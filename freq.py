@@ -7,7 +7,7 @@ ignored = {'\u0060','`','\u007e','～','!','@','\u0023','#','$','%','^','&','*',
 ignored = ignored.union(string.ascii_uppercase)
 ignored = ignored.union(string.ascii_lowercase)
 
-bs = {'！','','|',"'"}
+bs = {'！','','|',"'",'、'}
 ignored = ignored.union(bs)
 
 #case like 啊啊啊啊啊啊... ~ aaaaaaaa...
@@ -92,6 +92,6 @@ def generate_md(character_frequencies):
 
 
 
-all_text = process_directories({'./lyrics','./poems'})
+all_text = process_directories({'./lyrics'})
 
 print_character_frequencies(all_text)

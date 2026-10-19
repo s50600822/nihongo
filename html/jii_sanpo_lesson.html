@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandpa's Walk — A Japanese Lesson</title>
+    <style>
+        /* Root variables: dark mode by default, energy-efficient for OLED/mini-LED */
+        :root {
+            --bg: #0d0d0d;
+            --surface: #141414;
+            --surface-raised: #1a1a1a;
+            --ink: #d4d0c8;
+            --ink-dim: #8a8580;
+            --ink-faint: #5c5854;
+            --accent: #b8a88a;
+            --accent-weak: rgba(184,168,138,0.08);
+            --line: rgba(212,208,200,0.08);
+            --border: rgba(212,208,200,0.12);
+            --radius: 6px;
+            --step--1: clamp(0.8rem, 0.78rem + 0.12vw, 0.88rem);
+            --step-0: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+            --step-1: clamp(1.08rem, 1.02rem + 0.3vw, 1.25rem);
+            --step-2: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+            --step-3: clamp(1.8rem, 1.5rem + 1.5vw, 2.6rem);
+            --step-4: clamp(2.4rem, 2rem + 2vw, 3.6rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+        }
+
+        /* Light mode override for users who prefer it */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f5f2ed;
+                --surface: #faf8f5;
+                --surface-raised: #fff;
+                --ink: #1a1a1a;
+                --ink-dim: #4a4744;
+                --ink-faint: #7a7770;
+                --accent: #6a5a3a;
+                --accent-weak: rgba(106,90,58,0.06);
+                --line: rgba(26,26,26,0.08);
+                --border: rgba(26,26,26,0.12);
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Noto Sans JP", "Hiragino Sans", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "TakaoExMincho", serif;
+            line-height: 1.9;
+        }
+
+        /* Header: minimal, no heavy gradients */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: calc(var(--space) * 2.5) var(--space);
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", serif;
+            font-size: var(--step-4);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--ink);
+        }
+
+        header .japanese-title {
+            display: block;
+            font-family: "Noto Serif JP", serif;
+            font-size: 0.5em;
+            font-weight: 400;
+            color: var(--ink-dim);
+            margin-top: 0.6rem;
+        }
+
+        header .subtitle {
+            font-size: var(--step-1);
+            color: var(--ink-dim);
+            margin-top: 0.8rem;
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            margin-top: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", serif;
+            font-size: var(--step-3);
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: var(--step-2);
+            font-weight: 500;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step--1);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        /* Passage block: clean, no gradients, minimal shadow */
+        .passage {
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.1);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+            opacity: 0.7;
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-size: var(--step-1);
+            color: var(--ink-dim);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        /* Vocabulary table */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.55rem 0.7rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.75rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+
+        /* Nuance box */
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 2px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+            color: var(--ink-dim);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Grammar box */
+        .grammar {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+            border: 1px solid var(--line);
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .grammar code {
+            background: var(--surface-raised);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            font-size: 0.85em;
+            color: var(--accent);
+        }
+
+        .hl {
+            background: var(--accent-weak);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--ink-faint);
+            font-size: var(--step-2);
+            letter-spacing: 0.4em;
+            opacity: 0.4;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--ink-dim);
+            margin-bottom: calc(var(--space) * 2);
+            font-weight: 300;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent-weak);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .chapter-list {
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+        }
+
+        .chapter-list h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .chapter-list ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .chapter-list li {
+            font-size: var(--step--1);
+            margin-bottom: 0.4rem;
+            color: var(--ink-dim);
+        }
+
+        /* Print support */
+        @media print {
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .passage, .nuance, .grammar, .disclaimer, .chapter-list {
+                border: 1px solid #ccc !important;
+                background: #fff !important;
+            }
+            header {
+                background: #fff !important;
+                border-bottom: 1px solid #ccc !important;
+            }
+        }
+
+        /* Reduced motion for energy saving */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Grandpa's Walk<br><span class="japanese-title jp">じい散歩</span></h1>
+    <div class="subtitle">A Japanese lesson through Fujino Chiya's novel of an aging couple, three failed sons, and the grammar of family that outlasts every disaster</div>
+    <div class="meta">Fujino Chiya &middot; Futabasha &middot; 2020 &middot; Novel</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reader reviews of <em>Jii-sanpo</em> (じい散歩), a novel by Fujino Chiya (藤野千夜), originally published by Futabasha in 2020 (hardcover) and 2023 (bunko). The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    First published by Futabasha in 2020 and now a bestseller with over 200,000 copies sold across the series (including its sequel <em>Jii-sanpo: Tsuma no Hanran</em>), <em>Jii-sanpo</em> (じい散歩) is the work of Fujino Chiya (藤野千夜, b. 1962), one of Japan's most distinctive literary voices. Born in Fukuoka, Fujino worked as a manga magazine editor before debuting as a novelist in 1995 with "Gogo no Jikokuwari," which won the 14th Umiyome New Writer Literary Prize. In 1998, <em>Oshaberi Kaidan</em> won the 20th Noma Literary New Writer Prize. In 2000, "Natsu no Yakusoku" won the 122nd Akutagawa Prize. Fujino is a transgender woman, and many of her characters are social misfits who exist in productive friction with Japanese convention. Where previous lessons in this series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, the cage that makes the animal ferocious, the backstage of publishing where editors make authors grovel, the wobbly line that dances Edo back into existence, the wind chime that rings when the murderer's breath disturbs the air, and the fitting room where a woman discovers her heart has already decided what her mind still debates, this lesson enters a different territory: the family as an accident that continues, the walk as a declaration of independence in old age, and the sentence as a form of stoic comedy. This is Japanese as the language of endurance, as the grammar of the family that should have collapsed but somehow hasn't, as the vocabulary of aging without dignity and yet with something better than dignity: persistence.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Geriatric Stroll</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is a diminutive that contains an entire philosophy of aging.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">じい散歩</span>
+        </div>
+        <div class="romaji">"Jii-sanpo."</div>
+        <div class="translation">"Grandpa's walk" / "Old man's stroll."</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">じい</td><td class="reading">jii</td><td>grandpa, old man (familiar/diminutive)</td></tr>
+        <tr><td class="word">散歩</td><td class="reading">sanpo</td><td>walk, stroll</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The affectionate diminishment of じい</h5>
+        <p><strong>じい (jii):</strong> A colloquial, affectionate shortening of おじいさん (ojiisan, grandfather). Where おじいさん carries respect, じい carries intimacy and a hint of amused exasperation. It is what family members call the old man when they are not being formal. By using じい rather than おじいさん, the title makes the novel domestic before a single sentence is read. This is not a story about aging in the abstract. It is a story about a specific old man, seen from inside the family, where he is neither venerated nor pitied but simply <em>there</em>, walking. The grammar of the diminutive makes the title into a family nickname that has become public.</p>
+        <p><strong>散歩 (sanpo):</strong> "Walk, stroll." The word combines 散 (scatter, disperse, relax) with 歩 (walk, step). A sanpo is not exercise in the Western sense of calorie-burning or heart-rate monitoring. It is an unhurried perambulation without a fixed destination. The Japanese elderly practice of sanpo is a social institution: the daily walk that maintains not merely physical health but mental autonomy. For Shinpei, the 89-year-old protagonist, the sanpo is his declaration of independence from his own family. While his wife suspects him of using the walk as cover for flirtation, and while his three middle-aged sons remain dependent on him in various ways, the walk is the one thing that belongs entirely to Shinpei. The grammar of じい散歩 makes the title into a description of sovereignty: the old man's last territory is the sidewalk.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Author's Life: The Grammar of the Misfit</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Fujino's biography explains why she can see a dysfunctional family with such clear affection.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">1962年福岡県生まれ。千葉大学教育学部卒業。漫画雑誌の編集者を経て、1995年「午後の時間割」で第14回海燕新人文学賞を受賞し小説家に転身。1998年『おしゃべり怪談』で第20回野間文芸新人賞受賞。2000年「夏の約束」で第122回芥川賞受賞</span>
+        </div>
+        <div class="romaji">"Sen-kyūhyaku-rokujūni-nen Fukuoka-ken umare. Chiba Daigaku Kyōikugakubu sotsugyō. Manga zasshi no henshūsha wo hete, sen-kyūhyaku-kyūjūgo-nen 'Gogo no Jikokuwari' de dai-jūyon-kai Umiyome Shinjin Bungaku-shō wo jushō shi shōsetsuka ni tenshin. Sen-kyūhyaku-kyūjūhachi-nen 'Oshaberi Kaidan' de dai-nijū-kai Noma Bungaku Shinjin-shō jushō. Ni-sen-nen 'Natsu no Yakusoku' de dai-hyakunijūni-kai Akutagawa-shō jushō."</div>
+        <div class="translation">"Born in Fukuoka Prefecture in 1962. Graduated from the Faculty of Education at Chiba University. After working as a manga magazine editor, won the 14th Umiyome New Writer Literary Prize in 1995 for 'Gogo no Jikokuwari' and turned to fiction. Won the 20th Noma Literary New Writer Prize in 1998 for 'Oshaberi Kaidan.' Won the 122nd Akutagawa Prize in 2000 for 'Natsu no Yakusoku.'"</div>
+        <div class="source">— Wikipedia / author bio</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">編集者</td><td class="reading">henshūsha</td><td>editor</td></tr>
+        <tr><td class="word">経て</td><td class="reading">hete</td><td>via, through, after</td></tr>
+        <tr><td class="word">転身</td><td class="reading">tenshin</td><td>change of career, switching paths</td></tr>
+        <tr><td class="word">受賞</td><td class="reading">jushō</td><td>receiving an award</td></tr>
+        <tr><td class="word">海燕新人文学賞</td><td class="reading">Umiyome Shinjin Bungaku-shō</td><td>Umiyome New Writer Literary Prize</td></tr>
+        <tr><td class="word">野間文芸新人賞</td><td class="reading">Noma Bungaku Shinjin-shō</td><td>Noma Literary New Writer Prize</td></tr>
+        <tr><td class="word">芥川賞</td><td class="reading">Akutagawa-shō</td><td>Akutagawa Prize</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The transitional grammar of 経て and 転身</h5>
+        <p><strong>経て (hete):</strong> "Via, through, after experiencing." This is the te-form of 経る (heru), to pass through. When Fujino's bio says she became a novelist 漫画雑誌の編集者を経て (after working as a manga magazine editor / via being a manga magazine editor), the grammar makes the editorial career into a passage rather than a detour. She did not abandon her past. She passed through it. The experience of editing manga, with its visual pacing, speech bubbles, and economy of line, informs the clean, uncluttered prose of <em>Jii-sanpo</em>. Fujino knows how to let a scene breathe because she spent years deciding how many millimeters to place between panels.</p>
+        <p><strong>転身 (tenshin):</strong> "Change of career, switching paths." The word contains 転 (turn, change) and 身 (body, self). It means not merely changing jobs but turning the whole self toward a new direction. The grammar of 小説家に転身 (turning to fiction) makes the career change sound like a physical rotation, as if Fujino pivoted her entire being from manga editing to novel-writing. This is not a casual transition. It is a reorientation of the self. The word helps explain why Fujino's fiction has such a strong sense of embodied experience: she writes as someone who has turned, more than once, and knows what it costs.</p>
+        <p><strong>The Akutagawa Prize context:</strong> "Natsu no Yakusoku" (夏の約束), which won the 122nd Akutagawa Prize in 2000, centered on a gay couple. Fujino, a transgender woman, has consistently written characters who exist at an angle to mainstream Japanese society. This makes her uniquely qualified to write the Akashi family, where the second son self-identifies as the "eldest daughter" (自称・長女), where the eldest son has been a shut-in for decades, and where the third son's business failures have made him financially dependent on his parents. Fujino does not treat these deviations as problems to be solved. She treats them as conditions to be observed with warmth. The grammar of her career makes <em>Jii-sanpo</em> into a mature work by a writer who has spent thirty years learning to love misfits.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. "Combined, Nearly 180 Years Old": The Grammar of Geriatric Arithmetic</h2>
+    <span class="story-label">Opening hook</span>
+
+    <p>The novel's most famous sentence turns age into a family balance sheet.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">夫婦あわせて、もうすぐ180歳</span>
+        </div>
+        <div class="romaji">"Fūfu awasete, mōsugu hyaku-hachi-jū-sai."</div>
+        <div class="translation">"The couple, combined, are nearly 180 years old."</div>
+        <div class="source">— Promotional copy / opening hook</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夫婦</td><td class="reading">fūfu</td><td>husband and wife, married couple</td></tr>
+        <tr><td class="word">合わせて</td><td class="reading">awasete</td><td>combined, added together</td></tr>
+        <tr><td class="word">もうすぐ</td><td class="reading">mōsugu</td><td>soon, nearly, almost</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The accounting grammar of 合わせて</h5>
+        <p><strong>合わせて (awasete):</strong> "Combined, added together." From 合わせる (awaseru), to join, to combine, to add. The word is used for arithmetic (2 plus 2), for coordination (合わせる動作, coordinated movement), and for marital union itself (夫婦の契り, the marital bond). When the promotional copy says 夫婦あわせて, it performs a small act of addition that produces a number so large it becomes comic. 180 years. The number is absurd because it treats a marriage as a quantitative entity. But the absurdity contains tenderness. These two people have lived so long that their ages must be summed to be comprehended. The grammar of 合わせて makes the marriage into a joint account of time, and the balance is impressive even if the individual withdrawals have been severe.</p>
+        <p><strong>もうすぐ (mōsugu):</strong> "Soon, nearly, almost." The phrase carries anticipation. They are not yet 180. They are approaching it. The word もう (already) plus すぐ (soon) creates a temporal pressure: time is still moving, still adding to the total. The couple is still alive, still accumulating years together. The grammar makes longevity sound like an ongoing project rather than a completed achievement. The "nearly" is important because it means the story happens in the approach to a milestone, not after it. The Akashis are still in motion, still walking toward something, even if they do not know what.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Family Portrait: The Grammar of Catalogued Disaster</h2>
+    <span class="story-label">Plot summary</span>
+
+    <p>The novel introduces the Akashi family through a list of failures that somehow coheres into affection.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">明石家の主、新平は散歩が趣味の健啖家。妻は、散歩先での夫の浮気をしつこく疑っている。長男は高校中退後、ずっと引きこもり。次男はしっかりの、自称・長女。末っ子は事業に失敗して借金まみれ。……いろいろあるけど、「家族」である日々は続いてゆく</span>
+        </div>
+        <div class="romaji">"Akashi-ke no aruji, Shinpei wa sanpo ga shumi no kentan-ka. Tsuma wa, sanpo-saki de no otto no uwaki wo shitsukoku utagatte iru. Chōnan wa kōkō chūtaigo, zutto hikikomori. Jinan wa shikkari-mono no, jishō-chōjo. Suekko wa jigyō ni shippai shite shakkin-mamire…… Iroiro aru kedo, 'kazoku' de aru hibi wa tsuzuite yuku."</div>
+        <div class="translation">"The head of the Akashi household, Shinpei, is a big eater whose hobby is walking. His wife persistently suspects him of cheating during his walks. The eldest son has been a shut-in ever since dropping out of high school. The second son is a reliable person who self-identifies as the 'eldest daughter.' The youngest son has failed in business and is covered in debt…… There are various problems, but the days of being a 'family' continue."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">明石家</td><td class="reading">Akashi-ke</td><td>the Akashi family/household</td></tr>
+        <tr><td class="word">主</td><td class="reading">aruji</td><td>head of household, master</td></tr>
+        <tr><td class="word">健啖家</td><td class="reading">kentan-ka</td><td>big eater, hearty eater</td></tr>
+        <tr><td class="word">浮気</td><td class="reading">uwaki</td><td>infidelity, affair, flirting</td></tr>
+        <tr><td class="word">しつこ</td><td class="reading">shitsukoku</td><td>persistently, stubbornly, tenaciously</td></tr>
+        <tr><td class="word">疑う</td><td class="reading">utagau</td><td>to doubt, to suspect</td></tr>
+        <tr><td class="word">引きこもり</td><td class="reading">hikikomori</td><td>shut-in, social withdrawal</td></tr>
+        <tr><td class="word">しっかり者</td><td class="reading">shikkari-mono</td><td>reliable person, steady character</td></tr>
+        <tr><td class="word">自称</td><td class="reading">jishō</td><td>self-proclaimed, self-described</td></tr>
+        <tr><td class="word">長女</td><td class="reading">chōjo</td><td>eldest daughter</td></tr>
+        <tr><td class="word">借金まみれ</td><td class="reading">shakkin-mamire</td><td>covered in debt, deep in debt</td></tr>
+        <tr><td class="word">いろいろある</td><td class="reading">iroiro aru</td><td>there are various things/problems</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The stubborn grammar of しつこく疑っている</h5>
+        <p><strong>しつこく (shitsukoku):</strong> "Persistently, stubbornly, tenaciously." This adverb comes from しつこい (shitsukoi), which means persistent to the point of annoyance, clingy, refusing to let go. It is not a compliment. When applied to Eiko's suspicion of her husband's infidelity, the word makes her vigilance sound both comic and admirable. She is 88 years old. Her husband is 89. And still she suspects him of flirting during his walks. The persistence is absurd, but it is also a form of love. She has spent seventy-odd years watching him, and she has not stopped. The grammar of しつこく makes suspicion into a lifelong habit that has outlasted the energy of the suspected behavior. Shinpei probably is not actually cheating. But Eiko's suspicion has become part of the marriage's architecture, like a creaking floorboard you learn to walk around.</p>
+        <p><strong>健啖家 (kentan-ka):</strong> "Big eater, hearty eater." The word combines 健 (healthy, robust) with 啖 (to eat, to feed) and 家 (person, specialist). A kentan-ka is not merely someone who eats a lot. They are someone whose appetite is a defining characteristic, almost a profession. For Shinpei, being a kentan-ka is part of what keeps him alive and independent. He enjoys food. He enjoys walking to places where he can enjoy food that his wife does not serve at home (Western food at coffee shops). The word makes his appetite into a virtue and a rebellion. The grammar of 散歩が趣味の健啖家 (a big eater whose hobby is walking) creates a perfect equilibrium: what he consumes, he walks off. The walk justifies the meal, and the meal justifies the walk.</p>
+        <p><strong>自称・長女 (jishō chōjo):</strong> "Self-proclaimed eldest daughter." This is the novel's most quietly radical phrase. The second son is reliable (しっかり者), but he does not identify as a son. He identifies as the family's eldest daughter. The word 自称 (self-proclaimed, self-described) is crucial here. In Japanese, 自称 can carry a note of skepticism, as in "so-called." But in Fujino's hands, it becomes a simple statement of fact. He calls himself the eldest daughter. Therefore he is. The grammar of しっかり者の、自称・長女 (a reliable person who self-identifies as the eldest daughter) makes gender identity into a matter of family role rather than biology. He is the one who takes care of things. In a family where the actual eldest son has withdrawn from society and the youngest son has collapsed into debt, the second son has stepped into the structural position of "eldest daughter" — the responsible child who manages parental relations. Fujino does not make this into a problem. She makes it into a fact, noted with the same calm tone as the father's appetite or the mother's suspicion.</p>
+        <p><strong>いろいろあるけど (iroiro aru kedo):</strong> "There are various problems, but." This is one of the most Japanese phrases in the language. いろいろ (various things) avoids specifying. ある (there are) states existence without judgment. けど (but) pivots toward acceptance. The phrase is the verbal equivalent of a shrug that becomes a hug. Yes, this family is a disaster by conventional metrics. Yes, the sons are all unmarried and dependent. Yes, the wife suspects the husband and the husband enjoys escaping. But. The but is the whole novel. いろいろあるけど makes the entire catalog of failures into a preface for the real subject, which is that the family continues. The grammar of this phrase is the grammar of Japanese stoicism at its most humane.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. "The Days of Being a Family Continue": The Grammar of Unconditional Continuation</h2>
+    <span class="story-label">Central theme</span>
+
+    <p>The novel's emotional thesis is a sentence that refuses to qualify its own optimism.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">「家族」である日々は続いてゆく</span>
+        </div>
+        <div class="romaji">"'Kazoku' de aru hibi wa tsuzuite yuku."</div>
+        <div class="translation">"The days of being a 'family' continue." / "The days of 'family' go on."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">家族</td><td class="reading">kazoku</td><td>family</td></tr>
+        <tr><td class="word">日々</td><td class="reading">hibi</td><td>days, everyday</td></tr>
+        <tr><td class="word">続く</td><td class="reading">tsuzuku</td><td>to continue, to last</td></tr>
+        <tr><td class="word">～てゆく</td><td class="reading">-te yuku</td><td>to go on (into the future)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The directional grammar of てゆく and the scare quotes around 家族</h5>
+        <p><strong>続いてゆく (tsuzuite yuku):</strong> From 続 (tsuzuku, to continue) plus the auxiliary ゆく (yuku, to go). Where ていく (teiku) is the colloquial form, てゆく is more literary, more formal, more poetic. The directional auxiliary ゆく indicates movement away from the speaker, into the future. When combined with 続く, it creates a phrase that means not merely "continues" but "continues onward, into the distance." The grammar makes the family's continuation into a journey with a horizon rather than a static state. The Akashis are not just staying together. They are proceeding together, day by day, into whatever remains.</p>
+        <p><strong>The quotation marks around 家族:</strong> In the promotional copy, 家族 appears in quotation marks: 「家族」. This is crucial. The marks indicate that the word is being used with awareness of its contested meaning. What is a family, anyway? A married couple and their children? The Akashis fit this definition technically, but their reality subverts the ideal: three middle-aged sons who are all unmarried, two of whom still live with their parents, one of whom has not left the house in decades. The quotation marks say: we know this does not look like the families in government pamphlets. We know this is not the kazoku of postwar propaganda. But it is what they have. The grammar of the scare quotes makes the novel's central claim modest and defiant at once: this is a "family" in the only sense that matters, the sense in which the days continue.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. "Light, Airy Humor and Warmth": The Grammar of the 飄々 Tone</h2>
+    <span class="story-label">Style</span>
+
+    <p>The novel's tone is captured in an adverb that describes a very specific emotional weather.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">飄々としたユーモアと温かさがじんわりと胸に沁みる</span>
+        </div>
+        <div class="romaji">"Hyōhyō to shita yumoa to atatakasa ga jinwari to mune ni shimiru."</div>
+        <div class="translation">"Light, airy humor and warmth slowly permeate the heart."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">飄々</td><td class="reading">hyōhyō</td><td>light, airy, nonchalant, carefree</td></tr>
+        <tr><td class="word">ユーモア</td><td class="reading">yumoa</td><td>humor</td></tr>
+        <tr><td class="word">温かさ</td><td class="reading">atatakasa</td><td>warmth</td></tr>
+        <tr><td class="word">じんわり</td><td class="reading">jinwari</td><td>slowly, gradually, soaking in</td></tr>
+        <tr><td class="word">胸</td><td class="reading">mune</td><td>chest, heart, breast</td></tr>
+        <tr><td class="word">沁みる</td><td class="reading">shimiru</td><td>to permeate, to soak in, to sting (with emotion)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The meteorological grammar of 飄々 and the osmotic grammar of じんわり沁みる</h5>
+        <p><strong>飄々 (hyōhyō):</strong> "Light, airy, nonchalant, carefree." The word contains 飄 (to flutter, to float in the wind), repeated. It describes something that moves like a leaf on a breeze, without heaviness, without attachment. When applied to humor (飄々としたユーモア), it creates a specific tonal instruction: this book will not press down on you. It will not burden you with the weight of its subjects (aging, failure, debt, social withdrawal, gender identity, infidelity suspicion). It will treat them lightly, not because they are light, but because heaviness has never helped anyone. The grammar of 飄々とした makes the novel's tone meteorological: a warm wind that moves through the house without breaking anything.</p>
+        <p><strong>じんわりと胸に沁みる (jinwari to mune ni shimiru):</strong> "Slowly permeates the heart." じんわり (jinwari) is an adverb of gradual absorption, like water soaking into cloth. 沁みる (shimiru) means to permeate, to soak in, and also to sting (as when cold wind makes your eyes water, or when emotion makes your chest ache). The combination creates a paradox: the warmth enters slowly, without force, but it reaches deep enough to hurt. The grammar of じんわりと胸に沁みる makes the reading experience into an osmotic process. You do not feel the emotion arriving. You notice, suddenly, that it is already inside you. This is the perfect description of how Fujino's prose works. She does not announce her emotional intentions. She lets them accumulate until you realize you have been moved.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Walk Itself: The Grammar of てくてく</h2>
+    <span class="story-label">Recurring motif</span>
+
+    <p>Shinpei's walk is described in an onomatopoeia that contains his entire character.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">新平は今日も元気にてくてく歩く</span>
+        </div>
+        <div class="romaji">"Shinpei wa kyō mo genki ni tekuteku aruku."</div>
+        <div class="translation">"Shinpei walks energetically, plodding along, today as always."</div>
+        <div class="source">— Reader review / promotional description</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">てくてく</td><td class="reading">tekuteku</td><td>plodding along, walking steadily, trudging</td></tr>
+        <tr><td class="word">元気</td><td class="reading">genki</td><td>energetic, healthy, vigorous</td></tr>
+        <tr><td class="word">歩く</td><td class="reading">aruku</td><td>to walk</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The onomatopoeic persistence of てくてく</h5>
+        <p><strong>てくてく (tekuteku):</strong> An onomatopoeia for walking steadily, persistently, without hurry or drama. It is the sound of small steps repeated. Not the confident stride of a young man (どしどし, doshi-doshi), not the hurried scamper of a child (ぱたぱた, pata-pata), but the patient, rhythmic movement of someone who has been walking for eighty-nine years and sees no reason to stop. The word contains no elevation, no transcendence. It is purely horizontal. Shinpei walks tekuteku because that is what his body can do, and because doing it makes him free. The grammar of てくてく歩く makes the act of walking into a statement of being: I walk, therefore I am not merely my family's problems. The onomatopoeia is the sound of identity surviving circumstance.</p>
+        <p><strong>元気に (genki ni):</strong> "Energetically, healthily." 元気 (genki) is one of the most important words in Japanese daily life. It means healthy, energetic, in good spirits. When you greet someone, you ask 元気ですか (Are you well?). When Shinpei walks genki ni at 89, the adverb is both factual and defiant. He is well. Despite everything: the wife who suspects him, the sons who depend on him, the body that must be failing in ways the novel does not emphasize. He is well enough to walk. The grammar of 元気にてくてく歩く makes the walk into a performance of vitality that needs no audience. He walks because walking is how he remains himself.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. "Asking Parents for Money": The Grammar of 無心</h2>
+    <span class="story-label">Social vocabulary</span>
+
+    <p>The youngest son's relationship to his parents is captured in a word that sounds like the opposite of what it means.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">親に無心ばかり</span>
+        </div>
+        <div class="romaji">"Oya ni mushin bakari."</div>
+        <div class="translation">"Constantly asking his parents for money." / "Always hitting up his parents for cash."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">無心</td><td class="reading">mushin</td><td>asking someone (esp. parents) for money</td></tr>
+        <tr><td class="word">ばかり</td><td class="reading">bakari</td><td>only, merely, constantly</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The Zen irony of 無心</h5>
+        <p><strong>無心 (mushin):</strong> This is one of Japanese's most ironically loaded words. In Zen Buddhism, 無心 (mushin, also read as mujōshin) means "no-mind," the state of consciousness without thought, desire, or ego — the perfected condition of the enlightened being. In everyday Japanese, however, 無心 (mushin) means something completely different: asking one's parents for money, especially when one is an adult who should be self-supporting. The word is written with the same characters (無 = without, 心 = mind/heart) but means "to ask for money without shame" or "to make a thoughtless request." The semantic collision is extraordinary. The Zen ideal of egoless awareness and the social reality of a middle-aged son asking his elderly parents for cash share a single written form. When the promotional copy says the youngest son is 親に無心ばかり (constantly asking his parents for money), the word carries a faint echo of its Buddhist meaning: he asks without thinking, without self-consciousness, as if it were natural. The grammar of 無心 makes the son's dependency sound almost like a spiritual condition, which in a way it is. He has achieved a state of perfect unselfconsciousness about his own failure.</p>
+        <p><strong>ばかり (bakari):</strong> "Only, merely, constantly." When bakari follows a verb, it indicates repetition to the point of exclusivity. He does not occasionally ask for money. He does only that. 無心ばかり means that his relationship to his parents has been reduced to a single transaction. The grammar makes the son's life sound like a broken record, and the parents' tolerance sound like either saintliness or exhaustion. Fujino does not judge. She notes. The noting is the judgment.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. "Wife's Rebellion": The Grammar of the Sequel</h2>
+    <span class="story-label">Sequel title</span>
+
+    <p>The 2023 sequel shifts the novel's center of gravity from the husband's walk to the wife's resistance.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">じい散歩 妻の反乱</span>
+        </div>
+        <div class="romaji">"Jii-sanpo: Tsuma no Hanran."</div>
+        <div class="translation">"Grandpa's Walk: The Wife's Rebellion."</div>
+        <div class="source">— Sequel title, 2023</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">妻</td><td class="reading">tsuma</td><td>wife</td></tr>
+        <tr><td class="word">反乱</td><td class="reading">hanran</td><td>rebellion, revolt, uprising</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The military grammar of 反乱 in a domestic context</h5>
+        <p><strong>反乱 (hanran):</strong> "Rebellion, revolt, uprising." This is a military word. It describes armed insurrection, coups d'état, peasant revolts. When Fujino applies it to an 88-year-old wife in a long marriage, the word creates a wonderful disproportion. Eiko is not leading an army. She is probably refusing to make dinner, or insisting on her own walk, or demanding that her husband account for his whereabouts. But in the economy of a seventy-year marriage, these small refusals are rebellion. The grammar of 妻の反乱 makes the domestic into the epic. It says: what happens inside a marriage is as significant as what happens on a battlefield. The wife's resistance to her husband's autonomy is not nagging. It is a political act. And the fact that the sequel is called "The Wife's Rebellion" rather than something softer suggests that Fujino understands marriage as a permanent negotiation of power, where even the very old have not finished fighting for recognition.</p>
+        <p><strong>The sequel's context:</strong> In the second book, the couple has crossed the 180-year threshold. The three sons remain unchanged. The mother now requires care (老老介護, rōrō kaigo: the elderly caring for the elderly has begun). And yet Shinpei still walks. The sequel's title announces that the wife, who in the first book was primarily defined by her suspicion of her husband's walks, will now claim narrative equality. The grammar of the colon makes the sequel into a revision: this is not just more of Grandpa's Walk. This is Grandpa's Walk reconsidered from the wife's perspective. The rebellion is that she too has a story.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. "Difficulties Accumulate, Become Happiness": The Grammar of the Miyazaki Prize Citation</h2>
+    <span class="story-label">Award recognition</span>
+
+    <p>The novel won the 6th Miyazaki Book Grand Prize in 2025, and the citation captured its paradox.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">難も積もれば、幸となる</span>
+        </div>
+        <div class="romaji">"Nan mo tsumoreba, sachi to naru."</div>
+        <div class="translation">"If difficulties accumulate, they become happiness." / "When troubles pile up, they turn into fortune."</div>
+        <div class="source">— Miyazaki Book Grand Prize citation, 2025</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">難</td><td class="reading">nan</td><td>difficulty, trouble, hardship</td></tr>
+        <tr><td class="word">積もる</td><td class="reading">tsumoru</td><td>to pile up, to accumulate</td></tr>
+        <tr><td class="word">幸</td><td class="reading">sachi</td><td>happiness, fortune, blessing</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The alchemical grammar of 積もれば</h5>
+        <p><strong>難も積もれば (nan mo tsumoreba):</strong> "If difficulties accumulate." The grammar uses the conditional form of 積もる (tsumoru), to pile up, to accumulate. 積もる is the same verb used for snow accumulating (雪が積もる, yuki ga tsumoru). Difficulties, in this phrase, are like snow: they fall, they layer, they build. The conditional ば creates a premise: if this accumulation happens. The word 難 (nan, difficulty) is modified by も (also/even), which gives it a sense of inclusiveness: not just one difficulty, but every difficulty, all of them, piling up. The grammar makes hardship sound like a natural process rather than a moral failure.</p>
+        <p><strong>幸となる (sachi to naru):</strong> "They become happiness/fortune." 幸 (sachi) is an older, more literary word for happiness than the common 幸せ (shiawase). It has a biblical or classical resonance, as in the Beatitudes (八つの福, yattsu no fuku). When the citation says that accumulated difficulties become sachi, the word makes the transformation sound almost sacred. The grammar is alchemical: lead becomes gold, nan becomes sachi. This is the philosophy of <em>Jii-sanpo</em> in a single clause. The Akashi family's troubles, piled up over decades, have become something that looks, from the outside, like happiness. Not because the troubles have been solved. Because the family has learned to live inside them. The grammar of 難も積れば、幸となる is the grammar of Japanese family stoicism at its most radical: suffering, accumulated patiently enough, transmutes into blessing.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Family That Should Have Collapsed But Didn't</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜合わせて</strong> — Combined/added together: the grammar of geriatric arithmetic</li>
+        <li><strong>〜もうすぐ</strong> — Soon/nearly: the grammar of approaching milestones</li>
+        <li><strong>〜経て</strong> — Via/through: the grammar of career as passage</li>
+        <li><strong>〜に転身</strong> — Turning toward a new career: the grammar of self-reorientation</li>
+        <li><strong>〜しつこく〜</strong> — Persistently/stubbornly: the grammar of lifelong habits</li>
+        <li><strong>自称・〜</strong> — Self-proclaimed: the grammar of identity as self-description</li>
+        <li><strong>〜まみれ</strong> — Covered in: the grammar of being saturated with a condition</li>
+        <li><strong>いろいろあるけど</strong> — There are various problems, but: the grammar of stoic acceptance</li>
+        <li><strong>〜てゆく</strong> — Continuing into the future: the grammar of ongoing procession</li>
+        <li><strong>飄々とした</strong> — Light and airy: the grammar of emotional meteorology</li>
+        <li><strong>じんわりと〜沁みる</strong> — Slowly permeating: the grammar of osmotic emotion</li>
+        <li><strong>てくてく</strong> — Plodding steadily: the grammar of persistent horizontal motion</li>
+        <li><strong>無心</strong> — Asking parents for money: the grammar of Zen irony</li>
+        <li><strong>〜ばかり</strong> — Only/constantly: the grammar of exclusive repetition</li>
+        <li><strong>〜も積もれば、〜となる</strong> — If X accumulates, it becomes Y: the grammar of alchemical transformation</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>じい散歩</strong> — Grandpa's walk: the diminutive that domesticates an old man's sovereignty</li>
+        <li><strong>夫婦あわせて</strong> — The couple combined: the arithmetic that makes marriage quantitative</li>
+        <li><strong>180歳</strong> — 180 years: the number that turns longevity into comedy and awe</li>
+        <li><strong>健啖家</strong> — Big eater: the appetite as rebellion and vitality</li>
+        <li><strong>しつこく疑う</strong> — Persistently suspect: the vigilance that has become love</li>
+        <li><strong>引きこもり</strong> — Shut-in: the son who has not left the house in decades</li>
+        <li><strong>自称・長女</strong> — Self-proclaimed eldest daughter: gender identity as family role</li>
+        <li><strong>しっかり者</strong> — Reliable person: the steadiness that holds the family together</li>
+        <li><strong>借金まみれ</strong> — Covered in debt: the condition that saturates the youngest son</li>
+        <li><strong>無心</strong> — Asking parents for money: the Zen word that means its opposite</li>
+        <li><strong>いろいろあるけど</strong> — There are various problems, but: the shrug that becomes a hug</li>
+        <li><strong>家族である日々は続いてゆく</strong> — The days of family continue onward: the thesis</li>
+        <li><strong>飄々としたユーモア</strong> — Light airy humor: the tone that refuses to burden</li>
+        <li><strong>じんわりと胸に沁みる</strong> — Slowly permeating the heart: the osmosis of emotion</li>
+        <li><strong>てくてく歩く</strong> — Walking ploddingly: the sound of identity surviving circumstance</li>
+        <li><strong>元気に</strong> — Energetically: the defiant adverb of the 89-year-old</li>
+        <li><strong>妻の反乱</strong> — The wife's rebellion: the domestic made epic</li>
+        <li><strong>老老介護</strong> — The elderly caring for the elderly: the next phase</li>
+        <li><strong>難も積もれば、幸となる</strong> — Difficulties accumulated become happiness: the alchemical philosophy</li>
+        <li><strong>経て</strong> — Via/through: the grammar of career as passage</li>
+        <li><strong>転身</strong> — Change of career: the rotation of the self</li>
+        <li><strong>芥川賞</strong> — Akutagawa Prize: the recognition of the misfit's voice</li>
+    </ul>
+
+    <h4>Fujino vs. Ogata vs. Sano vs. Takita vs. Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Twenty-two directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ), Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる), Takita's are visual and wobbly (落語劇場, 下町風俗, 吹き出し, 無意味な絵, ふにゃふにゃ, 線のゆらぎ, フラのような間, また夢になるといけねえ, 枕元, 天秤棒, 居候, 番台), Sano's are cool and causative (風鈴, 優雅な推理, 社の用, 1200編, 中庸, アッと言わせる, 知的遊戯, マンネリズムに陥る, 一石を投じる, 揚げ足取り, 名探偵否定論, 淡々, アッケラカン), Ogata's are sartorial and diagnostic (試着室, 本気の恋, 片思い, 両思い, 運命の一着, 強がり, 諦め, 素直, 戦闘服, 背中を押す, 相手を慮る, 曖昧, 実らなかった恋, 感情は歳をとらない, 悪い女ほど清楚, 花嫁未満, いったりきたり), and Fujino's are stoic and familial (じい散歩, 夫婦あわせて, 健啖家, しつこく疑う, 引きこもり, 自称・長女, 借金まみれ, 無心, いろいろあるけど, 家族である日々は続いてゆく, 飄々, じんわり沁みる, てくてく, 妻の反乱, 老老介護, 難も積もれば幸となる). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. Higashino asks what happens when you love an industry so much that you cannot stop laughing at it. Takita asks what happens when a man who grew up in a vanished downtown tries to draw the spoken stories of an even more vanished downtown, using a line that wobbles like a hula dancer. Sano asks what happens when a newspaper reporter decides that the perfect mystery is one that makes the reader say "a" in a single involuntary syllable. Ogata asks what happens when a 175cm copywriter decides that the fitting room is the only honest room in the city. And Fujino asks what happens when a family accumulates every possible failure — a hikikomori son, a debt-ridden son, a son who calls himself the eldest daughter, a wife who suspects her husband of cheating at 88, a husband who walks to escape them all — and yet the days of being a "family" continue, not because anyone has fixed anything, but because no one has left. Together these twenty-two works map the full range of Japanese narrative art: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the cage that makes the animal ferocious, to the crossroads where a woman must choose before someone else chooses for her, to the horizon where sky and sea meet and a promise arrives shimmering across the years, to the office at midnight where a blank price column becomes the beginning of everything, to the backstage of a publishing house where a legendary editor makes authors grovel, to the wobbly line that dances Edo back into existence one speech bubble at a time, to the wind chime that rings when the murderer's breath disturbs the air, to the fitting room where a woman stands before a mirror and discovers, because she cannot stop thinking of him, that her heart has already decided what her mind still debates, to the sidewalk where an 89-year-old man walks tekuteku away from a house full of problems and toward a coffee shop where nobody needs anything from him, not even love.</p>
+</section>
+
+</main>
+
+</body>
+</html>

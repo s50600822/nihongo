@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>灰色の虹 — 貫井徳郎 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-slate: #7a7a9e;
+  --accent-slate-dim: #4a4a6e;
+  --accent-slate-glow: rgba(122, 122, 158, 0.12);
+  --accent-mauve: #9e7a8a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-slate-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-slate);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-slate-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-slate-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-slate);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-slate-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-slate), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-slate);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-slate-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-slate); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-slate-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-slate-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-slate);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-slate-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-slate);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-mauve);
+}
+
+.nuance-box h4 {
+  color: var(--accent-mauve);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-slate);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-slate);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-slate-dim), var(--accent-slate));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-slate);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-slate);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(122, 122, 158, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-slate);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-slate-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>灰色の虹</h1>
+  <p class="hero-subtitle">HAI-IRO NO NIJI</p>
+  <p class="hero-meta">貫井徳郎 &middot; 新潮社 2010（単行本）/ 2013（新潮文庫） &middot; 冤罪復讐ミステリー長編</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & The Four Targets</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 灰色の虹</h2>
+  <p class="lead">The title <em>Hai-iro no Niji</em> (灰色の虹) is an oxymoron that contains the novel's entire moral vision in four syllables. <em>Hai-iro</em> (灰色, "gray / ashen") is the color of ambiguity, of moral middle ground, of skies before rain, of things that refuse to be either black or white. <em>Niji</em> (虹, "rainbow") is the color of promise, of spectrum, of light divided into its constituent beauties, of the covenant after the flood. A "gray rainbow" is a meteorological impossibility and a moral necessity: it is the rainbow that appears not after cleansing rain but after the dirty, compromised, human storm of a wrongful conviction. The possessive particle <em>no</em> (の) makes gray a quality of the rainbow — not "a gray sky with a rainbow" but "a rainbow that is itself gray." The title announces that this will be a novel about beauty that has been damaged, about hope that has been discolored, about the spectrum of human justice that resolves not into bright bands but into a single ashen arc across a darkened sky.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">灰色</span>
+        <span class="romaji">hai-iro</span>
+        <span class="meaning">"gray / ashen" — A compound of <em>hai</em> (灰, "ash") and <em>iro</em> (色, "color"). The word carries the weight of cremation, of what remains after fire has consumed what mattered. In Japanese moral vocabulary, <em>hai-iro</em> is the color of the in-between: not the clarity of black-and-white (<em>shirokuro</em>, 白黒) but the murk where right and wrong intermingle. The novel's promotional copy asks <em>fukushuu wa seigi to ieru no ka</em> (復讐は正義と言えるのか / "Can vengeance be called justice?") — a question that admits no binary answer. The gray is the space where the reader must stand: not with the vigilante, not with the law, but in the uncomfortable middle where both have claims. <em>Hai</em> (灰) also evokes the Christian <em>ashes to ashes</em> — the reminder that all human endeavors, including justice systems, return to dust. The wrongful conviction has turned the protagonist's life to ash; the revenge he undertakes will produce more ash. Gray is the color of this cycle.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">possessive particle — Links <em>hai-iro</em> to <em>niji</em> not as an external descriptor but as an intrinsic quality. This is not "a rainbow seen against a gray sky"; it is a rainbow whose essential nature has become gray. The <em>no</em> suggests that the grayness has penetrated the rainbow itself — that the promise has been corrupted from within. In the context of the novel, this means that the institutions that should deliver justice (the police, the prosecution, the courts) have themselves become gray, their rainbows — their promises of fairness — discolored by human error, ambition, and indifference.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">虹</span>
+        <span class="romaji">niji</span>
+        <span class="meaning">"rainbow" — In Japanese as in English, the rainbow is a symbol of hope after destruction, of beauty after storm, of the divine promise never again to destroy the world by flood. The single character <em>niji</em> (虹) contains within it the character for "insect" or "worm" (虫) beneath the radical for "thread" or "cord" (工/糸), suggesting the ancient idea of the rainbow as a celestial worm or serpent — a living thing in the sky. By calling the rainbow gray, Nukui removes its promise while preserving its form. The arc remains — the structure of hope is still visible — but the colors are gone. This is the perfect metaphor for the novel's Japan: the institutions of justice still stand (the courts, the police, the legal code), but their colors — their capacity to deliver true justice — have been leached away by a single wrongful conviction. The rainbow is still there; you can see its shape. But do not look for colors.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The title's oxymoron places the novel in a tradition of Japanese mystery titles that use color to signal moral complexity. Nukui's own <em>Doukoku</em> (慟哭 / "Throes of Lament," 1993) uses the black of grief; <em>Ranshasha</em> (乱反射 / "Diffuse Reflection," 2009) uses the scattered light of multiple perspectives. <em>Hai-iro no Niji</em> goes further by naming a color that is the absence of color — gray is what you get when all the rainbow's wavelengths cancel each other out. The title is a physics of morality: when all perspectives are valid, the result is not white light but gray ash.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>貫井徳郎 &mdash; Nukui Tokuro</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">貫</div>
+    <div class="author-name-block">
+      <h3>貫井徳郎</h3>
+      <p class="author-name-romaji">Nukui Tokuro &middot; b. February 25, 1968 &middot; Shibuya, Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Nukui Tokuro is one of the most intellectually ambitious mystery writers of his generation — a novelist who places formal puzzlecraft at the service of social critique, and who believes that the mystery novel's true subject is not whodunit but what-kind-of-world-produces-such-deeds. Born in 1968 in Shibuya, Tokyo, he grew up in the decades when Japan's economic miracle was giving way to its long post-bubble stagnation, when the certainties of lifetime employment and social cohesion were beginning to crack. He began writing fiction in high school, continued through his years at Waseda University's Faculty of Commerce, and after graduation worked at a real estate company while refining his craft in the evenings. In 1992, on New Year's Eve, he resigned from the company to devote himself to writing — a decision that would prove either courageous or foolhardy, depending on what happened next.</p>
+    <p style="margin-bottom: var(--space-md);">What happened next was <em>Doukoku</em> (慟哭 / "Throes of Lament," 1993), submitted to the 4th Ayukawa Tetsuya Prize competition. It did not win — the prize went to another writer — but it reached the final selection round, where preliminary judge Kitamura Kaoru (later a major mystery writer himself) gave it passionate praise. Tokyo Sogensha published it as part of the "Golden Thirteen" mystery series, and Nukui was launched. The novel established what would become his signature approach: the fusion of classic mystery trickery with a dark, almost nihilistic vision of human society. Readers who came for the puzzles stayed for the despair; readers who came for the despair were surprised by the ingenuity.</p>
+    <p style="margin-bottom: var(--space-md);">Over the following decades, Nukui proved himself a restless experimenter, refusing to be typecast. He wrote the "Syndrome" trilogy (<em>Shissou Syndrome</em> / 失踪症候群, <em>Yuukai Syndrome</em> / 誘拐症候群, <em>Satsujin Syndrome</em> / 殺人症候群, 1995-2002) — police procedurals with a clinical eye for institutional failure. He created the "Meishi" series (<em>Kiryuu Meishi</em> / 鬼流殺生祭, <em>Youki Setsudanfu</em> / 妖奇切断譜, 1998-99) — historical mysteries set in a fictional past that allowed him to explore violence without the constraints of contemporary realism. He wrote standalone masterpieces like <em>Hai-iro no Niji</em> (灰色の虹 / "The Gray Rainbow," 2010), <em>Kokuu no Zekkyou</em> (空白の叫び / "The Blank Scream," 2012), and <em>Gyouden</em> (愚行録 / "Record of Folly," 2015) — each a different angle on the question of how ordinary people become capable of extraordinary cruelty, and whether the systems that judge them are any less cruel. The 2017 film adaptation of <em>Gyouden</em>, starring Emoto Tasuku, brought his work to a wider audience and confirmed his status as a writer whose mysteries could bear the weight of cinema.</p>
+    <p style="margin-bottom: var(--space-md);">The year 2010 was Nukui's annus mirabilis. He won the 63rd Japan Mystery Writers Association Prize for <em>Ranshasha</em> (乱反射 / "Diffuse Reflection," 2009), a novel that uses the physics of scattered light as a metaphor for the multiple perspectives that converge on a single tragedy — a child killed by a falling mirror, and the chain of small negligence that led to the accident. In the same year, he won the 23rd Yamamoto Shugoro Prize for <em>Koukai to Shinjitsu no Iro</em> (後悔と真実の色 / "The Color of Regret and Truth"), a novel that explores the moral weight of testimony and the colors — literal and metaphorical — that memory assigns to guilt. Two major prizes in one year, for two formally different novels that share a single obsession: the relationship between what we see and what we know, between surface and depth, between the colors of the world and the gray of moral uncertainty. <em>Hai-iro no Niji</em>, published in the same remarkable year, extends this inquiry into the judicial system itself — the institution charged with converting human messiness into legal clarity, and the gray that persists despite its best efforts.</p>
+    <p>Nukui is married to fellow mystery writer Kano Tomoko (加納朋子), creating one of Japanese literature's rare double-mystery-writer households. In interviews, he has cited the manga <em>Devilman</em> as a formative influence on his understanding of violence and transformation — an unexpected but revealing confession from a writer whose novels often trace the moment when an ordinary person becomes capable of atrocity. His author statement distills his entire project: "I like writing about people's fates. Not taking partial slices, but writing a person's fate whole." <em>Hai-iro no Niji</em> is the fulfillment of that promise: the story of a man whose fate was stolen from him, and who responds by stealing the fates of others.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1968</span>
+        <span>Born February 25 in Shibuya, Tokyo. Grows up during Japan's transition from economic miracle to post-bubble uncertainty — an education in institutional fragility that will inform his fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1980s</span>
+        <span>Begins writing fiction in high school. Enters Waseda University, Faculty of Commerce, where he continues writing while studying business — a combination that will give his novels their acute understanding of corporate and institutional structures.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1992</span>
+        <span>Works at a real estate company while writing in the evenings. Resigns on New Year's Eve, December 31, to commit himself fully to becoming a novelist — a leap of faith made without prize money or a publishing contract.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1993</span>
+        <span>Literary debut with <em>Doukoku</em> (慟哭 / "Throes of Lament"), a finalist for the 4th Ayukawa Tetsuya Prize. Kitamura Kaoru's passionate advocacy brings the novel to publication in Tokyo Sogensha's "Golden Thirteen" series. Establishes Nukui as a writer of dark, formally inventive mystery fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1995-2002</span>
+        <span>Publishes the "Syndrome" trilogy — <em>Shissou Syndrome</em> (失踪症候群 / "Disappearance Syndrome"), <em>Yuukai Syndrome</em> (誘拐症候群 / "Kidnapping Syndrome"), <em>Satsujin Syndrome</em> (殺人症候群 / "Murder Syndrome") — demonstrating his ability to sustain long-form police procedurals while deepening his social critique.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1998-99</span>
+        <span>Creates the "Meishi" historical mystery series — <em>Kiryuu Meishi</em> (鬼流殺生祭) and <em>Youki Setsudanfu</em> (妖奇切断譜) — set in a fictional past that frees him to explore violence and justice outside contemporary constraints.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2009</span>
+        <span>Publishes <em>Ranshasha</em> (乱反射 / "Diffuse Reflection"), a masterpiece of multiple-perspective plotting that uses optical physics as a moral metaphor. Wins the 63rd Japan Mystery Writers Association Prize (2010).</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Annus mirabilis: wins the 23rd Yamamoto Shugoro Prize for <em>Koukai to Shinjitsu no Iro</em> (後悔と真実の色 / "The Color of Regret and Truth"). Publishes <em>Hai-iro no Niji</em> (灰色の虹 / "The Gray Rainbow") with Shinchosha — the novel that brings his concerns with wrongful conviction and vigilante justice to their most sustained expression.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2012</span>
+        <span>Television adaptation of <em>Hai-iro no Niji</em> airs on TV Asahi as a special drama starring Shiina Kippei as Detective Yamana Shogo — bringing the novel's questions about justice and vengeance to a national audience.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2015</span>
+        <span>Publishes <em>Gyouden</em> (愚行録 / "Record of Folly"), adapted into a 2017 film starring Emoto Tasuku. The novel's exploration of university-circle hierarchy and collective cruelty confirms Nukui's status as a master of institutional mystery.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span>Publishes <em>Kantan no Shima Haruka Nari</em> (邯鄲の島遥かなり), a three-volume epic — the latest demonstration of a career that refuses to repeat itself.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>慟哭</h4>
+        <p class="char-role">Doukoku / Throes of Lament &middot; 1993</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Debut novel, finalist for the Ayukawa Tetsuya Prize. Established Nukui's signature fusion of formal mystery trickery with a dark vision of human society. The black of grief, before the gray of the rainbow.</p>
+      </div>
+      <div class="char-card">
+        <h4>乱反射</h4>
+        <p class="char-role">Ranshasha / Diffuse Reflection &middot; 2009</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 63rd Japan Mystery Writers Association Prize. Uses the physics of scattered light as a metaphor for multiple perspectives converging on tragedy. A child dies; everyone is slightly responsible; no one is fully guilty.</p>
+      </div>
+      <div class="char-card">
+        <h4>後悔と真実の色</h4>
+        <p class="char-role">Koukai to Shinjitsu no Iro / The Color of Regret and Truth &middot; 2010</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 23rd Yamamoto Shugoro Prize. Explores the moral weight of testimony and the colors memory assigns to guilt. The companion piece to <em>Hai-iro no Niji</em>'s inquiry into judicial truth.</p>
+      </div>
+      <div class="char-card">
+        <h4>愚行録</h4>
+        <p class="char-role">Gyouden / Record of Folly &middot; 2015</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Adapted into a 2017 film starring Emoto Tasuku. A masterpiece of institutional mystery exploring university-circle hierarchy and collective cruelty — the system that produces violence without individual villains.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters & The Four Targets</h2>
+
+  <p class="lead"><em>Hai-iro no Niji</em> is structured around two axes: the man who was wronged, and the system that wronged him. The "system" is not an abstraction; it is four specific people who made specific decisions at specific moments — a detective who forced a confession, a prosecutor who filed charges, a lawyer who failed to defend, a judge who passed sentence. Nukui's genius is to make each of these people human, to show the pressures and compromises that led to their errors, and then to ask whether being understandable is the same as being forgivable.</p>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>江木雅史 &middot; Egi Masashi</h4>
+      <p class="char-role">The Wrongfully Convicted</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The novel's protagonist and, in the second half, its antagonist. Masashi was a young man working at a small trucking company, living an unremarkable life, when his boss was murdered. He had quarreled with the boss the day before; witnesses saw the argument. That was enough. A violent detective extracted a confession; a prosecutor filed charges; a lawyer mounted a half-hearted defense; a judge sentenced him to six years. By the time he is released, his parents have died, his lover has married someone else, and the life he was building has been demolished. Nukui writes him with terrible clarity: we see the ordinary man he was, the prisoner he became, and the killer he decides to be. The transformation is not melodramatic; it is arithmetic. The law took six years and everyone he loved. The law will now lose what it failed to protect.</p>
+    </div>
+    <div class="char-card">
+      <h4>山名省吾 &middot; Yamana Shogo</h4>
+      <p class="char-role">The Detective Who Sees the Pattern</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The investigating detective who discovers that the murder of a prosecutor he knew — a man who was a friend — is connected to a series of deaths among people who worked on a case seven years ago. Yamana is not the detective who forced Masashi's confession; he is the detective who must clean up the mess that detective left. This distance is crucial: Yamana can see the system objectively because he was not part of its original failure. But he is also personally wounded — the dead prosecutor was his friend — and his investigation is driven by grief as well as duty. Shiina Kippei's performance in the 2012 television adaptation captures this wounded professionalism: a man solving a crime while mourning a friend, enforcing a law he is no longer sure deserves his loyalty.</p>
+    </div>
+    <div class="char-card">
+      <h4>刑事・検事・弁護士・判事</h4>
+      <p class="char-role">The Four Targets of Vengeance</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The four legal professionals who, at different stages of the judicial process, contributed to Masashi's wrongful conviction. Nukui devotes significant narrative space to each: the violent detective who believed confession was truth; the prosecutor who trusted the detective's work more than the defendant's protests; the lawyer who had too many cases and too little time; the judge who saw the paperwork but not the man. None is a cartoon villain. Each made decisions that seemed reasonable at the time, within a system that rewards speed and conviction rates over careful truth-seeking. Nukui's point is not that they are innocent — they are not — but that their guilt is systemic as well as personal. They are the gray rainbow: the people who believed they were serving justice while destroying a life.</p>
+    </div>
+    <div class="char-card">
+      <h4>江木の家族と恋人 &middot; Egi's Family and Lover</h4>
+      <p class="char-role">The Collateral Damage</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The people Masashi loses while in prison — parents who die of the stress and shame, a lover who cannot wait six years for a man the world calls a murderer. They appear mostly in memory and aftermath, but they are the novel's true victims. Masashi's vengeance is not only for himself; it is for them, for the weddings that never happened, the grandchildren never born, the ordinary happiness that was converted into grief by a single wrongful verdict. Nukui understands that the damage of wrongful conviction extends far beyond the prisoner. The gray rainbow falls on everyone who stood beneath it.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Wrongful Conviction</h3>
+    <p>Seven years before the novel opens, Egi Masashi was an ordinary young man working at a small trucking company. He had a quarrel with his boss — the kind of argument that happens every day in workplaces around the world. The next day, the boss was found murdered. Masashi was arrested because he had motive (the quarrel), means (he was at the scene), and opportunity (no airtight alibi). But these were circumstantial; what convicted him was a confession extracted by a detective who believed that innocence would not break under pressure. The detective was wrong. Masashi confessed to stop the violence of the interrogation, and that confession became the foundation of the prosecution's case. The lawyer assigned to defend him was overworked and underpaid; the judge saw a signed confession and a prosecutor's recommendation; six years was the sentence. By the time Masashi emerged from prison, his parents had died and his lover had married another man. The world had moved on. He had not.</p>
+    <p style="margin-top: var(--space-sm);">Nukui narrates this backstory not as a prologue but as a series of revelations that emerge during Yamana's investigation. The novel alternates between present-tense detection and past-tense reconstruction, and the reader's understanding of the original case deepens as the body count rises. What seemed at first like a simple wrongful conviction reveals itself as a chain of small failures: the detective who cut corners, the prosecutor who trusted too much, the lawyer who gave up, the judge who saw the file but not the face. Each failure was individually understandable; together, they destroyed a life.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Vengeance</h3>
+    <p>After his release, Masashi discovers that the legal professionals who contributed to his conviction have prospered. The detective was promoted; the prosecutor became a judge; the lawyer still practices; the judge retired with honors. None has suffered. None has acknowledged error. The system that failed Masashi has, in the manner of systems, absorbed the failure and moved on. Masashi decides that if the law will not balance the account, he will do it himself. One by one, the four targets die — not in dramatic set pieces but in the quiet, methodical manner of a man who has had six years to plan. The killings are not sadistic; they are surgical. Masashi is not enjoying himself. He is settling a debt.</p>
+    <p style="margin-top: var(--space-sm);">Yamana's investigation begins with the murder of his friend, the prosecutor, and gradually reveals the connection to the old case. As he interviews the surviving targets, he hears their versions of what happened seven years ago — each slightly different, each self-exonerating, each containing a grain of truth that makes the whole more painful. The detective believed he was protecting society; the prosecutor believed he was following procedure; the lawyer believed he was doing his best with limited resources; the judge believed the confession was voluntary. They are not lying, exactly. They are remembering selectively, as people do. Yamana's task is not merely to catch a killer but to reconstruct a truth that the legal system failed to find — the truth of what actually happened to Masashi, and what Masashi has become.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Gray</h3>
+    <p>The novel's most devastating insight is that Masashi's vengeance does not restore what he lost. Killing the detective does not bring back his parents. Killing the prosecutor does not return his lover. Killing the lawyer and the judge does not erase the six years. Vengeance, in Nukui's hands, is not catharsis; it is continuation. Each murder adds a new crime to the old one, a new grieving family to the list of victims, a new justification for the system to condemn the man it already wronged. The gray rainbow spreads: Masashi's first tragedy was being convicted of a crime he did not commit; his second tragedy is becoming the killer the law always believed him to be. By the end, he has fulfilled the system's original misjudgment — not by being guilty from the start, but by being driven to guilt by the system's own violence.</p>
+    <p style="margin-top: var(--space-sm);">Yamana solves the case because he is a good detective, but the solution brings no satisfaction. He understands why Masashi killed. He might have done the same. But his oath, his badge, and his belief in the possibility of reform require him to arrest a man who is, in some sense, the law's own creation. The novel's final pages do not offer a verdict on whether vengeance can be called justice. They offer something more honest: the recognition that the question itself is gray, that any answer will leave someone unavenged, and that the rainbow — if it appears at all — will appear not in color but in the muted tones of a sky that has seen too much rain.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Wrongful conviction as systemic failure:</strong> Nukui's deepest argument is that wrongful convictions are not anomalies but products of a system that rewards speed, confession, and conviction rates over careful truth-seeking. The detective, prosecutor, lawyer, and judge are not monsters; they are cogs in a machine designed to process cases efficiently. The tragedy is that the machine sometimes processes people.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Vengeance as continuation, not closure:</strong> Unlike revenge fantasies that offer catharsis, Nukui shows that Masashi's killings add new grief to old grief. Each target has a family; each death creates new victims. The chain of violence does not end with the original avenger; it extends infinitely backward and forward, a gray rainbow with no pot of gold at either end.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The law's time versus the victim's time:</strong> The legal system operates on calendars — trial dates, sentencing hearings, parole reviews. Grief operates on a different clock. Masashi's six years were not merely lost time; they were time in which the world moved on without him. The law's "case closed" is the victim's "wound open."</li>
+      <li style="margin-bottom: 0.5em;"><strong>Institutional memory versus personal memory:</strong> The system has forgotten Masashi's case; it has been filed, archived, superseded by new cases. Masashi has not forgotten. The novel dramatizes the collision between institutional amnesia and personal trauma — the system's ability to move on versus the victim's inability to do so.</li>
+      <li><strong>Detection as moral archaeology:</strong> Yamana's investigation is not merely a hunt for a killer; it is an excavation of the original crime — the wrongful conviction that the system buried. Each interview with a surviving target is a layer of sediment being brushed away, revealing the bones of what really happened. The mystery novel becomes a form of historical truth-telling, recovering a past that official records distorted or erased.</li>
+    </ul>
+  </div>
+
+  <div class="film-banner">
+    <div class="film-title">Television Adaptation</div>
+    <div class="film-detail">2012 &middot; TV Asahi Special Drama</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">Starring Shiina Kippei as Detective Yamana Shogo</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">Broadcast May 19, 2012 (Saturday 9:00 PM)</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">Shiina: "There are many perspectives from which viewers can empathize, not only with Yamana. The drama depicts the parts of the heart that cannot be measured simply by good and evil — wrongful conviction, the feelings of crime victims, and more."</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture Nukui's characteristic precision: the way he states the novel's moral framework in the promotional copy, and his belief that the most devastating sentences in a mystery are those that describe what was lost, not what was done.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Novel's Central Question</div>
+    <div class="passage-jp">
+      復讐のための殺人は罪か。「冤罪」を描き人間の深淵を抉るミステリー大作。
+    </div>
+    <div class="passage-romaji">
+      Fukushuu no tame no satsujin wa tsumi ka. "Enzai" wo egaki ningen no shinen wo eguru misuterii tasaku.
+    </div>
+    <div class="passage-en">
+      "Is murder for the sake of vengeance a crime? A mystery masterpiece that depicts 'wrongful conviction' and gouges at the abyss of the human."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's promotional tagline, and it functions as a compressed thesis statement. The first sentence — <em>fukushuu no tame no satsujin wa tsumi ka</em> (復讐のための殺人は罪か) — is a question that appears simple but is grammatically and morally complex. <em>Fukushuu no tame no</em> (復讐のための, "for the sake of vengeance") is a purpose clause modifying <em>satsujin</em> (殺人, "murder / killing"). The question is not whether murder is a crime — that is assumed — but whether murder <em>undertaken for a specific purpose</em> (avenging a wrongful conviction) occupies a different moral category than murder undertaken for gain or pleasure. The final particle <em>ka</em> (か) is the standard question marker, but in this context it functions as a challenge: answer this, if you can. The second sentence uses two verbs of artistic violence: <em>egaku</em> (描き, "depict / portray") and <em>eguru</em> (抉る, "gouge / scoop out / excavate"). The homophonic echo is deliberate — Nukui does not merely "draw" (<em>egaku</em>) wrongful conviction; he "gouges" (<em>eguru</em>) the abyss of human nature that produces it. <em>Enzai</em> (冤罪, "wrongful conviction / false accusation") is written in quotation marks, as if the word itself were evidence being entered into the record. The compound combines <em>en</em> (冤, "false charge / grievance") and <em>zai</em> (罪, "crime / guilt") — a word that contains both the accusation and its falseness in a single character pair. <em>Ningen no shinen</em> (人間の深淵, "the abyss of the human") uses <em>shinen</em> (深淵), a word with philosophical weight — it is the abyss Nietzsche warns against staring into, the depth where moral certainties dissolve. The tagline promises not entertainment but excavation: Nukui will gouge into the reader's comfortable moral categories and force them to confront what lies beneath.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">What Was Taken</div>
+    <div class="passage-jp">
+      事件は彼から家族や恋人、日常生活の全てを奪った。
+    </div>
+    <div class="passage-romaji">
+      Jiken wa kare kara kazoku ya koibito, nichijou seikatsu no subete wo ubatta.
+    </div>
+    <div class="passage-en">
+      "The case took from him everything — his family, his lover, his everyday life."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the promotional copy is the novel's emotional core, and its grammar is a study in cumulative loss. The subject is <em>jiken</em> (事件, "the case / incident") — not "the wrongful conviction" or "the justice system" but the neutral, bureaucratic <em>jiken</em>. This matters: Nukui personifies the case itself as the thief, as if the legal process were an autonomous entity that acted upon Masashi without human agency. The verb <em>ubatta</em> (奪った, "took / seized / robbed") is the past tense of <em>ubau</em> (奪う), a verb of violent deprivation — it is what bandits do, what war does, what death does. It is not the gentle <em>ushinau</em> (失う, "to lose") but the aggressive <em>ubau</em>, suggesting that Masashi's losses were not natural consequences but active seizures. The objects of deprivation are listed in ascending order of intimacy: <em>kazoku</em> (家族, "family") — the biological unit; <em>koibito</em> (恋人, "lover") — the chosen partner; <em>nichijou seikatsu no subete</em> (日常生活の全て, "all of everyday life") — the entire texture of ordinary existence. The <em>ya</em> (や) particle between <em>kazoku</em> and <em>koibito</em> creates an incomplete list, suggesting that these are merely representative examples of a larger devastation. The final word, <em>subete</em> (全て, "everything / all"), swallows the preceding specifics into a totality: not just family and lover but the whole world that contained them. The sentence's grammar mirrors Masashi's experience: the case began by taking one thing, then another, then everything. By the end of the sentence, there is nothing left to list.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Author's Method</div>
+    <div class="passage-jp">
+      人の運命を書くのが好き。部分的に切り取るのではなく、人の運命を丸ごと書きたい。
+    </div>
+    <div class="passage-romaji">
+      Hito no unmei wo kaku no ga suki. Bubunteki ni kiritoru no de wa naku, hito no unmei wo marugoto kakitai.
+    </div>
+    <div class="passage-en">
+      "I like writing about people's fates. Not taking partial slices, but writing a person's fate whole."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This statement from a 2016 interview is Nukui's artistic manifesto, and it illuminates why <em>Hai-iro no Niji</em> is structured as it is. Grammatically, the first sentence — <em>hito no unmei wo kaku no ga suki</em> (人の運命を書くのが好き) — uses the <em>no ga</em> nominalization to make "writing people's fates" the subject of the emotional verb <em>suki</em> (好き, "like / love"). The construction elevates the act of writing fates from a professional activity to a personal passion. <em>Unmei</em> (運命, "fate / destiny") is a weighty word in Japanese, combining <em>un</em> (運, "fortune / luck / movement") and <em>mei</em> (命, "life / command / destiny") — it is not merely "life story" but the predetermined arc of a person's existence, the trajectory that contains all their choices and chances. The second sentence contrasts two approaches using the <em>no de wa naku</em> (のではなく, "not ~ but rather") construction: <em>bubunteki ni kiritoru no de wa naku</em> (部分的に切り取るのではなく, "not taking partial slices / cuttings"). <em>Kiritoru</em> (切り取る, "to cut out / excise / extract") is a verb of violence — it is what a surgeon does, what an editor does, what a system does when it reduces a human life to a case file. Nukui rejects this. <em>Marugoto</em> (丸ごと, "whole / entire / in one piece") is an emphatic adverb that suggests completeness, roundness, integrity — the opposite of the partial, the fragmentary, the sliced. The sentence says, in effect: I will not cut you down to fit my narrative; I will expand my narrative to contain all of you. This is why <em>Hai-iro no Niji</em> spends so much time on what happened before the crime, during the trial, after the prison — Nukui is writing Masashi's fate <em>marugoto</em>, and that fate includes the parents who died, the lover who left, the ordinary days that never came. The grammar of Nukui's manifesto is the grammar of his novel: refusal to cut, commitment to wholeness, the belief that a person's fate cannot be understood in slices.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Unending Chain</div>
+    <div class="passage-jp">
+      終わらない不幸の連鎖、果てしない人間の業に胸をえぐられながらも、読む手が止まらない。
+    </div>
+    <div class="passage-romaji">
+      Owaranai fukou no rensa, hateshinai ningen no gou ni mune wo egurare nagara mo, yomu te ga tomaranai.
+    </div>
+    <div class="passage-en">
+      "Even as your heart is gouged by the unending chain of misfortune, by the boundless karma of human deeds, your hand cannot stop turning the pages."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the promotional copy is a masterclass in the grammar of compulsive reading. The main clause is simple: <em>yomu te ga tomaranai</em> (読む手が止まらない, "the hand that reads cannot stop" — i.e., you cannot stop reading). But everything before it creates the emotional condition that makes stopping impossible. The first noun phrase — <em>owaranai fukou no rensa</em> (終わらない不幸の連鎖, "the unending chain of misfortune") — uses <em>rensa</em> (連鎖, "chain / linkage"), a word that describes causal sequences: A causes B, B causes C, C causes D, with no terminal link. The chain is "unending" (<em>owaranai</em>, 終わらない) not merely because it is long but because each link generates the next. Masashi's wrongful conviction generates his vengeance; his vengeance generates new victims; their grief generates new demands for justice; the cycle has no natural terminus. The second noun phrase — <em>hateshinai ningen no gou</em> (果てしない人間の業, "the boundless karma of human deeds") — introduces the Buddhist concept of <em>gou</em> (業, "karma / deed / act"), the accumulated actions that determine one's destiny across lifetimes. <em>Hateshinai</em> (果てしない, "boundless / endless / without limit") suggests not merely that human karma is extensive but that it exceeds any individual's capacity to calculate or atone for. The phrase implies that Masashi's tragedy is not an isolated event but part of a cosmic accounting that extends beyond any single life. The grammatical heart of the sentence is the concessive clause <em>...ni mune wo egurare nagara mo</em> (…に胸をえぐられながらも, "even while one's heart is being gouged by..."). The passive verb <em>egurare</em> (えぐられ, "is being gouged / excavated") uses the same root as <em>eguru</em> (抉る) in the tagline — Nukui's fiction is not merely read; it wounds. The <em>nagara mo</em> (ながらも, "even while / despite") construction creates a paradox: the reader is being hurt by the reading and cannot stop. This is the definition of tragic catharsis — the pain that purges — but Nukui's grammar makes it more visceral: not "you will be moved" but "your heart will be gouged and you will keep reading anyway." The sentence is a promise and a warning. It tells you what the novel will do to you, and then dares you to open it.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, the world of wrongful conviction and vengeance, and the judicial-moral vocabulary of Nukui's social mystery.</p>
+
+  <div class="card">
+    <h3>Wrongful Conviction & Justice</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>冤罪</td><td>enzai</td><td class="pos">noun</td><td>wrongful conviction, false accusation</td></tr>
+        <tr><td>無実の罪</td><td>mujitsu no tsumi</td><td class="pos">phrase</td><td>crime one did not commit</td></tr>
+        <tr><td>復讐</td><td>fukushuu</td><td class="pos">noun</td><td>revenge, vengeance</td></tr>
+        <tr><td>正義</td><td>seigi</td><td class="pos">noun</td><td>justice, righteousness</td></tr>
+        <tr><td>報復</td><td>houfuku</td><td class="pos">noun</td><td>retaliation, reprisal</td></tr>
+        <tr><td>報い</td><td>mukui</td><td class="pos">noun</td><td>retribution, recompense</td></tr>
+        <tr><td>因果応報</td><td>inguouhou</td><td class="pos">phrase</td><td>just retribution, karma</td></tr>
+        <tr><td>業</td><td>gou</td><td class="pos">noun</td><td>karma, deed, act (Buddhist)</td></tr>
+        <tr><td>連鎖</td><td>rensa</td><td class="pos">noun</td><td>chain, linkage, sequence</td></tr>
+        <tr><td>深淵</td><td>shinen</td><td class="pos">noun</td><td>abyss, depths</td></tr>
+        <tr><td>不幸</td><td>fukou</td><td class="pos">noun</td><td>misfortune, unhappiness</td></tr>
+        <tr><td>果てしない</td><td>hateshinai</td><td class="pos">adjective</td><td>endless, boundless</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Law & The Judicial System</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>刑事</td><td>keiji</td><td class="pos">noun</td><td>detective, police investigator</td></tr>
+        <tr><td>検事</td><td>kenji</td><td class="pos">noun</td><td>prosecutor</td></tr>
+        <tr><td>弁護士</td><td>bengoshi</td><td class="pos">noun</td><td>lawyer, attorney</td></tr>
+        <tr><td>判事</td><td>hanji</td><td class="pos">noun</td><td>judge</td></tr>
+        <tr><td>捜査</td><td>sousa</td><td class="pos">noun</td><td>investigation</td></tr>
+        <tr><td>取り調べ</td><td>torishirabe</td><td class="pos">noun</td><td>interrogation, questioning</td></tr>
+        <tr><td>自白</td><td>jihaku</td><td class="pos">noun</td><td>confession</td></tr>
+        <tr><td>起訴</td><td>kiso</td><td class="pos">noun</td><td>indictment, prosecution</td></tr>
+        <tr><td>判決</td><td>hanketsu</td><td class="pos">noun</td><td>verdict, sentence</td></tr>
+        <tr><td>懲役</td><td>choueki</td><td class="pos">noun</td><td>imprisonment with labor</td></tr>
+        <tr><td>所</td><td>shussho</td><td class="pos">noun</td><td>release from prison</td></tr>
+        <tr><td>状況証拠</td><td>joukyou shouko</td><td class="pos">noun</td><td>circumstantial evidence</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Color, Light & Metaphor</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>灰色</td><td>hai-iro</td><td class="pos">noun</td><td>gray, ashen color</td></tr>
+        <tr><td>虹</td><td>niji</td><td class="pos">noun</td><td>rainbow</td></tr>
+        <tr><td>灰</td><td>hai</td><td class="pos">noun</td><td>ash, ashes</td></tr>
+        <tr><td>色</td><td>iro</td><td class="pos">noun</td><td>color</td></tr>
+        <tr><td>乱反射</td><td>ranshasha</td><td class="pos">noun</td><td>diffuse reflection, scattering</td></tr>
+        <tr><td>光</td><td>hikari</td><td class="pos">noun</td><td>light</td></tr>
+        <tr><td>影</td><td>kage</td><td class="pos">noun</td><td>shadow</td></tr>
+        <tr><td>闇</td><td>yami</td><td class="pos">noun</td><td>darkness</td></tr>
+        <tr><td>白黒</td><td>shirokuro</td><td class="pos">noun</td><td>black and white; right and wrong</td></tr>
+        <tr><td>後悔</td><td>koukai</td><td class="pos">noun</td><td>regret, remorse</td></tr>
+        <tr><td>真実</td><td>shinjitsu</td><td class="pos">noun</td><td>truth</td></tr>
+        <tr><td>運命</td><td>unmei</td><td class="pos">noun</td><td>fate, destiny</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Crime, Violence & Society</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>殺人</td><td>satsujin</td><td class="pos">noun</td><td>murder, homicide</td></tr>
+        <tr><td>罪</td><td>tsumi</td><td class="pos">noun</td><td>crime, sin, guilt</td></tr>
+        <tr><td>奪う</td><td>ubau</td><td class="pos">verb</td><td>to seize, rob, deprive</td></tr>
+        <tr><td>抉る</td><td>eguru</td><td class="pos">verb</td><td>to gouge, scoop out, excavate</td></tr>
+        <tr><td>描く</td><td>egaku</td><td class="pos">verb</td><td>to depict, portray, draw</td></tr>
+        <tr><td>切り取る</td><td>kiritoru</td><td class="pos">verb</td><td>to cut out, excise, extract</td></tr>
+        <tr><td>丸ごと</td><td>marugoto</td><td class="pos">adverb</td><td>whole, entire, in one piece</td></tr>
+        <tr><td>悲劇</td><td>higeki</td><td class="pos">noun</td><td>tragedy</td></tr>
+        <tr><td>絶望</td><td>zetsubou</td><td class="pos">noun</td><td>despair, hopelessness</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness, solitude</td></tr>
+        <tr><td>翻弄する</td><td>honrou suru</td><td class="pos">verb</td><td>to toy with, manipulate</td></tr>
+        <tr><td>ミステリー</td><td>misuterii</td><td class="pos">noun</td><td>mystery (fiction genre)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Nukui's prose in <em>Hai-iro no Niji</em> appears accessible on the surface, but it relies on Japanese moral vocabulary, Buddhist concepts, and the specific gravity of legal terminology that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Enzai</em> (冤罪) as False Guilt</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「<strong>冤罪</strong>」を描き人間の深淵を抉る</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"depicts 'wrongful conviction' and gouges at the abyss of the human"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Enzai</em> (冤罪) is a compound of <em>en</em> (冤, "false charge / grievance / wrong") and <em>zai</em> (罪, "crime / guilt / sin"). The character <em>en</em> (冤) is one of the most emotionally loaded in Japanese legal vocabulary: it contains the radical for "hare" or "rabbit" (兔) beneath a roof radical (冖), suggesting a creature trapped and unable to escape — the precise image of the wrongfully convicted. <em>En</em> is the word used in classical Chinese for grievances so deep that they disturb the cosmic order, causing unnatural weather or hauntings. When Nukui puts <em>enzai</em> in quotation marks, he is not merely citing a legal term; he is invoking this whole history of false guilt as a disturbance in the moral universe. The English "wrongful conviction" is accurate but clinical — it is what a lawyer would say. What is lost is the sense of <em>enzai</em> as a metaphysical wound, a tear in the fabric of justice that produces not only individual suffering but cosmic imbalance. Masashi's wrongful conviction is not merely a mistake; it is an <em>en</em> — a grievance that demands redress not only from the legal system but from the universe itself.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Gou</em> (業) as Cosmic Accountability</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>果てしない人間の<strong>業</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the boundless karma of human deeds"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Gou</em> (業) is the Japanese rendering of the Sanskrit <em>karma</em> — the accumulated actions that determine one's destiny across lifetimes in Buddhist cosmology. But <em>gou</em> is not merely "karma" in the casual Western sense of "what goes around comes around." In Japanese Buddhism, <em>gou</em> is technical and precise: it refers to the intentional actions (<em>shinchuu</em>, 身口意 / body, speech, mind) that produce effects (<em>ka</em>, 果) in this life or future lives. The character <em>gou</em> (業) originally meant "work / deed / occupation" and carries the sense of labor — karma is not fate but the fruit of one's own effort, for good or ill. When Nukui describes the "boundless <em>gou</em> of human deeds," he is invoking a cosmic accounting system in which every action, including the detective's violence and the judge's negligence, generates consequences that extend beyond any individual lifetime. The English "karma" has been so diluted by popular usage that it sounds almost whimsical. What is lost is the weight of <em>gou</em> as a moral physics — the rigorous Buddhist doctrine that every deed has its exact consequence, and that the chain of misfortune in the novel is not random but karmically determined. Masashi's vengeance is <em>gou</em>; the system's original failure was also <em>gou</em>. The gray rainbow is what appears when these two karmic streams collide.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Eguru</em> (抉る) as Artistic Violence</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>人間の深淵を<strong>抉る</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"gouges at the abyss of the human"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Eguru</em> (抉る) means "to gouge, scoop out, excavate, cut into" — it is the verb used for digging a hole, removing an eye, hollowing a pumpkin. It is a verb of violent extraction, of removing something from where it belongs by force. In medical contexts, it describes surgical excision; in criminal contexts, it describes mutilation. When Nukui says his novel "gouges at the abyss of the human," he is using a verb of physical violence to describe an intellectual and emotional act. The English "gouge" preserves some of this, but "explore" or "delve into" — common translations for similar promotional copy — would lose it entirely. What is lost is the sense that reading this novel will be not merely intellectually challenging but physically wounding — that Nukui intends to remove something from the reader's comfortable moral assumptions and leave a cavity where certainty used to be. The echo with <em>egaku</em> (描く, "to depict / draw") in the same sentence reinforces this: Nukui does not merely draw the abyss; he cuts into it. The novel is a surgical instrument as well as a work of art.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Marugoto</em> (丸ごと) as Narrative Wholeness</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>人の運命を<strong>丸ごと</strong>書きたい</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"write a person's fate whole"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Marugoto</em> (丸ごと) is an emphatic adverb formed from <em>maru</em> (丸, "round / circle / whole") and the adverbial suffix <em>goto</em> (ごと). The <em>maru</em> suggests not merely completeness but roundness, integrity, the absence of edges where something has been cut away. A <em>maru</em> thing is unbroken, unfragmented, like a full moon or a perfect sphere. The English "whole" captures the meaning but not the emotional quality — "whole" can sound merely quantitative (all parts included), while <em>marugoto</em> is qualitative (nothing missing, nothing added, the thing as it truly is). What is lost is the specifically Japanese aesthetic of <em>maru</em> as a positive value: the tea bowl that is beautiful because it is whole, the life that is meaningful because it has not been shattered. Nukui's commitment to writing fate <em>marugoto</em> is a commitment to a Japanese ideal of narrative wholeness that resists the fragmentary, the partial, the case-file reduction of human beings to charges and sentences. When the legal system cuts Masashi's life into six years and a conviction, Nukui responds by writing the <em>marugoto</em> — the round, whole, uncut fate that includes the parents, the lover, the ordinary days, the gray rainbow that should have been full of color.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Nichijou Seikatsu</em> (日常生活) as the Stolen Ordinary</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>日常生活</strong>の全てを奪った</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"took... all of everyday life"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Nichijou seikatsu</em> (日常生活, "everyday life / daily life") is a compound of <em>nichijou</em> (日常, "ordinary days / routine") and <em>seikatsu</em> (生活, "life / living / livelihood"). It is the most important word in modern Japanese social criticism — the philosopher Kosaka Kiyoshi made <em>tsuzuku nichijou</em> (続く日常, "the everyday that continues") the definition of postwar Japanese peace; the sociologist Oda Makoto wrote that the defense of <em>nichijou</em> was the defense of democracy itself. When Nukui writes that the case took Masashi's <em>nichijou seikatsu</em>, he is invoking this entire tradition. The English "everyday life" sounds banal, almost dismissive — as if the loss were merely of routine, of habit, of the unremarkable. What is lost is the sense that <em>nichijou seikatsu</em> is the highest good of a peaceful society, the accumulated texture of small pleasures and small burdens that constitutes a human life. To lose one's <em>nichijou seikatsu</em> is not to lose excitement or adventure; it is to lose the ground beneath one's feet, the assumption that tomorrow will resemble today. Masashi's tragedy is not that he lost something extraordinary; it is that he lost the ordinary — and the ordinary, in Japanese postwar value, is everything.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, key passages, and the judicial-moral register of Nukui's social mystery.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の〜（所有・属性）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>No</em>: possessive particle linking a quality to a noun as an intrinsic attribute.</p>
+      <div class="grammar-example">灰色の虹</div>
+      <p class="grammar-example-en">"the gray rainbow" — The <em>no</em> makes gray an essential quality of the rainbow, not merely a coincidental descriptor. The grammar encodes the title's oxymoron.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜は〜か？（疑問・問いかけ）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Wa ~ ka?</em>: "Is ~ ~?" — topic-marked question that presents a moral problem for consideration rather than a factual query.</p>
+      <div class="grammar-example">復grammar-example">復讐のための殺人は罪か</div>
+      <p class="grammar-example-en">"Is murder for vengeance a crime?" — The <em>wa</em> marks "murder for vengeance" as the topic of moral inquiry. The question asks for categorical judgment, not information.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜から〜を奪う（奪取・奪格）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Kara ~ wo ubau</em>: "to rob ~ from ~" — <em>kara</em> marks the source of deprivation; <em>wo</em> marks the thing taken.</p>
+      <div class="grammar-example">彼から家族や恋人、日常生活の全てを奪った</div>
+      <p class="grammar-example-en">"took from him everything — family, lover, everyday life" — The <em>kara</em> makes Masashi the source from which things were violently extracted. The grammar enacts the theft.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜や〜（列挙・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ya</em>: "~ and ~ [among other things]" — incomplete listing that suggests representative examples of a larger set.</p>
+      <div class="grammar-example">家族や恋人</div>
+      <p class="grammar-example-en">"family and lover [among other things]" — The <em>ya</em> listing is open-ended, implying that the losses exceeded what is named. The grammar of incompleteness mirrors the inexpressibility of total loss.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のが好き（名詞化・感情）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>No ga suki</em>: "like [doing] ~" — nominalizes a verb phrase with <em>no</em> and makes it the subject of emotional preference.</p>
+      <div class="grammar-example">人の運命を書くのが好き</div>
+      <p class="grammar-example-en">"I like writing people's fates" — The <em>no ga</em> construction turns the act of writing into an object of love. The grammar makes the artistic project personal.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のではなく（対比・否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No de wa naku</em>: "not ~ but rather ~" — nominalized negative contrast that rejects one approach in favor of another.</p>
+      <div class="grammar-example">部分的に切り取るのではなく、人の運命を丸ごと書きたい</div>
+      <p class="grammar-example-en">"not taking partial slices, but writing a person's fate whole" — The <em>no de wa naku</em> construction creates a clear before-and-after: the rejected method versus the chosen method. The grammar enacts Nukui's artistic manifesto.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ながらも（譲歩・同時）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Nagara mo</em>: "even while / despite" — concessive construction indicating that two contradictory states coexist.</p>
+      <div class="grammar-example">胸をえぐられながらも、読む手が止まない</div>
+      <p class="grammar-example-en">"even while your heart is being gouged, you cannot stop reading" — The <em>nagara mo</em> creates the paradox of tragic pleasure: the wound and the compulsion coexist. The grammar is the grammar of catharsis.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を〜にする（対象・化）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo ~ ni suru</em>: "make ~ into ~ / use ~ as ~" — marks transformation or instrumentalization of an object.</p>
+      <div class="grammar-example">冤罪を描き人間の深淵を抉る</div>
+      <p class="grammar-example-en">"depicts wrongful conviction and gouges the human abyss" — The parallel structure makes <em>enzai</em> the surface subject and <em>shinen</em> the depth. The grammar enacts the novel's movement from case file to cosmic wound.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Nukui's grammar in <em>Hai-iro no Niji</em> is deceptively simple — mostly N5-N4 constructions that create their effects through juxtaposition rather than complexity. Pay attention to how the <em>ya</em> listing creates incompleteness, how the <em>nagara mo</em> construction creates paradox, and how the <em>no de wa naku</em> structure enacts rejection and choice. Nukui is a writer who trusts simple grammar to bear heavy meaning, and the lesson of his prose is that sophistication lies not in construction complexity but in semantic precision.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">灰色の虹 &middot; 貫井徳郎 &middot; 新潮社 2010（単行本）ISBN 978-4-10-303872-6 / 新潮文庫 2013 ISBN 978-4-10-149913-0</p>
+</footer>
+
+</div>
+</body>
+</html>

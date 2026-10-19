@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エネミイ — 森村誠一 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-burgundy: #8a4a5a;
+  --accent-burgundy-dim: #5e303e;
+  --accent-burgundy-glow: rgba(138, 74, 90, 0.12);
+  --accent-gold: #9e8a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-burgundy-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-burgundy-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-burgundy-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-burgundy);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-burgundy-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-burgundy), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-burgundy);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-burgundy-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-burgundy); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-burgundy-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-burgundy-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-burgundy);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-burgundy-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-burgundy);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-burgundy);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-burgundy-dim), var(--accent-burgundy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-burgundy);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-burgundy);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(138, 74, 90, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-burgundy);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-burgundy-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>エネミイ</h1>
+  <p class="hero-subtitle">ENEMII</p>
+  <p class="hero-meta">森村誠一 &middot; 講談社 2000（単行本）/ 講談社文庫 &middot; 社会派サスペンス長編</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & The Four Victims</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: エネミイ</h2>
+  <p class="lead">The title <em>Enemii</em> (エネミイ) is the Japanese katakana rendering of the English word "enemy" — but with a critical orthographic twist. The standard Japanese transliteration of "enemy" is <em>enemii</em> (エネミー), ending in a long-vowel <em>ii</em> (イー). Morimura's title uses the double-i spelling <em>enemii</em> (エネミイ) with two separate <em>i</em> kana (イイ), a graphical choice that makes the word look almost like a pair of eyes staring back from the page. This is not mere typography; it is thematic. The novel asks who the enemy is — the criminal who destroyed an innocent life, the victim who retaliates, the law that fails to deliver justice, or the society that produces both criminal and victim. By writing "enemy" in katakana rather than choosing a Japanese word like <em>teki</em> (敵) or <em>kataki</em> (仇), Morimura signals that the concept itself is imported, alien, unstable. An <em>enemii</em> is not a traditional foe with a face and a clan; it is a modern condition, a structural relationship, a category that shifts depending on where you stand.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">エネミイ</span>
+        <span class="romaji">enemii</span>
+        <span class="meaning">"enemy" — Written in katakana (エネミイ) rather than kanji (敵 / 仇) or the more conventional long-vowel form (エネミー). The double-i spelling (イイ) creates a visual echo — two identical syllables that suggest duplication, reflection, or a pair of eyes. This matters because the novel's central question is whether the victim who becomes a vigilante has, in becoming an enemy to the criminal, duplicated the criminal's violence. The title's orthography asks: when you look at your enemy, do you see yourself? The katakana rendering also distances the word from Japanese moral vocabulary. <em>Teki</em> () implies a recognizable opponent; <em>kataki</em> (仇) implies a blood-debt that demands repayment. <em>Enemii</em> is colder, more abstract — the word a bureaucracy would use, or a foreign legal system, or a person who has stepped outside their own language in order to do something their language would condemn. By choosing the katakana loanword, Morimura frames vengeance not as traditional Japanese <em>katakiuchi</em> (仇討ち) but as a modern ethical crisis without precedent in either Japanese or Western morality.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The cover of the Kodansha edition uses the English word "ENEMY" in bold sans-serif type above the Japanese <em>enemii</em> (エネミイ), creating a bilingual title that mirrors the novel's thematic bilingualism: the story is about Japanese people using a foreign concept (vigilante justice as a rational system) to address a Japanese problem (the failure of the legal system to satisfy victims' need for retribution). The English title on a Japanese novel is not decoration; it is a claim that the problem transcends national boundaries.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>森村誠一 &mdash; Morimura Seiichi</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">森</div>
+    <div class="author-name-block">
+      <h3>森村誠一</h3>
+      <p class="author-name-romaji">Morimura Seiichi &middot; 1933-2023 &middot; Kumagaya, Saitama</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Morimura Seiichi was one of the towering figures of postwar Japanese mystery fiction — a writer who transformed the genre from puzzle-box entertainment into a vehicle for social criticism, historical reckoning, and profound human empathy. Born in 1933 in Kumagaya, Saitama Prefecture, he grew up during the Pacific War and its aftermath, an experience that gave his work a lifelong preoccupation with the question of what justice means in a society that has committed, and suffered, mass violence. After graduating from Aoyama Gakuin University's Faculty of Literature (English and American Literature department), he did what few future novelists have done: he spent nine years as a hotelman — first at the New Osaka Hotel (now Rihga Royal Hotel), then for nine years as a front-desk clerk at the Hotel New Otani in Tokyo. This experience would prove decisive. Morimura did not write about hotels because he had read about them; he wrote about them because he had stood behind the front desk at 3 AM, watching the human comedy check in and out, observing the way wealth and desperation shared the same lobby.</p>
+    <p style="margin-bottom: var(--space-md);">His literary debut came in 1969 with <em>Kouzou no Shikaku</em> (高層の死角 / "The Blind Spot in the High-Rise"), which won the 15th Edogawa Rampo Prize and introduced the reading public to Detective Munekata (棟居刑事) — the compassionate, intellectually rigorous investigator who would become Morimura's signature character across dozens of novels. The following year's <em>Shinkansen Satsujin Jiken</em> (新幹線殺人事件 / "The Shinkansen Murder Case") sold over 600,000 copies and established him as a bestseller. But it was the "Proof" trilogy — <em>Ningen no Shoumei</em> (人間の証明 / "Proof of the Man," 1976), <em>Seishun no Shoumei</em> (青春の証明 / "Proof of Youth," 1977), and <em>Yasei no Shoumei</em> (野性の証明 / "Proof of the Beast," 1977) — that secured his place in the canon. <em>Proof of the Man</em> was adapted into a film that became a sensation across Asia, and the trilogy's exploration of race, class, and identity in postwar Japan remains unmatched in the mystery genre.</p>
+    <p style="margin-bottom: var(--space-md);">Morimura's courage as a writer extended beyond fiction. In 1981, he published <em>Akuma no Houshoku</em> (悪魔の飽食 / "The Devil's Gluttony"), a nonfiction exposé of Unit 731, the Imperial Japanese Army's biological warfare unit that conducted horrific human experiments in Manchuria. The book made him a target of right-wing attacks and legal threats, but he persisted, publishing two sequels and helping to force the Japanese government to acknowledge crimes it had spent decades denying. This same moral courage animates <em>Enemii</em> (2000): the willingness to ask whether victims have the right to vengeance when the law fails them, and whether a society that cannot protect its citizens from violence deserves their obedience. Morimura died in 2023 at the age of 90, leaving behind more than 300 books and a legacy as Japan's preeminent social mystery writer — the man who proved that the detective novel could bear the weight of history.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1933</span>
+        <span>Born January 2 in Kumagaya City, Saitama Prefecture. Grows up through the Pacific War, an experience that will inform his lifelong concern with justice, violence, and historical memory.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1950s</span>
+        <span>Graduates from Aoyama Gakuin University, Faculty of Literature, English and American Literature department. Begins working as a hotel front-desk clerk — first at New Osaka Hotel, then for nine years at Hotel New Otani, Tokyo. The hotel becomes his university of human nature.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1969</span>
+        <span>Wins the 15th Edogawa Rampo Prize for <em>Kouzou no Shikaku</em> (高層の死角 / "The Blind Spot in the High-Rise"), debuting as a novelist and introducing Detective Munekata (棟居刑事), who will appear across decades of novels.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1970</span>
+        <span>Publishes <em>Shinkansen Satsujin Jiken</em> (新幹線殺人事件 / "The Shinkansen Murder Case"), which sells over 600,000 copies and makes him a national bestseller. The train, that most Japanese of spaces, becomes a locked-room mystery.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1973</span>
+        <span>Wins the Japan Mystery Writers Association Prize for <em>Fushoku no Kouzou</em> (腐蝕の構造 / "The Structure of Corrosion"), confirming his status as the leading social mystery writer of his generation.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1976-77</span>
+        <span>Publishes the "Proof" trilogy — <em>Ningen no Shoumei</em> (人間の証明), <em>Seishun no Shoumei</em> (青春の証明), <em>Yasei no Shoumei</em> (野性の証明) — establishing him as a writer who could address race, identity, and postwar trauma within the mystery format. <em>Proof of the Man</em> is adapted into a blockbuster film.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1981</span>
+        <span>Publishes <em>Akuma no Houshoku</em> (悪魔の飽食 / "The Devil's Gluttony"), exposing Unit 731's war crimes. Becomes a target of right-wing harassment and lawsuits. Refuses to retract. Publishes two sequels. Changes Japan's historical consciousness.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2004</span>
+        <span>Wins the Japan Mystery Literary Prize (日本ミステリー文学大賞), the highest honor in Japanese mystery fiction, for his lifetime contribution to the genre.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2011</span>
+        <span>Wins the Yoshikawa Eiji Literary Prize (吉川英治文学賞) for <em>Seigi no Shoumei</em> (正義の証明 / "Proof of Justice"), the capstone achievement of a career spent asking what justice means.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2023</span>
+        <span>Dies July 24 at age 90. Leaves behind more than 300 books, two iconic detective series (Munekata and Ushio), the "Proof" trilogy, the "Devil's Gluttony" trilogy, and a genre transformed by his insistence that mystery fiction must engage with society's deepest wounds.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>人間の証明</h4>
+        <p class="char-role">Ningen no Shoumei / Proof of the Man &middot; 1976</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The first volume of the "Proof" trilogy. A young Black man is murdered in a luxury Tokyo hotel, and Detective Munekata's investigation uncovers a story of race, class, and postwar Japanese identity. Adapted into a blockbuster film that swept Asia. Morimura's breakthrough into literary seriousness.</p>
+      </div>
+      <div class="char-card">
+        <h4>悪魔の飽食</h4>
+        <p class="char-role">Akuma no Houshoku / The Devil's Gluttony &middot; 1981</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The nonfiction exposé of Unit 731 that made Morimura a target of the far right and changed Japan's relationship with its wartime past. A work of moral courage that demonstrated his belief that a writer's duty extends beyond fiction into historical truth-telling.</p>
+      </div>
+      <div class="char-card">
+        <h4>棟居刑事シリーズ</h4>
+        <p class="char-role">Munekata Keiji / Detective Munekata Series &middot; 1969-2017</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Morimura's signature detective — compassionate, intellectually rigorous, personally wounded by the cases he investigates. Appears in dozens of novels including <em>Enemii</em>, where he must confront the possibility that the victims he sympathizes with have become killers.</p>
+      </div>
+      <div class="char-card">
+        <h4>正義の証明</h4>
+        <p class="char-role">Seigi no Shoumei / Proof of Justice &middot; 2010</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the Yoshikawa Eiji Literary Prize. The culmination of Morimura's lifelong inquiry into justice — what it is, who defines it, and whether the law can ever fully deliver it. The thematic companion piece to <em>Enemii</em>'s exploration of vigilante justice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters & The Four Victims</h2>
+
+  <p class="lead"><em>Enemii</em> centers on four people who have lost everything to criminals the law failed to adequately punish. Their chance meeting in a coffee shop becomes the catalyst for a vigilante alliance that Detective Munekata must unravel. Each victim represents a different form of legal failure: corporate betrayal, random street violence, juvenile delinquency, and organized crime collateral damage. Together they ask whether a justice system that protects the guilty has forfeited its monopoly on punishment.</p>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>家木路江 &middot; Ieki Rie</h4>
+      <p class="char-role">The Daughter of Betrayal</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Rie's father, a company president, was driven to suicide by a treacherous employee's betrayal and the subsequent collapse of his business. The law punished the employee lightly, if at all; the damage to Rie's family was irreversible. She enters the coffee shop carrying not only grief but the specific rage of someone who has watched a respected parent destroyed by a subordinate's greed. Her desire for vengeance is filtered through class resentment: the employee climbed by stepping on her father's back. Morimura writes her with the precision of someone who understands that corporate Japan's hierarchical violence is no less destructive for being bloodless.</p>
+    </div>
+    <div class="char-card">
+      <h4>矢沢寛 &middot; Yazawa Kan</h4>
+      <p class="char-role">The Man Who Lost His Fiancée</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Kan watched his fiancée kidnapped and murdered before his eyes by a street thug who attacked without reason or warning. The randomness of the violence is what haunts him: there was no narrative he could tell himself to make sense of it, no precaution he could have taken. The killer was caught, but the sentence felt insulting — a number of years that could not possibly equal a lifetime of love. Kan's presence in the coffee shop represents the purest form of victimhood: the person to whom violence happened for no reason at all, who must construct meaning from catastrophe after the fact.</p>
+    </div>
+    <div class="char-card">
+      <h4>末次雅俊 &middot; Suetsugu Masatoshi</h4>
+      <p class="char-role">The Father of the Battered Girl</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Masatoshi's twenty-year-old daughter was hit by a <em>bousouzoku</em> (暴走族, biker gang) rider and left hemiplegic — half her body paralyzed, her future destroyed by a teenager showing off on a motorcycle. The juvenile justice system protected the offender; the victim's family received apologies and little else. Masatoshi's rage is the slowest-burning of the four: it has had time to calcify into ideology. He has moved through all the stages of grief and arrived at a fifth stage Morimura recognizes — the decision that if the law will not balance the account, he will do the arithmetic himself. His presence in the coffee shop is the gathering of a man who has already made up his mind.</p>
+    </div>
+    <div class="char-card">
+      <h4>星野友信 &middot; Hoshino Tomonobu</h4>
+      <p class="char-role">The Father of the Stray Bullet</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Tomonobu's young daughter was killed by a stray bullet during a <em>yakuza</em> gang conflict — collateral damage in a war between criminals that the police could not prevent and the courts could not adequately punish. The organized crime connection adds a political dimension to his grief: the <em>yakuza</em> are not merely criminals but a parallel power structure with relationships to politicians, police, and business. Tomonobu's loss is not only personal but systemic — his daughter died because Japanese society has tolerated the existence of organized crime as a "necessary evil." His presence in the coffee shop asks the most dangerous question: if the state collaborates with criminals, does the state's monopoly on violence still hold?</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: var(--space-lg);">
+    <h3>The Investigators</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>棟居刑事 &middot; Munekata Keiji</h4>
+        <p class="char-role">The Compassionate Detective</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Morimura's signature detective, appearing in dozens of novels since his debut in <em>Kouzou no Shikaku</em> (1969). Munekata is defined by a rare combination: he is intellectually rigorous enough to solve complex crimes and emotionally open enough to suffer with the victims. In <em>Enemii</em>, this combination becomes a torment. He understands why the four victims have become killers; he might have done the same in their position. But his oath, his badge, and his belief in the law require him to stop them. Munekata is the novel's moral center not because he has easy answers but because he holds the questions with such unbearable clarity.</p>
+      </div>
+      <div class="char-card">
+        <h4>牛尾刑事 &middot; Ushio Keiji</h4>
+        <p class="char-role">The Pragmatic Partner</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Ushio is Munekata's partner in the investigation, representing a more pragmatic, procedure-oriented approach to police work. Where Munekata is haunted by empathy, Ushio is driven by the need to close cases. Their dynamic — compassion versus efficiency, understanding versus enforcement — structures the novel's police-procedural elements and gives Morimura a way to dramatize the tension between justice as feeling and justice as system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Coffee Shop Pact</h3>
+    <p>Four strangers sit in a coffee shop, each carrying a grief that has outlived the legal system's interest in their case. Rie's father, destroyed by betrayal. Kan's fiancée, murdered without reason. Masatoshi's daughter, half-paralyzed by a biker's show-off speed. Tomonobu's child, erased by a bullet meant for someone else. They do not know each other. They have not come to meet. But they recognize something in one another's faces — the particular expression of someone who has learned that the law's verdict does not equal justice's balance. The coffee shop becomes a courtroom without a judge, and the four find themselves confessing not to a crime but to a desire: the wish that their offenders had suffered as they have suffered. The wish becomes a plan. The plan becomes a pact. The pact becomes a series of murders.</p>
+    <p style="margin-top: var(--space-sm);">Morimura structures the novel as a double narrative: the victims' escalating vigilante campaign, and the police investigation that gradually recognizes the pattern behind seemingly unrelated killings. As former offenders die across Tokyo, Munekata and Ushio trace connections that lead them back to the coffee shop, back to the four faces that looked like any other customers on any other afternoon. The procedural elements are expertly handled — Morimura learned his craft in the golden age of Japanese social mystery, and the alibi-breaking, witness-interviewing, evidence-gathering sequences are models of the genre. But what elevates <em>Enemii</em> above genre is the detective's growing recognition that he is not hunting monsters. He is hunting the wounded. And he is one of the wounded too.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Central Question</h3>
+    <p>The novel's promotional copy asks: <em>"Imawashiki teki (enemii). Fukushuu wa seigi to ieru no ka?"</em> (忌まわしき敵。復讐は正義と言えるのか？ / "The abominable enemy. Can vengeance be called justice?") This is the engine of the entire book, and Morimura refuses the easy answer. He does not condemn the vigilantes as mere criminals; he does not celebrate them as heroes. He shows us what brought each to the coffee shop, what the law did and failed to do, what the years of unresolved grief did to their marriages, their work, their capacity for joy. By the time the first former offender dies, we understand the arithmetic in the killers' heads. We may not endorse it, but we cannot dismiss it. This is Morimura's method: to make the morally unacceptable emotionally comprehensible, and then to ask whether emotional comprehension is a form of complicity.</p>
+    <p style="margin-top: var(--space-sm);">The novel's most devastating insight is that the vigilantes do not feel better after killing. Vengeance does not restore the dead or heal the paralyzed. It adds a new crime to the old one, a new grief to the existing grief. The coffee shop pact was not a solution; it was a diagnosis — a group of people recognizing that they shared the same disease, which was not hatred of their offenders but hatred of a system that had looked at their loss and pronounced it adequately addressed. The killings are not therapy; they are symptoms. And Munekata, who solves the case, must live with the knowledge that the legal system he serves produced the vigilantes he arrests. The enemy, the novel finally suggests, is not in the coffee shop. The enemy is the distance between what the law calls justice and what a grieving heart knows justice should be.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Vengeance versus justice:</strong> The novel's central dialectic. Japanese law, like most legal systems, distinguishes between the state's right to punish and the individual's prohibition against private retribution. Morimura asks why. If the state fails to deliver proportionate punishment, has it forfeited its monopoly? If a father's grief exceeds the court's sentence, where should the excess go? The novel does not answer; it demonstrates.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The victim's time versus the law's time:</strong> The legal system operates on calendars: trial dates, sentencing hearings, parole reviews. Grief operates on a different clock entirely. The novel's four protagonists have been living with their losses for years while the legal system moved on to the next case. Morimura's insight is that this temporal mismatch — the law's closure versus the heart's ongoing wound — is itself a form of injustice.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Class and the distribution of justice:</strong> Rie's father's corporate betrayal, the <em>bousouzoku</em> rider's juvenile protection, the <em>yakuza</em> bullet's political context — each crime exists within a different power structure, and each receives a different quality of legal attention. Morimura implies that justice in Japan, as elsewhere, is not equally distributed. The wealthy employee who betrays a company receives different treatment than the street thug who kills a fiancée. The novel asks whether this inequality is what drives victims toward private vengeance.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The detective as double agent:</strong> Munekata serves the law but understands the lawbreakers. This is the classic social-mystery detective position, but Morimura pushes it further: Munekata's empathy becomes almost unbearable because the killers are not wrong about the system's failures. They are wrong to act on their conclusions. But Munekata knows, and the reader knows, that the system they are attacking is indeed flawed. The detective becomes a man enforcing a law he knows to be imperfect against people he knows to be wounded.</li>
+      <li><strong>Violence as infection:</strong> The novel's title — <em>Enemii</em> — suggests that enmity is a relationship, not a state. The original criminals created victims; the victims, unsatisfied by legal remedy, become criminals themselves. Violence moves from person to person like a virus, and each new carrier believes they are the endpoint, the final avenger, the one who will close the account. Morimura shows that vengeance never closes accounts; it opens new ones.</li>
+    </ul>
+  </div>
+
+  <div class="film-banner">
+    <div class="film-title">Adaptations</div>
+    <div class="film-detail"><em>Enemii</em> has not been adapted into film or television, but its thematic concerns — vigilante justice, legal failure, the victim's perspective — animate much of Morimura's adapted work, including the <em>Proof of the Man</em> film (1977) and various Munekata television dramas.</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture Morimura's moral precision: the way he states the novel's central question with stark clarity, and his belief that the most important sentences in a mystery are not about clues but about conscience.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Novel's Central Question</div>
+    <div class="passage-jp">
+      忌まわしき敵（エネミイ）。復讐は正義と言えるのか？
+    </div>
+    <div class="passage-romaji">
+      Imawashiki teki (enemii). Fukushuu wa seigi to ieru no ka?
+    </div>
+    <div class="passage-en">
+      "The abominable enemy. Can vengeance be called justice?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's promotional tagline, and it functions as a philosophical thesis compressed into two sentences. Grammatically, the first sentence is a noun phrase with an appositive: <em>imawashiki teki</em> (忌まわしき敵, "abominable enemy") is glossed in parentheses as <em>enemii</em> (エネミイ), the katakana rendering that connects the classical Japanese moral vocabulary to the modern loanword. <em>Imawashiki</em> (忌まわしき) is the classical attributive form of <em>imawashii</em> (忌まわしい, "abominable / hateful / accursed") — a word with religious weight, used for things that inspire ritual dread. It is stronger than <em>kirai</em> (嫌い, "disliked") or <em>nikui</em> (憎い, "hateful"); it suggests something that should not exist, something whose very presence pollutes. By calling the enemy <em>imawashiki</em>, the tagline frames vengeance not as a pragmatic response but as a confrontation with something morally unclean. The second sentence — <em>fukushuu wa seigi to ieru no ka</em> (復讐は正義言えるのか) — uses the potential form <em>ieru</em> (言える, "can be said / can one say") with the quotative <em>to</em> (と), asking not whether vengeance <em>is</em> justice but whether it can be <em>called</em> justice — whether the word applies, whether the category holds. The final <em>no ka</em> (のか) is the explanatory/emphatic question marker that seeks reasoning, not merely a yes/no answer. The tagline is not asking for a verdict; it is asking for a definition. What is justice, that vengeance might or might not be it? The grammar makes the question existential rather than judicial.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Four Who Gathered</div>
+    <div class="passage-jp">
+      絶望と憎しみに苛まれた過去に憑かれた4人が出会うとき、予期せぬ怨恨が呼び覚まされる。
+    </div>
+    <div class="passage-romaji">
+      Zetsubou to nikushimi ni sainamareta kako ni tsukareta yonin ga deau toki, yokisenu enkon ga yobisamasareru.
+    </div>
+    <div class="passage-en">
+      "When four people, possessed by a past tormented by despair and hatred, meet, an unexpected grievance is awakened."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the promotional copy contains the novel's entire psychology in a single clause. <em>Zetsubou to nikushimi ni sainamareta kako</em> (絶望と憎しみに苛まれた過去, "a past tormented by despair and hatred") uses the passive <em>sainamareru</em> (苛まれる, "to be tormented / harassed") — the past itself is being acted upon by despair and hatred, as if the emotions were external forces rather than internal states. This is crucial: Morimura does not say the four people <em>felt</em> despair and hatred; he says their past was <em>tormented by</em> these emotions, suggesting that the damage was done to time itself, to memory, to the narrative of their lives. <em>Tsukareta</em> (憑かれた, "possessed / haunted") is the passive of <em>tsuku</em> (憑く), the verb used for spiritual possession — a ghost or spirit attaching itself to a person. The four are not merely influenced by their pasts; they are haunted, possessed, as by a <em>yokai</em> (妖怪) or vengeful ghost. This supernatural vocabulary elevates their grief from psychology to something almost demonic. <em>Yokisenu enkon</em> (予期せぬ怨恨, "unexpected grievance / unforeseen rancor") uses <em>enkon</em> (怨恨, a compound of <em>en</em> 怨, "grudge" and <em>kon</em> 恨, "resentment") — one of the heaviest words in Japanese for accumulated, unappeased anger. It is the word used for the grudges that create <em>onryou</em> (怨霊, vengeful spirits) in Japanese folklore. The final passive verb <em>yobisamasareru</em> (呼び覚まされる, "is awakened / is called forth") uses the causative-passive form: the grievance is made to wake up by the meeting. The four do not consciously decide to become vigilantes; something wakes in them when their eyes meet across the coffee shop. The grammar removes agency and suggests that the pact is less a choice than a summoning.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Justice and the Shell</div>
+    <div class="passage-jp">
+      自衛の殻に閉じこもっている限り、危険は避けられるが、チャンスもない。
+    </div>
+    <div class="passage-romaji">
+      Jiei no kara ni tojikomotte iru kagiri, kiken wa sakerareru ga, chansu mo nai.
+    </div>
+    <div class="passage-en">
+      "As long as you remain closed inside the shell of self-defense, you can avoid danger, but there will be no chance either."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence is from Morimura's <em>Seigi no Shoumei</em> (正義の証明 / "Proof of Justice," 2010), but it illuminates <em>Enemii</em>'s central dilemma with perfect precision. Grammatically, it is a conditional statement of remarkable balance. <em>Jiei no kara ni tojikomotte iru kagiri</em> (自衛の殻に閉じこもっている限り, "as long as one remains closed in the shell of self-defense") uses <em>kagiri</em> (限り, "as long as / to the extent that") — a conditional marker that suggests a limit or boundary. The "shell of self-defense" (<em>jiei no kara</em>, 自衛の殻) is Morimura's metaphor for the protective isolation that trauma creates: after violence, the victim builds a shell to prevent further harm. The main clause delivers a perfect chiasmus in four beats: <em>kiken wa sakerareru ga</em> (危険は避けられるが, "danger can be avoided, but") / <em>chansu mo nai</em> (チャンスもない, "there is no chance either"). The grammar is simple — passive <em>sakerareru</em> (避けられる, "can be avoided") and the negative existential <em>nai</em> (ない, "there is not") — but the structure creates an equation: safety = opportunity cost. The particle <em>mo</em> (も, "also / either") in <em>chansu mo nai</em> is doing crucial work: it says that chance is absent in the same way that danger is absent — both are voids created by the shell. The sentence applies directly to <em>Enemii</em>'s four protagonists: by remaining in their shells of grief, they avoided further pain but also eliminated any possibility of justice, closure, or renewal. The coffee shop meeting is the moment they crack the shell — and danger rushes in, but so does the chance, however terrible, to act. Morimura's genius is to recognize that vigilante justice is not only a moral crime but also a moral risk: it is what happens when people decide that a life without danger is also a life without meaning.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Author's Origin Story</div>
+    <div class="passage-jp">
+      この町の発端は『アリババと40人の盗賊』のような泥棒が、盗品の隠し場所にしていたそうであるが、町史には書かれていないと話していたのが面白かった。
+    </div>
+    <div class="passage-romaji">
+      Kono machi no hossoku wa "Aribaba to yonjuu-nin no touzoku" no you na dorobou ga, touhin no kakushi basho ni shite ita sou de aru ga, choushi ni wa kakarete inai to hanashite ita no ga omoshirokatta.
+    </div>
+    <div class="passage-en">
+      "It was interesting to be told that the origin of this town was that thieves like those in 'Ali Baba and the Forty Thieves' had used it as a hiding place for stolen goods, but that this was not written in the town's official history."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence comes from Morimura's author commentary on <em>Enemii</em>, and it reveals the novel's deepest structural principle: that every official history has an unofficial shadow, and that what is <em>not</em> written is often more important than what is. The sentence describes a visit to Makubetsu, Hokkaido, where a local figure told Morimura that the town's origin story — thieves hiding stolen goods — had been excluded from the official town history (<em>choushi</em>, 町史). Grammatically, the sentence is a nested report: <em>...sou de aru ga</em> (…そうであるが, "it is said that... but") introduces hearsay, and <em>...to hanashite ita no ga omoshirokatta</em> (…と話していたのが面白かった, "the fact that [he] was saying... was interesting") frames the entire anecdote as something that struck the author. The key contrast is between <em>sou de aru</em> (そうである, "it is said / apparently") — the unofficial oral tradition — and <em>choushi ni wa kakarete inai</em> (町史には書かれていない, "it is not written in the town history") — the official documented record. The particle <em>wa</em> (は) in <em>choushi ni wa</em> marks the official history as the topic of negation: as for the town history, it is not written there. Morimura's interest in this gap between oral memory and written record is the key to <em>Enemii</em>. The law's verdict is the "town history" — the official account that says the case is closed, the sentence was served, justice was done. The victims' grief is the oral tradition — the story that continues to be told in kitchens and bedrooms, the version that says the official record is incomplete. The four coffee-shop vigilantes are people who have decided that when official history fails, unofficial action becomes necessary. The sentence's grammar — hearsay versus documentation, the interesting gap between what is said and what is written — is the grammar of Morimura's entire moral project as a writer.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, the world of crime and vengeance, and the legal-moral vocabulary of Morimura's social mystery.</p>
+
+  <div class="card">
+    <h3>Crime, Vengeance & Justice</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>エネミイ</td><td>enemii</td><td class="pos">noun</td><td>enemy (katakana rendering)</td></tr>
+        <tr><td>敵</td><td>teki</td><td class="pos">noun</td><td>enemy, foe</td></tr>
+        <tr><td>仇</td><td>kataki / ada</td><td class="pos">noun</td><td>enemy, foe; blood-debt; avenger's target</td></tr>
+        <tr><td>仇討ち</td><td>katakiuchi</td><td class="pos">noun</td><td>vendetta, blood revenge (traditional Japanese)</td></tr>
+        <tr><td>復讐</td><td>fukushuu</td><td class="pos">noun</td><td>revenge, vengeance</td></tr>
+        <tr><td>怨恨</td><td>enkon</td><td class="pos">noun</td><td>grievance, deep-seated resentment, rancor</td></tr>
+        <tr><td>正義</td><td>seigi</td><td class="pos">noun</td><td>justice, righteousness</td></tr>
+        <tr><td>私刑</td><td>shikei</td><td class="pos">noun</td><td>vigilante justice, lynching, mob law</td></tr>
+        <tr><td>報復</td><td>houfuku</td><td class="pos">noun</td><td>retaliation, reprisal</td></tr>
+        <tr><td>報い</td><td>mukui</td><td class="pos">noun</td><td>retribution, recompense, just deserts</td></tr>
+        <tr><td>因果応報</td><td>inguouhou</td><td class="pos">phrase</td><td>just retribution, karma, cause and effect</td></tr>
+        <tr><td>天罰</td><td>tenbatsu</td><td class="pos">noun</td><td>divine punishment</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Law, Crime & Social Order</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>犯罪被害者</td><td>hanzai higaisha</td><td class="pos">noun</td><td>crime victim</td></tr>
+        <tr><td>加害者</td><td>kagaisha</td><td class="pos">noun</td><td>perpetrator, offender</td></tr>
+        <tr><td>被害者</td><td>higaisha</td><td class="pos">noun</td><td>victim</td></tr>
+        <tr><td>刑事</td><td>keiji</td><td class="pos">noun</td><td>detective, police investigator</td></tr>
+        <tr><td>捜査</td><td>sousa</td><td class="pos">noun</td><td>investigation</td></tr>
+        <tr><td>容疑者</td><td>yougisha</td><td class="pos">noun</td><td>suspect</td></tr>
+        <tr><td>アリバイ</td><td>aribai</td><td class="pos">noun</td><td>alibi</td></tr>
+        <tr><td>判決</td><td>hanketsu</td><td class="pos">noun</td><td>verdict, sentence, judicial decision</td></tr>
+        <tr><td>量刑</td><td>ryoukei</td><td class="pos">noun</td><td>sentencing, measurement of punishment</td></tr>
+        <tr><td>少年法</td><td>shounenhou</td><td class="pos">noun</td><td>Juvenile Act (protecting underage offenders)</td></tr>
+        <tr><td>裏切り</td><td>uragiri</td><td class="pos">noun</td><td>betrayal, treachery</td></tr>
+        <tr><td>巻き添え</td><td>makizoe</td><td class="pos">noun</td><td>collateral damage, getting caught up in</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Trauma</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>憎しみ</td><td>nikushimi</td><td class="pos">noun</td><td>hatred, hate</td></tr>
+        <tr><td>絶望</td><td>zetsubou</td><td class="pos">noun</td><td>despair, hopelessness</td></tr>
+        <tr><td>苛まれる</td><td>sainamareru</td><td class="pos">verb</td><td>to be tormented, harassed, plagued</td></tr>
+        <tr><td>憑かれる</td><td>tsukareru</td><td class="pos">verb</td><td>to be possessed (by spirit, obsession)</td></tr>
+        <tr><td>嘆き</td><td>nageki</td><td class="pos">noun</td><td>grief, lamentation</td></tr>
+        <tr><td>無念</td><td>munen</td><td class="pos">noun</td><td>regret, chagrin, bitter frustration</td></tr>
+        <tr><td>歯痒さ</td><td>haigasa</td><td class="pos">noun</td><td>frustration, impatience (lit. "itchy teeth")</td></tr>
+        <tr><td>自衛</td><td>jie</td><td class="pos">noun</td><td>self-defense</td></tr>
+        <tr><td>殻</td><td>kara</td><td class="pos">noun</td><td>shell, husk</td></tr>
+        <tr><td>閉じこもる</td><td>tojikomoru</td><td class="pos">verb</td><td>to shut oneself in, to withdraw</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Social & Criminal Worlds</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>暴走族</td><td>bousouzoku</td><td class="pos">noun</td><td>biker gang, speed tribe</td></tr>
+        <tr><td>暴力団</td><td>bouryokudan</td><td class="pos">noun</td><td>organized crime syndicate, yakuza</td></tr>
+        <tr><td>抗争</td><td>kousou</td><td class="pos">noun</td><td>conflict, gang war, internecine struggle</td></tr>
+        <tr><td>流れ弾</td><td>nagaredama</td><td class="pos">noun</td><td>stray bullet</td></tr>
+        <tr><td>半身不随</td><td>hanshin fuzui</td><td class="pos">noun</td><td>hemiplegia, paralysis of one side</td></tr>
+        <tr><td>社長</td><td>shachou</td><td class="pos">noun</td><td>company president</td></tr>
+        <tr><td>自殺</td><td>jisatsu</td><td class="pos">noun</td><td>suicide</td></tr>
+        <tr><td>拉致</td><td>rachi</td><td class="pos">noun</td><td>kidnapping, abduction</td></tr>
+        <tr><td>殺害</td><td>satsugai</td><td class="pos">noun</td><td>killing, murder</td></tr>
+        <tr><td>非行</td><td>hikou</td><td class="pos">noun</td><td>delinquency, misconduct</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Morimura's prose in <em>Enemii</em> appears straightforward, but it relies on Japanese moral vocabulary, legal terminology, and the cultural weight of traditional vengeance concepts that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Imawashiki</em> (忌まわしき) as Ritual Dread</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>忌まわしき</strong>敵</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"abominable enemy" / "hateful foe"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Imawashii</em> (忌まわしい) derives from <em>imu</em> (忌む, "to avoid as taboo / to shun as polluting"). It is the word used for things that carry <em>kegare</em> (穢れ, ritual impurity) — death, blood, incest, certain illnesses. To call an enemy <em>imawashiki</em> is not merely to say they are disliked; it is to say they should not exist, that their presence contaminates the moral order. The English "abominable" carries some of this (it derives from Latin <em>abominari</em>, "to shudder away from as an ill omen"), but "hateful" or "detestable" loses the religious dimension entirely. What is lost is the sense that the enemy is not just morally wrong but cosmically out of place — a being whose existence violates the proper order of things. In the context of <em>Enemii</em>, this matters because the novel asks whether the vigilantes, by killing, have themselves become <em>imawashiki</em> — not merely criminals but polluters of the moral universe they sought to cleanse.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Fukushuu</em> (復讐) versus <em>Katakiuchi</em> (仇討ち)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>復讐</strong>は正義と言えるのか</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Can vengeance be called justice?"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Japanese has at least three distinct words for retributive killing, and Morimura's choice of <em>fukushuu</em> (讐) is significant. <em>Katakiuchi</em> (仇討ち) is the traditional, often socially sanctioned vengeance of samurai culture — the killing of a person who has murdered one's lord or parent, which was sometimes legally protected under Tokugawa law. <em>Ada-uchi</em> (敵討ち) is more general — the pursuit of an enemy who has wronged you. <em>Fukushuu</em> (復讐) is the modern, legalistic word: it carries no samurai romance, no social approval. It is the word used in criminal codes and courtrooms. By asking whether <em>fukushuu</em> (not <em>katakiuchi</em>) can be justice, Morimura deliberately strips vengeance of its traditional dignity. He is not asking about noble samurai avenging their lords; he is asking whether modern private citizens have the right to kill because the courts disappointed them. The English "vengeance" cannot fully convey this distinction because English does not differentiate between romanticized traditional revenge and modern vigilante killing. What is lost is the specific modernity of Morimura's question — he is not invoking bushido; he is interrogating the postwar legal state's failure.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Enkon</em> (怨恨) as Vengeful-Spirit Anger</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>予期せぬ<strong>怨恨</strong>が呼び覚まされる</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"an unexpected grievance is awakened"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Enkon</em> (怨恨) is a compound of <em>en</em> (怨, "grudge / deep resentment") and <em>kon</em> (恨, "hatred / regret"). Both characters belong to the vocabulary of Japanese ghost stories: <em>en</em> is the grudge that creates <em>onryou</em> (怨霊, vengeful spirits), and <em>kon</em> is the hatred that survives death. In folklore, a person who dies with <em>enkon</em> in their heart cannot rest; they return as ghosts to torment the living. When Morimura uses <em>enkon</em> to describe the feeling awakened in the coffee shop, he is invoking this supernatural tradition. The four victims' grievance is not ordinary anger; it is the kind of resentment that, in Japanese cultural imagination, transcends death and drives the dead back to the world of the living. The English "grievance" or "rancor" sounds almost administrative — a grievance is what you file with HR. What is lost is the ghost-story resonance: the sense that what wakes in the coffee shop is not merely a plan but a haunting, a force from Japanese folklore that possesses the living and demands blood. The novel's killers are, in this sense, <em>onryou</em> in flesh — people animated by a grudge too deep for the grave.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Jiei no Kara</em> (自衛の殻) as Trauma Architecture</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>自衛の殻</strong>に閉じこもっている限り</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"as long as you remain closed inside the shell of self-defense"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kara</em> (殻) means "shell, husk, pod" — the hard outer covering of a nut, the discarded skin of an insect, the empty house a hermit crab leaves behind. It is a word of emptiness and protection simultaneously. In Buddhist vocabulary, <em>kara</em> can suggest the physical body as the shell of the soul — something that must eventually be cast off. In Morimura's metaphor, the "shell of self-defense" is what trauma builds around the self: a hard outer layer that keeps pain out and feeling in. The English "shell" captures some of this, but it misses the specific Japanese association of <em>kara</em> with emptiness. A shell is not merely protective; it is hollow. The person inside the <em>jiei no kara</em> is not only safe from danger but also empty of the chance for connection, renewal, or justice-through-action. What is lost is the Buddhist echo — the suggestion that self-protection can become a kind of living death, a husk without a kernel. The four coffee-shop vigilantes crack their shells, and what emerges is not freedom but violence. Morimura's metaphor suggests that the shell was keeping something worse inside.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Choushi</em> (町史) as Official Memory</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>町史</strong>には書かれていない</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"it is not written in the town history"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Choushi</em> (町史, "town history") is a specific Japanese genre: the officially commissioned, municipally published historical record of a town's development. Every Japanese municipality of significant size has one, and they are written in a formal, documentary style that emphasizes civic pride and respectable origins. To say that the thieves' hiding place is not in the <em>choushi</em> is to say that official memory has performed its usual selective function — preserving what flatters and erasing what shames. The English "town history" sounds informal, almost colloquial; it could mean a local history book written by an amateur enthusiast. The Japanese <em>choushi</em> is an institution, a genre with rules and expectations. What is lost is the sense of official erasure as a civic act — the town government deciding, collectively and consciously, that certain origins do not belong in the record. This maps directly onto <em>Enemii</em>'s legal theme: the court's verdict is the <em>choushi</em> of the crime — the official memory that preserves the sentence and erases the victim's ongoing pain. The vigilantes are people who have discovered that the official record is incomplete, and who have decided to write the missing chapter in blood.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, key passages, and the moral-legal register of Morimura's social mystery.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と言えるのか？（可能＋疑問）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>To ieru no ka?</em>: "Can [it] be said that ~?" — potential form of <em>iu</em> (言う) with quotative <em>to</em>, asking whether a category applies.</p>
+      <div class="grammar-example">復讐は正義言えるのか</div>
+      <p class="grammar-example-en">"Can vengeance be called justice?" — The potential <em>ieru</em> (言える) asks about categorical possibility, not factual truth. The question is definitional, not empirical.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に憑かれる（受身形・憑依）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni tsukareru</em>: "to be possessed by ~" — passive form of <em>tsuku</em> (憑く), used for spiritual possession and obsessive fixation.</p>
+      <div class="grammar-example">過去に憑かれた4人</div>
+      <p class="grammar-example-en">"four people possessed by the past" — The passive removes agency and suggests supernatural compulsion. The victims did not choose their obsession; it attached to them.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が呼び覚まされる（受身形・喚起）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga yobisamasareru</em>: "[something] is awakened / called forth" — passive form suggesting that the subject is activated by an external trigger.</p>
+      <div class="grammar-example">怨恨が呼び覚まされる</div>
+      <p class="grammar-example-en">"a grievance is awakened" — The causative-passive <em>yobisamasareru</em> removes human agency. The grievance is not chosen; it is summoned by the meeting.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜限り（条件・範囲）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Kagiri</em>: "as long as / to the extent that" — conditional marker indicating a boundary condition.</p>
+      <div class="grammar-example">殻に閉じこもっている限り</div>
+      <p class="grammar-example-en">"as long as one remains closed in the shell" — <em>Kagiri</em> suggests a limit. The protection of the shell is conditional and bounded; beyond the limit, different rules apply.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜は〜られるが、〜もない（対比・否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Wa ~rareru ga, ~ mo nai</em>: "~ can be ~ed, but there is no ~ either" — passive potential + contrastive <em>ga</em> + negative existential with <em>mo</em>.</p>
+      <div class="grammar-example">危険は避けられるが、チャンスもない</div>
+      <p class="grammar-example-en">"danger can be avoided, but there is no chance either" — The <em>mo</em> (も) creates a perfect equation: the absence of danger equals the absence of chance. Safety and opportunity are traded at par.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜そうであるが、〜（伝聞・対比）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Sou de aru ga</em>: "it is said that ~, but ~" — hearsay marker <em>sou</em> (そう) with contrastive <em>ga</em>, setting oral tradition against official record.</p>
+      <div class="grammar-example">泥棒が隠し場所にしていたそうであるが、町史には書かれていない</div>
+      <p class="grammar-example-en">"thieves had used it as a hiding place, it is said, but it is not written in the town history" — The <em>sou</em> marks unofficial knowledge; the <em>ga</em> introduces official absence. The grammar enacts the gap between memory and record.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のが面白かった（名詞化・感覚）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No ga omoshirokatta</em>: "the fact that ~ was interesting" — nominalizes a clause with <em>no</em> and makes it the subject of an emotional judgment.</p>
+      <div class="grammar-example">町史に書かれていないと話していたのが面白かった</div>
+      <p class="grammar-example-en">"the fact that he said it was not written in the town history was interesting" — The <em>no ga</em> construction turns the reported speech into an object of authorial reflection. What interests Morimura is not the fact but the reporting of the fact's absence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">忌まわしき〜（古典的連体形）</span>
+        <span class="grammar-level">N1 / Classical</span>
+      </div>
+      <p class="grammar-meaning"><em>Imawashiki ~</em>: classical attributive form of <em>imawashii</em> — used in modern Japanese for elevated, literary, or religiously weighted description.</p>
+      <div class="grammar-example">忌まわしき敵</div>
+      <p class="grammar-example-en">"the abominable enemy" — The <em>-ki</em> attributive (連体形) is classical grammar surviving in modern literary usage. It elevates the noun phrase beyond everyday speech into the register of moral judgment.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Morimura's grammar in <em>Enemii</em> operates on two registers: the accessible modern Japanese of the procedural narrative (mostly N4-N3) and the elevated, sometimes classical vocabulary of the moral framework (N1/classical). Pay attention to how the passive voice removes agency from victims turned killers, how <em>kagiri</em> creates bounded conditions, and how the <em>no ga</em> construction turns reported facts into objects of reflection. Morimura is not merely telling a story; he is constructing a moral architecture, and every grammatical choice supports the load.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">エネミイ &middot; 森村誠一 &middot; 講談社 2000（単行本）ISBN 9784062100144</p>
+</footer>
+
+</div>
+</body>
+</html>

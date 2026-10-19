@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep River Japanese Lesson — Endo Shusaku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f4ee;
+            --surface: #fffdf9;
+            --ink: #1e1a16;
+            --muted: #6e6558;
+            --accent: #8b4513;
+            --accent-weak: color-mix(in oklab, var(--accent) 10%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 6px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        /* Japanese text styling */
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        /* Header */
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(139,69,19,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 70%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 50%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        /* Main layout */
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        /* Passage box */
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        /* Vocab table */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* Nuance box */
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Grammar note */
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        /* Highlighted word */
+        .hl {
+            background: color-mix(in oklab, var(--accent) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        /* Section divider */
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.4;
+        }
+
+        /* Intro paragraph */
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        /* List styling */
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1e1a16; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Deep River<br><span style="font-size:0.6em; font-weight:300;">深い河</span></h1>
+    <div class="subtitle">A Japanese lesson through Endo Shusaku's final novel</div>
+    <div class="meta">Vocabulary &middot; Grammar &middot; What translation loses</div>
+</header>
+
+<main>
+
+<p class="intro">
+    Endo Shusaku's <em>Deep River</em> (1993) is his spiritual testament: five Japanese travellers meet on the banks of the Ganges, each carrying a private grief. The novel is a masterclass in prose that is simultaneously simple and bottomless. In this lesson, we will study four key passages and explore what happens to their meaning when they cross into English.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Epigraph</h2>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            深い河、神よ、わたしは河を渡って、集いの地に行きたい
+        </div>
+        <div class="romaji">Fukai kawa, kami yo, watashi wa kawa o watatte, tsudoi no chi ni ikitai</div>
+        <div class="translation">"Deep river, Lord, I want to cross over into campground."</div>
+        <div class="source">— Negro spiritual, as quoted in the novel's epigraph</div>
+    </div>
+
+    <p>This is the spiritual that gives the novel its title. Endo heard it and felt it named everything his novel was trying to say. The Japanese translation of the spiritual is already doing interesting work.</p>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">深い</td><td class="reading">fukai</td><td>deep</td></tr>
+        <tr><td class="word">河</td><td class="reading">kawa / ga</td><td>river (河 is more literary than 川)</td></tr>
+        <tr><td class="word">渡る</td><td class="reading">wataru</td><td>to cross (a river, a boundary, into another world)</td></tr>
+        <tr><td class="word">集い</td><td class="reading">tsudoi</td><td>gathering, assembly (from 集まる)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses</h5>
+        <p><strong>河 (kawa) vs 川 (kawa):</strong> Both read <em>kawa</em> and mean "river." But Endo chooses 河, the more literary/ancient form, which appears in words like 河川 (rivers), 銀河 (Milky Way), and 天河 (heavenly river). It carries a biblical, mythic weight that the plain 川 lacks. In English, "river" is just "river."</p>
+        <p><strong>集いの地 (tsudoi no chi):</strong> The English spiritual says "campground," a very specific religious-gathering term. The Japanese 集いの地 literally means "the land of gathering." It feels more universal, more poetic, less denominationally Christian. A Japanese reader might think of 集い as simply "where souls assemble."</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. God Is Not a Noun</h2>
+    <p>The most famous passage in the novel: the unbeliever Mitsuko meets her old classmate Otsu, now a theology student in France. She asks him what "God" means to him now.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「神は<span class="hl">存在</span>というより、<span class="hl">働き</span>です。<span class="hl">玉ねぎ</span>は愛の働く<span class="hl">塊り</span>なんです」
+        </div>
+        <div class="romaji">"Kami wa sonzai to iu yori, hataraki desu. Tamanegi wa ai no hataraku katamari nan desu."</div>
+        <div class="translation">"Rather than saying God is <em>existence</em>, it is more accurate to say God is <em>activity</em>. The onion is a clump of love at work."</div>
+        <div class="source">— Chapter 3: Mitsuko's Case</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">存在</td><td class="reading">sonzai</td><td>existence (as a philosophical category)</td></tr>
+        <tr><td class="word">働き</td><td class="reading">hataraki</td><td>work, activity, functioning, operation</td></tr>
+        <tr><td class="word">玉ねぎ</td><td class="reading">tamanegi</td><td>onion (Otsu's private name for God)</td></tr>
+        <tr><td class="word">塊り</td><td class="reading">katamari</td><td>clump, mass, lump, conglomeration</td></tr>
+        <tr><td class="word">働く</td><td class="reading">hataraku</td><td>to work, to function, to operate (intransitive)</td></tr>
+    </table>
+
+    <div class="grammar">
+        <h5>Grammar: 〜というより</h5>
+        <p>Pattern: <code>Noun + というより</code> = "rather than saying it is X..."</p>
+        <p>This pattern rejects a categorization and proposes a better one. It is stronger and more literary than the everyday 〜より. Otsu is not just adjusting his wording; he is making a theological claim. "God is not a being that happens to exist. God is a force that operates."</p>
+    </div>
+
+    <div class="nuance">
+        <h5>What translation loses: The onion theology</h5>
+        <p><strong>働き (hataraki):</strong> English translations often render this as "work" or "activity," but 働き is a noun derived from the intransitive verb 働く. It suggests something that <em>operates on its own</em>, that has an inner dynamism. A machine "works" (動く). A heart "functions" (働く). Otsu is saying God is not a static entity sitting somewhere; God is a self-activating principle. "Activity" sounds abstract. "Work" sounds like a job. 働き sounds like life happening.</p>
+        <p><strong>塊り (katamari):</strong> This is a wonderfully physical word. A 塊り is a lump of clay, a ball of dirt, a clump of cells. It is unformed, unbeautiful, organic. When Otsu calls God an "onion" and then a 塊り of love, he is deliberately choosing the least grandiose, least theological language possible. English "clump" or "lump" captures some of this, but 塊り also carries a sense of something that has <em>cohered naturally</em>, like a snowball or a gallstone. It is humble and bodily.</p>
+        <p><strong>愛の働く塊り (ai no hataraku katamari):</strong> The grammar here is beautiful and strange. Literally: "a clumping-together where love is working." The relative clause 愛の働く modifies 塊り without any explicit connector. It makes love into a process, not a substance. The onion is not "made of love"; it is a site where love is currently operating.</p>
+    </div>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「玉ねぎはある場所で<span class="hl">棄てられた</span>ぼくをいつの間にか別の場所で<span class="hl">生かして</span>くれました」
+        </div>
+        <div class="romaji">"Tamanegi wa aru basho de suterareta boku wo itsunomanika betsu no basho de ikashite kuremashita."</div>
+        <div class="translation">"The onion took me, discarded in one place, and before I knew it, had let me live in another."</div>
+    </div>
+
+    <h4>More vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">棄てる</td><td class="reading">suteru</td><td>to throw away, discard, abandon</td></tr>
+        <tr><td class="word">いつの間にか</td><td class="reading">itsunomanika</td><td>before one knows it, unnoticed</td></tr>
+        <tr><td class="word">生かす</td><td class="reading">ikasu</td><td>to let live, to keep alive, to make use of (transitive of 生きる)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: 生かす</h5>
+        <p><strong>生かす (ikasu):</strong> This is the transitive form of 生きる (ikiru, "to live"). It means "to let someone live," "to keep alive," or "to give life to." It implies an agent doing the life-giving. In English, "let me live" sounds like permission. In Japanese, 生かしてくれた carries warmth and gratitude; the onion <em>actively sustained</em> him. It is the difference between "I survived" and "something carried me."</p>
+        <p>Also note the passive 棄てられた (suterareta, "was discarded"). Otsu does not say "I left" or "I failed." He was <em>discarded</em>, suggesting a suffering that happened to him, not a choice he made. This is the language of someone who has been broken and found, not someone who went looking.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Goddess of Suffering</h2>
+    <p>The tour guide, Enami, takes the group to a temple of the goddess Chāmuṇḍā. What begins as a tourist stop becomes one of the novel's most devastating passages.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            彼女の乳房はもう老婆のように<span class="hl">萎びています</span>。でもその<span class="hl">萎びた乳房</span>から乳を出して、並んでいる子供たちに与えています。彼女の右足はハンセン氏病のため、<span class="hl">ただれている</span>のがわかりますか。
+        </div>
+        <div class="romaji">"Kanojo no chibusa wa mou rouba no you ni shibinete imasu. Demo sono shibita chibusa kara chichi wo dashite, narande iru kodomotachi ni ataete imasu. Kanojo no migiashi wa Hansen-shibyou no tame, tadarete iru no ga wakarimasu ka."</div>
+        <div class="translation">"Her breasts have withered like an old woman's. Yet from those shriveled breasts she gives milk to the children lined up before her. Her right foot, you can see, is festering from Hansen's disease."</div>
+        <div class="source">— Chapter 7: The Goddess</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">乳房</td><td class="reading">chibusa</td><td>breast (literary/poetic; 乳首 is nipple, 胸 is chest)</td></tr>
+        <tr><td class="word">萎びる</td><td class="reading">shibiru / shibireru</td><td>to wither, to shrivel, to atrophy</td></tr>
+        <tr><td class="word">萎びた</td><td class="reading">shibita</td><td>withered, shriveled (past participle as adjective)</td></tr>
+        <tr><td class="word">ただれる</td><td class="reading">tadareru</td><td>to fester, to become inflamed and rotten</td></tr>
+        <tr><td class="word">並ぶ</td><td class="reading">narabu</td><td>to line up, to stand in a row (intransitive)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The body in language</h5>
+        <p><strong>萎びる (shibiru):</strong> This is a visceral word. It describes grapes turning to raisins, flowers dying on the stem, skin wrinkling with age. It is not the clinical "withered" or the polite "shrunken." It carries a sense of life-force leaving tissue. When Enami says 萎びた乳房, he is forcing the tourists (and the reader) to confront a body that has been devastated by time and disease, yet still functions as a source of nourishment. The word is ugly and tender at once.</p>
+        <p><strong>ただれる (tadareru):</strong> Even stronger. This word describes a wound that is not just infected but <em>actively rotting</em>, oozing, breaking down. It appears in descriptions of battlefield wounds and leprosy. English "festering" is close, but ただれる has a soft, almost liquid sound that makes the horror more intimate. It is the word of a body betrayed by itself.</p>
+        <p><strong>乳 (chichi) vs ミルク:</strong> Enami says 乳を出して (chichi wo dashite), using the native Japanese word for a mother's milk, not the borrowed ミルク. 乳 is ancient, biological, mammalian. It connects this goddess to every nursing mother in history. The word choice makes the statue into a fact of nature, not a religious symbol.</p>
+    </div>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            彼女はそんな病苦や痛みに<span class="hl">耐えながら</span>も、萎びた乳房から人間に乳を与えているんです
+        </div>
+        <div class="romaji">"Kanojo wa sonna byouku ya itami ni taenagara mo, shibita chibusa kara ningen ni chichi wo ataete iru n desu."</div>
+        <div class="translation">"Even while enduring such sickness and pain, she gives her milk to humankind from those withered breasts."</div>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜ながら（も）</h5>
+        <p>Pattern: <code>Verb-stem + ながら（も）</code> = "even while doing..., (still)..."</p>
+        <p>The も is optional but adds emphasis. 耐えながらも means "even while enduring." It creates a tension between two simultaneous realities: the goddess is suffering, <em>and yet</em> she is giving. The grammar itself enacts the mystery Enami is trying to express. The も presses on the contradiction.</p>
+    </div>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">喘ぎながら</span>、萎びた乳房で乳を人間に与えている
+        </div>
+        <div class="romaji">"Aegi nagara, shibita chibusa de chichi wo ningen ni ataete iru"</div>
+        <div class="translation">"Gasping, she gives her milk to humankind with those withered breasts."</div>
+    </div>
+
+    <div class="nuance">
+        <h5>What translation loses: 喘ぐ (aegu)</h5>
+        <p><strong>喘ぐ (aegu):</strong> To gasp, to pant, to struggle for breath. It is the sound of dying, of asthma, of orgasm, of extreme exertion. In this context, it suggests the goddess is barely alive, every breath an effort, and yet the milk continues to flow. English "gasping" captures the physical act but loses the intimacy: 喘ぐ is a word you might use for a lover, a sick child, someone whose breath you can hear. It makes the goddess into a body you are in the room with.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The River at the End</h2>
+    <p>Isobe, a man who has lost his wife, sits by the Ganges. The novel's closing movement turns on a distinction that English almost cannot make.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            1人ぽっちになった今、磯辺は<span class="hl">生活</span>と<span class="hl">人生</span>とが根本的に違うことがやっとわかってきた。そして自分には生活のために交わった他人は多かったが、人生のなかで本当に<span class="hl">ふれあった</span>人間はたった2人
+        </div>
+        <div class="romaji">"Hitori-bocchi ni natta ima, Isobe wa seikatsu to jinsei to ga konponteki ni chigau koto ga yatto wakatte kita. Soshite jibun ni wa seikatsu no tame ni majiwatta tanin wa ookatta ga, jinsei no naka de hontou ni fureatta ningen wa tatta futari..."</div>
+        <div class="translation">"Now that he was alone, Isobe finally understood that <em>daily life</em> and <em>a life</em> were fundamentally different. He had known many people for the sake of daily life, but people he had truly <em>touched</em> in the course of a life were only two..."</div>
+        <div class="source">— Final chapters</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">1人ぽっち</td><td class="reading">hitori-bocchi</td><td>all alone, completely alone (colloquial, emphatic)</td></tr>
+        <tr><td class="word">生活</td><td class="reading">seikatsu</td><td>daily life, livelihood, making a living</td></tr>
+        <tr><td class="word">人生</td><td class="reading">jinsei</td><td>life (as a narrative, a totality)</td></tr>
+        <tr><td class="word">交わる</td><td class="reading">majiwaru</td><td>to associate with, to intersect with, to cross paths</td></tr>
+        <tr><td class="word">ふれあう</td><td class="reading">fureau</td><td>to come into contact, to touch one another, to commune</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: Seikatsu vs Jinsei</h5>
+        <p><strong>生活 (seikatsu):</strong> The mechanics of living. Eating, working, paying rent, commuting, small talk at the office. It is life as routine, as survival, as social function. When Isobe says he knew many people 生活のために (for the sake of seikatsu), he means they were useful, convenient, part of the infrastructure of his days.</p>
+        <p><strong>人生 (jinsei):</strong> Life as a whole, from birth to death, as a story with meaning. It is "a life" in the biographical sense. Your 人生 is what you look back on when you die. English has only one word: "life." A translator must choose "daily life" vs "life," which works, but the parallel structure of 生活と人生 is elegant and devastating in Japanese: two words built from the same character 生 (life), one pointing to the surface, one to the depth.</p>
+    </div>
+
+    <div class="nuance">
+        <h5>What translation loses: ふれあう (fureau)</h5>
+        <p><strong>交わる (majiwaru)</strong> vs <strong>ふれあう (fureau):</strong> Isobe contrasts these two verbs. 交わる means to associate, to have dealings, to intersect. It is neutral, almost bureaucratic. ふれあう means "to touch one another," "to brush against each other," "to share contact." It contains 触れる (to touch) + 合う (mutual/reciprocal). It suggests a two-way, skin-close connection.</p>
+        <p>English "touched" is close, but ふれあう is not a dramatic, once-in-a-lifetime touch. It is the accumulated small contacts of a real relationship: hands brushing as you pass the rice, a glance held one second longer than necessary, sitting in silence together. The word is gentle and physical. "Touched" can mean "moved emotionally" in English; ふれあう is always physical first, emotional second.</p>
+    </div>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            河は彼の叫びを<span class="hl">受けとめた</span>まま<span class="hl">黙々と</span>流れていく。だがその銀色の<span class="hl">沈黙</span>には、ある力があった。河は今日まであまたの人間の死を<span class="hl">包みながら</span>、それを次の世に運んだように、川原の岩に腰かけた男の人生の声も運んでいった。
+        </div>
+        <div class="romaji">"Kawa wa kare no sakebi wo uketometa mama, mokumoku to nagarete iku. Da ga sono gingiro no chinmoku ni wa, aru chikara ga atta. Kawa wa kyou made amata no ningen no shi wo tsutsuminagara, sore wo tsugi no yo ni hakonda you ni, kawara no iwa ni koshikaketa otoko no jinsei no koe mo hakonde itta."</div>
+        <div class="translation">"The river received his cry and flowed on in silence. But in that silver silence there was a power. Just as the river, wrapping countless human deaths until today, had carried them to the next world, so it carried the voice of the man's life, seated on a rock by the riverbank."</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">受けとめる</td><td class="reading">uketomeru</td><td>to receive, to accept, to take in (implies holding)</td></tr>
+        <tr><td class="word">黙々と</td><td class="reading">mokumoku to</td><td>silently, wordlessly, without speaking</td></tr>
+        <tr><td class="word">沈黙</td><td class="reading">chinmoku</td><td>silence (as a state, a presence)</td></tr>
+        <tr><td class="word">包む</td><td class="reading">tsutsumu</td><td>to wrap, to envelop, to enfold</td></tr>
+        <tr><td class="word">あまた</td><td class="reading">amata</td><td>many, countless (literary, slightly archaic)</td></tr>
+        <tr><td class="word">次の世</td><td class="reading">tsugi no yo</td><td>the next world, the afterlife</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The silence that has power</h5>
+        <p><strong>沈黙 (chinmoku):</strong> Not merely the absence of noise. 沈黙 is silence as a presence, a weight, a choice. It is the silence of someone who could speak but does not. The river's 沈黙 is active: it is holding Isobe's cry, not ignoring it. English "silence" can mean either "quiet" or "refusal to speak." 沈黙 leans toward the latter; it is a willful, meaningful quiet.</p>
+        <p><strong>包みながら (tsutsuminagara):</strong> The ながら form again. The river flows <em>while wrapping</em> deaths in its embrace. The image is maternal: the Ganges as a mother wrapping a child in cloth, or a body in a shroud. 包む suggests tenderness and completeness. It is not "containing" (which is neutral) or "hiding" (which is suspicious). It is enfolding, the way arms enfold. The river does not merely transport corpses; it holds them lovingly on the journey.</p>
+        <p><strong>銀色の沈黙 (gingiro no chinmoku):</strong> "Silver silence" is a striking visual-metaphor. The Ganges at certain times of day does look silver. But 銀色 also carries connotations of moonlight, of something not quite real, of a liminal space between worlds. A "silver silence" is a silence with a glow to it, a silence you can almost see.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. A Word on 業 (Gō / Karma)</h2>
+
+    <p>Throughout the novel, the characters are described as carrying their <strong>業 (gō)</strong>. This is a deliberately loaded choice by Endo.</p>
+
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">業</td><td class="reading">gō / karma</td><td>karma; actions and their consequences; also: work, deed, burden</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: A Christian novel using a Buddhist word</h5>
+        <p><strong>業 (gō)</strong> is the Japanese reading of the Buddhist concept of karma: the accumulated weight of one's actions across lifetimes, the burden you carry. By using 業 instead of 罪 (tsumi, "sin") or 苦労 (kurou, "suffering"), Endo is doing something remarkable: he is writing a novel about Christian faith using a fundamentally Buddhist framework for human suffering.</p>
+        <p>In English, this is often translated as "karma" or "burden" or "fate." But 業 is not quite any of these. It is something you have made for yourself through your choices, something you must work through, not be saved from. A Christian might say "sin" and mean a violation of God's law that requires forgiveness. A Buddhist says 業 and means a debt that must be paid through experience. Endo's characters carry 業 to the Ganges, and the river accepts it. The novel's theology is happening in the space between these two understandings.</p>
+        <p>Also note: 業 is the same character used in 仕事 (shigoto, "work"), 職業 (shokugyou, "occupation"), and 作業 (sagyou, "manual labor"). It is work you have done, now become your identity. This is why Otsu's "God as working" (働き) and the characters' "karma" (業) are linguistically related in Japanese in a way they are not in English.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>6. Summary: Patterns to Watch</h2>
+
+    <h4>Grammar patterns</h4>
+    <ul>
+        <li><strong>〜というより</strong> — "rather than saying X, it is Y" (rejection and redefinition)</li>
+        <li><strong>〜ながら（も）</strong> — "even while doing... (still)..." (simultaneous contradiction)</li>
+        <li><strong>〜てくれる / 〜てくれた</strong>  someone does something for me/us (with gratitude)</li>
+        <li><strong>〜ということ</strong> — "the fact that..." (nominalization, making events into objects of thought)</li>
+    </ul>
+
+    <h4>Translation danger zones</h4>
+    <ul>
+        <li><strong>Existence vs activity:</strong> Japanese can make God a process (働き). English forces a noun.</li>
+        <li><strong>Body words:</strong> 萎びる, ただれる, 喘ぐ carry physical intimacy that clinical English loses.</li>
+        <li><strong>Life vs life:</strong> 生活 and 人生 are a distinction English cannot easily make.</li>
+        <li><strong>Touch:</strong> ふれあう is mutual, physical, gentle. "Touch" in English is broader and more ambiguous.</li>
+        <li><strong>Silence:</strong> 沈黙 is a presence. "Silence" in English is often an absence.</li>
+        <li><strong>Wrapping:</strong> 包む is maternal and tender. "Wrap" in English is functional.</li>
+    </ul>
+
+    <h4>Why this novel teaches Japanese well</h4>
+    <p>Endo's prose is not difficult in the sense of using rare kanji or convoluted syntax. It is difficult because every word choice is doing theological and emotional work. When you learn Japanese through this novel, you are not just learning vocabulary; you are learning how Japanese can hold concepts that English must strain to express. The "onion" is not a quirk. It is a theory of language: that the most humble words (玉ねぎ, 塊り, 働き) can bear the most sacred meanings.</p>
+</section>
+
+</main>
+
+</body>
+</html>

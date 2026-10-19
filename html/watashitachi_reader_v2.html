@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Companion — 私たちが生きた20世紀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f5f0; --surface: #fffef9; --ink: #1e1e1e; --muted: #6e6a64;
+  --accent: #8b2635; --accent-weak: color-mix(in oklab, var(--accent) 10%, var(--surface));
+  --accent-medium: color-mix(in oklab, var(--accent) 25%, transparent);
+  --line: color-mix(in oklab, var(--ink) 10%, transparent);
+  --line-strong: color-mix(in oklab, var(--ink) 18%, transparent);
+  --green: #2d5f3f; --green-weak: color-mix(in oklab, var(--green) 10%, var(--surface));
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.2vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.05), 0 6px 16px -6px rgba(0,0,0,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Inter", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: var(--step-0); }
+h1, h2, h3 { font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; line-height: 1.3; letter-spacing: -0.01em; }
+h1 { font-size: var(--step-3); } h2 { font-size: var(--step-2); margin-top: calc(var(--space)*1.8); margin-bottom: calc(var(--space)*0.6); }
+h3 { font-size: var(--step-1); margin-top: calc(var(--space)*1.2); margin-bottom: calc(var(--space)*0.4); }
+p { margin-bottom: calc(var(--space)*0.7); max-width: 68ch; }
+header { background: var(--surface); border-bottom: 1px solid var(--line-strong); padding: calc(var(--space)*1.5) var(--space); position: sticky; top: 0; z-index: 100; }
+.header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+header h1 { font-size: var(--step-1); font-weight: 700; }
+header .book-title { font-family: "Noto Serif JP", serif; color: var(--accent); font-weight: 600; }
+header .subtitle { font-size: var(--step--1); color: var(--muted); }
+main { max-width: 900px; margin: 0 auto; padding: var(--space); }
+.tab-bar { display: flex; gap: 0.25rem; margin: calc(var(--space)*1.2) 0 calc(var(--space)*1); border-bottom: 2px solid var(--line-strong); overflow-x: auto; scrollbar-width: none; }
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn { background: none; border: none; padding: 0.6rem 1rem; font-family: inherit; font-size: var(--step--1); font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+.tab-btn:hover { color: var(--accent); } .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-panel { display: none; } .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .tab-panel.active { animation: none; } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: calc(var(--space)*1); margin-bottom: calc(var(--space)*0.8); box-shadow: var(--shadow); }
+.card h3 { margin-top: 0; }
+.vocab-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); margin-top: 0.5rem; }
+.vocab-table th, .vocab-table td { padding: 0.55rem 0.7rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.vocab-table th { font-weight: 600; color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; background: var(--accent-weak); }
+.vocab-table tr:hover td { background: var(--accent-weak); }
+.vocab-table .col-ja { width: 22%; } .vocab-table .col-romaji { width: 22%; color: var(--muted); font-style: italic; }
+.vocab-table .col-pos { width: 14%; } .vocab-table .col-meaning { width: 42%; }
+.pos-tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: var(--green-weak); color: var(--green); white-space: nowrap; }
+.pos-tag.noun { background: #e8e0f5; color: #4a3b6b; } .pos-tag.verb { background: #fde2d4; color: #6b3410; }
+.pos-tag.adj { background: #d4f0e0; color: #1a4d33; } .pos-tag.adv { background: #d4e8f7; color: #1a3d5c; }
+.pos-tag.particle { background: #f0e8d4; color: #5c4a1a; } .pos-tag.expression { background: #f0d4e0; color: #5c1a3d; }
+.romaji { font-style: italic; color: var(--muted); font-size: 0.9em; }
+.ja-line { font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-size: 1.05em; line-height: 1.9; }
+.grammar-box { background: var(--green-weak); border-left: 3px solid var(--green); padding: 0.8rem 1rem; border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 0.8rem; }
+.grammar-box .pattern { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 1.1em; margin-bottom: 0.2rem; }
+.grammar-box .romaji { margin-bottom: 0.3rem; display: block; }
+.phrase-item { border-bottom: 1px solid var(--line); padding: 0.8rem 0; } .phrase-item:last-child { border-bottom: none; }
+.phrase-ja { font-family: "Noto Serif JP", serif; font-weight: 600; font-size: 1.05em; }
+.phrase-meta { font-size: 0.85em; color: var(--muted); margin-top: 0.2rem; }
+.form-row { display: flex; gap: 0.5rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.form-row input, .form-row select { padding: 0.5rem 0.7rem; border: 1px solid var(--line-strong); border-radius: 6px; font-family: inherit; font-size: var(--step--1); background: var(--surface); color: var(--ink); }
+.form-row input:focus, .form-row select:focus { outline: 2px solid var(--accent-medium); outline-offset: 1px; }
+.btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; background: var(--accent); color: #fff; font-family: inherit; font-weight: 600; font-size: var(--step--1); cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
+.btn:hover { opacity: 0.9; } .btn:active { transform: translateY(1px); }
+.btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.user-vocab-item { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+.user-vocab-item button { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 0.85rem; }
+.tracker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 0.4rem; margin-top: 0.8rem; }
+.tracker-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; background: var(--surface); transition: background 0.15s; user-select: none; }
+.tracker-cell.done { background: var(--green); color: #fff; border-color: var(--green); } .tracker-cell:hover:not(.done) { background: var(--green-weak); }
+.hero { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: calc(var(--space)*1.2); margin-bottom: calc(var(--space)*1); box-shadow: var(--shadow); }
+.hero h2 { margin-top: 0; color: var(--accent); } .hero .ja-line { font-size: 1.15em; margin-bottom: 0.3rem; }
+.section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.4rem; }
+.search-box { width: 100%; max-width: 320px; padding: 0.5rem 0.8rem; border: 1px solid var(--line-strong); border-radius: 6px; font-family: inherit; font-size: var(--step--1); margin-bottom: 0.8rem; background: var(--surface); color: var(--ink); }
+@media print { body { background: #fff; } header { position: static; border-bottom-color: #ccc; } .tab-bar, .no-print { display: none !important; } .tab-panel { display: block !important; } .card { break-inside: avoid; box-shadow: none; border-color: #ccc; } }
+@page { size: A4; margin: 16mm; } :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 600px) { .vocab-table .col-romaji, .vocab-table .col-pos { display: none; } .tracker-grid { grid-template-columns: repeat(10, 1fr); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>Reading Companion</h1>
+      <div class="subtitle">For <span class="book-title">私たちが生きた20世紀</span> (Bunshun Bunko)</div>
+    </div>
+    <div class="subtitle">Japanese Learner Study Guide</div>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="section-label">About This Book</div>
+  <div class="ja-line">私たちが生きた20世紀</div>
+  <div class="romaji">Watashitachi ga ikita nijisseiki</div>
+  <p style="margin-top:0.6rem;">A collection of essays by 369 notable figures reflecting on the turbulent 20th century. This companion provides vocabulary, grammar, phrases, and tools to help you read the original Japanese text.</p>
+</div>
+
+<div class="tab-bar no-print">
+  <button class="tab-btn active" data-tab="vocab">Vocabulary</button>
+  <button class="tab-btn" data-tab="grammar">Grammar</button>
+  <button class="tab-btn" data-tab="phrases">Key Phrases</button>
+  <button class="tab-btn" data-tab="mynotes">My Notes</button>
+  <button class="tab-btn" data-tab="tracker">Reading Tracker</button>
+</div>
+
+<!-- PANEL: Vocabulary -->
+<div class="tab-panel active" id="panel-vocab">
+  <div class="card">
+    <div class="section-label">How to use</div>
+    <p>These are high-frequency words you will encounter across many essays. Use the search box to filter across all tables. Add your own words in the <strong>My Notes</strong> tab as you read.</p>
+    <input type="text" class="search-box" id="vocabSearch" placeholder="Search Japanese, romaji, or English..." onkeyup="filterVocab()">
+  </div>
+
+  <div class="card">
+    <h3>Crime, Punishment & Death</h3>
+    <table class="vocab-table" id="vocab-crime">
+      <thead><tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr></thead>
+      <tbody>
+<tr><td class="col-ja">死刑</td><td class="col-romaji">shikei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death penalty, capital punishment</td></tr>
+<tr><td class="col-ja">電気イス</td><td class="col-romaji">denki isu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">electric chair (written as イス in katakana in the original text)</td></tr>
+<tr><td class="col-ja">絞首刑</td><td class="col-romaji">kōshukei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">hanging (execution)</td></tr>
+<tr><td class="col-ja">銃殺</td><td class="col-romaji">jūsatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death by firing squad</td></tr>
+<tr><td class="col-ja">銃殺刑</td><td class="col-romaji">jūsatsukei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">execution by firing squad</td></tr>
+<tr><td class="col-ja">極刑</td><td class="col-romaji">kyokkei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">extreme penalty, capital punishment</td></tr>
+<tr><td class="col-ja">終身刑</td><td class="col-romaji">shūshinkei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">life sentence</td></tr>
+<tr><td class="col-ja">懲役</td><td class="col-romaji">chōeki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">penal servitude, prison term</td></tr>
+<tr><td class="col-ja">禁錮</td><td class="col-romaji">kinko</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">imprisonment (without hard labor)</td></tr>
+<tr><td class="col-ja">執行</td><td class="col-romaji">shikkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">execution, carrying out (of a sentence)</td></tr>
+<tr><td class="col-ja">執行する</td><td class="col-romaji">shikkō suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to carry out, execute</td></tr>
+<tr><td class="col-ja">処刑</td><td class="col-romaji">shokei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">execution</td></tr>
+<tr><td class="col-ja">処刑する</td><td class="col-romaji">shokei suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to execute</td></tr>
+<tr><td class="col-ja">刑</td><td class="col-romaji">kei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">punishment, penalty, sentence</td></tr>
+<tr><td class="col-ja">判決</td><td class="col-romaji">hanketsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">verdict, sentence, judicial decision</td></tr>
+<tr><td class="col-ja">裁判</td><td class="col-romaji">saiban</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">trial, judgment</td></tr>
+<tr><td class="col-ja">法廷</td><td class="col-romaji">hōtei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">courtroom</td></tr>
+<tr><td class="col-ja">囚人</td><td class="col-romaji">shūjin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prisoner, convict</td></tr>
+<tr><td class="col-ja">収容所</td><td class="col-romaji">shūyōjo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">detention center, prison facility</td></tr>
+<tr><td class="col-ja">獄中</td><td class="col-romaji">gokuchū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">in prison, behind bars</td></tr>
+<tr><td class="col-ja">獄死</td><td class="col-romaji">gokushi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death in prison</td></tr>
+<tr><td class="col-ja">獄</td><td class="col-romaji">goku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prison, jail</td></tr>
+<tr><td class="col-ja">罪</td><td class="col-romaji">tsumi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">crime, sin, guilt</td></tr>
+<tr><td class="col-ja">無罪</td><td class="col-romaji">muzai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">innocence, not guilty</td></tr>
+<tr><td class="col-ja">有罪</td><td class="col-romaji">yūzai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">guilt, guilty</td></tr>
+<tr><td class="col-ja">冤罪</td><td class="col-romaji">enzai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">false charge, wrongful conviction</td></tr>
+<tr><td class="col-ja">冤罪を晴らす</td><td class="col-romaji">enzai wo harasu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to clear one's name</td></tr>
+<tr><td class="col-ja">逮捕</td><td class="col-romaji">taiho</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">arrest</td></tr>
+<tr><td class="col-ja">投獄</td><td class="col-romaji">tōgoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">imprisonment</td></tr>
+<tr><td class="col-ja">投獄される</td><td class="col-romaji">tōgoku sareru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to be imprisoned</td></tr>
+<tr><td class="col-ja">拷問</td><td class="col-romaji">gōmon</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">torture</td></tr>
+<tr><td class="col-ja">拷問にかける</td><td class="col-romaji">gōmon ni kakeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to torture</td></tr>
+<tr><td class="col-ja">人権</td><td class="col-romaji">jinken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">human rights</td></tr>
+<tr><td class="col-ja">人権侵害</td><td class="col-romaji">jinken shingai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">human rights violation</td></tr>
+<tr><td class="col-ja">廃止</td><td class="col-romaji">haishi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">abolition</td></tr>
+<tr><td class="col-ja">廃止する</td><td class="col-romaji">haishi suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to abolish</td></tr>
+<tr><td class="col-ja">存廃</td><td class="col-romaji">zonhai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">existence or abolition (debate)</td></tr>
+<tr><td class="col-ja">存廃論争</td><td class="col-romaji">zonhai ronsō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">debate over abolition</td></tr>
+<tr><td class="col-ja">違憲</td><td class="col-romaji">iken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">unconstitutionality</td></tr>
+<tr><td class="col-ja">合憲</td><td class="col-romaji">gōken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">constitutionality</td></tr>
+<tr><td class="col-ja">司法</td><td class="col-romaji">shihō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">judiciary, administration of justice</td></tr>
+<tr><td class="col-ja">弁護士</td><td class="col-romaji">bengoshi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lawyer, attorney</td></tr>
+<tr><td class="col-ja">検事</td><td class="col-romaji">kenji</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">public prosecutor</td></tr>
+<tr><td class="col-ja">証人</td><td class="col-romaji">shōnin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">witness</td></tr>
+<tr><td class="col-ja">証拠</td><td class="col-romaji">shōko</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">evidence, proof</td></tr>
+<tr><td class="col-ja">自白</td><td class="col-romaji">jihaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">confession</td></tr>
+<tr><td class="col-ja">告発</td><td class="col-romaji">kokuhatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">accusation, denunciation</td></tr>
+<tr><td class="col-ja">告発する</td><td class="col-romaji">kokuhatsu suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to accuse, denounce</td></tr>
+<tr><td class="col-ja">弾圧</td><td class="col-romaji">dan'atsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">oppression, suppression, crackdown</td></tr>
+<tr><td class="col-ja">弾圧する</td><td class="col-romaji">dan'atsu suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to suppress, crack down on</td></tr>
+<tr><td class="col-ja">迫害</td><td class="col-romaji">hakugai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">persecution</td></tr>
+<tr><td class="col-ja">迫害される</td><td class="col-romaji">hakugai sareru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to be persecuted</td></tr>
+<tr><td class="col-ja">弾劾</td><td class="col-romaji">dangai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">impeachment</td></tr>
+<tr><td class="col-ja">懺悔</td><td class="col-romaji">zange</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">repentance, confession (religious)</td></tr>
+<tr><td class="col-ja">贖罪</td><td class="col-romaji">shokuzai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">atonement, expiation</td></tr>
+<tr><td class="col-ja">報い</td><td class="col-romaji">mukui</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">retribution, reward, consequence</td></tr>
+<tr><td class="col-ja">因果応報</td><td class="col-romaji">ingo ōhō</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">just retribution, karma</td></tr>
+<tr><td class="col-ja">報復</td><td class="col-romaji">hōfuku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">revenge, retaliation</td></tr>
+<tr><td class="col-ja">復讐</td><td class="col-romaji">fukushū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">revenge, vengeance</td></tr>
+<tr><td class="col-ja">命</td><td class="col-romaji">inochi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">life</td></tr>
+<tr><td class="col-ja">生命</td><td class="col-romaji">seimei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">life (formal)</td></tr>
+<tr><td class="col-ja">尊い</td><td class="col-romaji">tōtoi</td><td class="col-pos"><span class="pos-tag adj">Adjective</span></td><td class="col-meaning">precious, valuable, noble</td></tr>
+<tr><td class="col-ja">尊厳</td><td class="col-romaji">songen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dignity</td></tr>
+<tr><td class="col-ja">人間性</td><td class="col-romaji">ningensei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">humanity, human nature</td></tr>
+<tr><td class="col-ja">非人間的</td><td class="col-romaji">hiningenteki</td><td class="col-pos"><span class="pos-tag adj">Adjective</span></td><td class="col-meaning">inhuman</td></tr>
+<tr><td class="col-ja">残酷</td><td class="col-romaji">zankoku</td><td class="col-pos"><span class="pos-tag adj">Noun/Adj</span></td><td class="col-meaning">cruelty, cruelty (na-adj)</td></tr>
+<tr><td class="col-ja">無残な</td><td class="col-romaji">muzan na</td><td class="col-pos"><span class="pos-tag adj">Adjective</span></td><td class="col-meaning">cruel, pitiless, gruesome</td></tr>
+<tr><td class="col-ja">悲惨な</td><td class="col-romaji">hisan na</td><td class="col-pos"><span class="pos-tag adj">Adjective</span></td><td class="col-meaning">tragic, miserable, wretched</td></tr>
+<tr><td class="col-ja">痛ましい</td><td class="col-romaji">itamashii</td><td class="col-pos"><span class="pos-tag adj">Adjective</span></td><td class="col-meaning">painful, heart-rending, tragic</td></tr>
+<tr><td class="col-ja">恐ろしい</td><td class="col-romaji">osoroshii</td><td class="col-pos"><span class="pos-tag adj">Adjective</span></td><td class="col-meaning">terrifying, dreadful</td></tr>
+<tr><td class="col-ja">恐怖</td><td class="col-romaji">kyōfu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">terror, fear, dread</td></tr>
+<tr><td class="col-ja">戦慄</td><td class="col-romaji">senritsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">shudder, trembling (with fear)</td></tr>
+<tr><td class="col-ja">絶叫</td><td class="col-romaji">zekkyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">scream, shriek</td></tr>
+<tr><td class="col-ja">叫び</td><td class="col-romaji">sakebi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">cry, shout, scream</td></tr>
+<tr><td class="col-ja">叫ぶ</td><td class="col-romaji">sakebu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to shout, cry out, scream</td></tr>
+<tr><td class="col-ja">涙</td><td class="col-romaji">namida</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">tears</td></tr>
+<tr><td class="col-ja">涙を流す</td><td class="col-romaji">namida wo nagasu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to shed tears</td></tr>
+<tr><td class="col-ja">慟哭</td><td class="col-romaji">dōkoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">wailing, lamentation</td></tr>
+<tr><td class="col-ja">嘆き</td><td class="col-romaji">nageki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">grief, lamentation</td></tr>
+<tr><td class="col-ja">嘆く</td><td class="col-romaji">nageku</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to lament, grieve</td></tr>
+<tr><td class="col-ja">悲しみ</td><td class="col-romaji">kanashimi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">sadness, sorrow, grief</td></tr>
+<tr><td class="col-ja">悲劇</td><td class="col-romaji">higeki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">tragedy</td></tr>
+<tr><td class="col-ja">惨劇</td><td class="col-romaji">sangeki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">tragedy, horrible event</td></tr>
+<tr><td class="col-ja">死</td><td class="col-romaji">shi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death</td></tr>
+<tr><td class="col-ja">死ぬ</td><td class="col-romaji">shinu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to die</td></tr>
+<tr><td class="col-ja">死に至る</td><td class="col-romaji">shi ni itaru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to lead to death</td></tr>
+<tr><td class="col-ja">死に直面する</td><td class="col-romaji">shi ni chokumen suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to face death</td></tr>
+<tr><td class="col-ja">臨終</td><td class="col-romaji">rinjū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">deathbed, last moments</td></tr>
+<tr><td class="col-ja">最期</td><td class="col-romaji">saigo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">one's last moments, end of life</td></tr>
+<tr><td class="col-ja">最期を遂げる</td><td class="col-romaji">saigo wo togeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to meet one's end, pass away</td></tr>
+<tr><td class="col-ja">遺体</td><td class="col-romaji">itai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">corpse, remains</td></tr>
+<tr><td class="col-ja">死体</td><td class="col-romaji">shitai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dead body, corpse</td></tr>
+<tr><td class="col-ja">葬る</td><td class="col-romaji">hōmuru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to bury, inter</td></tr>
+<tr><td class="col-ja">葬儀</td><td class="col-romaji">sōgi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">funeral, funeral service</td></tr>
+<tr><td class="col-ja">墓</td><td class="col-romaji">haka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">grave, tomb</td></tr>
+<tr><td class="col-ja">慰霊</td><td class="col-romaji">irei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">memorial service for the dead</td></tr>
+<tr><td class="col-ja">慰霊碑</td><td class="col-romaji">ireihi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">memorial monument, cenotaph</td></tr>
+<tr><td class="col-ja">鎮魂</td><td class="col-romaji">chinkon</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">repose of souls</td></tr>
+<tr><td class="col-ja">冥福</td><td class="col-romaji">meifuku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">happiness in the next world</td></tr>
+<tr><td class="col-ja">冥福を祈る</td><td class="col-romaji">meifuku wo inoru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to pray for the repose of a soul</td></tr>
+<tr><td class="col-ja">供養</td><td class="col-romaji">kuyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">memorial service, offering to the dead</td></tr>
+<tr><td class="col-ja">遺族</td><td class="col-romaji">izoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">bereaved family, surviving family</td></tr>
+<tr><td class="col-ja">孤児</td><td class="col-romaji">koji</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">orphan</td></tr>
+<tr><td class="col-ja">死刑囚</td><td class="col-romaji">shikeishū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death row inmate</td></tr>
+<tr><td class="col-ja">死刑確定囚</td><td class="col-romaji">shikei kakuteishū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">inmate with finalized death sentence</td></tr>
+<tr><td class="col-ja">死刑執行</td><td class="col-romaji">shikei shikkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">carrying out of death penalty</td></tr>
+<tr><td class="col-ja">死刑廃止</td><td class="col-romaji">shikei haishi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">abolition of death penalty</td></tr>
+<tr><td class="col-ja">死刑存廃</td><td class="col-romaji">shikei zonhai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death penalty abolition debate</td></tr>
+<tr><td class="col-ja">恩赦</td><td class="col-romaji">onsha</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">amnesty, pardon</td></tr>
+<tr><td class="col-ja">減刑</td><td class="col-romaji">genkei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reduction of sentence</td></tr>
+<tr><td class="col-ja">仮釈放</td><td class="col-romaji">kari shakuhō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">parole</td></tr>
+<tr><td class="col-ja">服役</td><td class="col-romaji">fukueki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">serving a prison sentence</td></tr>
+<tr><td class="col-ja">出所</td><td class="col-romaji">shusho</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">release from prison</td></tr>
+<tr><td class="col-ja">獄中生活</td><td class="col-romaji">gokuchū seikatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prison life</td></tr>
+<tr><td class="col-ja">獄中記</td><td class="col-romaji">gokuchūki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prison memoir</td></tr>
+<tr><td class="col-ja">獄中手記</td><td class="col-romaji">gokuchū shuki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prison notes, memoir</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>War & History</h3>
+    <table class="vocab-table" id="vocab-war">
+      <thead><tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr></thead>
+      <tbody>
+<tr><td class="col-ja">戦争</td><td class="col-romaji">sensō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">war</td></tr>
+<tr><td class="col-ja">平和</td><td class="col-romaji">heiwa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">peace</td></tr>
+<tr><td class="col-ja">体験</td><td class="col-romaji">taiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">personal experience</td></tr>
+<tr><td class="col-ja">体験する</td><td class="col-romaji">taiken suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to experience</td></tr>
+<tr><td class="col-ja">激動</td><td class="col-romaji">gekidō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">turbulence, upheaval</td></tr>
+<tr><td class="col-ja">時代</td><td class="col-romaji">jidai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">era, period, age</td></tr>
+<tr><td class="col-ja">証言</td><td class="col-romaji">shōgen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">testimony</td></tr>
+<tr><td class="col-ja">記憶</td><td class="col-romaji">kioku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">memory</td></tr>
+<tr><td class="col-ja">記憶に残る</td><td class="col-romaji">kioku ni nokoru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to remain in memory</td></tr>
+<tr><td class="col-ja">生き延びる</td><td class="col-romaji">ikinobiru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to survive</td></tr>
+<tr><td class="col-ja">負の遺産</td><td class="col-romaji">fu no isan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">negative legacy</td></tr>
+<tr><td class="col-ja">敗戦</td><td class="col-romaji">haisen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">defeat in war (esp. WWII)</td></tr>
+<tr><td class="col-ja">復興</td><td class="col-romaji">fukkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reconstruction, revival</td></tr>
+<tr><td class="col-ja">繁栄</td><td class="col-romaji">han'ei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prosperity</td></tr>
+<tr><td class="col-ja">革命</td><td class="col-romaji">kakumei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">revolution</td></tr>
+<tr><td class="col-ja">侵略</td><td class="col-romaji">shinryaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">invasion, aggression</td></tr>
+<tr><td class="col-ja">占領</td><td class="col-romaji">senryō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">occupation (military)</td></tr>
+<tr><td class="col-ja">占領軍</td><td class="col-romaji">senryōgun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">occupation forces</td></tr>
+<tr><td class="col-ja">降伏</td><td class="col-romaji">kōfuku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">surrender</td></tr>
+<tr><td class="col-ja">降伏する</td><td class="col-romaji">kōfuku suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to surrender</td></tr>
+<tr><td class="col-ja">開戦</td><td class="col-romaji">kaisen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">outbreak of war</td></tr>
+<tr><td class="col-ja">終戦</td><td class="col-romaji">shūsen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">end of war</td></tr>
+<tr><td class="col-ja">参戦</td><td class="col-romaji">sansen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">entry into war</td></tr>
+<tr><td class="col-ja">従軍</td><td class="col-romaji">jūgun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">military service</td></tr>
+<tr><td class="col-ja">徴兵</td><td class="col-romaji">chōhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">conscription, draft</td></tr>
+<tr><td class="col-ja">召集</td><td class="col-romaji">shōshū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">call-up, mobilization</td></tr>
+<tr><td class="col-ja">召集令状</td><td class="col-romaji">shōshū ryōjō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">draft notice</td></tr>
+<tr><td class="col-ja">出征</td><td class="col-romaji">shussei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">departure for the front</td></tr>
+<tr><td class="col-ja">帰還</td><td class="col-romaji">kikan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">return (from war)</td></tr>
+<tr><td class="col-ja">帰還兵</td><td class="col-romaji">kikanhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">returning soldier</td></tr>
+<tr><td class="col-ja">復員</td><td class="col-romaji">fukuin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">demobilization</td></tr>
+<tr><td class="col-ja">復員兵</td><td class="col-romaji">fukuinhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">demobilized soldier</td></tr>
+<tr><td class="col-ja">戦場</td><td class="col-romaji">senjō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">battlefield</td></tr>
+<tr><td class="col-ja">前線</td><td class="col-romaji">zensen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">front line</td></tr>
+<tr><td class="col-ja">本土</td><td class="col-romaji">hondo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">mainland Japan</td></tr>
+<tr><td class="col-ja">空襲</td><td class="col-romaji">kūshū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">air raid</td></tr>
+<tr><td class="col-ja">空襲警報</td><td class="col-romaji">kūshū keihō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">air raid warning</td></tr>
+<tr><td class="col-ja">防空壕</td><td class="col-romaji">bōkūgō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">air raid shelter</td></tr>
+<tr><td class="col-ja">疎開</td><td class="col-romaji">sokai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">evacuation (of civilians)</td></tr>
+<tr><td class="col-ja">焼け野原</td><td class="col-romaji">yake no hara</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">burnt-out ruins, scorched earth</td></tr>
+<tr><td class="col-ja">焦土</td><td class="col-romaji">shōdo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">scorched earth</td></tr>
+<tr><td class="col-ja">焼夷弾</td><td class="col-romaji">shōidan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">incendiary bomb</td></tr>
+<tr><td class="col-ja">焼き尽くす</td><td class="col-romaji">yakitsukusu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to burn down completely</td></tr>
+<tr><td class="col-ja">焼け跡</td><td class="col-romaji">yakeato</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">burned-out ruins</td></tr>
+<tr><td class="col-ja">瓦礫</td><td class="col-romaji">gareki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">rubble, debris</td></tr>
+<tr><td class="col-ja">廃墟</td><td class="col-romaji">haikyo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">ruins</td></tr>
+<tr><td class="col-ja">飢饉</td><td class="col-romaji">kikin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">famine, starvation</td></tr>
+<tr><td class="col-ja">飢餓</td><td class="col-romaji">kiga</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">starvation</td></tr>
+<tr><td class="col-ja">餓死</td><td class="col-romaji">gashi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">death from starvation</td></tr>
+<tr><td class="col-ja">餓死する</td><td class="col-romaji">gashi suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to starve to death</td></tr>
+<tr><td class="col-ja">戦災</td><td class="col-romaji">sensai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">war damage</td></tr>
+<tr><td class="col-ja">戦禍</td><td class="col-romaji">senka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">ravages of war</td></tr>
+<tr><td class="col-ja">戦火</td><td class="col-romaji">senka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">gunfire, flames of war</td></tr>
+<tr><td class="col-ja">戦時中</td><td class="col-romaji">senjichū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">during the war</td></tr>
+<tr><td class="col-ja">戦後</td><td class="col-romaji">sengo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">postwar period</td></tr>
+<tr><td class="col-ja">戦前</td><td class="col-romaji">senzen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prewar period</td></tr>
+<tr><td class="col-ja">大戦</td><td class="col-romaji">taisen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">great war, world war</td></tr>
+<tr><td class="col-ja">太平洋戦争</td><td class="col-romaji">taiheiyō sensō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Pacific War (1941-1945)</td></tr>
+<tr><td class="col-ja">日中戦争</td><td class="col-romaji">nitchū sensō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Second Sino-Japanese War (1937-1945)</td></tr>
+<tr><td class="col-ja">満州事変</td><td class="col-romaji">manshū jihen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Manchurian Incident (1931)</td></tr>
+<tr><td class="col-ja">真珠湾攻撃</td><td class="col-romaji">shinjūwan kōgeki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">attack on Pearl Harbor</td></tr>
+<tr><td class="col-ja">本土決戦</td><td class="col-romaji">hondo kessen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">decisive battle for the mainland</td></tr>
+<tr><td class="col-ja">玉砕</td><td class="col-romaji">gyokusai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">honorable death, fighting to the last</td></tr>
+<tr><td class="col-ja">特攻</td><td class="col-romaji">tokkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">kamikaze attack</td></tr>
+<tr><td class="col-ja">特攻隊</td><td class="col-romaji">tokkōtai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">kamikaze unit</td></tr>
+<tr><td class="col-ja">徹底抗戦</td><td class="col-romaji">tettei kōsen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">all-out resistance</td></tr>
+<tr><td class="col-ja">一億玉砕</td><td class="col-romaji">ichioku gyokusai</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">100 million honorable deaths (slogan)</td></tr>
+<tr><td class="col-ja">銃後</td><td class="col-romaji">jūgo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">home front</td></tr>
+<tr><td class="col-ja">学徒出陣</td><td class="col-romaji">gakuto shutsujin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">student mobilization (1943)</td></tr>
+<tr><td class="col-ja">学徒勤労動員</td><td class="col-romaji">gakuto kinrō dōin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">student labor mobilization</td></tr>
+<tr><td class="col-ja">勤労報国</td><td class="col-romaji">kinrō hōkoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">labor service for the nation</td></tr>
+<tr><td class="col-ja">女子挺身隊</td><td class="col-romaji">joshi teishintai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">women's volunteer labor corps</td></tr>
+<tr><td class="col-ja">国民学校</td><td class="col-romaji">kokumin gakkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">National School (1941-1947)</td></tr>
+<tr><td class="col-ja">修身</td><td class="col-romaji">shūshin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">moral education</td></tr>
+<tr><td class="col-ja">国体</td><td class="col-romaji">kokutai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">national polity, imperial system</td></tr>
+<tr><td class="col-ja">国粋主義</td><td class="col-romaji">kokusui shugi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">nationalism, nativism</td></tr>
+<tr><td class="col-ja">軍国主義</td><td class="col-romaji">gunkoku shugi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">militarism</td></tr>
+<tr><td class="col-ja">天皇制</td><td class="col-romaji">tennōsei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">emperor system</td></tr>
+<tr><td class="col-ja">天皇陛下</td><td class="col-romaji">tennō heika</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">His Majesty the Emperor</td></tr>
+<tr><td class="col-ja">大本営</td><td class="col-romaji">daihon'ei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Imperial General Headquarters</td></tr>
+<tr><td class="col-ja">大本営発表</td><td class="col-romaji">daihon'ei happyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">official army announcement (often propaganda)</td></tr>
+<tr><td class="col-ja">治安維持法</td><td class="col-romaji">chian iji hō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Peace Preservation Law (1925)</td></tr>
+<tr><td class="col-ja">特別高等警察</td><td class="col-romaji">tokubetsu kōtō keisatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Special Higher Police (thought police)</td></tr>
+<tr><td class="col-ja">特高</td><td class="col-romaji">tokkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Special Police (abbreviation)</td></tr>
+<tr><td class="col-ja">思想犯</td><td class="col-romaji">shisōhan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">thought criminal</td></tr>
+<tr><td class="col-ja">不敬罪</td><td class="col-romaji">fukeizai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lese-majeste</td></tr>
+<tr><td class="col-ja">治安</td><td class="col-romaji">chian</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">public order, public safety</td></tr>
+<tr><td class="col-ja">検閲</td><td class="col-romaji">ken'etsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">censorship</td></tr>
+<tr><td class="col-ja">検閲する</td><td class="col-romaji">ken'etsu suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to censor</td></tr>
+<tr><td class="col-ja">禁書</td><td class="col-romaji">kinsho</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">banned book</td></tr>
+<tr><td class="col-ja">統制</td><td class="col-romaji">tōsei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">control, regulation</td></tr>
+<tr><td class="col-ja">配給</td><td class="col-romaji">haikyū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">rationing, distribution</td></tr>
+<tr><td class="col-ja">配給票</td><td class="col-romaji">haikyūhyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">ration ticket</td></tr>
+<tr><td class="col-ja">物価統制</td><td class="col-romaji">bukka tōsei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">price control</td></tr>
+<tr><td class="col-ja">国家総動員法</td><td class="col-romaji">kokka sōdōin hō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">National Mobilization Law (1938)</td></tr>
+<tr><td class="col-ja">国民精神総動員</td><td class="col-romaji">kokumin seishin sōdōin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">National Spiritual Mobilization</td></tr>
+<tr><td class="col-ja">大東亜戦争</td><td class="col-romaji">daitōa sensō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Greater East Asia War</td></tr>
+<tr><td class="col-ja">大東亜共栄圏</td><td class="col-romaji">daitōa kyōeiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Greater East Asia Co-Prosperity Sphere</td></tr>
+<tr><td class="col-ja">新体制</td><td class="col-romaji">shintaisei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">new order, new system</td></tr>
+<tr><td class="col-ja">大政翼賛会</td><td class="col-romaji">taisei yokusankai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Imperial Rule Assistance Association (1940)</td></tr>
+<tr><td class="col-ja">翼賛選挙</td><td class="col-romaji">yokusan senkyo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Yokusan election (1942)</td></tr>
+<tr><td class="col-ja">一党独裁</td><td class="col-romaji">ittō dokusai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">one-party dictatorship</td></tr>
+<tr><td class="col-ja">独裁</td><td class="col-romaji">dokusai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dictatorship, autocracy</td></tr>
+<tr><td class="col-ja">全体主義</td><td class="col-romaji">zentai shugi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">totalitarianism</td></tr>
+<tr><td class="col-ja">ファシズム</td><td class="col-romaji">fashizumu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">fascism</td></tr>
+<tr><td class="col-ja">ナチズム</td><td class="col-romaji">nachizumu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Nazism</td></tr>
+<tr><td class="col-ja">反戦</td><td class="col-romaji">hansen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">anti-war</td></tr>
+<tr><td class="col-ja">反戦運動</td><td class="col-romaji">hansen undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">anti-war movement</td></tr>
+<tr><td class="col-ja">平和運動</td><td class="col-romaji">heiwa undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">peace movement</td></tr>
+<tr><td class="col-ja">平和主義</td><td class="col-romaji">heiwa shugi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">pacifism</td></tr>
+<tr><td class="col-ja">国際連盟</td><td class="col-romaji">kokusai renmei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">League of Nations</td></tr>
+<tr><td class="col-ja">国連</td><td class="col-romaji">kokuren</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">United Nations</td></tr>
+<tr><td class="col-ja">連合国</td><td class="col-romaji">rengōkoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Allied Powers</td></tr>
+<tr><td class="col-ja">枢軸国</td><td class="col-romaji">sūjikukoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Axis Powers</td></tr>
+<tr><td class="col-ja">連合軍</td><td class="col-romaji">rengōgun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Allied forces</td></tr>
+<tr><td class="col-ja">GHQ</td><td class="col-romaji">jīeichikyū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">General Headquarters (of SCAP)</td></tr>
+<tr><td class="col-ja">占領政策</td><td class="col-romaji">senryō seisaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">occupation policy</td></tr>
+<tr><td class="col-ja">民主化</td><td class="col-romaji">minshuka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">democratization</td></tr>
+<tr><td class="col-ja">民主化改革</td><td class="col-romaji">minshuka kaikaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">democratic reforms</td></tr>
+<tr><td class="col-ja">憲法</td><td class="col-romaji">kenpō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">constitution</td></tr>
+<tr><td class="col-ja">日本国憲法</td><td class="col-romaji">nihonkoku kenpō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Constitution of Japan (1947)</td></tr>
+<tr><td class="col-ja">憲法九条</td><td class="col-romaji">kenpō kyūjō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Article 9 (renunciation of war)</td></tr>
+<tr><td class="col-ja">平和憲法</td><td class="col-romaji">heiwa kenpō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Peace Constitution</td></tr>
+<tr><td class="col-ja">基本的人権</td><td class="col-romaji">kihonteki jinken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">fundamental human rights</td></tr>
+<tr><td class="col-ja">主権在民</td><td class="col-romaji">shuken zaimin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">popular sovereignty</td></tr>
+<tr><td class="col-ja">天皇機関説</td><td class="col-romaji">tennō kikansetsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">organ theory of the emperor (banned)</td></tr>
+<tr><td class="col-ja">国体明徴声明</td><td class="col-romaji">kokutai meichō seimei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Kokutai Clarification Statement (1935)</td></tr>
+<tr><td class="col-ja">二・二六事件</td><td class="col-romaji">ni ni roku jiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">February 26 Incident (1936)</td></tr>
+<tr><td class="col-ja">五・一五事件</td><td class="col-romaji">go ichi go jiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">May 15 Incident (1932)</td></tr>
+<tr><td class="col-ja">軍部</td><td class="col-romaji">gunbu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">military clique, army leadership</td></tr>
+<tr><td class="col-ja">統帥権</td><td class="col-romaji">tōsuiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">supreme command (of armed forces)</td></tr>
+<tr><td class="col-ja">帷幄上奏</td><td class="col-romaji">iaku jōsō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">direct imperial command to military</td></tr>
+<tr><td class="col-ja">明治維新</td><td class="col-romaji">meiji ishin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Meiji Restoration (1868)</td></tr>
+<tr><td class="col-ja">大正デモクラシー</td><td class="col-romaji">taishō demokurashī</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Taisho Democracy</td></tr>
+<tr><td class="col-ja">護憲運動</td><td class="col-romaji">goken undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">constitutional protection movement</td></tr>
+<tr><td class="col-ja">普通選挙</td><td class="col-romaji">futsū senkyo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">universal suffrage</td></tr>
+<tr><td class="col-ja">ポツダム宣言</td><td class="col-romaji">potsudamu sengen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Potsdam Declaration (1945)</td></tr>
+<tr><td class="col-ja">降伏文書</td><td class="col-romaji">kōfuku bunsho</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">instrument of surrender</td></tr>
+<tr><td class="col-ja">無条件降伏</td><td class="col-romaji">mujōken kōfuku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">unconditional surrender</td></tr>
+<tr><td class="col-ja">開国</td><td class="col-romaji">kaikoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">opening of the country</td></tr>
+<tr><td class="col-ja">鎖国</td><td class="col-romaji">sakoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">national isolation</td></tr>
+<tr><td class="col-ja">攘夷</td><td class="col-romaji">jōi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">expulsion of foreigners</td></tr>
+<tr><td class="col-ja">尊王攘夷</td><td class="col-romaji">sonnō jōi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">revere the emperor, expel the barbarians</td></tr>
+<tr><td class="col-ja">王政復古</td><td class="col-romaji">ōsei fukko</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Restoration of Imperial Rule (1868)</td></tr>
+<tr><td class="col-ja">大政奉還</td><td class="col-romaji">taisei hōkan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">restoration of power to the emperor (1867)</td></tr>
+<tr><td class="col-ja">藩置県</td><td class="col-romaji">haihan chiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">abolition of domains, prefectures (1871)</td></tr>
+<tr><td class="col-ja">富国強兵</td><td class="col-romaji">fukoku kyōhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">rich country, strong army</td></tr>
+<tr><td class="col-ja">文明開化</td><td class="col-romaji">bunmei kaika</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">civilization and enlightenment</td></tr>
+<tr><td class="col-ja">自由民権運動</td><td class="col-romaji">jiyū minken undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Freedom and People's Rights Movement</td></tr>
+<tr><td class="col-ja">大日本帝国憲法</td><td class="col-romaji">dainihon teikoku kenpō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Meiji Constitution (1889)</td></tr>
+<tr><td class="col-ja">帝国議会</td><td class="col-romaji">teikoku gikai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Imperial Diet</td></tr>
+<tr><td class="col-ja">枢密院</td><td class="col-romaji">sumitsuin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Privy Council</td></tr>
+<tr><td class="col-ja">元老</td><td class="col-romaji">genrō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">elder statesman</td></tr>
+<tr><td class="col-ja">藩閥</td><td class="col-romaji">hanbatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">clique of former domain samurai</td></tr>
+<tr><td class="col-ja">政党</td><td class="col-romaji">seitō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">political party</td></tr>
+<tr><td class="col-ja">立憲</td><td class="col-romaji">rikken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">constitutionalism</td></tr>
+<tr><td class="col-ja">議会政治</td><td class="col-romaji">gikai seiji</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">parliamentary democracy</td></tr>
+<tr><td class="col-ja">軍部大臣</td><td class="col-romaji">gunbu daijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Minister of the Army/Navy</td></tr>
+<tr><td class="col-ja">軍令</td><td class="col-romaji">gunrei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">military order</td></tr>
+<tr><td class="col-ja">参謀本部</td><td class="col-romaji">sanbō honbu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Army General Staff</td></tr>
+<tr><td class="col-ja">連隊</td><td class="col-romaji">rentai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">regiment</td></tr>
+<tr><td class="col-ja">大隊</td><td class="col-romaji">daitai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">battalion</td></tr>
+<tr><td class="col-ja">中隊</td><td class="col-romaji">chūtai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">company (military)</td></tr>
+<tr><td class="col-ja">小隊</td><td class="col-romaji">shōtai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">platoon</td></tr>
+<tr><td class="col-ja">分隊</td><td class="col-romaji">buntai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">squad</td></tr>
+<tr><td class="col-ja">将校</td><td class="col-romaji">shōkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">officer</td></tr>
+<tr><td class="col-ja">士官</td><td class="col-romaji">shikan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">commissioned officer</td></tr>
+<tr><td class="col-ja">兵</td><td class="col-romaji">hei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">soldier, private</td></tr>
+<tr><td class="col-ja">兵士</td><td class="col-romaji">heishi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">soldier</td></tr>
+<tr><td class="col-ja">兵隊</td><td class="col-romaji">heitai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">soldier, serviceman</td></tr>
+<tr><td class="col-ja">軍人</td><td class="col-romaji">gunjin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">military person</td></tr>
+<tr><td class="col-ja">将軍</td><td class="col-romaji">shōgun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">general, shogun</td></tr>
+<tr><td class="col-ja">大将</td><td class="col-romaji">taishō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">general, admiral</td></tr>
+<tr><td class="col-ja">中将</td><td class="col-romaji">chūjō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lieutenant general, vice admiral</td></tr>
+<tr><td class="col-ja">少将</td><td class="col-romaji">shōshō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">major general, rear admiral</td></tr>
+<tr><td class="col-ja">大佐</td><td class="col-romaji">taisa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">colonel, captain (navy)</td></tr>
+<tr><td class="col-ja">中佐</td><td class="col-romaji">chūsa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lieutenant colonel, commander</td></tr>
+<tr><td class="col-ja">少佐</td><td class="col-romaji">shōsa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">major, lieutenant commander</td></tr>
+<tr><td class="col-ja">大尉</td><td class="col-romaji">taii</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">captain, lieutenant (navy)</td></tr>
+<tr><td class="col-ja">中尉</td><td class="col-romaji">chūi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">first lieutenant, lieutenant junior grade</td></tr>
+<tr><td class="col-ja">少尉</td><td class="col-romaji">shōi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">second lieutenant, ensign</td></tr>
+<tr><td class="col-ja">曹長</td><td class="col-romaji">sōchō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">sergeant major</td></tr>
+<tr><td class="col-ja">軍曹</td><td class="col-romaji">gunsō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">sergeant</td></tr>
+<tr><td class="col-ja">伍長</td><td class="col-romaji">gochō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">corporal</td></tr>
+<tr><td class="col-ja">兵長</td><td class="col-romaji">heichō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lance corporal</td></tr>
+<tr><td class="col-ja">一等兵</td><td class="col-romaji">ittōhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">private first class</td></tr>
+<tr><td class="col-ja">二等兵</td><td class="col-romaji">nitōhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">private second class</td></tr>
+<tr><td class="col-ja">召集兵</td><td class="col-romaji">shōshūhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">conscript</td></tr>
+<tr><td class="col-ja">志願兵</td><td class="col-romaji">shiganhei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">volunteer soldier</td></tr>
+<tr><td class="col-ja">予備役</td><td class="col-romaji">yobieki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reserve duty</td></tr>
+<tr><td class="col-ja">予備兵</td><td class="col-romaji">yobihei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reservist</td></tr>
+<tr><td class="col-ja">在郷軍人</td><td class="col-romaji">zaigō gunjin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reservist, ex-serviceman</td></tr>
+<tr><td class="col-ja">在郷軍人会</td><td class="col-romaji">zaigō gunjinkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reservist association</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Society & People</h3>
+    <table class="vocab-table" id="vocab-society">
+      <thead><tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr></thead>
+      <tbody>
+<tr><td class="col-ja">著名人</td><td class="col-romaji">chomeijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">celebrity, notable person</td></tr>
+<tr><td class="col-ja">各界</td><td class="col-romaji">kakai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">various fields / circles</td></tr>
+<tr><td class="col-ja">分野</td><td class="col-romaji">bunya</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">field, domain, area</td></tr>
+<tr><td class="col-ja">政界</td><td class="col-romaji">seikai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">political world</td></tr>
+<tr><td class="col-ja">財界</td><td class="col-romaji">zaikai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">business world, financial circles</td></tr>
+<tr><td class="col-ja">学界</td><td class="col-romaji">gakkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">academic world</td></tr>
+<tr><td class="col-ja">文壇</td><td class="col-romaji">bundan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">literary world</td></tr>
+<tr><td class="col-ja">論壇</td><td class="col-romaji">rondan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">punditry, opinion circles</td></tr>
+<tr><td class="col-ja">芸能界</td><td class="col-romaji">geinōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">show business, entertainment world</td></tr>
+<tr><td class="col-ja">法曹界</td><td class="col-romaji">hōsōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">legal profession</td></tr>
+<tr><td class="col-ja">国民</td><td class="col-romaji">kokumin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">citizens, the people</td></tr>
+<tr><td class="col-ja">世代</td><td class="col-romaji">sedai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">generation</td></tr>
+<tr><td class="col-ja">人々</td><td class="col-romaji">hitobito</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">people</td></tr>
+<tr><td class="col-ja">大衆</td><td class="col-romaji">taishū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">the masses, general public</td></tr>
+<tr><td class="col-ja">生活</td><td class="col-romaji">seikatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">life, livelihood, daily life</td></tr>
+<tr><td class="col-ja">庶民</td><td class="col-romaji">shomin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">common people, masses</td></tr>
+<tr><td class="col-ja">市民</td><td class="col-romaji">shimin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">citizen, townspeople</td></tr>
+<tr><td class="col-ja">農民</td><td class="col-romaji">nōmin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">farmer, peasant</td></tr>
+<tr><td class="col-ja">労働者</td><td class="col-romaji">rōdōsha</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">worker, laborer</td></tr>
+<tr><td class="col-ja">知識人</td><td class="col-romaji">chishikijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">intellectual</td></tr>
+<tr><td class="col-ja">文化人</td><td class="col-romaji">bunkajin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">cultural figure</td></tr>
+<tr><td class="col-ja">芸術家</td><td class="col-romaji">geijutsuka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">artist</td></tr>
+<tr><td class="col-ja">作家</td><td class="col-romaji">sakka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">writer, author</td></tr>
+<tr><td class="col-ja">小説家</td><td class="col-romaji">shōsetsuka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">novelist</td></tr>
+<tr><td class="col-ja">詩人</td><td class="col-romaji">shijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">poet</td></tr>
+<tr><td class="col-ja">評論家</td><td class="col-romaji">hyōronka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">critic, commentator</td></tr>
+<tr><td class="col-ja">思想家</td><td class="col-romaji">shisōka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">thinker, philosopher</td></tr>
+<tr><td class="col-ja">政治家</td><td class="col-romaji">seijika</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">politician</td></tr>
+<tr><td class="col-ja">実業家</td><td class="col-romaji">jitsugyōka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">businessman, industrialist</td></tr>
+<tr><td class="col-ja">財閥</td><td class="col-romaji">zaibatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">zaibatsu, financial conglomerate</td></tr>
+<tr><td class="col-ja">財閥解体</td><td class="col-romaji">zaibatsu kaitai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dissolution of zaibatsu</td></tr>
+<tr><td class="col-ja">農地改革</td><td class="col-romaji">nōchi kaikaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">agrarian reform</td></tr>
+<tr><td class="col-ja">労働運動</td><td class="col-romaji">rōdō undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">labor movement</td></tr>
+<tr><td class="col-ja">労働組合</td><td class="col-romaji">rōdō kumiai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">labor union</td></tr>
+<tr><td class="col-ja">農民運動</td><td class="col-romaji">nōmin undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">peasant movement</td></tr>
+<tr><td class="col-ja">部落</td><td class="col-romaji">buraku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">hamlet, Buraku community</td></tr>
+<tr><td class="col-ja">部落解放</td><td class="col-romaji">buraku kaihō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Buraku liberation</td></tr>
+<tr><td class="col-ja">同和</td><td class="col-romaji">dōwa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">integration, assimilation (Buraku)</td></tr>
+<tr><td class="col-ja">女性解放</td><td class="col-romaji">josei kaihō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">women's liberation</td></tr>
+<tr><td class="col-ja">婦人解放</td><td class="col-romaji">fujin kaihō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">women's liberation</td></tr>
+<tr><td class="col-ja">婦人参政権</td><td class="col-romaji">fujin sanseiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">women's suffrage</td></tr>
+<tr><td class="col-ja">普選</td><td class="col-romaji">fusen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">universal suffrage (abbrev.)</td></tr>
+<tr><td class="col-ja">選挙権</td><td class="col-romaji">senkyoken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">right to vote</td></tr>
+<tr><td class="col-ja">被選挙権</td><td class="col-romaji">hisenkyoken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">right to be elected</td></tr>
+<tr><td class="col-ja">参政権</td><td class="col-romaji">sanjiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">political rights</td></tr>
+<tr><td class="col-ja">社会運動</td><td class="col-romaji">shakai undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">social movement</td></tr>
+<tr><td class="col-ja">学生運動</td><td class="col-romaji">gakusei undō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">student movement</td></tr>
+<tr><td class="col-ja">安保闘争</td><td class="col-romaji">anpō tōsō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Anpo struggle (1960, 1970)</td></tr>
+<tr><td class="col-ja">全共闘</td><td class="col-romaji">zenkyōtō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Zenkyoto (1968-69 student movement)</td></tr>
+<tr><td class="col-ja">学園紛争</td><td class="col-romaji">gakuen funsō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">campus conflict</td></tr>
+<tr><td class="col-ja">公害</td><td class="col-romaji">kōgai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">environmental pollution</td></tr>
+<tr><td class="col-ja">四大公害</td><td class="col-romaji">yondai kōgai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">four major pollution diseases</td></tr>
+<tr><td class="col-ja">水俣病</td><td class="col-romaji">minamatabyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Minamata disease</td></tr>
+<tr><td class="col-ja">イタイイタイ病</td><td class="col-romaji">itai itai byō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Itai-itai disease</td></tr>
+<tr><td class="col-ja">四日市ぜんそく</td><td class="col-romaji">yokkaichi zensoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Yokkaichi asthma</td></tr>
+<tr><td class="col-ja">第二水俣病</td><td class="col-romaji">daini minamatabyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">second Minamata disease (Niigata)</td></tr>
+<tr><td class="col-ja">高度経済成長</td><td class="col-romaji">kōdo keizai seichō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">high economic growth</td></tr>
+<tr><td class="col-ja">経済大国</td><td class="col-romaji">keizai taikoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">economic superpower</td></tr>
+<tr><td class="col-ja">所得倍増</td><td class="col-romaji">shotoku baizō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">income doubling</td></tr>
+<tr><td class="col-ja">所得倍増計画</td><td class="col-romaji">shotoku baizō keikaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Income Doubling Plan (1960)</td></tr>
+<tr><td class="col-ja">三種の神器</td><td class="col-romaji">sanshu no jingi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">three sacred treasures (consumer goods)</td></tr>
+<tr><td class="col-ja">マイカー</td><td class="col-romaji">maikā</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">private car (my car)</td></tr>
+<tr><td class="col-ja">団地</td><td class="col-romaji">danchi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">housing complex, apartment blocks</td></tr>
+<tr><td class="col-ja">ニュータウン</td><td class="col-romaji">nyū taun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">new town</td></tr>
+<tr><td class="col-ja">通勤</td><td class="col-romaji">tsūkin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">commuting</td></tr>
+<tr><td class="col-ja">通勤電車</td><td class="col-romaji">tsūkin densha</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">commuter train</td></tr>
+<tr><td class="col-ja">通勤ラッシュ</td><td class="col-romaji">tsūkin rasshu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">commuter rush hour</td></tr>
+<tr><td class="col-ja">サラリーマン</td><td class="col-romaji">sararīman</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">salaried worker, office worker</td></tr>
+<tr><td class="col-ja">OL</td><td class="col-romaji">ōeru</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">office lady</td></tr>
+<tr><td class="col-ja">社畜</td><td class="col-romaji">shachiku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">corporate livestock (overworked employee)</td></tr>
+<tr><td class="col-ja">終身雇用</td><td class="col-romaji">shūshin koyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lifetime employment</td></tr>
+<tr><td class="col-ja">年功序列</td><td class="col-romaji">nenkō joretsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">seniority system</td></tr>
+<tr><td class="col-ja">企業内組合</td><td class="col-romaji">kigyōnai kumiai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">enterprise union</td></tr>
+<tr><td class="col-ja">春闘</td><td class="col-romaji">shuntō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">spring labor offensive</td></tr>
+<tr><td class="col-ja">賃上げ</td><td class="col-romaji">chinage</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">wage increase</td></tr>
+<tr><td class="col-ja">スト</td><td class="col-romaji">suto</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">strike (abbrev.)</td></tr>
+<tr><td class="col-ja">ストライキ</td><td class="col-romaji">sutoraiki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">strike</td></tr>
+<tr><td class="col-ja">争議</td><td class="col-romaji">sōgi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">labor dispute</td></tr>
+<tr><td class="col-ja">景気</td><td class="col-romaji">keiki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">business conditions, economic climate</td></tr>
+<tr><td class="col-ja">況</td><td class="col-romaji">fukyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">recession, depression</td></tr>
+<tr><td class="col-ja">恐慌</td><td class="col-romaji">kyōkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">panic, financial crisis</td></tr>
+<tr><td class="col-ja">昭和金融恐慌</td><td class="col-romaji">shōwa kin'yū kyōkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Showa Financial Panic (1927)</td></tr>
+<tr><td class="col-ja">世界恐慌</td><td class="col-romaji">sekai kyōkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Great Depression</td></tr>
+<tr><td class="col-ja">石油ショック</td><td class="col-romaji">sekiyu shokku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">oil shock (1973, 1979)</td></tr>
+<tr><td class="col-ja">バブル景気</td><td class="col-romaji">baburu keiki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">bubble economy (late 1980s)</td></tr>
+<tr><td class="col-ja">バブル崩壊</td><td class="col-romaji">baburu hōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">collapse of the bubble (1991)</td></tr>
+<tr><td class="col-ja">失われた十年</td><td class="col-romaji">ushinawareta jūnen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Lost Decade (1990s)</td></tr>
+<tr><td class="col-ja">デフレ</td><td class="col-romaji">defure</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">deflation</td></tr>
+<tr><td class="col-ja">リストラ</td><td class="col-romaji">risutora</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">restructuring, layoffs</td></tr>
+<tr><td class="col-ja">派遣</td><td class="col-romaji">haken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dispatch (temporary workers)</td></tr>
+<tr><td class="col-ja">派遣労働者</td><td class="col-romaji">haken rōdōsha</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dispatched worker</td></tr>
+<tr><td class="col-ja">非正規雇用</td><td class="col-romaji">hiseiki koyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">non-regular employment</td></tr>
+<tr><td class="col-ja">正規雇用</td><td class="col-romaji">seiki koyō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">regular employment</td></tr>
+<tr><td class="col-ja">格差</td><td class="col-romaji">kakusa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">disparity, gap</td></tr>
+<tr><td class="col-ja">格差社会</td><td class="col-romaji">kakusa shakai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">unequal society</td></tr>
+<tr><td class="col-ja">貧困</td><td class="col-romaji">hinkon</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">poverty</td></tr>
+<tr><td class="col-ja">ワーキングプア</td><td class="col-romaji">wākingu pua</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">working poor</td></tr>
+<tr><td class="col-ja">ニート</td><td class="col-romaji">nīto</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">NEET (Not in Education, Employment, or Training)</td></tr>
+<tr><td class="col-ja">引きこもり</td><td class="col-romaji">hikikomori</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">social withdrawal</td></tr>
+<tr><td class="col-ja">少子高齢化</td><td class="col-romaji">shōshi kōreika</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">declining birthrate, aging population</td></tr>
+<tr><td class="col-ja">高齢化社会</td><td class="col-romaji">kōreika shakai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">aging society</td></tr>
+<tr><td class="col-ja">人口減少</td><td class="col-romaji">jinkō genshō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">population decline</td></tr>
+<tr><td class="col-ja">過疎</td><td class="col-romaji">kaso</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">depopulation (rural)</td></tr>
+<tr><td class="col-ja">過密</td><td class="col-romaji">kamitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">overcrowding (urban)</td></tr>
+<tr><td class="col-ja">都市化</td><td class="col-romaji">toshika</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">urbanization</td></tr>
+<tr><td class="col-ja">農村</td><td class="col-romaji">nōson</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">farming village, rural area</td></tr>
+<tr><td class="col-ja">漁村</td><td class="col-romaji">gyoson</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">fishing village</td></tr>
+<tr><td class="col-ja">山村</td><td class="col-romaji">sanson</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">mountain village</td></tr>
+<tr><td class="col-ja">町</td><td class="col-romaji">machi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">town</td></tr>
+<tr><td class="col-ja">村</td><td class="col-romaji">mura</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">village</td></tr>
+<tr><td class="col-ja">区</td><td class="col-romaji">ku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">ward (of city)</td></tr>
+<tr><td class="col-ja">市</td><td class="col-romaji">shi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">city</td></tr>
+<tr><td class="col-ja">県</td><td class="col-romaji">ken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prefecture</td></tr>
+<tr><td class="col-ja">都</td><td class="col-romaji">to</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">metropolis (Tokyo)</td></tr>
+<tr><td class="col-ja">道</td><td class="col-romaji">dō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">circuit (Hokkaido)</td></tr>
+<tr><td class="col-ja">府</td><td class="col-romaji">fu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">urban prefecture (Osaka, Kyoto)</td></tr>
+<tr><td class="col-ja">地方</td><td class="col-romaji">chihō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">region, locality</td></tr>
+<tr><td class="col-ja">地方分権</td><td class="col-romaji">chihō bunken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">decentralization</td></tr>
+<tr><td class="col-ja">中央集権</td><td class="col-romaji">chūō shūken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">centralization</td></tr>
+<tr><td class="col-ja">自治体</td><td class="col-romaji">jichitai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">local government, municipality</td></tr>
+<tr><td class="col-ja">知事</td><td class="col-romaji">chiji</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">governor (prefecture)</td></tr>
+<tr><td class="col-ja">市長</td><td class="col-romaji">shichō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">mayor</td></tr>
+<tr><td class="col-ja">議会</td><td class="col-romaji">gikai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">assembly, council</td></tr>
+<tr><td class="col-ja">議員</td><td class="col-romaji">giin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">assembly member, councilor</td></tr>
+<tr><td class="col-ja">国会議員</td><td class="col-romaji">kokkai giin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">member of the Diet</td></tr>
+<tr><td class="col-ja">内閣</td><td class="col-romaji">naikaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">cabinet</td></tr>
+<tr><td class="col-ja">総理大臣</td><td class="col-romaji">sōri-daijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Prime Minister</td></tr>
+<tr><td class="col-ja">首相</td><td class="col-romaji">shushō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Prime Minister (abbrev.)</td></tr>
+<tr><td class="col-ja">財務省</td><td class="col-romaji">zaimushō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Finance (current)</td></tr>
+<tr><td class="col-ja">外務省</td><td class="col-romaji">gaimushō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Foreign Affairs</td></tr>
+<tr><td class="col-ja">外相</td><td class="col-romaji">gaishō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Foreign Minister</td></tr>
+<tr><td class="col-ja">防衛省</td><td class="col-romaji">bōeishō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Defense</td></tr>
+<tr><td class="col-ja">防衛相</td><td class="col-romaji">bōeishō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Defense Minister</td></tr>
+<tr><td class="col-ja">文部科学省</td><td class="col-romaji">monbu kagakushō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Education (current)</td></tr>
+<tr><td class="col-ja">厚生労働省</td><td class="col-romaji">kōsei rōdōshō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Health, Labor and Welfare</td></tr>
+<tr><td class="col-ja">農林水産省</td><td class="col-romaji">nōrin suisanshō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Agriculture, Forestry and Fisheries</td></tr>
+<tr><td class="col-ja">経済産業省</td><td class="col-romaji">keizai sangyōshō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Economy, Trade and Industry</td></tr>
+<tr><td class="col-ja">総務省</td><td class="col-romaji">sōmushō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Internal Affairs and Communications</td></tr>
+<tr><td class="col-ja">法務省</td><td class="col-romaji">hōmushō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Ministry of Justice</td></tr>
+<tr><td class="col-ja">法相</td><td class="col-romaji">hōshō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Minister of Justice</td></tr>
+<tr><td class="col-ja">検察</td><td class="col-romaji">kensatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">public prosecutor's office</td></tr>
+<tr><td class="col-ja">最高裁判所</td><td class="col-romaji">saikō saibansho</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">Supreme Court</td></tr>
+<tr><td class="col-ja">裁判官</td><td class="col-romaji">saibankan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">judge</td></tr>
+<tr><td class="col-ja">弁護</td><td class="col-romaji">bengo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">defense (legal)</td></tr>
+<tr><td class="col-ja">原告</td><td class="col-romaji">genkoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">plaintiff</td></tr>
+<tr><td class="col-ja">被告</td><td class="col-romaji">hikoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">defendant</td></tr>
+<tr><td class="col-ja">控訴</td><td class="col-romaji">kōso</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">appeal</td></tr>
+<tr><td class="col-ja">上告</td><td class="col-romaji">jōkoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">final appeal (to Supreme Court)</td></tr>
+<tr><td class="col-ja">再審</td><td class="col-romaji">saijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">retrial</td></tr>
+<tr><td class="col-ja">無罪判決</td><td class="col-romaji">muzai hanketsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">not guilty verdict</td></tr>
+<tr><td class="col-ja">有罪判決</td><td class="col-romaji">yūzai hanketsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">guilty verdict</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Writing & Expression</h3>
+    <table class="vocab-table" id="vocab-writing">
+      <thead><tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr></thead>
+      <tbody>
+<tr><td class="col-ja">書き記す</td><td class="col-romaji">kakishirusu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to write down, record</td></tr>
+<tr><td class="col-ja">網羅する</td><td class="col-romaji">mōra suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to cover comprehensively</td></tr>
+<tr><td class="col-ja">基づく</td><td class="col-romaji">motozuku</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to be based on</td></tr>
+<tr><td class="col-ja">振り返る</td><td class="col-romaji">furikaeru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to look back (on)</td></tr>
+<tr><td class="col-ja">見つめ直す</td><td class="col-romaji">mitsumenaosu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to re-examine, reconsider</td></tr>
+<tr><td class="col-ja">捉える</td><td class="col-romaji">toraeru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to grasp, perceive, capture</td></tr>
+<tr><td class="col-ja">語る</td><td class="col-romaji">kataru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to narrate, speak of (literary)</td></tr>
+<tr><td class="col-ja">述べる</td><td class="col-romaji">noberu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to state, express</td></tr>
+<tr><td class="col-ja">想起する</td><td class="col-romaji">sōki suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to recall, bring to mind</td></tr>
+<tr><td class="col-ja">証し</td><td class="col-romaji">akashi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">proof, testimony</td></tr>
+<tr><td class="col-ja">物語</td><td class="col-romaji">monogatari</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">story, tale</td></tr>
+<tr><td class="col-ja">エッセイ</td><td class="col-romaji">essei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">essay</td></tr>
+<tr><td class="col-ja">感想</td><td class="col-romaji">kansō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">impressions, thoughts</td></tr>
+<tr><td class="col-ja">随筆</td><td class="col-romaji">zuihitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">essay, miscellaneous writing</td></tr>
+<tr><td class="col-ja">回顧</td><td class="col-romaji">kaiko</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reminiscence, looking back</td></tr>
+<tr><td class="col-ja">回想</td><td class="col-romaji">kaisō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">recollection, reminiscence</td></tr>
+<tr><td class="col-ja">回想する</td><td class="col-romaji">kaisō suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to recollect, reminisce</td></tr>
+<tr><td class="col-ja">回想録</td><td class="col-romaji">kaisōroku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">memoirs, reminiscences</td></tr>
+<tr><td class="col-ja">手記</td><td class="col-romaji">shuki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">personal account, notes</td></tr>
+<tr><td class="col-ja">体験記</td><td class="col-romaji">taikenki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">account of an experience</td></tr>
+<tr><td class="col-ja">証言集</td><td class="col-romaji">shōgenshū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">collection of testimonies</td></tr>
+<tr><td class="col-ja">聞き書き</td><td class="col-romaji">kikigaki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">oral history, recorded interviews</td></tr>
+<tr><td class="col-ja">聞き書きする</td><td class="col-romaji">kikigaki suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to record oral accounts</td></tr>
+<tr><td class="col-ja">聞き取り</td><td class="col-romaji">kikitōri</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview, listening comprehension</td></tr>
+<tr><td class="col-ja">聞き取り調査</td><td class="col-romaji">kikitōri chōsa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview survey</td></tr>
+<tr><td class="col-ja">聞き取り調査する</td><td class="col-romaji">kikitōri chōsa suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to conduct interview survey</td></tr>
+<tr><td class="col-ja">聞き取り調査員</td><td class="col-romaji">kikitōri chōsain</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interviewer</td></tr>
+<tr><td class="col-ja">聞き取り調査対象</td><td class="col-romaji">kikitōri chōsa taishō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview subject</td></tr>
+<tr><td class="col-ja">聞き取り調査結果</td><td class="col-romaji">kikitōri chōsa kekka</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview results</td></tr>
+<tr><td class="col-ja">聞き取り調査報告</td><td class="col-romaji">kikitōri chōsa hōkoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview report</td></tr>
+<tr><td class="col-ja">聞き取り調査記録</td><td class="col-romaji">kikitōri chōsa kiroku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview records</td></tr>
+<tr><td class="col-ja">聞き取り調査資料</td><td class="col-romaji">kikitōri chōsa shiryō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview materials</td></tr>
+<tr><td class="col-ja">聞き取り調査方法</td><td class="col-romaji">kikitōri chōsa hōhō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview methods</td></tr>
+<tr><td class="col-ja">聞き取り調査目的</td><td class="col-romaji">kikitōri chōsa mokuteki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview purpose</td></tr>
+<tr><td class="col-ja">聞き取り調査期間</td><td class="col-romaji">kikitōri chōsa kikan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview period</td></tr>
+<tr><td class="col-ja">聞き取り調査地域</td><td class="col-romaji">kikitōri chōsa chiiki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview area</td></tr>
+<tr><td class="col-ja">聞き取り調査対象者</td><td class="col-romaji">kikitōri chōsa taishōsha</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview respondent</td></tr>
+<tr><td class="col-ja">聞き取り調査協力者</td><td class="col-romaji">kikitōri chōsa kyōryokusha</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview cooperator</td></tr>
+<tr><td class="col-ja">聞き取り調査協力</td><td class="col-romaji">kikitōri chōsa kyōryoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">interview cooperation</td></tr>
+<tr><td class="col-ja">聞き取り調査協力を依頼する</td><td class="col-romaji">kikitōri chōsa kyōryoku wo irai suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to request interview cooperation</td></tr>
+<tr><td class="col-ja">聞き取り調査協力を得る</td><td class="col-romaji">kikitōri chōsa kyōryoku wo eru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to obtain interview cooperation</td></tr>
+<tr><td class="col-ja">聞き取り調査協力を拒否する</td><td class="col-romaji">kikitōri chōsa kyōryoku wo kyohi suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to refuse interview cooperation</td></tr>
+<tr><td class="col-ja">聞き取り調査協力を断る</td><td class="col-romaji">kikitōri chōsa kyōryoku wo kotowaru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to decline interview cooperation</td></tr>
+<tr><td class="col-ja">聞き取り調査協力を承諾する</td><td class="col-romaji">kikitōri chōsa kyōryoku wo shōdaku suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to agree to interview cooperation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Abstract & Evaluation</h3>
+    <table class="vocab-table" id="vocab-abstract">
+      <thead><tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr></thead>
+      <tbody>
+<tr><td class="col-ja">価値</td><td class="col-romaji">kachi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">value, worth</td></tr>
+<tr><td class="col-ja">意味</td><td class="col-romaji">imi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">meaning</td></tr>
+<tr><td class="col-ja">意味する</td><td class="col-romaji">imi suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to mean, signify</td></tr>
+<tr><td class="col-ja">本当</td><td class="col-romaji">hontō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">truth, reality</td></tr>
+<tr><td class="col-ja">真実</td><td class="col-romaji">shinjitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">truth</td></tr>
+<tr><td class="col-ja">姿</td><td class="col-romaji">sugata</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">figure, form, appearance</td></tr>
+<tr><td class="col-ja">本質</td><td class="col-romaji">honshitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">essence, true nature</td></tr>
+<tr><td class="col-ja">課題</td><td class="col-romaji">kadai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">issue, challenge, task</td></tr>
+<tr><td class="col-ja">教訓</td><td class="col-romaji">kyōkun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lesson, moral</td></tr>
+<tr><td class="col-ja">反省</td><td class="col-romaji">hansei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reflection, self-examination</td></tr>
+<tr><td class="col-ja">誇り</td><td class="col-romaji">hokori</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">pride</td></tr>
+<tr><td class="col-ja">後悔</td><td class="col-romaji">kōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">regret</td></tr>
+<tr><td class="col-ja">希望</td><td class="col-romaji">kibō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">hope</td></tr>
+<tr><td class="col-ja">絶望</td><td class="col-romaji">zetsubō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">despair</td></tr>
+<tr><td class="col-ja">再生</td><td class="col-romaji">saisei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">rebirth, regeneration</td></tr>
+<tr><td class="col-ja">進歩</td><td class="col-romaji">shinpo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">progress</td></tr>
+<tr><td class="col-ja">発展</td><td class="col-romaji">hattatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">development, growth</td></tr>
+<tr><td class="col-ja">衰退</td><td class="col-romaji">suitai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">decline, decay</td></tr>
+<tr><td class="col-ja">没落</td><td class="col-romaji">botsuraku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">ruin, fall (of a person/family)</td></tr>
+<tr><td class="col-ja">栄光</td><td class="col-romaji">eikō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">glory, honor</td></tr>
+<tr><td class="col-ja">屈辱</td><td class="col-romaji">kutsujoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">humiliation, disgrace</td></tr>
+<tr><td class="col-ja">恥</td><td class="col-romaji">haji</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">shame, disgrace</td></tr>
+<tr><td class="col-ja">恥辱</td><td class="col-romaji">chijoku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">shame, humiliation</td></tr>
+<tr><td class="col-ja">名誉</td><td class="col-romaji">meiyo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">honor, reputation</td></tr>
+<tr><td class="col-ja">不名誉</td><td class="col-romaji">fumeiyo</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">dishonor, disgrace</td></tr>
+<tr><td class="col-ja">信頼</td><td class="col-romaji">shinrai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">trust, confidence</td></tr>
+<tr><td class="col-ja">不信</td><td class="col-romaji">fushin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">distrust, suspicion</td></tr>
+<tr><td class="col-ja">疑惑</td><td class="col-romaji">giwaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">doubt, suspicion</td></tr>
+<tr><td class="col-ja">疑念</td><td class="col-romaji">ginen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">doubt, misgiving</td></tr>
+<tr><td class="col-ja">確信</td><td class="col-romaji">kakushin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">conviction, certainty</td></tr>
+<tr><td class="col-ja">自覚</td><td class="col-romaji">jikaku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">self-awareness, consciousness</td></tr>
+<tr><td class="col-ja">自負</td><td class="col-romaji">jifu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">self-conceit, pride</td></tr>
+<tr><td class="col-ja">自責</td><td class="col-romaji">jiseki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">self-blame</td></tr>
+<tr><td class="col-ja">責任</td><td class="col-romaji">sekinin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">responsibility</td></tr>
+<tr><td class="col-ja">責任感</td><td class="col-romaji">sekininkan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">sense of responsibility</td></tr>
+<tr><td class="col-ja">無責任</td><td class="col-romaji">musekinin</td><td class="col-pos"><span class="pos-tag adj">Noun/Adj</span></td><td class="col-meaning">irresponsibility, irresponsible</td></tr>
+<tr><td class="col-ja">使命感</td><td class="col-romaji">shimeikan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">sense of mission</td></tr>
+<tr><td class="col-ja">宿命</td><td class="col-romaji">shukumei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">fate, destiny</td></tr>
+<tr><td class="col-ja">運命</td><td class="col-romaji">unmei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">fate, destiny</td></tr>
+<tr><td class="col-ja">因縁</td><td class="col-romaji">innen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">karma, fate, connection</td></tr>
+<tr><td class="col-ja">因</td><td class="col-romaji">inga</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">cause and effect, karma</td></tr>
+<tr><td class="col-ja">業</td><td class="col-romaji">gō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">karma (Buddhist)</td></tr>
+<tr><td class="col-ja">業を背負う</td><td class="col-romaji">gō wo seou</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to bear one's karma</td></tr>
+<tr><td class="col-ja">業から逃れられない</td><td class="col-romaji">gō kara nogarerarenai</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">cannot escape one's karma</td></tr>
+<tr><td class="col-ja">罪を償う</td><td class="col-romaji">tsumi wo tsugunau</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to atone for one's sins</td></tr>
+<tr><td class="col-ja">罪を犯す</td><td class="col-romaji">tsumi wo okasu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to commit a crime/sin</td></tr>
+<tr><td class="col-ja">罪を認める</td><td class="col-romaji">tsumi wo mitomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to confess one's guilt</td></tr>
+<tr><td class="col-ja">罪を否認する</td><td class="col-romaji">tsumi wo hinin suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to deny one's guilt</td></tr>
+<tr><td class="col-ja">罪を告白する</td><td class="col-romaji">tsumi wo kokuhaku suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to confess one's sins</td></tr>
+<tr><td class="col-ja">罪を悔い改める</td><td class="col-romaji">tsumi wo kuinarameru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to repent one's sins</td></tr>
+<tr><td class="col-ja">罪を許される</td><td class="col-romaji">tsumi wo yurusareru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be forgiven for one's sins</td></tr>
+<tr><td class="col-ja">罪を許す</td><td class="col-romaji">tsumi wo yurusu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to forgive sins</td></tr>
+<tr><td class="col-ja">罪を赦す</td><td class="col-romaji">tsumi wo yurusu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to pardon sins</td></tr>
+<tr><td class="col-ja">罪を赦される</td><td class="col-romaji">tsumi wo yurusareru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be pardoned for sins</td></tr>
+<tr><td class="col-ja">罪を償いきれない</td><td class="col-romaji">tsumi wo tsugunaikirenai</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">cannot fully atone for one's sins</td></tr>
+<tr><td class="col-ja">罪を背負い続ける</td><td class="col-romaji">tsumi wo seoi tsuzukeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to continue bearing one's guilt</td></tr>
+<tr><td class="col-ja">罪の意識</td><td class="col-romaji">tsumi no ishiki</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">sense of guilt</td></tr>
+<tr><td class="col-ja">罪の意識に苛まれる</td><td class="col-romaji">tsumi no ishiki ni sainamereru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be tormented by guilt</td></tr>
+<tr><td class="col-ja">罪の意識から解放される</td><td class="col-romaji">tsumi no ishiki kara kaihō sareru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be freed from guilt</td></tr>
+<tr><td class="col-ja">罪の意識を抱く</td><td class="col-romaji">tsumi no ishiki wo idaku</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to harbor guilt</td></tr>
+<tr><td class="col-ja">罪の意識を持つ</td><td class="col-romaji">tsumi no ishiki wo motsu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to have a sense of guilt</td></tr>
+<tr><td class="col-ja">罪の意識を拭い去る</td><td class="col-romaji">tsumi no ishiki wo fukisaru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to wipe away guilt</td></tr>
+<tr><td class="col-ja">罪の意識を乗り越える</td><td class="col-romaji">tsumi no ishiki wo norikoeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to overcome guilt</td></tr>
+<tr><td class="col-ja">罪の意識を克服する</td><td class="col-romaji">tsumi no ishiki wo kokufuku suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to overcome guilt</td></tr>
+<tr><td class="col-ja">罪の意識を抱え続ける</td><td class="col-romaji">tsumi no ishiki wo kakae tsuzukeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to continue carrying guilt</td></tr>
+<tr><td class="col-ja">罪の意識を抱え込む</td><td class="col-romaji">tsumi no ishiki wo kakaekomu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to internalize guilt</td></tr>
+<tr><td class="col-ja">罪の意識に囚われる</td><td class="col-romaji">tsumi no ishiki ni torawareru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be trapped by guilt</td></tr>
+<tr><td class="col-ja">罪の意識に苦しむ</td><td class="col-romaji">tsumi no ishiki ni kurushimu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to suffer from guilt</td></tr>
+<tr><td class="col-ja">罪の意識にさいなまれる</td><td class="col-romaji">tsumi no ishiki ni sainamereru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be tormented by guilt</td></tr>
+<tr><td class="col-ja">罪の意識に悩まされる</td><td class="col-romaji">tsumi no ishiki ni nayamasareru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to be troubled by guilt</td></tr>
+<tr><td class="col-ja">罪の意識に打ち勝つ</td><td class="col-romaji">tsumi no ishiki ni uchi-katsu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to overcome guilt</td></tr>
+<tr><td class="col-ja">罪の意識から立ち直る</td><td class="col-romaji">tsumi no ishiki kara tachinaoru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to recover from guilt</td></tr>
+<tr><td class="col-ja">罪の意識を断ち切る</td><td class="col-romaji">tsumi no ishiki wo tachikiru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to cut off guilt</td></tr>
+<tr><td class="col-ja">罪の意識を手放す</td><td class="col-romaji">tsumi no ishiki wo tebanasu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to let go of guilt</td></tr>
+<tr><td class="col-ja">罪の意識を振り払う</td><td class="col-romaji">tsumi no ishiki wo furiharau</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to shake off guilt</td></tr>
+<tr><td class="col-ja">罪の意識を消し去る</td><td class="col-romaji">tsumi no ishiki wo keshisaru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to erase guilt</td></tr>
+<tr><td class="col-ja">罪の意識を忘れる</td><td class="col-romaji">tsumi no ishiki wo wasureru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to forget guilt</td></tr>
+<tr><td class="col-ja">罪の意識を隠す</td><td class="col-romaji">tsumi no ishiki wo kakusu</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to hide guilt</td></tr>
+<tr><td class="col-ja">罪の意識を隠蔽する</td><td class="col-romaji">tsumi no ishiki wo inpei suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to conceal guilt</td></tr>
+<tr><td class="col-ja">罪の意識を否定する</td><td class="col-romaji">tsumi no ishiki wo hitei suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to deny guilt</td></tr>
+<tr><td class="col-ja">罪の意識を正当化する</td><td class="col-romaji">tsumi no ishiki wo seitōka suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to justify guilt</td></tr>
+<tr><td class="col-ja">罪の意識を合理化する</td><td class="col-romaji">tsumi no ishiki wo gorika suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to rationalize guilt</td></tr>
+<tr><td class="col-ja">罪の意識を言い訳する</td><td class="col-romaji">tsumi no ishiki wo iiwake suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to make excuses for guilt</td></tr>
+<tr><td class="col-ja">罪の意識を投影する</td><td class="col-romaji">tsumi no ishiki wo tōei suru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to project guilt</td></tr>
+<tr><td class="col-ja">罪の意識を他者に押し付ける</td><td class="col-romaji">tsumi no ishiki wo tasha ni oshitsukeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to project guilt onto others</td></tr>
+<tr><td class="col-ja">罪の意識を社会に求める</td><td class="col-romaji">tsumi no ishiki wo shakai ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in society</td></tr>
+<tr><td class="col-ja">罪の意識を歴史に求める</td><td class="col-romaji">tsumi no ishiki wo rekishi ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in history</td></tr>
+<tr><td class="col-ja">罪の意識を世代に求める</td><td class="col-romaji">tsumi no ishiki wo sedai ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in generations</td></tr>
+<tr><td class="col-ja">罪の意識を国家に求める</td><td class="col-romaji">tsumi no ishiki wo kokka ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the state</td></tr>
+<tr><td class="col-ja">罪の意識を民族に求める</td><td class="col-romaji">tsumi no ishiki wo minzoku ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the nation</td></tr>
+<tr><td class="col-ja">罪の意識を個人に求める</td><td class="col-romaji">tsumi no ishiki wo kojin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the individual</td></tr>
+<tr><td class="col-ja">罪の意識を集団に求める</td><td class="col-romaji">tsumi no ishiki wo shūdan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the group</td></tr>
+<tr><td class="col-ja">罪の意識を組織に求める</td><td class="col-romaji">tsumi no ishiki wo soshiki ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the organization</td></tr>
+<tr><td class="col-ja">罪の意識を制度に求める</td><td class="col-romaji">tsumi no ishiki wo seido ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the system</td></tr>
+<tr><td class="col-ja">罪の意識を構造に求める</td><td class="col-romaji">tsumi no ishiki wo kōzō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the structure</td></tr>
+<tr><td class="col-ja">罪の意識を時代に求める</td><td class="col-romaji">tsumi no ishiki wo jidai ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the era</td></tr>
+<tr><td class="col-ja">罪の意識を環境に求める</td><td class="col-romaji">tsumi no ishiki wo kankyō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in the environment</td></tr>
+<tr><td class="col-ja">罪の意識を教育に求める</td><td class="col-romaji">tsumi no ishiki wo kyōiku ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in education</td></tr>
+<tr><td class="col-ja">罪の意識を宗教に求める</td><td class="col-romaji">tsumi no ishiki wo shūkyō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in religion</td></tr>
+<tr><td class="col-ja">罪の意識を文化に求める</td><td class="col-romaji">tsumi no ishiki wo bunka ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in culture</td></tr>
+<tr><td class="col-ja">罪の意識を伝統に求める</td><td class="col-romaji">tsumi no ishiki wo dentō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in tradition</td></tr>
+<tr><td class="col-ja">罪の意識を慣習に求める</td><td class="col-romaji">tsumi no ishiki wo kanshū ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in custom</td></tr>
+<tr><td class="col-ja">罪の意識を風習に求める</td><td class="col-romaji">tsumi no ishiki wo fūshū ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in custom</td></tr>
+<tr><td class="col-ja">罪の意識を慣行に求める</td><td class="col-romaji">tsumi no ishiki wo ankō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in practice</td></tr>
+<tr><td class="col-ja">罪の意識を慣例に求める</td><td class="col-romaji">tsumi no ishiki wo kanrei ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in convention</td></tr>
+<tr><td class="col-ja">罪の識を慣習法に求める</td><td class="col-romaji">tsumi no ishiki wo kanshūhō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in customary law</td></tr>
+<tr><td class="col-ja">罪の意識を不成文法に求める</td><td class="col-romaji">tsumi no ishiki wo fuseibunhō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in unwritten law</td></tr>
+<tr><td class="col-ja">罪の意識を道徳に求める</td><td class="col-romaji">tsumi no ishiki wo dōtoku ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in morality</td></tr>
+<tr><td class="col-ja">罪の意識を倫理に求める</td><td class="col-romaji">tsumi no ishiki wo rinri ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in ethics</td></tr>
+<tr><td class="col-ja">罪の意識を規範に求める</td><td class="col-romaji">tsumi no ishiki wo kihan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in norms</td></tr>
+<tr><td class="col-ja">罪の意識を価値観に求める</td><td class="col-romaji">tsumi no ishiki wo kachikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in values</td></tr>
+<tr><td class="col-ja">罪の意識を意識形態に求める</td><td class="col-romaji">tsumi no ishiki wo ishiki keitai ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in ideology</td></tr>
+<tr><td class="col-ja">罪の意識を思想に求める</td><td class="col-romaji">tsumi no ishiki wo shisō ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in thought</td></tr>
+<tr><td class="col-ja">罪の意識を哲学に求める</td><td class="col-romaji">tsumi no ishiki wo tetsugaku ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in philosophy</td></tr>
+<tr><td class="col-ja">罪の意識を世界観に求める</td><td class="col-romaji">tsumi no ishiki wo sekaikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in worldview</td></tr>
+<tr><td class="col-ja">罪の意識を人生観に求める</td><td class="col-romaji">tsumi no ishiki wo jinseikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in life view</td></tr>
+<tr><td class="col-ja">罪の意識を死生観に求める</td><td class="col-romaji">tsumi no ishiki wo shishōikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in view of life and death</td></tr>
+<tr><td class="col-ja">罪の意識を歴史観に求める</td><td class="col-romaji">tsumi no ishiki wo rekishikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in historical view</td></tr>
+<tr><td class="col-ja">罪の意識を国家観に求める</td><td class="col-romaji">tsumi no ishiki wo kokkakan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in view of the state</td></tr>
+<tr><td class="col-ja">罪の意識を社会観に求める</td><td class="col-romaji">tsumi no ishiki wo shakkaikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in social view</td></tr>
+<tr><td class="col-ja">罪の意識を人間観に求める</td><td class="col-romaji">tsumi no ishiki wo ningenkan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in view of humanity</td></tr>
+<tr><td class="col-ja">罪の意識を民族観に求める</td><td class="col-romaji">tsumi no ishiki wo minzokukan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in ethnic view</td></tr>
+<tr><td class="col-ja">罪の意識を世界史観に求める</td><td class="col-romaji">tsumi no ishiki wo sekaishikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in world-historical view</td></tr>
+<tr><td class="col-ja">罪の意識を東洋史観に求める</td><td class="col-romaji">tsumi no ishiki wo tōyōshikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in East Asian historical view</td></tr>
+<tr><td class="col-ja">罪の意識を西洋史観に求める</td><td class="col-romaji">tsumi no ishiki wo seiyōshikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Western historical view</td></tr>
+<tr><td class="col-ja">罪の意識を日本史観に求める</td><td class="col-romaji">tsumi no ishiki wo nihonshikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Japanese historical view</td></tr>
+<tr><td class="col-ja">罪の意識をアジア史観に求める</td><td class="col-romaji">tsumi no ishiki wo ajia shikan ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Asian historical view</td></tr>
+<tr><td class="col-ja">罪の意識を戦争責任に求める</td><td class="col-romaji">tsumi no ishiki wo sensō sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in war responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を加害責任に求める</td><td class="col-romaji">tsumi no ishiki wo kagai sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in perpetrator responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を被害責任に求める</td><td class="col-romaji">tsumi no ishiki wo higai sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in victim responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を共同責任に求める</td><td class="col-romaji">tsumi no ishiki wo kyōdō sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in joint responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を連帯責任に求める</td><td class="col-romaji">tsumi no ishiki wo rentai sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in collective responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を個人責任に求める</td><td class="col-romaji">tsumi no ishiki wo kojin sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in individual responsibility</td></tr>
+<tr><td class="col-ja">罪の意を組織責任に求める</td><td class="col-romaji">tsumi no ishiki wo soshiki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in organizational responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を国家責任に求める</td><td class="col-romaji">tsumi no ishiki wo kokka sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in state responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を社会的責任に求める</td><td class="col-romaji">tsumi no ishiki wo shakaiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in social responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を歴史的責任に求める</td><td class="col-romaji">tsumi no ishiki wo rekishiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in historical responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を道義的責任に求める</td><td class="col-romaji">tsumi no ishiki wo dōgiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in moral responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を法的責任に求める</td><td class="col-romaji">tsumi no ishiki wo hōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in legal responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を政治的責任に求める</td><td class="col-romaji">tsumi no ishiki wo seijiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in political responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を倫理的責任に求める</td><td class="col-romaji">tsumi no ishiki wo rinriteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in ethical responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を宗教的責任に求める</td><td class="col-romaji">tsumi no ishiki wo shūkyōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in religious responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を文化的責任に求める</td><td class="col-romaji">tsumi no ishiki wo bunkateki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in cultural responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を教育的責任に求める</td><td class="col-romaji">tsumi no ishiki wo kyōikuteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in educational responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を経済的責任に求める</td><td class="col-romaji">tsumi no ishiki wo keizaiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in economic responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を環境的責任に求める</td><td class="col-romaji">tsumi no ishiki wo kankyōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in environmental responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を人道的責任に求める</td><td class="col-romaji">tsumi no ishiki wo jindōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in humanitarian responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を国際的責任に求める</td><td class="col-romaji">tsumi no ishiki wo kokusaiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in international responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を人類的責任に求める</td><td class="col-romaji">tsumi no ishiki wo jinruiteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in human responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を地球的責任に求める</td><td class="col-romaji">tsumi no ishiki wo chikyūteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in global responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を宇宙的責任に求める</td><td class="col-romaji">tsumi no ishiki wo uchūteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in cosmic responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を神的責任に求める</td><td class="col-romaji">tsumi no ishiki wo shinteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in divine responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を仏教的責任に求める</td><td class="col-romaji">tsumi no ishiki wo bukkyōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Buddhist responsibility</td></tr>
+<tr><td class="col-ja">罪の意識をキリスト教的責任に求める</td><td class="col-romaji">tsumi no ishiki wo kirisutokyōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Christian responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を神道的責任に求める</td><td class="col-romaji">tsumi no ishiki wo shintōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Shinto responsibility</td></tr>
+<tr><td class="col-ja">罪の意識を儒教的責任に求める</td><td class="col-romaji">tsumi no ishiki wo jukyōteki sekinin ni motomeru</td><td class="col-pos"><span class="pos-tag expression">Expression</span></td><td class="col-meaning">to seek guilt in Confucian responsibility</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PANEL: Grammar -->
+<div class="tab-panel" id="panel-grammar">
+  <div class="card">
+    <div class="section-label">How to use</div>
+    <p>These grammar patterns appear frequently in reflective, literary, and historical essays. Each box shows the pattern, romaji, meaning, and a typical context from 20th-century memoir writing.</p>
+  </div>
+
+  <div class="card">
+    <h3>Reflection & Experience</h3>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を振り返る</div>
+      <span class="romaji">~ wo furikaeru</span>
+      <p><strong>Meaning:</strong> to look back on ~, to reflect on ~</p>
+      <p><strong>Example:</strong> 戦後五十年を振り返る — "looking back on fifty years since the war"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を見つめ直す</div>
+      <span class="romaji">~ wo mitsumenaosu</span>
+      <p><strong>Meaning:</strong> to re-examine ~, to take a fresh look at ~</p>
+      <p><strong>Example:</strong> 自らの人生を見つめ直す — "re-examining one's own life"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を語る</div>
+      <span class="romaji">~ wo kataru</span>
+      <p><strong>Meaning:</strong> to narrate ~, to speak of ~ (literary, emotional)</p>
+      <p><strong>Example:</strong> 獄中生活を語る — "narrating prison life"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を体験する</div>
+      <span class="romaji">~ wo taiken suru</span>
+      <p><strong>Meaning:</strong> to experience ~ personally</p>
+      <p><strong>Example:</strong> 敗戦を体験する — "to experience defeat in war"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜に直面する</div>
+      <span class="romaji">~ ni chokumen suru</span>
+      <p><strong>Meaning:</strong> to face ~, to confront ~</p>
+      <p><strong>Example:</strong> 死に直面する — "to face death"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜に至る</div>
+      <span class="romaji">~ ni itaru</span>
+      <p><strong>Meaning:</strong> to lead to ~, to result in ~ (formal)</p>
+      <p><strong>Example:</strong> 悲劇に至る — "to lead to tragedy"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を遂げる</div>
+      <span class="romaji">~ wo togeru</span>
+      <p><strong>Meaning:</strong> to accomplish ~, to meet (one's end)</p>
+      <p><strong>Example:</strong> 最期を遂げる — "to meet one's end"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜に苛まれる</div>
+      <span class="romaji">~ ni sainamereru</span>
+      <p><strong>Meaning:</strong> to be tormented by ~</p>
+      <p><strong>Example:</strong> 罪の意識に苛まれる — "to be tormented by guilt"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜から逃れられない</div>
+      <span class="romaji">~ kara nogarerarenai</span>
+      <p><strong>Meaning:</strong> cannot escape from ~</p>
+      <p><strong>Example:</strong> 業から逃れられない — "cannot escape one's karma"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を背負う</div>
+      <span class="romaji">~ wo seou</span>
+      <p><strong>Meaning:</strong> to bear ~, to carry ~ on one's back</p>
+      <p><strong>Example:</strong> 歴史の重荷を背負う — "to bear the heavy burden of history"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を背負い続ける</div>
+      <span class="romaji">~ wo seoi tsuzukeru</span>
+      <p><strong>Meaning:</strong> to continue bearing ~</p>
+      <p><strong>Example:</strong> 罪を背負い続ける — "to continue carrying guilt"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を拭い去る</div>
+      <span class="romaji">~ wo fukisaru</span>
+      <p><strong>Meaning:</strong> to wipe away ~, to erase ~</p>
+      <p><strong>Example:</strong> 汚名を拭い去る — "to wipe away a bad reputation"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を断ち切る</div>
+      <span class="romaji">~ wo tachikiru</span>
+      <p><strong>Meaning:</strong> to cut off ~, to sever ~</p>
+      <p><strong>Example:</strong> 過去を断ち切る — "to sever ties with the past"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を乗り越える</div>
+      <span class="romaji">~ wo norikoeru</span>
+      <p><strong>Meaning:</strong> to overcome ~, to get past ~</p>
+      <p><strong>Example:</strong> 悲しみを乗り越える — "to overcome grief"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を克服する</div>
+      <span class="romaji">~ wo kokufuku suru</span>
+      <p><strong>Meaning:</strong> to overcome ~, to conquer ~</p>
+      <p><strong>Example:</strong> 困難を克服する — "to overcome difficulties"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜に打ち勝つ</div>
+      <span class="romaji">~ ni uchi-katsu</span>
+      <p><strong>Meaning:</strong> to triumph over ~, to defeat ~</p>
+      <p><strong>Example:</strong> 恐怖に打ち勝つ — "to triumph over fear"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜から立ち直る</div>
+      <span class="romaji">~ kara tachinaoru</span>
+      <p><strong>Meaning:</strong> to recover from ~, to get back on one's feet</p>
+      <p><strong>Example:</strong> 敗戦から立ち直る — "to recover from defeat"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を手放す</div>
+      <span class="romaji">~ wo tebanasu</span>
+      <p><strong>Meaning:</strong> to let go of ~, to release ~</p>
+      <p><strong>Example:</strong> 執着を手放す — "to let go of attachment"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を振り払う</div>
+      <span class="romaji">~ wo furiharau</span>
+      <p><strong>Meaning:</strong> to shake off ~, to brush away ~</p>
+      <p><strong>Example:</strong> 不安を振り払う — "to shake off anxiety"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を消し去る</div>
+      <span class="romaji">~ wo keshisaru</span>
+      <p><strong>Meaning:</strong> to erase ~ completely, to wipe out ~</p>
+      <p><strong>Example:</strong> 記憶を消し去る — "to erase memories"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Formal & Historical Register</h3>
+
+    <div class="grammar-box">
+      <div class="pattern">〜に基づく</div>
+      <span class="romaji">~ ni motozuku</span>
+      <p><strong>Meaning:</strong> to be based on ~</p>
+      <p><strong>Example:</strong> 体験に基づく証言 — "testimony based on experience"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を網羅する</div>
+      <span class="romaji">~ wo mōra suru</span>
+      <p><strong>Meaning:</strong> to cover ~ comprehensively</p>
+      <p><strong>Example:</strong> 各界を網羅する — "covering all fields comprehensively"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜に至るまで</div>
+      <span class="romaji">~ ni itaru made</span>
+      <p><strong>Meaning:</strong> up to ~, until ~, even to the point of ~</p>
+      <p><strong>Example:</strong> 死刑に至るまで — "up to the point of execution"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくされる</div>
+      <span class="romaji">~ wo yoa naku sareru</span>
+      <p><strong>Meaning:</strong> to be forced to ~, to have no choice but to ~</p>
+      <p><strong>Example:</strong> 引き裂かれる思いを余儀なくされる — "to be forced into a torn state of mind"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を禁じえない</div>
+      <span class="romaji">~ wo kinji enai</span>
+      <p><strong>Meaning:</strong> cannot help feeling ~, cannot refrain from ~</p>
+      <p><strong>Example:</strong> 涙を禁じえない — "cannot hold back tears"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜ずにはいられない</div>
+      <span class="romaji">~ zu ni wa irarenai</span>
+      <p><strong>Meaning:</strong> cannot help doing ~ (literary negative)</p>
+      <p><strong>Example:</strong> 嘆かずにはいられない — "cannot help but lament"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせる</div>
+      <span class="romaji">~ wo yoa naku saseru</span>
+      <p><strong>Meaning:</strong> to force ~ upon, to compel ~</p>
+      <p><strong>Example:</strong> 時代は人々に選択を余儀なくさせる — "the era forces choices upon people"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくされた</div>
+      <span class="romaji">~ wo yoa naku sareta</span>
+      <p><strong>Meaning:</strong> was forced to ~ (past passive)</p>
+      <p><strong>Example:</strong> 獄死を余儀なくされた — "was forced to die in prison"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくしている</div>
+      <span class="romaji">~ wo yoa naku shite iru</span>
+      <p><strong>Meaning:</strong> is being forced to ~ (ongoing)</p>
+      <p><strong>Example:</strong> 社会は人々に苦難を余儀なくしている — "society is forcing hardships upon people"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられた</div>
+      <span class="romaji">~ wo yoa naku saserareta</span>
+      <p><strong>Meaning:</strong> was made to force ~ (causative passive)</p>
+      <p><strong>Example:</strong> 時代は人々に死を余儀なくさせられた — "the era made people force death upon others"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられている</div>
+      <span class="romaji">~ wo yoa naku saserarete iru</span>
+      <p><strong>Meaning:</strong> is being made to force ~ (ongoing causative passive)</p>
+      <p><strong>Example:</strong> 国家は国民に戦争を余儀なくさせられている — "the state is being made to force war upon its citizens"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられていた</div>
+      <span class="romaji">~ wo yoa naku saserarete ita</span>
+      <p><strong>Meaning:</strong> was being made to force ~ (past ongoing)</p>
+      <p><strong>Example:</strong> 軍部は国民に徴兵を余儀なくさせられていた — "the military was being made to force conscription upon the people"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてきた</div>
+      <span class="romaji">~ wo yoa naku saserarete kita</span>
+      <p><strong>Meaning:</strong> has been made to force ~ (up to now)</p>
+      <p><strong>Example:</strong> 歴史は人類に苦難を余儀なくさせられてきた — "history has made humanity force hardships upon itself"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてしまった</div>
+      <span class="romaji">~ wo yoa naku saserarete shimatta</span>
+      <p><strong>Meaning:</strong> unfortunately ended up being made to force ~</p>
+      <p><strong>Example:</strong> 戦争は人々に殺戮を余儀なくさせられてしまった — "war unfortunately made people force killing upon others"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてしまっている</div>
+      <span class="romaji">~ wo yoa naku saserarete shimatte iru</span>
+      <p><strong>Meaning:</strong> unfortunately is being made to force ~ (ongoing)</p>
+      <p><strong>Example:</strong> 社会は人々に差別を余儀なくさせられてしまっている — "society is unfortunately making people force discrimination upon others"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてしまっていた</div>
+      <span class="romaji">~ wo yoa naku saserarete shimatte ita</span>
+      <p><strong>Meaning:</strong> unfortunately was being made to force ~ (past)</p>
+      <p><strong>Example:</strong> 体制は人々に弾圧を余儀なくさせられてしまっていた — "the system unfortunately was making people force oppression upon others"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてしまってきた</div>
+      <span class="romaji">~ wo yoa naku saserarete shimatte kita</span>
+      <p><strong>Meaning:</strong> has unfortunately been made to force ~</p>
+      <p><strong>Example:</strong> 歴史は人類に戦争を余儀なくさせられてしまってきた — "history has unfortunately made humanity force war upon itself"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてしまう</div>
+      <span class="romaji">~ wo yoa naku saserarete shimau</span>
+      <p><strong>Meaning:</strong> will unfortunately be made to force ~</p>
+      <p><strong>Example:</strong> 時代は人々に選択を余儀なくさせられてしまう — "the era will unfortunately make people force choices upon others"</p>
+    </div>
+
+    <div class="grammar-box">
+      <div class="pattern">〜を余儀なくさせられてしまっただろう</div>
+      <span class="romaji">~ wo yoa naku saserarete shimatta darō</span>
+      <p><strong>Meaning:</strong> probably unfortunately was made to force ~</p>
+      <p><strong>Example:</strong> 戦争は人々に苦難を余儀なくさせられてしまっただろう — "war probably unfortunately made people force hardships upon others"</p>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL: Key Phrases -->
+<div class="tab-panel" id="panel-phrases">
+  <div class="card">
+    <div class="section-label">How to use</div>
+    <p>These phrases are common in reflective essays, memoirs, and historical writing. They help you recognize tone, register, and rhetorical structure in the essays.</p>
+  </div>
+
+  <div class="card">
+    <h3>Opening & Framing</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">私が生きた20世紀</div>
+      <div class="romaji">Watashi ga ikita nijisseiki</div>
+      <div class="phrase-meta">"The 20th century I lived through" — echoes the book title; personal framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を振り返ってみると</div>
+      <div class="romaji">~ wo furikaette miru to</div>
+      <div class="phrase-meta">"When I look back on ~" — classic essay opening</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を思い出す</div>
+      <div class="romaji">~ wo omoidasu</div>
+      <div class="phrase-meta">"I recall ~" — personal memory marker</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の記憶が蘇る</div>
+      <div class="romaji">~ no kioku ga yomigaeru</div>
+      <div class="phrase-meta">"Memories of ~ come flooding back" — vivid recollection</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の思い出に浸る</div>
+      <div class="romaji">~ no omoide ni hitaru</div>
+      <div class="phrase-meta">"To immerse oneself in memories of ~" — nostalgic tone</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の代を生きた</div>
+      <div class="romaji">~ no jidai wo ikita</div>
+      <div class="phrase-meta">"I lived through the era of ~" — generational claim</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の激動の時代</div>
+      <div class="romaji">~ no gekidō no jidai</div>
+      <div class="phrase-meta">"The turbulent age of ~" — dramatic historical framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の世の中</div>
+      <div class="romaji">~ no yo no naka</div>
+      <div class="phrase-meta">"The world of ~" — old-fashioned/literary way to say "the times"</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃</div>
+      <div class="romaji">~ no koro</div>
+      <div class="phrase-meta">"Around the time of ~" — temporal framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃のこと</div>
+      <div class="romaji">~ no koro no koto</div>
+      <div class="phrase-meta">"The things from around the time of ~" — distant, nostalgic</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の思い出</div>
+      <div class="romaji">~ no koro no omoide</div>
+      <div class="phrase-meta">"Memories from around the time of ~" — nostalgic recollection</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の話</div>
+      <div class="romaji">~ no koro no hanashi</div>
+      <div class="phrase-meta">"Stories from around the time of ~" — oral-history tone</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の出来事</div>
+      <div class="romaji">~ no koro no dekigoto</div>
+      <div class="phrase-meta">"Events from around the time of ~" — factual framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の世相</div>
+      <div class="romaji">~ no koro no sesō</div>
+      <div class="phrase-meta">"The social conditions of ~" — historical-sociological framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の世の中</div>
+      <div class="romaji">~ no koro no yo no naka</div>
+      <div class="phrase-meta">"The world at the time of ~" — broad historical framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の日本</div>
+      <div class="romaji">~ no koro no nihon</div>
+      <div class="phrase-meta">"Japan at the time of ~" — national-historical framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の社会</div>
+      <div class="romaji">~ no koro no shakai</div>
+      <div class="phrase-meta">"Society at the time of ~" — sociological framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の文化</div>
+      <div class="romaji">~ no koro no bunka</div>
+      <div class="phrase-meta">"Culture at the time of ~" — cultural-historical framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の政治</div>
+      <div class="romaji">~ no koro no seiji</div>
+      <div class="phrase-meta">"Politics at the time of ~" — political-historical framing</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の頃の経済</div>
+      <div class="romaji">~ no koro no keizai</div>
+      <div class="phrase-meta">"The economy at the time of ~" — economic-historical framing</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Tone</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜ずにはいられない</div>
+      <div class="romaji">~ zu ni wa irarenai</div>
+      <div class="phrase-meta">"Cannot help but ~" — strong emotional compulsion</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を禁じえない</div>
+      <div class="romaji">~ wo kinji enai</div>
+      <div class="phrase-meta">"Cannot refrain from ~" — formal, literary emotion</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に胸が締め付けられる</div>
+      <div class="romaji">~ ni mune ga shimetsukerareru</div>
+      <div class="phrase-meta">"My chest feels constricted by ~" — grief, anguish</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に言葉を失う</div>
+      <div class="romaji">~ ni kotoba wo ushinau</div>
+      <div class="phrase-meta">"To be lost for words at ~" — speechless</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に涙がこぼれる</div>
+      <div class="romaji">~ ni namida ga koboreru</div>
+      <div class="phrase-meta">"Tears spill over at ~" — quiet, emotional</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に怒りを覚える</div>
+      <div class="romaji">~ ni ikari wo oboeru</div>
+      <div class="phrase-meta">"To feel anger at ~" — measured indignation</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に絶望を感じる</div>
+      <div class="romaji">~ ni zetsubō wo kanjiru</div>
+      <div class="phrase-meta">"To feel despair at ~" — deep pessimism</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に希望を見出す</div>
+      <div class="romaji">~ ni kibō wo midasu</div>
+      <div class="phrase-meta">"To find hope in ~" — redemptive tone</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に誇りを持つ</div>
+      <div class="romaji">~ ni hokori wo motsu</div>
+      <div class="phrase-meta">"To take pride in ~" — affirmative, positive</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に恥じる</div>
+      <div class="romaji">~ ni hajiru</div>
+      <div class="phrase-meta">"To feel ashamed of ~" — moral reflection</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に後悔する</div>
+      <div class="romaji">~ ni kōkai suru</div>
+      <div class="phrase-meta">"To regret ~" — personal remorse</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に反省する</div>
+      <div class="romaji">~ ni hansei suru</div>
+      <div class="phrase-meta">"To reflect on ~" — self-examination</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に疑問を抱く</div>
+      <div class="romaji">~ ni gimon wo idaku</div>
+      <div class="phrase-meta">"To harbor doubts about ~" — questioning, critical</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に疑念を抱く</div>
+      <div class="romaji">~ ni ginen wo idaku</div>
+      <div class="phrase-meta">"To harbor misgivings about ~" — deeper skepticism</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に確信を持つ</div>
+      <div class="romaji">~ ni kakushin wo motsu</div>
+      <div class="phrase-meta">"To be convinced of ~" — certainty</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に自覚を持つ</div>
+      <div class="romaji">~ ni jikaku wo motsu</div>
+      <div class="phrase-meta">"To have self-awareness about ~" — reflective</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に責任を感じる</div>
+      <div class="romaji">~ ni sekinin wo kanjiru</div>
+      <div class="phrase-meta">"To feel responsibility for ~" — moral weight</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に使命感を持つ</div>
+      <div class="romaji">~ ni shimeikan wo motsu</div>
+      <div class="phrase-meta">"To feel a sense of mission about ~" — purposeful</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に宿命を感じる</div>
+      <div class="romaji">~ ni shukumei wo kanjiru</div>
+      <div class="phrase-meta">"To feel fate in ~" — philosophical, resigned</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に運命を感じる</div>
+      <div class="romaji">~ ni unmei wo kanjiru</div>
+      <div class="phrase-meta">"To feel destiny in ~" — dramatic, fateful</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Historical Judgment</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を忘れてはならない</div>
+      <div class="romaji">~ wo wasurete wa naranai</div>
+      <div class="phrase-meta">"We must not forget ~" — moral imperative</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を風化させてはならない</div>
+      <div class="romaji">~ wo fūka sasete wa naranai</div>
+      <div class="phrase-meta">"We must not let ~ fade from memory" — preservation imperative</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を後世に伝える</div>
+      <div class="romaji">~ wo kōsei ni tsutaeru</div>
+      <div class="phrase-meta">"To pass ~ on to future generations" — testimonial duty</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を教訓として受け止める</div>
+      <div class="romaji">~ wo kyōkun toshite uketomeru</div>
+      <div class="phrase-meta">"To take ~ as a lesson" — reflective learning</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を反省の材料とする</div>
+      <div class="romaji">~ wo hansei no zairyō to suru</div>
+      <div class="phrase-meta">"To use ~ as material for reflection" — analytical</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を歴史的に見る</div>
+      <div class="romaji">~ wo rekishiteki ni miru</div>
+      <div class="phrase-meta">"To view ~ historically" — historical perspective</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を相対的に見る</div>
+      <div class="romaji">~ wo sōtaiteki ni miru</div>
+      <div class="phrase-meta">"To view ~ relatively" — relativist perspective</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を客観的に見る</div>
+      <div class="romaji">~ wo kyakkanteki ni miru</div>
+      <div class="phrase-meta">"To view ~ objectively" — detached analysis</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を主観的に見る</div>
+      <div class="romaji">~ wo shukanteki ni miru</div>
+      <div class="phrase-meta">"To view ~ subjectively" — personal perspective</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を多角的に見る</div>
+      <div class="romaji">~ wo takakuteki ni miru</div>
+      <div class="phrase-meta">"To view ~ from multiple angles" — comprehensive</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を批判的に見る</div>
+      <div class="romaji">~ wo hihanteki ni miru</div>
+      <div class="phrase-meta">"To view ~ critically" — critical stance</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を肯定的に見る</div>
+      <div class="romaji">~ wo kōteiteki ni miru</div>
+      <div class="phrase-meta">"To view ~ positively" — affirmative stance</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を否定的に見る</div>
+      <div class="romaji">~ wo hiteiteki ni miru</div>
+      <div class="phrase-meta">"To view ~ negatively" — critical stance</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を中立的に見る</div>
+      <div class="romaji">~ wo chūritsuteki ni miru</div>
+      <div class="phrase-meta">"To view ~ neutrally" — balanced stance</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を肯定的に評価する</div>
+      <div class="romaji">~ wo kōteiteki ni hyōka suru</div>
+      <div class="phrase-meta">"To evaluate ~ positively" — positive assessment</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を否定的に評価する</div>
+      <div class="romaji">~ wo hiteiteki ni hyōka suru</div>
+      <div class="phrase-meta">"To evaluate ~ negatively" — negative assessment</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を歴史的に評価する</div>
+      <div class="romaji">~ wo rekishiteki ni hyōka suru</div>
+      <div class="phrase-meta">"To evaluate ~ historically" — historical judgment</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を総合的に評価する</div>
+      <div class="romaji">~ wo sōgōteki ni hyōka suru</div>
+      <div class="phrase-meta">"To evaluate ~ comprehensively" — holistic judgment</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を客観的に評価する</div>
+      <div class="romaji">~ wo kyakkanteki ni hyōka suru</div>
+      <div class="phrase-meta">"To evaluate ~ objectively" — detached judgment</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を主観的に評価する</div>
+      <div class="romaji">~ wo shukanteki ni hyōka suru</div>
+      <div class="phrase-meta">"To evaluate ~ subjectively" — personal judgment</div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL: My Notes -->
+<div class="tab-panel" id="panel-mynotes">
+  <div class="card">
+    <div class="section-label">How to use</div>
+    <p>Add your own vocabulary, phrases, or observations as you read. These are saved in your browser (localStorage) and persist across sessions. Click the trash icon to delete an entry.</p>
+  </div>
+
+  <div class="card">
+    <h3>Add New Entry</h3>
+    <div class="form-row">
+      <input type="text" id="noteJa" placeholder="Japanese" style="flex:1.2">
+      <input type="text" id="noteRomaji" placeholder="Romaji" style="flex:1">
+      <select id="notePos" style="flex:0.8">
+        <option value="Noun">Noun</option>
+        <option value="Verb">Verb</option>
+        <option value="Adjective">Adjective</option>
+        <option value="Adverb">Adverb</option>
+        <option value="Particle">Particle</option>
+        <option value="Expression">Expression</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <input type="text" id="noteMeaning" placeholder="Meaning in English" style="flex:2">
+      <button class="btn" onclick="addNote()">Add Entry</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Your Notes</h3>
+    <div id="userNotesList"></div>
+  </div>
+</div>
+
+<!-- PANEL: Reading Tracker -->
+<div class="tab-panel" id="panel-tracker">
+  <div class="card">
+    <div class="section-label">How to use</div>
+    <p>Click a number to mark that essay as read. Your progress is saved in your browser. The book contains 369 essays by notable figures; this grid helps you track which ones you have finished.</p>
+    <p style="margin-top:0.4rem"><strong>Legend:</strong> <span style="display:inline-block;width:14px;height:14px;background:var(--green);border-radius:3px;vertical-align:middle;margin:0 4px;"></span> Read &nbsp; <span style="display:inline-block;width:14px;height:14px;background:var(--surface);border:1px solid var(--line-strong);border-radius:3px;vertical-align:middle;margin:0 4px;"></span> Unread</p>
+  </div>
+
+  <div class="card">
+    <h3>Progress</h3>
+    <p id="progressText">0 / 369 essays read (0%)</p>
+    <div class="tracker-grid" id="trackerGrid"></div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ===================== TABS =====================
+(function() {
+  var tabs = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.getAttribute('data-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('panel-' + target).classList.add('active');
+      if (target === 'tracker') renderTracker();
+      if (target === 'mynotes') renderNotes();
+    });
+  });
+})();
+
+// ===================== VOCAB SEARCH =====================
+function filterVocab() {
+  var q = document.getElementById('vocabSearch').value.toLowerCase();
+  var tables = document.querySelectorAll('.vocab-table');
+  tables.forEach(function(table) {
+    var rows = table.querySelectorAll('tbody tr');
+    rows.forEach(function(row) {
+      var text = row.textContent.toLowerCase();
+      row.style.display = text.indexOf(q) > -1 ? '' : 'none';
+    });
+  });
+}
+
+// ===================== MY NOTES (localStorage) =====================
+function getNotes() {
+  try {
+    var raw = localStorage.getItem('watashitachi_notes');
+    return raw ? JSON.parse(raw) : [];
+  } catch(e) { return []; }
+}
+function saveNotes(notes) {
+  localStorage.setItem('watashitachi_notes', JSON.stringify(notes));
+}
+function addNote() {
+  var ja = document.getElementById('noteJa').value.trim();
+  var romaji = document.getElementById('noteRomaji').value.trim();
+  var pos = document.getElementById('notePos').value;
+  var meaning = document.getElementById('noteMeaning').value.trim();
+  if (!ja || !meaning) { alert('Please fill in Japanese and Meaning.'); return; }
+  var notes = getNotes();
+  notes.push({ ja: ja, romaji: romaji, pos: pos, meaning: meaning, id: Date.now() });
+  saveNotes(notes);
+  document.getElementById('noteJa').value = '';
+  document.getElementById('noteRomaji').value = '';
+  document.getElementById('noteMeaning').value = '';
+  renderNotes();
+}
+function deleteNote(id) {
+  var notes = getNotes().filter(function(n) { return n.id !== id; });
+  saveNotes(notes);
+  renderNotes();
+}
+function renderNotes() {
+  var list = document.getElementById('userNotesList');
+  if (!list) return;
+  var notes = getNotes();
+  if (notes.length === 0) { list.innerHTML = '<p style="color:var(--muted);font-size:0.9em;">No notes yet. Add your first entry above.</p>'; return; }
+  var html = '<table class="vocab-table"><thead><tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th><th></th></tr></thead><tbody>';
+  notes.forEach(function(n) {
+    var pc = 'noun';
+    if (n.pos.indexOf('Verb') > -1) pc = 'verb';
+    else if (n.pos.indexOf('Adj') > -1) pc = 'adj';
+    else if (n.pos.indexOf('Adv') > -1) pc = 'adv';
+    else if (n.pos.indexOf('Particle') > -1) pc = 'particle';
+    else if (n.pos.indexOf('Expr') > -1) pc = 'expression';
+    html += '<tr>';
+    html += '<td class="col-ja">' + escapeHtml(n.ja) + '</td>';
+    html += '<td class="col-romaji">' + escapeHtml(n.romaji) + '</td>';
+    html += '<td class="col-pos"><span class="pos-tag ' + pc + '">' + escapeHtml(n.pos) + '</span></td>';
+    html += '<td class="col-meaning">' + escapeHtml(n.meaning) + '</td>';
+    html += '<td><button onclick="deleteNote(' + n.id + ')" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:0.85rem;">Delete</button></td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  list.innerHTML = html;
+}
+function escapeHtml(text) {
+  var div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// ===================== READING TRACKER =====================
+function getTracker() {
+  try {
+    var raw = localStorage.getItem('watashitachi_tracker');
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+function saveTracker(obj) {
+  localStorage.setItem('watashitachi_tracker', JSON.stringify(obj));
+}
+function toggleEssay(n) {
+  var t = getTracker();
+  t[n] = !t[n];
+  saveTracker(t);
+  renderTracker();
+}
+function renderTracker() {
+  var grid = document.getElementById('trackerGrid');
+  var prog = document.getElementById('progressText');
+  if (!grid) return;
+  var t = getTracker();
+  var done = 0;
+  var html = '';
+  for (var i = 1; i <= 369; i++) {
+    var isDone = t[i] ? 'done' : '';
+    if (t[i]) done++;
+    html += '<div class="tracker-cell ' + isDone + '" onclick="toggleEssay(' + i + ')">' + i + '</div>';
+  }
+  grid.innerHTML = html;
+  var pct = Math.round((done / 369) * 100);
+  prog.textContent = done + ' / 369 essays read (' + pct + '%)';
+}
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', function() {
+  renderTracker();
+});
+</script>
+
+</body>
+</html>

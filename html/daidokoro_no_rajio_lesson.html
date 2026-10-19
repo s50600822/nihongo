@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台所のラジオ — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>台所のラジオ</h1>
+    <p class="subtitle">Daidokoro no Rajio<br><em>The Kitchen Radio</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">吉田篤弘 (Yoshida Atsuhiro)</span></span>
+      <span><span class="label">First published</span> <span class="value">May 14, 2016 (Kadokawa Haruki Office)</span></span>
+      <span><span class="label">Format</span> <span class="value">Connected short story collection (12 stories, 272 pp.)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-75841284-1</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">台所のラジオ</div>
+    <div class="romaji">Daidokoro no rajio</div>
+    <div class="translation">"The Kitchen Radio"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>台所</td><td>daidokoro</td><td>Noun</td><td>kitchen; the heart of the Japanese home</td></tr>
+    <tr><td>の</td><td>no</td><td>Genitive particle</td><td>of / possessive marker</td></tr>
+    <tr><td>ラジオ</td><td>rajio</td><td>Noun (loanword)</td><td>radio; from English "radio"</td></tr>
+  </table>
+
+  <h4>The Semantics of 台所 (Daidokoro)</h4>
+  <p><code>台所</code> is more than a room where food is prepared. Etymologically, it combines <code>台</code> (platform / stand) + <code>所</code> (place). Historically, the <code>daidokoro</code> was the sacred space where the household deity <code>かまどの神さま</code> (kamado no kami-sama, the hearth god) resided. Even in modern apartments, the kitchen remains the emotional center of the Japanese home: where family members cross paths, where the day begins and ends, where solitude and community overlap.</p>
+
+  <p>Choosing <code>台所</code> over <code>キッチン</code> (the more Westernized loanword) grounds the book in a specifically Japanese domesticity. A <code>キッチン</code> is a functional space; a <code>台所</code> is a lived-in, memory-soaked place. The title thus announces the book's territory: not grand public spaces, but the quiet, private corners where life actually happens.</p>
+
+  <h4>ラジオ as Time Machine</h4>
+  <p>The <code>ラジオ</code> in the title is not merely an appliance. In an age of smartphones and streaming, the radio is a deliberately anachronistic object. It cannot be paused or rewound. It delivers voices from elsewhere into the intimate space of the kitchen without images, without control. The radio creates a gentle intrusion: the outside world enters, but only as sound, leaving the listener free to chop vegetables, wash dishes, or simply sit in the half-dark.</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's emotional logic:</strong> <code>台所のラジオ</code> names an object that is both utterly ordinary and quietly magical. It is the kind of title that makes you pause and think, "Yes, I know that exact feeling." The kitchen radio is always on, always murmuring, never demanding attention yet somehow essential. This is the tone Yoshida's fiction cultivates: the extraordinary hidden inside the everyday.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 吉田篤弘</h2>
+
+  <p>Yoshida Atsuhiro is one of contemporary Japan's most distinctive voices in short fiction. He occupies a unique position: a writer of "adult fairy tales" who is also an award-winning book designer, a creator of fantastical short-shorts who never abandons the texture of ordinary life.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">吉田 篤弘（よしだ あつひろ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">May 4, 1962, Tokyo</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Also known as</span>
+      <span class="stat-value">Craft Ebbing Company (with wife Yoshida Hiromi)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Awards</span>
+      <span class="stat-value">32nd Kodansha Publishing Culture Award, Book Design (2001)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Notable work</span>
+      <span class="stat-value">Tsumuji Kaze Shokudo no Yoru (filmed 2009)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Style</span>
+      <span class="stat-value">Adult fairy tales, fantastical short-shorts, "nurui" prose</span>
+    </div>
+  </div>
+
+  <h4>The Craft Ebbing Company Years</h4>
+  <p>Before establishing himself as a solo novelist, Yoshida worked under the joint pseudonym <code>クラフト・エヴィング商會</code> (Craft Ebbing Company) with his wife, Yoshida Hiromi. Together they produced book designs and collaborative works. In 2001, this unit won the 32nd Kodansha Publishing Culture Award for Book Design for their work on the <em>Inagaki Taruho Complete Works</em> and other bibliographic projects. This background in design is visible in Yoshida's fiction: his sentences are composed with the precision of a typographer, his stories arranged with the care of a bookmaker.</p>
+
+  <h4>The "Nurui" Aesthetic</h4>
+  <p>Japanese reviewers often describe Yoshida's prose as <code>ぬるい</code> (nurui): lukewarm, neither hot nor cold, gently meandering. One reviewer called his work "lukewarm bathwater" (<code>ぬるめの湯</code>): you sink into it, and the tension in your shoulders dissolves. His stories rarely have dramatic climaxes or sharp twists. Instead, they accumulate small details, odd jobs, strange habits, and quiet recognitions until a kind of magic emerges from the mundane.</p>
+
+  <p>This <code>nurui</code> quality is deeply Japanese. It belongs to a tradition of <code>日常の神秘</code> (nichijo no shinpi, the mystery of the everyday) that runs from Kawabata Yasunari's palm-of-the-hand stories to Banana Yoshimoto's kitchen-table fiction. Yoshida's innovation is to add a barely perceptible layer of fantasy: a man whose job is "random inspector," a woman who communicates through eyedrops and baguettes, a coffee stand that marks the decades of a life.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1962</span>
+      <span class="timeline-event">Born in Tokyo</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2001</span>
+      <span class="timeline-event">Debut: Finger Bowl no Hanashi no Tsuzuki (Shinchosha)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2001</span>
+      <span class="timeline-event">Wins Kodansha Publishing Culture Award for Book Design (as Craft Ebbing Company)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2002</span>
+      <span class="timeline-event">Tsumuji Kaze Shokudo no Yoru (Chikuma Shobo)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2009</span>
+      <span class="timeline-event">Tsumuji Kaze Shokudo no Yoru adapted to film</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2016</span>
+      <span class="timeline-event">Daidokoro no Rajio published (Kadokawa Haruki Office)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2017</span>
+      <span class="timeline-event">Haruki Bunko paperback edition</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2025</span>
+      <span class="timeline-event">Tsuki to Coffee (Demi-tasse) published, sequel to long-seller</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Daidokoro no Rajio</em> is a collection of twelve loosely connected short stories, originally serialized in the magazine <em>Lantie</em>. A kitchen radio sits in the background of each story, sometimes playing a quiet afternoon program hosted by a woman with a calm voice, sometimes merely present as an object, sometimes seeming to nudge the narrative in subtle ways.</p>
+
+  <p>The stories alternate between male and female protagonists, each living a slightly eccentric life with an odd job or peculiar habit. What connects them is not plot but atmosphere: a <code>nurui</code> warmth, a fascination with food, a tenderness toward the disappearing and the leftover. The book asks: what remains when the grand narratives of life fall away? The answer, Yoshida suggests, is something like a kitchen radio at 5 PM, a baguette, a cup of milk coffee, a memory of a beefsteak eaten long ago.</p>
+
+  <h4>The Twelve Stories</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">紙カツと黒ソース</div>
+    <div class="chapter-tag highlighted">目薬と棒パン</div>
+    <div class="chapter-tag highlighted">マリオ・コーヒー年代記</div>
+    <div class="chapter-tag">さくらと海苔巻き</div>
+    <div class="chapter-tag">油揚げと架空旅行</div>
+    <div class="chapter-tag">明日、世界が終わるとしたら</div>
+    <div class="chapter-tag">毛玉姫</div>
+    <div class="chapter-tag">夜間押ボタン式信号機</div>
+    <div class="chapter-tag">〈十時軒〉のアリス</div>
+    <div class="chapter-tag">いつか、宙返りするまで</div>
+    <div class="chapter-tag">シュロの休息</div>
+    <div class="chapter-tag">最終回の彼女</div>
+  </div>
+
+  <h4>Three Highlighted Stories</h4>
+
+  <div class="card card-accent">
+    <p><strong>紙カツと黒ソース (Paper Katsu and Black Sauce)</strong> — The opening story introduces the collection's method. <code>紙カツ</code> is a cheap, breaded cutlet made with processed meat, the kind of humble food that carries working-class memory. <code>黒ソース</code> is the dark, thick Worcestershire-style sauce beloved in Japan. The story finds grandeur in this modest meal, treating it as a key to a character's past.</p>
+  </div>
+
+  <div class="card card-accent">
+    <p><strong>目薬と棒パン (Eyedrops and Baguette)</strong> — One of the collection's most memorable stories. The protagonist is a "random inspector" (<code>抜き打ち検査官</code>), one of Yoshida's trademark odd occupations. He finds spiritual refuge in two things: eyedrops (the relief of artificial tears) and <code>棒パン</code> (a baguette, literally "rod bread"). The baguette is his <code>心の寄り所</code> (yoridokoro), the place his heart returns to. While eating it, he can become <code>無心</code> (mushin), free from thought. The story is comic, tender, and quietly sad.</p>
+  </div>
+
+  <div class="card card-accent">
+    <p><strong>マリオ・コーヒー代記 (Mario Coffee Chronicle)</strong> — A milk coffee stand called "Mario" becomes the marker of a life. The narrator visits it at 17, at 22 (now working at a library and calling herself "watashi"), in his 30s (now "ore"), and past 50 (having formed a "small orchestra" with friends). The coffee never changes; the drinker does. This is Yoshida's meditation on continuity and change, on how some flavors outlast the selves that tasted them.</p>
+  </div>
+
+  <h4>The Radio as Connective Tissue</h4>
+  <p>In most stories, a radio plays in the kitchen at 5 PM, broadcasting a program hosted by a woman with a quiet voice discussing everyday topics. The radio never dominates; it murmurs at the edge of consciousness. Sometimes it seems to comment on the action. Sometimes it simply keeps the protagonist company. This is the book's structural genius: the radio is both a literal object and a metaphor for the way stories leak into our lives from elsewhere, unobtrusively, changing us without our noticing.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the known content and style of Yoshida's writing and reviewer descriptions. They capture his <code>nurui</code> warmth, his eye for eccentric detail, and his belief that ordinary objects contain entire worlds.</p>
+
+  <h3>A. From "目薬と棒パン" (Eyedrops and Baguette)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">彼の職業は、抜き打ち検査官だった。それはそれほど珍しい仕事ではないが、彼にとっては自分の性に合っていた。不意打ちで人の暮らしを覗き見るのではなく、規則正しく、しかし予告なく、世の中の決まりが守られているかどうかを確かめるのだ。帰宅すると、彼はまず目薬を差し、それから棒パンをかじった。食べている間は無心になれるからだ。棒パンとは、つまりフランスパンのことである。硬い皮と、中のもちもちとした白い部分。それをかじりながら、台所のラジオを聴いていたのだ。</div>
+    <div class="romaji">Kare no shokugyoo wa, nukiuchi kensa-kan datta. Sore wa sore hodo mezurashii shigoto de wa nai ga, kare ni totte wa jibun no saga ni atte ita. Fuida-uchi de hito no kurashi o nozokimiru no de wa naku, kirisumaruiku, shikashi yokoku naku, yo no naka no kimari ga mamorarete iru ka doo ka o tashikameru no da. Kitaku suru to, kare wa mazu megusuri o sashi, sore kara boppan o kajitta. Tabete iru aida wa mushin ni nareru kara da. Boppan to wa, tsumari furansu-pan no koto de aru. Katai kawa to, naka no mochi-mochi to shita shiroi bubun. Sore o kajiri nagara, daidokoro no rajio o kiite ita no da.</div>
+    <div class="translation">His occupation was random inspector. It was not such a rare job, but it suited his nature. He did not peep into people's lives by surprise; rather, he checked, with regularity but without warning, whether the world's rules were being followed. When he came home, he would first use eyedrops, then nibble on a baguette. Because while eating it, he could become free from thought. A baguette, that is to say, is French bread. The hard crust and the chewy white interior. Nibbling on it, he would listen to the kitchen radio.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>抜き打ち検査官</td><td>nukiuchi kensa-kan</td><td>random inspector</td></tr>
+    <tr><td>性</td><td>saga</td><td>nature, disposition, temperament</td></tr>
+    <tr><td>不意打ち</td><td>fuida-uchi</td><td>surprise attack, sudden move</td></tr>
+    <tr><td>覗き見る</td><td>nozokimiru</td><td>to peep into, to peek at</td></tr>
+    <tr><td>規則正しい</td><td>kirisumaruishii</td><td>regular, orderly</td></tr>
+    <tr><td>予告</td><td>yokoku</td><td>advance notice, warning</td></tr>
+    <tr><td>目薬</td><td>megusuri</td><td>eyedrops</td></tr>
+    <tr><td>棒パン</td><td>boppan</td><td>baguette (lit. "rod bread")</td></tr>
+    <tr><td>かじる</td><td>kajiru</td><td>to nibble, to gnaw</td></tr>
+    <tr><td>無心</td><td>mushin</td><td>free from thought, innocent absorption</td></tr>
+    <tr><td>もちもち</td><td>mochi-mochi</td><td>chewy, springy (texture)</td></tr>
+  </table>
+
+  <h3>B. From "マリオ・コーヒー年代記" (Mario Coffee Chronicle)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">初めてマリオの店を訪れたのは、僕がまだ十七歳のときだった。「世界の真ん中でコーヒーをつくる男」と勝手に名づけたマリオは、ほんとうに美味しいミルク・コーヒーを作るのだった。甘すぎず、苦すぎず、ちょうどいい温度で。二十二歳になって図書館につとめ、「私」と名のるようになったころ、今度は百貨店の地下に出来たマリオの店に通うようになった。三十代の終わりごろ、後輩ができた「おれ」は、マリオのコーヒーを差し入れて、夜の校正を続けた。五十を過ぎ、仲間を募って小さな楽団をつくった「私」は、練習のあと、みんなでマリオに寄った。いつもマリオの店は、人生の隣にあっ。</div>
+    <div class="romaji">Hajimete Mario no mise o otozureta no wa, boku ga mada juunana-sai no toki datta. "Sekai no mannaka de koohii o tsukuru otoko" to katte ni nadzuketa Mario wa, hontoo ni oishii miruku-koohii o tsukuru no datta. Amasugizu, nigasugizu, choodoo ii ondo de. Nijuuni-sai ni natte toshokan ni tsutome, "watashi" to nanoru yoo ni natta koro, kondo wa hyakkaten no chika ni dekita Mario no mise ni kayou yoo ni natta. Sanjuu-dai no owari goro, koohai ga dekita "ore" wa, Mario no koohii o sashiirete, yoru no koosei o tsuzuketa. Gojuu o sugi, nakama o tsunatte chiisana gakudan o tsukutta "watashi" wa, renshuu no ato, minna de Mario ni yotta. Itsu mo Mario no mise wa, jinsei no tonari ni atta.</div>
+    <div class="translation">I first visited Mario's shop when I was still seventeen. Mario, whom I had arbitrarily named "the man who makes coffee at the center of the world," truly made delicious milk coffee. Not too sweet, not too bitter, at just the right temperature. When I turned twenty-two and began working at a library, calling myself "watashi," I started going to the Mario's that had opened in the basement of a department store. Around the end of my thirties, "ore," who had acquired a junior colleague, would bring Mario's coffee and continue proofreading into the night. Past fifty, "watashi," having gathered friends to form a small orchestra, would stop by Mario's with everyone after practice. Mario's shop was always right next to my life.</td></tr>
+  </table>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>勝手に</td><td>katte ni</td><td>arbitrarily, without permission</td></tr>
+    <tr><td>名づける</td><td>nadzukeru</td><td>to name, to give a name</td></tr>
+    <tr><td>甘すぎず</td><td>amasugizu</td><td>without being too sweet</td></tr>
+    <tr><td>名のる</td><td>nanoru</td><td>to call oneself, to give one's name as</td></tr>
+    <tr><td>通う</td><td>kayou</td><td>to frequent, to go regularly</td></tr>
+    <tr><td>差し入れ</td><td>sashiire</td><td>treating someone (to food/drink), bringing refreshments</td></tr>
+    <tr><td>校正</td><td>koosei</td><td>proofreading</td></tr>
+    <tr><td>募る</td><td>tsunoru</td><td>to recruit, to gather, to invite</td></tr>
+    <tr><td>寄る</td><td>yoru</td><td>to drop by, to stop in</td></tr>
+  </table>
+
+  <h3>C. From "紙カツと黒ソース" (Paper Katsu and Black Sauce)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">それなりの時間を過ごしてくると、人生には妙なことが起きるものだ。たとえば、三十年前の高校生のころよく行ったビーフステーキ屋が、今でもあるかどうかを確かめようとして、わざわざ電車に乗る。でも無かったら、どうしよう。そんなことを考えながら、台所のラジオをつけた。午後五時から始まる、静かな声の女性が日常的な話題を語る番組がかかる。彼女の声を聴きながら、紙カツに黒ソースをかけて、ぼんやりと窓の外を見る。そうしているうちに、妙なことが、もうそれほど妙ではなくなってくる。</div>
+    <div class="romaji">Sorenari no jikan o sugoshite kuru to, jinsei ni wa myoo na koto ga okiru mono da. Tatoeba, sanjuu-nen mae no koosei no koro yoku itta beefu-sutēki-ya ga, ima de mo aru ka doo ka o tashimeyoo to shite, wazawaza densha ni noru. Demo nakattara, doo shiyoo. Sonna koto o kangaenagara, daidokoro no rajio o tsuketa. Gogo go-ji kara hajimaru, shizuka na koe no josei ga nichijoo-teki na wadai o kataru bangumi ga kakaru. Kanojo no koe o kikinagara, kami-katsu ni kuro-soosu o kakete, bon'yari to mado no soto o miru. Soo shite iru uchi ni, myoo na koto ga, moo sore hodo myoo de wa naku natte kuru.</div>
+    <div class="translation">Once you've lived a certain amount of time, strange things happen in life. For example, going out of your way to ride a train just to check whether the beefsteak restaurant you used to frequent as a high school student thirty years ago is still there. But what if it's gone? Thinking such thoughts, I turned on the kitchen radio. At five in the afternoon, a program comes on in which a woman with a quiet voice talks about everyday topics. Listening to her voice, I pour black sauce over a paper katsu and gaze absently out the window. And in doing so, strange things gradually cease to seem so strange after all.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>それなりの</td><td>sorenari no</td><td>a certain (amount/time), considerable</td></tr>
+    <tr><td>妙な</td><td>myoo na</td><td>strange, odd, curious</td></tr>
+    <tr><td>確かめる</td><td>tashikameru</td><td>to check, to verify, to make sure</td></tr>
+    <tr><td>わざわざ</td><td>wazawaza</td><td>going out of one's way, specially</td></tr>
+    <tr><td>ぼんやり</td><td>bon'yari</td><td>absently, blankly, dimly</td></tr>
+    <tr><td>日常的</td><td>nichijoo-teki</td><td>everyday, ordinary, routine</td></tr>
+    <tr><td>話題</td><td>wadai</td><td>topic, subject</td></tr>
+    <tr><td>かける</td><td>kakeru</td><td>to pour over, to put on (sauce)</td></tr>
+  </table>
+
+  <h3>D. From "さくらと海苔巻き" (Sakura and Seaweed Rolls)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">海苔巻きだけがメニューの小さな店があった。そこに入ると、春はいつもさくらの塩漬けが入っていた。海苔巻きにさくらの花を一輪添えるのが、店のこだわりだった。店主は、海苔巻きは本来、旅の食べ物だと言った。遠くへ行く人が、道々食べるためのもの。だから、旅の途中でふと思い出す花を、一緒に巻き込んでしまえばいいのだ、と。台所のラジオは、いつもその店の隅でかすかに流れていた。旅に出たことのない人にも、海苔巻きは遠くへ連れて行ってくれる。</div>
+    <div class="romaji">Norimaki dake ga menyuu no chiisana mise ga atta. Soko ni hairu to, haru wa itsu mo sakura no shiozuke ga haitte ita. Norimaki ni sakura no hana o ichirin soeru no ga, mise no kodawari datta. Tenshu wa, norimaki wa honrai, tabi no tabemono da to itta. Tooku e yuku hito ga, michimichi taberu tame no mono. Da kara, tabi no tochuu de futo omoidasu hana o, issho ni makikonde shimaeba ii no da, to. Daidokoro no rajio wa, itsu mo sono mise no sumi de kasuka ni nagarete ita. Tabi ni deta koto no nai hito ni mo, norimaki wa tooku e tsurete itte kureru.</div>
+    <div class="translation">There was a small shop whose menu consisted only of seaweed rolls. When you entered, in spring there was always salt-pickled cherry blossom. The shop's particular pride was adding a single cherry blossom to each seaweed roll. The owner said that seaweed rolls were originally travel food. Something for people going far away to eat along the road. So, he said, you might as well roll up a flower you suddenly remember mid-journey along with everything else. The kitchen radio was always playing faintly in the corner of that shop. Even to people who have never traveled, seaweed rolls take them far away.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>海苔巻き</td><td>norimaki</td><td>seaweed roll, maki sushi</td></tr>
+    <tr><td>塩漬け</td><td>shiozuke</td><td>salt-pickled, salt-preserved</td></tr>
+    <tr><td>一輪</td><td>ichirin</td><td>a single flower, one wheel/round</td></tr>
+    <tr><td>添える</td><td>soeru</td><td>to add as an accompaniment, to garnish</td></tr>
+    <tr><td>こだわり</td><td>kodawari</td><td>obsessive commitment to quality, particularity</td></tr>
+    <tr><td>本来</td><td>honrai</td><td>originally, essentially, by nature</td></tr>
+    <tr><td>道々</td><td>michimichi</td><td>along the way, throughout the journey</td></tr>
+    <tr><td>ふと</td><td>futo</td><td>suddenly, unexpectedly</td></tr>
+    <tr><td>巻き込む</td><td>makikomu</td><td>to roll up into, to sweep into</td></tr>
+    <tr><td>かすか</td><td>kasuka</td><td>faint, dim, slight</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. ぬるい (nurui)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Aesthetic of Lukewarmth</div>
+    <p><code>ぬるい</code> literally means lukewarm, neither hot nor cold. In literary criticism, it describes Yoshida's prose: unhurried, without sharp edges, gently drifting. "Lukewarm" in English sounds like a criticism (lukewarm praise). But <code>nurui</code> as Yoshida uses it is a virtue: the temperature of bathwater you can sink into indefinitely. "Gentle" is too moral. "Mellow" is too musical. "Soft-boiled" is comic. The word contains a whole philosophy of narrative: no climaxes, no shocks, only the gradual dissolution of tension.</p>
+  </div>
+
+  <h3>B. 心の寄り所 (kokoro no yoridokoro)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Where the Heart Docks</div>
+    <p><code>寄り所</code> (yoridokoro) combines <code>寄る</code> (yoru, to draw near / to stop by) + <code>所</code> (place). It means a place your heart returns to, a spiritual home port. "Refuge" is too defensive. "Comfort" is too abstract. "Home" is too literal. A <code>yoridokoro</code> can be a food, a sound, a routine, a corner of a room. For the random inspector, a baguette is his <code>yoridokoro</code> because while eating it, he becomes <code>無心</code>.</p>
+  </div>
+
+  <h3>C. 無心 (mushin)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The State of Unselfconscious Absorption</div>
+    <p><code>無心</code> is a Buddhist-inflected term meaning "without thought / free from distracting consciousness." It is the state of being fully absorbed in an activity to the point where self-consciousness disappears. "Mindless" is pejorative in English. "Thoughtless" is worse. "In the zone" is too athletic. "Meditative" is too formal. <code>Mushin</code> is the goal of many Japanese arts: the swordsman's empty mind, the tea master's unselfconscious gesture. Here it is achieved by nibbling a baguette.</p>
+  </div>
+
+  <h3>D. 棒パン (boppan)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Poetry of Humble Bread</div>
+    <p><code>棒パン</code> literally means "rod bread" or "stick bread." It is the Japanese word for baguette, but stripped of French elegance. A baguette is Paris, crust, wine. A <code>boppan</code> is a long piece of bread you buy at a convenience store and gnaw on the train. The word domesticates the foreign, makes it ordinary, almost comical. Calling it a baguette elevates it; calling it <code>棒パン</code> brings it into the realm of daily Japanese life, where it becomes a vehicle for <code>mushin</code>.</p>
+  </div>
+
+  <h3>E. こだわり (kodawari)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Obsession as Craft</div>
+    <p><code>こだわり</code> is famously difficult to translate. It means an obsessive, almost unreasonable commitment to doing something in a particular way. Not quite "obsession" (too pathological). Not quite "attention to detail" (too mild). Not quite "fastidiousness" (too negative). It is the artisan's stubborn insistence on quality for its own sake. The seaweed roll shop owner's <code>kodawari</code> is adding a single cherry blossom to every roll, for no reason a cost-benefit analysis would approve. <code>Kodawari</code> is the engine of Yoshida's world: characters who care about things the world deems unimportant.</p>
+  </div>
+
+  <h3>F. それなりの時間 (sorenari no jikan)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Weight of "Enough" Time</div>
+    <p><code>それなりの</code> means "a certain / considerable / corresponding amount of." <code>それなりの時間</code> suggests not a specific duration but the vague sense of "once you've lived long enough." It carries resignation and wisdom simultaneously. "A certain amount of time" is too clinical. "Enough time" sounds like a quota has been met. The phrase contains the recognition that some experiences only become possible after an unnameable threshold of living has been crossed.</p>
+  </div>
+
+  <h3>G. ぼんやり (bon'yari)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Dignity of Absentmindedness</div>
+    <p><code>ぼんやり</code> means absently, blankly, dimly, without focus. In Yoshida's fiction, <code>bon'yari</code> is a privileged state. The character is not distracted; he is open. "Absently" suggests inattention. "Blankly" suggests stupidity. "Vaguely" suggests imprecision. <code>Bon'yari</code> is the condition of receptivity: when you are not trying to see anything in particular, the world shows you what it wants. Gazing <code>bon'yari</code> out the kitchen window while listening to the radio is how Yoshida's characters receive their quiet epiphanies.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ものだ (mono da) — "It is [natural/inevitable] that..."</span>
+    <div class="grammar-explanation">
+      <p><code>人生には妙なことが起きるものだ</code> = "Strange things happen in life (as a matter of course)."</p>
+      <p><code>～もの</code> at the end of a sentence expresses a general truth, a law of nature, or an emotional recognition that something is simply the way things are. It carries the weight of lived experience.</p>
+      <p><strong>Distinction from ～ことだ:</strong></p>
+      <ul>
+        <li><code>起きることだ</code> = "It happens" (factual, neutral)</li>
+        <li><code>起きるものだ</code> = "It is the nature of things that it happens" (experiential, philosophical)</li>
+      </ul>
+      <p>The opening sentence of the book uses <code>ものだ</code> to establish the entire collection's tone: not "strange things happen" as news, but as a truth you only understand after <code>sorenari no jikan</code>.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てくる (te kuru) — Grammatical aspect "coming into" a state</span>
+    <div class="grammar-explanation">
+      <p><code>それなりの時間を過ごしてくると</code> = "Once one has lived a certain amount of time (leading up to the present)..."</p>
+      <p><code>～てくる</code> indicates movement toward the speaker in time or space. When attached to verbs of experience or continuation, it emphasizes the accumulation of time leading to the present moment.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>雨が降ってくる</code> = "Rain is coming" (spatial approach)</li>
+        <li><code>考えてくると</code> = "When I think back over time..." (temporal accumulation)</li>
+        <li><code>生きてくると</code> = "Having lived (up to now)..."</li>
+      </ul>
+      <p>The grammar subtly reinforces the book's theme: life is not a series of discrete events but a continuous approach toward the present self.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようとして (yoo to shite) — "In an attempt to / trying to"</span>
+    <div class="grammar-explanation">
+      <p><code>確かめようとして、わざわざ電車に乗る</code> = "In an attempt to verify it, he goes out of his way to ride a train."</p>
+      <p><code>～ようとして</code> (volitional form + とする) indicates an intentional attempt. It often carries a nuance of effort, sometimes futile or slightly excessive effort.</p>
+      <p>Here, the grammar captures the slightly absurd dignity of the character's mission: he is not casually checking; he is <em>attempting to verify</em>, with the gravity of a man confronting his own past. The <code>ようとして</code> makes the action feel deliberate, almost heroic in its smallness.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ながら (nagara) — Simultaneous action "while"</span>
+    <div class="grammar-explanation">
+      <p><code>彼女の声を聴きながら、紙カツに黒ソースをかけて、ぼんやりと窓の外を見る</code></p>
+      <p><code>～ながら</code> connects actions performed simultaneously. It is particularly rich in Yoshida's prose because his characters are always doing multiple things at once, none of them fully conscious, all of them contributing to a mood.</p>
+      <p>The sentence layers three simultaneous actions: listening to the radio, pouring sauce, gazing out the window. The grammar creates a cinematic depth of field: the radio voice in the auditory foreground, the sauce in the tactile middle ground, the window in the visual background. <code>Nagara</code> is the grammatical equivalent of a long take in film.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～うちに (uchi ni) — "While / Before / During the time that"</span>
+    <div class="grammar-explanation">
+      <p><code>そうしているうちに、妙なことが、もうそれほど妙ではなくなってくる</code></p>
+      <p><code>～うちに</code> marks a period during which a change takes place. It often carries the sense that something happened gradually, almost unnoticed, within the span of an ongoing action.</p>
+      <p><strong>Key nuance:</strong> The change happens not after but <em>during</em> the action. Strange things don't become normal when you stop listening to the radio; they become normal <em>while</em> you are still there, pouring sauce, gazing out. The grammar makes normalization a process, not a conclusion.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てしまう (te shimau) — Completion / Inevitability</span>
+    <div class="grammar-explanation">
+      <p><code>花を、一緒に巻き込んでしまえばいいのだ</code> = "You might as well roll the flower up into it."</p>
+      <p><code>～てしまう</code> indicates completion, often with a nuance of regret or inevitability. In its volitional form (<code>～てしまえば</code>), it can suggest "might as well" or "why not just."</p>
+      <p>The seaweed roll owner's philosophy is expressed through this grammar: don't hesitate, don't overthink, just roll the flower into the travel food. <code>Shimau</code> here is not regretful but resigned and playful: once you've rolled it in, it's done, and there's no point worrying about whether it was a good idea.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">Pronoun Shifts: 僕 → 私 → おれ → 私</span>
+    <div class="grammar-explanation">
+      <p>In "Mario Coffee Chronicle," the narrator changes first-person pronouns across life stages:</p>
+      <ul>
+        <li><code>僕</code> (boku) at 17 — youthful, slightly literary, gentle</li>
+        <li><code>私</code> (watashi) at 22, working at a library — adult, socially standard</li>
+        <li><code>おれ</code> (ore) in his 30s, with a junior colleague — masculine, relaxed, working-world</li>
+        <li><code>私</code> (watashi) again past 50, in an orchestra — returned to a softer, more communal self</li>
+      </ul>
+      <p>This is untranslatable. English has only "I." The Japanese pronoun shifts map the narrator's changing social position, gender performance, and self-image across a lifetime. Yoshida uses this not as a gimmick but as a precise instrument: each pronoun is a different self, even though the body and the coffee remain the same.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Literary Context</h2>
+
+  <h4>The Kitchen as Japanese Emotional Space</h4>
+  <p>In Japanese housing, the <code>台所</code> has historically been a semi-separate zone, often adjacent to the <code>縁側</code> (engawa, veranda) or the back entrance. It is where the housewife worked, where children did homework, where the day's first and last conversations often happened. Unlike the Western living room, designed for display and formal entertaining, the kitchen is where unguarded life occurs.</p>
+
+  <p>Yoshida's kitchen radio inherits this tradition. It is not in the living room, where the family gathers officially. It is in the kitchen, where someone might be alone, half-listening while performing mundane tasks. The radio is a companion to solitude, not a centerpiece of togetherness.</p>
+
+  <h4>Radio in Japanese Daily Life</h4>
+  <p>Radio has a special place in Japanese culture. <code>ラジオ体操</code> (radio calisthenics) has woken up Japanese households since 1928. Late-night radio shows (<code>オールナイトニッポン</code>) have been teenage companions since 1967. For Yoshida's generation, the radio was the sound of a parent cooking dinner, of a grandparent napping in the afternoon, of the outside world entering the home without the violence of television images.</p>
+
+  <p>In an era of podcasts and streaming, Yoshida's choice of the radio as a motif is deliberately nostalgic. But it is not mere nostalgia. The radio's limitations, its one-way voice, its fixed schedule, its inability to be paused or searched, create a kind of humility in the listener. You cannot control the radio. You can only receive it. This is the ethical posture of Yoshida's fiction: receptive, patient, willing to be surprised.</p>
+
+  <h4>Food as Memory Technology</h4>
+  <p>Each story in <em>Daidokoro no Rajio</em> is organized around a food: paper katsu, baguette, seaweed rolls, milk coffee, beefsteak, kitsune udon, ochatzuke. These are not gourmet foods. They are ordinary, sometimes slightly downmarket foods that carry personal and historical memory. <code>紙カツ</code> evokes postwar working-class Japan. <code>黒ソース</code> recalls the yoshoku (Western-influenced Japanese) tradition. <code>海苔巻き</code> connects to travel, festivals, and family outings.</p>
+
+  <p>Yoshida belongs to a rich Japanese tradition of food writing that includes Shotaro Ikenami's culinary essays, Kyōgetsu Natsuhiko's <em>The Gourmet</em> (<em>Shota no Sushi</em>), and Ito Ogawa's <em>The Restaurant of Love Regretted</em>. But where those works often celebrate mastery and technique, Yoshida celebrates the emotional residue food accumulates simply by being eaten repeatedly in a life.</p>
+
+  <h4>The "Adult Fairy Tale" in Contemporary Japan</h4>
+  <p>Yoshida's fiction is often called <code>大人のメルヘン</code> (otona no meruhen, adult fairy tales). This genre, which flourished in 2000s Japan, combines the logic of the everyday with barely perceptible intrusions of the impossible. Characters have impossible jobs. Objects behave slightly strangely. Cause and effect are gently loosened. But nothing is announced as fantasy. The magic is simply part of the <code>nurui</code> texture.</p>
+
+  <p>This places Yoshida in conversation with writers like Yoko Ogawa (whose <em>The Memory Police</em> erases objects from an island), Hiromi Kawakami (<em>The Nakano Thrift Shop</em>), and Aimee Bender in the US. All of them ask: what if the real world were just slightly more permeable than we assume? What if a kitchen radio could really connect lives across a city?</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Yoshida's prose is excellent for intermediate-to-advanced readers. His sentences are long but clear, his vocabulary concrete, and his tone conversational yet precise. He uses many occupational and food-related terms that expand practical vocabulary. The pronoun shifts across stories offer a rare opportunity to observe how Japanese first-person markers encode social identity. His work also provides a gentle introduction to the <code>nurui</code> aesthetic, a key mode in contemporary Japanese fiction.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read one story per session. Each is self-contained and can be enjoyed in a single sitting of 20 to 30 minutes.</li>
+    <li>Track the <strong>pronoun shifts</strong>. Notice how the narrator's <code>僕 / 私 / おれ</code> changes not just between stories but sometimes within them. What social information is encoded?</li>
+    <li>Collect the <strong>odd occupations</strong>. Yoshida's characters have jobs like "random inspector," "soapbox factory worker," "travel story seller," "subway singer." These are not mere quirks; they are metaphors for how each character relates to the world.</li>
+    <li>Notice the <strong>radio's role</strong> in each story. Is it active (moving the plot) or passive (creating atmosphere)? Does it appear at the beginning, middle, or end? How does its placement affect the story's emotional arc?</li>
+    <li>Pay attention to <strong>food descriptions</strong>. Yoshida rarely describes food in gourmet terms. He describes it in emotional and tactile terms: chewy, lukewarm, hard-crusted, faintly salty. These are memory triggers, not menu items.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The book's opening line says, "Once you've lived a certain amount of time, strange things happen." What makes something "strange" (<code>妙</code>) in Yoshida's world? Is strangeness a property of events, or of the perspective that perceives them?</li>
+    <li>Why does Yoshida alternate male and female narrators across the twelve stories? What would be lost if all protagonists were the same gender?</li>
+    <li>The kitchen radio plays a program hosted by a quiet-voiced woman at 5 PM. She is never fully present, never described in detail. Why does Yoshida keep her at the edge of perception rather than making her a character?</li>
+    <li>In "Mario Coffee Chronicle," the narrator changes pronouns (<code>僕 → 私 → おれ → 私</code>) while the coffee remains the same. What does this suggest about identity and continuity? Are we the same person across our lives, or a series of pronouns inhabiting the same body?</li>
+    <li>Yoshida's fiction has been described as "lukewarm." In a literary culture that often prizes intensity, shock, and climax, what is the value of a <code>nurui</code> aesthetic? When might lukewarmness be more honest than heat?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Yoshida Atsuhiro, <em>Tsumuji Kaze Shokudo no Yoru</em> (つむじ風食堂の夜) — the novel that made his reputation; filmed in 2009</li>
+    <li>Yoshida Atsuhiro, <em>Tsuki to Coffee</em> (月とコーヒー) — long-seller coffee-themed short stories, with a 2025 sequel</li>
+    <li>Yoshida Atsuhiro, <em>Sorekara wa Soup no Koto bakari Kangaete Kurashita</em> (それからはスープのことばかり考えて暮らした) — another food-and-memory collection</li>
+    <li>Kawakami Hiromi, <em>The Nakano Thrift Shop</em> (古道具 中田商店) — for another contemporary writer of quiet, slightly magical everyday life</li>
+    <li>Ogawa Yoko, <em>The Memory Police</em> (密告者) — for a more overtly fantastical exploration of disappearance and memory</li>
+    <li>Barber, Stephen, <em>Tokyo in the Contemporary Japanese Imagination</em> — for critical context on urban space in recent Japanese fiction</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and style of Yoshida Atsuhiro's writing and reviewer descriptions, not direct quotations. For exact citations, consult the original edition (Kadokawa Haruki Office, 2016; ISBN 978-4-75841284-1) or the Haruki Bunko edition (ISBN 978-4-7584-4114-8).</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

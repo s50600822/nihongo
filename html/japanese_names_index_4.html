@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>名前帳 — An Index of Japanese Names</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #E7E1D3;
+    --paper-card: #F1EDE2;
+    --ink: #23241F;
+    --ink-soft: #55564C;
+    --seal: #A6362C;
+    --seal-soft: #A6362C22;
+    --line: #23241F33;
+    --indigo: #38506B;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+    line-height: 1.5;
+  }
+
+  /* subtle paper texture */
+  body::before{
+    content:"";
+    position: fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.4;
+    background-image:
+      radial-gradient(var(--ink) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+    opacity: .03;
+  }
+
+  header.hero{
+    padding: 3.2rem 1.5rem 2.4rem;
+    max-width: 1180px;
+    margin: 0 auto;
+    display:flex;
+    align-items:flex-end;
+    gap: 1.4rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .seal-mark{
+    flex: none;
+    width: 64px;
+    height: 64px;
+    border: 2.5px solid var(--seal);
+    color: var(--seal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Shippori Mincho', serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    transform: rotate(-3deg);
+    border-radius: 2px;
+    background: var(--seal-soft);
+  }
+
+  h1{
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 .3rem;
+    letter-spacing: .01em;
+  }
+
+  header.hero p{
+    margin:0;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    font-size: .98rem;
+  }
+
+  .layout{
+    max-width: 1180px;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2.2rem;
+    padding: 2.4rem 1.5rem 5rem;
+    align-items: start;
+  }
+
+  .sidebar{
+    position: sticky;
+    top: 1.5rem;
+    display:flex;
+    flex-direction:column;
+    gap: 1.6rem;
+  }
+
+  .sidebar h2{
+    font-size: .78rem;
+    font-weight: 700;
+    margin: 0 0 .6rem;
+    color: var(--ink-soft);
+  }
+
+  .search-box{
+    display:flex;
+    flex-direction:column;
+    gap: .4rem;
+  }
+
+  .search-box input{
+    font-family: inherit;
+    font-size: .95rem;
+    padding: .55rem .7rem;
+    border: 1px solid var(--line);
+    background: var(--paper-card);
+    color: var(--ink);
+    border-radius: 2px;
+  }
+
+  .search-box input:focus-visible{
+    outline: 2px solid var(--seal);
+    outline-offset: 1px;
+  }
+
+  .filter-list{
+    display:flex;
+    flex-direction:column;
+    gap: .35rem;
+  }
+
+  .filter-btn{
+    text-align:left;
+    font-family: inherit;
+    font-size: .92rem;
+    padding: .45rem .6rem;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 2px;
+    display:flex;
+    justify-content:space-between;
+    gap: .5rem;
+  }
+
+  .filter-btn:hover{ background: var(--paper-card); }
+
+  .filter-btn:focus-visible{
+    outline: 2px solid var(--seal);
+    outline-offset: 1px;
+  }
+
+  .filter-btn[aria-pressed="true"]{
+    border-color: var(--seal);
+    background: var(--seal-soft);
+    font-weight: 700;
+  }
+
+  .filter-btn .count{
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .note-block{
+    font-size: .84rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+
+  .results-summary{
+    font-size: .88rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.1rem;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+
+  .card{
+    position:relative;
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    padding: 1.1rem 1.1rem 1rem;
+    border-radius: 2px;
+  }
+
+  .card .tag{
+    position:absolute;
+    top: -1px;
+    right: -1px;
+    width: 30px;
+    height: 30px;
+    background: var(--seal);
+    color: #F1EDE2;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 700;
+    font-size: .8rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .card .kanji{
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0 0 .15rem;
+  }
+
+  .card .romaji{
+    font-size: .9rem;
+    color: var(--indigo);
+    letter-spacing: .02em;
+    margin: 0 0 .55rem;
+  }
+
+  .card .meaning{
+    font-size: .84rem;
+    margin: 0 0 .5rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .card .notes{
+    font-size: .86rem;
+    margin: 0;
+    padding-top: .55rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .empty-state{
+    padding: 3rem 1rem;
+    text-align:center;
+    color: var(--ink-soft);
+    font-size: .95rem;
+    border: 1px dashed var(--line);
+  }
+
+  @media (max-width: 780px){
+    .layout{ grid-template-columns: 1fr; }
+    .sidebar{
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items:flex-start;
+    }
+    .search-box{ flex: 1 1 100%; }
+    .filter-list{ flex-direction: row; flex-wrap: wrap; }
+    .note-block{ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="seal-mark" aria-hidden="true">名</div>
+  <div>
+    <h1>名前帳 — An Index of Japanese Names</h1>
+    <p>Common surnames and given names for Japanese learners, with romaji readings, literal meanings, and the cultural context behind each one.</p>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="search-box">
+      <h2 id="search-label">Search</h2>
+      <input type="text" id="search" placeholder="Search kanji, romaji, meaning…" aria-labelledby="search-label">
+    </div>
+
+    <div>
+      <h2 id="filter-label">Category</h2>
+      <div class="filter-list" role="group" aria-labelledby="filter-label" id="filters"></div>
+    </div>
+
+    <div class="note-block">
+      Japanese names are written surname first, given name second — the reverse of Western order. Kanji readings shown here are the most common; some names have alternate valid readings.
+    </div>
+  </aside>
+
+  <main>
+    <p class="results-summary" id="summary" aria-live="polite"></p>
+    <div class="grid" id="grid"></div>
+    <div class="empty-state" id="empty" hidden>No names match your search. Try a different word or clear the filter.</div>
+  </main>
+</div>
+
+<script>
+const DATA = [
+  // Surnames
+  { kanji:"佐藤", romaji:"Satō", meaning:"\u201chelp / assist\u201d + \u201cwisteria\u201d", notes:"The single most common surname in Japan. Often used as a generic/everyman name in fiction.", category:"surname", tag:"S" },
+  { kanji:"鈴木", romaji:"Suzuki", meaning:"\u201cbell\u201d + \u201ctree\u201d", notes:"Second most common surname nationwide. Also a major car brand.", category:"surname", tag:"S" },
+  { kanji:"高橋", romaji:"Takahashi", meaning:"\u201chigh / tall\u201d + \u201cbridge\u201d", notes:"Consistently ranks in the top three most common surnames.", category:"surname", tag:"S" },
+  { kanji:"田中", romaji:"Tanaka", meaning:"\u201crice field\u201d + \u201cinside / middle\u201d", notes:"Extremely common. Frequently used as a default \u201caverage person\u201d name, similar to \u201cJohn Smith.\u201d", category:"surname", tag:"S" },
+  { kanji:"渡辺", romaji:"Watanabe", meaning:"\u201ccross / ford\u201d + \u201carea / vicinity\u201d", notes:"Common nationwide; several variant kanji spellings exist for the same reading.", category:"surname", tag:"S" },
+  { kanji:"伊藤", romaji:"Itō", meaning:"place name + \u201cwisteria\u201d", notes:"Common especially in central and eastern Japan. Also the name of a major trading company (Itochu).", category:"surname", tag:"S" },
+  { kanji:"山本", romaji:"Yamamoto", meaning:"\u201cmountain\u201d + \u201corigin / base\u201d", notes:"Common nationwide. Isoroku Yamamoto, the WWII admiral, is a well-known historical bearer.", category:"surname", tag:"S" },
+  { kanji:"中村", romaji:"Nakamura", meaning:"\u201cmiddle\u201d + \u201cvillage\u201d", notes:"Very common, with a straightforward descriptive meaning: \u201cmiddle of the village.\u201d", category:"surname", tag:"S" },
+  { kanji:"小林", romaji:"Kobayashi", meaning:"\u201csmall\u201d + \u201cforest / woods\u201d", notes:"Common surname with a poetic, nature-based meaning.", category:"surname", tag:"S" },
+  { kanji:"加藤", romaji:"Katō", meaning:"\u201cadd / increase\u201d + \u201cwisteria\u201d", notes:"Part of a large family of \u201c-tō\u201d (wisteria) surnames tracing back to the Fujiwara clan of the Heian period.", category:"surname", tag:"S" },
+  { kanji:"吉田", romaji:"Yoshida", meaning:"\u201cgood fortune\u201d + \u201crice field\u201d", notes:"A top-15 surname nationwide, common in both cities and rural areas.", category:"surname", tag:"S" },
+  { kanji:"山田", romaji:"Yamada", meaning:"\u201cmountain\u201d + \u201crice field\u201d", notes:"Very common; often paired with Hanako as Japan\u2019s stock \u201cJane Doe\u201d full name (see full-name section).", category:"surname", tag:"S" },
+  { kanji:"佐々木", romaji:"Sasaki", meaning:"reduplicated \u201cassist\u201d kanji, of unclear original meaning", notes:"A distinctive-sounding common surname; frequent in Tōhoku (northern Japan).", category:"surname", tag:"S" },
+  { kanji:"山口", romaji:"Yamaguchi", meaning:"\u201cmountain\u201d + \u201cmouth / opening\u201d", notes:"Common surname; also the name of a prefecture in western Japan.", category:"surname", tag:"S" },
+  { kanji:"松本", romaji:"Matsumoto", meaning:"\u201cpine tree\u201d + \u201corigin / base\u201d", notes:"Common nationwide; also the name of a city in Nagano Prefecture.", category:"surname", tag:"S" },
+  { kanji:"井上", romaji:"Inoue", meaning:"\u201cwell (water source)\u201d + \u201cabove\u201d", notes:"Common surname, literally \u201cabove the well\u201d \u2014 refers to homes historically built near a well.", category:"surname", tag:"S" },
+  { kanji:"木村", romaji:"Kimura", meaning:"\u201ctree\u201d + \u201cvillage\u201d", notes:"Common; a straightforward nature-based place-name-style surname.", category:"surname", tag:"S" },
+  { kanji:"林", romaji:"Hayashi", meaning:"\u201cwoods / grove\u201d", notes:"A short, common single-kanji surname.", category:"surname", tag:"S" },
+  { kanji:"斎藤", romaji:"Saitō", meaning:"\u201cpurification / worship\u201d + \u201cwisteria\u201d", notes:"Another \u201c-tō\u201d (wisteria) surname from the Fujiwara lineage; has several alternate kanji spellings (斎藤/齋藤/齊藤).", category:"surname", tag:"S" },
+  { kanji:"清水", romaji:"Shimizu", meaning:"\u201cclear\u201d + \u201cwater\u201d", notes:"Common surname meaning \u201cclear water,\u201d often tied to a natural spring near an ancestral home.", category:"surname", tag:"S" },
+  { kanji:"山崎", romaji:"Yamazaki", meaning:"\u201cmountain\u201d + \u201ccape / promontory\u201d", notes:"Common surname; also a well-known whisky brand (Suntory\u2019s Yamazaki distillery).", category:"surname", tag:"S" },
+  { kanji:"森", romaji:"Mori", meaning:"\u201cforest\u201d", notes:"A short, common single-kanji surname with a plain nature meaning.", category:"surname", tag:"S" },
+  { kanji:"池田", romaji:"Ikeda", meaning:"\u201cpond\u201d + \u201crice field\u201d", notes:"Common surname; also a city name in Osaka Prefecture.", category:"surname", tag:"S" },
+  { kanji:"橋本", romaji:"Hashimoto", meaning:"\u201cbridge\u201d + \u201corigin / base\u201d", notes:"Common surname meaning roughly \u201cfoot of the bridge.\u201d", category:"surname", tag:"S" },
+  { kanji:"阿部", romaji:"Abe", meaning:"unclear origin, old clan name", notes:"Common surname especially in the Tōhoku region; unrelated in meaning to modern kanji readings.", category:"surname", tag:"S" },
+  { kanji:"石川", romaji:"Ishikawa", meaning:"\u201cstone\u201d + \u201criver\u201d", notes:"Common surname; also a prefecture on the Sea of Japan coast.", category:"surname", tag:"S" },
+  { kanji:"中島", romaji:"Nakajima", meaning:"\u201cmiddle\u201d + \u201cisland\u201d", notes:"Common surname referring to a small landmass amid a river or lake.", category:"surname", tag:"S" },
+  { kanji:"前田", romaji:"Maeda", meaning:"\u201cin front of\u201d + \u201crice field\u201d", notes:"Common surname; also the name of a powerful feudal-era clan.", category:"surname", tag:"S" },
+  { kanji:"藤田", romaji:"Fujita", meaning:"\u201cwisteria\u201d + \u201crice field\u201d", notes:"Common; another Fujiwara-derived \u201cfuji\u201d (wisteria) surname.", category:"surname", tag:"S" },
+  { kanji:"後藤", romaji:"Gotō", meaning:"\u201cbehind / after\u201d + \u201cwisteria\u201d", notes:"Common; yet another \u201c-tō\u201d (wisteria) surname tracing back to the Fujiwara clan.", category:"surname", tag:"S" },
+  { kanji:"近藤", romaji:"Kondō", meaning:"\u201cnear / close\u201d + \u201cwisteria\u201d", notes:"Common Fujiwara-derived surname; Kondō Isami was a famous Shinsengumi commander.", category:"surname", tag:"S" },
+  { kanji:"村上", romaji:"Murakami", meaning:"\u201cvillage\u201d + \u201cabove / upper\u201d", notes:"Common surname; shared with novelist Haruki Murakami.", category:"surname", tag:"S" },
+  { kanji:"藤原", romaji:"Fujiwara", meaning:"\u201cwisteria\u201d + \u201cfield / plain\u201d", notes:"The original clan name behind most \u201c-tō\u201d and \u201cfuji-\u201d surnames; historically one of Japan\u2019s most powerful aristocratic families.", category:"surname", tag:"S" },
+  { kanji:"椎名", romaji:"Shiina", meaning:"\u201cchinquapin tree (a type of oak)\u201d + \u201cname\u201d", notes:"A moderately common surname, well known from musician Ringo Shiina and frequent use as a character surname in anime, manga, and dramas.", category:"surname", tag:"S" },
+  { kanji:"新井", romaji:"Arai", meaning:"\u201cnew\u201d + \u201cwell\u201d", notes:"A recognizable surname meaning \u201cnew well,\u201d referring to a newly dug water source.", category:"surname", tag:"S" },
+  { kanji:"神谷", romaji:"Kamiya", meaning:"\u201cgod / deity\u201d + \u201cvalley\u201d", notes:"A distinctive surname often seen in fiction; literally \u201cgod\u2019s valley.\u201d", category:"surname", tag:"S" },
+  { kanji:"宮崎", romaji:"Miyazaki", meaning:"\u201cshrine\u201d + \u201ccape / promontory\u201d", notes:"Recognizable surname; shares its name with director Hayao Miyazaki and Miyazaki Prefecture.", category:"surname", tag:"S" },
+  { kanji:"秋元", romaji:"Akimoto", meaning:"\u201cautumn\u201d + \u201corigin / base\u201d", notes:"A recognizable surname associated with producer Yasushi Akimoto (AKB48).", category:"surname", tag:"S" },
+  { kanji:"綾瀬", romaji:"Ayase", meaning:"\u201cdesign / pattern\u201d + \u201crapids / shallows\u201d", notes:"A more distinctive, elegant-sounding surname; shared with actress Haruka Ayase.", category:"surname", tag:"S" },
+  { kanji:"竹内", romaji:"Takeuchi", meaning:"\u201cbamboo\u201d + \u201cinside\u201d", notes:"A common surname, literally \u201cinside the bamboo (grove).\u201d", category:"surname", tag:"S" },
+  { kanji:"向井", romaji:"Mukai", meaning:"\u201cfacing / opposite\u201d + \u201cwell\u201d", notes:"A recognizable surname meaning roughly \u201cacross from the well\u201d; shared with baseball pitcher Shohei-era teammate Yuki Mukai and others.", category:"surname", tag:"S" },
+  { kanji:"横山", romaji:"Yokoyama", meaning:"\u201cside / horizontal\u201d + \u201cmountain\u201d", notes:"Common surname referring to a mountain seen from the side.", category:"surname", tag:"S" },
+  { kanji:"宮本", romaji:"Miyamoto", meaning:"\u201cshrine\u201d + \u201corigin / base\u201d", notes:"Common surname; shared with legendary swordsman Musashi Miyamoto.", category:"surname", tag:"S" },
+  { kanji:"内田", romaji:"Uchida", meaning:"\u201cinside\u201d + \u201crice field\u201d", notes:"Common surname referring to a field enclosed within a settlement.", category:"surname", tag:"S" },
+  { kanji:"高木", romaji:"Takagi", meaning:"\u201ctall\u201d + \u201ctree\u201d", notes:"Common surname with a plain nature-based meaning.", category:"surname", tag:"S" },
+  { kanji:"安藤", romaji:"Andō", meaning:"\u201cpeace / calm\u201d + \u201cwisteria\u201d", notes:"Another Fujiwara-derived \u201c-tō\u201d surname; shared with architect Tadao Ando.", category:"surname", tag:"S" },
+  { kanji:"島田", romaji:"Shimada", meaning:"\u201cisland\u201d + \u201crice field\u201d", notes:"Common surname; also the name of a traditional married-woman\u2019s hairstyle (shimada-mage).", category:"surname", tag:"S" },
+  { kanji:"谷口", romaji:"Taniguchi", meaning:"\u201cvalley\u201d + \u201cmouth / opening\u201d", notes:"Common surname referring to the entrance of a valley.", category:"surname", tag:"S" },
+  { kanji:"大野", romaji:"Ōno", meaning:"\u201cbig\u201d + \u201cfield / plain\u201d", notes:"Common surname; shared with Arashi member Satoshi Ohno.", category:"surname", tag:"S" },
+  { kanji:"丸山", romaji:"Maruyama", meaning:"\u201cround\u201d + \u201cmountain\u201d", notes:"Common surname describing a rounded hill or mountain.", category:"surname", tag:"S" },
+  { kanji:"今井", romaji:"Imai", meaning:"\u201cnow / present\u201d + \u201cwell\u201d", notes:"Common surname; one of many \u201c-i\u201d (well) surnames referring to a water source.", category:"surname", tag:"S" },
+  { kanji:"河野", romaji:"Kōno", meaning:"\u201criver\u201d + \u201cfield / plain\u201d", notes:"Common surname especially in western Japan (Shikoku).", category:"surname", tag:"S" },
+  { kanji:"村田", romaji:"Murata", meaning:"\u201cvillage\u201d + \u201crice field\u201d", notes:"Common surname with a plain agricultural meaning.", category:"surname", tag:"S" },
+  { kanji:"酒井", romaji:"Sakai", meaning:"\u201calcohol / sake\u201d + \u201cwell\u201d", notes:"Common surname; historically linked to a feudal-era clan of the same name.", category:"surname", tag:"S" },
+  { kanji:"工藤", romaji:"Kudō", meaning:"\u201ccraft / construction\u201d + \u201cwisteria\u201d", notes:"Another Fujiwara-lineage \u201c-tō\u201d surname, common especially in northern Japan.", category:"surname", tag:"S" },
+  { kanji:"石田", romaji:"Ishida", meaning:"\u201cstone\u201d + \u201crice field\u201d", notes:"Common surname; shared with feudal-era commander Mitsunari Ishida.", category:"surname", tag:"S" },
+  { kanji:"森田", romaji:"Morita", meaning:"\u201cforest\u201d + \u201crice field\u201d", notes:"Common surname; also the name of Sony co-founder Akio Morita.", category:"surname", tag:"S" },
+  { kanji:"上田", romaji:"Ueda", meaning:"\u201cabove / upper\u201d + \u201crice field\u201d", notes:"Common surname; also a city name in Nagano Prefecture.", category:"surname", tag:"S" },
+  { kanji:"原", romaji:"Hara", meaning:"\u201cfield / plain\u201d", notes:"A short, common single-kanji surname.", category:"surname", tag:"S" },
+  { kanji:"柴田", romaji:"Shibata", meaning:"\u201cbrushwood\u201d + \u201crice field\u201d", notes:"Common surname; shared with feudal-era general Katsuie Shibata.", category:"surname", tag:"S" },
+  { kanji:"中山", romaji:"Nakayama", meaning:"\u201cmiddle\u201d + \u201cmountain\u201d", notes:"Common surname describing a mountain in the middle of a range.", category:"surname", tag:"S" },
+  { kanji:"田村", romaji:"Tamura", meaning:"\u201crice field\u201d + \u201cvillage\u201d", notes:"Common surname combining two of the most frequent surname kanji.", category:"surname", tag:"S" },
+  { kanji:"金子", romaji:"Kaneko", meaning:"\u201cgold / money\u201d + \u201cchild\u201d", notes:"Common surname, despite the literal \u201cmoney child\u201d reading having no particular financial connotation today.", category:"surname", tag:"S" },
+  { kanji:"和田", romaji:"Wada", meaning:"\u201charmony\u201d + \u201crice field\u201d", notes:"Common surname carrying a peaceful, harmonious meaning.", category:"surname", tag:"S" },
+  { kanji:"中野", romaji:"Nakano", meaning:"\u201cmiddle\u201d + \u201cfield / plain\u201d", notes:"Common surname; also a well-known ward in Tokyo.", category:"surname", tag:"S" },
+  { kanji:"原田", romaji:"Harada", meaning:"\u201cfield / plain\u201d + \u201crice field\u201d", notes:"Common surname combining two agricultural-landscape kanji.", category:"surname", tag:"S" },
+  { kanji:"小野", romaji:"Ono", meaning:"\u201csmall\u201d + \u201cfield / plain\u201d", notes:"Common surname; distinct from Ōno (大野, \u201cbig field\u201d) despite the similar romanization.", category:"surname", tag:"S" },
+  { kanji:"福田", romaji:"Fukuda", meaning:"\u201cgood fortune\u201d + \u201crice field\u201d", notes:"Common surname with an auspicious meaning.", category:"surname", tag:"S" },
+  { kanji:"太田", romaji:"Ōta", meaning:"\u201cbig\u201d + \u201crice field\u201d", notes:"Common surname; also a ward name in Tokyo.", category:"surname", tag:"S" },
+  { kanji:"三浦", romaji:"Miura", meaning:"\u201cthree\u201d + \u201cbay / inlet\u201d", notes:"Common surname; also the name of a peninsula south of Tokyo.", category:"surname", tag:"S" },
+  { kanji:"岡本", romaji:"Okamoto", meaning:"\u201chill\u201d + \u201corigin / base\u201d", notes:"Common surname; shared with artist Tarō Okamoto.", category:"surname", tag:"S" },
+  { kanji:"松田", romaji:"Matsuda", meaning:"\u201cpine tree\u201d + \u201crice field\u201d", notes:"Common surname; also the name of Mazda\u2019s founding family (Matsuda, romanized as \u201cMazda\u201d for the brand).", category:"surname", tag:"S" },
+  { kanji:"西村", romaji:"Nishimura", meaning:"\u201cwest\u201d + \u201cvillage\u201d", notes:"Common surname indicating a village\u2019s western section.", category:"surname", tag:"S" },
+  { kanji:"藤井", romaji:"Fujii", meaning:"\u201cwisteria\u201d + \u201cwell\u201d", notes:"Common Fujiwara-derived surname; shared with shogi prodigy Sōta Fujii.", category:"surname", tag:"S" },
+  { kanji:"坂本", romaji:"Sakamoto", meaning:"\u201cslope\u201d + \u201corigin / base\u201d", notes:"Common surname; shared with historical reformer Ryōma Sakamoto.", category:"surname", tag:"S" },
+  { kanji:"青木", romaji:"Aoki", meaning:"\u201cblue / green\u201d + \u201ctree\u201d", notes:"Common surname describing an evergreen tree.", category:"surname", tag:"S" },
+  { kanji:"遠藤", romaji:"Endō", meaning:"\u201cfar\u201d + \u201cwisteria\u201d", notes:"Another Fujiwara-lineage \u201c-tō\u201d surname, common nationwide.", category:"surname", tag:"S" },
+  { kanji:"岡田", romaji:"Okada", meaning:"\u201chill\u201d + \u201crice field\u201d", notes:"Common surname describing a field on a hillside.", category:"surname", tag:"S" },
+  { kanji:"長谷川", romaji:"Hasegawa", meaning:"\u201clong valley\u201d + \u201criver\u201d", notes:"Common surname with an unusually long reading for its kanji; associated with the Hasedera temple region.", category:"surname", tag:"S" },
+  { kanji:"石井", romaji:"Ishii", meaning:"\u201cstone\u201d + \u201cwell\u201d", notes:"Common surname referring to a well lined with stone.", category:"surname", tag:"S" },
+  { kanji:"小川", romaji:"Ogawa", meaning:"\u201csmall\u201d + \u201criver\u201d", notes:"Common surname meaning \u201csmall river\u201d or \u201cstream.\u201d", category:"surname", tag:"S" },
+  { kanji:"山下", romaji:"Yamashita", meaning:"\u201cmountain\u201d + \u201cbelow / under\u201d", notes:"Common surname describing a home at the base of a mountain.", category:"surname", tag:"S" },
+  { kanji:"服部", romaji:"Hattori", meaning:"old clan/guild name (weavers)", notes:"A distinctive surname tracing back to a historical clothmakers\u2019 guild; well known from ninja-themed fiction.", category:"surname", tag:"S" },
+  { kanji:"桜井", romaji:"Sakurai", meaning:"\u201ccherry blossom\u201d + \u201cwell\u201d", notes:"A recognizable, poetic-sounding surname; also a city name in Nara Prefecture.", category:"surname", tag:"S" },
+  { kanji:"平野", romaji:"Hirano", meaning:"\u201cflat / level\u201d + \u201cfield / plain\u201d", notes:"Common surname describing flat, open farmland.", category:"surname", tag:"S" },
+  { kanji:"望月", romaji:"Mochizuki", meaning:"\u201cwish / hope\u201d + \u201cmoon\u201d", notes:"A poetic surname literally meaning \u201cfull moon.\u201d", category:"surname", tag:"S" },
+  { kanji:"菅原", romaji:"Sugawara", meaning:"\u201csedge (plant)\u201d + \u201cfield / plain\u201d", notes:"Historic surname tied to the deified scholar Sugawara no Michizane, worshipped as the god of learning.", category:"surname", tag:"S" },
+  { kanji:"久保", romaji:"Kubo", meaning:"\u201chollow / depression (in land)\u201d", notes:"Common surname describing a low-lying area of land.", category:"surname", tag:"S" },
+  { kanji:"千葉", romaji:"Chiba", meaning:"\u201cthousand\u201d + \u201cleaves\u201d", notes:"Common surname; also the name of a prefecture bordering Tokyo.", category:"surname", tag:"S" },
+  { kanji:"松尾", romaji:"Matsuo", meaning:"\u201cpine tree\u201d + \u201ctail / ridge\u201d", notes:"Common surname; shared with haiku poet Matsuo Bashō.", category:"surname", tag:"S" },
+  { kanji:"野口", romaji:"Noguchi", meaning:"\u201cfield / plain\u201d + \u201cmouth / opening\u201d", notes:"Common surname; shared with bacteriologist Hideyo Noguchi, pictured on the 1,000-yen note.", category:"surname", tag:"S" },
+  { kanji:"川口", romaji:"Kawaguchi", meaning:"\u201criver\u201d + \u201cmouth / opening\u201d", notes:"Common surname describing where a river meets the sea; also a city in Saitama.", category:"surname", tag:"S" },
+  { kanji:"小島", romaji:"Kojima", meaning:"\u201csmall\u201d + \u201cisland\u201d", notes:"Common surname; shared with game designer Hideo Kojima.", category:"surname", tag:"S" },
+  { kanji:"荒木", romaji:"Araki", meaning:"\u201crough / wild\u201d + \u201ctree\u201d", notes:"Recognizable surname; shared with manga artist Hirohiko Araki (JoJo\u2019s Bizarre Adventure).", category:"surname", tag:"S" },
+  { kanji:"中川", romaji:"Nakagawa", meaning:"\u201cmiddle\u201d + \u201criver\u201d", notes:"Common surname describing a river running through the middle of an area.", category:"surname", tag:"S" },
+  { kanji:"星野", romaji:"Hoshino", meaning:"\u201cstar\u201d + \u201cfield / plain\u201d", notes:"A poetic, distinctive surname literally meaning \u201cstar field.\u201d", category:"surname", tag:"S" },
+  { kanji:"川崎", romaji:"Kawasaki", meaning:"\u201criver\u201d + \u201ccape / promontory\u201d", notes:"Common surname; also a major industrial city and the namesake of Kawasaki Heavy Industries.", category:"surname", tag:"S" },
+  { kanji:"黒田", romaji:"Kuroda", meaning:"\u201cblack\u201d + \u201crice field\u201d", notes:"Recognizable surname referring to dark, fertile soil; also a historic feudal clan name.", category:"surname", tag:"S" },
+  { kanji:"白石", romaji:"Shiraishi", meaning:"\u201cwhite\u201d + \u201cstone\u201d", notes:"A distinctive surname meaning \u201cwhite stone.\u201d", category:"surname", tag:"S" },
+  { kanji:"松岡", romaji:"Matsuoka", meaning:"\u201cpine tree\u201d + \u201chill\u201d", notes:"Common surname combining two nature-landscape kanji.", category:"surname", tag:"S" },
+  { kanji:"北村", romaji:"Kitamura", meaning:"\u201cnorth\u201d + \u201cvillage\u201d", notes:"Common surname indicating a village\u2019s northern section.", category:"surname", tag:"S" },
+  { kanji:"及川", romaji:"Oikawa", meaning:"\u201creach / arrive at\u201d + \u201criver\u201d", notes:"A distinctive surname common in the Tōhoku region.", category:"surname", tag:"S" },
+  { kanji:"立花", romaji:"Tachibana", meaning:"\u201cstand\u201d + \u201cflower / mandarin orange blossom\u201d", notes:"An elegant, literary-sounding surname frequently used for characters in fiction.", category:"surname", tag:"S" },
+  { kanji:"水野", romaji:"Mizuno", meaning:"\u201cwater\u201d + \u201cfield / plain\u201d", notes:"Common surname; also a well-known sportswear brand (Mizuno).", category:"surname", tag:"S" },
+  { kanji:"森本", romaji:"Morimoto", meaning:"\u201cforest\u201d + \u201corigin / base\u201d", notes:"Common surname combining two frequently used surname kanji.", category:"surname", tag:"S" },
+  { kanji:"二宮", romaji:"Ninomiya", meaning:"\u201csecond\u201d + \u201cshrine / palace\u201d", notes:"Recognizable surname; shared with Arashi member Kazunari Ninomiya and Edo-era agricultural reformer Sontoku Ninomiya.", category:"surname", tag:"S" },
+  { kanji:"木下", romaji:"Kinoshita", meaning:"\u201ctree\u201d + \u201cbelow / under\u201d", notes:"Common surname meaning \u201cunder the tree.\u201d", category:"surname", tag:"S" },
+  { kanji:"熊谷", romaji:"Kumagai", meaning:"\u201cbear\u201d + \u201cvalley\u201d", notes:"Recognizable surname; also a city name in Saitama Prefecture.", category:"surname", tag:"S" },
+  { kanji:"石橋", romaji:"Ishibashi", meaning:"\u201cstone\u201d + \u201cbridge\u201d", notes:"Common surname; also the founding family name behind Bridgestone (a wordplay translation of \u201cIshibashi\u201d).", category:"surname", tag:"S" },
+  { kanji:"三宅", romaji:"Miyake", meaning:"\u201cthree\u201d + \u201chouse / residence\u201d", notes:"Recognizable surname; also shared with fashion designer Issey Miyake.", category:"surname", tag:"S" },
+  { kanji:"菊池", romaji:"Kikuchi", meaning:"\u201cchrysanthemum\u201d + \u201cpond\u201d", notes:"An elegant surname referencing Japan\u2019s imperial flower, the chrysanthemum.", category:"surname", tag:"S" },
+  { kanji:"石原", romaji:"Ishihara", meaning:"\u201cstone\u201d + \u201cfield / plain\u201d", notes:"Common surname; shared with actress Satomi Ishihara and former Tokyo governor Shintarō Ishihara.", category:"surname", tag:"S" },
+  { kanji:"尾崎", romaji:"Ozaki", meaning:"\u201ctail / ridge\u201d + \u201ccape / promontory\u201d", notes:"Recognizable surname; shared with singer-songwriter Yutaka Ozaki.", category:"surname", tag:"S" },
+
+  // Male given names
+  { kanji:"太郎", romaji:"Tarō", meaning:"\u201cthick / big\u201d + \u201cson\u201d (eldest son)", notes:"An almost archetypal male name — Japan\u2019s equivalent of \u201cJohn Doe.\u201d Traditionally given to firstborn sons.", category:"male", tag:"M" },
+  { kanji:"一郎", romaji:"Ichirō", meaning:"\u201cone\u201d + \u201cson\u201d", notes:"\u201cFirst son.\u201d Part of a traditional numbered naming set (Ichirō, Jirō, Saburō…).", category:"male", tag:"M" },
+  { kanji:"次郎", romaji:"Jirō", meaning:"\u201cnext\u201d + \u201cson\u201d", notes:"Traditionally the name given to a second son.", category:"male", tag:"M" },
+  { kanji:"健太", romaji:"Kenta", meaning:"\u201chealthy / strong\u201d + \u201cbig / great\u201d", notes:"A popular modern name conveying strength and vitality.", category:"male", tag:"M" },
+  { kanji:"大輔", romaji:"Daisuke", meaning:"\u201cbig\u201d + \u201chelp\u201d", notes:"Common name that conveys the image of a \u201cgreat helper.\u201d", category:"male", tag:"M" },
+  { kanji:"翔太", romaji:"Shōta", meaning:"\u201csoar / fly\u201d + \u201cbig\u201d", notes:"Popular from the late 20th century onward; evokes flight and ambition.", category:"male", tag:"M" },
+  { kanji:"悠斗", romaji:"Yūto", meaning:"\u201cleisurely / calm\u201d + \u201cthe Big Dipper / star\u201d", notes:"A very trendy name from the 2000s\u20132020s, combining calmness with a celestial image.", category:"male", tag:"M" },
+  { kanji:"蓮", romaji:"Ren", meaning:"\u201clotus\u201d", notes:"An extremely popular single-kanji name in recent years, carrying Buddhist imagery of purity rising from mud.", category:"male", tag:"M" },
+  { kanji:"陸", romaji:"Riku", meaning:"\u201cland\u201d", notes:"Popular modern name — simple, strong, and nature-based.", category:"male", tag:"M" },
+  { kanji:"拓也", romaji:"Takuya", meaning:"\u201cpioneer / open up\u201d + \u201calso\u201d", notes:"Common name conveying ambition and forging one\u2019s own path.", category:"male", tag:"M" },
+  { kanji:"誠", romaji:"Makoto", meaning:"\u201csincerity / truth\u201d", notes:"A timeless single-kanji name valuing honesty; popular across many generations.", category:"male", tag:"M" },
+  { kanji:"直樹", romaji:"Naoki", meaning:"\u201chonest / straight\u201d + \u201ctree\u201d", notes:"Common name; also shares its reading with the prestigious Naoki Prize for popular fiction.", category:"male", tag:"M" },
+  { kanji:"隼人", romaji:"Hayato", meaning:"\u201cfalcon\u201d + \u201cperson\u201d", notes:"A striking name evoking speed and sharpness; historically also referred to an ancient people of southern Kyushu.", category:"male", tag:"M" },
+  { kanji:"大翔", romaji:"Hiroto", meaning:"\u201cbig\u201d + \u201csoar\u201d", notes:"One of the most popular boys\u2019 names in recent years, evoking a big, soaring future.", category:"male", tag:"M" },
+  { kanji:"樹", romaji:"Itsuki", meaning:"\u201ctree\u201d", notes:"Simple single-kanji nature name, popular for its calm, grounded image.", category:"male", tag:"M" },
+  { kanji:"湊", romaji:"Minato", meaning:"\u201charbor / port\u201d", notes:"A trendy modern name; also gained visibility from characters sharing the name in popular anime.", category:"male", tag:"M" },
+  { kanji:"颯太", romaji:"Sōta", meaning:"\u201crefreshing / brisk (wind)\u201d + \u201cbig\u201d", notes:"Popular modern name evoking a brisk, energetic image.", category:"male", tag:"M" },
+  { kanji:"陽向", romaji:"Hinata", meaning:"\u201csun\u201d + \u201cfacing / direction\u201d", notes:"A warm, sunny-sounding name; used for both boys and girls, though more common for boys.", category:"male", tag:"M" },
+  { kanji:"健一", romaji:"Ken\u2019ichi", meaning:"\u201chealthy / strong\u201d + \u201cone\u201d", notes:"A classic mid-20th-century name, often given to firstborn sons alongside the \u201cone\u201d (一) kanji.", category:"male", tag:"M" },
+  { kanji:"新太郎", romaji:"Shintarō", meaning:"\u201cnew\u201d + \u201cthick / big\u201d + \u201cson\u201d", notes:"A more elaborate variant on the classic \u201c-tarō\u201d ending, giving an old-fashioned but distinguished feel.", category:"male", tag:"M" },
+  { kanji:"匠", romaji:"Takumi", meaning:"\u201ccraftsman / artisan\u201d", notes:"A single-kanji name evoking skill and mastery; popular from the 1990s onward.", category:"male", tag:"M" },
+  { kanji:"大和", romaji:"Yamato", meaning:"\u201cgreat harmony\u201d; also the ancient/poetic name for Japan itself", notes:"A name carrying strong national and historical resonance \u2014 \u201cYamato\u201d was the classical name for the Japanese state.", category:"male", tag:"M" },
+  { kanji:"亮", romaji:"Ryō", meaning:"\u201cclear / bright\u201d", notes:"A short, common single-kanji name used across many generations.", category:"male", tag:"M" },
+  { kanji:"隆", romaji:"Takashi", meaning:"\u201cprosperous / noble\u201d", notes:"A classic mid-20th-century single-kanji name.", category:"male", tag:"M" },
+  { kanji:"淳", romaji:"Jun", meaning:"\u201cpure / honest\u201d", notes:"A short, gender-neutral-leaning name more commonly given to boys.", category:"male", tag:"M" },
+  { kanji:"蒼", romaji:"Sō / Aoi", meaning:"\u201cdeep blue / green\u201d", notes:"A trendy modern name with two common readings; increasingly popular for boys in recent years.", category:"male", tag:"M" },
+  { kanji:"修二", romaji:"Shūji", meaning:"\u201cdiscipline / study\u201d + \u201csecond\u201d", notes:"A traditional name often given to a second son, paired with a \u201cdiscipline/study\u201d kanji.", category:"male", tag:"M" },
+
+  // Female given names
+  { kanji:"花子", romaji:"Hanako", meaning:"\u201cflower\u201d + \u201cchild\u201d", notes:"The classic, archetypal female name — Japan\u2019s equivalent of \u201cJane Doe.\u201d Common in old textbooks and form examples.", category:"female", tag:"F" },
+  { kanji:"明美", romaji:"Akemi", meaning:"\u201cbright\u201d + \u201cbeautiful\u201d", notes:"A common name for women born in the mid-20th century; still widely recognized today.", category:"female", tag:"F" },
+  { kanji:"由美", romaji:"Yumi", meaning:"\u201creason / cause\u201d + \u201cbeautiful\u201d", notes:"A popular name from the mid-to-late 20th century.", category:"female", tag:"F" },
+  { kanji:"恵子", romaji:"Keiko", meaning:"\u201cblessing / grace\u201d + \u201cchild\u201d", notes:"Very common for women born in the Shōwa era (1926\u20131989).", category:"female", tag:"F" },
+  { kanji:"咲", romaji:"Saki", meaning:"\u201cto bloom\u201d", notes:"Popular modern name evoking blossoming flowers.", category:"female", tag:"F" },
+  { kanji:"陽菜", romaji:"Hina", meaning:"\u201csun / sunshine\u201d + \u201cgreens\u201d (poetically, \u201cgreen shoot\u201d)", notes:"One of the most popular girls\u2019 names of the 2010s\u20132020s.", category:"female", tag:"F" },
+  { kanji:"結衣", romaji:"Yui", meaning:"\u201ctie / bind\u201d + \u201cclothing\u201d", notes:"A very trendy modern name, boosted in popularity by actress Yui Aragaki.", category:"female", tag:"F" },
+  { kanji:"美咲", romaji:"Misaki", meaning:"\u201cbeautiful\u201d + \u201cbloom\u201d", notes:"Popular name with poetic floral imagery.", category:"female", tag:"F" },
+  { kanji:"葵", romaji:"Aoi", meaning:"\u201chollyhock\u201d (flower)", notes:"A popular, unisex-leaning name historically tied to the Tokugawa shogunate\u2019s family crest.", category:"female", tag:"F" },
+  { kanji:"さくら", romaji:"Sakura", meaning:"\u201ccherry blossom\u201d (often written in hiragana rather than kanji)", notes:"An iconic name evoking Japan\u2019s national flower; common in anime and media (e.g. Sakura Haruno, Cardcaptor Sakura).", category:"female", tag:"F" },
+  { kanji:"愛", romaji:"Ai", meaning:"\u201clove\u201d", notes:"A short, timeless single-kanji name used across generations.", category:"female", tag:"F" },
+  { kanji:"舞", romaji:"Mai", meaning:"\u201cdance\u201d", notes:"A graceful, common single-kanji name evoking traditional dance.", category:"female", tag:"F" },
+  { kanji:"彩", romaji:"Aya", meaning:"\u201ccolor / design\u201d", notes:"Popular name suggesting vividness and beauty; also read as \u201cAyaka\u201d or \u201cAyano\u201d with added kanji.", category:"female", tag:"F" },
+  { kanji:"千尋", romaji:"Chihiro", meaning:"\u201cthousand\u201d + \u201cfathom / depth\u201d", notes:"A poetic name meaning roughly \u201cvast depth\u201d; widely recognized as the protagonist\u2019s name in Studio Ghibli\u2019s *Spirited Away*.", category:"female", tag:"F" },
+  { kanji:"凛", romaji:"Rin", meaning:"\u201cdignified / cold and clear\u201d", notes:"A trendy modern name evoking quiet strength and composure.", category:"female", tag:"F" },
+  { kanji:"楓", romaji:"Kaede", meaning:"\u201cmaple (tree)\u201d", notes:"A nature-based name evoking autumn foliage; used for both girls and, less often, boys.", category:"female", tag:"F" },
+  { kanji:"詩織", romaji:"Shiori", meaning:"\u201cpoem\u201d + \u201cweave\u201d", notes:"A literary-sounding name popular from the late 20th century onward.", category:"female", tag:"F" },
+  { kanji:"心", romaji:"Kokoro", meaning:"\u201cheart / mind / spirit\u201d", notes:"A simple, meaningful single-kanji name; also a major theme word in Japanese literature.", category:"female", tag:"F" },
+  { kanji:"優", romaji:"Yū", meaning:"\u201cgentle / superior / tender\u201d", notes:"A soft, gender-flexible name, though more commonly given to girls.", category:"female", tag:"F" },
+  { kanji:"莉子", romaji:"Riko", meaning:"\u201cjasmine\u201d + \u201cchild\u201d", notes:"A modern name pairing a floral kanji with the traditional \u201c-ko\u201d (child) ending, bridging old and new naming styles.", category:"female", tag:"F" },
+  { kanji:"直美", romaji:"Naomi", meaning:"\u201chonest / straight\u201d + \u201cbeautiful\u201d", notes:"A common mid-to-late-20th-century name; coincidentally resembles the English name \u201cNaomi,\u201d though unrelated in origin.", category:"female", tag:"F" },
+  { kanji:"真央", romaji:"Mao", meaning:"\u201ctrue\u201d + \u201ccenter\u201d", notes:"A modern name that gained visibility through figure skater Mao Asada.", category:"female", tag:"F" },
+  { kanji:"陽子", romaji:"Yōko", meaning:"\u201csun / sunshine\u201d + \u201cchild\u201d", notes:"A classic \u201c-ko\u201d name common among women born in the mid-20th century; shared with artist Yoko Ono.", category:"female", tag:"F" },
+  { kanji:"光", romaji:"Hikari", meaning:"\u201clight\u201d", notes:"A single-kanji name meaning \u201clight\u201d; also the name of Japan\u2019s original bullet train service.", category:"female", tag:"F" },
+  { kanji:"芽依", romaji:"Mei", meaning:"\u201csprout / bud\u201d + \u201crely on\u201d", notes:"A trendy modern name evoking new growth; one of several common kanji combinations read \u201cMei.\u201d", category:"female", tag:"F" },
+  { kanji:"澪", romaji:"Mio", meaning:"\u201cwaterway / channel\u201d", notes:"An elegant, less common single-kanji name popular in fiction.", category:"female", tag:"F" },
+  { kanji:"智子", romaji:"Tomoko", meaning:"\u201cwisdom\u201d + \u201cchild\u201d", notes:"A classic \u201c-ko\u201d name common among women born mid-20th century.", category:"female", tag:"F" },
+
+  // Full name pairings
+  { kanji:"田中太郎", romaji:"Tanaka Tarō", meaning:"common surname + archetypal male given name", notes:"The Japanese equivalent of \u201cJohn Smith\u201d — used constantly as a generic placeholder name on forms and in textbooks.", category:"full", tag:"F+" },
+  { kanji:"山田花子", romaji:"Yamada Hanako", meaning:"common surname + archetypal female given name", notes:"The female counterpart to Tanaka Tarō — Japan\u2019s default \u201cJane Doe,\u201d used in the same placeholder contexts.", category:"full", tag:"F+" },
+  { kanji:"鈴木一郎", romaji:"Suzuki Ichirō", meaning:"common surname + \u201cfirst son\u201d given name", notes:"Notable real bearer: baseball legend Ichiro Suzuki, so famous he is often referred to by given name alone — unusual in Japanese convention.", category:"full", tag:"F+" },
+  { kanji:"中村由美", romaji:"Nakamura Yumi", meaning:"common surname + mid-century female given name", notes:"A realistic, unremarkable-sounding name — plausible for a Japanese woman born in the 1970s\u201380s.", category:"full", tag:"F+" },
+  { kanji:"佐藤蓮", romaji:"Satō Ren", meaning:"Japan\u2019s most common surname + a currently trendy given name", notes:"A plausible name for a boy born in the 2010s\u20132020s.", category:"full", tag:"F+" },
+];
+
+const CATEGORIES = [
+  { key: "all", label: "All names" },
+  { key: "surname", label: "Surnames" },
+  { key: "male", label: "Male given names" },
+  { key: "female", label: "Female given names" },
+  { key: "full", label: "Full name pairs" },
+];
+
+let activeCategory = "all";
+let query = "";
+
+const filtersEl = document.getElementById("filters");
+const gridEl = document.getElementById("grid");
+const summaryEl = document.getElementById("summary");
+const emptyEl = document.getElementById("empty");
+const searchEl = document.getElementById("search");
+
+function countFor(key){
+  if(key === "all") return DATA.length;
+  return DATA.filter(d => d.category === key).length;
+}
+
+function renderFilters(){
+  filtersEl.innerHTML = "";
+  CATEGORIES.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-pressed", String(cat.key === activeCategory));
+    btn.innerHTML = `<span>${cat.label}</span><span class="count">${countFor(cat.key)}</span>`;
+    btn.addEventListener("click", () => {
+      activeCategory = cat.key;
+      renderFilters();
+      renderGrid();
+    });
+    filtersEl.appendChild(btn);
+  });
+}
+
+function matchesQuery(item, q){
+  if(!q) return true;
+  const hay = (item.kanji + " " + item.romaji + " " + item.meaning + " " + item.notes).toLowerCase();
+  return hay.includes(q.toLowerCase());
+}
+
+function renderGrid(){
+  const filtered = DATA.filter(d =>
+    (activeCategory === "all" || d.category === activeCategory) &&
+    matchesQuery(d, query)
+  );
+
+  summaryEl.textContent = `Showing ${filtered.length} of ${DATA.length} names`;
+  gridEl.innerHTML = "";
+  emptyEl.hidden = filtered.length !== 0;
+
+  filtered.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = `
+      <span class="tag" aria-hidden="true">${item.tag}</span>
+      <p class="kanji" lang="ja">${item.kanji}</p>
+      <p class="romaji">${item.romaji}</p>
+      <p class="meaning">${item.meaning}</p>
+      <p class="notes">${item.notes}</p>
+    `;
+    gridEl.appendChild(card);
+  });
+}
+
+searchEl.addEventListener("input", (e) => {
+  query = e.target.value;
+  renderGrid();
+});
+
+renderFilters();
+renderGrid();
+</script>
+
+</body>
+</html>

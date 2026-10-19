@@ -1,0 +1,3505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Names — Family & Given Names with Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0;
+  --surface: #fffefb;
+  --ink: #1a1816;
+  --muted: #6e6860;
+  --accent: #2e5c8a;
+  --accent-weak: color-mix(in oklab, var(--accent) 10%, var(--surface));
+  --line: color-mix(in oklab, var(--ink) 10%, transparent);
+  --female: #8a4a6b;
+  --male: #3a6e5e;
+  --family: #5c4a2e;
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.6rem);
+  --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 18px -8px rgba(0,0,0,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: "Inter", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--step-0);
+  line-height: 1.7;
+}
+
+header {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) var(--space) calc(var(--space) * 1.5);
+  text-align: center;
+}
+
+header h1 {
+  font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+header p {
+  color: var(--muted);
+  max-width: 55ch;
+  margin: 0 auto;
+  font-size: var(--step-0);
+}
+
+.hero-kanji {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: color-mix(in oklab, var(--ink) 18%, transparent);
+  line-height: 1;
+  margin-bottom: 0.2em;
+  user-select: none;
+}
+
+main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space);
+}
+
+.section-title {
+  font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  margin: calc(var(--space) * 1.8) 0 calc(var(--space) * 0.8);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-title::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 1.1em;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.section-title.family::before { background: var(--family); }
+.section-title.male::before { background: var(--male); }
+.section-title.female::before { background: var(--female); }
+
+.section-desc {
+  color: var(--muted);
+  margin-bottom: calc(var(--space) * 0.8);
+  font-size: 0.95em;
+}
+
+.name-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: calc(var(--space) * 0.6);
+}
+
+.name-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 0.7);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.name-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.name-card.family::before { background: var(--family); }
+.name-card.male::before { background: var(--male); }
+.name-card.female::before { background: var(--female); }
+
+.name-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 28px -10px rgba(0,0,0,0.14);
+}
+
+.kanji {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.15em;
+}
+
+.reading {
+  font-size: 0.9em;
+  color: var(--muted);
+  margin-bottom: 0.3em;
+}
+
+.romaji {
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  margin-top: 0.5em;
+}
+
+.tag.family {
+  background: color-mix(in oklab, var(--family) 12%, transparent);
+  color: var(--family);
+}
+
+.tag.male {
+  background: color-mix(in oklab, var(--male) 12%, transparent);
+  color: var(--male);
+}
+
+.tag.female {
+  background: color-mix(in oklab, var(--female) 12%, transparent);
+  color: var(--female);
+}
+
+.note {
+  margin-top: 0.6em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--line);
+  font-size: 0.82em;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin: calc(var(--space) * 0.5) 0 calc(var(--space) * 1.2);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.88em;
+  color: var(--muted);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.family { background: var(--family); }
+.dot.male { background: var(--male); }
+.dot.female { background: var(--female); }
+
+.stats {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 0.8);
+  margin-bottom: calc(var(--space) * 1.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 1.2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.8em;
+  color: var(--muted);
+  margin-top: 0.2em;
+}
+
+footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2) var(--space) calc(var(--space) * 1.5);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88em;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 480px) {
+  .name-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body { background: #fff; }
+  .name-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-card { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero-kanji">名前</div>
+  <h1>Japanese Names</h1>
+  <p>An expanded reference of 295 family names, 106 male given names, and 51 female given names, with kanji, hiragana, romaji, and notes on meaning, history, and notable people.</p>
+</header>
+
+<main>
+
+<div class="legend">
+  <div class="legend-item"><span class="dot family"></span> Family Name (姓)</div>
+  <div class="legend-item"><span class="dot male"></span> Male Given Name (男名)</div>
+  <div class="legend-item"><span class="dot female"></span> Female Given Name (女名)</div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <span class="stat-value">295</span>
+    <span class="stat-label">Family Names</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">106</span>
+    <span class="stat-label">Male Given Names</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">51</span>
+    <span class="stat-label">Female Given Names</span>
+  </div>
+  <div class="stat">
+    <span class="stat-value">452</span>
+    <span class="stat-label">Total Names</span>
+  </div>
+</div>
+
+<!-- FAMILY NAMES -->
+<h2 class="section-title family">Family Names (姓 / Sei)</h2>
+<p class="section-desc">Common Japanese surnames with notes on meaning, historical significance, and notable bearers.</p>
+<div class="name-grid">
+  <div class="name-card family">
+    <div class="kanji">佐藤</div>
+    <div class="reading">さとう</div>
+    <div class="romaji">Sato</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">The most common surname in Japan (~1.9 million people). Derived from the noble Fujiwara clan; 'Sato' means 'help wisteria'.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">鈴木</div>
+    <div class="reading">すずき</div>
+    <div class="romaji">Suzuki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">The second most common surname (~1.8 million). Means 'bell tree'. Associated with the traditional occupation of rice-farming ritual bell makers.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高橋</div>
+    <div class="reading">たかはし</div>
+    <div class="romaji">Takahashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Third most common (~1.4 million). Means 'high bridge'. Legend says ancestors lived near a high bridge or served as bridge keepers.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田中</div>
+    <div class="reading">たなか</div>
+    <div class="romaji">Tanaka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice paddy middle'. One of the most common and geographically neutral surnames in Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">伊藤</div>
+    <div class="reading">いとう</div>
+    <div class="romaji">Ito</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'this wisteria'. Associated with the Fujiwara clan. Ito family was a powerful samurai clan in the Muromachi period.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">渡辺</div>
+    <div class="reading">わたなべ</div>
+    <div class="romaji">Watanabe</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'crossing the bank/shore'. The Watanabe clan was a major samurai clan descended from the Seiwa Genji.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山本</div>
+    <div class="reading">やまもと</div>
+    <div class="romaji">Yamamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'base of the mountain'. Very common surname reflecting Japan's mountainous geography.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中村</div>
+    <div class="reading">なかむら</div>
+    <div class="romaji">Nakamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'village middle'. One of the most common surnames, found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小林</div>
+    <div class="reading">こばやし</div>
+    <div class="romaji">Kobayashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small forest'. Common surname with many notable bearers in arts and sports.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">加藤</div>
+    <div class="reading">かとう</div>
+    <div class="romaji">Kato</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'addition wisteria'. Also from the Fujiwara clan. Kato Kiyomasa was a famous samurai and daimyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">吉田</div>
+    <div class="reading">よしだ</div>
+    <div class="romaji">Yoshida</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'lucky/fortunate rice paddy'. Associated with Shinto shrine tradition; Yoshida Shrine in Kyoto is famous.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山田</div>
+    <div class="reading">やまだ</div>
+    <div class="romaji">Yamada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'mountain rice paddy'. Extremely common, especially in rural areas.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">佐々木</div>
+    <div class="reading">ささき</div>
+    <div class="romaji">Sasaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'help help tree'. The Sasaki clan was a powerful samurai clan in the Kamakura and Muromachi periods.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山口</div>
+    <div class="reading">やまぐち</div>
+    <div class="romaji">Yamaguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'mountain mouth/entrance'. Also the name of a prefecture in western Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松本</div>
+    <div class="reading">まつもと</div>
+    <div class="romaji">Matsumoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'base of the pine tree'. Matsumoto Castle in Nagano is one of Japan's most beautiful original castles.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">井上</div>
+    <div class="reading">いのうえ</div>
+    <div class="romaji">Inoue</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'above the well'. Historically associated with well-digging or living near a well.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">木村</div>
+    <div class="reading">きむら</div>
+    <div class="romaji">Kimura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tree village'. Very common surname; many notable actors and athletes bear this name.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">林</div>
+    <div class="reading">はやし</div>
+    <div class="romaji">Hayashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'forest/grove'. Simple and common, shared by many notable figures in various fields.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">清水</div>
+    <div class="reading">しみず</div>
+    <div class="romaji">Shimizu</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'clear/pure water'. Associated with Shinto shrine water purification rituals.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山崎</div>
+    <div class="reading">やまざき</div>
+    <div class="romaji">Yamazaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'mountain promontory'. Yamazaki is also a famous Japanese whisky brand.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岡村</div>
+    <div class="reading">おかむら</div>
+    <div class="romaji">Okamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'hill village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">森</div>
+    <div class="reading">もり</div>
+    <div class="romaji">Mori</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'forest'. The Mori clan was a powerful daimyo clan in the Chugoku region during the Sengoku period.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">池田</div>
+    <div class="reading">いけだ</div>
+    <div class="romaji">Ikeda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice paddy pond'. Ikeda Hayato was a former Prime Minister of Japan (1960-1964).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">橋本</div>
+    <div class="reading">はしもと</div>
+    <div class="romaji">Hashimoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'base of the bridge'. Hashimoto Ryutaro was Prime Minister of Japan (1996-1998).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">阿部</div>
+    <div class="reading">あべ</div>
+    <div class="romaji">Abe</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'corner/quarter'. Abe Shinzo was Japan's longest-serving Prime Minister. Abe no Seimei was a famous Heian period onmyoji (spiritual master).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石川</div>
+    <div class="reading">いしかわ</div>
+    <div class="romaji">Ishikawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'stone river'. Ishikawa Prefecture is on the Sea of Japan coast.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">前田</div>
+    <div class="reading">まえだ</div>
+    <div class="romaji">Maeda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'front rice paddy'. The Maeda clan ruled Kaga domain (present-day Ishikawa) during the Edo period.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">藤田</div>
+    <div class="reading">ふじた</div>
+    <div class="romaji">Fujita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'wisteria rice paddy'. Fujita Seiko was a famous martial artist and last known ninja.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">後藤</div>
+    <div class="reading">ごとう</div>
+    <div class="romaji">Goto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rear wisteria'. Another Fujiwara-derived name. Goto Islands are a chain off Nagasaki.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小川</div>
+    <div class="reading">おがわ</div>
+    <div class="romaji">Ogawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small stream/river'. Reflects Japan's river-rich landscape.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">近藤</div>
+    <div class="reading">こんどう</div>
+    <div class="romaji">Kondo</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'near wisteria'. Kondo Isami was a famous samurai and commander of the Shinsengumi.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">長谷川</div>
+    <div class="reading">はせがわ</div>
+    <div class="romaji">Hasegawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'long valley river'. Common surname with many notable actors and writers.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石井</div>
+    <div class="reading">いしい</div>
+    <div class="romaji">Ishii</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'stone well'. Simple and common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">村上</div>
+    <div class="reading">むらかみ</div>
+    <div class="romaji">Murakami</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'upper village'. Murakami Haruki is one of Japan's most famous contemporary novelists.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">遠藤</div>
+    <div class="reading">えんどう</div>
+    <div class="romaji">Endo</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'distant wisteria'. Another Fujiwara-derived surname.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">青木</div>
+    <div class="reading">あおき</div>
+    <div class="romaji">Aoki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'green/blue tree'. Aoki is also a common given name element.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">坂本</div>
+    <div class="reading">さかもと</div>
+    <div class="romaji">Sakamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'base of the slope'. Sakamoto Ryoma was a key figure in the Meiji Restoration.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">斉藤</div>
+    <div class="reading">さいとう</div>
+    <div class="romaji">Saito</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'purification wisteria'. Saito Hajime was a real Shinsengumi captain (famous from Rurouni Kenshin).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">福田</div>
+    <div class="reading">ふくだ</div>
+    <div class="romaji">Fukuda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'fortunate rice paddy'. Fukuda Takeo and Fukuda Yasuo were both Prime Ministers.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岡田</div>
+    <div class="reading">おかだ</div>
+    <div class="romaji">Okada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'hill rice paddy'. Common surname found nationwide.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中島</div>
+    <div class="reading">なかじま</div>
+    <div class="romaji">Nakajima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'middle island'. Nakajima Kazuko was a famous actress; also a major WWII aircraft manufacturer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">内田</div>
+    <div class="reading">うちだ</div>
+    <div class="romaji">Uchida</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inside rice paddy'. Common surname with many notable actors and musicians.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">服部</div>
+    <div class="reading">はっとり</div>
+    <div class="romaji">Hattori</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'clothing department'. Hattori Hanzo was a famous ninja and samurai who served Tokugawa Ieyasu.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小島</div>
+    <div class="reading">こじま</div>
+    <div class="romaji">Kojima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small island'. Kojima Productions is a famous video game studio founded by Hideo Kojima.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">河野</div>
+    <div class="reading">こうの</div>
+    <div class="romaji">Kono</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river field'. Kono Taeko was a renowned female writer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高木</div>
+    <div class="reading">たかぎ</div>
+    <div class="romaji">Takagi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall tree'. Common surname; Takagi-san is a popular manga/anime character.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">菅原</div>
+    <div class="reading">すがわら</div>
+    <div class="romaji">Sugawara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'sedge plain'. Sugawara no Michizane was a Heian scholar deified as Tenjin, god of learning.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松田</div>
+    <div class="reading">まつだ</div>
+    <div class="romaji">Matsuda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice paddy of pine'. Matsuda Seiko is a legendary J-pop idol.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川口</div>
+    <div class="reading">かわぐち</div>
+    <div class="romaji">Kawaguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river mouth'. Kawaguchi is also a major city in Saitama Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">平野</div>
+    <div class="reading">ひらの</div>
+    <div class="romaji">Hirano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'flat field'. Hirano is also a district in Osaka.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">久保</div>
+    <div class="reading">くぼ</div>
+    <div class="romaji">Kubo</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'sunken ground/hollow'. Kubo Tite is the creator of Bleach manga.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">西村</div>
+    <div class="reading">にしむら</div>
+    <div class="romaji">Nishimura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'west village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小山</div>
+    <div class="reading">こやま</div>
+    <div class="romaji">Koyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small hill'. Common surname reflecting Japan's hilly terrain.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大塚</div>
+    <div class="reading">おおつか</div>
+    <div class="romaji">Otsuka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large mound/burial mound'. Otsuka Ai was a popular J-pop singer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岩崎</div>
+    <div class="reading">いわさき</div>
+    <div class="romaji">Iwasaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rocky promontory'. Iwasaki Yataro founded the Mitsubishi zaibatsu.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">北村</div>
+    <div class="reading">きたむら</div>
+    <div class="romaji">Kitamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'north village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川崎</div>
+    <div class="reading">かわさき</div>
+    <div class="romaji">Kawasaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river promontory'. Kawasaki is a major industrial city between Tokyo and Yokohama.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">平田</div>
+    <div class="reading">ひらた</div>
+    <div class="romaji">Hirata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'flat rice paddy'. Common surname, especially in western Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">木下</div>
+    <div class="reading">きのした</div>
+    <div class="romaji">Kinoshita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'under the tree'. Kinoshita Mokutaro was a famous poet and doctor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">久保田</div>
+    <div class="reading">くぼた</div>
+    <div class="romaji">Kubota</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'long hollow rice paddy'. Kubota Corporation is a major machinery manufacturer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">野口</div>
+    <div class="reading">のぐち</div>
+    <div class="romaji">Noguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field mouth'. Noguchi Hideyo won the Nobel Prize in Physiology or Medicine.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松井</div>
+    <div class="reading">まつい</div>
+    <div class="romaji">Matsui</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'pine well'. Matsui Hideki was a famous Yankees baseball player.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">千葉</div>
+    <div class="reading">ちば</div>
+    <div class="romaji">Chiba</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'thousand leaves'. Chiba is also a major prefecture east of Tokyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">浅野</div>
+    <div class="reading">あさの</div>
+    <div class="romaji">Asano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'shallow field'. The Asano clan was central to the famous 47 Ronin legend.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小野</div>
+    <div class="reading">おの</div>
+    <div class="romaji">Ono</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small field'. Ono no Komachi was a legendary Heian beauty and poet.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岡本</div>
+    <div class="reading">おかもと</div>
+    <div class="romaji">Okamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'hill base'. Okamoto Taro was a famous avant-garde artist.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田村</div>
+    <div class="reading">たむら</div>
+    <div class="romaji">Tamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice paddy village'. Common surname, especially in northern Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中山</div>
+    <div class="reading">なかやま</div>
+    <div class="romaji">Nakayama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'middle mountain'. Nakayama Miho was a famous actress and singer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小松</div>
+    <div class="reading">こまつ</div>
+    <div class="romaji">Komatsu</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small pine'. Komatsu is also a major construction equipment company.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中西</div>
+    <div class="reading">なかにし</div>
+    <div class="romaji">Nakanishi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'middle west'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">原田</div>
+    <div class="reading">はらだ</div>
+    <div class="romaji">Harada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field plain'. Common surname with many notable figures.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">吉川</div>
+    <div class="reading">よしかわ</div>
+    <div class="romaji">Yoshikawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'fortunate river'. Yoshikawa Eiji wrote the famous novel Miyamoto Musashi.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">竹内</div>
+    <div class="reading">たけうち</div>
+    <div class="romaji">Takeuchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inside bamboo'. Takeuchi Naoko created Sailor Moon.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">三浦</div>
+    <div class="reading">みうら</div>
+    <div class="romaji">Miura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'three inlets'. Miura Haruma was a beloved actor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">入江</div>
+    <div class="reading">いりえ</div>
+    <div class="romaji">Irie</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inlet bay'. Common surname in coastal regions.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">藤井</div>
+    <div class="reading">ふじい</div>
+    <div class="romaji">Fujii</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'wisteria well'. Fujii was a major Shingon Buddhist temple in Kyoto.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">宮崎</div>
+    <div class="reading">みやざき</div>
+    <div class="romaji">Miyazaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'shrine cape'. Miyazaki Hayao is the legendary animator and co-founder of Studio Ghibli.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大西</div>
+    <div class="reading">おおにし</div>
+    <div class="romaji">Onishi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large west'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小池</div>
+    <div class="reading">こいけ</div>
+    <div class="romaji">Koike</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small pond'. Koike Yuriko was Tokyo's first female governor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">島田</div>
+    <div class="reading">しまだ</div>
+    <div class="romaji">Shimada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'island rice paddy'. Shimada is also a city in Shizuoka Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">菊地</div>
+    <div class="reading">きくち</div>
+    <div class="romaji">Kikuchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'chrysanthemum ground'. Kikuchi Kan was a famous playwright.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">本田</div>
+    <div class="reading">ほんだ</div>
+    <div class="romaji">Honda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'origin rice paddy'. Honda Soichiro founded the Honda Motor Company.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松岡</div>
+    <div class="reading">まつおか</div>
+    <div class="romaji">Matsuoka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'pine hill'. Matsuoka Shuzo is a famous tennis player known for his 'never give up' meme.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">今井</div>
+    <div class="reading">いまい</div>
+    <div class="romaji">Imai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'now well'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">秋山</div>
+    <div class="reading">あきやま</div>
+    <div class="romaji">Akiyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'autumn mountain'. Akiyama is a common surname reflecting seasonal beauty.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中野</div>
+    <div class="reading">なかの</div>
+    <div class="romaji">Nakano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'middle field'. Nakano is a major ward in Tokyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">安藤</div>
+    <div class="reading">あんどう</div>
+    <div class="romaji">Ando</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'peaceful wisteria'. Ando Tadao is a world-famous architect (Pritzker Prize winner).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">馬場</div>
+    <div class="reading">ばば</div>
+    <div class="romaji">Baba</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'horse field'. Baba was a common place name where horses were kept.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">上田</div>
+    <div class="reading">うえだ</div>
+    <div class="romaji">Ueda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'upper rice paddy'. Ueda is a city in Nagano Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">杉山</div>
+    <div class="reading">すぎやま</div>
+    <div class="romaji">Sugiyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'cedar mountain'. Common surname reflecting Japan's cedar forests.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川村</div>
+    <div class="reading">かわむら</div>
+    <div class="romaji">Kawamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">黒田</div>
+    <div class="reading">くろだ</div>
+    <div class="romaji">Kuroda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'black rice paddy'. Kuroda Kanbei was a famous samurai strategist who served Toyotomi Hideyoshi.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">永井</div>
+    <div class="reading">ながい</div>
+    <div class="romaji">Nagai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'long well'. Nagai Kafu was a famous novelist known for depictions of Tokyo nightlife.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松村</div>
+    <div class="reading">まつむら</div>
+    <div class="romaji">Matsumura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'pine village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田口</div>
+    <div class="reading">たぐち</div>
+    <div class="romaji">Taguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field mouth'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">土井</div>
+    <div class="reading">どい</div>
+    <div class="romaji">Doi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'soil well'. Doi Takako was the first female Speaker of the House in Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高田</div>
+    <div class="reading">たかだ</div>
+    <div class="romaji">Takada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'high rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山内</div>
+    <div class="reading">やまうち</div>
+    <div class="romaji">Yamauchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inside the mountain'. Yamauchi Fusajiro founded Nintendo in 1889.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">西田</div>
+    <div class="reading">にしだ</div>
+    <div class="romaji">Nishida</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'west rice paddy'. Nishida Kitaro was a famous philosopher.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小沢</div>
+    <div class="reading">おざわ</div>
+    <div class="romaji">Ozawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small stream'. Ozawa Seiji is a world-renowned conductor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">横山</div>
+    <div class="reading">よこやま</div>
+    <div class="romaji">Yokoyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'horizontal/side mountain'. Yokoyama Taikan was a famous Nihonga painter.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">角田</div>
+    <div class="reading">つのだ</div>
+    <div class="romaji">Tsunoda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'horn rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岩田</div>
+    <div class="reading">いわた</div>
+    <div class="romaji">Iwata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rocky rice paddy'. Iwata Satoru was the beloved president of Nintendo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">村田</div>
+    <div class="reading">むらた</div>
+    <div class="romaji">Murata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'village rice paddy'. Murata Sayaka is an acclaimed novelist (Convenience Store Woman).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小笠原</div>
+    <div class="reading">おがさわら</div>
+    <div class="romaji">Ogasawara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small shade field/hat'. The Ogasawara Islands are a UNESCO World Heritage site.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">豊田</div>
+    <div class="reading">とよだ</div>
+    <div class="romaji">Toyoda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'abundant rice paddy'. The Toyoda family founded Toyota Motor Corporation.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">長田</div>
+    <div class="reading">ながた</div>
+    <div class="romaji">Nagata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'long rice paddy'. Nagata-cho is the political district in Tokyo where the Diet is located.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">早川</div>
+    <div class="reading">はやかわ</div>
+    <div class="romaji">Hayakawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'early river'. Hayakawa Sessue was the first Asian Hollywood star in the 1920s.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">菅野</div>
+    <div class="reading">すがの</div>
+    <div class="romaji">Sugano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'sedge field'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">荒木</div>
+    <div class="reading">あらき</div>
+    <div class="romaji">Araki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rough tree'. Araki Hirohiko is the creator of JoJo's Bizarre Adventure.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">平井</div>
+    <div class="reading">ひらい</div>
+    <div class="romaji">Hirai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'flat well'. Hirai Ken is a famous J-pop singer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">塚本</div>
+    <div class="reading">つかもと</div>
+    <div class="romaji">Tsukamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'mound origin'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">宮田</div>
+    <div class="reading">みやた</div>
+    <div class="romaji">Miyata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'shrine rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石原</div>
+    <div class="reading">いしはら</div>
+    <div class="romaji">Ishihara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'stone plain'. Ishihara Shintaro was a famous writer and politician.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大島</div>
+    <div class="reading">おおしま</div>
+    <div class="romaji">Oshima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large island'. Oshima Nagisa was a legendary film director.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大橋</div>
+    <div class="reading">おおはし</div>
+    <div class="romaji">Ohashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large bridge'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">竹田</div>
+    <div class="reading">たけだ</div>
+    <div class="romaji">Takeda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'bamboo rice paddy'. The Takeda clan was a powerful daimyo clan in Kai Province.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">三上</div>
+    <div class="reading">みかみ</div>
+    <div class="romaji">Mikami</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'three above'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">牧野</div>
+    <div class="reading">まきの</div>
+    <div class="romaji">Makino</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'pasture field'. Makino Mamoru was a pioneering anime historian.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">桜井</div>
+    <div class="reading">さくらい</div>
+    <div class="romaji">Sakurai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'cherry blossom well'. Sakurai Sho is a member of the idol group Arashi.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松下</div>
+    <div class="reading">まつした</div>
+    <div class="romaji">Matsushita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'under the pine'. Matsushita Konosuke founded Panasonic.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">古川</div>
+    <div class="reading">ふるかわ</div>
+    <div class="romaji">Furukawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'old river'. The Furukawa zaibatsu was one of Japan's major industrial conglomerates.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">杉本</div>
+    <div class="reading">すぎもと</div>
+    <div class="romaji">Sugimoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'cedar origin'. Sugimoto Hiroshi is a world-famous photographer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高島</div>
+    <div class="reading">たかしま</div>
+    <div class="romaji">Takashima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall island'. Takashima is also an island in Nagasaki.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小倉</div>
+    <div class="reading">おぐら</div>
+    <div class="romaji">Ogura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small storehouse'. Ogura Hyakunin Isshu is a famous classical poetry anthology.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">奥村</div>
+    <div class="reading">おくむら</div>
+    <div class="romaji">Okumura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inner village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">尾崎</div>
+    <div class="reading">おざき</div>
+    <div class="romaji">Ozaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tail promontory'. Ozaki Kota was a famous children's poet.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">宮本</div>
+    <div class="reading">みやもと</div>
+    <div class="romaji">Miyamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'shrine origin'. Miyamoto Musashi is Japan's most famous swordsman.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">河田</div>
+    <div class="reading">かわだ</div>
+    <div class="romaji">Kawada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">篠原</div>
+    <div class="reading">しのはら</div>
+    <div class="romaji">Shinohara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field of dwarf bamboo'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石黒</div>
+    <div class="reading">いしぐろ</div>
+    <div class="romaji">Ishiguro</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'black stone'. Ishiguro Kazuo won the Nobel Prize in Literature (2017).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">谷口</div>
+    <div class="reading">たにぐち</div>
+    <div class="romaji">Taniguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'valley mouth'. Taniguchi Jiro was a renowned manga artist.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">細川</div>
+    <div class="reading">ほそかわ</div>
+    <div class="romaji">Hosokawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'narrow river'. The Hosokawa clan was a powerful samurai clan; Hosokawa Morihiro was Prime Minister.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中川</div>
+    <div class="reading">なかがわ</div>
+    <div class="romaji">Nakagawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'middle river'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">落合</div>
+    <div class="reading">おちあい</div>
+    <div class="romaji">Ochiai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'falling union/meeting'. Ochiai is also a district in Tokyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小泉</div>
+    <div class="reading">こいずみ</div>
+    <div class="romaji">Koizumi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small spring'. Koizumi Junichiro was Prime Minister (2001-2006).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">桑原</div>
+    <div class="reading">くわはら</div>
+    <div class="romaji">Kuwahara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'mulberry field'. Kuwabara means 'mulberry field' and is associated with a superstition about lightning.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川島</div>
+    <div class="reading">かわしま</div>
+    <div class="romaji">Kawashima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river island'. Kawashima Yoshiko was a famous Manchurian princess/spy.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">白石</div>
+    <div class="reading">しらいし</div>
+    <div class="romaji">Shiraishi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'white stone'. Shiraishi Mai is a famous actress and former Nogizaka46 member.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">原</div>
+    <div class="reading">はら</div>
+    <div class="romaji">Hara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field/plain'. Hara Setsuko was a legendary actress who starred in many Ozu films.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大谷</div>
+    <div class="reading">おおたに</div>
+    <div class="romaji">Otani</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large valley'. Ohtani Shohei is a two-way baseball superstar.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">広瀬</div>
+    <div class="reading">ひろせ</div>
+    <div class="romaji">Hirose</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'wide shallows'. Hirose Suzu is a famous young actress.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">内山</div>
+    <div class="reading">うちやま</div>
+    <div class="romaji">Uchiyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inner mountain'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">片山</div>
+    <div class="reading">かたやま</div>
+    <div class="romaji">Katayama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'single mountain'. Katayama Tetsu was Japan's first socialist Prime Minister.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高山</div>
+    <div class="reading">たかやま</div>
+    <div class="romaji">Takayama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'high mountain'. Takayama is a beautifully preserved old town in Gifu Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川田</div>
+    <div class="reading">かわた</div>
+    <div class="romaji">Kawata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小森</div>
+    <div class="reading">こもり</div>
+    <div class="romaji">Komori</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small forest'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">梅田</div>
+    <div class="reading">うめだ</div>
+    <div class="romaji">Umeda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'plum rice paddy'. Umeda is a major commercial district in Osaka.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">神谷</div>
+    <div class="reading">かみや</div>
+    <div class="romaji">Kamiya</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'god valley'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">深田</div>
+    <div class="reading">ふかだ</div>
+    <div class="romaji">Fukada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'deep rice paddy'. Fukada Kyoko is a famous actress and singer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">吉本</div>
+    <div class="reading">よしもと</div>
+    <div class="romaji">Yoshimoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'fortunate origin'. Yoshimoto Kogyo is Japan's largest entertainment conglomerate.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">森田</div>
+    <div class="reading">もりた</div>
+    <div class="romaji">Morita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'forest rice paddy'. Morita Akio co-founded Sony Corporation.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">島崎</div>
+    <div class="reading">しまざき</div>
+    <div class="romaji">Shimazaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'island promontory'. Shimazaki Toson was a pioneer of modern Japanese poetry.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">有村</div>
+    <div class="reading">ありむ</div>
+    <div class="romaji">Arimura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'exist village'. Arimura Kasumi is a popular actress.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">森下</div>
+    <div class="reading">もりした</div>
+    <div class="romaji">Morishita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'under the forest'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川原</div>
+    <div class="reading">かわはら</div>
+    <div class="romaji">Kawahara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river plain'. Kawahara Reki created the Sword Art Online light novel series.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大森</div>
+    <div class="reading">おおもり</div>
+    <div class="romaji">Omori</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large forest'. Omori is also a ward in Tokyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小田</div>
+    <div class="reading">おだ</div>
+    <div class="romaji">Oda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small rice paddy'. Oda Nobunaga was one of the three great unifiers of Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">西</div>
+    <div class="reading">にし</div>
+    <div class="romaji">Nishi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'west'. Simple directional surname.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大川</div>
+    <div class="reading">おおかわ</div>
+    <div class="romaji">Okawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large river'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岡</div>
+    <div class="reading">おか</div>
+    <div class="romaji">Oka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'hill'. Simple and common surname.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">東</div>
+    <div class="reading">あずま</div>
+    <div class="romaji">Azuma</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'east'. Azuma is also an old name for the eastern regions of Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">五十嵐</div>
+    <div class="reading">いがらし</div>
+    <div class="romaji">Igarashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'fifty storms'. Igarashi Ran is a famous manga artist (Candy Candy).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松浦</div>
+    <div class="reading">まつうら</div>
+    <div class="romaji">Matsuura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'pine bay'. The Matsura clan ruled Hirado in Nagasaki during the Edo period.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小西</div>
+    <div class="reading">こにし</div>
+    <div class="romaji">Konishi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small west'. Konishi Yukinaga was a Christian daimyo who led invasions of Korea.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">栗山</div>
+    <div class="reading">くりやま</div>
+    <div class="romaji">Kuriyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'chestnut mountain'. Kuriyama Chiaki starred in Kill Bill.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川上</div>
+    <div class="reading">かわかみ</div>
+    <div class="romaji">Kawakami</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'above the river'. Kawakami Hiromi is a famous contemporary novelist.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">西山</div>
+    <div class="reading">にしやま</div>
+    <div class="romaji">Nishiyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'west mountain'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金田</div>
+    <div class="reading">かねだ</div>
+    <div class="romaji">Kaneda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold rice paddy'. Kaneda is the protagonist of the anime Akira.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">北島</div>
+    <div class="reading">きたじま</div>
+    <div class="romaji">Kitajima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'north island'. Kitajima Kensuke is a legendary Olympic swimmer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">平</div>
+    <div class="reading">たいら</div>
+    <div class="romaji">Taira</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'flat/plain'. The Taira (Heike) clan was one of the two great samurai clans in the Genpei War.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">安田</div>
+    <div class="reading">やすだ</div>
+    <div class="romaji">Yasuda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'peaceful rice paddy'. The Yasuda zaibatsu was one of the Big Four pre-war conglomerates.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">水田</div>
+    <div class="reading">みずた</div>
+    <div class="romaji">Mizuta</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'water rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">玉井</div>
+    <div class="reading">たまい</div>
+    <div class="romaji">Tamai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'jewel well'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">米田</div>
+    <div class="reading">よねだ</div>
+    <div class="romaji">Yoneda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">谷</div>
+    <div class="reading">たに</div>
+    <div class="romaji">Tani</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'valley'. Simple and common surname.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">藤原</div>
+    <div class="reading">ふじわら</div>
+    <div class="romaji">Fujiwara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'wisteria plain'. The Fujiwara clan dominated Japanese politics for over 500 years.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">黒木</div>
+    <div class="reading">くろき</div>
+    <div class="romaji">Kuroki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'black tree'. Kuroki Hitomi is a famous actress.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">宇野</div>
+    <div class="reading">うの</div>
+    <div class="romaji">Uno</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field house'. Uno Sosuke was briefly Prime Minister in 1989.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">矢野</div>
+    <div class="reading">やの</div>
+    <div class="romaji">Yano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'arrow field'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">今村</div>
+    <div class="reading">いまむら</div>
+    <div class="romaji">Imamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'now village'. Imamura Shohei won the Palme d'Or at Cannes twice.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">白井</div>
+    <div class="reading">しらい</div>
+    <div class="romaji">Shirai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'white well'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">滝沢</div>
+    <div class="reading">たきざわ</div>
+    <div class="romaji">Takizawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'waterfall swamp'. Takizawa Hideaki is a famous idol and talent.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">菅</div>
+    <div class="reading">すが</div>
+    <div class="romaji">Suga</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'sedge'. Suga Yoshihide was Prime Minister (2020-2021).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">広田</div>
+    <div class="reading">ひろた</div>
+    <div class="romaji">Hirota</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'wide rice paddy'. Hirota Koki was Prime Minister and executed as a Class-A war criminal.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大竹</div>
+    <div class="reading">おおたけ</div>
+    <div class="romaji">Otake</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large bamboo'. Ohtake Shinobu is a famous Olympic swimmer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">堀</div>
+    <div class="reading">ほり</div>
+    <div class="romaji">Hori</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'moat/ditch'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">根本</div>
+    <div class="reading">ねもと</div>
+    <div class="romaji">Nemoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'root origin'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大山</div>
+    <div class="reading">おおやま</div>
+    <div class="romaji">Oyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large mountain'. Oyama Masutatsu founded Kyokushin karate.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小坂</div>
+    <div class="reading">こさか</div>
+    <div class="romaji">Kosaka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small hill'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">宮下</div>
+    <div class="reading">みやした</div>
+    <div class="romaji">Miyashita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'under the shrine'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田代</div>
+    <div class="reading">たしろ</div>
+    <div class="romaji">Tashiro</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field substitute'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小牧</div>
+    <div class="reading">こまき</div>
+    <div class="romaji">Komaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small pasture'. Komaki is also a city in Aichi Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川井</div>
+    <div class="reading">かわい</div>
+    <div class="romaji">Kawai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river well'. Kawai Kanjiro was a famous potter.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">新井</div>
+    <div class="reading">あらい</div>
+    <div class="romaji">Arai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'new well'. Arai is also a common place name.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">赤井</div>
+    <div class="reading">あかい</div>
+    <div class="romaji">Akai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'red well'. Akai is a distinctive surname with relatively few bearers.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大木</div>
+    <div class="reading">おおき</div>
+    <div class="romaji">Oki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large tree'. Oki is also an island chain in the Sea of Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">若林</div>
+    <div class="reading">わかばやし</div>
+    <div class="romaji">Wakabayashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'young forest'. Wakabayashi is a comedian from the duo Audrey.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">日高</div>
+    <div class="reading">ひだか</div>
+    <div class="romaji">Hidaka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'sun high'. Hidaka Mountains are in Hokkaido.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">杉田</div>
+    <div class="reading">すぎた</div>
+    <div class="romaji">Sugita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'cedar rice paddy'. Sugita Tomokazu is a famous voice actor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">坂口</div>
+    <div class="reading">さかぐち</div>
+    <div class="romaji">Sakaguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'slope mouth'. Sakaguchi Ango was a famous writer in the Buraiha genre.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">筒井</div>
+    <div class="reading">つつい</div>
+    <div class="romaji">Tsutsui</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'cylinder well'. Tsutsui Yasutaka is a famous science fiction writer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">江藤</div>
+    <div class="reading">えとう</div>
+    <div class="romaji">Eto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inlet wisteria'. Eto Shin was a politician who fought for samurai rights in the Meiji era.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">北野</div>
+    <div class="reading">きたの</div>
+    <div class="romaji">Kitano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'north field'. Kitano Takeshi ('Beat Takeshi') is a legendary filmmaker and comedian.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">森川</div>
+    <div class="reading">もりかわ</div>
+    <div class="romaji">Morikawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'forest river'. Morikawa Toshiyuki is a famous voice actor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小柳</div>
+    <div class="reading">こやなぎ</div>
+    <div class="romaji">Koyanagi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small willow'. Koyanagi Rumiko was a famous singer and actress.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">手塚</div>
+    <div class="reading">てづか</div>
+    <div class="romaji">Tezuka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'hand mound'. Tezuka Osamu is the 'God of Manga' who created Astro Boy.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石塚</div>
+    <div class="reading">いしづか</div>
+    <div class="romaji">Ishizuka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'stone mound'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">柳田</div>
+    <div class="reading">やなぎた</div>
+    <div class="romaji">Yanagita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'willow rice paddy'. Yanagita Kunio founded Japanese folklore studies.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高瀬</div>
+    <div class="reading">たかせ</div>
+    <div class="romaji">Takase</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'high shallows'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">植田</div>
+    <div class="reading">うえだ</div>
+    <div class="romaji">Ueta</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'planted rice paddy'. Ueda Akinari was an Edo period writer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">真田</div>
+    <div class="reading">さなだ</div>
+    <div class="romaji">Sanada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'true rice paddy'. Sanada Yukimura was a legendary samurai known as the 'Crimson Demon of War'.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">立花</div>
+    <div class="reading">たちばな</div>
+    <div class="romaji">Tachibana</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'standing flower'. The Tachibana clan was a major samurai clan in Kyushu.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">塚田</div>
+    <div class="reading">つかだ</div>
+    <div class="romaji">Tsukada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'mound rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">水野</div>
+    <div class="reading">みずの</div>
+    <div class="romaji">Mizuno</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'water field'. Mizuno is also a major Japanese sports equipment company.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">杉村</div>
+    <div class="reading">すぎむら</div>
+    <div class="romaji">Sugimura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'cedar village'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">井口</div>
+    <div class="reading">いぐち</div>
+    <div class="romaji">Iguchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'well mouth'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">前川</div>
+    <div class="reading">まえかわ</div>
+    <div class="romaji">Maekawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'front river'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高松</div>
+    <div class="reading">たかまつ</div>
+    <div class="romaji">Takamatsu</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'high pine'. Takamatsu is a major city on Shikoku island.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小杉</div>
+    <div class="reading">こすぎ</div>
+    <div class="romaji">Kosugi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small cedar'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">長島</div>
+    <div class="reading">ながしま</div>
+    <div class="romaji">Nagashima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'long island'. Nagashima Shigeo is a legendary baseball player and manager.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川野</div>
+    <div class="reading">かわの</div>
+    <div class="romaji">Kawano</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river field'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">藤沢</div>
+    <div class="reading">ふじさわ</div>
+    <div class="romaji">Fujisawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'wisteria swamp'. Fujisawa is a major city in Kanagawa Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">吉岡</div>
+    <div class="reading">よしおか</div>
+    <div class="romaji">Yoshioka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'fortunate hill'. Yoshioka Yayoi founded Japan's first women's university.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">村山</div>
+    <div class="reading">むらやま</div>
+    <div class="romaji">Murayama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'village mountain'. Murayama Tomiichi was Prime Minister and issued the historic war apology.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">細田</div>
+    <div class="reading">ほそだ</div>
+    <div class="romaji">Hosoda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'narrow rice paddy'. Hosoda Mamoru is a renowned anime director (Wolf Children, Belle).</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大城</div>
+    <div class="reading">おおしろ</div>
+    <div class="romaji">Oshiro</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large castle'. Common in Okinawa Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松原</div>
+    <div class="reading">まつばら</div>
+    <div class="romaji">Matsubara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'pine field'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">今野</div>
+    <div class="reading">こんの</div>
+    <div class="romaji">Konno</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'now field'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大原</div>
+    <div class="reading">おおはら</div>
+    <div class="romaji">Ohara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large plain'. Ohara is a famous traditional district in Kyoto.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田畑</div>
+    <div class="reading">たばた</div>
+    <div class="romaji">Tabata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice paddy and field'. Tabata is a neighborhood in Tokyo known for its literary history.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石山</div>
+    <div class="reading">いしやま</div>
+    <div class="romaji">Ishiyama</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'stone mountain'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小堀</div>
+    <div class="reading">こぼり</div>
+    <div class="romaji">Kobori</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small moat'. Kobori Enshu was a famous tea master and garden designer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川端</div>
+    <div class="reading">かわばた</div>
+    <div class="romaji">Kawabata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river edge'. Kawabata Yasunari was Japan's first Nobel laureate in Literature.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田所</div>
+    <div class="reading">たどころ</div>
+    <div class="romaji">Tadokoro</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field place'. Tadokoro Azusa is a popular voice actress.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高井</div>
+    <div class="reading">たかい</div>
+    <div class="romaji">Takai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'high well'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">森本</div>
+    <div class="reading">もりもと</div>
+    <div class="romaji">Morimoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'forest origin'. Morimoto Masaharu is an Iron Chef and restaurateur.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">梅原</div>
+    <div class="reading">うめはら</div>
+    <div class="romaji">Umehara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'plum plain'. Umehara Takeshi is a famous philosopher.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">吉野</div>
+    <div class="reading">よしの</div>
+    <div class="romaji">Yoshino</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'fortunate field'. Yoshino is famous for its cherry blossoms, a UNESCO site.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小田切</div>
+    <div class="reading">おだぎり</div>
+    <div class="romaji">Odagiri</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small field cut'. Odagiri Joe is a famous actor and director.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">竹下</div>
+    <div class="reading">たけした</div>
+    <div class="romaji">Takeshita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'under the bamboo'. Takeshita Noboru was Prime Minister.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">有賀</div>
+    <div class="reading">ありが</div>
+    <div class="romaji">Ariga</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'have celebration'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大平</div>
+    <div class="reading">おおひら</div>
+    <div class="romaji">Ohira</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large plain'. Ohira Masayoshi was Prime Minister.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金沢</div>
+    <div class="reading">かなざわ</div>
+    <div class="romaji">Kanazawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold swamp'. Kanazawa is one of Japan's best-preserved Edo-period cities.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大槻</div>
+    <div class="reading">おおつき</div>
+    <div class="romaji">Otsuki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large zelkova tree'. Otsuki Hibiki is a famous enka singer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小久保</div>
+    <div class="reading">こくぼ</div>
+    <div class="romaji">Kokubo</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small long-time protect'. Kokubo Saki is a former idol.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">長尾</div>
+    <div class="reading">ながお</div>
+    <div class="romaji">Nagao</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'long tail'. The Nagao clan produced Uesugi Kenshin, one of the greatest samurai.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岩本</div>
+    <div class="reading">いわもと</div>
+    <div class="romaji">Iwamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rocky origin'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">宮川</div>
+    <div class="reading">みやがわ</div>
+    <div class="romaji">Miyagawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'shrine river'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">西本</div>
+    <div class="reading">にしもと</div>
+    <div class="romaji">Nishimoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'west origin'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">大村</div>
+    <div class="reading">おおむら</div>
+    <div class="romaji">Omura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'large village'. Omura Sumitada was Japan's first Christian daimyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">坂田</div>
+    <div class="reading">さかた</div>
+    <div class="romaji">Sakata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'rice paddy on the slope'. Sakata is a city in Yamagata Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">玉置</div>
+    <div class="reading">たまき</div>
+    <div class="romaji">Tamaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'jewel place'. Tamaki Koji is a legendary rock musician.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">奥田</div>
+    <div class="reading">おくだ</div>
+    <div class="romaji">Okuda</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inner rice paddy'. Okuda Tamio is a famous musician.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川合</div>
+    <div class="reading">かわあい</div>
+    <div class="romaji">Kawai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river meeting'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高柳</div>
+    <div class="reading">たかやなぎ</div>
+    <div class="romaji">Takayanagi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall willow'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小栗</div>
+    <div class="reading">おぐり</div>
+    <div class="romaji">Oguri</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small chestnut'. Oguri Shun is a famous actor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高岡</div>
+    <div class="reading">たかおか</div>
+    <div class="romaji">Takaoka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall hill'. Takaoka is a city in Toyama known for bronze casting.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金谷</div>
+    <div class="reading">かなや</div>
+    <div class="romaji">Kanaya</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold valley'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川越</div>
+    <div class="reading">かわごえ</div>
+    <div class="romaji">Kawagoe</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river crossing'. Kawagoe is a famous Edo-period town near Tokyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田原</div>
+    <div class="reading">たはら</div>
+    <div class="romaji">Tahara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field plain'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小山田</div>
+    <div class="reading">おやまだ</div>
+    <div class="romaji">Oyamada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small hill rice paddy'. Oyama Daisuke is a famous shogi player.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金丸</div>
+    <div class="reading">かねまる</div>
+    <div class="romaji">Kanemaru</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold round'. Kanemaru Shin was a powerful post-war politician.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">玉木</div>
+    <div class="reading">たまき</div>
+    <div class="romaji">Tamaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'jewel tree'. Tamaki Hiroshi is a famous actor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">石崎</div>
+    <div class="reading">いしざき</div>
+    <div class="romaji">Ishizaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'stone promontory'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高梨</div>
+    <div class="reading">たかなし</div>
+    <div class="romaji">Takanashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall pear'. Interestingly, the kanji can also be read as 'taka-nashi' (no hawks), a folk etymology.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小幡</div>
+    <div class="reading">おばた</div>
+    <div class="romaji">Obata</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small flag'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金本</div>
+    <div class="reading">かねもと</div>
+    <div class="romaji">Kanemoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold origin'. Kanemoto Genji is a famous composer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田崎</div>
+    <div class="reading">たざき</div>
+    <div class="romaji">Tazaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field promontory'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">玉川</div>
+    <div class="reading">たまがわ</div>
+    <div class="romaji">Tamagawa</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'jewel river'. Tamagawa is a major river in Tokyo.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小宮</div>
+    <div class="reading">こみや</div>
+    <div class="romaji">Komiya</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small shrine'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">岡崎</div>
+    <div class="reading">おかざき</div>
+    <div class="romaji">Okazaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'hill promontory'. Okazaki is a major city in Aichi Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田島</div>
+    <div class="reading">たじま</div>
+    <div class="romaji">Tajima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field island'. Tajima is also a region in northern Hyogo Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">玉田</div>
+    <div class="reading">たまだ</div>
+    <div class="romaji">Tamada</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'jewel rice paddy'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金田一</div>
+    <div class="reading">きんだいち</div>
+    <div class="romaji">Kindaichi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold rice paddy one'. Kindaichi Kyosuke was a famous linguist; Kindaichi Hajime is a fictional detective.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川内</div>
+    <div class="reading">かわうち</div>
+    <div class="romaji">Kawauchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'inside the river'. Kawauchi Koji won the Boston Marathon.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高坂</div>
+    <div class="reading">たかさか</div>
+    <div class="romaji">Takasaka</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall hill'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小室</div>
+    <div class="reading">こむろ</div>
+    <div class="romaji">Komuro</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small room'. Komuro Tetsuya is a legendary J-pop producer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金尾</div>
+    <div class="reading">かなお</div>
+    <div class="romaji">Kanao</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold tail'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田淵</div>
+    <div class="reading">たぶち</div>
+    <div class="romaji">Tabuchi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field pool'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川瀬</div>
+    <div class="reading">かわせ</div>
+    <div class="romaji">Kawase</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river shallows'. Kawase Naomi is a Cannes-winning film director.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高見</div>
+    <div class="reading">たかみ</div>
+    <div class="romaji">Takami</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'high view'. Takami Katsunori is a famous enka singer.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金指</div>
+    <div class="reading">かなざし</div>
+    <div class="romaji">Kanazashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold finger/point'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田上</div>
+    <div class="reading">たがみ</div>
+    <div class="romaji">Tagami</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field above'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金原</div>
+    <div class="reading">かねはら</div>
+    <div class="romaji">Kanehara</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold plain'. Kanehara Hitomi wrote the controversial novel Autofiction.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小峰</div>
+    <div class="reading">こみね</div>
+    <div class="romaji">Komine</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small peak'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川本</div>
+    <div class="reading">かわもと</div>
+    <div class="romaji">Kawamoto</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'river origin'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高木</div>
+    <div class="reading">たかき</div>
+    <div class="romaji">Takaki</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall tree'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">川下</div>
+    <div class="reading">かわした</div>
+    <div class="romaji">Kawashita</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'below the river'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小橋</div>
+    <div class="reading">こばし</div>
+    <div class="romaji">Kobashi</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small bridge'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">金井</div>
+    <div class="reading">かない</div>
+    <div class="romaji">Kanai</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'gold well'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田辺</div>
+    <div class="reading">たなべ</div>
+    <div class="romaji">Tanabe</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'field side'. Tanabe is a city in Wakayama Prefecture.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高村</div>
+    <div class="reading">たかむら</div>
+    <div class="romaji">Takamura</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall village'. Takamura Kotaro was a famous poet and sculptor.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小菅</div>
+    <div class="reading">こすげ</div>
+    <div class="romaji">Kosuge</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'small sedge'. Common surname found throughout Japan.</div>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高嶋</div>
+    <div class="reading">たかしま</div>
+    <div class="romaji">Takashima</div>
+    <span class="tag family">Family Name</span>
+    <div class="note">Means 'tall island'. Common surname found throughout Japan.</div>
+  </div>
+</div>
+
+<!-- MALE GIVEN NAMES -->
+<h2 class="section-title male">Male Given Names (男名 / Nanmei)</h2>
+<p class="section-desc">Common male given names with notes on meaning, popularity trends, and cultural significance.</p>
+<div class="name-grid">
+  <div class="name-card male">
+    <div class="kanji">太郎</div>
+    <div class="reading">たろう</div>
+    <div class="romaji">Taro</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Classic first-born son name meaning 'great/eldest son'. Still popular but less common than in the past.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">健太</div>
+    <div class="reading">けんた</div>
+    <div class="romaji">Kenta</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'healthy/big'. Very popular from the 1980s-2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔</div>
+    <div class="reading">しょう</div>
+    <div class="romaji">Sho</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'soar/fly'. One of the most popular kanji for boys' names in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大翔</div>
+    <div class="reading">ひろと</div>
+    <div class="romaji">Hiroto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big soar'. Topped baby name charts in the late 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮</div>
+    <div class="reading">れん</div>
+    <div class="romaji">Ren</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus'. Symbolizes purity rising from mud; very popular since the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠真</div>
+    <div class="reading">ゆうま</div>
+    <div class="romaji">Yuma</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely/distant truth'. Popular since the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">湊</div>
+    <div class="reading">みなと</div>
+    <div class="romaji">Minato</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'harbor/water port'. Gained popularity from the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大輝</div>
+    <div class="reading">だいき</div>
+    <div class="romaji">Daiki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big shine/radiance'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽翔</div>
+    <div class="reading">はると</div>
+    <div class="romaji">Haruto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun soar'. The most popular boys' name in Japan in recent years.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">樹</div>
+    <div class="reading">いつき</div>
+    <div class="romaji">Itsuki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'tree/timber'. Popular unisex name; can also be read as 'Ju'.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蒼太</div>
+    <div class="reading">そうた</div>
+    <div class="romaji">Sota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'blue/big'. Popular since the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠人</div>
+    <div class="reading">ゆうと</div>
+    <div class="romaji">Yuto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely person'. Popular since the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">健</div>
+    <div class="reading">けん</div>
+    <div class="romaji">Ken</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'healthy/strong'. Classic short name popular since the mid-20th century.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">誠</div>
+    <div class="reading">まこと</div>
+    <div class="romaji">Makoto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sincerity/truth'. Classic virtue name; also read as 'Sei'.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓也</div>
+    <div class="reading">たくや</div>
+    <div class="romaji">Takuya</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'pioneering/opening also'. Very popular in the 1970s-1980s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">雄大</div>
+    <div class="reading">ゆうだい</div>
+    <div class="romaji">Yudai</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'heroic/big'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">直樹</div>
+    <div class="reading">なおき</div>
+    <div class="romaji">Naoki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'honest tree'. Popular since the 1970s; Naoki Prize is a major literary award.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">康平</div>
+    <div class="reading">こうへい</div>
+    <div class="romaji">Kohei</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'peaceful flat'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">亮太</div>
+    <div class="reading">りょうた</div>
+    <div class="romaji">Ryota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'clear/shining big'. Popular in the 1980s-1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">和也</div>
+    <div class="reading">かずや</div>
+    <div class="romaji">Kazuya</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'harmony also'. Popular in the 1970s-1980s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">健一</div>
+    <div class="reading">けんいち</div>
+    <div class="romaji">Kenichi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'healthy one'. Classic post-war name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">浩二</div>
+    <div class="reading">こうじ</div>
+    <div class="romaji">Koji</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'vast second son'. Very common for second-born sons in the mid-20th century.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">隆</div>
+    <div class="reading">たかし</div>
+    <div class="romaji">Takashi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'prosperity'. Classic name popular from the 1950s-1970s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">修</div>
+    <div class="reading">おさむ</div>
+    <div class="romaji">Osamu</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'discipline/cultivate'. Classic name; Dazai Osamu was a famous writer.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">達也</div>
+    <div class="reading">たつや</div>
+    <div class="romaji">Tatsuya</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'accomplished also'. Popular in the 1970s-1980s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">正男</div>
+    <div class="reading">まさお</div>
+    <div class="romaji">Masao</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'proper man'. Classic name from the early-mid 20th century.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">裕太</div>
+    <div class="reading">ゆうた</div>
+    <div class="romaji">Yuta</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'abundant big'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔太</div>
+    <div class="reading">しょうた</div>
+    <div class="romaji">Shota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'soar big'. Extremely popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓海</div>
+    <div class="reading">たくみ</div>
+    <div class="romaji">Takumi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'open sea' or 'skilled/artisan'. Popular in the 1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">涼</div>
+    <div class="reading">りょう</div>
+    <div class="romaji">Ryo</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'cool/refreshing'. Popular short name since the 1980s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">颯太</div>
+    <div class="reading">そうた</div>
+    <div class="romaji">Sota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sudden/big' like the wind. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">海斗</div>
+    <div class="reading">かいと</div>
+    <div class="romaji">Kaito</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sea/big dipper'. Popular in the 2000s-2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽向</div>
+    <div class="reading">ひなた</div>
+    <div class="romaji">Hinata</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'toward the sun'. Popular unisex name; Hinata is a character in Haikyuu!!.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠斗</div>
+    <div class="reading">ゆうと</div>
+    <div class="romaji">Yuto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely big dipper'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮斗</div>
+    <div class="reading">れんと</div>
+    <div class="romaji">Rento</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus big dipper'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">瑛太</div>
+    <div class="reading">えいた</div>
+    <div class="romaji">Eita</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'crystal shine'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">風太</div>
+    <div class="reading">ふうた</div>
+    <div class="romaji">Futa</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'wind big'. Less common but distinctive.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大智</div>
+    <div class="reading">だいち</div>
+    <div class="romaji">Daichi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big wisdom/earth'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏太</div>
+    <div class="reading">かなた</div>
+    <div class="romaji">Kanata</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'playing music big' or 'beyond'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽大</div>
+    <div class="reading">はると</div>
+    <div class="romaji">Haruto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun big'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠太</div>
+    <div class="reading">ゆうた</div>
+    <div class="romaji">Yuta</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely big'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮司</div>
+    <div class="reading">れんじ</div>
+    <div class="romaji">Renji</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus administer'. Distinctive name gaining popularity.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔平</div>
+    <div class="reading">しょうへい</div>
+    <div class="romaji">Shohei</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'soar flat/peaceful'. Ohtani Shohei is a two-way baseball superstar.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓実</div>
+    <div class="reading">たくみ</div>
+    <div class="romaji">Takumi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'open truth'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">涼太</div>
+    <div class="reading">りょうた</div>
+    <div class="romaji">Ryota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'cool big'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">海翔</div>
+    <div class="reading">かいと</div>
+    <div class="romaji">Kaito</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sea soar'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽介</div>
+    <div class="reading">ようすけ</div>
+    <div class="romaji">Yosuke</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun help'. Popular in the 1980s-1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠生</div>
+    <div class="reading">ゆうき</div>
+    <div class="romaji">Yuki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely life'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮二</div>
+    <div class="reading">れんじ</div>
+    <div class="romaji">Renji</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus two'. Distinctive name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">颯</div>
+    <div class="reading">そう</div>
+    <div class="romaji">So</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sudden/heroic'. Short and modern.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大樹</div>
+    <div class="reading">だいき</div>
+    <div class="romaji">Daiki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big tree'. Popular in the 1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏</div>
+    <div class="reading">かなで</div>
+    <div class="romaji">Kanade</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'to play music'. Popular unisex name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽太</div>
+    <div class="reading">ようた</div>
+    <div class="romaji">Yota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun big'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮太</div>
+    <div class="reading">れんた</div>
+    <div class="romaji">Renta</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus big'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔真</div>
+    <div class="reading">しょうま</div>
+    <div class="romaji">Shoma</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'soar truth'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓登</div>
+    <div class="reading">たくと</div>
+    <div class="romaji">Takuto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'open rise'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">涼介</div>
+    <div class="reading">りょうすけ</div>
+    <div class="romaji">Ryosuke</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'cool help'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">海音</div>
+    <div class="reading">かいと</div>
+    <div class="romaji">Kaito</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sea sound'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽斗</div>
+    <div class="reading">はると</div>
+    <div class="romaji">Haruto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun big dipper'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠翔</div>
+    <div class="reading">ゆうと</div>
+    <div class="romaji">Yuto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely soar'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮也</div>
+    <div class="reading">れんや</div>
+    <div class="romaji">Renya</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus to be'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">颯人</div>
+    <div class="reading">そうと</div>
+    <div class="romaji">Soto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sudden person'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大貴</div>
+    <div class="reading">だいき</div>
+    <div class="romaji">Daiki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big precious'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏介</div>
+    <div class="reading">かなすけ</div>
+    <div class="romaji">Kanasuke</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'music help'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽成</div>
+    <div class="reading">はるなり</div>
+    <div class="romaji">Harunari</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun become'. Distinctive and traditional-feeling.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠仁</div>
+    <div class="reading">ひさひと</div>
+    <div class="romaji">Hisahito</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely benevolence'. Prince Hisahito is second in line to the Chrysanthemum Throne.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮太郎</div>
+    <div class="reading">れんたろう</div>
+    <div class="romaji">Rentaro</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus big son'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔吾</div>
+    <div class="reading">しょうご</div>
+    <div class="romaji">Shogo</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'soar I/me'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓人</div>
+    <div class="reading">たくと</div>
+    <div class="romaji">Takuto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'open person'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">涼真</div>
+    <div class="reading">りょうま</div>
+    <div class="romaji">Ryoma</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'cool truth'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">海人</div>
+    <div class="reading">かいと</div>
+    <div class="romaji">Kaito</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sea person'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽輝</div>
+    <div class="reading">はるき</div>
+    <div class="romaji">Haruki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun shine'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠河</div>
+    <div class="reading">ゆうが</div>
+    <div class="romaji">Yuga</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely river'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮之介</div>
+    <div class="reading">れんのすけ</div>
+    <div class="romaji">Rennosuke</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus of help'. Traditional suffix '-nosuke' was common for samurai.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">颯真</div>
+    <div class="reading">そうま</div>
+    <div class="romaji">Soma</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sudden truth'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大誠</div>
+    <div class="reading">たいせい</div>
+    <div class="romaji">Taisei</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big sincerity'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏太</div>
+    <div class="reading">そうた</div>
+    <div class="romaji">Sota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'music big'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽一</div>
+    <div class="reading">よういち</div>
+    <div class="romaji">Yoichi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun one'. Classic name; Nasu no Yoichi was a legendary archer.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠佑</div>
+    <div class="reading">ゆうすけ</div>
+    <div class="romaji">Yusuke</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely help'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮太朗</div>
+    <div class="reading">れんたろう</div>
+    <div class="romaji">Rentaro</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus big son'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔大</div>
+    <div class="reading">しょうた</div>
+    <div class="romaji">Shota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'soar big'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓矢</div>
+    <div class="reading">たくや</div>
+    <div class="romaji">Takuya</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'open arrow'. Popular in the 1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">涼平</div>
+    <div class="reading">りょうへい</div>
+    <div class="romaji">Ryohei</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'cool peaceful'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">海星</div>
+    <div class="reading">いせい</div>
+    <div class="romaji">Kaisei</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sea star'. Distinctive name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽登</div>
+    <div class="reading">はると</div>
+    <div class="romaji">Haruto</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun rise'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠月</div>
+    <div class="reading">ゆうづき</div>
+    <div class="romaji">Yuzuki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely moon'. Popular unisex name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">颯汰</div>
+    <div class="reading">そうた</div>
+    <div class="romaji">Sota</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sudden big'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大輔</div>
+    <div class="reading">だいすけ</div>
+    <div class="romaji">Daisuke</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big help'. Extremely popular from the 1970s-1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏河</div>
+    <div class="reading">かなた</div>
+    <div class="romaji">Kanata</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'music river'. Distinctive modern name.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽翔</div>
+    <div class="reading">はる</div>
+    <div class="romaji">Haru</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun soar'. Short form popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓</div>
+    <div class="reading">たく</div>
+    <div class="romaji">Taku</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'open/pioneer'. Short form popular in the 1990s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">海</div>
+    <div class="reading">かい</div>
+    <div class="romaji">Kai</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sea/ocean'. Short form gaining popularity.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽</div>
+    <div class="reading">よう</div>
+    <div class="romaji">Yo</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun/sunshine'. Short form popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠</div>
+    <div class="reading">ゆう</div>
+    <div class="romaji">Yu</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely/distant'. Short form popular in the 2010s.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大</div>
+    <div class="reading">だい</div>
+    <div class="romaji">Dai</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big/great'. Short form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏</div>
+    <div class="reading">かな</div>
+    <div class="romaji">Kana</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'play music'. Short unisex form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽</div>
+    <div class="reading">ひなた</div>
+    <div class="romaji">Hinata</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'toward the sun'. Unisex short form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠</div>
+    <div class="reading">はる</div>
+    <div class="romaji">Haru</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'leisurely'. Short form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮</div>
+    <div class="reading">はす</div>
+    <div class="romaji">Hasu</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'lotus'. Alternative reading.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">颯</div>
+    <div class="reading">はやて</div>
+    <div class="romaji">Hayate</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sudden sound of wind'. Full form of the kanji.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大</div>
+    <div class="reading">ひろ</div>
+    <div class="romaji">Hiro</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big/vast'. Classic short form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">奏</div>
+    <div class="reading">そう</div>
+    <div class="romaji">So</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'play music'. Alternative reading.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽</div>
+    <div class="reading">あき</div>
+    <div class="romaji">Aki</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'bright/autumn'. Alternative reading.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大</div>
+    <div class="reading">たい</div>
+    <div class="romaji">Tai</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'big'. Short form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽</div>
+    <div class="reading">はる</div>
+    <div class="romaji">Haru</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun'. Short form.</div>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽</div>
+    <div class="reading">ひ</div>
+    <div class="romaji">Hi</div>
+    <span class="tag male">Male Given</span>
+    <div class="note">Means 'sun'. Short form.</div>
+  </div>
+</div>
+
+<!-- FEMALE GIVEN NAMES -->
+<h2 class="section-title female">Female Given Names (女名 / Jomei)</h2>
+<p class="section-desc">Common female given names with notes on meaning, popularity trends, and cultural significance.</p>
+<div class="name-grid">
+  <div class="name-card female">
+    <div class="kanji">葵</div>
+    <div class="reading">あおい</div>
+    <div class="romaji">Aoi</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'hollyhock/mallow'. Aoi is also the name of the Tokugawa family crest. Very popular since the 1990s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽葵</div>
+    <div class="reading">ひまり</div>
+    <div class="romaji">Himari</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'sun hollyhock'. The most popular girls' name in Japan in recent years.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結衣</div>
+    <div class="reading">ゆい</div>
+    <div class="romaji">Yui</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind clothing'. Extremely popular in the 2000s; Aragaki Yui is a famous actress.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美月</div>
+    <div class="reading">みつき</div>
+    <div class="romaji">Mitsuki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful moon'. Popular in the 2000s-2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">凛</div>
+    <div class="reading">りん</div>
+    <div class="romaji">Rin</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'dignified/cold'. Short and strong; popular since the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">咲良</div>
+    <div class="reading">さくら</div>
+    <div class="romaji">Sakura</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'blossom good'. Sakura means cherry blossom; Japan's national flower.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">紬</div>
+    <div class="reading">つむぎ</div>
+    <div class="romaji">Tsumugi</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'pongee silk'. A traditional craft; distinctive and elegant name.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">莉子</div>
+    <div class="reading">りこ</div>
+    <div class="romaji">Riko</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'jasmine child'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結愛</div>
+    <div class="reading">ゆあ</div>
+    <div class="romaji">Yua</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind love'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">花音</div>
+    <div class="reading">かのん</div>
+    <div class="romaji">Kanon</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'flower sound'. Popular in the 2000s-2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">愛莉</div>
+    <div class="reading">あいり</div>
+    <div class="romaji">Airi</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'love jasmine'. Extremely popular in the 2000s-2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美咲</div>
+    <div class="reading">みさき</div>
+    <div class="romaji">Misaki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful blossom'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">桜</div>
+    <div class="reading">さくら</div>
+    <div class="romaji">Sakura</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'cherry blossom'. The ultimate Japanese flower symbol; extremely popular name.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">七海</div>
+    <div class="reading">ななみ</div>
+    <div class="romaji">Nanami</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'seven seas'. Popular in the 2000s; Nanami is a character in Kamisama Kiss.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">真央</div>
+    <div class="reading">まお</div>
+    <div class="romaji">Mao</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'true center'. Asada Mao is a famous Olympic figure skater.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">玲奈</div>
+    <div class="reading">れいな</div>
+    <div class="romaji">Reina</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'sound of jewels'. Very popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">彩乃</div>
+    <div class="reading">あやの</div>
+    <div class="romaji">Ayano</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'color of'. Popular in the 1990s-2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">遥</div>
+    <div class="reading">はるか</div>
+    <div class="romaji">Haruka</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'distant/far'. Popular unisex name; Haruka is a character in Pokemon and Sailor Moon.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">奈々</div>
+    <div class="reading">なな</div>
+    <div class="romaji">Nana</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'seven/what'. Simple and popular; Osaki Nana is a character in Nana manga.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">優子</div>
+    <div class="reading">ゆうこ</div>
+    <div class="romaji">Yuko</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'gentle child'. Classic name popular from the 1950s-1970s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">愛</div>
+    <div class="reading">あい</div>
+    <div class="romaji">Ai</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'love'. Simple and powerful; popular since the 1990s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">彩花</div>
+    <div class="reading">やか</div>
+    <div class="romaji">Ayaka</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'colorful flower'. Extremely popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結菜</div>
+    <div class="reading">ゆいな</div>
+    <div class="romaji">Yuina</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind greens'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽菜</div>
+    <div class="reading">ひな</div>
+    <div class="romaji">Hina</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'sun greens'. Very popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美月</div>
+    <div class="reading">みづき</div>
+    <div class="romaji">Mizuki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful moon'. Alternative reading of the same kanji.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">心春</div>
+    <div class="reading">こはる</div>
+    <div class="romaji">Koharu</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'heart spring'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">咲</div>
+    <div class="reading">さき</div>
+    <div class="romaji">Saki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'blossom'. Short and popular since the 1990s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美羽</div>
+    <div class="reading">みう</div>
+    <div class="romaji">Miu</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful feather'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結月</div>
+    <div class="reading">ゆづき</div>
+    <div class="romaji">Yuzuki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind moon'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽菜</div>
+    <div class="reading">はるな</div>
+    <div class="romaji">Haruna</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'sun greens'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美桜</div>
+    <div class="reading">みお</div>
+    <div class="romaji">Mio</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful cherry blossom'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">心結</div>
+    <div class="reading">みゆ</div>
+    <div class="romaji">Miyu</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'heart tie'. Popular in the 2000s-2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">咲月</div>
+    <div class="reading">さつき</div>
+    <div class="romaji">Satsuki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'blossom moon'. Satsuki is also the old name for May.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">莉央</div>
+    <div class="reading">りお</div>
+    <div class="romaji">Rio</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'jasmine center'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美結</div>
+    <div class="reading">みゆ</div>
+    <div class="romaji">Miyu</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful tie'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結愛</div>
+    <div class="reading">ゆめ</div>
+    <div class="romaji">Yume</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind love'. Alternative reading; Yume means 'dream'.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽咲</div>
+    <div class="reading">ひなた</div>
+    <div class="romaji">Hinata</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'sun blossom'. Popular unisex name.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美空</div>
+    <div class="reading">みそら</div>
+    <div class="romaji">Misora</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful sky'. Hibari Misora was the greatest enka singer of all time.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">心愛</div>
+    <div class="reading">ここな</div>
+    <div class="romaji">Kokona</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'heart love'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">咲希</div>
+    <div class="reading">さき</div>
+    <div class="romaji">Saki</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'blossom hope'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">莉愛</div>
+    <div class="reading">りあ</div>
+    <div class="romaji">Ria</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'jasmine love'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美優</div>
+    <div class="reading">みゆう</div>
+    <div class="romaji">Miyu</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful gentleness'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結翔</div>
+    <div class="reading">ゆいと</div>
+    <div class="romaji">Yuito</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind soar'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽向</div>
+    <div class="reading">ひなた</div>
+    <div class="romaji">Hinata</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'toward the sun'. Popular unisex name.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美波</div>
+    <div class="reading">みなみ</div>
+    <div class="romaji">Minami</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful wave'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">心音</div>
+    <div class="reading">ここね</div>
+    <div class="romaji">Kokone</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'heart sound'. Popular in the 2010s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">咲良</div>
+    <div class="reading">さら</div>
+    <div class="romaji">Sara</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'blossom good'. Alternative reading; also the Japanese form of Sarah.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">莉緒</div>
+    <div class="reading">りお</div>
+    <div class="romaji">Rio</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'jasmine cord'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美雨</div>
+    <div class="reading">みう</div>
+    <div class="romaji">Miu</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'beautiful rain'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結依</div>
+    <div class="reading">ゆい</div>
+    <div class="romaji">Yui</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'tie/bind rely'. Popular in the 2000s.</div>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽奈</div>
+    <div class="reading">ひな</div>
+    <div class="romaji">Hina</div>
+    <span class="tag female">Female Given</span>
+    <div class="note">Means 'sun what'. Popular in the 2010s.</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p>This is a curated learner's reference, not an exhaustive database. For comprehensive lookups, see JMnedict / Jisho.org.</p>
+</footer>
+
+</body>
+</html>

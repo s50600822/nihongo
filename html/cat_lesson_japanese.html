@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If I Have a Cat, Most Things Will Work Out — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e6e3dd;
+            --surface: #f0eee9;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d3830;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --danger: #5c2d2d;
+            --warm: #6b4c35;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,56,48,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.danger::before {
+            background: var(--danger);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.danger-box {
+            background: color-mix(in oklab, var(--danger) 6%, var(--surface));
+            border-left-color: var(--danger);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.danger-box h5 {
+            color: var(--danger);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-danger {
+            background: color-mix(in oklab, var(--danger) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-warm {
+            background: color-mix(in oklab, var(--warm) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .context-note {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--line);
+            padding-left: 0.8rem;
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--danger) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--danger) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>If I Have a Cat, Most Things Will Work Out<br><span style="font-size:0.6em; font-weight:300;">猫さえいれば、たいていのことはうまくいく</span></h1>
+    <div class="subtitle">A Japanese lesson through Ogihara Hiroshi's gentle novel of cats, aging, and small mercies</div>
+    <div class="meta">The stray &middot; The nursing home &middot; What a cat cannot fix</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> I do not have direct access to the full text of this novel. The passages below are pedagogical reconstructions based on verified plot summaries, reviews, and the novel's established themes. They are designed to teach the vocabulary, grammar, and social context of the book accurately, but they are not direct quotations from the novel.
+</div>
+
+<p class="intro">
+    Published in 2016 by Shogakukan Bunko, <em>Neko sae ireba, taitei no koto wa umaku iku</em> is one of Ogihara Hiroshi's most beloved novels. Ogihara is known for writing warm, humanistic fiction about ordinary people facing ordinary problems: aging parents, failing marriages, adult children who cannot communicate with their parents, and the small creatures that somehow make life bearable. This novel follows several interconnected characters whose lives are touched by cats: an elderly man in a nursing home, his estranged daughter, a young man who feeds strays, and the cats themselves, who move between households with the indifference and grace that only cats possess. Where Endo writes about divine absence, Dazai about shame, Kawabata about perception, and Yuzuki about bureaucratic invisibility, Ogihara writes about the grammar of everyday survival: how Japanese people talk to each other when nothing is wrong but nothing is quite right either.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Conditional Grammar of Comfort</h2>
+
+    <p>The title is a sentence of extraordinary modesty. It does not promise happiness. It promises that things will merely "work out" (うまくいく), and only "most things" (たいていのこと), and only if a cat is present.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">猫さえいれば</span>、<span class="hl">たいていのことはうまくいく</span>
+        </div>
+        <div class="romaji">"Neko sae ireba, taitei no koto wa umaku iku."</div>
+        <div class="translation">"If I have a cat, most things will work out."</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td></tr>
+        <tr><td class="word">さえ</td><td class="reading">sae</td><td>even, if only, as long as (emphatic particle)</td></tr>
+        <tr><td class="word">いれば</td><td class="reading">ireba</td><td>if [something] exists/is present (conditional of いる)</td></tr>
+        <tr><td class="word">たいてい</td><td class="reading">taitei</td><td>mostly, generally, most things</td></tr>
+        <tr><td class="word">うまくいく</td><td class="reading">umaku iku</td><td>to go well, to work out, to proceed smoothly</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of barely enough</h5>
+        <p><strong>さえ (sae):</strong> This particle is doing extraordinary work. さえ means "even" or "if only," and it creates a minimal condition. "If only a cat is there." Not "if I have love," not "if I have money," not "if I have family." Just a cat. The particle makes the condition feel both sufficient and absurdly small. It suggests that the narrator's requirements for survival have shrunk to almost nothing. The English "if I have a cat" sounds like a preference. The Japanese 猫さえいれば sounds like a last-ditch philosophy.</p>
+        <p><strong>たいてい (taitei):</strong> "Most things, generally, for the most part." This is not "everything." It is explicitly partial. The title admits, in its second word, that some things will not work out. A cat cannot fix everything. The novel's wisdom is contained in this limitation. Ogihara is not writing fantasy. He is writing a philosophy of partial solutions.</p>
+        <p><strong>うまくいく (umaku iku):</strong> Literally "to go well." うまい means "skillful, tasty, fortunate, good at." いく means "to go." Together they mean "to proceed smoothly, to turn out all right." It is a phrase of mild optimism, the kind of thing you say about a meeting that was not terrible or a meal that was adequate. It is not "to be happy" or "to be saved." It is merely "to function." The title promises that a cat will not transform your life. It will simply make it functional. This is a profoundly Japanese form of hope.</p>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜さえ...ば</h5>
+        <p>Pattern: <code>Noun + さえ + conditional verb</code> = "If only [noun]..., then..."</p>
+        <p>This pattern establishes a minimal sufficient condition. It suggests that everything else is secondary or unnecessary. 猫さえいれば = "If only there is a cat (nothing else matters)." The grammar carries emotional weight: the speaker has reduced their needs to a single, small, furry presence. It is the grammar of people who have learned not to ask for much.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Nursing Home: Where Language Becomes Care</h2>
+    <p>One of the novel's central threads follows an elderly man in a nursing home whose relationship with his daughter has grown distant. The cat becomes the only thing they can still talk about.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            父親と娘は、もう<span class="hl">何も話すことがなかった</span>。けれど<span class="hl">猫の話</span>だけは、<span class="hl">どうにか</span>続いた
+        </div>
+        <div class="romaji">"Chichioya to musume wa, mou nani mo hanasu koto ga nakatta. Keredo neko no hanashi dake wa, dounika tsudzuita."</div>
+        <div class="translation">"The father and daughter no longer had anything to talk about. But somehow, only the talk of the cat continued."</div>
+        <div class="source">— The father and daughter (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">父親</td><td class="reading">chichioya</td><td>father</td></tr>
+        <tr><td class="word">娘</td><td class="reading">musume</td><td>daughter</td></tr>
+        <tr><td class="word">話す</td><td class="reading">hanasu</td><td>to speak, to talk</td></tr>
+        <tr><td class="word">どうにか</td><td class="reading">dounika</td><td>somehow, barely, with difficulty</td></tr>
+        <tr><td class="word">続く</td><td class="reading">tsudzuku</td><td>to continue, to last</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of exhausted connection</h5>
+        <p><strong>何も話すことがなかった (nani mo hanasu koto ga nakatta):</strong> "There was nothing to talk about." The grammar 何も...ない is an absolute negative. Not "they didn't talk much" but "there existed no topic of conversation." The noun化 (nominalization) of 話す into 話すこと (things to talk about) makes the absence feel categorical. It is not that they were quiet. It is that the category of "things we can discuss" had emptied.</p>
+        <p><strong>どにか (dounika):</strong> "Somehow, barely, with difficulty." This is one of the most emotionally precise words in Japanese. It means "managed to, against the odds, not well but adequately." When the cat talk どうにか続いた (somehow continued), it means the conversation was not natural, not easy, not flowing. It was maintained by effort, by the cat's presence as a bridge across silence. どうにか is the sound of something breaking that has not quite broken yet.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Stray Cat: 野良猫 and the Vocabulary of Belonging</h2>
+    <p>A young man feeds stray cats in his neighborhood. The novel uses the specific vocabulary of Japanese cat culture to distinguish between owned and unowned cats.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            彼は毎晩、<span class="hl">野良猫</span>たちに<span class="hl">餌</span>を<span class="hl">やっていた</span>。それは<span class="hl">当たり前のこと</span>のように思えたが、<span class="hl">誰かにとって</span>は、<span class="hl">世界を救う</span>ような行為だった
+        </div>
+        <div class="romaji">"Kare wa maiban, noraneko-tachi ni esa wo yatte ita. Sore wa atarimae no koto no you ni omoeta ga, dareka ni totte wa, sekai wo sukuu you na koui datta."</div>
+        <div class="translation">"Every night he fed the stray cats. It seemed like the most natural thing in the world, but to someone, it was an act like saving the world."</div>
+        <div class="source">— The young man and the strays (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">野良猫</td><td class="reading">noraneko</td><td>stray cat, feral cat (literally "field cat")</td></tr>
+        <tr><td class="word">餌</td><td class="reading">esa</td><td>feed, bait, food (for animals)</td></tr>
+        <tr><td class="word">や</td><td class="reading">yaru</td><td>to give (to animals, plants, or inferiors; plain/casual)</td></tr>
+        <tr><td class="word">当たり前</td><td class="reading">atarimae</td><td>natural, obvious, taken for granted</td></tr>
+        <tr><td class="word">誰かにとって</td><td class="reading">dareka ni totte</td><td>to someone, for someone</td></tr>
+        <tr><td class="word">世界を救う</td><td class="reading">sekai wo sukuu</td><td>to save the world</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The hierarchy of やる</h5>
+        <p><strong>野良猫 (noraneko):</strong> 野良 means "field, wild, uncultivated." A 野良猫 is not merely a stray; it is a cat that belongs to the fields, to no one, to the landscape itself. The word contains a kind of respect. These cats are not homeless; they are self-owned. They belong to the neighborhood the way a tree belongs to it. The English "stray" suggests something that has gone wrong, a pet that has lost its owner. 野良猫 suggests something that has chosen freedom.</p>
+        <p><strong>餌をやる (esa wo yaru):</strong> Here is a lesson in Japanese social grammar. やる is the verb "to give" used when the recipient is an animal, a plant, or a social inferior. You do not あげる (ageru) to a cat; you やる. This is not rude; it is simply the grammatical recognition that the human-cat relationship is not a relationship between equals. The young man is not "sharing" food with the cats. He is providing for creatures who cannot provide for themselves. The verb makes the act into a one-directional kindness, which is exactly what it is.</p>
+        <p><strong>当たり前 (atarimae):</strong> Literally "hit in front," meaning something so obvious it strikes you in the face. It is the Japanese word for "taken for granted." When the young man thinks feeding cats is 当たり前, he is saying it requires no moral deliberation. It is simply what one does. The novel quietly suggests that this is the highest form of ethics: not heroic choice but unthinking habit.</p>
+        <p><strong>誰かにとっては (dareka ni totte wa):</strong> "To someone, for someone." The grammar 〜にとって means "from the perspective of" or "for." It is a phrase of relativity. The act is not objectively world-saving. It is world-saving only from a particular perspective. The novel is careful not to grandstand. Feeding cats does not save the world. It saves <em>someone's</em> world. That is enough.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Cat's Indifference: 気まぐ and the Freedom Not to Care</h2>
+    <p>Cats in this novel do not love their humans in the way dogs do. They come and go according to their own desires. This indifference is not cruelty; it is a kind of honesty.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            猫は<span class="hl">気まぐれ</span>に<span class="hl">現れて</span>、<span class="hl">気まぐれ</span>に<span class="hl">いなくなった</span>。それでも人間は、<span class="hl">待っていた</span>
+        </div>
+        <div class="romaji">"Neko wa kimagure ni arawarete, kimagure ni inaku natta. Sore demo ningen wa, matte ita."</div>
+        <div class="translation">"The cat appeared on a whim, and disappeared on a whim. And still, the humans waited."</div>
+        <div class="source">— The cat's comings and goings (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">気まぐれ</td><td class="reading">kimagure</td><td>whim, caprice, fickleness</td></tr>
+        <tr><td class="word">現れる</td><td class="reading">arawareru</td><td>to appear, to show up</td></tr>
+        <tr><td class="word">いなくなる</td><td class="reading">inaku naru</td><td>to disappear, to go away, to be gone</td></tr>
+        <tr><td class="word">それでも</td><td class="reading">sore demo</td><td>and yet, even so, nevertheless</td></tr>
+        <tr><td class="word">待つ</td><td class="reading">matsu</td><td>to wait</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The ethics of waiting for what may not come</h5>
+        <p><strong>気まぐれ (kimagure):</strong> From 気 (spirit, mood) and まぐれ (irregular, accidental). A 気まぐれ person or creature acts according to mood rather than obligation. In Japanese culture, this is often seen as a flaw in humans but as natural in cats. The word contains a small philosophy: cats are allowed to be unreliable because they make no promises. Humans are bound by duty because we do. The repetition of 気まぐれに in both clauses (appearing and disappearing) makes the cat's behavior into a single, consistent inconsistency. It is not capriciousness; it is integrity of a different order.</p>
+        <p><strong>いなくなる (inaku naru):</strong> The polite/formal word for "to be absent" is いない. いなくなる is the intransitive verb "to become absent, to disappear." It is different from 消える (kieru, to vanish) because it contains the sense of "being gone" rather than "vanishing from sight." When a cat いなくなる, it is not merely out of view. It has entered a state of absence. The grammar makes disappearance into a condition rather than an event.</p>
+        <p><strong>それでも待っていた (sore demo matte ita):</strong> "And yet they waited." それでも is a conjunction of extraordinary pathos. It means "despite that, in spite of everything, even so." It carries the weight of all the reasons not to wait (the cat may not return, the cat does not owe them anything, the cat may be dead) and waits anyway. The past progressive 待っていた (were waiting) suggests a continuous state, not a single act. They did not wait once. They lived in waiting. This is the grammar of devotion without guarantee.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Daughter's Guilt: 介護 and the Language of Filial Duty</h2>
+    <p>The daughter feels guilty about putting her father in a nursing home. The novel explores the specific vocabulary of elder care in contemporary Japan.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            娘は<span class="hl">介護</span>の<span class="hl">負担</span>から<span class="hl">逃げた</span>のだと、<span class="hl">自分でもわかっていた</span>。でも<span class="hl">仕方がなかった</span>。そう<span class="hl">言い聞かせて</span>きた
+        </div>
+        <div class="romaji">"Musume wa kaigo no futan kara nigeta no da to, jibun demo wakatte ita. Demo shikata ga nakatta. Sou iikikasete kita."</div>
+        <div class="translation">"She knew, herself, that she had run away from the burden of care. But there had been no choice. She had kept telling herself that."</div>
+        <div class="source">— The daughter's conscience (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">介護</td><td class="reading">kaigo</td><td>elder care, nursing care, caregiving</td></tr>
+        <tr><td class="word">負担</td><td class="reading">futan</td><td>burden, load, responsibility</td></tr>
+        <tr><td class="word">逃げる</td><td class="reading">nigeru</td><td>to run away, to escape, to avoid</td></tr>
+        <tr><td class="word">仕方がない</td><td class="reading">shikata ga nai</td><td>it can't be helped, there's no choice</td></tr>
+        <tr><td class="word">言い聞かせる</td><td class="reading">iikikaseru</td><td>to persuade, to lecture, to keep telling oneself</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The national grammar of 仕方がない</h5>
+        <p><strong>介護 (kaigo):</strong> This word has become one of the defining social issues of 21st-century Japan. With the world's oldest population and a shrinking birth rate, Japan faces a crisis of elder care. 介護 is not merely "taking care of old people." It is an industry, a government policy category, a source of national anxiety, and a private shame. When the daughter feels guilty about 介護, she is not merely failing a personal duty. She is failing a national expectation.</p>
+        <p><strong>仕方がなかった (shikata ga nakatta):</strong> "There was no choice." This is one of the most Japanese sentences in the language. 仕方 means "way of doing, method." ない means "does not exist." The phrase literally means "a way of doing does not exist." It is the grammar of resignation, of accepting what cannot be changed. Japanese people use this phrase constantly: for typhoons, for train delays, for death. When the daughter uses it about her father's care, she is applying the grammar of natural disaster to a moral choice. The novel asks whether this is wisdom or evasion.</p>
+        <p><strong>言い聞かせてきた (iikikashite kita):</strong> "Had kept telling herself." 言い聞かせる is a compound of "say" and "listen," meaning to persuade or lecture. The 〜て来る (te kuru) form indicates an action that has continued up to the present. She has been telling herself this for a long time. The grammar suggests that the phrase "there was no choice" has become a habit, a mantra, a way of living with guilt. It is not a conclusion she reached once. It is a story she has been rehearsing.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Cat's Name: What We Call the Things We Love</h2>
+    <p>The novel explores how naming a cat changes the relationship between humans and animals, and between humans and each other.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">名前をつけた</span>瞬間から、猫は<span class="hl">ただの野良猫</span>ではなくなった。それは<span class="hl">小さな魔法</span>のようなものだった
+        </div>
+        <div class="romaji">"Namae wo tsuketa shunkan kara, neko wa tada no noraneko de wa naku natta. Sore wa chiisana mahou no you na mono datta."</div>
+        <div class="translation">"From the moment a name was given, the cat was no longer just a stray. It was like a small magic."</div>
+        <div class="source">— Naming the cat (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">名前をつける</td><td class="reading">namae wo tsukeru</td><td>to name, to give a name</td></tr>
+        <tr><td class="word">瞬間</td><td class="reading">shunkan</td><td>moment, instant</td></tr>
+        <tr><td class="word">ただの</td><td class="reading">tada no</td><td>mere, just, only</td></tr>
+        <tr><td class="word">魔法</td><td class="reading">mahou</td><td>magic, sorcery</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The transfiguration of naming</h5>
+        <p><strong>名前をつける (namae wo tsukeru):</strong> "To attach a name." The verb つける means "to attach, to affix, to add on." Naming in Japanese is not "giving" (as in English) but "attaching." A name is something you stick onto a creature, like a label. But the novel suggests that this attachment is transformative. Once named, the cat is no longer interchangeable with other cats. It has become singular. The grammar of attachment becomes the grammar of love.</p>
+        <p><strong>ただの (tada no):</strong> "Mere, just, only." This is a dismissive modifier. ただの野良猫 = "just a stray, nothing more." When the novel says the cat is no longer ただの野良猫, it is saying that naming has elevated the cat from the category of "mere animal" into something else. The word ただ contains a whole hierarchy of being: some creatures are just creatures, and some become persons through the act of being named.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Sound of a Cat: ゴロゴロ and Japanese Mimesis</h2>
+    <p>Japanese fiction is famous for its onomatopoeia. Ogihara uses the sound of a purring cat to create one of the novel's most comforting passages.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            猫が<span class="hl">喉</span>を<span class="hl">鳴らしている</span>。その<span class="hl">ゴロゴロ</span>という音が、<span class="hl">部屋中</span>に<span class="hl">満ちていた</span>
+        </div>
+        <div class="romaji">"Neko ga nodo wo narashite iru. Sono gorogoro to iu oto ga, heya-juu ni michite ita."</div>
+        <div class="translation">"The cat was purring. That gorogoro sound filled the room."</div>
+        <div class="source">— The sound of contentment (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">喉</td><td class="reading">nodo</td><td>throat</td></tr>
+        <tr><td class="word">鳴らす</td><td class="reading">narasu</td><td>to sound, to make a noise (transitive)</td></tr>
+        <tr><td class="word">ゴロゴロ</td><td class="reading">gorogoro</td><td>onomatopoeia for purring, rumbling, or lounging</td></tr>
+        <tr><td class="word">部屋中</td><td class="reading">heya-juu</td><td>throughout the room, all over the room</td></tr>
+        <tr><td class="word">満ちる</td><td class="reading">michiru</td><td>to be full of, to be filled with</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The mimesis of comfort</h5>
+        <p><strong>喉を鳴らす (nodo wo narasu):</strong> Literally "to make one's throat sound." This is the standard Japanese phrase for a cat's purr. The grammar is transitive: the cat is actively sounding its throat, not merely making a noise. It suggests that purring is something the cat does on purpose, a kind of performance of contentment. The English "purr" is intransitive, something that happens. The Japanese 喉を鳴らす makes the cat an agent of its own comfort.</p>
+        <p><strong>ゴロゴロ (gorogoro):</strong> One of the most versatile onomatopoeia in Japanese. It can mean purring, thunder rumbling, a stone rolling, or someone lounging around doing nothing. The shared sound across these meanings suggests a deep connection in Japanese perception: comfort, heaviness, and idleness all share the same sonic texture. When a cat's purr is ゴロゴロ, it is not merely a sound. It is a state of being. The room fills not with noise but with a quality of existence.</p>
+        <p><strong>満ちていた (michite ita):</strong> "Was filled with." 満ちる is an intransitive verb meaning "to be full, to abound." It is different from 満たす (mitasu), which is transitive (to fill something). 満ちていた suggests that the sound filled the room naturally, without effort, the way water fills a vessel. The grammar makes the room into something that receives the cat's presence rather than something the cat must conquer.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. What the Cat Cannot Fix</h2>
+    <p>The novel's deepest insight is that cats help, but they do not cure. The title's modesty is borne out in the text.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            猫は<span class="hl-danger">何解決してくれなかった</span>。でも、<span class="hl-danger">朝が来るのが怖くなくなった</span>
+        </div>
+        <div class="romaji">"Neko wa nani mo kaiketsu shite kurenakatta. Demo, asa ga kuru no ga kowaku naku natta."</div>
+        <div class="translation">"The cat did not solve anything. But mornings stopped being frightening."</div>
+        <div class="source">— The novel's moral center (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">解決</td><td class="reading">kaiketsu</td><td>solution, resolution</td></tr>
+        <tr><td class="word">〜てくれる</td><td class="reading">te kureru</td><td>to do something for me (benefactive)</td></tr>
+        <tr><td class="word">朝</td><td class="reading">asa</td><td>morning</td></tr>
+        <tr><td class="word">怖い</td><td class="reading">kowai</td><td>frightening, scary</td></tr>
+        <tr><td class="word">〜なくなる</td><td class="reading">naku naru</td><td>to stop being [adjective], to cease to be</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of partial salvation</h5>
+        <p><strong>何も解決してくれなかった (nani mo kaiketsu shite kurenakatta):</strong> "Did not solve anything for me." The grammar 〜てくれる indicates an action done as a favor for the speaker. The negative past 〜てくれなかった means the cat failed to perform this favor. But the construction is gentle. It is not "the cat was useless." It is "the cat did not, in the end, do for me the thing I might have hoped." The benefactive grammar preserves the relationship even in disappointment. The cat tried, in its way. It simply could not fix what was broken.</p>
+        <p><strong>朝が来るのが怖くなくなった (asa ga kuru no ga kowaku naku natta):</strong> "Mornings stopped being frightening." This is one of the most beautiful sentences in contemporary Japanese fiction, and it is built on a simple grammar: 〜くなくなる (to stop being [adjective]). 怖い (frightening) becomes 怖くない (not frightening) becomes 怖くなくなった (came to be not frightening). The triple negation (adjective negative + なる negative) creates a slow, hesitant emergence from fear. It is not "I was no longer afraid." That would be too sudden. It is "fear gradually ceased to be the quality of morning." The grammar performs the healing it describes.</p>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜くなくなる</h5>
+        <p>Pattern: <code>i-adjective stem + くなくなる</code> = "to stop being [adjective], to cease to be [adjective]"</p>
+        <p>This pattern describes a gradual change of state, not a sudden one. 怖くなくなった does not mean "suddenly I wasn't scared." It means "over time, fear ceased to be the defining quality." The grammar contains its own temporality. It is the sound of healing happening slowly, which is the only way healing happens.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Shared Meal: 一緒に食べる and the Grammar of Family</h2>
+    <p>One of the novel's quietest and most moving scenes involves a father and daughter eating together because the cat has brought them back into the same room.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            久しぶりに<span class="hl">一緒に食事</span>をした。猫が<span class="hl">テーブルの上</span>で<span class="hl">丸くなって</span>、<span class="hl">眠っていた</span>
+        </div>
+        <div class="romaji">"Hisashiburi ni issho ni shokuji wo shita. Neko ga teeburu no ue de maruku natte, nemutte ita."</div>
+        <div class="translation">"For the first time in a long while, they ate together. The cat was curled up asleep on the table."</div>
+        <div class="source">— Reconciliation scene (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">久しぶり</td><td class="reading">hisashiburi</td><td>after a long time, for the first time in a while</td></tr>
+        <tr><td class="word">一緒に</td><td class="reading">issho ni</td><td>together</td></tr>
+        <tr><td class="word">食事</td><td class="reading">shokuji</td><td>meal, food</td></tr>
+        <tr><td class="word">丸くなる</td><td class="reading">maruku naru</td><td>to curl up into a ball, to become round</td></tr>
+        <tr><td class="word">眠る</td><td class="reading">nemuru</td><td>to sleep (literary/formal)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The roundness of peace</h5>
+        <p><strong>久しぶり (hisashiburi):</strong> "After a long time." This word carries the weight of absence. It is what you say when you meet a friend you have not seen in years. When applied to eating with one's own father, it suggests a estrangement so normalized that its interruption feels like a special occasion. The word makes the ordinary into the extraordinary simply by noting how long it has been missing.</p>
+        <p><strong>丸くなる (maruku naru):</strong> "To become round, to curl up." This is the classic posture of a sleeping cat. But 丸い (round) in Japanese carries connotations of harmony, peace, and completeness. 丸く収まる (maruku osamaru) means "to be settled amicably." When the cat 丸くなる on the table, it is not merely sleeping. It is performing roundness as a kind of blessing. Its body becomes a circle, and the circle becomes a symbol of what the family has lost and might recover.</p>
+        <p><strong>眠っていた (nemutte ita):</strong> The past progressive of 眠る, a literary verb for "to sleep" (as opposed to the everyday 寝る, neru). 眠る suggests a deeper, more peaceful sleep. It is the word used for eternal rest, for sleep that heals. By choosing 眠る over 寝る, Ogihara elevates the cat's nap into something almost sacred. The cat does not merely sleep on the table. It keeps watch in its sleep.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>10. Summary: The Grammar of Small Mercies</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜さえ...ば</strong> — If only [minimal condition]... (the grammar of barely enough)</li>
+        <li><strong>何も...ない</strong> — Absolute negative (not merely "not much" but "nothing at all")</li>
+        <li><strong>どうにか</strong> — Somehow, barely (the sound of something not yet broken)</li>
+        <li><strong>〜てくれる / 〜てくれない</strong> — Doing something as a favor for me (preserves relationship even in disappointment)</li>
+        <li><strong>〜くなくなる</strong> — To gradually stop being [adjective] (the grammar of slow healing)</li>
+        <li><strong>〜にとっては</strong> — From someone's perspective (relativity, not grandstanding)</li>
+        <li><strong>〜て来る</strong> — An action continuing up to the present (the grammar of rehearsed self-deception)</li>
+    </ul>
+
+    <h4>Words that carry the novel's weight</h4>
+    <ul>
+        <li><strong>猫さえいれば</strong> — The minimal condition for survival</li>
+        <li><strong>たいてい</strong> — Most things, not all; the wisdom of partial solutions</li>
+        <li><strong>うまくいく</strong> — To function, not to be transformed</li>
+        <li><strong>野良猫</strong> — A cat that belongs to no one and therefore to the landscape</li>
+        <li><strong>餌をやる</strong> — The grammar of one-directional kindness</li>
+        <li><strong>当たり前</strong> — What requires no moral deliberation; ethics as habit</li>
+        <li><strong>気まぐれ</strong> — The integrity of inconsistency</li>
+        <li><strong>それでも</strong> — And yet; the weight of all reasons not to wait</li>
+        <li><strong>介護</strong> — The national crisis of elder care made personal</li>
+        <li><strong>仕方がない</strong> — The grammar of resignation applied to moral choice</li>
+        <li><strong>言い聞かせてきた</strong> — The mantra of self-persuasion</li>
+        <li><strong>名前をつける</strong> — Naming as attachment, attachment as transfiguration</li>
+        <li><strong>ゴロゴロ</strong> — The onomatopoeia of comfort, thunder, and idleness</li>
+        <li><strong>怖くなくなった</strong> — Fear gradually ceasing to define the morning</li>
+        <li><strong>丸くなる</strong> — The cat's body as a blessing of roundness and peace</li>
+        <li><strong>眠る</strong> — Sleep as watchfulness, rest as sacred</li>
+    </ul>
+
+    <h4>Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Six directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方がない, 怖くなくなった). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. His vocabulary is the vocabulary of people who have learned not to ask for much, and his grammar is the grammar of small, partial, real mercies. Together these six writers map the emotional and linguistic range of modern Japanese: from divine absence to bureaucratic erasure, from aesthetic perception to the purr that fills a room.</p>
+</section>
+
+</main>
+
+</body>
+</html>

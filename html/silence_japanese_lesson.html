@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silence — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e6e2db;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #4a3f35;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --danger: #5c2d2d;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(74,63,53,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.danger::before {
+            background: var(--danger);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.danger-box {
+            background: color-mix(in oklab, var(--danger) 6%, var(--surface));
+            border-left-color: var(--danger);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.danger-box h5 {
+            color: var(--danger);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-danger {
+            background: color-mix(in oklab, var(--danger) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .context-note {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--line);
+            padding-left: 0.8rem;
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Silence<br><span style="font-size:0.6em; font-weight:300;">沈黙</span></h1>
+    <div class="subtitle">A Japanese lesson through Endo Shusaku's most famous novel</div>
+    <div class="meta">The weight of silence &middot; The swamp &middot; The foot that tramples and is trampled</div>
+</header>
+
+<main>
+
+<p class="intro">
+    Published in 1966, <em>Silence</em> is Endo's masterpiece and one of the most important novels of the twentieth century. It tells the story of Father Rodrigues, a Portuguese Jesuit who travels to 17th-century Japan to find his mentor, Ferreira, who is rumored to have apostatized. Instead, Rodrigues finds a Japan that has systematically eradicated Christianity, and a God who seems to answer torture with nothing but silence. The novel asks: What does faith mean when God does not speak? What does apostasy mean when it is done to save others? And what kind of Christ can live in a country Endo calls a swamp?
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: 沈黙</h2>
+
+    <p>Endo's title is not 静寂 (seijaku), the word for mere absence of noise. It is 沈黙 (chinmoku), a much heavier word.</p>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">沈黙</td><td class="reading">chinmoku</td><td>silence as a weight, a presence, a refusal to speak</td></tr>
+        <tr><td class="word">静寂</td><td class="reading">seijaku</td><td>stillness, quiet, absence of sound (neutral)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The sinking silence</h5>
+        <p><strong>沈 (chin)</strong> means to sink, to submerge, to be immersed in. <strong>黙 (moku)</strong> means silence, muteness. Together, 沈黙 suggests a silence that is not empty but heavy, something that presses down on you like water. It is the silence of someone who could speak but chooses not to, or of a God who hears but does not answer. The English word "silence" can mean either "quiet" or "refusal to speak." 沈黙 leans decisively toward the latter. It is a willed, meaningful, almost aggressive silence.</p>
+        <p>In the novel, this silence belongs to God, to the inquisitors, to the martyred peasants, and finally to Rodrigues himself. When the title appears at the end of a chapter, it is not describing an acoustic condition. It is naming the central character of the book.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. Japan as a Swamp</h2>
+    <p>The most famous metaphor in the novel comes from the apostate Ferreira, explaining why Christianity failed in Japan.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「この国は<span class="hl">沼</span>だ。今までわしは、日本という国を沼とは考えなかった。今までわれわれが植えたものは、根を伸ばそうとしたが、やがて水に漬かって<span class="hl">腐った</span>」
+        </div>
+        <div class="romaji">"Kono kuni wa numa da. Ima made washi wa, Nihon to iu kuni wo numa to wa kangaenakatta. Ima made wareware ga ueta mono wa, ne wo nobasou to shita ga, yagate mizu ni tsukatte kusatta."</div>
+        <div class="translation">"This country is a swamp. Until now I had not thought of Japan as a swamp. Everything we planted tried to extend its roots, but soon it soaked in the water and rotted."</div>
+        <div class="source">— Ferreira to Rodrigues</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">沼</td><td class="reading">numa</td><td>swamp, marsh, bog, morass</td></tr>
+        <tr><td class="word">根</td><td class="reading">ne</td><td>root</td></tr>
+        <tr><td class="word">伸ばす</td><td class="reading">nobasu</td><td>to extend, to stretch out (transitive)</td></tr>
+        <tr><td class="word">漬かる</td><td class="reading">tsukaru</td><td>to be soaked in, to be immersed in</td></tr>
+        <tr><td class="word">腐る</td><td class="reading">kusaru / kusanu</td><td>to rot, to decay, to decompose</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The organic horror of 沼</h5>
+        <p><strong>沼 (numa):</strong> Not merely a swamp. A 沼 is stagnant water, shallow, filled with decaying vegetation, producing methane and bad air. It is the opposite of a river (河/川), which flows and renews itself. Ferreira is saying that Japan does not kill Christianity violently; it lets it sink into stagnant water and decompose from below. The word carries a sense of slow, organic, inevitable corruption. "Swamp" in English can be neutral (the Everglades) or political (drain the swamp). 沼 is simply rotten. It is nature in a state of unhealthy stasis.</p>
+        <p><strong>腐った (kusatta):</strong> The plain past tense of 腐る. Ferreira uses no fancy theological language. He says the faith <em>rotted</em>. This is the language of a doctor describing gangrene, not a theologian describing heresy. The word is visceral and final. Something that rots does not merely die; it becomes unclean, unapproachable, something you do not touch.</p>
+    </div>
+
+    <div class="context-note">
+        The metaphor is devastating because Ferreira was once the most dedicated missionary. His vocabulary of rot is the vocabulary of a man who has watched something he loved die not by fire but by dampness.
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Warmth of the Heart</h2>
+    <p>Rodrigues, watching the hidden Christians, comes to understand why the faith spread among peasants who had nothing.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            我々の宗教がこの地方の農民に<span class="hl">水の浸み入るように</span>拡がっていったのは、ほかでもない、生れてはじめてこの連中が<span class="hl">人の心のあたたかさ</span>を見たからです。人間として取り扱ってくれる者にあったからです
+        </div>
+        <div class="romaji">"Wareware no shuukyou ga kono chihou no noumin ni mizu no shimiiriru you ni hirogatte ita no wa, hoka demo nai, umarete hajimete kono renchuu ga hito no kokoro no atatakasa wo mita kara desu. Ningen to shite toriatsukatte kureru mono ni atta kara desu."</div>
+        <div class="translation">"The reason our religion spread among the peasants of this region like water soaking in was nothing other than this: for the first time in their lives, these people saw the warmth of the human heart. They met someone who treated them as human beings."</div>
+        <div class="source">— Rodrigues's reflection</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">浸み入る</td><td class="reading">shimiiriru / shimijimiru</td><td>to soak in, to permeate, to penetrate gradually</td></tr>
+        <tr><td class="word">拡がる</td><td class="reading">hirogaru</td><td>to spread, to extend (intransitive)</td></tr>
+        <tr><td class="word">あたたかさ</td><td class="reading">atatakasa</td><td>warmth (of heart, of feeling)</td></tr>
+        <tr><td class="word">取り扱う</td><td class="reading">toriatsukau</td><td>to treat, to handle, to deal with</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: Water soaking into dry ground</h5>
+        <p><strong>水の浸み入るように (mizu no shimiiriru you ni):</strong> This simile is almost too humble for the subject. Endo compares the spread of Christianity not to fire or wind or conquering armies, but to water soaking into soil. The grammar 〜ように makes it a simile of manner, not of appearance: it spread <em>in the manner that</em> water soaks in. This suggests something gradual, inevitable, and welcomed by the receiver. Dry ground does not resist water. These peasants did not resist the faith because it arrived not as doctrine but as 人の心のあたたかさ, the warmth of the human heart.</p>
+        <p><strong>人の心のあたたかさ (hito no kokoro no atatakasa):</strong> The warmth of a person's heart. In English this sounds like a cliché. In Japanese, あたたかさ is a concrete physical word (warmth, as opposed to coldness) being used for emotional reality. The peasants had been treated as beasts of burden by the samurai class. When missionaries looked at them with kindness, they felt a warmth they had never known. The word suggests that Christianity spread in Japan not because of theology but because of something simpler and harder to sustain: human decency.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. What Is Sin?</h2>
+    <p>Rodrigues, watching guards laugh at the suffering of prisoners, has a sudden insight that redefines the novel's moral universe.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">罪</span>は、普通考えられるように、盗んだり、虚言をついたりすることではなかった。罪とは人がもう一人の人間の<span class="hl">人生の上を通過</span>しながら、自分がそこに残した<span class="hl">痕跡</span>を忘れることだった
+        </div>
+        <div class="romaji">"Tsumi wa, futsuu kangaerareru you ni, nusundari, kyogen wo tsuitari suru koto de wa nakatta. Tsumi to wa hito ga mou hitori no ningen no jinsei no ue wo tsuuka shinagara, jibun ga soko ni nokoshita konseki wo wasureru koto datta."</div>
+        <div class="translation">"Sin was not, as commonly thought, stealing or telling lies. Sin was passing over another person's life while forgetting the traces one left there."</div>
+        <div class="source">— Rodrigues's interior monologue</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">罪</td><td class="reading">tsumi</td><td>sin, guilt, crime (internal, moral)</td></tr>
+        <tr><td class="word">虚言</td><td class="reading">kyogen</td><td>falsehood, lie (literary/formal)</td></tr>
+        <tr><td class="word">通過</td><td class="reading">tsuuka</td><td>passing through, transit</td></tr>
+        <tr><td class="word">痕跡</td><td class="reading">konseki</td><td>trace, mark, vestige</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The geometry of sin</h5>
+        <p><strong>人生上を通過 (jinsei no ue wo tsuuka):</strong> To pass over a life. 通過 is a neutral word for transit, used for trains passing through stations without stopping. Rodrigues is saying that sin is treating other people's lives as places you pass through without stopping, leaving damage you do not remember and do not account for. The metaphor is spatial: a life as a landscape, and the sinner as a traveler who leaves footprints and forgets them. This is very different from the Western definition of sin as violation of divine law. Endo's definition is relational and Japanese: sin is failed memory, failed attention, the refusal to acknowledge that you have altered someone else's existence.</p>
+        <p><strong>痕跡 (konseki):</strong> Not merely a "mark" or "trace." 痕跡 is a forensic word. It is what detectives look for at a crime scene. By using it for ordinary human interaction, Rodrigues is saying that every contact leaves evidence, and to forget that evidence is to commit a kind of spiritual vandalism. The word makes sin into something that could be photographed, measured, presented in court.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. Ferreira's Despair</h2>
+    <p>The moment Rodrigues has feared arrives: his former teacher, Ferreira, appears before him, not as a prisoner but as a Japanese man.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            「わしが転んだのはな、いいか。聞きなさい。そのあとでここに入れられ耳にしたあの声に、神が何ひとつ、<span class="hl-danger">なさらなかった</span>からだ。わしは必死で神に祈ったが、神は何もしなかったからだ」
+        </div>
+        <div class="romaji">"Washi ga koronda no wa na, ii ka. Kiki nasai. Sono ato de koko ni irerare mimi ni shita ano koe ni, kami ga nani hitotsu, nasaranakatta kara da. Washi wa hisshi de kami ni inotta ga, kami wa nani mo shinakatta kara da."</div>
+        <div class="translation">"I apostatized because, listen to me. After I was put in here and heard those voices, God did absolutely nothing. I prayed to God desperately, but God did nothing."</div>
+        <div class="source">— Ferreira's confession</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">転ぶ</td><td class="reading">korobu / koronda</td><td>to fall, to apostatize (in this context, to fall from faith)</td></tr>
+        <tr><td class="word">必死</td><td class="reading">hisshi</td><td>desperate, with all one's might</td></tr>
+        <tr><td class="word">なさる</td><td class="reading">nasaru</td><td>to do (honorific of する)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The honorific that accuses God</h5>
+        <p><strong>なさらなかった (nasaranakatta):</strong> This is the negative past of なさる, the honorific form of する (to do). Ferreira is a priest speaking about God. Even in his accusation, he uses honorific language. This creates a devastating tension: he is angry at God, he is saying God failed, and yet his grammar still bows. The honorific makes the accusation more personal, not less. It is the grammar of a son accusing a father, not a subject accusing a king. In English, "God did nothing" is flat and declarative. なさらなかった carries the weight of a relationship. Ferreira is not saying God is powerless. He is saying God <em>chose</em> not to act, and that choice is a betrayal.</p>
+        <p><strong>転ぶ (korobu):</strong> The standard word for "to fall down." In Christian Japanese, it became the euphemism for apostasy: to fall from the faith. Ferreira uses this simple word instead of 棄教する (kikyousuru, "to apostatize formally"). He describes his apostasy not as a theological decision but as a physical collapse, like a man falling in the street. The word contains no dignity. It is the opposite of 殉教 (junkyou, martyrdom, "dying for the faith").</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Sound of the Sea</h2>
+    <p>Throughout the novel, Rodrigues hears what he thinks is the sea, or the wind, or the cicadas. In fact, it is often the sound of Christians being tortured.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            夜半、彼は<span class="hl-danger">うめき声</span>で目を覚ました。それは海の音か、風の音かと思ったが、よく耳をすますと、それは人間の声であった
+        </div>
+        <div class="romaji">"Yonaka, kare wa umekigoe de me wo samashita. Sore wa umi no oto ka, kaze no oto ka to omotta ga, yoku mimi wo sumasu to, sore wa ningen no koe de atta."</div>
+        <div class="translation">"In the middle of the night he awoke to groaning. He thought it was the sound of the sea, or the wind, but when he listened carefully, it was a human voice."</div>
+        <div class="source">— In the prison</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夜半</td><td class="reading">yonaka</td><td>middle of the night, midnight</td></tr>
+        <tr><td class="word">うめき声</td><td class="reading">umekigoe</td><td>groan, moan (of pain, not pleasure)</td></tr>
+        <tr><td class="word">耳をすます</td><td class="reading">mimi wo sumasu</td><td>to listen carefully, to prick up one's ears</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The naturalization of torture</h5>
+        <p><strong>うめき声 (umekigoe):</strong> A groan of pain. The word うめく suggests an animal sound, something that escapes without words. It is the sound a wounded dog makes. By making Rodrigues mistake this for the sea or the wind, Endo accomplishes something terrible: he makes torture sound like nature. The groans become part of the landscape, like waves or wind, something you might not even notice if you were not paying attention. This is how the guards live with it. They have learned to hear うめき声 as background noise.</p>
+        <p><strong>耳をすます (mimi wo sumasu):</strong> Literally "to clear one's ears." It means to listen with deliberate attention, to make an effort to hear what is not obvious. The phrase suggests that the truth is available to anyone who tries to hear it, but most people do not try. Rodrigues must actively clear his ears to recognize human suffering. Before he does, he hears only nature. This small phrase contains the novel's ethics: perception is a moral act. You must choose to hear.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Fumie</h2>
+    <p>The climax of the novel. Rodrigues is ordered to trample on the fumie, an image of Christ, to prove he has apostatized. He looks at the face of Christ, and the face seems to speak.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            『<span class="hl-danger">踏むがいい</span>。お前の足の痛さはこの私が一番よく知っている。踏むがいい。私はお前たちに踏まれるため、この世に生れ、お前たちの痛さを分つため十字架を背負ったのだ』
+        </div>
+        <div class="romaji">"Fumu ga ii. Omae no ashi no itasa wa kono watashi ga ichiban yoku shitte iru. Fumu ga ii. Watashi wa omaetachi ni fumareru tame, kono yo ni umare, omaetachi no itasa wo wakatsu tame juujika wo seotta no da."</div>
+        <div class="translation">"Trample! It was to be trampled on by you that I was born into this world. It was to share your pain that I bore the cross."</div>
+        <div class="source">— The voice Rodrigues hears from the fumie</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">踏む</td><td class="reading">fumu</td><td>to step on, to trample</td></tr>
+        <tr><td class="word">踏み絵</td><td class="reading">fumie</td><td>the image one is ordered to trample (anti-Christian test)</td></tr>
+        <tr><td class="word">痛さ</td><td class="reading">itasa</td><td>pain (nominalized from 痛い)</td></tr>
+        <tr><td class="word">分つ</td><td class="reading">wakatsu</td><td>to share, to divide, to partake of</td></tr>
+        <tr><td class="word">背負う</td><td class="reading">seou</td><td>to bear on one's back, to carry (a burden)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of being-trampled</h5>
+        <p><strong>踏まれるため (fumareru tame):</strong> The passive form. "In order to be trampled." This is the theological shock of the passage. Christ says he was born not to conquer, not to judge, but to be trampled. The passive voice makes him into a victim by design, not by accident. In English, "to be trampled on by you" keeps the passive, but loses the deliberate grammatical construction 〜ため (in order to). In Japanese, Christ is saying his purpose, his telos, his reason for being born was to receive this specific violence from these specific people. It is not something that happens to him despite his mission. It <em>is</em> his mission.</p>
+        <p><strong>痛さ (itasa):</strong> The nominalization of 痛い (painful). By turning the adjective into a noun, Endo makes pain into an object, a thing that can be known and shared. Christ says "your pain" (お前の足の痛さ) as if it were a measurable substance. And he claims to know it better than anyone. 痛さ is more intimate than 苦痛 (kutsuu, suffering); it is the pain of a specific foot on a specific face.</p>
+        <p><strong>分つ (wakatsu):</strong> Usually means "to divide" or "to separate." Here it means "to share," as in dividing something so that each party has a portion. Christ says he bore the cross in order to 分つ (divide/share) their pain. The word suggests that pain is not eliminated but distributed. Christ does not take their pain away; he takes a share of it. This is the "God who suffers with" rather than the "God who rescues from." It is the central theological innovation of Endo's entire career.</p>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜がいい</h5>
+        <p>Pattern: <code>Verb + がいい</code> = "You may as well [verb] / Go ahead and [verb]"</p>
+        <p>This pattern gives permission, but with a specific nuance: it is permission given when the speaker believes the action is inevitable or even desirable. When Christ says 踏むがいい, he is not merely saying "I allow you." He is saying "This is why I am here." The grammar of permission becomes the grammar of purpose. It transforms an act of apostasy into an act of communion.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Rooster Crows</h2>
+    <p>After Rodrigues apostatizes, the novel gives us a devastating echo of the Gospels. Kichijiro, the Judas figure, appears again.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">鶏が鳴いた</span>。キチジローは顔を上げた。そしてロドリゴを見た。その目には、涙が光っていた
+        </div>
+        <div class="romaji">"Niwatori ga naita. Kichijirou wa kao wo ageta. Soshite Rodorigo wo mita. Sono me ni wa, namida ga hikatte ita."</div>
+        <div class="translation">"The cock crowed. Kichijiro raised his face. And he looked at Rodrigues. In his eyes, tears shone."</div>
+        <div class="source">— After the apostasy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">鶏</td><td class="reading">niwatori</td><td>chicken, rooster, fowl</td></tr>
+        <tr><td class="word">鳴く</td><td class="reading">naku</td><td>to cry, to call, to crow (animal sound)</td></tr>
+        <tr><td class="word">光る</td><td class="reading">hikaru</td><td>to shine, to gleam, to glisten</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: Peter and Judas in one gesture</h5>
+        <p><strong>鶏が鳴いた (niwatori ga naita):</strong> In the Gospels, the cock crows after Peter denies Christ three times. Here, it crows after Rodrigues apostatizes. But the person who hears it is not Rodrigues. It is Kichijiro, the serial apostate, the character who has betrayed Rodrigues repeatedly, the Judas figure. The tears in Kichijiro's eyes suggest that he recognizes Rodrigues as finally like himself: weak, broken, forgiven. The cock crow is for Kichijiro, not for the priest. It is the moment when the betrayer recognizes the betrayed as his brother in failure.</p>
+        <p><strong>鳴く (naku):</strong> The word for animal cries. Crows 鳴く, dogs 鳴く, insects 鳴く. By using 鳴く instead of 啼く (the more dignified word for a rooster's crow), Endo keeps the sound in the realm of nature, of unglamorous farmyard fact. The cock does not make a triumphant clarion call. It simply 鳴くs, the way animals do. The mundanity of the word makes the biblical allusion more painful, not less.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. Christ Died for the Miserable</h2>
+    <p>One of the novel's most important theological passages comes early, when Rodrigues looks at the peasants and understands something about the nature of grace.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            基督は美しいものや善いもののために死んだのではない。美しいものや善いもののために死ぬことはやさしいのだが、<span class="hl">みじめなものや腐敗したものたちのために死ぬのはむつかしい</span>と私はその時はっきりわかりました
+        </div>
+        <div class="romaji">"Kirisuto wa utsukushii mono ya yoi mono no tame ni shinda no de wa nai. Utsukushii mono ya yoi mono no tame ni shinu koto wa yasashii no da ga, mijime na mono ya fuhai shita monotachi no tame ni shinu no wa mutsukashii to watashi wa sono toki hakkiri wakarimashita."</div>
+        <div class="translation">"Christ did not die for the beautiful or the good. It is easy enough to die for the beautiful and the good; what is hard is to die for the miserable and corrupt. At that moment I understood this clearly."</div>
+        <div class="source">— Rodrigues's reflection</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">みじめ</td><td class="reading">mijime</td><td>miserable, wretched, pitiful</td></tr>
+        <tr><td class="word">腐敗</td><td class="reading">fuhai</td><td>corruption, decay, rottenness</td></tr>
+        <tr><td class="word">むつかしい</td><td class="reading">mutsukashii</td><td>difficult, hard, complicated</td></tr>
+        <tr><td class="word">はっきり</td><td class="reading">hakkiri</td><td>clearly, distinctly</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The word for miserable</h5>
+        <p><strong>みじめ (mijime):</strong> This is a word of pity, not of condemnation. It describes someone who is so unfortunate that they evoke sympathy simply by existing. A beggar in rags is みじめ. A beaten dog is みじめ. It is different from 不幸 (fukou, unfortunate), which is factual. みじめ is emotional. When Rodrigues says Christ died for the みじめ, he is saying Christ died for those who make you uncomfortable with their need. The English "miserable" can mean "unhappy" or "contemptibly inadequate." みじめ cannot mean contemptible. It always carries compassion.</p>
+        <p><strong>腐敗したものたち (fuhai shita monotachi):</strong> "Those who have rotted." Ferreira used 腐る for Christianity rotting in Japan. Here Rodrigues uses the same root for people. But the context transforms the word. Christ died for the rotten. Not despite their rottenness. For it. This is the scandal of Endo's theology, and it is stated in vocabulary that sounds medical rather than romantic. He does not say "sinners." He says "the rotten." The word refuses to beautify humanity. It insists that grace must be ugly enough to love actual people.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. Kichijiro's Weakness</h2>
+    <p>The most misunderstood character in the novel is Kichijiro, the Japanese guide who betrays Rodrigues, apostatizes repeatedly, and yet keeps returning to the faith. He speaks in the dialect of the weak.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「俺は生まれつき<span class="hl">弱か</span>。心の弱か者には、殉教さえできぬ。どうすればよか。ああ、なぜ、こげん世の中に俺は生まれあわせたか」
+        </div>
+        <div class="romaji">"Ore wa umaretsuki yowaka. Kokoro no yowaka mono ni wa, junkyou sae dekinu. Douse sureba yoka. Aa, naze, kogen yo no naka ni ore wa umareawaseta ka."</div>
+        <div class="translation">"I was born weak. Those with weak hearts cannot even become martyrs. What should I do? Ah, why was I born into such a world?"</div>
+        <div class="source">— Kichijiro's confession</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">弱か</td><td class="reading">yowaka</td><td>weak (dialectal/older form of 弱い)</td></tr>
+        <tr><td class="word">生まれつき</td><td class="reading">umaretsuki</td><td>by nature, from birth</td></tr>
+        <tr><td class="word">殉教</td><td class="reading">junkyou</td><td>martyrdom</td></tr>
+        <tr><td class="word">こげん</td><td class="reading">kogen</td><td>such (dialectal form of こんな)</td></tr>
+        <tr><td class="word">生まれあわせた</td><td class="reading">umareawaseta</td><td>was born (humble/reflexive, dialectal)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The dialect of the unworthy</h5>
+        <p><strong>弱か (yowaka):</strong> An older/dialectal form of 弱い (weak). Kichijiro does not say 弱い. He says 弱か, which is humbler, more self-abasing. It is the speech of someone who has internalized his own inadequacy so deeply that his grammar has changed. The word sounds like a confession before it is a description. In English, "weak" is a statement of fact. 弱か is a statement of identity.</p>
+        <p><strong>こげん (kogen):</strong> A dialectal form of こんな (such, like this). Kichijiro speaks in the Japanese of the rural poor, not the standard language of the priests. His dialect marks him as uneducated, marginal, unreliable. But it also gives his words an authenticity that Rodrigues's polished Latin prayers lack. When Kichijiro asks why he was born into こげん世の中, he is asking the novel's central question in the voice of those for whom the question is not theological but existential.</p>
+        <p><strong>殉教さえできぬ (junkyou sae dekinu):</strong> "Cannot even become a martyr." The particle さえ means "even." Kichijiro's despair is precise: he is too weak for the highest form of Christian heroism. He cannot even manage the glorious death. His weakness excludes him from the one form of religious excellence that his culture recognizes. This is why he fascinates Endo, and why he is the secret hero of the novel: he represents the faith of those who cannot be heroes, which is, Endo suggests, almost everyone.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Vocabulary of a Silent God</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜がいい</strong> — permission that reveals purpose ("Go ahead and...")</li>
+        <li><strong>Passive forms (〜られる)</strong> — victimhood as design, not accident</li>
+        <li><strong>〜ように</strong> — simile of manner, not appearance (soaking, not burning)</li>
+        <li><strong>Honorifics in accusation (なさる)</strong> — anger that still bows</li>
+    </ul>
+
+    <h4>Words that carry the novel's weight</h4>
+    <ul>
+        <li><strong>沈黙</strong> — silence as a presence, a weight, a refusal</li>
+        <li><strong>沼</strong> — stagnant water that rots from below</li>
+        <li><strong>腐る</strong> — organic decay, not violent death</li>
+        <li><strong>罪</strong> — not violation of law but failure of memory and attention</li>
+        <li><strong>痕跡</strong> — forensic traces left on another's life</li>
+        <li><strong>うめき声</strong> — the groan that sounds like nature</li>
+        <li><strong>踏む</strong> — to trample; the central action of the novel</li>
+        <li><strong>痛さ</strong> — pain made into a shareable object</li>
+        <li><strong>分つ</strong> — to divide and share, not to eliminate</li>
+        <li><strong>弱か</strong> — weakness as identity, spoken in dialect</li>
+        <li><strong>みじめ</strong> — the miserable who evoke pity merely by existing</li>
+    </ul>
+
+    <h4>The triptych complete</h4>
+    <p>Where <em>The Sea and Poison</em> taught the vocabulary of moral failure (paralysis, poison, punishment, dryness), and <em>Deep River</em> taught the vocabulary of spiritual seeking (love, crossing, gathering, wrapping), <em>Silence</em> teaches the vocabulary of divine absence and unexpected presence. The same author, across three decades, uses the same physical, humble words to ask different questions: What does guilt feel like in a body? What does grace look like in a river? What does God sound like in silence?</p>
+    <p>In all three, the words that matter most are the small ones: 働き (working), 包む (wrapping), 麻痺 (paralysis), 踏む (trampling), 分つ (sharing), 沈黙 (silence). Endo's genius is to make these ordinary words bear the weight of theology. He writes as if he believes that Japanese, with its capacity for turning adjectives into nouns (痛さ), verbs into processes (浸み入る), and physical words into spiritual ones (沼), is a language uniquely suited to asking what it costs to love the weak.</p>
+</section>
+
+</main>
+
+</body>
+</html>

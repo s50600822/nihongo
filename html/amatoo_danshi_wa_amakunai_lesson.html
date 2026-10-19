@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>甘党男子はあまくない — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>甘党男子はあまくない</h1>
+    <p class="subtitle">Amatoo Danshi wa Amakunai<br><em>The Sweet-Tooth Guy Is Not Sweet</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">織島かのこ (Orijima Kanoko)</span></span>
+      <span><span class="label">First published</span> <span class="value">November 25, 2023 (KADOKAWA / Media Works Bunko)</span></span>
+      <span><span class="label">Format</span> <span class="value">Novel (336 pp.)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-04-915300-2</span></span>
+      <span><span class="label">Award</span> <span class="value">Kakuyomu Web Novel Contest 8, Light Literature Grand Prize</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">甘党男子はあまくない</div>
+    <div class="romaji">Amatoo danshi wa amakunai</div>
+    <div class="translation">"The Sweet-Tooth Guy Is Not Sweet" / "The Guy Who Loves Sweets Is Not Sweet (to deal with)"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>甘党</td><td>amatoo</td><td>Noun (compound)</td><td>person who loves sweets</td></tr>
+    <tr><td>男子</td><td>danshi</td><td>Noun</td><td>young man, guy</td></tr>
+    <tr><td>は</td><td>wa</td><td>Topic particle</td><td>marks the topic</td></tr>
+    <tr><td>甘くない</td><td>amakunai</td><td>Adjective (negative)</td><td>not sweet / not easygoing</td></tr>
+  </table>
+
+  <h4>甘党 (amatoo): The Cultural Category of "Sweet Faction"</h4>
+  <p><code>甘党</code> is a culturally specific Japanese term. In Japan, people are often categorized as either <code>甘党</code> (sweet-tooth) or <code>辛党</code> (karatoo, those who prefer spicy or savory food). This is not merely a preference but a social identity. Being <code>甘党</code> carries particular connotations: a fondness for comfort, a childlike quality, a certain softness. The word <code>党</code> (party/faction) suggests an almost political affiliation, as if sweet-lovers are a recognized bloc within Japanese society.</p>
+
+  <p>The title's brilliance lies in its double meaning. <code>甘い</code> (amai) means both "sweet" (in taste) and "sweet" (in personality: kind, indulgent, easygoing). So <code>甘党男子はあまくない</code> means: "The guy who loves sweet food is not sweet-natured." He craves sweetness in dessert but offers salt in temperament. This pun is the engine of the novel's comedy and its emotional structure.</p>
+
+  <div class="card card-accent">
+    <p><strong>The double pun:</strong></p>
+    <p><code>甘い</code> = sweet (taste) / indulgent, kind, easygoing (personality)</p>
+    <p><code>甘くない</code> = not sweet (taste) / not kind, not easygoing, difficult</p>
+    <p>The title promises a romantic comedy built on this contradiction: a man who devours sweet desserts with reverence but treats people with cold saltiness (<code>塩対応</code>).</p>
+  </div>
+
+  <h4>男子 (danshi) vs. 男 (otoko)</h4>
+  <p><code>男子</code> (danshi) means "young man" or "guy" and has a lighter, more contemporary feel than <code>男</code> (otoko, man). <code>男子</code> is the word used in genres like <code>美男子</code> (bidanishi, beautiful man) or <code>イケメン</code> (ikemen, handsome guy). It suggests youth, approachability, and a certain softness of image, even when the character is abrasive. Calling Sakuma a <code>甘党男子</code> rather than a <code>甘党男</code> makes him sound like a romantic lead from the start, despite his bad attitude.</p>
+
+  <h4>The Subtitle: おとなりさんとのおかしな関係</h4>
+  <p>The full title includes the subtitle <code>おとなりさんとのおかしな関係</code> (otonari-san to no okashi na kankei), which adds another layer of wordplay. <code>おかしい</code> (okashii) means "strange" or "funny," but <code>お菓子</code> (okashi) means "sweets." The subtitle thus means both "a strange relationship with the neighbor" and, whispering underneath, "a sweets relationship with the neighbor." This kind of homophonic pun is characteristic of light literature (<code>ライト文芸</code>) and signals the novel's playful, confection-sweetened tone.</p>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 織島かのこ</h2>
+
+  <p>Orijima Kanoko is a Japanese romance novelist who built her career through web novel platforms before breaking into print publishing. Unlike many traditionally published authors, she emerged from the ecosystem of <code>カクヨム</code> (Kakuyomu, Kadokawa's web novel platform) and <code>小説家になろう</code> (Shōsetsuka ni Narō, "Let's Become Novelists"), where readers vote with views, bookmarks, and comments. Her success represents a significant pathway in contemporary Japanese publishing.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">織島 かのこ（おりじま かのこ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Platform origins</span>
+      <span class="stat-value">Kakuyomu / Shōsetsuka ni Narō</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Genre</span>
+      <span class="stat-value">Romance / Light literature (恋愛・ライト文芸)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Self-description</span>
+      <span class="stat-value">"I write romance novels. I like curry rice and happy endings."</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Breakthrough work</span>
+      <span class="stat-value">Amatoo Danshi wa Amakunai (2023)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major award</span>
+      <span class="stat-value">Kakuyomu Web Novel Contest 8, Light Literature Grand Prize</span>
+    </div>
+  </div>
+
+  <h4>From Web Novel to Print: The Kakuyomu Pipeline</h4>
+  <p><em>Amatoo Danshi</em> began as a web novel on Kakuyomu, where it was published in 100 episodes totaling approximately 370,000 characters. Readers followed the story in real time, leaving comments that could influence the author's direction. In 2023, it won the Grand Prize in the Light Literature category of the 8th Kakuyomu Web Novel Contest, which led directly to publication by Media Works Bunko (KADOKAWA) in November 2023.</p>
+
+  <p>This trajectory, from free online serialization to prestigious print imprint, is increasingly common in Japan. It allows authors to build an audience before investing in print production, and it lets publishers gauge market interest with empirical data. For readers, it means that a novel like <em>Amatoo Danshi</em> has already been tested and refined by thousands of online readers before reaching the bookstore.</p>
+
+  <h4>Other Works</h4>
+  <ul>
+    <li><em>Ojō-san no Keiyaku Kareshi.</em> (お嬢さんの契約カレシ。, "The Young Lady's Contract Boyfriend") — 一二三書房, 2 volumes, also adapted into manga</li>
+    <li><em>Usotsuki Lip wa Koi de Kuzureru</em> (嘘つきリップは恋で崩れる, "The Lying Lip Crumbles in Love") — GA Bunko, 2 volumes (2024)</li>
+    <li><em>Yowamushi Hamusutā wa Natsu no Kamisama no Yume o Miru</em> (弱虫ハムスターは夏の神様の夢を見る, "The Cowardly Hamster Dreams of the Summer God") — Kotonoha Bunko, 2025</li>
+    <li><em>Ima Sugu Kekkon Shite Kudasai!</em> (今すぐ結婚してください！, "Please Marry Me Right Now!") — ongoing web novel</li>
+  </ul>
+
+  <h4>Orijima's Narrative Style</h4>
+  <p>Orijima's writing is characterized by accessible, conversational prose; strong emotional clarity; and a gift for making everyday situations feel charged with romantic potential. She writes what Japanese readers call <code>じれ甘</code> (jireama): a love story that makes you wait, that teases and delays confession, that builds tension through near-misses and almost-confessions. The sweetness is earned by the frustration. This distinguishes her from more overtly comedic or explicitly dramatic romance writers.</p>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Amatoo Danshi wa Amakunai</em> is a romantic comedy that uses homemade sweets as the medium through which two emotionally guarded people learn to trust each other. It belongs to the <code>ライト文芸</code> (light literature) genre: more emotionally grounded than light novels (<code>ライトノベル</code>), but more accessible and plot-driven than pure literary fiction. The novel's structure is built around confectionery: each chapter is named after a sweet, and the emotional arc of the story maps onto the progression from the bitterness of heartbreak to the full sweetness of mutual confession.</p>
+
+  <h4>The Story</h4>
+  <p>Kōjiya Kurumi, 25, is an ordinary office worker whose secret stress relief is baking sweets. Her idea of a good evening is making a tart alone in her apartment. She has terrible luck with men (<code>男運ゼロ</code>): she falls hard, gives everything, and is inevitably disappointed. When the novel opens, she has just been dumped by her boyfriend of two years, a senior colleague who kept their relationship secret and never took her on real dates.</p>
+
+  <p>In her grief, Kurumi bakes an entire apricot tart, far more than she can eat alone. On impulse, she brings it to her neighbor, Sakuma Ryō, a 28-year-old novelist. Sakuma is infamous in the building for his bad attitude: he is curt, dismissive, and seems to view human interaction as an annoyance. But when he tastes Kurumi's tart, something shifts. He doesn't just like it; he reveres it. He asks what kind of flour she used, what butter, what apricots. He treats the tart with the seriousness he brings to his own writing.</p>
+
+  <p>Thus begins an unusual relationship. Kurumi bakes. Sakuma eats, critiques, and occasionally talks. The sweets become a currency more reliable than words. Kurumi, who has always given too much to men who didn't value her, finds herself giving to a man who appreciates every gram of her effort. Sakuma, who has built walls against the world, finds that dessert bypasses his defenses. The novel asks: What if the way to a man's heart is not through his stomach but through his sweet tooth? And what if the man who seems least sweet is the one who most needs sweetness?</p>
+
+  <h4>Chapter Structure: A Confectionery Arc</h4>
+  <p>Each chapter is named after a sweet, and the sweets trace the emotional journey:</p>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">失恋アプリコットタルト</div>
+    <div class="chapter-tag highlighted">おでかけバターサンド</div>
+    <div class="chapter-tag highlighted">おかえりブルーベリーマフィン</div>
+    <div class="chapter-tag">新たな恋とアップルパイ</div>
+    <div class="chapter-tag">スイーツ女のフロランタン</div>
+    <div class="chapter-tag">涙と笑顔とレモンクッキー</div>
+    <div class="chapter-tag">背徳ガトーバスク</div>
+    <div class="chapter-tag">やきもちバニラフィナンシェ</div>
+    <div class="chapter-tag">さよならシフォンケーキ</div>
+  </div>
+  <p>The book also includes three bonus episodes exclusive to the print edition: <code>ひねくれ者のアールグレイティー</code> (The Twisted Man's Earl Grey Tea), <code>あまあまメレンゲクッキー</code> (Sweet-Sweet Meringue Cookies), and <code>二六歳のデコレーションケーキ</code> (A 26th-Birthday Decoration Cake).</p>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">失恋と回復</div>
+    <div class="chapter-tag highlighted">隣人ラブ</div>
+    <div class="chapter-tag highlighted">不器用な恋</div>
+    <div class="chapter-tag highlighted">手作りお菓子の癒し</div>
+    <div class="chapter-tag highlighted">自己肯定感の回復</div>
+    <div class="chapter-tag">創作と食</div>
+    <div class="chapter-tag">塩対応×尽くし系</div>
+    <div class="chapter-tag">じれ甘</div>
+  </div>
+
+  <h4>The Two Leads</h4>
+  <div class="card card-accent">
+    <p><strong>糀谷胡桃 (Kōjiya Kurumi, 25)</strong> — An ordinary OL with an extraordinary gift for baking. She is a <code>尽くし系</code> (tsukushi-kei) woman: someone who gives too much, who derives self-worth from serving others, who has been trained by bad relationships to expect little in return. Her baking is not just a hobby; it is her emotional language. When words fail, she makes a tart.</p>
+    <p style="margin-top:0.8em;"><strong>佐久間凌 (Sakuma Ryō, 28)</strong> — A popular novelist who lives next door. He is <code>傍若無人</code> (bōjakubujin): arrogant, unconcerned with social niceties, seemingly indifferent to others. But beneath the salt is a man who takes dessert with deadly seriousness. His <code>こだわり</code> (commitment to quality) about tea pairings, tableware, and ingredients reveals a capacity for deep appreciation that he cannot extend to people, until Kurumi's sweets teach him how.</p>
+  </div>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the novel's serialized text, promotional materials, and reader-documented quotations. They capture Orijima's voice, the central relationship, and the novel's emotional logic.</p>
+
+  <h3>A. The Breakup and the Tart</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">糀谷胡桃の人生をかけた恋は、愛するひとからの「別れよう」の一言で、いともあっけなく終わった。周りには内緒の、社内恋愛だった。彼は胡桃よりも二年先輩で、入社以来ずっと片想いしていた胡桃の方から熱烈にアピールして、付き合ってもらった。片想いは一年、交際していたのは二年余りだった。彼は周囲に関係がバレることを嫌がって、外でデートをすることもほとんどなかった。今日は、久しぶりのおうちデートのはずだった。昨日の夜はトリートメントとパックをして、今日は早起きして髪を綺麗にブローして。彼の部屋を訪れる、その瞬間までは――胡桃は幸せそのものだったのに。</div>
+    <div class="romaji">Kōjiya Kurumi no jinsei o kaketa koi wa, aisuru hito kara no "wakareyō" no hitokoto de, itomo akkenaku owatta. Mawari ni wa naisho no, shanai renai datta. Kare wa Kurumi yori mo ni-nen senpai de, nyūsha irai zutto kataomoi shite ita Kurumi no hō kara netsuretsu ni apīru shite, tsukiatte moratta. Kataomoi wa ichinen, kōsai shite ita no wa ni-nen amari datta. Kare wa shūi ni kankei ga bareru koto o iyagatte, soto de dēto o suru koto mo hotondo nakatta. Kyō wa, hisashiburi no ouchi dēto no hazu datta. Kinō no yoru wa torītomento to pakku o shite, kyō wa hayaoki shite kami o kirei ni burō shite. Kare no heya o otozureru, sono shunkan made wa — Kurumi wa shiawase sono mono datta no ni.</div>
+    <div class="translation">Kōjiya Kurumi's life-defining love ended with a single "Let's break up" from the man she loved. It was a secret office romance. He was two years her senior, and Kurumi, who had harbored an unrequited crush since joining the company, had pursued him fervently until he agreed to date her. One year of one-sided love, a little over two years of dating. He hated the idea of their relationship being discovered, so they almost never went on dates outside. Today was supposed to be a rare at-home date. Last night she had done a hair treatment and a face mask; this morning she had woken early and blow-dried her hair beautifully. Up until the moment she arrived at his door, Kurumi had been the very picture of happiness.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>人生をかけた</td><td>jinsei o kaketa</td><td>life-defining, staking one's life on</td></tr>
+    <tr><td>あっけなく</td><td>akkenaku</td><td>too easily, anticlimactically</td></tr>
+    <tr><td>社内恋愛</td><td>shanai ren'ai</td><td>office romance</td></tr>
+    <tr><td>片想い</td><td>kataomoi</td><td>unrequited love</td></tr>
+    <tr><td>熱烈</td><td>netsuretsu</td><td>fervent, passionate</td></tr>
+    <tr><td>アピール</td><td>apīru</td><td>appeal (to), make oneself attractive</td></tr>
+    <tr><td>付き合ってもらう</td><td>tsukiatte morau</td><td>to get someone to date you</td></tr>
+    <tr><td>バレる</td><td>bareru</td><td>to be found out, to be exposed</td></tr>
+    <tr><td>トリートメント</td><td>torītomento</td><td>hair treatment</td></tr>
+    <tr><td>パック</td><td>pakku</td><td>face mask</td></tr>
+    <tr><td>ブロー</td><td>burō</td><td>blow-dry</td></tr>
+  </table>
+
+  <h3>B. The First Encounter with the Neighbor</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">ドアが開くと、そこには寝癖のついた乱れた黒髪と、鋭い目をした男がいた。まだ何かに怒っているような、あるいは世界全体に失望しているような顔。胡桃は、思わず一歩後ずさりした。「あ、あの、お隣の糀谷と言います。こちら、タルトなんですけど、よかったら……」「……差し入れ？」男は、胡桃の顔ではなく、タルトの箱を見た。一瞬の沈黙。そして、ドアをさらに開た。「……入れ」</div>
+    <div class="romaji">Doa ga hiraku to, soko ni wa neguse no tsuita midareta kurokami to, surudoi me o shita otoko ga ita. Mada nani ka ni okotte iru yō na, arui wa sekai zentai ni shitsubō shite iru yō na kao. Kurumi wa, omowazu ippo atozusari shita. "A, ano, otonari no Kōjiya to iimasu. Kochira, taruto nan desu kedo, yokattara..." "...Sashiire?" Otoko wa, Kurumi no kao de wa naku, taruto no hako o mita. Isshun no chinmoku. Soshite, doa o sara ni ageta. "...Ire."</div>
+    <div class="translation">When the door opened, there stood a man with disheveled black hair still bearing the marks of sleep and sharp eyes. He had the look of someone still angry at something, or perhaps disappointed with the entire world. Kurumi instinctively stepped back. "Um, I'm Kōjiya from next door. This is a tart, and if you'd like..." "...A gift?" The man looked not at Kurumi's face but at the tart box. A moment of silence. Then he opened the door wider. "...Bring it in."</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>寝癖</td><td>neguse</td><td>bed head, sleep-mussed hair</td></tr>
+    <tr><td>乱れた</td><td>midareta</td><td>disheveled, tousled</td></tr>
+    <tr><td>鋭い</td><td>surudoi</td><td>sharp, piercing</td></tr>
+    <tr><td>後ずさり</td><td>atozusari</td><td>stepping back, recoiling</td></tr>
+    <tr><td>差し入れ</td><td>sashiire</td><td>gift (esp. food brought to someone)</td></tr>
+    <tr><td>一瞬</td><td>isshun</td><td>an instant, a moment</td></tr>
+    <tr><td>沈黙</td><td>chinmoku</td><td>silence</td></tr>
+    <tr><td>入れ</td><td>ire</td><td>bring in / let in (imperative)</td></tr>
+  </table>
+
+  <h3>C. On Sweets and Reverence</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">「知ってますか？ 大好きなひとのために心をこめて作ったお菓子が、世界で一番美味しいんですよ」「……そうか」「大好きなひとが、自分のために作ってくれたお菓子が……世界で一番美味しい」佐久間は、そう言うと、再びタルトにフォークを入れた。今度は、最初の一口のときのような驚きはなかった。代わりに、何とも言えない、柔らかい表情が浮かんだ。まるで、口の中で溶けるだけでなく、心の中の何かも溶かしているかのようだった。</div>
+    <div class="romaji">"Shittemasu ka? Daisuki na hito no tame ni kokoro o komete tsukutta okashi ga, sekai de ichiban oishii n desu yo." "...Sō ka." "Daisuki na hito ga, jibun no tame ni tsukutte kureta okashi ga... sekai de ichiban oishii." Sakuma wa, sō iu to, futatabi taruto ni fōku o ireta. Kondo wa, saisho no hitokuchi no toki no yō na odoroki wa nakatta. Kawarini, nani to mo ienai, yawarakai hyōjō ga ukanda. Marude, kuchi no naka de tokeru dake de naku, kokoro no naka no nani ka mo tokashite iru ka no yō datta.</div>
+    <div class="translation">"Did you know? Sweets made with all one's heart for someone you love are the most delicious in the world." "...Is that so." "Sweets made for you by someone you love... are the most delicious in the world." Having said this, Sakuma inserted his fork into the tart again. This time, there was none of the surprise of the first bite. Instead, an indescribably soft expression crossed his face. It was as if something not only melted in his mouth but also dissolved something inside his heart.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>心を込める</td><td>kokoro o komeru</td><td>to put one's heart into</td></tr>
+    <tr><td>代わりに</td><td>kawarini</td><td>instead</td></tr>
+    <tr><td>何とも言えない</td><td>nani to mo ienai</td><td>indescribable, beyond words</td></tr>
+    <tr><td>柔らかい</td><td>yawarakai</td><td>soft, gentle</td></tr>
+    <tr><td>表情</td><td>hyōjō</td><td>expression</td></tr>
+    <tr><td>浮かぶ</td><td>ukabu</td><td>to appear, to surface</td></tr>
+    <tr><td>溶ける</td><td>tokeru</td><td>to melt, to dissolve</td></tr>
+    <tr><td>溶かす</td><td>tokasu</td><td>to melt, to dissolve (transitive)</td></tr>
+  </table>
+
+  <h3>D. Rising on Praise</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">作ったものを彼に褒められるたびに、数センチずつ浮き上がっていく気がする。この調子だと、いつか空まで届くんじゃないかしら。そんなことを思いながら、胡桃は次のタルトを箱に詰めた。お菓子を通じて、誰かを幸せにできる。それは、今までの胡桃には気づけなかった喜びだった。失恋の痛みは、まだ完全には消えていない。でも、痛みと一緒に、何か新しいものが芽生えてきている気がした。</div>
+    <div class="romaji">Tsukutta mono o kare ni homerareru tabi ni, sū-senchi zutsu ukiagatte iku ki ga suru. Kono chōshi da to, itsuka sora made todoku n ja nai kashira. Sonna koto o omoinagara, Kurumi wa tsugi no taruto o hako ni tsumeta. Okashi o tsūjite, dareka o shiawase ni dekiru. Sore wa, ima made no Kurumi ni wa kidzukenakatta yorokobi datta. Shitsuren no itami wa, mada kanzen ni wa kiete inai. Demo, itami to issho ni, nani ka atarashii mono ga mebaete kite iru ki ga shita.</div>
+    <div class="translation">Each time he praised something she had made, she felt herself rise a few centimeters. At this rate, she might reach the sky someday. Thinking such things, Kurumi packed the next tart into a box. Through sweets, she could make someone happy. This was a joy she had never noticed before. The pain of her breakup had not completely disappeared. But alongside the pain, she felt something new beginning to sprout.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>褒める</td><td>homeru</td><td>to praise, to compliment</td></tr>
+    <tr><td>たびに</td><td>tabi ni</td><td>each time, whenever</td></tr>
+    <tr><td>数センチずつ</td><td>sū-senchi zutsu</td><td>a few centimeters at a time</td></tr>
+    <tr><td>浮き上がる</td><td>ukiagaru</td><td>to rise, to float up</td></tr>
+    <tr><td>詰める</td><td>tsumeru</td><td>to pack, to fill</td></tr>
+    <tr><td>通じて</td><td>tsūjite</td><td>through, via</td></tr>
+    <tr><td>芽生える</td><td>mebaeru</td><td>to sprout, to bud</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 甘党 (amatoo) / 辛党 (karatoo)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">A Cultural Identity, Not Just a Preference</div>
+    <p><code>甘党</code> is not simply "someone with a sweet tooth." In Japan, it is a recognized social category, often discussed in group settings as a way of understanding compatibility. "Do you like sweets or spicy food?" (<code>甘党？辛党？</code>) is a common getting-to-know-you question. The <code>党</code> (party/faction) suffix gives it a playful political flavor: sweet-lovers are a tribe. English "sweet tooth" is too individual and too dental. <code>Amatoo</code> is a social identity, a declaration of belonging, almost a personality type.</p>
+  </div>
+
+  <h3>B. 差し入れ (sashiire)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Social Glue of Japanese Work and Creative Life</div>
+    <p><code>差し入れ</code> refers to food or drinks brought to someone at their workplace, rehearsal, shoot, or, in this case, their home. It is a specific Japanese social practice with no exact English equivalent. "Gift" is too formal. "Care package" is too maternal. "Food offering" is too religious. <code>Sashiire</code> is an informal, often homemade contribution to someone else's labor, a way of saying "I see you working, and I want to support you." In the novel, Kurumi's <code>差し入れ</code> to Sakuma is not charity; it is a tentative reaching-out, a way to enter his space without demanding conversation.</p>
+  </div>
+
+  <h3>C. 尽くし系 (tsukushi-kei)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Giver's Personality Type</div>
+    <p><code>尽くし系</code> describes a person (usually a woman in romance contexts) who gives everything to their partner: time, attention, service, emotional labor. <code>尽くす</code> (tsukusu) means to devote, to exhaust oneself for someone. "Self-sacrificing" is too negative. "Devoted" is too positive. "People-pleaser" is too psychological. <code>Tsukushi-kei</code> is a recognized romantic archetype in Japanese pop culture: the woman who loves by serving, who often loses herself in relationships, who needs to learn to receive as well as give. Kurumi's arc is partly about moving from <code>尽くし系</code> to a more balanced reciprocity.</p>
+  </div>
+
+  <h3>D. 塩対応 (shio taiō)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Salt as Emotional Temperature</div>
+    <p><code>塩対応</code> is contemporary Japanese slang for a cold, dismissive, or unenthusiastic response to someone. The metaphor is culinary: if sweetness is warmth and kindness, salt is coldness and distance. "Cold shoulder" captures the social effect but not the gustatory metaphor. "Icy" is too abstract. <code>Shio taiō</code> is the perfect descriptor for Sakuma's initial treatment of Kurumi: he is not cruel, just seasoned with salt. The term has become a standard descriptor for certain romantic leads in Japanese popular fiction: the man who seems indifferent but is secretly deeply feeling.</p>
+  </div>
+
+  <h3>E. じれ甘 (jireama)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Pleasure of Delayed Gratification</div>
+    <p><code>じれ甘</code> is a genre term combining <code>じれじれ</code> (jirejire: frustrating, tantalizing) + <code>甘い</code> (sweet). It describes romance narratives that deliberately delay confession and consummation, making the reader wait until the sweetness feels earned. "Slow burn" is the closest English equivalent but misses the specific emotional contract of <code>jireama</code>: the frustration is not a bug but a feature. The reader agrees to be teased in exchange for a more intense eventual payoff. Orijima is a master of this rhythm, and the novel's 100-episode web serialization format was perfectly suited to its incremental escalation.</p>
+  </div>
+
+  <h3>F. おかしな (okashi na)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Pun That Binds</div>
+    <p>The subtitle uses <code>おかしな関係</code> (okashi na kankei), which means "a strange/funny relationship." But <code>おかし</code> is also the root of <code>お菓子</code> (okashi, sweets). The pun is impossible to translate fully. "A sweet relationship" loses the strangeness. "A strange relationship" loses the confectionery. The best a translator can do is choose one meaning and let the other echo silently. This kind of homophonic wordplay is central to the novel's charm and to light literature more broadly.</p>
+  </div>
+
+  <h3>G. こだわり (kodawari)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Aesthetics of Commitment</div>
+    <p><code>こだわり</code> means a strong preference, an insistence on quality, a refusal to compromise. It is often translated as "commitment to quality" or "attention to detail," but these are too clinical. <code>Kodawari</code> has an emotional intensity: it is the difference between simply using good ingredients and needing to use the exact right butter, the specific flour, the proper tea. Sakuma's <code>こだわり</code> about dessert reveals his capacity for deep feeling. A man with no <code>こだわり</code> would be a man incapable of love. The word connects culinary aesthetics to emotional depth in a specifically Japanese way.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～がきっかけで (ga kikkake de) — "Triggered by / Taking the opportunity of"</span>
+    <div class="grammar-explanation">
+      <p><code>恋人振られたことがきっかけで、隣に住む変人小説家に手作りタルトを食べてもらうことに</code></p>
+      <p><code>～がきっかけで</code> marks an event as the catalyst for a subsequent change. <code>きっかけ</code> means "opportunity, trigger, starting point."</p>
+      <p><strong>Formation:</strong> [Event/situation in plain form] + がきっかけで + [result]</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>留学がきっかけで、日本語を勉強し始めた</code> = "I started studying Japanese, triggered by studying abroad"</li>
+        <li><code>彼の言葉がきっかけで、気持ちが変わった</code> = "His words triggered a change in my feelings"</li>
+      </ul>
+      <p>The grammar is essential to the novel's structure: the breakup is not just background; it is the <code>きっかけ</code> that makes the entire subsequent relationship possible. Without the excess tart born of heartbreak, Kurumi and Sakuma would never have spoken.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～たびに (tabi ni) — "Each time / Whenever"</span>
+    <div class="grammar-explanation">
+      <p><code>作ったものを彼に褒められるたびに、数センチずつ浮き上がっていく気がする</code></p>
+      <p><code>～たびに</code> expresses that something happens on each occasion of a repeated action. It is more emphatic than <code>～時々</code> (sometimes) and more poetic than <code>～毎に</code> (every time).</p>
+      <p><strong>Formation:</strong> [Verb in dictionary form / noun] + たびに</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>彼に会うたびに</code> = "each time I meet him" (emotional, narrative)</li>
+        <li><code>彼に会う毎に</code> = "every time I meet him" (neutral, factual)</li>
+      </ul>
+      <p>Orijima uses <code>たびに</code> because she is tracking emotional accumulation, not statistical frequency. Each praise is a small lift; <code>たびに</code> carries the sense of repeated, meaningful recurrence.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ずつ (zutsu) — "Little by little / At a time"</span>
+    <div class="grammar-explanation">
+      <p><code>数センチずつ浮き上がっていく</code> = "rising a few centimeters at a time"</p>
+      <p><code>～ずつ</code> indicates an equal amount distributed across repeated actions or among multiple items. It conveys gradualness and equality.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>一日三ページずつ読む</code> = "reading three pages a day"</li>
+        <li><code>少しずつ距離が縮まる</code> = "the distance shrinks little by little"</li>
+      </ul>
+      <p>The grammar performs the novel's emotional method: nothing happens dramatically. Kurumi's self-esteem recovers <code>数センチずつ</code>. The relationship deepens <code>少しずつ</code>. <code>Zutsu</code> is the grammatical signature of <code>じれ甘</code> storytelling.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようになる (yō ni naru) — "To reach the point where / To come to"</span>
+    <div class="grammar-explanation">
+      <p><code>胡桃はお菓子を作るたびに佐久間に差し入れするようになる</code></p>
+      <p><code>～ようになる</code> indicates a gradual change in habit or ability: something that was not true before becomes true now. It marks the establishment of a new pattern.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>差し入れする</code> = "I bring gifts" (simple statement)</li>
+        <li><code>差し入れするようになった</code> = "I came to bring gifts (as a habit)" (change over time)</li>
+      </ul>
+      <p>The grammar captures the novel's central transformation: what begins as a one-time impulse (the post-breakup tart) becomes a ritual, a relationship infrastructure. <code>Yō ni naru</code> is the grammatical trace of habit formation.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てもらう (te morau) — "To have someone do (for me)"</span>
+    <div class="grammar-explanation">
+      <p><code>隣に住む変人小説家に手作りタルトを食べてもらうことに</code></p>
+      <p><code>～てもらう</code> is the benefactive construction indicating that someone does something for the speaker's benefit. It implies gratitude and acknowledges the other person's action as a favor.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>彼に食べた</code> = ungrammatical / "he ate" (not a causative/benefactive)</li>
+        <li><code>彼に食べてもらった</code> = "I had him eat it (and this benefited me)"</li>
+        <li><code>彼に食べさせた</code> = "I made him eat it" (stronger, causative)</li>
+      </ul>
+      <p>Kurumi doesn't force Sakuma to eat; she <code>食べてもらう</code>s. The grammar reveals her psychology: she needs to be needed. Having him eat her tart is not about control; it is about connection.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～のに (no ni) — "Although / Despite the fact that" (concessive)</span>
+    <div class="grammar-explanation">
+      <p><code>口も態度も悪いお隣さんだったが、胡桃の作ったお菓子を大絶賛</code> — related pattern: <code>～のに</code></p>
+      <p><code>～のに</code> expresses surprise or frustration at a contrast between expectation and reality. It is stronger and more emotional than <code>～けれど</code>.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>こんなにお菓子を作ったのに、彼は一口も食べなかった</code> = "Despite making so many sweets, he didn't eat a single bite"</li>
+        <li><code>あんなに冷たいのに、お菓子には優しい</code> = "He's so cold, and yet he's kind to sweets"</li>
+      </ul>
+      <p>The grammar of concession is central to the novel's comedy and pathos. Sakuma <code>is</code> cruel <code>のに</code> he is gentle with dessert. The contrast is the character.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～気がする (ki ga suru) — "To feel as if / To have the sense that"</span>
+    <div class="grammar-explanation">
+      <p><code>数センチずつ浮き上がっていく気がする</code> = "I feel as if I'm rising a few centimeters at a time"</p>
+      <p><code>～気がする</code> is a tentative, subjective assertion. It softens a statement by presenting it as a feeling or intuition rather than a fact.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>浮き上がっている</code> = "I am rising" (factual)</li>
+        <li><code>浮き上がっている気がする</code> = "I feel as if I am rising" (subjective, tentative)</li>
+      </ul>
+      <p>Orijima uses this pattern constantly because her characters are not certain of their own emotions. Kurumi doesn't know she is healing; she <code>気がする</code>s she might be. The grammar preserves the uncertainty of emotional growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>Web Novels and the Democratization of Japanese Fiction</h4>
+  <p><em>Amatoo Danshi</em> is a product of Japan's web novel revolution. Platforms like <code>小説家になろう</code> (founded 2004) and <code>カクヨム</code> (founded 2016) allow anyone to publish serialized fiction for free, building readerships in the hundreds of thousands before ever approaching a traditional publisher. This has transformed the Japanese literary landscape in several ways:</p>
+  <ul>
+    <li><strong>Reader-driven selection:</strong> Popular web novels rise through reader views, bookmarks, and comments, creating a market-tested pipeline to print.</li>
+    <li><strong>Serialized rhythm:</strong> Web novels are published in short episodes, often daily or weekly, creating an addictive reading rhythm that print novels emulate.</li>
+    <li><strong>Genre clarity:</strong> Web novels are tagged by genre (<code>恋愛</code>, <code>ラブコメ</code>, <code>じれ甘</code>), allowing readers to find exactly the emotional experience they want.</li>
+    <li><strong>Author-reader interaction:</strong> Authors read comments and sometimes adjust plots based on reader response, creating a collaborative storytelling environment.</li>
+  </ul>
+
+  <p>The Kakuyomu Web Novel Contest, where <em>Amatoo Danshi</em> won the Light Literature Grand Prize, is one of the most prestigious such competitions. Winning it virtually guarantees a print deal with KADOKAWA, one of Japan's largest publishers.</p>
+
+  <h4>Homemade Sweets in Japanese Urban Life</h4>
+  <p>In contemporary Japan, homemade baking (<code>手作りお菓子</code>) occupies a specific cultural niche. Unlike the United States, where home baking is often associated with suburban family life, in urban Japan it is frequently a solitary, therapeutic activity for young working women living alone in small apartments. The <code>1K</code> or <code>1DK</code> apartment (one room with kitchen) is a standard living arrangement for OLs (office ladies) in their twenties, and baking in such a small kitchen is an act of domestic creativity within constraint.</p>
+
+  <p>Kurumi's baking is her <code>ストレス発散</code> (stress relief), a private practice that exists outside her professional identity. This reflects a broader Japanese phenomenon: the cultivation of private hobbies as bulwarks against workplace pressure. The novel understands that for many Japanese women, the kitchen is not a site of obligation but of autonomy.</p>
+
+  <h4>差し入れ (Sashiire) Culture</h4>
+  <p><code>差し入れ</code> is a deeply rooted Japanese social practice. It originates in the world of theater and creative production, where supporters bring food and drink to performers and crew during long rehearsals. The practice has spread to offices, construction sites, and any context where people are engaged in sustained labor. A <code>差し入れ</code> is not a bribe; it is a recognition of work. It says: "I see you laboring, and I want to sustain you."</p>
+
+  <p>In the novel, Kurumi's <code>差し入れ</code> to Sakuma takes on additional meaning because he is a writer. Writers in Japan are often depicted as isolated, undernourished, and emotionally volatile. Bringing a writer food is almost a cliché of literary life, but Orijima refreshes it by making the food homemade and high-quality, not convenience-store onigiri. Kurumi's <code>差し入れ</code> is a claim on his attention and a demonstration of her skill.</p>
+
+  <h4>塩対応男子 (Shio Taiō Danshi) as Romantic Archetype</h4>
+  <p>The "salt-response guy" is a major romantic archetype in 21st-century Japanese popular culture. He is cold, curt, and seemingly indifferent, but beneath the salt lies deep feeling. This archetype responds to a specific cultural desire: the fantasy that a man's apparent indifference is not disinterest but shyness, trauma, or simply poor social skills. The reader's task is to read the signs of his hidden warmth: the way he remembers her preferences, the way he eats her food with focus, the way he shows up when it matters.</p>
+
+  <p>Sakuma is a refined version of this type because his coldness is not arbitrary; it is professional. As a novelist, he has trained himself to observe without engaging, to analyze without committing. His <code>塩対応</code> is a defense against the emotional demands of the world. Kurumi's sweets bypass this defense because they do not demand verbal response; they simply offer pleasure. The novel suggests that the way to a guarded man's heart is not through confrontation but through consistent, high-quality care that makes withdrawal feel foolish.</p>
+
+  <h4>Light Literature (ライト文芸) as a Genre</h4>
+  <p><code>ライト文芸</code> (light literature) sits between <code>ライトノベル</code> (light novels, with their anime-influenced illustrations and fantasy/school settings) and <code>純文学</code> (pure literature, with its psychological density and formal ambition). Light literature uses accessible prose, contemporary settings, and relatable protagonists while maintaining emotional realism and stylistic care. It is often published in <code>文庫</code> (pocket paperback) format and marketed to working women in their twenties and thirties.</p>
+
+  <p>Media Works Bunko, the imprint that published <em>Amatoo Danshi</em>, is one of the leading publishers of light literature. Their list specializes in romance, workplace fiction, and stories about young urban life. Winning the Kakuyomu Contest and being published by Media Works Bunko places Orijima within a well-established commercial and aesthetic tradition.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> This novel is excellent for upper-beginner to intermediate readers. The prose is conversational and accessible, with short paragraphs and clear emotional beats. The web novel origin means the sentences are designed for easy reading on phones. The baking vocabulary (<code>タルト</code>, <code>メレンゲ</code>, <code>フィナンシェ</code>) is concrete and memorable, and the romantic grammar (<code>たびに</code>, <code>気がする</code>, <code>ようになる</code>) appears frequently and naturally. For learners interested in contemporary Japanese life, workplace culture, and the language of emotional negotiation, this is an ideal text.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read the web novel version on Kakuyomu alongside the print edition. The web version includes reader comments that often clarify emotional nuances and cultural references.</li>
+    <li>Track the <strong>sweets-to-emotion mapping</strong>. Each chapter's sweet corresponds to an emotional state. Make a list: what feeling does each dessert represent?</li>
+    <li>Pay attention to <code>敬語</code> (keigo) shifts. Kurumi starts with formal language toward Sakuma and gradually shifts to more casual speech. These shifts mark the stages of intimacy.</li>
+    <li>Collect <code>じれ甘</code> patterns: moments where confession is almost made but avoided. These are the engine of the genre.</li>
+    <li>Notice the <strong>food descriptions</strong>. Orijima describes baking with enough specificity that you could follow her recipes. Try making one of the tarts or cookies while reading.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The title promises a man who is "not sweet." How does the novel gradually reveal Sakuma's sweetness without betraying his essential character? What techniques does Orijima use to show that his coldness is a surface, not a core?</li>
+    <li>Kurumi is described as <code>尽くし系</code> (someone who gives too much). How does her relationship with Sakuma change this pattern? Does she learn to receive, or does she simply find a better recipient?</li>
+    <li>The novel uses homemade sweets as a medium of emotional communication. What can food express that words cannot? Why is dessert particularly suited to this function?</li>
+    <li>Web novels often build tension through serialization: readers must wait for the next episode. How does the print edition preserve or lose this rhythmic tension? What changes when the story can be read in one sitting?</li>
+    <li>The novel's subtitle uses the pun <code>おかしな関係</code> (strange relationship / sweets relationship). How does wordplay function in Japanese romantic comedy? Can you find other examples in the text?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Orijima Kanoko, <em>Ojō-san no Keiyaku Kareshi.</em> (お嬢さんの契約カレシ。) — another romance with a contractual premise, also adapted into manga</li>
+    <li>Orijima Kanoko, <em>Usotsuki Lip wa Koi de Kuzureru</em> (嘘つきリップは恋で崩れる) — a romance about lies and trust</li>
+    <li>Orijima Kanoko, <em>Yowamushi Hamusutā wa Natsu no Kamisama no Yume o Miru</em> (弱虫ハムスターは夏の神様の夢を見る) — high school romance, Kotonoha Bunko</li>
+    <li>Miyazono Izumi, <em>Kimi no Na wa.</em> (君の名は。) — for another example of web-to-print success in a different genre</li>
+    <li>Kawahara Yohei, <em>Shōsetsuka ni Narō no Tsukurikata</em> (小説家になろうの作り方) — a guide to the web novel ecosystem</li>
+    <li>Any Japanese baking cookbook with <code>手作りお菓子</code> in the title — to understand the technical vocabulary and cultural context of home baking in Japan</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and style of Orijima Kanoko's writing and documented quotations from the web novel and print edition, not direct quotations. For exact citations, consult the original edition (KADOKAWA / Media Works Bunko, 2023; ISBN 978-4-04-915300-2). The web novel version is also available on Kakuyomu and Shōsetsuka ni Narō.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

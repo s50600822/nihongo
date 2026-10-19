@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Stories — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e4e1db;
+            --surface: #eeede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d3830;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --deep: #2c2a26;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--deep);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,56,48,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-deep {
+            background: color-mix(in oklab, var(--deep) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--accent) 5%, var(--surface));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .epigraph {
+            text-align: center;
+            font-style: italic;
+            margin: calc(var(--space) * 1.5) 0;
+            padding: calc(var(--space) * 1);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .epigraph .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: 0.5rem;
+        }
+
+        .epigraph .translation {
+            font-family: "Cormorant Garamond", serif;
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>American Stories<br><span style="font-size:0.6em; font-weight:300;">あめりか物語</span></h1>
+    <div class="subtitle">A Japanese lesson through Nagai Kafu's tales of exile, cities, and the underside of civilization</div>
+    <div class="meta">The voyage out &middot; The asylum on the hill &middot; What the traveler sees that natives cannot</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages from "Senpou Yawa" (Ship Cabin Night Talk) and "Makiba no Michi" (Return Through the Meadow) are drawn from the public-domain text of <em>Amerika Monogatari</em> available via Project Gutenberg. Other passages are pedagogical reconstructions based on verified plot summaries and reviews. All are designed to teach the vocabulary, grammar, and literary context of the book accurately.
+</div>
+
+<p class="intro">
+    Published in August 1908 by Hakubunkan, <em>Amerika Monogatari</em> is the book that made Nagai Kafu famous. Kafu (1879-1959) spent roughly five years in the United States and France between 1903 and 1907, working first as an employee of the Yokohama Specie Bank in New York and later traveling through Tacoma, Seattle, Kalamazoo, and other American cities. Where previous Japanese writers had described the West as a model for modernization, Kafu was drawn to what lay beneath the surface: the asylums where Japanese immigrant laborers ended their days, the Chinatown alleys, the midnight taverns, the ship cabins where men going into exile talked through the night. The book's prose is a deliberate hybrid: modern Japanese infused with the rhythms of kanbun-chō (classical Chinese-influenced prose), gesaku (Edo-period popular fiction), and the French naturalism of Zola and Maupassant. It is one of the founding documents of Japanese urban literature.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Dedication: Grammar as Homage</h2>
+
+    <p>The book opens not with a story but with a dedication written in Lyon, France, after Kafu had already left America. It is a masterpiece of classical prose architecture.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            明治三十六年の秋十月の頃より米國に<span class="hl">遊びて</span>、今茲明治四十年の夏七月、フランスに<span class="hl">向ひて</span>ニューヨークを<span class="hl">去るに臨み</span>、日頃旅窗に書き綴りたるものを採り集めて、あめりかものがたりと題し、<span class="hl">謹んで</span>わが恩師にして恩友なる小波山人巖谷先生の机下に<span class="hl">呈す</span>
+        </div>
+        <div class="romaji">"Meiji sanjuuroku-nen no aki juu-gatsu no koro yori Beikoku ni asobite, ima koko Meiji yonjuu-nen no natsu shichi-gatsu, Furansu ni mukai te Nyuu Yooku wo saru ni nozomi, higoro ryosou ni kaki tsuzuritaru mono wo toriatumete, amerika monogatari to dai shi, tsutsushinde waga onshi ni shite onyuu naru Kohayama-san Iwaya-sensei no kizoka ni tei su."</div>
+        <div class="translation">"From about autumn, October of Meiji 36 (1903), I traveled in America, and now, in July of Meiji 40 (1907), as I am about to leave New York for France, I have gathered what I wrote from time to time at my traveling window, titled it American Stories, and humbly present it at the desk of my honored teacher and beneficent friend, Mr. Iwaya of Kohayama."</div>
+        <div class="source">— Dedication, Lyon, November 1907</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">遊ぶ</td><td class="reading">asobu</td><td>to travel, to wander (classical/literary usage)</td></tr>
+        <tr><td class="word">向う</td><td class="reading">mukau</td><td>to head toward, to face</td></tr>
+        <tr><td class="word">去るに臨み</td><td class="reading">saru ni nozomi</td><td>as [I] am about to depart (classical construction)</td></tr>
+        <tr><td class="word">旅窗</td><td class="reading">ryosou</td><td>traveler's window (poetic compound)</td></tr>
+        <tr><td class="word">綴る</td><td class="reading">tsuzuru</td><td>to compose, to write, to string together (words)</td></tr>
+        <tr><td class="word">謹んで</td><td class="reading">tsutsushinde</td><td>humbly, respectfully</td></tr>
+        <tr><td class="word">呈す</td><td class="reading">tei su</td><td>to present, to submit (humbling verb)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The architecture of humility</h5>
+        <p><strong>遊びて (asobite):</strong> In classical Japanese, 遊ぶ means not "to play" but "to travel, to wander, to sojourn." It carries the sense of a temporary, non-purposeful presence. Kafu did not "work" in America; he "wandered" there. The te-form 遊びて connects this wandering to everything that follows, making the entire American experience into a single continuous action that only ends when he turns toward France.</p>
+        <p><strong>去るに臨み (saru ni nozomi):</strong> This is a classical construction. 去る means "to depart, to leave." 臨む means "to face, to confront, to be on the point of." 去るに臨み = "as I face leaving / as I am about to depart." The grammar is deliberately archaic. A modern writer would say 去る前に or 去ろうとする時. Kafu chooses the classical form because it elevates the moment of departure into something ceremonial, almost funereal. He is not merely changing cities. He is performing a rite of leave-taking.</p>
+        <p><strong>謹んで (tsutsushinde):</strong> From 謹む (tsutsushimu), "to be humble, to be careful, to revere." This is the adverbial form used in formal dedications and letters. It is the sound of a student addressing a master. By using this word, Kafu places himself in a lineage: he is the disciple presenting his work to his teacher. The word contains an entire social relationship.</p>
+        <p><strong>呈す (tei su):</strong> A classical humbling verb meaning "to present (to a superior)." Not あげる (ageru), not 渡す (watasu), but 呈す. The word makes the book into an offering. The dedication is not merely informative; it is a ritual submission of the work into the hands of the master's judgment.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Epigraph: Baudelaire in Japanese Dress</h2>
+    <p>The book carries an epigraph from Baudelaire's "Le Voyage," translated into kanbun-style Japanese. This tells you everything about Kafu's literary allegiances.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl-deep">ただ行かんがために行かんとするものこそ、真個の旅人なれ</span>。心は気球の如くに軽く、身は悪運の手より逃れ得ず……
+        </div>
+        <div class="romaji">"Tada yukan ga tame ni yukan to suru mono koso, shinko no tabibito nare. Kokoro wa kikyuu no gotoku ni karuku, mi wa akuun no te yori nogare ezu..."</div>
+        <div class="translation">"Those who travel only in order to travel are the true travelers. The heart is light as a balloon, but the body cannot escape the hand of ill fortune..."</div>
+        <div class="source">— Baudelaire, "Le Voyage" (epigraph)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">真個</td><td class="reading">shinko</td><td>truth, reality; truly, genuinely (classical)</td></tr>
+        <tr><td class="word">旅人</td><td class="reading">tabibito</td><td>traveler</td></tr>
+        <tr><td class="word">気球</td><td class="reading">kikyuu</td><td>balloon</td></tr>
+        <tr><td class="word">如く</td><td class="reading">gotoku</td><td>like, as (classical form of ように)</td></tr>
+        <tr><td class="word">悪運</td><td class="reading">akuun</td><td>ill fortune, bad luck</td></tr>
+        <tr><td class="word">逃れ得ず</td><td class="reading">nogare ezu</td><td>cannot escape (classical negative potential)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: Kanbun as modernism</h5>
+        <p><strong>〜ものこそ、〜なれ (mono koso, nare):</strong> This is a classical emphatic pattern. ものこそ = "it is precisely those who..." なれ = the copula なり (nari) in its exclamatory form. The grammar is from kanbun kundoku (the Japanese reading of classical Chinese texts). By framing Baudelaire in this syntax, Kafu is doing something extraordinary: he is making French symbolism speak with the voice of East Asian classical prose. This is not mere translation. It is cultural transposition. The epigraph announces that this book will read America through a triple lens: French poetry, Chinese prose architecture, and Japanese sensibility.</p>
+        <p><strong>如く (gotoku):</strong> The classical form of ように (you ni, "like, as"). Modern Japanese would say 気球のように. Kafu writes 気球の如く. The single character 如 carries the weight of centuries of Sino-Japanese literary tradition. It is the word used in classical histories and poetry collections to introduce similes. When the heart becomes light as a balloon, it does so in the same language that described emperors shining like the sun.</p>
+        <p><strong>逃れ得ず (nogare ezu):</strong> A classical negative potential construction. 逃れる = to escape. 得る = to be able to. ず = negative. The modern form would be 逃れられない. The classical form compresses the meaning into a denser, more tragic sound. The body cannot escape. There is no possibility of escape. The grammar makes misfortune into a physical law.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Sea Voyage: The Grammar of Boredom and Exile</h2>
+    <p>The opening story, "Senpou Yawa" (Ship Cabin Night Talk), begins with one of the most famous passages in Japanese travel literature.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">何處いづこにしても陸を見る事の出來ない航海は、殆ど堪へ難い程無聊ぶれうに苦しめられるものである</span>
+        </div>
+        <div class="romaji">"Izuko ni shite mo riku wo miru koto no deki nai kokai wa, hotondo taegatai hodo bureou ni kurushimerareru mono de aru."</div>
+        <div class="translation">"A sea voyage in which one cannot see land, no matter where one looks, is something that torments one with a boredom almost beyond endurance."</div>
+        <div class="source">— "Senpou Yawa" (Ship Cabin Night Talk), opening line</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">何處</td><td class="reading">izuko</td><td>where (classical/poetic for どこ)</td></tr>
+        <tr><td class="word">航海</td><td class="reading">kokai</td><td>sea voyage, navigation</td></tr>
+        <tr><td class="word">殆ど</td><td class="reading">hotondo</td><td>almost, nearly</td></tr>
+        <tr><td class="word">堪へ難い</td><td class="reading">taegatai</td><td>unbearable, intolerable, hard to endure</td></tr>
+        <tr><td class="word">無聊</td><td class="reading">bureou /buryou</td><td>boredom, ennui, tedium (from Chinese 無聊)</td></tr>
+        <tr><td class="word">苦しめらる</td><td class="reading">kurushimerareru</td><td>to be tormented, to be afflicted (passive causative)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The classical weight of exile</h5>
+        <p><strong>何處 (izuko):</strong> Not どこ (doko), the modern word for "where," but 何處, the classical form. The character 處 (instead of the modern simplified 所) immediately signals that this is literary prose. The word contains a note of wandering, of searching without finding. Wherever one looks, there is no land. The classical word makes the absence feel categorical rather than merely temporary.</p>
+        <p><strong>無聊 (bureou/buryou):</strong> A Sino-Japanese compound meaning "without diversion, bored." It is a much heavier word than the modern 退屈 (taikutsu) or 暇 (hima). 無聊 is the boredom of exile, the tedium of the soul when deprived of all familiar anchors. It is the word used in Chinese poetry by banished officials staring at empty rivers. When Kafu uses it to describe a Pacific crossing, he is connecting his own voyage to a thousand years of literary exile.</p>
+        <p><strong>堪へ難い (taegatai):</strong> "Hard to endure, unbearable." The grammar 〜がたい means "difficult to [verb]." 堪へ難い = difficult to endure. But the word is stronger than the English "unbearable" suggests. 堪える means "to bear, to withstand, to endure with effort." 堪へ難い means that the effort of endurance has become nearly impossible. The grammar makes boredom into a physical weight.</p>
+        <p><strong>苦しめられる (kurushimerareru):</h5> The passive causative of 苦しむ (to suffer). Not merely "I suffer" but "I am made to suffer (by something)." The grammar makes the voyage into an agent of torture. The sea voyage does not merely bore the passenger; it actively torments him. The passive causative is the grammatical signature of powerlessness.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Pacific: Yesterday Sea, Today Sea</h2>
+    <p>Kafu's description of the ocean crossing is a study in repetition as existential condition.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">昨日も海、今日も海</span>―――<span class="hl">何時見ても變らぬ太平洋の眺望</span>ながめと云ふのは唯だ茫漠として、大きな波浪なみの起伏する邊に翼の長い嘴くちばしの曲つた灰色の信天翁あほうどりの飛び廻つてゐるばかりである
+        </div>
+        <div class="romaji">"Kinou mo umi, kyou mo umi — itsu mite mo kawaranu Taiheiyou no nagame to iu no wa tada boubaku to shite, ookina nami no kifuku suru hen ni tsubasa no nagai kuchibashi no magatta haiiro no ahoudori no tobimawatte iru bakari de aru."</div>
+        <div class="translation">"Yesterday sea, today sea — the prospect of the Pacific, unchanging no matter when you look, is merely a vast expanse where nothing exists but the rise and fall of great waves and the circling of gray albatrosses with their long wings and curved beaks."</div>
+        <div class="source">— "Senpou Yawa"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">海</td><td class="reading">umi</td><td>sea (classical character form)</td></tr>
+        <tr><td class="word">變らぬ</td><td class="reading">kawaranu</td><td>unchanging (classical negative)</td></tr>
+        <tr><td class="word">眺望</td><td class="reading">nagame</td><td>prospect, view, scene</td></tr>
+        <tr><td class="word">茫漠</td><td class="reading">boubaku</td><td>vast, boundless, vague</td></tr>
+        <tr><td class="word">起伏</td><td class="reading">kifuku</td><td>rising and falling, undulation</td></tr>
+        <tr><td class="word">信天翁</td><td class="reading">ahoudori / albatross</td><td>albatross (literally "trust heaven venerable elder")</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of monotony</h5>
+        <p><strong>昨日も海、今日も海 (kinou mo umi, kyou mo umi):</strong> The repetition is the point. Not "yesterday it was the sea, and today it is the sea again" but simply "yesterday sea, today sea" — no verbs, no grammar of connection, just the bare fact of sameness. The omission of particles makes each day into a naked predicate. The sea is not what happened; it is what exists. The grammar performs the monotony it describes.</p>
+        <p><strong>變らぬ (kawaranu):</strong> The classical negative form of 変わる (to change). Modern Japanese would say 変わらない. The classical ぬ ending is shorter, harder, more absolute. It is the negative of finality. When the Pacific is 何時見ても變らぬ (unchanging no matter when you look), the grammar makes changelessness into a permanent condition rather than a temporary state.</p>
+        <p><strong>信天翁 (ahoudori):</strong> The Japanese word for albatross is a masterpiece of poetic etymology. 信 = trust. 天 = heaven. 翁 = venerable old man. The bird is "the old man who trusts in heaven." It is the perfect image for Kafu's voyage: a creature that spends its entire life over open water, trusting to winds and currents, never needing land. The word makes the albatross into a symbol of the exile's condition: to trust in what you cannot control, to find your home in what others call emptiness.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Cabin at Night: Whiskey and Exile</h2>
+    <p>The frame of "Senpou Yawa" is simple: three Japanese men in a ship cabin at night, drinking whiskey and talking. But the talk reveals the architecture of Japanese ambition in the Meiji era.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「<span class="hl">日本なんかに居つたら、到底心の底から快哉を呼ぶやうな事アありやせんからね</span>」
+        </div>
+        <div class="romaji">"'Nihon nanka ni ittara, toutou kokoro no soko kara kaizai wo yobu you na koto ariyasen kara ne.'"</div>
+        <div class="translation">"'If you stay in Japan, there is nothing that can make you cry out in triumph from the bottom of your heart.'"</div>
+        <div class="source">— Yanagida, "Senpou Yawa"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">到底</td><td class="reading">toutou</td><td>after all, in the end, fundamentally</td></tr>
+        <tr><td class="word">心の底</td><td class="reading">kokoro no soko</td><td>the bottom of one's heart</td></tr>
+        <tr><td class="word">快哉</td><td class="reading">kaizai</td><td>cry of triumph, exclamation of joy</td></tr>
+        <tr><td class="word">呼ぶ</td><td class="reading">yobu</td><td>to call out, to cry out</td></tr>
+        <tr><td class="word">ありやせん</td><td class="reading">ariyasen</td><td>there is not (colloquial/classical negative)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The voice of Meiji disillusionment</h5>
+        <p><strong>快哉 (kaizai):</strong> A Sino-Japanese compound meaning "joyful cry, triumphant shout." It is the word for the feeling when something magnificent happens and you cannot help but exclaim. The character 快 means "pleasant, fast, satisfying" and 哉 is an exclamatory particle from classical Chinese. When Yanagida says Japan offers nothing that can make him cry 快哉 from the bottom of his heart, he is saying that the entire civilization is too small for his soul. This is the voice of Meiji-era ambition confronting its limits.</p>
+        <p><strong>到底 (toutou):</strong> "After all, in the end, fundamentally." This adverb carries the weight of final judgment. It means "when all is said and done, when you get right down to it." When Yanagida says 到底...ありやせん, he is making a categorical statement about the nature of Japan itself. It is not merely difficult to find triumph there. It is structurally impossible.</p>
+        <p><strong>ありやん (ariyasen):</strong> A colloquial/classical negative form of ある (to exist). It is more emphatic than the standard ない. The やせん ending carries a note of dismissiveness, of someone who has thought about it and concluded with finality. It is the grammar of a man who has already made up his mind to leave.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Asylum on the Hill: Civilization's Dark Side</h2>
+    <p>"Makiba no Michi" (Return Through the Meadow) is the book's moral center. A bicycle ride through the Tacoma countryside ends at a state asylum where Japanese immigrant laborers have been confined.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            此の時友は恁かう云つたので、私は彼の後に<span class="hl">續いて</span>後の丘陵へ上ると、遠くの彼方には氣も晴々する牧場を望、近くは幽邃いうすゐな林を前にして、宏莊な煉瓦造の建物が、直ぐ樣其れと知られるのであつた
+        </div>
+        <div class="romaji">"Kono toki tomo wa kou itta no de, watashi wa kare no ato ni tsudzuite nochi no kyuuryou e noboru to, tooku no kanata ni ki mo sese suru makiba wo nozomi, chikaku wa yusui na hayashi wo mae ni shite, kousou na renga-zukuri no tatemono ga, sugusama sore to shirareru no de atta."</div>
+        <div class="translation">"At this point my friend spoke thus, and I, following after him, climbed the hill behind, and when from afar I gazed upon an open, sunlit pasture, and before me nearby a deep, still forest, a grand brick building was immediately recognizable for what it was."</div>
+        <div class="source">— "Makiba no Michi"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">續く</td><td class="reading">tsudzuku</td><td>to follow, to continue (classical character form)</td></tr>
+        <tr><td class="word">丘陵</td><td class="reading">kyuuryou</td><td>hill, knoll</td></tr>
+        <tr><td class="word">彼方</td><td class="reading">kanata</td><td>the distance, beyond</td></tr>
+        <tr><td class="word">氣も晴々</td><td class="reading">ki mo sese</td><td>open, bright, sunlit (literary)</td></tr>
+        <tr><td class="word">牧場</td><td class="reading">makiba</td><td>pasture, meadow</td></tr>
+        <tr><td class="word">幽邃</td><td class="reading">yusui</td><td>deep, still, secluded, profound</td></tr>
+        <tr><td class="word">宏莊</td><td class="reading">kousou</td><td>grand, magnificent, imposing</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The beauty that hides the horror</h5>
+        <p><strong>氣も晴々する (ki mo sese suru):</strong> A rare literary expression meaning "bright, open, sunlit." 晴 is the classical form of 晴 (clear weather). The reduplication 晴々 creates a sense of spaciousness and clarity. Kafu uses this beautiful phrase to describe the pasture just before revealing the asylum. The grammar of beauty becomes the grammar of irony: the brighter the landscape, the darker the building at its center.</p>
+        <p><strong>幽邃 (yusui):</strong> "Deep, still, secluded, profound." A Sino-Japanese compound used in classical poetry to describe hidden valleys and ancient forests. By calling the forest 幽邃な林, Kafu makes it sound like a setting from a Tang dynasty poem. But this is Tacoma, Washington, in 1903. The classical word does not fit the American landscape, and that dissonance is precisely the point. Kafu is seeing America through the vocabulary of Chinese pastoral, and the mismatch reveals his own exile.</p>
+        <p><strong>直ぐ樣其れと知られる (sugusama sore to shirareru):</strong> "Was immediately recognizable for what it was." 直ぐ樣 = immediately, at once. 其れ = it, that thing. The grammar is deliberately vague. Kafu does not say "the asylum" but "that thing" — as if naming it would make it too real. The passive 知られる (is known/recognized) makes the recognition impersonal. The building reveals itself; the observer merely receives the revelation.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Laborers: What America Does to the Japanese Body</h2>
+    <p>Kafu's description of the Japanese laborers in the ship's hold is one of the most powerful passages in Japanese literature about immigration.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            彼等は人間としてよりは<span class="hl">寧荷物の如くに取扱はれ</span>、狹い汚い船底に<span class="hl">滿載せられてゐた</span>
+        </div>
+        <div class="romaji">"Karera wa ningen to shite yori wa mushiro nimotsu no gotoku ni toriatsukaware, semai kitanai funazoko ni mansai sarete ita."</div>
+        <div class="translation">"They were handled not as human beings but rather as cargo, and packed into the narrow, filthy ship's hold."</div>
+        <div class="source">— "Makiba no Michi"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">寧</td><td class="reading">mushiro</td><td>rather, sooner, more accurately</td></tr>
+        <tr><td class="word">荷物</td><td class="reading">nimotsu</td><td>cargo, baggage, freight</td></tr>
+        <tr><td class="word">如く</td><td class="reading">gotoku</td><td>like, as (classical)</td></tr>
+        <tr><td class="word">取扱はれる</td><td class="reading">toriatsukawareru</td><td>to be handled, to be treated (passive)</td></tr>
+        <tr><td class="word">滿載</td><td class="reading">mansai</td><td>full load, packed full</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of dehumanization</h5>
+        <p><strong>寧〜如くに (mushiro...gotoku ni):</strong> "Rather...like." 寧 is a classical adverb that introduces a correction: not A but rather B. When Kafu writes 人間としてよりは寧荷物の如くに, he is saying: "If you must categorize them, do not call them human beings; call them cargo." The grammar forces the reader to make the same correction Kafu made when he saw them. It is the grammar of witnessing injustice and refusing to look away.</p>
+        <p><strong>取扱はれる (toriatsukawareru):</strong> The passive form of 取り扱う (to handle, to treat). Not "they were treated" in a general sense but "they were handled" — the word used for objects, not people. 取り扱う is what you do with luggage, with merchandise, with tools. The passive voice removes the agent. We do not learn who handled them. The grammar makes dehumanization into an impersonal system.</p>
+        <p><strong>滿載せられてゐた (mansai sarete ita):</strong> "Were packed full." 満載 (mansai) means "full load, packed to capacity." The causative passive 満載せられて makes the laborers into objects of someone else's loading. They did not choose to be packed in. They were made to be packed in. The ゐた (classical form of いる) gives the state a continuous, ongoing quality. They were still packed in when Kafu saw them. The grammar makes the condition permanent.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Madman's Story: 失望 as Causation</h2>
+    <p>Kafu asks his friend why the Japanese laborers went mad. The friend's answer contains a word that explains the book's entire worldview.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「<span class="hl">大槪は先づ失望と云ふ奴が原因になる</span>んだが」
+        </div>
+        <div class="romaji">"'Taigai wa mazu shitsubou to iu yatsu ga gen'in ni naru n da ga.'"</div>
+        <div class="translation">"'Generally, first of all, it's disappointment — that fellow — that becomes the cause.'"</div>
+        <div class="source">— "Makiba no Michi"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">大槪</td><td class="reading">taigai</td><td>generally, mostly, probably</td></tr>
+        <tr><td class="word">先づ</td><td class="reading">mazu</td><td>first of all, to begin with</td></tr>
+        <tr><td class="word">失望</td><td class="reading">shitsubou</td><td>disappointment, despair</td></tr>
+        <tr><td class="word">奴</td><td class="reading">yatsu</td><td>fellow, guy, thing (casual, often dismissive)</td></tr>
+        <tr><td class="word">原因</td><td class="reading">gen'in</td><td>cause, origin</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The personification of despair</h5>
+        <p><strong>失望と云ふ奴 (shitsubou to iu yatsu):</strong> Literally "the fellow called disappointment." 奴 (yatsu) is a casual, often contemptuous word for a person or thing. By calling disappointment 奴, the friend personifies it. Disappointment is not an abstract condition; it is a character, an agent, a villain who enters people's lives and destroys them. The grammar makes despair into something you could point at, something with a face. This is the book's secret theology: the god who rules America is not opportunity but disappointment.</p>
+        <p><strong>大槪は先づ (taigai wa mazu):</strong> "Generally, first of all." The double adverbs create a note of reluctant expertise. The friend has seen this before. He does not say "I know exactly why." He says "generally, first of all" — the grammar of someone who has witnessed enough cases to see the pattern but still finds each one unbearable.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Landscape Transformed: 寂寥 as Contagion</h2>
+    <p>After learning that Japanese laborers are in the asylum, Kafu looks at the same landscape and sees something entirely different. This is the book's key psychological passage.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            私の目には今まで平和と靜安の限りを示して居た行手の牧場は、<span class="hl">忽ち變じて云はん方なき寂寥を感ぜしめ</span>、松の森林は暗澹として奧深く、恐怖と祕密の隱家である樣に思はれた
+        </div>
+        <div class="romaji">"Watashi no me ni wa ima made heiwa to seian no kagiri wo shimeshite ita yukute no makiba wa, tachimachi henjite iwan kata naki seiryou wo kanze shime, matsu no shinrin wa antan to shite okufukaku, kyoufu to himitsu no kakurega de aru you ni omowareta."</div>
+        <div class="translation">"In my eyes, the pasture ahead, which until then had shown me only the limits of peace and tranquility, suddenly changed and made me feel an inexpressible loneliness; the pine forest became dark and profound in its depths, and seemed a hiding place of terror and secrecy."</div>
+        <div class="source">— "Makiba no Michi"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">忽ち</td><td class="reading">tachimachi</td><td>suddenly, in an instant</td></tr>
+        <tr><td class="word">云はん方なき</td><td class="reading">iwan kata naki</td><td>inexpressible, indescribable</td></tr>
+        <tr><td class="word">寂寥</td><td class="reading">seiryou / sekiryou</td><td>loneliness, solitude, desolation</td></tr>
+        <tr><td class="word">感ぜしめる</td><td class="reading">kanze shimeru</td><td>to make one feel, to cause to feel (causative classical)</td></tr>
+        <tr><td class="word">暗澹</td><td class="reading">antan</td><td>dark, gloomy, dim</td></tr>
+        <tr><td class="word">奧深く</td><td class="reading">okufukaku</td><td>deep in the interior, profoundly within</td></tr>
+        <tr><td class="word">隱家</td><td class="reading">kakurega</td><td>hiding place, secret dwelling</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The causative of transformed perception</h5>
+        <p><strong>云はん方なき寂寥 (iwan kata naki seiryou):</strong> "Inexpressible loneliness." 云はん方なき is a classical construction: 云う (to say) + 方 (way) + なき (without). "Without a way to say it." The grammar admits the failure of language before the feeling is even named. And what cannot be named is 寂寥 (seiryou), one of the most important words in East Asian aesthetics. It is the loneliness of empty temples, of autumn evenings, of distant bells. It is not merely sadness; it is the recognition that beauty and desolation are the same thing seen from different angles.</p>
+        <p><strong>感ぜしめる (kanze shimeru):</strong> The classical causative of 感ずる (to feel). Not "I felt" but "it made me feel." The grammar makes the landscape into an active agent. The pasture does not merely look different now; it forces a new emotion into the observer. This is the book's deepest insight: knowledge changes perception, and perception changes the world. Once you know the asylum is there, the meadow becomes its accomplice.</p>
+        <p><strong>奧深く (okufukaku):</strong> "Deep in the interior, profoundly within." 奧 means "interior, depths, inner chamber." 深く means "deeply." Together they describe not merely the physical depth of the forest but its psychological depth. The trees are not just tall; they conceal something. The word makes the forest into a mind with secrets.</p>
+        <p><strong>隱家 (kakurega):</strong> "Hiding place, secret dwelling." From 隠れる (kakureru, to hide) and 家 (ie, house). It is the word for a bandit's lair, a hermit's cave, a place where something is concealed from the world. When the forest becomes a 恐怖と祕密の隱家 (hiding place of terror and secrecy), Kafu is using the vocabulary of Edo-period fiction to describe an American pine wood. The mismatch is deliberate. Japan provides the words; America provides the horror.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>10. Summary: The Grammar of Exile</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜に臨み</strong> — As one confronts/faces [doing something] (the grammar of ceremonial leave-taking)</li>
+        <li><strong>〜ものこそ、〜なれ</strong> — It is precisely [those who]... that are... (classical emphatic identification)</li>
+        <li><strong>〜如く</strong> — Like, as (classical simile, carrying the weight of Sino-Japanese literary tradition)</li>
+        <li><strong>〜得ず</strong> — Cannot [verb] (classical negative potential, making impossibility into physical law)</li>
+        <li><strong>〜ぬ</strong> — Classical negative (shorter, harder, more absolute than modern ない)</li>
+        <li><strong>〜せられてゐた</strong> — Classical causative passive continuous (the grammar of permanent imposed conditions)</li>
+        <li><strong>〜がために</strong> — For the sake of, in order to (classical purpose construction)</li>
+        <li><strong>〜と云ふ奴</strong> — The fellow called... (personification of abstract forces)</li>
+        <li><strong>〜ぜしめる</strong> — Classical causative (making the landscape into an agent of emotion)</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>遊びて</strong> — To wander, not to work; the temporary sojourner</li>
+        <li><strong>去るに臨み</strong> — The ceremonial grammar of departure</li>
+        <li><strong>謹で</strong> — The sound of a student addressing a master</li>
+        <li><strong>呈す</strong> — To offer a book as ritual submission</li>
+        <li><strong>真個の旅人</strong> — The true traveler, defined by purposelessness</li>
+        <li><strong>如く</strong> — The classical simile, carrying centuries of literary weight</li>
+        <li><strong>逃れ得ず</strong> — Cannot escape; misfortune as physical law</li>
+        <li><strong>無聊</strong> — The boredom of exile, not mere tedium</li>
+        <li><strong>堪へ難い</strong> — Unbearable; the effort of endurance failing</li>
+        <li><strong>何處</strong> — Where (classical); the voice of the wanderer</li>
+        <li><strong>變らぬ</strong> — Unchanging (classical negative); changelessness as fate</li>
+        <li><strong>信天翁</strong> — The albatross; the old man who trusts heaven</li>
+        <li><strong>快哉</strong> — The cry of triumph that Japan cannot elicit</li>
+        <li><strong>到底</strong> — After all; the grammar of categorical judgment</li>
+        <li><strong>幽邃</strong> — Deep, still, secluded; Chinese pastoral in American woods</li>
+        <li><strong>寧〜如く</strong> — Rather like; the grammar of dehumanizing correction</li>
+        <li><strong>滿載せられてゐた</strong> — Were packed full; objects of someone else's loading</li>
+        <li><strong>失望と云ふ奴</strong> — The fellow called disappointment; despair personified</li>
+        <li><strong>云はん方なき寂寥</strong> — Inexpressible loneliness; language admitting its own failure</li>
+        <li><strong>感ぜしめる</strong> — To make one feel; the landscape as active agent</li>
+        <li><strong>奧深く</strong> — Deep in the interior; the mind with secrets</li>
+        <li><strong>隱家</strong> — Hiding place; Edo fiction vocabulary for American horror</li>
+    </ul>
+
+    <h4>Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Eight directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方がない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul when you place it in a country where no one knows its name. Together these eight writers map the emotional and linguistic range of modern Japanese: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of small mercies to the classical architecture of exile.</p>
+</section>
+
+</main>
+
+</body>
+</html>

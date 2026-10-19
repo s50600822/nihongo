@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>にぎやかな未来 — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.story-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.story-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .story-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>にぎやかな未来</h1>
+    <p class="subtitle">Nigiyaka na Mirai<br><em>A Lively Future / The Bustling Future</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">筒井康隆 (Tsutsui Yasutaka)</span></span>
+      <span><span class="label">First published</span> <span class="value">1968 (San'ichi Shobo); 1972 (Kadokawa Bunko)</span></span>
+      <span><span class="label">Format</span> <span class="value">41 short-short stories (ショートショート)</span></span>
+      <span><span class="label">Pages</span> <span class="value">256 pp. (2016 Kadokawa edition)</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">にぎやかな未来</div>
+    <div class="romaji">Nigiyaka na mirai</div>
+    <div class="translation">"A Lively Future" / "The Bustling Future"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>にぎやか</td><td>nigiyaka</td><td>Na-adjective stem</td><td>lively, bustling, noisy, vibrant</td></tr>
+    <tr><td>な</td><td>na</td><td>Attributive copula</td><td>Connects na-adjective to following noun</td></tr>
+    <tr><td>未来</td><td>mirai</td><td>Noun</td><td>future; Sino-Japanese compound (未+来)</td></tr>
+  </table>
+
+  <h4>The Na-Adjective (ナ形容詞 / 形容動詞)</h4>
+  <p><code>にぎやか</code> is a <strong>na-adjective</strong> (形容動詞, keiyodoshi). Unlike i-adjectives, which inflect directly, na-adjectives require the copular particle <code>だ</code> (predicative) or <code>な</code> (attributive) to modify a noun.</p>
+
+  <div class="card card-accent">
+    <p><strong>Key pattern:</strong> Na-adjective + <code>な</code> + Noun = attributive modification</p>
+    <p style="margin-top:0.8em;"><code>にぎやかな未来</code> = "a lively future" (modifying the noun directly)</p>
+    <p><code>未来はにぎやかだ</code> = "the future is lively" (predicative, ending the sentence)</p>
+  </div>
+
+  <h4>The Ironic Undertone</h4>
+  <p><code>にぎやか</code> is typically a <em>positive</em> word: it evokes festivals, crowded streets, children playing. But in the title story, the "liveliness" is the cacophony of an advertising-saturated dystopia. The title is therefore <strong>bitterly ironic</strong>: what sounds cheerful is actually oppressive. This tonal dissonance is central to Tsutsui's black humor.</p>
+
+  <h4>Orthographic Note: 賑やか vs. にぎやか</h4>
+  <p>The title uses hiragana <code>にぎやか</code> rather than the kanji <code>賑やか</code>. This softens the visual impact and creates a playful, almost childlike surface that contrasts with the dystopian content. Tsutsui often uses hiragana for effect, especially in his nonsense and slapstick modes.</p>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 筒井康隆</h2>
+
+  <p>Tsutsui Yasutaka is one of Japan's most versatile and influential writers, a shape-shifter who moved between SF, slapstick comedy, black humor, metafiction, and literary fiction with apparent ease.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">筒井 康隆（つつい やすたか）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">September 24, 1934, Osaka</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Doshisha University, Faculty of Letters (Aesthetics & Art)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">1960, "Otasuke" (お助け) in SF coterie magazine NULL</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major awards</span>
+      <span class="stat-value">Izumi Kyoka Prize (1981), Tanizaki Prize (1987), Kawabata Prize (1989), Japan SF Grand Prize (1992), Yomiuri Prize (2000)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Honors</span>
+      <span class="stat-value">Medal with Purple Ribbon (2002), Japan Art Academy member</span>
+    </div>
+  </div>
+
+  <h4>Career Trajectory</h4>
+  <p>Tsutsui founded the SF coterie magazine <code>NULL</code> in 1960 with his three younger brothers. His story <code>お助け</code> (Otasuke) was spotted by Edogawa Ranpo and reprinted in the commercial magazine <code>Houseki</code>, launching his professional career. In the 1960s and early 1970s, he produced a flood of short-short stories (ショートショート) that combined SF premises with slapstick and black humor. This collection, <em>Nigiyaka na Mirai</em>, gathers the best of that early period.</p>
+
+  <p>In the 1980s, Tsutsui shifted toward more experimental and literary work (<code>虚人たち</code>, <code>夢の木坂分岐点</code>). In 1993, he issued a famous <strong>断筆宣言</strong> (declaration that he would stop writing) after a controversy over his story <code>無人警察</code> being removed from a high-school textbook. He resumed writing in 1996 and has continued publishing into his late 80s.</p>
+
+  <h4>Tsutsui's Literary DNA</h4>
+  <ul>
+    <li><strong>SF御三家:</strong> Along with Komatsu Sakyo and Hoshi Shinichi, Tsutsui formed the "Big Three" of early Japanese SF.</li>
+    <li><strong>Black humor:</strong> He finds comedy in cruelty, bureaucracy, and bodily functions.</li>
+    <li><strong>Metafiction:</strong> He frequently breaks the fourth wall and plays with narrative convention.</li>
+    <li><strong>Osaka sensibility:</strong> His comedy carries the fast-talking, irreverent energy of Kansai humor.</li>
+    <li><strong>Prophetic SF:</strong> Many 1960s premises (ad saturation, surveillance, time manipulation) feel contemporary.</li>
+  </ul>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1934</span>
+      <span class="timeline-event">Born in Osaka</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1960</span>
+      <span class="timeline-event">Founds NULL magazine; debuts with "Otasuke"</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1965</span>
+      <span class="timeline-event">First collection: Tokaido Senso</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1967</span>
+      <span class="timeline-event">Toki wo Kakeru Shojo (The Girl Who Leapt Through Time)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1968</span>
+      <span class="timeline-event">Nigiyaka na Mirai first published</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1993</span>
+      <span class="timeline-event">Danpitsu sengen (writing strike) over "Mujin Keisatsu"</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1996</span>
+      <span class="timeline-event">Resumes writing</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1993</span>
+      <span class="timeline-event">Paprika published</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Collection -->
+<section id="collection">
+  <h2><span class="section-num">03</span> The Collection</h2>
+
+  <p><em>Nigiyaka na Mirai</em> contains 41 short-short stories, most written in the 1960s. The stories are grouped into rough thematic clusters: modern-day SF, fantasy, nonsense comedy, and future SF. Hoshi Shinichi provided the afterword for the Kadokawa edition, praising Tsutsui's unique voice.</p>
+
+  <h4>Notable Stories in the Collection</h4>
+  <div class="story-grid">
+    <div class="story-tag highlighted">お助け</div>
+    <div class="story-tag highlighted">にぎやかな未来</div>
+    <div class="story-tag highlighted">無人警察</div>
+    <div class="story-tag">超能力</div>
+    <div class="story-tag">星は生きている</div>
+    <div class="story-tag">最終兵器の漂流</div>
+    <div class="story-tag">怪物たちの夜</div>
+    <div class="story-tag">007入社す</div>
+    <div class="story-tag">コドモのカミサマ</div>
+    <div class="story-tag">腸はどこへいった</div>
+    <div class="story-tag">踊る星</div>
+    <div class="story-tag">地下鉄の笑い</div>
+    <div class="story-tag">疑似人間</div>
+    <div class="story-tag">火星にきた男</div>
+    <div class="story-tag">差別</div>
+    <div class="story-tag">遊民の街</div>
+    <div class="story-tag">亭主調理法</div>
+    <div class="story-tag">欲望</div>
+    <div class="story-tag">パチンコ必勝原理</div>
+    <div class="story-tag">到着</div>
+  </div>
+
+  <h4>The Three Highlighted Stories</h4>
+
+  <div class="card card-accent">
+    <p><strong>お助け (Otasuke / "Help!")</strong> — Tsutsui's 1960 debut. An astronaut trainee finds his own time moving faster and faster relative to the world around him. He can perform pranks in "frozen time," but the ending is terrifying: he lies down in traffic and awakens to find a truck wheel slowly crushing him, screaming "Help!" in a world where no one can perceive his speed. A perfect introduction to Tsutsui's blend of SF premise and cruel punchline.</p>
+  </div>
+
+  <div class="card card-accent">
+    <p><strong>にぎやかな未来 (Nigiyaka na Mirai / "A Lively Future")</strong> — The title story. In a future saturated with advertising, silence itself becomes a luxury commodity. A man buys a "silent record" (無音のレコード) only to discover that true silence has been outlawed or made impossible. The story is a prescient satire of attention economics, written decades before smartphones and YouTube ads.</p>
+  </div>
+
+  <div class="card card-accent">
+    <p><strong>無人警察 (Mujin Keisatsu / "Unmanned Police")</strong> — Robot police officers monitor citizens for pre-crime signals, including abnormal brainwaves associated with epilepsy. The story became infamous in 1993 when the Japan Epilepsy Association protested its inclusion in a high school textbook, leading to Tsutsui's writing strike. It remains a sharp satire of surveillance and algorithmic policing.</p>
+  </div>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the known content and style of the stories. They capture Tsutsui's linguistic and narrative techniques.</p>
+
+  <h3>A. From "お助け" (Otasuke)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">最初、それは細君との口論からはじまった。妙にノロノロした言い方で彼女は彼に、数日来の不満をぶちまけたのである。彼はイライラしながらも、どうにか相槌を打っていたが、やがて奇妙なことに気づいた。妻の動が、まるでスローモーションの映画のように、异常に遅く見えるのだ。</div>
+    <div class="romaji">Saisho, sore wa saikun to no kuchiron kara hajimatta. Myo ni noronoro shita iikata de kanojo wa kare ni, suujitsurai no fuman o buchimaketa no de aru. Kare wa iraira shinagara mo, doo ni ka aizuchi o utte ita ga, yagate kimyo na koto ni kidzuita. Tsuma no dosagata ga, maru de suroo-moshon no eiga no yoo ni, ijoo ni osoku mieru no da.</div>
+    <div class="translation">At first, it began with an argument with his wife. In an oddly sluggish manner of speaking, she vented her grievances of the past several days. He responded with irritation, managing to nod along; but before long he noticed something strange. His wife's movements looked abnormally slow, as if in a slow-motion film.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>細君</td><td>saikun</td><td>wife (slightly old-fashioned/humble)</td></tr>
+    <tr><td>口論</td><td>kuchiron</td><td>quarrel, argument</td></tr>
+    <tr><td>ノロノロ</td><td>noronoro</td><td>slowly, sluggishly (onomatopoeic adverb)</td></tr>
+    <tr><td>ぶちまける</td><td>buchimakeru</td><td>to vent, to pour out (emotions)</td></tr>
+    <tr><td>相槌</td><td>aizuchi</td><td>interjections showing one is listening (uh-huh, I see)</td></tr>
+    <tr><td>スローモーション</td><td>suroo-moshon</td><td>slow motion (loanword)</td></tr>
+  </table>
+
+  <h3>B. From "にぎやかな未来" (Title Story)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">彼の部屋の四壁は、朝から晩まで、色とりどりの広告で埋め尽くされていた。目を閉じても、耳を塞いでも、どこからともなく宣伝の声が聞こえてくる。そこで彼は、高値をはたいて、無音のレコードを手に入れたのだった。</div>
+    <div class="romaji">Kare no heya no shibe wa, asa kara ban made, iro toridori no kokoku de umetsukusarete ita. Me o tojite mo, mimi o fusaide mo, doko kara to mo naku senden no koe ga kikoete kuru. Sokode kare wa, tane o hataraite, muon no rekoodo o te ni ireta no datta.</div>
+    <div class="translation">The four walls of his room were filled from morning till night with multicolored advertisements. Even if he closed his eyes or plugged his ears, advertising voices could be heard from nowhere in particular. So he paid a high price to obtain a silent record.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>四壁</td><td>shibe</td><td>the four walls (literary)</td></tr>
+    <tr><td>埋め尽くす</td><td>umetsukusu</td><td>to cover completely, to fill entirely</td></tr>
+    <tr><td>塞ぐ</td><td>fusagu</td><td>to plug, to block (ears, nose, etc.)</td></tr>
+    <tr><td>宣伝</td><td>senden</td><td>advertising, propaganda</td></tr>
+    <tr><td>高値</td><td>tane</td><td>high price</td></tr>
+    <tr><td>はたく</td><td>hataku</td><td>to pay out (money); here in te-form: はたいて</td></tr>
+    <tr><td>無音</td><td>muon</td><td>silence, absence of sound</td></tr>
+  </table>
+
+  <h3>C. From "無人警察" (Mujin Keisatsu)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">おかしいな。何もおれは悪いことしていないのに。あと、てんかん持ちの人が異常な脳波を出していた場合もチェックされるらしいが、おれはてんかん持ちでないしなあ。それなのに、あのロボット巡査は、おれから一歩も離れようとしない。</div>
+    <div class="romaji">Okashii na. Nani mo ore wa warui koto shite inai no ni. Ato, tenkan-mochi no hito ga ijoo na nooha o dashite ita baai mo chekku sareru rashii ga, ore wa tenkan-mochi de nai shi naa. Sore na no ni, ano robotto junsa wa, ore kara ippo mo hanareyoo to shinai.</div>
+    <div class="translation">Strange. I haven't done anything wrong. And apparently they also flag people with epilepsy who emit abnormal brainwaves, but I don't have epilepsy. Even so, that robot police officer won't step away from me for a moment.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>てんかん持ち</td><td>tenkan-mochi</td><td>epileptic (literally "epilepsy-holder")</td></tr>
+    <tr><td>脳波</td><td>nooha</td><td>brainwaves, EEG</td></tr>
+    <tr><td>チェックされる</td><td>chekku sareru</td><td>to be flagged, to be checked (passive loanword)</td></tr>
+    <tr><td>巡査</td><td>junsa</td><td>police officer (older term)</td></tr>
+    <tr><td>～しな</td><td>shi naa</td><td>colloquial emphatic: "after all..." / "and besides..."</td></tr>
+  </table>
+
+  <h3>D. From "腸はどこへいった" (Where Did the Intestines Go?)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">数か月も排便がない。腹は張るが、出てこない。医者の叔父に診てもらうと、どうやら腸そのものが消失してしまったらしい。小便だけが、透明な水のように、ひたひたと流れ出る。</div>
+    <div class="romaji">Suu-kagetsu mo benbi ga nai. Hara wa haru ga, dete konai. Isha no oji ni mitete morau to, doo yara choo sono mono ga shoushitsu shite shimatta rashii. Shyoben dake ga, toomei na mizu no yoo ni, hitahita to nagaredasu.</div>
+    <div class="translation">For several months, no bowel movements. His abdomen was distended, but nothing came out. When examined by his uncle the doctor, it seemed that his intestines themselves had disappeared. Only urine flowed out, like transparent water, in a steady trickle.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>排便</td><td>benbi</td><td>bowel movement (clinical term)</td></tr>
+    <tr><td>張る</td><td>haru</td><td>to swell, to become distended</td></tr>
+    <tr><td>消失</td><td>shoushitsu</td><td>disappearance, vanishing (Sino-Japanese)</td></tr>
+    <tr><td>小便</td><td>shyoben</td><td>urine (colloquial/clinical)</td></tr>
+    <tr><td>ひたひた</td><td>hitahita</td><td>steadily, in a continuous flow (onomatopoeia)</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. にぎやか (nigiyaka)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Cheerful Noise vs. Oppressive Clutter</div>
+    <p><code>にぎやか</code> carries warmth: children's laughter, festival crowds, a lively classroom. It is almost always positive. When Tsutsui applies it to a future of inescapable advertising, the word becomes <strong>poisoned</strong>. English "bustling" or "lively" cannot convey this betrayal of a normally happy word. The closest might be "obnoxiously lively," but that over-explains what Japanese leaves implicit.</p>
+  </div>
+
+  <h3>B. ノロノロ (noronoro)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Onomatopoeia as Emotional State</div>
+    <p><code>ノロノロ</code> is an adverbial onomatopoeia for slow, sluggish movement. But it also carries <em>irritation</em>: the speaker is annoyed by the slowness. English "slowly" is neutral. "Sluggishly" is clinical. "At a snail's pace" is idiomatic but too specific. The Japanese word compresses perception and emotion into one phonetic gesture.</p>
+  </div>
+
+  <h3>C. ぶちまける (buchimakeru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Violence of Venting</div>
+    <p><code>ぶちまける</code> means to pour out, to vent, to spill everything. The prefix <code>ぶち～</code> carries a sense of explosive release (related to <code>打つ</code>, to strike). "Vent" is close but too calm. "Dump on someone" captures the aggression but is too slangy. The Japanese word suggests that grievances are not gently shared but <em>violently discharged</em>.</p>
+  </div>
+
+  <h3>D. 相槌 (aizuchi)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Untranslatable Art of Listening</div>
+    <p><code>相槌</code> refers to the interjections ("uh-huh," "I see," "really?") that a listener makes to show engagement. There is no single English word for this. "Nods" is physical, not verbal. "Interjections" is too broad. The concept is deeply embedded in Japanese conversational etiquette: the listener is expected to actively <code>打つ</code> (strike) these sounds back at the speaker.</p>
+  </div>
+
+  <h3>E. お助け (otasuke)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Childish Cry in Adult Terror</div>
+    <p><code>お助け</code> is an old-fashioned, almost childlike cry for help. The honorific prefix <code>お～</code> softens it, making it sound like something from a period drama or a child's mouth. When the protagonist screams this at the end, trapped under a slowly descending truck wheel in a world frozen by his own accelerated time, the word's childishness makes the moment <strong>grotesquely pathetic</strong>. "Help!" is too generic. "Save me!" is too dramatic. The Japanese title word carries a specific cultural register of helplessness.</p>
+  </div>
+
+  <h3>F. 無音 (muon) / 音のレコード</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Silence as Luxury Commodity</div>
+    <p><code>無音</code> is not merely "silence" (<code>静寂</code>, seijaku). It is the <em>absence of sound</em> as a technical, almost scientific condition. A <code>無音のレコード</code> is a record that plays nothing, a product designed to deliver silence in a world where silence no longer exists naturally. The oxymoron is sharper in Japanese because <code>レコード</code> (record) implies content by definition. English "silent record" sounds like a category error; in Japanese it sounds like a desperate invention.</p>
+  </div>
+
+  <h3>G. ひたひた (hitahita)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Sound of Unstoppable Flow</div>
+    <p><code>ひたひた</code> suggests a steady, relentless flow, often of water approaching or overflowing. It carries a hint of menace: something is coming, continuously, without pause. "Steadily" is too neutral. "Trickling" is too small. The word makes the urine flow sound almost like rising floodwaters, turning a bodily function into something quietly horrifying.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">Na-adjective + な + Noun (attributive)</span>
+    <div class="grammar-explanation">
+      <p>Na-adjectives modify nouns using <code>な</code>, not <code>い</code>. This is the attributive form (連体形) of the na-adjective copula.</p>
+      <p><code>にぎやかな未来</code> = a lively future</p>
+      <p><code>奇妙なこと</code> = a strange thing</p>
+      <p><code>透明な水</code> = transparent water</p>
+      <p><strong>Contrast with i-adjectives:</strong> <code>高い山</code> (takai yama) uses the adjective's inherent attributive form, with no extra particle.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～しながらも (shinagara mo) — Concessive "although"</span>
+    <div class="grammar-explanation">
+      <p><code>イライラしながらも、どうにか相槌を打っていた</code></p>
+      <p><code>～ながらも</code> combines the continuative <code>ながら</code> (while) with the emphatic/concessive <code>も</code>. It means "although / even though." The subject holds two contradictory states simultaneously.</p>
+      <p><strong>Pattern:</strong> Verb-stem + ながらも + [contradictory clause]</p>
+      <p>Distinction from simple <code>ながら</code>: <code>ながら</code> alone means "while doing X, (also) do Y." <code>ながらも</code> means "despite X, (still) Y" with a sense of overcoming or enduring.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようとしない — Negative intention / refusal</span>
+    <div class="grammar-explanation">
+      <p><code>離れようとしない</code> = "refuses to move away" / "won't step away"</p>
+      <p><code>～ようとする</code> means "to try to do." The negative <code>～ようとしない</code> means "to not even try to do" or "to refuse to do." It implies stubborn persistence in <em>not</em> doing the action.</p>
+      <p><strong>Formation:</strong> Volitional form (意向形) + とする → negative</p>
+      <p>English "won't" captures some of this, but <code>ようとしない</code> suggests a more active, almost willful refusal.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～らしい — Hearsay / Inference</span>
+    <div class="grammar-explanation">
+      <p><code>チェックされらしい</code> = "apparently they are flagged" / "I hear they get checked"</p>
+      <p><code>～らしい</code> has two main uses: (1) hearsay ("I hear that...") and (2) inference from evidence ("it seems that..."). In this passage, the protagonist is reporting something he has heard or surmised about the system.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>雨が降るらしい</code> (hearsay: "They say it will rain")</li>
+        <li><code>雨が降ったらしい</code> (inference: "It seems to have rained")</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てしまう — Completion / Regrettable result</span>
+    <div class="grammar-explanation">
+      <p><code>腸そのものが消失してしまった</code> = "his intestines have (regrettably/completely) disappeared"</p>
+      <p><code>～てしまう</code> (colloquially <code>～ちゃう</code>) indicates completion, often with a sense of irreversibility or regret. It can also suggest something happening against one's will.</p>
+      <p>In this context, it turns a medical anomaly into a personal catastrophe. The intestines didn't just disappear; they have <em>gone and disappeared</em>, with all the finality that implies.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～のに — Contradictory "although / and yet"</span>
+    <div class="grammar-explanation">
+      <p><code>何も悪いことしていないのに</code> = "even though I haven't done anything wrong"</p>
+      <p><code>～のに</code> marks a proposition that contradicts the expected outcome. The speaker has done nothing wrong; <em>and yet</em> the robot police follow him.</p>
+      <p><strong>Emotional load:</strong> <code>のに</code> often carries a tone of grievance or injustice. It is stronger than English "although" because it implies the speaker feels wronged by the contradiction.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～だけが — Exclusive focus / "only"</span>
+    <div class="grammar-explanation">
+      <p><code>小便だけが、透明な水のように、ひたひたと流れ出る</code></p>
+      <p><code>だけが</code> isolates one element in contrast to everything else. Here, urine is the <em>only</em> thing that still functions; the intestines are gone, the feces absent, but urine alone continues to flow.</p>
+      <p>The construction creates a haunting rhythm: everything else has failed; only this one thing persists, almost mockingly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Literary Context</span></h2>
+
+  <h4>The Short-Short Boom</h4>
+  <p>In the 1960s, Japanese magazines popularized the <code>ショートショート</code>: stories of 2–4 pages with a twist ending. Hoshi Shinichi was the master of the form; Tsutsui brought to it a wilder, more transgressive energy. The brevity demands precision: every word must earn its place.</p>
+
+  <h4>SF as Social Satire</h4>
+  <p>Tsutsui's SF is not primarily concerned with scientific accuracy. It uses speculative premises to expose human folly. The ad-saturated future of the title story, written in the 1960s, anticipates:</p>
+  <ul>
+    <li>YouTube pre-roll ads and unskippable commercials</li>
+    <li>Algorithmic surveillance and predictive policing</li>
+    <li>The commodification of attention and silence</li>
+    <li>Social credit systems and pre-crime detection</li>
+  </ul>
+
+  <h4>Kansai Humor and the Grotesque</h4>
+  <p>Tsutsui's Osaka roots give his comedy a rapid, irreverent rhythm. But beneath the slapstick is a fascination with the <strong>grotesque body</strong>: intestines that vanish, time that accelerates, brainwaves that betray you. His humor is not comforting; it is the laughter of recognition at how absurd and fragile human existence is.</p>
+
+  <h4>The 1993 Controversy: 無人警察 and the Danpitsu Sengen</h4>
+  <p>In 1993, <code>無人警察</code> was selected for a high school textbook. The Japan Epilepsy Association protested that the story's depiction of epilepsy was discriminatory. Kadokawa (the publisher) removed the story without consulting Tsutsui. Enraged by what he saw as censorship and cowardice, Tsutsui issued his <strong>断筆宣言</strong> (declaration that he would stop writing). The case became a landmark in debates over freedom of expression, disability representation, and editorial responsibility in Japan. Tsutsui resumed writing in 1996, but the episode cemented his reputation as a principled (if combative) defender of artistic freedom.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Tsutsui's early stories are excellent for intermediate readers. The sentences are short, the vocabulary is concrete, and the plots are gripping. But beware: his humor often depends on <strong>register shifts</strong> (sudden moves from clinical language to slang, from polite to vulgar) that are easy to miss without cultural context.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read one story per session. The short-short format is designed for single sittings.</li>
+    <li>Pay attention to the <strong>last sentence</strong> of each story. Tsutsui's punchlines often flip the entire narrative.</li>
+    <li>Track his use of <strong>onomatopoeia</strong>: ノロノロ, ひたひた, ぎゅっと. These are not decorative; they carry emotional and sensory information.</li>
+    <li>Notice how he shifts between <strong>だ/である</strong> (literary/narrative) and <strong>だ/～のだ</strong> (colloquial/character voice) within a single story.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>Why does Tsutsui use the word <code>にぎやか</code> (normally positive) for a dystopian future? What does this irony reveal about his view of consumer society?</li>
+    <li>In "Otasuke," time acceleration begins during a domestic argument. What is the relationship between the protagonist's emotional state and his supernatural condition?</li>
+    <li>How does <code>無人警察</code> use the grammar of surveillance (チェックされる, 離れようとしない) to create paranoia? Can you rewrite the passage in polite Japanese, and does it change the tone?</li>
+    <li>Tsutsui's body humor (腸はどこへいった) has been called "vulgar" and "brilliant." How does the clinical vocabulary (排便, 消失) interact with the absurd premise?</li>
+    <li>Compare Tsutsui's SF with Western dystopian fiction (Bradbury, Orwell, Vonnegut). What is distinctively Japanese about his approach?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Tsutsui Yasutaka, <em>Toki wo Kakeru Shojo</em> (時をかける少女) — his most famous work</li>
+    <li>Tsutsui Yasutaka, <em>Paprika</em> (パプリカ) — later SF masterpiece</li>
+    <li>Hoshi Shinichi, <em>Short Short</em> collections — compare the pure twist-ending form</li>
+    <li>Komatsu Sakyo, <em>Japan Sinks</em> (日本沈没) — the other pole of Japanese SF</li>
+    <li>Sasaki Atsushi, <em>Tsutsui Yasutaku Nyumon</em> (筒井康隆入門) — critical introduction</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and style of the stories, not direct quotations. For exact citations, consult the original Kadokawa edition (ISBN 978-4-04-104199-4).</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

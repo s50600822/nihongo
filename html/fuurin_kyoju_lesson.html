@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Fuurin's Elegant Deduction — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #4a4a5a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --mystery: #5a4a6a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--mystery);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(90,74,106,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.mystery::before {
+            background: var(--mystery);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.mystery-box {
+            background: color-mix(in oklab, var(--mystery) 8%, var(--surface));
+            border-left-color: var(--mystery);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.mystery-box h5 {
+            color: var(--mystery);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-mystery {
+            background: color-mix(in oklab, var(--mystery) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--mystery) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--mystery) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #5a4a6a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Professor Fuurin's Elegant Deduction<br><span style="font-size:0.6em; font-weight:300;">風鈴教授の優雅な推理</span></h1>
+    <div class="subtitle">A Japanese lesson through Sano Yō's mystery collection, where a wind chime professor solves crimes with the grace of a man who believes murder is an intellectual game played between equals</div>
+    <div class="meta">Sano Yō &middot; Tokuma Shoten &middot; 1999 &middot; Short Story Collection</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified biographical information, publication data, and Sano Yō's known stylistic tendencies as a master of the short mystery form. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published by Tokuma Shoten in 1999 as part of their Tokuma Bunko line, <em>Fuurin Kyoju no Yuuga na Suiri</em> (風鈴教授の優雅な推理) is a collection of short mystery stories by Sano Yō (佐野洋, 1928–2013), one of the most prolific and influential mystery writers in Japanese literary history. Sano wrote over 1,200 short stories and more than 80 novels during his fifty-five-year career, and was the first recipient of the Japan Mystery Literature Grand Prize (日本ミステリー文学大賞) in 1998. Where previous lessons in this series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, the cage that makes the animal ferocious, the backstage of publishing where editors make authors grovel, and the wobbly line that dances Edo back into existence, this lesson enters the realm of the classic Japanese mystery: the short-story collection featuring an amateur detective whose elegance is his weapon. Sano Yō was a newspaper reporter before he was a novelist, a psychology graduate of Tokyo University before he was a reporter, and a man who believed that mystery fiction should be an intellectual game rather than a blood-soaked spectacle. The title alone tells you everything you need to know about his philosophy: the detective is a professor, his instrument is the wind chime, and his method is elegance.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Wind Chime Detective</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is a complete aesthetic manifesto compressed into seven syllables.</p>
+
+    <div class="passage mystery">
+        <div class="jp-text jp">
+            <span class="hl-mystery">風鈴教授の優雅な推理</span>
+        </div>
+        <div class="romaji">"Fuurin Kyoju no Yuuga na Suiri"</div>
+        <div class="translation">"Professor Fuurin's Elegant Deduction" / "The Wind Chime Professor's Graceful Reasoning"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">風鈴</td><td class="reading">fuurin</td><td>wind chime</td></tr>
+        <tr><td class="word">教授</td><td class="reading">kyoju</td><td>professor, full professor</td></tr>
+        <tr><td class="word">優雅</td><td class="reading">yuuga</td><td>elegant, graceful, refined</td></tr>
+        <tr><td class="word">推理</td><td class="reading">suiri</td><td>deduction, reasoning, inference</td></tr>
+    </table>
+
+    <div class="nuance mystery-box">
+        <h5>What translation loses: The sensory paradox of 風鈴</h5>
+        <p><strong>風鈴 (fuurin):</strong> "Wind chime." In Japan, the wind chime is not merely a decorative object. It is a summer institution, a sound that evokes the coolness of evening, the passing of a breeze, the intimacy of a shaded porch. The word combines 風 (wind) with 鈴 (bell/small bell). A fuurin makes sound without being touched by human hands; it responds to invisible forces. When this word becomes a person's name or title, it creates a detective who operates like a wind chime: sensitive to disturbances in the air, producing clarity from chaos, making music from motion. The grammar of 風鈴教授 makes the professor into an instrument that detects what others cannot feel. He does not search for clues. He listens for them.</p>
+        <p><strong>優雅 (yuuga):</strong> "Elegant, graceful, refined." This is a word with aristocratic resonance. It describes not merely beauty but a certain kind of unhurried, cultivated poise. A yuuga person does not rush, does not shout, does not force conclusions. The elegance is both aesthetic and methodological: the deduction proceeds with the grace of a tea ceremony, each step deliberate, each movement meaningful. The grammar of 優雅な推理 makes mystery-solving into an art form rather than a procedure. Sano Yō's detective does not break down doors or chase suspects. He thinks, and his thinking is beautiful.</p>
+        <p><strong>推理 (suiri):</strong> "Deduction, reasoning, inference." This is the technical term for the detective's central activity in Japanese mystery fiction. 推 means to infer, to conjecture, to push forward from known to unknown. 理 means reason, principle, logic. Together they describe the movement from evidence to conclusion, the intellectual journey that is the engine of the mystery genre. The grammar of 推理 as the object of 優雅な makes the deduction itself into something that can possess grace. It is not merely the professor who is elegant. It is the reasoning. The logic sings like a wind chime.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Author's Name: The Grammar of the Newspaper Pun</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Sano Yō's pen name encodes his entire professional origin in a single syllabic joke.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">ペンネーム「佐野洋」は、「社の用」のもじり</span>
+        </div>
+        <div class="romaji">"Pen-nēmu 'Sano Yō' wa, 'sha no yō' no mojiri."</div>
+        <div class="translation">"The pen name 'Sano Yō' is a play on words for 'sha no yō' (the company's business)."</div>
+        <div class="source">— Biographical note</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ペンネーム</td><td class="reading">pen-nēmu</td><td>pen name, pseudonym</td></tr>
+        <tr><td class="word">社</td><td class="reading">sha</td><td>company, newspaper company</td></tr>
+        <tr><td class="word">用</td><td class="reading">yō</td><td>business, use, duty</td></tr>
+        <tr><td class="word">もじり</td><td class="reading">mojiri</td><td>wordplay, pun, parody</td></tr>
+        <tr><td class="word">本名</td><td class="reading">honmyō</td><td>real name</td></tr>
+        <tr><td class="word">丸山一郎</td><td class="reading">Maruyama Ichirō</td><td>Sano Yō's real name</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The corporate etymology of 佐野洋</h5>
+        <p><strong>社の用 (sha no yō):</strong> "The company's business, the newspaper's affairs." Sano Yō created his pen name while working as a reporter for the Yomiuri Shimbun. 佐野洋 (Sano Yō) and 社の用 (sha no yō) are phonetically almost identical: the "sa" of 佐 corresponds to 社, the "no" is identical, and the "yō" of 洋 corresponds to 用. The pun makes his professional identity inseparable from his literary identity. He was a newspaper man who wrote mysteries, and his very name announced that his writing was an extension of his day job. The grammar of the pun makes authorship into a form of moonlighting that has become permanent.</p>
+        <p><strong>The significance:</strong> Sano Yō's background as a newspaper reporter is crucial to understanding his mystery fiction. Reporters are professional investigators who work within deadlines, who interview suspects and witnesses, who know that every story has at least three sides. When Sano became a full-time writer in 1959, he brought the reporter's eye for detail, the journalist's nose for contradiction, and the newspaper man's understanding that truth is often buried in the paragraph nobody reads. The pen name preserves this origin story. Every time readers see "Sano Yō" on a book cover, they are seeing a pun on "the company's business," a reminder that this writer learned his craft in the city room.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Author's Career: The Grammar of Prolific Mastery</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Sano Yō's career statistics are staggering, and the words used to describe them reveal the nature of his genius.</p>
+
+    <div class="passage mystery">
+        <div class="jp-text jp">
+            <span class="hl-mystery">短編を1200編以上書き、その多くが文庫化された</span>
+        </div>
+        <div class="romaji">"Tanpen wo sen-ni-hyaku-hen ijō kaki, sono ooku ga bunko-ka sareta."</div>
+        <div class="translation">"He wrote more than 1,200 short stories, most of which were published in paperback."</div>
+        <div class="source">— Wikipedia biography</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">短編</td><td class="reading">tanpen</td><td>short story</td></tr>
+        <tr><td class="word">編</td><td class="reading">hen</td><td>story, piece, volume (counter)</td></tr>
+        <tr><td class="word">以上</td><td class="reading">ijō</td><td>more than, over, above</td></tr>
+        <tr><td class="word">文庫化</td><td class="reading">bunko-ka</td><td>to be published in paperback format</td></tr>
+        <tr><td class="word">作</td><td class="reading">tasaku</td><td>prolific, writing many works</td></tr>
+        <tr><td class="word">名手</td><td class="reading">meishu</td><td>master, expert, virtuoso</td></tr>
+    </table>
+
+    <div class="nuance mystery-box">
+        <h5>What translation loses: The counter grammar of 1200編</h5>
+        <p><strong>編 (hen):</strong> "Story, piece, volume." This counter is specific to literary works, particularly short stories and individual installments of serialized fiction. When Sano's output is described as 1200編, the word makes each story into a discrete unit, a self-contained puzzle complete in itself. The number is almost incomprehensible: 1,200 short stories means roughly one story every two weeks for fifty years. But the grammar of 編 makes the quantity feel less like factory production and more like a collection of individual gems. Each hen is a complete thought, a finished game, a closed case. The word makes Sano's prolificacy into a virtue rather than a vice: he was not writing too much. He was solving too many puzzles.</p>
+        <p><strong>文庫化された (bunko-ka sareta):</strong> "Published in paperback/bunko format." In Japan, bunko-ka is the mark of a work's enduring popularity. A story that appears in a magazine may be read once and forgotten. A story that is collected in a bunko edition has been selected, preserved, deemed worthy of permanent shelf space. The fact that most of Sano's 1,200 stories were bunko-ka'd means that his prolificacy was matched by his quality. He did not merely write fast. He wrote well enough to be kept. The grammar of 文庫化 makes the short story into a durable object, and Sano into a writer whose throwaway pieces were better than most writers' masterpieces.</p>
+        <p><strong>短編の名手 (tanpen no meishu):</strong> "Master of the short story." 名手 literally means "famous hand," a person whose hand is known for excellence. In traditional Japanese arts, a meishu is a master of a specific craft: a meishu of go, a meishu of the shamisen. When applied to Sano Yō, the word makes him into a craftsman of the short mystery form, someone whose technique has been refined to the point where each story is a demonstration of mastery. The grammar of 名手 elevates the mystery short story from entertainment to art, and Sano from entertainer to artist.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Anti-Gothic Stance: The Grammar of Moderate Realism</h2>
+    <span class="story-label">Literary philosophy</span>
+
+    <p>Sano Yō defined his aesthetic by what he refused to write.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">エキセントリックな犯罪、大掛かりなトリック、大邸宅大家族どのゴシックロマン的な背景も排除するなど、ほどのよいリアリズム、中庸さが持ち味</span>
+        </div>
+        <div class="romaji">"Ekisentorikku na hanzai, ōgakari na torikku, dai-teitaku dai-kazoku nado no goshikku roman-teki na haikei mo haijo suru nado, hodo no yoi riarizumu, chūyō-sa ga mochiaji."</div>
+        <div class="translation">"He excluded eccentric crimes, large-scale tricks, Gothic-romantic backgrounds such as mansions and extended families, and so forth; his distinguishing feature is a moderate realism, a sense of balance."</div>
+        <div class="source">— Critical assessment</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">エキセントリック</td><td class="reading">ekisentorikku</td><td>eccentric, unconventional</td></tr>
+        <tr><td class="word">大掛かり</td><td class="reading">ōgakari</td><td>large-scale, elaborate, grandiose</td></tr>
+        <tr><td class="word">トリック</td><td class="reading">torikku</td><td>trick, gimmick, plot device</td></tr>
+        <tr><td class="word">大邸宅</td><td class="reading">dai-teitaku</td><td>mansion, stately home</td></tr>
+        <tr><td class="word">排除</td><td class="reading">haijo</td><td>exclusion, elimination, rejection</td></tr>
+        <tr><td class="word">ほどのよい</td><td class="reading">hodo no yoi</td><td>moderate, well-balanced, just right</td></tr>
+        <tr><td class="word">リアリズム</td><td class="reading">riarizumu</td><td>realism</td></tr>
+        <tr><td class="word">中庸</td><td class="reading">chūyō</td><td>the golden mean, moderation</td></tr>
+        <tr><td class="word">持ち味</td><td class="reading">mochiaji</td><td>distinguishing feature, special quality</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The Confucian grammar of 中庸</h5>
+        <p><strong>中庸 (chūyō):</strong> "The golden mean, moderation, the middle way." This is one of the most important concepts in Confucian philosophy, the ideal of avoiding extremes and maintaining balance. When a critic describes Sano's work as possessing 中庸さ, the word carries philosophical weight. Sano is not merely a moderate writer. He is a writer who has found the middle path between the bloodless puzzle and the bloody thriller, between the locked-room impossibility and the police procedural, between the cerebral and the visceral. The grammar of 中庸さが持ち味 makes moderation into a positive aesthetic virtue rather than a lack of daring. In a genre that often rewards excess, Sano's chūyō is a deliberate choice, a principled stance.</p>
+        <p><strong>ほどのよい (hodo no yoi):</strong> "Moderate, well-balanced, just right." Literally: "of a good degree." This is a quintessentially Japanese aesthetic judgment. Something that is hodo no yoi is neither too much nor too little, too hot nor too cold, too complex nor too simple. Goldilocks would use this phrase. When applied to Sano's realism, it means that his stories feel like real life without being boring, like actual investigations without being tedious. The grammar of ほどのよいリアリズム makes realism into a seasoning rather than a doctrine: enough to ground the story, not so much that the puzzle disappears.</p>
+        <p><strong>持ち味 (mochiaji):</strong> "Distinguishing feature, special quality." Literally: "the taste that something possesses." The word comes from cooking: a mochiaji is the inherent flavor of an ingredient, the taste that cannot be added or subtracted, only revealed. When Sano's moderation is called his mochiaji, the word makes it clear that this is not a technique he adopted. It is who he is as a writer. The grammar of 持ち味 makes literary style into something as intrinsic as the flavor of a fish or the aroma of a tea.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Intellectual Game: The Grammar of the "Aha!"</h2>
+    <span class="story-label">Literary philosophy</span>
+
+    <p>Sano Yō stated his purpose with the simplicity of a man who knows exactly what he is doing.</p>
+
+    <div class="passage mystery">
+        <div class="jp-text jp">
+            <span class="hl-mystery">読者にアッと言わせるために推理小説を書く</span>
+        </div>
+        <div class="romaji">"Dokusha ni 'a' to iwa seru tame ni suiri shōsetsu wo kaku."</div>
+        <div class="translation">"I write mystery novels in order to make readers say 'Aha!'"</div>
+        <div class="source">— Sano Yō's stated creative principle</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">読者</td><td class="reading">dokusha</td><td>reader</td></tr>
+        <tr><td class="word">アッ</td><td class="reading">a</td><td>"aha!", exclamation of surprise/realization</td></tr>
+        <tr><td class="word">言わせる</td><td class="reading">iwa seru</td><td>to make someone say (causative)</td></tr>
+        <tr><td class="word">ため</td><td class="reading">tame</td><td>for the sake of, in order to</td></tr>
+        <tr><td class="word">知的遊戯</td><td class="reading">chiteki yūgi</td><td>intellectual game, mental play</td></tr>
+    </table>
+
+    <div class="nuance mystery-box">
+        <h5>What translation loses: The causative shock of アッと言わせる</h5>
+        <p><strong>アッと言わせる (a to iwa seru):</strong> "To make [someone] say 'Aha!'" The grammar here is crucial. Sano does not say "I try to surprise readers" or "I hope readers are surprised." He uses the causative form 言わせる, which means "to cause to speak, to make say." The causative makes the writer into an active agent and the reader into someone who will inevitably produce the exclamation. The writer's craft is so precise, the plot construction so meticulous, that the reader has no choice but to say "a" when the solution is revealed. The grammar of the causative makes mystery-writing into a form of compulsion: the writer compels the reader's surprise. This is the opposite of modesty. It is a statement of absolute confidence in the machinery of plot.</p>
+        <p><strong>アッ (a):</strong> The exclamation itself is significant. "A" is the shortest possible expression of surprise in Japanese. It is the sound of a mind changing state in a single moment: from confusion to clarity, from darkness to light. When Sano says his goal is to make readers say "a," he is describing the perfect mystery experience: not a long explanation, not a gradual dawning, but a sudden flash. The single syllable "a" is the sound of the puzzle piece clicking into place. The grammar of the onomatopoeia makes the reading experience into a physical reflex, like a sneeze or a hiccup. The surprise is involuntary because the logic is irresistible.</p>
+        <p><strong>知的遊戯 (chiteki yūgi):</strong> "Intellectual game, mental play." This phrase, often applied to Sano's work, makes mystery fiction into a game between equals. The writer sets the board. The reader makes the moves. The solution is the checkmate. The word 遊戯 (yūgi, play/game) carries a note of lightness: this is not war, not tragedy, not social commentary. It is play. But it is 知的 (chiteki, intellectual), which means the play requires intelligence, concentration, and fair play. Sano was once criticized by the writer Kuroiwa Jūgo for writing novels "without blood or sweat." Sano replied that he would prefer to take that as a compliment. The grammar of the intellectual game makes the absence of blood into a virtue. The proper temperature for a mystery is cool, not hot.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Awards: The Grammar of Institutional Recognition</h2>
+    <span class="story-label">Awards</span>
+
+    <p>Sano Yō's prizes map the trajectory of a career that shaped Japanese mystery fiction.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">第18回日本推理作家協会賞、第1回日本ミステリー文学大賞、第57回菊池寛賞</span>
+        </div>
+        <div class="romaji">"Dai-jūhachi-kai Nihon Suiri Sakka Kyōkai-shō, dai-ikkai Nihon Misuterī Bungaku Taishō, dai-gojūnana-kai Kikuchi Kan-shō."</div>
+        <div class="translation">"The 18th Japan Mystery Writers Association Prize, the 1st Japan Mystery Literature Grand Prize, the 57th Kikuchi Kan Prize."</div>
+        <div class="source">— Awards</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">推理作家協会賞</td><td class="reading">Suiri Sakka Kyōkai-shō</td><td>Japan Mystery Writers Association Prize</td></tr>
+        <tr><td class="word">ミステリー文学大賞</td><td class="reading">Misuterī Bungaku Taishō</td><td>Japan Mystery Literature Grand Prize</td></tr>
+        <tr><td class="word">菊池寛賞</td><td class="reading">Kikuchi Kan-shō</td><td>Kikuchi Kan Prize (for contributions to literature)</td></tr>
+        <tr><td class="word">華麗なる醜聞</td><td class="reading">Karei naru Shūbun</td><td>"A Splendid Scandal" (award-winning novel)</td></tr>
+        <tr><td class="word">功績</td><td class="reading">kōseki</td><td>achievement, meritorious service</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The hierarchy of the prizes</h5>
+        <p><strong>日本推理作家協会賞 (Nihon Suiri Sakka Kyōkai-shō):</strong> The Japan Mystery Writers Association Prize, awarded for individual works. Sano won this in 1965 for <em>Karei naru Shūbun</em> (華麗なる醜聞, "A Splendid Scandal"), a novel about a diplomatic scandal and a bus bombing. This prize recognizes excellence in a single book. It is the mark of a writer who has arrived, who has produced a work that his peers acknowledge as outstanding. The grammar of the prize makes the individual work into a milestone.</p>
+        <p><strong>日本ミステリー文学大賞 (Nihon Misuterī Bungaku Taishō):</strong> The Japan Mystery Literature Grand Prize, awarded for lifetime achievement. Sano was the first recipient in 1998. The word 大賞 (taishō, grand prize) makes this award the highest honor in the field, and the fact that Sano was the first recipient means that the prize was created, in part, to recognize him. The grammar of 功績により (for meritorious service/achievement) makes the award about the whole career, not a single book. It is the institution saying: you have defined this genre for us.</p>
+        <p><strong>菊池寛賞 (Kikuchi Kan-shō):</strong> The Kikuchi Kan Prize, awarded for contributions to publishing and literature. Named after Kikuchi Kan, the founder of Bungeishunjū and one of the most important figures in 20th-century Japanese publishing, this prize recognizes not merely literary quality but cultural contribution. When Sano received the 57th Kikuchi Kan Prize in 2009, it was the general literary world acknowledging that his mysteries had transcended genre and become part of Japan's literary heritage. The grammar of the three prizes traces an arc: first, the genre recognizes a good book. Then, the genre recognizes a great career. Finally, the culture recognizes a lasting contribution.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The "Meishi" Taisaku: The Grammar of the Anti-Series Detective</h2>
+    <span class="story-label">Literary philosophy</span>
+
+    <p>Sano Yō's most famous critical stance was his opposition to the series detective, a position that makes Professor Fuurin all the more significant.</p>
+
+    <div class="passage mystery">
+        <div class="jp-text jp">
+            <span class="hl-mystery">同一の主人公のシリーズばかり書くと、作品のパターンが繰返しになり、マンネリズムに陥る</span>
+        </div>
+        <div class="romaji">"Dōitsu no shujinkō no shirīzu bakari kaku to, sakuhin no patān ga kurikaeshi ni nari, mannerizumu ni ochīru."</div>
+        <div class="translation">"If one writes only series with the same protagonist, the pattern of the works becomes repetitive and falls into mannerism."</div>
+        <div class="source">— Sano Yō on series detectives</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">同一</td><td class="reading">dōitsu</td><td>same, identical</td></tr>
+        <tr><td class="word">主人公</td><td class="reading">shujinkō</td><td>protagonist, main character</td></tr>
+        <tr><td class="word">シリーズ</td><td class="reading">shirīzu</td><td>series</td></tr>
+        <tr><td class="word">繰り返し</td><td class="reading">kurikaeshi</td><td>repetition</td></tr>
+        <tr><td class="word">マンネリズム</td><td class="reading">mannerizumu</td><td>mannerism, rut, formulaic repetition</td></tr>
+        <tr><td class="word">陥る</td><td class="reading">ochīru</td><td>to fall into, to lapse into</td></tr>
+    </table>
+
+    <div class="nuance mystery-box">
+        <h5>What translation loses: The gravitational pull of 陥る</h5>
+        <p><strong>陥る (ochīru):</strong> "To fall into, to lapse into, to cave in." This is a strong verb. It means not merely to become mannered but to fall, to collapse, to be swallowed by something. When Sano says series detectives make writers マンネリズムに陥る, he is describing mannerism as a trap, a pit, a gravitational well that pulls the writer downward. The grammar makes the series detective dangerous not because it is bad in itself but because it exerts a force that the writer may not be able to resist. The pattern becomes comfortable, and comfort becomes repetition, and repetition becomes mannerism. The verb 陥る makes the danger physical.</p>
+        <p><strong>The paradox of Professor Fuurin:</strong> Sano was famously opposed to series detectives, yet <em>Fuurin Kyoju no Yuuga na Suiri</em> is a collection featuring a recurring protagonist. This is not a contradiction. It is evidence of Sano's flexibility. The Professor Fuurin stories are not a series in the conventional sense. They are a gathering of independent puzzles that happen to share a detective. Each story stands alone. Each puzzle is self-contained. The professor is not the point; the deduction is. Sano's opposition was to series in which the detective's personality, relationships, and backstory become more important than the mystery itself. Professor Fuurin is elegant precisely because he is thin, because he does not obstruct the light of the puzzle. He is a wind chime, not a monument.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The "Suiri Nikki": The Grammar of Critical Aggression</h2>
+    <span class="story-label">Critical work</span>
+
+    <p>Sano Yō's "Deduction Diary" was a monthly column that changed the critical landscape of Japanese mystery fiction.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">推理日記については、このエッセーは、論争や問題提起が少なく温室的な雰囲気の推理小説界に、一石を投じたいと考えて始めたもので、実作の批判（時には一種の揚げ足取り）が主なものになっている</span>
+        </div>
+        <div class="romaji">"Suiri nikki ni tsuite wa, kono essei wa, ronsō ya mondai teiki ga sukunaku onshitsu-teki na fun'iki no suiri shōsetsu-kai ni, isseki wo tōjita to kangaete hajimeta mono de, jissaku no hihan (toki ni wa isshu no ageashi-dori) ga omona mono ni natte iru."</div>
+        <div class="translation">"Regarding the Deduction Diary, this essay series was begun with the intention of casting a stone into the hothouse atmosphere of the mystery fiction world, where there was little debate or problem-raising, and it came to consist mainly of criticism of actual works (at times a kind of nitpicking)."</div>
+        <div class="source">— Sano Yō's self-assessment</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">推理日記</td><td class="reading">suiri nikki</td><td>Deduction Diary (Sano's critical column)</td></tr>
+        <tr><td class="word">論争</td><td class="reading">ronsō</td><td>debate, controversy, dispute</td></tr>
+        <tr><td class="word">問題提起</td><td class="reading">mondai teiki</td><td>raising a problem, posing a question</td></tr>
+        <tr><td class="word">温室的</td><td class="reading">onshitsu-teki</td><td>hothouse-like, greenhouse, insulated</td></tr>
+        <tr><td class="word">一石を投じる</td><td class="reading">isseki wo tōjiru</td><td>to cast a stone, to stir things up</td></tr>
+        <tr><td class="word">実作</td><td class="reading">jissaku</td><td>actual works, published works</td></tr>
+        <tr><td class="word">揚げ足取り</td><td class="reading">ageashi-dori</td><td>nitpicking, catching at trifles</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The combative gentleness of 一石を投じる</h5>
+        <p><strong>一石を投じる (isseki wo tōjiru):</strong> "To cast a stone, to stir things up, to make waves." This idiom comes from the image of throwing a stone into a pond: the stone is small, but the ripples spread. When Sano says he wanted to cast a stone into the mystery world's hothouse atmosphere, the word makes his critical project sound both modest and revolutionary. He was not trying to destroy the greenhouse. He was trying to let in some air. The grammar of the idiom makes criticism into a physical act with physical consequences. The stone disturbs the water. The hothouse loses its perfect temperature. The mystery world, Sano believed, had become too comfortable, too polite, too unwilling to challenge its own assumptions. The Deduction Diary was his stone.</p>
+        <p><strong>揚げ足取り (ageashi-dori):</strong> "Nitpicking, catching at trifles, seizing on minor errors." Literally: "catching the raised foot." The image is of someone who, when another person lifts their foot, catches at it to make them stumble. It is the word for petty criticism, for attacking small mistakes rather than large failures. Sano's admission that his column sometimes became ageashi-dori is remarkable for its honesty. He knew that criticism can become compulsive, that the critic who sets out to improve a field can end up merely enjoying the sound of his own voice. The grammar of 揚げ足取り makes self-awareness into a form of integrity. Sano knew the danger of his own critical power, and he named it.</p>
+        <p><strong>温室的 (onshitsu-teki):</strong> "Hothouse-like, greenhouse, insulated." A greenhouse is a controlled environment where plants grow in artificial conditions, protected from wind, cold, and competition. When Sano calls the mystery fiction world 温室的, he is saying that it has become too protected, too self-congratulatory, too unwilling to face external criticism. The word makes the mystery community into a place where weak ideas survive because strong challenges are not allowed. The Deduction Diary was his way of breaking the glass. The grammar of the metaphor makes Sano's critical mission into an act of environmental disruption.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The "Meishi" Ronso: The Grammar of the Great Detective Debate</h2>
+    <span class="story-label">Critical history</span>
+
+    <p>In 1978, Sano Yō engaged in one of the most important critical debates in Japanese mystery history.</p>
+
+    <div class="passage mystery">
+        <div class="jp-text jp">
+            <span class="hl-mystery">名探偵論争は、佐野洋が《小説推理》で連載していた「推理日記」と連携する形で、一九七八年に交わされた都筑との論争。内容は、佐野（と結城昌治）の「名探偵否定論」と、都筑が『黄色い部屋はいかに改装されたか?』で提示した「名探偵復活論」の二つの主張をめぐるもの</span>
+        </div>
+        <div class="romaji">"Meitantei ronsō wa, Sano Yō ga 'Shōsetsu Suiri' de rensai shite ita 'Suiri Nikki' to renkei suru keitai de, sen-kyūhyaku-nanajūhachi-nen ni kawashita Tsuzuki Dōfu to no ronsō. Naiyō wa, Sano (to Yūki Shōji) no 'meitantei hitei-ron' to, Tsuzuki ga 'Kiiroi Heya wa Ikani Kaisō Sareta ka?' de teiji shita 'meitantei fukkatsu-ron' no futatsu no shuchō wo meguru mono."</div>
+        <div class="translation">"The Great Detective Debate was a controversy exchanged with Tsuzuki Dōfu in 1978, in conjunction with Sano Yō's 'Deduction Diary' serialized in 'Shōsetsu Suiri.' Its content concerned two positions: Sano's (and Yūki Shōji's) 'great detective negation theory' and the 'great detective revival theory' that Tsuzuki presented in 'How Was the Yellow Room Renovated?'"</div>
+        <div class="source">— Critical history</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">名探偵</td><td class="reading">meitantei</td><td>great detective, famous detective</td></tr>
+        <tr><td class="word">論争</td><td class="reading">ronsō</td><td>debate, controversy</td></tr>
+        <tr><td class="reading">名探偵否定論</td><td class="reading">meitantei hitei-ron</td><td>great detective negation theory</td></tr>
+        <tr><td class="word">復活論</td><td class="reading">fukkatsu-ron</td><td>revival theory, resurrection theory</td></tr>
+        <tr><td class="word">主張</td><td class="reading">shuchō</td><td>claim, argument, assertion</td></tr>
+        <tr><td class="word">都筑道夫</td><td class="reading">Tsuzuki Dōfu</td><td>Tsuzuki Dōfu (mystery writer and critic)</td></tr>
+    </table>
+
+    <div class="nuance mystery-box">
+        <h5>What translation loses: The theological grammar of 否定論 vs. 復活論</h5>
+        <p><strong>名探偵否定論 (meitantei hitei-ron):</strong> "Great detective negation theory." The word 否定論 (hitei-ron) means "negation theory, denial theory." It is the word used in theological and philosophical debates: atheism is a kind of hitei-ron, the negation of God's existence. When Sano applies this word to the great detective, he is making the series detective into an article of faith that he refuses to profess. The grammar of 否定論 makes the debate theological in intensity. Sano is not merely saying "I prefer not to write series." He is constructing a theory of why the great detective must be denied. The great detective, in Sano's view, distorts the mystery form by making the detective more interesting than the puzzle. The reader stops asking "how was it done?" and starts asking "what will the detective do next?" The mystery becomes a character study, and the puzzle becomes secondary. Sano's negation is a principled defense of the puzzle's primacy.</p>
+        <p><strong>名探偵復活論 (meitantei fukkatsu-ron):</strong> "Great detective revival theory." 復活 means resurrection, revival, coming back to life. It is the word used for Christ's resurrection (キリストの復活). When Tsuzuki Dōfu argues for the revival of the great detective, the grammar makes his position sound like a religious restoration. The great detective, having been killed by the social realists and the police procedurals, must rise again. Tsuzuki's argument, presented in his critical work <em>How Was the Yellow Room Renovated?</em>, was that the authentic mystery tradition required the great detective as its central figure, that without a detective who was smarter than the reader, the genre lost its reason for being. The debate between Sano and Tsuzuki was thus a debate about the soul of mystery fiction: is the puzzle primary, or is the detective? Sano said the puzzle. Tsuzuki said the detective. Professor Fuurin is Sano's compromise: a detective so elegant, so thin, so wind-chime-like that he never obscures the puzzle he solves.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The "Akkera-kan" Tone: The Grammar of Critical Nonchalance</h2>
+    <span class="story-label">Style</span>
+
+    <p>A reader who knew Sano's critical voice describes its most distinctive quality.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">ミステリ文壇界隈での様々な出来事の舞台裏が淡々と、とときにはアッケラカンとした調子で明らかにされている</span>
+        </div>
+        <div class="romaji">"Misuterī bundan kaiwai de no samazama na dekigoto no butaiura ga tantan to, tokidoki wa akkera-kan to shita chōshi de akiraka ni sarete iru."</div>
+        <div class="translation">"The behind-the-scenes of various events in the mystery literary world are revealed in a flat, matter-of-fact manner, and at times in an akkera-kan, devil-may-care tone."</div>
+        <div class="source">— Reader's description of Sano's essay style</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">淡々</td><td class="reading">tantan</td><td>flat, matter-of-fact, dry</td></tr>
+        <tr><td class="word">アッケラカン</td><td class="reading">akkera-kan</td><td>devil-may-care, nonchalant, offhand</td></tr>
+        <tr><td class="word">調子</td><td class="reading">chōshi</td><td>tone, manner, style</td></tr>
+        <tr><td class="word">舞台裏</td><td class="reading">butaiura</td><td>backstage, behind the scenes</td></tr>
+        <tr><td class="word">界隈</td><td class="reading">kaiwai</td><td>circles, vicinity, neighborhood (of a field)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The performative carelessness of アッケラカン</h5>
+        <p><strong>アッケラカン (akkera-kan):</strong> "Devil-may-care, nonchalant, offhand." This is an onomatopoeic word for a particular attitude: the appearance of not caring, of shrugging things off, of delivering devastating information as if it were a weather report. When a reader describes Sano's essay tone as akkera-kan, they are identifying his most powerful rhetorical weapon. Sano would reveal scandalous behind-the-scenes information, expose logical flaws in famous works, and challenge sacred cows of the mystery world, all in a tone that suggested he was barely interested in what he was saying. The akkera-kan makes the criticism more devastating because it refuses to dramatize itself. The reader cannot dismiss the critique as emotional or personal because the tone is so flat. The grammar of the akkera-kan makes Sano's critical voice into a kind of performance art: the less he seems to care, the more the reader understands that he cares profoundly.</p>
+        <p><strong>淡々 (tantan):</strong> "Flat, matter-of-fact, dry." This word describes a surface without peaks or valleys. When combined with akkera-kan, it creates a tone that is simultaneously dry and careless, precise and offhand. The tan-tan is the flatness of a journalist's report. The akkera-kan is the shrug of a man who has seen it all. Together they make Sano's critical prose into something uniquely unsettling: you cannot argue with it because it does not seem to be arguing with you. It is simply stating facts, and the facts happen to destroy your illusions. The grammar of the combined tone makes Sano into the most dangerous kind of critic: one who tells the truth without raising his voice.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Wind Chime's Clarity</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜と言わせる</strong> — To make someone say: the causative grammar of compulsory surprise</li>
+        <li><strong>〜ために</strong> — For the purpose of: the grammar of intentional craft</li>
+        <li><strong>〜に陥る</strong> — To fall into: the gravitational grammar of mannerism</li>
+        <li><strong>〜のもじり</strong> — A play on words: the pun as origin story</li>
+        <li><strong>〜が持ち味</strong> — Is one's distinguishing feature: the grammar of intrinsic quality</li>
+        <li><strong>〜を投じる</strong> — To cast/throw: the grammar of disruptive intervention</li>
+        <li><strong>〜論 vs. 〜論</strong> — Theory vs. theory: the theological grammar of critical debate</li>
+        <li><strong>〜的な雰囲気</strong> — An atmosphere of: the grammar of environmental critique</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>風鈴</strong> — Wind chime: the instrument that detects invisible disturbances</li>
+        <li><strong>優雅</strong> — Elegant: the aristocratic poise of the deduction</li>
+        <li><strong>推理</strong> — Deduction: the movement from evidence to conclusion</li>
+        <li><strong>社の用</strong> — The company's business: the newspaper pun that became a name</li>
+        <li><strong>もじり</strong> — Wordplay: the origin encoded in syllables</li>
+        <li><strong>短編</strong> — Short story: the discrete puzzle, complete in itself</li>
+        <li><strong>編</strong> — Piece/story: the counter that makes 1,200 into a collection of gems</li>
+        <li><strong>文庫化</strong> — Bunko publication: the mark of durable quality</li>
+        <li><strong>名手</strong> — Master: the craftsman of the short form</li>
+        <li><strong>中庸</strong> — The golden mean: the Confucian virtue of moderation</li>
+        <li><strong>ほどのよい</strong> — Just right: the Goldilocks grammar of realism</li>
+        <li><strong>持ち味</strong> — Distinguishing flavor: the taste that cannot be added</li>
+        <li><strong>アッ</strong> — Aha: the single syllable of compulsory surprise</li>
+        <li><strong>言わせる</strong> — To make say: the causative that compels exclamation</li>
+        <li><strong>知的遊戯</strong> — Intellectual game: the mystery as play between equals</li>
+        <li><strong>功績</strong>  Meritorious service: the lifetime achievement that needs no single book</li>
+        <li><strong>マンネリズム</strong> — Mannerism: the trap that swallows the series writer</li>
+        <li><strong>陥る</strong> — To fall into: the gravitational grammar of creative danger</li>
+        <li><strong>一石を投じる</strong> — To cast a stone: the ripple that disturbs the hothouse</li>
+        <li><strong>温室的</strong> — Hothouse-like: the insulated world that needs breaking</li>
+        <li><strong>揚げ足取り</strong> — Nitpicking: the danger of criticism that enjoys itself too much</li>
+        <li><strong>否定論</strong> — Negation theory: the theological intensity of the anti-detective stance</li>
+        <li><strong>復活論</strong> — Revival theory: the resurrection of the great detective</li>
+        <li><strong>淡々</strong> — Flat, dry: the surface that conceals devastating precision</li>
+        <li><strong>アッケラカン</strong> — Devil-may-care: the performative carelessness that destroys illusions</li>
+    </ul>
+
+    <h4>Sano Yō vs. Takita Yū vs. Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Twenty directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらい, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ハートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ), Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる), Takita's are visual and wobbly (落語劇場, 下町風俗, 吹き出し, 無意味な絵, ふにゃふにゃ, 線のゆらぎ, フラのような間, また夢になるといけねえ, 枕元, 天秤棒, 居候, 番台), and Sano Yō's are cool and causative (鈴, 優雅な推理, 社の用, 1200編, 中庸, アッと言わせる, 知的遊戯, マンネリズムに陥る, 一石を投じる, 揚げ足取り, 名探偵否定論, 淡々, アッケラカン). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. Higashino asks what happens when you love an industry so much that you cannot stop laughing at it. Takita asks what happens when a man who grew up in a vanished downtown tries to draw the spoken stories of an even more vanished downtown, using a line that wobbles like a hula dancer. And Sano Yō asks what happens when a newspaper reporter with a psychology degree decides that the perfect mystery is one that makes the reader say "a" in a single involuntary syllable, that the proper temperature for murder is cool, that the detective should be as thin and responsive as a wind chime, and that elegance is not decoration but method. Together these twenty works map the full range of Japanese narrative art: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the cage that makes the animal ferocious, to the crossroads where a woman must choose before someone else chooses for her, to the horizon where sky and sea meet and a promise arrives shimmering across the years, to the office at midnight where a blank price column becomes the beginning of everything, to the backstage of a publishing house where a legendary editor makes authors grovel, to the wobbly line that dances Edo back into existence one speech bubble at a time, to the wind chime that rings when the murderer's breath disturbs the air.</p>
+</section>
+
+</main>
+
+</body>
+</html>

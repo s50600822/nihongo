@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>胃袋を買いに。 — 椎名 誠 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-crimson: #8a3a3a;
+  --accent-crimson-dim: #5a2020;
+  --accent-crimson-glow: rgba(138, 58, 58, 0.12);
+  --accent-amber: #8a6a3a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-crimson-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-crimson);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-crimson-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-crimson-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-crimson);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-crimson-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-crimson), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-crimson);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-crimson-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-crimson); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-crimson-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-crimson-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-crimson);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-crimson-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-crimson);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-amber);
+}
+
+.nuance-box h4 {
+  color: var(--accent-amber);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-crimson);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-crimson);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-crimson-dim), var(--accent-crimson));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-crimson);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-crimson);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-crimson-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>胃袋を買いに。</h1>
+  <p class="hero-subtitle">IBUKURO WO KAINI</p>
+  <p class="hero-meta">椎名 誠 &middot; 文藝春秋 1991（単行本/ 文春文庫 1994 &middot; 11篇の超常短篇集</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & Stories</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 胃袋を買いに。</h2>
+  <p class="lead">The title <em>Ibukuro wo Kaini</em> (胃袋を買いに) is a parody of one of the most beloved children's stories in Japanese literature: Niimi Nankichi's <em>Tebukuro wo Kaini</em> (手袋を買いに, "Buying Mittens," 1943). The grammatical structure is identical: <em>[noun] wo [verb-stem] + ni</em> — object marker <em>wo</em> (を) + the masu-stem of <em>kau</em> (買う, "to buy") + the purposive particle <em>ni</em> (に), meaning "in order to buy [noun]" or "(setting out) to buy [noun]." The substitution of <em>ibukuro</em> (胃袋, "stomach / gastric sac") for <em>tebukuro</em> (手袋, "mittens / gloves") is the entire joke — and the entire point. Where Niimi's story is a tender fable about a young fox's first journey into the human world, Shiina's is a near-future SF tale about a world where clone technology has made organs commodities. The grammatical identity between the two titles makes the parody audible before a single page is turned: any Japanese reader who sees <em>...wo Kaini</em> will immediately think of Niimi's classic, and the shock of <em>ibukuro</em> where <em>tebukuro</em> should be creates the same disorientation that the story's characters feel when they discover that stomachs can be purchased like gloves. The title's grammar is thus a time bomb of intertextuality — a nursery rhyme detonated into science fiction.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">胃袋</span>
+        <span class="romaji">ibukuro</span>
+        <span class="meaning">"stomach / gastric sac / belly" — The word <em>ibukuro</em> (胃袋) combines <em>i</em> (胃, "stomach," the organ of digestion) with <em>fukuro</em> (袋, "bag / sack / pouch"), creating a compound that literally means "stomach-bag." It is a more visceral, colloquial word than the clinical <em>i</em> (胃) or the polite <em>onaka</em> (お腹, "belly / tummy"). <em>Ibukuro</em> suggests the physical, fleshy reality of the organ — the thing that digests, that hungers, that can be ulcerated or cancerous. In the context of the story, it is the organ that the protagonist must replace, and the word's blunt physicality makes the commodification of human tissue feel concrete rather than abstract. The choice of <em>ibukuro</em> over <em>i</em> or <em>onaka</em> is crucial: it makes the stomach into a thing, an object, a <em>fukuro</em> that can be bought and sold. The kanji 胃 shows the organ (月/肉 radical for flesh + 田 field), while 袋 shows a bag — together they create a visual image of the stomach as a container, which is precisely how the story's world treats it: a container to be replaced when defective, like a broken appliance.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">を</span>
+        <span class="romaji">wo</span>
+        <span class="meaning">object marker — The particle <em>wo</em> (を) marks <em>ibukuro</em> as the direct object of the verb <em>kau</em> (買う, "to buy"). In the construction <em>...wo kaini</em>, the <em>wo</em> creates a grammatical bridge between the commodity (stomach) and the action (buying). The particle is neutral, functional, bureaucratic — it does not judge whether buying a stomach is normal or monstrous. This neutrality is part of the title's effect: in the world of the story, buying a stomach is as grammatically straightforward as buying mittens. The <em>wo</em> performs the normalization that the story will explore — the way language adapts to commodification without protest, the way grammar accommodates the unthinkable simply by placing it in the object position.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">買い</span>
+        <span class="romaji">kai</span>
+        <span class="meaning">"buying" — The masu-stem (連用形 / <em>ren'yokei</em>) of <em>kau</em> (買う, "to buy"), formed by the <em>i</em>-onbin sound change: <em>kau</em> → <em>kai</em>. The masu-stem is the form used before auxiliary verbs and particles, and in the construction <em>kai ni</em> (買いに) it creates a purposive phrase meaning "for the purpose of buying" or "(going) to buy." The stem form <em>kai</em> is also the form used in compounds like <em>kaimono</em> (買い物, "shopping") and <em>kaidashi</em> (買い出し, "buying expedition"), so it carries a sense of mundane commercial activity. The word "buying" in English sounds transactional; <em>kai</em> in Japanese sounds like an errand. The grammatical ordinariness of <em>kai</em> is what makes <em>ibukuro wo kai</em> so disturbing — it frames the purchase of an organ as a shopping trip.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">に</span>
+        <span class="romaji">ni</span>
+        <span class="meaning">purposive particle — The particle <em>ni</em> (に) after a masu-stem verb creates a purposive construction: <em>kai ni</em> (買いに) means "in order to buy" or "(setting out) to buy." This <em>ni</em> is the same particle used in countless everyday phrases: <em>tabe ni iku</em> (食べに行く, "go to eat"), <em>kaimono ni iku</em> (買い物に行く, "go shopping"), <em>gakkō ni iku</em> (学校に行く, "go to school"). By using this most ordinary of purposive constructions, the title places the purchase of a stomach in the same grammatical category as going to eat or going to school. The <em>ni</em> is the final element that completes the normalization: not "to buy a stomach" (which could sound like a conscious decision) but "(going out) to buy a stomach" — an errand, a task, something one does on the way to other things. The title's grammar thus contains the story's central horror: the world in which organ purchase has become as routine as grocery shopping.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Intertextual context:</strong> The title's parody of Niimi Nankichi's <em>Tebukuro wo Kaini</em> (手袋を買いに, 1943) is a masterstroke of allusive compression. Niimi's story — about a young fox who goes to a human town to buy mittens, nearly reveals his identity by showing his paw, but is treated with unexpected kindness by the shopkeeper — is a foundational text of Japanese childhood, taught in elementary schools, read aloud by parents, beloved across generations. By changing only one kanji (手 → 胃, "hand" to "stomach"), Shiina transforms a story of innocence and trust into a story of biotechnology and commodification. The parody works because the two titles are phonetically and grammatically identical in structure; only the semantic field has shifted from extremities to viscera, from warmth to digestion, from childhood to adulthood, from fable to SF. Shiina himself noted in a conversation at his "Shiina Makoto Traveling Literature Museum" that despite the obviousness of the parody, no one had pointed it out — a fact that says something about how deeply Niimi's title has penetrated Japanese consciousness: it is so familiar that its transformation becomes invisible, just as the story's world has made the commodification of organs invisible to its inhabitants.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>椎名 誠 &mdash; Shiina Makoto</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">椎</div>
+    <div class="author-name-block">
+      <h3>椎名 誠</h3>
+      <p class="author-name-romaji">Shiina Makoto &middot; b. June 14, 1944 &middot; Tokyo / Chiba</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Shiina Makoto is one of the most prolific and versatile writers in contemporary Japanese literature — a novelist, essayist, photographer, film director, and editor whose career moves between "bright <em>shishosetsu</em>" (<em>akarui shishosetsu</em>, 明るい私小説, "bright I-novels") and "supernatural fiction" (<em>chōjō shōsetsu</em>, 超常小説) with an ease that has made him difficult to categorize and impossible to ignore. Born in 1944 in Tokyo's Setagaya Ward, he grew up in Chiba (his father was a certified public accountant, and the family moved to Makuhari when Shiina was six). He graduated from Chiba Municipal Chiba High School and entered Tokyo College of Photography (now Tokyo Polytechnic University), but dropped out after a serious accident in his second year. While working part-time, he attended a drama school and began studying scriptwriting — an early indication of the narrative versatility that would define his career.</p>
+    <p style="margin-bottom: var(--space-md);">In 1966, he joined Stores Sha (now Stores Inc.) and worked on the trade magazine <em>Chosa Geppo</em> (調査月報). In 1968, he married Watanabe Kazue, and in 1969 he founded and became editor-in-chief of <em>Stores Report</em> (ストアーズレート), a trade magazine for the distribution industry. But his true literary debut came in 1976, when he co-founded the legendary book review magazine <em>Hon no Zasshi</em> (本の雑誌, "The Book Magazine") with Meguro Koji and others, serving as its first editor-in-chief. The magazine became a cult institution in Japanese literary culture — irreverent, knowledgeable, and passionately engaged with books. In 1979, he left Stores Sha and published <em>Saraba Kokubunji Shoten no Obaba</em> (さらば国分寺書店のオババ, "Farewell to the Old Lady of the Kokubunji Bookstore"), a collection of essays that became a bestseller and established the "Shiina style": light, witty, full of onomatopoeia, and deceptively profound. The book announced him as a major essayist and launched a career that would span novels, SF, travel writing, photography, and film.</p>
+    <p style="margin-bottom: var(--space-md);">Shiina's literary output falls into two major streams, as he himself has identified: "bright I-novels" based on his own life (<em>Take Monogatari</em> / 岳物語, about his son; <em>Inu no Keifu</em> / 犬の系譜, which won the 10th Yoshikawa Eiji Prize for New Writers in 1989; <em>Aishu no Machi ni Kiri ga Furu no da</em> / 哀愁の町に霧が降るのだ) and "supernatural fiction" that extends the everyday world into strange territories (<em>Ado Bado</em> / アド・バード, which won the 11th Japan SF Prize in 1990; <em>Buso Shimata Soko</em> / 武装島田倉庫; <em>Ibukuro wo Kaini</em> / 胃袋を買いに). The latter stream — to which <em>Ibukuro wo Kaini</em> belongs — is what Shiina calls "supernatural fiction" (<em>chōjō shōsetsu</em>): not quite SF, not quite horror, not quite fantasy, but stories in which something in the ordinary world slips, tilts, or doubles back on itself. A dead mother returns during Obon. A house slowly sinks into the ground. All text becomes invisible. These are not dystopian epics but domestic anomalies — the strange visited upon the mundane.</p>
+    <p style="margin-bottom: var(--space-md);">Beyond fiction, Shiina is a celebrated travel essayist (<em>Washira wa Ayashii Tankentai</em> / わしらは怪しい探検隊 series), a photographer (his photo-essays pair images with prose in ways that expand both media), and a film director (<em>Ahiru no Uta ga Kikoete Kuru yo</em> / あひるのうたがきこえてくるよ won the 10th Yamaji Fumiko Film Prize in 1993; <em>Gaku no Boken</em> / ガクの冒険). In 1987, he established Shiina Makoto Office Inc., and in 1989 he joined the "Genki Mura" (元気村) project in Hayakawa, Yamanashi, conducting nature workshops. His official website, "Shiina Makoto Traveling Literature Museum" (椎名誠 旅する文学館), continues to be updated and serves as a living archive of his work and thought. What distinguishes Shiina across all these forms is his voice: casual, funny, peppered with invented onomatopoeia and odd proper nouns, yet capable of sudden depths of feeling. He is a writer who can make you laugh on one page and feel existential dread on the next — often in the same sentence.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1944</span>
+        <span>Born June 14 in Setagaya Ward, Tokyo. Family moves to Makuhari, Chiba when he is six. Father is a certified public accountant.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1963</span>
+        <span>Graduates from Chiba Municipal Chiba High School. Enters Tokyo College of Photography (now Tokyo Polytechnic University).</span>
+      </li>
+      <li>
+        <span class="timeline-year">1965</span>
+        <span>Suffers a serious accident in his second year of university. Drops out. Begins attending a drama school and studying scriptwriting while working part-time.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1966</span>
+        <span>Joins Stores Sha (now Stores Inc.), working on the trade magazine <em>Chosa Geppo</em> (調査月報).</span>
+      </li>
+      <li>
+        <span class="timeline-year">1968</span>
+        <span>Marries Watanabe Kazue. They later have two children: Watanabe Gaku and Watanabe Yo.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1969</span>
+        <span>Founds and becomes editor-in-chief of <em>Stores Report</em> (ストアーズレポート), a trade magazine for the distribution industry.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1976</span>
+        <span>Co-founds the legendary book review magazine <em>Hon no Zasshi</em> (本の雑誌, "The Book Magazine") with Meguro Koji and others. Serves as its first editor-in-chief. The magazine becomes a cult institution of Japanese literary culture.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1979</span>
+        <span>Leaves Stores Sha. Publishes <em>Saraba Kokubunji Shoten no Obaba</em> (さらば国分寺書店のオババ), a collection of essays that becomes a bestseller and establishes the "Shiina style" — light, witty, onomatopoeic, and deceptively profound.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1980s</span>
+        <span>Publishes numerous essays, novels, and travel writings. Develops the two streams of his fiction: "bright I-novels" and "supernatural fiction."</span>
+      </li>
+      <li>
+        <span class="timeline-year">1987</span>
+        <span>Establishes Shiina Makoto Office Inc. (株式会社椎名誠事務所).</span>
+      </li>
+      <li>
+        <span class="timeline-year">1989</span>
+        <span>Wins the 10th Yoshikawa Eiji Prize for New Writers for <em>Inu no Keifu</em> (犬の系譜). Joins the "Genki Mura" (元気村) project in Hayakawa, Yamanashi, conducting nature workshops.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1990</span>
+        <span>Wins the 11th Japan SF Prize for <em>Ado Bado</em> (アド・バード), confirming his status as a major SF/supernatural fiction writer.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1991</span>
+        <span>Publishes <em>Ibukuro wo Kaini</em> (胃袋を買いに) with Bungeishunju — a collection of 11 short stories of "supernatural abnormality" (<em>chōjō ijō</em> / 超常異常).</span>
+      </li>
+      <li>
+        <span class="timeline-year">1993</span>
+        <span>Film <em>Ahiru no Uta ga Kikoete Kuru yo</em> (あひるのうたがきこえてくるよ) wins the 10th Yamaji Fumiko Film Prize. Confirms his talent as a film director.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1995</span>
+        <span>Wins the JRA Prize for Equestrian Culture. His interests extend far beyond literature into horse racing culture and other popular domains.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1996</span>
+        <span>Wins the Japan Film Critics Award for <em>Shiroi Uma</em> (白い馬). Continues his parallel career in film.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2000s–present</span>
+        <span>Continues to publish prolifically across genres: novels, essays, travel writing, photography collections, and children's books. Maintains the "Shiina Makoto Traveling Literature Museum" website as a living archive of his work.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>さらば国分寺書店のオババ</h4>
+        <p class="char-role">Saraba Kokubunji Shoten no Obaba &middot; 1979</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Shiina's debut collection of essays — a bestseller that established the "Shiina style": light, witty, full of onomatopoeia, and deceptively profound. The "old lady of the Kokubunji bookstore" becomes a symbol of a disappearing world of independent booksellers.</p>
+      </div>
+      <div class="char-card">
+        <h4>犬の系譜</h4>
+        <p class="char-role">Inu no Keifu / The Genealogy of Dogs &middot; 1989</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 10th Yoshikawa Eiji Prize for New Writers. A "bright I-novel" that explores family, memory, and the relationship between humans and dogs — Shiina at his most autobiographically tender.</p>
+      </div>
+      <div class="char-card">
+        <h4>アド・バード</h4>
+        <p class="char-role">Ado Bado &middot; 1990</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 11th Japan SF Prize. The first volume of Shiina's "SF Trilogy" (along with <em>Suiiki</em> / 水域 and <em>Buso Shimata Soko</em> / 武装島田倉庫), establishing him as a major voice in Japanese science fiction and supernatural fiction.</p>
+      </div>
+      <div class="char-card">
+        <h4>胃袋を買いに。</h4>
+        <p class="char-role">Ibukuro wo Kaini / To Buy a Stomach &middot; 1991</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A collection of 11 short stories of "supernatural abnormality." The title story parodies Niimi Nankichi's classic children's tale, transforming a fable of innocence into an SF meditation on organ commodification. Ranges from the comic to the genuinely unsettling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters & Stories -->
+<section id="characters">
+  <div class="section-label">Cast & Contents</div>
+  <h2>Characters & The Eleven Stories</h2>
+
+  <div class="card">
+    <h3>About the Collection</h3>
+    <p><em>Ibukuro wo Kaini</em> is a collection of eleven short stories that Shiina described as "supernatural fiction" (<em>chōjō shōsetsu</em> / 超常小説) — tales of "supernatural abnormality" (<em>chōjō ijō</em> / 超常異常) that occur at the margins of ordinary life. The publisher's copy captures the tone perfectly: "A dead mother returns home during Obon. Suddenly, all text becomes invisible. Supernatural abnormalities occur!" (<em>Kyonen shinda haha ga 'bon-modori' de ie ni kaette kita. Totsuzen, subete no moji ga mienaku natta. Chōjō ijō ga okoru no da!</em>). The stories are SF in sensibility but domestic in setting: the strange does not arrive from outer space or the future but from the kitchen, the bedroom, the commuter train, the family grave. Shiina's method is to take a single impossible premise and follow it with logical, humorous, and often moving precision. What if your dead mother came back during Obon and seemed exactly the same? What if your house started sinking into the ground, slowly, one millimeter per day? What if you woke up unable to see any text — newspapers, signs, the labels on medicine bottles? The collection's power comes from the juxtaposition of the fantastic and the mundane: these are not heroes on quests but ordinary Japanese people dealing with inexplicable phenomena while still worrying about work, marriage, and what to have for dinner.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Eleven Stories</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>家族陥没</h4>
+        <p class="char-role">Kazoku Kanbotsu / Family Subsidence</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">One morning, the narrator's house begins to sink into the ground — slowly, imperceptibly at first, then with increasing speed. The family must decide whether to abandon their home or sink with it. A comic meditation on domesticity, property, and the ground beneath our feet.</p>
+      </div>
+      <div class="char-card">
+        <h4>アルヒ…</h4>
+        <p class="char-role">Aruhi... / One Day...</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story of gradual, inexplicable change — the kind of story where the world shifts so slowly that you cannot pinpoint when it stopped being normal. Shiina's specialty: the anomaly that disguises itself as aging.</p>
+      </div>
+      <div class="char-card">
+        <h4>デルメルゲゾン</h4>
+        <p class="char-role">Derumerugezon / Delmergezon</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A man wakes up one morning unable to see any text. Newspapers, flyers, street signs, medicine labels — all the words are gone, leaving only blank white space. The story explores the terror of illiteracy in a literate world, and the way language constructs reality. Particularly praised as one of the most frightening stories in the collection.</p>
+      </div>
+      <div class="char-card">
+        <h4>箱の中</h4>
+        <p class="char-role">Hako no Naka / Inside the Box</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story of containment and claustrophobia — what happens when the boundaries of one's world shrink to the size of a box. Shiina's exploration of urban alienation and the architecture of isolation.</p>
+      </div>
+      <div class="char-card">
+        <h4>足</h4>
+        <p class="char-role">Ashi / Foot / Leg</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story centered on the body part that carries us — the foot, the leg, the foundation of mobility. In the context of the collection's organ/theme, a meditation on what it means to stand, to walk, to move through the world on flesh and bone.</p>
+      </div>
+      <div class="char-card">
+        <h4>にぎやかな夜</h4>
+        <p class="char-role">Nigiyaka na Yoru / A Lively Night</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A night of noise, activity, and perhaps hallucination — the kind of sleepless night when the boundaries between the real and the imagined grow thin. Shiina's comic sensibility at its most exuberant.</p>
+      </div>
+      <div class="char-card">
+        <h4>胃袋を買いに。</h4>
+        <p class="char-role">Ibukuro wo Kaini / To Buy a Stomach</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The title story. In a near-future where clone technology has made organ replacement routine, a man must buy a new stomach. The story explores how people think about organs when they become commodities — the stomach not as a part of the self but as a replaceable component. Light in tone, heavy in implication.</p>
+      </div>
+      <div class="char-card">
+        <h4>猫舐祭</h4>
+        <p class="char-role">Nekanabe-sai / Cat-Licking Festival</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story with one of Shiina's characteristic invented compound nouns — a festival, a cat, the act of licking. The strange proper nouns that populate Shiina's fiction create a world that is almost Japan but not quite, a parallel reality where festivals have names that don't exist in any calendar.</p>
+      </div>
+      <div class="char-card">
+        <h4>八灘海岸</h4>
+        <p class="char-role">Hachitan Kaigan / Yatan Coast / Hachitan Coast</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A coastal story — the sea, the shore, the boundary between land and water. Shiina's travel writer's eye for landscape meets his supernatural sensibility: the coast as a liminal zone where strange things wash ashore.</p>
+      </div>
+      <div class="char-card">
+        <h4>引綱軽便鉄道</h4>
+        <p class="char-role">Hikizuna Keiben Tetsudo / Hikizuna Light Railway</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story of railways, those most nostalgic of Japanese technologies — the light railways (<em>keiben tetsudo</em>) that once connected rural Japan. Shiina's fascination with obsolete technology and disappearing landscapes finds its supernatural expression.</p>
+      </div>
+      <div class="char-card">
+        <h4>ループ橋の人々</h4>
+        <p class="char-role">Rupu-bashi no Hitobito / The People of the Loop Bridge</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story of infrastructure and the people who inhabit it — the loop bridge (<em>rūpu-bashi</em>), a highway structure that circles back on itself, becomes a metaphor for lives that cannot move forward. The final story in the collection, bringing the theme of circularity to the structural level.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Main Character: Title Story</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>主人公（「おれ」）</h4>
+        <p class="char-role">The Protagonist ("I")</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The narrator of the title story — an ordinary man in a world where buying a stomach is an errand. He is not a scientist, not a rebel, not a victim; he is simply someone who needs a new stomach and goes to get one. Shiina's protagonists are often this kind of everyman: not heroic, not particularly reflective, just trying to get through the day while the world around them has become strange. The first-person narration (<em>ore</em>, おれ — rough, masculine, casual) creates intimacy and comedy: we see this bizarre world through the eyes of someone who finds it slightly annoying, mostly normal, and occasionally puzzling. The humor comes from the gap between the extraordinariness of the premise and the ordinariness of the narrator's response.</p>
+      </div>
+      <div class="char-card">
+        <h4>胃袋売り</h4>
+        <p class="char-role">The Stomach Seller</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The vendor from whom the protagonist buys his new stomach. In Shiina's world, the stomach seller is not a black-market organ trafficker but a shopkeeper — someone with a storefront, a display case, perhaps a loyalty card. The comedy and horror of the story depend on this normalization: the stomach seller is as ordinary as a baker or a pharmacist. The transaction is commercial, not medical; the stomach is a product, not a donation. The stomach seller embodies the story's central question: what happens to human dignity when the body becomes inventory?</p>
+      </div>
+      <div class="char-card">
+        <h4>家族・周囲の人々</h4>
+        <p class="char-role">Family and Others</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The people around the protagonist — wife, children, colleagues — who treat his stomach purchase as a routine event. Their casual acceptance is more disturbing than any protest would be. In Shiina's method, the horror is not in the monstrous but in the mundane: it is not the stomach seller who is frightening but the neighbor who asks "What model did you get?" The family represents the social normalization of biotechnology — the way a society collectively decides not to be disturbed by what should be disturbing.</p>
+      </div>
+      <div class="char-card">
+        <h4>亡き母（「盆戻り」）</h4>
+        <p class="char-role">The Dead Mother ("Bon-modori")</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">From the story "Ibukuro wo Kaini" or a related tale in the collection — the dead mother who returns during Obon (盆戻り, "returning for Obon"). In Japanese Buddhist tradition, Obon is the time when the spirits of ancestors return to the living world. In Shiina's story, the return is literal: the mother comes back not as a ghost or a dream but as a physical presence, her appearance and voice unchanged from before her death. She is the embodiment of the collection's theme: the supernatural as domestic inconvenience, the dead as family members who simply won't stay gone. Her presence raises questions that the story does not answer: Is she really back? Is she the same person? What does it mean for the dead to return when they seem unchanged?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The World of Stomach Shopping</h3>
+    <p>The title story is set in a near-future Japan where clone technology has advanced to the point where organ replacement is routine. Not just kidneys or hearts — stomachs too. If your stomach fails, you go to a shop and buy a new one. The technology is never explained in detail; Shiina is not interested in the science but in the sociology. What matters is not how clone-stomachs work but how people live with them — how they talk about them, how they choose them, how they feel about having a digestive organ that was grown in a vat rather than inherited from their parents.</p>
+    <p style="margin-top: var(--space-sm);">The protagonist discovers that his stomach needs replacing. This is not presented as a crisis. It is presented as an errand — something between a medical appointment and a shopping trip. He goes to a stomach shop, looks at the available models, discusses options with the vendor. The comedy of the story lies in the normalization of what should be extraordinary: the protagonist worries about price, about quality, about whether to get the extended warranty. He compares stomachs the way one might compare refrigerators. The vendor explains the features of each model with the enthusiasm of a salesperson pitching a new product line. The story's genius is to make the reader complicit in this normalization: by the third page, we too are thinking about stomachs as commodities, because the prose treats them as such with such casual precision that resistance feels pedantic.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Purchase</h3>
+    <p>The central scene — the stomach purchase itself — is rendered with Shiina's characteristic lightness. The protagonist enters the shop, examines the merchandise, asks questions. The stomachs are displayed, perhaps in glass cases, perhaps in catalogs. There are different models: economy, standard, premium. Some are optimized for spicy food, others for heavy drinking, others for quiet digestion. The protagonist must choose not just a stomach but a digestive identity: what kind of eater does he want to be? The stomach he selects will determine what he can taste, how much he can eat, what will make him sick. The organ is not merely a replacement part; it is a lifestyle choice.</p>
+    <p style="margin-top: var(--space-sm);">The transaction is completed with paperwork, payment, and an appointment for installation. The story's comedy peaks here: the bureaucracy of organ purchase, the forms to be filled out, the insurance questions, the payment plan options. Shiina is satirizing not biotechnology itself but the Japanese talent for institutionalizing everything — even the unimaginable becomes procedural once it enters the marketplace. The protagonist signs where indicated, initials the waiver, and schedules his stomach replacement for next Tuesday. The ordinariness is absolute.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Aftermath</h3>
+    <p>After the installation, the protagonist must learn to live with his new stomach. It digests differently from his old one. Some foods taste strange; others taste better than before. He discovers that his new stomach has preferences, habits, a personality of its own. The story moves from comedy to something more unsettling: the question of whether a transplanted organ — especially a cloned one, grown from generic tissue — carries any identity, any trace of someone else's hunger. The protagonist begins to crave foods he never liked before. He develops a taste for things that his old stomach would have rejected. Is this the stomach's influence, or his imagination, or simply the psychology of having paid for a premium digestive experience?</p>
+    <p style="margin-top: var(--space-sm);">The story ends not with a revelation but with a continuation. The protagonist lives with his new stomach, adapts to it, more or less forgets that it is not the stomach he was born with. The horror, if there is horror, is in this adaptation — in the human capacity to normalize the replacement of the self. Shiina does not condemn this capacity; he observes it with the clear eye of a humorist and the troubled eye of a moralist. The story's final implication is that we are already living in the world it describes: we replace hips, corneas, heart valves; we take pills to modify our chemistry; we treat the body as a machine to be maintained. The cloned stomach is only a slight exaggeration of what we already do.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>The commodification of the body:</strong> The story's central theme is the transformation of human organs into consumer goods. Shiina asks what happens to our sense of self when the parts that compose us can be bought, sold, and upgraded like appliances. The stomach — the organ of hunger, of pleasure, of nourishment — is a particularly poignant choice for commodification because it is so intimately tied to identity and desire.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Normalization through language:</strong> The story demonstrates how language normalizes the unthinkable. Once there is a word for "stomach shop" (<em>ibukuro-ya</em> / 胃袋屋), a verb for "stomach replacement" (<em>ibukuro kōkan</em> / 胃袋交換), and a particle for "going to buy a stomach" (<em>ibukuro wo kaini</em> / 胃袋を買いに), the activity becomes linguistically domesticated. Shiina's title performs this normalization before the first sentence.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Parody as critique:</strong> By parodying Niimi Nankichi's beloved children's story, Shiina creates a structural critique of innocence and experience. The child fox going to buy mittens (a story of trust across species boundaries) becomes the adult human going to buy a stomach (a story of trust across the boundary between self and commodity). The parody suggests that the adult world is the child world with the innocence removed and the technology added.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The uncanny domestic:</strong> Like all the stories in the collection, "Ibukuro wo Kaini" locates the supernatural in the home and the marketplace, not in distant galaxies or gothic castles. The strange is not an invasion; it is an upgrade. This domestication of the uncanny is Shiina's signature: he makes the impossible feel like a household inconvenience.</li>
+      <li><strong>Comedy and dread:</strong> The story's tone is light — Shiina is a fundamentally comic writer — but the comedy does not negate the dread. Rather, the comedy is the form the dread takes when it has been lived with long enough to become routine. We laugh because the alternative is to scream, and Shiina knows this.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the collection's tonal range — the comic normalization of organ shopping, the genuine eeriness of supernatural intrusion, and the linguistic play that makes Shiina's prose instantly recognizable.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Title as Parody</div>
+    <div class="passage-jp">
+      「胃袋を買いに。」というタイトルは、新美南吉の「手袋を買いに」をパロディにしたが、だれにも指摘されなかった。
+    </div>
+    <div class="passage-romaji">
+      "Ibukuro wo Kaini" to iu taitoru wa, Niimi Nankichi no "Tebukuro wo Kaini" wo parodi ni shita ga, dare ni mo shijiki sarenakatta.
+    </div>
+    <div class="passage-en">
+      "The title 'To Buy a Stomach' was a parody of Niimi Nankichi's 'Buying Mittens,' but no one pointed it out."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is Shiina's own admission, recorded in a conversation at his "Traveling Literature Museum" — and it is perhaps the most important single sentence for understanding the title story. The grammar is straightforward: <em>"Ibukuro wo Kaini" to iu taitoru wa</em> (「胃袋を買いに。」というタイトルは, "the title called 'To Buy a Stomach'") + <em>Niimi Nankichi no "Tebukuro wo Kaini" wo parodi ni shita</em> (新美南吉の「手袋を買いに」をパロディにした, "parodied Niimi Nankichi's 'Buying Mittens'") + <em>ga</em> (が, contrastive "but") + <em>dare ni mo shijiki sarenakatta</em> (だれにも指摘されなかった, "was not pointed out by anyone"). The <em>ni mo</em> (にも) + negative construction creates an emphatic universal negation: "not by anyone at all." The passive <em>sarenakatta</em> (されなかった, "was not done") removes the agent — no one did the pointing out, and the title's parodic nature remained unremarked. What is extraordinary about this sentence is what it reveals about literary reception: a parody so obvious that it becomes invisible. The substitution of 胃 (stomach) for 手 (hand) is a single-stroke change in the title, yet readers failed to notice because Niimi's story is so deeply embedded in Japanese cultural consciousness that its title operates below the level of conscious attention. Shiina's observation is not merely a complaint about being misunderstood; it is a demonstration of his method. By making a parody that no one recognizes as a parody, he shows how thoroughly we have internalized certain stories — and by extension, how thoroughly we might internalize the commodification of the body without recognizing it as a transformation. The grammar of <em>parodi ni shita</em> (パロディにした, "made into a parody") is also telling: the <em>ni</em> (に) transforms the original into a tool, a medium, a raw material — just as the story's world transforms the stomach into a commodity. The title parodies Niimi's story by using it as material, and Shiina's comment parodies his own parody by noting that the material was not recognized. The layers of unacknowledged transformation mirror the story's theme: when commodification becomes invisible, we no longer notice what we have lost.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">Supernatural Abnormality</div>
+    <div class="passage-jp">
+      去年死んだ母が「盆戻り」で家に帰ってきた。突然、すべての文字が見えなくなった。超常異常が起こるのだ！
+    </div>
+    <div class="passage-romaji">
+      "Kyonen shinda haha ga 'bon-modori' de ie ni kaette kita. Totsuzen, subete no moji ga mienaku natta. Chōjō ijō ga okoru no da!"
+    </div>
+    <div class="passage-en">
+      "The mother who died last year came home in a 'Bon return.' Suddenly, all text became invisible. Supernatural abnormalities occur!"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the publisher's promotional copy for the collection, and it is a masterpiece of tonal compression — three sentences that contain an entire aesthetic program. The first sentence — <em>Kyonen shinda haha ga "bon-modori" de ie ni kaette kita</em> (去年死んだ母が「盆戻り」で家に帰ってきた, "The mother who died last year came home in a 'Bon return'") — uses the grammatical device of relativization to create emotional density. <em>Kyonen shinda haha</em> (去年死んだ母) is a relative clause: "the mother [who] died last year." The past-tense verb <em>shinda</em> (死んだ, "died") embedded before the noun <em>haha</em> (母, "mother") creates a factual, almost bureaucratic statement of death — "the mother who died last year" — which is immediately contradicted by the main clause: <em>kaette kita</em> (帰ってきた, "came back / returned home"). The grammar thus enacts the story's central paradox: a dead person returning. The phrase <em>"bon-modori" de</em> (「盆り」で, "by means of / in the form of a 'Bon return'") uses the quotative <em>bon-modori</em> in quotation marks, treating it as a term of art — which it is, in Japanese Buddhist tradition, but here it is literalized. Obon (お盆) is the annual Buddhist festival when ancestral spirits return; <em>bon-modori</em> (盆戻り) is the return journey of those spirits. By putting it in quotes, the copy treats this religious concept as a technical category — as if the mother's return were a scheduled service. The second sentence — <em>Totsuzen, subete no moji ga mienaku natta</em> (突然、すべての文字が見えなくなった, "Suddenly, all text became invisible") — shifts from the domestic (mother returning) to the epistemological (text disappearing). <em>Totsuzen</em> (突然, "suddenly") is an adverb of shock, but the grammar that follows is the potential negative <em>mienaku natta</em> (見えなくなった, "became unable to be seen"), which describes a gradual or completed transition into a state of invisibility. The text did not flash and disappear; it <em>became</em> invisible — a process. The third sentence — <em>Chōjō ijō ga okoru no da!</em> (超常異常が起こるのだ！, "Supernatural abnormalities occur!") — is the collection's manifesto. <em>Chōjō ijō</em> (超常異常) is Shiina's own coinage: <em>chō</em> (超, "super- / trans-") + <em>jō</em> (常, "normal / ordinary") + <em>ijō</em> (異常, "abnormality / anomaly"). It literally means "super-normal abnormality" — abnormalities that transcend the ordinary, or abnormalities of the superordinary. The grammar <em>okoru no da</em> (起こるのだ) uses the explanatory/emphatic <em>no da</em> (のだ) construction, which asserts a fact with explanatory force — "it is that supernatural abnormalities occur" — and the exclamation mark turns this assertion into an announcement, a proclamation, a carnival barker's cry. The publisher's copy thus performs the collection's method: it announces the impossible in the tone of a travel brochure, making the supernatural sound like a feature, not a bug. What is lost in English is the specifically Japanese cultural density of <em>bon-modori</em> — a word that carries not only Buddhist theology but family memory, seasonal ritual, and the smell of incense — and the philosophical precision of <em>chōjō ijō</em>, a term that only Shiina could have coined and that only Japanese grammar could accommodate.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Lightness and Weight</div>
+    <div class="passage-jp">
+      軽妙である。しかし、軽くはない。
+    </div>
+    <div class="passage-romaji">
+      "Keimyō de aru. Shikashi, karuku wa nai."
+    </div>
+    <div class="passage-en">
+      "It is light and witty. But it is not light."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This two-sentence appraisal of Shiina's style, from a publisher's description of the collection, captures the essence of his art with haiku-like compression. The first sentence — <em>Keimyō de aru</em> (軽妙である, "It is light and witty") — uses the formal copular <em>de aru</em> (である), the written-language form of <em>da</em> (だ), which creates a tone of critical authority. <em>Keimyō</em> (軽妙) is a compound of <em>kei</em> (軽, "light / nimble / frivolous") and <em>myō</em> (妙, "subtle / ingenious / wonderful"), meaning "light and witty / deft and clever / with a light touch." It is a term of praise in Japanese literary criticism, suggesting the kind of touch that makes difficult things seem easy. The second sentence — <em>Shikashi, karuku wa nai</em> (しかし、軽くはない, "But it is not light") — uses the contrastive conjunction <em>shikashi</em> (しかし, "but / however") to pivot from praise to qualification. <em>Karuku wa nai</em> (軽くはない) is the negative form of the adverbial <em>karuku</em> (軽く, "lightly"), with the topic-marker <em>wa</em> (は) creating a contrastive emphasis: "as for being light, it is not." The <em>wa</em> here topicalizes "lightness" as a quality to be denied, and the negation <em>nai</em> (ない) is absolute. The paradox is precise: Shiina's prose has the <em>quality</em> of lightness (<em>keimyō</em>) without being <em>merely</em> light (<em>karuku wa nai</em>). This is the difference between a writer who makes serious things seem trivial and a writer who makes serious things accessible without trivializing them. The grammar of the two sentences enacts this distinction: the first is a positive assertion using the formal copula (critical judgment), the second is a negative assertion using the topic-marker contrast (philosophical qualification). What is lost in English is the semantic distinction between <em>keimyō</em> and <em>karui</em> (軽い, "light"). <em>Keimyō</em> is an aesthetic term — it describes a style, a manner, a surface quality. <em>Karui</em> is a moral term — it describes weight, substance, seriousness of purpose. The English "light and witty" captures <em>keimyō</em> but has no way to distinguish it from "light" in the second sentence, so the paradox collapses into contradiction. In Japanese, the two sentences are a definition of artistic maturity: the achievement of a surface so skillful that it does not reveal the depth beneath, and the depth so genuine that it does not need to advertise itself.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Shiina World</div>
+    <div class="passage-jp">
+      愉快で奇怪なシーナ・ワールドが展開する。
+    </div>
+    <div class="passage-romaji">
+      "Yukai de kikai na Shīna Wārudo ga tenkai suru."
+    </div>
+    <div class="passage-en">
+      "A delightful and strange Shiina World unfolds."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This phrase, from a reader's description of the collection, names something that has no equivalent in contemporary Japanese literature: "Shiina World" (<em>Shīna Wārudo</em> / シーナ・ワールド). The grammar is simple — <em>Yukai de kikai na</em> (愉快で奇怪な, "delightful and strange [adnominal]") + <em>Shīna Wārudo</em> (シーナ・ワールド) + <em>ga tenkai suru</em> (が展開する, "unfolds / develops") — but the cultural implications are vast. <em>Yukai</em> (愉快, "delightful / pleasant / enjoyable") and <em>kikai</em> (奇怪, "strange / bizarre / weird") are an odd couple of adjectives: <em>yukai</em> suggests amusement park fun, while <em>kikai</em> suggests gothic unease. The <em>de</em> (で) connecting them is the continuative form of the copula, creating a compound quality — "delightful and [yet] strange" — that defines Shiina's aesthetic. The adnominal <em>na</em> (な) that follows prepares the adjectives to modify the proper noun <em>Shīna Wārudo</em>. The use of "World" in katakana (<em>Wārudo</em> / ワールド) is significant: it frames Shiina's fiction not merely as stories but as a universe, a coherent imaginary realm with its own laws, its own geography, its own vocabulary of strange proper nouns (<em>Derumerugezon</em>, <em>Nekanabe-sai</em>, <em>Hachitan Kaigan</em>). The verb <em>tenkai suru</em> (展開する, "to unfold / to develop / to spread out") is a term from narrative theory and military strategy: it suggests not merely that stories happen but that a world deploys itself across the pages, like a map opening or a campaign beginning. What is lost in English is the specificity of <em>Shīna Wārudo</em> as a critical term. Japanese readers use it to refer to the particular quality of Shiina's imagination — the way he invents names, the way he makes the familiar strange, the way he balances comedy and dread. "Shiina World" in English sounds like a theme park; in Japanese, it is a critical category, a way of recognizing a unique literary sensibility. The phrase <em>yukai de kikai</em> also loses something: "delightful and strange" in English sounds like a mild compliment, but <em>yukai de kikai</em> in Japanese captures the exact tonal mixture that makes Shiina's fiction unsettling — the way he makes you laugh while he frightens you, the way the strange arrives wearing the mask of the delightful.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the world of Shiina's supernatural fiction — organs and technology, the uncanny domestic, and the linguistic play that defines his style.</p>
+
+  <div class="card">
+    <h3>Body, Organs & Biotechnology</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>胃袋</td><td>ibukuro</td><td class="pos">noun</td><td>stomach, gastric sac</td></tr>
+        <tr><td>胃</td><td>i</td><td class="pos">noun</td><td>stomach (organ)</td></tr>
+        <tr><td>お腹</td><td>onaka</td><td class="pos">noun</td><td>belly, tummy (polite)</td></tr>
+        <tr><td>臓器</td><td>zōki</td><td class="pos">noun</td><td>organ (internal)</td></tr>
+        <tr><td>臓器移植</td><td>zōki ishoku</td><td class="pos">noun</td><td>organ transplant</td></tr>
+        <tr><td>クローン技術</td><td>kurōn gijutsu</td><td class="pos">noun</td><td>clone technology</td></tr>
+        <tr><td>生体</td><td>seitai</td><td class="pos">noun</td><td>living body, organism</td></tr>
+        <tr><td>身体</td><td>shintai</td><td class="pos">noun</td><td>body, physical body</td></tr>
+        <tr><td>消化</td><td>shōka</td><td class="pos">noun</td><td>digestion</td></tr>
+        <tr><td>空腹</td><td>kūfuku</td><td class="pos">noun</td><td>hunger, empty stomach</td></tr>
+        <tr><td>満腹</td><td>manpuku</td><td class="pos">noun</td><td>full stomach, satiety</td></tr>
+        <tr><td>食欲</td><td>shokuyoku</td><td class="pos">noun</td><td>appetite</td></tr>
+        <tr><td>味覚</td><td>mikaku</td><td class="pos">noun</td><td>sense of taste</td></tr>
+        <tr><td>交換</td><td>kōkan</td><td class="pos">noun</td><td>exchange, replacement</td></tr>
+        <tr><td>商品</td><td>shōhin</td><td class="pos">noun</td><td>commodity, merchandise</td></tr>
+        <tr><td>購入</td><td>kōnyū</td><td class="pos">noun</td><td>purchase, buying</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Supernatural & The Strange</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>超常</td><td>chōjō</td><td class="pos">noun</td><td>supernatural, supernormal</td></tr>
+        <tr><td>異常</td><td>ijō</td><td class="pos">noun</td><td>abnormality, anomaly</td></tr>
+        <tr><td>超常異常</td><td>chōjō ijō</td><td class="pos">noun</td><td>supernatural abnormality (Shiina's coinage)</td></tr>
+        <tr><td>奇怪</td><td>kikai</td><td class="pos">na-adj</td><td>strange, bizarre, weird</td></tr>
+        <tr><td>不気味</td><td>bukimi</td><td class="pos">na-adj</td><td>eerie, uncanny, creepy</td></tr>
+        <tr><td>怪しい</td><td>ayashii</td><td class="pos">adjective</td><td>suspicious, dubious, strange</td></tr>
+        <tr><td>盆戻り</td><td>bon-modori</td><td class="pos">noun</td><td>return for Obon (ancestral spirits)</td></tr>
+        <tr><td>お盆</td><td>Obon</td><td class="pos">noun</td><td>Obon festival (Buddhist)</td></tr>
+        <tr><td>陥没</td><td>kanbotsu</td><td class="pos">noun</td><td>subsidence, sinking, cave-in</td></tr>
+        <tr><td>文字</td><td>moji</td><td class="pos">noun</td><td>letter, character, text</td></tr>
+        <tr><td>見えない</td><td>mienai</td><td class="pos">adjective</td><td>invisible, unable to be seen</td></tr>
+        <tr><td>突然</td><td>totsuzen</td><td class="pos">adverb</td><td>suddenly, unexpectedly</td></tr>
+        <tr><td>愉快</td><td>yukai</td><td class="pos">na-adj</td><td>delightful, pleasant, enjoyable</td></tr>
+        <tr><td>展開</td><td>tenkai</td><td class="pos">noun</td><td>development, unfolding</td></tr>
+        <tr><td>幻想</td><td>gensō</td><td class="pos">noun</td><td>illusion, fantasy, vision</td></tr>
+        <tr><td>日常</td><td>nichijō</td><td class="pos">noun</td><td>daily life, everyday</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Parody, Literature & Childhood</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>パロディ</td><td>parodi</td><td class="pos">noun</td><td>parody</td></tr>
+        <tr><td>指摘</td><td>shijiki</td><td class="pos">noun</td><td>pointing out, identification</td></tr>
+        <tr><td>童話</td><td>dōwa</td><td class="pos">noun</td><td>children's story, fairy tale</td></tr>
+        <tr><td>名作</td><td>mesaku</td><td class="pos">noun</td><td>masterpiece, classic work</td></tr>
+        <tr><td>児童文学</td><td>jidō bungaku</td><td class="pos">noun</td><td>children's literature</td></tr>
+        <tr><td>手袋</td><td>tebukuro</td><td class="pos">noun</td><td>mitten, glove</td></tr>
+        <tr><td>狐</td><td>kitsune</td><td class="pos">noun</td><td>fox</td></tr>
+        <tr><td>母親</td><td>hahaoya</td><td class="pos">noun</td><td>mother</td></tr>
+        <tr><td>子供</td><td>kodomo</td><td class="pos">noun</td><td>child</td></tr>
+        <tr><td>買い物</td><td>kaimono</td><td class="pos">noun</td><td>shopping</td></tr>
+        <tr><td>軽妙</td><td>keimyō</td><td class="pos">na-adj</td><td>light and witty, deft</td></tr>
+        <tr><td>軽い</td><td>karui</td><td class="pos">adjective</td><td>light (weight), light (tone), frivolous</td></tr>
+        <tr><td>SF</td><td>esu-efu</td><td class="pos">noun</td><td>science fiction</td></tr>
+        <tr><td>短篇</td><td>tanpen</td><td class="pos">noun</td><td>short story</td></tr>
+        <tr><td>短編集</td><td>tanpenshū</td><td class="pos">noun</td><td>short story collection</td></tr>
+        <tr><td>擬音語</td><td>giongo</td><td class="pos">noun</td><td>onomatopoeia, sound-symbolic word</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Shiina's Style & World</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>私小説</td><td>shishōsetsu</td><td class="pos">noun</td><td>I-novel, autobiographical fiction</td></tr>
+        <tr><td>明るい</td><td>akarui</td><td class="pos">adjective</td><td>bright, cheerful</td></tr>
+        <tr><td>超常小説</td><td>chōjō shōsetsu</td><td class="pos">noun</td><td>supernatural fiction (Shiina's term)</td></tr>
+        <tr><td>シーナ・ワールド</td><td>Shīna Wārudo</td><td class="pos">noun</td><td>Shiina World (critical term)</td></tr>
+        <tr><td>固有名詞</td><td>koyū meishi</td><td class="pos">noun</td><td>proper noun</td></tr>
+        <tr><td>擬音語</td><td>giongo</td><td class="pos">noun</td><td>onomatopoeia</td></tr>
+        <tr><td>擬態語</td><td>gitaigo</td><td class="pos">noun</td><td>mimetic word (for states/manners)</td></tr>
+        <tr><td>文体</td><td>buntai</td><td class="pos">noun</td><td>style, literary style</td></tr>
+        <tr><td>エッセイ</td><td>essei</td><td class="pos">noun</td><td>essay</td></tr>
+        <tr><td>紀行</td><td>kikō</td><td class="pos">noun</td><td>travel writing, travelogue</td></tr>
+        <tr><td>随筆</td><td>zuihitsu</td><td class="pos">noun</td><td>essay, miscellaneous writing</td></tr>
+        <tr><td>ベストセラー</td><td>besuto serā</td><td class="pos">noun</td><td>bestseller</td></tr>
+        <tr><td>デビュー</td><td>debyū</td><td class="pos">noun</td><td>debut</td></tr>
+        <tr><td>代表作</td><td>daihyōsaku</td><td class="pos">noun</td><td>representative work</td></tr>
+        <tr><td>受賞</td><td>jushō</td><td class="pos">noun</td><td>winning (a prize)</td></tr>
+        <tr><td>文学館</td><td>bungakukan</td><td class="pos">noun</td><td>literature museum</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Shiina's prose in <em>Ibukuro wo Kaini</em> is deceptively casual — full of invented onomatopoeia, odd proper nouns, and a conversational tone that makes the supernatural feel like gossip. Much of what makes his style distinctive is embedded in Japanese sound-symbolism and cultural reference.</p>
+
+  <div class="card">
+    <h3>1. <em>...wo Kaini</em> (…を買いに) as Intertextual Time Bomb</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>胃袋<strong>を買いに</strong>。 / 手袋<strong>を買いに</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"To Buy a Stomach" / "Buying Mittens"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The grammatical construction <em>...wo kaini</em> (…を買いに) is one of the most emotionally resonant phrase patterns in Japanese children's literature because of Niimi Nankichi's 1943 classic. For Japanese readers, <em>Tebukuro wo Kaini</em> is not merely a story title but a cultural touchstone — read in elementary school, recited from memory, referenced in advertising, alluded to in countless works. The phrase <em>wo kaini</em> (を買いに) carries the aroma of childhood, of maternal love, of first independence, of trust between species (the fox child and the human shopkeeper). When Shiina substitutes 胃 (stomach) for 手 (hand), he activates this entire associative network and then contaminates it. The English reader encountering "To Buy a Stomach" receives none of this intertextual charge — the title sounds odd, perhaps darkly comic, but it does not resonate against a foundational text of childhood. What is lost is the specific gravity of <em>wo kaini</em> as a phrase that Japanese culture has invested with tenderness. The parody is invisible in English because the original is invisible to non-Japanese readers — not because they don't know Niimi's story (which can be summarized) but because they don't know what it feels like to grow up with <em>Tebukuro wo Kaini</em> as a bedtime story. The grammar of <em>wo kaini</em> — the purposive particle <em>ni</em> after the masu-stem — is also specifically Japanese in its construction of intentionality. "To buy" in English is an infinitive; <em>kai ni</em> in Japanese is a purpose formed by grammatical concatenation, suggesting that buying is the reason for movement, for leaving home, for entering the world. The fox child goes to buy mittens; the man goes to buy a stomach. The grammar makes both journeys errands, and this ordinariness is the point.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Chōjō Ijō</em> (超常異常) as Untranslatable Coinage</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>超常異常</strong>が起こるのだ</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Supernatural abnormalities occur"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Chōjō ijō</em> (超常異常) is Shiina's own coinage, and it is untranslatable not because the words are obscure but because the combination is philosophically specific. <em>Chōjō</em> (超常) means "supernormal / transcending the ordinary" — it is the word used for psychic powers (<em>chōjō nōryoku</em>, 超常能力) and paranormal phenomena. <em>Ijō</em> (異常) means "abnormal / anomalous / deviating from the normal." The compound thus creates a paradox: abnormalities that transcend the ordinary — or, read differently, the abnormality of the superordinary. The English "supernatural abnormalities" captures the meaning but loses the structural wit of the compound. In Japanese, <em>chōjō ijō</em> has a rhythmic balance (chō-jō i-jō, four syllables in two pairs) and a visual symmetry (超-常-異-常, with 常 repeated in both halves). The repetition of <em>jō</em> (常, "normal / ordinary") creates a drumbeat of normality that the prefixes <em>chō</em> (超, "super-") and <em>i</em> (異, "different-") disrupt. The word thus performs its own meaning: it is a normal word made strange by prefixation, just as the stories make normal life strange by introducing a single impossible element. What is also lost is the explanatory/emphatic <em>no da</em> (のだ) that follows: <em>okoru no da</em> (起こるのだ, "it is that they occur"). The <em>no da</em> construction asserts explanatory force — this is not merely an observation but a law, a principle, a feature of Shiina World. The exclamation mark turns this assertion into an announcement, a proclamation. In English, "Supernatural abnormalities occur!" sounds like a movie poster; in Japanese, <em>Chōjō ijō ga okoru no da!</em> sounds like a naturalist's field note from a strange country — which is precisely what the collection is.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Bon-modori</em> (盆戻り) as Cultural Specificity</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>去年死んだ母が「<strong>盆戻り</strong>」で家に帰ってきた</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The mother who died last year came home in a 'Bon return'"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Bon-modori</em> (盆戻り) is a term from Japanese Buddhist tradition that has no English equivalent because it refers to a specifically Japanese cosmological event: the return of ancestral spirits to the living world during the Obon festival. Obon is not merely a holiday; it is a period when the boundary between the living and the dead is understood to become permeable, when families clean graves, light lanterns, and welcome the spirits of ancestors back to the family home. <em>Bon-modori</em> refers specifically to the spirits' return journey — they "return" (<em>modori</em> / 戻り) for Bon. In Shiina's story, the term is literalized: the dead mother actually comes home, physically, during Obon. But the English reader who encounters "Bon return" receives only a label, not the sensory and emotional world that the term evokes: the smell of incense, the sound of sutras, the sight of the family altar with its offerings of food and flowers, the feeling of a house temporarily inhabited by more presences than usual. The quotation marks around <em>bon-modori</em> in the Japanese text treat it as a technical term, a category of event — which in the story it has become, because the mother's return is routine, expected, almost bureaucratic. The English translation cannot reproduce this double layer: the sacred term made mundane by repetition, and the mundane event made sacred by the term. What is lost is the way Japanese culture has encoded the relationship between the living and the dead into a seasonal calendar, and the way Shiina's story both uses and subverts this encoding by making the return physical rather than spiritual.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Keimyō de Aru. Shikashi, Karuku wa Nai.</em> (軽妙である。しかし、軽くはない。) as Critical Paradox</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>軽妙</strong>である。しかし、<strong>軽く</strong>はない。</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"It is light and witty. But it is not light."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The distinction between <em>keimyō</em> (軽妙) and <em>karui</em> (軽い) is central to Japanese aesthetic criticism and cannot be preserved in English because English has no separate word for <em>keimyō</em>. <em>Keimyō</em> (軽妙) is a compound of <em>kei</em> (軽, "light / nimble") and <em>myō</em> (妙, "subtle / ingenious / wonderful"), and it describes a quality of artistic touch — the deftness that makes difficult things seem easy, the lightness that comes from mastery rather than superficiality. It is a term of praise for writers like Shiina, who can write about serious things without heaviness. <em>Karui</em> (軽い), by contrast, means simply "light" — in weight, in tone, in substance — and when applied to literature, it suggests frivolity, lack of depth, triviality. The paradox <em>keimyō de aru. shikashi, karuku wa nai</em> thus asserts that Shiina's work has the aesthetic quality of lightness (<em>keimyō</em>) without the moral failing of superficiality (<em>karui</em>). In English, both qualities must be translated as "light," and the paradox collapses into apparent contradiction: "It is light. But it is not light." The Japanese reader understands immediately; the English reader must be given an explanatory footnote. What is lost is not merely a distinction but a whole aesthetic philosophy — the Japanese tradition that values <em>keimyō</em> as a difficult achievement, the lightness that is harder to achieve than heaviness because it requires the artist to carry the full weight of meaning while concealing the effort. Shiina's prose is <em>keimyō</em> in this sense: it reads effortlessly, but the effortlessness is the product of decades of craft. The English "light and witty" captures the surface but cannot distinguish it from "light" in the second sentence, and the critical precision of the original is dissolved.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. Shiina's Onomatopoeia and Invented Proper Nouns</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>デルメルゲゾン、猫舐祭、八灘海岸、引綱軽便鉄道</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Delmergezon, Cat-Licking Festival, Yatan Coast, Hikizuna Light Railway"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Shiina's fiction is populated with invented proper nouns that sound almost real but are not — a technique that creates what critics call "Shiina World" (<em>Shīna Wārudo</em>). <em>Derumerugezon</em> (デルメルゲゾン) sounds like a pharmaceutical product (<em>deru</em> / 出る, "to appear"; <em>meru</em> possibly from <em>merumeru</em>, a mimetic for smoothness; <em>gezon</em> echoing <em>gesuidō</em> / 下水道, "sewer" or suggesting a made-up drug name). <em>Nekanabe-sai</em> (猫舐祭) combines <em>neko</em> (猫, "cat"), <em>name</em> (舐め, "lick"), and <em>sai</em> (祭, "festival") — a festival that does not exist but sounds like it should. <em>Hachitan Kaigan</em> (八灘海岸) uses <em>hachi</em> (八, "eight") and <em>tan</em> (灘, "rapids / beach") to create a coastal name that echoes real Japanese place names without being one. <em>Hikizuna Keiben Tetsudō</em> (引綱軽便鉄道) combines <em>hikizuna</em> (引綱, "tow rope") with <em>keiben tetsudō</em> (軽便鉄道, "light railway"), evoking the era of Japan's rural rail networks. These names do more than label fictional places and events; they create a parallel Japan that is almost recognizable but slightly off — a world where the proper nouns are wrong in ways that suggest the reality beneath them has shifted. In English translation, these names become mere labels, their phonetic texture and quasi-referentiality lost. The English reader sees "Delmergezon" and thinks "made-up word"; the Japanese reader sees <em>Derumerugezon</em> and thinks "almost a drug, almost a place, almost something I should recognize." The uncertainty is the point. Shiina's invented nouns create a persistent low-level cognitive dissonance that keeps the reader slightly off-balance, and this dissonance is the formal equivalent of the stories' content: the world is not what you think it is, and even the names of things have become unreliable.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from Shiina's conversational prose, his parodic titles, and the promotional language that frames his "supernatural fiction."</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を買いに（目的・行動）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo [masu-stem] + ni</em>: "in order to buy ~ / (going) to buy ~" — purposive construction for errands and journeys.</p>
+      <div class="grammar-example">胃袋を買いに。 / 手袋を買いに</div>
+      <p class="grammar-example-en">"To Buy a Stomach" / "Buying Mittens" — The <em>wo kaini</em> construction frames organ purchase as an errand, a shopping trip. The grammar normalizes the unthinkable by placing it in the most ordinary of purposive forms.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜た母が…帰ってきた（過去・帰着）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ta haha ga...kaette kita</em>: "[the mother who] died... came back" — relative clause + return verb creating paradox.</p>
+      <div class="grammar-example">去年死んだ母が「盆戻り」で家に帰ってきた</div>
+      <p class="grammar-example-en">"The mother who died last year came home in a 'Bon return'" — The <em>ta</em> relative clause (<em>kyonen shinda haha</em>) establishes death as a fact; the main clause (<em>kaette kita</em>) contradicts it. The grammar enacts resurrection.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が見えなくなった（可能性・変化）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga mienaku natta</em>: "became unable to see ~ / ~ became invisible" — potential negative + change of state.</p>
+      <div class="grammar-example">突然、すべての文字が見えなくなった</div>
+      <p class="grammar-example-en">"Suddenly, all text became invisible" — The potential negative <em>mienaku</em> (見えなく, "unable to be seen") + <em>natta</em> (なった, "became") describes a transition into a state of invisibility, not an instantaneous disappearance.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のだ（説明・強調）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No da</em>: explanatory/emphatic construction asserting a fact with explanatory force.</p>
+      <div class="grammar-example">超常異常が起こるのだ！</div>
+      <p class="grammar-example-en">"Supernatural abnormalities occur!" — The <em>no da</em> construction turns observation into law, announcement into proclamation. The exclamation mark makes it a carnival barker's cry.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜である。しかし、〜はない。（対比・否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>De aru. Shikashi, ...wa nai.</em>: "It is ~. But it is not ~." — contrastive assertion and negation creating critical paradox.</p>
+      <div class="grammar-example">軽妙である。しかし、くはない。</div>
+      <p class="grammar-example-en">"It is light and witty. But it is not light." — The formal copula <em>de aru</em> asserts; <em>shikashi</em> pivots; the topic-marker <em>wa</em> + negative <em>nai</em> denies. The grammar creates a philosophical distinction between surface quality and substance.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜にされたが、〜されなかった（受身・経験）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni saretaga, sarenakatta</em>: "was made into ~, but was not ~ed" — passive construction describing unrecognized transformation.</p>
+      <div class="grammar-example">パロディにしたが、だれにも指摘されなかった</div>
+      <p class="grammar-example-en">"was made into a parody, but was not pointed out by anyone" — The <em>ni suru</em> (にする) passive transforms the original into material; the <em>ni mo</em> (にも) + negative creates universal negation. The parody that no one recognizes is the perfect parody.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜で〜な〜が〜する（連続・形容）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>De...na...ga...suru</em>: continuative copula + adnominal + subject + verb — describing compound qualities and their effects.</p>
+      <div class="grammar-example">愉快で奇怪なシーナ・ワールドが展開する</div>
+      <p class="grammar-example-en">"A delightful and strange Shiina World unfolds" — The <em>de</em> (で) connects <em>yukai</em> and <em>kikai</em>; the <em>na</em> (な) adnominalizes them to modify <em>Shīna Wārudo</em>; <em>ga tenkai suru</em> makes the world active, not static.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜SFテイストなのだが〜（譲歩・対比）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...na no da ga,...</em>: "It is ~, but / though ~" — concessive construction creating tonal complexity.</p>
+      <div class="grammar-example">SFテイストなのだが、いずれの作品もどこか不気味で、どこか怪しい</div>
+      <p class="grammar-example-en">"They are SF in sensibility, but every work is somehow eerie, somehow suspicious" — The <em>na no da ga</em> construction concedes the genre classification while asserting a different emotional reality. The grammar creates the collection's defining tonal mixture.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Shiina's grammar in <em>Ibukuro wo Kaini</em> is the grammar of the casual anecdote — simple constructions that carry complex implications. Pay attention to how <em>wo kaini</em> normalizes organ purchase, how <em>ta haha ga kaette kita</em> enacts resurrection through relativization, how <em>mienaku natta</em> describes invisibility as a process rather than an event, and how <em>keimyō de aru. shikashi, karuku wa nai</em> creates a critical paradox through contrastive negation. The grammar is as light as the prose, and as serious.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">胃袋を買いに。 &middot; 椎名 誠 &middot; 文藝春秋 1991（単行本 ISBN 978-4-16-312450-6）/ 文春文庫 1994（ISBN 978-4-16-733404-8）/ シティブックス電子版 2025</p>
+</footer>
+
+</div>
+</body>
+</html>

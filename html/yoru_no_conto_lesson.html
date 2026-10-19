@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night's Conte, Winter's Conte — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --teal: #3a5a5a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--teal);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(58,90,90,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.teal::before {
+            background: var(--teal);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.teal-box {
+            background: color-mix(in oklab, var(--teal) 8%, var(--surface));
+            border-left-color: var(--teal);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.teal-box h5 {
+            color: var(--teal);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-teal {
+            background: color-mix(in oklab, var(--teal) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--teal) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--teal) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #3a5a5a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Night's Conte, Winter's Conte<br><span style="font-size:0.6em; font-weight:300;">夜のコント・冬のコント</span></h1>
+    <div class="subtitle">A Japanese lesson through Tsutsui Yasutaka's eighteen tempests of slapstick, madness, and verbal anarchy</div>
+    <div class="meta">Tsutsui Yasutaka &middot; Shinchosha &middot; 1994 &middot; 18 stories</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reviews of <em>Yoru no Conto / Fuyu no Conto</em> (Night's Conte, Winter's Conte), a short-story collection by Tsutsui Yasutaka published by Shinchosha in 1994. The book contains eighteen stories spanning slapstick SF, absurdist comedy, metafictional experiment, and dark parody. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published by Shinchosha in 1994, <em>Yoru no Conto / Fuyu no Conto</em> is a collection of eighteen short stories by Tsutsui Yasutaka (b. 1934), the Osaka-born writer who, alongside Komatsu Sakyo and Hoshi Shinichi, forms Japan's celebrated "SF Big Three." Where previous works in this lesson series have explored the grammar of grief, love, exile, and quiet domesticity, Tsutsui's prose operates in an entirely different register: the grammar of chaos. His sentences accelerate. His plots escalate. His characters are actors, waiters, smokers, dream censors, cats who sing mathematics, and ordinary people caught in systems that have quietly gone insane. The title pairs 夜 (night) with 冬 (winter): two words for darkness, two seasons of the soul. A コント (conte, from French) is a comedy sketch, a brief theatrical scene built on escalation and reversal. By calling his stories "conte," Tsutsui signals that he is not writing conventional fiction. He is staging verbal farces in which language itself is the protagonist, and the reader is both audience and accomplice. The prose is fast, dense with wordplay, allusion, and sudden tonal shifts. It demands that you read quickly and think slowly. This is Japanese as rollercoaster, as demolition derby, as jazz improvisation.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Sketch</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title contains a structural joke before a single story is read.</p>
+
+    <div class="passage teal">
+        <div class="jp-text jp">
+            <span class="hl-teal">夜のコント・冬のコント</span>
+        </div>
+        <div class="romaji">"Yoru no Conto / Fuyu no Conto"</div>
+        <div class="translation">"Night's Conte / Winter's Conte"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夜</td><td class="reading">yoru</td><td>night</td></tr>
+        <tr><td class="word">冬</td><td class="reading">fuyu</td><td>winter</td></tr>
+        <tr><td class="word">コント</td><td class="reading">conto</td><td>conte (comedy sketch, from French)</td></tr>
+        <tr><td class="word">の</td><td class="reading">no</td><td>possessive / attributive particle</td></tr>
+    </table>
+
+    <div class="nuance teal-box">
+        <h5>What translation loses: The French ghost in the title</h5>
+        <p><strong>コント (conto):</strong> From the French "conte," meaning a short story, tale, or comedy sketch. In Japanese entertainment, コント specifically means a brief comedic stage sketch, usually with a setup, escalation, and punchline. It is faster than a play, looser than a short story, and more dependent on timing than on plot. By using コント instead of 小説 (shousetsu, novel) or 物語 (monogatari, tale), Tsutsui tells the reader that these are not conventional narratives. They are sketches: quick, disposable, explosive. The word makes the book into a variety show rather than a collection. You are not settling in for a long journey. You are buying a ticket to eighteen roller coasters.</p>
+        <p><strong>夜 (yoru) and 冬 (fuyu):</strong> Night and winter. Both are states of reduced light, reduced warmth, reduced visibility. In Japanese literary tradition, 夜 is the time of secrets, of the unconscious, of things that cannot be said in daylight. 冬 is the season of austerity, of ends, of the world stripped to its bones. By pairing them, Tsutsui creates a title that sounds like a seasonal pairing (春の... 夏の...) but replaces the expected seasons of growth with seasons of darkness. The grammar of Xのコント (X's conte) is simple, but the choice of X makes the simple structure into a declaration: these sketches happen in the dark, in the cold, in the parts of the psyche where reason has gone to sleep.</p>
+        <p><strong>The slash (・):</strong> The interpunct between the two titles is doing important work. It makes the book into a double feature, a two-act show. Night's Conte AND Winter's Conte. The slash also suggests that the two title stories are in conversation with each other: one about an actor's rage, one about a waiter's madness. Both are about people trapped in roles they did not write. The grammar of the slash makes the collection into a dialogue between two forms of entrapment.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Actor's Rage: The Grammar of Typecasting</h2>
+    <span class="story-label">夜のコント</span>
+
+    <p>The title story follows an actor who has spent his career playing villains and is now watching his own life become the role he never wanted.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">不人気な俳優の鬱屈した怒りをコミカルに捉えた「夜のコント」</span>
+        </div>
+        <div class="romaji">"Funinkina haiyuu no ukutsu shita ikari wo komikaru ni toraeta 'Yoru no Conto.'"</div>
+        <div class="translation">"'Night's Conte' comically captures the pent-up rage of an unpopular actor."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">不人気</td><td class="reading">funinki</td><td>unpopular, lacking popularity</td></tr>
+        <tr><td class="word">俳優</td><td class="reading">haiyuu</td><td>actor</td></tr>
+        <tr><td class="word">鬱屈</td><td class="reading">ukutsu</td><td>pent-up, frustrated, suppressed</td></tr>
+        <tr><td class="word">怒り</td><td class="reading">ikari</td><td>anger, rage</td></tr>
+        <tr><td class="word">コミカル</td><td class="reading">komikaru</td><td>comical</td></tr>
+        <tr><td class="word">捉える</td><td class="reading">toraeru</td><td>to capture, to seize, to grasp</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The compression of 鬱屈</h5>
+        <p><strong>鬱屈 (ukutsu):</strong> This is a Sino-Japanese compound of extraordinary density. 鬱 means depressed, gloomy, stagnant (as in 鬱病, utsubyou, depression). 屈 means bent, crooked, submissive, frustrated. Together they describe a feeling that has been bent double, forced into an unnatural shape, and stored in the body until it becomes toxic. 鬱屈した怒り is not merely "pent-up anger." It is anger that has been living in the body so long that it has changed the body's chemistry. The word makes the actor's rage into a medical condition, a buildup of emotional plaque in the arteries of his self-esteem. The fact that this 鬱屈した怒り is captured コミカルに (comically) creates the central tension of the story: the actor's pain is real, but his life has become so absurd that the only honest way to depict it is through comedy. The grammar of 〜をコミカルに捉える makes comedy into a method of truth-telling, not an escape from it.</p>
+        <p><strong>不人気な (funinkina):</strong> "Unpopular." The word is blunt and slightly cruel. In Japanese entertainment culture, 人気 (ninki, popularity) is the currency of existence. To be 不人気 is to be economically and socially invisible. The grammar of 不人気な俳優 (unpopular actor) defines the protagonist by what he lacks before describing what he feels. He is not "a talented actor who is overlooked." He is simply 不人気. The word makes his identity contingent on audience approval. His rage is not about art. It is about the market's refusal to buy what he is selling.</p>
+        <p><strong>捉える (toraeru):</strong> "To capture, to seize." This is a strong verb. It implies suddenness, decisiveness, the act of grabbing something that is trying to escape. When the promotional copy says the story 捉えた his rage, it means the story does not merely describe the rage. It catches it, holds it still, and makes it visible. The grammar makes the conte into a trap set for emotion. This is what Tsutsui's fiction does at its best: it captures the rage you did not know you had and makes you laugh at it before you can look away.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Waiter's Madness: The Grammar of Rules</h2>
+    <span class="story-label">冬のコント</span>
+
+    <p>The second title story turns a restaurant into a theater of bureaucratic insanity.</p>
+
+    <div class="passage teal">
+        <div class="jp-text jp">
+            <span class="hl-teal">規="hl-teal">規則に縛られたレストランのボーイの狂気を描く「冬のコント」</span>
+        </div>
+        <div class="romaji">"Kisoku ni shibarareta resutoran no booi no kyouki wo egaku 'Fuyu no Conto.'"</div>
+        <div class="translation">"'Winter's Conte' depicts the madness of a restaurant waiter bound by rules."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">規則</td><td class="reading">kisoku</td><td>rule, regulation</td></tr>
+        <tr><td class="word">縛る</td><td class="reading">shibaru</td><td>to bind, to tie, to restrict</td></tr>
+        <tr><td class="word">レストラン</td><td class="reading">resutoran</td><td>restaurant</td></tr>
+        <tr><td class="word">ボーイ</td><td class="reading">booi</td><td>waiter, busboy</td></tr>
+        <tr><td class="word">狂気</td><td class="reading">kyouki</td><td>madness, insanity</td></tr>
+        <tr><td class="word">描く</td><td class="reading">egaku</td><td>to depict, to portray</td></tr>
+    </table>
+
+    <div class="nuance teal-box">
+        <h5>What translation loses: The passivity of 縛られた</h5>
+        <p><strong>規則に縛られた (kisoku ni shibarareta):</strong> "Bound by rules." The grammar is a passive construction: the waiter is not binding the rules. The rules are binding him. The passive voice makes the waiter into a victim of the system he serves. This is one of Tsutsui's recurring themes: the individual crushed by institutions that were created to serve human needs but have become ends in themselves. The word 縛る means "to tie, to bind," and carries a physicality that 制限される (to be restricted) or 規制される (to be regulated) does not. The rules are not merely limiting him. They are tying him up. The grammar makes the restaurant into a bondage dungeon dressed in white tablecloths.</p>
+        <p><strong>狂気 (kyouki):</strong> "Madness, insanity." This is a strong, clinical word. It is not 怒り (anger) or 悲しみ (sadness). It is 狂気: the complete breakdown of rational function. The fact that the promotional copy says the story 描く (depicts) the waiter's madness means the story does not merely show him becoming mad. It portrays madness as a state, a world with its own logic. In Tsutsui's hands, 狂気 is not a failure of reason but a different kind of reason: the waiter goes mad because the rules are already mad, and he is the only one who notices. His madness is a form of perception. The grammar of 狂気を描く makes insanity into a landscape the reader is invited to tour.</p>
+        <p><strong>ボーイ (booi):</strong> The English loanword "boy" used to mean "waiter" in Japanese restaurants. The word carries class connotations: a ボーイ is not a 主人 (master) or a 客 (guest). He is staff, subordinate, invisible. The English loanword makes the role sound slightly archaic, slightly colonial, as if the waiter belongs to a hierarchy imported from elsewhere. The grammar of レストランのボーイ places him at the bottom of a chain of service that extends upward to managers, owners, and the abstract system of "rules" itself. He is the point where all the rules converge and must be enacted. No wonder he goes mad.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Last Smoker: The Grammar of Escalation</h2>
+    <span class="story-label">最後の喫煙者</span>
+
+    <p>The collection's most famous story is a slapstick prophecy that has only become more relevant with time.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">嫌煙運動は苛烈を極め、喫煙者は全国で迫害を受け始めた</span>
+        </div>
+        <div class="romaji">"Ken'en undou wa karetsu wo kiwame, kitsuen-sha wa zenkoku de hakugai wo uke hajimeta."</div>
+        <div class="translation">"The anti-smoking movement reached extremes of severity, and smokers began to be persecuted nationwide."</div>
+        <div class="source">— "Saigo no Kitsuensha" (The Last Smoker)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">嫌煙</td><td class="reading">ken'en</td><td>anti-smoking</td></tr>
+        <tr><td class="word">運動</td><td class="reading">undou</td><td>movement, campaign</td></tr>
+        <tr><td class="word">苛烈</td><td class="reading">karetsu</td><td>severe, harsh, relentless</td></tr>
+        <tr><td class="word">極める</td><td class="reading">kiwameru</td><td>to carry to extremes, to reach the limit</td></tr>
+        <tr><td class="word">喫煙者</td><td class="reading">kitsuen-sha</td><td>smoker</td></tr>
+        <tr><td class="word">迫害</td><td class="reading">hakugai</td><td>persecution</td></tr>
+        <tr><td class="word">受ける</td><td class="reading">ukeru</td><td>to receive, to suffer</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The acceleration of 極める</h5>
+        <p><strong>苛烈を極 (karetsu wo kiwame):</strong> "Reached extremes of severity." The grammar is a noun + wo + verb: 苛烈 (severity) を 極める (to carry to the extreme). 極める is a powerful verb that means to reach the utmost limit of something, to go as far as something can go. When attached to 苛烈, it creates a sense of acceleration that has hit its ceiling: the anti-smoking movement did not merely become severe. It became as severe as severity can be. The grammar makes the movement into a force of nature that has passed through all gradations of intensity and arrived at maximum. This is the engine of Tsutsui's slapstick: everything escalates to its logical extreme, and then one step further.</p>
+        <p><strong>迫害を受け始めた (hakugai wo uke hajimeta):</strong> "Began to be persecuted." The grammar is passive + 始める (to begin). The smokers are not persecuting; they are being persecuted. The passive voice makes them into a class of victims, and the 始める makes the persecution into a process that has just started and will get worse. The word 迫害 is strong: it means persecution, not merely discrimination (差別) or restriction (規制). It is the word used for religious persecution, ethnic cleansing, witch hunts. By using 迫害 for smokers, Tsutsui creates a deliberate absurdity that is also a warning: any movement, however well-intentioned, can become a mechanism of persecution when it reaches 苛烈を極め. The grammar makes the story into a satire of moral absolutism.</p>
+        <p><strong>全国で (zenkoku de):</strong> "Nationwide." The scope is total. This is not a local ordinance or a workplace policy. It is 全国: the entire country. The grammar of scale makes the satire systemic. Tsutsui is not mocking a few zealots. He is mocking the moment when a private habit becomes a national emergency. The word 全国 transforms the story from a personal complaint into a social prophecy.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Vow: The Grammar of Defiance</h2>
+    <span class="story-label">最後の喫煙者</span>
+
+    <p>The protagonist's response to persecution is not surrender but absurd commitment.</p>
+
+    <div class="passage teal">
+        <div class="jp-text jp">
+            <span class="hl-teal">男は最後の一人になるまで喫煙することを誓うのだが……</span>
+        </div>
+        <div class="romaji">"Otoko wa saigo no hitori ni naru made kitsuen suru koto wo chikau no da ga..."</div>
+        <div class="translation">"The man vows to keep smoking until he becomes the last one remaining, but..."</div>
+        <div class="source">— "Saigo no Kitsuensha" (The Last Smoker)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">最後</td><td class="reading">saigo</td><td>last, final</td></tr>
+        <tr><td class="word">一人</td><td class="reading">hitori</td><td>one person</td></tr>
+        <tr><td class="word">〜まで</td><td class="reading">-made</td><td>until</td></tr>
+        <tr><td class="word">喫煙</td><td class="reading">kitsuen</td><td>smoking</td></tr>
+        <tr><td class="word">誓う</td><td class="reading">chikau</td><td>to vow, to swear, to pledge</td></tr>
+        <tr><td class="word">のだが</td><td class="reading">no da ga</td><td>explanatory + but (foreshadowing twist)</td></tr>
+    </table>
+
+    <div class="nuance teal-box">
+        <h5>What translation loses: The tragicomic grammar of のだが</h5>
+        <p><strong>誓うのだが (chikau no da ga):</strong> "Vows, but..." The grammar is the explanatory のだ (indicating a settled fact or determination) followed by が (but). This construction is doing extraordinary work. The のだ makes the vow sound absolute, final, almost noble. The man is not merely thinking about smoking. He has made a 誓う: a solemn pledge, the kind of word used for marriage vows and oaths of loyalty. And then が. The conjunction hangs in the air like a held breath. The reader knows, from the grammar alone, that this vow will not end as intended. The が creates narrative tension without specifying what will go wrong. It is the grammatical equivalent of a drumroll. In English we might say "he vows to keep smoking until he is the last one left, but..." The Japanese のだが does the same work more compactly, and with a note of resigned foreknowledge that English "but" cannot quite capture. The grammar makes the reader into an accomplice: we know the punchline is coming, and we are waiting for it.</p>
+        <p><strong>最後の一人になるまで (saigo no hitori ni naru made):</strong> "Until he becomes the last person." The grammar is a goal phrase: he will continue UNTIL he reaches the state of being the last one. The word 最後 (last) contains both triumph and tragedy. To be the last is to win a war of attrition and to lose everything that made the war worth fighting. If you are the last smoker, there is no one left to smoke with, no culture left to defend, no pleasure left that is shared. The grammar of 最後の一人 makes the protagonist's goal into a paradox: he fights to preserve something by being the only one who remembers it. This is the essence of Tsutsui's dark comedy: the hero's victory is always a form of defeat.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. Slapstick as Art: The Grammar of ドタバタ</h2>
+    <span class="story-label">Collection</span>
+
+    <p>The promotional copy uses a word that defines Tsutsui's entire aesthetic.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">スラップスティックの傑作「最後の喫煙者」</span>
+        </div>
+        <div class="romaji">"Surapppusutikkku no kessaku 'Saigo no Kitsuensha.'"</div>
+        <div class="translation">"'The Last Smoker,' a slapstick masterpiece."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">スラップティック</td><td class="reading">surapppusutikkku</td><td>slapstick (physical comedy)</td></tr>
+        <tr><td class="word">傑作</td><td class="reading">kessaku</td><td>masterpiece</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The Japanese art of ドタバタ</h5>
+        <p><strong>スラップスティック (surapppusutikkku):</strong> The English loanword for physical comedy: falling, chasing, collisions, pratfalls. But in Japanese literary criticism, Tsutsui's comedy is more precisely described as ドタバタ (dotabata), an onomatopoeia for the sound of frantic running, falling, and crashing. ドタバタ is not merely physical. It is a rhythm, a tempo of narrative in which events accelerate beyond the characters' ability to control them. When the copy calls "The Last Smoker" a スラップスティックの傑作, it is using the international term for a very Japanese effect. The loanword elevates the genre: this is not mere comedy. It is slapstick as art form, as 傑作 (masterpiece). The grammar of Xの傑作 makes the story into the best example of its kind, a model for how slapstick can carry social weight.</p>
+        <p><strong>傑作 (kessaku):</strong> "Masterpiece." This is a strong word in Japanese criticism, usually reserved for works of acknowledged excellence. By calling a slapstick story about smoking persecution a 傑作, the copy makes a claim about genre hierarchy: comedy can be as serious as tragedy, as crafted as poetry. Tsutsui's entire career is an argument for this claim. He writes ドタバタ that wins literary prizes. He makes nonsense that critics analyze. The word 傑作 is both description and defense: this story is not merely funny. It is a masterpiece of the form.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Dream Censor: The Grammar of the Unconscious Bureaucracy</h2>
+    <span class="story-label">夢の検閲官</span>
+
+    <p>One of the collection's most praised stories turns Freudian theory into office comedy.</p>
+
+    <div class="passage teal">
+        <div class="jp-text jp">
+            <span class="hl-teal">女が眠りにつき、夢の法廷が開廷する</span>
+        </div>
+        <div class="romaji">"Onna ga nemuri ni tsuki, yume no houtei ga kaitei suru."</div>
+        <div class="translation">"The woman falls asleep, and the court of dreams goes into session."</div>
+        <div class="source">— "Yume no Ken'etsukan" (The Dream Censor)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">眠りにつく</td><td class="reading">nemuri ni tsuku</td><td>to fall asleep</td></tr>
+        <tr><td class="word">夢</td><td class="reading">yume</td><td>dream</td></tr>
+        <tr><td class="word">法廷</td><td class="reading">houtei</td><td>courtroom, tribunal</td></tr>
+        <tr><td class="word">開廷</td><td class="reading">kaitei</td><td>opening of court, going into session</td></tr>
+    </table>
+
+    <div class="nuance teal-box">
+        <h5>What translation loses: The bureaucracy of dreams</h5>
+        <p><strong>夢の法廷 (yume no houtei):</strong> "The court of dreams." The grammar is simple: dream + possessive + courtroom. But the concept is extraordinary. In Tsutsui's imagining, the Freudian "dream censor" (the psychic mechanism that distorts unconscious wishes before they reach consciousness) is not an abstract function. It is a bureaucracy. It has offices, clerks, procedures, retirement ages. The word 法廷 makes the unconscious into a branch of government. This is the essence of Tsutsui's method: he takes abstract concepts and makes them concrete, ridiculous, and oddly moving. A courtroom is where guilt is determined, where evidence is weighed, where sentences are passed. By placing a courtroom inside a woman's sleeping mind, Tsutsui makes her grief into a legal proceeding that never ends. The grammar of 夢の法廷 turns psychology into jurisprudence.</p>
+        <p><strong>開廷する (kaitei suru):</strong> "To go into session." This is formal legal language. Judges 開廷. Parliaments 開廷. The verb makes the dream court into an institution with regular hours and procedural rules. The fact that it 開廷する every time the woman falls asleep makes sleep into a commute to a second job. She is not resting. She is attending court. The grammar of institutional verbs applied to psychic processes is Tsutsui's signature move: he makes the inner life sound like municipal administration, and in doing so, he reveals how much of our private pain is already bureaucratized.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Censor's Dilemma: The Grammar of Protective Cruelty</h2>
+    <span class="story-label">夢の検閲官</span>
+
+    <p>The dream censors face a problem: the woman's dead son keeps trying to appear in her dreams.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">入ってくるのは、彼女の安眠を妨げ、悲しませる者たちばかり</span>
+        </div>
+        <div class="romaji">"Haitte kuru no wa, kanojo no anmin wo samatage, kanashimaseru mono-tachi bakari."</div>
+        <div class="translation">"Those who enter are only people who disturb her peaceful sleep and make her grieve."</div>
+        <div class="source">— "Yume no Ken'etsukan" (The Dream Censor)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">安眠</td><td class="reading">anmin</td><td>peaceful sleep, restful sleep</td></tr>
+        <tr><td class="word">妨げる</td><td class="reading">samatageru</td><td>to disturb, to obstruct, to hinder</td></tr>
+        <tr><td class="word">悲しませる</td><td class="reading">kanashimaseru</td><td>to make sad, to grieve (causative)</td></tr>
+        <tr><td class="word">者</td><td class="reading">mono</td><td>person (formal/literary)</td></tr>
+        <tr><td class="word">ばかり</td><td class="reading">bakari</td><td>only, merely, nothing but</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The cruelty of ばかり</h5>
+        <p><strong>〜ばかり (bakari):</strong> "Only, nothing but." The grammar makes the entrants into a uniform category: they are ALL people who disturb and grieve. There are no neutral figures, no harmless visitors. Every figure who approaches her dreaming mind is a threat to her rest. The word ばかり creates a sense of siege: her unconscious is under constant attack by memories that wear the faces of the people she has lost. The grammar of uniformity (ばかり) makes her grief feel inescapable. There is no dream that will not hurt her. The censors' job is therefore impossible: they are trying to protect her from her own mind.</p>
+        <p><strong>悲しませる (kanashimaseru):</strong> Causative form of 悲しむ (to be sad). "To make [someone] sad." The causative makes the entering figures into agents of grief. They do not merely remind her of sadness. They actively produce it. The grammar assigns responsibility: the son who appears in her dream is not merely a memory. He is a figure who makes her sad, who has an effect on her. This is the paradox of grief that Tsutsui captures precisely: the people we love most become, after death, the people who hurt us most. The causative grammar makes love and pain into cause and effect.</p>
+        <p><strong>安眠を妨げる (anmin wo samatageru):</strong> "To disturb peaceful sleep." 安眠 is a formal, almost medical word for good sleep. It is the sleep of people who are not grieving. By specifying that the censors are protecting her 安眠, Tsutsui makes their bureaucratic work sound almost tender. They are not censoring dreams for political reasons. They are trying to give a grieving mother one night of peace. The word makes the story's comedy into a form of compassion. The censors are ridiculous, but their motive is humane. This is Tsutsui at his most complex: he makes you laugh at a system that is also, in its broken way, trying to be kind.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Singing Cat: The Grammar of Absurd Genius</h2>
+    <span class="story-label">「聖ジェームス病院」を歌う猫</span>
+
+    <p>One of the collection's most inexplicable stories gives mathematics education to a cat.</p>
+
+    <div class="passage teal">
+        <div class="jp-text jp">
+            <span class="hl-teal">数学教育に革命的な叡智を見せる「『聖ジェームス病院』を歌う猫」</span>
+        </div>
+        <div class="romaji">"Suugaku kyouiku ni kakumeiteki na eichi wo miseru 'Sei Jeemusu Byouin' wo utau neko.'"</div>
+        <div class="translation">"'The Cat Who Sings "St. James Infirmary,"' displaying revolutionary wisdom in mathematics education."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">数学</td><td class="reading">suugaku</td><td>mathematics</td></tr>
+        <tr><td class="word">教育</td><td class="reading">kyouiku</td><td>education</td></tr>
+        <tr><td class="word">革命的</td><td class="reading">kakumeiteki</td><td>revolutionary</td></tr>
+        <tr><td class="word">叡智</td><td class="reading">eichi</td><td>wisdom, sagacity (formal/literary)</td></tr>
+        <tr><td class="word">見せる</td><td class="reading">miseru</td><td>to show, to display</td></tr>
+    </table>
+
+    <div class="nuance teal-box">
+        <h5>What translation loses: The dignity of 叡智 applied to a cat</h5>
+        <p><strong>叡智 (eichi):</strong> "Wisdom, sagacity." This is a high, formal word, the kind used for philosophers, sages, and spiritual teachers. It is not 知識 (chishiki, knowledge) or 知恵 (chie, practical wisdom). It is 叡智: deep, almost sacred insight. When the promotional copy says the cat 見せる (displays) 革命的な叡智 (revolutionary wisdom) in mathematics education, the comedy arises from the collision of registers. A cat should not have 叡智. Mathematics education should not be revolutionized by a creature that licks its own paws. The grammar of 叡智を見せる makes the cat into a guru, a messiah of math. This is pure Tsutsui: he takes the most dignified vocabulary in the language and attaches it to the most ridiculous subject he can find. The effect is not merely funny. It is liberating. If a cat can have 叡智, then wisdom is not the property of humans. It can arrive from anywhere, wearing any form.</p>
+        <p><strong>革命的な (kakumeiteki na):</strong> "Revolutionary." This is political language. Revolutions change governments, overthrow systems, rewrite history. By calling the cat's wisdom 革命的, the copy makes mathematics education into a site of political struggle. The cat is not merely teaching math. It is overthrowing the old math. The adjective makes the story into a parable about how genius arrives from outside established institutions. The grammar of 革命的な叡智 turns a singing cat into a revolutionary cell.</p>
+        <p><strong>「聖ジェームス病院」を歌う ("Sei Jeemusu Byouin" wo utau):</strong> "Who sings 'St. James Infirmary.'" The title references the American blues/folk song "St. James Infirmary," a lament for the dead. That a cat sings this song while revolutionizing math education creates a layering of cultural references that is characteristic of Tsutsui's cosmopolitan sensibility. He grew up in postwar Osaka reading American SF and French literature. His fiction is full of imported references that have been Japanized until they become unrecognizable to their origins. The grammar of the title makes the cat into a blues singer, a math teacher, and a holy fool all at once.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Tempest: The Grammar of the Collection</h2>
+    <span class="story-label">Collection</span>
+
+    <p>The promotional copy's final description gives the book its weather system.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">疾風怒濤の全18編</span>
+        </div>
+        <div class="romaji">"Shippuu dotou no zen juuhachi hen."</div>
+        <div class="translation">"Eighteen stories like a tempest, like raging waves."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">疾風</td><td class="reading">shippuu</td><td>gale, strong wind</td></tr>
+        <tr><td class="word">怒濤</td><td class="reading">dotou</td><td>raging waves, surging billows</td></tr>
+        <tr><td class="word">全</td><td class="reading">zen</td><td>all, entire</td></tr>
+        <tr><td class="word">編</td><td class="reading">hen</td><td>piece, story, installment</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The four-character storm</h5>
+        <p><strong>疾風怒濤 (shippuu dotou):</strong> A four-character idiom (四字熟語, yojijukugo) meaning "gale and raging waves," used to describe a tempestuous, turbulent, unstoppable force. The idiom is built from two natural images: 疾風 (gale-force wind) and 怒濤 (angry waves). Together they create a picture of a storm at sea, wind and water in violent collaboration. When the promotional copy calls the eighteen stories 疾風怒濤の全18編, it is saying that reading this book is like being caught in a storm. The stories do not merely entertain. They overwhelm. The grammar of the yojijukugo makes the collection into a force of nature rather than a cultural product. This is appropriate for Tsutsui, whose prose has the velocity of wind and the destructive power of waves. The idiom also carries a note of classical dignity: yojijukugo are the compressed wisdom of Chinese literary tradition. By using one to describe slapstick comedy sketches, the copy performs the same register collision that Tsutsui performs in his fiction.</p>
+        <p><strong>全18編 (zen juuhachi hen):</strong> "All eighteen stories." The word 全 (all, entire) makes the storm comprehensive. It is not a few tempestuous stories and some calm ones. It is ALL eighteen. The grammar of totality (全) makes a promise to the reader: you will not find a quiet moment in this book. Every story is part of the storm. The word 編 (hen, piece/installment) is the standard counter for literary works, but it also means "to compile, to edit." There is a faint note of editorial control in 編: someone has arranged these eighteen storms into an order. Even chaos, Tsutsui suggests, can be curated.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of Chaos</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜に縛られた</strong> — Bound by (passive: the system acts on the individual)</li>
+        <li><strong>〜を極める</strong> — To carry to extremes (the grammar of escalation)</li>
+        <li><strong>〜を受け始める</strong> — To begin to receive/suffer (the grammar of process)</li>
+        <li><strong>〜を誓うのだが</strong> — Vows, but... (the grammar of foreshadowed failure)</li>
+        <li><strong>〜ばかり</strong> — Nothing but (the grammar of siege)</li>
+        <li><strong> causative verbs (〜させる)</strong> — To make [someone] feel (the grammar of grief as agency)</li>
+        <li><strong>〜の傑作</strong> — Masterpiece of (the grammar of genre elevation)</li>
+        <li><strong>四字熟語 (yojijukugo)</strong> — Four-character idioms (the grammar of compressed storm)</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>コント</strong> — Conte: the comedy sketch as narrative form</li>
+        <li><strong>夜</strong> — Night: the time of secrets and unconscious farce</li>
+        <li><strong>冬</strong> — Winter: the season of stripped-down madness</li>
+        <li><strong>鬱屈</strong> — Pent-up: anger that has become a medical condition</li>
+        <li><strong>不人気</strong> — Unpopular: the market's verdict as identity</li>
+        <li><strong>捉える</strong> — To capture: comedy as a trap set for emotion</li>
+        <li><strong>規li><strong>規則に縛られた</strong> — Bound by rules: the passive grammar of institutional bondage</li>
+        <li><strong>狂気</strong> — Madness: not a failure of reason but a different kind of perception</li>
+        <li><strong>苛烈を極め</strong> — Reached extremes of severity: the grammar of acceleration hitting its ceiling</li>
+        <li><strong>迫害</strong> — Persecution: the word that makes satire into warning</li>
+        <li><strong>全国で</strong> — Nationwide: the grammar of total systemic satire</li>
+        <li><strong>誓うのだが</strong> — Vows, but: the drumroll before the punchline</li>
+        <li><strong>最後の一人になるまで</strong> — Until he becomes the last one: victory as defeat</li>
+        <li><strong>スラップスティック</strong> — Slapstick: the international name for a Japanese rhythm</li>
+        <li><strong>傑作</strong> — Masterpiece: the claim that comedy can be as serious as tragedy</li>
+        <li><strong>夢の法廷</strong> — The court of dreams: the unconscious as municipal administration</li>
+        <li><strong>開廷する</strong> — To go into session: sleep as commute to a second job</li>
+        <li><strong>安眠を妨げる</strong> — To disturb peaceful sleep: bureaucratic compassion</li>
+        <li><strong>悲しませる</strong> — To make sad: the causative grammar of grief</li>
+        <li><strong>ばかり</strong> — Nothing but: the grammar of inescapable siege</li>
+        <li><strong>叡智</strong> — Wisdom: dignity applied to a cat</li>
+        <li><strong>革命的</strong> — Revolutionary: the adjective that overthrows institutions</li>
+        <li><strong>疾風怒濤</strong> — Gale and raging waves: the four-character storm</li>
+        <li><strong>全18編</strong> — All eighteen stories: the promise of comprehensive chaos</li>
+    </ul>
+
+    <h4>Tsutsui vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Twelve directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふる, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Tsutsui's are chaotic and accelerative (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui asks what happens when the world goes mad and the only sane response is to accelerate faster than the madness, to laugh at the rules until they break, to let the cat teach math and the smoker become a saint. Together these twelve writers map the full range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches and leaves the reader breathless, laughing, and somehow more awake than before.</p>
+</section>
+
+</main>
+
+</body>
+</html>

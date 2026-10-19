@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オリーブ — 吉永南央 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-olive: #9a9e5a;
+  --accent-olive-dim: #6e7140;
+  --accent-olive-glow: rgba(154, 158, 90, 0.12);
+  --accent-gold: #b8a46a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-olive-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-olive);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-olive-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-olive-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-olive);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-olive-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-olive), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-olive);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-olive-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-olive); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-olive-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-olive-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-olive);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-olive-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-olive);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-olive);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-olive);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-olive-dim), var(--accent-olive));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-olive);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-olive);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(154, 158, 90, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-olive);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-olive-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>オリーブ</h1>
+  <p class="hero-subtitle">OLIVE</p>
+  <p class="hero-meta">吉永南央 &middot; 文藝春秋 2010（単行本）/ 2012（文庫） &middot; サスペンス短編集</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & Stories</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: オリブ</h2>
+  <p class="lead">The title is a single word in katakana: <em>orību</em> (オリーブ), the Japanese rendering of "olive." Its simplicity is a trap. An olive tree is a plant of extraordinary symbolic density: in the West, it represents peace (the olive branch), longevity (trees live for millennia), and rootedness. In Japan, where olive cultivation began in Shodoshima in the early 20th century, it carries an additional layer of being an imported, cultivated thing — something domesticated but never fully native. Yoshinaga's genius is to make this foreign tree the emblem of her entire collection: each story is about something that appears to be one thing (a wife, a marriage, a sculpture, a family) but is revealed to have been imported, constructed, or never fully rooted in the first place.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">オリーブ</span>
+        <span class="romaji">orību</span>
+        <span class="meaning">"olive" — Written in katakana (オリーブ), marking it as a foreign loanword. The katakana rendering is significant: it signals that the olive is not indigenous to Japan, just as the deceptions in these stories are not natural growths but cultivated arrangements. The olive tree in the title story is purchased and brought home — a domestic addition that precedes a domestic dissolution. In Western tradition, the olive branch is the sign of peace after the flood (Genesis); in Greek myth, the olive was Athena's gift to Athens, symbolizing civilization itself. Yoshinaga compresses all of this into five katakana characters and then lets the stories unpack the irony: peace, longevity, and rootedness are exactly what her characters do not have.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The olive tree in the title story functions as a MacGuffin and a metaphor simultaneously. It is the last object the wife brings into the home before she disappears — a living thing that outlasts the relationship it was supposed to witness. The husband is left with the tree but not the wife, with the symbol but not the substance. The olive's hardiness (olive trees can survive drought, fire, and neglect) becomes a cruel commentary on the fragility of the marriage it was meant to ornament. What endures is not love but vegetation.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>吉永南央 &mdash; Yoshinaga Nao</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">吉</div>
+    <div class="author-name-block">
+      <h3>吉永南央</h3>
+      <p class="author-name-romaji">Yoshinaga Nao &middot; b. 1964 &middot; Saitama</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Yoshinaga Nao is a Japanese mystery novelist best known for the <em>Kouncho Coffee Shop Koyomi</em> (紅雲町珈琲屋こよみ) series, a long-running sequence of linked short stories featuring a 76-year-old amateur detective named Sugiura So (杉浦草), who runs a shop selling coffee beans and Japanese ceramics in the fictional town of Kouncho. Born in 1964 in Saitama Prefecture, Yoshinaga graduated from Gunma Prefectural Women's University with a degree in aesthetics and art history — a background that infuses her fiction with a refined attention to objects, spaces, and the stories they silently tell. She lives in Takasaki City, Gunma Prefecture, and her work is deeply rooted in the landscapes and social textures of provincial Japan.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1964</span>
+        <span>Born in Saitama Prefecture. Later graduates from Gunma Prefectural Women's University, Faculty of Letters, Department of Aesthetics and Art History.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2004</span>
+        <span>Wins the 43rd All Yomimono Mystery Novel New Writer Award for <em>Kouncho no Okusa</em> (紅雲町のお草), making her literary debut. The story introduces Sugiura So, the 76-year-old proprietress of "Kokuraya" (小蔵屋), a shop selling coffee beans and Japanese tableware.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2008</span>
+        <span>Publishes <em>Kouncho Monogatari</em> (紅雲町ものがたり), the first collected volume of the Kouncho series, marking her tankobon (hardcover) debut. The series was not originally planned; an editor fell in love with the elderly protagonist and persuaded Yoshinaga to continue.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Publishes <em>Olive</em> (オリーブ), a standalone collection of five suspense stories (three newly written) exploring "adult lies" — deceptions within intimate relationships. This is a departure from the gentle, community-centered Kouncho series into darker psychological territory.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2011</span>
+        <span>Publishes her first full-length novel, <em>Izanau Mori</em> (誘う森 / "Inviting Forest"), a mystery about a man who investigates the truth behind his wife's death a year earlier.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2012</span>
+        <span>Bunko edition of <em>Olive</em> published by Bungeishunju. The Kouncho series reaches cumulative sales of 300,000 copies.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2013</span>
+        <span>Publishes <em>Rantan Tomoru Madobe de</em> (ランタン灯る窓辺で / "By the Lantern-Lit Window"), a "loose apartment mystery" about a young man who becomes the landlord of a foreigner-only apartment building.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2015</span>
+        <span>The Kouncho series is adapted into an NHK special drama starring Tomi Taira (富司純子) as Sugiura So, bringing Yoshinaga's work to a national television audience.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span>Publishes <em>Toki no Niji</em> (時間の虹 / "Rainbow of Time"), the 12th and final volume of the Kouncho series — a shocking conclusion that closes the beloved series after 20 years.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>紅雲町珈琲屋こよみ シリーズ</h4>
+        <p class="char-role">Kouncho Coffee Shop Koyomi Series &middot; 2008-2024</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">12 volumes. A 76-year-old woman named Sugiura So solves small mysteries in her provincial town while running a shop selling coffee beans and Japanese ceramics. The series has sold over 800,000 copies cumulatively and was adapted into a 2015 NHK special drama. Yoshinaga's signature work.</p>
+      </div>
+      <div class="char-card">
+        <h4>誘う森</h4>
+        <p class="char-role">Izanau Mori / Inviting Forest &middot; 2011</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Yoshinaga's first full-length novel. A man investigates the truth behind his wife's death one year earlier, uncovering a hidden drama of love and hatred. Published by Tokyo Sogensha.</p>
+      </div>
+      <div class="char-card">
+        <h4>ランタン灯る窓辺で</h4>
+        <p class="char-role">Rantan Tomoru Madobe de / By the Lantern-Lit Window &middot; 2013</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A "loose apartment mystery" about a young man who becomes the landlord of a foreigner-only apartment building. Seven interconnected stories about displacement, community, and belonging.</p>
+      </div>
+      <div class="char-card">
+        <h4>蒼い翅</h4>
+        <p class="char-role">Aoi Tsubasa / Blue Wings &middot; 2016</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A mystery revolving around the works of a genius woodblock printmaker. Each chapter shifts narrator and motif, demonstrating Yoshinaga's skill at multi-perspective storytelling within a single narrative frame.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters & The Five Stories</h2>
+
+  <p class="lead"><em>Olive</em> is a collection of five suspense stories. Three are newly written for this volume; all revolve around the theme of "adult lies" — the deceptions people construct within intimate relationships, and the truths that emerge when those deceptions unravel. The common thread is <em>soushitsu</em> (喪失, loss) and <em>kizuna</em> (絆, bonds): what we lose when we discover that the person closest to us was never who we thought they were.</p>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>「オリーブ」&middot; "Olive"</h4>
+      <p class="char-role">The Vanished Wife & The Deceived Husband</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The title story. A wife disappears the day after buying an olive tree. As the husband traces her steps, he discovers that their marriage registration was never filed. She was never legally his wife. The olive tree remains — hardy, silent, and foreign — while the woman who bought it dissolves into pure question. The story asks: what is a marriage when its legal foundation was never laid? What is a wife who was never a wife?</p>
+    </div>
+    <div class="char-card">
+      <h4>「」&middot; The Hospitalized Husband's Wife</h4>
+      <p class="char-role">The Disloyal Caregiver</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A wife appears to be carrying on a relationship with her husband's old friend while her husband is hospitalized. The story probes the ambiguity of care: when does nursing become intimacy? When does gratitude to a helper become betrayal of the one being helped? Yoshinaga refuses easy moral judgment, letting the reader feel the wife's isolation and the friend's genuine kindness before the full picture emerges.</p>
+    </div>
+    <div class="char-card">
+      <h4>「」&middot; The Plagiarist Sculptor</h4>
+      <p class="char-role">The Art Thief in the Bedroom</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A man publishes his lover's sculpture as his own work. The story explores how intimacy enables theft: the closer you are to someone, the easier it is to take what is theirs. Art, desire, and possession intertwine as the lover discovers that her body and her work have both been claimed by a man who believes that love confers ownership.</p>
+    </div>
+    <div class="char-card">
+      <h4>「」&middot; The Missing Sister</h4>
+      <p class="char-role">Schizophrenia and Disappearance</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A sister with schizophrenia goes missing. The story navigates the painful territory of mental illness within families: the guilt, the exhaustion, the secret relief that sometimes accompanies disappearance. Yoshinaga treats the subject with the same precision she brings to art history — every object, every room, every gesture carries the weight of a family trying to survive what cannot be cured.</p>
+    </div>
+    <div class="char-card">
+      <h4>「欠けた月の夜に」&middot; "On the Night of the Waning Moon"</h4>
+      <p class="char-role">The Sudden Widow</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The final story, often cited as the collection's best. A woman with a gentle husband, a wise son, and good friends — seemingly happy — loses her husband to sudden death. The story follows her grief not as a single event but as a series of small realizations: that the life she thought was stable was always provisional, that happiness is not a contract but a weather pattern. The waning moon of the title is the perfect image: something beautiful that is already, visibly, in the process of disappearing.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Title Story: "Olive"</h3>
+    <p>A couple buys an olive tree. The next day, the wife is gone. The husband, trying to understand what happened, retraces their life together and discovers the first of many deceptions: their marriage was never registered. The paper that would have made her his wife in the eyes of the law was never filed. Everything else — their shared home, their routines, their history — was built on a foundation that did not exist.</p>
+    <p style="margin-top: var(--space-sm);">The husband's investigation becomes an archaeology of intimacy. Each layer he uncovers reveals not a monster but a person who made choices he cannot fully reconstruct. The wife was not evil; she was not even, perhaps, dishonest in the ways that matter most. She simply lived alongside him without ever fully joining her life to his. The olive tree, still growing in its pot, is the only witness that remains — and it cannot speak.</p>
+    <p style="margin-top: var(--space-sm);">The story's power lies in its refusal of thriller conventions. There is no chase, no confrontation, no revelation that explains everything. There is only the slow recognition that the person you sleep beside may inhabit a completely different understanding of your shared life. The olive tree becomes the symbol of this gap: it was meant to root them, to grow with them, to bear witness to their years together. Instead it outlasts the marriage it was purchased to commemorate — a living thing that survives the lie that brought it home.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Collection as a Whole</h3>
+    <p>Across all five stories, Yoshinaga explores what she calls "adult lies" (大人の嘘): not the lies of children, which are impulsive and easily confessed, but the lies of adults, which are constructed, maintained, and often half-believed by the liars themselves. These are not crimes in the legal sense (though some skirt close). They are emotional deceptions: marriages that were never real, artworks that were never original, families that were never whole, care that was never selfless.</p>
+    <p style="margin-top: var(--space-sm);">What distinguishes Yoshinaga's treatment is her compassion. She does not expose these lies to punish her characters; she exposes them because they are the truth of how people live. Every story ends with a revelation, but the revelation is never merely shocking — it is always, in retrospect, inevitable. The reader sees not "what a twist" but "of course." This is the mark of a master: the surprise that feels, on reflection, like recognition.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>The lie at the center:</strong> Every story contains a foundational deception — a marriage unregistered, a sculpture stolen, a relationship concealed, a disappearance unexplained. These are not peripheral secrets; they are the load-bearing walls of the characters' lives. When the lie is exposed, the entire structure shakes.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Objects as witnesses:</strong> Following her art history training, Yoshinaga uses objects with extraordinary precision. The olive tree, a polished faucet, a ceramic bowl — these are not decorative details but silent witnesses to human deception. They outlast the emotions they were purchased to express.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The gap between legal and emotional truth:</strong> The unfiled marriage registration in the title story is the perfect symbol. The couple lived as married; they were not married. Which is the deeper truth — the emotional reality or the legal absence? Yoshinaga refuses to choose, letting both truths coexist in painful equilibrium.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Misunderstanding as the human condition:</strong> In every story, characters misunderstand each other not through malice but through the ordinary limitations of perspective. We cannot know what others are thinking; we can only interpret. Yoshinaga's fiction suggests that most emotional disasters begin not with cruelty but with the simple fact that no one can read another person's mind.</li>
+      <li><strong>The persistence of bonds after loss:</strong> Despite the collection's darkness, it is not nihilistic. Even when a bond is revealed to have been based on deception, the grief is real. The husband in "Olive" mourns a wife who was never his wife; the widow in the final story mourns a happiness she now questions. The bond may have been illusory, but the loss is not. This is Yoshinaga's deepest insight: we grieve not what was but what we believed was — and that grief is no less valid for being based on a misunderstanding.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture Yoshinaga's characteristic precision: the way she uses domestic detail to carry emotional weight, and her belief that small actions — cleaning, polishing, planting — can be forms of survival.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Promotional Hook</div>
+    <div class="passage-jp">
+      オリーブの木を買ってきた翌日、突然、消えた妻。
+    </div>
+    <div class="passage-romaji">
+      Orību no ki wo katte kita yokujitsu, totsuzen, kieta tsuma.
+    </div>
+    <div class="passage-en">
+      "The day after they bought the olive tree, his wife suddenly vanished."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's promotional tagline, and it functions as a prose poem. The sentence is grammatically minimal: no subject is named, no emotion is described. <em>Katte kita</em> (買ってきた, "bought and brought home") uses the subsidiary-motion construction <em>te-kuru</em> (てくる), which implies movement toward the speaker's location — the tree was not merely purchased; it was brought into the domestic sphere. <em>Yokujitsu</em> (翌日, "the next day") is a formal, almost journalistic word — it creates temporal precision and emotional distance simultaneously. <em>Totsuzen</em> (突然, "suddenly") is the only emotional marker in the sentence, and it is an adverb, not a feeling. The wife does not "leave"; she <em>kieru</em> (消える, "vanishes / disappears"), an intransitive verb that removes agency — we do not know if she fled, was taken, or simply ceased to be present. The sentence's chill is in what it refuses to explain.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Legal Absence</div>
+    <div class="passage-jp">
+      跡を辿ろうとする夫は、2人の婚姻届すら提出されていなかった事実を知る。
+    </div>
+    <div class="passage-romaji">
+      Ato wo tadorou to suru otto wa, futari no kon'in todori sura teishutsu sarete inakatta jijitsu wo shiru.
+    </div>
+    <div class="passage-en">
+      "The husband, attempting to trace her steps, learns the fact that not even their marriage registration had been filed."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Ato wo tadoru</em> (跡を辿る, "to trace footsteps / follow a trail") is a detective-novel verb, and its appearance here signals a genre shift: this is not merely a relationship story but an investigation. <em>Tadorou to suru</em> (辿ろうとする) uses the volitional + <em>to suru</em> construction, indicating attempt rather than success — he tries to follow her trail but cannot fully reconstruct it. <em>Kon'in todori</em> (婚姻届, "marriage registration") is the document that legally creates a marriage in Japan; without it, a couple may live as married but have no legal standing. The particle <em>sura</em> (すら, "even / not even") is devastating here: it means "not even the marriage registration," implying that if the most basic legal document was never filed, what else might be false? The passive-negative-past <em>teishutsu sarete inakatta</em> (提出されていなかった, "had not been submitted") removes all agency — we do not know who failed to file it, only that the filing never happened. The sentence's emotional weight is carried entirely by grammar.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Cleaning as Survival</div>
+    <div class="passage-jp">
+      理都は落ち込んだ時に、部屋の掃除をする。鏡や蛇口を磨き上げたりすると、前向きな気持ちにスイッチが入るからだ。夢中になれる時間と、小さな達成感が、勢いを失いかけた時の助けになる。
+    </div>
+    <div class="passage-romaji">
+      Rito wa ochikonda toki ni, heya no souji wo suru. Kagami ya jaguchi wo migaki agetari suru to, maemukina kimochi ni suicchi ga hairu kara da. Muchuu ni nareru jikan to, chiisana tasseikan ga, ikioi wo ushinaikaketa toki no tasuke ni naru.
+    </div>
+    <div class="passage-en">
+      "When Rito felt down, she cleaned her room. Polishing mirrors and faucets turned on a switch to a positive mindset. Time you could lose yourself in, and small accomplishments, helped when you were losing momentum."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage, from a reviewer's quotation of the text, encapsulates Yoshinaga's philosophy of small survivals. <em>Ochikomu</em> (落ち込む, "to feel down / be depressed") is a gentle, everyday word — not clinical depression but the ordinary sadness of life. The response is not therapy or confession but <em>souji</em> (掃除, "cleaning"): the most domestic of actions. <em>Migaki ageru</em> (磨き上げる, "to polish until shiny") is a compound verb emphasizing completion and shine — the mirror does not merely get cleaned; it achieves a reflective perfection. <em>Suicchi ga hairu</em> (スイッチが入る, "a switch turns on") is a mechanical metaphor for emotional recovery: not a gradual healing but a sudden activation. The final sentence is the key: <em>muchuu ni nareru jikan</em> (夢中になれる時間, "time you can lose yourself in") and <em>chiisana tasseikan</em> (小さな達成感, "small sense of accomplishment") are Yoshinaga's prescription for despair. Not grand meaning, not dramatic change — just absorption and modest completion. The grammar is simple (mostly N5-N4), but the emotional wisdom is advanced.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Nature of Adult Lies</div>
+    <div class="passage-jp">
+      彼女は一体何者だったのか？そして、彼女の目的とは？
+    </div>
+    <div class="passage-romaji">
+      Kanojo wa ittai nanimono datta no ka? Soshite, kanojo no mokuteki to wa?
+    </div>
+    <div class="passage-en">
+      "What in the world was she? And what was her purpose?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">These are the questions that drive the title story, rendered in the promotional copy as pure interrogative force. <em>Ittai</em> (一体) is an emphatic question marker that expresses bewilderment, frustration, and demand — "what in the world / what on earth." <em>Nanimono</em> (何者, "what person / what sort of person") is stronger than <em>dare</em> (誰, "who"): it asks not merely for identity but for category, essence, type. The second question uses <em>mokuteki</em> (目的, "purpose / objective") — a cold, goal-oriented word that reframes a marriage as a mission. The questions are brutal in their simplicity: the husband is not asking "why did she leave?" (which would imply she was real and chose to go) but "what was she?" (which implies she may never have been what she appeared). The grammar is elementary; the existential crisis is total.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, synopsis, and thematic context, organized by theme.</p>
+
+  <div class="card">
+    <h3>Deception & Discovery</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>嘘</td><td>uso</td><td class="pos">noun</td><td>lie, falsehood</td></tr>
+        <tr><td>大人の嘘</td><td>otona no uso</td><td class="pos">phrase</td><td>adult lies (constructed, maintained deceptions)</td></tr>
+        <tr><td>消える</td><td>kieru</td><td class="pos">verb</td><td>to disappear, vanish (intransitive)</td></tr>
+        <tr><td>跡を辿る</td><td>ato wo tadoru</td><td class="pos">verb</td><td>to trace footsteps, follow a trail</td></tr>
+        <tr><td>事実</td><td>jijitsu</td><td class="pos">noun</td><td>fact, truth</td></tr>
+        <tr><td>判明する</td><td>hanmei suru</td><td class="pos">verb</td><td>to become clear, be established (as fact)</td></tr>
+        <tr><td>誤解</td><td>gokai</td><td class="pos">noun</td><td>misunderstanding, misinterpretation</td></tr>
+        <tr><td>真実</td><td>shinjitsu</td><td class="pos">noun</td><td>truth, reality</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Marriage & Legal Bonds</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>婚姻届</td><td>kon'in todori</td><td class="pos">noun</td><td>marriage registration (document)</td></tr>
+        <tr><td>提出する</td><td>teishutsu suru</td><td class="pos">verb</td><td>to submit (a document)</td></tr>
+        <tr><td>妻</td><td>tsuma</td><td class="pos">noun</td><td>wife</td></tr>
+        <tr><td>夫</td><td>otto</td><td class="pos">noun</td><td>husband</td></tr>
+        <tr><td>絆</td><td>kizuna</td><td class="pos">noun</td><td>bond, tie, connection</td></tr>
+        <tr><td>喪失</td><td>soushitsu</td><td class="pos">noun</td><td>loss, bereavement</td></tr>
+        <tr><td>婚約者</td><td>kon'yakusha</td><td class="pos">noun</td><td>fiancé, fiancée</td></tr>
+        <tr><td>恋人</td><td>koibito</td><td class="pos">noun</td><td>lover, sweetheart</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Domestic Survival</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>掃除</td><td>souji</td><td class="pos">noun</td><td>cleaning, housework</td></tr>
+        <tr><td>磨き上げる</td><td>migaki ageru</td><td class="pos">verb</td><td>to polish to a shine</td></tr>
+        <tr><td>鏡</td><td>kagami</td><td class="pos">noun</td><td>mirror</td></tr>
+        <tr><td>蛇口</td><td>jaguchi</td><td class="pos">noun</td><td>faucet, tap</td></tr>
+        <tr><td>前向き</td><td>maemuki</td><td class="pos">adjective</td><td>positive, forward-looking</td></tr>
+        <tr><td>達成感</td><td>tasseikan</td><td class="pos">noun</td><td>sense of accomplishment</td></tr>
+        <tr><td>夢中</td><td>muchuu</td><td class="pos">noun</td><td>absorption, being lost in something</td></tr>
+        <tr><td>勢い</td><td>ikioi</td><td class="pos">noun</td><td>momentum, impetus, energy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Suspense & Psychology</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>サスペンス</td><td>sasupensu</td><td class="pos">noun</td><td>suspense</td></tr>
+        <tr><td>目的</td><td>mokuteki</td><td class="pos">noun</td><td>purpose, objective, aim</td></tr>
+        <tr><td>何者</td><td>nanimono</td><td class="pos">noun</td><td>what person, what sort of person</td></tr>
+        <tr><td>突然</td><td>totsuzen</td><td class="pos">adverb</td><td>suddenly, unexpectedly</td></tr>
+        <tr><td>翌日</td><td>yokujitsu</td><td class="pos">noun</td><td>the next day, the following day</td></tr>
+        <tr><td>短編</td><td>tanpen</td><td class="pos">noun</td><td>short story</td></tr>
+        <tr><td>ラスト</td><td>rasuto</td><td class="pos">noun</td><td>ending, finale</td></tr>
+        <tr><td>心裏</td><td>shinri</td><td class="pos">noun</td><td>psychology, inner mind</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Yoshinaga's prose in <em>Olive</em> appears simple, but it relies on Japanese legal concepts, domestic vocabulary, and the emotional weight of specific social rituals that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Kon'in Todori</em> (婚姻届) as the Absence That Defines</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>婚姻届</strong>すら提出されていなかった</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"not even their marriage registration had been filed"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English "marriage registration" sounds bureaucratic but misses the cultural centrality of the <em>kon'in todori</em> in Japanese family law. In Japan, a marriage is not created by ceremony or cohabitation but by the submission of this document to city hall. The <em>kon'in todori</em> is the moment of legal creation; without it, there is no marriage regardless of how long a couple has lived together or how many children they have. The English "registration" suggests a formality; the Japanese <em>kon'in todori</em> is the marriage itself in the eyes of the state. When Yoshinaga reveals that this document was never filed, she is not saying "they forgot paperwork" — she is saying "the marriage never legally existed." The shock is cosmic, not administrative, and the English translation cannot fully convey this because Anglo-American common-law traditions recognize common-law marriage in ways Japanese civil law does not.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Otona no Uso</em> (大人の嘘) as a Category of Deception</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「<strong>大人の嘘</strong>」をモチーフにしたサスペンス作品集</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"a suspense collection with 'adult lies' as its motif"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Otona no uso</em> (大人の嘘) is not merely "lies told by adults." It is a recognized Japanese concept distinguishing the deceptions of maturity from the impulsive fibs of childhood. An <em>otona no uso</em> is strategic, maintained, and often partially believed by the liar. It is the lie you tell to preserve a relationship, to protect someone's feelings, to maintain a social facade — the lie that becomes indistinguishable from the life it sustains. The English "adult lies" sounds like a description of content (lies about adult topics) rather than a category of deception (lies characteristic of adult psychology). What is lost is the recognition that these lies are not aberrations but features of mature social life — the necessary fictions that allow coexistence.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kieru</em> (消える) as Vanishing Without Agency</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>突然、<strong>消えた</strong>妻</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"his wife suddenly vanished"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kieru</em> (消える) is an intransitive verb meaning "to disappear, vanish, fade away." It is the verb used for mist clearing, for lights going out, for memories fading. It contains no agent — the subject is not leaving; existence is simply withdrawing. The English "vanished" captures this reasonably well, but what the Japanese adds is the cultural resonance of <em>kieru</em> in mystery fiction. From Edogawa Ranpo to Miyabe Miyuki, <em>kieru</em> is the quintessential verb of Japanese disappearance narratives. It carries a sense of the uncanny, the unexplained, the possibly supernatural. The wife does not "run away" (逃げる, <em>nigeru</em>) or "leave" (去る, <em>saru</em>) or "abandon" (見捨てる, <em>misuteru</em>). She <em>kieru</em>s — and that grammatical choice makes her disappearance feel less like a decision and more like a phenomenon.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kizuna</em> (絆) as Bond, Not Bondage</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「喪失」と「<strong>絆</strong>」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"'loss' and 'bonds'"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kizuna</em> (絆) is one of the most emotionally loaded words in contemporary Japanese. Originally meaning "bonds that tie" (from the verb <em>kizuna</em>, to bind), it became a post-3/11 national keyword — the word used to describe the connections that held communities together after the tsunami. In Yoshinaga's usage, it carries this full weight: not merely "relationships" or "connections" but the deep, often unchosen bonds that define a life. The English "bonds" is accurate but thin. <em>Kizuna</em> implies obligation, history, and emotional necessity. It is the bond that persists even when the relationship it describes has been revealed as false — which is exactly Yoshinaga's subject. The collection asks: if a bond was based on a lie, was it still a <em>kizuna</em>? Her answer is yes.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Migaki Ageru</em> (磨き上げる) as Emotional Labor</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>鏡や蛇口を<strong>磨き上げたり</strong>する</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"polishing mirrors and faucets until they shine"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Migaki ageru</em> (磨き上げる) is a compound verb: <em>migaku</em> (磨く, to polish) + <em>ageru</em> (上げ, to raise / complete). The <em>ageru</em> suffix implies finishing, perfecting, bringing to a state of completion. It is the verb used for polishing silver, for buffing a car, for preparing a surface until it reflects perfectly. In Yoshinaga's hands, this domestic action becomes a form of emotional self-regulation. The English "polishing" is accurate but misses the upward completion encoded in <em>ageru</em> — the sense that the act is not merely maintenance but elevation. When Rito polishes the faucet, she is not just cleaning; she is restoring shine to a world that has dulled. The grammar of the verb enacts the psychology of the action.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, synopsis, and key passages, useful for intermediate to advanced learners.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくる（持ち帰り動作）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Te-kuru</em>: "to do ~ and come (here)" — subsidiary-motion construction indicating action performed elsewhere and brought toward the speaker's location.</p>
+      <div class="grammar-example">オリーブの木を買ってきた</div>
+      <p class="grammar-example-en">"bought an olive tree and brought it home" — The <em>te-kuru</em> emphasizes that the tree was not merely purchased; it was brought into the domestic sphere, making its presence in the home narratively significant.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜すら〜ない（極端例示）</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>Sura ~ nai</em>: "not even ~" — emphasizes the extremity of absence by citing the minimum expected thing that was missing.</p>
+      <div class="grammar-example">婚姻届すら提出されていなかった</div>
+      <p class="grammar-example-en">"not even the marriage registration had been filed" — <em>Sura</em> is stronger than <em>mo</em> (も) in this context; it implies that if the most basic document was absent, everything else is questionable.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ようとする（試行）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>You to suru</em>: "to try to ~ / to attempt to ~" — volitional form + <em>to suru</em> indicates attempt or intention.</p>
+      <div class="grammar-example">跡を辿ろうとする夫</div>
+      <p class="grammar-example-en">"the husband who tries to trace her steps" — The construction implies effort toward a goal that may not be achievable; he attempts to follow but may never fully reconstruct her trail.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜されていなかった（受身形・過去否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Sarete inakatta</em>: passive-negative-past — "had not been ~ed" — removes agency, describing a state of non-completion without naming who failed to act.</p>
+      <div class="grammar-example">提出されていなかった</div>
+      <p class="grammar-example-en">"had not been submitted" — The passive construction is crucial: we learn that the filing never happened, but not who was responsible. Agency is deliberately obscured.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たりする（並列・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Tari suru</em>: "to do things like ~" — lists representative actions, suggesting a pattern rather than an exhaustive account.</p>
+      <div class="grammar-example">鏡や蛇口を磨き上げたりする</div>
+      <p class="grammar-example-en">"polishing mirrors and faucets (among other things)" — The <em>tari</em> form implies this is representative behavior, one item in a repertoire of small domestic survivals.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と、〜（条件・発見）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>To, ~</em>: "when ~, (then) ~" — conditional pattern where the first clause triggers a discovery or automatic result in the second.</p>
+      <div class="grammar-example">磨き上げたりすると、前向きな気持ちにスイッチが入る</div>
+      <p class="grammar-example-en">"when she polishes them, a switch flips to a positive mindset" — The <em>to</em> conditional presents the emotional shift as an automatic, reliable consequence of the physical action.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜かける（開始・未完了）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Kakeru</em>: "to be on the verge of ~ / to begin to ~ without completing" — indicates an action in its initial, incomplete stage.</p>
+      <div class="grammar-example">勢いを失いかけた時</div>
+      <p class="grammar-example-en">"when one is on the verge of losing momentum" — <em>Ushinaikaketa</em> (失いかけた) captures the precarious moment before collapse, not the collapse itself. The grammar mirrors the emotional state it describes.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のか？（疑問・感慨）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>No ka?</em>: question with explanatory <em>no</em> — seeks not just information but understanding; often carries emotional weight.</p>
+      <div class="grammar-example">彼女は一体何者だったのか？</div>
+      <p class="grammar-example-en">"What in the world was she?" — The <em>no ka</em> construction turns the question into an existential cry, not merely a request for identification but a demand for ontological clarity.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Yoshinaga Nao's grammar in <em>Olive</em> is accessible (mostly N5-N4 with some N2 patterns) but emotionally precise. Pay attention to how passive constructions remove agency, how <em>sura</em> intensifies absence, and how <em>te-kuru</em> encodes spatial and emotional movement. Her sentences do not dazzle with complexity; they achieve their effects through the careful placement of ordinary grammatical tools. This is the craft of a writer who trusts that grammar itself can carry grief.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">オリーブ &middot; 吉永南央 &middot; 文藝春秋 2010（単行本）/ 2012（文春文庫）</p>
+</footer>
+
+</div>
+</body>
+</html>

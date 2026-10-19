@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please Understand — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --warm: #6b5a4a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--warm);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(90,74,58,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.warm::before {
+            background: var(--warm);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.warm-box {
+            background: color-mix(in oklab, var(--warm) 8%, var(--surface));
+            border-left-color: var(--warm);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.warm-box h5 {
+            color: var(--warm);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-warm {
+            background: color-mix(in oklab, var(--warm) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--warm) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--warm) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #6b5a4a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Please Understand<br><span style="font-size:0.6em; font-weight:300;">わかって下さい</span></h1>
+    <div class="subtitle">A Japanese lesson through Fujita Yoshinaga's gentle stories of love, memory, and the autumn of life</div>
+    <div class="meta">Six stories &middot; Six men in their sixties &middot; The love they thought they had forgotten</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, reviews, and the known stylistic characteristics of Fujita Yoshinaga's prose. They are designed to teach the vocabulary, grammar, and literary context of <em>Wakatte Kudasai</em> accurately. The book was published by Shinchosha in March 2018 and consists of six interconnected stories about men in the autumn of their lives.
+</div>
+
+<p class="intro">
+    Published in March 2018 by Shinchosha, <em>Wakatte Kudasai</em> is a collection of six short stories by Fujita Yoshinaga (1950-2020), winner of the Naoki Prize for <em>Ai no Ryobun</em> (2001) and the Yoshikawa Eiji Prize for <em>Ooyuki Monogatari</em> (2017). The title is taken from a hit song by Inaba Akira, a ballad of longing and apology that gives the book its emotional key. Where Fujita's early career was built on noir-tinged mysteries and adventure novels set in France, his late work turned inward, toward the quiet dramas of men who have retired, whose children have grown, whose marriages have settled into comfortable silence, and who suddenly discover that the capacity for love, jealousy, and wonder has not aged at all. The prose is understated, warm, and precise. It does not shout. It waits. And then, gradually, it overwhelms you. This is the grammar of late-life emotion: not the explosion of youth but the slow accumulation of feeling that has nowhere else to go.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of a Plea</h2>
+    <span class="story-label">Title Story</span>
+
+    <p>The title itself is a complete emotional system. わかって下さい is not a demand. It is a plea.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">涙で頰が濡れていたら、この手の温もりを感じたら、わかって下さい</span>
+        </div>
+        <div class="romaji">"Namida de hoho ga nurete itara, kono te no nukumori wo kanjitara, wakatte kudasai."</div>
+        <div class="translation">"If your cheeks are wet with tears, if you feel the warmth of this hand, please understand."</div>
+        <div class="source">— Promotional copy / thematic statement</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">涙</td><td class="reading">namida</td><td>tears</td></tr>
+        <tr><td class="word">頰</td><td class="reading">hoho</td><td>cheek (literary/poetic)</td></tr>
+        <tr><td class="word">濡れる</td><td class="reading">nureru</td><td>to be wet, to be moistened</td></tr>
+        <tr><td class="word">温もり</td><td class="reading">nukumori</td><td>warmth (of a living body, not temperature)</td></tr>
+        <tr><td class="word">感じる</td><td class="reading">kanjiru</td><td>to feel, to sense</td></tr>
+        <tr><td class="word">わかる</td><td class="reading">wakaru</td><td>to understand, to comprehend</td></tr>
+        <tr><td class="word">下さい</td><td class="reading">kudasai</td><td>please (humble request form)</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The humility of わかって下さい</h5>
+        <p><strong>わかって下さい (wakatte kudasai):</strong> The grammar is a te-form + 下さい, the standard pattern for polite requests. But the emotional weight is in what is not said. The speaker is not saying "I want you to understand me." They are saying "please, if you can, understand." The 下さい makes the request humble, almost apologetic. It is the voice of someone who knows they are asking for something that may be impossible. The phrase is also the title of a famous ballad by Inaba Akira, a song about a man who has hurt someone he loves and is begging for forgiveness. By using this as his title, Fujita signals that his book is about the same territory: not the beginning of love but its aftermath, the long echo of something that was never fully resolved.</p>
+        <p><strong>温もり (nukumori):</strong> This is not 温度 (ondo, temperature). It is not 熱 (netsu, heat). It is 温もり: the warmth of a living body, of skin, of a hand that has been held. The word is intimate and slightly old-fashioned. It is the warmth you feel when someone touches your cheek, not the warmth of a room. When the promotional copy says この手のもりを感じたら、わかって下さい, it is invoking a physical memory that bypasses language. You do not explain this warmth. You either remember it or you do not. The grammar of conditional + わかって下さい ("if you feel this, please understand") makes understanding conditional on physical sensation, not on explanation. This is the book's method: it trusts the body to remember what the mind has buried.</p>
+        <p><strong>頰 (hoho):</strong> Not 頬 (also hoho, the more common character for cheek), but the variant 頰. The choice of the less common character gives the word a literary, slightly nostalgic quality. It is the cheek of poetry, not of casual speech. The word makes the tears feel less like crying and more like the natural moisture of a face that has lived a long time.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Retired Man: The Grammar of Unremarkable Days</h2>
+    <span class="story-label">わかって下さい</span>
+
+    <p>The title story's protagonist, Hirama Sosuke, is a retired paper company employee whose days have settled into a comfortable emptiness. The prose that describes his life is a study in the grammar of diminishment.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            平間聡介は製紙会社を定年退職後、子会社に勤めて六十五歳で仕事をやめた。<span class="hl">不満もないが充実もない日々</span>を送っていた
+        </div>
+        <div class="romaji">"Hirama Sosuke wa seishi-gaisha wo teinen taishoku go, kosha ni tsutomete rokujuugo-sai de shigoto wo yameta. Fuman mo nai ga juujitsu mo nai hibi wo okutte ita."</div>
+        <div class="translation">"Hirama Sosuke had retired from the paper company, worked at a subsidiary, and stopped working at sixty-five. He was passing days in which there was neither dissatisfaction nor fulfillment."</div>
+        <div class="source">— "Wakatte Kudasai" (title story)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">製紙会社</td><td class="reading">seishi-gaisha</td><td>paper manufacturing company</td></tr>
+        <tr><td class="word">定年退職</td><td class="reading">teinen taishoku</td><td>mandatory retirement</td></tr>
+        <tr><td class="word">子会社</td><td class="reading">kosha</td><td>subsidiary company</td></tr>
+        <tr><td class="word">不満</td><td class="reading">fuman</td><td>dissatisfaction, discontent</td></tr>
+        <tr><td class="word">充実</td><td class="reading">juujitsu</td><td>fulfillment, enrichment, substance</td></tr>
+        <tr><td class="word">日々</td><td class="reading">hibi</td><td>days, everyday life</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of the middle</h5>
+        <p><strong>不満もないが充実もない (fuman mo nai ga juujitsu mo nai):</strong> "Neither dissatisfied nor fulfilled." The grammar is a paired negative with a conjunctive が. The structure places the protagonist's life in the exact middle of the emotional spectrum. He is not unhappy enough to change anything. He is not happy enough to celebrate anything. The grammar of も...も (neither...nor) is standard, but the choice of words is precise. 不満 is a mild word for dissatisfaction. 充実 is a strong word for fulfillment. The asymmetry is the point: his lack of dissatisfaction is weaker than his lack of fulfillment. He is not merely in the middle. He is drifting slightly downward. The phrase is the emotional signature of an entire generation of Japanese salarymen who gave their lives to companies and received, in return, a retirement in which nothing was wrong and nothing was right.</p>
+        <p><strong>日々を送っていた (hibi wo okutte ita):</strong> "Was passing/spending days." 送る in this context means "to spend time," but the word also means "to send away, to see off." There is a faint note of loss in 日々を送る: the days are being sent away, one by one, without being fully lived. The past progressive 送っていた makes this into a continuous state, not an event. He did not have a bad day. He had been having unremarkable days for years.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Accidental Reunion: The Grammar of Recognition</h2>
+    <span class="story-label">わかって下さい</span>
+
+    <p>The story's central event is simple: at a concert of old folk songs, Sosuke finds himself sitting next to a woman he has not seen in forty years. The moment of recognition is rendered with extraordinary restraint.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            娘のプレゼントで出かけた「青春のフォークソング」というコンサートで、<span class="hl-warm">かつての恋人、美奈子と隣り合わせの席になる</span>
+        </div>
+        <div class="romaji">"Musume no purezento de dekaketa 'seishun no fooku songu' to iu konsaato de, katsute no koibito, Minako to tonariawase no seki ni naru."</div>
+        <div class="translation">"At a concert called 'Youth Folk Songs' that he had gone to thanks to his daughter's gift, he ended up in the seat next to his former lover, Minako."</div>
+        <div class="source">— "Wakatte Kudasai" (title story)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">かつて</td><td class="reading">katsute</td><td>once, formerly, in the past</td></tr>
+        <tr><td class="word">恋人</td><td class="reading">koibito</td><td>lover, sweetheart</td></tr>
+        <tr><td class="word">隣り合わせ</td><td class="reading">tonariawase</td><td>adjacent, next to each other</td></tr>
+        <tr><td class="word">席</td><td class="reading">seki</td><td>seat</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The casualness of fate</h5>
+        <p><strong>かつての恋人 (katsute no koibito):</strong> "Former lover." かつて is a literary adverb meaning "once, formerly." It carries a note of distance, of something that belongs to a previous era of one's life. The phrase かつての恋人 is how Japanese people refer to someone they once loved deeply but no longer do, not because the love died but because time passed. The grammar makes the lover into a category: not "Minako" but "the former lover Minako." The categorization is a defense. If he calls her かつての恋人, he does not have to call her by the name that still hurts.</p>
+        <p><strong>隣り合わせの席になる (tonariawase no seki ni naru):</strong> "To end up in adjacent seats." The grammar is deceptively casual. になる means "to become, to end up as." It is the grammar of accidents, of things that happen without intention. He did not seek her out. He did not arrange to meet her. He "ended up" next to her. The word 隣り合わせ (adjacent, next to each other) contains 隣 (tonari, next door) and 合わせ (awase, joined together). The seats are joined. The people in them are not. The grammar makes the physical proximity into a kind of cruelty: they are close enough to touch, but forty years stand between them.</p>
+        <p><strong>娘のプレゼントで (musume no purezento de):</strong> "Thanks to his daughter's gift." The instrumental で makes the daughter's gift into the cause of the reunion. Without the daughter, he would not have gone. Without the gift, he would not have been there. The grammar of causation is gentle: it was a kindness that led to pain. This is the book's worldview in miniature: the things we do for love of our families sometimes lead us back to the people we loved before our families existed.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Blind Woman: The Grammar of What Cannot Be Seen</h2>
+    <span class="story-label">わかって下さい</span>
+
+    <p>The story's emotional center is the revelation that Minako has gone blind. Sosuke does not announce himself. He gives a false name. The grammar of this deception is the grammar of love that has learned to hide.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">盲目になっていた美奈子に平間は偽名を名乗り、話しかける</span>
+        </div>
+        <div class="romaji">"Moumoku ni natte ita Minako ni Hirama wa gimyou wo nanori, hanashikakeru."</div>
+        <div class="translation">"To Minako, who had gone blind, Hirama gave a false name and spoke to her."</div>
+        <div class="source">— "Wakatte Kudasai" (title story)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">盲目</td><td class="reading">moumoku</td><td>blindness</td></tr>
+        <tr><td class="word">偽名</td><td class="reading">gimyou</td><td>false name, pseudonym</td></tr>
+        <tr><td class="word">名乗る</td><td class="reading">nanoru</td><td>to introduce oneself, to give one's name</td></tr>
+        <tr><td class="word">話しかける</td><td class="reading">hanashikakeru</td><td>to speak to, to address, to strike up conversation</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The ethics of the false name</h5>
+        <p><strong>偽名を名乗り (gimyou wo nanori):</strong> "Giving a false name." 名乗る is the verb for introducing oneself formally. It is what you do when you meet someone for the first time. By using 名乗る with 偽名, Fujita creates a paradox: Sosuke is performing the ritual of introduction while concealing the one thing that matters. The grammar of the te-form 名乗り connects the false introduction to what follows: 話しかける (he speaks to her). He does not simply give a false name and stop. He uses the false name as a bridge back into her life. The cruelty and tenderness are inseparable. If he tells her who he is, he risks hurting her or himself. If he says nothing, he loses her again. The false name is the compromise of a man who has spent forty years learning to compromise.</p>
+        <p><strong>盲目になっていた (moumoku ni natte ita):</strong> "Had gone blind." The past progressive なっていた makes the blindness into a completed state that has persisted over time. She did not just become blind. She has been blind. The grammar makes her condition permanent and ongoing. Sosuke cannot see what she looks like now. She cannot see what he looks like now. They are equals in their mutual blindness, but his is chosen and hers is not. The word 盲目 carries a literary weight that 目が見えない (the modern, more considerate phrase for blindness) does not. Fujita uses 盲目 because he is writing about a condition that is not merely medical but existential: she lives in a world where faces are only voices, where recognition must happen through words alone.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The White Rhododendron: The Grammar of Stepfamily</h2>
+    <span class="story-label">白いシャクナゲ</span>
+
+    <p>The second story, "Shiroi Shakunage" (The White Rhododendron), explores a different kind of love: the love between a stepfather and the daughter he raised but did not father.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            資産家の菅野は二十四年前、子連れの女性と結婚したが、妻は早くに亡くなり、<span class="hl">血縁のない娘、可南子と二人で暮らしてきた</span>
+        </div>
+        <div class="romaji">"Shisanka no Kanno wa nijuuyon-nen mae, kokzure no josei to kekkon shita ga, tsuma wa hayaku ni nakunari, ketsuen no nai musume, Kanako to futari de kurashite kita."</div>
+        <div class="translation">"Kanno, a man of means, had married a woman with a child twenty-four years ago, but his wife had died early, and he had lived with Kanako, a daughter not of his blood, just the two of them."</div>
+        <div class="source">— "Shiroi Shakunage" (The White Rhododendron)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">資産家</td><td class="reading">shisanka</td><td>wealthy person, man of means</td></tr>
+        <tr><td class="word">子連れ</td><td class="reading">kokzure</td><td>with a child in tow, accompanied by a child</td></tr>
+        <tr><td class="word">血縁</td><td class="reading">ketsuen</td><td>blood relation, kinship</td></tr>
+        <tr><td class="word">可南子</td><td class="reading">Kanako</td><td>character name (also written 加奈子 etc.)</td></tr>
+        <tr><td class="word">二人で暮らす</td><td class="reading">futari de kurasu</td><td>to live together, just the two of them</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of chosen family</h5>
+        <p><strong>血縁のない娘 (ketsuen no nai musume):</strong> "A daughter not of his blood." The grammar is a noun modified by a negative adjective phrase. It defines the daughter by what she is not: not related by blood. The phrase is factual, not judgmental. But it carries the weight of Japanese family law and social expectation, in which blood relation has historically been the primary basis of kinship. By specifying 血縁のない, Fujita makes the reader aware of the legal and social framework within which this relationship exists. She is his daughter in every way that matters except the one that the state records. The grammar makes absence into presence: the absence of blood is the presence of choice.</p>
+        <p><strong>二人で暮らしてきた (futari de kurashite kita):</strong> "The two of them have lived together." The grammar 〜てきた (te-kita) means "have been doing [something] up to now." It creates a sense of duration and continuity. They did not merely live together. They have been living together, building a shared history, for twenty-four years. The きた (came) makes the present moment the culmination of a long process. When she announces her marriage, that process is about to end. The grammar of continuous past makes the impending separation feel like the end of an era.</p>
+        <p><strong>子連れの女性 (kokzure no josei):</strong> "A woman with a child in tow." 子連れ literally means "accompanied by a child." The word 連れ (tsure) implies companionship, not burden. But in the context of marriage, 子連れ carries a social note: she was a widow or divorcee with a child, not a young unmarried woman. The word makes their marriage into a second beginning for both of them. He took on not just a wife but a ready-made family. The grammar of 子連れ makes the child into part of the package, not an obstacle or an afterthought.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Daughter's Marriage: The Grammar of Letting Go</h2>
+    <span class="story-label">白いシャクナゲ</span>
+
+    <p>When Kanako announces her marriage, the stepfather must confront what it means to have loved a child who was never legally, biologically, or socially required to be his.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">ある日、結婚が決まった可南子から相談を受ける</span>
+        </div>
+        <div class="romaji">"Aru hi, kekkon ga kimatta Kanako kara soudan wo ukeru."</div>
+        <div class="translation">"One day, he receives a consultation from Kanako, whose marriage has been decided."</div>
+        <div class="source">— "Shiroi Shakunage" (The White Rhododendron)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">結婚が決まる</td><td class="reading">kekkon ga kimaru</td><td>for a marriage to be decided/arranged</td></tr>
+        <tr><td class="word">相談</td><td class="reading">soudan</td><td>consultation, discussion, seeking advice</td></tr>
+        <tr><td class="word">受ける</td><td class="reading">ukeru</td><td>to receive, to accept</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The honor of being consulted</h5>
+        <p><strong>相談を受ける (soudan wo ukeru):</strong> "To receive a consultation." In Japanese family dynamics, a daughter's decision to 相談する with her father before marrying is a significant act of respect. She is not merely informing him. She is asking for his judgment, his blessing, his participation in her future. The grammar of 受ける (to receive) makes the father into the recipient of an honor. He has no biological claim on her. He has no legal obligation from her. And yet she comes to him. The word 相談 carries the weight of Japanese filial ritual: the daughter who consults her parents before marriage is performing her role correctly, and in doing so, she validates his role as father. The grammar makes the consultation into a gift.</p>
+        <p><strong>結婚が決まった (kekkon ga kimatta):</strong> "Whose marriage has been decided." The intransitive 決まる (to be decided) rather than the transitive 決める (to decide) is significant. She did not unilaterally decide to marry. The marriage became decided, through a process that involved her, her partner, and their families. The grammar makes marriage into something that happens between people, not something one person does to another. This is the Japanese understanding of marriage as a union of families, not merely of individuals. When she comes to him for 相談, she is acknowledging that his family is her family, even though the blood says otherwise.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Ferris Wheel: The Grammar of Accidental Intimacy</h2>
+    <span class="story-label">観覧車</span>
+
+    <p>In "Kanransha" (The Ferris Wheel), a man encounters the daughter of a woman who once initiated him into sex. The past returns not as memory but as flesh and blood in the present.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">若き日に性の手ほどきを受けた人妻の娘に出会う</span>
+        </div>
+        <div class="romaji">"Wakaki hi ni sei no tehodoki wo uketa hitozuma no musume ni deau."</div>
+        <div class="translation">"He meets the daughter of a married woman who once initiated him into sex in his youth."</div>
+        <div class="source">— "Kanransha" (The Ferris Wheel)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">若き日</td><td class="reading">wakaki hi</td><td>in one's youth (literary form of 若い日)</td></tr>
+        <tr><td class="word">手ほどき</td><td class="reading">tehodoki</td><td>initiation, instruction, guidance (by hand)</td></tr>
+        <tr><td class="word">人妻</td><td class="reading">hitozuma</td><td>married woman</td></tr>
+        <tr><td class="word">受ける</td><td class="reading">ukeru</td><td>to receive</td></tr>
+        <tr><td class="word">出会う</td><td class="reading">deau</td><td>to meet by chance, to encounter</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The gentleness of 手ほどき</h5>
+        <p><strong>手ほどき (tehodoki):</strong> Literally "hand-guidance." It is the word for teaching someone a practical skill by guiding their hands: how to hold a brush, how to knead dough, how to swing a bat. When Fujita uses it for sexual initiation, the effect is extraordinary. He makes sex into a craft, something learned by being guided. The word contains no violence, no predation, no shame. It is the word for a generous transfer of knowledge. The fact that the teacher was a 人妻 (married woman) adds a layer of transgression, but 手ほどき softens it into something almost maternal. She taught him. Now he meets her daughter. The grammar of 受けた (received) makes him the recipient, not the aggressor. He was the student. She was the teacher. The past, when it returns, does so as a debt of gratitude rather than a source of guilt.</p>
+        <p><strong>若き日 (wakaki hi):</strong> The classical/literary form of 若い日 (young days). The adjective 若き (wakaki) instead of 若い (wakai) gives the phrase a nostalgic, almost poetic quality. It is the voice of an older man looking back at his own youth as if it were a distant country. The grammar makes the youth into something completed, sealed off, accessible only through memory and accident.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Air Guitar: The Grammar of Unlived Dreams</h2>
+    <span class="story-label">エアギターを抱いた男</span>
+
+    <p>In "Air Guitar wo Idaita Otoko" (The Man Who Held an Air Guitar), a painter past his prime meets a man who reawakens his creative impulse. The story is about the dreams we abandon and the unexpected people who bring them back.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">六十五歳の声を聞いた頃から、漠然とだが将来のことをよく考えるようになった</span>
+        </div>
+        <div class="romaji">"Rokujuugo-sai no koe wo kiita koro kara, bakuzen to da ga shourai no koto wo yoku kangaeru you ni natta."</div>
+        <div class="translation">"From around the time I heard the voice of sixty-five, I began to think often, though vaguely, about the future."</div>
+        <div class="source">— "Air Guitar wo Idaita Otoko" (The Man Who Held an Air Guitar)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">漠然</td><td class="reading">bakuzen</td><td>vague, hazy, indistinct</td></tr>
+        <tr><td class="word">将来</td><td class="reading">shourai</td><td>future</td></tr>
+        <tr><td class="word">考える</td><td class="reading">kangaeru</td><td>to think, to consider</td></tr>
+        <tr><td class="word">ようになる</td><td class="reading">you ni naru</td><td>to come to (do something), to start to</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The voice of age</h5>
+        <p><strong>六十五歳の声 (rokujuugo-sai no koe):</strong> "The voice of sixty-five." This is a remarkable phrase. Age does not have a voice in ordinary speech. But Fujita personifies sixty-five as something that speaks to you, that calls out from the future and asks what you have done with your life. The grammar makes age into an interlocutor. The protagonist has been hearing this voice, not listening to it, but hearing it, the way you hear a neighbor's television through the wall. It has been there for a while. He has only recently started to answer.</p>
+        <p><strong>漠然とだが (bakuzen to da ga):</strong> "Vague, though / hazy, but." The grammar is a concessive: he thinks about the future, but his thoughts are vague. The だが (though/but) creates a tension between the seriousness of the subject (the future) and the indistinctness of his thoughts about it. He knows he should be thinking clearly. He cannot. The grammar of 漠然と (vaguely) + だが captures the experience of aging: the future becomes more urgent and less clear at the same time.</p>
+        <p><strong>ようになった (you ni natta):</strong> "Came to, started to." The grammar of ようになる marks a gradual change in habit or state. He did not suddenly decide to think about the future. He gradually found himself doing so. The grammar makes the change sound natural, almost inevitable, like gray hair or joint pain. It is what happens when you reach a certain age. The voice of sixty-five speaks, and eventually, you start to listen.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Souvenir Story: The Grammar of Unspoken Love</h2>
+    <span class="story-label">土産話</span>
+
+    <p>The final story, "Miyagebanashi" (The Souvenir Story), follows a man and his childhood friend, a woman now divorced, whose relationship has remained in the ambiguous space between friendship and love for decades.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">離婚した幼馴染みへのひそかな思慕を描く</span>
+        </div>
+        <div class="romaji">"Rikon shita osananajimi e no hisoka na shibo wo egaku."</div>
+        <div class="translation">"It depicts the secret longing for a childhood friend who is divorced."</div>
+        <div class="source">— "Miyagebanashi" (The Souvenir Story)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">離婚</td><td class="reading">rikon</td><td>divorce</td></tr>
+        <tr><td class="word">幼馴染み</td><td class="reading">osananajimi</td><td>childhood friend</td></tr>
+        <tr><td class="word">ひそか</td><td class="reading">hisoka</td><td>secret, hidden, private</td></tr>
+        <tr><td class="word">思慕</td><td class="reading">shibo</td><td>longing, yearning, affectionate regard</td></tr>
+        <tr><td class="word">描く</td><td class="reading">egaku</td><td>to depict, to portray</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The weight of 思慕</h5>
+        <p><strong>思慕 (shibo):</strong> This is not 恋 (koi, passionate love) or 愛 (ai, love). It is not even 好き (suki, liking). It is 思慕: a Sino-Japanese compound meaning "to think of and long for." The character 思 means "to think, to remember." The character 慕 means "to yearn for, to admire from afar." Together they describe a feeling that is constant, quiet, and respectful. 思慕 is the word for the love that never declares itself, that waits at the edge of friendship for decades, that finds its expression in small kindnesses rather than grand gestures. When Fujita says he depicts ひそかな思慕 (secret longing), he is describing the emotional core of the entire book: not the love that speaks but the love that persists in silence.</p>
+        <p><strong>幼馴染み (osananajimi):</strong> "Childhood friend." This is one of the most emotionally loaded relationship categories in Japanese culture. The osananajimi is the person who knew you before you became who you are. They remember your failures, your awkwardness, your family as it was. A love for an osananajimi is different from other loves because it is rooted in shared origin. The grammar of 離婚した幼馴染み (divorced childhood friend) creates a complex emotional field: she is available now in a way she was not before, but the decades of unspoken feeling have created a barrier that mere availability cannot remove. The word 幼馴染み makes their history into both a bridge and a wall.</p>
+        <p><strong>ひそか (hisoka):</strong> "Secret, hidden." The word carries a note of tenderness rather than deception. This is not a guilty secret. It is a private feeling, kept hidden not because it is wrong but because declaring it would change everything, and the friendship, in its ambiguous form, is too precious to risk. The grammar of ひそかな思慕 makes the longing into something cherished precisely because it is unspoken.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Style: The Grammar of ジワジワ</h2>
+
+    <p>The book's promotional copy uses a word that perfectly describes Fujita's prose style.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">ジワジワ来る珠玉6篇</span>
+        </div>
+        <div class="romaji">"Jiwajiwakuru chugyoku roppen."</div>
+        <div class="translation">"Six jewel-like stories that gradually, insistently, get under your skin."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ジワジワ</td><td class="reading">jiwajiwa</td><td>gradually, slowly, insistently (onomatopoeia)</td></tr>
+        <tr><td class="word">来る</td><td class="reading">kuru</td><td>to come, to arrive; here: to affect, to get through</td></tr>
+        <tr><td class="word">珠玉</td><td class="reading">chugyoku</td><td>jewel, gem; masterpiece (figurative)</td></tr>
+        <tr><td class="word">篇</td><td class="reading">hen</td><td>piece, story, installment (counter for literary works)</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The onomatopoeia of creeping emotion</h5>
+        <p><strong>ジワジワ (jiwajiwa):</strong> An onomatopoeia describing something that happens gradually, slowly, persistently, like water seeping into cloth or warmth spreading through a body. It is the opposite of ドキドキ (heart pounding) or ワクワク (excited anticipation). ジワジワ is the sound of emotion that does not announce itself. It arrives so slowly that you do not notice it until it has already taken hold. When the promotional copy says the stories ジワジワ来る, it means they do not hit you. They seep into you. You finish reading and feel fine, and then an hour later you realize you cannot stop thinking about that blind woman at the concert, that stepfather watching his daughter prepare for marriage, that childhood friend whose divorce has finally made her reachable and unreachable at the same time. The grammar of ジワジワ来る makes the reading experience into a delayed reaction. This is Fujita's art: he writes so quietly that the emotion arrives without announcement, like age itself.</p>
+        <p><strong>珠玉 (chugyoku):</strong> Literally "pearl and jade." A classical literary term for masterpieces, individual works of such quality that they shine like precious stones. By calling the six stories 珠玉, the copy places Fujita in a tradition of literary craftsmanship. These are not merely good stories. They are jewels, each one complete and self-contained, but more valuable together. The word makes the book into a collection of artifacts, each polished to perfection.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of Late-Life Emotion</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜て下さい</strong> — Please [do] (the humble request that makes a plea out of a command)</li>
+        <li><strong>〜もないが〜もない</strong> — Neither...nor (the grammar of the emotional middle)</li>
+        <li><strong>〜てきた</strong> — Have been doing up to now (the grammar of accumulated duration)</li>
+        <li><strong>〜てしまう / 〜てしまった</strong> — To end up doing (the grammar of unintended outcomes)</li>
+        <li><strong>〜ようになる</strong> — To come to (do), gradually (the grammar of slow change)</li>
+        <li><strong>〜たら</strong> — If/when (conditional: the grammar of moments that change everything)</li>
+        <li><strong>〜ながら</strong> — While (the grammar of simultaneous states)</li>
+        <li><strong>〜ずに</strong> — Without doing (the grammar of roads not taken)</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>わかって下さい</strong> — Please understand; the plea that knows it may not be answered</li>
+        <li><strong>温もり</strong> — The warmth of living skin, not mere temperature</li>
+        <li><strong>頰</strong> — The cheek of poetry, where tears arrive unannounced</li>
+        <li><strong>不満もないが充実もない</strong> — Neither dissatisfied nor fulfilled; the grammar of the drifting middle</li>
+        <li><strong>日々を送っていた</strong> — Passing days; sending time away without living it</li>
+        <li><strong>かつての恋人</strong> — The former lover; the category that protects the name that still hurts</li>
+        <li><strong>隣り合わせの席になる</strong> — To end up in adjacent seats; the cruelty of accidental proximity</li>
+        <li><strong>偽名を名乗り</strong> — Giving a false name; the ritual of introduction as concealment</li>
+        <li><strong>盲目になっていた</strong> — Had gone blind; the permanent condition that equalizes what remains</li>
+        <li><strong>血縁のない娘</strong> — The daughter not of his blood; chosen family defined by absence</li>
+        <li><strong>二人で暮らしてきた</strong> — The two of them have lived together; duration as the substance of love</li>
+        <li><strong>相談を受ける</strong> — To receive a consultation; the honor of being asked</li>
+        <li><strong>結婚が決まった</strong> — The marriage became decided; the intransitive grammar of family union</li>
+        <li><strong>手ほどき</strong> — Hand-guidance; sex as craft, taught with generosity</li>
+        <li><strong>若き日</strong> — In one's youth; the distant country of who you were</li>
+        <li><strong>六十五歳の声</strong> — The voice of sixty-five; age as interlocutor</li>
+        <li><strong>漠然とだが</strong> — Vague, though; the tension between urgency and indistinctness</li>
+        <li><strong>ようになった</strong> — Came to; the grammar of changes that happen like gray hair</li>
+        <li><strong>ひそかな思慕</strong> — Secret longing; love that persists in silence</li>
+        <li><strong>幼馴染み</strong> — Childhood friend; shared origin as both bridge and wall</li>
+        <li><strong>ジワジワ来る</strong> — Gradually, insistently getting under the skin; emotion as seepage</li>
+        <li><strong>珠玉</strong> — Jewel; the masterpiece that shines with quiet perfection</li>
+    </ul>
+
+    <h4>Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Ten directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫え, たいてい, どうにか, 仕方がない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふる, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Together these ten writers map the full range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the small mercies of morning to the slow seepage of feeling that arrives without announcement in the autumn of a life.</p>
+</section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolling Star — YUI &middot; Full Lyrics Breakdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+JP:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0e0a;
+  --surface: #1a1812;
+  --surface-raised: #262218;
+  --ink: #ece8dc;
+  --ink-dim: #a09880;
+  --accent: #c49020;
+  --accent-glow: #e0b040;
+  --accent-weak: rgba(196, 144, 32, 0.10);
+  --accent2: #a08050;
+  --accent2-glow: #c4a470;
+  --accent2-weak: rgba(160, 128, 80, 0.10);
+  --line: rgba(236, 232, 220, 0.08);
+  --line-strong: rgba(196, 144, 32, 0.35);
+  --space: clamp(1.25rem, 1rem + 1vw, 2rem);
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --step-3: clamp(2.2rem, 1.6rem + 2.4vw, 3.6rem);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -8px rgba(0,0,0,0.5);
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  position: relative;
+  padding: calc(var(--space) * 4) var(--space) calc(var(--space) * 3);
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(196, 144, 32, 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 90%, rgba(160, 128, 80, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+header .eyebrow {
+  position: relative;
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin-bottom: var(--space);
+}
+
+header h1 {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: calc(var(--space) * 0.6);
+}
+
+header .subtitle {
+  position: relative;
+  color: var(--ink-dim);
+  font-size: var(--step-0);
+  max-width: 55ch;
+  margin: 0 auto calc(var(--space) * 1.2);
+}
+
+header .meta {
+  position: relative;
+  color: var(--accent2-glow);
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.15em;
+  margin-bottom: calc(var(--space) * 1.5);
+}
+
+header .full-lyrics {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2.2;
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--ink);
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) var(--space);
+}
+
+.section-title {
+  font-family: "Cinzel", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin-bottom: calc(var(--space) * 1.25);
+  padding-bottom: calc(var(--space) * 0.5);
+  border-bottom: 1px solid var(--line-strong);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+}
+
+.section-title .num {
+  font-size: 0.55em;
+  color: var(--accent-glow);
+  letter-spacing: 0.05em;
+}
+
+.line-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: calc(var(--space) * 1.1) calc(var(--space) * 1.2);
+  margin-bottom: calc(var(--space) * 1.25);
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+}
+
+.line-header {
+  margin-bottom: calc(var(--space) * 0.9);
+  padding-bottom: calc(var(--space) * 0.6);
+  border-bottom: 1px solid var(--line);
+}
+
+.japanese-line {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.35em;
+  color: var(--ink);
+}
+
+.romaji-line {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: var(--step-0);
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.english-line {
+  font-size: var(--step-0);
+  color: #b0a888;
+  font-style: italic;
+  margin-top: 0.4em;
+  line-height: 1.6;
+}
+
+.word-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+
+.word-table th {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  color: var(--ink-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+  border-bottom: 1px solid var(--line);
+}
+
+.word-table td {
+  padding: 0.65em 0.8em;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.word-table tr:last-child td {
+  border-bottom: none;
+}
+
+.word-table .col-jp {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.15em;
+  color: var(--ink);
+  width: 18%;
+}
+
+.word-table .col-romaji {
+  color: #b0a888;
+  width: 20%;
+}
+
+.word-table .col-pos {
+  color: var(--accent-glow);
+  font-weight: 600;
+  width: 22%;
+}
+
+.word-table .col-gloss {
+  color: var(--ink-dim);
+  width: 40%;
+}
+
+.grammar-note {
+  background: var(--surface-raised);
+  border-left: 2px solid var(--accent);
+  padding: 0.9em 1.1em;
+  margin-top: calc(var(--space) * 0.8);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--step--1);
+  color: #b0a888;
+  line-height: 1.65;
+}
+
+.grammar-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  margin: calc(var(--space) * 2) 0;
+}
+
+.chorus-badge {
+  display: inline-block;
+  font-family: "Cinzel", serif;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent2-glow);
+  background: var(--accent2-weak);
+  border: 1px solid rgba(160, 128, 80, 0.25);
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  margin-bottom: 0.6em;
+}
+
+@media (max-width: 640px) {
+  .word-table .col-pos, .word-table .col-gloss {
+    width: auto;
+  }
+  .line-card {
+    padding: var(--space);
+  }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  header, .line-card, .grammar-note, .section-title {
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+  header::before, header::after { display: none; }
+}
+
+@page { size: A4; margin: 14mm; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">YUI &middot; Bleach OP5</div>
+  <h1>Rolling Star</h1>
+  <p class="subtitle">A full grammatical and lexical breakdown of YUI's anthem of resilience: falling down, getting back up, and rolling on through the mud of reality.</p>
+  <div class="meta">Lyrics, Music &amp; Composition: YUI &nbsp;&bull;&nbsp; Released: 2007</div>
+  <div class="full-lyrics">もう我慢ばっかしてらんないよ
+言いたいことは言わなくちゃ
+帰り道 夕暮れのバス停
+落ちこんだ背中に bye bye bye
+君の fighting pose 見せなゃ oh! Oh!
+
+夢にまで見たような世界は
+争いもなく平和な日常
+でも現実は日々トラブッて
+たまに悔やんだりしてる そんな rolling days
+
+転んじゃったって いいんじゃないの
+そんときは笑ってあげる
+乗り込んだバスの奥から
+ちいさく ほほえみが見えた
+君を頼りにしてるよ oh! Oh!
+
+夢にまで見たような sweet love
+恋人たちは隠れ家を探すの
+でも現実は会えない日が
+続きながらも信じてるの rolling days
+
+Oh, yeah, oh
+つまずいたって way to go!
+Yeah! Yeah! 泥だらけ rolling star!
+
+なるべく笑顔でいたいけれど
+守り抜くためには仕方ないでしょ?
+きっと嘘なんて そう 意味を持たないの
+All my loving
+そうじゃなきゃ やってらんない
+
+夢にまで見たような世界は
+争いもなく平和な日常
+でも現実は日々トラブッて
+たまに悔やんだりしてる そんな rolling days
+
+Oh, yeah, oh
+そう わかってるって
+Oh, yeah, oh
+つまずいたって way to go!
+Yeah! Yeah! 泥だらけ rolling star!</div>
+</header>
+
+<main>
+
+<section>
+<h2 class="section-title"><span class="num">01</span> Verse 1</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">もう我慢ばっかしてらんないよ 言いたいことは言わなくちゃ</div>
+    <div class="romaji-line">Mou gaman bakka shiterannai yo, iitai koto wa iwanakucha.</div>
+    <div class="english-line">"I can't keep enduring anymore. The things I want to say, I have to say them."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">もう</td><td class="col-romaji">mou</td><td class="col-pos">Adverb</td><td class="col-gloss">already; anymore; enough</td></tr>
+    <tr><td class="col-jp">我慢</td><td class="col-romaji">gaman</td><td class="col-pos">Noun / Suru-verb</td><td class="col-gloss">endurance; patience; putting up with</td></tr>
+    <tr><td class="col-jp">ばっか</td><td class="col-romaji">bakka</td><td class="col-pos">Adverbial particle</td><td class="col-gloss">only; just; nothing but — casual of ばかり</td></tr>
+    <tr><td class="col-jp">してらんない</td><td class="col-romaji">shiterannai</td><td class="col-pos">Verb phrase (negative potential)</td><td class="col-gloss">can't keep doing — colloquial of していられない</td></tr>
+    <tr><td class="col-jp">よ</td><td class="col-romaji">yo</td><td class="col-pos">Final particle</td><td class="col-gloss">emphatic; assertive</td></tr>
+    <tr><td class="col-jp">言いたい</td><td class="col-romaji">iitai</td><td class="col-pos">Verb (desiderative)</td><td class="col-gloss">want to say — 言う + たい</td></tr>
+    <tr><td class="col-jp">こと</td><td class="col-romaji">koto</td><td class="col-pos">Nominalizer</td><td class="col-gloss">thing; what</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">言わなくちゃ</td><td class="col-romaji">iwanakucha</td><td class="col-pos">Verb phrase (obligation)</td><td class="col-gloss">have to say — casual of 言わなくては</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> ばっか is the casual truncation of ばかり (only; nothing but), here emphasizing that all she's been doing is enduring. してらんない is a heavily contracted colloquial form of していられない, which combines the progressive している (am doing) with the potential negative られない (cannot): literally "cannot be in the state of doing." 我慢ばっかしてらんない = "I can't keep just enduring [anymore]." 言わなくちゃ is the casual truncation of 言わなくては (いけない/ならない), the negative te-form + は pattern expressing obligation: "must say; have to say." The double contraction (してらんない, 言わなくちゃ) gives the opening an urgent, conversational energy. The line is a declaration of emotional honesty: the speaker refuses to keep swallowing her words.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">帰り道 夕暮れのバス停 落ちこんだ背中に bye bye bye</div>
+    <div class="romaji-line">Kaerimichi, yuugure no basu tei, ochikonda senaka ni bye bye bye.</div>
+    <div class="english-line">"On the way home, at the twilight bus stop, to those downcast shoulders: bye bye bye."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">帰り道</td><td class="col-romaji">kaerimichi</td><td class="col-pos">Noun</td><td class="col-gloss">way home; way back</td></tr>
+    <tr><td class="col-jp">夕暮れ</td><td class="col-romaji">yuugure</td><td class="col-pos">Noun</td><td class="col-gloss">twilight; dusk</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of</td></tr>
+    <tr><td class="col-jp">バス停</td><td class="col-romaji">basu tei</td><td class="col-pos">Noun (compound)</td><td class="col-gloss">bus stop — バス + 停</td></tr>
+    <tr><td class="col-jp">落ちこんだ</td><td class="col-romaji">ochikonda</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">downcast; depressed — past of 落ち込む <em>ochikomu</em></td></tr>
+    <tr><td class="col-jp">背中</td><td class="col-romaji">senaka</td><td class="col-pos">Noun</td><td class="col-gloss">back; backside</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Dative / directional particle</td><td class="col-gloss">to; toward</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 帰り道 is a compound noun: 帰り (returning) + 道 (road/path). 落ちこんだ is the past/attributive form of 落ち込む (to sink down; to become depressed; to feel down), modifying 背中: "downcast shoulders / a depressed back." The に after 背中 marks the direction of the farewell: "to/toward [those] downcast shoulders." The image is specific and cinematic: a bus stop at dusk, someone walking away with their shoulders slumped, and the speaker saying goodbye not to their face but to their retreating back. The triple "bye bye bye" mimics the rhythm of departure and the repetition of trying to convince oneself it's really over. The grammar is simple, but the imagery carries the emotional weight.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">君の fighting pose 見せなきゃ oh! Oh!</div>
+    <div class="romaji-line">Kimi no fighting pose misenakya, oh! Oh!</div>
+    <div class="english-line">"I have to show your fighting pose, oh! Oh!"</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">君</td><td class="col-romaji">kimi</td><td class="col-pos">Pronoun</td><td class="col-gloss">you — intimate</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">your</td></tr>
+    <tr><td class="col-jp">fighting pose</td><td class="col-romaji">fighting pose</td><td class="col-pos">Noun phrase (loanword)</td><td class="col-gloss">fighting pose; ready stance</td></tr>
+    <tr><td class="col-jp">見せなきゃ</td><td class="col-romaji">misenakya</td><td class="col-pos">Verb phrase (obligation)</td><td class="col-gloss">have to show — casual of 見せなくては</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 見せなきゃ is the casual truncation of 見せなくては (いけない/ならない), the same obligation pattern as 言わなくちゃ: negative te-form + は = "must [verb]; have to [verb]." The English "fighting pose" inserted into the Japanese line is typical of YUI's bilingual songwriting and of anime theme songs in general. The line is ambiguous in a productive way: it could mean "I have to show [you] your fighting pose" (remind you of your own strength) or "you have to show [me] your fighting pose" (don't give up). The ambiguity lets the listener project themselves into either role: the one encouraging or the one being encouraged. The exclamatory "oh! Oh!" breaks the grammatical flow with pure emotional energy, a signature of YUI's vocal style.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">02</span> Pre-Chorus 1</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">夢にまで見たような世界は 争いもなく平和な常</div>
+    <div class="romaji-line">Yume ni made mita you na sekai wa, arasoi mo naku heiwa na nichijou.</div>
+    <div class="english-line">"The kind of world I dreamed about, a peaceful everyday life without any conflict."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">夢</td><td class="col-romaji">yume</td><td class="col-pos">Noun</td><td class="col-gloss">dream</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Locative particle</td><td class="col-gloss">in; to</td></tr>
+    <tr><td class="col-jp">まで</td><td class="col-romaji">made</td><td class="col-pos">Extent particle</td><td class="col-gloss">even; to the extent of</td></tr>
+    <tr><td class="col-jp">見た</td><td class="col-romaji">mita</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">saw; dreamed — past of 見る <em>miru</em></td></tr>
+    <tr><td class="col-jp">ような</td><td class="col-romaji">you na</td><td class="col-pos">Comparative / nominalizer</td><td class="col-gloss">like; as if; such as</td></tr>
+    <tr><td class="col-jp">世界</td><td class="col-romaji">sekai</td><td class="col-pos">Noun</td><td class="col-gloss">world</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">争い</td><td class="col-romaji">arasoi</td><td class="col-pos">Noun</td><td class="col-gloss">conflict; dispute; strife</td></tr>
+    <tr><td class="col-jp">も</td><td class="col-romaji">mo</td><td class="col-pos">Inclusive particle</td><td class="col-gloss">even; also — with negative: "not even"</td></tr>
+    <tr><td class="col-jp">なく</td><td class="col-romaji">naku</td><td class="col-pos">Adjective (adverbial negative)</td><td class="col-gloss">without — negative of ない <em>nai</em></td></tr>
+    <tr><td class="col-jp">平和</td><td class="col-romaji">heiwa</td><td class="col-pos">Na-adjective / Noun</td><td class="col-gloss">peaceful; peace</td></tr>
+    <tr><td class="col-jp">な</td><td class="col-romaji">na</td><td class="col-pos">Na-adjective linker</td><td class="col-gloss">links na-adjective to noun</td></tr>
+    <tr><td class="col-jp">日常</td><td class="col-romaji">nichijou</td><td class="col-pos">Noun</td><td class="col-gloss">everyday life; daily routine</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 夢にまで見た is an intensified version of 夢に見た (dreamed of): に marks the location of the dream, and ま adds "even; to the extent of," suggesting the dream was vivid, recurring, or deeply wished for. ような after a verb creates a descriptive approximation: "the kind of world [that is] like [I] saw in [my] dreams." 争いもなく uses the universal negative pattern: [noun] + も + negative = "not even [noun]; without even [noun]." なく is the adverbial form of ない, connecting to the following noun phrase. The line establishes the ideal: a peaceful, conflict-free everyday life that exists only in dreams. The contrast with what follows (でも現実は) makes the disappointment sharper.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">でも現実は日々トラブッて たまに悔やんだりしてる そんな rolling days</div>
+    <div class="romaji-line">Demo genjitsu wa hibi torabutte, tamani kuyandari shiteru, sonna rolling days.</div>
+    <div class="english-line">"But reality is troubled day after day. Sometimes I regret things, those kinds of rolling days."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">でも</td><td class="col-romaji">demo</td><td class="col-pos">Conjunction</td><td class="col-gloss">but; however</td></tr>
+    <tr><td class="col-jp">現実</td><td class="col-romaji">genjitsu</td><td class="col-pos">Noun</td><td class="col-gloss">reality; actuality</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">日々</td><td class="col-romaji">hibi</td><td class="col-pos">Noun</td><td class="col-gloss">day after day; every day</td></tr>
+    <tr><td class="col-jp">トラブッて</td><td class="col-romaji">torabutte</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">troubled; in trouble — te-form of トラブる</td></tr>
+    <tr><td class="col-jp">たまに</td><td class="col-romaji">tamani</td><td class="col-pos">Adverb</td><td class="col-gloss">sometimes; occasionally</td></tr>
+    <tr><td class="col-jp">悔やんだり</td><td class="col-romaji">kuyandari</td><td class="col-pos">Verb (tari-form)</td><td class="col-gloss">regretting and such — tari-form of 悔やむ <em>kuyamu</em></td></tr>
+    <tr><td class="col-jp">してる</td><td class="col-romaji">shiteru</td><td class="col-pos">Verb (colloquial progressive)</td><td class="col-gloss">am doing — colloquial of している</td></tr>
+    <tr><td class="col-jp">そんな</td><td class="col-romaji">sonna</td><td class="col-pos">Determiner</td><td class="col-gloss">that kind of; such</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> トラブる is a loanword verb from English "trouble," conjugated as a Japanese godan verb: トラブる → トラブって. Loanword verbs (和製英語) are a hallmark of casual modern Japanese. 悔やんだり is the tari-form of 悔やむ (to regret; to lament), used to list representative actions: "doing things like regretting." The tari-form implies this is one of several things she does; the others are left unspoken. してる is the colloquial contraction of している, the progressive form of する used as an auxiliary for the tari-form: 悔やんだりしてる = "am [in the state of] doing things like regretting." そんな rolling days uses the determiner そんな to characterize the days she's been describing: "those kinds of rolling days." The word "rolling" in the title and refrain suggests continuous motion, like a wheel that keeps turning regardless of obstacles.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">03</span> Chorus 1</h2>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">転んじゃったって いいんじゃないの そんときは笑ってあげる</div>
+    <div class="romaji-line">Koronjattatte, ii n ja nai no, sonna toki wa waratte ageru.</div>
+    <div class="english-line">"Even if you fall down, isn't that okay? At that time, I'll laugh for you [with you]."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">転んじゃったって</td><td class="col-romaji">koronjattatte</td><td class="col-pos">Verb phrase (concessive)</td><td class="col-gloss">even if (I) fell — 転ぶ + ちゃう + たって</td></tr>
+    <tr><td class="col-jp">いい</td><td class="col-romaji">ii</td><td class="col-pos">Adjective</td><td class="col-gloss">fine; good; okay</td></tr>
+    <tr><td class="col-jp">ん</td><td class="col-romaji">n</td><td class="col-pos">Explanatory nominalizer</td><td class="col-gloss">it is that ~ — の</td></tr>
+    <tr><td class="col-jp">じゃない</td><td class="col-romaji">ja nai</td><td class="col-pos">Copula (negative)</td><td class="col-gloss">isn't it? — negative question</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">softening; feminine</td></tr>
+    <tr><td class="col-jp">そんな</td><td class="col-romaji">sonna</td><td class="col-pos">Determiner</td><td class="col-gloss">that kind of</td></tr>
+    <tr><td class="col-jp">とき</td><td class="col-romaji">toki</td><td class="col-pos">Temporal noun</td><td class="col-gloss">time; moment</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">笑って</td><td class="col-romaji">waratte</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">laughing — te-form of 笑う <em>warau</em></td></tr>
+    <tr><td class="col-jp">あげる</td><td class="col-romaji">ageru</td><td class="col-pos">Auxiliary verb</td><td class="col-gloss">do for [you] — giving auxiliary</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 転んじゃったって is a multi-layered contraction: 転ぶ (to fall; to stumble) → 転んでしまう (fall completely) → 転んじゃう (colloquial) → 転んじゃった (past) → 転んじゃったって (concessive, equivalent to 転んじゃっても). The たって pattern means "even if [verb]ed." いいんじゃないの is a soft rhetorical question: いい (fine) + のだ (explanatory) + じゃない (negative) + の (softening final particle) = "isn't it fine?" The negative question seeks agreement rather than information. 笑ってあげる combines the te-form with the giving auxiliary あげる, which indicates the action is done for someone else's benefit: "I'll laugh [for you/with you]." The chorus is the song's moral center: falling is not failure; it's part of moving forward, and someone will be there to help you laugh it off.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">乗り込んだバスの奥から ちいさく ほほえみが見えた</div>
+    <div class="romaji-line">Norikonda basu no oku kara, chiisaku, hohoemi ga mieta.</div>
+    <div class="english-line">"From the back of the bus I got on, a small smile could be seen."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">乗り込んだ</td><td class="col-romaji">norikonda</td><td class="col-pos">Compound verb (attributive / past)</td><td class="col-gloss">got on(board) — 乗る + 込む</td></tr>
+    <tr><td class="col-jp">バス</td><td class="col-romaji">basu</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">bus</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of; 's</td></tr>
+    <tr><td class="col-jp">奥</td><td class="col-romaji">oku</td><td class="col-pos">Noun</td><td class="col-gloss">back; interior; depths</td></tr>
+    <tr><td class="col-jp">から</td><td class="col-romaji">kara</td><td class="col-pos">Ablative particle</td><td class="col-gloss">from</td></tr>
+    <tr><td class="col-jp">ちいさく</td><td class="col-romaji">chiisaku</td><td class="col-pos">Adjective (adverbial)</td><td class="col-gloss">small; faintly — adverbial of 小さ <em>chiisai</em></td></tr>
+    <tr><td class="col-jp">ほほえみ</td><td class="col-romaji">hohoemi</td><td class="col-pos">Noun</td><td class="col-gloss">smile</td></tr>
+    <tr><td class="col-jp">が</td><td class="col-romaji">ga</td><td class="col-pos">Subject particle</td><td class="col-gloss">marks the subject</td></tr>
+    <tr><td class="col-jp">見えた</td><td class="col-romaji">mieta</td><td class="col-pos">Verb (spontaneous / potential)</td><td class="col-gloss">could be seen; was visible — past of 見える <em>mieru</em></td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 乗り込んだ is the past of 乗り込む, a compound verb: 乗る (to ride/board) + 込む (to go into) = "to board; to get on and into." ちいさく is the adverbial form of 小さい (small), modifying the visibility of the smile: "faintly; small[ly]." 見えた is the past of 見える, which can mean "to be visible" (spontaneous) or "can see" (potential). Here it suggests the smile appeared spontaneously in her field of vision, perhaps from someone at the back of the bus. The image is a small moment of human connection that interrupts the struggle: even on a crowded bus, in the middle of a difficult day, someone smiled, and it was enough to notice. The grammar of spontaneous visibility (見える) suggests the smile found her, not that she went looking for it.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">君を頼りにしてるよ oh! Oh!</div>
+    <div class="romaji-line">Kimi wo tayori ni shiteru yo, oh! Oh!</div>
+    <div class="english-line">"I'm relying on you, oh! Oh!"</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">君</td><td class="col-romaji">kimi</td><td class="col-pos">Pronoun</td><td class="col-gloss">you</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">wo</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">頼り</td><td class="col-romaji">tayori</td><td class="col-pos">Noun</td><td class="col-gloss">reliance; dependence</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Adverbial particle</td><td class="col-gloss">as; into</td></tr>
+    <tr><td class="col-jp">してる</td><td class="col-romaji">shiteru</td><td class="col-pos">Verb (colloquial progressive)</td><td class="col-gloss">am doing — colloquial of している</td></tr>
+    <tr><td class="col-jp">よ</td><td class="col-romaji">yo</td><td class="col-pos">Final particle</td><td class="col-gloss">emphatic; assertive</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> [Noun] + を + [same noun stem] + に + する is a set pattern for making something into a state or condition: 頼にする = "to make [someone] into a reliance" = "to rely on [someone]." してる is the colloquial progressive of する: "am relying." The line is a vulnerable admission after the tough cheerfulness of the previous lines: she can tell others that falling is okay because she has someone she relies on herself. The oh! Oh! again breaks the grammatical sentence with pure vocalization, a YUI trademark that turns declarative statements into anthemic shouts. The vulnerability of admitting dependence makes the encouragement that came before it more authentic: she's not preaching from above, she's sharing what she needs too.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">04</span> Verse 2</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">夢にまで見たような sweet love 恋人たちは隠れ家を探すの</div>
+    <div class="romaji-line">Yume ni made mita you na sweet love, koibito-tachi wa kakurega wo sagasu no.</div>
+    <div class="english-line">"The sweet love I dreamed about, lovers search for a hideaway."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">夢</td><td class="col-romaji">yume</td><td class="col-pos">Noun</td><td class="col-gloss">dream</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Locative particle</td><td class="col-gloss">in; to</td></tr>
+    <tr><td class="col-jp">まで</td><td class="col-romaji">made</td><td class="col-pos">Extent particle</td><td class="col-gloss">even; to the extent of</td></tr>
+    <tr><td class="col-jp">見た</td><td class="col-romaji">mita</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">saw; dreamed</td></tr>
+    <tr><td class="col-jp">ような</td><td class="col-romaji">you na</td><td class="col-pos">Comparative / nominalizer</td><td class="col-gloss">like; as if</td></tr>
+    <tr><td class="col-jp">恋人</td><td class="col-romaji">koibito</td><td class="col-pos">Noun</td><td class="col-gloss">lover; sweetheart</td></tr>
+    <tr><td class="col-jp">たち</td><td class="col-romaji">tachi</td><td class="col-pos">Plural suffix</td><td class="col-gloss">plural marker for people</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">隠れ家</td><td class="col-romaji">kakurega</td><td class="col-pos">Noun</td><td class="col-gloss">hideaway; secret refuge; hideout</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">wo</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">探す</td><td class="col-romaji">sagasu</td><td class="col-pos">Verb</td><td class="col-gloss">to search for; to look for</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">feminine assertive/softening</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> The structure mirrors the first pre-chorus exactly (夢にまで見たような + noun), but replaces "world" with "sweet love," shifting the ideal from a general state of peace to a specific romantic relationship. 恋人たち uses the plural suffix たち, which is reserved for people and personified beings, marking "lovers" as a collective group. 隠れ家 is a charmingly specific word: a hidden place where lovers can be alone, away from the world. The final particle の at the end of the sentence is a feminine, softening assertive: "[they] search for a hideaway, [you know]." The line describes what lovers in ideal romances do; the でも that follows will again puncture this ideal with reality.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">でも現実は会えない日が 続きながらも信じてるの rolling days</div>
+    <div class="romaji-line">Demo genjitsu wa aenai hi ga tsuzuki nagara mo shinjiteru no, rolling days.</div>
+    <div class="english-line">"But reality is days we can't meet continuing, and yet I keep believing, rolling days."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">でも</td><td class="col-romaji">demo</td><td class="col-pos">Conjunction</td><td class="col-gloss">but; however</td></tr>
+    <tr><td class="col-jp">現実</td><td class="col-romaji">genjitsu</td><td class="col-pos">Noun</td><td class="col-gloss">reality</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">会えない</td><td class="col-romaji">aenai</td><td class="col-pos">Verb (potential negative)</td><td class="col-gloss">can't meet — potential negative of 会う <em>au</em></td></tr>
+    <tr><td class="col-jp">日</td><td class="col-romaji">hi</td><td class="col-pos">Noun</td><td class="col-gloss">day(s)</td></tr>
+    <tr><td class="col-jp">が</td><td class="col-romaji">ga</td><td class="col-pos">Subject particle</td><td class="col-gloss">marks the subject</td></tr>
+    <tr><td class="col-jp">続き</td><td class="col-romaji">tsuzuki</td><td class="col-pos">Verb (continuative)</td><td class="col-gloss">continuing — continuative of 続く <em>tsuzuku</em></td></tr>
+    <tr><td class="col-jp">ながら</td><td class="col-romaji">nagara</td><td class="col-pos">Concessive particle</td><td class="col-gloss">while; although; even as</td></tr>
+    <tr><td class="col-jp">も</td><td class="col-romaji">mo</td><td class="col-pos">Inclusive particle</td><td class="col-gloss">even; also — with ながらも</td></tr>
+    <tr><td class="col-jp">信じてる</td><td class="col-romaji">shinjiteru</td><td class="col-pos">Verb (colloquial progressive)</td><td class="col-gloss">am believing — colloquial of 信じている</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">feminine assertive/softening</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 会えない is the potential negative of 会う: "cannot meet." 続きながらも combines the continuative form of 続く with ながらも, an emphatic concessive: "even while continuing; despite the fact that [they] continue." ながらも is stronger than plain ながら, emphasizing the contrast between the difficulty (days of not meeting) and the response (continuing to believe). 信じてる is the colloquial progressive of 信じる (to believe; to trust): 信じている → 信じてる. The final particle の again softens the assertion into something more intimate. The structure is grammatically beautiful: the subject is not "I" but "days we can't meet" (会えない日), which "continue" (続く) as the main clause, while the speaker's belief runs underneath as a concurrent, resistant action. The grammar makes belief an act of endurance.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">05</span> Bridge</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">なるべく笑顔でいたいけれど 守り抜くためには仕方ないでしょ？</div>
+    <div class="romaji-line">Narubeku egao de itai keredo, mamorinuku tame ni wa shikata nai desho?</div>
+    <div class="english-line">"I want to be smiling as much as possible, but to protect [what matters] through to the end, it can't be helped, right?"</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">なるべく</td><td class="col-romaji">narubeku</td><td class="col-pos">Adverb</td><td class="col-gloss">as much as possible; if possible</td></tr>
+    <tr><td class="col-jp">笑顔</td><td class="col-romaji">egao</td><td class="col-pos">Noun</td><td class="col-gloss">smiling face; smile</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Copular particle</td><td class="col-gloss">as; with; being — te-form of だ</td></tr>
+    <tr><td class="col-jp">いたい</td><td class="col-romaji">itai</td><td class="col-pos">Verb (desiderative)</td><td class="col-gloss">want to be — いる + たい</td></tr>
+    <tr><td class="col-jp">けれど</td><td class="col-romaji">keredo</td><td class="col-pos">Conjunction</td><td class="col-gloss">but; although</td></tr>
+    <tr><td class="col-jp">守り抜く</td><td class="col-romaji">mamorinuku</td><td class="col-pos">Compound verb</td><td class="col-gloss">to protect through to the end — 守る + 抜く</td></tr>
+    <tr><td class="col-jp">ため</td><td class="col-romaji">tame</td><td class="col-pos">Noun</td><td class="col-gloss">sake; purpose; for the sake of</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Dative particle</td><td class="col-gloss">for; to</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">仕方ない</td><td class="col-romaji">shikata nai</td><td class="col-pos">Adjective phrase</td><td class="col-gloss">can't be helped; nothing can be done</td></tr>
+    <tr><td class="col-jp">でしょ</td><td class="col-romaji">desho</td><td class="col-pos">Copula (conjectural)</td><td class="col-gloss">right?; isn't it? — polite conjectural</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> なるべく is an adverb meaning "as much as possible; if possible; wherever practicable." 笑顔でいたい uses the copular particle で (te-form of だ) + いる (to be) + たい (want to): "want to be [in a state of] smiling face." 守り抜く is a compound verb: 守る (to protect) + 抜く (to pull through; to do thoroughly) = "to protect through to the end; to defend completely." [Noun] + の + ため(に) means "for the sake of; in order to," but here the の is omitted in casual speech: 守り抜くために = "for the sake of protecting through." 仕方ない is the set phrase 仕方がない (there is no way/method) used adjectivally: "it can't be helped; there's nothing to be done." The trailing でしょ seeks agreement: "right?" The line acknowledges a painful truth: maintaining a smile isn't always possible when you're fighting to protect something important. The grammar of necessity (ためには) overrides the grammar of desire (でいたい).
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">きっと嘘なんて そう 意味を持たないの All my loving そうじゃなきゃ やってらんない</div>
+    <div class="romaji-line">Kitto uso nante, sou, imi wo motanai no, All my loving, sou ja nakya yatterannai.</div>
+    <div class="english-line">"Surely lies and such, yes, they hold no meaning. All my loving. If it weren't so, I couldn't keep going."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">きっと</td><td class="col-romaji">kitto</td><td class="col-pos">Adverb</td><td class="col-gloss">surely; certainly; no doubt</td></tr>
+    <tr><td class="col-jp">嘘</td><td class="col-romaji">uso</td><td class="col-pos">Noun</td><td class="col-gloss">lie; falsehood</td></tr>
+    <tr><td class="col-jp">なんて</td><td class="col-romaji">nante</td><td class="col-pos">Adverbial particle</td><td class="col-gloss">things like ~; and so on — belittling</td></tr>
+    <tr><td class="col-jp">そう</td><td class="col-romaji">sou</td><td class="col-pos">Adverb</td><td class="col-gloss">yes; that's right; indeed</td></tr>
+    <tr><td class="col-jp">意味</td><td class="col-romaji">imi</td><td class="col-pos">Noun</td><td class="col-gloss">meaning; significance</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">wo</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">持たない</td><td class="col-romaji">motanai</td><td class="col-pos">Verb (negative)</td><td class="col-gloss">don't hold; don't possess — negative of 持つ <em>motsu</em></td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">feminine assertive/softening</td></tr>
+    <tr><td class="col-jp">そうじゃなきゃ</td><td class="col-romaji">sou ja nakya</td><td class="col-pos">Conditional phrase</td><td class="col-gloss">if it weren't so — casual of そうでなければ</td></tr>
+    <tr><td class="col-jp">やってらんない</td><td class="col-romaji">yatterannai</td><td class="col-pos">Verb phrase (negative potential)</td><td class="col-gloss">can't keep doing — colloquial of やっていられない</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> なんて after a noun belittles or generalizes it: 嘘なんて = "lies and such; things like lies." The implication is that lies are trivial, unworthy of serious consideration. 意味を持たない is the negative of 意味を持つ (to hold meaning; to have significance): "hold no meaning." All my loving is an English phrase inserted as a declaration, a moment of direct emotional statement that needs no translation. そうじゃなきゃ is a heavy contraction of そうでなければ (if it were not so; if that weren't the case): そう (so) + じゃ (colloquial だ) + なきゃ (colloquial なければ). やってらんない is the same pattern as してらんない from the opening: やっている (am doing) + られない (cannot) = "cannot be in the state of doing" = "can't keep going." The line is the bridge's philosophical anchor: authenticity (no lies) is not optional; it's the only condition under which she can continue.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">06</span> Final Chorus & Outro</h2>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">Oh, yeah, oh つずいたって way to go! Yeah! Yeah! 泥だらけ rolling star!</div>
+    <div class="romaji-line">Oh, yeah, oh, tsumazuitatte, way to go! Yeah! Yeah! doro darake rolling star!</div>
+    <div class="english-line">"Oh, yeah, oh, even if I stumble, way to go! Yeah! Yeah! Mud-covered rolling star!"</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">つまずいたって</td><td class="col-romaji">tsumazuitatte</td><td class="col-pos">Verb phrase (concessive)</td><td class="col-gloss">even if (I) stumble — つまずく + たって</td></tr>
+    <tr><td class="col-jp">way to go</td><td class="col-romaji">way to go</td><td class="col-pos">Phrase (loanword)</td><td class="col-gloss">way to go; good going — English encouragement</td></tr>
+    <tr><td class="col-jp">泥</td><td class="col-romaji">doro</td><td class="col-pos">Noun</td><td class="col-gloss">mud; dirt; mire</td></tr>
+    <tr><td class="col-jp">だらけ</td><td class="col-romaji">darake</td><td class="col-pos">Adverbial suffix</td><td class="col-gloss">covered in; full of; riddled with</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> つまずいたって is the concessive form of つまずく (to stumble; to trip): [past] + たって = "even if [verb]ed." This is the same pattern as 転んじゃったって from the first chorus, but with a different verb for variety. way to go is an English congratulatory phrase repurposed here as self-encouragement: she's cheering herself on. 泥だらけ uses the suffix だらけ, which attaches to nouns to mean "covered in; full of; riddled with," often with a negative connotation. 泥だらけ = "covered in mud." But here the mud is worn as a badge of honor: a rolling star (転がる星) picks up mud because it's moving, because it's in contact with the ground. A clean star would be a stationary one. The grammar of concession (たって) plus the grammar of contamination (だらけ) creates a paradoxical celebration: the marks of struggle are proof of motion.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Outro</div>
+  <div class="line-header">
+    <div class="japanese-line">Oh, yeah, oh そう わかってるって Oh, yeah, oh つまずいたって way to go!</div>
+    <div class="romaji-line">Oh, yeah, oh, sou, wakatterutte, oh, yeah, oh, tsumazuitatte way to go!</div>
+    <div class="english-line">"Oh, yeah, oh, yes, I know that. Oh, yeah, oh, even if I stumble, way to go!"</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">そう</td><td class="col-romaji">sou</td><td class="col-pos">Adverb</td><td class="col-gloss">yes; that's right; so</td></tr>
+    <tr><td class="col-jp">わかってる</td><td class="col-romaji">wakatteru</td><td class="col-pos">Verb (colloquial progressive)</td><td class="col-gloss">am knowing — colloquial of 分かっている</td></tr>
+    <tr><td class="col-jp">って</td><td class="col-romaji">tte</td><td class="col-pos">Final particle</td><td class="col-gloss">you know; I tell you — casual quotative/final</td></tr>
+    <tr><td class="col-jp">つまずいたって</td><td class="col-romaji">tsumazuitatte</td><td class="col-pos">Verb phrase (concessive)</td><td class="col-gloss">even if (I) stumble</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> わかってる is the colloquial contraction of 分かっている (understand; know), the progressive form of 分かる. Using the progressive with stative verbs like 分かる emphasizes a current, ongoing state of knowledge: "I do know; I am aware." The final particle って after わかってる is a casual quotative used as an assertion marker: "I know, [I'm telling you]." It responds to an implied objection: "Yes, I know it's hard. Yes, I know I'll fall." The outro is a conversation with herself or with doubt itself: acknowledging the difficulty (わかってるって) and immediately overriding it with the same encouragement (way to go!). The repetition of the entire chorus structure with slight variation creates the sense of a mantra, something she tells herself again and again until it becomes true through repetition.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">07</span> Key Grammar Patterns Summary</h2>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜てらんない / 〜ていられない</div>
+    <div class="english-line">"Can't keep [verb]ing." Progressive + potential negative. Colloquial てらんない form. Used for emotional limits: "can't keep enduring," "can't keep going."</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜なくちゃ / 〜なきゃ</div>
+    <div class="english-line">"Must [verb]; have to [verb]." Negative te-form + は (truncated). Colloquial obligation pattern. 言わなくちゃ, 見せなきゃ.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜たって / 〜ちゃったって</div>
+    <div class="english-line">"Even if [verb]ed." Concessive pattern. 転んじゃったって, つまずいたって. Expresses resilience in the face of failure.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ながら(も)</div>
+    <div class="english-line">"While; although; even as." Continuative + concessive. 続きながらも. Expresses simultaneous difficulty and persistence.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜たりする</div>
+    <div class="english-line">"Do things like [verb]." Tari-form + する. Representative listing of actions. 悔やんだりしてる.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜んじゃないの</div>
+    <div class="english-line">Soft rhetorical question: "isn't it [adjective]?" Explanatory の + negative + の. いんじゃないの. Seeks agreement.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜てあげる</div>
+    <div class="english-line">"Do [verb] for [you]." Te-form + giving auxiliary. 笑ってあげる. Action performed for another's benefit.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ために(は)</div>
+    <div class="english-line">"For the sake of; in order to." Expresses purpose and necessity. 守り抜くためには.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+</body>
+</html>

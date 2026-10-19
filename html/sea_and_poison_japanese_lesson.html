@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sea and Poison — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f2f0ec;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #2d4a3e;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --danger: #6b2d2d;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(45,74,62,0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.danger::before {
+            background: var(--danger);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.danger-box {
+            background: color-mix(in oklab, var(--danger) 6%, var(--surface));
+            border-left-color: var(--danger);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.danger-box h5 {
+            color: var(--danger);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-danger {
+            background: color-mix(in oklab, var(--danger) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .context-note {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--line);
+            padding-left: 0.8rem;
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Sea and Poison<br><span style="font-size:0.6em; font-weight:300;">海と毒薬</span></h1>
+    <div class="subtitle">A Japanese lesson through Endo Shusaku's most harrowing novel</div>
+    <div class="meta">Moral emptiness &middot; Physical language &middot; What grammar reveals about guilt</div>
+</header>
+
+<main>
+
+<p class="intro">
+    Published in 1957, <em>The Sea and Poison</em> is Endo's breakthrough novel. It takes its subject from a real wartime atrocity: the vivisection of American POWs at a Japanese medical school. But the novel is not interested in condemning monsters. It is interested in something far more disturbing: how ordinary, timid, not-especially-cruel people come to participate in evil, and how, in a culture without a concept of divine judgment, guilt becomes something you manage rather than something that transforms you. The prose is famously flat, detached, clinical. That is the point.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title Itself</h2>
+
+    <p>Endo conceived the title while standing on the roof of a hospital in Fukuoka, looking at the sea through rain. A critic later wrote:</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            運命とは黒い<span class="hl">海</span>であり、自分を破片のように押し流すもの。そして人間の意志や良心を<span class="hl">麻痺</span>させてしまうような状況を<span class="hl">毒薬</span>と名づけたのだろう
+        </div>
+        <div class="romaji">"Unmei to wa kuroi umi de ari, jibun wo hahen no you ni oshinagasu mono. Soshite ningen no ishi ya ryoushin wo mahi sasete shimau you na joukyou wo dokuyaku to nadzuketa no darou."</div>
+        <div class="translation">"Fate is a black sea that sweeps one along like debris. And the circumstances that paralyze human will and conscience, he named poison."</div>
+        <div class="source">— Yamamoto Kenkichi, literary critic</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">運命</td><td class="reading">unmei</td><td>fate, destiny</td></tr>
+        <tr><td class="word">破片</td><td class="reading">hahen</td><td>fragment, shard, debris</td></tr>
+        <tr><td class="word">押し流す</td><td class="reading">oshinagasu</td><td>to sweep away, to wash away (transitive)</td></tr>
+        <tr><td class="word">麻痺</td><td class="reading">mahi</td><td>paralysis, numbness (medical and moral)</td></tr>
+        <tr><td class="word">毒薬</td><td class="reading">dokuyaku</td><td>poison, toxic substance</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The medical register</h5>
+        <p><strong>麻痺 (mahi):</strong> This is a medical term meaning "paralysis," as in nerve damage. But it is also used for moral numbness, for the inability to feel shock anymore. In English we might say "desensitized" or "deadened," but 麻痺 keeps the physicality: conscience as a limb that has lost sensation. When a doctor's hands are 麻痺, they cannot feel what they are cutting. The metaphor is almost too perfect for this novel.</p>
+        <p><strong>毒薬 (dokuyaku):</strong> Not merely "poison." 薬 means medicine, drug, chemical. 毒薬 is a pharmaceutical term. It suggests something that might have been therapeutic in a different dose, or something that was manufactured deliberately. The English "poison" can mean snake venom, household cleaner, or malice. 毒薬 sounds like something in a labeled bottle, stored on a hospital shelf.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Face of Guilt</h2>
+    <p>The novel opens with a narrator visiting a doctor, Suguro, for his lung condition. The first description of Suguro's face contains the entire novel in miniature.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            医者は四十位だろうか老けた感じのする男だった。あごを右手で<span class="hl">しきりに</span>さすりながら、彼は私を<span class="hl">ぼんやりと</span><span class="hl">凝視</span>していた。西陽をこちらは背にうけているためか、雨戸をしめきった部屋はひどく暗く、その暗い影のなかでこの男の顔は妙に<span class="hl-danger">蒼黒くむくんで</span>見える
+        </div>
+        <div class="romaji">"Isha wa yonjuu kurai darou ka, fuketa kanji no suru otoko datta. Ago wo migite de shikiri ni sasurinagara, kare wa watashi wo bon'yari to gyoushi shite ita. Nishibi wo kochira wa se ni ukete iru tame ka, amado wo shimekitta heya wa hidoku kuraku, sono kurai kage no naka de kono otoko no kao wa myou ni soukokuku mukunde mieru."</div>
+        <div class="translation">"The doctor appeared to be about forty, a man who looked older than his years. While continually rubbing his chin with his right hand, he stared at me vaguely. Perhaps because the setting sun was at his back, the room with its shutters closed was terribly dark, and in those dark shadows the man's face looked strangely swollen and blue-black."</div>
+        <div class="source">— Opening chapter</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">老けた</td><td class="reading">fuketa</td><td>aged-looking, older than one's years</td></tr>
+        <tr><td class="word">しきりに</td><td class="reading">shikiri ni</td><td>constantly, repeatedly, without stopping</td></tr>
+        <tr><td class="word">ぼんやりと</td><td class="reading">bon'yari to</td><td>vacantly, dimly, unfocused</td></tr>
+        <tr><td class="word">凝視</td><td class="reading">gyoushi</td><td>to stare fixedly, to gaze intently</td></tr>
+        <tr><td class="word">蒼黒い</td><td class="reading">souguroi / aoguroi</td><td>blue-black, livid, cyanotic (medical)</td></tr>
+        <tr><td class="word">むくむ</td><td class="reading">mukumu</td><td>to swell, to become puffy (often with pathological connotation)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The body speaks first</h5>
+        <p><strong>蒼黒くむくんで (sougoku mukunde):</strong> This is clinical description. 蒼黒い is the color of a corpse, of oxygen-starved tissue, of cyanosis. むくむ means to swell with fluid, like edema. Together they describe a face that looks medically abnormal, not merely tired or shadowed. In English, "swollen and blue-black" sounds almost cartoonish. In Japanese medical description, this is precise. Suguro's face looks like tissue that has been damaged at the cellular level. His guilt has become physiological.</p>
+        <p><strong>しきりに (shikiri ni):</strong> "Constantly, repeatedly." The word suggests a nervous tic, something unconscious and compulsive. Suguro keeps rubbing his chin because his body knows something his words will not say. しきりに implies frequency with a hint of anxiety; it is not the calm 常に (tsune ni, "always"). It is the restlessness of a guilty man who cannot keep his hands still.</p>
+        <p><strong>ぼんやりと凝視 (bon'yari to gyoushi):</strong> A fascinating oxymoron. ぼんやり means unfocused, vacant, daydreaming. 凝視 means to stare with intense focus. Together: he is staring without seeing. His eyes are fixed on the narrator but his mind is elsewhere, back in the operating room, back in 1945. The grammar of the adverb modifying the verb enacts his dissociation.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Flat Voice</h2>
+    <p>The most distinctive quality of this novel is its narrative tone. Endo describes unimaginable cruelty in a voice that never rises. The adverb 淡々と (tan-tan to) is the key.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            淡々と綴った本書は、あらためて人間の罪責意識を深く、鮮烈に問いかける衝撃の名作である
+        </div>
+        <div class="romaji">"Tan-tan to tsuzutta honsho wa, aratamete ningen no zaiseki ishiki wo fukaku, senretsu ni toikakeru shougeki no meisaku de aru."</div>
+        <div class="translation">"This book, written in a flat, unemotional manner, is a shocking masterpiece that once again interrogates human guilt-consciousness with depth and vivid intensity."</div>
+        <div class="source">— From publisher's description</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">淡々と</td><td class="reading">tan-tan to</td><td>flatly, calmly, without emotion, matter-of-factly</td></tr>
+        <tr><td class="word">綴る</td><td class="reading">tsuzuru</td><td>to write, to compose (literary; literally: to stitch together)</td></tr>
+        <tr><td class="word">罪責意識</td><td class="reading">zaiseki ishiki</td><td>sense of guilt and responsibility</td></tr>
+        <tr><td class="word">鮮烈</td><td class="reading">senretsu</td><td>vivid, intense, striking</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The etymology of flatness</h5>
+        <p><strong>淡々と (tan-tan to):</strong> From 淡い (awai), meaning pale, light, thin, diluted. 淡々と describes a voice without coloration, without flavor, like water. In English, "flatly" or "matter-of-factly" captures the emotional absence, but loses the aesthetic quality: Endo's prose is deliberately thin, deliberately without the richness of his later work. He is writing about moral numbness in a style that enacts numbness. The word also suggests something diluted, as if the horror has been watered down until it can be swallowed. This is how the characters experience their own crime: not as a single dramatic moment, but as something that seeps in gradually, diluted by routine, by hierarchy, by the everyday.</p>
+        <p><strong>綴る (tsuzuru):</strong> Not the common 書く (kaku). 綴る literally means to bind pages, to stitch together. It suggests writing as craft, as assembly, as something done with deliberate care. The word contains a metaphor of joining fragments, which is exactly what the novel does: stitching together past and present, confession and denial, memory and anesthesia.</p>
+    </div>
+
+    <div class="context-note">
+        The novel's most horrifying passages, describing the vivisection itself, are written in this same 淡々と voice. Endo understood that horror is most disturbing not when it is shouted but when it is catalogued.
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. "While Still Alive"</h2>
+    <p>The central fact of the novel is described in a phrase of devastating grammatical simplicity.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            <span class="hl-danger">生きたままの</span>人間を解剖する
+        </div>
+        <div class="romaji">"Ikita mama no ningen wo kaibou suru"</div>
+        <div class="translation">"To dissect a human being while still alive"</div>
+        <div class="source">— Recurring phrase in the novel</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">生きた</td><td class="reading">ikita</td><td>living, alive (past participle as adjective)</td></tr>
+        <tr><td class="word">まま</td><td class="reading">mama</td><td>in the state of, as is, without change</td></tr>
+        <tr><td class="word">解剖</td><td class="reading">kaibou</td><td>dissection, anatomization (medical term)</td></tr>
+    </table>
+
+    <div class="grammar">
+        <h5>Grammar: 〜たまま</h5>
+        <p>Pattern: <code>Verb-past + まま</code> = "in the state of having [done/been]..., without changing that state"</p>
+        <p>生きたまま means "while remaining in the state of being alive" — the まま emphasizes that no change has occurred. The person is alive, and that condition continues, uninterrupted, into the dissection. The grammar refuses to separate the two states. In English, "while still alive" inserts a temporal conjunction (while) that creates a slight separation: there was living, and then there was dissecting, and they overlapped. 生きたままの collapses them into a single modifying phrase. The grammar makes the victim's aliveness into an attribute of the body being cut, as if it were a color or a size.</p>
+    </div>
+
+    <div class="nuance danger-box">
+        <h5>What translation loses: The grammar of atrocity</h5>
+        <p><strong>解剖 (kaibou):</strong> A neutral medical term. Doctors perform 解剖 on cadavers to learn anatomy. It is a word from the medical curriculum. When paired with 生きたままの, the clinical neutrality of 解剖 becomes obscene. The word does not change; the context does. This is the novel's method: it uses the language of medicine to describe crimes, and the language does not rise to meet the horror. It remains flat, professional, institutional. The English "vivisection" is more specific and more horrifying; it names the crime directly. 解剖 is worse because it does not name the crime. It names the procedure.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. Punishment vs. Guilt</h2>
+    <p>The novel's moral core is a distinction that Japanese makes with terrible precision. In a postwar confession, the character Toda writes:</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl-danger">他人の眼や社会の罰だけにしか恐れを感ぜ</span>、それが除かれれば恐れも消える自分が不気味
+        </div>
+        <div class="romaji">"Tanin no me ya shakai no batsu dake ni shika osore wo kanzezu, sore ga nozokareba osore mo kieru jibun ga bukimi."</div>
+        <div class="translation">"I felt fear only of others' eyes and society's punishment, and when those were removed, my fear vanished too. I find this self uncanny."</div>
+        <div class="source">— Toda's written confession</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">罰</td><td class="reading">batsu</td><td>punishment, penalty (external, social, legal)</td></tr>
+        <tr><td class="word">恐れ</td><td class="reading">osore</td><td>fear, dread, apprehension</td></tr>
+        <tr><td class="reading">感ぜず</td><td class="reading">kanzezu</td><td>without feeling (archaic/literary negative of 感じる)</td></tr>
+        <tr><td class="word">除く</td><td class="reading">nozoku</td><td>to remove, to eliminate, to do away with</td></tr>
+        <tr><td class="word">不気味</td><td class="reading">bukimi</td><td>uncanny, eerie, disturbing, sinister</td></tr>
+    </table>
+
+    <div class="nuance danger-box">
+        <h5>What translation loses: The architecture of moral emptiness</h5>
+        <p><strong>罰 (batsu) vs 罪 (tsumi):</strong> This is the novel's central distinction. 罰 is external punishment: what society does to you, what the law imposes, what others see. 罪 is internal guilt: what you feel when no one is watching. Toda admits he feared only 罰. When the danger of 罰 was removed (when the war ended, when no one was prosecuted), his fear disappeared. He did not have 罪. This is what Endo means by "Japanese without God" — a culture where the internal witness, the voice that speaks when no human authority is present, may be underdeveloped.</p>
+        <p><strong>感ぜず (kanzezu):</strong> The literary negative form of 感じる. It appears in confessions, in religious texts, in documents of solemn weight. Toda is writing a confession, but the archaic grammar reveals something: he is performing remorse without feeling it. The formality of 感ぜず is the language of a man who knows what a confession should sound like but cannot generate the emotion that would make it real.</p>
+        <p><strong>不気味 (bukimi):</strong> Not merely "uncanny" or "eerie." 不気味 is the feeling you get when something looks human but is not. A doll that moves. A smile that does not reach the eyes. Toda calls his own self 不気味 because he has discovered that he lacks the internal structure that should make a human being capable of genuine remorse. He is frightened of his own emptiness. This is a more precise word than any English equivalent; it captures the horror of recognizing yourself as morally hollow.</p>
+    </div>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl-danger">罰は恐れど、罪は恐れず</span>
+        </div>
+        <div class="romaji">"Batsu wa osoredo, tsumi wa osorezu"</div>
+        <div class="translation">"I fear punishment, but I do not fear sin."</div>
+        <div class="source">— The novel's moral thesis in six words</div>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜ど / 〜ず (classical negative)</h5>
+        <p>Pattern: <code>Verb-stem + ど</code> = "although..." (concessive, classical)<br>
+        Pattern: <code>Verb-stem + ず</code> = "without..." (negative, classical)</p>
+        <p>This is literary Japanese, echoing classical grammar. 恐れど = 恐れるけれども. 恐れず = 恐れないで. The parallelism creates a chiasmus: punishment/feared, sin/not feared. The archaic form gives the sentence the weight of a proverb or a judgment. It sounds like something carved in stone. In English, "I fear punishment but not sin" is clear but flat. The Japanese original sounds like a moral law has been discovered and named.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Dry Mouth at the End</h2>
+    <p>The novel ends not with a scream but with a physical symptom. Suguro, years later, trying to speak of what he did, finds his body will not cooperate.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            勝呂は<span class="hl-danger">乾いた口</span>を開こうとしたが、言葉は出なかった
+        </div>
+        <div class="romaji">"Suguro wa kawaita kuchi wo hirakou to shita ga, kotoba wa denakatta."</div>
+        <div class="translation">"Suguro tried to open his dry mouth, but the words would not come."</div>
+        <div class="source">— Final section</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">乾いた</td><td class="reading">kawaita</td><td>dry, parched (past participle as adjective)</td></tr>
+        <tr><td class="word">口</td><td class="reading">kuchi</td><td>mouth</td></tr>
+        <tr><td class="word">開こうとする</td><td class="reading">hirakou to suru</td><td>to try to open (volitional + to suru)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The body that cannot confess</h5>
+        <p><strong>乾いた口 (kawaita kuchi):</strong> A dry mouth is a medical symptom (dehydration, shock, fear). But it is also a spiritual condition. In Japanese, 口が乾く can mean being speechless with anxiety, with the inability to articulate something. Suguro's mouth is dry because his body knows what his mind is trying to do: it is trying to produce words that would make him accountable. And the body refuses. The dryness is not mere thirst. It is the physical resistance of a man who has spent years not speaking, whose silence has become embodied.</p>
+        <p><strong>〜ようとした (tried to... but):</strong> The volitional + とする pattern indicates intention, effort, an attempt that was made. Combined with が (but), it creates a small drama of failed will. He tried. The trying is important. He is not simply silent; he is actively attempting speech and being defeated by something in himself. This is the novel's final judgment: not that evil people refuse to speak, but that speaking becomes physically impossible when guilt has been suppressed too long.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Sea as Fate</h2>
+    <p>Throughout the novel, the sea appears as a force that does not judge but simply receives. In the wartime sections, characters look at the sea and feel something between resignation and dread.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            どうせ何をしたってあの暗い海のなかに誰もが<span class="hl">ひきずりこまれる</span>時代だという諦めがわたしの心を支配していたのかもしれません
+        </div>
+        <div class="romaji">"Douse nani wo shitatte ano kurai umi no naka ni daremo ga hikizurikomareru jidai da to iu akirame ga watashi no kokoro wo shihai shite ita no kamoshiremasen."</div>
+        <div class="translation">"Perhaps it was the resignation that, no matter what one did, everyone would be dragged into that dark sea, that governed my heart."</div>
+        <div class="source">— Toda's reflection</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">どうせ</td><td class="reading">douse</td><td>anyway, in any case, no matter what (with resignation)</td></tr>
+        <tr><td class="word">ひきずりこむ</td><td class="reading">hikizurikomu</td><td>to drag into, to pull in (by force)</td></tr>
+        <tr><td class="word">諦め</td><td class="reading">akirame</td><td>resignation, acceptance of the inevitable</td></tr>
+        <tr><td class="word">支配</td><td class="reading">shihai</td><td>domination, control, rule over</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The passive voice of evil</h5>
+        <p><strong>ひきずりこまれる (hikizurikomareru):</strong> The passive form of 引きずり込む. This is crucial. Toda does not say "we will all enter the sea" or "we will be swallowed by the sea." He uses the passive: we will be dragged in. By what? By whom? The grammar refuses to name an agent. This is the language of moral evasion: things happen to people, no one is responsible, the era itself drags everyone down. The passive voice is the grammatical form of しょうがない (it can't be helped), the most dangerous phrase in Japanese ethics.</p>
+        <p><strong>諦め (akirame):</strong> Often translated as "resignation" or "giving up." But 諦め in Japanese is not necessarily negative. It can be a form of wisdom, of Buddhist acceptance. Here, it is toxic: a premature surrender of moral agency. Toda's 諦め is not the acceptance of what cannot be changed; it is the refusal to try to change what could be. The word carries a whole philosophy, and in this context, that philosophy is the poison of the title.</p>
+        <p><strong>どうせ (douse):</strong> A small word with enormous moral weight. どうせ means "whatever I do, the outcome will be the same." It is the word of preemptive surrender. In war, in bureaucracy, in systems of collective action, どうせ is what people say before they participate in something they know is wrong. It dissolves individual responsibility into a shrug.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>8. Summary: The Grammar of Complicity</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜たまま</strong> — "in the state of..." (the grammar that collapses living and cutting into one phrase)</li>
+        <li><strong>〜ど / 〜ず</strong> — classical concessive and negative (the language of moral proverbs)</li>
+        <li><strong>〜ようとしたが</strong> — "tried to... but" (the drama of failed will)</li>
+        <li><strong>Passive forms (〜られる)</strong> — agentless suffering (the grammar of evasion)</li>
+    </ul>
+
+    <h4>Words that carry the novel's weight</h4>
+    <ul>
+        <li><strong>淡々と</strong> — flatness as style and as moral anesthesia</li>
+        <li><strong>麻痺</strong> — paralysis as physical and moral numbness</li>
+        <li><strong>罰 vs 罪</strong> — external punishment vs internal guilt</li>
+        <li><strong>不気味</strong> — the uncanniness of discovering your own emptiness</li>
+        <li><strong>諦め</strong> — resignation that becomes complicity</li>
+        <li><strong>どうせ</strong> — the shrug that precedes atrocity</li>
+    </ul>
+
+    <h4>Why this novel teaches Japanese differently than Deep River</h4>
+    <p>Where <em>Deep River</em> teaches the vocabulary of spiritual seeking (love, crossing, gathering, wrapping), <em>The Sea and Poison</em> teaches the vocabulary of moral failure (paralysis, poison, punishment, dryness). The grammar is different too: where <em>Deep River</em> uses ながらも to hold contradictions together (suffering and giving simultaneously), <em>The Sea and Poison</em> uses the passive voice to dissolve agency, classical negatives to sound like proverbs, and まま to collapse horror into a single unchanging state. If <em>Deep River</em> is about what Japanese can say that English struggles to express, <em>The Sea and Poison</em> is about what Japanese can almost-not-say: the sentences that approach atrocity and then retreat into clinical distance, the body that knows what the mouth cannot articulate.</p>
+</section>
+
+</main>
+
+</body>
+</html>

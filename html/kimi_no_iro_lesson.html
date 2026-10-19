@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>きみの色 — 鈴木小波 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-amber: #c9a35a;
+  --accent-amber-dim: #8f7340;
+  --accent-amber-glow: rgba(201, 163, 90, 0.12);
+  --accent-warm: #d4b07a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-amber-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-amber);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-amber-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-amber-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-amber);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-amber-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-amber);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-amber-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-amber); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-amber-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 4em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Color concept box */
+.color-box {
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, rgba(201, 163, 90, 0.05) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  position: relative;
+}
+
+.color-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--accent-amber);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.color-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-sm);
+}
+
+.color-en {
+  text-align: center;
+  color: var(--ink-secondary);
+  font-size: var(--step-0);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-amber-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-amber-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-amber);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-warm);
+}
+
+.nuance-box h4 {
+  color: var(--accent-warm);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-amber);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-amber);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-amber-dim), var(--accent-amber));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-amber);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-amber);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(201, 163, 90, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-amber);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Color swatches */
+.color-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.color-swatch {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  text-align: center;
+  border: 1px solid var(--line-subtle);
+}
+
+.color-swatch .swatch-name {
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+}
+
+.color-swatch .swatch-desc {
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-amber-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage, .color-box {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>きみの色</h1>
+  <p class="hero-subtitle">THE COLORS WITHIN</p>
+  <p class="hero-meta">鈴木小波（漫画）&middot; 山田尚子（原作・監督）&middot; KADOKAWA 川コミックス・エース &middot; 2024</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author & Original Work</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: きみの色</h2>
+  <p class="lead">The title is deceptively simple: a possessive phrase that carries the weight of an entire emotional universe. <em>Kimi</em> (きみ) is an intimate second-person pronoun, softer than <em>anata</em> and more direct than a name. <em>Iro</em> (色) means "color," but in Japanese it also carries connotations of character, personality, sensuality, and hidden nature (<em>iro wo shiru</em> = to know someone's true character). The title does not ask "What is your color?" It simply states it, as if the speaker has finally seen what they were looking for.</p>
+
+  <div class="color-box">
+    <div class="color-jp">きみの色</div>
+    <div class="color-romaji">Kimi no Iro</div>
+    <div class="color-en">"The Color of You" / "Your Color" / "The Colors Within"</div>
+    <p style="text-align:center; color: var(--ink-muted); font-size: var(--step--1); margin-top: var(--space-sm);">English release title: <em>THE COLORS WITHIN</em> — a plural expansion that hints at the multiplicity of selves each character contains.</p>
+  </div>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">きみ</span>
+        <span class="romaji">kimi</span>
+        <span class="meaning">"you" — An intimate second-person pronoun. In modern Japanese, it is used between close friends, romantic partners, or from a senior to a junior. It carries warmth and directness without the formality of <em>anata</em> or the distance of a name.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">possessive particle — "of / 's" — The simplest particle in Japanese, yet here it creates a sense of belonging, of one person's essence being held by another's gaze.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">色</span>
+        <span class="romaji">iro</span>
+        <span class="meaning">"color" — Beyond hue, <em>iro</em> in Japanese encompasses: sensuality (<em>iroppoi</em> = sexy), character/nature (<em>hitono iro</em> = a person's true colors), variety (<em>iroiro</em>), and emotional tone. In the story, it is the literal visual manifestation of a person's inner emotional state.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary nuance:</strong> The title uses <em>kimi</em> rather than a character's name, making it universally addressable. Any reader can imagine themselves as the one seeing, or being seen. The lack of a verb creates a floating, contemplative quality — a fragment of perception rather than a complete sentence. This is characteristic of Japanese titling: the incompleteness invites participation.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The Colors in the Story</h3>
+    <p>Totsuko sees emotions as colors. The story establishes a loose chromatic vocabulary:</p>
+    <div class="color-swatches">
+      <div class="color-swatch">
+        <div class="swatch-name">嬉しい色</div>
+        <div class="swatch-desc">Ureshii iro — "happy color"</div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-name">楽しい色</div>
+        <div class="swatch-desc">Tanoshii iro — "joyful color"</div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-name">穏やかな色</div>
+        <div class="swatch-desc">Odayaka na iro — "calm color"</div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-name">自分の色</div>
+        <div class="swatch-desc">Jibun no iro — "one's own color"</div>
+      </div>
+    </div>
+    <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-top: var(--space-sm);">The central tragedy and hope of the story is that Totsuko can see everyone's color except her own. She is a mirror without a reflection, a synesthete who cannot synesthete herself. The title thus contains a hidden subject: it is not just "your color" but "the color of you that I can finally see — and the color of me that I am still searching for."</p>
+  </div>
+
+  <div class="film-banner">
+    <div class="film-title">原作：アニメーション映画『きみの色』</div>
+    <div class="film-detail">Directed by Naoko Yamada &middot; Screenplay by Reiko Yoshida &middot; Science SARU &middot; August 30, 2024</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">鈴川紗由 / 髙石あかり / 木戸大聖 / 新垣結衣 &middot; 主題歌：Mr.Children「in the pocket」</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author & Original Work</div>
+  <h2>鈴木小波 &mdash; Suzuki Sanami</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">鈴</div>
+    <div class="author-name-block">
+      <h3>鈴木小波</h3>
+      <p class="author-name-romaji">Suzuki Sanami &middot; b. June 14 &middot; Chiba Prefecture</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Suzuki Sanami is a Japanese manga artist from Chiba Prefecture, currently living in Tokyo. She debuted in 2002 and has built a remarkably versatile career spanning children's magazines, shonen, seinen, and shojo publications. Her range is evident in her bibliography: from the horror-tinged <em>Gregory Horror Show: Another World</em> to the food-centric <em>Hokusai to Meshi Sae Areba</em> (adapted into a TV drama), to the supernatural <em>Rinshou Shoujo</em> (adapted into a live-action film).</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">2002</span>
+        <span>Debuted with <em>Narikiri Doki Hoten</em> (なりきりドキホーテン) in Shogakukan's <em>Sunday Chao</em>. Initially worked in children's magazines and shonen publications.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2007</span>
+        <span>Published <em>Gregory Horror Show: Another World</em> (GREGORY HORROR SHOW アナザーワールド) in Kodansha's <em>Morning</em>, demonstrating her ability to handle darker, more atmospheric material.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2014</span>
+        <span>Began serializing <em>Rinshou Shoujo</em> (燐寸少女 / "Matchstick Girl") in <em>Young Ace</em> (KADOKAWA). The series was adapted into a live-action film in 2016 starring SKE48's Sato Sumire.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2016</span>
+        <span><em>Rinshou Shoujo</em> film released. Also began <em>Hokusai to Meshi Sae Areba</em> (ホクサイと飯さえあれば) in <em>Young Magazine the 3rd</em> (Kodansha), later adapted into a 2017 TV drama.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2021</span>
+        <span>Published <em>Kami-shoku no Ryourinin</em> (神食の料理人 / "Divine Chef") with Shueisha, entering the fantasy-cooking genre.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span>Released the manga adaptation of <em>Kimi no Iro</em> (きみの色), the anime film by director Naoko Yamada. Published by KADOKAWA in <em>Comic Walker</em> and collected in 4 tankobon volumes (completed June 2025).</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>燐寸少女</h4>
+        <p class="char-role">Rinshou Shoujo &middot; Young Ace</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A mysterious girl named Rin sells "delusion matches" that materialize whatever you imagine while the match burns. A surreal, philosophical fantasy. 2016 live-action film adaptation.</p>
+      </div>
+      <div class="char-card">
+        <h4>ホクサイと飯さえあれば</h4>
+        <p class="char-role">Hokusai to Meshi Sae Areba &middot; Young Magazine the 3rd</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A food-centric manga about Hokusai... and food. Adapted into a 2017 TV drama. Showcases Suzuki's ability to render culinary detail with the same precision she brings to emotional expression.</p>
+      </div>
+      <div class="char-card">
+        <h4>ヤオツクモ</h4>
+        <p class="char-role">Yaotsukumo &middot; Various</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A supernatural drama demonstrating Suzuki's skill at depicting female relationships under pressure — a direct precursor to her work on <em>Kimi no Iro</em>.</p>
+      </div>
+      <div class="char-card">
+        <h4>神食の料理人</h4>
+        <p class="char-role">Kami-shoku no Ryourinin &middot; Shueisha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">"Divine Chef" — fantasy cooking manga that combines mythological elements with gastronomic precision, showing Suzuki's genre versatility.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>On adapting <em>Kimi no Iro</em>:</strong> Suzuki was tasked with translating Naoko Yamada's painterly, color-drenched animation into static manga panels. Her solution was to lean into the comic medium's strengths: bold screentone gradients, full-bleed color pages that replicate the film's watercolor palette, and carefully composed silent panels where emotion is conveyed through posture and hue rather than dialogue. The manga is not a secondary adaptation but a genuine reinterpretation — Suzuki uses the film's story as a score she plays in her own visual key.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Main Characters</h2>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>日暮トツ子 &middot; Higurashi Totsuko</h4>
+      <p class="char-role">Protagonist / Guitar & Vocals</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A high school student at a mission school who has been able to see people's emotions as colors since childhood. Happy colors, fun colors, calm colors — she reads them all effortlessly. But she cannot see her own color. This absence becomes the engine of her curiosity and her insecurity. She is drawn to Kimi's "beautiful color" and pursues her when Kimi suddenly quits school, leading to the formation of the band. Her name (日暮 = "sunset") evokes the liminal space between day and night, visibility and obscurity.</p>
+    </div>
+    <div class="char-card">
+      <h4>作永きみ &middot; Sakunaga Kimi</h4>
+      <p class="char-role">Keyboard / The "Beautiful Color"</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A classmate of Totsuko's who radiates the most beautiful color Totsuko has ever seen. She suddenly quits school, hiding this fact from her family. She works part-time at a used bookstore on the edge of town. Her name, written in hiragana (きみ), is the same as the pronoun in the title — a deliberate conflation of character and concept. She is the "you" whose color Totsuko is chasing, and perhaps the "you" addressing Totsuko in return.</p>
+    </div>
+    <div class="char-card">
+      <h4>影平ルイ &middot; Kagehira Rui</h4>
+      <p class="char-role">Drums / The Quiet Musician</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A music-loving boy Totsuko meets at the used bookstore where Kimi works. His mother expects him to become a doctor, so he hides his musical activities from his family. He is calm, observant, and provides the steady rhythmic backbone of the band — both musically and emotionally. His name (影平 = "shadow flat") suggests someone who exists in the penumbra of others' expectations.</p>
+    </div>
+    <div class="char-card">
+      <h4>シスター日吉子 &middot; Sister Hiyoshiko</h4>
+      <p class="char-role">Guiding Figure / Mission School</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A sister at the mission school who watches over the three students. In the anime film, voiced by Aragaki Yui. She represents an older generation's gentle wisdom, offering guidance without imposing solutions. Her presence anchors the story in the quiet spirituality of the mission school setting.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Naming strategy:</strong> The characters' names are carefully chosen. Totsuko's surname <em>Higurashi</em> (日暮) means "sunset" — the moment when colors are most vivid yet about to disappear. Kimi's given name is written in hiragana (きみ), making it identical to the pronoun <em>kimi</em> (you). When Totsuko says "<em>Kimi no iro</em>," she is simultaneously saying "your color" and "Kimi's color." This double meaning is impossible to replicate in English, where "Kimi" and "you" are distinct words.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <p>Totsuko is a high school student at a mission school who has possessed a rare gift since childhood: she sees people's emotions as colors. Happiness has a hue, excitement has a shade, tranquility has a tone. She navigates the world through this chromatic overlay, reading people's inner states more easily than their facial expressions.</p>
+    <p style="margin-top: var(--space-sm);">But there is one color she cannot see: her own.</p>
+    <p style="margin-top: var(--space-sm);">Among all the people she has ever encountered, one color stands out as uniquely beautiful: that of her classmate, Kimi. When Kimi suddenly quits school, Totsuko is compelled to find her. Her search leads to a used bookstore on the edge of town, where Kimi has been working part-time. There, Totsuko also meets Rui, a quiet boy who loves music.</p>
+    <p style="margin-top: var(--space-sm);">The three of them form a band. Their practice space is an old church on a remote island, accessible only by ferry — a sanctuary separated from the expectations of school, family, and society. Kimi has not told her family that she quit school. Rui has not told his mother that he is pursuing music instead of medicine. Totsuko has not told anyone that she cannot see her own color.</p>
+    <p style="margin-top: var(--space-sm);">As they rehearse, argue, laugh, and gradually open up to one another, something shifts. The music becomes a medium through which colors can be shared, transformed, and finally seen. At the school festival, and then at their first live performance, the three of them stand before an audience and reveal not just their songs but their colors — the hues of their true selves that they have been hiding.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Synesthesia as metaphor:</strong> Totsuko's chromatic perception literalizes what adolescence feels like — the overwhelming, pre-verbal intensity of sensing other people's emotions before you understand them.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The invisible self:</strong> The tragedy of seeing everyone clearly while remaining opaque to yourself is the central paradox of the story. It speaks to anyone who has felt like an observer rather than a participant in their own life.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Music as translation:</strong> When words fail, music becomes the language through which the three characters communicate their incommunicable feelings. A chord progression can carry what a sentence cannot.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Adolescence as liminal space:</strong> The old church on the island is a physical manifestation of the transitional space between childhood and adulthood — sacred, slightly run-down, and separate from the mainland of ordinary life.</li>
+      <li><strong>The gaze and being seen:</strong> The title contains both the active and passive senses: "your color" (what I see of you) and "your color" (what you reveal when seen). The story is about learning to be the object of someone else's perception and surviving it.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the story's central motifs: chromatic perception, the ache of invisibility, the discovery of music as a shared language, and the quiet drama of being seen.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Chromatic Gift</div>
+    <div class="passage-jp">
+      高校生のトツ子は、人が「色」で見える。嬉しい色、楽しい色、穏やかな色。そして、自分の好きな色。
+    </div>
+    <div class="passage-romaji">
+      Koukousei no Totsuko wa, hito ga "iro" de mieru. Ureshii iro, tanoshii iro, odayaka na iro. Soshite, jibun no suki na iro.
+    </div>
+    <div class="passage-en">
+      "The high school student Totsuko sees people as 'colors.' Happy colors, joyful colors, calm colors. And, her favorite color."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The sentence structure is almost childlike in its simplicity: subject, verb, object, then a list. The repetition of <em>iro</em> (色) creates an incantatory rhythm. The final phrase — <em>jibun no suki na iro</em> (自分の好き色, "her favorite color") — is deliberately ambiguous. It could mean "the color she likes best in others" or "the color of the person she likes best." This ambiguity is the story's engine: Totsuko's favorite color belongs to Kimi, and she spends the narrative trying to understand what that attraction means. The passage also withholds the crucial information: she cannot see her own color. This omission, revealed later, recontextualizes everything.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Invisible Self</div>
+    <div class="passage-jp">
+      でも自分の持つ色だけは見えないでいた。
+    </div>
+    <div class="passage-romaji">
+      Demo jibun no motsu iro dake wa mienai de ita.
+    </div>
+    <div class="passage-en">
+      "But the color she herself possessed was the only one she could not see."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This single sentence contains the story's entire emotional architecture. <em>Demo</em> (でも, "but") arrives like a small gate closing. <em>Jibun no motsu iro</em> (自分の持つ色, "the color she herself possessed/had") uses <em>motsu</em> (持つ, to hold/possess) rather than a simpler copula, emphasizing that the color is an attribute she carries, not merely a state. <em>Dake wa mienai de ita</em> (だけは見えないでいた, "was the only thing she could not see") uses the continuative <em>de ita</em> form, indicating a persistent state — she has been not-seeing her own color for her entire life. The sentence is short, almost thrown away, yet it carries the weight of every adolescent who has looked in a mirror and failed to recognize themselves.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Band Forms</div>
+    <div class="passage-jp">
+      「よかったらバンドに、入りませんか？」音楽で心を通わせていく三人のあいだに、友情とほのかな恋のような感情が生まれ始める。
+    </div>
+    <div class="passage-romaji">
+      "Yokattara bando ni, hairimasen ka?" Ongaku de kokoro wo tsuuwase teiku sannin no aida ni, yuujou to honoka na koi no you na kanjou ga umare hajimeru.
+    </div>
+    <div class="passage-en">
+      "'If you'd like, won't you join the band?' Between the three of them, as they gradually come to understand each other through music, friendship and a faint, love-like feeling begin to be born."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Yokattara</em> (よかったら, "if it's good / if you'd like") is the gentlest possible invitation — less demanding than <em>~masen ka</em> alone would be. It creates a soft landing for the question. <em>Kokoro wo tsuuwaseru</em> (心を通わせる, "to communicate heart-to-heart / to come to an understanding") is a set phrase that implies a gradual, mutual process rather than a single moment of revelation. The phrase <em>honoka na koi no you na kanjou</em> (ほのかな恋のような感情, "a faint, love-like feeling") is characteristically Japanese in its hedging: it is not "love" but "love-like"; not a certainty but a <em>kanjou</em> (feeling/emotion) that is only <em>honoka</em> (faint/dim). This is how Japanese adolescence is often rendered — not in declarations but in approximations.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Performance</div>
+    <div class="passage-jp">
+      周りに合わせ過ぎたり、ひとりで傷ついたり、自分を偽ったり――やがて訪れる学園祭、そして初めてのライブ。会場に集まった観客の前で見せた三人の「色」とは。
+    </div>
+    <div class="passage-romaji">
+      Mawari ni awasesugitari, hitori de kizutsuitari, jibun wo itsuwattari — yagate otozureru gakuensai, soshite hajimete no live. Kaijou ni atsumatta kankyaku no mae de miseta sannin no "iro" to wa.
+    </div>
+    <div class="passage-en">
+      "Trying too hard to match those around her, hurting alone, pretending to be someone she's not — at last the school festival arrives, and then their first live show. What were the 'colors' that the three of them revealed before the audience gathered in the venue?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The three <em>~tari</em> verbs form a classic Japanese rhetorical triad: <em>awasesugitari</em> (合わせ過ぎたり, trying too hard to conform), <em>kizutsuitari</em> (傷ついたり, getting hurt), <em>itsuwattari</em> (偽ったり, pretending/faking). These are the three modes of adolescent self-loss, and the story has shown each character inhabiting all three. The dash before <em>yagate</em> (やがて, "at last/finally") creates a pause, a breath held before the climax. The final sentence is a question without a question mark — a Japanese promotional-copy convention that invites the reader to discover the answer by experiencing the story. <em>Iro</em> appears in quotation marks, signaling that it is both literal (the colors Totsuko sees) and metaphorical (the true selves they finally reveal).</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, synopsis, and thematic context, organized by theme.</p>
+
+  <div class="card">
+    <h3>Color & Perception</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>色</td><td>iro</td><td class="pos">noun</td><td>color; hue; sensuality; character</td></tr>
+        <tr><td>嬉しい</td><td>ureshii</td><td class="pos">adj</td><td>happy, glad, joyful</td></tr>
+        <tr><td>楽しい</td><td>tanoshii</td><td class="pos">adj</td><td>fun, enjoyable, joyful</td></tr>
+        <tr><td>穏やか</td><td>odayaka</td><td class="pos">adj</td><td>calm, gentle, peaceful</td></tr>
+        <tr><td>鮮やか</td><td>azayaka</td><td class="pos">adj</td><td>vivid, bright, brilliant</td></tr>
+        <tr><td>見える</td><td>mieru</td><td class="pos">verb</td><td>to be visible, to be seen (potential)</td></tr>
+        <tr><td>見えない</td><td>mienai</td><td class="pos">verb</td><td>to be unable to see; to be invisible</td></tr>
+        <tr><td>色彩</td><td>shikisai</td><td class="pos">noun</td><td>coloration, hues, palette</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Self</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>心</td><td>kokoro</td><td class="pos">noun</td><td>heart, mind, spirit, emotion</td></tr>
+        <tr><td>通わせる</td><td>tsuuwaseru</td><td class="pos">verb</td><td>to communicate, to make understood</td></tr>
+        <tr><td>悩み</td><td>nayami</td><td class="pos">noun</td><td>worry, trouble, anguish</td></tr>
+        <tr><td>葛藤</td><td>kattou</td><td class="pos">noun</td><td>conflict, struggle, turmoil</td></tr>
+        <tr><td>傷つく</td><td>kizutsuku</td><td class="pos">verb</td><td>to get hurt, to be wounded</td></tr>
+        <tr><td>偽る</td><td>itsuwaru</td><td class="pos">verb</td><td>to pretend, to feign, to fake</td></tr>
+        <tr><td>自分</td><td>jibun</td><td class="pos">pronoun</td><td>oneself, self</td></tr>
+        <tr><td>自立</td><td>jiritsu</td><td class="pos">noun</td><td>independence, self-reliance</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Music & Performance</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>バンド</td><td>bando</td><td class="pos">noun</td><td>band (musical group)</td></tr>
+        <tr><td>音楽</td><td>ongaku</td><td class="pos">noun</td><td>music</td></tr>
+        <tr><td>ライブ</td><td>raibu</td><td class="pos">noun</td><td>live performance, concert</td></tr>
+        <tr><td>学園祭</td><td>gakuensai</td><td class="pos">noun</td><td>school festival, cultural festival</td></tr>
+        <tr><td>観客</td><td>kankyaku</td><td class="pos">noun</td><td>audience, spectator</td></tr>
+        <tr><td>練習</td><td>renshuu</td><td class="pos">noun</td><td>practice, rehearsal</td></tr>
+        <tr><td>演奏</td><td>ensou</td><td class="pos">noun</td><td>musical performance, playing</td></tr>
+        <tr><td>教会</td><td>kyoukai</td><td class="pos">noun</td><td>church</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Relationships & Adolescence</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>友情</td><td>yuujou</td><td class="pos">noun</td><td>friendship</td></tr>
+        <tr><td>恋</td><td>koi</td><td class="pos">noun</td><td>love (romantic), longing</td></tr>
+        <tr><td>ほのか</td><td>honoka</td><td class="pos">adj</td><td>faint, dim, subtle</td></tr>
+        <tr><td>思春期</td><td>shishunki</td><td class="pos">noun</td><td>puberty, adolescence</td></tr>
+        <tr><td>同級生</td><td>doukyuusei</td><td class="pos">noun</td><td>classmate</td></tr>
+        <tr><td>憧れ</td><td>akogare</td><td class="pos">noun</td><td>longing, admiration, yearning</td></tr>
+        <tr><td>期待</td><td>kitai</td><td class="pos">noun</td><td>expectation, hope</td></tr>
+        <tr><td>気持ち</td><td>kimochi</td><td class="pos">noun</td><td>feelings, emotions, heart</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">The story's power lies in its compression, its chromatic metaphors, and the cultural specificity of Japanese adolescent discourse. Much of this is difficult to carry into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Kimi</em> (きみ) as Name and Pronoun</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>作永<strong>きみ</strong> — そして「<strong>きみ</strong>の色」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Kimi Sakunaga" — and "The Colors Within"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>In Japanese, the character's name <em>Kimi</em> (きみ) and the pronoun <em>kimi</em> (きみ, "you") are written identically in hiragana. When Totsuko thinks or speaks about "<em>kimi no iro</em>," she is simultaneously referring to "your color" (the color of the person she is addressing) and "Kimi's color" (the color of the character). This creates a constant double resonance: every time the title concept appears, it names both a specific person and a universal experience of being seen by another. English cannot replicate this because "Kimi" and "you" are orthographically and phonetically distinct.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Iro</em> (色) Beyond "Color"</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>人が「色」で見える</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"She sees people as 'colors'"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Japanese <em>iro</em> carries semantic fields that "color" does not. <em>Iro</em> can mean sensuality (<em>iroppoi</em> = sexy), one's true nature (<em>hito no iro</em> = a person's true colors), variety (<em>iroiro</em>), and even political complexion. When Totsuko sees emotions as <em>iro</em>, she is not just seeing hues; she is perceiving the entire affective and moral character of a person. The English "color" flattens this into a visual metaphor, whereas in Japanese it is a visual-metaphor-plus: color-as-essence, color-as-sensuality, color-as-variation.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. The <em>~tari</em> Triad of Adolescent Suffering</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>周りに合わせ過ぎたり、ひとりで傷ついたり、自分を偽ったり</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Trying too hard to conform, getting hurt alone, pretending to be someone she's not"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The <em>~tari</em> form in Japanese lists exemplary actions rather than exhaustive ones, implying "things like conforming too much, getting hurt alone, faking herself — among others." It creates a sense of ongoing, repetitive, overlapping struggle rather than three discrete problems. The English translation turns these into a list of specific issues; the Japanese suggests a continuous, cycling pattern of adolescent self-negotiation. The rhythm of three <em>~tari</em> verbs is also lost: it sounds like a heartbeat in Japanese, a compressed poem of teenage pain.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kokoro wo Tsuuwaseru</em> (心を通わせる)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>音楽で心を通わせていく三人</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the three of them gradually coming to understand each other through music"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kokoro wo tsuuwaseru</em> is a set phrase that literally means "to make hearts pass through to each other." It implies a mutual, reciprocal process of emotional disclosure — not merely "understanding" but a kind of inter-cardiac connection. The English "coming to understand each other" is cognitive; the Japanese is visceral. Hearts, not minds, are what pass between these characters. The continuative form <em>tsuuwase te iku</em> (通わせていく) emphasizes that this is an ongoing, deepening process, not a completed achievement.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Honoka na Koi no You na Kanjou</em> (ほのかな恋のような感情)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>友情とほのかな恋のような感情</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"friendship and a faint, love-like feeling"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>This phrase is a masterpiece of Japanese emotional hedging. <em>Honoka</em> (ほのか) means faint, dim, barely perceptible — like a candle at the edge of vision. <em>Koi no you na</em> (恋のような) is "love-like," not "love" — it acknowledges the resemblance while denying the certainty. <em>Kanjou</em> (感情) is "feeling/emotion," a step down from "love" as a category. The entire phrase is a way of describing queer or ambiguous adolescent attraction without having to name it definitively. In Japanese youth culture, this kind of phrasing is a recognized convention for speaking about feelings that exceed available categories. English can approximate it, but loses the specific cultural grammar of Japanese adolescent emotional indirection.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the synopsis and key passages, useful for intermediate to advanced learners.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜で見える（様態・手段）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>De mieru</em>: to be visible as / to see by means of / to appear as.</p>
+      <div class="grammar-example">人が「色」で見える</div>
+      <p class="grammar-example-en">"People appear as 'colors'" — <em>De</em> here indicates the medium or form through which perception occurs. It is not "see by color" but "see in the form of color."</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だけは（限定・例外）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Dake wa</em>: only / the only thing that (with emphatic exception).</p>
+      <div class="grammar-example">自分の持つ色だけは見えないでいた</div>
+      <p class="grammar-example-en">"The color she herself possessed was the only thing she could not see" — <em>Dake wa</em> isolates one element from a set and gives it special (often tragic) emphasis.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ずつ（継続・反復）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Zutsu</em>: little by little / gradually / apiece.</p>
+      <div class="grammar-example">心を通わせていく（＝少しずつ通じ合う）</div>
+      <p class="grammar-example-en">"Gradually coming to understand each other" — The continuative <em>te iku</em> form combined with the semantics of <em>tsuuwaseru</em> implies incremental, ongoing mutual disclosure.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たり〜たり〜たり（並立・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Tari ~ tari</em>: doing things like X and Y (exemplary listing).</p>
+      <div class="grammar-example">周りに合わせ過ぎたり、ひとりで傷ついたり、自分を偽ったり</div>
+      <p class="grammar-example-en">"Trying too hard to conform, getting hurt alone, pretending to be someone she's not" — The <em>tari</em> form lists representative actions rather than an exhaustive inventory, implying there are more.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のような〜（比況）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No you na</em>: like / similar to / resembling.</p>
+      <div class="grammar-example">ほのかな恋のような感情</div>
+      <p class="grammar-example-en">"a faint, love-like feeling" — <em>No you na</em> creates a simile without <em>mitai</em>'s casualness. It is more literary, more tentative, more precise.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜始める（開始）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Hajimeru</em>: to begin to (auxiliary verb indicating the start of an action).</p>
+      <div class="grammar-example">生まれ始める</div>
+      <p class="grammar-example-en">"begin to be born / begin to emerge" — <em>Umaru</em> (生まれる, to be born) + <em>hajimeru</em> (始める, to begin) creates an inceptive passive: something is in the process of coming into being.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・遺憾）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te shimau</em>: to do completely / to end up doing (often with regret).</p>
+      <div class="grammar-example">学校を辞めてしまう</div>
+      <p class="grammar-example-en">"ends up quitting school" — The <em>te shimau</em> form here carries a nuance of regrettable finality. Kimi's withdrawal from school is not just an action but a completed, somewhat tragic event.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と（引用・内容）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>To</em> as quotative particle: marking the content of speech, thought, or perception.</p>
+      <div class="grammar-example">三人の「色」とは</div>
+      <p class="grammar-example-en">"What were the three people's 'colors'?" — The quotative <em>to</em> turns <em>iro</em> into something being asked about, defined, or revealed. The quotation marks in the Japanese reinforce this.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The language of <em>Kimi no Iro</em> is accessible (N4-N3 level) but emotionally dense. The grammatical simplicity — short sentences, basic particles, common verb forms — is part of the story's power. It reads like adolescent speech: direct, slightly repetitive, and full of things left unsaid. For learners, this makes it an ideal bridge between textbook Japanese and literary Japanese. Pay attention to how much emotion is carried by the choice of auxiliary verbs (<em>te iru</em>, <em>te iku</em>, <em>te shimau</em>) rather than by adjectives or adverbs.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">きみの色 &middot; 鈴木小波（漫画）&middot; 山田尚子（原作・監督）</p>
+</footer>
+
+</div>
+</body>
+</html>

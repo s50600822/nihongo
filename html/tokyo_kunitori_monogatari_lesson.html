@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トーキョー国盗り物語 — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>トーキョー国盗り物語</h1>
+    <p class="subtitle">Tokyo Kunitori Monogatari<br><em>The Tokyo Tale of Conquering the Realm</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">林真理子 (Hayashi Mariko)</span></span>
+      <span><span class="label">First published</span> <span class="value">1992 (hardcover) / 1995 (Shueisha Bunko)</span></span>
+      <span><span class="label">Publisher</span> <span class="value">Shueisha</span></span>
+      <span><span class="label">Format</span> <span class="value">Novel (275 pp. paperback)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-08-748394-9</span></span>
+      <span><span class="label">TV drama</span> <span class="value">NHK Drama Shinginka, 1993</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">トーキョー国盗り物語</div>
+    <div class="romaji">Tokyo Kunitori Monogatari</div>
+    <div class="translation">"The Tokyo Tale of Conquering the Realm" / "Tokyo: A Story of Nation-Stealing"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>トーキョー</td><td>Tokyo</td><td>Proper noun (katakana)</td><td>Tokyo, the metropolis</td></tr>
+    <tr><td>国盗り</td><td>kunitori</td><td>Noun (compound)</td><td>realm-conquering, nation-stealing</td></tr>
+    <tr><td>物語</td><td>monogatari</td><td>Noun</td><td>tale, story, narrative</td></tr>
+  </table>
+
+  <h4>国盗り (kunitori): From Sengoku Battlefield to Marriage Market</h4>
+  <p><code>国盗り</code> is a term from Japan's Sengoku (Warring States) period (1467–1615), referring to the conquest and seizure of territories by warlords. The most famous literary usage is in the title of the NHK Taiga drama <em>Kunitori Monogatari</em> (国盗り物語, 1973), about the rise of Oda Nobunaga. In Hayashi's hands, this martial term is transposed into the social battlefield of Tokyo: the "realm" being conquered is not land but status, not castles but marriages. The title announces that the novel will treat romance and career as forms of territorial warfare.</p>
+
+  <p>The genius of the title lies in its double layer. On the surface, it is playful and ironic: three young women "conquering" Tokyo in the sense of making their way in the big city. But beneath the playfulness is a serious observation: in a patriarchal society, a woman's ability to secure a good marriage is indeed a form of conquest, a seizure of social territory that determines the rest of her life. The title does not mock the women; it dignifies their struggle with historical weight.</p>
+
+  <h4>物語 (monogatari): The Classical Narrative Form</h4>
+  <p><code>物語</code> is one of the most culturally loaded words in Japanese literature. It is the suffix of Japan's foundational texts: <em>Genji Monogatari</em> (源氏物語, The Tale of Genji, c. 1021), <em>Heike Monogatari</em> (平家物語, The Tale of the Heike, c. 1240). Using <code>物語</code> rather than <code>小説</code> (shōsetsu, novel) or <code>ストーリー</code> (sutōrī, story) places the novel in a lineage of Japanese narrative stretching back a thousand years. Hayashi is not merely telling a contemporary story; she is writing a <code>monogatari</code> in the classical sense: a tale of human ambition, love, and fate set against the backdrop of a particular world, in this case, bubble-era Tokyo.</p>
+
+  <h4>トーキョー in Katakana</h4>
+  <p>The use of katakana <code>トーキョー</code> rather than kanji <code>東京</code> is a stylistic choice that gives the city a modern, almost foreign feel. Katakana is the script of the new, the imported, the trendy. Writing "Tokyo" in katakana suggests a city that is less a place than a brand, less a geography than a lifestyle. It is the Tokyo of department stores, designer boutiques, foreign luxury goods, and international parties. The katakana signals that this is not the Tokyo of shitamachi backstreets or imperial gardens; it is the Tokyo of working women in power suits, a city that exists in neon and chrome.</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's historical irony:</strong> <code>国盗り</code> evokes warlords in armor seizing provinces with swords. Hayashi's heroines seize their futures with job applications, party invitations, and strategic marriages. The parallel is not parody but recognition: the social world of Tokyo is as brutal and consequential as any Sengoku battlefield, and the women who navigate it are as calculating and courageous as any daimyō.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 林真理子</h2>
+
+  <p>Hayashi Mariko is one of Japan's most prolific and decorated writers, a cultural institution whose career spans over four decades and virtually every major literary prize. She is known for her unflinching portrayal of women's desires, ambitions, and contradictions, her sharp social observation, and a prose style that is accessible, witty, and psychologically acute. She has been called the writer who "liberated jealousy, envy, and resentment" (<code>ねたみ・そねみ・しっとを解放した</code>) in Japanese women's fiction, giving voice to emotions that had previously been suppressed or pathologized.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">林 真理子（はやし まりこ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">April 1, 1954, Yamanashi Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Nihon University College of Art, Literature Department</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Early career</span>
+      <span class="stat-value">Copywriter</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">1982, essay collection Runrun o Katte Ouchi ni Kaerō</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major award</span>
+      <span class="stat-value">Naoki Prize (1986), Yoshikawa Eiji Prize (1998)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Current position</span>
+      <span class="stat-value">President of Nihon University (since 2022)</span>
+    </div>
+  </div>
+
+  <h4>From Copywriter to Literary Stardom</h4>
+  <p>Hayashi began her career as a copywriter after graduating from Nihon University's literature department. This background is visible in her prose: she writes with the concision, punch, and market awareness of someone trained to sell products in thirty seconds. Her 1982 essay collection, <em>Runrun o Katte Ouchi ni Kaerō</em> (ルンルンを買っておうちに帰ろう, "Let's Buy Some Run-Run and Go Home"), became an instant bestseller and established her as the voice of a new generation of urban Japanese women: working, consuming, and negotiating independence in a society still structured around male breadwinners.</p>
+
+  <p>Her breakthrough as a novelist came in 1986 when she won the 94th Naoki Prize for <em>Saishūbin ni Maniaeba</em> (最終便に間に合えば, "If We Make the Last Flight") and <em>Kyōto made</em> (京都まで, "To Kyoto"). The Naoki is one of Japan's most prestigious prizes for popular fiction, and winning it at 32 established her as a major literary figure. She has since accumulated virtually every major honor: the Shibata Renzaburō Prize (1995), the Yoshikawa Eiji Literary Prize (1998), the Shima Seien Love Literature Prize (2013), the Medal with Purple Ribbon (2018), the Kikuchi Kan Prize (2020), and the Noma Prize for Publication Culture (2022).</p>
+
+  <h4>The Hayashi Mariko Method</h4>
+  <p>Hayashi's signature achievement is her creation of female characters who are neither idealized nor condemned for their ambition. Before Hayashi, Japanese women's fiction often presented its heroines as either self-sacrificing angels or punished sinners. Hayashi's women want money, status, attractive husbands, and beautiful things, and they are allowed to pursue these desires without moralistic framing. This was revolutionary in 1980s Japan and remains influential.</p>
+
+  <p>Her prose style is conversational, brisk, and full of cultural reference. She assumes an intelligent reader who understands brand names, university hierarchies, and social codes. This makes her an excellent author for language learners interested in contemporary Japanese social dynamics: her novels are textbooks of class, gender, and aspiration in urban Japan.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1954</span>
+      <span class="timeline-event">Born in Yamanashi Prefecture</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1976</span>
+      <span class="timeline-event">Graduates from Nihon University College of Art</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Works as a copywriter</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1982</span>
+      <span class="timeline-event">Debut: Runrun o Katte Ouchi ni Kaerō (bestseller essay collection)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1984</span>
+      <span class="timeline-event">First novel Hoshikage no Stella (Naoki Prize nominee)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1986</span>
+      <span class="timeline-event">Wins 94th Naoki Prize for Saishūbin ni Maniaeba / Kyōto made</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1992</span>
+      <span class="timeline-event">Tokyo Kunitori Monogatari published (hardcover)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1993</span>
+      <span class="timeline-event">NHK Drama Shinginka adaptation (first in the series)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1995</span>
+      <span class="timeline-event">Shibata Renzaburō Prize for Byakuren Renren; Tokyo Kunitori in paperback</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1998</span>
+      <span class="timeline-event">Yoshikawa Eiji Prize for Minna no Himitsu</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2013</span>
+      <span class="timeline-event">Shima Seien Love Literature Prize for Asukurepiosu no Aijin</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2018</span>
+      <span class="timeline-event">Medal with Purple Ribbon; Saigō Don! adapted as NHK Taiga drama</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2020</span>
+      <span class="timeline-event">Kikuchi Kan Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2022</span>
+      <span class="timeline-event">Becomes President of Nihon University; Noma Prize for Publication Culture</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Tokyo Kunitori Monogatari</em> is a novel about three working women in Tokyo who meet by chance at a party and form an unlikely alliance in their pursuit of happiness, which in the Japan of the early 1990s means, above all, a good marriage and a successful career. The novel captures a precise historical moment: the tail end of the bubble economy, when ostentatious consumption was still possible but the cracks were beginning to show, and when the "marriage hunt" (<code>婚活</code>) had not yet been named as a social phenomenon but was already a full-time occupation for many women.</p>
+
+  <h4>The Three Heroines</h4>
+  <p>The novel's structure is built around the contrast between three women who have almost nothing in common except their gender, their age (roughly late twenties), and their shared dissatisfaction with their lives.</p>
+
+  <div class="card card-accent">
+    <p><strong>遠藤美保 (Endō Miho)</strong> — A boutique clerk of extraordinary beauty and equally extraordinary sharp tongue. She is quick-witted, fashion-conscious, and acutely aware that her looks are her capital. She is not educated in the formal sense, but she has a street-level intelligence that allows her to read people instantly. Her ambition is to marry up, to convert beauty into security. She is the novel's most pragmatic character, and Hayashi does not condemn her for it.</p>
+    <p style="margin-top:0.8em;"><strong>高宮絹 (Takamiya Kinu)</strong> — A Waseda University political science graduate who failed to secure a proper job through standard recruitment and now works as a freelance writer through connections. She is intelligent, well-connected, and vaguely ashamed of her dependence on others. She represents the educated woman who discovers that a prestigious degree does not automatically translate into the life she was promised.</p>
+    <p style="margin-top:0.8em;"><strong>長岡笙子 (Nagaoka Shōko)</strong> — An office lady (OL) at a company where she is neither happy nor unhappy. She is the most "average" of the three, which is precisely her problem: her life is predictable, and predictability has begun to feel like a trap. She is the reader's entry point, the woman who could be any college graduate in Tokyo.</p>
+  </div>
+
+  <h4>The Party Where It Begins</h4>
+  <p>The novel opens at a wedding after-party (<code>披露パーティ</code>) hosted by a Keiō University graduate who is now a doctor. This setting is crucial. In 1990s Japan, a doctor from Keiō represented the pinnacle of the marriage market: elite education, stable high income, high social status. The fact that the three heroines are at this party at all, even as peripheral guests, tells us something about their social level and their aspirations. They are not insiders, but they are close enough to see the inside.</p>
+
+  <p>The party is where the three women discover that they are all, in different ways, hunting the same thing: not just a husband, but a <em>good</em> husband, which in their world means a man with education, income, and status. The novel's radical honesty is to admit this openly. These are not women looking for "true love" in a vacuum; they are women trying to optimize their lives within a social structure that rewards women primarily through marriage. Hayashi lets them be strategic without making them villains.</p>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">女性の野心</div>
+    <div class="chapter-tag highlighted">恋愛と結婚</div>
+    <div class="chapter-tag highlighted">キャリアと成功</div>
+    <div class="chapter-tag highlighted">バブル期の東京</div>
+    <div class="chapter-tag highlighted">学閥と階層</div>
+    <div class="chapter-tag highlighted">友情と競争</div>
+    <div class="chapter-tag highlighted">「幸せ」の定義</div>
+    <div class="chapter-tag">婚活の先駆け</div>
+  </div>
+
+  <h4>Bubble-Era Tokyo as a Character</h4>
+  <p>The novel's Tokyo is not a neutral backdrop; it is a force. It is the city of Ginza boutiques, Roppongi clubs, Keiō and Waseda networks, omiai (arranged marriage meetings), and after-work drinking parties where connections are made and futures decided. Hayashi understands that in this Tokyo, every social interaction is a transaction, every party is an audition, and every relationship is a potential investment. The city itself is the "realm" of the title, and the women are its would-be conquerors.</p>
+
+  <p>The novel was published in 1992, just as the bubble was definitively bursting. This timing gives it a particular poignancy: the world it describes, of easy money and unquestioned upward mobility, was already vanishing as the book hit the shelves. Reading it now is like looking at a photograph of a city that no longer exists, a Tokyo of optimism and excess that the Lost Decade would slowly dismantle.</p>
+
+  <h4>The NHK Drama: A Cultural Moment</h4>
+  <p>The 1993 NHK television adaptation, starring Sawaguchi Yasuko (沢口靖子) as Miho, Shimizu Misa (清水美砂) as Kinu, and OginoMe Yōko (荻野目洋子) as Shōko, was the inaugural production of NHK's <em>Drama Shinginka</em> (ドマ新銀河) series, which would go on to produce 54 works. The casting was perfect: three actresses who themselves represented different types of feminine appeal in early-1990s Japan. The drama brought the novel to a mass audience and made the title a household phrase.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the novel's content, style, and documented quotations from reviewers. They capture Hayashi's voice, the central relationship between the three women, and the novel's social observation.</p>
+
+  <h3>A. The Party and the First Encounter</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">慶応出身の医者が主催する披露パーティの帰り道、三人の女は偶然同じタクシーに乗り合わた。遠藤美保は、自分の美貌に対する確信を失ったことがない。高宮絹は、頭の良さだけでは何も始まらないことを、最近ようやく悟り始めていた。長岡笙子は、不満もないが、楽しいこともない毎日に、どこか拍子抜けしていた。三人とも、今夜のパーティで何かが変わることを、密かに期待していたのだ。</div>
+    <div class="romaji">Keiō shusshin no isha ga shusai suru hirō pāti no kaerimichi, sannin no onna wa gūzen onaji takushī ni noriawaseta. Endō Miho wa, jibun no bibō ni taisuru kakushin o ushinatta koto ga nai. Takamiya Kinu wa, atama no yosa dake de wa nani mo hajimaranai koto o, saikin yōyaku satori hajimete ita. Nagaoka Shōko wa, fuman mo nai ga, tanoshii koto mo nai mainichi ni, dokoka hyonshibuke shite ita. Sannin tomo, kon'ya no pāti de nanika ga kawaru koto o, hisoka ni kitai shite ita no da.</div>
+    <div class="translation">On their way home from a wedding after-party hosted by a Keiō-educated doctor, three women happened to share the same taxi. Endō Miho had never lost her certainty about her own beauty. Takamiya Kinu had only recently begun to realize that intelligence alone was not enough to get things started. Nagaoka Shōko was somehow deflated by her daily life, in which there was nothing to complain about but also nothing to enjoy. All three had been secretly hoping that something would change at tonight's party.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>披露パーティ</td><td>hirō pāti</td><td>wedding after-party, reception party</td></tr>
+    <tr><td>乗り合わせる</td><td>noriawaseru</td><td>to share (a vehicle)</td></tr>
+    <tr><td>美貌</td><td>bibō</td><td>beauty, good looks</td></tr>
+    <tr><td>確信</td><td>kakushin</td><td>certainty, conviction</td></tr>
+    <tr><td>悟る</td><td>satoru</td><td>to realize, to awaken to</td></tr>
+    <tr><td>拍子抜け</td><td>hyonshibuke</td><td>anticlimax, letdown</td></tr>
+    <tr><td>密か</td><td>hisoka</td><td>secretly, privately</td></tr>
+  </table>
+
+  <h3>B. On Men and Strategy</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">「男で自分の一生が決まるなんて、どうかしてると思わない？」笙子が言うと、美保はクスッと笑った。「思わないわ。だって、本当じゃない。女の人生の大半は、どんな男を選ぶかで決まるもの。それを認めないで、どうするの？」絹は窓の外を見ながら、静かに付け加えた。「問題は、選べるかどうかよ。いい男は、みんな奪い合いなの。それがトーキョーなのよ。」</div>
+    <div class="romaji">"Otoko de jibun no isshō ga kimaru nante, dōka shiteru to omowanai?" Shōko ga iu to, Miho wa kusutto waratta. "Omowanai wa. Datte, hontō ja nai. Onna no jinsei no taihan wa, donna otoko o erabu ka de kimaru mono. Sore o mitomenaide, dō suru no?" Kinu wa mado no soto o minagara, shizuka ni tsukekuwaeta. "Mondai wa, eraberu ka dō ka yo. Ii otoko wa, minna ubai ai na no. Sore ga Tokyo na no yo."</div>
+    <div class="translation">"Don't you think it's crazy that your whole life is decided by a man?" Shōko asked. Miho chuckled. "I don't. Because it's true. Most of a woman's life is determined by what kind of man she chooses. What are you going to do, deny it?" Kinu, looking out the window, quietly added: "The question is whether you can choose. Good men are all fought over. That's Tokyo."</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>一生</td><td>isshō</td><td>one's whole life</td></tr>
+    <tr><td>決まる</td><td>kimaru</td><td>to be decided, to be determined</td></tr>
+    <tr><td>どうかしてる</td><td>dōka shiteru</td><td>crazy, not right (colloquial)</td></tr>
+    <tr><td>大半</td><td>taihan</td><td>majority, greater part</td></tr>
+    <tr><td>認める</td><td>mitomeru</td><td>to acknowledge, to accept</td></tr>
+    <tr><td>付け加える</td><td>tsukekuwaeru</td><td>to add (a remark)</td></tr>
+    <tr><td>奪い合い</td><td>ubai ai</td><td>scramble, competition (for something)</td></tr>
+  </table>
+
+  <h3>C. On Happiness and Dissatisfaction</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">不満を持っていれば幸せになれる、というのは、美保の口癖のようなものだった。笙子には、その言葉の意味が最初はよくわからなかった。不満があるのは、幸せの反対のはずだ。しかし、美保のいう不満とは、今の自分に満足してしまうことへの抵抗だった。何も望まなければ、何も失わない。でも、何も手に入らない。笙子は初めて、自分の「拍子抜け」が、望みのなさから来ているのだと気づいた。</div>
+    <div class="romaji">Fuman o motte ireba shiawase ni nareru, to iu no wa, Miho no kuchiguse no yō na mono datta. Shōko ni wa, sono kotoba no imi ga saisho wa yoku wakaranakatta. Fuman ga aru no wa, shiawase no hantai no hazu da. Shikashi, Miho no iu fuman to wa, ima no jibun ni manzoku shite shimau koto e no teikō datta. Nani mo nozomanakereba, nani mo ushinawanai. Demo, nani mo te ni hairanai. Shōko wa hajimete, jibun no "hyonshibuke" ga, nozomi no nashi kara kite iru no da to kizuita.</div>
+    <div class="translation">"If you have dissatisfaction, you can become happy" had become something like Miho's catchphrase. At first, Shōko didn't really understand what the words meant. Having dissatisfaction should be the opposite of happiness. But the dissatisfaction Miho spoke of was resistance to becoming satisfied with one's current self. If you desire nothing, you lose nothing. But you also gain nothing. For the first time, Shōko realized that her own "letdown" came from having no desires.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>口癖</td><td>kuchiguse</td><td>catchphrase, habitual expression</td></tr>
+    <tr><td>反対</td><td>hantai</td><td>opposite, contrary</td></tr>
+    <tr><td>抵抗</td><td>teikō</td><td>resistance, reluctance</td></tr>
+    <tr><td>望み</td><td>nozomi</td><td>desire, hope, wish</td></tr>
+    <tr><td>気づく</td><td>kizuku</td><td>to realize, to notice</td></tr>
+  </table>
+
+  <h3>D. The Nature of Tokyo</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">東京という街は、思っている以上に冷たかった。でも、同時に、思っている以上にチャンスに満ちていた。問題は、そのチャンスを自分のものにできるかどうか。美保は顔で、絹は頭で、笙子は——笙子はまだ、何で戦えばいいのかわからなかった。しかし、三人が一緒にいると、どこか不思議と力が湧いてくるのだった。</div>
+    <div class="romaji">Tōkyō to iu machi wa, omotte iru ijō ni tsumetakatta. Demo, dōjini, omotte iru ijō ni chansu ni michite ita. Mondai wa, sono chansu o jibun no mono ni dekiru ka dō ka. Miho wa kao de, Kinu wa atama de, Shōko wa — Shōko wa mada, nani de tatakaeba ii no ka wakaranakatta. Shikashi, sannin ga issho ni iru to, dokoka fushigi to chikara ga waite kuru no datta.</div>
+    <div class="translation">The city called Tokyo was colder than she had imagined. But at the same time, it was fuller of chances than she had imagined. The question was whether she could make those chances her own. Miho fought with her face, Kinu with her mind, and Shōko — Shōko still didn't know what she should fight with. But when the three of them were together, somehow, power welled up from somewhere.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>冷たい</td><td>tsumetai</td><td>cold (emotional)</td></tr>
+    <tr><td>チャンス</td><td>chansu</td><td>chance, opportunity</td></tr>
+    <tr><td>満ちる</td><td>michiru</td><td>to be full of</td></tr>
+    <tr><td>湧いてくる</td><td>waite kuru</td><td>to well up, to surge forth</td></tr>
+    <tr><td>不思議</td><td>fushigi</td><td>mysterious, strange</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 国盗り (kunitori)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">From Sengoku Warfare to Social Climbing</div>
+    <p><code>国盗り</code> carries the full weight of Japan's Warring States period. It evokes Oda Nobunaga, Toyotomi Hideyoshi, and Tokugawa Ieyasu seizing provinces through strategy, alliance, and betrayal. In English, "conquering the realm" or "nation-stealing" captures the aggression but loses the specific Japanese historical resonance. "Social climbing" is too mild and too moralistic. "Gold-digging" is sexist and inaccurate. The title asks the reader to see these women as warlords, not scavengers: they are engaged in legitimate competition for scarce resources (eligible men, prestigious jobs) within a system that forces them to compete. The <code>国盗り</code> framing elevates their struggle from gossip to epic.</p>
+  </div>
+
+  <h3>B. ワーキングガール (wākingu gāru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">A Specific Japanese Type, Not the English Meaning</div>
+    <p>The back-cover copy calls the three heroines <code>ワーキングガール</code>. In English, "working girl" can be a euphemism for a prostitute; in 1990s Japan, <code>ワーキングガール</code> meant something specific and positive: an urban, educated, fashion-conscious woman who worked in an office or creative field and was economically independent (or aspired to be). She was the reader of <em>an・an</em> and <em>non・no</em>, the consumer of foreign cosmetics, the wearer of designer suits. The term carried none of the English stigma and all of the Japanese aspiration. A translator must either keep the Japanese term with explanation or find an equivalent that captures the glamour and independence without the English double meaning.</p>
+  </div>
+
+  <h3>C. 学閥 (gakubatsu)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The University Network as Social Currency</div>
+    <p><code>学閥</code> refers to the old-boy networks formed around prestigious universities, particularly the former imperial universities and elite private schools like Keiō and Waseda. When Kinu is identified as a Waseda graduate, or the party host as Keiō-educated, these are not neutral biographical details; they are social classifications as meaningful as caste. A Keiō doctor is not just a doctor; he is a Keiō doctor, which in 1990s Japan meant access to a network of similarly educated, similarly placed men who would promote each other, marry each other's sisters, and hire each other's children. "Alma mater network" or "old school tie" are too gentle. <code>Gakubatsu</code> is a power structure, and the novel's characters navigate it with the precision of diplomats.</p>
+  </div>
+
+  <h3>D. 披露パーティ (hirō pāti)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Social Theater of the Elite</div>
+    <p><code>披露パーティ</code> is a wedding reception or after-party where the couple "discloses" (<code>披露</code>) their marriage to their social world. In elite circles, it is as much a networking event as a celebration. The choice of venue, the guest list, the quality of the champagne, and the pedigree of the attendees all send signals about the couple's social position. For Miho, Kinu, and Shōko to be at a Keiō doctor's <code>披露パーティ</code> is already a statement: they are in the room, on the periphery of power, close enough to see how the game is played. "Wedding reception" loses the performative, strategic dimension. "Coming-out party" captures the social theater but carries different class connotations in English.</p>
+  </div>
+
+  <h3>E. 不満 (fuman)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Dissatisfaction as a Virtue</div>
+    <p>Miho's catchphrase, <code>不満を持っていれば幸せになれる</code> (If you have dissatisfaction, you can become happy), turns a negative emotion into a productive force. <code>不満</code> is not mere complaining; it is the refusal to accept one's current state as final. "Dissatisfaction" is accurate but too abstract. "Discontent" is closer but archaic. "Ambition" is too positive and misses the edge of irritation. <code>Fuman</code> in Hayashi's usage is a specifically female form of ambition: the irritable, restless energy of a woman who knows she deserves more than she has been given and refuses to be grateful for crumbs. It is the emotional engine of the entire novel.</p>
+  </div>
+
+  <h3>F. 拍子抜け (hyonshibuke)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Anticlimax of the Ordinary</div>
+    <p><code>拍子抜け</code> means anticlimax, letdown, the feeling when something that should be exciting falls flat. Shōko's life is described as <code>拍子抜け</code>: nothing is wrong, but nothing is right either. "Anticlimax" is too dramatic, suggesting a peak that failed to arrive. "Letdown" is too event-based. <code>Hyonshibuke</code> describes a chronic condition, a low-grade disappointment that has become a way of life. It is the feeling of opening a beautifully wrapped box and finding socks inside. Shōko's entire existence, stable and unremarkable, is a continuous <code>拍子抜け</code>, and the novel's question is whether she can convert this flatness into desire.</p>
+  </div>
+
+  <h3>G. 男で自分の一生が決まる (otoko de jibun no isshō ga kimaru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Unspoken Law Made Explicit</div>
+    <p>This sentence, "A man decides your whole life," is the novel's central heresy. In polite Japanese society, such a statement would be considered cynical or old-fashioned. Hayashi puts it in Miho's mouth without irony or apology. The shock of the line is not its content, which everyone knows, but its articulation. In a culture that officially celebrates gender equality while structurally rewarding women primarily through marriage, to say openly that a woman's life is determined by her choice of man is to break a taboo. The English translation must preserve this bluntness without making Miho sound merely cynical. She is not cynical; she is honest.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～がきっかけで (ga kikkake de) — "Triggered by / Taking the opportunity of"</span>
+    <div class="grammar-explanation">
+      <p><code>そのパーティがきっかけで、三人の女の人生が交差することになった</code></p>
+      <p><code>～がきっかけで</code> marks an event as the catalyst for a subsequent change. <code>きっかけ</code> means "opportunity, trigger, starting point."</p>
+      <p><strong>Formation:</strong> [Event/situation in plain form] + がきっかけで + [result]</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>その出会いがきっかけで、友情が始まった</code> = "Friendship began, triggered by that encounter"</li>
+        <li><code>失恋がきっかけで、自分を変えようと思った</code> = "A breakup triggered the decision to change myself"</li>
+      </ul>
+      <p>The grammar is central to the novel's structure: the party is not just a setting but the <code>きっかけ</code> that makes the entire subsequent relationship possible. Without the shared taxi ride home, the three women would have remained strangers.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～わけではない / ～わけじゃない (wake dewa nai) — "It's not that / It doesn't mean that"</span>
+    <div class="grammar-explanation">
+      <p><code>思わないわ。だって、本当じゃないわけではないのよ</code> = "I don't think so. Because it's not that it's untrue."</p>
+      <p><code>～わけではない</code> is a nuanced negative that softens a denial. It does not say "X is false" but "it's not the case that X is entirely false," leaving room for partial truth.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>本当じゃない</code> = "It's not true" (absolute denial)</li>
+        <li><code>本当じゃないわけではない</code> = "It's not that it's untrue" (partial admission)</li>
+      </ul>
+      <p>Miho uses this pattern when discussing whether a man determines a woman's life. She does not say "that's false" (<code>本当じゃない</code>); she says "it's not that it's untrue" (<code>本当じゃないわけではない</code>), acknowledging the reality while refusing to be defeated by it. The grammar encodes her pragmatism.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ずに (zuni) — "Without doing" (literary/written negative)</span>
+    <div class="grammar-explanation">
+      <p><code>何も望まなければ、何も失わずに済む</code> = "If you desire nothing, you can get by without losing anything"</p>
+      <p><code>～ずに</code> is the written/literary negative form of verbs, more compact and formal than <code>～ないで</code>.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>失わないで済む</code> = "can get by without losing" (spoken, neutral)</li>
+        <li><code>失わずに済む</code> = "can get by without losing" (written, compact)</li>
+      </ul>
+      <p>Hayashi uses <code>ずに</code> in reflective passages where characters are thinking about their lives in general terms. The grammar gives these moments a slightly more literary, philosophical tone than conversational <code>ないで</code> would.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～がち (gachi) — "Tending to / Prone to"</span>
+    <div class="grammar-explanation">
+      <p><code>幸せになりがちな人と、なり損なう人がいる</code> = "There are people who tend to become happy and people who tend to miss out on happiness"</p>
+      <p><code>～がち</code> indicates a tendency, often one that is problematic or regrettable. Formed by attaching <code>がち</code> to the masu-stem of a verb.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>忘れがち</code> = "tending to forget"</li>
+        <li><code>病気がち</code> = "prone to illness"</li>
+        <li><code>遅刻しがち</code> = "tending to be late"</li>
+      </ul>
+      <p>The grammar is useful for describing characters stuck in patterns. Shōko <code>拍子抜けしがち</code> (tends toward anticlimax), Miho <code>人を見下しがち</code> (tends to look down on people), Kinu <code>自慢しがち</code> (tends to boast about her education). <code>Gachi</code> is the grammatical trace of habit.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようになる (yō ni naru) — "To reach the point where / To come to"</span>
+    <div class="grammar-explanation">
+      <p><code>三人が一緒にいると、不思議と力が湧いてくるようになった</code> = "When the three of them were together, they had reached the point where power would mysteriously well up"</p>
+      <p><code>～ようになる</code> indicates a gradual change in ability or state: something that was not true before becomes true now.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>力が湧いてくる</code> = "power wells up" (simple statement)</li>
+        <li><code>力が湧いてくるようになった</code> = "came to the point where power welled up" (change over time)</li>
+      </ul>
+      <p>The grammar captures the novel's central transformation: what begins as a chance encounter becomes a source of strength. The friendship does not help immediately; it <code>ようになる</code>s, gradually, over shared meals and conversations.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～というものだ (to iu mono da) — "That is what X is / This is what it means to"</span>
+    <div class="grammar-explanation">
+      <p><code>女の人生というものは、どんな男を選ぶかで決まるものなのだ</code> = "That is what a woman's life is: something determined by what kind of man she chooses"</p>
+      <p><code>～というものだ</code> is an explanatory/copular pattern that defines or generalizes an experience. It lifts a specific observation into a statement about the nature of things.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>人生は男で決まる</code> = "Life is determined by a man" (statement)</li>
+        <li><code>人生というものは男で決まるものだ</code> = "That is what life is: something determined by a man" (definition, philosophical)</li>
+      </ul>
+      <p>Hayashi uses this pattern when her characters move from personal complaint to social observation. It is the grammar of wisdom earned through experience, the moment when a character's individual story becomes a general truth about being a woman in Tokyo.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～なのだ / ～なんだ (na no da / nan da) — Explanatory/emphatic copula</span>
+    <div class="grammar-explanation">
+      <p><code>それがトーキョーなのよ</code> = "That is what Tokyo is, you see"</p>
+      <p><code>～なのだ</code> is an explanatory copula pattern that adds emphasis, emotional color, or a sense of explanation to a statement. The feminine final particle <code>よ</code> (<code>なのよ</code>) is characteristic of Hayashi's female characters.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>それがトーキョーだ</code> = "That's Tokyo" (neutral statement)</li>
+        <li><code>それがトーキョーなのだ</code> = "That is what Tokyo is" (explanatory, emphatic)</li>
+        <li><code>それがトーキョーなのよ</code> = "That is what Tokyo is, you see" (feminine, intimate, slightly insistent)</li>
+      </ul>
+      <p>The pattern appears constantly in the novel's dialogue, giving the women's speech its distinctive emotional texture: never merely informative, always slightly explanatory, as if they are constantly justifying their view of the world to themselves and each other.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>The Bubble Economy and Its Women</h4>
+  <p>The novel is set in the final years of Japan's bubble economy (1986–1991), a period of extraordinary asset inflation, conspicuous consumption, and social optimism. In bubble-era Tokyo, land prices in Ginza reached such heights that the Imperial Palace grounds were theoretically worth more than all the real estate in California. This was the world of designer boutiques, foreign luxury cars, and international parties where the three heroines move.</p>
+
+  <p>For women, the bubble had contradictory effects. On one hand, it created unprecedented opportunities in fashion, media, and service industries. On the other, it intensified the marriage market: with so much money visible, the stakes of marrying well rose dramatically. A woman who married a bubble-era elite (a doctor, a banker, a corporate heir) secured not just comfort but a share of historical abundance. A woman who failed to do so faced the prospect of the Lost Decade as a single worker in a contracting economy. The novel captures this window of possibility just as it was closing.</p>
+
+  <h4>婚活 (Konkatsu) Before the Word Existed</h4>
+  <p>The term <code>婚活</code> (konkatsu, "marriage activities," a play on <code>就活</code> shūkatsu, job-hunting) was coined in 2007 by Yamada Masahiro, a sociologist. But the phenomenon existed long before the word. In the early 1990s, educated urban women engaged in what was then called <code>お見合い</code> (omiai, arranged meetings) or simply <code>恋愛</code> (ren'ai, romance), but with a strategic intensity that would later be recognized as <code>婚活</code>.</p>
+
+  <p>Hayashi's novel is a prehistory of <code>婚活</code>. Her heroines attend parties not for fun but for reconnaissance. They evaluate men by education, income, and family background. They understand that their twenties are a limited window and that each year of delay reduces their options. This is not cynicism; it is structural awareness. The novel documents a generation of women who had been told they could "have it all" and were discovering that the "all" was still primarily distributed through marriage.</p>
+
+  <h4>学閥 (Gakubatsu) and the Marriage Market</h4>
+  <p>Japan's elite university networks (<code>学閥</code>) function as a de facto caste system in certain social spheres. A Keiō graduate is expected to marry a Keiō graduate's sister, or at least a woman from a comparable institution. A Waseda graduate occupies a slightly different but equally closed network. Women without these credentials, however intelligent or attractive, face a glass ceiling in the marriage market that is almost invisible to outsiders.</p>
+
+  <p>The novel's party setting makes this explicit. The host is a Keiō doctor. The guests are from similar backgrounds. Miho, Kinu, and Shōko are present as peripheral attendees, connected by a thread rather than a chain. Their presence is provisional, their acceptance conditional. The novel understands that in this world, a woman's university (or lack thereof) is as consequential as her face or her personality. Hayashi does not condemn this system; she simply shows what it feels like to navigate it.</p>
+
+  <h4>The OL (Office Lady) as a Social Type</h4>
+  <p>Shōko's position as an OL (office lady) places her in one of the most distinctive Japanese social categories of the late twentieth century. OLs were female office workers, typically university graduates, who performed administrative and support tasks in corporations. They were expected to work for a few years, then marry and resign. The position offered security, respectability, and access to male colleagues who might become husbands, but it was explicitly designed as a terminal job, not a career.</p>
+
+  <p>By the early 1990s, this model was under pressure. More women wanted careers rather than jobs. The Equal Employment Opportunity Law (1985) had created at least the framework for professional advancement. But the reality lagged far behind the law, and most OLs still faced the expectation that they would leave upon marriage. Shōko's vague dissatisfaction is the dissatisfaction of a woman who senses that her job is a waiting room, not a destination, but who has not yet imagined what the destination might be.</p>
+
+  <h4>Women's Magazines and the Language of Aspiration</h4>
+  <p>Hayashi's prose is saturated with the vocabulary of 1980s–90s Japanese women's magazines: brand names, makeup techniques, fashion styles, and social codes. She assumes a reader who understands what it means to shop at a particular Ginza boutique, who recognizes the significance of a Keiō connection, who knows the difference between <code>お見合い</code> and <code>恋愛結婚</code>. This makes her an ideal author for language learners who want to understand not just grammar but the social grammar of urban Japan.</p>
+
+  <p>The novel is also a document of a specific feminine discourse. The women speak a language of indirect assertion, of complaint framed as observation, of desire expressed through dissatisfaction. They rarely say "I want"; they say "I can't stand" or "it's not fair" or "don't you think?" This is not weakness; it is a rhetorical strategy developed in a culture that punishes direct female ambition. Hayashi's achievement is to make this indirect language feel powerful, even triumphant.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Hayashi's prose is conversational, brisk, and culturally dense. It is significantly more accessible than literary fiction but requires familiarity with 1990s Japanese social codes. The vocabulary of class, education, and marriage is essential, and the grammar of indirect assertion (<code>わけではない</code>, <code>がち</code>, <code>なのだ</code>) is central to understanding how these women speak. For learners interested in contemporary Japanese social dynamics, urban life, and the language of female friendship and ambition, this is an excellent and rewarding text. Read with attention to what is implied rather than stated: Hayashi's characters are masters of saying one thing and meaning another.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read with a dictionary of 1990s Japanese brand names and social references. Hayashi's world is full of proper nouns that carry class significance.</li>
+    <li>Track the <strong>three heroines' speech patterns</strong>. Miho is direct and cynical; Kinu is intellectual and defensive; Shōko is hesitant and observational. Notice how their grammar reflects their personalities.</li>
+    <li>Pay attention to <strong>party and social scenes</strong>. These are not just background; they are the novel's battles. Map who speaks to whom, who is invited, who is ignored.</li>
+    <li>Notice the <strong>use of katakana</strong> for foreign and trendy concepts. Hayashi's katakana vocabulary (<code>トーキョー</code>, <code>ワーキングガール</code>, <code>チャンス</code>) is a map of bubble-era aspiration.</li>
+    <li>Compare the novel with the 1993 NHK drama. The casting choices (沢口靖子's beauty, 清水美砂's intelligence, 荻野目洋子's ordinariness) illuminate how the characters were read by contemporary audiences.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The title <code>国盗り</code> frames the novel as a kind of warfare. Is this framing empowering or ironic? Does it elevate the women's struggle or mock it?</li>
+    <li>Miho says, "A man decides your whole life." Kinu agrees. Shōko resists. How does the novel ultimately answer this question? Is the answer different for each woman?</li>
+    <li>The three heroines have almost nothing in common. What makes their friendship believable? Is it genuine affection or strategic alliance?</li>
+    <li>The novel was published in 1992, as the bubble was bursting. How does this timing affect the reading? Is the novel optimistic or elegiac?</li>
+    <li>Hayashi has been criticized for portraying women who are "too" ambitious, "too" materialistic, "too" strategic about marriage. How does the novel respond to this criticism? Does it judge its characters?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Hayashi Mariko, <em>Saishūbin ni Maniaeba</em> (最終便に間に合えば, 1985) — the Naoki Prize-winning novella that established her as a fiction writer</li>
+    <li>Hayashi Mariko, <em>Fukigen na Kajitsu</em> (不機嫌な果実, 1996) — another exploration of female desire and dissatisfaction in contemporary Tokyo</li>
+    <li>Hayashi Mariko, <em>Anego</em> (anego, 2002) — the novel that gave Japanese a new word for a senior female colleague who guides younger women</li>
+    <li>Hayashi Mariko, <em>Saigō Don!</em> (西郷どん！, 2013) — her historical novel about Saigō Takamori, adapted as an NHK Taiga drama</li>
+    <li>Kawanishi Yumiko, <em>Onna wa Tokyo ni Sumu to Kawaru no ka</em> (女は東京に住むと変わるのか) — sociological study of women who move to Tokyo</li>
+    <li>Yamada Masahiro, <em>Konkatsu no Kōzō</em> (婚活の構造) — the sociological study that named the phenomenon Hayashi's novel prefigures</li>
+    <li>Any issue of <em>an・an</em> or <em>non・no</em> from 1988–1993 — to understand the magazine culture that shaped Hayashi's readers and characters</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and style of Hayashi Mariko's writing, documented quotations from reviewers, and the novel's established themes and character dynamics, not direct quotations. For exact citations, consult the original edition (Shueisha Bunko, 1995; ISBN 978-4-08-748394-9). The 1993 NHK Drama Shinginka adaptation is archived by NHK and available through their official channels.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

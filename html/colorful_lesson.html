@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カラフル — 森 絵都 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-violet: #7a6ab8;
+  --accent-violet-dim: #4a3a78;
+  --accent-violet-glow: rgba(122, 106, 184, 0.12);
+  --accent-teal: #4a9a8a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-violet-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-violet);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-violet-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-violet-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-violet);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-violet-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-violet), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-violet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-violet-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-violet); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-violet-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-violet-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-violet);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-violet-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-violet);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-teal);
+}
+
+.nuance-box h4 {
+  color: var(--accent-teal);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-violet);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-violet);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-violet-dim), var(--accent-violet));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-violet);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-violet);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-violet-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>カラフル</h1>
+  <p class="hero-subtitle">COLORFUL</p>
+  <p class="hero-meta">森 絵都 &middot; 理論社 1998（初版）/ 文藝春秋 2007（文春文庫） &middot; 産経児童出版文化賞 &middot; 累計120万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: カラフル</h2>
+  <p class="lead">The title <em>Colorful</em> (カラフル) is a loanword from English, written in katakana — the Japanese syllabary reserved for foreign terms, onomatopoeia, and words that exist outside the native emotional register. This orthographic choice is already a statement: the book announces itself as something that does not fit within traditional Japanese categories. A novel about reincarnation, suicide, family collapse, and adolescent despair could easily have been given a classical Japanese title — something in kanji, something grave and literary. Instead, Mori Eto chose a word that sparkles, that evokes children's crayons and summer festivals and the pleasure of seeing many colors at once. The irony of this choice is the book's central engine: the world only becomes "colorful" to the protagonist after he has died, lost his memory, and been forced to inhabit the body of a suicidal teenager whose life appeared to be nothing but shades of gray. The title is thus both a promise and a destination — the reader knows, from the first word, that the monochrome suffering of the opening chapters will eventually bloom into something multihued, but the journey from one to the other is what gives the novel its emotional power.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">カラフル</span>
+        <span class="romaji">karafuru</span>
+        <span class="meaning">"colorful" — A loanword from English, rendered in katakana (カラフル) rather than kanji or hiragana. The katakana orthography immediately signals foreignness, modernity, and a certain lightness — this is not a heavy philosophical term but a word that children use to describe a box of crayons or a festival float. In Japanese, <em>karafuru</em> carries connotations of brightness, variety, and visual pleasure that the English "colorful" shares, but the katakana form adds a layer of cultural translation: it is a word that entered Japanese through American popular culture, through advertising, through the visual language of postwar consumerism. By choosing a katakana loanword as her title, Mori Eto places her novel at the intersection of Japanese literary tradition and global youth culture. The word is also phonetically distinctive in Japanese: the four syllables <em>ka-ra-fu-ru</em> create a rhythmic bounce that sounds almost playful, even when the subject matter is death and despair. This phonetic lightness is part of the novel's method: it uses a cheerful surface to approach dark depths, trusting that the contrast will make both the darkness and the eventual color more vivid. The title contains no particles, no grammatical markers — it is a pure adjective, a quality without a subject. The reader must supply the subject: what is colorful? The world? The soul? Memory? Grief? The novel's answer is all of these, and the grammatical openness of the title invites the reader to discover the answer for themselves.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Color symbolism in the novel:</strong> The title's central metaphor — the transformation of a monochrome world into a colorful one — operates throughout the novel at multiple levels. At the literal level, it refers to the protagonist's growing ability to perceive the world in emotional color rather than moral black-and-white. At the psychological level, it describes the shift from depression (which the Japanese call <em>mono no aware</em>-adjacent despair) to the recognition that people contain many colors — good and bad, cruel and kind, weak and strong — simultaneously. At the metaphysical level, it connects to the Buddhist concept of <em>rinne</em> (輪廻, reincarnation), in which the soul passes through many "colors" of existence across lifetimes. The title is thus a compressed theology: the world is colorful because souls are complex, and souls are complex because they have lived many lives.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>森 絵都 &mdash; Mori Eto</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">森</div>
+    <div class="author-name-block">
+      <h3>森 絵都</h3>
+      <p class="author-name-romaji">Mori Eto &middot; b. April 2, 1968 &middot; Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Mori Eto is one of the most versatile and beloved writers in contemporary Japanese literature — a novelist who began in children's literature, crossed into young adult fiction, and emerged as a major voice in general literature, winning the Naoki Prize and the Chuo Koron Literary Prize while maintaining the accessibility and emotional directness that made her famous among young readers. Born in Tokyo in 1968, she graduated from Waseda University's Second Faculty of Letters, Literature and Linguistics Department — an education that gave her both classical literary training and the freedom to move between genres. Before becoming a novelist, she worked as a scenario writer for television, film, and anime — an experience that shaped her narrative sense, her ear for dialogue, and her understanding of how stories work across media.</p>
+    <p style="margin-bottom: var(--space-md);">Her literary debut came in 1990 when <em>Rhythm</em> (リズム) won the 31st Kodansha Award for Children's Literature New Writer Prize. The novel announced her signature concerns: the inner lives of young people, the drama of growing up, and the moral complexity of situations that resist easy answers. Over the following decade, she established herself as the leading voice in Japanese YA fiction, winning major children's literature prizes almost annually: the Saito Mokichi Children's Literature Award for <em>Rhythm</em> (1991), the Japan Children's Literature Association New Writer Award nomination for <em>Rhythm</em> (1992), the Sankei Children's Publishing Culture Award for <em>Orphans of the Universe</em> (宇宙のみなしご, 1995), the Noma Children's Literature New Writer Award for <em>Orphans of the Universe</em> (1995), and the Rookie of the Year Roadside Stone Literature Award for <em>Waltz with Almond Chocolate</em> (アーモンド入りチョコレートのワルツ, 1998).</p>
+    <p style="margin-bottom: var(--space-md);"><em>Colorful</em> (カラフル, 1998) was published in the midst of this extraordinary run and became her breakthrough work — a novel that transcended the children's literature category to become a genuine crossover phenomenon. It won the 46th Sankei Children's Publishing Culture Award and has sold over 1.2 million copies across multiple editions. Its success lay in Mori's ability to treat the darkest subjects — suicide, family breakdown, adolescent despair — with a lightness of touch that made them bearable for young readers without sanitizing their pain. The novel was adapted into a live-action film in 2000, an animated film by Keiichi Hara (原恵一) and Sunrise in 2010, a radio drama, a musical, and even a Thai film adaptation in 2022 — a testament to the universality of its themes.</p>
+    <p style="margin-bottom: var(--space-md);">Mori's crossing into general literature was confirmed in 2006 when her short story collection <em>The Vinyl Sheet Dancing in the Wind</em> (風に舞いあがるビニールシート) won the 135th Naoki Prize — one of Japan's two most prestigious awards for popular fiction. The collection demonstrated that her gifts for characterization and emotional precision worked as powerfully for adult readers as for children. She continued to expand her range with works like <em>Mikazuki</em> (みかづき, 2016), which was adapted into a television drama, and won the 31st Chuo Koron Literary Prize. Her 2020 novel <em>Yokogao</em> (横顔) confirmed her status as one of Japan's most important contemporary novelists. Throughout her career, Mori has maintained a remarkable double identity: she is simultaneously a children's author who writes with adult sophistication and an adult author who remembers what it felt like to be thirteen.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1968</span>
+        <span>Born April 2 in Tokyo. Grows up in the metropolis that will provide the setting for so many of her novels — a city of trains, convenience stores, cram schools, and hidden loneliness.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1990</span>
+        <span>Graduates from Waseda University Second Faculty of Letters, Literature and Linguistics Department. Begins working as a scenario writer for television, film, and anime.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1991</span>
+        <span>Literary debut with <em>Rhythm</em> (リズム), which wins the 31st Kodansha Award for Children's Literature New Writer Prize and the Saito Mokichi Children's Literature Award. Establishes her as a major new voice in Japanese children's literature.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1995</span>
+        <span>Publishes <em>Orphans of the Universe</em> (宇宙のみなしご), winning both the Sankei Children's Publishing Culture Award and the Noma Children's Literature New Writer Award. Her reputation as the leading YA writer of her generation is confirmed.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1998</span>
+        <span>Publishes <em>Colorful</em> (カラフル) with Rironsha. The novel wins the 46th Sankei Children's Publishing Culture Award and goes on to sell over 1.2 million copies, becoming her most famous and enduring work. Also wins the Roadside Stone Literature Award for <em>Waltz with Almond Chocolate</em>.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2000</span>
+        <span><em>Colorful</em> is adapted into a live-action film, bringing the novel to a wider audience and confirming its status as a cultural phenomenon.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2003</span>
+        <span>Publishes the <em>DIVE!!</em> series, which wins the Shogakukan Children's Publishing Culture Award and is adapted into a film in 2008, demonstrating her range beyond the single-protagonist novel.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2006</span>
+        <span>Wins the 135th Naoki Prize for <em>The Vinyl Sheet Dancing in the Wind</em> (風に舞いあがるビニールシート), confirming her crossing from children's literature into general literary recognition.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2007</span>
+        <span><em>Colorful</em> is published in Bungeishunju's paperback library (文春文庫), bringing the novel to adult readers and confirming its status as a work that transcends age categories. It is voted "No. 1 paperback high school students want to read."</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>The animated film adaptation of <em>Colorful</em>, directed by Keiichi Hara and produced by Sunrise, is released. The film wins critical acclaim and introduces the story to international audiences.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2016</span>
+        <span>Publishes <em>Mikazuki</em> (みかづき), which is adapted into a television drama and wins the 31st Chuo Koron Literary Prize, confirming her mature literary powers.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2020</span>
+        <span>Publishes <em>Yokogao</em> (横顔), her latest major novel. An audiobook edition of <em>Colorful</em>, narrated by Mari Hagai, is released on Audible, bringing the story to a new generation of listeners.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2022</span>
+        <span>A Thai film adaptation of <em>Colorful</em> is released, demonstrating the novel's international resonance. The story of a suicidal teenager finding color in a gray world speaks across cultures.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span>A junior edition of <em>Colorful</em> is published, confirming that the novel continues to find new readers more than 25 years after its original publication.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>カラフル</h4>
+        <p class="char-role">Colorful &middot; 1998</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Her breakthrough work and most beloved novel — over 1.2 million copies sold, adapted into live-action film (2000), anime (2010), musical, radio drama, and Thai film (2022). The story that proved YA fiction could address suicide, family collapse, and the search for self with both lightness and depth.</p>
+      </div>
+      <div class="char-card">
+        <h4>に舞いあるビニールシート</h4>
+        <p class="char-role">The Vinyl Sheet Dancing in the Wind &middot; 2006</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 135th Naoki Prize. The collection that confirmed Mori's crossing into general literature — six stories of people who protect their own values while living desperately, rendered with the warmth and strength that characterize her mature work.</p>
+      </div>
+      <div class="char-card">
+        <h4>DIVE!!</h4>
+        <p class="char-role">DIVE!! Series &middot; 2000-2002</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the Shogakukan Children's Publishing Culture Award, adapted into a film in 2008. A series about competitive diving that demonstrates Mori's ability to make any world — even the platform of a swimming pool — a stage for human drama.</p>
+      </div>
+      <div class="char-card">
+        <h4>みかづき</h4>
+        <p class="char-role">Mikazuki &middot; 2016</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 31st Chuo Koron Literary Prize, adapted into a television drama. The mature work of a writer who has spent decades refining her understanding of family, memory, and the small acts of courage that constitute a life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters</h2>
+
+  <div class="card">
+    <h3>Main Characters</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>「ぼく」（主人公・魂）</h4>
+        <p class="char-role">The Protagonist / The Soul</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A soul who has died after committing a "great mistake" in his previous life. Because of this sin, he has been removed from the cycle of reincarnation (<em>rinne</em>). He has lost all memory of his former life, his name, and his crime. When an angel informs him that he has "won the lottery" — a chance to return to the living world and atone for his sin — he is placed into the body of Kobayashi Makoto, a 14-year-old boy who has just attempted suicide. The novel is narrated in his voice, and its power derives from his gradual discovery that the body he inhabits is not a stranger's but his own — that "Makoto" and the "soul" are the same person, separated only by memory and despair. His journey from monochrome perception to colorful understanding is the novel's central arc.</p>
+      </div>
+      <div class="char-card">
+        <h4>プラプラ</h4>
+        <p class="char-role">Purapura / The Angel Guide</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A young man who serves as the protagonist's guide from the afterlife. His name, <em>Purapura</em> (プラプラ), suggests something floating, drifting, or hovering — appropriate for a being who exists between worlds. He is not a traditional angel with wings and a halo but a bureaucrat of the afterlife, casual in manner and darkly humorous in tone. He informs the protagonist that he must "homestay" in Makoto's body, discover his own sin, and atone for it before the homestay ends. Purapura is the novel's comic relief and its moral compass — his apparently flippant remarks contain profound truths about life, death, and the nature of sin. He is also the novel's most subversive creation: an angel who speaks like a teenager, who makes jokes about suicide, and who treats the boundary between life and death as an administrative formality.</p>
+      </div>
+      <div class="char-card">
+        <h4>小林 真</h4>
+        <p class="char-role">Kobayashi Makoto / The Body</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A third-year junior high school student (中学3年生, roughly 14 years old) who has attempted suicide by overdosing on medication. At the novel's opening, he lies in a coma — his body available for the protagonist's "homestay." Makoto is, by conventional standards, unremarkable: he is short, unathletic, not particularly handsome, and has no friends. His only talent is drawing — he is a member of the art club. He hides "secret boots" (<em>shiikuretto buutsu</em>, シークレットブーツ) under his bed to make himself taller. His family is a disaster: his father is selfish and career-obsessed, his mother is having an affair, and his older brother Mitsuru bullies him mercilessly. The protagonist initially despises Makoto's life, but as he lives it, he discovers that Makoto's apparent failures and weaknesses contain hidden strengths, and that the people who seemed cruel have their own pain. The novel's great revelation is that Makoto <em>is</em> the protagonist — the soul and the body are one, and the "homestay" is actually a second chance at the same life.</p>
+      </div>
+      <div class="char-card">
+        <h4>桑原 ひろか</h4>
+        <p class="char-role">Kuwahara Hiroka / The First Love</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A younger student (kouhai, 後輩) whom Makoto has loved from afar. She is beautiful, popular, and seemingly unattainable. Purapura informs the protagonist that Hiroka is engaged in <em>enjo kosai</em> (援助交際, "compensated dating" — a euphemism for teenage prostitution), and this knowledge devastates the protagonist, who had idealized her. Hiroka is the novel's most morally complex character: she is neither simply victim nor simply villain. She has her own reasons for what she does, her own pain, her own dreams. The protagonist's confrontation with her — and his realization that he cannot save her, only understand her — is one of the novel's most painful and beautiful scenes. Hiroka teaches the protagonist that people cannot be reduced to a single color: she is not "bad" because she sells her body, nor was she "good" when Makoto loved her from a distance. She is a person of many colors, some dark and some bright, and the protagonist's task is not to judge her but to see her.</p>
+      </div>
+      <div class="char-card">
+        <h4>佐野 唱子</h4>
+        <p class="char-role">Sano Shouko / The Witness</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Makoto's classmate and fellow member of the art club. She is described as a "strange little woman" (<em>hen na chibi onna</em>, 変なチビ女) — short, odd, unpopular, and unusually perceptive. She is the only person at school who speaks to Makoto after his "return" from the suicide attempt, and she quickly senses that something has changed in him. Shouko is the novel's moral anchor: she sees Makoto clearly when no one else does, and her friendship with him is based not on pity but on genuine recognition. She is also an artist — she draws and paints with a seriousness that matches Makoto's own — and the art room becomes the sacred space where the two of them can be honest with each other. Shouko's role in the novel's conclusion is crucial: she is the one who has been watching Makoto all along, who remembers things about him that he has forgotten, and who ultimately helps him understand who he really is. She is the novel's argument that salvation often comes not from grand gestures but from the quiet persistence of someone who sees you.</p>
+      </div>
+      <div class="char-card">
+        <h4>小林 満（真の兄）</h4>
+        <p class="char-role">Kobayashi Mitsuru / The Older Brother</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Makoto's older brother, described by Purapura as an "insensitive bully" (<em>mushinkei na ijiwaru otoko</em>, 無神経な意地悪男). He is academically successful, physically confident, and treats Makoto with contempt. The protagonist initially hates him on Makoto's behalf, but as the homestay continues, he discovers that Mitsuru has his own pressures — parental expectations, the burden of being the "good" son, and a secret vulnerability that he hides beneath his aggressive surface. The brothers' relationship is one of the novel's most carefully drawn portraits: two boys who have been taught to compete rather than support each other, who have never learned to express affection, and who are both suffering from the same family dysfunction but coping with it differently. Mitsuru is not redeemed by the novel's end — Mori Eto is too honest for that — but he becomes visible as a person rather than a caricature of the cruel older brother, and that visibility is itself a kind of mercy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Lottery of Rebirth</h3>
+    <p>The novel opens in the liminal space between death and whatever comes after — a bureaucratic afterlife presided over by angels who speak in the casual register of office workers. The protagonist, a soul who has died after committing an unspecified "great sin," has been removed from the cycle of reincarnation (<em>rinne no saikuru</em>, 輪廻のサイクル). He has no memory of his former life, his name, or his crime. He exists in a state of suspended non-being, punished by forgetfulness as much as by separation from life.</p>
+    <p style="margin-top: var(--space-sm);">Into this gray limbo comes Purapura, an angel whose job is to guide souls through the afterlife's administrative procedures. He informs the protagonist that he has "won the lottery" (<em>chuusen ni atarimashita</em>, 抽選に当たりました) — a chance to return to the living world, inhabit another person's body, and atone for his sin by discovering what it was and learning from it. The mechanism of this return is called a "homestay" (<em>hoomusutei</em>, ホームステイ) — a word that deliberately domesticates the metaphysical, making reincarnation sound like an exchange student program. The protagonist's soul enters the body of Kobayashi Makoto, a 14-year-old junior high school student who has just attempted suicide by overdosing on medication and now lies in a coma. Makoto's body is alive but vacant; the protagonist's soul is conscious but bodiless. The match is made, and the homestay begins.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Monochrome World</h3>
+    <p>When the protagonist wakes in Makoto's body, he discovers a life that seems, at first, to justify suicide. Makoto's father is a company employee obsessed with his own career advancement, indifferent to his family except as an audience for his self-importance. Makoto's mother is having an affair, which Makoto discovered before his suicide attempt. Makoto's older brother Mitsuru is a model student who treats Makoto with contempt. At school, Makoto has no friends — he eats lunch alone, is ignored by his classmates, and retreats to the art room where he draws in solitude. The only person who speaks to him is Shouko, a strange, short girl from the art club who seems to see something in him that no one else does.</p>
+    <p style="margin-top: var(--space-sm);">The protagonist's initial response is disgust: he cannot believe that anyone would choose to live this life, and he assumes that Makoto's suicide was a rational response to intolerable circumstances. But as the days pass and the protagonist lives as Makoto — going to school, drawing in the art room, speaking with Shouko, observing his family — he begins to notice details that complicate his judgment. His father, for all his selfishness, has moments of vulnerability. His mother, for all her infidelity, is clearly unhappy and trapped. His brother, for all his cruelty, is under enormous pressure. And Shouko, for all her oddness, is the most honest person the protagonist has ever met. The monochrome world begins to reveal hidden colors.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Discovery of Color</h3>
+    <p>The novel's central movement is the protagonist's gradual recognition that people cannot be reduced to a single color — that everyone contains multitudes. This discovery unfolds through a series of encounters that force the protagonist to revise his initial judgments. The most important of these is his confrontation with Hiroka, the younger student he has loved from afar. When he learns that she is engaged in compensated dating, his idealized image of her shatters, and he must decide whether to condemn her or try to understand her. He chooses understanding — not approval, but the recognition that her choices arise from a complex mixture of desire, desperation, and the limited options available to a teenage girl in a society that values her appearance more than her mind.</p>
+    <p style="margin-top: var(--space-sm);">A parallel discovery occurs with his family. The protagonist initially sees his father as merely selfish, but he comes to recognize the man's fear of failure, his need for recognition, and his genuine (if clumsy) love for his children. His mother is not simply an adulteress but a woman who has sacrificed her own dreams for a marriage that has not fulfilled her. His brother is not simply a bully but a boy who has never been taught how to express affection and who copes with family tension by asserting dominance. None of these recognitions excuse the harm these people have done — Mori Eto is clear-eyed about cruelty and neglect — but they complicate the protagonist's moral framework, forcing him to trade black-and-white judgment for multicolored understanding.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Revelation and Return</h3>
+    <p>The novel's climax arrives with two revelations that transform everything that has come before. The first is the protagonist's discovery of his own sin: he was not a murderer or a thief in his previous life — his "great mistake" was his own suicide. The sin for which he was removed from the cycle of reincarnation was the act of giving up on his own life. The homestay in Makoto's body was not a journey into someone else's despair but a second chance at his own. Makoto <em>is</em> the protagonist — the soul and the body are the same person, and the "lottery" was a form of divine mercy disguised as bureaucracy.</p>
+    <p style="margin-top: var(--space-sm);">The second revelation concerns Shouko, who has known all along that something was different about "Makoto" after his suicide attempt. In the novel's most moving scene, she reveals that she has been watching him — really watching him — for longer than he knew, and that her friendship with him was not charity but recognition. She saw the colors in him when he could only see gray, and her seeing helped him learn to see himself. The novel ends with the protagonist's return to consciousness — Makoto wakes from his coma, not as a new person but as the same person with new eyes. The world is still full of pain, betrayal, and disappointment, but it is also full of color: the color of Shouko's paintings, the color of his mother's regret, the color of his brother's hidden fear, the color of his own capacity to endure. The final sentence of the novel is an invitation: the world is colorful, and so are you.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Monochrome to color as moral maturation:</strong> The novel's central metaphor traces the protagonist's psychological development from a binary worldview (people are good or bad, life is worth living or not) to a nuanced one (people are mixtures of colors, life contains both suffering and beauty). The shift from monochrome to color is not merely aesthetic; it is ethical.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Suicide and second chances:</strong> The novel addresses suicide with a directness rare in children's and YA literature. It does not romanticize suicide, nor does it offer simple moral condemnation. Instead, it treats suicide as a mistake — a grave one, with consequences that extend beyond death — while insisting that the person who made the mistake is still worthy of redemption. The homestay is a theological argument: God (or the universe) believes in second chances, even for those who have given up on themselves.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The multiplicity of selves:</strong> The novel's structure — a soul inhabiting a body that turns out to be its own — is a metaphor for the experience of looking at one's own life from outside. The protagonist sees Makoto's life with the clarity that Makoto himself lacked, and this clarity is what saves him. The novel suggests that the distance required for self-understanding can be achieved not by dying but by imagination — by the willingness to see oneself as a stranger and then to claim that stranger as oneself.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Family as a system of hidden colors:</strong> Makoto's family appears monochrome from the outside — the selfish father, the adulterous mother, the cruel brother — but the novel reveals that each member contains colors the others cannot see. The family's tragedy is not that they are bad people but that they have stopped looking at each other carefully enough to notice the colors. The novel is a plea for attention as a form of love.</li>
+      <li><strong>Art as a way of seeing:</strong> Makoto's drawing, and Shouko's painting, are not mere hobbies but modes of perception. The art room is the only place where Makoto can see clearly, and his friendship with Shouko is built on their shared commitment to looking carefully at the world. The novel suggests that artistic practice — the discipline of really seeing — is a form of spiritual training that can save a life.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the novel's tonal range — from the bureaucratic comedy of the afterlife to the profound recognition that people, like the world, contain many colors.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Lottery of Rebirth</div>
+    <div class="passage-jp">
+      「おめでとうございます、抽選に当たりました！」
+    </div>
+    <div class="passage-romaji">
+      "Omedetou gozaimasu, chuusen ni atarimashita!"
+    </div>
+    <div class="passage-en">
+      "Congratulations, you've won the lottery!"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening line — spoken by Purapura to a soul who has just been told he has been removed from the cycle of reincarnation for a grave sin. The juxtaposition is deliberately absurd: winning a lottery is good news, but the context (death, sin, exclusion from rebirth) makes it ominous. The grammar is simple: <em>omedetou gozaimasu</em> (おめでとうございます, "congratulations") is the formal celebratory phrase used for birthdays, graduations, weddings, and promotions. <em>Chuusen ni atarimashita</em> (抽選に当たりました, "you have won the lottery / been selected by lottery") uses the polite past tense of <em>ataru</em> (当たる, "to win a lottery / to be selected"), a verb that normally describes happy randomness — winning a raffle, getting a ticket to a sold-out concert. The phrase <em>chuusen ni ataru</em> is something people say with delight; here it is spoken in the gray limbo of the afterlife, to a soul who has no idea what he has won or why. The exclamation point adds a note of forced cheerfulness, as if Purapura is reading from a script. What is lost in English is the specifically Japanese bureaucratic humor: the afterlife operates like a government office or a bank, with lotteries and homestay programs and application procedures. The opening line establishes the novel's tone — comic on the surface, devastating underneath — and its central paradox: the worst thing that ever happened to you (death) might also be an opportunity (the lottery). The grammar of celebration applied to the context of damnation creates a moral vertigo that pulls the reader into the story before they have time to resist.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Monochrome World</div>
+    <div class="passage-jp">
+      モノクロームだった周囲のイメージが、様々な色で満ちてくる。
+    </div>
+    <div class="passage-romaji">
+      Monokuroomu datta shuui no imeeji ga, samazama na iro de michite kuru.
+    </div>
+    <div class="passage-en">
+      "The image of the surroundings, which had been monochrome, fills with various colors."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the promotional copy encapsulates the novel's central transformation in a single line of extraordinary compression. The subject — <em>monokuroomu datta shuui no imeeji ga</em> (モノクロームだった周囲のイメージが, "the image of the surroundings, which had been monochrome") — uses the loanword <em>monokuroomu</em> (モノクローム, "monochrome") in katakana, creating a visual and linguistic contrast with the Japanese <em>samazama na iro</em> (様々な色, "various colors") that will replace it. The grammar is a classic Japanese topic-comment structure with a relative clause: <em>monokuroomu datta</em> (モノクロームだった, "which had been monochrome") modifies <em>shuui no imeeji</em> (周囲のイメージ, "the image of the surroundings"), and the subject marker <em>ga</em> (が) introduces the change. The predicate — <em>samazama na iro de michite kuru</em> (様々な色で満ちてくる, "fills with various colors") — uses the continuative form <em>michite</em> (満ちて, "filling") combined with the directional auxiliary <em>kuru</em> (来る, "coming"), suggesting a process that moves toward the subject, that arrives from outside. The colors do not simply appear; they <em>come</em>, as if responding to an invitation. The adjective <em>samazama</em> (様々, "various / diverse / many kinds of") is etymologically related to <em>sama</em> (様, "appearance / form / manner"), suggesting not random colors but colors that each have their own form, their own character. What is lost in English is the sense of arrival in <em>michite kuru</em>: the colors are not a static property of the world but a gift that the world offers to those who learn to see. The sentence is also a theological statement in secular disguise: the world was always colorful; what changed was the protagonist's capacity to perceive it. The grammar of <em>michite kuru</em> makes this clear — the colors were coming all along; the protagonist was just not there to receive them.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Ethics of Color</div>
+    <div class="passage-jp">
+      人は自分でも気づかないところで、だれかを救ったり苦しめたりしている。この世があまりにもカラフルだから、ぼくらはいつも迷っている。どれがほんとの色だかわからなくて。どれが自分の色だかわからなくて。
+    </div>
+    <div class="passage-romaji">
+      Hito wa jibun demo kidzukanai tokoro de, dareka wo sukuttari kurushimetari shite iru. Kono yo ga amari ni mo karafuru dakara, bokura wa itsumo mayotte iru. Dore ga honto no iro da ka wakaranakute. Dore ga jibun no iro da ka wakaranakute.
+    </div>
+    <div class="passage-en">
+      "People are, without even realizing it, saving someone or hurting someone. Because this world is all too colorful, we are always lost. Not knowing which is the true color. Not knowing which is our own color."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage, cited in a reader's book report, captures the novel's deepest philosophical statement about the relationship between color, morality, and identity. The first sentence — <em>hito wa jibun demo kidzukanai tokoro de, dareka wo sukuttari kurushimetari shite iru</em> (人は自分でも気づかないところで、だれかを救ったり苦しめたりしている, "people are, without even realizing it, saving someone or hurting someone") — uses the grammar of unconscious action: <em>jibun demo kidzukanai tokoro de</em> (自分でも気づかないところで, "in places where even oneself does not notice" / "without even realizing it"). The phrase <em>sukuttari kurushimetari shite iru</em> (救ったり苦しめたりしている) uses the <em>tari...tari suru</em> construction to list two opposed actions — saving and hurting — as things that happen simultaneously, not alternately. The grammar says that every person is always doing both, all the time, without knowing it. This is the novel's ethical core: morality is not a choice between good and evil but an unconscious byproduct of being alive. The second sentence — <em>kono yo ga amari ni mo karafuru dakara, bokura wa itsumo mayotte iru</em> (この世があまりにもカラフルだから、ぼくらはいつも迷っている, "because this world is all too colorful, we are always lost") — makes color the cause of moral confusion. The adverbial phrase <em>amari ni mo</em> (あまりにも, "all too / excessively") suggests that the world's colorfulness is not a blessing but a burden — there are too many colors, too many possibilities, too many ways to interpret any single act. The verb <em>mayou</em> (迷う, "to be lost / to wander / to hesitate") is one of the most important words in Buddhist psychology: it describes the state of being caught in <em>samsara</em>, wandering through existence without clear direction. The final two sentences are parallel fragments, both ending with <em>wakaranakute</em> (わからなくて, "not knowing / unable to understand"), the continuative negative form of <em>wakaru</em> (分かる, "to understand"). The first fragment — <em>dore ga honto no iro da ka wakaranakute</em> (どれがほんとの色だかわからなくて, "not knowing which is the true color") — questions epistemology: in a world of many colors, how do we know which one is real? The second — <em>dore ga jibun no iro da ka wakaranakute</em> (どれが自分の色だかわからなくて, "not knowing which is our own color") — questions identity: in a world of many colors, how do we know which one is ours? The grammar of both fragments is identical except for the substitution of <em>honto no iro</em> (ほんとの色, "true color") with <em>jibun no iro</em> (自分の色, "one's own color"), creating a chiasmus that moves from the external world to the internal self. What is lost in English is the poignancy of <em>wakaranakute</em> as a continuative form — the sentence does not end with a period but with a trailing off, a grammatical gesture toward the ongoing nature of the confusion. The protagonist does not resolve his uncertainty; he learns to live with it, and the grammar refuses the closure that a final-form verb would provide.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">Tomorrow's Difference</div>
+    <div class="passage-jp">
+      今日と明日はぜんぜん違う。
+    </div>
+    <div class="passage-romaji">
+      Kyou to ashita wa zenzen chigau.
+    </div>
+    <div class="passage-en">
+      "Today and tomorrow are completely different."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This simple sentence, cited by a reader as one of the novel's most memorable lines, contains the entire theology of hope that <em>Colorful</em> offers to its adolescent audience. The grammar is elementary — <em>kyou to ashita wa</em> (今日と明日は, "today and tomorrow [topic]") + <em>zenzen chigau</em> (ぜんぜん違う, "completely different") — but the semantics are profound. The topic marker <em>wa</em> (は) creates a categorical statement: not "today might be different from tomorrow" but "as for today and tomorrow, [they are] completely different." The adverb <em>zenzen</em> (ぜんぜん, "completely / entirely / not at all") intensifies the difference to the maximum degree. In standard Japanese, <em>zenzen</em> is most commonly used with negative verbs (<em>zenzen wakaranai</em>, ぜんぜんわからない, "I don't understand at all"), so its use with a positive adjective (<em>chigau</em>, 違う, "different") creates a slight grammatical surprise — the difference is so total that it exceeds normal description. The sentence is the novel's answer to suicidal despair: the reason not to kill yourself today is that tomorrow will be completely different. This is not naive optimism — the novel has shown that tomorrow might be worse as well as better — but it is a refusal of the assumption that today's pain will last forever. The grammar of the sentence is a promise: <em>kyou</em> (今日, "today") and <em>ashita</em> (明日, "tomorrow") are grammatically parallel, connected by <em>to</em> (と, "and"), suggesting that they are two distinct entities rather than a continuum. The gap between them is total (<em>zenzen chigau</em>), which means that escape from today is always possible, because tomorrow is not a continuation of today but a different thing entirely. What is lost in English is the radical simplicity of the claim. In Japanese, the sentence is something a child could say — and does say, in the novel's most hopeful moments. Its very simplicity is what makes it believable: this is not a philosopher's argument but a survivor's discovery, spoken in the plain language of someone who has learned it by living.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the novel's world of adolescence, afterlife bureaucracy, art, and emotional color.</p>
+
+  <div class="card">
+    <h3>Life, Death & The Afterlife</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>魂</td><td>tamashii</td><td class="pos">noun</td><td>soul, spirit</td></tr>
+        <tr><td>輪廻</td><td>rinne</td><td class="pos">noun</td><td>reincarnation, cycle of rebirth</td></tr>
+        <tr><td>罪</td><td>tsumi</td><td class="pos">noun</td><td>sin, crime, guilt</td></tr>
+        <tr><td>修行</td><td>shugyou</td><td class="pos">noun</td><td>spiritual training, ascetic practice</td></tr>
+        <tr><td>ホームステイ</td><td>hoomusutei</td><td class="pos">noun</td><td>homestay</td></tr>
+        <tr><td>抽選</td><td>chuusen</td><td class="pos">noun</td><td>lottery, drawing lots</td></tr>
+        <tr><td>天使</td><td>tenshi</td><td class="pos">noun</td><td>angel</td></tr>
+        <tr><td>自殺</td><td>jisatsu</td><td class="pos">noun</td><td>suicide</td></tr>
+        <tr><td>服毒</td><td>fukudoku</td><td class="pos">noun</td><td>drug overdose / poisoning</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory</td></tr>
+        <tr><td>前世</td><td>zense</td><td class="pos">noun</td><td>previous life</td></tr>
+        <tr><td>下界</td><td>gekai</td><td class="pos">noun</td><td>the lower world / the world of the living</td></tr>
+        <tr><td>再挑戦</td><td>saichousen</td><td class="pos">noun</td><td>retry, second challenge</td></tr>
+        <tr><td>償う</td><td>tsugunau</td><td class="pos">verb</td><td>to atone for, to make amends</td></tr>
+        <tr><td>危篤</td><td>kitoku</td><td class="pos">noun</td><td>critical condition</td></tr>
+        <tr><td>昏睡</td><td>konsui</td><td class="pos">noun</td><td>coma</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Color, Perception & Emotion</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>カラフル</td><td>karafuru</td><td class="pos">na-adj</td><td>colorful</td></tr>
+        <tr><td>モノクローム</td><td>monokuroomu</td><td class="pos">noun</td><td>monochrome</td></tr>
+        <tr><td>色</td><td>iro</td><td class="pos">noun</td><td>color</td></tr>
+        <tr><td>様々</td><td>samazama</td><td class="pos">na-adj</td><td>various, diverse</td></tr>
+        <tr><td>満ちる</td><td>michiru</td><td class="pos">verb</td><td>to be full of, to be filled with</td></tr>
+        <tr><td>イメージ</td><td>imeeji</td><td class="pos">noun</td><td>image, impression</td></tr>
+        <tr><td>周囲</td><td>shuui</td><td class="pos">noun</td><td>surroundings, vicinity</td></tr>
+        <tr><td>欠点</td><td>ketten</td><td class="pos">noun</td><td>flaw, defect, fault</td></tr>
+        <tr><td>美点</td><td>biten</td><td class="pos">noun</td><td>virtue, good point</td></tr>
+        <tr><td>迷う</td><td>mayou</td><td class="pos">verb</td><td>to be lost, to wander, to hesitate</td></tr>
+        <tr><td>救う</td><td>sukuu</td><td class="pos">verb</td><td>to save, to rescue</td></tr>
+        <tr><td>苦しめる</td><td>kurushimeru</td><td class="pos">verb</td><td>to torment, to cause pain</td></tr>
+        <tr><td>気づく</td><td>kidzuku</td><td class="pos">verb</td><td>to notice, to realize</td></tr>
+        <tr><td>違う</td><td>chigau</td><td class="pos">verb</td><td>to differ, to be different</td></tr>
+        <tr><td>ぜんぜん</td><td>zenzen</td><td class="pos">adverb</td><td>completely, entirely</td></tr>
+        <tr><td>ほんと</td><td>honto</td><td class="pos">noun</td><td>truth, the real thing</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>School, Family & Adolescence</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>中学三年生</td><td>chuuaku sannensei</td><td class="pos">noun</td><td>third-year junior high student</td></tr>
+        <tr><td>美術部</td><td>bijutsu bu</td><td class="pos">noun</td><td>art club</td></tr>
+        <tr><td>クラスメイト</td><td>kurasumeeto</td><td class="pos">noun</td><td>classmate</td></tr>
+        <tr><td>後輩</td><td>kouhai</td><td class="pos">noun</td><td>junior (student)</td></tr>
+        <tr><td>同級生</td><td>doukyuusei</td><td class="pos">noun</td><td>classmate, peer</td></tr>
+        <tr><td>援助交際</td><td>enjo kosai</td><td class="pos">noun</td><td>compensated dating</td></tr>
+        <tr><td>不倫</td><td>furin</td><td class="pos">noun</td><td>adultery, affair</td></tr>
+        <tr><td>出世</td><td>shusse</td><td class="pos">noun</td><td>career advancement, success</td></tr>
+        <tr><td>利己的</td><td>rikoteki</td><td class="pos">na-adj</td><td>selfish, self-centered</td></tr>
+        <tr><td>無神経</td><td>mushinkei</td><td class="pos">na-adj</td><td>insensitive, tactless</td></tr>
+        <tr><td>意地悪</td><td>ijiwaru</td><td class="pos">na-adj</td><td>mean, unkind</td></tr>
+        <tr><td>シークレットブーツ</td><td>shiikuretto buutsu</td><td class="pos">noun</td><td>secret boots (shoe lifts)</td></tr>
+        <tr><td>絵を描く</td><td>e wo kaku</td><td class="pos">phrase</td><td>to draw, to paint</td></tr>
+        <tr><td>取り柄</td><td>torie</td><td class="pos">noun</td><td>merit, saving grace</td></tr>
+        <tr><td>冴えない</td><td>saenai</td><td class="pos">adjective</td><td>dull, unremarkable, lackluster</td></tr>
+        <tr><td>初恋</td><td>hatsukoi</td><td class="pos">noun</td><td>first love</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Mori Eto's Thematic Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>リズム</td><td>rizumu</td><td class="pos">noun</td><td>rhythm</td></tr>
+        <tr><td>宇宙のみなしご</td><td>uchuu no minashigo</td><td class="pos">noun</td><td>orphans of the universe</td></tr>
+        <tr><td>ダイブ</td><td>daibu</td><td class="pos">noun</td><td>dive</td></tr>
+        <tr><td>みかづき</td><td>mikazuki</td><td class="pos">noun</td><td>crescent moon</td></tr>
+        <tr><td>横顔</td><td>yokogao</td><td class="pos">noun</td><td>profile, side face</td></tr>
+        <tr><td>青春</td><td>seishun</td><td class="pos">noun</td><td>youth, adolescence</td></tr>
+        <tr><td>成長</td><td>seichou</td><td class="pos">noun</td><td>growth, development</td></tr>
+        <tr><td>葛藤</td><td>katto</td><td class="pos">noun</td><td>conflict, struggle</td></tr>
+        <tr><td>自己肯定</td><td>jiko koutei</td><td class="pos">noun</td><td>self-affirmation</td></tr>
+        <tr><td>他者理解</td><td>taisha rikai</td><td class="pos">noun</td><td>understanding of others</td></tr>
+        <tr><td>思春期</td><td>shishunki</td><td class="pos">noun</td><td>puberty, adolescence</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness, solitude</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Mori Eto's prose in <em>Colorful</em> is deceptively accessible — simple enough for a twelve-year-old to read, yet layered with Buddhist theology, color psychology, and the specific emotional vocabulary of Japanese adolescence that does not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Karafuru</em> (カラフル) as Katakana Hope</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>カラフル</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Colorful"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Karafuru</em> (カラフル) is not merely the Japanese word for "colorful"; it is a katakana loanword that entered Japanese through American popular culture — through advertising, through children's television, through the visual language of postwar consumerism. The katakana orthography carries a set of associations that the English word "colorful" does not: foreignness, modernity, commercial brightness, the pleasure of novelty. When a Japanese reader sees <em>karafuru</em> in katakana, they think of crayon boxes and festival floats and department store displays — not of literary depth or philosophical complexity. Mori Eto's genius is to take this light, commercial word and make it bear the weight of a novel about suicide and redemption. The title performs the book's central transformation: a word that sounds trivial becomes profound through the story that surrounds it. The English "Colorful" cannot reproduce this orthographic journey — it cannot show the reader that the word was once foreign, once superficial, once merely descriptive, and has been deepened by the novel's use of it. What is lost is the specifically Japanese experience of watching a katakana word grow a soul.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Chuusen ni Atarimashita</em> (抽選に当たりました) as Bureaucratic Grace</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「おめでとうございます、<strong>抽選に当たりました</strong>！」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Congratulations, you've won the lottery!"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>chuusen ni atarimashita</em> (選に当たりました) is the standard Japanese announcement for winning any kind of lottery, raffle, or random selection — from a department store prize drawing to a ticket lottery for a popular concert. It is a phrase associated with consumer pleasure, with the small joys of modern life. To hear it spoken in the afterlife, by an angel, to a soul who has been excluded from reincarnation for a grave sin, is a deliberate comic deflation of the metaphysical. The English "you've won the lottery" captures the randomness but loses the specifically Japanese bureaucratic context. In Japan, <em>chuusen</em> (抽選) is the word used for everything from apartment lotteries to school admissions to concert tickets — it describes a system in which demand exceeds supply and fairness requires randomness. The afterlife's use of <em>chuusen</em> suggests that mercy operates like a modern administrative procedure: impartial, randomized, available to anyone who happens to be selected. This is a very different theology from the Western idea of grace as personal and intentional. What is lost is the sense that the novel's afterlife is a Japanese bureaucracy — efficient, impersonal, and yet capable of surprising kindness. The English "lottery" sounds like gambling; the Japanese <em>chuusen</em> sounds like life in a crowded society where many people want the same thing and someone has to devise a fair way to choose.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Homusutei</em> (ホームステイ) as Domesticated Reincarnation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>真の体に<strong>ホームステイ</strong>し</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"homestay in Makoto's body"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Homusutei</em> (ホームステイ) is a katakana loanword from English "homestay" — the practice of living with a local family while studying abroad. In Japan, homestays are associated with adolescence: junior high and high school students going to America or Australia for a summer, living with a host family, learning a new culture. The word carries connotations of growth, adventure, and temporary displacement — you are not moving permanently; you are visiting, learning, and coming back changed. By using <em>homusutei</em> to describe the protagonist's inhabitation of Makoto's body, Mori Eto performs a radical domestication of the metaphysical. Reincarnation — one of the most profound concepts in Buddhist philosophy — becomes a student exchange program. The soul is not being reborn; it is staying with a host family. This is not irreverence but accessibility: Mori wants her young readers to understand that the protagonist's experience is, in essence, like their own — a temporary stay in an unfamiliar life, from which they will return changed. The English "homestay" preserves the literal meaning but loses the specifically Japanese educational context. For Japanese readers, <em>homusutei</em> evokes brochures from study-abroad agencies, parental anxiety, and the excitement of a first trip abroad. What is lost is the sense that the afterlife is not a distant mystery but a familiar institution, as ordinary and transformative as a summer in another country.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Michite Kuru</em> (満ちてくる) as Arriving Fullness</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>様々な色で<strong>満ちてくる</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"fills with various colors"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Michite kuru</em> (満ちてくる) is a compound of <em>michiru</em> (満ちる, "to be full / to be filled") and <em>kuru</em> (来る, "to come"), creating a directional verb phrase that suggests fullness arriving from elsewhere. <em>Michiru</em> is an intransitive verb — the subject fills itself, or is filled by an external force — and it is the verb used for the moon waxing (<em>tsuki ga michiru</em>, 月が満ちる), for tides rising, for cups overflowing. It suggests a natural, inevitable process rather than a deliberate act. Combined with <em>kuru</em>, it creates the sense that color is not something the protagonist creates or discovers but something that comes to him, that approaches him, that offers itself. The English "fills with" is accurate but static — it describes a state. <em>Michite kuru</em> describes a movement: color is coming, is approaching, is on its way. The grammar contains the novel's theology of perception: the world does not change; what changes is the protagonist's receptivity, and as he becomes more open, the colors that were always coming finally arrive. What is lost is the sense of gift in <em>michite kuru</em> — the implication that color is not earned but received, that the protagonist's task is not to find color but to make himself available to its arrival.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Wakaranakute</em> (わからなくて) as Unresolved Continuation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>どれがほんとの色だか<strong>わからなくて</strong>。どれが自分の色だか<strong>わからなくて</strong>。</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Not knowing which is the true color. Not knowing which is our own color."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Wakaranakute</em> (わからなくて) is the continuative negative form of <em>wakaru</em> (分かる, "to understand / to know"), formed by the negative <em>wakaranai</em> (わからない) + the continuative <em>-te</em> (て). In Japanese grammar, the continuative form does not close the sentence; it leaves it open, suggesting that the action or state continues into what follows, or that it exists in an ongoing present. The two fragments ending with <em>wakaranakute</em> are grammatically incomplete — they trail off, they hesitate, they refuse conclusion. This grammatical openness is essential to the novel's meaning: the protagonist does not resolve his uncertainty about the world's colors or his own; he learns to live with it. The English translation uses participial phrases ("not knowing") which are also open in a sense, but they are subordinate to an implied main clause, whereas the Japanese fragments stand alone, naked in their uncertainty. The repetition of <em>wakaranakute</em> at the end of both fragments creates a rhyming structure of non-knowledge: not knowing the true color, not knowing one's own color. The grammar enacts the content — the sentence cannot end because the uncertainty cannot end. What is lost is the specifically Japanese poignancy of the <em>-te</em> form as a gesture of continuation, of hanging in the air, of a voice that speaks and then falls silent without finding resolution. The English reader receives information; the Japanese reader receives a mood, a state of being, an invitation to inhabit the same uncertainty.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the novel's dialogue, narration, and the specific registers of afterlife bureaucracy, adolescent speech, and emotional revelation.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に当たる（抽選・的中）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni ataru</em>: "to win [a lottery] / to be selected" — verb of random success.</p>
+      <div class="grammar-example">抽選に当たりました</div>
+      <p class="grammar-example-en">"You have won the lottery" — The grammar of random selection applied to divine mercy. The bureaucratic verb <em>ataru</em> makes grace sound like a department store raffle.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たり〜たりする（列挙・交替）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Tari...tari suru</em>: "to do ~ and ~ (among other things)" — listing representative actions.</p>
+      <div class="grammar-example">救ったり苦しめたりしている</div>
+      <p class="grammar-example-en">"saving and hurting [people]" — The <em>tari...tari</em> construction lists saving and hurting not as opposites but as simultaneous, unconscious activities. The grammar says: every person is always doing both.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくる（方向・継続）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te kuru</em>: "to ~ toward here / to begin to ~" — directional auxiliary suggesting approach or inception.</p>
+      <div class="grammar-example">様々な色で満ちてくる</div>
+      <p class="grammar-example-en">"fills with various colors [approaching]" — The <em>te kuru</em> construction makes color an arrival, a gift coming toward the protagonist. The grammar enacts the novel's theology of receptive perception.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なくて（連用・原因・継続）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Nakute</em>: continuative negative form, creating open-ended, unresolved states.</p>
+      <div class="grammar-example">わからなくて</div>
+      <p class="grammar-example-en">"not knowing / unable to understand [and...]" — The <em>nakute</em> form refuses closure. The sentence trails off, the uncertainty continues, and the grammar mirrors the novel's refusal of easy answers.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜は〜が（対比・主題）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Wa...ga</em>: topic marker plus subject marker, creating contrastive focus.</p>
+      <div class="grammar-example">今日と明日はぜんぜん違う</div>
+      <p class="grammar-example-en">"As for today and tomorrow, [they are] completely different" — The <em>wa</em> topicalizes the two days as a category, and the predicate <em>zenzen chigau</em> states their absolute difference. The grammar is a promise: tomorrow is not a continuation of today.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ところで（場所・時点）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Tokoro de</em>: "in the place where / at the point where" — locative/temporal noun indicating unconscious moments.</p>
+      <div class="grammar-example">自分でも気づかないところで</div>
+      <p class="grammar-example-en">"in places where even oneself does not notice" — The <em>tokoro de</em> construction turns unconsciousness into a location. Moral action happens in places the self cannot see, and the grammar makes this invisible space visible.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だから（原因・理由）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Dakara</em>: "because / therefore" — causal conjunction connecting color to confusion.</p>
+      <div class="grammar-example">この世があまりにもカラフルだから、ぼくらはいつも迷っている</div>
+      <p class="grammar-example-en">"Because this world is all too colorful, we are always lost" — The <em>dakara</em> makes color the cause of moral vertigo. The grammar is simple; the causality is devastating: too much color makes navigation impossible.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が〜た（連体修飾・関係節）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga...ta</em>: relative clause construction modifying a following noun.</p>
+      <div class="grammar-example">モノクロームだった周囲のイメージ</div>
+      <p class="grammar-example-en">"the image of the surroundings, which had been monochrome" — The relative clause <em>monokuroomu datta</em> creates a before-and-after in a single noun phrase. The grammar compresses the novel's entire transformation into four words.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Mori Eto's grammar in <em>Colorful</em> is deliberately accessible — she writes for young readers who may be encountering these patterns for the first time. But the simplicity is strategic: complex emotions require clear grammar, and the novel's power comes from the precision with which simple constructions are deployed. Pay attention to how <em>tari...tari</em> makes moral action unconscious, how <em>te kuru</em> makes color an arrival, how <em>nakute</em> refuses closure, and how <em>dakara</em> makes the world's colorfulness the cause of our confusion. The grammar is the novel's hidden philosophy, written in the language of adolescence.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">カラフル &middot; 森 絵都 &middot; 理論社 1998（初版 ISBN 978-4-65-207163-2）/ 文藝春秋 2007（文春文庫 ISBN 978-4-16-774101-3）/ 英訳版 Counterpoint Press 2021（ISBN 978-1-64009-442-0）</p>
+</footer>
+
+</div>
+</body>
+</html>

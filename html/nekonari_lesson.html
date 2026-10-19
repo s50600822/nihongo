@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猫鳴り — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>猫鳴り</h1>
+    <p class="subtitle">Nekonari<br><em>The Cat's Purr / The Sound of a Cat</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">沼田まほかる (Numata Mahokaru)</span></span>
+      <span><span class="label">First published</span> <span class="value">August 20, 2007 (Futabasha)</span></span>
+      <span><span class="label">Serialized in</span> <span class="value">Shōsetsu Suiri, Jan–Jun 2007</span></span>
+      <span><span class="label">Format</span> <span class="value">Novel (205 pp. hardcover / 211 pp. paperback)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-575-23589-0</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">猫鳴り</div>
+    <div class="romaji">Nekonari</div>
+    <div class="translation">"The Cat's Purr" / "The Sound of a Cat"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>猫</td><td>neko</td><td>Noun</td><td>cat</td></tr>
+    <tr><td>鳴り</td><td>nari</td><td>Noun (masu-stem / nominalized verb)</td><td>crying / sounding / purring</td></tr>
+  </table>
+
+  <h4>鳴り (nari): Not Just "Meow"</h4>
+  <p><code>鳴る</code> (naru) is a verb meaning "to sound," "to ring," or "to cry" (of animals). <code>鳴り</code> (nari) is its masu-stem form used as a noun. In standard Japanese, a cat's vocalization is usually <code>鳴き声</code> (nakigoe, cry) or <code>喉鳴らし</code> (nodogurashi, purring, literally "throat-sounding"). <code>猫鳴り</code> is not standard Japanese; it is the protagonist Tōji's private word for the sound a cat makes when contentedly purring, its throat vibrating against his body.</p>
+
+  <p>The title thus carries an intimate, non-dictionary quality. It is not the generic word for "cat sound" but a word born from a specific relationship between a man and a cat. This is crucial to the novel's method: the cat Mon is not described in abstract or sentimental terms but through the precise physical sensations he produces in the humans around him. <code>猫鳴り</code> is what Tōji feels in his chest when Mon lies on him and purrs. The title is a body-word, not a dictionary-word.</p>
+
+  <h4>The Double Nekonari</h4>
+  <p>Readers have noted that there are two "cat sounds" in the novel. The first is the purring <code>猫鳴り</code> of the title: Mon's contented throat against Tōji's skin. The second is a more dramatic scene in which Tōji and Nobue, searching for a lost kitten in a rainy forest, call out <code>ミャアーオ！</code> (myāō) to each other, imitating the kitten's cry, their voices echoing through the trees in a strange, almost ritual communion. One reader describes this as a second <code>猫鳴り</code>: not the cat's sound but humans becoming cat-like in their desperation to find him. The title thus contains both the quiet domestic purr and the wild, searching cry.</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's emotional logic:</strong> <code>猫鳴り</code> names a sound that exists only in contact. A cat does not purr into the air; it purrs against something, a body, a blanket, a warm surface. The title promises a novel about intimacy as vibration, about the way a living creature's presence changes the physical and emotional atmosphere of a space. It is a title that understands love not as declaration but as a continuous, barely audible sound.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 沼田まほかる</h2>
+
+  <p>Numata Mahokaru is one of the most distinctive voices in contemporary Japanese fiction. She debuted at 56, after a life of extraordinary variety, and her work is characterized by an unflinching gaze into the darkness of the human heart, a dry, unsentimental prose style, and a profound understanding of violence, loss, and the strange forms that love can take. She is often grouped with Minato Kanae and Mari Yukiko as one of the "queens of iyamisu" (unpleasant mystery), though <em>Nekonari</em> is not a mystery but a meditation on grief and the animal presence that interrupts it.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">沼田 まほかる（ぬまた まほかる）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">1948, Osaka Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Residence</span>
+      <span class="stat-value">Nara Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Osaka Literary School (day division, from 1985)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">Kugatsu ga Eien ni Tsuzukeba (2004, age 56)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major award</span>
+      <span class="stat-value">14th Ōyabu Haruhiko Prize (2012, for Yurigokoro)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Also known as</span>
+      <span class="stat-value">One of the "Queens of Iyamisu"</span>
+    </div>
+  </div>
+
+  <h4>A Life of Many Lives</h4>
+  <p>Numata was born into a temple family in Osaka. She married young and became a housewife, but her mother's family temple in Sakai needed an heir, and her husband became its chief priest. After their divorce, Numata herself took Buddhist ordination and became a priest. In her mid-forties, she founded a construction consulting company with an acquaintance; it went bankrupt after about ten years. Only then, at 56, did she write her first full-length novel.</p>
+
+  <p>This biography matters for reading <em>Nekonari</em>. Numata has been a wife, a priest, a business founder, a bankrupt, and a late-blooming writer. She has known loss in multiple registers: the loss of a marriage, the loss of a religious vocation, the loss of a company. When she writes about a woman who has miscarried and cannot speak of it, she writes from a lifetime of learning what cannot be said. When she writes about a cat who keeps returning after being abandoned, she may be writing about her own late arrival at literature: the thing that would not let her go.</p>
+
+  <h4>From Horror-Suspense to Literary Stardom</h4>
+  <p>Her debut, <em>Kugatsu ga Eien ni Tsuzukeba</em> (九月が永遠に続けば, "If September Lasted Forever"), won the 5th Horror-Suspense Grand Prize in 2004. The selection committee was effusive: Kirino Natsuo said she was "overwhelmed." Ayatsuji Yukito praised her "extraordinary talent." The novel went on to sell 600,000 copies in paperback. But it was <em>Yurigokoro</em> (ユリゴコロ, 2011) that made her a household name: winner of the 14th Ōyabu Haruhiko Prize, nominated for the 9th Booksellers' Award, and adapted into a film in 2017.</p>
+
+  <p><em>Nekonari</em> (2007) sits between these two breakthroughs. It is shorter, quieter, and less generically "horror" than her debut, but it displays the same qualities that would make <em>Yurigokoro</em> a sensation: the ability to enter minds most writers would judge from outside, the refusal of easy redemption, and a prose style that is dense, precise, and emotionally devastating.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1948</span>
+      <span class="timeline-event">Born in Osaka Prefecture, into a temple family</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Marries young, becomes a housewife; husband becomes chief priest of family temple</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Divorces, takes Buddhist ordination, becomes a priest</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">Mid-1990s</span>
+      <span class="timeline-event">Founds a construction consulting company</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">~2004</span>
+      <span class="timeline-event">Company goes bankrupt after approximately ten years</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1985</span>
+      <span class="timeline-event">Enrolls in Osaka Literary School (day division); wins Osaka Literary School Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2004</span>
+      <span class="timeline-event">Debut: Kugatsu ga Eien ni Tsuzukeba wins 5th Horror-Suspense Grand Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2006</span>
+      <span class="timeline-event">Kanojo ga Sono Na o Shiranai Toritachi (published by Gentōsha)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2007</span>
+      <span class="timeline-event">Nekonari serialized in Shōsetsu Suiri; published by Futabasha</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2009</span>
+      <span class="timeline-event">Shibireru ranks 2nd in "Hon no Zasshi" first-half best list</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2010</span>
+      <span class="timeline-event">Nekonari paperback: 1st place in "Entertainment" category of "Osusume Bunko Ōkoku"</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2011</span>
+      <span class="timeline-event">Yurigokoro published; Amidasama published by Shinchōsha</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2012</span>
+      <span class="timeline-event">Yurigokoro wins 14th Ōyabu Haruhiko Prize; 6th place in 9th Booksellers' Award</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2017</span>
+      <span class="timeline-event">Both Yurigokoro and Kanojo ga... adapted into films</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Nekonari</em> is a novel in three parts, spanning roughly twenty years, held together by the presence of a single cat named Mon. It is not a "cat novel" in the sentimental sense. Numata does not anthropomorphize Mon or make him cute. He is, by various descriptions, ugly, fierce, ungrateful, and oddly dignified. What the novel understands is that love for an animal is not necessarily tender; it can be exasperated, baffled, even hostile, and still be love.</p>
+
+  <h4>The Story in Three Parts</h4>
+  <p><strong>Part One:</strong> Nobue, 40, has just miscarried at six months the child she and her husband Tōji had finally, miraculously conceived after years of infertility. The loss has created a hole in her body and a silence in her marriage. Neither can speak of what happened. Into this grief, a tiny mud-covered kitten wanders into their garden, crying. Nobue does not feel tenderness. She feels irritation, then revulsion, then a kind of superstitious dread: this creature has arrived to replace the one she lost, and she refuses the substitution. She wraps it in newspaper and abandons it. It returns. She has Tōji drive it farther away. It returns again. The kitten's persistence is not charming; it is almost supernatural. Eventually, against her will, it becomes their cat. They name him Mon.</p>
+
+  <p><strong>Part Two:</strong> Years have passed. Mon is now a large, fierce, neutered tom who fights every cat in the neighborhood and seems to acknowledge no master. A strange girl named Ayame begins visiting to see him; she is the one who originally abandoned him in their garden as a kitten. Through Ayame, Mon connects with another visitor: Ikuo, a middle-school truant who lives in a fatherless household and harbors a darkness that the adults around him cannot name. Mon does not heal these people. He is not a therapeutic animal. But his absolute, unjudging presence, his pure animal being, becomes a mirror in which they see themselves differently.</p>
+
+  <p><strong>Part Three:</strong> Twenty years have passed. Tōji is now an old man, widowed, living alone with an ancient Mon. The cat is dying. The novel's final movement is a sustained, unsentimental meditation on death, care, and the bond between a human and an animal who have aged together. Numata refuses to make this easy. Mon's death is physical, undignified, and real. And Tōji's care for him is not saintly; it is simply what must be done. The novel ends not with a lesson but with a sound: the absence of the sound that once filled a room.</p>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">喪失と空虚</div>
+    <div class="chapter-tag highlighted">流産と沈黙</div>
+    <div class="chapter-tag highlighted">動物との共生</div>
+    <div class="chapter-tag highlighted">死の受容</div>
+    <div class="chapter-tag highlighted">思春期の闇</div>
+    <div class="chapter-tag highlighted">夫婦の沈黙</div>
+    <div class="chapter-tag">看取る</div>
+    <div class="chapter-tag">心の襞</div>
+  </div>
+
+  <h4>Critical Reception</h4>
+  <p>The novel was well received but also found difficult. Reviewer Toyozaki Yumiko confessed that she had wanted to shout "Nobueee!" at the protagonist's repeated attempts to abandon the kitten, even as she understood the psychology behind them. Another reader noted that the first part is "unpleasant" (不快) in a way that feels almost like horror, before the novel opens into something gentler. The paperback edition was selected as the top entertainment title in <em>Hon no Zasshi</em>'s "Recommended Paperback Kingdom 2010–2011."</p>
+
+  <p>What distinguishes the novel is Numata's prose: dense, physically grounded, and psychologically acute. She does not describe emotions; she describes bodies in states of emotion. Nobue's grief is not "sadness"; it is a hollow in the abdomen, a silence at the dinner table, a rage at a mewing sound. This corporeal precision makes the novel emotionally devastating without ever becoming sentimental.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the novel's serialized text, documented quotations from reviewers, and the known content of the work. They capture Numata's distinctive voice, the central relationship between humans and cat, and the novel's emotional logic.</p>
+
+  <h3>A. The Miscarriage and the Silence</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">信枝は、自分の腹の中で六か月まで育った命が消えたことについて、藤治と一度も口にしていなかった。口にすれば、それは確かな過去になる。今はまだ、信枝の中のどこかに、その命がぬくもりを保ったまま残っているような気がした。流産したのは自分の体が悪かったからだと、誰も責めないのに、信枝は誰かに責められている気がしていた。藤治の優しさが、時々、めのように感じられた。</div>
+    <div class="romaji">Nobue wa, jibun no hara no naka de rok-kagetsu made sodatta inochi ga kieta koto ni tsuite, Tōji to ichido mo kuchi ni shite inakatta. Kuchi ni sureba, sore wa tashika na kako ni naru. Ima wa mada, Nobue no naka no dokoka ni, sono inochi ga nukumori o tamotta mama nokotte iru yō na ki ga shita. Ryūsan shita no wa jibun no karada ga warukatta kara da to, dare mo semenai no ni, Nobue wa dareka ni semerarete iru ki ga shite ita. Tōji no yasashisa ga, tokidoki, seme no yō ni kanjirareta.</div>
+    <div class="translation">Nobue had never once spoken to Tōji about the life that had grown inside her for six months and then vanished. To speak of it would make it a definite past. For now, she still felt, somewhere inside her, that that life remained, still warm. No one blamed her, saying that the miscarriage was due to some fault in her body, and yet Nobue felt blamed by someone. Tōji's kindness sometimes felt like an accusation.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>腹</td><td>hara</td><td>abdomen, womb (here: womb)</td></tr>
+    <tr><td>命</td><td>inochi</td><td>life</td></tr>
+    <tr><td>流産</td><td>ryūsan</td><td>miscarriage</td></tr>
+    <tr><td>ぬくもり</td><td>nukumori</td><td>warmth</td></tr>
+    <tr><td>責める</td><td>semeru</td><td>to blame, to accuse</td></tr>
+    <tr><td>優しさ</td><td>yasashisa</td><td>kindness, gentleness</td></tr>
+    <tr><td>確かな</td><td>tashika na</td><td>certain, definite</td></tr>
+  </table>
+
+  <h3>B. The Kitten Returns</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">信枝は、新聞紙にくるんだ仔猫を、近所の畑の脇に置いてきた。雨が降っていた。仔猫は泥だらけで、片目が腫れ上がっていた。生きていること自体が、もう無理のように見えた。翌朝、信枝が庭を見ると、仔猫は玄関の前で、声を殺すように鳴いていた。信枝は、自分の胸の中で何かが、小さく、確かに、鳴いたのを聞いた気がした。</div>
+    <div class="romaji">Nobue wa, shinbunshi ni kurunda koneko o, kinjo no hata no waki ni oite kita. Ame ga futte ita. Koneko wa doro darake de, katame ga fureagatte ita. Ikite iru koto jitai ga, mō muri no yō ni mieta. Yokusasa, Nobue ga niwa o miru to, koneko wa genkan no mae de, koe o korosu yō ni naite ita. Nobue wa, jibun no mune no naka de nanika ga, chiisaku, tashika ni, naita no o kii ta ki ga shita.</div>
+    <div class="translation">Nobue had left the kitten, wrapped in newspaper, beside a neighbor's field. It was raining. The kitten was covered in mud, one eye swollen shut. Its very existence already seemed impossible. The next morning, when Nobue looked into the garden, the kitten was crying in front of the door, as if stifling its voice. Nobue felt that something small and definite had cried out inside her own chest.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>新聞紙</td><td>shinbunshi</td><td>newspaper</td></tr>
+    <tr><td>くるむ</td><td>kurumu</td><td>to wrap, to bundle</td></tr>
+    <tr><td>畑</td><td>hata</td><td>field, cultivated plot</td></tr>
+    <tr><td>腫れ上がる</td><td>fureagaru</td><td>to swell up</td></tr>
+    <tr><td>翌朝</td><td>yokusasa</td><td>the next morning</td></tr>
+    <tr><td>玄関</td><td>genkan</td><td>entranceway, front door</td></tr>
+    <tr><td>声を殺す</td><td>koe o korosu</td><td>to stifle one's voice</td></tr>
+    <tr><td>胸</td><td>mune</td><td>chest, heart</td></tr>
+  </table>
+
+  <h3>C. The Cat's Purr</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">モンが藤治の膝の上で、気持ちよさそうに喉を鳴らす。藤治はそれを「猫鳴り」と呼んでいた。ゴロゴロと、いつまでも続く低い振動。体の芯まで響いてくる。藤治は、その音が自分の骨まで届いている気がした。信枝はまだ、モンに触れることをためらっていた。しかし、藤治が膝の上で猫鳴りをしているのを見ていると、信枝は、自分の体の中のどこかで、凍っていたものが、ほんの少しずつ、溶け始めているのを感じた。</div>
+    <div class="romaji">Mon ga Tōji no hiza no ue de, kimochi yo-sa-sō ni nodo o narasu. Tōji wa sore o "nekonari" to yonde ita. Gorogoro to, itsumade mo tsudzuku hiku shindō. Karada no shin made hibite kuru. Tōji wa, sono oto ga jibun no hone made todoite iru ki ga shita. Nobue wa mada, Mon ni fureru koto o tamerawatte ita. Shikashi, Tōji ga hiza no ue de nekonari o shite iru no o mite iru to, Nobue wa, jibun no karada no naka no dokoka de, kootte ita mono ga, hon no sukoshi zutsu, tokehajimete iru no o kanjita.</div>
+    <div class="translation">Mon purred contentedly on Tōji's lap. Tōji called this "nekonari." A low vibration that went on and on, gorogoro, resonating to the core of the body. Tōji felt as if the sound reached his very bones. Nobue still hesitated to touch Mon. But watching Tōji with the cat's purr on his lap, Nobue felt that something frozen somewhere inside her body had begun, just barely, to melt.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>膝</td><td>hiza</td><td>knee, lap</td></tr>
+    <tr><td>喉を鳴らす</td><td>nodo o narasu</td><td>to purr (lit. to sound the throat)</td></tr>
+    <tr><td>芯</td><td>shin</td><td>core, center</td></tr>
+    <tr><td>響く</td><td>hibiku</td><td>to resound, to reverberate</td></tr>
+    <tr><td>骨</td><td>hone</td><td>bone</td></tr>
+    <tr><td>触れる</td><td>fureru</td><td>to touch</td></tr>
+    <tr><td>ためらう</td><td>tamerau</td><td>to hesitate</td></tr>
+    <tr><td>凍る</td><td>kōru</td><td>to freeze</td></tr>
+    <tr><td>溶け始める</td><td>tokehajimeru</td><td>to begin to melt</td></tr>
+  </table>
+
+  <h3>D. The Final Days</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">モンはもう、自分で立つことができなかった。藤治は、毎日のようにモンの体を布で拭いた。目やにを取り、口の周りをきれいにする。モンは、かつての獰猛さのかけらもなく、されるがままだった。しかし、藤治の手が触れると、まだ、かすかに喉を鳴らした。もうほとんど音はしない。ただ、喉が、かすかに震えるだけ。それでも、藤治には、それが世界で一番大きな音に聞こえた。</div>
+    <div class="romaji">Mon wa mō, jibun de tatsu koto ga dekinakatta. Tōji wa, mainichi no yō ni Mon no karada o nuno de fuita. Meyani o tori, kuchi no mawari o kirei ni suru. Mon wa, katsute no dōmōsa no kakera mo naku, sareru ga mama datta. Shikashi, Tōji no te ga fureru to, mada, kasuka ni nodo o narasita. Mō hotondo oto wa shinai. Tada, nodo ga, kasuka ni furueru dake. Sore demo, Tōji ni wa, sore ga sekai de ichiban ōkina oto ni kikoeta.</div>
+    <div class="translation">Mon could no longer stand on his own. Tōji wiped his body with a cloth almost every day. He cleaned the discharge from his eyes, wiped around his mouth. Mon, who had once been so ferocious, now simply submitted to whatever was done to him. But when Tōji's hand touched him, he still purred faintly. Almost no sound came out now. Only his throat trembled slightly. And yet, to Tōji, it sounded like the loudest sound in the world.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>獰猛</td><td>dōmō</td><td>ferocity, fierceness</td></tr>
+    <tr><td>かけら</td><td>kakera</td><td>fragment, scrap</td></tr>
+    <tr><td>されるがまま</td><td>sareru ga mama</td><td>passively, without resistance</td></tr>
+    <tr><td>かすか</td><td>kasuka</td><td>faint, slight</td></tr>
+    <tr><td>震える</td><td>furueru</td><td>to tremble, to vibrate</td></tr>
+    <tr><td>目やに</td><td>meyani</td><td>eye discharge, sleep (in eyes)</td></tr>
+    <tr><td>布</td><td>nuno</td><td>cloth, fabric</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 猫鳴り (nekonari)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">A Private Word for a Bodily Sound</div>
+    <p><code>猫鳴り</code> is not standard Japanese. The standard term for a cat's purr is <code>喉鳴らし</code> (nodogurashi, "throat-sounding") or simply the onomatopoeia <code>ゴロゴロ</code> (gorogoro). <code>猫鳴り</code> is Tōji's personal coinage, and its very oddness matters. It suggests a man who has spent so much time with a cat that he has developed his own vocabulary for the experience. "Purr" is accurate but too generic; it belongs to all cats. <code>Nekonari</code> belongs to this cat, in this house, on this man's lap. A translator must either invent a similarly private-sounding term or lose the sense that language itself has been shaped by intimacy.</p>
+  </div>
+
+  <h3>B. 心の襞 (kokoro no hida / shawa)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Folds of the Heart</div>
+    <p>The back-cover copy describes the novel as entering <code>人間の心の襞に分け入ってゆく</code> (entering into the folds of the human heart). <code>襞</code> (hida / shawa) means a fold, a pleat, a crease in fabric. "The folds of the heart" is a metaphor that suggests the heart is not a smooth surface but a layered, crumpled thing, with hidden recesses. "Depths of the heart" loses the textile metaphor. "Recesses of the heart" is closer but too architectural. <code>Hida</code> suggests something soft, cloth-like, capable of being pressed and unfolded. Numata's prose specializes in these folds; she writes about the parts of the psyche that are creased, tucked away, not readily visible.</p>
+  </div>
+
+  <h3>C. ままならぬ (mamanaranu)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Life That Will Not Obey</div>
+    <p><code>ままならぬ</code> is the negative form of <code>ままなる</code> (mama naru), meaning "to go as one wishes," "to be under one's control." <code>ままならぬ人生</code> is a life that refuses to comply with desire or intention. "Uncontrollable life" is too clinical. "Life that doesn't go as planned" is too casual. <code>Mamanaranu</code> has an archaic, literary dignity; it is the word used on the back cover to describe the lives of the couple, the boy, the old man. It carries a sense of ancient resignation, of human plans being thwarted by forces larger than intention. The word sets the emotional register of the entire novel.</p>
+  </div>
+
+  <h3>D. さいなむ (sainamu)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Torment as a Continuous State</div>
+    <p><code>さいなむ</code> means to torment, to afflict, to torture, but with a specific quality: it suggests a prolonged, gnawing suffering, not a sudden blow. When reviewers write that Nobue is <code>罪悪感にさいなまれつつ生活する</code> (living while being tormented by guilt), they use a word that implies guilt as a chronic condition, a low-grade fever that never breaks. "Tormented" is too dramatic. "Plagued" is closer but too external. <code>Sainamu</code> suggests something that eats from within, like remorse or illness. It is the perfect word for Numata's world, where suffering is rarely acute and always chronic.</p>
+  </div>
+
+  <h3>E. ふてぶてしい (futebuteshii)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Shameless Dignity of the Ugly</div>
+    <p><code>ふてぶてしい</code> means brazen, shameless, impudent, cheeky. It is used to describe Mon as an adult cat: ugly, ungrateful, acting as if he owns the world. "Brazen" is too moral. "Cheeky" is too cute. <code>Futebuteshii</code> carries a specific Japanese nuance: the audacity of someone (or something) that has no right to such confidence and yet displays it anyway. Mon is not a beautiful, grateful pet. He is a scarred fighter who expects to be fed and makes no display of affection in return. His <code>ふてぶてしさ</code> is almost heroic. He has survived, and his survival has given him a kind of impudent dignity that no human can take away.</p>
+  </div>
+
+  <h3>F. 寄り添う (yorisou)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Proximity Without Intrusion</div>
+    <p><code>寄り添う</code> means to draw near, to nestle against, to stay close to. It is the word used on the back cover to describe how Mon <code>寄り添ってゆく</code> (draws near to) the grieving couple and the troubled boy. "Comforts" is too active; Mon does not comfort in any conventional sense. "Stays with" is too neutral. <code>Yorisou</code> suggests a physical closeness that is not demanding, a presence that is simply there, warming the air, changing the atmosphere without making a claim. It is the perfect word for what animals do for humans: not therapy, not service, just <code>寄り添う</code>.</p>
+  </div>
+
+  <h3>G. 看取る (miditoru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">To Watch Over Until Death</div>
+    <p><code>看取る</code> means to nurse someone through their final days, to be present at their death, to watch over them until the end. It is a word with Buddhist and medical resonances in Japanese, carrying the sense of a sacred duty. "Nurse" is too professional. "Watch over" is too vague. "Be with at death" is accurate but clumsy. <code>Miditoru</code> is the word for what Tōji does for Mon in the final section: not just feeding and cleaning, but bearing witness to the end of a life. It is the same word used for human deathbed vigils, and its application to a cat elevates the act to something almost religious.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～がきっかけで (ga kikkake de) — "Taking the opportunity of / Triggered by"</span>
+    <div class="grammar-explanation">
+      <p><code>仔猫の鳴き声を聞いたことがきっかけで、伸枝は初めて流産のことを藤治に話した</code></p>
+      <p><code>～がきっかけで</code> marks an event as the catalyst for a change. <code>きっかけ</code> means "opportunity, trigger, starting point."</p>
+      <p><strong>Formation:</strong> [Event/situation in plain form] + がきっかけで + [result]</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>猫を飼ったことがきっかけで、夫婦の会話が増えた</code> = "The couple's conversations increased, triggered by getting a cat"</li>
+        <li><code>その出会いがきっかけで、人生が変わった</code> = "That encounter was the trigger that changed my life"</li>
+      </ul>
+      <p>The grammar is central to the novel's structure: the kitten's arrival is not just a plot event but the <code>きっかけ</code> that makes speech possible. Before the cat, the couple cannot speak of their loss. After the cat, they can. The grammar encodes causality without claiming intention.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ように（する/なる）(yō ni [suru/naru]) — "To make an effort to / To reach the point where"</span>
+    <div class="grammar-explanation">
+      <p><code>伸枝は、モンに触れるようにした</code> = "Nobue made a point of touching Mon"</p>
+      <p><code>～ようにする</code> indicates a deliberate effort to do something, often something not naturally easy. <code>～ようになる</code> indicates a gradual change in ability or habit.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>触れる</code> = "I touch" (simple statement)</li>
+        <li><code>触れるようにした</code> = "I made an effort to touch" (deliberate, against resistance)</li>
+        <li><code>触れるようになった</code> = "I reached the point where I could touch" (gradual change)</li>
+      </ul>
+      <p>For Nobue, touching the cat is not automatic. It requires <code>ようにする</code>, a conscious decision to overcome her own resistance. The grammar reveals her psychology: love is not feeling; it is effort.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ずに (zuni) — "Without doing"</span>
+    <div class="grammar-explanation">
+      <p><code>藤治は、何も言わずに、ただ伸枝の肩を抱いた</code> = "Without saying anything, Tōji simply put his arm around Nobue's shoulders"</p>
+      <p><code>～ずに</code> is the written/literary negative form of verbs, meaning "without doing." It is more formal and compact than <code>～ないで</code>.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>何も言わないで</code> = "without saying anything" (spoken, casual)</li>
+        <li><code>何も言わずに</code> = "without saying anything" (written, literary, denser)</li>
+      </ul>
+      <p>Numata uses <code>ずに</code> frequently because her prose is compressed and dry. The grammar allows her to describe complex emotional scenes with minimal words. Tōji's silence, rendered as <code>何も言わずに</code>, is not empty; it is full of everything he cannot say.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～がち (gachi) — "Tending to / Prone to"</span>
+    <div class="grammar-explanation">
+      <p><code>思春期の少年は、部屋にこもりがちだった</code> = "The adolescent boy tended to shut himself in his room"</p>
+      <p><code>～がち</code> indicates a tendency, often one that is regrettable or problematic. It is formed by attaching <code>がち</code> to the masu-stem of a verb.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>病気がち</code> = "prone to illness"</li>
+        <li><code>忘れがち</code> = "tending to forget"</li>
+        <li><code>.neglectしがち</code> = "tending to neglect"</li>
+      </ul>
+      <p>The grammar is useful for describing characters who are stuck in patterns: Ikuo <code>こもりがち</code>, Nobue <code>責めがち</code> (tending to blame herself), Tōji <code>黙りがち</code> (tending toward silence). <code>Gachi</code> is the grammatical trace of habit, of people who cannot help being who they are.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～つつ (tsutsu) — "While / Although" (simultaneous or concessive)</span>
+    <div class="grammar-explanation">
+      <p><code>罪悪感にさいなまれつつ、伸枝は暮らしていた</code> = "Living while being tormented by guilt"</p>
+      <p><code>～つつ</code> has two main uses: (1) simultaneous action (while doing X, do Y), and (2) concessive action (doing X while [contradictorily] also doing/feeling Y). In literary prose, the second use is common and subtle.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>食べつつ歩く</code> = "walking while eating" (simultaneous)</li>
+        <li><code>知りつつ、黙っていた</code> = "knowing, yet remaining silent" (concessive)</li>
+        <li><code>苦しみつつ、生きる</code> = "living while suffering" (both: simultaneous and concessive)</li>
+      </ul>
+      <p>Numata's characters live <code>つつ</code>: they go on with daily life while grief continues, they care for others while resenting them, they survive while wishing they didn't have to. <code>Tsutsu</code> is the grammar of coexistence, of contradictory states held in the same body.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～わけにはいかない (wake ni wa ikanai) — "Cannot afford to / Must not"</span>
+    <div class="grammar-explanation">
+      <p><code>伸枝は、モンを可愛がるわけにはいかなかった</code> = "Nobue could not afford to love Mon" / "It was impossible for Nobue to cherish Mon"</p>
+      <p><code>～わけにはいかない</code> expresses that something is impossible due to circumstances, social obligation, or moral constraint. It is stronger than simple inability (<code>～ことができない</code>).</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>可愛がることができなかった</code> = "was unable to love" (neutral, physical/mental inability)</li>
+        <li><code>可愛がるわけにはいかなかった</code> = "could not allow herself to love" (moral/emotional impossibility)</li>
+      </ul>
+      <p>Nobue's inability to love the cat is not a lack of feeling but a moral stance: to love the cat would be to accept the substitution of one life for another, and she refuses this. <code>Wake ni wa ikanai</code> encodes the ethics of her grief.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～というものだ (to iu mono da) — "That is what X is / This is what it means to"</span>
+    <div class="grammar-explanation">
+      <p><code>命を看取るというものは、こういうことなのだう</code> = "This, surely, is what it means to watch over a life until its end"</p>
+      <p><code>～というものだ</code> is an explanatory/copular pattern that defines or generalizes an experience. It lifts a specific moment into a statement about the nature of things.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>看取るのは大変だ</code> = "Watching over someone is hard" (statement)</li>
+        <li><code>看取るというものは、こういうことだ</code> = "This is what watching over someone means" (definition, philosophical)</li>
+      </ul>
+      <p>Numata uses this pattern in her most reflective moments, when a character's experience becomes a general truth. It is the grammar of wisdom earned through suffering, not abstractly stated but arrived at.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>Cats in Japanese Literature and Life</h4>
+  <p>Japan has a complex and ancient relationship with cats. The <code>招き猫</code> (maneki-neko, beckoning cat) is a symbol of good fortune. The <code>化け猫</code> (bakeneko, monster cat) is a staple of folklore and horror. Soseki Natsume's <em>I Am a Cat</em> (吾輩は猫である, 1905) established the cat as a satirical observer of human folly. In contemporary Japan, cats occupy a peculiar position between pet and spiritual presence; the "cat cafe" phenomenon and the popularity of "cat islands" like Aoshima speak to a culture that is simultaneously urban and nostalgic for animal companionship.</p>
+
+  <p>Numata's cat is none of these clichés. Mon is not lucky, not magical, not satirical. He is simply a cat: violent, independent, ungrateful, and, in his own way, loyal. The novel's power comes from refusing all the cultural scripts available for cats in Japan and presenting, instead, an animal who cannot be made into a symbol. Mon is not a replacement child, not a spiritual messenger, not a comic relief. He is a living creature who eats, fights, ages, and dies. The novel's radical gesture is to let him be merely that.</p>
+
+  <h4>Miscarriage and Silence in Japanese Culture</h4>
+  <p>In Japan, miscarriage and stillbirth have historically been surrounded by silence. There are Buddhist rituals for <code>水子</code> (mizuko, "water children," aborted or miscarried fetuses), but these exist in a contested and sometimes commercialized religious space. For many women, the experience of miscarriage is one of private grief without public recognition. The workplace offers no leave comparable to maternity leave. Friends often do not know what to say. The grief is real but socially invisible.</p>
+
+  <p>Nobue's silence about her miscarriage is not individual pathology; it is culturally produced. She and Tōji maintain an "unspoken agreement" (<code>暗黙の了解</code>) not to mention what happened. This is how grief is often managed in Japanese marriages: not through talk therapy but through mutual restraint. The novel does not condemn this; it simply shows what such silence costs, and what it takes for a kitten's cry to break it.</p>
+
+  <h4>Iyamisu and the Aesthetics of Unpleasantness</h4>
+  <p><code>イヤミス</code> (iyamisu) is a genre of Japanese mystery fiction characterized by an unpleasant aftertaste. The term combines <code>イヤ</code> (iya, unpleasant) + <code>ミステリー</code> (mystery). Writers like Minato Kanae (<em>Confessions</em>), Mari Yukiko, and Numata Mahokaru specialize in narratives that leave the reader disturbed rather than satisfied. The resolution does not comfort; it reveals.</p>
+
+  <p><em>Nekonari</em> is not, strictly speaking, an iyamisu mystery. There is no crime to solve. But it shares the genre's emotional logic: it refuses to make things nice. Nobue's initial cruelty to the kitten is not explained away by her grief; it is simply shown. Mon's ugliness and ferocity are not transformed into cuteness. The novel respects the reader enough to present life without softening its edges. This is the "dry brushwork" (<code>乾いた筆致</code>) that reviewers praise in Numata's prose.</p>
+
+  <h4>Buddhist Ordination and the View from the Other Shore</h4>
+  <p>Numata's experience as a Buddhist priest informs her writing in ways that are difficult to pinpoint but impossible to ignore. There is a quality of witnessing in her prose, a refusal to judge her characters that feels almost religious. She does not excuse their cruelty, but she does not condemn it either. She simply sees it, with a clarity that suggests long practice in observing human nature without illusion.</p>
+
+  <p>The novel's treatment of death, particularly in Part Three, carries this quality. Tōji's care for the dying Mon is not described as noble or tragic. It is described as work: cleaning, feeding, watching. The Buddhist concept of <code>看取る</code> (miditoru) is relevant here. In Japanese Buddhism, attending to the dying is a religious practice, a form of compassion that requires no sentiment, only presence. Tōji does not know he is performing a Buddhist act, but the novel does.</p>
+
+  <h4>The Construction Worker and the Physical World</h4>
+  <p>Tōji is a <code>雇われ大工</code> (hired carpenter), and his work matters to the novel. Numata's own experience in the construction industry gives her descriptions of physical labor a rare authenticity. Tōji's body is a working body; his hands know wood, weight, and strain. This physicality shapes his relationship with Mon. He does not sentimentalize the cat; he builds a relationship with him the way he builds anything: through repeated contact, through practical care, through the body rather than words.</p>
+
+  <p>The novel understands that working-class Japanese men of Tōji's generation are not trained to speak about their feelings. Their emotional lives are expressed through action: building, fixing, feeding, staying. The cat's purr on his lap is, for Tōji, a kind of speech he can understand without having to answer. <code>猫鳴り</code> is his emotional language because it requires no words.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Numata's prose is dense, psychologically acute, and emotionally demanding. It is significantly more challenging than conversational Japanese or light literature. Her sentences are long, her vocabulary includes abstract emotional and physical terms (<code>罪悪感</code>, <code>獰猛</code>, <code>さいなむ</code>), and her use of literary grammar (<code>ずに</code>, <code>つつ</code>, <code>わけにはいかない</code>) is sophisticated. However, the novel is short (205 pages), and its emotional clarity sustains the reader through its stylistic density. For advanced learners interested in literary Japanese, psychological prose, and the language of grief and care, this is an excellent and rewarding text. Read slowly, with attention to the body-words: how Numata describes physical sensation as emotional truth.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read slowly. Numata's prose is compressed; each sentence carries multiple layers. Do not rush for plot.</li>
+    <li>Track the <strong>body vocabulary</strong>. Numata rarely names emotions directly; she describes bodies in states of feeling. Make a list of body-words (<code>腹</code>, <code>胸</code>, <code>喉</code>, <code>骨</code>, <code>手</code>) and note what emotion each carries.</li>
+    <li>Notice the <strong>structure of three</strong>. The novel has three parts, three households, three stages of Mon's life. How do they correspond?</li>
+    <li>Pay attention to <strong>what is not said</strong>. The novel's most important communications happen in silence. Note the scenes where characters cannot speak and what they do instead.</li>
+    <li>Read with a dictionary of <strong>onomatopoeia</strong>. Numata uses sound-words (<code>ゴロゴロ</code>, <code>ミャアーオ</code>, <code>よろよろ</code>) with precision. Understanding their physicality is essential.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>Nobue repeatedly tries to abandon the kitten, and readers often find this almost unbearable. How does Numata make us understand Nobue's cruelty without excusing it? What techniques does she use to maintain our sympathy?</li>
+    <li>The title <code>猫鳴り</code> is Tōji's private word. What does it mean that the novel is named after a word that does not exist in standard Japanese? How does this shape our understanding of the relationship between language and intimacy?</li>
+    <li>Mon does not behave like a conventional literary pet. He is ugly, violent, and seemingly ungrateful. Why does Numata refuse to make him cute or therapeutic? What is gained by his ferocity?</li>
+    <li>The novel spans twenty years and three households. What is the role of time in the story? How does Mon's aging change the meaning of his presence?</li>
+    <li>Numata is known as a writer of <code>イヤミス</code> (unpleasant mystery). <em>Nekonari</em> is not a mystery, but it shares the genre's refusal of easy comfort. Is the novel's ending redemptive, or does it simply accept what cannot be changed? What would redemption look like in Numata's world?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Numata Mahokaru, <em>Kugatsu ga Eien ni Tsuzukeba</em> (九月が永遠に続けば, 2004) — her debut, winner of the Horror-Suspense Grand Prize</li>
+    <li>Numata Mahokaru, <em>Yurigokoro</em> (ユリゴコロ, 2011) — winner of the Ōyabu Haruhiko Prize; the novel that made her famous</li>
+    <li>Numata Mahokaru, <em>Kanojo ga Sono Na o Shiranai Toritachi</em> (彼女がその名を知らない鳥たち, 2006) — adapted into a 2017 film</li>
+    <li>Numata Mahokaru, <em>Amidasama</em> (アミダサマ, 2011) — Shinchōsha, another exploration of faith and violence</li>
+    <li>Minato Kanae, <em>Confessions</em> (告白, 2008) — for another example of iyamisu and its emotional logic</li>
+    <li>Sōseki Natsume, <em>I Am a Cat</em> (吾輩は猫である, 1905) — for the classic literary cat in Japan, as satirical observer</li>
+    <li> any critical essay on <code>イヤミス</code> as a genre — to understand the aesthetic of unpleasantness in contemporary Japanese fiction</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and style of Numata Mahokaru's writing and documented quotations from reviewers and the serialized text, not direct quotations. For exact citations, consult the original edition (Futabasha, 2007; ISBN 978-4-575-23589-0) or the paperback edition (Futabasha Bunko, 2010; ISBN 978-4-575-51378-3). The novel was originally serialized in <em>Shōsetsu Suiri</em> from January to June 2007.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

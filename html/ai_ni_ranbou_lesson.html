@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>愛に乱暴 — 吉田修一 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-wine: #a85c6a;
+  --accent-wine-dim: #7a404c;
+  --accent-wine-glow: rgba(168, 92, 106, 0.12);
+  --accent-rose: #c47a88;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-wine-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-wine);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-wine-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-wine-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-wine);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-wine-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-wine), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-wine);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-wine-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-wine); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-wine-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-wine-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-wine);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-wine-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-wine);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-rose);
+}
+
+.nuance-box h4 {
+  color: var(--accent-rose);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-wine);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-wine);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-wine-dim), var(--accent-wine));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-wine);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-wine);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(168, 92, 106, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-wine);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-wine-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>愛に乱暴</h1>
+  <p class="hero-subtitle">RUDE TO LOVE</p>
+  <p class="hero-meta">吉田修一 &middot; 新潮社 2013 &middot; 新潮文庫 2017 &middot; 夫婦の闇を描く恋愛サスペンス</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 愛に乱暴</h2>
+  <p class="lead">The title is a three-word grenade. <em>Ai</em> (愛) is "love" — not the light <em>koi</em> (恋) of flirtation, but the heavy, committed <em>ai</em> that carries obligations, sacrifices, and social recognition. <em>Ni</em> (に) is the target particle, marking the object of an action. <em>Ranbou</em> (乱暴) means "violence / roughness / rudeness / brutality." The title does not say "violent love" (乱暴な愛). It says "violence <em>toward</em> love" — an act committed against love itself. This grammatical precision is the key to the entire novel: every character in this story is violent toward love, and love, in turn, is violent toward them.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">愛</span>
+        <span class="romaji">ai</span>
+        <span class="meaning">"love" — the deep, committed love of marriage and family, not the fleeting <em>koi</em> of romance. In Japanese, <em>ai</em> is the love that binds families, sustains households, and creates obligations. It is the word used in 愛人 (lover/mistress), 愛情 (affection), and 愛着 (attachment). Yoshida chooses the heaviest word for the most violated thing.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">に</span>
+        <span class="romaji">ni</span>
+        <span class="meaning">target particle — "to / toward / at" — Marks the indirect object, the thing being acted upon. This is the crucial word. The title is not "violent love" (an adjective-noun phrase). It is "violence toward love" (an action with a target). The particle <em>ni</em> transforms the title from a description into an accusation.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">乱暴</span>
+        <span class="romaji">ranbou</span>
+        <span class="meaning">"violence / roughness / rudeness / brutality" — A noun that can also function as a na-adjective (乱暴な). It covers everything from physical assault to social discourtesy. In this novel, it encompasses the husband's infidelity, the mistress's entitlement, the mother-in-law's passive aggression, and the wife's eventual retaliation. Every relationship in the novel is a form of <em>ranbou</em>.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The title's grammar — <em>X ni ranbou</em> — is unusual and arresting. It echoes the structure of 人に乱暴 (violence toward a person), 物に乱暴 (violence toward a thing). By substituting <em>ai</em> (love) for the expected human object, Yoshida elevates love to the status of a victim. The title asks: if love is the victim, who is the perpetrator? The answer, the novel suggests, is everyone.
+    </div>
+  </div>
+
+  <div class="film-banner">
+    <div class="film-title">映画『愛に乱暴』</div>
+    <div class="film-detail">Released August 30, 2024 &middot; Directed by Morigaki Yukihiro</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">江口のりこ / 小泉孝太郎 / 馬場ふみか / 風吹ジュン &middot; モントリオール日本映画祭 女優最優秀賞・最優秀脚本賞W受賞</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>吉田修一 &mdash; Yoshida Shuichi</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">吉</div>
+    <div class="author-name-block">
+      <h3>吉田修一</h3>
+      <p class="author-name-romaji">Yoshida Shuichi &middot; b. September 14, 1968 &middot; Nagasaki</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Shuichi Yoshida is one of Japan's most versatile and psychologically acute novelists. Born in Nagasaki in 1968, he moved to Tokyo as a young man and has made the capital's social geography — its neighborhoods, its class stratifications, its quiet cruelties — the central terrain of his fiction. He is a master of the "unreliable everyday": the way ordinary life conceals extraordinary violence, and the way respectable people commit acts they would never admit to themselves. <em>Ai ni Ranbou</em> (2013) is a signature work in this mode, taking the seemingly banal subject of a husband's infidelity and excavating from it a profound meditation on what marriage, family, and love mean in contemporary Japan.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1968</span>
+        <span>Born in Nagasaki. Later moves to Tokyo, where the city's social landscapes become the setting for much of his fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1997</span>
+        <span>Wins the Bungakukai New Writers Prize for <em>Shofu</em> (青布), his literary debut.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2002</span>
+        <span>Publishes <em>Parade</em> (パレード), a novel about four young people sharing a Tokyo apartment. Wins both the Yamamoto Shugoro Prize and the Akutagawa Prize, establishing him as a major literary voice.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2007</span>
+        <span>Publishes <em>Akui</em> (悪人 / "Villain"), a blockbuster novel about a murder in a declining port town. Wins the Mainichi Publishing Culture Prize and the Osaragi Jiro Prize. Adapted into a film in 2010.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Publishes <em>Yokomichi Yonosuke</em> (横道世之介), a nostalgic epic about a young man in 1980s Tokyo. Wins the Shibata Renzaburo Prize. The novel's warmth and humor make it one of his most beloved works.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2013</span>
+        <span>Publishes <em>Ai ni Ranbou</em> (愛に乱暴). Yoshida himself described it as a "genre-unknown novel" — not quite romance, not quite mystery, not quite family drama. It is a work that deliberately refuses categorization, which is itself a formal expression of its themes.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2014</span>
+        <span>Publishes <em>Ikari</em> (怒り / "Rage"), a triptych novel about a murder and its aftermath across Tokyo, Chiba, and Okinawa. Adapted into a film by Sang-il Lee in 2016.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2019</span>
+        <span>Publishes <em>Kokho</em> (国宝 / "National Treasure"), a sweeping novel about a <em>onnagata</em> (female-role kabuki actor) from postwar Japan to the present. Wins the Chuo Koron Literary Prize and the Shimazaki Toson Prize.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span>Film adaptation of <em>Ai ni Ranbou</em> directed by Morigaki Yukihiro, starring Eguchi Noriko. Selected for the Karlovy Vary International Film Festival competition. Wins Best Actress and Best Screenplay at the Montreal Japanese Film Festival.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>悪人</h4>
+        <p class="char-role">Villain &middot; 2007</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A murder in a declining port town reveals the loneliness of contemporary Japanese life. Winner of the Mainichi Publishing Culture Prize. Adapted into a 2010 film. Yoshida's breakthrough as a commercial-literary hybrid.</p>
+      </div>
+      <div class="char-card">
+        <h4>横道世之介</h4>
+        <p class="char-role">Yokomichi Yonosuke &middot; 2010</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A nostalgic epic about an innocent young man in 1980s Tokyo. Warm, funny, and unexpectedly moving. Winner of the Shibata Renzaburo Prize. Adapted into a beloved 2013 film.</p>
+      </div>
+      <div class="char-card">
+        <h4>怒り</h4>
+        <p class="char-role">Rage &middot; 2014</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A triptych about a murder's ripple effects across Tokyo, Chiba, and Okinawa. Explores trust, suspicion, and the violence beneath Japan's polite surface. Adapted into a 2016 film by Sang-il Lee.</p>
+      </div>
+      <div class="char-card">
+        <h4>国宝</h4>
+        <p class="char-role">National Treasure &middot; 2019</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A sweeping epic about a <em>onnagata</em> kabuki actor from postwar Japan to the present. Winner of the Chuo Koron Literary Prize and the Shimazaki Toson Prize. Considered Yoshida's magnum opus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Main Characters</h2>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>初瀬桃子 &middot; Hase Momoko</h4>
+      <p class="char-role">Protagonist / The Wife</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A 30-something housewife in her eighth year of marriage. Childless. She lives with her husband Mamoru in a detached house behind his parents' main residence, where she teaches a weekly handmade soap class. Her life appears orderly and content — curated outfits, elaborate meals, a carefully maintained domestic aesthetic — but this perfection is a defense against her mother-in-law's subtle hostility and her husband's growing indifference. When she discovers his affair, the mask slips, and something far more dangerous emerges. Yoshida described her as "a person who was difficult to understand from the writer's perspective" — a character who keeps her own secrets even from her creator.</p>
+    </div>
+    <div class="char-card">
+      <h4>初瀬真守 &middot; Hase Mamoru</h4>
+      <p class="char-role">The Husband</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Momoko's husband. A man of passive cruelty: he does not shout, he does not hit, he simply withdraws. His affair is not passionate rebellion but casual entitlement — he assumes his wife will absorb the damage without making a scene. He is the kind of man who asks his wife to meet his mistress, as if this were a reasonable request. Yoshida's portrait of him is devastating in its ordinariness.</p>
+    </div>
+    <div class="char-card">
+      <h4>初瀬照子 &middot; Hase Teruko</h4>
+      <p class="char-role">The Mother-in-Law</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Mamoru's mother, who lives in the main house with her husband Soichiro. Her relationship with Momoko is "strangely awkward" (ぎくしゃく) — a classic Japanese description of a relationship that looks fine on the surface but is full of micro-tensions. She exerts power not through confrontation but through atmosphere: a glance, a silence, a comment about the soap class. She is the unacknowledged sovereign of the household.</p>
+    </div>
+    <div class="char-card">
+      <h4>初瀬宗一郎 &middot; Hase Soichiro</h4>
+      <p class="char-role">The Father-in-Law</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Mamoru's father. His stroke early in the novel destabilizes the household's equilibrium and forces Momoko into closer contact with her in-laws. His decline is both a plot device and a metaphor: the patriarch's weakening creates a power vacuum that the women must navigate.</p>
+    </div>
+    <div class="char-card">
+      <h4>三宅奈央 &middot; Miyake Nao</h4>
+      <p class="char-role">The Mistress</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Mamoru's pregnant lover. The novel alternates between Momoko's perspective and Nao's, and Nao is no caricatured villainess. She genuinely believes the convenient fictions Mamoru tells her — that his marriage is unhappy, that his wife is cold, that he will leave. Her pregnancy makes her dangerous not because she is evil but because she is sincere. Yoshida gives her a full interior life, making her complicity and her victimhood inseparable.</p>
+    </div>
+    <div class="char-card">
+      <h4>浅尾 &middot; Asao</h4>
+      <p class="char-role">The Assistant</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A young man who helps with Momoko's soap-making class. He represents a world outside the family — neutral, observant, and potentially sympathetic. His presence in the story is small but strategically placed.</p>
+    </div>
+    <div class="char-card">
+      <h4>時枝 &middot; Tokieda</h4>
+      <p class="char-role">The Ghost in the Floorboards</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A woman from the past who once lived in the detached house where Momoko now resides. Her "unfortunate life" (不遇の生涯) is discovered by Mamoru and becomes a haunting parallel to the present. She exists only in memory and family lore, yet her story reframes everything.</p>
+    </div>
+    <div class="char-card">
+      <h4>葉月 &middot; Hazuki</h4>
+      <p class="char-role">The Friend</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Momoko's friend, to whom she first confesses her suspicions. Hazuki offers a telling definition of infidelity: "If there's no sex, it's not an affair." Momoko disagrees. This disagreement is the novel's ethical fault line.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <p>Hase Momoko has been married for eight years. She has no children. She lives with her husband Mamoru in a detached house behind his parents' main residence — a classic Japanese <em>nikkaidate</em> (two-generation) arrangement that looks like familial closeness and feels like surveillance. She teaches a handmade soap class once a week. She prepares elaborate meals. She dresses with care. She believes, or has convinced herself to believe, that her marriage is fine.</p>
+    <p style="margin-top: var(--space-sm);">Then Mamoru's father suffers a stroke.</p>
+    <p style="margin-top: var(--space-sm);">The household's fragile equilibrium shatters. As Momoko is drawn into caring for her in-laws, a silent phone call comes. A voice on the other end, faintly familiar. The suspicion she has been suppressing rises to the surface: her husband is having an affair.</p>
+    <p style="margin-top: var(--space-sm);">The novel's structure is its genius. Chapters alternate between Momoko's perspective and the diary of the other woman — or so it appears. The mistress, Miyake Nao, is pregnant. She believes Mamoru's stories about his unhappy marriage. She believes he will leave his wife. She believes their love is real. The reader, positioned between these two women's accounts, must decide who is the victim and who is the manipulator.</p>
+    <p style="margin-top: var(--space-sm);">As the novel progresses, strange events multiply around Momoko: suspicious fires at neighborhood garbage dumps, her beloved cat goes missing, an anonymous social media account begins tracking her husband's infidelity. Her mother-in-law's gaze grows sharper. Her own behavior grows stranger. She becomes obsessed with the space beneath the floorboards of the detached house. She makes an unexpected impulse purchase. She begins keeping a diary of her own.</p>
+    <p style="margin-top: var(--space-sm);">The novel's central question is not "will the husband leave?" It is: what does it mean to be a wife? What does a wife do when the position itself — the social role, the household labor, the performance of love — is revealed as a trap? Yoshida's answer is as unsettling as it is compelling: she fights back. But the weapon she chooses is not what anyone expects.</p>
+    <p style="margin-top: var(--space-sm);">The final twist recontextualizes the diary, the fires, the cat, and the floorboards. What seemed like a story about a wronged wife becomes something far more ambiguous: a story about who gets to narrate love, who gets to claim victimhood, and what violence is permitted in the name of self-defense.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>The detached house as prison:</strong> The <em>hanare</em> (離れ, detached house) is physically separate from the main residence but emotionally and economically subordinate to it. Momoko's living situation is a perfect metaphor for the position of the Japanese wife: close to power but not possessing it, visible but not acknowledged, present but peripheral.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Domestic labor as performance:</strong> Momoko's elaborate meals, her curated outfits, her soap-making class — these are not hobbies. They are performances of wifeliness, demonstrations of value in a system where her childlessness has already diminished her status. When the affair is revealed, the performance becomes weaponized.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The diary as weapon and trap:</strong> The novel's use of diary entries — both Momoko's and the mistress's — raises questions about narrative reliability. Diaries are supposed to be private truth, but Yoshida shows how they can be staged, edited, and deployed. The "unfaithful woman's diary" that appears in the story is both evidence and performance.</li>
+      <li style="margin-bottom: 0.5em;"><strong>What counts as infidelity:</strong> Hazuki's claim that "if there's no sex, it's not an affair" is presented as common sense. Momoko's counter-definition — "if you can't stop wanting to see someone, it's already an affair" — is the novel's moral center. The gap between these definitions is where Yoshida's characters live and suffer.</li>
+      <li><strong>Gender and property:</strong> The novel's setting — a family compound with a main house and a detached house — is not accidental. It is a physical manifestation of Japanese family structure: the patriarchal main house and the subordinate annex. Momoko's gradual discovery of the space beneath the floorboards is a discovery of what has been buried in that structure — literally and historically.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the novel's moral architecture: the promotional hook that frames the wife as both victim and strategist, the ethical debate about what counts as infidelity, and the weapon that emerges from domestic desperation.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Deception Hook</div>
+    <div class="passage-jp">
+      妻も、読者も、騙される。
+    </div>
+    <div class="passage-romaji">
+      Tsuma mo, dokusha mo, damasareru.
+    </div>
+    <div class="passage-en">
+      "The wife, and the reader too, are deceived."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This promotional tagline, used on the book's obi (帯), is a masterpiece of compact threat. <em>Tsuma mo</em> (妻も, "the wife too / also") establishes the wife as the primary deceived party, but the <em>mo</em> (も, "also") immediately extends the deception to <em>dokusha</em> (読者, "the reader"). You, the person holding this book, are implicated. <em>Damasareru</em> (騙される) is the passive form of <em>damasu</em> (騙す, "to deceive / trick"), meaning "to be deceived." The passive voice is crucial: it emphasizes victimhood rather than agency. No one is named as the deceiver. The tagline creates a conspiracy without a conspirator, a violence without a perpetrator. It is a promise and a warning: you will think you know what is happening, and you will be wrong.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Definition of Infidelity</div>
+    <div class="passage-jp">
+      会いたくて仕方がなければ、もう不倫です。
+    </div>
+    <div class="passage-romaji">
+      Aitakute shikata ga nakereba, mou furin desu.
+    </div>
+    <div class="passage-en">
+      "If you can't stop wanting to see someone, it's already an affair."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is Momoko's response to her friend Hazuki's claim that "if there's no sex, it's not an affair." <em>Aitakute shikata ga nai</em> (会いたくて仕方がない) is an emotionally charged phrase: <em>shikata ga nai</em> (仕方がない, "there's nothing to be done / can't be helped") frames desire as compulsive, overwhelming, beyond rational control. The <em>te</em> form of <em>au</em> (会う, "to meet") + <em>shikata ga nai</em> creates a sense of being driven: "wanting to see someone so badly that nothing can be done about it." <em>Mou</em> (もう, "already") is the knife-edge: by the time sex happens, the affair has already begun. The real betrayal is in the wanting. This redefinition shifts the moral center of the novel from physical acts to emotional states — from what bodies do to what hearts refuse to stop doing.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Weapon</div>
+    <div class="passage-jp">
+      追い込まれた女がそのとき手にした〈武器〉とは？
+    </div>
+    <div class="passage-romaji">
+      Oikomareta onna ga sono toki te ni shita "buki" to wa?
+    </div>
+    <div class="passage-en">
+      "What was the 'weapon' that the cornered woman took in hand at that moment?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the promotional hook from the bunko edition's cover copy. <em>Oikomareta onna</em> (追い込まれた女, "the cornered woman / driven woman") uses the passive past participle <em>oikomareta</em> (追い込まれた) from <em>oikomu</em> (追い込む, "to drive into a corner / to corner"). The word suggests an animal at bay, a creature with its back to the wall. <em>Te ni shita</em> (手にした, "took in hand / took up") is a literary phrase for acquiring a tool or weapon, with biblical and samurai echoes. <em>Buki</em> (武器, "weapon") is in quotation marks in the original — a typographical signal that the word is being used metaphorically, or ironically, or both. The question form creates suspense without revealing whether the weapon is physical, psychological, or narrative. The answer, when it comes, is all three.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Question That Reframes Everything</div>
+    <div class="passage-jp">
+      本当に騙したのは、妻か？
+    </div>
+    <div class="passage-romaji">
+      Hontou ni damashita no wa, tsuma ka?
+    </div>
+    <div class="passage-en">
+      "Was the wife really the one who deceived?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This tagline appears on the book's back cover and in promotional materials. <em>Hontou ni</em> (本当に, "really / truly") is a challenge to the reader's assumptions. <em>Damashita no wa</em> (騙したのは, "the one who deceived was") uses the nominalized past tense <em>no wa</em> construction to turn the verb into a topic: not "who deceived?" but "the deceiver was..." <em>Tsuma ka</em> (妻か, "the wife?") ends with the question particle <em>ka</em>, but the intonation is rhetorical. The question does not expect an answer; it expects a reassessment. After 300 pages of believing Momoko is the victim, the reader is asked to consider that she may be the architect of the deception. The <em>ka</em> at the end is a trapdoor.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, synopsis, and thematic context, organized by theme.</p>
+
+  <div class="card">
+    <h3>Love, Marriage & Betrayal</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>愛</td><td>ai</td><td class="pos">noun</td><td>love (deep, committed)</td></tr>
+        <tr><td>乱暴</td><td>ranbou</td><td class="pos">noun/na-adj</td><td>violence, roughness, rudeness</td></tr>
+        <tr><td>不倫</td><td>furin</td><td class="pos">noun</td><td>adultery, extramarital affair</td></tr>
+        <tr><td>夫婦</td><td>fuufu</td><td class="pos">noun</td><td>husband and wife, married couple</td></tr>
+        <tr><td>妻</td><td>tsuma</td><td class="pos">noun</td><td>wife</td></tr>
+        <tr><td>浮気</td><td>uwaki</td><td class="pos">noun</td><td>cheating, infidelity, affair</td></tr>
+        <tr><td>騙す</td><td>damasu</td><td class="pos">verb</td><td>to deceive, trick, cheat</td></tr>
+        <tr><td>略奪愛</td><td>ryakudatsu ai</td><td class="pos">noun</td><td>love obtained by stealing someone from another</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Domestic Space & Family</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>離れ</td><td>hanare</td><td class="pos">noun</td><td>detached house, separate building</td></tr>
+        <tr><td>母屋</td><td>omoya</td><td class="pos">noun</td><td>main house (of a compound)</td></tr>
+        <tr><td>義母</td><td>gibo</td><td class="pos">noun</td><td>mother-in-law</td></tr>
+        <tr><td>義父</td><td>gifu</td><td class="pos">noun</td><td>father-in-law</td></tr>
+        <tr><td>同居</td><td>doukyo</td><td class="pos">noun</td><td>living together, cohabitation</td></tr>
+        <tr><td>主婦</td><td>shufu</td><td class="pos">noun</td><td>housewife, homemaker</td></tr>
+        <tr><td>家庭</td><td>katei</td><td class="pos">noun</td><td>family, household, home</td></tr>
+        <tr><td>床下</td><td>yukashita</td><td class="pos">noun</td><td>under the floor, crawl space</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Psychology & Power</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>武器</td><td>buki</td><td class="pos">noun</td><td>weapon, arms</td></tr>
+        <tr><td>追い込む</td><td>oikomu</td><td class="pos">verb</td><td>to drive into a corner, to corner</td></tr>
+        <tr><td>日記</td><td>nikki</td><td class="pos">noun</td><td>diary, journal</td></tr>
+        <tr><td>秘密</td><td>himitsu</td><td class="pos">noun</td><td>secret</td></tr>
+        <tr><td>衝動</td><td>shoudou</td><td class="pos">noun</td><td>impulse, urge</td></tr>
+        <tr><td>葛藤</td><td>kattou</td><td class="pos">noun</td><td>conflict, struggle, inner turmoil</td></tr>
+        <tr><td>揺らぎ</td><td>yuragi</td><td class="pos">noun</td><td>wavering, fluctuation, instability</td></tr>
+        <tr><td>企み</td><td>takurami</td><td class="pos">noun</td><td>scheme, plot, design</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Social & Material World</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>石鹸</td><td>sekken</td><td class="pos">noun</td><td>soap</td></tr>
+        <tr><td>講師</td><td>koushi</td><td class="pos">noun</td><td>instructor, lecturer</td></tr>
+        <tr><td>不審火</td><td>fushinka</td><td class="pos">noun</td><td>suspicious fire, arson</td></tr>
+        <tr><td>無言電話</td><td>mugon denwa</td><td class="pos">noun</td><td>silent phone call, hang-up call</td></tr>
+        <tr><td>直談判</td><td>jikodanpan</td><td class="pos">noun</td><td>direct negotiation, face-to-face appeal</td></tr>
+        <tr><td>身重</td><td>mibomaru</td><td class="pos">noun</td><td>pregnancy (advanced stage)</td></tr>
+        <tr><td>不遇</td><td>fuguu</td><td class="pos">noun</td><td>misfortune, unhappy circumstances</td></tr>
+        <tr><td>因果応報</td><td>ingaouhou</td><td class="pos">noun</td><td>karmic retribution, just deserts</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Yoshida's prose appears deceptively simple, but it relies on Japanese grammatical precision, social hierarchies, and the architecture of domestic space in ways that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Ai ni Ranbou</em> (愛に乱暴) as Grammatical Accusation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>愛<strong>に</strong>乱暴</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Rude to Love" / "Violent Toward Love"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English title "Rude to Love" captures the emotional register but loses the grammatical violence of the original. The particle <em>ni</em> (に) is doing essential work: it marks love as the target of an action. "Violent love" (an adjective-noun phrase) would describe a type of love. "Violence toward love" (a prepositional phrase) describes an act committed against it. The Japanese title is neither description nor mere phrase; it is an accusation in search of a perpetrator. The English translation must add a preposition ("to" / "toward") where Japanese needs only a particle, turning a compact indictment into a longer, softer phrase. The title's original sharpness — three syllables, three characters, one devastating particle — is impossible to preserve.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Hanare</em> (離れ) as Social Metaphor</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>母屋の<strong>離れ</strong>で暮らす</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"lives in a detached house behind the main residence"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Hanare</em> (離れ) literally means "separation / detachment" and refers to a separate building on the same property as the main house. In English, "detached house" suggests independence and privacy — a desirable feature. In Japanese, the <em>hanare</em> carries complex social meaning: it is where elderly parents live, where adult children live before inheriting the main house, where the less powerful members of a household are accommodated. Momoko lives in the <em>hanare</em> not because she is independent but because she is subordinate. The word contains an entire critique of Japanese family structure that "detached house" cannot convey. The English flattens a spatial hierarchy into a neutral architectural description.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Shikata ga nai</em> (仕方がない) as Compulsion</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>会いたくて<strong>仕方がない</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"can't stop wanting to see" / "can't help wanting to meet"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Shikata ga nai</em> is one of the most culturally loaded phrases in Japanese. It can express resignation ("nothing can be done"), compulsion ("can't help myself"), or fatalism ("it's inevitable"). In Momoko's definition of infidelity, it frames desire as something that overrides will — not a choice but a force. The English "can't stop wanting" captures the meaning but loses the specific cultural grammar of <em>shikata ga nai</em>, which has been used for centuries to excuse everything from personal weakness to national policy. Momoko is placing romantic compulsion in the same category as historical necessity: something too powerful to resist. This is both a moral claim and a moral evasion, and the Japanese phrase carries both at once.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Gikushaku</em> (ぎくしゃく) as Micro-Aggression</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>妙に<strong>ぎくしゃく</strong>していた</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"strangely awkward" / "uncomfortably strained"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Gikushaku</em> (ぎくしゃく) is an onomatopoeic adverb describing a relationship that is not openly hostile but full of small frictions — the Japanese specialty. It is the feeling of a conversation that keeps catching, a silence that lasts slightly too long, a politeness that is just barely polite enough. "Awkward" is too broad; "strained" is too strong. <em>Gikushaku</em> is the sound of a relationship that looks fine to outsiders but grates on its participants. It is the perfect word for a mother-in-law / daughter-in-law relationship in a <em>hanare</em> arrangement, where proximity and hierarchy create constant, unacknowledged tension. English has no single word for this; Japanese has an entire vocabulary of such relational textures.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. The Missing Agent in "Deceived"</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>妻も、読者も、<strong>騙される</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The wife, and the reader too, are deceived"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Japanese <em>damasareru</em> (騙される) is a passive verb with no stated agent. The English translation must supply a passive construction ("are deceived"), but the Japanese original leaves the deceiver unnamed and ungrammatically absent. This is not a flaw; it is the point. The novel's central mystery is not just who deceived whom, but whether deception requires a deceiver at all. Can a structure — a family, a household, a marriage — deceive without any individual intending to? The Japanese passive allows this question to hover. The English, by grammatical necessity, implies a deceiver behind the deception. The title's grammar creates a world in which violence toward love may not have a perpetrator, only victims.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, synopsis, and key passages, useful for intermediate to advanced learners.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">Xに乱暴（対象を示す）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>X ni ranbou</em>: violence / rudeness directed at X — the target particle <em>ni</em> marks the object of the action.</p>
+      <div class="grammar-example">愛に乱暴</div>
+      <p class="grammar-example-en">"violence toward love" — The particle <em>ni</em> transforms a description into an accusation. Compare: 人に乱暴 (violence toward a person).</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜て仕方がない（強い感情）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Te shikata ga nai</em>: can't help ~ing / ~ing uncontrollably — expresses overwhelming emotion or compulsion.</p>
+      <div class="grammar-example">会いたくて仕方がない</div>
+      <p class="grammar-example-en">"can't stop wanting to see [someone]" — The <em>te</em> form + <em>shikata ga nai</em> frames desire as beyond rational control.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜られる（受身・被害）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>~rareru</em>: passive voice — marks the subject as the recipient of an action, often with a sense of suffering or victimhood.</p>
+      <div class="grammar-example">妻も、読者も、騙される</div>
+      <p class="grammar-example-en">"The wife, and the reader too, are deceived" — The passive <em>damasareru</em> emphasizes victimhood without naming a perpetrator.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のは〜か？（焦点化疑問）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No wa... ka?</em>: nominalized topic + question — "Is it X that...?" / "Was it X who...?"</p>
+      <div class="grammar-example">本当に騙したのは、妻か？</div>
+      <p class="grammar-example-en">"Was the wife really the one who deceived?" — The <em>no wa</em> construction turns the verb into a topic, focusing attention on the identity of the deceiver.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が〜揺らぎ始める（変化の開始）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga... yuragi hajimeru</em>: [something] begins to waver / shake — inceptive pattern marking the start of instability.</p>
+      <div class="grammar-example">日常が揺らぎ始める</div>
+      <p class="grammar-example-en">"daily life begins to waver" — <em>Yuragi</em> (揺らぎ) is a noun form of <em>yuragu</em> (揺らぐ, "to sway / waver"), suggesting not sudden collapse but gradual destabilization.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ずにはいられない（禁制）</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>Zu ni wa irarenai</em>: cannot help but / cannot resist / compelled to.</p>
+      <div class="grammar-example">異常な興味が湧かずにはいられない</div>
+      <p class="grammar-example-en">"cannot help an abnormal interest from welling up" — A stronger, more literary version of compulsion than <em>te shikata ga nai</em>.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に走る（行動の方向）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni hashiru</em>: to rush toward / to resort to — indicates a sudden turn toward an action, often impulsive or desperate.</p>
+      <div class="grammar-example">思わぬ衝動買いに走る</div>
+      <p class="grammar-example-en">"rushes into an unexpected impulse purchase" — <em>Hashiru</em> (走る, "to run") adds a sense of urgency and lack of deliberation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が〜しのびよる（忍び寄る）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga... shinobiyoru</em>: [something] creeps in / stealthily approaches — suggests something unwanted entering unnoticed.</p>
+      <div class="grammar-example">浮気相手の影がしのびよる</div>
+      <p class="grammar-example-en">"the shadow of the other woman creeps in" — <em>Shinobiyoru</em> (忍び寄る) combines <em>shinobi</em> (stealth) with <em>yoru</em> (to approach), creating a sense of invasion by degrees.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Yoshida's prose in <em>Ai ni Ranbou</em> is syntactically straightforward but rhetorically sophisticated. The grammar is largely N4-N3, but the emotional precision is advanced. Pay attention to how passive constructions (<em>~rareru</em>), compulsion patterns (<em>~te shikata ga nai</em>, <em>~zu ni wa irarenai</em>), and inceptive verbs (<em>~hajimeru</em>, <em>shinobiyoru</em>) create a sense of characters being acted upon by forces they cannot control. These are the grammatical tools of a novelist who understands that the most terrifying violence is the kind that arrives gradually, dressed as everyday life.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">愛に乱暴 &middot; 吉田修一 &middot; 新潮社 2013 / 新潮文庫 2017</p>
+</footer>
+
+</div>
+</body>
+</html>

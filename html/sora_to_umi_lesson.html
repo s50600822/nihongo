@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where the Sky and Sea Meet — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --horizon: #4a6a7a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--horizon);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(74,106,122,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.horizon::before {
+            background: var(--horizon);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.horizon-box {
+            background: color-mix(in oklab, var(--horizon) 8%, var(--surface));
+            border-left-color: var(--horizon);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.horizon-box h5 {
+            color: var(--horizon);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-horizon {
+            background: color-mix(in oklab, var(--horizon) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--horizon) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--horizon) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #4a6a7a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Where the Sky and Sea Meet<br><span style="font-size:0.6em; font-weight:300;">空と海の出会う場所</span></h1>
+    <div class="subtitle">A Japanese lesson through Kotemari Rui's horizon where love, fairy tales, and thistle wounds converge</div>
+    <div class="meta">Kotemari Rui &middot; Poplar-sha &middot; 2006 &middot; Novel</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reviews of <em>Sora to Umi no Deau Basho</em> (Where the Sky and Sea Meet), a novel by Kotemari Rui published by Poplar-sha in 2006. The book follows an illustrator named Konoha and her former lover Arashi, who met as children in a care facility and reunite across time and distance through a manuscript he sends her. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published by Poplar-sha in 2006, <em>Sora to Umi no Deau Basho</em> is a novel by Kotemari Rui (b. 1956), the Okayama-born poet who re-debuted as a novelist in 1995 and has since built a career across romance, children's literature, essays, and politically engaged fiction. Since 1992 she has lived in Woodstock, New York, and her prose carries the quality of someone who writes Japanese while breathing American air: it is spacious, unhurried, and strangely tidal. Where previous works in this lesson series have explored theology, slapstick, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, and the grammar of women's waiting, Kotemari's prose operates in the register of the horizon: the place where two elements meet without merging, where the eye believes it sees a line but the mind knows there is only continuous atmosphere. The title names this liminal space: 空 (sky) and 海 (sea) are not merely landscape. They are states of being. The sky is aspiration, distance, the word sent upward. The sea is memory, depth, the feeling that returns. The place where they meet is the novel itself: a story about a story, a love that travels through a manuscript, a promise kept across the years by the only means available to the wounded: the imagination. The prose is lyrical, fairy-tale-inflected, and quietly devastating. Kotemari began as a poet, and it shows in every sentence. This is Japanese as incantation, as letter never sent, as the horizon that moves away whenever you approach it.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Horizon</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title contains an entire theory of love before a single character is named.</p>
+
+    <div class="passage horizon">
+        <div class="jp-text jp">
+            <span class="hl-horizon">空と海の出会う場所</span>
+        </div>
+        <div class="romaji">"Sora to Umi no Deau Basho"</div>
+        <div class="translation">"The Place Where the Sky and Sea Meet"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">空</td><td class="reading">sora</td><td>sky, heavens, emptiness</td></tr>
+        <tr><td class="word">海</td><td class="reading">umi</td><td>sea, ocean</td></tr>
+        <tr><td class="word">出会う</td><td class="reading">deau</td><td>to meet, to encounter (by chance)</td></tr>
+        <tr><td class="word">場所</td><td class="reading">basho</td><td>place, location</td></tr>
+        <tr><td class="word">と</td><td class="reading">to</td><td>and (connecting nouns)</td></tr>
+        <tr><td class="word">の</td><td class="reading">no</td><td>possessive / attributive particle</td></tr>
+    </table>
+
+    <div class="nuance horizon-box">
+        <h5>What translation loses: The physics of 出会う</h5>
+        <p><strong>出会う (deau):</strong> This is not the neutral 会う (au, to meet). It is 出会う: to meet by chance, to encounter, to come upon unexpectedly. The prefix 出 (de, out) adds a note of emergence, of something surfacing into visibility. When sky and sea 出会う, they do not merely touch. They emerge into each other at the limit of perception. The word makes the horizon into an event rather than a geometry. In Japanese literary tradition, 出会う is the verb of fated encounters, of meetings that change a life. By applying it to sky and sea, Kotemari makes the natural world into a protagonist with its own romantic destiny. The grammar of XとYの出会う場所 makes the title into a description of a meeting place, but the meeting is ongoing, perpetual, never finally accomplished. The horizon is always arriving and always receding.</p>
+        <p><strong>空 (sora) and 海 (umi):</strong> Sky and sea. In Japanese aesthetics, these are not merely elements. They are emotional territories. 空 is the word used for the Buddhist void (śūnyatā), for weather, for the atmosphere that holds everything. 海 is the word for the primordial waters, for the unconscious, for what returns and returns. By naming them together, Kotemari creates a title that sounds like a geographical location but functions as a psychological map. The place where sky and sea meet is the place where consciousness touches its own depth, where what we know meets what we feel without language to mediate. The grammar of the title makes the novel into a journey toward this impossible place, which turns out to be not a location but a manuscript, a memory, a promise.</p>
+        <p><strong>場所 (basho):</strong> "Place, location." This is a plain, almost humble word. It is not 境地 (kyouchi, spiritual realm) or 領域 (ryouiki, domain). It is simply 場所: a place, somewhere you could theoretically stand. The modesty of the word makes the title feel intimate rather than grandiose. Kotemari is not claiming to describe the infinite. She is pointing to a specific place, a spot on the map of feeling that you might recognize if you have ever loved someone you could not keep. The grammar of 〜場所 makes the abstract concrete, which is the novel's method throughout: fairy tales become autobiography, manuscripts become love letters, and the horizon becomes a room where two people once sat together.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Promise: The Grammar of What Returns</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The promotional copy establishes the novel's central emotional engine in a single line.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">遠い日の約束が果たされるとき、明らかになるのは――</span>
+        </div>
+        <div class="romaji">"Tooi hi no yakusoku ga hatasareru toki, akiraka ni naru no wa —"</div>
+        <div class="translation">"When the promise of a distant day is fulfilled, what becomes clear is —"</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">遠い</td><td class="reading">tooi</td><td>distant, far</td></tr>
+        <tr><td class="word">日</td><td class="reading">hi</td><td>day</td></tr>
+        <tr><td class="word">約束</td><td class="reading">yakusoku</td><td>promise, agreement</td></tr>
+        <tr><td class="word">果たす</td><td class="reading">hatasu</td><td>to fulfill, to carry out</td></tr>
+        <tr><td class="word">明らか</td><td class="reading">akiraka</td><td>clear, obvious, revealed</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The passive miracle of 果たされる</h5>
+        <p><strong>約束が果たされる (yakusoku ga hatasareru):</strong> "The promise is fulfilled." The grammar is passive. The promise does not fulfill itself, and the lovers do not exactly fulfill it either. It is fulfilled, by time, by circumstance, by the manuscript that arrives like a message in a bottle. The passive voice makes the promise into an agent with its own will, a vow that persists in the world until conditions allow it to complete itself. This is crucial to the novel's theology: love is not something you do and finish. It is something you make and release, and if it is real, it will find its own fulfillment across years and distance. The word 果たす means "to carry out, to accomplish," and it is the word used for duties, missions, vows. A 約束 is not casual. It is a commitment that binds the future to the past. When Kotemari says the promise is 果たされる, she makes it sound almost inevitable, as if the promise were a seed that had to wait for the right season to germinate.</p>
+        <p><strong>遠い日 (tooi hi):</strong> "A distant day." The grammar is simple: adjective + noun. But the emotional weight is immense. 遠い is not merely "long ago." It is "far," a spatial word applied to time. The day is not behind them. It is far from them, as if they have traveled a great distance from the moment when the promise was made. This is how the novel treats time: not as a line but as a landscape. The past is not gone. It is distant, visible, reachable if you are willing to travel toward it. The word makes the childhood promise into a mountain on the horizon, always present even when you have turned away from it.</p>
+        <p><strong>明らかになる (akiraka ni naru):</strong> "To become clear, to be revealed." The grammar is intransitive: something becomes clear. Not "we will understand" or "the truth will emerge." Something 明らかになる. The word 明らか contains 明 (brightness, clarity), the same character as in 明るい (akarui, bright) and 明白 (meihaku, obvious). When something 明らかになる, it moves from darkness into light. The promotional copy uses this construction to promise the reader a revelation, but the grammar makes the revelation sound less like a detective's solution and more like dawn: gradual, inevitable, and somehow always already present. What becomes clear when the promise is fulfilled is not a fact but a feeling: that the love was real, that the wound was also a door, that the horizon was never empty.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Thistle Lovers: The Grammar of Hurting as Loving</h2>
+    <span class="story-label">Cover copy</span>
+
+    <p>The back-cover copy gives the novel its central image: love that can only wound because it is too large to hold.</p>
+
+    <div class="passage horizon">
+        <div class="jp-text jp">
+            <span class="hl-horizon">わたしたちは、27歳だった。好きで好きでたまらないのに、互いを傷つけ合うことでしか、その気持ちを表現できない、棘だらけの薊のようだった</span>
+        </div>
+        <div class="romaji">"Watashitachi wa, nijuunanasai datta. Suki de suki de tamaranai no ni, tagai wo kizutsukeau koto de shika, sono kimochi wo hyougen dekinai, toge darake no azami no you datta."</div>
+        <div class="translation">"We were twenty-seven. We loved each other so much we could not stand it, yet we could only express that feeling by hurting one another; we were like thistles covered in thorns."</div>
+        <div class="source">— Back cover copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">27歳</td><td class="reading">nijuunanasai</td><td>twenty-seven years old</td></tr>
+        <tr><td class="word">好きでたまらない</td><td class="reading">suki de tamaranai</td><td>love so much one cannot stand it</td></tr>
+        <tr><td class="word">傷つけ合う</td><td class="reading">kizutsukeau</td><td>to hurt each other</td></tr>
+        <tr><td class="word">表現</td><td class="reading">hyougen</td><td>expression</td></tr>
+        <tr><td class="word">棘</td><td class="reading">toge</td><td>thorn, spine</td></tr>
+        <tr><td class="word">薊</td><td class="reading">azami</td><td>thistle</td></tr>
+    </table>
+
+    <div class="nuance horizon-box">
+        <h5>What translation loses: The unbearability of 好きでたまらない</h5>
+        <p><strong>好きでたまらない (suki de tamaranai):</strong> "Love so much one cannot stand it." This is one of the most intense expressions of feeling in Japanese. たまらない means "unbearable, intolerable, irresistible." It is the word for pain that cannot be endured, for pleasure that overwhelms, for desire that defeats reason. When combined with 好き (suki, liking/love), it creates a paradox: the love is so strong that it has become a form of suffering. The grammar of 〜でたまらない makes the emotion into a physical condition, something that happens to the body whether the mind approves or not. Kotemari's lovers do not merely love each other. They are afflicted by love. The word makes their relationship into a medical emergency, which explains why their only available language is violence. People in pain strike out.</p>
+        <p><strong>傷つけ合う (kizutsukeau):</strong> "To hurt each other." The grammar is reciprocal: 傷つける (to wound) + 合う (au, to do to each other). The 合う suffix is one of the most emotionally precise tools in Japanese. It turns a one-directional action into a mutual dance. When lovers 傷つけ合う, they are not merely wounding. They are wounding together, as a form of contact, as the only intimacy available to them. The grammar makes their cruelty into a collaboration. This is the tragedy of the thistle lovers: they have not learned any other way to touch. Every approach is a laceration. The word 傷つける contains 傷 (kizu, wound), the same word used for scars, trauma, and emotional damage. Kotemari makes no distinction between physical and emotional wounding. In her grammar, to hurt someone is always to leave a mark.</p>
+        <p><strong>棘だらけの薊 (toge darake no azami):</strong> "Thistles covered in thorns." 薊 (azami, thistle) is a plant of extraordinary symbolic density in Japanese and world literature. The thistle is the national flower of Scotland, a symbol of resilience and defensive pride. In Christian iconography, the thistle represents the curse of Adam: thorns and thistles the earth shall bring forth. In Japanese, 薊 carries a note of wild beauty, of something that cannot be cultivated or tamed. The phrase 棘だらけ (toge darake, covered in thorns) uses だらけ, a suffix meaning "full of, covered with, riddled with," usually with a negative connotation. A room ゴミだらけ is a room covered in trash. A history 嘘だらけ is a history full of lies. By calling her lovers 棘だらけの薊, Kotemari makes them into beautiful disasters: they are attractive precisely because they are dangerous, and they wound precisely because they are tender underneath. The simile is devastating because it offers no escape. A thistle cannot stop being thorny. It can only hope to encounter someone willing to bleed for its flower.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Manuscript: The Grammar of the Story Within</h2>
+    <span class="story-label">Plot</span>
+
+    <p>The novel's central device is a manuscript that arrives from the past, containing a story that is also a confession.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">イラストレーターとして着実にキャリアを積んでいる木の葉に、作家となったかつての恋人アラシから一篇の物語が届く</span>
+        </div>
+        <div class="romaji">"Illustrator to shite chakujitsu ni kyaria wo tsunde iru Konoha ni, sakka to natta katsute no koibito Arashi kara ippen no monogatari ga todoku."</div>
+        <div class="translation">"A story arrives for Konoha, who has been steadily building her career as an illustrator, from Arashi, her former lover who has become a writer."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">イラストレーター</td><td class="reading">irasutoreetaa</td><td>illustrator</td></tr>
+        <tr><td class="word">着実</td><td class="reading">chakujitsu</td><td>steady, sure, reliable</td></tr>
+        <tr><td class="word">キャリア</td><td class="reading">kyaria</td><td>career</td></tr>
+        <tr><td class="word">積む</td><td class="reading">tsumu</td><td>to pile up, to accumulate</td></tr>
+        <tr><td class="word">かつて</td><td class="reading">katsute</td><td>former, once, in the past</td></tr>
+        <tr><td class="word">恋人</td><td class="reading">koibito</td><td>lover</td></tr>
+        <tr><td class="word">一篇</td><td class="reading">ippen</td><td>one piece, one story</td></tr>
+        <tr><td class="word">物語</td><td class="reading">monogatari</td><td>tale, story, narrative</td></tr>
+        <tr><td class="word">届く</td><td class="reading">todoku</td><td>to arrive, to reach, to be delivered</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The arrival of 届く</h5>
+        <p><strong>届く (todoku):</strong> "To arrive, to reach, to be delivered." This is a gentle verb. It is the word used for letters, packages, messages, and sounds. When something 届く, it completes a journey that began elsewhere. The grammar of 〜が届く makes the manuscript into a traveler. It has crossed distance, time, and silence to reach Konoha. The word carries a note of successful transmission: the sender intended it to arrive, and it has. In a novel about a love that could not speak itself directly, 届く is the most important verb. The lovers could not say what they felt when they were together. Only when separated by years and silence can the words finally 届く. The manuscript is not merely a story. It is a delayed message, a love letter disguised as fiction, the only form of communication available to two people who hurt each other whenever they tried to speak plainly.</p>
+        <p><strong>着実にキャリアを積む (chakujitsu ni kyaria wo tsumu):</strong> "To steadily accumulate a career." The word 着実 means steady, sure, reliable, step by step. It is the opposite of dramatic, sudden, or miraculous. Konoha has built her life 着実に: without fanfare, without the explosions that characterized her love. The grammar of キャリアを積む (to pile up a career) makes her professional life into something constructed, layer by layer, like sediment. This is the life she has made in the absence of Arashi: solid, visible, respectable. The novel's drama comes from the collision between this 着実な life and the 届いた manuscript, which arrives like a geological event, a disturbance from the deep past that threatens to rearrange everything she has carefully accumulated.</p>
+        <p><strong>一篇の物語 (ippen no monogatari):</strong> "One piece of writing, one story." 一篇 is a literary counter: one piece, one installment, one unit of narrative. It is a modest measure. Kotemari does not call it a novel or a confession or a love letter. She calls it 一篇の物語: one story, one tale, one piece of the world made out of words. The word 物語 carries the full weight of Japanese narrative tradition, from the Tale of Genji to contemporary fiction. By using 物語 rather than 小説 (shousetsu, novel), Kotemari makes the manuscript sound older, more essential, closer to the oral tradition of tales told beside fires. A 物語 is not merely entertainment. It is a vessel for truth that cannot be spoken directly. The grammar of 一篇の物語 makes the manuscript into a single chapter of a longer story that includes both their lives.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Facility: The Grammar of Orphaned Time</h2>
+    <span class="story-label">Backstory</span>
+
+    <p>The lovers' origin story is told in a single devastating detail: they met in a facility, which means they were both, in some sense, abandoned before they found each other.</p>
+
+    <div class="passage horizon">
+        <div class="jp-text jp">
+            <span class="hl-horizon">ふたりは中学校のときに施設で知り合った</span>
+        </div>
+        <div class="romaji">"Futari wa chuugakkou no toki ni shisetsu de shiriatta."</div>
+        <div class="translation">"The two of them met at a facility when they were in middle school."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">中学校</td><td class="reading">chuugakkou</td><td>middle school, junior high</td></tr>
+        <tr><td class="word">施設</td><td class="reading">shisetsu</td><td>facility, institution, care home</td></tr>
+        <tr><td class="word">知り合う</td><td class="reading">shiriau</td><td>to become acquainted</td></tr>
+    </table>
+
+    <div class="nuance horizon-box">
+        <h5>What translation loses: The institutional silence of 施設</h5>
+        <p><strong>施設 (shisetsu):</strong> "Facility, institution." This is a bureaucratic word, the kind used in government documents and social-work reports. It refers to children's homes, orphanages, care facilities for minors without stable family environments. The word is deliberately neutral. It does not say "orphanage" (孤児院, kojiin) or "children's home" (児童養護施設, jidou yougo shisetsu). It simply says 施設: the facility, the place, the institution. This neutrality is doing extraordinary work. By using the bureaucratic term, Kotemari communicates the depersonalization that institutional life imposes on children. They are not orphans with stories. They are residents of a 施設. The grammar of 施設で知り合った (met at a facility) places their origin story inside a building designed to replace the family, which means their love begins in a space of substitution. They are each other's attempt to make a family where one was missing.</p>
+        <p><strong>知り合う (shiriau):</strong> "To become acquainted." This is a gentler verb than 出会う. It describes the gradual process of getting to know someone, not the sudden shock of encounter. When Kotemari says they 知り合った at the facility, she makes their meeting sound like the slow recognition of similarity: two children discovering that they are both living in a place where no one has chosen to be. The grammar of 知り合う makes their bond into something built over time rather than struck like lightning. This is important because it distinguishes their love from romantic cliché. They did not fall in love at first sight. They grew into love through shared institutional time, through the daily experience of being housed but not held, fed but not nourished, supervised but not seen.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Soul's Love: The Grammar of What Transcends</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The promotional copy makes a claim about the novel's genre that elevates it beyond ordinary romance.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">恋愛小説の名手が、時も距離も超える思いを描く、心ゆさぶる魂の愛の物語</span>
+        </div>
+        <div class="romaji">"Ren'ai shousetsu no meishu ga, toki mo kyori mo koeru omoi wo egaku, kokoro yusaburu tamashii no ai no monogatari."</div>
+        <div class="translation">"A master of romance fiction portrays a feeling that transcends both time and distance: a heart-shaking story of the soul's love."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">名手</td><td class="reading">meishu</td><td>master, expert, virtuoso</td></tr>
+        <tr><td class="word">超える</td><td class="reading">koeru</td><td>to exceed, to transcend, to cross over</td></tr>
+        <tr><td class="word">思い</td><td class="reading">omoi</td><td>feeling, thought, love</td></tr>
+        <tr><td class="word">心ゆさぶる</td><td class="reading">kokoro yusaburu</td><td>heart-shaking, soul-stirring</td></tr>
+        <tr><td class="word">魂</td><td class="reading">tamashii</td><td>soul, spirit</td></tr>
+        <tr><td class="word">愛</td><td class="reading">ai</td><td>love</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The hierarchy of Japanese love words</h5>
+        <p><strong>魂の愛 (tamashii no ai):</strong> "The soul's love." This is not 恋 (koi, passionate love) or 好き (suki, liking) or even 愛情 (aijou, affection). It is 魂の愛: love that belongs to the soul, love that exists at the deepest level of the self, below personality, below wound, below the thorns that two people grow to protect themselves. The word 魂 is not used lightly in Japanese. It is the word for the animating spirit, the thing that survives death, the part of a person that is not body and not mind but something more essential. When Kotemari is described as writing 魂の愛, the copy is making a claim that her romance fiction is doing something religious, something that approaches the condition of prayer. The grammar of 魂の愛 makes love into a spiritual category, not merely an emotional one. This love is not about happiness or compatibility or shared interests. It is about recognition at the level of the soul: two people who see each other clearly and cannot stop seeing each other even when they are apart.</p>
+        <p><strong>時も距離も超える (toki mo kyori mo koeru):</strong> "Transcends both time and distance." The grammar is noun + mo + noun + mo + verb: both time AND distance are exceeded. The word 超える means to cross over, to surpass, to transcend. It is the word used for crossing a mountain pass, for exceeding a limit, for moving beyond a boundary. When applied to time and distance, it makes the love into something that operates outside physics. The lovers are not merely remembering each other. They are continuing to love across the very categories that should make love impossible. The grammar of 〜も〜も超える makes the claim comprehensive: not time, not distance, not anything can stop this feeling. This is the novel's central assertion, and it is tested by the narrative itself: if the love is real, it must survive the only test available to it, which is separation.</p>
+        <p><strong>心ゆさぶる (kokoro yusaburu):</strong> "Heart-shaking, soul-stirring." ゆさぶる means to shake, to jolt, to disturb. It is a physical verb: you ゆさぶる a tree to make the fruit fall, you ゆさぶる a person to wake them up. When combined with 心, it creates a word for emotional impact so strong it feels like physical shaking. The copy promises the reader not merely entertainment but disturbance: this story will shake your heart. The grammar makes the novel into an event that happens to the reader, not merely a text to be consumed. Kotemari's prose earns this promise through its precision. She does not shout. She describes. And in the describing, she shakes.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. I Want to See You: The Grammar of the Unfinished Sentence</h2>
+    <span class="story-label">Tagline</span>
+
+    <p>The novel's most repeated phrase is a declaration of need that contains its own impossibility.</p>
+
+    <div class="passage horizon">
+        <div class="jp-text jp">
+            <span class="hl-horizon">会いたい――どんなに今は離れていても</span>
+        </div>
+        <div class="romaji">"Aitai — donna ni ima wa hanarete ite mo."</div>
+        <div class="translation">"I want to see you — no matter how far apart we are now."</div>
+        <div class="source"> Tagline</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">会いたい</td><td class="reading">aitai</td><td>want to meet/see [someone]</td></tr>
+        <tr><td class="word">どんなに</td><td class="reading">donna ni</td><td>no matter how, however much</td></tr>
+        <tr><td class="word">離れる</td><td class="reading">hanareru</td><td>to separate, to be apart</td></tr>
+        <tr><td class="word">〜ても</td><td class="reading">-te mo</td><td>even if, even though</td></tr>
+    </table>
+
+    <div class="nuance horizon-box">
+        <h5>What translation loses: The ache of 会いたい</h5>
+        <p><strong>会いたい (aitai):</strong> "I want to see you." This is the simplest, most direct expression of romantic need in Japanese. It is not "I love you" (愛してる, aishiteru), which is rarely spoken in Japanese daily life. It is not "I like you" (好きだ, suki da). It is 会いたい: the desiderative form of 会う (au, to meet). The grammar strips everything away except need. I want to see you. Not "I want to talk to you" or "I want to be with you." I want to see you. The eyes are the organ of recognition, and 会いたい is the cry of someone who needs to confirm that the other person still exists in the same world. The dash after 会いたい in the tagline creates a pause, a breath, a moment when the need hangs in the air before the qualification arrives. The grammar of the dash makes the sentence into a heartbeat: need, pause, condition, endurance.</p>
+        <p><strong>どんなに今は離れていても (donna ni ima wa hanarete ite mo):</strong> "No matter how far apart we are now." The grammar is concessive: どんなに (however much) + 離れている (are separated) + ても (even if). The ても makes the separation into a condition that cannot defeat the need. No matter how far, no matter how long, no matter what has happened between them: 会いたい. The word 離れる means to separate, to part, to move away from. It contains the same root as 放す (hanasu, to release) and 離婚 (rikon, divorce). When two people are 離れている, they are in a state of having been let go, having been released from each other's orbit. The ても says: even in this state of release, the need persists. The grammar makes love into something that survives its own ending, which is the novel's deepest theme.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Fairy Tale Within: The Grammar of Nested Worlds</h2>
+    <span class="story-label">Plot device</span>
+
+    <p>Arashi's manuscript contains a fairy tale about a traveler and a cat, which functions as encoded autobiography.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">童話の中の旅人と猫の触れ合い</span>
+        </div>
+        <div class="romaji">"Douwa no naka no tabibito to neko no fureai."</div>
+        <div class="translation">"The contact between the traveler and the cat inside the fairy tale."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">童話</td><td class="reading">douwa</td><td>fairy tale, children's story</td></tr>
+        <tr><td class="word">旅人</td><td class="reading">tabibito</td><td>traveler, wayfarer</td></tr>
+        <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td></tr>
+        <tr><td class="word">触れ合い</td><td class="reading">fureai</td><td>contact, interaction, touching</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The tenderness of 触れ合い</h5>
+        <p><strong>触れ合い (fureai):</strong> "Contact, interaction, touching." This is a beautiful compound. 触れる (fureru) means to touch, to come into contact with, to brush against. 合う (au) means to match, to fit, to do to each other. Together they describe a mutual touching that is gentle, exploratory, and reciprocal. 触れ合い is the word used for community interaction programs, for the contact between animals and humans, for the tentative reaching that happens before full intimacy. When the reader review mentions the 触れ合い between the traveler and the cat inside the fairy tale, the word makes their relationship sound delicate, provisional, and precious. The cat in the fairy tale is a stand-in for Konoha, or for some part of Arashi that could only speak through metaphor. The traveler is Arashi himself, wandering through the narrative trying to find a form for what he cannot say directly. The grammar of 触れ合い makes their interaction into the central action of the fairy tale: not adventure, not conquest, but the slow discovery of how to touch without wounding.</p>
+        <p><strong>童話の中の (douwa no naka no):</strong> "Inside the fairy tale." The grammar nests worlds within worlds. The novel contains a manuscript. The manuscript contains a fairy tale. The fairy tale contains a traveler and a cat. Each layer is a translation of the layer beneath it, a code that allows the truth to travel in disguise. Kotemari's use of the fairy tale structure is characteristic of her poetic sensibility. Poetry often speaks truth indirectly, through image and symbol, and the fairy tale performs the same function here. The grammar of 〜の中の makes the fairy tale into a container, a box inside which the real gift is hidden. Konoha must read the fairy tale not as entertainment but as evidence, decoding the traveler and the cat until she recognizes herself and Arashi in their patterned fur and wandering feet.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Prose: The Grammar of the Prose Poem</h2>
+    <span class="story-label">Style</span>
+
+    <p>Readers consistently describe Kotemari's prose as poetic, and the word they use reveals the source of its power.</p>
+
+    <div class="passage horizon">
+        <div class="jp-text jp">
+            <span class="hl-horizon">まるで散文詩のように美しい文章</span>
+        </div>
+        <div class="romaji">"Marude sanbunshi no you ni utsukushii bunshou."</div>
+        <div class="translation">"Prose as beautiful as a prose poem."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">まるで</td><td class="reading">marude</td><td>just like, as if</td></tr>
+        <tr><td class="word">散文詩</td><td class="reading">sanbunshi</td><td>prose poem</td></tr>
+        <tr><td class="word">美しい</td><td class="reading">utsukushii</td><td>beautiful</td></tr>
+        <tr><td class="word">文章</td><td class="reading">bunshou</td><td>prose, writing, text</td></tr>
+    </table>
+
+    <div class="nuance horizon-box">
+        <h5>What translation loses: The freedom of 散文詩</h5>
+        <p><strong>散文詩 (sanbunshi):</strong> "Prose poem." This is a hybrid genre that occupies the border between poetry and prose, using the rhythmic density of verse without the formal constraints of line breaks and meter. When a reader calls Kotemari's writing 散文詩のように美しい, they are identifying the source of its effect: the sentences are not merely conveying information. They are creating atmosphere, emotion, and image with the compressed intensity of poetry. Kotemari began her career as a poet, winning the "Shi to Meruhen" Prize in 1981, and her prose carries the residue of that training. Every sentence is weighed for sound, rhythm, and resonance. The grammar of まるで〜のように (just like, as if) makes the comparison explicit: this novel is not quite a prose poem, but it is like one, close enough to borrow the genre's powers without surrendering the narrative's obligation to move through time.</p>
+        <p><strong>文章 (bunshou):</strong> "Prose, writing, text." This is a formal, literary word. It is not 話 (hanashi, story/talk) or 言葉 (kotoba, words). It is 文章: composed writing, the craft of putting sentences together. By praising the 文章, the reader is praising not merely the plot or the characters but the medium itself. Kotemari's 文章 is beautiful. The sentences are the attraction. This is a high compliment in Japanese literary culture, where the quality of the prose is often valued as highly as the content it conveys. The grammar of 美しい文章 makes beauty into the primary virtue, which is appropriate for a novel about love that transcends time and distance. If the feeling is beautiful, the vessel that carries it must be beautiful too.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Film's Ending: The Grammar of Luminous Closure</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>A reader's description of the ending captures the novel's aesthetic in a single luminous phrase.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">ラストシーンも、上質の映画のように煌めいている素敵なラブストーリー</span>
+        </div>
+        <div class="romaji">"Rasuto shiin mo, joushitsu no eiga no you ni kirameite iru suteki na rabu sutoorii."</div>
+        <div class="translation">"The last scene too sparkles like a high-quality film: a wonderful love story."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ラストシーン</td><td class="reading">rasuto shiin</td><td>last scene</td></tr>
+        <tr><td class="word">上質</td><td class="reading">joushitsu</td><td>high-quality, superior</td></tr>
+        <tr><td class="word">煌めく</td><td class="reading">kirameku</td><td>to sparkle, to glitter, to shimmer</td></tr>
+        <tr><td class="word">素敵</td><td class="reading">suteki</td><td>wonderful, lovely, splendid</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The shimmer of 煌めく</h5>
+        <p><strong>煌めく (kirameku):</strong> "To sparkle, to glitter, to shimmer." This is a visual verb of extraordinary beauty. It describes light on water, stars in darkness, the shimmer of heat above asphalt. When the reader says the last scene 煌めいている, she makes the ending sound not merely happy but radiant, as if the narrative itself has become a source of light. The word contains 煌 (kirameki, radiance), a character associated with brilliance and glory. By using 煌めく rather than a simpler word like 明るい (bright) or 美しい (beautiful), the reader captures something essential about Kotemari's endings: they do not merely resolve. They glow. The grammar of 煌めいている makes the last scene into a continuous state, not a single moment but a condition that persists after the book is closed. This is the novel's gift: it leaves the reader with a shimmer, a sense that the horizon is still there, that sky and sea are still meeting somewhere beyond the edge of the page.</p>
+        <p><strong>上質の映画 (joushitsu no eiga):</strong> "A high-quality film." The comparison to cinema is apt. Kotemari's prose is visual, atmospheric, and paced like a film. The word 上質 means superior quality, first-class, made of the best materials. It is the word used for fine fabrics, excellent cuisine, well-crafted objects. By comparing the novel's last scene to a 上質の映画, the reader is saying that the ending has the polish, the emotional precision, and the visual beauty of the best cinema. The grammar of the comparison makes the novel into an experience that competes with film, which is the dominant narrative medium of our time. For a book to earn this comparison is for it to have achieved something rare: the translation of literary language into the condition of light.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Horizon</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜が届く</strong> — To arrive, to be delivered: the grammar of delayed communication</li>
+        <li><strong>〜が果たされる</strong> — To be fulfilled (passive): the grammar of promises with their own will</li>
+        <li><strong>〜でたまらない</strong> — So much one cannot stand it: the grammar of unbearable feeling</li>
+        <li><strong>〜合う</strong> — Reciprocal verb suffix: the grammar of mutual action</li>
+        <li><strong>〜だらけ</strong> — Covered in, full of: the grammar of beautiful disaster</li>
+        <li><strong>〜ても</strong> — Even if, even though: the grammar of love that survives its conditions</li>
+        <li><strong>〜のように</strong> — Just like, as if: the grammar of poetic comparison</li>
+        <li><strong>〜の中の</strong> — Inside of: the grammar of nested worlds</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>空と海の出会う場所</strong> — Where sky and sea meet: the horizon as event, not geometry</li>
+        <li><strong>出会う</strong> — To encounter by chance: the emergence of one thing into another</li>
+        <li><strong>場所</strong> — Place: the modest word that makes the infinite intimate</li>
+        <li><strong>遠い日の約束</strong> — Promise of a distant day: the past as a visible mountain</li>
+        <li><strong>果たされる</strong> — To be fulfilled: the passive miracle of kept vows</li>
+        <li><strong>明らかになる</strong> — To become clear: revelation as dawn, not detective work</li>
+        <li><strong>好きでたまらない</strong> — Love so much it hurts: emotion as physical affliction</li>
+        <li><strong>傷つけ合う</strong> — To hurt each other: cruelty as the only available intimacy</li>
+        <li><strong>棘だらけの薊</strong> — Thistles covered in thorns: beautiful disaster</li>
+        <li><strong>一篇の物語</strong> — One piece of writing: the modest measure of a life</li>
+        <li><strong>届く</strong> — To arrive: the traveler that completes its journey</li>
+        <li><strong>着実にキャリアを積む</strong> — To steadily build a career: sediment as survival</li>
+        <li><strong>施設</strong> — Facility: the bureaucratic silence of institutional origin</li>
+        <li><strong>知り合う</strong> — To become acquainted: the slow recognition of similarity</li>
+        <li><strong>魂の愛</strong> — The soul's love: love as spiritual category</li>
+        <li><strong>時も距離も超える</strong> — Transcends time and distance: love outside physics</li>
+        <li><strong>心ゆさぶる</strong> — Heart-shaking: the novel as physical event</li>
+        <li><strong>会いたい</strong> — I want to see you: the stripped cry of need</li>
+        <li><strong>どんなに離れていても</strong> — No matter how far apart: love that survives its own ending</li>
+        <li><strong>触れ合い</strong> — Contact: the tentative reaching before intimacy</li>
+        <li><strong>童話の中の</strong> — Inside the fairy tale: truth in disguise</li>
+        <li><strong>散文詩</strong> — Prose poem: the freedom of the hybrid</li>
+        <li><strong>煌めく</strong> — To sparkle: the ending as persistent radiance</li>
+    </ul>
+
+    <h4>Kotemari vs. Niitsu vs. Tsutsui vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Fourteen directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Tsutsui's are chaotic and accelerative (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Niitsu's are precise and merciless (待て, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散文詩, 触れ合い). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape, and that the horizon they have been walking toward alone is actually the place where their separate paths were always going to converge. Together these fourteen writers map the full range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the crossroads where a woman must choose before someone else chooses for her, to the horizon where sky and sea meet and the promise of a distant day finally arrives, shimmering like a film's last frame, like a manuscript that crossed years to say what could never be said face to face.</p>
+</section>
+
+</main>
+
+</body>
+</html>

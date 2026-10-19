@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If You Think of It in the Fitting Room, I Think It's Serious Love — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #6a4a5a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --closet: #8a6a7a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--closet);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(138,106,122,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.closet::before {
+            background: var(--closet);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.closet-box {
+            background: color-mix(in oklab, var(--closet) 8%, var(--surface));
+            border-left-color: var(--closet);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.closet-box h5 {
+            color: var(--closet);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-closet {
+            background: color-mix(in oklab, var(--closet) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--closet) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--closet) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-list {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+        }
+
+        .chapter-list h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-list ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .chapter-list li {
+            font-size: var(--step--1);
+            margin-bottom: 0.4rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #8a6a7a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>If You Think of It in the Fitting Room,<br>I Think It's Serious Love<br><span style="font-size:0.55em; font-weight:300;">試着室で思い出したら、本気の恋だと思う</span></h1>
+    <div class="subtitle">A Japanese lesson through Ogata Mariko's novel of five women, one closet, and the grammar of clothes that makes courage possible</div>
+    <div class="meta">Ogata Mariko &middot; Gentosha Bunko &middot; 2014 &middot; Novel</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, chapter titles, promotional copy, and reader reviews of <em>Shichakushitsu de Omoidashitara, Honki no Koi da to Omou</em> (試着室で思い出したら、本気の恋だと思う), a novel by Ogata Mariko (尾形真理子), originally published by Gentosha in 2014. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    First published by Gentosha in 2014 and now a long-seller with over 170,000 copies in print, <em>Shichakushitsu de Omoidashitara, Honki no Koi da to Omou</em> (試着室で思い出したら、本気の恋だと思う) is the debut novel of Ogata Mariko (尾形真理子, b. 1978), one of Japan's most celebrated copywriters. Before she was a novelist, Ogata wrote the advertising copy for LUMINE, the fashion complex that defines young Tokyo femininity: lines like "好きは、片思い。似合うは、両思い" (Liking is one-sided. Suiting each other is mutual.) that became cultural touchstones. She is 175cm tall, grew up knowing that clothes were how she negotiated the world, and became a copywriter at Hakuhodo in 2001 after graduating from Nihon University's Department of Journalism. She won the Asahi Advertising Award Grand Prix in 2003, founded her own company Tang in 2018, and has written for Shiseido, Tiffany & Co., Kirin Beer, Nissan, Netflix, and Fuji Film. Where previous lessons in this series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, the cage that makes the animal ferocious, the backstage of publishing where editors make authors grovel, the wobbly line that dances Edo back into existence, and the wind chime that rings when the murderer's breath disturbs the air, this lesson enters a different territory: the fitting room as confessional, the select shop as therapist's office, and the sentence as a piece of clothing that either fits or doesn't. This is Japanese as self-presentation, as the language of wanting to be cute, as the grammar of the outfit that makes the next day possible.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Fitting Room Confession</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is a conditional sentence that functions as a love test.</p>
+
+    <div class="passage closet">
+        <div class="jp-text jp">
+            <span class="hl-closet">試着室で思い出したら、本気の恋だと思う</span>
+        </div>
+        <div class="romaji">"Shichakushitsu de omoidashitara, honki no koi da to omou."</div>
+        <div class="translation">"If you think of it in the fitting room, I think it's serious love." / "If you remember him while trying on clothes, I think it's real."</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">試着室</td><td class="reading">shichakushitsu</td><td>fitting room, changing room</td></tr>
+        <tr><td class="word">思い出す</td><td class="reading">omoidasu</td><td>to remember, to recall, to think of</td></tr>
+        <tr><td class="word">たら</td><td class="reading">-tara</td><td>if/when (conditional)</td></tr>
+        <tr><td class="word">本気</td><td class="reading">honki</td><td>serious, earnest, real</td></tr>
+        <tr><td class="word">恋</td><td class="reading">koi</td><td>love, romance (passionate)</td></tr>
+        <tr><td class="word">思う</td><td class="reading">omou</td><td>to think, to believe</td></tr>
+    </table>
+
+    <div class="nuance closet-box">
+        <h5>What translation loses: The conditional intimacy of 試着室で思い出したら</h5>
+        <p><strong>試着室 (shichakushitsu):</strong> "Fitting room, changing room." In Japan, the fitting room is a uniquely private space in an otherwise public commercial environment. You enter alone. You remove your clothes. You stand before a mirror that is not your own, under lighting designed to flatter, and you confront the gap between the self you present and the self you might become. The word combines 試 (test, try) with 着 (wear) and 室 (room): a room for testing how you will appear to the world. When Ogata makes this the setting for the title's conditional clause, she is saying that the fitting room is where truth happens. Not in bed, not at a restaurant, not on a phone call. In the fitting room, where you are most vulnerable to your own reflection, if you think of him, the love is real. The grammar makes the fitting room into a lie detector for the heart.</p>
+        <p><strong>たら (tara):</strong> The conditional form たら is crucial here. It means "if/when," but it carries a note of discovery: when condition X occurs, realization Y follows. 試着室で思い出したら is not a hypothesis. It is a diagnostic. The sentence says: try this test. Go into a fitting room. Try on something beautiful. If, in that moment of private self-appraisal, he comes to mind, then what you feel is not a passing fancy. It is 本気の恋. The grammar makes the title into an instruction manual for recognizing your own heart. The fitting room is the laboratory. The memory is the reagent. The result is love or its absence.</p>
+        <p><strong>本気の恋 (honki no koi):</strong> "Serious love, real love." 本気 means "serious, earnest, genuine," as opposed to 遊び (asobi, play/playing around). In Japanese romance, the distinction between 本気 and 遊び is fundamental: are you serious or are you passing time? The word 本気 contains 本 (true, real, root) and 気 (spirit, mind, attention). To be 本気 is to have your true spirit engaged. When combined with 恋 (koi, passionate love, as opposed to ai, which is broader and deeper), it creates a phrase that means not merely "I like him" but "I am actually, seriously, root-level in love." The grammar of the title makes the fitting room into the place where play-love is distinguished from real-love. If he survives the mirror test, he matters.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Author's Origin: The Grammar of the Copywriter-Novelist</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Ogata's professional biography explains why her sentences fit so precisely.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">1978年東京都生まれ。2001年、博報堂に入社し、コピーライター、制作ディレクターとして活躍。LUMINE、資生堂、Tiffany&Co.、キリンビール、日産自動車などの広告を手がける。朝日広告賞グランプリ他受賞多数。『試着室で思い出したら、本気の恋だと思う。』で小説家デビュー</span>
+        </div>
+        <div class="romaji">"Sen-kyūhyaku-nanajūhachi-nen Tōkyō-to umare. Ni-sen-ichi-nen, Hakuhōdō ni nyūsha shi, copywriter, seisaku director toshite katsuyaku. LUMINE, Shiseido, Tiffany & Co., Kirin Beer, Nissan jidōsha nado no kōkoku wo tegakeru. Asahi kōkoku-shō grand prix hoka jushō tasū. 'Shichakushitsu de Omoidashitara, Honki no Koi da to Omou' de shōsetsuka debyū."</div>
+        <div class="translation">"Born in Tokyo in 1978. Joined Hakuhodo in 2001 and became active as a copywriter and production director. Handled advertising for LUMINE, Shiseido, Tiffany & Co., Kirin Beer, Nissan Motors, and others. Won numerous awards including the Asahi Advertising Award Grand Prix. Debuted as a novelist with 'If You Think of It in the Fitting Room, I Think It's Serious Love.'"</div>
+        <div class="source">— Gentosha author bio</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">博報堂</td><td class="reading">Hakuhōdō</td><td>Hakuhodo (major Japanese advertising agency)</td></tr>
+        <tr><td class="word">コピーライター</td><td class="reading">copywriter</td><td>copywriter</td></tr>
+        <tr><td class="word">制作ディレクター</td><td class="reading">seisaku director</td><td>production director</td></tr>
+        <tr><td class="word">手がける</td><td class="reading">tegakeru</td><td>to handle, to undertake, to produce</td></tr>
+        <tr><td class="word">広告</td><td class="reading">kōkoku</td><td>advertisement, commercial</td></tr>
+        <tr><td class="word">グランプリ</td><td class="reading">grand prix</td><td>grand prix, highest award</td></tr>
+        <tr><td class="word">小説家デビュー</td><td class="reading">shōsetsuka debyū</td><td>debut as a novelist</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The precision grammar of 手がける</h5>
+        <p><strong>手がける (tegakeru):</strong> "To handle, to undertake, to produce with one's own hands." This verb contains 手 (te, hand), and it means to personally take something in hand, to be the one who does the work. When Ogata's bio says she 手がけた the advertising for LUMINE, Shiseido, and Tiffany, the word makes her relationship to those brands physical and artisanal. She did not merely supervise. She put her hands on the work. A copywriter's product is sentences, and Ogata's sentences for LUMINE were so effective that they became part of Tokyo's visual culture: posters of young women in stylish clothes, walking through the city, accompanied by copy that understood exactly what those women were feeling. The grammar of 手がける makes copywriting into a craft, and Ogata into a craftswoman who turned her advertising skill into fiction.</p>
+        <p><strong>The LUMINE connection:</strong> This novel was born from Ogata's advertising work for LUMINE, the fashion and lifestyle complex that operates major stations in Tokyo (Shinjuku, Ikebukuro, Est Shinjuku, etc.). LUMINE's advertising is famous for understanding the psychology of young Tokyo women: the desire to be cute, the fear of being alone, the hope that the right outfit will make the right day possible. Ogata's novel takes the insight that powered her advertising copy and expands it into narrative. The fitting room, the select shop, the "fated outfit" (運命の一着), the mirror as truth-teller: these are all extensions of the LUMINE worldview, which is that fashion is not vanity. Fashion is emotional architecture. The right clothes build the courage to live the life you want. The grammar of Ogata's career makes this novel into an advertisement that became a philosophy.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Five Women: The Grammar of the Select Shop Confessional</h2>
+    <span class="story-label">Plot</span>
+
+    <p>The novel follows five women who find their way to a back-alley select shop called "Closet."</p>
+
+    <div class="passage closet">
+        <div class="jp-text jp">
+            <span class="hl-closet">年下に片思いする文系女子、不倫に悩む美容マニア、元彼の披露宴スピーチを頼まれる化粧品会社勤務のOL……。恋愛下手な彼女たちが訪れるのは、路地裏のセレクトショップ</span>
+        </div>
+        <div class="romaji">"Toshishita ni kataomoi suru bunkei joshi, furin ni nayamu biyō mania, moto-kare no hirōen speech wo tanomareru keshōhin gaisha kinmu no OL…… Koi-ayamate na kanojo-tachi ga otozureru no wa, rojiura no select shop."</div>
+        <div class="translation">"A humanities-type woman with an unrequited crush on a younger man, a beauty enthusiast troubled by an affair, an office lady at a cosmetics company asked to give a speech at her ex-boyfriend's wedding…… The love-clumsy women who visit are drawn to a select shop in a back alley."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">年下</td><td class="reading">toshishita</td><td>younger (person)</td></tr>
+        <tr><td class="word">片思い</td><td class="reading">kataomoi</td><td>unrequited love, one-sided love</td></tr>
+        <tr><td class="word">文系</td><td class="reading">bunkei</td><td>humanities (as opposed to sciences)</td></tr>
+        <tr><td class="word">不倫</td><td class="reading">furin</td><td>adultery, affair</td></tr>
+        <tr><td class="word">悩む</td><td class="reading">nayamu</td><td>to be troubled, to suffer</td></tr>
+        <tr><td class="word">美容マニア</td><td class="reading">biyō mania</td><td>beauty enthusiast, beauty obsessive</td></tr>
+        <tr><td class="word">披露宴</td><td class="reading">hirōen</td><td>wedding reception</td></tr>
+        <tr><td class="word">スピーチ</td><td class="reading">speech</td><td>speech</td></tr>
+        <tr><td class="word">恋愛下手</td><td class="reading">koi-ayumate</td><td>clumsy at love, bad at romance</td></tr>
+        <tr><td class="word">セレクトショップ</td><td class="reading">select shop</td><td>select shop, boutique with curated selection</td></tr>
+        <tr><td class="word">路地裏</td><td class="reading">rojiura</td><td>back alley, side street</td></tr>
+    </table>
+
+    <div class="nuance closet-box">
+        <h5>What translation loses: The social taxonomy of 文系女子</h5>
+        <p><strong>文系女子 (bunkei joshi):</strong> "A humanities-type woman." In Japan, the distinction between 文系 (humanities) and 理系 (rikei, sciences) is one of the fundamental social taxonomies. A 文系女子 is understood to be literary, emotional, intuitive, perhaps a bit impractical, more likely to read novels than to code software. The phrase carries a whole personality profile. When Ogata identifies her first protagonist as a 文系女子, she is telling the reader everything they need to know: this woman overthinks, she reads situations like texts, she is probably employed in a field that values words over numbers, and she is currently suffering because she has fallen for a younger man and does not know how to act on it. The grammar of 文系女子 makes social type into narrative shorthand.</p>
+        <p><strong>恋愛下手 (koi-ayumate):</strong> "Clumsy at love, bad at romance." 下手 (heta) means unskilled, clumsy, bad at something. When combined with 恋愛 (romance), it creates a phrase that is both modest and precise. These women are not unlovable. They are not undesirable. They are simply unskilled at the performance of romance. The word 下手 makes love into a skill that can be practiced and improved, which is exactly what the select shop will help them do. Not by teaching them how to date, but by teaching them how to dress, which is, in Ogata's world, the same thing. The grammar of 恋愛下手 makes romantic incompetence into something that can be fixed with the right outfit.</p>
+        <p><strong>路地裏のセレクトショップ (rojiura no select shop):</strong> "A select shop in a back alley." A select shop is not a department store. It is a small boutique with a curated selection of clothes, chosen by an owner with taste and vision. The fact that this one is in a 路地裏 (back alley) makes it hidden, special, hard to find. You do not stumble into it. You must seek it out. The grammar makes the shop into a secret, which is appropriate because what happens there is also secret: women confront their own hearts in the fitting room, away from the eyes of the men who have caused their confusion. The back alley is privacy. The select shop is sanctuary.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The "Fated Outfit": The Grammar of Clothing as Courage</h2>
+    <span class="story-label">Central metaphor</span>
+
+    <p>The shop's owner gives each woman not just clothes but a new relationship with herself.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">自分を変える運命の一着を探すうちに、誰もが強がりや諦めを捨て素直な気持ち向き合っていく</span>
+        </div>
+        <div class="romaji">"Jibun wo kaeru unmei no icchaku wo sagasu uchi ni, daremo ga tsuyogari ya akirame wo sutete sunao na kimochi to mukiatte iku."</div>
+        <div class="translation">"As they search for the one fated outfit that will change themselves, everyone abandons their bluffs and resignations and confronts their honest feelings."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">運命の一着</td><td class="reading">unmei no icchaku</td><td>the one fated outfit</td></tr>
+        <tr><td class="word">強がり</td><td class="reading">tsuyogari</td><td>bluff, bravado, putting on a brave face</td></tr>
+        <tr><td class="word">諦め</td><td class="reading">akirame</td><td>resignation, giving up</td></tr>
+        <tr><td class="word">捨てる</td><td class="reading">suteru</td><td>to throw away, to discard</td></tr>
+        <tr><td class="word">素直</td><td class="reading">sunao</td><td>honest, straightforward, docile</td></tr>
+        <tr><td class="word">向き合う</td><td class="reading">mukiau</td><td>to face, to confront</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The emotional undressing of 強がりや諦めを捨て</h5>
+        <p><strong>強がり (tsuyogari):</strong> "Bluff, bravado, putting on a brave face." This is a specifically Japanese emotional concept. 強がる (tsuyogaru) means to pretend to be strong when you are not, to act tougher than you feel. The word contains 強 (strong) and the self-referential auxiliary がる, which indicates a performed or displayed emotion. A tsuyogari is not actually strong. She is performing strength because she believes that showing vulnerability will make her weak. In the context of the novel, the women who enter the fitting room are all performing some version of strength: the woman in the affair pretends she does not want more, the woman asked to speak at her ex's wedding pretends she is over him, the woman with the crush on the younger man pretends she is fine with things as they are. The fitting room makes the performance impossible because the mirror shows the truth. The grammar of 強がりを捨てる (to discard one's bluff) makes the act of trying on clothes into an emotional undressing that precedes the physical one.</p>
+        <p><strong>諦め (akirame):</strong> "Resignation, giving up." From the verb 諦める (akirameru), to give up, to abandon hope. In Japanese emotional life, akirame is a complex state: it can be mature acceptance (諦めがつく, to come to terms with), or it can be premature surrender. The women in the novel have akirame'd too early. They have decided that love is not for them, or that they do not deserve better, or that the situation cannot change. The select shop owner, with her eye for what suits each woman, shows them that akirame is a choice, not a fate. The grammar of 諦めを捨てる makes giving up into an object that can be thrown away like last season's coat.</p>
+        <p><strong>素直 (sunao):</strong> "Honest, straightforward, docile, supple." This is one of the most important words in Japanese emotional vocabulary. A sunao person is not merely honest. They are open, flexible, without defensive armor. They can receive what comes. The word is often used as praise for emotional health: someone who is sunao is not twisted by pride or fear. In the novel, confronting 素直な気持ち (honest feelings) is the goal of every fitting room session. The clothes do not change the women. The clothes make the women capable of changing themselves by making them sunao enough to see what they actually want. The grammar of 素直な気持ちと向き合う makes honesty into a direction (向き, direction/face) that one must turn toward.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. "Liking Is One-Sided, Suiting Is Mutual": The Grammar of the LUMINE Aphorism</h2>
+    <span class="story-label">Famous copy</span>
+
+    <p>The novel's most famous line began as advertising copy for LUMINE.</p>
+
+    <div class="passage closet">
+        <div class="jp-text jp">
+            <span class="hl-closet">好きは、片思い。似合うは、両思い。</span>
+        </div>
+        <div class="romaji">"Suki wa, kataomoi. Niau wa, ryōomoi."</div>
+        <div class="translation">"Liking is one-sided. Suiting each other is mutual."</div>
+        <div class="source">— LUMINE advertising copy / novel tagline</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">好き</td><td class="reading">suki</td><td>liking, fondness, love</td></tr>
+        <tr><td class="word">片思い</td><td class="reading">kataomoi</td><td>one-sided love, unrequited love</td></tr>
+        <tr><td class="word">似合う</td><td class="reading">niau</td><td>to suit, to look good on, to match</td></tr>
+        <tr><td class="word">両思い</td><td class="reading">ryōomoi</td><td>mutual love, love on both sides</td></tr>
+    </table>
+
+    <div class="nuance closet-box">
+        <h5>What translation loses: The parallel grammar of romantic asymmetry</h5>
+        <p><strong>好きは、片思い (Suki wa, kataomoi):</strong> "Liking is one-sided." The sentence is devastating in its brevity. 好き (suki) is the most common word for "like/love" in Japanese. It is the word schoolgirls use for the boy in the next class, the word adults use for their partners, the word that covers everything from mild preference to deep attachment. By saying 好きは、片思い, Ogata makes a universal claim: the act of liking, by itself, is always one-sided. Your feelings do not create an obligation in the other person. Your suki does not make them suki you back. The grammar of the sentence makes liking into a monologue, a speech act with only one speaker.</p>
+        <p><strong>似合うは、両思い (Niau wa, ryōomoi):</strong> "Suiting is mutual." 似合う (niau) means "to suit, to look good on, to be a good match for." It is most commonly used for clothes: "that color suits you" (その色があなたに似合う). But it can also describe people: "those two suit each other" (あの二人は似合う). Ogata's genius is to make 似合う the opposite of 片思い. If liking is one-sided, suiting is mutual. The outfit that suits you is the outfit that you also suit. The relationship is reciprocal. The grammar creates a perfect parallel: suki/kataomoi vs. niau/ryōomoi. The word 両思い (ryōomoi, mutual love) contains 両 (both) and 思い (thought/feeling): both sides feel the same way. When you find the outfit that truly suits you, it is like finding a person who loves you back. The fit is confirmed from both directions. You look good in it, and it looks right on you.</p>
+        <p><strong>The copywriter's art:</strong> This line is a masterpiece of advertising copy because it does not sell clothes directly. It sells the emotional experience of finding clothes that fit. And it does so by using the vocabulary of romance, which is the vocabulary that LUMINE's target audience (young Tokyo women) cares about most. The line says: you have suffered through one-sided love. You have liked people who did not like you back. But clothes are different. When you find the right clothes, the relationship is mutual. They suit you, and you suit them. The grammar of the aphorism makes shopping into a form of romantic healing.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Chapter Titles: The Grammar of the Emotional Pendulum</h2>
+    <span class="story-label">Chapter titles</span>
+
+    <p>The five chapter titles trace the oscillation between wanting and pretending not to want.</p>
+
+    <div class="chapter-list">
+        <h5>Chapter titles from the novel</h5>
+        <ul>
+            <li><strong>あなたといたい、とひとりで平気、をいったりきたり。</strong> — "Going back and forth between 'I want to be with you' and 'I'm fine alone.'"</li>
+            <li><strong>悪い女ほど、清楚な服がよく似合う。</strong> — "The worse the woman, the better she looks in modest clothes."</li>
+            <li><strong>可愛くなりたいって思うのは、ひとりぼっちじゃないってこと。</strong> — "Wanting to be cute means you're not alone."</li>
+            <li><strong>ドレスコードは、花嫁未満の、わき役以上で。</strong> — "The dress code is: less than the bride, more than an extra."</li>
+            <li><strong>好きは、片思い。似合うは、両思い。</strong> — "Liking is one-sided. Suiting is mutual."</li>
+        </ul>
+    </div>
+
+    <h4>Vocabulary from the chapter titles</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ひとりで平気</td><td class="reading">hitori de heiki</td><td>fine alone, okay by oneself</td></tr>
+        <tr><td class="word">いったりきたり</td><td class="reading">ittari kitari</td><td>going back and forth, oscillating</td></tr>
+        <tr><td class="word">悪い女</td><td class="reading">warui onna</td><td>a bad woman (morally compromised)</td></tr>
+        <tr><td class="word">清楚</td><td class="reading">seiso</td><td>modest, neat, clean, demure</td></tr>
+        <tr><td class="word">愛くなりたい</td><td class="reading">kawaiku naritai</td><td>wanting to become cute/pretty</td></tr>
+        <tr><td class="word">ひとりぼっち</td><td class="reading">hitori-bocchi</td><td>all alone, lonely</td></tr>
+        <tr><td class="word">ドレスコード</td><td class="reading">dress code</td><td>dress code</td></tr>
+        <tr><td class="word">花嫁未満</td><td class="reading">hanayome miman</td><td>less than the bride, sub-bridal</td></tr>
+        <tr><td class="word">わき役</td><td class="reading">wakiyaku</td><td>supporting role, extra</td></tr>
+    </table>
+
+    <div class="nuance closet-box">
+        <h5>What translation loses: The pendulum grammar of いたりきたり</h5>
+        <p><strong>いったりきたり (ittari kitari):</strong> "Going back and forth, oscillating." This is a grammatical pattern (V-tari V-tari) that indicates repeated alternation between two states. The first chapter title uses this pattern to describe the emotional pendulum of a woman who cannot decide whether she wants to be with someone or whether she is fine alone. あなたといたい (I want to be with you) and ひとりで平気 (I'm fine alone) are not merely two options. They are the two poles between which she swings, day by day, hour by hour, text by text. The grammar of いったりきたり makes the chapter title into a description of emotional motion rather than a static state. The woman is not confused. She is in motion.</p>
+        <p><strong>悪い女ほど、清楚な服がよく似う (Warui onna hodo, seiso na fuku ga yoku niau):</strong> "The worse the woman, the better she looks in modest clothes." This title uses the ほど grammar pattern (the more X, the more Y) to make a provocative claim. A 悪い女 (warui onna) is a "bad woman" in the sense of being morally compromised: she is having an affair, or she wants someone she should not want, or she has done something she should not have done. 清楚 (seiso) means modest, demure, clean, neat: the kind of clothes that signal innocence and propriety. The title's paradox is that the more "bad" a woman is, the better she looks in clothes that say the opposite. The grammar of ほど makes this into a proportional relationship, as if it were a law of nature. The title suggests that clothes do not merely express identity. They can strategically misexpress it. The "bad woman" who wears modest clothes understands that fashion is a language she can speak fluently enough to deceive.</p>
+        <p><strong>花嫁未満の、わき役以上で (Hanayome miman no, wakiyaku ijō de):</strong> "Less than the bride, more than an extra." This is the dress code for the woman who must attend her ex-boyfriend's wedding and give a speech. 花嫁未満 (hanayome miman) means "less than the bride, not quite bride-level." わき役以上 (wakiyaku ijō) means "more than a supporting role/extra." The grammar of the title makes the wedding into a performance with cast rankings, and the protagonist into someone who must calculate exactly how visible to be. She cannot outshine the bride (花嫁未満), but she cannot fade into the background either (わき役以上). She must find the exact outfit that places her in the precise social position she wants to occupy: present, dignified, memorable, but not threatening. The dress code is emotional as much as sartorial. The clothes must say: I am fine, I have moved on, I wish you well, and I am still here.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. "Even Unfulfilled Love Bears Fruit": The Grammar of Emotional Harvest</h2>
+    <span class="story-label">Famous line</span>
+
+    <p>One of the novel's most quoted lines transforms failure into fertility.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">実らなかった恋にも、ちゃんと実ができている</span>
+        </div>
+        <div class="romaji">"Minoranakatta koi ni mo, chanto mi ga dekite iru."</div>
+        <div class="translation">"Even love that did not bear fruit has, properly, produced fruit." / "Even unfulfilled love bears fruit."</div>
+        <div class="source">— From the novel</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">実る</td><td class="reading">minoru</td><td>to bear fruit, to ripen</td></tr>
+        <tr><td class="word">実</td><td class="reading">mi</td><td>fruit, result, outcome</td></tr>
+        <tr><td class="word">ちゃんと</td><td class="reading">chanto</td><td>properly, duly, as expected</td></tr>
+        <tr><td class="word">できている</td><td class="reading">dekite iru</td><td>has been formed/created, is in place</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The agricultural grammar of 実</h5>
+        <p><strong>実る (minoru) and 実 (mi):</strong> "To bear fruit" and "fruit." The line contains a perfect etymological loop. 実らなかった (did not bear fruit) describes love that failed, love that ended without the hoped-for relationship. But 実ができている (fruit has formed) says that even this failed love has produced something. The word 実 connects the two clauses like a thread: the love that did not bear fruit has nonetheless borne fruit. The grammar makes failure into a form of harvest. The relationship ended, but the experience remained. The love did not achieve its intended outcome, but it achieved an outcome nonetheless. The word ちゃんと (properly, as expected) is crucial: the fruit is not accidental. It is real, legitimate, earned. Even failed love, properly understood, is fertile.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. "Feelings May Not Age": The Grammar of Emotional Maturity</h2>
+    <span class="story-label">Famous line</span>
+
+    <p>Another of the novel's most resonant lines separates feeling from its management.</p>
+
+    <div class="passage closet">
+        <div class="jp-text jp">
+            <span class="hl-closet">感情は、歳をとらないのかもしれない。対処の仕方が大人になっていくだけで</span>
+        </div>
+        <div class="romaji">"Kanjō wa, toshi wo toranai no kamoshirenai. Taisho no shikata ga otona ni natte iku dake de."</div>
+        <div class="translation">"Feelings may not grow old. It may be only the way we handle them that becomes adult."</div>
+        <div class="source">— From the novel</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">感情</td><td class="reading">kanjō</td><td>emotion, feeling, sentiment</td></tr>
+        <tr><td class="word">歳をとる</td><td class="reading">toshi wo toru</td><td>to grow old, to age</td></tr>
+        <tr><td class="word">対処</td><td class="reading">taisho</td><td>dealing with, handling, coping</td></tr>
+        <tr><td class="word">仕方</td><td class="reading">shikata</td><td>way of doing, method</td></tr>
+        <tr><td class="word">大人になる</td><td class="reading">otona ni naru</td><td>to become an adult, to mature</td></tr>
+    </table>
+
+    <div class="nuance closet-box">
+        <h5>What translation loses: The separation grammar of だけで</h5>
+        <p><strong>だけで (dake de):</strong> "Only, merely, just by." The sentence ends with だけで, which means "only that, and nothing else." The grammar makes a radical separation between what happens to feelings and what happens to us. Feelings do not age. They remain as raw, as urgent, as unreasonable at forty as they were at sixteen. What ages is not the emotion but the management: 対処の仕方 (taisho no shikata, the way of handling/coping). The adult is not someone who feels differently. The adult is someone who has learned to handle the same feelings with more skill. The grammar of だけで makes this into a minimalist claim: the only thing that changes is the coping. The feelings stay the same. This is both comforting and sobering. Your heart will always be sixteen. Your behavior, however, must learn to be older.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Reader's Recognition: The Grammar of the Battle Outfit</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>A reader who understood the book's central insight named it with military precision.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">彼女たちにとっての服が「戦闘服」のように感じた</span>
+        </div>
+        <div class="romaji">"Kanojo-tachi ni totte no fuku ga 'sentōfuku' no yō ni kanjita."</div>
+        <div class="translation">"The clothes, for them, felt like 'battle outfits.'"</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">戦闘服</td><td class="reading">sentōfuku</td><td>battle gear, combat uniform</td></tr>
+        <tr><td class="word">感じる</td><td class="reading">kanjiru</td><td>to feel, to sense</td></tr>
+        <tr><td class="word">背中を押す</td><td class="reading">senaka wo osu</td><td>to push someone's back, to encourage</td></tr>
+        <tr><td class="word">寄り添う</td><td class="reading">yorisou</td><td>to snuggle up to, to stay close to, to empathize with</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The military tenderness of 戦闘服</h5>
+        <p><strong>戦闘服 (sentōfuku):</strong> "Battle gear, combat uniform." This is a military term. It is what soldiers wear when they go to war. When a reader says that the clothes in Ogata's novel felt like sentōfuku, the word makes the women's emotional lives into a battlefield. Love is not a gentle meadow. It is a combat zone where self-esteem, social position, and future happiness are at stake. The outfit that the select shop owner chooses for each woman is not merely pretty. It is strategic. It is the armor she needs to survive the next confrontation: with the younger man she likes, with the married man she should leave, with the ex-boyfriend whose wedding she must attend. The grammar of 戦闘服 makes fashion into military equipment, and the fitting room into an armory where women prepare for the battles they cannot avoid.</p>
+        <p><strong>背中を押す (senaka wo osu):</strong> "To push someone's back, to encourage." This is a common Japanese idiom for encouragement: you do not push someone forward directly. You push their back, which is the part they cannot see. The push from behind is invisible support, the kind that allows someone to walk toward something scary while believing they are walking on their own. In the novel, the select shop owner pushes the women's backs by choosing clothes that make them feel capable. The clothes do not change the situation. They change the woman's capacity to face it. The grammar of 背中を押す makes encouragement into a form of invisible propulsion, and the shop owner into someone who pushes without being seen.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The "Ambiguity" Interview: The Grammar of Japanese as Emotional Fabric</h2>
+    <span class="story-label">Author interview</span>
+
+    <p>In an interview about the beauty of language, Ogata identified exactly what makes Japanese suitable for emotional precision.</p>
+
+    <div class="passage closet">
+        <div class="jp-text jp">
+            <span class="hl-closet">日本語は解釈の幅がある言語ゆえに曖昧ともいえますが、その柔軟さが魅力だと思います。相手を慮る言葉の選びが多様なことで、わたしたちの人間性を豊かにしてくれる気がします</span>
+        </div>
+        <div class="romaji">"Nihongo wa kaishaku no haba ga aru gengo yue ni aimai to mo iemasu ga, sono jūnan-sa ga miryoku da to omoimasu. Aite wo hakaru kotoba no erabi ga tayō na koto de, watashi-tachi no ningen-sei wo yutaka ni shite kureru ki ga shimasu."</div>
+        <div class="translation">"Japanese is a language with room for interpretation, so it could be called ambiguous, but I think that flexibility is its charm. The diversity of ways to choose words that consider the other person, I feel, enriches our humanity."</div>
+        <div class="source">— Vogue Japan interview</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">解釈</td><td class="reading">kaishaku</td><td>interpretation</td></tr>
+        <tr><td class="word">幅</td><td class="reading">haba</td><td>width, range, latitude</td></tr>
+        <tr><td class="word">曖昧</td><td class="reading">aimai</td><td>ambiguous, vague</td></tr>
+        <tr><td class="word">柔軟さ</td><td class="reading">jūnan-sa</td><td>flexibility, suppleness</td></tr>
+        <tr><td class="word">慮る</td><td class="reading">hakaru</td><td>to consider, to be considerate of</td></tr>
+        <tr><td class="word">人間性</td><td class="reading">ningen-sei</td><td>humanity, human nature</td></tr>
+        <tr><td class="word">豊か</td><td class="reading">yutaka</td><td>rich, abundant, plentiful</td></tr>
+    </table>
+
+    <div class="nuance closet-box">
+        <h5>What translation loses: The social grammar of 相手を慮る</h5>
+        <p><strong>相手を慮る (aite wo hakaru):</strong> "To consider the other person, to be considerate of the other." 慮る (hakaru) is a sophisticated verb. It means not merely to think about someone but to calculate, to take into account, to adjust one's behavior based on a careful assessment of the other's feelings, status, and needs. It is the verb of social intelligence. When Ogata says that Japanese allows for diverse 相手を慮る言葉の選び (ways of choosing words that consider the other person), she is describing the core virtue of Japanese communication: the language forces you to think about who is listening, what they need to hear, and how they will feel when they hear it. The grammar of 慮る makes communication into an act of care, and language choice into a moral decision. This is why Ogata's copy works: she is always writing for a specific woman, at a specific moment, with a specific vulnerability. She is always 慮る-ing her reader.</p>
+        <p><strong>曖昧 (aimai) as virtue:</strong> In Western criticism, ambiguity in language is often treated as a flaw: unclear, imprecise, evasive. Ogata reframes it. Japanese is ambiguous, she says, because it has 解釈の幅 (room for interpretation, width of interpretation). The width is the point. A language with width can accommodate more emotional nuance, more social contexts, more individual situations. It is not that Japanese cannot be precise. It is that Japanese chooses to be spacious. The grammar of 曖昧ともいえますが (it could be called ambiguous, but) makes the admission into a pivot: yes, Japanese is ambiguous. And that ambiguity is exactly what makes it capable of the emotional precision that Ogata's novel achieves. The fitting room is an ambiguous space: are you trying on clothes for yourself, for a man, for a future, for a past? Japanese, Ogata suggests, is the perfect language for that space because it does not force you to choose before you are ready.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Outfit That Makes Tomorrow Possible</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜たら</strong> — If/when (conditional): the grammar of diagnostic tests</li>
+        <li><strong>〜だと思う</strong> — I think that: the grammar of tentative conviction</li>
+        <li><strong>〜ほど</strong> — The more… the more: the grammar of proportional paradox</li>
+        <li><strong>〜たり〜たり</strong> — Doing X and Y alternately: the grammar of emotional oscillation</li>
+        <li><strong>〜未満の、〜以上で</strong> — Less than X, more than Y: the grammar of social positioning</li>
+        <li><strong>〜を捨てる</strong> — To throw away: the grammar of emotional undressing</li>
+        <li><strong>〜と向き合う</strong> — To face/confront: the grammar of turning toward honesty</li>
+        <li><strong>〜だけで</strong> — Only, merely: the grammar of minimalist claims</li>
+        <li><strong>〜に mo, 〜ができている</strong> — Even in… something has formed: the grammar of unexpected fertility</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>試着室</strong> — Fitting room: the confessional where truth happens</li>
+        <li><strong>本気の恋</strong> — Serious love: the root-level emotion the mirror test reveals</li>
+        <li><strong>片思い</strong> — One-sided love: the monologue that liking always is</li>
+        <li><strong>両思い</strong> — Mutual love: the reciprocity that suiting achieves</li>
+        <li><strong>好きは片思い、似合うは両思い</strong> — Liking is one-sided, suiting is mutual: the aphorism that heals</li>
+        <li><strong>運命の一着</strong> — The one fated outfit: the garment that changes the self</li>
+        <li><strong>セレクトショップ</strong> — Select shop: the curated sanctuary in the back alley</li>
+        <li><strong>路地裏</strong> — Back alley: the hidden place where privacy is possible</li>
+        <li><strong>強がり</strong> — Bluff, bravado: the performed strength the mirror strips away</li>
+        <li><strong>諦め</strong> — Resignation: the premature surrender that can be thrown away</li>
+        <li><strong>素直</strong> — Honest, supple: the emotional state that makes change possible</li>
+        <li><strong>恋愛下手</strong> — Clumsy at love: the romantic incompetence that clothes can fix</li>
+        <li><strong>文系女子</strong> — Humanities-type woman: the social type that overthinks romance</li>
+        <li><strong>いったりきたり</strong> — Back and forth: the pendulum between wanting and pretending</li>
+        <li><strong>悪い女</strong> — Bad woman: the one who looks best in modest clothes</li>
+        <li><strong>清楚</strong> — Modest, demure: the innocence that can be strategically worn</li>
+        <li><strong>花嫁未満</strong> — Less than the bride: the dress code of the ex at the wedding</li>
+        <li><strong>わき役以上</strong> — More than an extra: the minimum visibility dignity demands</li>
+        <li><strong>実らなかった恋</strong> — Love that did not bear fruit: the failure that is nonetheless fertile</li>
+        <li><strong>感情は歳をとらない</strong> — Feelings do not age: the constancy of the heart</li>
+        <li><strong>対処の仕方が大人になる</strong> — The way of handling becomes adult: what maturity actually is</li>
+        <li><strong>戦闘服</strong> — Battle outfit: the armor that makes emotional combat survivable</li>
+        <li><strong>背中を押す</strong> — To push someone's back: invisible encouragement</li>
+        <li><strong>相手を慮る</strong> — To consider the other: the moral core of Japanese communication</li>
+        <li><strong>曖昧</strong> — Ambiguous: the spaciousness that allows emotional precision</li>
+        <li><strong>手がける</strong> — To handle with one's hands: the craft of copywriting</li>
+        <li><strong>コピーライター</strong> — Copywriter: the novelist's previous incarnation</li>
+    </ul>
+
+    <h4>Ogata vs. Sano vs. Takita vs. Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Twenty-one directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ハートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ), Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる), Takita's are visual and wobbly (落語劇場, 下町風俗, 吹き出し, 無意味な絵, ふにゃふにゃ, 線のゆらぎ, フラのような間, また夢になるといけねえ, 枕元, 天秤棒, 居候, 番台), Sano's are cool and causative (風鈴, 優雅な推理, 社の用, 1200編, 中庸, アッと言わせる, 知的遊戯, マンネリズムに陥る, 一石を投じる, 揚げ足取り, 名探偵否定論, 淡々, アッケラカン), and Ogata's are sartorial and diagnostic (試着室, 本気の恋, 片思い, 両思い, 運命の一着, 強がり, 諦め, 素直, 戦闘服, 背中を押す, 相手を慮る, 曖昧, 実らなかった恋, 感情は歳をとらない, 悪い女ほど清楚, 花嫁未満, いったりきたり). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. Higashino asks what happens when you love an industry so much that you cannot stop laughing at it. Takita asks what happens when a man who grew up in a vanished downtown tries to draw the spoken stories of an even more vanished downtown, using a line that wobbles like a hula dancer. Sano asks what happens when a newspaper reporter decides that the perfect mystery is one that makes the reader say "a" in a single involuntary syllable. And Ogata asks what happens when a 175cm copywriter who learned that clothes are how you negotiate the world decides that the fitting room is the only honest room in the city, that the right outfit is the only therapy some women can afford, and that if you think of him while trying on a dress, the love is real, whether you want it to be or not. Together these twenty-one works map the full range of Japanese narrative art: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the cage that makes the animal ferocious, to the crossroads where a woman must choose before someone else chooses for her, to the horizon where sky and sea meet and a promise arrives shimmering across the years, to the office at midnight where a blank price column becomes the beginning of everything, to the backstage of a publishing house where a legendary editor makes authors grovel, to the wobbly line that dances Edo back into existence one speech bubble at a time, to the wind chime that rings when the murderer's breath disturbs the air, to the fitting room where a woman stands before a mirror and discovers, because she cannot stop thinking of him, that her heart has already decided what her mind still debates.</p>
+</section>
+
+</main>
+
+</body>
+</html>

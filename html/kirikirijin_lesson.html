@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吉里吉里人 — 井上 ひさし | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-terracotta: #a0522d;
+  --accent-terracotta-dim: #6a3520;
+  --accent-terracotta-glow: rgba(160, 82, 45, 0.12);
+  --accent-gold: #8a7038;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-terracotta-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-terracotta);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-terracotta-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-terracotta-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-terracotta);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-terracotta-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-terracotta), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-terracotta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-terracotta-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-terracotta); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-terracotta-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-terracotta-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-terracotta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-terracotta-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-terracotta);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-terracotta);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-terracotta);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-terracotta-dim), var(--accent-terracotta));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-terracotta);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-terracotta);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-terracotta-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>吉里吉里人</h1>
+  <p class="hero-subtitle">KIRIKIRIJIN</p>
+  <p class="hero-meta">井上 ひさし &middot; 新潮社 1981（単行本）/ 新潮文庫 1985（上中下） &middot; 日本SF大賞 &middot; 読売文学賞 &middot; 星雲賞</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 吉里吉里人</h2>
+  <p class="lead">The title <em>Kirikirijin</em> (吉里吉里人) is a compound noun of extraordinary density: four kanji that contain an entire fictional nation. <em>Kirikiri</em> (吉里吉里) is a reduplicated toponym — the name of a real place in Otsuchi, Iwate Prefecture, on the Pacific coast of northeastern Japan, which Inoue Hisashi borrowed and amplified into the name of an imaginary village, then an imaginary country. The repetition (<em>kiri-kiri</em>) creates a phonetic insistence, a stutter of place that suggests both familiarity and strangeness — this is a real name from a real landscape, but doubled, it becomes something else entirely. The final character <em>jin</em> (人, "person / people") transforms the place into a population: not "Kirikiri" the village but "Kirikiri-jin" — the people of Kirikiri, a nationality, an ethnicity, a new category of human being that did not exist before the novel created it. The grammar is simple — a place name + <em>jin</em> is the standard Japanese way of forming ethnonyms (<em>Nihon-jin</em>, 日本人; <em>Chugoku-jin</em>, 中国人) — but the simplicity is deceptive. By calling his characters "Kirikiri-jin," Inoue performs a radical act of linguistic nation-building: he invents a people by naming them, and he names them using the same grammatical mechanism that the Japanese state uses to define its own citizens. The title is thus both a description and a declaration of independence in linguistic form.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">吉里</span>
+        <span class="romaji">kiri</span>
+        <span class="meaning">"Kiri" — The first half of the reduplicated toponym. The kanji 吉 means "good fortune / auspicious / lucky," and 里 means "village / hamlet / hometown / li" (a traditional unit of distance). Together, 吉里 suggests "auspicious village" or "lucky hamlet" — a name that carries the gentle irony characteristic of Inoue's humor. The real Kirikiri in Otsuchi is a small fishing community; in the novel, it becomes the capital of a nation. The kanji choice is Inoue's own invention — the real place may use different characters or be written in katakana — and this act of rechristening is itself a fictional appropriation, a writer claiming a landscape by giving it a new written form. The phoneme <em>kiri</em> also resonates with other Japanese words: <em>kiri</em> (霧, "fog / mist"), <em>kiri</em> (切り, "cutting"), <em>kiri</em> (桐, "paulownia tree"), creating a halo of associations around the name that the novel exploits — Kirikiri is a place that emerges from fog, that cuts itself off from Japan, that grows like a tree in the reader's imagination.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">吉里（反復）</span>
+        <span class="romaji">kiri-kiri</span>
+        <span class="meaning">"Kirikiri" — The reduplication. In Japanese, reduplicated place names often suggest smallness, intimacy, or childishness (<em>Pompompurin</em>, ポムポムプリン; <em>Doraemon</em>'s <em>Gian</em>'s real name is <em>Jaian</em>, ジャイアン, not reduplicated). But reduplication can also create emphasis or persistence — <em>kiri-kiri</em> sounds like something ongoing, something that will not stop. In the Tohoku dialect, <em>kirikiri</em> is an adverb meaning "tightly / closely / strictly" (<em>kirikiri to shimeru</em>, きりきりと締める, "to tighten securely"), and this semantic layer adds a political dimension to the name: Kirikiri is a place that holds itself tightly together, that closes its borders, that maintains strict control. The reduplication also mimics the rhythm of Tohoku dialect speech — the repetition of sounds, the musicality of northeastern Japanese — so that the name itself performs the linguistic nationalism that the novel will explore. The four characters 吉里吉里 create a visual symmetry on the page, a square of doubling that mirrors the novel's structure: two worlds (Japan and Kirikiri), two languages (standard Japanese and Kirikiri-go), two systems (centralization and autonomy), held in tense, comic opposition.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">人</span>
+        <span class="romaji">jin / hito</span>
+        <span class="meaning">"person / people" — The character 人 is one of the oldest and most fundamental in the Japanese writing system: a simple pictograph of two legs supporting a body, the universal human. When appended to a place name, <em>jin</em> (人) creates an ethnonym — a word for the people who belong to that place. <em>Nihon-jin</em> (日本人) are people of Japan; <em>Kirikiri-jin</em> (吉里吉里人) are people of Kirikiri. The grammar is identical, and this identical grammar is the novel's political point: if "Japanese" is a category created by appending <em>jin</em> to "Nihon," then "Kirikiri-jin" is equally valid as a category, created by the same grammatical rule. The novel's declaration of independence is performed first in the title, which creates a nationality before the first sentence creates a nation. The character 人 also carries philosophical weight in Japanese: it appears in compounds for humanity (<em>jinrui</em>, 人類), human rights (<em>jinken</em>, 人権), and artificiality (<em>ningen</em>, 人間, "human being"). By calling his characters <em>Kirikiri-jin</em>, Inoue places them in this philosophical lineage — they are not merely villagers who have declared independence; they are a new kind of human being, defined by their relationship to a specific place and language. What the English translation "The People of Kirikiri" cannot capture is the compactness of the original: four kanji that do the work of a constitutional assembly.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary context:</strong> The title's structure — place name + <em>jin</em> — places the novel in a tradition of Japanese fiction that invents nations through language. It recalls Shimazaki Toson's <em>Yoake Mae</em> (夜明け前, "Before the Dawn," 1929-1935), which explored the formation of Japanese national identity through regional consciousness, and anticipates Murakami Haruki's <em>Nejimaki-dori Kuronikuru</em> (ねじまき鳥クロニクル, "The Wind-Up Bird Chronicle," 1994-1995), which also invents a fictional nation in Manchuria. But Inoue's invention is unique in its comic audacity: he does not invent a nation in a distant colony or an alternative history; he invents one in the middle of contemporary Japan, on a train line that exists, in a landscape his readers might have passed through. The title's grammar — the simple addition of <em>jin</em> to a real place — makes the impossible sound bureaucratically inevitable.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>井上 ひさし &mdash; Inoue Hisashi</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">井</div>
+    <div class="author-name-block">
+      <h3>井上 ひさし</h3>
+      <p class="author-name-romaji">Inoue Hisashi &middot; November 16, 1934 &ndash; April 9, 2010 &middot; Yamagata / Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Inoue Hisashi was one of the most versatile and beloved writers in postwar Japanese literature — a novelist, playwright, broadcast writer, and essayist whose work moved between high literary seriousness and popular comedy with an ease that few have matched. Born in 1934 in Komatsu-cho, Higashi-Okitama-gun, Yamagata Prefecture (now Kawanishi-machi), he lost his father at age five and grew up reading his father's library — particularly the complete works of Shakespeare in Tsubouchi Shoyo's translation and the <em>Complete Works of Modern Drama</em>. These early encounters with dramatic literature shaped his lifelong commitment to the theater and his understanding of language as performance. After high school in Sendai, he entered Sophia University's Faculty of Letters, German Literature Department, but took a leave of absence and spent over two years in Kamaishi working as a civil servant at the National Kamaishi Sanatorium. He later transferred to the French Department of the Faculty of Foreign Studies, graduating while working as a scriptwriter at the Asakusa France-za, a striptease theater in Tokyo's Asakusa district — an apprenticeship in popular entertainment that would inform his comic genius for decades.</p>
+    <p style="margin-bottom: var(--space-md);">His breakthrough as a broadcast writer came in 1964 when he co-wrote the scripts for NHK's puppet theater series <em>Hyokkori Hyotan-jima</em> (ひょっこりひょうたん島, "The Unexpected Gourd Island"), which ran for five years and became a national phenomenon. The show's theme song — "Naku no wa iya da waracchaou" (泣くのはいやだ笑っちゃおう, "I don't want to cry, let's laugh instead") — might serve as Inoue's artistic manifesto. He made his theatrical debut in 1969 with <em>Nihonjin no Heso</em> (日本人のへそ, "The Navel of the Japanese"), written for the Theater Echo company, and his literary debut as a novelist in 1970. In 1972, he won both the Kishida Kunio Drama Prize and the New Artist Award of the Arts Festival for <em>Dogen no Boken</em> (道元の冒険, "The Adventures of Dogen"), and the Naoki Prize for <em>Tesagari Shinju</em> (手鎖心中, "Handcuffed Double Suicide")  a rare double achievement in drama and fiction in the same year.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Kirikirijin</em> (吉里吉里人, 1981) was the work that confirmed Inoue's status as a major novelist beyond the theater. Serialized in <em>Shosetsu Shincho</em> from May 1978 to September 1980 (after an earlier, incomplete serialization in <em>Shumatsu Kara</em> from 1973-1974), the novel won the 2nd Japan SF Prize, the 33rd Yomiuri Prize for Literature, and the 13th Seiun Award — a triple crown that recognized its achievement across genre boundaries. The novel's origins lay even earlier: in 1964, Inoue had written a radio drama called <em>Kirikiri Dokuritsu-su</em> (吉里吉里独立す, "Kirikiri Declares Independence"), which contained the seed of the novel's premise. Inoue's career continued with major works in every decade: <em>Yabuhara Kengyo</em> (藪原検校, 1973, play), <em>Shinsetsu Tono Monogatari</em> (新釈遠野物語, 1976), <em>Yon-senmanpo no Otoko</em> (四千万歩の男, 1986), <em>Fuchu Koroki</em> (腹鼓記), <em>Fuchu Koroki</em> (不忠臣蔵, which won the Yoshikawa Eiji Prize), <em>Shanhai Mun</em> (シャンハイムーン, 1991, which won the Tanizaki Prize), and <em>Tokyo Seven Roses</em> (東京セブンローズ, 1999, which won the Kikuchi Kan Prize). In 1984, he formed his own theater company, Komatsu-za (こまつ座), for which he wrote and produced numerous plays. He served as president of the Japan PEN Club from 2003 to 2007, was named a Person of Cultural Merit in 2004, and received the Japan Art Academy Prize Imperial Gift in 2009. He died of lung cancer in 2010 at his home in Kamakura at the age of 75.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Inoue's work across genres is his belief in laughter as a form of intelligence. He was a writer of the left — a member of the Article 9 Association (九条の会), critical of militarism and centralization — but his politics were always expressed through comedy rather than polemic. <em>Kirikirijin</em> is his most sustained political work, yet it is also one of his funniest: a novel in which armed farmers stop a train with hunting rifles and demand to see passports, in which the national assembly meets in a converted charcoal bus, in which the declaration of independence is delivered in a dialect that the Japanese government cannot understand. The comedy is not an escape from politics but its medium: Inoue believed that laughter could disarm power, that absurdity could reveal the absurdity of the powerful, and that a small village speaking its own language could be more revolutionary than any manifesto.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1934</span>
+        <span>Born November 16 in Komatsu-cho, Yamagata Prefecture (now Kawanishi-machi). Father dies when he is five; grows up reading his father's library of Shakespeare and modern drama.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1953</span>
+        <span>Enters Sophia University, German Literature Department. Takes leave of absence and spends over two years in Kamaishi as a civil servant at the National Kamaishi Sanatorium. Returns to university in the French Department of the Faculty of Foreign Studies.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1960s</span>
+        <span>Works as a scriptwriter at the Asakusa France-za, a striptease theater in Tokyo, while completing his degree. Begins writing radio dramas and broadcast scripts. The popular theater environment shapes his comic timing and ear for dialogue.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1964</span>
+        <span>Co-writes the scripts for NHK's puppet theater series <em>Hyokkori Hyotan-jima</em> (ひょっこりひょうたん島), which runs for five years and becomes a national sensation. The show's blend of music, puppetry, and gentle satire establishes Inoue's popular appeal.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1964</span>
+        <span>Writes the radio drama <em>Kirikiri Dokuritsu-su</em> (吉里吉里独立す, "Kirikiri Declares Independence"), the seed from which the novel <em>Kirikirijin</em> will eventually grow. The premise — a village declares independence from Japan — is already present.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1969</span>
+        <span>Theatrical debut with <em>Nihonjin no Heso</em> (日本人のへそ, "The Navel of the Japanese"), written for the Theater Echo company. Establishes himself as a playwright of the new generation.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1970</span>
+        <span>Literary debut as a novelist. The same year sees the publication of <em>Bun to Fun</em> (ブンとフン), confirming his double identity as novelist and playwright.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1972</span>
+        <span>An extraordinary year: wins the Kishida Kunio Drama Prize and the Arts Festival New Artist Award for <em>Dogen no Boken</em> (道元の冒険), and the Naoki Prize for <em>Tesagari Shinju</em> (手鎖心中). Confirmed as a major voice in both drama and fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1973-74</span>
+        <span>An early version of <em>Kirikirijin</em> is serialized in <em>Shumatsu Kara</em> (終末から) by Chikuma Shobo, with illustrations by Sasaki Maki. The serialization is left incomplete when the magazine ceases publication.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1973</span>
+        <span>Publishes the play <em>Yabuhara Kengyo</em> (藪原検校), which becomes one of his most performed works and confirms his reputation as Japan's leading comic playwright.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1978-80</span>
+        <span>Serializes <em>Kirikirijin</em> in <em>Shosetsu Shincho</em> (小説新潮) from May 1978 to September 1980. The full version allows Inoue to develop the novel's political, linguistic, and comic dimensions at epic length.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1981</span>
+        <span>Publishes <em>Kirikirijin</em> in hardcover by Shinchosha (834 pages), with cover illustrations by Anno Mitsumasa (安野光雅). Wins the 2nd Japan SF Prize, confirming the novel's genre-crossing achievement.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1982</span>
+        <span>Wins the 33rd Yomiuri Prize for Literature (Novel category) and the 13th Seiun Award (Japanese Long Form) for <em>Kirikirijin</em> — a triple crown of SF, literary, and popular recognition.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1984</span>
+        <span>Forms the theater company Komatsu-za (こまつ座), named after his birthplace, serving as its resident playwright. The company becomes the primary vehicle for his theatrical work for the rest of his life.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1985</span>
+        <span><em>Kirikirijin</em> is published in Shinchosha Bunko (新潮文庫) in three volumes (upper, middle, lower), making the epic novel accessible to a mass readership and confirming its status as a modern classic.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1991</span>
+        <span>Wins the Tanizaki Prize for <em>Shanhai Mun</em> (シャンハイムーン), a novel of Shanghai that demonstrates his ability to handle historical and international themes with the same comic precision.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1999</span>
+        <span>Wins the Kikuchi Kan Prize for <em>Tokyo Seven Roses</em> (東京セブンローズ), confirming his late-career powers.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2003-07</span>
+        <span>Serves as president of the Japan PEN Club, advocating for writers' freedom and international literary exchange.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2004</span>
+        <span>Named a Person of Cultural Merit (文化功労者), the Japanese government's highest honor for artists and scholars.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2009</span>
+        <span>Receives the Japan Art Academy Prize Imperial Gift (日本藝術院賞恩賜賞), one of the most prestigious honors in Japanese arts.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Dies April 9 at his home in Kamakura, Kanagawa Prefecture, of lung cancer, at age 75. Leaves behind a body of work that spans novels, plays, essays, broadcast scripts, and puppet theater — one of the most diverse and beloved careers in Japanese literary history.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>手鎖心中</h4>
+        <p class="char-role">Tesagari Shinju / Handcuffed Double Suicide &middot; 1972</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the Naoki Prize. A comic reimagining of the <em>shinju</em> (double suicide) tradition of Edo-period theater, rendered with Inoue's characteristic wit and historical erudition.</p>
+      </div>
+      <div class="char-card">
+        <h4>藪原検校</h4>
+        <p class="char-role">Yabuhara Kengyo &middot; 1973</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">One of his most performed plays — a comic masterpiece about a blind <em>kengyo</em> (master musician) that demonstrates Inoue's deep engagement with Japanese performing arts traditions.</p>
+      </div>
+      <div class="char-card">
+        <h4>吉里吉里人</h4>
+        <p class="char-role">Kirikirijin / The People of Kirikiri &middot; 1981</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the Japan SF Prize, Yomiuri Prize for Literature, and Seiun Award. His most ambitious novel — an epic of linguistic nationalism, agricultural resistance, and comic utopia set in a village that declares independence from Japan.</p>
+      </div>
+      <div class="char-card">
+        <h4>シャンハイムーン</h4>
+        <p class="char-role">Shanhai Mun / Shanghai Moon &middot; 1991</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the Tanizaki Prize. A historical novel of Shanghai that moves beyond Japan to explore the cosmopolitanism and violence of prewar Asia — Inoue at his most internationally expansive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters</h2>
+
+  <div class="card">
+    <h3>Main Characters</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>古橋 健二</h4>
+        <p class="char-role">Furahashi Kenji / The Novelist</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A novelist and the novel's protagonist. He is traveling on the express train <em>Towada 3</em> (十和田3号) from Ueno to Aomori on assignment for the magazine <em>Tabi to Rekishi</em> (旅と歴史, "Travel and History") when the train is stopped at Sekiheki (赤壁, "Red Cliff"), near Ichinoseki, by armed men. Kenji becomes the first writer to visit the newly independent nation of Kirikiri, and the novel follows his perspective as he is drawn into the chaos, comedy, and idealism of the separatist state. As a novelist, he is both observer and participant — his profession gives him access to the inner workings of the new country, but his Japanese identity makes him an outsider in a nation that has just declared itself no longer Japanese. Kenji is Inoue's surrogate: a writer from Tokyo who discovers that the provinces contain a vitality, a humor, and a political imagination that the capital has forgotten.</p>
+      </div>
+      <div class="char-card">
+        <h4>佐藤 久夫</h4>
+        <p class="char-role">Sato Hisao / The Editor</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Kenji's editor at <em>Tabi to Rekishi</em>, traveling with him on the fateful train. Sato represents the publishing industry's relationship to literature — practical, deadline-oriented, always thinking about the marketability of a story. His presence alongside Kenji creates a double perspective: the writer who wants to understand and the editor who wants to sell. As the Kirikiri crisis unfolds, Sato's concerns about getting the story back to Tokyo contrast with Kenji's growing identification with the Kirikiri cause, and this tension becomes one of the novel's running comic threads.</p>
+      </div>
+      <div class="char-card">
+        <h4>吉里吉里の農民たち</h4>
+        <p class="char-role">The Farmers of Kirikiri</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The collective protagonist of the novel — the 4,187 residents of Kirikiri Village who declare independence from Japan. They are not revolutionary ideologues but ordinary farmers driven to extraordinary action by decades of agricultural neglect. Their grievances are specific and economic: Japan's postwar industrialization has devalued their labor, centralized policymaking has ignored their needs, and the government's agricultural policy has treated them as expendable. Their revolution is not armed in the conventional sense — they have hunting rifles, not armies — but it is armed with something more powerful: a language (Kirikiri-go), a currency (the <em>yen</em>, イエン, distinct from the Japanese yen), and a constitutional principle ("Medical Nation, Agricultural Nation, Lustful Nation" / 医学立国、農業立国、好色立国). Inoue treats them with a mixture of comedy and respect that is the novel's ethical achievement: he laughs at their absurdities without ever laughing <em>at</em> them, and he celebrates their resistance without romanticizing their contradictions.</p>
+      </div>
+      <div class="char-card">
+        <h4>防衛同好会</h4>
+        <p class="char-role">The Defense Association</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Kirikiri's militia — a "defense association" (<em>boei dokokai</em>) rather than an army, composed of local farmers with hunting rifles who monitor the borders by land and air. The name itself is comic: a <em>dokokai</em> (同好会) is a hobby club, the kind of organization formed by people who share an interest in photography or hiking. That Kirikiri's national defense is a "hobby club" is both a joke and a serious political statement — it suggests that defense, in a truly autonomous community, is everyone's responsibility and everyone's interest, not a specialized profession. The Defense Association's methods are as unorthodox as their name: they stop trains, patrol skies, and use the landscape they know intimately as their primary weapon against the Japanese state's vastly superior forces.</p>
+      </div>
+      <div class="char-card">
+        <h4>日本政府・自衛隊</h4>
+        <p class="char-role">The Japanese Government & JSDF</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The antagonists of the novel — not as villains but as bureaucratic entities that cannot comprehend what has happened. The Japanese government's response to Kirikiri's declaration is a masterpiece of Inoue's satirical method: the officials do not know whether to treat the secession as a joke, a crime, or an international incident. The Japan Self-Defense Forces (JSDF) are dispatched to retrieve the "nation's greatest trump card" — the 40,000 tons of gold that the Kirikiri farmers claim as their sovereign fund (allegedly hidden by Fujiwara Kiyohira, the founder of the Oshu Fujiwara dynasty, in the 12th century). The government's inability to take Kirikiri seriously until it is too late is the novel's central political joke: a superpower brought low by its own arrogance, defeated not by force but by the refusal of a small village to play by its rules.</p>
+      </div>
+      <div class="char-card">
+        <h4>藤原 清衡</h4>
+        <p class="char-role">Fujiwara Kiyohira / The Historical Patron</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Though long dead (1056-1128), the founder of the Oshu Fujiwara dynasty in Hiraizumi haunts the novel as a kind of patron saint. The Kirikiri farmers claim that Kiyohira hid 40,000 tons of gold in their territory, and this legendary treasure becomes the financial foundation of their independent state. Kiyohira represents the deep history of Tohoku — a region that was once the center of Japanese civilization (the Hiraizumi temples were rivals to Kyoto) before being marginalized by the rise of the Kanto and Kansai plains. By invoking Kiyohira, the Kirikiri farmers connect their contemporary rebellion to a thousand-year history of Tohoku resistance to central rule, and they transform a local legend into a national origin myth. Inoue's use of Kiyohira is characteristic of his historical method: he treats legend as a form of political capital, a story that becomes true because people act as if it were true.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Train Stops at Red Cliff</h3>
+    <p>The novel opens with a scene of comic shock: on an early June morning, the express train <em>Towada 3</em> (十和田3号), bound from Ueno to Aomori, is brought to an emergency halt near Sekiheki (赤壁, "Red Cliff") station, between Ichinoseki and the border of Iwate Prefecture. Armed men board the train carrying hunting rifles and demand to see the passengers' passports. "<em>Anda ryogen ba motte e da ga</em>" (あんだ旅券ば持って居だが) — "You got your passport?" — they ask, in a dialect that the passengers cannot quite place. It is not standard Japanese, not quite Tohoku dialect, but something else — the first inkling the passengers (and readers) have that the linguistic rules have changed.</p>
+    <p style="margin-top: var(--space-sm);">On this morning at 6:00 AM, the village of Kirikiri — population 4,187, located on the border of Miyagi and Iwate Prefectures — has unilaterally declared its separation and independence from Japan. The reason, the novel will reveal, is decades of accumulated grievance: Japan's postwar agricultural policy has systematically devalued farming, centralized decision-making in Tokyo has ignored the needs of rural communities, and the farmers of Kirikiri have reached a breaking point. But the declaration is not delivered as a manifesto; it is delivered as a fait accompli, announced by armed farmers on a train, in a language that the Japanese state does not recognize as legitimate. The comedy of the opening — the absurdity of a passport check on a domestic train — is also the announcement of a serious political claim: if you will not recognize us as Japanese, we will stop being Japanese.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Nation of Kirikiri</h3>
+    <p>The Kirikiri farmers have not merely declared independence; they have built a state. Their sovereign fund is the legendary 40,000 tons of gold allegedly hidden by Fujiwara Kiyohira, which they claim as historical reparations for a thousand years of Tohoku marginalization. Their currency is the <em>yen</em> (イエン), distinct from the Japanese yen and backed by this gold reserve. Their national language is Kirikiri-go (吉里吉里語), a standardized version of the local Tohoku dialect, elevated from "hick speech" to national tongue. Their legislature meets in a converted charcoal bus (国会議事堂車, "National Diet Building Vehicle") that tours the country, bringing democracy to the people rather than requiring the people to come to the capital. Their defense is handled by the Defense Association (<em>boei dokokai</em>), a militia of farmers with hunting rifles who know every path and hill of their territory. Their constitution is summed up in three principles: "Medical Nation, Agricultural Nation, Lustful Nation" (医学立国、農業立国、好色立国) — a triad that replaces Japan's "Peace Nation" (<em>heiwa kokka</em>) with a more earthy, bodily set of priorities.</p>
+    <p style="margin-top: var(--space-sm);">Inoue devotes hundreds of pages to the detailed working-out of this imaginary state: its economy, its foreign relations, its legal system, its cultural policies. This is the novel's great formal achievement — it does not merely describe a utopia; it builds one, brick by brick, joke by joke, in the same way that the Kirikiri farmers build their nation. The reader learns how the Kirikiri currency appreciates against the Japanese yen, how international corporations attempt to invest in the new country, how assassins and detectives infiltrate from outside, and how the JSDF mobilizes to reclaim the gold. The novel's middle section is a political thriller disguised as a comedy, a <em>state-building simulator</em> rendered in prose.</p>
+  </div>
+
+  <div class="card">
+    <h3>Language as Revolution</h3>
+    <p>The deepest revolution in <em>Kirikirijin</em> is not political or economic but linguistic. The Kirikiri farmers do not merely reject Tokyo's rule; they reject Tokyo's language. Kirikiri-go (吉里吉里語) is the novel's most brilliant invention — a fully realized fictional language based on Tohoku dialect but systematized, codified, and elevated to the status of a national tongue. The particle <em>ba</em> (ば) replaces standard Japanese <em>wo</em> (を) and <em>wa</em> (は); the copula <em>de gasu</em> (でがす) and <em>da ga</em> (だが) replace <em>desu</em> (です); the sentence-ending <em>dat-cha</em> (だっちゃ) and <em>be-na</em> (べな) create a rhythmic, musical syntax that is unmistakably Tohoku yet newly authoritative.</p>
+    <p style="margin-top: var(--space-sm);">For Inoue, this linguistic secession is the novel's true subject. He had spent his career moving between registers — between the French he studied at university, the German of his early major, the standard Japanese of Tokyo literature, the Asakusa dialect of popular theater, and the Tohoku dialect of his childhood. <em>Kirikirijin</em> is his declaration that all of these languages are equal, that no dialect is "standard" and all others "deviant," and that the power to name, to legislate language, is the power that underlies all other powers. The Japanese government's inability to understand Kirikiri-go is not merely a comic device; it is a political diagnosis. A state that cannot comprehend the language of its own citizens has already lost the moral authority to govern them.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Collapse and the Legacy</h3>
+    <p>The novel's tragicomic climax arrives with the collapse of the Kirikiri state — on the second day of independence, the utopia begins to unravel. The Japanese government, having failed to comprehend the situation, resorts to force; the JSDF moves to seize the gold; foreign assassins and domestic detectives converge on the village; and the first casualties of the independence movement fall. The comic novel becomes, briefly, a tragedy — not because Inoue believes that resistance is futile, but because he knows that the powerful do not surrender their power willingly, and that the laughter of the weak is always shadowed by the violence of the strong.</p>
+    <p style="margin-top: var(--space-sm);">Yet the novel's ending is not despairing. Even as the Kirikiri state collapses, its linguistic and imaginative legacy persists. The farmers have demonstrated that another Japan is possible — a Japan of regional languages, agricultural dignity, and decentralized power. They have shown that a village of 4,187 people can bring a nation of 120 million to a halt, if it has the courage to speak in its own voice. The novel's final meaning is not in the success or failure of the Kirikiri state but in the fact that it existed at all — that for two days, in the imagination of a novelist and the actions of his characters, a different Japan was real. Inoue's genius is to make the reader feel that this two-day nation was worth more than the permanent state that destroyed it.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Centralization vs. regional autonomy:</strong> The novel's political core is a critique of postwar Japanese centralization — the concentration of economic, political, and cultural power in Tokyo at the expense of rural and regional communities. Kirikiri's independence is a fantasy of reversal: what if the periphery could secede from the center?</li>
+      <li style="margin-bottom: 0.5em;"><strong>Language and power:</strong> The elevation of Tohoku dialect to a national language is the novel's most radical gesture. Inoue treats linguistic standardization as a form of colonialism and dialect revival as a form of decolonization. Kirikiri-go is not merely a comic device but a political program.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Agricultural dignity:</strong> The farmers' grievances are economic and moral: Japan has treated agriculture as a backward sector to be sacrificed for industrial growth. Kirikiri's "Agricultural Nation" principle is a reclamation of farming as a noble, foundational activity.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Comedy as resistance:</strong> Inoue's method throughout is to make the powerful ridiculous and the ridiculous powerful. The comedy of <em>Kirikirijin</em> is not an escape from politics but its most effective weapon — laughter disarms authority, and absurdity reveals the absurdity of power.</li>
+      <li><strong>History as resource:</strong> The invocation of Fujiwara Kiyohira and the Oshu Fujiwara dynasty transforms local legend into political capital. Inoue shows that history is not merely the past but a toolbox for the present — a set of stories that can be mobilized, reinterpreted, and deployed.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the novel's tonal range — from the shock of the train stopping to the linguistic comedy of Kirikiri-go to the political philosophy of the three national principles.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Passport Check</div>
+    <div class="passage-jp">
+      「あんだ旅券ば持って居だが」
+    </div>
+    <div class="passage-romaji">
+      "Anda ryogen ba motte e da ga."
+    </div>
+    <div class="passage-en">
+      "You got your passport?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening line — spoken by an armed farmer boarding a domestic express train in northeastern Japan, and it is one of the most politically charged first sentences in Japanese literature. The grammar is Kirikiri-go, not standard Japanese, and every element performs a revolutionary function. <em>Anda</em> (あんだ) is the Kirikiri-go second-person pronoun, corresponding to standard Japanese <em>anata</em> (あなた) but stripped of politeness and urbanity — it is the "you" of equals, or of superiors addressing inferiors, and its use by a farmer to a train passenger immediately inverts the social hierarchy. <em>Ryogen</em> (旅券) is the formal word for "passport" (<em>ryoken</em> in standard Japanese), but the Kirikiri pronunciation shifts the vowel, making the familiar word strange — a technique Inoue uses throughout to create the effect of a language that is almost Japanese but not quite. The particle <em>ba</em> (ば) replaces standard Japanese <em>wo</em> (を) or <em>wa</em> (は), marking the object or topic with the Tohoku dialect form. <em>Motte e</em> (持って居) is the continuative form of <em>motsu</em> (持つ, "to hold / to have") combined with the progressive auxiliary <em>iru</em> (居る, "to be"), rendered in the Tohoku form <em>e</em> instead of <em>iru</em> or <em>oru</em>. The final <em>da ga</em> (だが) is the Kirikiri copula, replacing standard <em>desu ka</em> (ですか) or <em>arimasu ka</em> (ありますか), with the question function carried by intonation rather than the interrogative particle <em>ka</em>. What is lost in English is the entire political grammar of the sentence. "You got your passport?" is a plausible English translation of the meaning, but it sounds like a casual border check — an American TSA agent at an airport. The original is something far more radical: a farmer speaking a language that the Japanese state considers inferior, demanding documentation that the Japanese state does not require, on a train that the Japanese state considers its own territory. The sentence performs a triple usurpation: of language (dialect over standard), of authority (farmer over passenger), and of territory (Kirikiri over Japan). The English reader receives information; the Japanese reader receives a declaration of independence in seven words.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">Love Your Language</div>
+    <div class="passage-jp">
+      俺達の国語ば可愛がれ
+    </div>
+    <div class="passage-romaji">
+      "Oretachi no kokugo ba kawaigare."
+    </div>
+    <div class="passage-en">
+      "Love our national language."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the title of Chapter 2, and it is the novel's linguistic manifesto in five words. The grammar is deceptively simple: <em>oretachi no kokugo</em> (俺達の国語, "our national language") + <em>ba</em> (ば, object marker) + <em>kawaigare</em> (可愛がれ, imperative of <em>kawaigaru</em>, 可愛がる, "to love / to cherish / to treat with affection"). But each word carries layers of political and emotional weight. <em>Oretachi</em> (俺達) is the rough, masculine first-person plural — "we guys," "us fellas" — the pronoun of working men, not the refined <em>watashitachi</em> (私達) of standard Japanese. By using <em>oretachi</em>, the title claims the national language for the working class, the farmers, the dialect speakers whom standard Japanese has marginalized. <em>Kokugo</em> (国語, "national language") is the official term for Japanese in the education system — the subject taught in schools, the language of the state. By claiming <em>kokugo</em> status for Kirikiri-go, the title performs a constitutional act: it declares that Kirikiri-go is not a dialect (<em>hogen</em>, 方言) but a national language (<em>kokugo</em>), with all the institutional authority that term implies. The verb <em>kawaigare</em> (可愛がれ) is the imperative form of <em>kawaigaru</em> (可愛がる), a verb of deep affection — not merely "like" (<em>suki ni naru</em>) or "respect" (<em>sonkei suru</em>) but "love as one loves a child or a pet." <em>Kawaigaru</em> suggests nurturing, protecting, and taking pleasure in the beloved's growth. The imperative is directed at the reader, at the Japanese public, at anyone who encounters Kirikiri-go: love this language, care for it, help it grow. The particle <em>ba</em> (ば) marks "our national language" as the object of this imperative love, and the absence of any subject (who should love it?) makes the command universal. What is lost in English is the tenderness of <em>kawaigaru</em> — "love" is too generic, "cherish" too formal. The title asks for a familial, bodily affection for a language, the kind of love one has for something that is both dependent and precious. It is a mother's command to her children: love your little sister. The grammar makes language into kin.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Three Principles</div>
+    <div class="passage-jp">
+      医学立国、農業立国、好色立国
+    </div>
+    <div class="passage-romaji">
+      "Igaku rikkoku, nogyo rikkoku, koshoku rikkoku."
+    </div>
+    <div class="passage-en">
+      "Medical Nation, Agricultural Nation, Lustful Nation."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This triad is the constitutional foundation of Kirikiri State — its answer to Japan's postwar principle of "Peace Nation" (<em>heiwa kokka</em>, 平和国家). The grammar is a classical Japanese rhetorical form: three noun phrases in parallel, each consisting of a field (<em>igaku</em>, 医学, "medicine"; <em>nogyo</em>, 農業, "agriculture"; <em>koshoku</em>, 好色, "lust / eroticism") + <em>rikkoku</em> (立国, "nation-building / founding principle"). The <em>rikkoku</em> construction is the same used in historical phrases like <em>bunbu rikkoku</em> (文武立国, "founding the nation on civil and military arts") and <em>shinto rikkoku</em> (神道立国, "founding the nation on Shinto"). By adopting this classical form, Kirikiri claims historical legitimacy: its principles are expressed in the same grammatical structure used by Japanese states for a thousand years. The first two principles — Medical Nation and Agricultural Nation — are serious political statements. "Medical Nation" asserts that healthcare is a fundamental responsibility of the state, not a commodity to be purchased. "Agricultural Nation" asserts that farming is the foundation of national life, not a sector to be sacrificed for industrial growth. Both are direct critiques of Japanese policy, which had privatized healthcare and devalued agriculture. The third principle — <em>koshoku rikkoku</em> (好色立国, "Lustful Nation") — is where Inoue's comedy enters the constitution. <em>Koshoku</em> (好色) means "lustfulness / amorousness / fondness for sensual pleasure" and is the word used to describe the eroticism of writers like Ihara Saikaku (井原西鶴) or the "shunpon" (春画, erotic prints) of ukiyo-e. To make lust a founding principle of the state is absurd — and precisely the point. Inoue is saying that a nation founded only on medicine and agriculture would be worthy but dull; a nation needs pleasure, eros, the body as well as the breadbasket and the hospital. The triad thus contains Inoue's entire philosophy: a state should care for its people's bodies (medicine), feed them (agriculture), and give them joy (lust). What is lost in English is the shock of seeing <em>koshoku</em> in a constitutional context. In Japanese, <em>koshoku</em> is a literary word, associated with the <em>ukiyo</em> (浮世, "floating world") of Edo-period pleasure districts. To place it alongside <em>igaku</em> and <em>nogyo</em> — sober, modern, policy-oriented words — creates a comic collision of registers that English "Lustful Nation" cannot fully reproduce. "Lustful" in English sounds merely vulgar or comic; <em>koshoku</em> in Japanese carries the aroma of literature, of Saikaku and ukiyo-e, of a tradition of erotic art that the modern Japanese state has repressed. The triad is thus not only funny; it is a reclamation of Japan's repressed erotic tradition as a national value.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Quiet Eyes</div>
+    <div class="passage-jp">
+      吉里吉里人は眼はァ静がで
+    </div>
+    <div class="passage-romaji">
+      "Kirikiri-jin wa me wa shizuka de."
+    </div>
+    <div class="passage-en">
+      "The people of Kirikiri have quiet eyes."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the title of Chapter 3, and it is the novel's most poetic statement of national character. The grammar is a topic-description construction: <em>Kirikiri-jin wa</em> (吉里吉里人は, "as for the people of Kirikiri") + <em>me wa</em> (眼は, "as for [their] eyes") + <em>shizuka de</em> (静かで, "quiet [and...]"). The <em>de</em> (で) ending is the continuative form of the copula <em>da</em> (だ), suggesting that the sentence continues — their eyes are quiet, and... what? The trailing <em>de</em> creates a sense of unfinished observation, as if the narrator has noticed something that cannot be fully captured in words. The word <em>shizuka</em> (静か, "quiet / calm / still") is one of the most aesthetically charged words in Japanese. It describes not merely the absence of noise but a positive quality of being — the stillness of a pond, the hush of snowfall, the composure of someone who has made a difficult decision. To say that the Kirikiri people have "quiet eyes" is to describe a national temperament: they are not agitated, not hysterical, not fanatical. Their revolution is conducted with the calm of people who have thought carefully about what they are doing. The grammar of <em>me wa shizuka de</em> also contains a subtle emphasis: by topicalizing <em>me</em> (眼, "eyes") with <em>wa</em> (は), the sentence draws attention to the eyes specifically — the windows of the soul — rather than making a general claim about their character. It is their eyes that are quiet, and in Japanese aesthetics, the eyes are the seat of <em>kokoro</em> (心, "heart / mind"). The title thus suggests that the Kirikiri people's inner selves are calm, resolved, at peace with their radical action. What is lost in English is the specifically Japanese aesthetic resonance of <em>shizuka</em> and its association with moral composure. "Quiet eyes" in English might suggest shyness or dullness; <em>me wa shizuka</em> in Japanese suggests depth, deliberation, and the stillness that comes from knowing one's own mind. The title is a portrait in four words — a national character drawn not through action but through gaze.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the world of Kirikiri — its politics, language, agriculture, and revolutionary comedy.</p>
+
+  <div class="card">
+    <h3>Kirikiri State & Politics</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>吉里吉里国</td><td>Kirikiri-koku</td><td class="pos">noun</td><td>Kirikiri State / Nation</td></tr>
+        <tr><td>吉里吉里人</td><td>Kirikiri-jin</td><td class="pos">noun</td><td>people of Kirikiri</td></tr>
+        <tr><td>吉里吉里語</td><td>Kirikiri-go</td><td class="pos">noun</td><td>Kirikiri language</td></tr>
+        <tr><td>分離独立</td><td>bunri dokuritsu</td><td class="pos">noun</td><td>separation and independence</td></tr>
+        <tr><td>独立宣言</td><td>dokuritsu sengen</td><td class="pos">noun</td><td>declaration of independence</td></tr>
+        <tr><td>旅券</td><td>ryogen / ryoken</td><td class="pos">noun</td><td>passport</td></tr>
+        <tr><td>国会議事堂車</td><td>kokkai gijido-sha</td><td class="pos">noun</td><td>National Diet Building Vehicle</td></tr>
+        <tr><td>防衛同好会</td><td>boei dokokai</td><td class="pos">noun</td><td>Defense Association (militia)</td></tr>
+        <tr><td>切り札</td><td>kiri fuda</td><td class="pos">noun</td><td>trump card</td></tr>
+        <tr><td>立国</td><td>rikkoku</td><td class="pos">noun</td><td>nation-building / founding principle</td></tr>
+        <tr><td>金本位制</td><td>kin hon'i-sei</td><td class="pos">noun</td><td>gold standard</td></tr>
+        <tr><td>自給自足</td><td>jikyu jisoku</td><td class="pos">noun</td><td>self-sufficiency</td></tr>
+        <tr><td>通貨</td><td>tsuka</td><td class="pos">noun</td><td>currency</td></tr>
+        <tr><td>イエン</td><td>ien</td><td class="pos">noun</td><td>yen (Kirikiri currency)</td></tr>
+        <tr><td>憲法</td><td>kenpo</td><td class="pos">noun</td><td>constitution</td></tr>
+        <tr><td>不法侵入</td><td>fuhō shinnyu</td><td class="pos">noun</td><td>trespass / illegal entry</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Kirikiri Language & Dialect</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>方言</td><td>hogen</td><td class="pos">noun</td><td>dialect</td></tr>
+        <tr><td>国語</td><td>kokugo</td><td class="pos">noun</td><td>national language</td></tr>
+        <tr><td>標準語</td><td>hyojun-go</td><td class="pos">noun</td><td>standard language</td></tr>
+        <tr><td>ば</td><td>ba</td><td class="pos">particle</td><td>Kirikiri object/topic marker</td></tr>
+        <tr><td>でがす</td><td>de gasu</td><td class="pos">copula</td><td>Kirikiri polite copula</td></tr>
+        <tr><td>だが</td><td>da ga</td><td class="pos">copula</td><td>Kirikiri plain copula (question)</td></tr>
+        <tr><td>だっちゃ</td><td>dat-cha</td><td class="pos">auxiliary</td><td>Kirikiri sentence ending</td></tr>
+        <tr><td>べな</td><td>be-na</td><td class="pos">auxiliary</td><td>Tohoku exclamatory/sentence end</td></tr>
+        <tr><td>あんだ</td><td>anda</td><td class="pos">pronoun</td><td>Kirikiri "you"</td></tr>
+        <tr><td>俺達</td><td>oretachi</td><td class="pos">pronoun</td><td>"we" (rough, masculine)</td></tr>
+        <tr><td>東北弁</td><td>Tohoku-ben</td><td class="pos">noun</td><td>Tohoku dialect</td></tr>
+        <tr><td>語尾</td><td>gobi</td><td class="pos">noun</td><td>sentence ending</td></tr>
+        <tr><td>言語</td><td>gengo</td><td class="pos">noun</td><td>language</td></tr>
+        <tr><td>発音</td><td>hatsuon</td><td class="pos">noun</td><td>pronunciation</td></tr>
+        <tr><td>訛り</td><td>namari</td><td class="pos">noun</td><td>accent / dialectal pronunciation</td></tr>
+        <tr><td>言葉遣い</td><td>kotoba-zukai</td><td class="pos">noun</td><td>word usage / speech</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Agriculture, Region & History</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>農業</td><td>nogyo</td><td class="pos">noun</td><td>agriculture / farming</td></tr>
+        <tr><td>農民</td><td>nomin</td><td class="pos">noun</td><td>farmer / peasant</td></tr>
+        <tr><td>寒村</td><td>kanson</td><td class="pos">noun</td><td>poor village / remote hamlet</td></tr>
+        <tr><td>東北</td><td>Tohoku</td><td class="pos">noun</td><td>northeastern Japan (region)</td></tr>
+        <tr><td>岩手県</td><td>Iwate-ken</td><td class="pos">noun</td><td>Iwate Prefecture</td></tr>
+        <tr><td>宮城県</td><td>Miyagi-ken</td><td class="pos">noun</td><td>Miyagi Prefecture</td></tr>
+        <tr><td>大槌町</td><td>Otsuchi-cho</td><td class="pos">noun</td><td>Otsuchi Town</td></tr>
+        <tr><td>一ノ関</td><td>Ichinoseki</td><td class="pos">noun</td><td>Ichinoseki (city)</td></tr>
+        <tr><td>藤原清衡</td><td>Fujiwara Kiyohira</td><td class="pos">noun</td><td>Fujiwara Kiyohira (1056-1128)</td></tr>
+        <tr><td>奥州藤原氏</td><td>Oshu Fujiwara-shi</td><td class="pos">noun</td><td>Oshu Fujiwara clan</td></tr>
+        <tr><td>黄金</td><td>ogane</td><td class="pos">noun</td><td>gold</td></tr>
+        <tr><td>軍資金</td><td>gunshikin</td><td class="pos">noun</td><td>war chest / military fund</td></tr>
+        <tr><td>猟銃</td><td>ryoju</td><td class="pos">noun</td><td>hunting rifle</td></tr>
+        <tr><td>木炭バス</td><td>mokutan basu</td><td class="pos">noun</td><td>charcoal-fueled bus</td></tr>
+        <tr><td>急行列車</td><td>kyuko ressha</td><td class="pos">noun</td><td>express train</td></tr>
+        <tr><td>赤壁</td><td>Sekiheki</td><td class="pos">noun</td><td>Red Cliff (fictional station)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Inoue's Comic & Political Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ふんまん</td><td>funman</td><td class="pos">noun</td><td>resentment / pent-up grievance</td></tr>
+        <tr><td>風刺</td><td>fushi</td><td class="pos">noun</td><td>satire / irony</td></tr>
+        <tr><td>パロディ</td><td>parodi</td><td class="pos">noun</td><td>parody</td></tr>
+        <tr><td>ブラックユーモア</td><td>burakku yumoa</td><td class="pos">noun</td><td>black humor</td></tr>
+        <tr><td>コミック</td><td>komikku</td><td class="pos">na-adj</td><td>comic</td></tr>
+        <tr><td>好色</td><td>koshoku</td><td class="pos">noun</td><td>lust / eroticism / sensuality</td></tr>
+        <tr><td>医学</td><td>igaku</td><td class="pos">noun</td><td>medicine / medical science</td></tr>
+        <tr><td>中央集権</td><td>chuo shuken</td><td class="pos">noun</td><td>centralization</td></tr>
+        <tr><td>地方</td><td>chiho</td><td class="pos">noun</td><td>region / provinces / local area</td></tr>
+        <tr><td>村</td><td>mura</td><td class="pos">noun</td><td>village</td></tr>
+        <tr><td>国家</td><td>kokka</td><td class="pos">noun</td><td>state / nation</td></tr>
+        <tr><td>国民</td><td>kokumin</td><td class="pos">noun</td><td>citizen / national</td></tr>
+        <tr><td>自治</td><td>jichi</td><td class="pos">noun</td><td>autonomy / self-government</td></tr>
+        <tr><td>抵抗</td><td>teiko</td><td class="pos">noun</td><td>resistance</td></tr>
+        <tr><td>笑い</td><td>warai</td><td class="pos">noun</td><td>laughter</td></tr>
+        <tr><td>言葉の魅力</td><td>kotoba no miryoku</td><td class="pos">phrase</td><td>the charm of words / language</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Inoue's prose in <em>Kirikirijin</em> is a high-wire act between standard Japanese and Kirikiri-go, between literary seriousness and popular comedy, between political manifesto and puppet show. Much of what makes the novel revolutionary is embedded in its language and cannot be transferred into English without fundamental transformation.</p>
+
+  <div class="card">
+    <h3>1. Kirikiri-go (吉里吉里語) as Untranslatable Revolution</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「あんだ旅券ば持って居だが」「俺達の国語ば可愛がれ」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"You got your passport?" "Love our national language."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Kirikiri-go is not merely a dialect of Japanese; it is a political assertion rendered in grammatical form. When a Kirikiri farmer says <em>ba</em> instead of <em>wo</em> or <em>wa</em>, he is not making a mistake; he is making a revolution. The English translation can convey the meaning of Kirikiri-go sentences, but it cannot convey their political function — the way each non-standard particle, each dialectal verb ending, each Tohoku pronunciation is an act of resistance against the linguistic authority of Tokyo. In English, a dialect is a flavor, an accent, a regional color. In Japanese, dialect is hierarchy: standard Japanese (<em>hyojun-go</em>) is the language of education, employment, and state power, while dialects are the languages of home, of the provinces, of the unofficial. Kirikiri-go's elevation to national language status is thus a reversal of this hierarchy, and the English reader who encounters "You got your passport?" has no way of knowing that the original sentence performs a constitutional act. What is lost is the entire political grammar of the novel: the fact that language choice is never neutral in Japan, that speaking Tohoku dialect in Tokyo is a class marker, a regional marker, a statement of identity that carries social consequences. Inoue's genius is to make this invisible hierarchy visible by inverting it, and the English translation, by flattening Kirikiri-go into standard English, undoes the inversion. The revolution disappears into grammatical normalcy.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Funman</em> (ふんまん) as Accumulated Grievance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>農業軽視政策に対する<strong>ふんまん</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"resentment against agricultural neglect policies"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Funman</em> (憤懣) is a Sino-Japanese compound of <em>fun</em> (憤, "indignation / anger") and <em>man</em> (懣, "depression of spirits / pent-up feeling"), meaning "pent-up resentment / smoldering indignation." It is a word of extraordinary emotional precision: it describes not the explosive anger of protest but the slow accumulation of grievance over years, the sense of injustice that builds in silence until it can no longer be contained. <em>Funman</em> is the emotion of people who have been ignored, dismissed, and devalued — not for a day or a year but for decades, for generations. The farmers' <em>funman</em> is historical: it stretches back through the postwar period, through the industrialization that drained the countryside of its youth, through the agricultural policies that treated farming as a problem to be solved rather than a foundation to be preserved. The English "resentment" is accurate but thin — it suggests a personal emotion, perhaps even a petty one. <em>Funman</em> is collective, historical, and righteous. It is the emotion that fuels revolutions, and Inoue's choice of this word rather than the simpler <em>ikari</em> (怒り, "anger") or <em>funnu</em> (憤怒, "rage") tells us that Kirikiri's independence is not a spontaneous outburst but the culmination of a long, patient suffering. What is lost is the sense of time in <em>funman</em> — the implication that this grievance has been building for as long as anyone can remember, and that its explosion, when it comes, is both inevitable and surprising.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kokugo</em> (国語) vs. <em>Hogen</em> (方言) as Linguistic Hierarchy</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>国語</strong>（標準語）と<strong>方言</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"national language (standard language)" and "dialect"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The distinction between <em>kokugo</em> (国語, "national language") and <em>hogen</em> (方言, "dialect") is one of the most politically charged linguistic hierarchies in Japan. <em>Kokugo</em> is the language taught in schools, used in government, spoken on national television, and expected in job interviews. It is Tokyo dialect elevated to national standard, and its authority is backed by the entire apparatus of the modern Japanese state. <em>Hogen</em> is everything else — the regional languages that children learn at home and are taught to abandon at school, the "accents" that mark speakers as provincial, uneducated, or old-fashioned. The English words "standard language" and "dialect" carry some of this hierarchy, but they lack the specifically Japanese institutional weight of <em>kokugo</em>. In Japan, <em>kokugo</em> is a school subject, a ministry portfolio, a constitutional concept. To challenge the <em>kokugo/hogen</em> distinction is to challenge the Japanese state's authority over its citizens' speech. Kirikiri's claim that its dialect is a <em>kokugo</em> is thus not merely a linguistic assertion but a constitutional one: it claims the same institutional authority for Tohoku dialect that the Japanese state claims for Tokyo dialect. The English reader sees a dialect movement; the Japanese reader sees a constitutional crisis. What is lost is the sense that <em>kokugo</em> is not merely a linguistic category but a form of citizenship — the language in which one becomes a fully recognized member of the nation. By making Kirikiri-go a <em>kokugo</em>, the farmers claim a new form of citizenship, and the English translation cannot reproduce this claim because English has no equivalent institutional category.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Rikkoku</em> (立国) as Constitutional Poetry</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>医学<strong>立国</strong>、農業<strong>立国</strong>、好色<strong>立国</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Medical Nation, Agricultural Nation, Lustful Nation"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Rikkoku</em> (立国) is a compound of <em>ritsu</em> (立, "to stand / to establish") and <em>koku</em> (国, "nation / country"), meaning "to found a nation" or "nation-building principle." It is a word from classical Japanese political discourse, used in phrases like <em>bunbu rikkoku</em> (文武立国, "founding the nation on civil and military arts") that date back to the Heian and Kamakura periods. By using <em>rikkoku</em>, Inoue places Kirikiri's constitution in a thousand-year tradition of Japanese statecraft — the farmers are not improvising; they are speaking the language of Fujiwara Kiyohira and the Oshu Fujiwara dynasty, of the <em>Ritsuryo</em> state and the Meiji Restoration. The English "nation" loses this historical resonance — "Medical Nation" sounds like a modern policy slogan, not a constitutional principle rooted in Japanese political tradition. What is also lost is the rhythmic power of the triad: <em>igaku-rikkoku, nogyo-rikkoku, koshoku-rikkoku</em>. The repetition of <em>rikkoku</em> creates a drumbeat of founding principles, a constitutional mantra. The English translation must either repeat "Nation" (which becomes monotonous) or drop it (which loses the parallelism). In either case, the poetry of the original — four syllables repeated three times, each time with a different first element — is diminished. The triad is not merely a list of policies; it is a poem in the form of a constitution, and the English reader receives the policies without the poem.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Kotoba no Miryoku</em> (言葉の魅力) as the Novel's Own Subject</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>言葉の魅力</strong>を満載して描く大作</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"a monumental work filled with the charm of words"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The publisher's promotional copy describes <em>Kirikirijin</em> as a work "filled with <em>kotoba no miryoku</em>" (言葉の魅力, "the charm of words / the fascination of language"), and this phrase is not mere marketing — it is the novel's own self-description, its claim about what literature can do. <em>Kotoba</em> (言葉, "word / language / speech") is one of the most important words in Japanese literary criticism, carrying resonances that English "word" or "language" cannot capture. <em>Kotoba</em> includes not only written and spoken language but also the particular way a person speaks — their <em>kotoba-zukai</em> (言葉遣い, "word usage") — and by extension, their character, their region, their class. <em>Miryoku</em> (魅力, "charm / fascination / attraction") combines <em>mi</em> (魅, "fascination / enchantment") and <em>ryoku</em> (力, "power / force"), suggesting not merely "charm" in the English sense of pleasantness but a power that draws people in, that enchants, that transforms. <em>Kotoba no miryoku</em> is thus not "nice words" but "the transformative power of language" — the ability of words to create worlds, to invent nations, to make the impossible sound inevitable. This is precisely what <em>Kirikirijin</em> does: it uses the "charm of words" to create a country. The English "charm of words" sounds quaint, literary, perhaps even trivial. The Japanese <em>kotoba no miryoku</em> sounds like a force of nature — which, for Inoue, it is. What is lost is the novel's self-awareness: it knows that it is performing the very thing it describes, using the charm of words to build Kirikiri even as it writes about Kirikiri being built by the charm of words. The novel is a <em>mise en abyme</em> of linguistic creation, and the English translation cannot preserve this self-reflexive structure because it cannot preserve the specific gravity of <em>kotoba</em> in Japanese culture.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from Kirikiri-go, standard Japanese narration, and the political rhetoric of nation-building that drives the novel's linguistic comedy.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ば（吉里吉里語・対象・主題）</span>
+        <span class="grammar-level">Dialect</span>
+      </div>
+      <p class="grammar-meaning"><em>Ba</em>: Kirikiri-go particle replacing standard Japanese <em>wo</em> (を) and <em>wa</em> (は).</p>
+      <div class="grammar-example">あんだ旅券ば持って居だが / 俺達の国語ば可愛がれ</div>
+      <p class="grammar-example-en">"You got your passport?" / "Love our national language" — The <em>ba</em> particle marks both objects and topics in Kirikiri-go, collapsing the standard Japanese distinction and creating a fluid, musical syntax that the Japanese state cannot parse.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜でがす / 〜だが（吉里吉里語・断定）</span>
+        <span class="grammar-level">Dialect</span>
+      </div>
+      <p class="grammar-meaning"><em>De gasu / da ga</em>: Kirikiri-go copulas replacing standard <em>desu</em> (です).</p>
+      <div class="grammar-example">〜でがす（丁寧）/ 〜だが（普通体・疑問）</div>
+      <p class="grammar-example-en">"~de gasu" (polite) / "~da ga" (plain, often interrogative) — The Kirikiri copula system replaces the standard Japanese hierarchy of politeness with its own, asserting linguistic autonomy at the most fundamental grammatical level: the verb "to be."</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だっちゃ / 〜べな（東北語尾）</span>
+        <span class="grammar-level">Dialect</span>
+      </div>
+      <p class="grammar-meaning"><em>Dat-cha / be-na</em>: Tohoku sentence endings expressing assertion, exclamation, or speculation.</p>
+      <div class="grammar-example">これがまんず最初の切札なんだっちゃ</div>
+      <p class="grammar-example-en">"This is, well, our first trump card, <em>dat-cha</em>" — The <em>dat-cha</em> ending adds a note of rough assertion; <em>be-na</em> adds exclamatory force. Together they create the musical, emphatic quality of Tohoku speech that Kirikiri-go elevates to national language.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜は〜で（主題・継続）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Wa...de</em>: topic marker + continuative copula, creating open, descriptive statements.</p>
+      <div class="grammar-example">吉里吉里人は眼はァ静がで</div>
+      <p class="grammar-example-en">"The people of Kirikiri have quiet eyes [and...]" — The <em>wa...de</em> construction creates a portrait in progress, a description that trails off rather than concluding. The grammar enacts the novel's method: observation without closure.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜立国（複合名詞・憲法）</span>
+        <span class="grammar-level">N1</span>
+      </div>
+      <p class="grammar-meaning"><em>Rikkoku</em>: "nation-building on ~" — classical compound for constitutional principles.</p>
+      <div class="grammar-example">医学立国、農業立国、好色立国</div>
+      <p class="grammar-example-en">"Medical Nation, Agricultural Nation, Lustful Nation" — The <em>X + rikkoku</em> pattern places each field on the same grammatical level, making medicine, agriculture, and lust equally valid foundations for statecraft.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜て居る（進行・継続・方言）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te iru / te e</em>: progressive aspect, rendered in Kirikiri-go as <em>te e</em>.</p>
+      <div class="grammar-example">持って居だが（持っているのか）</div>
+      <p class="grammar-example-en">"Do you have [it]?" (literally: "are holding?") — The progressive <em>te e</em> (持って居) replaces standard <em>te iru</em> (持っている), and the interrogative function is carried by intonation rather than <em>ka</em>. The grammar makes the familiar strange.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜人（民族名・接尾語）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Jin</em>: suffix forming ethnonyms from place names.</p>
+      <div class="grammar-example">吉里吉里人 / 日本人 / 中国人</div>
+      <p class="grammar-example-en">"Kirikiri-jin / Nihon-jin / Chugoku-jin" — The <em>jin</em> suffix uses the same grammatical mechanism for all three, making Kirikiri nationality as linguistically valid as Japanese or Chinese nationality. The grammar performs nation-building.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に対する〜（対象・文脈）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni tai suru</em>: "toward / against / in response to" — creating contexts of grievance.</p>
+      <div class="grammar-example">農業軽視政策に対するふんまん</div>
+      <p class="grammar-example-en">"resentment toward agricultural neglect policies" — The <em>ni tai suru</em> construction frames the farmers' emotion as a response to a specific target, making their grievance concrete and directed rather than diffuse.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Inoue's grammar in <em>Kirikirijin</em> operates on two levels simultaneously: the standard Japanese of the narrator (Kenji) and the Kirikiri-go of the farmers. The novel's comedy and politics both depend on the friction between these two grammars. Pay attention to how <em>ba</em> replaces <em>wo/wa</em>, how <em>de gasu</em> replaces <em>desu</em>, how <em>dat-cha</em> and <em>be-na</em> create a rhythm that standard Japanese cannot replicate, and how the classical <em>rikkoku</em> construction gives constitutional weight to the farmers' absurd triad. The grammar is the revolution, written in particles and copulas.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">吉里吉里人 &middot; 井上 ひさし &middot; 新潮社 1981（単行本）/ 新潮文庫 1985（上中下 ISBN 978-4-10-116816-6 / 978-4-10-116817-3 / 978-4-10-116818-0）/ 電子書籍合本版 2015</p>
+</footer>
+
+</div>
+</body>
+</html>

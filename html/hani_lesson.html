@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>犯意 — 乃南アサ | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-wine: #8a4a5a;
+  --accent-wine-dim: #5e303e;
+  --accent-wine-glow: rgba(138, 74, 90, 0.12);
+  --accent-steel: #5a7a8a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-wine-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-wine);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-wine-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-wine-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-wine);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-wine-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-wine), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-wine);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-wine-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-wine); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-wine-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-wine-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-wine);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-wine-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-wine);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-steel);
+}
+
+.nuance-box h4 {
+  color: var(--accent-steel);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-wine);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-wine);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-wine-dim), var(--accent-wine));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-wine);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character / Story cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-wine);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Story grid for 12 stories */
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-sm);
+}
+
+.story-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.story-card h4 {
+  color: var(--accent-wine);
+  margin-top: 0;
+  font-size: var(--step-0);
+}
+
+.story-card .story-legal {
+  font-size: var(--step--1);
+  color: var(--accent-steel);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-wine-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>犯意</h1>
+  <p class="hero-subtitle">HAN'I</p>
+  <p class="hero-meta">乃南アサ &middot; 新潮社 2008（単行本）/ 2011（新潮文庫） &middot; 犯罪短編集＋法解説</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> The Twelve Stories & Legal Commentary</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 犯意</h2>
+  <p class="lead">The title <em>Han'i</em> (犯意) is a single compound of two characters — <em>han</em> (犯, "to violate / offend / commit [a crime]") and <em>i</em> (意, "intention / mind / will") — that together form the legal term for "criminal intent." In Japanese criminal law, <em>han'i</em> is the mental element (<em>mens rea</em>) required for an act to constitute a crime. Without it, there may be a prohibited act (<em>koui</em>, 行為) but no crime. The title thus announces that this book is not about the external facts of criminal cases but about the internal moment when an ordinary mind decides to violate the law. It is a title of extraordinary compression: two syllables that contain an entire theory of criminal responsibility, the philosophical question of whether evil is a property of acts or intentions, and the novel's own project of tracing how good people arrive at bad decisions.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">犯</span>
+        <span class="romaji">han</span>
+        <span class="meaning">"to violate / offend / commit [a crime]" — The character <em>han</em> (犯) combines the "dog" radical (犭) with <em>fan</em> (反, "to oppose / rebel"), suggesting originally a dog that breaks its tether, an animal that violates its proper boundaries. In modern legal Japanese, <em>han</em> is the root of <em>hanzai</em> (犯罪, "crime"), <em>hannin</em> (犯人, "criminal / perpetrator"), <em>hanzai</em> (犯行, "criminal act"), and <em>hanzai</em> (犯則, "violation of rules"). The character carries the sense of transgression against an established order — not merely doing something wrong, but crossing a line that should not be crossed. In the context of the book, <em>han</em> is what happens when an ordinary person steps across the invisible boundary between lawful and criminal behavior. The title's first character thus names the act; the second will name the mind that precedes it.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">意</span>
+        <span class="romaji">i</span>
+        <span class="meaning">"intention / mind / will / idea" — The character <em>i</em> (意) combines <em>yin</em> (音, "sound") over <em>xin</em> (心, "heart / mind"), suggesting the sound of the heart — what the mind says to itself before it speaks aloud. It is one of the most important characters in Japanese philosophy and psychology: <em>ishi</em> (意志, "will"), <em>imou</em> (意図, "intention / design"), <em>ikai</em> (意解, "understanding"), <em>ikoku</em> (意固, "stubbornness"). In Buddhist psychology, <em>i</em> is the faculty of conceptual thought that follows raw sensation and precedes action. In criminal law, <em>i</em> is the element that distinguishes accident from crime, negligence from malice, impulse from design. The title <em>Han'i</em> places this character in immediate juxtaposition with <em>han</em>, creating a compound that names the precise moment when the heart's sound becomes a decision to violate. The grammar of the compound is appositional, not possessive: not "the intention <em>of</em> crime" but "criminal-intention" — a single concept in which the mind and the violation are inseparable.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Legal context:</strong> In Japanese criminal law (刑法 / <em>keihou</em>), <em>han'i</em> (犯意) corresponds to the Roman-law concept of <em>mens rea</em> — the guilty mind that must accompany a guilty act (<em>actus reus</em>) for criminal liability to attach. Article 38 of the Japanese Penal Code (刑法第38条) states that "an act shall not be punishable unless done with intent" (<em>shiyoku naki koui wa shobatsu sezu</em>, 故意なき行為は処罰せず), with exceptions for crimes of negligence. By titling the book <em>Han'i</em>, Nonami and Sonoda announce that their subject is this legal threshold: the boundary between the accidental and the criminal, the moment when a person's internal state converts an ordinary action into a punishable offense. The book was conceived and published in 2008, on the eve of Japan's <em>saiban-in</em> (裁判員 / lay judge) system, which began in 2009 and required ordinary citizens to serve as jurors in serious criminal trials. The title is thus a direct address to these new amateur judges: before you condemn, understand <em>han'i</em>.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>乃南アサ &mdash; Nonami Asa</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">乃</div>
+    <div class="author-name-block">
+      <h3>乃南アサ</h3>
+      <p class="author-name-romaji">Nonami Asa &middot; b. August 19, 1960 &middot; Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Nonami Asa is one of the most versatile and psychologically acute writers in contemporary Japanese literature — a novelist who moves with equal authority between suspense, mystery, social realism, historical fiction, and reportage, always with a penetrating eye for the emotional architecture of human relationships. Born in Tokyo in 1960, she entered Waseda University's Faculty of Social Sciences but left before graduating — a decision that seems, in retrospect, to have freed her from disciplinary constraints and allowed her to develop the interdisciplinary intelligence that characterizes her work. After working in advertising, she made her literary debut in 1988 when <em>Koufuku na Choushoku</em> (幸福な朝食 / "A Happy Breakfast") won an honorable mention in the 1st Japan Mystery Suspense Prize. The novel announced her signature concerns: the emotional lives of ordinary women, the violence that simmers beneath domestic surfaces, and the moral complexity of situations that resist easy judgment.</p>
+    <p style="margin-bottom: var(--space-md);">Her breakthrough came in 1996 with <em>Kogoeru Kiba</em> (凍える牙 / "Frozen Fangs"), which won the 115th Naoki Prize — one of Japan's two most prestigious literary awards for popular fiction. The novel confirmed her ability to combine page-turning suspense with profound social observation, and it established her as a major voice in Japanese letters. Over the following decades, she refused to be confined by genre expectations. She wrote the "Line / Key / Chain" trilogy (<em>Line</em> / ライン, 1995; <em>Kagi</em> / 鍵, 1998; <em>Kusari</em> / 鎖, 2000) — interconnected novels exploring family secrets and generational trauma. She wrote social epics like <em>Chi no Hate Kara</em> (地のはてから / "From the Ends of the Earth," 2010), which won the 6th Chuo Koron Literary Prize, and <em>Suiyoubi no Gaika</em> (水曜日の凱歌 / "Wednesday's Paean," 2015), which won the 66th Minister of Education, Culture, Sports, Science and Technology's Art Encouragement Prize. She wrote reportage from Myanmar (<em>Myanmar: Ushinawareru Asia no Furusato</em> / ミャンマー 失われるアジアのふるさと) and Taiwan, demonstrating a geopolitical awareness rare among Japanese novelists.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Han'i</em> (2008) represents a unique experiment in her career: a collaboration with criminal lawyer Sonoda Hisashi, in which Nonami wrote twelve crime-noir short stories and Sonoda provided legal commentary on each. The result is a hybrid form — part fiction, part legal education — that uses narrative to make criminal law emotionally comprehensible and uses legal analysis to deepen the moral weight of the stories. Nonami's contribution is what one would expect from her: twelve portraits of ordinary people at the moment they cross into criminality, rendered with the psychological precision that has made her one of Japan's most admired writers. Sonoda's contribution is what elevates the book from entertainment to civic education: after each story, he explains the actual legal principles that would apply, the penalties that could be imposed, and the questions a lay judge would need to consider. The book was conceived specifically for the advent of Japan's lay judge system (<em>saiban-in seido</em>), which began in 2009 and required ordinary citizens to participate in criminal trials. <em>Han'i</em> is, among other things, a preparation for that responsibility — a literary training manual for the conscience.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1960</span>
+        <span>Born August 19 in Tokyo. Grows up in the metropolis that will become the setting for so many of her novels — a city of surfaces and secrets, where ordinary buildings contain extraordinary pain.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1980s</span>
+        <span>Enters Waseda University, Faculty of Social Sciences, but leaves before graduating. Works in advertising — an experience that gives her fiction its acute understanding of how public images conceal private realities.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1988</span>
+        <span>Literary debut with <em>Koufuku na Choushoku</em> (幸福な朝食 / "A Happy Breakfast"), which receives an honorable mention in the 1st Japan Mystery Suspense Prize. Establishes her signature themes: women's emotional lives, domestic violence, moral ambiguity.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1995</span>
+        <span>Publishes <em>Line</em> (ライン), the first volume of what will become the "Line / Key / Chain" trilogy — interconnected explorations of family secrets and the bonds that both connect and imprison.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1996</span>
+        <span>Wins the 115th Naoki Prize for <em>Kogoeru Kiba</em> (凍える牙 / "Frozen Fangs"), confirming her status as a major literary voice and demonstrating her ability to fuse suspense with social observation.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2000</span>
+        <span>Publishes <em>Kusari</em> (鎖 / "Chain"), completing the trilogy. The three novels together trace the invisible connections — of blood, debt, and love — that bind people across generations.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2008</span>
+        <span>Publishes <em>Han'i: Sono Tsumi no Yomitorikata</em> (犯意 その罪の読み取り方 / "Criminal Intent: How to Read That Crime") with Shinchosha — a collaboration with lawyer Sonoda Hisashi that combines twelve crime short stories with legal commentary, conceived as preparation for Japan's new lay judge system.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Wins the 6th Chuo Koron Literary Prize for <em>Chi no Hate Kara</em> (地のはてから / "From the Ends of the Earth"), a social epic that demonstrates her range beyond the mystery genre.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2015</span>
+        <span>Wins the 66th Minister of Education, Culture, Sports, Science and Technology's Art Encouragement Prize for <em>Suiyoubi no Gaika</em> (水曜日の凱歌 / "Wednesday's Paean").</span>
+      </li>
+      <li>
+        <span class="timeline-year">2025</span>
+        <span>Publishes <em>Konya mo Beru ga Naru</em> (今夜もベルが鳴る / "Tonight the Bell Rings Too"), her latest novel — a career that continues to expand in unexpected directions.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>凍える牙</h4>
+        <p class="char-role">Kogoeru Kiba / Frozen Fangs &middot; 1996</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 115th Naoki Prize. The novel that confirmed Nonami as a major literary voice — a suspense masterpiece with profound social observation and psychological depth.</p>
+      </div>
+      <div class="char-card">
+        <h4>ライン・鍵・鎖</h4>
+        <p class="char-role">Line / Key / Chain Trilogy &middot; 1995-2000</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Interconnected novels exploring family secrets, generational trauma, and the invisible bonds that both connect and imprison. Nonami's most sustained examination of domestic pain.</p>
+      </div>
+      <div class="char-card">
+        <h4>地のはてから</h4>
+        <p class="char-role">Chi no Hate Kara / From the Ends of the Earth &middot; 2010</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 6th Chuo Koron Literary Prize. A social epic demonstrating Nonami's range beyond mystery — her capacity for historical and geopolitical narrative on a grand scale.</p>
+      </div>
+      <div class="char-card">
+        <h4>水曜日の凱歌</h4>
+        <p class="char-role">Suiyoubi no Gaika / Wednesday's Paean &middot; 2015</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 66th Minister of Education Art Encouragement Prize. The mature work of a writer who has spent decades refining her understanding of human motivation and social structure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters / Stories -->
+<section id="characters">
+  <div class="section-label">Stories</div>
+  <h2>The Twelve Stories & Legal Commentary</h2>
+
+  <p class="lead"><em>Han'i</em> is structured as twelve crime short stories, each followed by a legal commentary from criminal lawyer Sonoda Hisashi. This hybrid form — fiction plus law — was conceived on the eve of Japan's lay judge system (<em>saiban-in seido</em>), which required ordinary citizens to serve as jurors in serious criminal trials. Nonami's stories provide the emotional and narrative context; Sonoda's commentaries provide the legal framework within which a lay judge would have to evaluate the characters' actions. Together they create a literary-juridical education: the reader learns not only what crimes look like from the inside but how the law would classify, weigh, and punish them.</p>
+
+  <div class="card">
+    <h3>The Twelve Stories</h3>
+    <div class="story-grid">
+      <div class="story-card">
+        <h4>1. 夢の結末</h4>
+        <p class="story-legal">Legal: "Death penalty is possible — for arson like this"</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A small impulse leads to arson, and the legal commentary reveals how a momentary flame can carry the ultimate penalty.</p>
+      </div>
+      <div class="story-card">
+        <h4>2. 隣人の妻</h4>
+        <p class="story-legal">Legal: "If you force someone to 'die now,' are you a murderer?"</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The boundary between words and homicide — when does verbal pressure become criminal complicity in death?</p>
+      </div>
+      <div class="story-card">
+        <h4>3. 八の字眉</h4>
+        <p class="story-legal">Legal: "The limits of permissible self-defense"</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A face, a judgment, a reaction — the story explores how appearance triggers violence and where self-defense ends.</p>
+      </div>
+      <div class="story-card">
+        <h4>4. アーユーハッピー？</h4>
+        <p class="story-legal">Legal: "There are three types of accomplices"</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Happiness as a mask for conspiracy  the casual question that conceals criminal collaboration.</p>
+      </div>
+      <div class="story-card">
+        <h4>5. ひと夜の転落</h4>
+        <p class="story-legal">Legal: "The difference between robbery + rape and robbery-rape"</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">One night, one fall — the legal distinctions that determine whether crimes are separate or compounded.</p>
+      </div>
+      <div class="story-card">
+        <h4>6. なりすまし</h4>
+        <p class="story-legal">Legal: [Commentary on impersonation and fraud]</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Becoming someone else as a crime — the legal and psychological dimensions of false identity.</p>
+      </div>
+      <div class="story-card">
+        <h4>7–12. 続く六編</h4>
+        <p class="story-legal">Legal: Six additional legal commentaries</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Six further stories exploring theft, assault, deception, and the other ordinary paths by which good people become defendants.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Sonoda Hisashi &mdash; The Legal Voice</h3>
+    <p>Sonoda Hisashi is a practicing criminal lawyer who served as Nonami's legal collaborator on <em>Han'i</em>. His role is not merely technical; it is pedagogical and moral. After each story, Sonoda explains the relevant provisions of the Japanese Penal Code (刑法), the precedents that would guide a court's decision, and the questions a lay judge would need to answer. His commentaries transform the book from a collection of crime stories into a civics lesson — a preparation for the responsibility of judging others. The collaboration between novelist and lawyer embodies the book's central premise: that fiction provides the emotional understanding necessary for just judgment, while law provides the framework that prevents judgment from becoming mere sentiment.</p>
+    <p style="margin-top: var(--space-sm);">In a 2008 dialogue at the Supreme Court (published by the Courts of Japan), Nonami explained that the book was conceived specifically to help ordinary citizens understand criminal law before the lay judge system began. Sonoda's commentaries address real legal questions: What constitutes attempted crime versus completed crime? When does self-defense exceed its limits? How does the law distinguish between different degrees of complicity? The result is a book that is simultaneously a work of literature and a work of legal education — a rare hybrid that respects both the emotional truth of fiction and the rational rigor of law.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Architecture of the Book</h3>
+    <p><em>Han'i</em> is not a single narrative but a constellation of twelve narratives, each orbiting the same central question: how does an ordinary person become a criminal? Nonami's answer, repeated with variations across the stories, is that criminal intent rarely arrives as a fully formed decision. It emerges from small impulses, chance conjunctions, and the snowball logic of escalation — what the promotional copy calls "a trivial impulse. Coincidence and momentum overlap, and crime proliferates like a snowball rolling." Each story isolates a different moment in this process: the first transgression, the first lie, the first act of violence that cannot be taken back.</p>
+    <p style="margin-top: var(--space-sm);">The stories are noir in the classic sense: they feature no detectives, no solutions, no moral comfort. What they offer instead is the intimacy of complicity — the reader's gradual recognition that the protagonist's reasoning, however flawed, is not alien. Nonami's genius is for what one might call "proximate empathy": the ability to make us understand why a person committed a crime without asking us to forgive them. Her criminals are not monsters; they are neighbors, colleagues, spouses — people who made a decision at a moment of weakness and found that the decision could not be unmade. The law, in Sonoda's commentaries, stands outside these stories as a system of retrospective judgment; the fiction stands inside them as a system of prospective understanding. Together they ask whether it is possible to understand a crime without excusing it, and to condemn a criminal without denying their humanity.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Snowball Metaphor</h3>
+    <p>The book's central image — crime proliferating like a snowball rolling — is not merely decorative; it is a theory of criminal escalation. In story after story, Nonami shows how a small, almost trivial decision (a harsh word, a small theft, a moment of inattention) sets in motion a chain of consequences that grows beyond the protagonist's control. The snowball metaphor captures three features of this process: its gradualness (the snowball grows imperceptibly), its irreversibility (a rolling snowball cannot easily be stopped), and its self-amplification (each rotation adds more snow). The legal commentaries add a fourth feature: its juridical accumulation. Each step in the snowball's growth may constitute a separate crime, and the final avalanche may carry penalties far exceeding what the protagonist imagined at the first handful of snow.</p>
+    <p style="margin-top: var(--space-sm);">This is the book's most unsettling insight: that the distance between "ordinary person" and "criminal defendant" is not a chasm but a slope, and that many people roll down it without ever making a conscious decision to fall. The law, in Sonoda's analysis, must draw lines on this slope — determining at what point impulse becomes intent, at what point negligence becomes recklessness, at what point presence becomes complicity. But the fiction reminds us that these lines, however necessary for social order, do not correspond to the lived experience of moral dissolution. The person inside the snowball does not feel themselves crossing lines; they feel themselves surviving, reacting, doing what the moment requires. <em>Han'i</em> is the record of these moments, and the law is the frame that makes them visible as crimes.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Criminal intent as process, not event:</strong> The book's deepest argument is that <em>han'i</em> — criminal intent — is not a light switch that turns on at a single moment but a dimmer that brightens gradually. Nonami traces this process across twelve different trajectories, showing how intent accumulates through small decisions, each of which seems reasonable at the time.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The ordinariness of crime:</strong> Nonami's criminals are not professional villains; they are amateurs, improvising their crimes as they go. This ordinariness is what makes the stories disturbing: the reader recognizes the protagonists' reasoning, their panic, their self-justification. The distance between "them" and "us" collapses, and with it the comfortable assumption that criminals are a different species.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Law as retrospective frame:</strong> Sonoda's commentaries demonstrate that the law operates retrospectively — it looks at completed acts and assigns categories. The fiction operates prospectively — it places the reader inside the act as it unfolds, before the categories have formed. The gap between these two perspectives is the book's true subject: the space between what crime feels like from the inside and what it looks like from the bench.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The lay judge's dilemma:</strong> Conceived for the advent of Japan's <em>saiban-in</em> system, the book addresses citizens who will soon be asked to judge their neighbors. Its implicit argument is that legal knowledge alone is insufficient for just judgment; emotional imagination — the ability to understand why a person did what they did — is equally necessary. But emotional imagination, unchecked by legal principle, becomes mere sympathy. The book's hybrid form is an attempt to hold both in balance.</li>
+      <li><strong>The sweetness of transgression:</strong> The promotional copy describes crime as "sweet and exciting" (<em>kanbi de exciting</em>, 甘美でエキサイティング) — a formulation that acknowledges the pleasure principle at work in criminal acts. Nonami does not sanitize her criminals' motivations; she shows that transgression can feel liberating, thrilling, even righteous. The law's job is to judge acts that the heart may have enjoyed.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the book's central paradox: that crime begins not with malice but with smallness, and that the law must judge what the heart barely recognizes as a decision.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Book's Opening Thesis</div>
+    <div class="passage-jp">
+      些細な出来心だった。偶然と勢いが重なって、罪は増殖していく、雪玉が転がるように。
+    </div>
+    <div class="passage-romaji">
+      Sasaina dekigokoro datta. Guuzen to ikioi ga kasanatte, tsumi wa zoushoku shite iku, yukidama ga korogaru you ni.
+    </div>
+    <div class="passage-en">
+      "It was a trivial impulse. Coincidence and momentum overlapped, and crime proliferated, like a snowball rolling."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence is the book's foundational statement, and its grammar encodes the entire theory of criminal escalation that the twelve stories will illustrate. The first clause — <em>sasaina dekigokoro datta</em> (些細な出来心だった, "it was a trivial impulse") — establishes the starting point with devastating understatement. <em>Dekigokoro</em> (出来心) is a compound of <em>deki</em> (出来, "occurrence / arising") and <em>kokoro</em> (心, "heart / mind"), meaning an impulse that arises spontaneously — not a planned intention but a momentary stirring of the heart. The adjective <em>sasaina</em> (些細な, "trivial / insignificant") diminishes it further: this was not a grand moral failure but a small, almost embarrassing lapse. The grammar of the first clause is simple past, copulative, definitive: <em>datta</em> (だった, "was") — a completed fact stated without drama. The second clause introduces motion and multiplication. <em>Guuzen to ikioi ga kasanatte</em> (偶然と勢いが重なって, "coincidence and momentum overlapped") uses the continuative form <em>kasanatte</em> (重なって, "overlapping / piling up") — a verb of accumulation that suggests layers building upon layers. <em>Guuzen</em> (偶然, "coincidence / chance") is what the protagonist cannot control; <em>ikioi</em> (勢い, "momentum / force / impetus") is what carries them forward once control is lost. The subject of the main verb is <em>tsumi</em> (罪, "crime / sin / guilt") — personified as something that proliferates of its own accord. <em>Zoushoku shite iku</em> (増殖していく, "proliferates / multiplies / increases") combines <em>zoushoku</em> (増殖, "multiplication / proliferation," used for cells, bacteria, populations) with the directional auxiliary <em>iku</em> (行く, "goes / proceeds"), suggesting a process that continues into the future, away from the protagonist, beyond their reach. The simile <em>yukidama ga korogaru you ni</em> (雪玉が転がるように, "like a snowball rolling") completes the sentence with an image of irreversible accumulation. <em>Korogaru</em> (転がる, "to roll / tumble") is an intransitive verb — the snowball rolls itself; no one is pushing it. The grammar removes agency at every level: the impulse was trivial, the coincidence was chance, the crime proliferates, the snowball rolls. What is lost in English is the cumulative weight of this grammatical passivity — the sense that the protagonist is not so much committing a crime as being carried by one.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Sweetness of Crime</div>
+    <div class="passage-jp">
+      犯罪――その瞬間甘美な興奮があなたを刺す。
+    </div>
+    <div class="passage-romaji">
+      Hanzai — sono shunkan kanbi na koufun ga anata wo sasu.
+    </div>
+    <div class="passage-en">
+      "Crime — at that moment, a sweet excitement pierces you."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the book's promotional tagline, and it is a masterpiece of moral ambiguity compressed into a single line. The subject is <em>hanzai</em> (犯罪, "crime"), set off by an em-dash that creates a pause, a moment of silence before the predicate. The pause matters: it mimics the gap between the act and the feeling, the split second in which the criminal discovers that transgression is not merely wrong but thrilling. The temporal marker <em>sono shunkan</em> (その瞬間, "that moment / the instant") is specific and universal at once — it refers to the moment of criminal action, whatever that action may be, and suggests that this moment is identical across all crimes, all criminals, all stories. The noun phrase <em>kanbi na koufun</em> (甘美な興奮, "sweet excitement") is the tagline's moral core. <em>Kanbi</em> (甘美, "sweet and beautiful / luscious / voluptuous") is a word of dangerous pleasure — it is used for desserts, for music, for erotic experience. To call criminal excitement <em>kanbi</em> is to acknowledge that the pleasure principle is at work, that crime can feel not merely justified but delicious. <em>Koufun</em> (興奮, "excitement / arousal / agitation") is a physiological word — it describes the body's response, the racing heart, the heightened senses. Together, <em>kanbi na koufun</em> names the somatic pleasure of transgression: the body's betrayal of moral principle. The verb <em>sasu</em> (刺す, "to pierce / stab / prick") completes the sentence with a violence that mirrors the crime itself. The excitement does not "move" you or "touch" you; it <em>pierces</em> you — a sudden, sharp penetration that leaves a wound. The grammar is simple: subject (crime), temporal phrase (that moment), noun phrase (sweet excitement), object marker (<em>ga</em>), verb (pierces). But the semantic sequence — crime, moment, sweetness, wound — traces the exact arc of criminal experience as Nonami understands it: the act, the thrill, the injury to the self. What is lost in English is the dangerous beauty of <em>kanbi</em> — a word too sweet for the thing it describes, and therefore perfectly accurate.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Mask Slips</div>
+    <div class="passage-jp">
+      最初はとてもいい人だった。気を許し、好きになった頃から、おもむろにヤツは本性を現しはじめた。
+    </div>
+    <div class="passage-romaji">
+      Saisho wa totemo ii hito datta. Ki wo yurushi, suki ni natta koro kara, omomuro ni yatsu wa honshou wo arawashi hajimeta.
+    </div>
+    <div class="passage-en">
+      "At first, he was a very good person. From around the time I let down my guard and came to like him, he slowly began to reveal his true nature."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence describes a pattern that recurs across the stories: the discovery that someone you trusted has been dangerous all along, and that your trust was the condition of their revelation. Grammatically, it is a narrative of before and after. The first clause — <em>saisho wa totemo ii hito datta</em> (最初はとてもいい人だった, "at first, he was a very good person") — uses the past tense copula <em>datta</em> (だった) with the topic marker <em>wa</em> (は), creating a statement of completed fact that is also a statement of expired truth. He <em>was</em> good; he is no longer. The adverb <em>totemo</em> (とても, "very") intensifies the goodness, making the subsequent reversal more painful. The second clause — <em>ki wo yurushi, suki ni natta koro kara</em> (気を許し、好きになった頃から, "from around the time I let down my guard and came to like him") — names the turning point with psychological precision. <em>Ki wo yurusu</em> (気を許す, "to let down one's guard / to trust") is an idiom in which <em>ki</em> (気, "spirit / attention") is the defensive faculty and <em>yurusu</em> (許す, "to permit / forgive / relax") is its suspension. The comma after <em>yurushi</em> (許し) creates a breath, a pause that mimics the relaxation of vigilance. <em>Suki ni natta koro kara</em> (好きになった頃から, "from around the time I came to like him") uses <em>koro</em> (頃, "around the time / season"), which softens the temporal boundary — it was not a single moment but a period, a season of affection during which the transformation occurred. The main clause — <em>omomuro ni yatsu wa honshou wo arawashi hajimeta</em> (おもむろにヤツは本性を現しはじめた, "slowly, he began to reveal his true nature") — is the sentence's moral climax. <em>Omomuro ni</em> (おもむろに, "slowly / gradually / deliberately") is an adverb of unhurried movement — the revelation is not sudden but staged, as if the person were testing how much they could reveal without losing the relationship. <em>Yatsu</em> (ヤツ / 奴, "he / that guy") is a pronoun of contempt or distance — the narrator has already withdrawn affection, and the word choice signals the retrospective re-evaluation. <em>Honshou</em> (本性, "true nature / real character") combines <em>hon</em> (本, "true / root") and <em>shou</em> (性, "nature / character"), suggesting that the goodness was a surface and the cruelty was the root. The verbal construction <em>arawashi hajimeta</em> (現しはじめた, "began to reveal") uses the inceptive auxiliary <em>hajimeru</em> (始める, "to begin"), which creates a sense of process: the true nature did not appear all at once but emerged gradually, story by story, wound by wound. What is lost in English is the emotional grammar of betrayal — the way the sentence moves from trust (<em>ki wo yurushi</em>) to affection (<em>suki ni natta</em>) to distance (<em>yatsu</em>) to horror (<em>honshou</em>), tracing the exact emotional trajectory of discovering that someone you love is capable of crime.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Ordinary Criminal</div>
+    <div class="passage-jp">
+      普通の人が犯罪に手を染めてしまう瞬間。哀しくて、やりきれなくて、そして甘美でエキサイティング。
+    </div>
+    <div class="passage-romaji">
+      Futsuu no hito ga hanzai ni te wo somete shimau shunkan. Kanashikute, yarikirenakute, soshite kanbi de exciting.
+    </div>
+    <div class="passage-en">
+      "The moment when an ordinary person succumbs to crime. Sad, unbearable, and yet sweet and exciting."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the promotional copy is the book's most explicit statement of its project, and its grammar is a study in emotional contradiction. The noun phrase <em>futsuu no hito ga hanzai ni te wo somete shimau shunkan</em> (普通の人が犯罪に手を染めてしまう瞬間, "the moment when an ordinary person succumbs to crime") is a complex nominalization in which the entire clause is compressed into a single temporal noun (<em>shunkan</em>, 瞬間, "moment / instant"). The subject <em>futsuu no hito</em> (普通の人, "ordinary person / normal person") is crucial: Nonami is not writing about professional criminals or pathological deviants but about people who could be anyone — the reader, the neighbor, the lay judge. The verb phrase <em>te wo somete shimau</em> (手を染めてしまう, "succumbs to / gets involved in") uses the idiom <em>te wo someru</em> (手を染める, literally "to dye one's hands"), which means to begin doing something (usually something bad) that one had previously avoided. The auxiliary <em>shimau</em> (しまう, "to complete / to do something irreversible") adds a sense of finality and regret — the hands are dyed and cannot be cleaned. The moment thus named is not merely the beginning of crime but the end of innocence, compressed into a single <em>shunkan</em> that the entire story builds toward. The second half of the sentence delivers three adjectives in sequence, creating an emotional chord rather than a single note. <em>Kanashikute</em> (哀しくて, "sad / sorrowful") uses the continuative form of <em>kanashii</em> (哀しい, "sad"), which is stronger than the everyday <em>kanashii</em> (悲しい) — <em>ai</em> (哀) suggests grief, mourning, the sadness of loss rather than mere disappointment. <em>Yarikirenakute</em> (やりきれなくて, "unbearable / unable to endure") is the continuative negative of <em>yarikiru</em> (やりきる, "to get through / endure to the end") — it describes not the crime itself but the reader's experience of it, the sense that the story is too painful to finish and too compelling to stop. The final phrase <em>soshite kanbi de exciting</em> (そして甘美でエキサイティング, "and yet sweet and exciting") introduces the dangerous pleasure that runs through all twelve stories. The conjunction <em>soshite</em> (そして, "and / and then") connects the pain to the pleasure without subordinating either; the grammatical parallelism (<em>kanashikute, yarikirenakute, [soshite] kanbi de exciting</em>) creates an equation in which all three qualities have equal weight. The code-switching to English "exciting" (エキサイティング) in the final adjective is a deliberate stylistic choice that distances the word from Japanese moral vocabulary — the excitement of crime is foreign, imported, not part of the native emotional lexicon. What is lost in English is the specifically Japanese pain of <em>yarikirenakute</em> — the sense of being overwhelmed by a story that you cannot stop reading, and the moral vertigo of discovering that crime is not only sad but also, in some register, enjoyable.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, the world of criminal law, and the emotional-moral vocabulary of Nonami's crime noir.</p>
+
+  <div class="card">
+    <h3>Criminal Law & Legal Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>犯意</td><td>han'i</td><td class="pos">noun</td><td>criminal intent, mens rea</td></tr>
+        <tr><td>犯罪</td><td>hanzai</td><td class="pos">noun</td><td>crime, offense</td></tr>
+        <tr><td>罪</td><td>tsumi</td><td class="pos">noun</td><td>crime, sin, guilt</td></tr>
+        <tr><td>犯人</td><td>hannin</td><td class="pos">noun</td><td>criminal, perpetrator</td></tr>
+        <tr><td>犯行</td><td>hankou</td><td class="pos">noun</td><td>criminal act</td></tr>
+        <tr><td>刑法</td><td>keihou</td><td class="pos">noun</td><td>criminal code, penal law</td></tr>
+        <tr><td>故意</td><td>ko</td><td class="pos">noun</td><td>intention, malice aforethought</td></tr>
+        <tr><td>過失</td><td>kashitsu</td><td class="pos">noun</td><td>negligence, fault</td></tr>
+        <tr><td>正当防衛</td><td>seitou bouei</td><td class="pos">noun</td><td>self-defense, legitimate defense</td></tr>
+        <tr><td>共犯</td><td>kyouhan</td><td class="pos">noun</td><td>complicity, accomplice</td></tr>
+        <tr><td>放火</td><td>houka</td><td class="pos">noun</td><td>arson</td></tr>
+        <tr><td>強盗</td><td>goutou</td><td class="pos">noun</td><td>robbery</td></tr>
+        <tr><td>殺人</td><td>satsujin</td><td class="pos">noun</td><td>murder, homicide</td></tr>
+        <tr><td>死刑</td><td>shikei</td><td class="pos">noun</td><td>death penalty</td></tr>
+        <tr><td>裁判員</td><td>saiban-in</td><td class="pos">noun</td><td>lay judge, juror</td></tr>
+        <tr><td>法解説</td><td>hou kaisetsu</td><td class="pos">noun</td><td>legal commentary</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Psychology & Moral Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>出来心</td><td>dekigokoro</td><td class="pos">noun</td><td>impulse, sudden notion</td></tr>
+        <tr><td>偶然</td><td>guuzen</td><td class="pos">noun</td><td>coincidence, chance</td></tr>
+        <tr><td>勢い</td><td>ikioi</td><td class="pos">noun</td><td>momentum, force, impetus</td></tr>
+        <tr><td>本性</td><td>honshou</td><td class="pos">noun</td><td>true nature, real character</td></tr>
+        <tr><td>気を許す</td><td>ki wo yurusu</td><td class="pos">phrase</td><td>to let down one's guard</td></tr>
+        <tr><td>手を染める</td><td>te wo someru</td><td class="pos">phrase</td><td>to get involved in (usu. bad)</td></tr>
+        <tr><td>甘美</td><td>kanbi</td><td class="pos">na-adj</td><td>sweet, luscious, voluptuous</td></tr>
+        <tr><td>興奮</td><td>koufun</td><td class="pos">noun</td><td>excitement, arousal</td></tr>
+        <tr><td>哀しい</td><td>kanashii</td><td class="pos">adjective</td><td>sad, sorrowful, grievous</td></tr>
+        <tr><td>やりきれない</td><td>yarikirenai</td><td class="pos">adjective</td><td>unbearable, unable to endure</td></tr>
+        <tr><td>増殖</td><td>zoushoku</td><td class="pos">noun</td><td>proliferation, multiplication</td></tr>
+        <tr><td>雪玉</td><td>yukidama</td><td class="pos">noun</td><td>snowball</td></tr>
+        <tr><td>転がる</td><td>korogaru</td><td class="pos">verb</td><td>to roll, tumble</td></tr>
+        <tr><td>些細</td><td>sasai</td><td class="pos">na-adj</td><td>trivial, insignificant</td></tr>
+        <tr><td>おもむろに</td><td>omomuro ni</td><td class="pos">adverb</td><td>slowly, gradually, deliberately</td></tr>
+        <tr><td>ノワール</td><td>nowaru</td><td class="pos">noun</td><td>noir (dark crime fiction)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Law & Society</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>処罰</td><td>shobatsu</td><td class="pos">noun</td><td>punishment, penalty</td></tr>
+        <tr><td>行為</td><td>koui</td><td class="pos">noun</td><td>act, deed, conduct</td></tr>
+        <tr><td>責</td><td>sekinin</td><td class="pos">noun</td><td>responsibility, liability</td></tr>
+        <tr><td>量刑</td><td>ryoukei</td><td class="pos">noun</td><td>sentencing</td></tr>
+        <tr><td>判決</td><td>hanketsu</td><td class="pos">noun</td><td>verdict, judgment</td></tr>
+        <tr><td>弁護士</td><td>bengoshi</td><td class="pos">noun</td><td>lawyer, attorney</td></tr>
+        <tr><td>刑事</td><td>keiji</td><td class="pos">noun</td><td>detective, criminal investigator</td></tr>
+        <tr><td>検事</td><td>kenji</td><td class="pos">noun</td><td>prosecutor</td></tr>
+        <tr><td>判事</td><td>hanji</td><td class="pos">noun</td><td>judge</td></tr>
+        <tr><td>法廷</td><td>houtei</td><td class="pos">noun</td><td>courtroom</td></tr>
+        <tr><td>証拠</td><td>shouko</td><td class="pos">noun</td><td>evidence, proof</td></tr>
+        <tr><td>自白</td><td>jihaku</td><td class="pos">noun</td><td>confession</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Nonami's Thematic Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>幸福</td><td>koufuku</td><td class="pos">noun</td><td>happiness, bliss</td></tr>
+        <tr><td>凍える</td><td>kogoeru</td><td class="pos">verb</td><td>to freeze, shiver with cold</td></tr>
+        <tr><td>牙</td><td>kiba</td><td class="pos">noun</td><td>fang, tusk</td></tr>
+        <tr><td>鎖</td><td>kusari</td><td class="pos">noun</td><td>chain, fetters</td></tr>
+        <tr><td>鍵</td><td>kagi</td><td class="pos">noun</td><td>key, lock</td></tr>
+        <tr><td>不発弾</td><td>fuhatsudan</td><td class="pos">noun</td><td>unexploded ordnance</td></tr>
+        <tr><td>墓碑銘</td><td>bohimei</td><td class="pos">noun</td><td>epitaph</td></tr>
+        <tr><td>凱歌</td><td>gaika</td><td class="pos">noun</td><td>paean, song of triumph</td></tr>
+        <tr><td>ウツボカズラ</td><td>utsubokazura</td><td class="pos">noun</td><td>nepenthes (pitcher plant)</td></tr>
+        <tr><td>翻弄する</td><td>honrou suru</td><td class="pos">verb</td><td>to toy with, manipulate</td></tr>
+        <tr><td>理不尽</td><td>rifujin</td><td class="pos">na-adj</td><td>unreasonable, unjust</td></tr>
+        <tr><td>運命</td><td>unmei</td><td class="pos">noun</td><td>fate, destiny</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Nonami's prose in <em>Han'i</em> appears accessible on the surface, but it relies on Japanese legal vocabulary, psychological idiom, and the specific gravity of emotional compounds that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Han'i</em> (犯意) as Mens Rea</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>犯意</strong> — その罪の読み取り方</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Criminal Intent — How to Read That Crime"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Han'i</em> (犯意) is the Japanese legal term for <em>mens rea</em> — the guilty mind that must accompany a guilty act. But the compound carries resonances that "criminal intent" does not. The character <em>han</em> (犯) combines the "dog" radical with <em>fan</em> (反, "rebel / oppose"), evoking a dog that has slipped its leash — an animal violating its proper boundaries. This etymology survives in the modern usage: <em>han</em> is not merely "crime" but "transgression against order." The character <em>i</em> (意) combines <em>yin</em> (音, "sound") over <em>xin</em> (心, "heart"), suggesting the sound the heart makes to itself — the internal monologue that precedes action. <em>Han'i</em> is thus not merely a legal category but a phenomenological one: it names the moment when the heart's sound becomes a decision to violate. The English "criminal intent" is accurate but bloodless — it is what a law professor would say. What is lost is the sense of <em>han'i</em> as a boundary-crossing of the self, an internal rebellion in which the mind turns against its own moral order. Nonami's stories trace this internal rebellion with a precision that the English title cannot convey.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Dekigokoro</em> (来心) as Unbidden Impulse</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>些細な<strong>出来心</strong>だった</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"It was a trivial impulse"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Dekigokoro</em> (出来心) is a compound of <em>deki</em> (出来, "arising / occurrence") and <em>kokoro</em> (心, "heart / mind"), meaning an impulse that arises spontaneously — something that "comes out" of the heart without deliberation or planning. It is distinct from <em>ishi</em> (意志, "will / intention"), which implies deliberate choice, and from <em>shuko</em> (趣向, "design / plan"), which implies forethought. <em>Dekigokoro</em> is the heart's own doing — not the person's decision but the heart's sudden movement. In Buddhist psychology, it would be classified as a <em>yokkai</em> (四か解 / one of the mental functions) — an immediate, unreflective response to circumstances. The English "impulse" captures some of this but misses the specifically Japanese sense of the heart as an autonomous agent that can act against the person's better judgment. What is lost is the passivity embedded in the word: the protagonist did not <em>have</em> an impulse; the impulse <em>occurred</em> (<em>deki</em>) in the heart. The grammar of <em>dekigokoro</em> removes agency, and this removal is crucial to Nonami's moral vision: crime often begins not with a decision but with a failure to resist what the heart has already begun.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kanbi</em> (甘美) as Dangerous Sweetness</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>甘美</strong>な興奮があなたを刺す</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"a sweet excitement pierces you"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kanbi</em> (甘美) is a compound of <em>kan</em> (甘, "sweet / pleasant / indulgent") and <em>bi</em> (美, "beauty / beautiful"), meaning "sweetly beautiful / luscious / voluptuous." It is a word of aesthetic and erotic intensity — used for ripe fruit, for seductive music, for experiences that overwhelm the senses with pleasure. To call criminal excitement <em>kanbi</em> is to place it in the same category as these sensory pleasures, suggesting that crime can be not merely exciting but beautiful in its transgression. The English "sweet" is too weak — it suggests candy, or a kind voice. "Voluptuous" or "luscious" are closer but sound excessive, almost comic, in English. What is lost is the specifically Japanese aesthetic register of <em>kanbi</em> — the word's association with <em>mono no aware</em> (物の哀れ), the bittersweet appreciation of beauty that contains its own destruction. Nonami's criminals experience their crimes as <em>kanbi</em> because the transgression contains both the pleasure of breaking free and the sorrow of what is broken. The English cannot hold both meanings at once.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Yarikirenai</em> (やりきれない) as Readerly Collapse</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>哀しくて、<strong>やりきれなくて</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"sad, unbearable"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Yarikirenai</em> (やりきれない) is the negative potential form of <em>yarikiru</em> (やりきる, "to get through / endure to the end / finish completely"). The root <em>yaru</em> (やる, "to do") combined with <em>kiru</em> (切る, "to cut / complete") suggests carrying something through to its terminus, seeing a difficult process to its end. The negative potential <em>yarikirenai</em> means "unable to endure to the end" — not merely "unbearable" in the sense of "too painful to experience" but "too painful to <em>complete</em>." This is crucial: the word describes not the objective intensity of the pain but the reader's capacity to survive the narrative. A story that is <em>yarikirenai</em> is one that you cannot finish — not because it is boring but because it is too much. The English "unbearable" loses this specificity: "unbearable" describes the stimulus, while <em>yarikirenai</em> describes the relationship between the stimulus and the subject's endurance. What is lost is the sense that reading Nonami's crime stories is an act of emotional labor, a test of the reader's capacity to witness human failure without turning away. The book is <em>yarikirenai</em> because it shows us what we do not want to see, and because seeing it changes us.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Ki wo Yurusu</em> (気許す) as the Origin of Betrayal</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>気を許し</strong>、好きになった頃から</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"from around the time I let down my guard and came to like him"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Ki wo yurusu</em> (気を許す) is an idiom that cannot be translated literally without losing its emotional weight. <em>Ki</em> (気) is one of the most important concepts in Japanese psychology — the vital energy, attention, vigilance, mood, that animates consciousness. <em>Yurusu</em> (許す) means "to permit / forgive / relax / let go." Together, <em>ki wo yurusu</em> means to relax the defensive vigilance of the <em>ki</em> — to stop monitoring, stop protecting, stop anticipating threat. It is what you do with someone you trust, and it is always, in Nonami's world, a dangerous act. The English "let down one's guard" captures the military metaphor but misses the specifically Japanese physiology of <em>ki</em> — the sense that trust is not merely a cognitive decision but a somatic relaxation, a lowering of the body's defenses. In traditional Japanese medicine and martial arts, <em>ki</em> must be guarded (<em>mamoru</em>, 守る); to relax it is to become vulnerable not only emotionally but energetically. What is lost is the sense that betrayal in Nonami's fiction is not merely a moral injury but a somatic one — the body remembers the relaxation that preceded the wound, and it will not relax again. The grammar of <em>ki wo yurushi</em> (気をし) — continuative form, followed by a comma, followed by <em>suki ni natta</em> (好きになった, "came to like") — creates a causal sequence: first the guard drops, then affection follows, then the true nature is revealed. The order matters. In Nonami's moral universe, affection is what makes betrayal possible, and the law must judge the consequences of a heart that opened itself to the wrong person.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, key passages, and the legal-emotional register of Nonami's crime noir.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜で〜（並立・手段</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>De</em>: "by / with / and" — marks means, manner, or parallel adjectives.</p>
+      <div class="grammar-example">甘美でエキサイティング</div>
+      <p class="grammar-example-en">"sweet and exciting" — The <em>de</em> connects two adjectives of equal weight, creating a moral paradox rather than a simple description. The grammar refuses to prioritize pain over pleasure.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・遺憾）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te shimau</em>: "to end up ~ing / to ~ completely" — aspectual auxiliary indicating completion, often with regret or irreversibility.</p>
+      <div class="grammar-example">犯罪に手を染めてしまう</div>
+      <p class="grammar-example-en">"succumbs to crime / ends up getting involved in crime" — The <em>te shimau</em> construction adds finality and regret. The hands are dyed and cannot be cleaned; the act is complete and irreversible.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ていく（継続・方向）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te iku</em>: "to continue ~ing / to ~ away from" — directional auxiliary suggesting process extending into the future.</p>
+      <div class="grammar-example">罪は増殖していく</div>
+      <p class="grammar-example-en">"crime proliferates [into the future]" — The <em>te iku</em> construction removes the crime from the protagonist's control and sends it forward in time, beyond their reach. The grammar enacts the snowball.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ように（比況・例示）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>You ni</em>: "like / as if / in the manner of" — simile marker creating metaphorical equivalence.</p>
+      <div class="grammar-example">雪玉が転がるように</div>
+      <p class="grammar-example-en">"like a snowball rolling" — The <em>you ni</em> simile removes agency from the crime. The snowball rolls itself; the crime proliferates itself. The grammar makes the protagonist a passenger, not a driver.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜くて／〜なくて（連用・理由）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Kute / nakute</em>: continuative form of adjectives, connecting emotional states in sequence.</p>
+      <div class="grammar-example">哀しくて、やりきれなくて</div>
+      <p class="grammar-example-en">"sad, unbearable [and then...]" — The <em>kute / nakute</em> continuative forms create an emotional chord. Each adjective is incomplete without the next; the grammar forces the reader to hold multiple feelings simultaneously.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜頃から（時間起点）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Koro kara</em>: "from around the time when ~" — soft temporal boundary indicating a period rather than a moment.</p>
+      <div class="grammar-example">好きになった頃から</div>
+      <p class="grammar-example-en">"from around the time I came to like him" — The <em>koro</em> (頃) softener creates a season of vulnerability rather than a single instant of betrayal. The grammar extends the danger across time.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜はじめる（開始相）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Hajimeru</em>: inceptive auxiliary indicating the beginning of a process.</p>
+      <div class="grammar-example">本性を現しはじめた</div>
+      <p class="grammar-example-en">"began to reveal his true nature" — The <em>hajimeru</em> auxiliary creates a narrative of gradual revelation. The true nature does not appear; it <em>begins</em> to appear, story by story, wound by wound.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が〜て（主語・継続）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga ~te</em>: subject marker plus continuative verb form, creating a clause of ongoing action.</p>
+      <div class="grammar-example">偶然と勢いが重なって</div>
+      <p class="grammar-example-en">"coincidence and momentum overlapping" — The <em>ga</em> marks the external forces as the grammatical subject, removing the protagonist from agency. The grammar says: forces converged, and crime followed.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Nonami's grammar in <em>Han'i</em> is deceptively simple — mostly N5-N4 constructions that create their effects through juxtaposition, passivity, and emotional parallelism. Pay attention to how <em>te shimau</em> removes reversibility, how <em>te iku</em> sends crime into the future, how <em>kute</em> continuatives create emotional chords, and how <em>ga</em> subjects externalize agency. Nonami is a writer who trusts simple grammar to bear heavy moral weight, and the lesson of her prose is that the most devastating sentences are often the most structurally modest.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">犯意 &middot; 乃南アサ／著、園田寿／法解説 &middot; 新潮社 2008（単行本「犯意 その罪の読み取り方」）/ 2011（新潮文庫）ISBN 978-4-10-142550-4</p>
+</footer>
+
+</div>
+</body>
+</html>

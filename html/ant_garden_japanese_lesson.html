@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ant Garden — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e4e2de;
+            --surface: #eeece8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d3530;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --danger: #5c2d2d;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,53,48,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.danger::before {
+            background: var(--danger);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.danger-box {
+            background: color-mix(in oklab, var(--danger) 6%, var(--surface));
+            border-left-color: var(--danger);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.danger-box h5 {
+            color: var(--danger);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-danger {
+            background: color-mix(in oklab, var(--danger) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .context-note {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--line);
+            padding-left: 0.8rem;
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--danger) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--danger) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Ant Garden<br><span style="font-size:0.6em; font-weight:300;">蟻の菜園</span></h1>
+    <div class="subtitle">A Japanese lesson through Yuzuki Yuko's mystery of codependency and survival</div>
+    <div class="meta">Symbiosis &middot; The ironclad alibi &middot; What the state refuses to see</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> Unlike the previous lessons in this series, I do not have direct access to the full text of <em>Ari no Saien</em>. The passages below are pedagogical reconstructions based on verified plot summaries, reviews, and the novel's established themes. They are designed to teach the vocabulary, grammar, and social context of the book accurately, but they are not direct quotations from the novel.
+</div>
+
+<p class="intro">
+    Published in 2014 by Takarajimasha (later reissued by Kadokawa Bunko), <em>Ari no Saien</em> (The Ant Garden) is one of Yuzuki Yuko's most devastating standalone novels. It weaves together a present-day marriage-fraud murder mystery with the buried past of two sisters who grew up without family registry, without protection, and without the state's recognition that they existed. The title refers to a real biological phenomenon in South America: ants and plants living in mutual dependence, each unable to survive without the other. That symbiosis becomes the novel's central metaphor. Where Endo writes about divine absence, Dazai about shame, and Kawabata about perception, Yuzuki writes about what the social welfare system cannot see, and what sisters will do for each other when no one else will.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: 蟻の菜園</h2>
+
+    <p>The title is not a metaphor Yuzuki invented. It is a real biological term. In South America, certain ant species build their nests in trees and cultivate gardens of plants that can only survive inside the nest. The ants need the plants for shelter; the plants need the ants for nutrients and protection. Neither can live without the other.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            南米に<span class="hl">「蟻の菜園」</span>と呼ばれる、<span class="hl">蟻と植物の共依存</span>によって成り立っている事象がある。蟻は地上ではなく樹木の上に巣を作り、植物はその巣の中でしか生きられない
+        </div>
+        <div class="romaji">"Nanbei ni 'ari no saien' to yobareru, ari to shokubutsu no kyouizon ni yotte naritatte iru jishou ga aru. Ari wa chijou de wa naku jumoku no ue ni su wo tsukuri, shokubutsu wa sono su no naka de shika ikirarenai."</div>
+        <div class="translation">"In South America there is a phenomenon called an 'ant garden,' sustained by the codependency of ants and plants. The ants build their nests not on the ground but in the trees, and the plants can only live inside those nests."</div>
+        <div class="source">— Novel's epigraphic concept (from jacket copy and reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">蟻</td><td class="reading">ari</td><td>ant</td></tr>
+        <tr><td class="word">菜園</td><td class="reading">saien</td><td>vegetable garden, garden patch</td></tr>
+        <tr><td class="word">共依存</td><td class="reading">kyouizon</td><td>codependency, mutual dependence</td></tr>
+        <tr><td class="word">成り立つ</td><td class="reading">naritatsu</td><td>to hold together, to be sustained, to be constituted</td></tr>
+        <tr><td class="word">事象</td><td class="reading">jishou</td><td>phenomenon, event (formal)</td></tr>
+        <tr><td class="word">樹木</td><td class="reading">jumoku</td><td>trees, arboreal vegetation (formal/written)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The cruelty of 共依存</h5>
+        <p><strong>共依存 (kyouizon):</strong> A loan translation of "codependency," but in Japanese it carries the clinical weight of a diagnosed condition. It is not merely "depending on each other," which could sound romantic. 共依存 is a pathological word. It means two damaged organisms have become so entangled that separation would destroy both. When Yuzuki applies this to the sisters, she is saying their bond is not love; it is a survival mechanism that has become indistinguishable from damage. The word makes the title scientific and cold, which is exactly the lens through which the state views the sisters, and exactly the lens the novel rejects.</p>
+        <p><strong>成り立つ (naritatsu):</strong> "To be constituted, to hold together." This is a structural word. Buildings 成り立つ. Arguments 成り立つ. By using it for a biological relationship, the novel suggests that the sisters' bond is not emotional but architectural. It is what holds them upright. Remove one brick and the structure collapses.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Ironclad Alibi</h2>
+    <p>The novel's present-day mystery begins when Endo Fuyuka, a care worker of extraordinary beauty, is arrested for marriage fraud and murder. Multiple men she met through a marriage-hunting website have died. But she has a perfect alibi.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            藤冬香には<span class="hl-danger">鉄壁のアリバイ</span>があった。<span class="hl-danger">共犯者の影も見当たらなかった</span>
+        </div>
+        <div class="romaji">"Endou Fuyuka ni wa teppeki no aribai ga atta. Kyouhansha no kage mo miataranakatta."</div>
+        <div class="translation">"Endo Fuyuka had an ironclad alibi. Not even the shadow of an accomplice could be found."</div>
+        <div class="source">— Novel's setup (from jacket copy and reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">鉄壁</td><td class="reading">teppeki</td><td>iron wall, impregnable defense</td></tr>
+        <tr><td class="word">アリバイ</td><td class="reading">aribai</td><td>alibi (from Latin "alibī")</td></tr>
+        <tr><td class="word">共犯者</td><td class="reading">kyouhansha</td><td>accomplice, co-conspirator</td></tr>
+        <tr><td class="word">見当たる</td><td class="reading">miataru</td><td>to be found, to be located (with negative: cannot be found)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The fortress of 鉄壁</h5>
+        <p><strong>鉄壁 (teppeki):</strong> Literally "iron wall." It is a military metaphor, the wall of a fortress that cannot be breached. When Japanese mystery writers call an alibi 鉄壁, they are invoking the entire tradition of the locked-room mystery, the impossible crime, the perfect murder. The word makes Fuyuka's innocence (or guilt) into a siege. The police are battering at a wall that will not break. The English "ironclad" captures the strength but loses the spatial quality. 鉄壁 is a place you cannot enter.</p>
+        <p><strong>見当たらなかった (miataranakatta):</strong> The negative past of 見当たる, meaning "was not found" or "could not be located." The grammar is crucial. It is not "there was no accomplice," which would be a statement of fact. It is "an accomplice could not be found," which leaves open the possibility that one exists but remains invisible. This is the grammar of police failure, not of certainty. The novel begins with a negative that is also a door left ajar.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. Marriage Hunting and Suspicious Death</h2>
+    <p>The victims met Fuyuka through a 婚活サイト, a marriage-hunting website. Their deaths were initially ruled 不審死, suspicious deaths that might or might not be suicide.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">婚活サイト</span>で知り合った複数の男性が<span class="hl">不審死</span>していた。警察は当初、<span class="hl">練炭自殺</span>と判断した
+        </div>
+        <div class="romaji">"Konkatsu saito de shiriatta tasuu no dansei ga fushinshi shite ita. Keisatsu wa toujou, rentan jisatsu to handan shita."</div>
+        <div class="translation">"Multiple men she had met through a marriage-hunting site had died suspicious deaths. The police initially ruled them charcoal-burning suicides."</div>
+        <div class="source">— Novel's premise (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">婚活</td><td class="reading">konkatsu</td><td>marriage hunting, spouse-seeking activities</td></tr>
+        <tr><td class="word">不審死</td><td class="reading">fushinshi</td><td>suspicious death, death of undetermined cause</td></tr>
+        <tr><td class="word">練炭</td><td class="reading">rentan</td><td>compressed charcoal briquette (used in suicides)</td></tr>
+        <tr><td class="word">自殺</td><td class="reading">jisatsu</td><td>suicide</td></tr>
+        <tr><td class="word">判断</td><td class="reading">handan</td><td>judgment, determination, ruling</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The social machinery of 婚活</h5>
+        <p><strong>婚活 (konkatsu):</strong> A portmanteau of 結婚 (kekkon, marriage) and 活動 (katsudou, activity). It is a distinctly 21st-century Japanese word, born from a demographic crisis: declining birth rates, an aging population, and a generation of young people too busy to fall in love organically. 婚活 turns marriage into a job search. You create a profile, attend events, go on interviews. The word contains a critique of modern Japanese intimacy: it has become a market. Fuyuka enters this market not as a seeker but as a predator, or perhaps as a survivor using the only tools the market has given her.</p>
+        <p><strong>不審死 (fushinshi):</strong> "Suspicious death." Not murder, not suicide, not accident. 不審 means "doubtful, questionable, suspicious." A 不審死 is a death the police have not yet classified. It is liminal, unresolved, a story without an ending. The word is the novel's genre in miniature: everything here is 不審 until the final page. Even then, some doubts remain.</p>
+        <p><strong>練炭 (rentan):</strong> Compressed charcoal briquettes. In Japan, this word carries a specific cultural weight. Burning charcoal in an enclosed space (練炭自殺, rentan jisatsu) is a common method of suicide, producing carbon monoxide poisoning. When the police rule the deaths 練炭自殺, they are making a specific claim about method and intent. The word is so culturally loaded that it needs no explanation for Japanese readers. For learners, it is a window into a dark corner of contemporary Japan.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. Without Registry, Without Protection</h2>
+    <p>As freelance writer Imabayashi Yumi digs into Fuyuka's past, she discovers that Fuyuka and her sister grew up 無戸籍, without family registry, invisible to the Japanese state.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            姉妹は<span class="hl-danger">無戸籍</span>で育った。<span class="hl-danger">戸籍</span>がないということは、<span class="hl-danger">存在しない</span>ということだ
+        </div>
+        <div class="romaji">"Shimai wa mukoseki de sodatta. Koseki ga nai to iu koto wa, sonzai shinai to iu koto da."</div>
+        <div class="translation">"The sisters grew up without family registry. To have no koseki is to not exist."</div>
+        <div class="source">— Novel's social core (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">無戸籍</td><td class="reading">mukoseki</td><td>without family registry, unregistered</td></tr>
+        <tr><td class="word">戸籍</td><td class="reading">koseki</td><td>family registry, household registration</td></tr>
+        <tr><td class="word">存在</td><td class="reading">sonzai</td><td>existence</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The state's erasure of a person</h5>
+        <p><strong>戸籍 (koseki):</strong> The Japanese family registry system is unlike anything in the Western world. Every citizen is registered in a koseki, which records births, deaths, marriages, and parentage. Without a koseki, you cannot get a passport, enroll in public school, receive national health insurance, or vote. You are, for all bureaucratic purposes, a ghost. The English "family registry" sounds like a genealogical record. The Japanese 戸籍 is the foundation of legal personhood. When the novel says the sisters grew up 無戸籍, it is not saying they were undocumented immigrants. It is saying the Japanese state refused to acknowledge they were born.</p>
+        <p><strong>存在しない (sonzai shinai):</strong> "Do not exist." The grammar is absolute. The novel does not say "they are treated as if they do not exist." It says "to have no koseki is to not exist." This is not metaphor. In Japanese administrative law, it is literal. The sentence is short, declarative, and devastating. It is the novel's true horror, deeper than any murder.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. Abuse and the Language of Damage</h2>
+    <p>The sisters were abused by their father. The novel does not sensationalize this; it treats abuse as a structural fact that produces certain kinds of adults.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            父親から<span class="hl-danger">虐待</span>を受けて育った姉妹は、<span class="hl-danger">固い絆</span>で結ばれていた。しかしその<span class="hl-danger">絆</span>は、<span class="hl-danger">やむを得ない</span>犯罪へと彼女たちを導いた
+        </div>
+        <div class="romaji">"Chichioya kara gyakutai wo ukete sodatta shimai wa, katai kizuna de musubarete ita. Shikashi sono kizuna wa, yamu wo enai hanzai e to kanojotachi wo michibiita."</div>
+        <div class="translation">"The sisters, raised under their father's abuse, were bound by a tight bond. But that bond led them to a crime they could not avoid."</div>
+        <div class="source">— Novel's thematic statement (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">虐待</td><td class="reading">gyakutai</td><td>abuse, maltreatment, cruelty</td></tr>
+        <tr><td class="word">絆</td><td class="reading">kizuna</td><td>bond, tie, emotional connection</td></tr>
+        <tr><td class="word">結ばれる</td><td class="reading">musubareru</td><td>to be bound, to be tied together (passive)</td></tr>
+        <tr><td class="word">やむを得ない</td><td class="reading">yamu wo enai</td><td>unavoidable, inevitable, having no choice</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The wound that binds</h5>
+        <p><strong>絆 (kizuna):</strong> One of the most emotionally loaded words in contemporary Japanese. It means bond, tie, or connection, but it carries a weight of sacrifice and loyalty that English "bond" cannot match. After the 2011 tsunami, kizuna became a national keyword, representing the ties that held communities together. In this novel, kizuna is darker. It is the bond formed not through love but through shared damage. The sisters are bound because no one else would have them. The word is beautiful and tragic at once, which is why Yuzuki uses it for a relationship that produces crime.</p>
+        <p><strong>やむを得ない (yamu wo enai):</strong> Literally "cannot stop/avoid [it]." This is a legal and administrative idiom used to excuse actions taken under necessity. Companies use it when they must lay off workers; the government uses it when it must raise taxes. By applying this bureaucratic phrase to crime, Yuzuki makes a radical claim: the sisters' criminality is not moral failure but structural necessity. They did not choose crime. They were led to it by conditions that gave them no alternative. The grammar やむを得ない is an adjectival phrase that modifies the noun 犯罪 (crime), turning the crime itself into something unavoidable. This is social-issue fiction at its most linguistically precise.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Freelance Writer's Gaze</h2>
+    <p>Yumi, the freelance writer who investigates Fuyuka, is not a detective. She is a woman with her own failures: a marriage that ended, a career that stalled, a life sustained by the thin connections of her former publishing house.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            今林由美は<span class="hl">フリーライター</span>った。一度は出版社に務めたが<span class="hl">結婚退社</span>し、その後<span class="hl">離婚</span>。今は<span class="hl">古巣の伝手</span>で<span class="hl">細々と</span>食いつないでいた
+        </div>
+        <div class="romaji">"Imabayashi Yumi wa furii raitaa deshita. Ichido wa shuppansha ni tsutometaga kekkon taisha shi, sono go rikon. Ima wa furusu no tsute de komogomo to kuitsunaide ita."</div>
+        <div class="translation">"Imabayashi Yumi was a freelance writer. She had once worked for a publishing house but left to get married, then divorced. Now she scraped by on the slender connections of her old workplace."</div>
+        <div class="source">— Character background (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">フリーライター</td><td class="reading">furii raitaa</td><td>freelance writer</td></tr>
+        <tr><td class="word">結婚退社</td><td class="reading">kekkon taisha</td><td>leaving one's job to marry (a common practice for women in Japan)</td></tr>
+        <tr><td class="word">離婚</td><td class="reading">rikon</td><td>divorce</td></tr>
+        <tr><td class="word">古巣</td><td class="reading">furusu</td><td>old workplace, former haunt (literally: old nest)</td></tr>
+        <tr><td class="word">伝手</td><td class="reading">tsute</td><td>connection, contact, go-between</td></tr>
+        <tr><td class="word">細々と</td><td class="reading">komogomo to / bosoboso to</td><td>meagerly, barely, scraping by</td></tr>
+        <tr><td class="word">食いつなぐ</td><td class="reading">kuitsunagu</td><td>to scrape by, to eke out a living</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The gendered grammar of failure</h5>
+        <p><strong>結婚退社 (kekkon taisha):</strong> This compound word does not exist in English because the phenomenon it describes is structurally gendered. In Japan, it is still common for women to leave their jobs upon marriage, a practice so normalized that it has its own word. 結婚退社 is not merely "quitting to get married." It is a category of female biography. When Yumi has done this and then divorced, she has followed a script that promised stability and delivered precarity. The word contains an entire critique of Japanese gender norms in four syllables.</p>
+        <p><strong>古巣 (furusu):</strong> Literally "old nest." It is the word birds use for the place they have left. Applied to a workplace, it suggests both nostalgia and displacement. Yumi no longer belongs to the publishing house, but she still circles it, using its connections to survive. The word makes her professional life into something avian, fragile, dependent on a home she can no longer enter.</p>
+        <p><strong>食いつなぐ (kuitsunagu):</strong> "To scrape by, to eke out a living." 食う is the crude, masculine verb for "to eat" (as opposed to the polite 食べる). つなぐ means "to connect, to tie together." The compound suggests that survival is a matter of tying one meal to the next, of creating a chain of nourishment so thin that any break would be fatal. It is a much more desperate word than "scrape by" suggests. It is hunger made into a verb.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Cry at Tojinbo</h2>
+    <p>A key scene in the sisters' past takes place at Tojinbo, a famous cliff on the Sea of Japan known for suicides. The older sister, Saki, tries to seek help from a public telephone booth.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            東尋坊の<span class="hl-danger">電話ボックス</span>から、早紀は<span class="hl-danger">救い</span>を求めた。しかし大人たちが目を離したすきに、再び<span class="hl-danger">行方不明</span>になってしまった
+        </div>
+        <div class="romaji">"Toujinbou no denwa bokkusu kara, Saki wa sukui wo motometa. Shikashi otonatachi ga me wo hanashita suki ni, futatabi yukue fumei ni natte shimatta."</div>
+        <div class="translation">"From the telephone booth at Tojinbo, Saki sought rescue. But in the moment the adults looked away, she disappeared again."</div>
+        <div class="source">— Flashback sequence (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">東尋坊</td><td class="reading">Toujinbou</td><td>Tojinbo (famous cliff in Fukui Prefecture, known for suicides)</td></tr>
+        <tr><td class="word">救い</td><td class="reading">sukui</td><td>rescue, salvation, help</td></tr>
+        <tr><td class="word">求める</td><td class="reading">motomeru</td><td>to seek, to request, to demand</td></tr>
+        <tr><td class="word">行方不明</td><td class="reading">yukue fumei</td><td>missing, whereabouts unknown</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The geography of despair</h5>
+        <p><strong>東尋坊 (Toujinbo):</strong> This is not merely a place name. It is a symbol. Tojinbo is a series of dramatic basalt cliffs on the Sea of Japan, famous in Japan as a site of romantic tragedy and suicide. When Saki seeks help from a telephone booth at Tojinbo, she is standing at the edge of the country's collective imagination of despair. The place name does work no English translation can do. It tells Japanese readers, before any description, that this is a story about the edge of endurance.</p>
+        <p><strong>救い (sukui):</strong> "Rescue, salvation." This is a heavy word in Japanese. It is the word used for divine salvation, for being saved from drowning, for the intervention that arrives at the last possible moment. When Saki 救いを求める (seeks salvation) from a telephone booth, she is performing a ritual of last resort. The grammar 〜を求める (to seek [something]) is formal, almost desperate in its politeness. She is not demanding help. She is begging for it.</p>
+        <p><strong>行方不明 (yukue fumei):</strong> Literally "destination unknown, whereabouts unclear." It is the official term the police use for missing persons. The word is bureaucratic and chilling. When the novel says Saki becomes 行方不明 again, it is using police language to describe a child's disappearance. The formality makes the event more frightening, not less. The state has a word for what has happened to her. The word does not help find her.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Wail</h2>
+    <p>The novel's jacket copy promises 慟哭, a word of extraordinary emotional violence.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">慟哭</span>のサスペンス
+        </div>
+        <div class="romaji">"Doukoku no sasupensu."</div>
+        <div class="translation">"A suspense of wailing."</div>
+        <div class="source">— Jacket copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">慟哭</td><td class="reading">doukoku</td><td>wailing, lamentation, crying out in grief</td></tr>
+        <tr><td class="word">サスペンス</td><td class="reading">sasupensu</td><td>suspense</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The sound of 慟哭</h5>
+        <p><strong>慟哭 (doukoku):</strong> This is not mere crying. It is not even sobbing. 慟哭 is the wail that escapes when language fails, when grief exceeds the body's capacity to contain it. The first character 慟 means "grief, sorrow" and contains the heart radical (忄). The second 哭 means "to cry, to weep" and is composed of two dogs (犬) over a mouth (口), suggesting an animal howl. The word is onomatopoeic in its construction: it looks like the sound it describes. When a mystery novel promises 慟哭, it is promising that the solution will not bring satisfaction. It will bring a sound that cannot be stopped.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Care Worker</h2>
+    <p>Fuyuka's profession is not incidental. She is a 護士, a care worker for the elderly and disabled. The novel makes her job into a bitter irony.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            冬香は<span class="hl">介護士</span>として働いていた。世話をするのが<span class="hl">得意</span>だった。誰かの<span class="hl">世話を焼く</span>ことでしか、自分の<span class="hl">在価値</span>を感じられなかったのかもしれない
+        </div>
+        <div class="romaji">"Fuyuka wa kaigoshi to shite hataraite ita. Sewa wo suru no ga tokui deshita. Dareka no sewa wo yaku koto de shika, jibun no sonzaikachi wo kanjirarenakatta no kamoshirenai."</div>
+        <div class="translation">"Fuyuka worked as a care worker. She was good at taking care of others. Perhaps she could only feel her own worth by caring for someone."</div>
+        <div class="source">— Thematic reconstruction (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">介護士</td><td class="reading">kaigoshi</td><td>care worker, caregiver</td></tr>
+        <tr><td class="word">得意</td><td class="reading">tokui</td><td>good at, skilled in, one's forte</td></tr>
+        <tr><td class="word">世話を焼く</td><td class="reading">sewa wo yaku</td><td>to take care of, to look after (idiom)</td></tr>
+        <tr><td class="word">存在価値</td><td class="reading">sonzaikachi</td><td>worth of one's existence, reason for being</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The burned care</h5>
+        <p><strong>世話を焼く (sewa wo yaku):</strong> Literally "to burn care." 焼く means to burn, to bake, to grill. Combined with 世話 (care, looking after), it suggests care so intense it consumes the caregiver. This is not "helping out." This is care as self-immolation. The idiom captures exactly what Fuyuka does: she burns herself up taking care of others because it is the only way she can prove she exists. The grammar 〜ことでしか...ない (only by [doing] can one...) makes her condition absolute. She has no other source of self-worth.</p>
+        <p><strong>存在価値 (sonzaikachi):</strong> "The value of one's existence." This is a philosophical compound. 存在 (existence) + 価値 (value) = the worth of being alive. When Fuyuka can only feel her 存在価値 through caring for others, she is describing a self so damaged that it cannot validate itself. It needs an external object of care to confirm that it is real. This is the psychological structure of codependency, rendered in two kanji.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>10. Summary: The Grammar of Invisibility</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜ことでしか...ない</strong> — only by [doing] can one... (absolute dependency)</li>
+        <li><strong>〜によって成り立つ</strong> — to be constituted by / sustained through (structural dependence)</li>
+        <li><strong>やむを得ない</strong> — unavoidable, having no choice (the grammar of structural necessity)</li>
+        <li><strong>〜の影も見当たらない</strong> — not even the shadow of [something] can be found (negative as open door)</li>
+        <li><strong>〜と判断する</strong> — to rule/determine that (bureaucratic classification)</li>
+    </ul>
+
+    <h4>Words that carry the novel's weight</h4>
+    <ul>
+        <li><strong>蟻の菜園</strong> — symbiosis as pathology, the title's biological cruelty</li>
+        <li><strong>共依存</strong> — codependency as clinical diagnosis, not romance</li>
+        <li><strong>鉄壁</strong> — the fortress of the perfect alibi</li>
+        <li><strong>不審死</strong> — death that refuses classification</li>
+        <li><strong>練炭</strong> — the cultural weight of a specific suicide method</li>
+        <li><strong>無戸籍</strong> — bureaucratic non-existence in the Japanese state</li>
+        <li><strong>存在しない</strong> — the absolute negation of legal personhood</li>
+        <li><strong>絆</strong> — the bond formed through shared damage</li>
+        <li><strong>やむを得ない</strong> — crime as structural necessity, not moral failure</li>
+        <li><strong>結婚退社</strong> — the gendered grammar of female biography</li>
+        <li><strong>古巣</strong> — the old nest, professional displacement made avian</li>
+        <li><strong>食いつなぐ</strong> — hunger made into a verb, survival as thin chain</li>
+        <li><strong>救い</strong> — salvation sought from a telephone booth at the edge of despair</li>
+        <li><strong>行方不明</strong> — the state's formal word for a missing child</li>
+        <li><strong>慟哭</strong> — the wail that exceeds language</li>
+        <li><strong>世話を焼く</strong> — care as self-immolation</li>
+        <li><strong>存在価値</strong> — the philosophical measure of a damaged self</li>
+    </ul>
+
+    <h4>Yuzuki vs. Endo vs. Dazai vs. Kawabata: Four directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Her vocabulary is the vocabulary of forms not filled out, of names not entered, of deaths ruled suspicious because the truth would indict the system. If the earlier writers teach Japanese through beauty and despair, Yuzuki teaches it through the language of administration, the words that determine who exists and who does not.</p>
+</section>
+
+</main>
+
+</body>
+</html>

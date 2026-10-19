@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Names — Family & Given Names</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f0;
+  --surface: #fffefb;
+  --ink: #1a1816;
+  --muted: #6e6860;
+  --accent: #2e5c8a;
+  --accent-weak: color-mix(in oklab, var(--accent) 10%, var(--surface));
+  --line: color-mix(in oklab, var(--ink) 10%, transparent);
+  --female: #8a4a6b;
+  --male: #3a6e5e;
+  --family: #5c4a2e;
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.6rem);
+  --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 6px 18px -8px rgba(0,0,0,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: "Inter", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--step-0);
+  line-height: 1.7;
+}
+
+header {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) var(--space) calc(var(--space) * 1.5);
+  text-align: center;
+}
+
+header h1 {
+  font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+header p {
+  color: var(--muted);
+  max-width: 50ch;
+  margin: 0 auto;
+  font-size: var(--step-0);
+}
+
+.hero-kanji {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: color-mix(in oklab, var(--ink) 18%, transparent);
+  line-height: 1;
+  margin-bottom: 0.2em;
+  user-select: none;
+}
+
+main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: var(--space);
+}
+
+.section-title {
+  font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  margin: calc(var(--space) * 1.8) 0 calc(var(--space) * 0.8);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-title::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 1.1em;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.section-title.family::before { background: var(--family); }
+
+.section-title.male::before { background: var(--male); }
+
+.section-title.female::before { background: var(--female); }
+
+.section-desc {
+  color: var(--muted);
+  margin-bottom: calc(var(--space) * 0.8);
+  font-size: 0.95em;
+}
+
+.name-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: calc(var(--space) * 0.6);
+}
+
+.name-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 0.7);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.name-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.name-card.family::before { background: var(--family); }
+
+.name-card.male::before { background: var(--male); }
+
+.name-card.female::before { background: var(--female); }
+
+.name-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 28px -10px rgba(0,0,0,0.14);
+}
+
+.kanji {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.15em;
+}
+
+.reading {
+  font-size: 0.9em;
+  color: var(--muted);
+  margin-bottom: 0.3em;
+}
+
+.romaji {
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  margin-top: 0.5em;
+}
+
+.tag.family {
+  background: color-mix(in oklab, var(--family) 12%, transparent);
+  color: var(--family);
+}
+
+.tag.male {
+  background: color-mix(in oklab, var(--male) 12%, transparent);
+  color: var(--male);
+}
+
+.tag.female {
+  background: color-mix(in oklab, var(--female) 12%, transparent);
+  color: var(--female);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin: calc(var(--space) * 0.5) 0 calc(var(--space) * 1.2);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.88em;
+  color: var(--muted);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.family { background: var(--family); }
+
+.dot.male { background: var(--male); }
+
+.dot.female { background: var(--female); }
+
+footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2) var(--space) calc(var(--space) * 1.5);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88em;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 480px) {
+  .name-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body { background: #fff; }
+  .name-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name-card { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero-kanji">名前</div>
+  <h1>Japanese Names</h1>
+  <p>A curated reference of common Japanese family names and given names, with kanji, hiragana readings, and romaji. Useful for learners getting familiar with Japanese naming conventions.</p>
+</header>
+
+<main>
+
+<div class="legend">
+  <div class="legend-item"><span class="dot family"></span> Family Name (姓)</div>
+  <div class="legend-item"><span class="dot male"></span> Male Given Name (男名)</div>
+  <div class="legend-item"><span class="dot female"></span> Female Given Name (女名)</div>
+</div>
+
+<!-- FAMILY NAMES -->
+<h2 class="section-title family">Family Names (姓 / Sei)</h2>
+<p class="section-desc">The ten most common surnames in Japan, shared by over ten million people.</p>
+<div class="name-grid">
+  <div class="name-card family">
+    <div class="kanji">佐藤</div>
+    <div class="reading">さとう</div>
+    <div class="romaji">Sato</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">鈴木</div>
+    <div class="reading">すずき</div>
+    <div class="romaji">Suzuki</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">高橋</div>
+    <div class="reading">たかはし</div>
+    <div class="romaji">Takahashi</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">田中</div>
+    <div class="reading">たなか</div>
+    <div class="romaji">Tanaka</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">伊藤</div>
+    <div class="reading">いとう</div>
+    <div class="romaji">Ito</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">渡辺</div>
+    <div class="reading">わたなべ</div>
+    <div class="romaji">Watanabe</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山本</div>
+    <div class="reading">やまもと</div>
+    <div class="romaji">Yamamoto</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">中村</div>
+    <div class="reading">なかむら</div>
+    <div class="romaji">Nakamura</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">小林</div>
+    <div class="reading">こばやし</div>
+    <div class="romaji">Kobayashi</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">加藤</div>
+    <div class="reading">かとう</div>
+    <div class="romaji">Kato</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">吉田</div>
+    <div class="reading">よしだ</div>
+    <div class="romaji">Yoshida</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山田</div>
+    <div class="reading">やまだ</div>
+    <div class="romaji">Yamada</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">佐々木</div>
+    <div class="reading">ささき</div>
+    <div class="romaji">Sasaki</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山口</div>
+    <div class="reading">やまぐち</div>
+    <div class="romaji">Yamaguchi</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">松本</div>
+    <div class="reading">まつもと</div>
+    <div class="romaji">Matsumoto</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">井上</div>
+    <div class="reading">いのうえ</div>
+    <div class="romaji">Inoue</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">木村</div>
+    <div class="reading">きむら</div>
+    <div class="romaji">Kimura</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">林</div>
+    <div class="reading">はやし</div>
+    <div class="romaji">Hayashi</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">清水</div>
+    <div class="reading">しみず</div>
+    <div class="romaji">Shimizu</div>
+    <span class="tag family">Family Name</span>
+  </div>
+  <div class="name-card family">
+    <div class="kanji">山崎</div>
+    <div class="reading">やまざき</div>
+    <div class="romaji">Yamazaki</div>
+    <span class="tag family">Family Name</span>
+  </div>
+</div>
+
+<!-- MALE GIVEN NAMES -->
+<h2 class="section-title male">Male Given Names (男名 / Nanmei)</h2>
+<p class="section-desc">Common male given names, often ending in -ro, -ya, -ta, or -o. Many carry meanings of strength, light, or virtue.</p>
+<div class="name-grid">
+  <div class="name-card male">
+    <div class="kanji">太郎</div>
+    <div class="reading">たろう</div>
+    <div class="romaji">Taro</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">健太</div>
+    <div class="reading">けんた</div>
+    <div class="romaji">Kenta</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">翔</div>
+    <div class="reading">しょう / かける</div>
+    <div class="romaji">Sho / Kakeru</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大翔</div>
+    <div class="reading">ひろと / たいと</div>
+    <div class="romaji">Hiroto / Taito</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蓮</div>
+    <div class="reading">れん</div>
+    <div class="romaji">Ren</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠真</div>
+    <div class="reading">ゆうま</div>
+    <div class="romaji">Yuma</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">湊</div>
+    <div class="reading">みなと</div>
+    <div class="romaji">Minato</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">大輝</div>
+    <div class="reading">だいき / たいき</div>
+    <div class="romaji">Daiki / Taiki</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">陽翔</div>
+    <div class="reading">はると / ひなと</div>
+    <div class="romaji">Haruto / Hinato</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">樹</div>
+    <div class="reading">いつき / じゅ</div>
+    <div class="romaji">Itsuki / Ju</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">蒼太</div>
+    <div class="reading">そうた</div>
+    <div class="romaji">Sota</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">悠人</div>
+    <div class="reading">ゆうと / はると</div>
+    <div class="romaji">Yuto / Haruto</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">健</div>
+    <div class="reading">けん / たける</div>
+    <div class="romaji">Ken / Takeru</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">誠</div>
+    <div class="reading">まこと / せい</div>
+    <div class="romaji">Makoto / Sei</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">拓也</div>
+    <div class="reading">たくや</div>
+    <div class="romaji">Takuya</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">雄大</div>
+    <div class="reading">ゆうだい</div>
+    <div class="romaji">Yudai</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">直樹</div>
+    <div class="reading">なおき</div>
+    <div class="romaji">Naoki</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">康平</div>
+    <div class="reading">こうへい</div>
+    <div class="romaji">Kohei</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">亮太</div>
+    <div class="reading">ょうた</div>
+    <div class="romaji">Ryota</div>
+    <span class="tag male">Male Given</span>
+  </div>
+  <div class="name-card male">
+    <div class="kanji">和也</div>
+    <div class="reading">かずや</div>
+    <div class="romaji">Kazuya</div>
+    <span class="tag male">Male Given</span>
+  </div>
+</div>
+
+<!-- FEMALE GIVEN NAMES -->
+<h2 class="section-title female">Female Given Names (女名 / Jomei)</h2>
+<p class="section-desc">Common female given names, often ending in -ko, -mi, -na, or -ka. Many evoke beauty, nature, flowers, or grace.</p>
+<div class="name-grid">
+  <div class="name-card female">
+    <div class="kanji">葵</div>
+    <div class="reading">あおい</div>
+    <div class="romaji">Aoi</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">陽葵</div>
+    <div class="reading">ひまり / ひなた</div>
+    <div class="romaji">Himari / Hinata</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">結衣</div>
+    <div class="reading">ゆい</div>
+    <div class="romaji">Yui</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美月</div>
+    <div class="reading">みつき / みずき</div>
+    <div class="romaji">Mitsuki / Mizuki</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">凛</div>
+    <div class="reading">りん</div>
+    <div class="romaji">Rin</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">咲良</div>
+    <div class="reading">さくら / さら</div>
+    <div class="romaji">Sakura / Sara</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">紬</div>
+    <div class="reading">つむぎ</div>
+    <div class="romaji">Tsumugi</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">莉子</div>
+    <div class="reading">りこ</div>
+    <div class="romaji">Riko</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">结愛</div>
+    <div class="reading">ゆあ / ゆめ</div>
+    <div class="romaji">Yua / Yume</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">花音</div>
+    <div class="reading">かのん / はね</div>
+    <div class="romaji">Kanon / Hane</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">愛莉</div>
+    <div class="reading">あいり / めいり</div>
+    <div class="romaji">Airi / Mei</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">美咲</div>
+    <div class="reading">みさき</div>
+    <div class="romaji">Misaki</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">桜</div>
+    <div class="reading">さくら</div>
+    <div class="romaji">Sakura</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">七海</div>
+    <div class="reading">ななみ</div>
+    <div class="romaji">Nanami</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">真央</div>
+    <div class="reading">まお</div>
+    <div class="romaji">Mao</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">玲奈</div>
+    <div class="reading">れいな / りな</div>
+    <div class="romaji">Reina / Rina</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">彩乃</div>
+    <div class="reading">あやの</div>
+    <div class="romaji">Ayano</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">遥</div>
+    <div class="reading">はるか</div>
+    <div class="romaji">Haruka</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">奈々</div>
+    <div class="reading">なな</div>
+    <div class="romaji">Nana</div>
+    <span class="tag female">Female Given</span>
+  </div>
+  <div class="name-card female">
+    <div class="kanji">優子</div>
+    <div class="reading">ゆうこ</div>
+    <div class="romaji">Yuko</div>
+    <span class="tag female">Female Given</span>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p>This is a curated learner’s reference, not an exhaustive database. For comprehensive lookups, see JMnedict / Jisho.org.</p>
+</footer>
+
+</body>
+</html>

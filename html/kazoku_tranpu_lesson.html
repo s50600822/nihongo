@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家族トランプ — 明野照葉 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-sage: #6a9e7a;
+  --accent-sage-dim: #4a7a5a;
+  --accent-sage-glow: rgba(106, 158, 122, 0.12);
+  --accent-gold: #9e8a6a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-sage-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-sage);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-sage-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-sage-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-sage);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-sage-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-sage), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-sage);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-sage-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-sage); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-sage-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-sage-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-sage);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-sage-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-sage);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-sage);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-sage);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-sage-dim), var(--accent-sage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-sage);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-sage);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(106, 158, 122, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-sage);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-sage-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>家族トランプ</h1>
+  <p class="hero-subtitle">FAMILY TRUMP / THE FAMILY SHUFFLE</p>
+  <p class="hero-meta">明野照葉 &middot; 実業之日本社 2010 &middot; 実業之日本社文庫 2013 &middot; 30代未婚女性の居場所探し</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 家族トランプ</h2>
+  <p class="lead">The title is a compound noun: <em>kazoku</em> (家族, "family") + <em>toranpu</em> (トランプ, "playing cards / trump"). There is no particle between them, no verb, no copula. Just two nouns placed side by side, inviting the reader to find the connection. This is the genius of the title: it does not explain the metaphor; it performs it. A family, like a hand of cards, is something you are dealt. But unlike cards, families can be reshuffled. The title contains the entire thesis of the novel in two words.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">家族</span>
+        <span class="romaji">kazoku</span>
+        <span class="meaning">"family" — In Japanese, <em>kazoku</em> carries the weight of the ie (家) system: the legal and social unit of the household, not merely the emotional bond of kinship. It is the word on family registers, the word that determines inheritance, the word that parents invoke when pressuring a 33-year-old daughter to marry or leave. For Masako, <em>kazoku</em> is both shelter and deadline.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">トランプ</span>
+        <span class="romaji">toranpu</span>
+        <span class="meaning">"playing cards / trump" — From the English "trump" (トランプ), which entered Japanese in the Meiji era as the generic term for Western playing cards. The word evokes chance (the deal), strategy (which card to play), and reshuffling (the <em>shaffuru</em>). In card games, the trump suit overrides all others. In this novel, the question becomes: what is the trump card in the game of family-making? Love? Economic necessity? Social pressure? Or the quiet courage to walk away from the table?</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The compound <em>kazoku toranpu</em> works like a kigo (季語, seasonal word) in haiku: it compresses an entire field of meaning into a juxtaposition. The absence of a connecting particle forces the reader to supply the relationship. Is family a game of cards? Are cards a model for family? Is the novel about playing the family hand you've been dealt, or about reshuffling until you find a winning combination? The title's refusal to specify is its generosity: every reader can find their own answer.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>明野照葉 &mdash; Akino Teruha</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">明</div>
+    <div class="author-name-block">
+      <h3>明野照葉</h3>
+      <p class="author-name-romaji">Akino Teruha &middot; b. June 25, 1959 &middot; Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Akino Teruha is a Japanese novelist and mystery writer known for her unflinching exploration of female psychology, particularly the dark corners of women's relationships, desires, and social constraints. Born in Nakano, Tokyo in 1959, she graduated from Tokyo Woman's Christian University with a degree in sociology — a background that informs her sharp eye for how social structures shape individual lives. For most of her career, she has been associated with the <em>iyamis</em> (イヤミス) genre: mystery and suspense novels that leave readers with an unpleasant, unsettling aftertaste. <em>Kazoku Toranpu</em> (2010) represents a deliberate departure: a warmer, more hopeful story that still retains her characteristic precision in dissecting social pressure and female interiority.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1959</span>
+        <span>Born in Nakano, Tokyo. Later graduates from Tokyo Woman's Christian University, Faculty of Arts and Sciences, Department of Sociology.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1982</span>
+        <span>Graduates from university and joins Fuji Xerox (now Fuji Film Business Innovation), working in the corporate world before turning to fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1998</span>
+        <span>Wins the 37th All Yomimono Mystery Novel New Writer Award for <em>Ame Onna</em> (雨女 / "Rain Woman"), making her literary debut at age 39.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2000</span>
+        <span>Wins the 7th Matsumoto Seicho Prize for <em>Rinkai</em> (輪廻 / "Reincarnation"), establishing her as a major voice in Japanese mystery fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2005</span>
+        <span>Publishes <em>Itai Hito</em> (痛いひと / "Painful People"), a collection of stories about people who bring trouble upon themselves and others. The title captures her central theme: the pain of human coexistence.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Publishes <em>Kazoku Toranpu</em> (家族トランプ). Marketed as a departure from her <em>iyamis</em> style, it is described as "an encouragement for 'relaxed-type' unmarried women" — a message of solidarity for women who do not fit conventional timelines.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2013</span>
+        <span>Bunko edition published by Jitsugyo no Nihon Sha Bunko. The novel finds a wider audience among women in their 30s navigating marriage pressure and career uncertainty.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2017</span>
+        <span>Publishes <em>Ma Kazoku</em> (魔家族 / "Demon Family"), returning to darker territory — a suspense novel about a widower, his daughter, and his impossibly beautiful mother-in-law, where female jealousy escalates toward murder.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2022</span>
+        <span>Her novel <em>Nanji no Na</em> (汝の名 / "Thy Name") is adapted into a TV drama starring Yamazaki Hirona and Kitano Kii, about two sisters locked in a toxic dependency.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>汝の名</h4>
+        <p class="char-role">Nanji no Na / Thy Name</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A psychological thriller about two sisters — a beautiful, capable older sister and a dependent younger one — whose toxic bond spirals toward violence. Adapted into a 2022 TV drama. A signature work of Akino's exploration of female pathology.</p>
+      </div>
+      <div class="char-card">
+        <h4>輪廻</h4>
+        <p class="char-role">Rinkai / Reincarnation &middot; 2000</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 7th Matsumoto Seicho Prize. A mystery that weaves together past and present through the concept of reincarnation, demonstrating Akino's ability to blend supernatural elements with social realism.</p>
+      </div>
+      <div class="char-card">
+        <h4>魔家族</h4>
+        <p class="char-role">Ma Kazoku / Demon Family &middot; 2017</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A widower, his young daughter, and his stunningly beautiful mother-in-law. As a new employee falls for the widower, jealousy and suspicion grow. A return to the <em>iyamis</em> territory of domestic suspense.</p>
+      </div>
+      <div class="char-card">
+        <h4>痛いひと</h4>
+        <p class="char-role">Itai Hito / Painful People &middot; 2005</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A short story collection about people who cause pain and people who endure it. Akino's sociology background is evident in her analysis of how social situations produce "painful" human interactions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Main Characters</h2>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>風見窓子 &middot; Kazami Masako</h4>
+      <p class="char-role">Protagonist / The "Relaxed-Type" Heroine</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">33 years old. A full-time office worker at a company selling office equipment. Her salary is modest, but she lives with her parents and commutes from home, so she lacks for nothing financially. She does not envy the junior colleagues who quit to get married (寿退社). She has a "more than friend, less than lover" relationship but feels no urgency to marry. She is, in the novel's term, <em>datsuryoku-kei</em> (脱力系, "relaxed-type"): not passive, not defeated, simply unhurried. Her parents, however, have given her a deadline: "three zodiac cycles" (干支三回り) — age 36 — is the limit for staying at home. Masako's journey is not about finding a husband. It is about finding a place where she can breathe.</p>
+    </div>
+    <div class="char-card">
+      <h4>有磯潮美 &middot; Ariiso Shiomi</h4>
+      <p class="char-role">The Boss / The Alternative Model</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">47 years old. A capable, single female boss at Masako's company. She is the one who asks Masako the question that starts everything: "Shinai no, kekkon?" (しないの、結婚？ / "Why don't you get married?"). Her family runs an izakaya in Minowa, a downtown Tokyo neighborhood along the Toden Arakawa Line. She represents a different kind of single woman: not a failure, not a victim, but someone who has built a life on her own terms. Through Shiomi, Masako discovers that there are other ways to be an adult woman in Japan besides marriage, and other ways to have a family besides blood.</p>
+    </div>
+    <div class="char-card">
+      <h4>風見家の両親 &middot; The Kazami Parents</h4>
+      <p class="char-role">The Pressure</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Masako's parents, with whom she lives in the western Tokyo suburbs (near the Tokyu Setagaya Line). They are concerned with <em>sekentei</em> (世間体, "public appearance / what people will say") — the invisible but crushing weight of social judgment. Their ultimatum, "three zodiac cycles is the limit" (干支三回りが限度), is delivered not with cruelty but with the resigned pragmatism of a generation that believes a woman's place is either her parents' home or her husband's. They are not villains. They are the system, personified.</p>
+    </div>
+    <div class="char-card">
+      <h4>三ノ輪の定食屋・居酒屋の人々 &middot; The Minowa Restaurant Family</h4>
+      <p class="char-role">The Alternative Family</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The family that runs the set-meal restaurant / izakaya in Minowa, near the terminus of the Toden Arakawa Line at Minowabashi. They are warm, slightly chaotic, and utterly unlike Masako's orderly suburban household. The successor son (跡取り息子) becomes a romantic possibility not because he is ideal but because he comes attached to a life — a place, a community, a way of being — that Masako finds she wants. They represent the novel's central argument: family is not who you are born to, but who you choose to shuffle your cards with.</p>
+    </div>
+    <div class="char-card">
+      <h4>窓子の交際相手 &middot; Masako's "More Than Friend"</h4>
+      <p class="char-role">The Uncommitted Option</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The man Masako is seeing — described as <em>yuujin ijou koibito miman</em> (友人以上恋人未満, "more than a friend, less than a lover"). He represents the modern Japanese relationship that refuses to escalate: pleasant, undemanding, and fundamentally temporary. His presence in the story is small but structurally important: he is what Masako is supposed to want, and his inadequacy clarifies what she actually needs.</p>
+    </div>
+    <div class="char-card">
+      <h4>寿退社する後輩 &middot; The Junior Who Quits to Marry</h4>
+      <p class="char-role">The Road Not Taken</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A junior colleague who resigns to get married (寿退社, <em>kotubusai taisha</em> — literally "congratulatory retirement"). Masako does not envy her. This lack of envy is the novel's quiet revolution: it refuses to frame the unmarried woman as bitter, jealous, or incomplete. Masako's equanimity in the face of others' conventional choices is the first sign that she is not a victim of her circumstances but an agent within them.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <p>Kazami Masako is 33 years old. She works full-time at a company that sells office equipment. Her salary is not high, but she lives with her parents in the western Tokyo suburbs and commutes from home, so she has no financial worries. She does not envy the junior colleagues who quit to get married. She has a pleasant, undemanding relationship with a man she does not intend to marry. Her life is, by most measures, fine.</p>
+    <p style="margin-top: var(--space-sm);">But her parents have other measures. Concerned with <em>sekentei</em> (世間体, "what people will say"), they inform her that she can continue living at home until she completes "three zodiac cycles" (干支三回り) — that is, until she turns 36. After that, the unspoken implication hangs in the air: she will need to leave, one way or another.</p>
+    <p style="margin-top: var(--space-sm);">One day, her boss, Ariiso Shiomi — 47, single, capable, and seemingly content — asks her a simple question: "Shinai no, kekkon?" (しないの、結婚？ / "Why don't you get married?"). It is not an accusation. It is an invitation. Shiomi introduces Masako to her family's world: an izakaya in Minowa, a downtown Tokyo neighborhood near the terminus of the Toden Arakawa Line. The restaurant is warm, slightly chaotic, and full of people who seem to have found a way to live without checking every decision against social convention.</p>
+    <p style="margin-top: var(--space-sm);">As Masako spends more time in Minowa, her carefully maintained equilibrium begins to shift. The shopping street, the tram line, the regular customers, the family that runs the restaurant — they offer a vision of life that is not about status or appearances but about presence and reciprocity. The successor son, who will one day inherit the business, is not a romantic ideal. He is simply there, part of a life that Masako finds herself wanting to join.</p>
+    <p style="margin-top: var(--space-sm);">The novel's climax is not a dramatic confrontation. It is a shuffle. The cards of family-making are redealt. Masako does not escape pressure; she redirects it. She does not reject family; she redefines it. The ending — she begins working at the restaurant and marries the successor — is not a surrender to convention but a strategic choice: she has found a place where she can be both needed and free, both connected and herself.</p>
+    <p style="margin-top: var(--space-sm);">Akino described this novel as "an encouragement for 'relaxed-type' unmarried women" (「脱力系未婚女性」に贈るエール). That is exactly what it is: not a manifesto, not a tragedy, but a warm, pragmatic letter to every woman who has been made to feel that her life is on hold because she has not followed the expected sequence.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>The deadline of the zodiac:</strong> "Three zodiac cycles" (干支三回り) is a brilliantly cruel unit of measurement. The Chinese zodiac cycles every 12 years; three cycles is 36. By framing the deadline in this traditional unit, Masako's parents invoke cosmic time, ancestral pattern, and social law all at once. It is not "when you're 35" or "before you're 40." It is a zodiacal judgment. The novel's first act of resistance is Masako's refusal to accept this timeframe as natural.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Sekentei as atmospheric pressure:</strong> <em>Sekentei</em> (世間体) — literally "the body's appearance to the world" — is the Japanese social force that operates not through explicit rules but through atmosphere. Masako's parents never say "you are embarrassing us." They say "what will people think?" The novel shows how this diffuse pressure shapes decisions more powerfully than any direct command.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The shitamachi as alternative space:</strong> Minowa, along the Toden Arakawa Line, is old Tokyo — the <em>shitamachi</em> (下町, downtown) that survived both the earthquake and the war, the bubble and the bust. It represents a different rhythm of life: slower, more communal, less concerned with status. The novel uses this geography strategically: Masako moves not from suburb to city center but from one kind of Tokyo to another, finding in the old downtown a model of family that is built rather than inherited.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Female mentorship across generations:</strong> The relationship between Masako (33) and Shiomi (47) is the novel's most important. Shiomi is not a mother figure or a rival; she is a <em>senpai</em> (先輩, senior) in the fullest sense — someone who has walked the path Masako is on and found her own way. The novel suggests that the most valuable guidance for women navigating marriage pressure may come not from family but from other women who have made unconventional choices and survived.</li>
+      <li><strong>The card game of family:</strong> The title's metaphor runs through the novel. Families are dealt (出生, birth), played (結婚, marriage), and reshuffled (再婚, remarriage; 縁組, adoption). But unlike cards, family hands can be renegotiated. Masako's final choice is not to accept the hand she was dealt (suburban daughter, deadline looming) but to ask for a reshuffle — to enter a family not through birth or conventional marriage but through work, presence, and chosen commitment.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the novel's social precision, its warmth, and its quietly radical argument about women's choices.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Deadline</div>
+    <div class="passage-jp">
+      こうして家にいられるのも、干支三回り＝36が限度。
+    </div>
+    <div class="passage-romaji">
+      Kou shite ie ni irareru no mo, eto mawari = sanjuuroku-sai ga gendo.
+    </div>
+    <div class="passage-en">
+      "You can only go on living at home like this until three zodiac cycles — age 36 — at the limit."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the parents' ultimatum, delivered in the promotional copy and central to the novel's premise. <em>Kou shite</em> (こうして, "like this / in this way") implies that Masako's current arrangement is temporary and slightly improper — a grace period, not a right. <em>Ie ni irareru</em> (家にいられる) uses the potential + passive form of <em>iru</em> (to be), suggesting that staying at home is a privilege that can be withdrawn. <em>Eto mawari</em> (干支回り, "zodiac cycle") is the key cultural term: the 12-year cycle of the Chinese zodiac, used in Japan to mark life stages. Three cycles (36 years) is traditionally considered the boundary of youth and full adulthood for a woman. By framing the deadline in zodiacal terms, the parents invoke not just social pressure but cosmic order: Masako is not merely behind schedule; she is out of alignment with the universe. The equation mark (＝) in the original text is a typographical masterstroke, reducing a woman's existential deadline to an arithmetic statement.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Invitation</div>
+    <div class="passage-jp">
+      しないの、結婚？
+    </div>
+    <div class="passage-romaji">
+      Shinai no, kekkon?
+    </div>
+    <div class="passage-en">
+      "Why don't you get married?" / "Aren't you going to marry?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Four syllables that change a life. <em>Shinai no</em> (しないの) is the negative of <em>suru</em> (to do) + the question particle <em>no</em>, which here functions as a soft inquiry — not "Why aren't you married?" (accusatory) but "Aren't you going to?" (curious, inviting). The particle <em>no</em> makes it intimate, almost conspiratorial. <em>Kekkon</em> (結婚) with no particle, no verb, no object — just the noun, hanging at the end of the sentence. The grammatical minimalism mirrors the question's directness: marriage, stripped of romance, social context, or personal desire, presented as a simple binary. Will you or won't you? Shiomi's question is not judgmental; it is an opening. It creates a space where Masako can, for the first time, consider marriage not as a deadline but as a choice.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Absence of Envy</div>
+    <div class="passage-jp">
+      寿退社する後輩を妬むこともない。
+    </div>
+    <div class="passage-romaji">
+      Kotubusai taisha suru kohai wo netamu koto mo nai.
+    </div>
+    <div class="passage-en">
+      "She does not even envy the junior colleague who quits to get married."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Kotubusai taisha</em> (寿退社) is a uniquely Japanese term: <em>kotubusai</em> (寿, "congratulations/longevity") + <em>taisha</em> (退社, "leaving the company"). It refers to the practice of women resigning from their jobs upon marriage, traditionally treated as a celebratory occasion by the company. The term carries the full weight of postwar Japanese gender norms: a woman's career is preparatory, her marriage is the real beginning. <em>Netamu</em> (妬む, "to envy / be jealous of") is a strong emotional verb. The construction <em>~koto mo nai</em> (〜こともない, "not even ~ / there is no ~") emphasizes the absence of a feeling that would, in conventional narrative, be expected. The novel's quiet radicalism is here: Masako is not a woman seething with repressed jealousy toward those who have "made it." She is genuinely content. This contentment is not ignorance; it is the foundation of her eventual agency. Because she does not want what others want, she is free to want something else.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Shuffle</div>
+    <div class="passage-jp">
+      家族作りのカードのシャッフルがはじまった。
+    </div>
+    <div class="passage-romaji">
+      Kazoku dzukuri no kado no shaffuru ga hajimatta.
+    </div>
+    <div class="passage-en">
+      "The shuffle of family-making cards had begun."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The novel's thesis sentence. <em>Kazoku dzukuri</em> (家族作り, "family-making") uses the productive suffix <em>~dzukuri</em> (〜作り, "making / building"), which appears in words like <em>iezukuri</em> (家作り, house-building) and <em>kizukuri</em> (気作り, mental preparation). It frames family not as a biological given but as an active construction. <em>Kado</em> (カード, "cards") is written in katakana, marking it as the Western playing card, not Japanese <em>karuta</em>. <em>Shaffuru</em> (シャッフル) is the English "shuffle," also in katakana — a foreign concept applied to the Japanese family. The intransitive verb <em>hajimatta</em> (始まった, "began") is crucial: the shuffle begins, but no one is named as the agent. The reshuffling of family is not something Masako does; it is something that happens when she allows herself to be present in a new context. The sentence's passivity is its wisdom: you do not force a new family; you let it emerge.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, synopsis, and thematic context, organized by theme.</p>
+
+  <div class="card">
+    <h3>Family & Social Pressure</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>家族</td><td>kazoku</td><td class="pos">noun</td><td>family, household</td></tr>
+        <tr><td>トランプ</td><td>toranpu</td><td class="pos">noun</td><td>playing cards, trump</td></tr>
+        <tr><td>世間体</td><td>sekentei</td><td class="pos">noun</td><td>public appearance, social face, what people will say</td></tr>
+        <tr><td>干支</td><td>eto</td><td class="pos">noun</td><td>Chinese zodiac, sexagenary cycle</td></tr>
+        <tr><td>回り</td><td>mawari</td><td class="pos">noun</td><td>cycle, round, rotation</td></tr>
+        <tr><td>寿退社</td><td>kotubusai taisha</td><td class="pos">noun</td><td>congratulatory resignation (upon marriage)</td></tr>
+        <tr><td>結婚</td><td>kekkon</td><td class="pos">noun</td><td>marriage</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place to belong, where one fits</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Work & Social Identity</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>正社員</td><td>seishain</td><td class="pos">noun</td><td>full-time permanent employee</td></tr>
+        <tr><td>後輩</td><td>kohai</td><td class="pos">noun</td><td>junior (at work/school)</td></tr>
+        <tr><td>妬む</td><td>netamu</td><td class="pos">verb</td><td>to envy, be jealous of</td></tr>
+        <tr><td>交際</td><td>kousai</td><td class="pos">noun</td><td>association, relationship, dating</td></tr>
+        <tr><td>友人以上恋人未満</td><td>yuujin ijou koibito miman</td><td class="pos">phrase</td><td>more than friends, less than lovers</td></tr>
+        <tr><td>上司</td><td>joushi</td><td class="pos">noun</td><td>boss, superior</td></tr>
+        <tr><td>独身</td><td>dokushin</td><td class="pos">noun</td><td>unmarried, single</td></tr>
+        <tr><td>未婚</td><td>mikon</td><td class="pos">noun</td><td>unmarried (formal)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Place & Atmosphere</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>下町</td><td>shitamachi</td><td class="pos">noun</td><td>downtown Tokyo (old neighborhoods)</td></tr>
+        <tr><td>都電</td><td>toden</td><td class="pos">noun</td><td>Tokyo streetcar / tram</td></tr>
+        <tr><td>荒川線</td><td>Arakawa-sen</td><td class="pos">noun</td><td>Arakawa Line (Toden streetcar)</td></tr>
+        <tr><td>三ノ輪</td><td>Minowa</td><td class="pos">noun</td><td>Minowa (neighborhood in Taito, Tokyo)</td></tr>
+        <tr><td>商店街</td><td>shotengai</td><td class="pos">noun</td><td>shopping street, arcade</td></tr>
+        <tr><td>定食屋</td><td>teishokuya</td><td class="pos">noun</td><td>set-meal restaurant</td></tr>
+        <tr><td>居酒屋</td><td>izakaya</td><td class="pos">noun</td><td>Japanese pub, tavern</td></tr>
+        <tr><td>跡取り息子</td><td>atotori musuko</td><td class="pos">noun</td><td>successor son, heir (to family business)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Psychology & Transformation</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>脱力系</td><td>datsuryoku-kei</td><td class="pos">noun</td><td>"relaxed-type," low-tension, laid-back</td></tr>
+        <tr><td>変容</td><td>henyou</td><td class="pos">noun</td><td>transformation, change</td></tr>
+        <tr><td>八方塞がり</td><td>happou fusagari</td><td class="pos">noun</td><td>blocked on all sides, at a dead end</td></tr>
+        <tr><td>しあわせ</td><td>shiawase</td><td class="pos">noun</td><td>happiness, good fortune</td></tr>
+        <tr><td>シャッフル</td><td>shaffuru</td><td class="pos">noun</td><td>shuffle (cards, order)</td></tr>
+        <tr><td>カード</td><td>kado</td><td class="pos">noun</td><td>card</td></tr>
+        <tr><td>新境地</td><td>shinkyouji</td><td class="pos">noun</td><td>new territory, uncharted ground</td></tr>
+        <tr><td>封印</td><td>fuuin</td><td class="pos">noun</td><td>sealing away, putting under lock and key</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Akino's prose in this novel is deceptively simple, but it relies on social codes, professional terminology, and the emotional weight of specific Japanese life stages that resist direct translation.</p>
+
+  <div class="card">
+    <h3>1. <em>Kotubusai Taisha</em> (寿退社) as Institutional Ritual</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>寿退社</strong>する後輩</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the junior colleague who quits to get married"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English flattens an institution into an action. <em>Kotubusai taisha</em> is not merely quitting; it is a culturally specific ritual in which a woman's marriage is celebrated by her employer as the natural and proper end of her working life. The <em>kotubusai</em> (寿, "congratulations/longevity") prefix frames the resignation as a happy event, not a loss. Companies historically held farewell parties, gave gifts, and treated the departing woman as having graduated to her true vocation. The English "quits to get married" makes it sound like a career decision; the Japanese <em>kotubusai taisha</em> makes it a social rite of passage. Masako's lack of envy is meaningful precisely because this institution is designed to make unmarried women feel left behind.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Yuujin Ijou Koibito Miman</em> (友人以上恋人未満) as Relationship Genre</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>友人以上恋人未満</strong>の交際相手</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"a 'more than friend, less than lover' relationship partner"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>This phrase is a genre in Japanese relationship discourse, so common it has its own abbreviation (友達以上恋人未満, often shortened to 友達). It describes the vast gray zone of modern Japanese romance: people who are dating but not committed, intimate but not defined, pleasant but not passionate. The English translation must either use the full phrase (clunky) or approximate (inaccurate). What is lost is the cultural ubiquity of the concept: in Japan, this is a recognizable relationship category, not a paradox. The phrase's very existence says something about a society where romantic escalation is fraught and many people prefer to remain in the undefined middle. Masako's presence in this zone is not unusual; it is standard. The English makes her sound ambivalent; the Japanese makes her typical.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Sekentei</em> (世間体) as Atmospheric Pressure</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>世間体</strong>を気にする両親</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"parents who care about public appearance"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Sekentei</em> is one of the most important untranslatable concepts in Japanese social life. It is not "reputation" (that is <em>meiyo</em>, 名誉). It is not "face" (that is <em>mentsu</em>, 面子). It is the accumulated judgment of the <em>seken</em> (世間) — the world, society, the people who are watching — as it presses upon an individual's decisions. <em>Sekentei</em> operates like atmospheric pressure: invisible, constant, and capable of crushing anything that rises too far above or falls too far below the norm. "Public appearance" suggests a performance, something one puts on. <em>Sekentei</em> is not a performance; it is the air one breathes. Masako's parents are not being superficial; they are being Japanese. The English makes them sound image-conscious; the Japanese makes them culturally situated.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Datsuryoku-kei</em> (脱力系) as Aesthetic Stance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「<strong>脱力系</strong>未婚女性」に贈るエール</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"an encouragement for 'relaxed-type' unmarried women"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Datsuryoku</em> (脱力, "removal of strength / relaxation") + <em>kei</em> (系, "type / school") is a Japanese pop-cultural category that emerged in the 2000s to describe comedians, characters, and people who adopt a low-energy, deadpan, deliberately unambitious stance. A <em>datsuryoku-kei</em> person does not try hard, does not get excited, does not push back. It is not laziness; it is an aesthetic. The English "relaxed-type" captures the surface but misses the performative, almost ironic dimension. Masako is not merely relaxed; she is strategically low-tension, conserving her energy in a world that demands constant emotional labor from women. The <em>datsuryoku-kei</em> label is a form of self-protection and self-definition. The English makes her sound passive; the Japanese makes her a participant in a recognizable cultural style.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Eto Mawari</em> (干支回り) as Cosmic Deadline</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>干支三回り</strong>＝36歳が限度</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"three zodiac cycles = age 36 is the limit"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English translation must add the equation and the explanation ("= age 36") because non-Japanese readers will not know that the zodiac cycles every 12 years. The original Japanese assumes this knowledge. More importantly, the English loses the <em>eto mawari</em> (干支回り) concept's cultural resonance: in Japan, completing a zodiac cycle (回り, <em>mawari</em>) is a significant life marker. The first cycle (12) is childhood's end; the second (24) is young adulthood; the third (36) is full maturity. By framing the deadline as three cycles rather than 36 years, Masako's parents invoke not just a number but a cosmological stage. The English makes it a math problem; the Japanese makes it a life stage. The equation mark in the original is a publisher's addition for clarity, but it also brutally exposes the mechanism: a woman's social viability reduced to arithmetic.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, synopsis, and key passages, useful for intermediate to advanced learners.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">XもYも〜ない（全面否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>X mo Y mo ~ nai</em>: "neither X nor Y ~" — comprehensive negation, emphasizing the absence of expected feelings or actions.</p>
+      <div class="grammar-example">寿退社する後輩を妬むこともない</div>
+      <p class="grammar-example-en">"does not even envy the junior who quits to marry" — The <em>~koto mo nai</em> construction emphasizes that the expected feeling (envy) is entirely absent, not merely reduced.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の、〜？（軟質疑問）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>~no, ~?</em>: soft inquiry — the particle <em>no</em> at the end of a question creates intimacy, curiosity, or gentle prompting rather than direct interrogation.</p>
+      <div class="grammar-example">しないの、結婚？</div>
+      <p class="grammar-example-en">"Why don't you get married?" — The <em>no</em> makes this inviting rather than accusatory. Compare with the harsher <em>kekkon shinai no?</em> (結婚しないの？).</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が限度（上限の設定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga gendo</em>: "~ is the limit" — sets a boundary, often social or institutional, with an implication that crossing it will have consequences.</p>
+      <div class="grammar-example">36歳が限度</div>
+      <p class="grammar-example-en">"36 is the limit" — <em>Gendo</em> (限度) carries the weight of an imposed ceiling, not a natural endpoint. The particle <em>ga</em> marks the subject as the boundary itself.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を〜にして（手段・方法）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo ~ ni shite</em>: "using ~ as ~ / making ~ into ~" — indicates a transformation of function or a means by which something is accomplished.</p>
+      <div class="grammar-example">潮美の実家との交流を機に</div>
+      <p class="grammar-example-en">"taking her interaction with Shiomi's family home as an opportunity" — <em>Wo ki ni</em> (を機に, "taking as an opportunity") is a formal pattern marking a turning point.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">がはじまる（開始・発生）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga hajimaru</em>: "~ begins" — intransitive marker of inception. The subject is not an agent but an event or process.</p>
+      <div class="grammar-example">カードのシャッフルがはじまった</div>
+      <p class="grammar-example-en">"the shuffle of cards began" — The intransitive <em>hajimaru</em> (not the transitive <em>hajimeru</em>) emphasizes that the reshuffling is a process that unfolds, not an action someone controls.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に贈る（対象への与え）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni okuru</em>: "to dedicate / present / offer to ~" — marks the intended recipient of a creative work, message, or gift.</p>
+      <div class="grammar-example">「脱力系未婚女性」に贈るエール</div>
+      <p class="grammar-example-en">"an encouragement dedicated to 'relaxed-type unmarried women'" — <em>Okuru</em> elevates the novel from entertainment to message, from product to offering.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜以上〜未未満（範囲の限定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ijou ~ miman</em>: "more than ~ but less than ~" — defines a range with inclusive lower bound and exclusive upper bound.</p>
+      <div class="grammar-example">友人以上恋人未満</div>
+      <p class="grammar-example-en">"more than a friend, less than a lover" — A fixed phrase describing the ambiguous zone of modern romance. The grammatical precision (inclusive/exclusive) mirrors the relationship's undefined status.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が〜をみせる（変化の兆候）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga ~ wo miseru</em>: "~ shows / displays ~" — indicates the emergence of a quality, change, or symptom.</p>
+      <div class="grammar-example">日常は突如として変容をみせる</div>
+      <p class="grammar-example-en">"daily life suddenly shows transformation" — <em>Miseru</em> (見せる, "to show") here implies that the change was latent and has now become visible, not that it was created from nothing.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Akino's grammar in <em>Kazoku Toranpu</em> is accessible (mostly N4-N3) but socially dense. Pay attention to how particles do emotional work: the softening <em>no</em> in questions, the boundary-marking <em>ga</em> in "~ ga gendo," the comprehensive negation of <em>~koto mo nai.</em> These are not merely grammatical choices; they are social negotiations. The novel's language is the language of women managing pressure without confrontation — polite, indirect, and quietly subversive.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">族トランプ &middot; 明野照葉 &middot; 実業之日本社 2010 / 実業之日本社文庫 2013</p>
+</footer>
+
+</div>
+</body>
+</html>

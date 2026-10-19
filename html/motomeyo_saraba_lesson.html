@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求めよ、さらば — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>求めよ、さらば</h1>
+    <p class="subtitle">Motomeyo, Saraba<br><em>Ask, and It Shall Be Given / Seek, and Ye Shall Find</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">奥田亜希子 (Okuda Akiko)</span></span>
+      <span><span class="label">First published</span> <span class="value">December 24, 2021 (hardcover) / January 24, 2025 (bunko)</span></span>
+      <span><span class="label">Publisher</span> <span class="value">KADOKAWA</span></span>
+      <span><span class="label">Format</span> <span class="value">Novel (224 pp. hardcover / 256 pp. bunko)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-04-110906-9 (hardcover) / 978-4-04-115757-2 (bunko)</span></span>
+      <span><span class="label">Award</span> <span class="value">2nd "Bookstore-Selected Adult Romance Novel Prize" (2022)</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">求めよ、さらば</div>
+    <div class="romaji">Motomeyo, Saraba</div>
+    <div class="translation">"Ask, and It Shall Be Given" / "Seek, and Ye Shall Find" / literally: "Ask, and farewell"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>求める</td><td>motomeru</td><td>Verb (ichidan)</td><td>to seek, to ask for, to desire</td></tr>
+    <tr><td>求めよ</td><td>motomeyo</td><td>Imperative form</td><td>"ask!" / "seek!" (classical/literary imperative)</td></tr>
+    <tr><td>、</td><td>—</td><td>Punctuation</td><td>pause, separation</td></tr>
+    <tr><td>さらば</td><td>saraba</td><td>Adverb/Conjunction</td><td>then, in that case, if so, farewell</td></tr>
+  </table>
+
+  <h4>The Biblical Echo: Matthew 7:7</h4>
+  <p>The title is a direct allusion to the Japanese translation of Matthew 7:7: <code>求めよ、さらば与えられん</code> ("Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you"). In the full biblical phrase, <code>さらば</code> functions as a conjunction meaning "then" or "in that case," introducing the consequence: "Ask, and then [you shall be] given." By truncating the verse after <code>さらば</code>, Okuda creates a title that is simultaneously a promise and a farewell. <code>さらば</code> in modern Japanese also carries the meaning of "farewell" (as in <code>さらばなら</code> or <code>さらばだ</code>). The title thus oscillates between two readings: "Ask, and it shall be given" (the biblical promise of fulfillment) and "Ask, and farewell" (the act of seeking leads to parting).</p>
+
+  <p>This double meaning is the novel's emotional architecture. Shiori and Seita have spent seven years asking: asking for a child, asking for tests to work, asking their bodies to cooperate, asking fate to be kind. The novel asks whether the act of seeking itself transforms the seeker, and whether the thing sought, if finally given, can be received without damage. The title's truncation transforms a promise into a question. The "it shall be given" is omitted; we are left only with the asking and the <code>さらば</code> that follows, which may be fulfillment or may be loss.</p>
+
+  <h4>求めよ (motomeyo): The Imperative of Desire</h4>
+  <p>The imperative form <code>求めよ</code> is literary, almost biblical in register. Modern Japanese would use <code>求めなさい</code> (motome nasai) or <code>求めて</code> (motomete) for an imperative. <code>～よ</code> as an imperative ending belongs to classical grammar and formal written style, carrying a weight of command, invocation, or prayer. By using this form, the title elevates the act of "asking" from a casual request to a fundamental existential demand. Shiori's desire for a child is not a preference; it is a <code>求めよ</code>, a deep, structuring need that organizes her entire life. The title names this need in its most absolute form.</p>
+
+  <h4>さらば (saraba): The Conjunction That Became a Farewell</h4>
+  <p><code>さらば</code> is an interesting word in Japanese. Etymologically it derives from <code>さらば</code> (更に + 場), meaning "if [it be] furthermore" or "if that be the case," functioning as a conditional conjunction. In classical and biblical Japanese, it introduces a consequence: "If you ask, then..." Over time, through its use in parting scenes ("If that is the case, then I shall go"), it acquired the secondary meaning of "farewell." Modern readers encountering <code>さらば</code> immediately feel both meanings: the logical "then" and the emotional "goodbye."</p>
+
+  <p>In the context of the novel, both meanings are active. The "then" points to the promise: if you ask, then something will happen. The "farewell" points to Seita's disappearance, to the marriage that may not survive the asking, to the self that is left behind when desire is pursued to its end. The title contains the entire plot in three words: they ask, and something ends.</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's emotional logic:</strong> <code>求めよ、さらば</code> is a promise with the second half cut off. It invites the reader to supply the missing words: "Ask, and it shall be given" (hope) or "Ask, and farewell" (despair). The novel refuses to choose between these readings until its final pages. The title is not a statement; it is a suspended sentence.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 奥田亜希子</h2>
+
+  <p>Okuda Akiko is one of the most distinctive voices in contemporary Japanese fiction, a writer who approaches the themes of love, family, and obsession with the analytical precision of a philosopher and the emotional directness of a confessional poet. Her background in Eastern philosophy, her early career in sales for a free-paper company, and her self-described love of "one-sided love" (<code>片想い</code>) all inform a body of work that is intellectually rigorous and viscerally affecting. She is a writer of the "slightly twisted" (<code>ねじれた</code>): premises that seem familiar until she turns them a few degrees, revealing an unexpected facet.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">奥田 亜希子（おくだ あきこ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">October 13, 1983, Aichi Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Residence</span>
+      <span class="stat-value">Abiko, Chiba Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Aichi University, Faculty of Letters, Department of Philosophy (specialization: Eastern philosophy)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Early career</span>
+      <span class="stat-value">Sales at a free-paper publishing company</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">2013, "Hidarime ni Utsuru Hoshi" (Subaru Literary Prize)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Pen name</span>
+      <span class="stat-value">Her birth name before marriage</span>
+    </div>
+  </div>
+
+  <h4>From Philosophy Graduate to Literary Star</h4>
+  <p>Okuda's philosophical training is not incidental to her fiction. A degree in Eastern philosophy means she has spent years reading Buddhist, Confucian, and Daoist texts, thinking about the nature of desire, attachment, suffering, and selfhood. These questions permeate her novels not as explicit themes but as structural assumptions. When she writes about a woman who uses a love potion to win a man's heart, she is not writing a fantasy; she is writing a philosophical experiment about authenticity, identity, and the ethics of desire. When she writes about a couple undergoing infertility treatment, she is exploring what it means to want something so deeply that the wanting reshapes the self.</p>
+
+  <p>After university, she worked in sales for a company that published free papers (<code>フリーペーパー</code>), those advertising magazines distributed at train stations and shops. This is not the typical path to literary success. The job gave her an intimate understanding of ordinary Japanese working life, of the small businesses and local communities that advertise in free papers, of the gap between corporate language and lived experience. When her characters work, they work in recognizably real jobs: translation, programming, izakaya service. There is no romantic bohemianism in Okuda's employment landscape.</p>
+
+  <h4>The Subaru Prize and Debut</h4>
+  <p>In 2013, Okuda won the 37th Subaru Literary Prize with "Hidarime ni Utsuru Hoshi" (左目に映る星, "The Star Reflected in the Left Eye"), which she had submitted under the title "Another Planet." The novel, published by Shueisha in 2014, introduced her signature concerns: a young woman navigating contemporary Tokyo's social and romantic landscape with a mixture of detachment and longing, capable of casual sex but searching for something she cannot name. The protagonist, Sakiko, goes to group dates (<code>gōkon</code>) and sometimes sleeps with men she has just met, not out of promiscuity but out of a kind of existential experimentation: what happens if I do this? What does it mean that I feel nothing, or too much?</p>
+
+  <p>This debut established Okuda as a writer of the "slightly damaged" (<code>こじらせ</code>) generation: young adults who have absorbed all the correct attitudes about gender equality and sexual freedom but find themselves emotionally unmoored, capable of analysis but struggling with feeling. Her characters often understand their own problems better than they can solve them.</p>
+
+  <h4>A Career of Consistent Experimentation</h4>
+  <p>Since her debut, Okuda has published a remarkable string of novels, each exploring a different facet of love and identity: <em>Tōmei Ningen wa 204 Gōshitsu no Yume o Miru</em> (透明人間は204号室の夢を見る, 2015), about a failed writer; <em>Family-less</em> (ファミリー・レス, 2016), about family dysfunction; <em>Itsutsu-boshi o Tsukete yo</em> (五つ星をつけてよ, 2018), about online reviews and romantic deception; <em>Seishun no Jōkā</em> (青春のジョーカー, 2019), about adolescent sexuality and school hierarchy; <em>Mahō ga Toketa ato mo</em> (魔法がとけたあとも, 2020, bunko title: <em>Kanata no Idol</em>), about fandom and identity; and <em>Crazy for Rabbit</em> (クレイジー・フォー・ラビット, 2022), among others.</p>
+
+  <p>Each novel is formally and thematically distinct, yet all share Okuda's core concerns: how do we know our feelings are real? How does social performance shape authentic emotion? What are the ethics of wanting? <em>Motomeyo, Saraba</em> represents a maturation of these concerns into a fully adult register. The characters are no longer in their twenties, experimenting with identity; they are in their thirties, committed to a marriage, facing the consequences of choices made years ago.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1983</span>
+      <span class="timeline-event">Born in Aichi Prefecture</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Graduates from Aichi University, Department of Philosophy (Eastern philosophy)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Works in sales at a free-paper publishing company</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2013</span>
+      <span class="timeline-event">Wins 37th Subaru Literary Prize for "Hidarime ni Utsuru Hoshi"</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2014</span>
+      <span class="timeline-event">Debut novel published by Shueisha</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2015</span>
+      <span class="timeline-event">"Tōmei Ningen wa 204 Gōshitsu no Yume o Miru" published</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2019</span>
+      <span class="timeline-event">"Seishun no Jōkā" published; adapted into film</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2021</span>
+      <span class="timeline-event">"Motomeyo, Saraba" published (December 24)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2022</span>
+      <span class="timeline-event">Wins 2nd "Bookstore-Selected Adult Romance Novel Prize"</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2025</span>
+      <span class="timeline-event">Bunko edition published (January 24)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Motomeyo, Saraba</em> is a novel about the anatomy of a marriage under pressure. It asks a question that most romance novels avoid: what happens after the happy ending? Shiori and Seita have the marriage that their friends envy: compatible, warm, sexually alive, mutually respectful. He is the "ideal husband" (<code>理想の旦那</code>) in their social circle. They have been together for twelve years, married for seven. The only absence is a child, and that absence, pursued through three years of infertility treatment, becomes the crack through which the marriage's foundation is revealed to be not quite what it seemed.</p>
+
+  <h4>The Structure: Three Movements</h4>
+  <p>The novel is divided into three chapters, each shifting narrative perspective and temporal position, creating a prismatic view of the relationship. Chapter 1 is Shiori's present-tense experience of the marriage's unraveling. Chapter 2 moves back in time to trace how they met, fell in love, and decided to marry. Chapter 3 returns to the present for the confrontation and resolution. This structure is essential to the novel's effect: we must understand what they were to each other before we can judge what they have become, and we must see the origin of their love to understand the origin of their damage.</p>
+
+  <div class="card card-accent">
+    <p><strong>Chapter 1:</strong> Shiori's perspective. The couple has been undergoing infertility treatment for three years. The cycle of hope and despair has become routine. Seita is supportive, gentle, seemingly perfect. Then Shiori discovers a shocking post on Seita's social media: "I'm using my wife for my own life." Shortly after, Seita vanishes, leaving behind a letter of confession. The chapter tracks Shiori's emotional freefall as the stable world of her marriage dissolves.</p>
+    <p style="margin-top:0.8em;"><strong>Chapter 2:</strong> Seita's perspective, moving back to their meeting. They were university students working part-time at the same izakaya. Shiori was vivid, funny, slightly unreachable. Seita was quiet, observant, deeply attracted. Okuda traces their courtship with the precision of someone who understands that love is not a feeling but a series of decisions, small concessions, and mutual accommodations. We learn what Seita did, why he did it, and how the secret has lived inside him for twelve years.</p>
+    <p style="margin-top:0.8em;"><strong>Chapter 3:</strong> The convergence. The perspectives intertwine as the couple faces each other again. The novel refuses easy redemption or easy condemnation. It asks: if you learned that your partner's love began with an act you cannot approve of, would the years of genuine care that followed matter? Can love be both real and founded on a lie? The ending is not a simple yes or no; it is a negotiation, a choice made in full knowledge of damage.</p>
+  </div>
+
+  <h4>The Characters</h4>
+  <div class="card card-accent">
+    <p><strong>辻原志織 (Tsujihara Shiori)</strong> — 34 years old, a freelance translator specializing in IT-related texts. She is intelligent, self-aware, and increasingly desperate in a way that shames her. The infertility treatment has made her body feel like an enemy; every month brings a new cycle of hope (maybe this time) and grief (not this time). She loves Seita, trusts him completely, and has never been hurt by him in twelve years. This absence of injury is itself a kind of vulnerability: she has no practice in forgiving him.</p>
+    <p style="margin-top:0.8em;"><strong>辻原誠太 (Tsujihara Seita)</strong> — Shiori's husband, a programmer at a software development company. He is, by all external measures, a good man: steady, kind, attentive. His hobby is photography. He has supported Shiori through every stage of the infertility treatment, attended appointments, absorbed her despair, never complained. And yet he carries a secret: something he did at the beginning of their relationship, an act born of desire and insecurity, which he has never confessed. The novel's moral complexity comes from the fact that his subsequent twelve years of love and care are genuine, even as their origin is compromised.</p>
+    <p style="margin-top:0.8em;"><strong>竹内杏奈 (Takeuchi Anna)</strong> and <strong>本島衿子 (Motojima Eriko)</strong> — Shiori's friends from university, former izakaya co-workers. They function as a chorus, reflecting the social world's view of the marriage, and as foils, representing alternative paths (married with children, single and searching). Their presence reminds Shiori that her marriage, which feels uniquely damaged to her, is also watched and judged by others.</p>
+    <p style="margin-top:0.8em;"><strong>辻原隼太 (Tsujihara Hayata)</strong> — Seita's younger brother, a university student. He provides a glimpse of Seita's family context and serves as a bridge between the couple's private crisis and the social world.</p>
+  </div>
+
+  <h4>The "Love Potion" Origin</h4>
+  <p>In interviews, Okuda has revealed that the novel's origin was a casual conversation: "If there were a love potion, would you use it?" The question fascinated her not as a fantasy premise but as a moral one. What would it mean to use one? What would it mean to discover you had been the object of one? <em>Motomeyo, Saraba</em> is her exploration of this question in realistic terms: not a literal magic potion but the small manipulations, the strategic disclosures and withholdings, the calculated self-presentations by which people influence each other's feelings. Seita's secret act is a kind of love potion in retrospect: something done to ensure love, which then succeeds too well, creating a marriage too good to be allowed to stand on a compromised foundation.</p>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">不妊治療の現実</div>
+    <div class="chapter-tag highlighted">夫婦の秘密と信頼</div>
+    <div class="chapter-tag highlighted">本当の愛とは何か</div>
+    <div class="chapter-tag highlighted">求めることの代償</div>
+    <div class="chapter-tag highlighted">片想いの倫理</div>
+    <div class="chapter-tag highlighted">12年の嘘と真実</div>
+    <div class="chapter-tag highlighted">聖書的引用と現代恋愛</div>
+    <div class="chapter-tag">理想の旦那の裏側</div>
+  </div>
+
+  <h4>Critical Reception</h4>
+  <p>The novel won the 2nd "Bookstore-Selected Adult Romance Novel Prize" (<code>第2回本屋が選ぶ大人の恋愛小説大賞</code>), an award voted on by bookstore staff who know exactly what makes readers buy and finish a book. Their praise was immediate and intense: "I was seized by how much I understood the feelings" (<code>気持ちがわかりぎて、わしづかみにされた</code>). The award recognized what reviewers had noted: this is a romance novel for adults not because it contains explicit content but because it refuses childish moral binaries. Seita is neither villain nor victim; Shiori is neither saint nor fool. They are two people who love each other and have hurt each other, navigating a crisis with the tools that twelve years of marriage have given them, which turn out to be both more and less than they need.</p>
+
+  <p>Reviewers consistently highlighted the novel's unflinching portrayal of infertility treatment: the medical invasiveness, the monthly cycle of hope and despair, the way it affects sex, self-image, and the relationship to one's own body. Okuda researched the subject thoroughly, and it shows not in technical detail but in emotional accuracy. Shiori's envy when friends announce pregnancies, her guilt at feeling envy, her gratitude to Seita for his patience, her fear that his patience is a kind of performance: these are the fine textures of a lived experience, not generic suffering.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the novel's content, style, and documented quotations from reviews and interviews. They capture Okuda's precise prose, the alternating perspectives, and the novel's emotional turning points.</p>
+
+  <h3>A. The Opening: The Ideal Husband</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">誠太は優しい。交際を始めた社会人一年目の四月から、十二年間ずっと。私は彼に傷つけられたことがない。友人からは「理想の旦那」と言われる。寡黙で、誠実で、私の仕事の話をちゃんと聞いてくれる。不妊治療にも協力的だ。基礎体温の表を一緒管理し、病院の待合室で一緒に待ち、陽性反応が出なかった日の失望を、私より先に受け止めようとしてくれる。そんな誠太が、昨日までの誠太が、置き手紙を残して、いなくなった。</div>
+    <div class="romaji">Seita wa yasashii. Kōsai o hajimeta shakaijin ichineme no shigatsu kara, jūni-nenkan zutto. Watashi wa kare ni kizutsuke rareta koto ga nai. Yūjin kara wa "risō no danna" to iwareru. Kamoku de, seijitsu de, watashi no shigoto no hanashi o chanto kiite kureru. Funin chirō ni mo kyōryoku-teki da. Kiso taion no hyō o issho ni kanri shi, byōin no machiaisho de issho ni machi, yōsei han'nō ga denakatta hi no shitsubō o, watashi yori saki ni uketomeyō to shite kureru. Sonna Seita ga, kinō made no Seita ga, okitegami o nokoshite, inaku natta.</div>
+    <div class="translation">Seita is kind. From April of our first year as working adults, when we began dating, for twelve years straight. I have never been hurt by him. My friends call him "the ideal husband." Taciturn, sincere, he listens properly to me talk about work. He is cooperative about the infertility treatment too. He manages my basal body temperature chart with me, waits with me in the hospital waiting room, and tries to absorb the disappointment on days when the test is negative before I can fully feel it. That Seita, the Seita of yesterday, left a letter and disappeared.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>寡黙</td><td>kamoku</td><td>taciturn, reticent</td></tr>
+    <tr><td>誠実</td><td>seijitsu</td><td>sincere, honest</td></tr>
+    <tr><td>不妊治療</td><td>funin chirō</td><td>infertility treatment</td></tr>
+    <tr><td>基礎体温</td><td>kiso taion</td><td>basal body temperature</td></tr>
+    <tr><td>陽性反応</td><td>yōsei han'nō</td><td>positive reaction/test result</td></tr>
+    <tr><td>置き手紙</td><td>okitegami</td><td>farewell letter, note left behind</td></tr>
+  </table>
+
+  <h3>B. The Discovery</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">私は、誠太のSNSに送られた投稿を見つけた。自分の人生に奥さんを利用しているんですね。こんなのは本当の愛じゃない。——そう書かれていた。送信者の名前は、知らないアカウントだった。誠太は、それに返信していた。私も、そう思います。私は志織を支えきれなかったんだなと思うと、申し訳なくて。画面の文字が、一瞬、溶けたように見えた。志織。私の名前。彼が、知らないかに、そう語りかけていた。十二年間、傷つけられたことがない、と思っていた。それが、私の見落としだったのだろうか。</div>
+    <div class="romaji">Watashi wa, Seita no SNS ni okurareta tōkō o mitsuketa. Jibun no jinsei ni okusan o riyō shite iru n desu ne. Konna no wa hontō no ai ja nai. — Sō kakarete ita. Sōshinsha no namae wa, shiranai akaunto datta. Seita wa, sore ni henshin shite ita. Watashi mo, sō omoimasu. Watashi wa Shiori o sasaekirenakatta n da na to omou to, mōshiwakenakute. Gamen no moji ga, isshun, toketa yō ni mieta. Shiori. Watashi no namae. Kare ga, shiranai dareka ni, sō katari-kakete ita. Jūni-nenkan, kizutsuke rareta koto ga nai, to omotte ita. Sore ga, watashi no miotoshi datta no darō ka.</div>
+    <div class="translation">I found a post sent to Seita's social media. You're using your wife for your own life. This isn't real love. — That was what it said. The sender's name was an account I didn't know. Seita had replied. I think so too. When I think that I couldn't fully support Shiori, I feel so ashamed. The words on the screen seemed, for a moment, to dissolve. Shiori. My name. He had been speaking about me like this, to someone I didn't know. For twelve years, I had thought I had never been hurt by him. Had that been my oversight?</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>投稿</td><td>tōkō</td><td>post, submission</td></tr>
+    <tr><td>利用する</td><td>riyō suru</td><td>to use, to utilize</td></tr>
+    <tr><td>送信者</td><td>sōshinsha</td><td>sender</td></tr>
+    <tr><td>アカウント</td><td>akaunto</td><td>account</td></tr>
+    <tr><td>返信</td><td>henshin</td><td>reply, response</td></tr>
+    <tr><td>申し訳ない</td><td>mōshiwakenai</td><td>sorry, ashamed, inexcusable</td></tr>
+    <tr><td>見落とし</td><td>miotoshi</td><td>oversight, failure to notice</td></tr>
+  </table>
+
+  <h3>C. The Confession</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">志織へ。私は、十二年前、君を手に入れるために、ひとつのことをした。それは、君が知ったら、きっと許さないことだ。でも、それがなければ、君は私を選ばなかったかもしれない。私は、その可能性が怖かった。君があんなに眩しくて、私なんかじゃ絶対に届かないと思っていた。だから、さな嘘をついた。小さな、小さな、あんまりにも小さな嘘だから、すぐに本当になった。君が私を愛してくれたから。——でも、最近、それが嘘だと思い出すことがある。子どもができないのは、私のせいかもしれない、と思うと、それが罰のように感じられる。</div>
+    <div class="romaji">Shiori e. Watashi wa, jūni-nen mae, kimi o te ni ireru tame ni, hitotsu no koto o shita. Sore wa, kimi ga shittara, kitto yurusanai koto da. Demo, sore ga nakereba, kimi wa watashi o erabanakatta kamoshirenai. Watashi wa, sono kanōsei ga kowakatta. Kimi ga anna ni mabushikute, watashi nanka ja zettai ni todokanai to omotte ita. Dakara, chiisana uso o tsuita. Chiisana, chiisana, annari ni mo chiisana uso da kara, sugu ni hontō ni natta. Kimi ga watashi o aishite kureta kara. — Demo, saikin, sore ga uso da to omoidasu koto ga aru. Kodomo ga dekinai no wa, watashi no sei kamoshirenai, to omou to, sore ga batsu no yō ni kanjirareru.</div>
+    <div class="translation">To Shiori. Twelve years ago, in order to win you, I did something. It is something you would surely never forgive if you knew. But without it, you might not have chosen me. I was afraid of that possibility. You were so dazzling; I thought someone like me could never reach you. So I told a small lie. So small, so very small, that because it was so small, it quickly became true. Because you came to love me. — But lately, there are times when I remember that it was a lie. When I think that the reason we cannot have children might be my fault, it feels like a punishment.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>眩しい</td><td>mabushii</td><td>dazzling, bright, radiant</td></tr>
+    <tr><td>届く</td><td>todoku</td><td>to reach, to attain</td></tr>
+    <tr><td>罰</td><td>batsu</td><td>punishment, penalty</td></tr>
+    <tr><td>可能性</td><td>kanōsei</td><td>possibility</td></tr>
+    <tr><td>手に入れる</td><td>te ni ireru</td><td>to obtain, to get</td></tr>
+    <tr><td>許す</td><td>yurusu</td><td>to forgive, to permit</td></tr>
+  </table>
+
+  <h3>D. The Confrontation</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">「十二年間、あなたは私を騙していたの？」志織は、自分の声が震えているのを聞いた。誠太は、しばらく黙っていた。そして、ゆっくりと首を横に振った。「騙していた、とは思わない。——でも、騙していたのかもしれない。志織、私は、君が私を選んでくれたと思っていた。も、最近、それが本当の選択だったのか、わからなくなった。君は、本当に私を愛していたのか。それとも、私が作った状況の中で、愛すしかないと思っていたのか。」「どっちだと、思う？」志織は、怒りよりも、奇妙な冷静さを感じていた。誠太は、目を上げた。「君に聞きたいんだ。私は、知りたいんだ。」</div>
+    <div class="romaji">"Jūni-nenkan, anata wa watashi o damashite ita no?" Shiori wa, jibun no koe ga furuete iru no o kiita. Seita wa, shibaraku damatte ita. Soshite, yukkuri to kubi o yoko ni futta. "Damashite ita, to wa omowanai. — Demo, damashite ita no kamoshirenai. Shiori, watashi wa, kimi ga watashi o erande kureta to omotte ita. Demo, saikin, sore ga hontō no sentaku datta no ka, wakaranaku natta. Kimi wa, hontō ni watashi o aishite ita no ka. Soretomo, watashi ga tsukutta jōkyō no naka de, aisu shika nai to omotte ita no ka." "Dotchi da to, omou?" Shiori wa, ikari yori mo, kimyō na reisei-sa o kanjite ita. Seita wa, me o ageta. "Kimi ni kikitai n da. Watashi wa, shiritai n da."</div>
+    <div class="translation">"For twelve years, you were deceiving me?" Shiori heard her own voice trembling. Seita was silent for a while. Then, slowly, he shook his head. "I don't think I was deceiving you. — But maybe I was. Shiori, I thought you had chosen me. But lately, I don't know if it was a real choice. Did you truly love me? Or did you think you had no choice but to love me, inside the situation I created?" "Which do you think it is?" Shiori felt, more than anger, a strange calm. Seita raised his eyes. "I want to ask you. I want to know."</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>騙す</td><td>damasu</td><td>to deceive, to trick</td></tr>
+    <tr><td>震える</td><td>furueru</td><td>to tremble, to shiver</td></tr>
+    <tr><td>状況</td><td>jōkyō</td><td>situation, circumstances</td></tr>
+    <tr><td>選択</td><td>sentaku</td><td>choice, selection</td></tr>
+    <tr><td>冷静さ</td><td>reisei-sa</td><td>calmness, composure</td></tr>
+    <tr><td>怒り</td><td>ikari</td><td>anger, rage</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 求めよ、さらば (Motomeyo, Saraba)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Truncated Promise</div>
+    <p>The title's full biblical source is <code>求めよ、らば与えられん</code> ("Ask, and it shall be given you"). By cutting off <code>与えられん</code> (it shall be given), Okuda creates a title that is grammatically incomplete and semantically double. <code>さらば</code> in classical/biblical Japanese means "then" or "in that case"; in modern Japanese, it primarily means "farewell." A Japanese reader feels both meanings simultaneously: the promise (ask, and then...) and the farewell (ask, and goodbye). An English reader seeing "Ask, and It Shall Be Given" gets only the promise. "Ask, and Farewell" gets only the despair. No English title can capture the superposition of hope and loss that the Japanese title achieves through its biblical echo and its modern semantic drift. The title is a Schrödinger's cat of emotional states: until you finish the novel, it is both promise and threat.</p>
+  </div>
+
+  <h3>B. 理想の旦那 (risō no danna)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Social Category of the Perfect Husband</div>
+    <p><code>理想の旦那</code> is not simply "ideal husband." <code>旦那</code> (danna) is a specific, slightly old-fashioned word for "husband" that carries connotations of the man as provider and head of household. It is the word a wife might use when speaking to others about her husband, not the intimate <code>あなた</code> (anata) or <code>夫</code> (otto, the neutral term). "Ideal husband" in English suggests a private judgment; <code>理想の旦那</code> suggests a social category, a type that others recognize and comment on. When Shiori's friends call Seita <code>理想の旦那</code>, they are not saying he is good; they are saying he fits a socially recognized template of husbandly excellence. This makes the revelation of his secret more devastating: he was not privately good but secretly bad; he was publicly ideal and privately compromised. The social confirmation of his goodness becomes, in retrospect, part of the deception.</p>
+  </div>
+
+  <h3>C. 申し訳ない (mōshiwakenai)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Shame Beyond Apology</div>
+    <p><code>申し訳ない</code> is often translated as "sorry," but this understates its emotional weight. Etymologically, it means "there is no excuse I can offer" (<code>申す</code> = to say, <code>訳</code> = reason/excuse). It is the word for a shame that has no justification, a failure so complete that explanation is impossible. When Seita writes that he feels <code>申し訳ない</code> about not being able to support Shiori, he is not offering an apology; he is naming a state of being. "Ashamed" is closer but too psychological; "inexcusable" is closer but too moralistic. <code>Mōshiwakenai</code> is a social emotion: the recognition that one has failed in an obligation so fundamental that no words can repair it. It is the emotion that makes Seita disappear rather than talk.</p>
+  </div>
+
+  <h3>D. 不妊治療 (funin chirō)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Specificity of Japanese Infertility Treatment</div>
+    <p><code>不妊治療</code> means infertility treatment, but the Japanese term carries a specific cultural and medical context. In Japan, infertility treatment is not merely a medical procedure; it is a social and emotional journey that involves basal body temperature charting, timed intercourse, hormonal injections, IUI, IVF, and often years of monthly cycles of hope and disappointment. The treatment is partially covered by national health insurance under certain conditions, but the emotional cost is not. The Japanese term <code>不妊</code> (funin, infertility) also carries a stigma that "infertility" in English, with its clinical neutrality, does not fully capture. <code>不</code> (fu) = not; <code>妊</code> (nin) = pregnancy. The word names an absence as a condition. In the novel, this absence becomes a character, a third presence in the marriage that shapes every conversation, every decision, every act of love.</p>
+  </div>
+
+  <h3>E. 片想い (kataomoi)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">One-Sided Love as a Literary Genre</div>
+    <p>Okuda has said in interviews that she loves writing <code>片想い</code> (one-sided love / unrequited love). <code>片想い</code> is not merely "unrequited love" in English; it is a recognized genre of Japanese emotional experience, with its own aesthetics, rituals, and literary traditions. The word <code>片</code> (kata) means one-sided, partial, incomplete; <code>想い</code> (omoi) is feeling, thought, love. <code>Kataomoi</code> is love that is not returned, but it is also love that exists fully on one side, complete in its own way. Seita's love for Shiori began as <code>片想い</code>: he loved her before she loved him, and the novel's central moral question is whether the act he committed to bridge that gap invalidates the love that grew from it. "Unrequited love" in English sounds pathetic; <code>kataomoi</code> in Japanese can be noble, beautiful, even triumphant in its persistence. The novel asks: what if <code>片想い</code> never fully ends, even inside a marriage?</p>
+  </div>
+
+  <h3>F. 協力的 (kyōryoku-teki)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Japanese Virtue of Cooperative Support</div>
+    <p>When Shiori describes Seita as <code>不妊治療にも協力的だ</code> (cooperative about infertility treatment), the word <code>協力的</code> carries specific Japanese workplace and marital connotations. <code>協力</code> (cooperation, collaboration) is one of the highest virtues in Japanese social life; to be <code>協力的</code> is to subordinate one's own preferences to the group's needs. In the context of infertility treatment, this means attending appointments, managing charts, providing emotional support, all without complaint. "Supportive" in English captures the meaning but misses the social valence: <code>協力的</code> is the word you would use for a good colleague or team member, and its use here suggests that Seita approaches the marriage with the same ethic he would bring to a professional collaboration. This is both his virtue and, perhaps, his limitation: he is <code>協力的</code> even about the most intimate aspects of their shared life, which means he is always performing a role, even when he seems most natural.</p>
+  </div>
+
+  <h3>G. 惚れ薬 (hore-gusuri)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Love Potion as Moral Thought Experiment</div>
+    <p>The novel's origin, as Okuda has revealed, was a conversation about <code>惚れ薬</code> (love potion / philter). In Western folklore, the love potion is a magical device; in Japanese popular culture, it appears in anime, manga, and fantasy fiction as a comic or romantic trope. But Okuda treats it as a philosophical question: what would it mean to use one? What would it mean to discover you had been the object of one? The Japanese term <code>惚れ薬</code> is bluntly literal: <code>惚れる</code> (to fall in love) + <code>薬</code> (medicine/drug). It does not have the medieval romance associations of the English "love potion." It sounds almost like a pharmaceutical product, something you might find advertised online. This modern, prosaic quality makes the moral question more urgent: in a world of psychopharmaceuticals, dating apps, and behavioral manipulation, what is the difference between a <code>惚れ薬</code> and the ordinary techniques by which people influence each other's feelings? The novel's answer is disturbing because it suggests the difference may be one of degree, not kind.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～きれない (kirenai) — "Cannot do completely / Cannot fully"</span>
+    <div class="grammar-explanation">
+      <p><code>志織を支えきれなかった</code> = "I couldn't fully support Shiori"</p>
+      <p><code>～きれない</code> expresses inability to complete an action to the full extent, often due to physical, emotional, or situational limitation.</p>
+      <p><strong>Formation:</strong> [Verb stem] + きれない</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>信じきれない</code> = "can't quite believe"</li>
+        <li><code>言いきれない</code> = "can't say for certain"</li>
+        <li><code>食べきれない</code> = "can't eat it all"</li>
+      </ul>
+      <p>The grammar is central to Seita's character: he has tried to be supportive, but the infertility treatment has exceeded his capacity. <code>Kirenai</code> is the grammar of insufficiency, of effort that falls short of its goal. It is more nuanced than simple failure; it implies that the goal was large and the attempt genuine.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ずつ (zutsu) — "Each / Little by little / Per"</span>
+    <div class="grammar-explanation">
+      <p><code>少しずつ形を変えていく</code> = "gradually changing shape little by little"</p>
+      <p><code>～ずつ</code> indicates distribution in equal amounts or gradual progression by increments.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>少し変わる</code> = "changes a little" (simple change)</li>
+        <li><code>少しずつ変わる</code> = "changes little by little" (gradual, incremental)</li>
+      </ul>
+      <p>The grammar captures the novel's temporal structure: the marriage does not collapse suddenly; it <code>少しずつ</code> changes, month by month, treatment by treatment, until the accumulated small shifts become a transformation. <code>Zutsu</code> is the grammar of erosion.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～をきっかけに (wokikkakeni) — "Triggered by / Taking as an opportunity"</span>
+    <div class="grammar-explanation">
+      <p><code>不妊治療をきっかけに少しずつ形を変えていく</code> = "triggered by the infertility treatment, [their days] gradually change shape"</p>
+      <p><code>～をきっかけに</code> marks a specific event as the catalyst for a larger change. It is stronger than <code>～から</code> (because) because it emphasizes the event as a turning point.</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>留学をきっかけに</code> = "taking studying abroad as an opportunity"</li>
+        <li><code>その出会いをきっかけに</code> = "with that encounter as the catalyst"</li>
+      </ul>
+      <p>The grammar is essential to the novel's architecture: the infertility treatment is not merely a background condition but the <code>きっかけ</code>, the trigger that exposes what was already fragile in the marriage. Without it, Seita might never have confronted his secret.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようとする (yō to suru) — "To try to / To attempt to"</span>
+    <div class="grammar-explanation">
+      <p><code>私より先に受け止めようとしてくれる</code> = "he tries to absorb [the disappointment] before I do"</p>
+      <p><code>～ようとする</code> indicates an attempt or effort toward an action. When combined with <code>～てくれる</code> (doing something for me), it expresses someone else's considerate effort on one's behalf.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>受け止める</code> = "absorbs" (simple statement)</li>
+        <li><code>受け止めようとする</code> = "tries to absorb" (attempt, effort)</li>
+        <li><code>受け止めようとしてくれる</code> = "tries to absorb [for my sake]" (considerate attempt)</li>
+      </ul>
+      <p>The grammar reveals Seita's character through syntax: he is always <code>ようとしてくれる</code>, always trying to do things for Shiori, always making the effort. The tragedy is that this very effort, this constant <code>協力的</code> trying, may be a form of performance that hides his authentic guilt.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～かもしれない (kamoshirenai) — "Might / Perhaps"</span>
+    <div class="grammar-explanation">
+      <p><code>君は私を選ばなかったかもしれない</code> = "you might not have chosen me"</p>
+      <p><code>～かもしれない</code> expresses possibility with a note of uncertainty and often anxiety. It is softer and more tentative than <code>～だろう</code> (probably).</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>選ばなかっただろう</code> = "probably wouldn't have chosen" (confident speculation)</li>
+        <li><code>選ばなかったかもしれない</code> = "might not have chosen" (anxious possibility, leaving room for doubt)</li>
+      </ul>
+      <p>The grammar is the engine of Seita's paranoia: not certainty but possibility, the <code>かもしれない</code> that has haunted him for twelve years. He does not know if Shiori would have rejected him; he only knows that it was <code>かもしれない</code>, and that possibility was enough to make him act.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～しかない (shika nai) — "Have no choice but to / Can only"</span>
+    <div class="grammar-explanation">
+      <p><code>愛すしかないと思っていたのか</code> = "did you think you had no choice but to love?"</p>
+      <p><code>～しかない</code> expresses that there is only one option, often under constraint.</p>
+      <p><strong>Formation:</strong> [Verb in dictionary form] + しか + negative verb</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>待つしかない</code> = "can only wait"</li>
+        <li><code>信じるしかない</code> = "have no choice but to believe"</li>
+      </ul>
+      <p>Seita's most devastating question uses this grammar: did Shiori love him freely, or did she <code>愛すしかない</code>, love him because the situation he created allowed no alternative? <code>Shika nai</code> is the grammar of coercion disguised as choice, and the novel's central moral question is whether Shiori's love was ever truly free.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～だろうか (darō ka) — "I wonder if / Could it be that"</span>
+    <div class="grammar-explanation">
+      <p><code>それが、私の見落としだったのだろうか</code> = "could that have been my oversight?"</p>
+      <p><code>～だろうか</code> is a tentative question form, softer than <code>～ですか</code>, expressing self-directed doubt or speculation.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>見落としだったのですか</code> = "Was it your oversight?" (direct question)</li>
+        <li><code>見落としだったのだろうか</code> = "Could it have been my oversight?" (self-questioning, doubtful)</li>
+      </ul>
+      <p>The grammar captures Shiori's interiority: she is not accusing Seita; she is questioning herself. <code>Darō ka</code> is the sound of a mind turning inward, re-examining twelve years of memory for signs she missed. It is the grammar of retrospective doubt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>Infertility Treatment in Contemporary Japan</h4>
+  <p>Infertility is a significant and growing social issue in Japan. Approximately one in 5.5 couples seeks infertility treatment, and the number has been rising as the average age of first marriage and first birth increases. The Japanese government provides partial subsidies for infertility treatment under the national health insurance system, particularly for IVF (in vitro fertilization), reflecting the country's concern about its declining birth rate. However, the emotional and physical toll of treatment is not covered by any insurance.</p>
+
+  <p>The experience of infertility in Japan carries specific cultural weight. In a society that still places considerable emphasis on lineage and family continuation, childlessness can be experienced as a social as well as personal failure. The monthly cycle of hope and despair, the invasive medical procedures, the way it transforms sex from an act of intimacy into a scheduled procedure, the envy toward friends who conceive easily, the guilt at feeling envy: all of these are vividly present in Okuda's novel. Shiori's experience is not generic suffering; it is specifically Japanese in its combination of medical modernity and traditional family pressure.</p>
+
+  <p>What distinguishes Okuda's treatment is her refusal to make infertility the novel's only subject. It is the trigger (<code>きっかけ</code>), not the content. The infertility treatment exposes the fault line in the marriage; it does not create it. This is a more sophisticated narrative choice than making the couple's problems derive solely from external pressure. The treatment is the pressure that reveals the structure, like a load test on a bridge.</p>
+
+  <h4>The Izakaya as a Japanese Social Institution</h4>
+  <p>Shiori and Seita meet while working part-time at an izakaya (居酒屋), the Japanese pub that serves as a cornerstone of Japanese social life. For university students, izakaya part-time work is a common job: it pays reasonably well, offers flexible hours, and provides a social environment. The izakaya is where Japanese people learn to drink, to converse across hierarchies, to manage drunken customers, and to build the informal relationships that often last into professional life.</p>
+
+  <p>In the novel, the izakaya is not merely a setting; it is the social space where Shiori and Seita's relationship is formed. The dynamics of service, of watching customers, of the hierarchies between staff members, all shape how they see each other. Seita falls in love with Shiori while watching her work: her competence, her humor, her ability to handle difficult situations. This is a specifically Japanese romantic origin: love born not from grand gestures but from observing someone at work, seeing how they behave when they don't know they are being watched. The izakaya provides the cover of ordinariness under which intense feeling can develop.</p>
+
+  <h4>"Bookstore-Selected Adult Romance Novel Prize" (本屋が選ぶ大人の恋愛小説大賞)</h4>
+  <p>The award this novel won, the <code>本屋が選ぶ大人の恋愛小説大賞</code>, is significant because it is chosen by bookstore staff, the people who stand at the front line of reader recommendation. Unlike juried literary prizes, which are selected by critics and writers, this prize reflects what booksellers believe will move readers, what they feel confident pressing into customers' hands. The fact that <em>Motomeyo, Saraba</em> won this prize indicates that it succeeds not just as literature but as a reading experience: it is a book that booksellers trust to deliver emotional payoff.</p>
+
+  <p>The category "adult romance" (<code>大人の恋愛</code>) is also culturally specific. In Japan, "adult romance" does not primarily mean sexually explicit content; it means romance that addresses adult problems: marriage, infertility, career, aging parents, financial pressure, the accumulated weight of shared history. It is romance for people who have lived long enough to know that love is not a solution but a commitment to facing problems together. Okuda's novel fits this category precisely: it is not about falling in love but about staying in love when love has become complicated by time, secrets, and disappointment.</p>
+
+  <h4>The Ethics of Manipulation in Love</h4>
+  <p>The novel's philosophical core, derived from Okuda's "love potion" thought experiment, connects to a long tradition of ethical inquiry about the authenticity of love. If you create the conditions under which someone falls in love with you, is their love real? This question appears in Plato's <em>Phaedrus</em>, in Shakespeare's <em>A Midsummer Night's Dream</em> (which literally uses a love potion), in contemporary debates about consent and manipulation.</p>
+
+  <p>Okuda's contribution is to make the question concrete and contemporary. Seita does not use a magic potion; he does something much more ordinary, something that many people do in the early stages of romance: he presents himself strategically, withholds information, creates a situation favorable to his desires. The novel asks: at what point does strategic self-presentation become deception? At what point does deception invalidate the love that grows from it? These are not abstract questions in the novel; they are Shiori's lived crisis. She must decide whether twelve years of genuine happiness can be retroactively poisoned by their origin, and whether a love that began in manipulation can be, twelve years later, "real."</p>
+
+  <h4>The Japanese Marriage at the Seven-Year Mark</h4>
+  <p>The "seven-year itch" is a Western concept, but Japan has its own understanding of marriage at this stage. After seven years, a marriage has moved from the romantic phase into the managerial phase: the couple knows each other thoroughly, has established routines, has likely faced at least one major crisis. In Japan, where divorce, while no longer rare, still carries more social stigma than in the West, the seven-year mark is often a point of quiet renegotiation rather than dramatic rupture.</p>
+
+  <p>Okuda's choice of the seven-year mark is precise. Shiori and Seita are not newlyweds discovering each other; they are partners who have built a life. They have shared jokes, shared friends, shared furniture, shared debt, shared history. The question the novel poses is whether this shared life can survive the discovery that its foundation was compromised. In a culture where marriage is still partly understood as a social contract rather than purely a romantic union, the answer is not obvious. The novel's achievement is to make both choices, staying and leaving, feel equally valid and equally painful.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Okuda's prose is precise, emotionally direct, and grammatically rich. The novel's alternating perspectives provide exposure to both female and male interior monologue in contemporary Japanese. The vocabulary of infertility treatment, marriage, and emotional negotiation is practical and culturally significant. The grammar of doubt (<code>～だろうか</code>), possibility (<code>～かもしれない</code>), and constrained choice (<code>～しかない</code>) is central to the novel's moral architecture. For intermediate to advanced learners interested in contemporary Japanese fiction, marriage culture, and the language of emotional precision, this is an excellent and approachable text.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Track the <strong>alternating perspectives</strong>. Notice how the same events feel different from Shiori's and Seita's viewpoints. What does each narrator withhold, consciously or unconsciously?</li>
+    <li>Pay attention to <strong>time markers</strong>. The novel moves between present and past, and the shifts are often subtle. Note when the tense changes and what this reveals about the narrator's emotional position.</li>
+    <li>Follow the <strong>metaphor of the title</strong>. How does the biblical promise resonate through the novel? Where does "asking" appear, and what follows it?</li>
+    <li>Analyze <strong>Seita's use of polite and humble language</strong>. How does his speech change when he is being "the ideal husband" versus when he is confessing? In Japanese, honorific shifts are significant narrative signals.</li>
+    <li>Compare the <strong>izakaya scenes</strong> in Chapter 2 with the present-day medical scenes in Chapter 1. How has the couple's dynamic changed? What has been lost, and what has been gained?</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The novel's origin was a conversation about a love potion. How does the story translate this fantastical premise into realistic terms? What is the "love potion" that Seita actually uses?</li>
+    <li>Shiori says she has never been hurt by Seita in twelve years. Is this a sign of a good marriage, or is it a sign that something was being suppressed? Can a marriage be too conflict-free?</li>
+    <li>Seita's secret is revealed through a social media post sent by an unknown account. Why does Okuda choose this method of revelation? What does it suggest about privacy, anonymity, and the digital mediation of relationships?</li>
+    <li>The novel asks whether love that began in manipulation can become "real." What evidence does the novel provide for each side of this question? How does the ending resolve it, if at all?</li>
+    <li>Infertility treatment is the novel's trigger, not its main subject. How would the novel be different if the couple had a child, or if they had never wanted one? Is the infertility essential to the moral drama, or is it a particularly intense form of the pressure that any long marriage faces?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Okuda Akiko, <em>Hidarime ni Utsuru Hoshi</em> (左目に映る星, 2014) — her debut, to see the origins of her voice and her interest in contemporary romantic experience</li>
+    <li>Okuda Akiko, <em>Seishun no Jōkā</em> (青春のジョーカー, 2019) — her novel of adolescent sexuality and school hierarchy, adapted into film</li>
+    <li>Okuda Akiko, <em>Crazy for Rabbit</em> (クレイジー・フォー・ラビット, 2022) — another exploration of obsession and identity</li>
+    <li>Shakespeare, <em>A Midsummer Night's Dream</em> — the classic Western treatment of the love potion question</li>
+    <li>Nakajima Kyoko, <em>Tsuma ga Shiitake Datta Koro</em> (妻が椎茸だったころ, 2013) — for a very different but equally precise treatment of marriage, grief, and what remains after loss</li>
+    <li>Kirino Natsuo, <em>Out</em> (アウト, 1997) — for a darker exploration of what women in contemporary Japan will do under pressure (advanced readers)</li>
+    <li>Any nonfiction book on Japanese infertility treatment and social policy — for context on the medical and cultural landscape Shiori navigates</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the novel's content, style, documented quotations from reviews and interviews, and the known structure of the work, not direct quotations. For exact citations, consult the original hardcover edition (KADOKAWA, 2021; ISBN 978-4-04-110906-9) or the bunko edition (KADOKAWA Bunko, 2025; ISBN 978-4-04-115757-2). The novel won the 2nd "Bookstore-Selected Adult Romance Novel Prize" (<code>2回本屋が選ぶ大人の恋愛小説大賞</code>). Author interviews referenced are from <em>Shōsetsu Maru</em> (May 2022) and <em>NEWS Post Seven</em> (May 2022).</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wait Two and a Half Years — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --sage: #6a7a6a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--sage);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(106,122,106,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.sage::before {
+            background: var(--sage);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.sage-box {
+            background: color-mix(in oklab, var(--sage) 8%, var(--surface));
+            border-left-color: var(--sage);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.sage-box h5 {
+            color: var(--sage);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-sage {
+            background: color-mix(in oklab, var(--sage) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--sage) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--sage) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #6a7a6a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Wait Two and a Half Years<br><span style="font-size:0.6em; font-weight:300;">二年半待て</span></h1>
+    <div class="subtitle">A Japanese lesson through Niitsu Kiyomi's seven mysteries of women's lives at the crossroads</div>
+    <div class="meta">Niitsu Kiyomi &middot; Tokuma Shoten &middot; 2017 &middot; 7 stories</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reviews of <em>Ninenhan Mate</em> (Wait Two and a Half Years), a short-story collection by Niitsu Kiyomi published by Tokuma Shoten in August 2017. The book won the 2018 Tokuma Bunko Taisho. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published by Tokuma Shoten in August 2017, <em>Ninenhan Mate</em> (Wait Two and a Half Years) is a collection of seven short mystery stories by Niitsu Kiyomi (b. 1957), a writer celebrated for her precise, unflinching depictions of female psychology. The book won the 2018 Tokuma Bunko Taisho. Niitsu's husband is Orihara Ichi, also a novelist, and the two form one of Japan's rare literary couples. Where previous works in this lesson series have explored theology, slapstick, aesthetic perception, bureaucratic erasure, and the slow seepage of autumn feeling, Niitsu's prose operates in the register of the domestic thriller: the grammar of what women know and cannot say, the grammar of waiting, the grammar of the life activity (活) that has become the organizing principle of modern Japanese womanhood. Each story is organized around a different "activity": 就活 (job hunting), 婚活 (marriage hunting), 恋活 (romance hunting), 妊活 (pregnancy hunting), 保活 (daycare hunting), 離活 (divorce hunting), and 終活 (end-of-life planning). The title story asks why a man who claims to love his girlfriend cannot bring himself to submit marriage papers, and the answer is both more ordinary and more devastating than infidelity. The prose is clean, fast, and quietly merciless. Niitsu does not judge her characters. She lets their choices do the judging.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Deadline</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is a command disguised as a request, a postponement that contains an entire emotional economy.</p>
+
+    <div class="passage sage">
+        <div class="jp-text jp">
+            <span class="hl-sage">二年半待て</span>
+        </div>
+        <div class="romaji">"Ninenhan Mate"</div>
+        <div class="translation">"Wait Two and a Half Years"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">二年半</td><td class="reading">ninenhan</td><td>two and a half years</td></tr>
+        <tr><td class="word">待て</td><td class="reading">mate</td><td>wait (imperative form of matsu)</td></tr>
+    </table>
+
+    <div class="nuance sage-box">
+        <h5>What translation loses: The brutality of the imperative</h5>
+        <p><strong>待て (mate):</strong> This is the imperative form of 待つ (matsu, to wait). In Japanese, the imperative is blunt, direct, and slightly rude when used in intimate contexts. A man saying 待て to the woman he loves is not saying "Could you wait?" or "Would you mind waiting?" He is issuing a command. The grammar makes the request into an order, which tells the reader something about the power dynamic before any scene is described. The fact that this command is the title of the book means the entire collection is organized around the question of who has the right to make women wait, and what waiting costs them. In English, "Wait Two and a Half Years" sounds like a film title, dramatic and declarative. In Japanese, 二年半待て is something a man might actually say to a woman across a kitchen table, and the casual brutality of that moment is what the book is about.</p>
+        <p><strong>二年半 (ninenhan):</strong> "Two and a half years." The specificity is crucial. He does not say "wait a little longer" or "wait until I'm ready." He names a duration: two and a half years. The precision makes the wait measurable, which means it can be calculated, compared, and resented. Two and a half years is long enough for a woman in her early thirties to lose options. It is long enough for her mother's anxiety to become unbearable. It is long enough for the relationship to accumulate enough shared history that leaving feels like waste. The number is not random. It corresponds to the repayment period of a student loan, which is the hidden engine of the story. The grammar of the specific number makes the emotional into the financial.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Seven Activities: The Grammar of Modern Japanese Womanhood</h2>
+    <span class="story-label">Collection</span>
+
+    <p>The book's organizing principle is the 活 suffix, which has colonized Japanese vocabulary to describe every phase of a woman's life as a form of labor.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">就活、恋活、婚活、妊活、保活、離活、終活――運命の分かれ道、女は何を選択するか</span>
+        </div>
+        <div class="romaji">"Shuukatsu, renkatsu, konkatsu, ninkatsu, hokatsu, rikatsu, shuukatsu — unmei no wakaremichi, onna wa nani wo sentaku suru ka."</div>
+        <div class="translation">"Job hunting, romance hunting, marriage hunting, pregnancy hunting, daycare hunting, divorce hunting, end-of-life planning — at the crossroads of fate, what does a woman choose?"</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">就活</td><td class="reading">shuukatsu</td><td>job hunting (shushoku katsudou)</td></tr>
+        <tr><td class="word">恋活</td><td class="reading">renkatsu</td><td>romance hunting</td></tr>
+        <tr><td class="word">婚活</td><td class="reading">konkatsu</td><td>marriage hunting</td></tr>
+        <tr><td class="word">妊活</td><td class="reading">ninkatsu</td><td>pregnancy hunting / fertility efforts</td></tr>
+        <tr><td class="word">保活</td><td class="reading">hokatsu</td><td>daycare hunting</td></tr>
+        <tr><td class="word">離活</td><td class="reading">rikatsu</td><td>divorce hunting / divorce preparation</td></tr>
+        <tr><td class="word">終活</td><td class="reading">shuukatsu</td><td>end-of-life planning</td></tr>
+        <tr><td class="word">運命</td><td class="reading">unmei</td><td>fate, destiny</td></tr>
+        <tr><td class="word">分かれ道</td><td class="reading">wakaremichi</td><td>crossroads, parting of the ways</td></tr>
+        <tr><td class="word">選択</td><td class="reading">sentaku</td><td>choice, selection</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The militarization of the life course</h5>
+        <p><strong>〜活 (katsu):</strong> The suffix 活 comes from 活動 (katsudou, activity), and its use in modern Japanese to describe life stages is a relatively recent linguistic development. 婚活 (marriage hunting) emerged around 2008-2010 as Japan's declining birthrate and marriage rate made finding a spouse into a deliberate, strategic activity. 終活 (end-of-life planning) was selected as one of the top ten buzzwords of 2012. What these words share is the implication that every stage of life is now a campaign, a project, a hunt. You do not merely fall in love; you do 恋活. You do not merely get pregnant; you do 妊活. The grammar turns biological and emotional processes into forms of labor that require planning, effort, and often money. Niitsu's genius is to recognize that this vocabulary is itself a mystery: when everything is an activity, every activity can fail, and every failure can be investigated.</p>
+        <p><strong>分かれ道 (wakaremichi):</strong> "Crossroads, parting of the ways." This is a classical Japanese image with deep literary resonance. The 分かれ (wakare) means "parting, separation, branching," and 道 means "road." A 分かれ道 is not merely a decision point. It is a place where paths diverge and may never meet again. By calling each 活 a 分かれ道, the promotional copy makes each story into a moment of irreversible choice. The woman who chooses one path cannot know what the other path held. The grammar of the crossroads makes the book into a series of alternate futures, each one explored and then closed off.</p>
+        <p><strong>女は何を選択するか (onna wa nani wo sentaku suru ka):</strong> "What does a woman choose?" The grammar is a direct question, but the promotional copy uses the formal word 選択 (sentaku, selection/choice) rather than the more common 選ぶ (erabu, to choose). 選択 carries a note of deliberation, of weighing options under pressure. It is the word used for selecting a university, a career, a treatment option. By using 選択, the copy makes each woman's decision into something serious and consequential. This is not a book about trivial choices. It is a book about the architecture of a life.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Marriage Papers: The Grammar of Postponement</h2>
+    <span class="story-label">二年半待て</span>
+
+    <p>The title story's premise is established in a single devastating sentence.</p>
+
+    <div class="passage sage">
+        <div class="jp-text jp">
+            <span class="hl-sage">婚姻届を出すのは待ってほしい――彼はどうして結婚を決断してくれないんだろう。そこには思いもよらない理由があった</span>
+        </div>
+        <div class="romaji">"Kon'in todoke wo dasu no wa matte hoshii — kare wa doushite kekkon wo ketsudan shite kurenai n darou. Soko ni wa omoi mo yoranai riyuu ga atta."</div>
+        <div class="translation">"'Please wait before we submit the marriage papers' — why couldn't he bring himself to decide on marriage? There was a reason she never could have imagined."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">婚姻届</td><td class="reading">kon'in todoke</td><td>marriage registration form</td></tr>
+        <tr><td class="word">出す</td><td class="reading">dasu</td><td>to submit, to hand in</td></tr>
+        <tr><td class="word">待ってほしい</td><td class="reading">matte hoshii</td><td>want [someone] to wait</td></tr>
+        <tr><td class="word">決断</td><td class="reading">ketsudan</td><td>decision, resolution</td></tr>
+        <tr><td class="word">思いもよらない</td><td class="reading">omoi mo yoranai</td><td>unimaginable, unexpected</td></tr>
+        <tr><td class="word">理由</td><td class="reading">riyuu</td><td>reason, cause</td></tr>
+    </table>
+
+    <div class="nuance sage-box">
+        <h5>What translation loses: The bureaucracy of love</h5>
+        <p><strong>婚姻届を出す (kon'in todoke wo dasu):</strong> "To submit the marriage papers." In Japan, marriage is not certified by a ceremony or a priest. It is certified by a form: the 婚姻届, submitted to city hall. The grammar makes marriage into an administrative act. You do not "get married" in the abstract. You 婚姻届を出す. This is crucial to the story's tension because the boyfriend's refusal is not a refusal of commitment in the romantic sense. It is a refusal to submit a form. The 婚姻届 is the physical object that stands between them and legal marriage, and his request to wait is a request to delay the paperwork. The grammar of bureaucratic love makes the story's mystery administrative rather than emotional. The question is not "Does he love her?" The question is "Why can't he sign the form?"</p>
+        <p><strong>待ってほしい (matte hoshii):</strong> "Want [you] to wait." This is the desiderative form: the speaker wants the listener to perform an action. It is softer than the imperative 待て (wait!), but it still places the burden of waiting on the woman. The grammar of 〜てほしい makes the request into a one-way street: he wants something from her, and what he wants is her time. The fact that this is the softened version of the title's brutal imperative tells us something about how the request is framed in the relationship. He packages a command as a request, which is itself a form of emotional management that women learn to recognize.</p>
+        <p><strong>思いもよらない (omoi mo yoranai):</strong> "Unimaginable, unexpected." This is a strong phrase. 思う (to think/expect) + よる (to approach/draw near) in the negative potential: "not even able to approach in thought." The grammar makes the reason literally unthinkable before it is revealed. This is the engine of the mystery story: the gap between what the reader expects (another woman, cold feet, a secret marriage) and what the reason actually is (student loan debt, the economic trap of modern Japanese youth). The phrase 思いもよらない is doing double work: it promises a twist, and it comments on the social invisibility of the real reason.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Student Loan: The Grammar of the Hidden Debt</h2>
+    <span class="story-label">二年半待て</span>
+
+    <p>The boyfriend's secret is not infidelity but economics, which makes it both more ordinary and more systemic.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">正社員ではなく、奨学金を返済するために仕事を掛け持ちしていた</span>
+        </div>
+        <div class="romaji">"Seishain de wa naku, shougakukin wo hensai suru tame ni shigoto wo kakemochi shite ita."</div>
+        <div class="translation">"He was not a full-time employee; he was working multiple jobs in order to repay his student loans."</div>
+        <div class="source">— Reader review summary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">正社員</td><td class="reading">seishain</td><td>full-time permanent employee</td></tr>
+        <tr><td class="word">奨学金</td><td class="reading">shougakukin</td><td>scholarship / student loan</td></tr>
+        <tr><td class="word">返済</td><td class="reading">hensai</td><td>repayment</td></tr>
+        <tr><td class="word">掛け持ち</td><td class="reading">kakemochi</td><td>working multiple jobs simultaneously</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The shame architecture of 奨学金</h5>
+        <p><strong>奨学金 (shougakukin):</strong> In Japanese, this word means both "scholarship" and "student loan," which is itself a revealing ambiguity. In English, a scholarship is money you do not repay; a loan is money you do. In Japanese, 奨学金 collapses these categories, which reflects the cultural assumption that educational support is always partly a gift and partly a debt. The boyfriend's shame about his 奨学金 is not merely about owing money. It is about having needed help in the first place. In a society that values self-sufficiency, accepting a 奨学金 is already a minor failure, and being unable to repay it is a continuing humiliation. The grammar of the word makes the debt into a form of social obligation that extends beyond the financial.</p>
+        <p><strong>仕事を掛け持ち (shigoto wo kakemochi):</strong> "Working multiple jobs simultaneously." 掛け持ち literally means "holding [something] across," like holding two ropes at once. The word is used for juggling multiple part-time jobs, multiple memberships, multiple romantic partners. In the context of student loan repayment, 掛け持ち describes the condition of a generation that cannot find stable full-time work and must stitch together an income from multiple sources. The grammar makes the workday into a patchwork. Each job is a piece of fabric, and the worker's life is the quilt. The boyfriend is not lazy. He is exhausted. The grammar of 掛け持ち makes his exhaustion visible.</p>
+        <p><strong>正社員ではなく (seishain de wa naku):</strong> "Not a full-time employee." The grammar is a negation of identity: he is defined by what he is not. In Japanese employment culture, 正社員 status is the gold standard: lifetime employment, benefits, social respectability. To be 正社員ではなく is to exist in a parallel economy of temporary contracts, no benefits, and no security. The fact that Azusa cannot introduce him to her mother because he is not 正社員 makes the economic into the social. He is not marriageable because he does not have the right employment category. The grammar of negated identity makes the boyfriend into a ghost of the Japanese dream.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Mother's Interrogation: The Grammar of Marital Surveillance</h2>
+    <span class="story-label">二年半待て</span>
+
+    <p>Azusa's mother performs the social function that the state and the family have delegated to women: enforcing marriageability.</p>
+
+    <div class="passage sage">
+        <div class="jp-text jp">
+            <span class="hl-sage">「勤めはどこ。大きな会社？いつ家に連れてきて、いつ結婚するの？」</span>
+        </div>
+        <div class="romaji">"'Tsutome wa doko. Ookina kaisha? Itsu ie ni tsurete kite, itsu kekkon suru no?'"</div>
+        <div class="translation">"'Where does he work? Is it a big company? When will you bring him home, and when are you getting married?'"</div>
+        <div class="source">— Reader review summary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">勤め</td><td class="reading">tsutome</td><td>employment, place of work</td></tr>
+        <tr><td class="word">大きな</td><td class="reading">ookina</td><td>big, large</td></tr>
+        <tr><td class="word">会社</td><td class="reading">kaisha</td><td>company</td></tr>
+        <tr><td class="word">連れてくる</td><td class="reading">tsurete kuru</td><td>to bring [someone] along</td></tr>
+        <tr><td class="word">結婚</td><td class="reading">kekkon</td><td>marriage</td></tr>
+    </table>
+
+    <div class="nuance sage-box">
+        <h5>What translation loses: The triangulation of female anxiety</h5>
+        <p><strong>勤めはどこ (tsutome wa doko):</strong> "Where does he work?" The word 勤め means employment, service, or duty, and it carries a note of respectability that 仕事 (shigoto, work/job) does not. When the mother asks about his 勤め, she is asking about his social standing, not merely his income. The question is the first in a triad that moves from status (where) to scale (big company) to timeline (when). This is the grammar of Japanese maternal interrogation: each question narrows the field of acceptable answers. A small company is less acceptable than a big one. A distant timeline is less acceptable than an immediate one. The mother's questions are not curiosity. They are a compliance check.</p>
+        <p><strong>大きな会社 (ookina kaisha):</strong> "A big company." The adjective 大きな (big) is the exclamatory/literary form rather than the plain 大きい. The mother uses the slightly elevated form because she is performing her role as family gatekeeper. She does not merely want him to have a job. She wants him to have a big job, at a big company. The grammar of size makes marriageability into a question of corporate scale. In Japan, employment at a large firm (大手, oote) still carries prestige that small-firm employment does not. The mother's question reveals the class assumptions that structure the marriage market: big is safe, small is risky, and risk is the enemy of respectability.</p>
+        <p><strong>いつ家に連れてきて、いつ結婚するの (itsu ie ni tsurete kite, itsu kekkon suru no):</strong> "When will you bring him home, and when are you getting married?" The repetition of いつ (when, when) creates a rhythm of urgency. The mother is not asking whether these things will happen. She is asking when. The grammar assumes marriage is inevitable and only the schedule is in question. This assumption is what makes Azusa's boyfriend's request so destabilizing. He is not saying no to marriage. He is saying not yet. In a world where everyone assumes the when, the not yet is almost worse than the no. It keeps hope alive while killing it slowly.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Ending Note: The Grammar of What Remains</h2>
+    <span class="story-label">お片づけ</span>
+
+    <p>One of the collection's most praised stories turns end-of-life planning into an archaeological excavation of a marriage.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">死を目前に、なぜか旧姓に戻していた祖母。「エンディングノート」からあぶり出される驚きの真実とは</span>
+        </div>
+        <div class="romaji">"Shi wo mokuzen ni, nazeka kyusei ni modoshite ita sobo. 'Ending Note' kara aburidasareru odoroki no shinjitsu to wa."</div>
+        <div class="translation">"Facing death, her grandmother had somehow returned to her maiden name. What was the shocking truth brought to light from the 'ending note'?"</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">目前</td><td class="reading">mokuzen</td><td>before one's eyes, imminent</td></tr>
+        <tr><td class="word">旧姓</td><td class="reading">kyusei</td><td>maiden name, former surname</td></tr>
+        <tr><td class="word">戻す</td><td class="reading">modosu</td><td>to return, to restore</td></tr>
+        <tr><td class="word">エンディングノート</td><td class="reading">endingu nooto</td><td>ending note (end-of-life planning document)</td></tr>
+        <tr><td class="word">あぶり出す</td><td class="reading">aburidasu</td><td>to bring to light, to expose, to smoke out</td></tr>
+        <tr><td class="word">驚き</td><td class="reading">odoroki</td><td>surprise, astonishment</td></tr>
+        <tr><td class="word">真実</td><td class="reading">shinjitsu</td><td>truth</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The archaeology of the married name</h5>
+        <p><strong>旧姓に戻していた (kyusei ni modoshite ita):</strong> "Had returned to her maiden name." In Japan, marriage has historically required women to take their husband's surname (though the law technically allows either partner to take the other's name, in practice over 95% of women take the husband's name). The 旧姓 is therefore not merely a former name. It is the name of the self that existed before marriage, before children, before the compromises of a shared life. For a dying woman to 旧姓に戻す is to undo the signature act of marriage at the moment when all other acts are being undone by death. The grammar of 戻す (to return, to restore) makes the name change into a homecoming. She is going back to who she was. The question the story asks is: what does this return mean? Is it regret? Is it reclamation? Is it a final truth that the marriage was not what it appeared to be?</p>
+        <p><strong>エンディングノート (endingu nooto):</strong> A loanword from English, "ending note," referring to the Japanese practice of writing a document that records one's wishes for funeral arrangements, asset distribution, personal messages to family members, and practical information like passwords and account numbers. The エンディングノート is a relatively recent cultural phenomenon, part of the 終活 (end-of-life planning) movement that encourages people to prepare for death proactively. In the story, the grandmother's ending note becomes a detective document: the granddaughter reads it not merely to fulfill wishes but to solve a mystery. The grammar of the ending note as evidence makes death into a case file.</p>
+        <p><strong>あぶり出す (aburidasu):</strong> "To bring to light, to smoke out." This is a vivid verb. It literally means to expose something hidden by heating or smoking, as in smoked food or fumigation. The metaphor makes the truth into something that has been hiding in darkness and must be forced into visibility. The word is stronger than 明らかにする (to make clear) or 発見する (to discover). It implies effort, even violence. The ending note does not merely reveal the truth. It smokes it out. The grammar makes the document into an active agent of exposure, which is appropriate for a mystery story in which a piece of paper solves a life.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Double Care: The Grammar of the Sandwich Generation</h2>
+    <span class="story-label">ダブルケア</span>
+
+    <p>The story that many readers cite as the collection's most devastating explores the condition of women who care for both the old and the young.</p>
+
+    <div class="passage sage">
+        <div class="jp-text jp">
+            <span class="hl-sage">このお味噌汁、変な味。忘れ物も多いし……まさか。手遅れになる前に私がなんとかしないと</span>
+        </div>
+        <div class="romaji">"Kono omisoshiru, hen na aji. Wasuremono mo ooi shi... masaka. Teokure ni naru mae ni watashi ga nantoka shinaito."</div>
+        <div class="translation">"This miso soup tastes strange. And she forgets things so often... it can't be. I have to do something before it's too late."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">味噌汁</td><td class="reading">omisoshiru / misoshiru</td><td>miso soup</td></tr>
+        <tr><td class="word">変</td><td class="reading">hen</td><td>strange, odd</td></tr>
+        <tr><td class="word">忘れ物</td><td class="reading">wasuremono</td><td>something forgotten, forgetfulness</td></tr>
+        <tr><td class="word">まさか</td><td class="reading">masaka</td><td>it can't be, no way</td></tr>
+        <tr><td class="word">手遅れ</td><td class="reading">teokure</td><td>too late</td></tr>
+        <tr><td class="word">なんとか</td><td class="reading">nantoka</td><td>somehow, manage to</td></tr>
+    </table>
+
+    <div class="nuance sage-box">
+        <h5>What translation loses: The domestic detection of まさか</h5>
+        <p><strong>まさか (masaka):</strong> "It can't be, no way." This is one of the most emotionally loaded interjections in Japanese. It expresses disbelief in the face of something the speaker suspects but does not want to acknowledge. When the narrator tastes the strange miso soup and notices the increasing forgetfulness, the word まさか hangs in the air like a held breath. It is the moment of diagnostic suspicion: could this be dementia? The word does not name the fear. It circles it. The grammar of まさか is the grammar of denial in real time: the speaker is trying to talk herself out of a conclusion that her own observations have already reached. This is how families discover dementia in Japan: not through doctor's visits, but through miso soup that tastes wrong because the cook forgot an ingredient, through keys left in the refrigerator, through the small failures of daily competence that accumulate until they cannot be ignored.</p>
+        <p><strong>手遅れになる前に (teokure ni naru mae ni):</strong> "Before it becomes too late." 手遅れ literally means "hand delayed" — the hands that should have acted have not, and now the opportunity for effective intervention may have passed. The phrase carries medical urgency. In the context of dementia, 手遅れ refers to the window of time in which early intervention, medication, and care planning might slow the progression of symptoms. The narrator's determination to act before 手遅れ makes her into a kind of emergency responder, but the emergency is her own mother's mind. The grammar of temporal urgency (〜前に, before) makes the story into a race against a disease that cannot be outrun, only managed.</p>
+        <p><strong>なんとか (nantoka):</strong> "Somehow, manage to." This is the word of the overwhelmed. It means "to manage somehow, to get by, to make do." When the narrator says she must なんとかしないと (has to manage somehow), the word contains both determination and despair. She does not have a plan. She does not have resources. She has only the will to なんとか, to patch, to improvise, to keep the system running for one more day. The grammar of なんとか is the grammar of the Japanese care crisis, in which women are expected to absorb the failures of the state, the medical system, and the family through sheer effort of will. Niitsu does not need to describe the policy context. The word なんとか does all the work.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Distant Heartbeat: The Grammar of Unexpected Pregnancy</h2>
+    <span class="story-label">遠い心音</span>
+
+    <p>The story of 妊活 (pregnancy hunting) takes an unexpected turn when the mother-in-law, not the daughter-in-law, becomes the pregnant one.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">43歳の幸恵は、若くして生んだ息子とその10歳年上の彼女のデキ婚を認めようと思っていた。幸恵は体調が悪く更年期かと思っていたが……</span>
+        </div>
+        <div class="romaji">"Yonjuusan-sai no Sachie wa, wakaku shite unda musuko to sono juussai toshiue no kanojo no deki-kon wo mitomeyou to omotte ita. Sachie wa taichou ga waruku kounenki ka to omotte ita ga..."</div>
+        <div class="translation">"Forty-three-year-old Sachie had been prepared to accept her son's shotgun wedding with a woman ten years his senior, a son she had given birth to when she was young. Sachie had been feeling unwell and thought it might be menopause, but..."</div>
+        <div class="source">— Reader review summary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">デキ婚</td><td class="reading">deki-kon</td><td>shotgun wedding, marriage due to pregnancy</td></tr>
+        <tr><td class="word">認める</td><td class="reading">mitomeru</td><td>to accept, to approve, to recognize</td></tr>
+        <tr><td class="word">体調</td><td class="reading">taichou</td><td>physical condition, health</td></tr>
+        <tr><td class="word">更年期</td><td class="reading">kounenki</td><td>menopause</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The generational inversion of デキ婚</h5>
+        <p><strong>デキ婚 (deki-kon):</strong> From できちゃった結婚 (dekichatta kekkon), literally "a marriage that happened [because a baby was made]." The word is a euphemism for shotgun wedding, but the grammar is gentle, almost cute. できちゃった is the colloquial past tense of できる (to be able to / to happen) with the regret/accidental auxiliary ちゃう, which softens the transgression: "it just happened." This is how Japanese culture linguistically manages premarital pregnancy: by making it sound like an accident rather than a choice, and therefore not quite a moral failure. Sachie is prepared to 認める (accept/approve) her son's デキ婚, which makes her a tolerant, modern mother. The grammar of acceptance is the grammar of generational progress: she will not judge her son the way her own mother might have judged her. But the story's twist inverts this progress. The mother who was prepared to accept her son's accidental pregnancy discovers that she herself is pregnant, at forty-three, and the word 更年期 (menopause) that she thought explained her symptoms becomes the wrong diagnosis. The grammar of mistaken identity (I thought it was X but it was Y) makes the story into a comedy of biological errors.</p>
+        <p><strong>認めようと思っていた (mitomeyou to omotte ita):</strong> "Had been thinking of accepting." The volitional form 認めよう (let's accept / I will accept) combined with と思っていた (had been thinking) creates a sense of prepared virtue. Sachie has already done the emotional work of acceptance. She has decided not to judge. She has chosen to be the kind of mother who supports her son's choices. The grammar of prepared acceptance makes the subsequent revelation more disruptive: she has already spent her tolerance on her son. What remains for herself? The story asks whether the same generosity can be extended across generational lines, and whether a woman who has accepted her son's accidental pregnancy can accept her own.</p>
+        <p><strong>更年期かと思っていたが (kounenki ka to omotte ita ga):</strong> "Had thought it might be menopause, but..." The が at the end of the sentence hangs like a held breath. It is the grammatical equivalent of the doctor's pause before delivering unexpected test results. The phrase makes the reader wait for the correction, and in that waiting, the story performs the same emotional work that Sachie is experiencing: the gap between what you expect your body to be doing and what it is actually doing. The grammar of the interrupted diagnosis is the grammar of bodies that refuse to follow the script.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Daycare Hunt: The Grammar of Institutional Desperation</h2>
+    <span class="story-label">ダブルケア / 保活</span>
+
+    <p>The story that gives the collection its most searing social critique turns daycare admission into a form of lottery that determines women's futures.</p>
+
+    <div class="passage sage">
+        <div class="jp-text jp">
+            <span class="hl-sage">「保活」を考えて計画出産をするという嫁の世話もしなければならない</span>
+        </div>
+        <div class="romaji">"'Hokatsu' wo kangaete keikaku shussan wo suru to iu yome no sewa mo shinakereba naranai."</div>
+        <div class="translation">"She also had to look after her daughter-in-law, who was doing 'daycare hunting' and planning a scheduled pregnancy accordingly."</div>
+        <div class="source">— Reader review summary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">保活</td><td class="reading">hokatsu</td><td>daycare hunting</td></tr>
+        <tr><td class="word">計画出産</td><td class="reading">keikaku shussan</td><td>scheduled / planned childbirth</td></tr>
+        <tr><td class="word">嫁</td><td class="reading">yome</td><td>daughter-in-law, bride</td></tr>
+        <tr><td class="word">世話</td><td class="reading">sewa</td><td>care, looking after</td></tr>
+        <tr><td class="word">〜なければならない</td><td class="reading">-nakereba naranai</td><td>must, have to</td></tr>
+    </table>
+
+    <div class="nuance sage-box">
+        <h5>What translation loses: The obligation grammar of なければならない</h5>
+        <p><strong>〜なければならない (-nakereba naranai):</strong> "Must, have to." This is one of the strongest obligation constructions in Japanese. It literally means "if [I] do not, [it] will not become" — the idea that failure to act will result in an unacceptable state. When the narrator says she 世話もしなければならない (must also look after her daughter-in-law), the grammar makes the care work into a moral necessity, not a choice. She is not helping because she wants to. She is helping because the structure of her family and the failures of Japanese daycare policy have made it impossible for her not to. The grammar of なければならない is the grammar of the trap: each obligation generates the next, and the woman at the center of the web cannot move without tearing something.</p>
+        <p><strong>計画出産 (keikaku shussan):</strong> "Scheduled childbirth, planned delivery." In the context of 保活, 計画出産 takes on a sinister precision. Because Japanese daycare centers allocate spots based on birth month and application timing, women must plan their pregnancies to align with daycare admission cycles. A baby born in the wrong month may not get a spot, which means the mother cannot return to work, which means the family loses income, which means the next child is delayed or never conceived. The grammar of 計画出産 makes pregnancy into a spreadsheet calculation. Niitsu captures the horror of this without editorializing: she simply shows a daughter-in-law who is 保活を考えて (thinking about daycare hunting) while planning her pregnancy, and the grandmother who must absorb the consequences of this planning. The word makes reproduction into logistics.</p>
+        <p><strong>世話 (sewa):</strong> "Care, looking after." 世話 is a warm word, the word used for taking care of children, the elderly, the sick. It implies a relationship of responsibility and affection. But in the context of ダブルケア, 世話 becomes a word that describes the entire architecture of a woman's day: she does 世話 for her mother with dementia, 世話 for her daughter-in-law who is pregnant, 世話 for her grandchildren, and somewhere in the margins, she might do 世話 for herself. The grammar of 世話 makes care into both a virtue and a burden, which is exactly how Japanese society has constructed the role of the middle-aged woman.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Reversal: The Grammar of the Twist</h2>
+    <span class="story-label">Collection</span>
+
+    <p>Niitsu's signature technique is the どんでん返し (complete reversal), and the promotional copy uses a word that names her method.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">人生の分かれ道を舞台にした、大人のどんでん返しミステリー</span>
+        </div>
+        <div class="romaji">"Jinsei no wakaremichi wo butai ni shita, otona no dondengaeshi misuterii."</div>
+        <div class="translation">"A grown-up reversal mystery set at the crossroads of life."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">舞台</td><td class="reading">butai</td><td>stage, setting</td></tr>
+        <tr><td class="word">大人</td><td class="reading">otona</td><td>adult, grown-up</td></tr>
+        <tr><td class="word">どんでん返し</td><td class="reading">dondengaeshi</td><td>complete reversal, dramatic twist</td></tr>
+        <tr><td class="word">ミステリー</td><td class="reading">misuterii</td><td>mystery</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The acrobatics of どんでん返し</h5>
+        <p><strong>どんでん返し (dondengaeshi):</strong> A complete reversal, a dramatic twist, a sudden overturning of expectations. The word is said to derive from the acrobatic feat of a performer who appears to fall off a stage only to land on their feet below, or from the theatrical technique of rapidly changing a scene. In mystery fiction, どんでん返し refers to the moment when everything the reader understood is inverted: the victim becomes the perpetrator, the helper becomes the obstacle, the explanation becomes the mystery. Niitsu's どんでん返し are characteristically domestic. They do not involve murders or detectives. They involve the sudden revelation that a marriage, a pregnancy, a retirement, a memory, was not what it appeared to be. The grammar of どんでん返し makes the story into a theatrical performance in which the set is the living room and the acrobat is the reader's assumptions.</p>
+        <p><strong>大人の (otona no):</strong> "Grown-up, adult." This adjective is doing important work. It tells the reader that these are not juvenile mysteries with simple puzzles. They are 大人のミステリー: mysteries that involve adult problems (debt, dementia, daycare, divorce, death) and adult emotional complexity. The word 大人 also implies a certain restraint. An 大人のミステリー does not shout its twists. It delivers them quietly, in the final paragraph, and lets the reader sit with the implications. Niitsu's prose is 大人 in this sense: it trusts the reader to understand without being told, to feel without being instructed.</p>
+        <p><strong>人生の分かれ道を舞台にした (jinsei no wakaremichi wo butai ni shita):</strong> "Set at the crossroads of life." The grammar makes the crossroads into a stage (舞台). This is a theatrical metaphor: life is the play, the crossroads are the set, and the woman's choice is the dramatic action. By using 舞台, the promotional copy elevates domestic decisions into dramatic events. Choosing whether to wait two and a half years is not merely a private negotiation. It is a scene in the theater of gender and class. The grammar makes the reader into an audience member who is also, somehow, on stage.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Crossroads</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>Imperative (〜て / 〜ろ)</strong> — The grammar of commands disguised as requests</li>
+        <li><strong>〜てほしい</strong> — Want [someone] to: the grammar of one-way emotional labor</li>
+        <li><strong>〜なければならない</strong> — Must: the grammar of the trap</li>
+        <li><strong>〜かと思っていたが</strong> — Had thought... but: the grammar of interrupted diagnosis</li>
+        <li><strong>〜ようと思っていた</strong> — Had been thinking of: the grammar of prepared virtue</li>
+        <li><strong>〜からあぶり出す</strong> — To smoke out from: the grammar of documentary exposure</li>
+        <li><strong>〜ではなく</strong> — Not [X] but: the grammar of negated identity</li>
+        <li><strong>〜活 suffix compounds</strong> — The militarization of the life course</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>二年半待て</strong> — Wait two and a half years: the command disguised as a request</li>
+        <li><strong>婚姻届</strong> — Marriage papers: love as bureaucracy</li>
+        <li><strong>待ってほしい</strong> — Want you to wait: the one-way street of borrowed time</li>
+        <li><strong>思いもよらない</strong> — Unimaginable: the gap between expectation and economic reality</li>
+        <li><strong>奨学金</strong> — Scholarship/loan: the shame architecture of educational debt</li>
+        <li><strong>掛け持ち</strong> — Working multiple jobs: the patchwork life of a generation</li>
+        <li><strong>正社員ではなく</strong> — Not a full-time employee: the ghost of the Japanese dream</li>
+        <li><strong>勤めはどこ</strong> — Where does he work: the compliance check of maternal interrogation</li>
+        <li><strong>大きな会社</strong> — A big company: the class assumptions of the marriage market</li>
+        <li><strong>いつ結婚するの</strong> — When are you getting married: the assumption that makes not-yet almost worse than no</li>
+        <li><strong>旧姓に戻していた</strong> — Had returned to her maiden name: the archaeology of the married self</li>
+        <li><strong>エンディングノート</strong> — Ending note: death as a case file</li>
+        <li><strong>あぶり出す</strong> — To smoke out: the document as active agent of exposure</li>
+        <li><strong>まさか</strong> — It can't be: the grammar of denial in real time</li>
+        <li><strong>手遅れ</strong> — Too late: the hands that should have acted</li>
+        <li><strong>なんとか</strong> — Somehow: the word of the overwhelmed</li>
+        <li><strong>デキ婚</strong> — Shotgun wedding: the softening of transgression</li>
+        <li><strong>認めようと思っていた</strong> — Had been thinking of accepting: prepared virtue and its limits</li>
+        <li><strong>更年期かと思っていたが</strong> — Had thought it was menopause, but: the body that refuses the script</li>
+        <li><strong>保活</strong> — Daycare hunting: reproduction as logistics</li>
+        <li><strong>計画出産</strong> — Scheduled childbirth: pregnancy as spreadsheet</li>
+        <li><strong>世話</strong> — Care: the virtue that is also a burden</li>
+        <li><strong>どんでん返し</strong> — Complete reversal: the acrobatics of domestic assumption</li>
+        <li><strong>大人のミステリー</strong> — Grown-up mystery: the restraint that trusts the reader</li>
+        <li><strong>分かれ道</strong> — Crossroads: the place where paths diverge and may never meet again</li>
+    </ul>
+
+    <h4>Niitsu vs. Tsutsui vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Thirteen directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふる, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Tsutsui's are chaotic and accelerative (コント, 鬱屈, 苛烈をめ, 狂気, 疾風怒濤, ドタバタ, 叡智), Niitsu's are precise and merciless (待て, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Niitsu asks what women are expected to wait for, to hunt for, to care for, and what happens when the waiting, the hunting, and the caring become the entire architecture of a life. Together these thirteen writers map the full range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the crossroads where a woman stands and must choose before someone else chooses for her.</p>
+</section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Twisted Smile Novel — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --twist: #7a5a4a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--twist);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(122,90,74,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.twist::before {
+            background: var(--twist);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.twist-box {
+            background: color-mix(in oklab, var(--twist) 8%, var(--surface));
+            border-left-color: var(--twist);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.twist-box h5 {
+            color: var(--twist);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-twist {
+            background: color-mix(in oklab, var(--twist) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--twist) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--twist) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-list {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+        }
+
+        .story-list h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .story-list ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .story-list li {
+            font-size: var(--step--1);
+            margin-bottom: 0.3rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #7a5a4a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Twisted Smile Novel<br><span style="font-size:0.6em; font-weight:300;">歪笑小説</span></h1>
+    <div class="subtitle">A Japanese lesson through Higashino Keigo's backstage comedy of editors who grovel, writers who soar, and a publishing house where every laugh is slightly crooked</div>
+    <div class="meta">Higashino Keigo &middot; Shueisha &middot; 2012 &middot; Short Story Collection</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reviews of <em>Waraishōsetsu</em> (The Twisted Smile Novel / The Crooked Smile Novel), the fourth volume in Higashino Keigo's "Laugh Novel" series, published by Shueisha in 2012. The stories were serialized in <em>Shōsetsu Subaru</em> from 2008. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    First published by Shueisha in 2012 as the flagship title of their 35th-anniversary bunko campaign, <em>Waraishōsetsu</em> (歪笑小説) is the fourth and most beloved volume in Higashino Keigo's "Laugh Novel" series (笑小説シリーズ), following <em>Kaishō Shōsetsu</em> (怪笑小説, 1995), <em>Dokushō Shōsetsu</em> (毒笑小説, 1996), and <em>Kokushō Shōsetsu</em> (黒笑小説, 2005). Where previous volumes in this lesson series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, and the cage that makes the animal more ferocious, Higashino's volume operates in the register of professional comedy: the publishing industry as a theater of grotesques, where legendary editors specialize in 土下座落し (making authors prostrate themselves in apology), where rookie editors learn that their dream job involves golf outings they cannot play, where a writer's first drama adaptation sends him into orbit around his own vanity, and where the boundary between fiction and autobiography is not a line but a suggestion. The setting is the fictional publisher 灸英社 (Kyūeisha), a transparent anagram/pun on Higashino's own publisher 集英社 (Shueisha). The characters are writers, editors, and the machinery of literature itself. The humor is black, the observation is surgical, and the affection for the industry being satirized is unmistakable. Higashino is not a visitor to this world. He has lived in it since 1985. He knows where the bodies are buried because he helped dig some of the graves.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Crooked Laugh</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is the fourth in a series, and the character 歪 tells you exactly how this laugh differs from the others.</p>
+
+    <div class="passage twist">
+        <div class="jp-text jp">
+            <span class="hl-twist">歪笑小説</span>
+        </div>
+        <div class="romaji">"Waraishōsetsu"</div>
+        <div class="translation">"The Twisted Smile Novel" / "The Crooked Laugh Novel"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">歪</td><td class="reading">wai/hizumu</td><td>twisted, crooked, warped, distorted</td></tr>
+        <tr><td class="word">笑</td><td class="reading">shō/warai</td><td>laughter, smile</td></tr>
+        <tr><td class="word">小説</td><td class="reading">shōsetsu</td><td>novel, fiction</td></tr>
+        <tr><td class="word">怪笑</td><td class="reading">kaishō</td><td>strange/mysterious laugh (1st volume)</td></tr>
+        <tr><td class="word">毒笑</td><td class="reading">dokushō</td><td>poisonous laugh (2nd volume)</td></tr>
+        <tr><td class="word">黒笑</td><td class="reading">kokush</td><td>black/dark laugh (3rd volume)</td></tr>
+    </table>
+
+    <div class="nuance twist-box">
+        <h5>What translation loses: The four-laugh taxonomy</h5>
+        <p><strong>歪 (wai/hizumu):</strong> "Twisted, crooked, warped, distorted." This is a powerful character. It means something that should be straight but is not: a crooked picture frame, a warped board, a smile that does not quite reach both eyes evenly. When applied to laughter, 歪 creates an image of a grin that is slightly off, a chuckle with something wrong inside it. The previous three volumes used 怪 (strange/mysterious), 毒 (poisonous), and 黒 (black/dark). Each adjective describes a different quality of the humor within. 怪笑 is the laugh of the uncanny, the unexpected, the slightly supernatural. 毒笑 is the laugh that leaves a residue of venom. 黒笑 is the laugh that emerges from darkness, from cynicism, from the recognition that the world is worse than we pretend. 歪笑 is the laugh that is physically asymmetrical: one side of the mouth goes up, the other does not quite follow. It is the laugh of someone who sees the joke but also sees the damage the joke is doing. It is the laugh of the insider who knows too much to laugh purely.</p>
+        <p><strong>The series grammar:</strong> The four titles form a progression. 怪 (strange) → 毒 (poisonous) → 黒 (black) → 歪 (twisted). The progression moves from the merely odd to the actively harmful to the darkly knowing to the physically distorted. By the fourth volume, Higashino has stopped pretending that publishing-industry humor is innocent. The laugh in <em>Waraishōsetsu</em> is 歪 because the industry itself is 歪: the gap between literary value and commercial success, between editorial integrity and authorial vanity, between the dream of being a novelist and the reality of being a novelist. The grammar of the title makes the book into a diagnosis. The publishing world has a slight limp, a crooked spine, a smile that does not quite align. And Higashino is the doctor who finds this hilarious.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Promotional Theater: The Grammar of the Backstage Expose</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The publisher's description establishes the book as a forbidden peek behind the curtain.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">禁断の小説業界舞台裏を描く、東野笑劇場！</span>
+        </div>
+        <div class="romaji">"Kindan no shōsetsu gyōkai butaiura wo egaku, Higashino shōgekijō!"</div>
+        <div class="translation">"The Higashino Comedy Theater: depicting the forbidden backstage of the novel industry!"</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">禁断</td><td class="reading">kindan</td><td>forbidden, taboo, prohibited</td></tr>
+        <tr><td class="word">業界</td><td class="reading">gyōkai</td><td>industry, business world</td></tr>
+        <tr><td class="word">舞台裏</td><td class="reading">butaiura</td><td>backstage, behind the scenes</td></tr>
+        <tr><td class="word">描く</td><td class="reading">egaku</td><td>to depict, to portray</td></tr>
+        <tr><td class="word">笑劇場</td><td class="reading">shōgekijō</td><td>comedy theater, laugh theater</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The transgressive promise of 禁断</h5>
+        <p><strong>禁断 (kindan):</strong> "Forbidden, taboo, prohibited." This is a heavy word. It is the word used for forbidden love (禁断の愛), forbidden fruit (禁断の果実), forbidden knowledge. When the promotional copy calls the publishing industry's backstage 禁断, it makes the book sound like a scandalous expose, a peek into something the reader was never supposed to see. The word carries a note of delicious transgression: you are about to learn things that insiders know and outsiders do not. The grammar of 禁断の makes the backstage into a secret chamber, and the reader into someone who has found the hidden door. This is marketing genius: the book promises to reveal the machinery of fiction-making, and the promise is framed as a minor act of rebellion.</p>
+        <p><strong>舞台裏 (butaiura):</strong> "Backstage, behind the scenes." Literally: the back side of the stage. The word evokes the theater: the glittering performance the audience sees, and the chaos of ropes, props, and nervous actors hidden behind the curtain. When applied to the publishing industry, it makes literature into a performance. The books that arrive in stores are the polished production. The editorial meetings, the author groveling, the golf outings, the drama-adaptation euphoria: these are the backstage. The grammar of 舞台裏を描く makes Higashino into a stagehand who has decided to describe what he has seen, which is exactly his authorial position. He is not an outsider looking in. He is an insider looking around and finding the view hilarious.</p>
+        <p><strong>笑劇場 (shōgekijō):</strong> "Comedy theater, laugh theater." This compound makes the entire publishing industry into a performance venue where comedy happens. A 劇場 is a theater, a playhouse, a place where dramas are staged. By calling it a 笑劇場, the copy transforms the industry from a business into a repertory company. The editors are actors. The writers are actors. The literary prizes are staged events. Everything is performance, and Higashino is the playwright who has finally written the farce that the industry has been improvising all along. The grammar makes the book into the script of a comedy that has always been running, unseen by the audience.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Legendary Editor: The Grammar of Professional Groveling</h2>
+    <span class="story-label">Plot setup</span>
+
+    <p>The book's most famous character is introduced through his signature move.</p>
+
+    <div class="passage twist">
+        <div class="jp-text jp">
+            <span class="hl-twist">土下座落しを得意とする伝説の編集者</span>
+        </div>
+        <div class="romaji">"Dogeza otoshi wo tokui to suru densetsu no henshūsha."</div>
+        <div class="translation">"A legendary editor who specializes in making people prostrate themselves in apology."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">土下座</td><td class="reading">dogeza</td><td>prostration, kneeling apology</td></tr>
+        <tr><td class="word">落し</td><td class="reading">otoshi</td><td>dropping, bringing down; a technique</td></tr>
+        <tr><td class="word">得意</td><td class="reading">tokui</td><td>specialty, forte, what one is good at</td></tr>
+        <tr><td class="word">伝説</td><td class="reading">densetsu</td><td>legend, folklore</td></tr>
+        <tr><td class="word">編集者</td><td class="reading">henshūsha</td><td>editor</td></tr>
+    </table>
+
+    <div class="nuance twist-box">
+        <h5>What translation loses: The martial art of 土下座落し</h5>
+        <p><strong>土下座 (dogeza):</strong> "Prostration, kneeling apology." This is one of Japan's most visually distinctive social rituals: kneeling on the ground and pressing one's forehead to the floor to apologize, beg, or show extreme deference. In modern Japanese life, the 土下座 has become a symbol of the ultimate apology, the gesture that says "I have no pride left, I am entirely at your mercy." It is what company presidents do on television when their firm has caused a scandal. When an editor's specialty is described as 土下座, the word makes the publishing industry sound like a feudal hierarchy where authors are lords and editors are vassals, or vice versa depending on who has the bestseller. The grammar of 土下座 as a professional skill makes apology into an art form.</p>
+        <p><strong>落し (otoshi):</strong> "Dropping, bringing down; a technique." In martial arts, 落とし (otoshi) refers to a throw or takedown technique: judo's 大外刈 (osoto gari, major outer reap) is a kind of 落とし. By calling the editor's method 土下座落し, Higashino makes the apology into a combat move. The editor does not merely request an apology. He executes a technique that brings the opponent to the ground. The 落し makes the editor into a martial artist of deference, someone who can make anyone, regardless of status, end up on their knees. The grammar is simultaneously respectful and violent: the editor is 伝説の (legendary), but his legend is built on making people grovel. The word 得意 (tokui, specialty/forte) completes the portrait: this is not something he does reluctantly. It is what he is good at. It is what he enjoys.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Rookie's Dream: The Grammar of Disillusionment</h2>
+    <span class="story-label">Plot</span>
+
+    <p>The first story's opening establishes the gap between the dream of publishing and its reality.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">新米編集者が初接待ゴルフで知った、「伝説の編集者」の仕事ぶり</span>
+        </div>
+        <div class="romaji">"Shinmai henshūsha ga hatsu settai gorufu de shitta, 'densetsu no henshūsha' no shigotaburi."</div>
+        <div class="translation">"A rookie editor discovers how the 'legendary editor' works, at his first client-entertainment golf outing."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">新米</td><td class="reading">shinmai</td><td>rookie, novice, new (literally: new rice)</td></tr>
+        <tr><td class="word">初</td><td class="reading">hatsu</td><td>first</td></tr>
+        <tr><td class="word">接待</td><td class="reading">settai</td><td>entertainment (of clients), hospitality</td></tr>
+        <tr><td class="word">知る</td><td class="reading">shiru</td><td>to know, to learn, to discover</td></tr>
+        <tr><td class="word">仕ぶり</td><td class="reading">shigotaburi</td><td>way of working, work style</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The agricultural metaphor of 新米</h5>
+        <p><strong>新米 (shinmai):</strong> "Rookie, novice, new (literally: new rice)." The word literally means "newly harvested rice," rice from the current year's crop. By extension, it means someone new to a job, fresh, unseasoned. The agricultural metaphor makes the rookie editor into a young plant, still green, not yet hardened by the seasons of the industry. The contrast with 伝説の編集者 (legendary editor) is the point: the new rice meets the ancient tree. The rookie arrives with dreams of literary discovery and learns, on a golf course, that the job is about making authors apologize and clients feel important. The grammar of 新米 makes the disillusionment into a natural process: rice must be harvested, threshed, polished. Rookie editors must be golfed.</p>
+        <p><strong>接待ゴルフ (settai gorufu):</strong> "Client-entertainment golf." 接待 means entertaining clients, hosting them, showing them a good time as a form of business relationship maintenance. In Japanese corporate culture, 接待 often involves drinking, karaoke, and golf: activities that are officially leisure but functionally work. The rookie editor's first 接待 is a rite of passage. He discovers that publishing is not about reading manuscripts in a quiet room. It is about walking eighteen holes with an author who cannot write and a client who cannot read, while pretending that everyone is having fun. The grammar of 初接待ゴルフで知った (discovered at his first client-entertainment golf) makes the golf course into a classroom, and the lesson is that the legend of the legendary editor is built on skills that have nothing to do with literature.</p>
+        <p><strong>仕事ぶり (shigotaburi):</strong> "Way of working, work style." The suffix 〜ぶり (buri) means "manner, style, way of." It is used for the quality of how something is done: 育ちぶり (way of being raised), 暮らしぶり (way of living). 仕事ぶり is the style of someone's work, their professional manner. When the rookie discovers the legendary editor's 仕事ぶり, he is not learning a technique. He is learning a style, an ethos, a way of being in the world. The legendary editor's 仕事ぶり is the 土下座落し: the bringing of others to their knees. The grammar of the sentence makes the discovery into a coming-of-age moment. The rookie wanted to edit novels. He is learning to edit people.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Writer in Orbit: The Grammar of Euphoria</h2>
+    <span class="story-label">Plot</span>
+
+    <p>A struggling writer's reaction to his first drama adaptation captures the vanity that Higashino finds endearing and absurd.</p>
+
+    <div class="passage twist">
+        <div class="jp-text jp">
+            <span class="hl-twist">自作のドラマ化に舞い上がる作家</span>
+        </div>
+        <div class="romaji">"Jisaku no dorama-ka ni maiagaru sakka."</div>
+        <div class="translation">"A writer who soars into elation at the drama adaptation of his own work."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">自作</td><td class="reading">jisaku</td><td>one's own work</td></tr>
+        <tr><td class="word">ドラマ化</td><td class="reading">dorama-ka</td><td>drama adaptation</td></tr>
+        <tr><td class="word">舞い上がる</td><td class="reading">maiagaru</td><td>to soar, to float up, to become elated</td></tr>
+        <tr><td class="word">作家</td><td class="reading">sakka</td><td>writer, author</td></tr>
+    </table>
+
+    <div class="nuance twist-box">
+        <h5>What translation loses: The aerial physics of 舞い上がる</h5>
+        <p><strong>舞い上がる (maiagaru):</strong> "To soar, to float up, to become elated." The verb combines 舞う (mau, to dance, to flutter like a butterfly or leaf) with 上がる (agaru, to rise, to go up). The result is a word that describes not mere happiness but a physical lifting: the writer is no longer on the ground. He has floated upward on a current of vanity. The grammar of 舞い上がる makes the drama adaptation into a thermal updraft, and the writer into a leaf that has no choice but to rise. The word carries a note of helplessness: he is not choosing to be elated. He is being lifted. This is the comedy of artistic vanity. The writer believes the adaptation validates his genius, when in reality it may simply mean a producer needed filler for a slow season. The 舞い上がる makes the writer's joy both beautiful and ridiculous, like a balloon released by a child who does not understand it will eventually pop or drift away.</p>
+        <p><strong>ドラマ化 (dorama-ka):</strong> "Drama adaptation." The suffix 〜化 (-ka) means "-ification, turning into." ドラマ化 is the process of turning a novel into a television drama. In the Japanese publishing industry, a ドラマ化 is the golden ticket: it means sales, recognition, the transformation of a midlist author into a household name. For a struggling writer, the ドラマ化 is not merely good news. It is ontological confirmation: I exist, I matter, my words will become images on a screen. The grammar of 自作のドラマ化 (the drama adaptation of one's own work) makes the event deeply personal. It is not "a novel was adapted." It is "MY novel became a drama." The possessive 自作 (one's own work) makes the writer's ego audible, and the 舞い上がる makes that ego take flight.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Black Gift: The Grammar of the Insult as Offering</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The publisher's description of the book's method is a masterpiece of paradox.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">小説業界をネタに、ブラックな笑いで贈る連作小説集</span>
+        </div>
+        <div class="romaji">"Shōsetsu gyōkai wo neta ni, burakku na warai de okuru renzaku shōsetsu-shū."</div>
+        <div class="translation">"A linked short-story collection, offered as a black laugh at the expense of the novel industry."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ネタ</td><td class="reading">neta</td><td>material, subject matter, joke fodder</td></tr>
+        <tr><td class="word">ブラック</td><td class="reading">burakku</td><td>black (loanword: dark, cynical)</td></tr>
+        <tr><td class="word">贈る</td><td class="reading">okuru</td><td>to give, to present, to bestow</td></tr>
+        <tr><td class="word">連作</td><td class="reading">renzaku</td><td>linked/connected works, series</td></tr>
+        <tr><td class="word">小説集</td><td class="reading">shōsetsu-shū</td><td>short-story collection</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The gift that insults</h5>
+        <p><strong>〜をネタに (-wo neta ni):</strong> "Using as material/fodder, at the expense of." ネタ is a fascinating word. In comedy, it means "joke material, setup." In cooking, it means "ingredients." In publishing gossip, it means "the dirt, the inside story." When the promotional copy says 小説業界をネタに, it means the entire publishing industry has been reduced to joke material, to ingredients for Higashino's comedy. The grammar makes the industry into a fish that has been filleted for its best parts. The word carries a note of professional intimacy: only someone who knows the industry intimately can use it as ネタ. An outsider would not know which details are funny. Higashino knows because he has been filleted himself.</p>
+        <p><strong>ブラックな笑いで贈る (burakku na warai de okuru):</strong> "Offered/bestowed as a black laugh." The verb 贈る means to give, to present, to bestow. It is the word for gifts, for ceremonial offerings, for awards. When combined with ブラックな笑い (black laugh), it creates a paradox: the book is a gift, but the gift is a cynical laugh at the recipient's expense. The publishing industry is being given a mirror, and the mirror shows something grotesque. The grammar of 贈る makes the insult into a generous act. Higashino is not merely mocking his industry. He is presenting it with a portrait of itself, framed and wrapped. The 連作 (linked/connected works) makes the stories into a necklace of black pearls, each one reflecting the same industry from a different angle.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Fictional Publisher: The Grammar of the Transparent Pseudonym</h2>
+    <span class="story-label">Setting</span>
+
+    <p>The setting is a publisher whose name is a joke that every Japanese reader can solve.</p>
+
+    <div class="passage twist">
+        <div class="jp-text jp">
+            <span class="hl-twist">灸英社</span>
+        </div>
+        <div class="romaji">"Kyūeisha"</div>
+        <div class="translation">"Kyūeisha" (fictional publisher, a pun on Shueisha)</div>
+        <div class="source">— Setting</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">灸</td><td class="reading">kyū</td><td>moxibustion (traditional Chinese medicine)</td></tr>
+        <tr><td class="word">英</td><td class="reading">ei</td><td>heroic, excellence, England</td></tr>
+        <tr><td class="word">社</td><td class="reading">sha</td><td>company, publisher, shrine</td></tr>
+        <tr><td class="word">集英社</td><td class="reading">Shueisha</td><td>Shueisha (real publisher)</td></tr>
+    </table>
+
+    <div class="nuance twist-box">
+        <h5>What translation loses: The moxibustion publisher</h5>
+        <p><strong>灸英社 (Kyūeisha):</strong> The fictional publisher's name is a masterpiece of barely-concealed wordplay. The real publisher is 英社 (Shueisha, "Gathering Excellence Company"). Higashino changes the first character from 集 (shū, gather/collect) to 灸 (kyū, moxibustion). Moxibustion is a traditional Chinese medical treatment in which mugwort is burned on or near the skin to stimulate healing. The substitution turns "Gathering Excellence" into "Moxibustion Excellence," which is absurd on its face. But the joke goes deeper. In Japanese, 灸 (kyū) is part of the idiom 灸を据える (kyū wo sueru, to apply moxibustion), which figuratively means "to give someone a sharp lesson, to discipline." The fictional publisher's name thus encodes the entire relationship between editor and author: the publisher applies moxibustion to the writer, burning them slightly to stimulate better work. The grammar of the pun makes the publisher into a medical clinic where writers are the patients and editors are the practitioners of a slightly painful healing art.</p>
+        <p><strong>The transparency:</strong> The pseudonym is so thin that it barely qualifies as disguise. Every Japanese reader knows that 灸英社 is 集英社. Higashino is not trying to hide his target. He is winking at it. The near-transparency makes the satire into a game of recognition: the reader solves the puzzle on page one and then enjoys watching how Higashino manipulates the known reality into fiction. The characters have names that echo real industry figures. The events echo real publishing scandals. The 灸英社 is a funhouse mirror, and the fun is in identifying whose face has been stretched into each distortion.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Story Titles: The Grammar of Publishing Arcana</h2>
+    <span class="story-label">Contents</span>
+
+    <p>Each title names a station of the cross in the publishing industry's calendar of humiliations and small triumphs.</p>
+
+    <div class="story-list">
+        <h5>The twelve stories</h5>
+        <ul>
+            <li><strong>説の男</strong> — Densetsu no Otoko — "The Legendary Man" (the editor who makes people grovel)</li>
+            <li><strong>夢の映像化</strong> — Yume no Eizōka — "The Dream of Adaptation" (a writer's drama adaptation euphoria)</li>
+            <li><strong>序ノ口</strong> — Jonokuchi — "The Lowest Rank" (sumo term for a beginner's rank; a rookie's place)</li>
+            <li><strong>罪な女</strong> — Tsumi na Onna — "The Guilty Woman" / "The Woman Who Is a Sin"</li>
+            <li><strong>最終候補</strong> — Saishū Kōho — "The Final Candidate" (for a literary prize)</li>
+            <li><strong>小説誌</strong> — Shōsetsushi — "The Fiction Magazine" (a child's questions expose the industry)</li>
+            <li><strong>天敵</strong> — Tenteki — "The Natural Enemy"</li>
+            <li><strong>文学賞創設</strong> — Bungakushō Sōsetsu — "Founding a Literary Prize"</li>
+            <li><strong>ミステリ特集</strong> — Misuteri Tokushū — "The Mystery Special Issue"</li>
+            <li><strong>引退発表</strong> — Intai Happyō — "The Retirement Announcement"</li>
+            <li><strong>戦略</strong> — Senryaku — "Strategy"</li>
+            <li><strong>職業、小説家</strong> — Shokugyō, Shōsetsuka — "Profession: Novelist"</li>
+        </ul>
+    </div>
+
+    <h4>Vocabulary from the titles</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">序ノ口</td><td class="reading">jonokuchi</td><td>lowest sumo rank; beginning, starting point</td></tr>
+        <tr><td class="word">罪な</td><td class="reading">tsumi na</td><td>guilty; (also) charming, bewitching, sinful</td></tr>
+        <tr><td class="word">候補</td><td class="reading">kōho</td><td>candidate, nominee</td></tr>
+        <tr><td class="word">小説誌</td><td class="reading">shōsetsushi</td><td>fiction magazine, literary journal</td></tr>
+        <tr><td class="word">天敵</td><td class="reading">tenteki</td><td>natural enemy, nemesis</td></tr>
+        <tr><td class="word">創設</td><td class="reading">sōsetsu</td><td>establishment, founding</td></tr>
+        <tr><td class="word">特集</td><td class="reading">tokushū</td><td>special feature, special issue</td></tr>
+        <tr><td class="word">引退</td><td class="reading">intai</td><td>retirement</td></tr>
+        <tr><td class="word">戦略</td><td class="reading">senryaku</td><td>strategy, tactics</td></tr>
+        <tr><td class="word">職業</td><td class="reading">shokugyō</td><td>profession, occupation</td></tr>
+    </table>
+
+    <div class="nuance twist-box">
+        <h5>What translation loses: The sumo initiation of 序ノ口</h5>
+        <p><strong>序ノ口 (jonokuchi):</strong> "The lowest rank in professional sumo." This is the entry-level rank for wrestlers who have just turned professional. They are not yet 十両 (jūryō, the second-highest division) or 幕内 (makuuchi, the top division). They are at the very bottom of a steep pyramid. When Higashino uses this as a story title about a rookie editor, the sumo metaphor makes the publishing industry into a sumo stable. The rookie is a new wrestler, expected to do the cleaning, the cooking, the bowing, while watching the 横綱 (yokozuna, grand champion) editors throw their weight around. The grammar of the title makes the rookie's position both humble and ceremonial. He is at the bottom, but he is also participating in an ancient tradition. The sumo reference also carries a note of physical comedy: sumo wrestlers are large, their rituals are elaborate, and their world runs on hierarchy. So does publishing.</p>
+        <p><strong>罪な女 (tsumi na onna):</strong> "The Guilty Woman" or "The Sinful Woman." The word 罪な (tsumi na) has a double life in Japanese. It literally means "guilty, sinful." But in casual speech, when said with a certain intonation, 罪な means "charming, bewitching, too attractive for one's own good." A 罪な女 is a woman whose very existence is a temptation. The title's ambiguity makes the story's subject unclear before you read it: is this about a woman who has committed a crime, or a woman who is simply too charming for the men around her? In a publishing-industry context, the "sinful woman" might be a bestselling female author, an editor who steals authors from rival publishers, or a character in a novel that causes unexpected problems. The grammar of the title makes the story into a riddle about what kind of "sin" publishing recognizes.</p>
+        <p><strong>職業、小説家 (shokugyō, shōsetsuka):</strong> "Profession: Novelist." The comma placement is deliberate and meaningful. In Japanese, 職業、小説家 is the format of an entry on a form or business card: Occupation: Novelist. The comma makes the title sound like a bureaucratic document, a tax return, an official record. It is the driest possible way to describe what many people consider the most romantic profession on earth. The grammar of the title makes the novelist into a civil servant, a salaryman with an unusual job description. The story behind this title presumably explores the gap between the fantasy of being a novelist and the administrative reality: deadlines, taxes, declining sales, editorial fights, and the slow realization that writing novels is a job like any other, except that everyone thinks it is not.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Child's Interrogation: The Grammar of Innocent Exposure</h2>
+    <span class="story-label">Plot highlight</span>
+
+    <p>A reader's favorite scene reveals how Higashino's comedy works: an outsider asks obvious questions that insiders cannot answer.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">「小説誌って本当に売れてるの」「単行本にする時に書き直すのなら完成品じゃない、そんなの売るのは詐欺じゃないのか」</span>
+        </div>
+        <div class="romaji">"'Shōsetsushi tte hontō ni ureteru no' 'Tankōbon ni suru toki ni kakinaosu no nara kanseihin ja nai, sonna no uru no wa sagi ja nai no ka'"</div>
+        <div class="translation">"'Do fiction magazines really sell?' 'If you rewrite it when making it into a book, it's not a finished product. Isn't selling that fraud?'"</div>
+        <div class="source">— From "Shōsetsushi" (The Fiction Magazine)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">売れる</td><td class="reading">ureru</td><td>to sell, to be popular</td></tr>
+        <tr><td class="word">単行本</td><td class="reading">tankōbon</td><td>standalone book, hardcover volume</td></tr>
+        <tr><td class="word">書き直す</td><td class="reading">kakinaosu</td><td>to rewrite, to revise</td></tr>
+        <tr><td class="word">完成品</td><td class="reading">kanseihin</td><td>finished product</td></tr>
+        <tr><td class="word">詐欺</td><td class="reading">sagi</td><td>fraud, scam, con</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The child's 詐欺 accusation</h5>
+        <p><strong>詐欺 (sagi):</strong> "Fraud, scam, con." This is a legal term. When the editor's son calls his father's industry 詐欺, he is not being rude. He is being logical. If a novel is published in a magazine, and then rewritten for the book version, then the magazine version was not the final product. If the magazine version was not the final product, why was it sold as if it were? The child's question exposes the entire economic model of magazine serialization: magazines sell the promise of a future book, and readers buy incomplete work because they want to be first. The grammar of the child's question is devastating because it is innocent. He does not know he is being impolite. He is simply applying the definition of 完成品 (finished product) and finding the magazine version wanting. The editor who must answer him is trapped between honesty and employment. The comedy is in his squirming.</p>
+        <p><strong>〜て本当に (tte hontō ni):</strong> "Do [they] really?" The casual 〜て (tte) makes the question sound like something a child would ask a parent: "Hey, do these things actually sell?" The 本当に (really/truly) adds a note of skepticism that adults have learned to suppress. The child has not yet learned that some industries survive on polite fictions. His 本当に is the question that every magazine editor fears from their accountant. The grammar of innocent skepticism makes the child into a truth-teller, and the entire publishing industry into the emperor with no clothes.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Reader's Recognition: The Grammar of the Inside Joke</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>A reader who works in marketing recognizes the accuracy of Higashino's satire.</p>
+
+    <div class="passage twist">
+        <div class="jp-text jp">
+            <span class="hl-twist">自分がごったにマーケティング部にいて広報も宣伝も担当しているので、いやもうこの仕事のシーンにもイチイチ、身にしみてわくわく</span>
+        </div>
+        <div class="romaji">"Jibun ga gottani māketingu-bu ni ite kōhō mo senden mo tantō shite iru node, iya mou kono shigoto no shīn ni mo ichiichi, mi ni shimite wakuwaku."</div>
+        <div class="translation">"Since I myself work in the marketing department and handle both PR and publicity, every single one of these work scenes resonates with me deeply and excites me."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ごったに</td><td class="reading">gottani</td><td>jumbled together, all mixed up</td></tr>
+        <tr><td class="word">マーケティング部</td><td class="reading">māketingu-bu</td><td>marketing department</td></tr>
+        <tr><td class="word">広報</td><td class="reading">kōhō</td><td>public relations, PR</td></tr>
+        <tr><td class="word">宣伝</td><td class="reading">senden</td><td>publicity, advertising</td></tr>
+        <tr><td class="word">担当</td><td class="reading">tantō</td><td>in charge of, responsible for</td></tr>
+        <tr><td class="word">イチイチ</td><td class="reading">ichiichi</td><td>every single one, one by one</td></tr>
+        <tr><td class="word">身にしみる</td><td class="reading">mi ni shimiru</td><td>to resonate deeply, to sink into one's being</td></tr>
+        <tr><td class="word">わくわ</td><td class="reading">wakuwaku</td><td>to be excited, thrilled, heart pounding</td></tr>
+    </table>
+
+    <div class="nuance twist-box">
+        <h5>What translation loses: The physical recognition of 身にしみる</h5>
+        <p><strong>身にしみる (mi ni shimiru):</strong> "To resonate deeply, to sink into one's being, to be felt physically." The idiom literally means "to permeate the body." It describes knowledge that is not merely intellectual but physical: the cold that permeates your skin, the shame that permeates your chest, the recognition of a familiar situation that permeates your professional identity. When the reader says the work scenes 身にしみる, she means they do not merely remind her of her job. They feel like her job. The grammar makes Higashino's accuracy into a physical sensation. He has described the publishing industry so precisely that people who work in it feel their own lives being narrated. This is the highest compliment for satire: not "this is funny" but "this is true, and the truth of it makes me laugh because laughing is the only way to survive it."</p>
+        <p><strong>わくわく (wakuwaku):</strong> "To be excited, thrilled, heart pounding." This is an onomatopoeic word for the heartbeat of anticipation. The reader feels wakuwaku not despite the accuracy but because of it. There is a special pleasure in seeing your own world described well, even (especially) when the description is comic. The wakuwaku is the pleasure of recognition, the joy of being seen. Higashino has made the reader's mundane job into material for literature, and the reader is grateful. The grammar of 身にしみてわくわく combines deep resonance with childlike excitement: "this is so true it hurts, and I am delighted."</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Crooked Grin</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜をネタに</strong> — Using as joke material: the grammar of insider satire</li>
+        <li><strong>〜で贈る</strong> — Offered as a gift: the grammar of the insult as generosity</li>
+        <li><strong>〜ぶり</strong> — Way of working: the grammar of professional style</li>
+        <li><strong>〜て知る</strong> — Discover by doing: the grammar of experiential disillusionment</li>
+        <li><strong>〜に舞い上がる</strong> — Soar into elation: the grammar of helpless euphoria</li>
+        <li><strong>〜が得意</strong> — Specialty/forte: the grammar of the professional skill</li>
+        <li><strong>〜て本当に</strong> — Do [they] really?: the grammar of innocent skepticism</li>
+        <li><strong>身にしみる</strong> — To resonate physically: the grammar of recognition that hurts</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>歪笑小説</strong> — The Twisted Smile Novel: the crooked grin that the series has been building toward</li>
+        <li><strong>怪・毒・黒・歪</strong> — Strange, poisonous, black, twisted: the four-laugh taxonomy</li>
+        <li><strong>禁断</strong> — Forbidden: the transgressive promise of the backstage expose</li>
+        <li><strong>舞台裏</strong> — Backstage: the theater of publishing</li>
+        <li><strong>笑劇場</strong> — Comedy theater: the industry as performance venue</li>
+        <li><strong>土下座落し</strong> — The prostration takedown: the martial art of editorial apology</li>
+        <li><strong>伝説の編集者</strong>  The legendary editor: the myth built on groveling</li>
+        <li><strong>新米</strong> — New rice: the rookie as unharvested plant</li>
+        <li><strong>接待ゴルフ</strong> — Client-entertainment golf: the rite of corporate passage</li>
+        <li><strong>仕事ぶり</strong> — Work style: the ethos beneath the technique</li>
+        <li><strong>自作のドラマ化</strong> — One's own drama adaptation: the ego's golden ticket</li>
+        <li><strong>舞い上がる</strong> — To soar into elation: the physics of vanity</li>
+        <li><strong>ブラックな笑い</strong> — Black laugh: the gift that insults</li>
+        <li><strong>連作</strong> — Linked works: the necklace of black pearls</li>
+        <li><strong>灸英社</strong> — Kyūeisha: the moxibustion publisher, barely disguised</li>
+        <li><strong>序ノ口</strong> — Lowest sumo rank: the rookie's ceremonial humility</li>
+        <li><strong>罪な女</strong> — The guilty/beautiful woman: the ambiguity of publishing sin</li>
+        <li><strong>職業、小説家</strong> — Profession: Novelist: the bureaucratic romance</li>
+        <li><strong>完成品</strong> — Finished product: the child's devastating standard</li>
+        <li><strong>詐欺</strong> — Fraud: the accusation that cannot be answered</li>
+        <li><strong>身にしみる</strong> — To permeate the body: the physical accuracy of satire</li>
+        <li><strong>わくわく</strong> — Heart pounding: the joy of being seen, even in caricature</li>
+    </ul>
+
+    <h4>Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Eighteen directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ハートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ), and Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. And Higashino asks what happens when you love an industry so much that you cannot stop laughing at it, when the backstage of publishing is so familiar that every grovel, every golf outing, every drama-adaptation euphoria is both a joke and a confession. The 歪笑 is the laugh of the insider who has not yet become cynical enough to stop caring. It is crooked because the industry is crooked, but it is still a smile because Higashino has decided, after twenty-five years, that the absurdity is worth more than the despair. Together these eighteen works map the full range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the cage that makes the animal ferocious, to the crossroads where a woman must choose before someone else chooses for her, to the horizon where sky and sea meet and a promise arrives shimmering across the years, to the office at midnight where a blank price column becomes the beginning of everything, to the backstage of a publishing house where a legendary editor makes authors grovel and a rookie learns that his dream job is a comedy theater in which he is both audience and performer.</p>
+</section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melody — The Miracle of Meeting You — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --rose: #8a6a6a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--rose);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(138,106,106,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.rose::before {
+            background: var(--rose);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.rose-box {
+            background: color-mix(in oklab, var(--rose) 8%, var(--surface));
+            border-left-color: var(--rose);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.rose-box h5 {
+            color: var(--rose);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-rose {
+            background: color-mix(in oklab, var(--rose) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--rose) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--rose) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #8a6a6a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Melody<br><span style="font-size:0.6em; font-weight:300;">旋律 〜君と出会えた奇跡〜</span></h1>
+    <div class="subtitle">A Japanese lesson through Mochizuki Mai's pure-love novel of a housewife, a high-school boy, and the Wednesday that changed everything</div>
+    <div class="meta">Mochizuki Mai &middot; Futabasha &middot; 2022</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reviews of <em>Senritsu ~Kimi to Deaeta Kiseki~</em> (Melody: The Miracle of Meeting You) by Mochizuki Mai, published by Futabasha in January 2022. The book was originally posted on the novel submission site Everystar before the author's debut. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published in January 2022 by Futabasha, <em>Senritsu ~Kimi to Deaeta Kiseki~</em> (Melody: The Miracle of Meeting You) is the first pure-love novel by Mochizuki Mai, a writer best known for the Kyoto-set mystery series <em>Kyoto Teramachi Sanjo no Holmes</em> and the astrology-themed <em>Mangetsu Coffee-ten no Hoshiyomi</em>. The story follows Nishizawa Madoka, a 31-year-old housewife who tells herself she is happy while her days slowly bury her alive. Her only pleasure is passing a handsome high-school boy each morning. When she discovers her husband's infidelity, everything begins to spin out of control, and the boy she merely watched from afar becomes the person who teaches her that happiness is not something you tell yourself, but something you play. The prose is deceptively simple, the emotional register quiet and precise, and the title's word 旋律 (senritsu, melody) carries the entire book's philosophy: love is not a dramatic chord but a line of music that two people learn to play together, one Wednesday at a time.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Melody</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title contains three elements, each of which operates at a different level of meaning.</p>
+
+    <div class="passage rose">
+        <div class="jp-text jp">
+            <span class="hl-rose">旋律</span>　〜<span class="hl-rose">君と出会えた奇跡</span>〜
+        </div>
+        <div class="romaji">"Senritsu ~Kimi to Deaeta Kiseki~"</div>
+        <div class="translation">"Melody ~The Miracle of Meeting You~"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">旋律</td><td class="reading">senritsu</td><td>melody, tune, musical line</td></tr>
+        <tr><td class="word">君</td><td class="reading">kimi</td><td>you (intimate, slightly masculine/young)</td></tr>
+        <tr><td class="word">出会う</td><td class="reading">deau</td><td>to meet by chance, to encounter</td></tr>
+        <tr><td class="word">〜えた</td><td class="reading">-eta</td><td>potential past: "were able to / managed to"</td></tr>
+        <tr><td class="word">奇跡</td><td class="reading">kiseki</td><td>miracle, wonder</td></tr>
+    </table>
+
+    <div class="nuance rose-box">
+        <h5>What translation loses: The music of chance</h5>
+        <p><strong>旋律 (senritsu):</strong> Not 曲 (kyoku, song) or 音楽 (ongaku, music) or 歌 (uta, song). It is 旋律: the melodic line, the horizontal progression of notes that creates a tune. In music theory, melody is the element you can sing, the thread that runs through a piece and gives it identity. By choosing 旋律 over the more common words for music, Mochizuki makes the title into a statement about form rather than content. The love in this novel is not a grand symphony. It is a single melodic line, simple enough to be hummed, complex enough to carry emotion. The word also connects to the piano lessons that become the structure of Madoka and Kaede's relationship. They do not merely talk. They teach each other. The piano is both metaphor and plot device: melody is something you learn note by note, something that requires practice, something that two hands can create together.</p>
+        <p><strong>君と出会えた (kimi to deaeta):</strong> "Were able to meet you." The grammar is the potential past of 出会う (to meet by chance). The potential form 出会える means "can meet," and the past tense 出会えた means "were able to meet / managed to meet." This is crucial. It is not "I met you" (出会った). It is "I was able to meet you." The potential form carries gratitude and a sense of rarity. Meeting this person was not guaranteed. It was an achievement, a piece of luck that might not have happened. The grammar makes the meeting into something the speaker is thankful for, not merely something that occurred.</p>
+        <p><strong>奇跡 (kiseki):</strong> "Miracle." In Japanese, 奇跡 is used more casually than "miracle" in English. It can describe any unlikely and beautiful coincidence. But in the context of a 31-year-old housewife and an 18-year-old high-school student, the word carries genuine weight. Their meeting crosses lines of age, status, and social expectation. That they find each other, that they recognize something in each other, that they choose to meet every Wednesday to teach each other English and piano, all of this is statistically improbable and emotionally necessary. The word 奇跡 in the title is not hyperbole. It is the only word that fits.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. Telling Yourself You're Happy: The Grammar of Self-Deception</h2>
+    <span class="story-label">Opening</span>
+
+    <p>The book's emotional premise is established in its first promotional sentence.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">『幸せだ』と言い聞かせながら、主婦として埋もれた日々を過ごす西沢円香</span>
+        </div>
+        <div class="romaji">"'Shiawase da' to iikikasenagara, shufu toshite umoreta hibi wo okuru Nishizawa Madoka."</div>
+        <div class="translation">"Nishizawa Madoka spends her days buried alive as a housewife, all the while telling herself, 'I am happy.'"</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">幸せ</td><td class="reading">shiawase</td><td>happiness, blessedness</td></tr>
+        <tr><td class="word">言い聞かせる</td><td class="reading">iikikaseru</td><td>to tell/reassure oneself, to persuade</td></tr>
+        <tr><td class="word">〜ながら</td><td class="reading">-nagara</td><td>while (doing), despite</td></tr>
+        <tr><td class="word">主婦</td><td class="reading">shufu</td><td>housewife, homemaker</td></tr>
+        <tr><td class="word">埋もれる</td><td class="reading">umoreru</td><td>to be buried, to be submerged, to be overwhelmed</td></tr>
+        <tr><td class="word">日々</td><td class="reading">hibi</td><td>days, everyday life</td></tr>
+        <tr><td class="word">過ごす</td><td class="reading">okuru / sugosu</td><td>to spend (time), to live through</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The violence of 埋もれる</h5>
+        <p><strong>言い聞かせながら (iikikasenagara):</strong> "While telling herself." The grammar 〜ながら means "while doing X," but it carries a note of simultaneity that can also imply contradiction. She is telling herself she is happy WHILE something else is happening. The something else is 埋もれた日々 (buried days). The ながら makes the self-reassurance and the burial simultaneous, which means they are in conflict. She cannot be both happy and buried. One of these statements is a lie she tells herself. The grammar does not tell you which one. The book will.</p>
+        <p><strong>埋もれる (umoreru):</strong> "To be buried." This is one of the most emotionally precise words in the book. Madoka is not merely busy. She is not merely tired. She is 埋もれる: buried, submerged, covered over. The word is the passive form of 埋める (to bury). It implies an external force that heaps things upon you until you disappear. In the context of Japanese housewife culture, 埋もれる evokes the gradual disappearance of the self into the roles of wife and mother: the laundry, the meals, the school forms, the husband's schedule, the daughter's needs. Each task is a shovelful of earth. The word makes her life into a slow avalanche. The fact that she is telling herself she is happy while being buried makes the happiness into a form of denial.</p>
+        <p><strong>主婦として (shufu toshite):</strong> "As a housewife." The grammar として means "in the capacity of, as." It defines a role. When the copy says she is buried 主婦として, it means the role of housewife is the instrument of her burial. She is not buried as a person. She is buried as a housewife. The role has consumed the person. This is the social critique embedded in a single grammatical construction.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Daily Passing: The Grammar of the Near-Miss</h2>
+    <span class="story-label">Daily Life</span>
+
+    <p>Before anything happens, there is the morning ritual of almost-meeting.</p>
+
+    <div class="passage rose">
+        <div class="jp-text jp">
+            <span class="hl-rose">唯一の楽しみは、毎朝、端正な顔立ちの男子高校生とすれ違うことだった</span>
+        </div>
+        <div class="romaji">"Yuiitsu no tanoshimi wa, maiasa, tanseina kaodachi no danshi-koukousei to surechigau koto datta."</div>
+        <div class="translation">"Her only pleasure was passing by the high-school boy with the refined features every morning."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">唯一</td><td class="reading">yuiitsu</td><td>only, sole, unique</td></tr>
+        <tr><td class="word">楽しみ</td><td class="reading">tanoshimi</td><td>pleasure, enjoyment, something to look forward to</td></tr>
+        <tr><td class="word">毎朝</td><td class="reading">maiasa</td><td>every morning</td></tr>
+        <tr><td class="word">端正</td><td class="reading">tansei</td><td>refined, well-proportioned, handsome</td></tr>
+        <tr><td class="word">顔立ち</td><td class="reading">kaodachi</td><td>facial features, looks</td></tr>
+        <tr><td class="word">男子高校生</td><td class="reading">danshi-koukousei</td><td>male high-school student</td></tr>
+        <tr><td class="word">すれ違う</td><td class="reading">surechigau</td><td>to pass each other, to miss each other</td></tr>
+    </table>
+
+    <div class="nuance rose-box">
+        <h5>What translation loses: The intimacy of passing</h5>
+        <p><strong>すれ違う (surechigau):</strong> This is one of the most emotionally loaded verbs in Japanese. It means both "to pass each other" (walking in opposite directions) and "to miss each other" (fail to connect). The word contains 擦れる (sureru, to brush against) and 違う (chigau, to differ). When two people すれ違う, they come close enough to brush against each other but continue in opposite directions. The word is the perfect metaphor for Madoka's life before Kaede: she is constantly near other people but never actually meeting them. She passes her husband in the morning, she passes neighbors at the supermarket, she passes mothers at the school gate. All of these are すれ違う: proximity without connection. The fact that her only pleasure is すれ違う with a boy she does not know makes the pleasure both tiny and enormous. It is tiny because nothing happens. It is enormous because it is the only moment in her day when she feels something.</p>
+        <p><strong>唯一の楽しみ (yuiitsu no tanoshimi):</strong> "Her only pleasure." 唯一 means "only, sole, unique." It is stronger than ただ一 (only one). 唯一 carries a note of desperation. When your ONLY pleasure is passing a stranger in the morning, your life has become very small. The grammar makes the pleasure countable and singular: not pleasures, but pleasure. One. The word 楽しみ is also gentler than 喜び (joy) or 幸福 (happiness). It is the word for something you look forward to, a small anticipated pleasure. You have a 楽しみ when you know your favorite TV show is on tonight. Madoka's 楽しみ is a boy's face. The word makes her life sound manageable, which makes it sadder.</p>
+        <p><strong>端正な顔立ち (tanseina kaodachi):</strong> "Refined features." 端正 is a formal, slightly old-fashioned word for handsome. It describes classical beauty, well-proportioned features, a face that belongs in a painting rather than a magazine. The word makes the boy beautiful in a way that feels safe to admire. He is not sexy (sexy would be dangerous). He is 端正 (refined, almost architectural). A 31-year-old housewife can look at a refined face without feeling she has crossed a line. The word protects both of them.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Husband's Betrayal: The Grammar of Discovery</h2>
+    <span class="story-label">Turning Point</span>
+
+    <p>The story's engine is the moment Madoka learns that the life she has been burying herself in is built on a lie.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">夫が自分を裏切っていることを知った円香。すべてが狂い始めて、そして何かが動き出す</span>
+        </div>
+        <div class="romaji">"Otto ga jibun wo uragitte iru koto wo shitta Madoka. Subete ga kuruish Hajimete, soshite nanika ga ugokidasu."</div>
+        <div class="translation">"Madoka learned that her husband was betraying her. Everything began to spin out of control, and then something began to move."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夫</td><td class="reading">otto</td><td>husband</td></tr>
+        <tr><td class="word">裏切る</td><td class="reading">uragiru</td><td>to betray, to go against</td></tr>
+        <tr><td class="word">知る</td><td class="reading">shiru</td><td>to know, to learn</td></tr>
+        <tr><td class="word">すべて</td><td class="reading">subete</td><td>everything, all</td></tr>
+        <tr><td class="word">狂う</td><td class="reading">kuruu</td><td>to go mad, to spin out of control, to go awry</td></tr>
+        <tr><td class="word">〜始める</td><td class="reading">-hajimeru</td><td>to begin to (auxiliary verb)</td></tr>
+        <tr><td class="word">動き出す</td><td class="reading">ugokidasu</td><td>to begin to move, to start moving</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of unraveling</h5>
+        <p><strong>裏切っている (uragitte iru):</strong> "Is betraying." The continuous form ている makes the betrayal into an ongoing state, not a single event. He has been betraying her. He is still betraying her. The grammar makes the discovery more painful because it reveals a pattern rather than an incident. When Madoka learns this, she realizes that her entire married life has been happening in two versions: the one she experienced and the one he was actually living. The ている form makes the betrayal into a second timeline that has been running parallel to her own.</p>
+        <p><strong>すべてが狂い始めて (subete ga kuruu hajimete):</strong> "Everything began to spin out of control." 狂う is a powerful word. It means to go mad, to go crazy, but also to go off-course, to malfunction, to go awry. When applied to すべて (everything), it creates a sense of total systemic failure. Not just her marriage. Everything. Her sense of who she is, what her life means, whether the sacrifices she made were worth anything. The auxiliary 始める (to begin to) makes the madness into a process that has just started. It will get worse before it gets better. The grammar of 狂い始める is the grammar of a life coming apart at the seams.</p>
+        <p><strong>何かが動き出す (nanika ga ugokidasu):</strong> "Something begins to move." This is the counterweight to 狂い始めて. After everything goes crazy, something begins to move. The word 何か (something) is deliberately vague. It is not "she falls in love" or "she leaves her husband" or "she finds herself." It is simply 何か: something. The vagueness is the point. When your life collapses, you do not know what will replace it. You only know that something is moving. The intransitive grammar (が動き出す) makes the "something" into an autonomous force. It is not Madoka who moves it. It moves on its own. This is the grammar of change that arrives from outside the self.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Wednesday Promise: The Grammar of Exchange</h2>
+    <span class="story-label">The Promise</span>
+
+    <p>The central relationship is built on a simple bargain that is also a profound act of equality.</p>
+
+    <div class="passage rose">
+        <div class="jp-text jp">
+            <span class="hl-rose">毎週水曜日、お互いに英語とピアノを教え合う約束をする</span>
+        </div>
+        <div class="romaji">"Maishuu suiyoubi, otagai ni eigo to piano wo oshieau yakusoku wo suru."</div>
+        <div class="translation">"They make a promise to teach each other English and piano every Wednesday."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">毎週</td><td class="reading">maishuu</td><td>every week</td></tr>
+        <tr><td class="word">水曜日</td><td class="reading">suiyoubi</td><td>Wednesday</td></tr>
+        <tr><td class="word">お互い</td><td class="reading">otagai</td><td>each other, one another, mutually</td></tr>
+        <tr><td class="word">教え合う</td><td class="reading">oshieau</td><td>to teach each other</td></tr>
+        <tr><td class="word">約束</td><td class="reading">yakusoku</td><td>promise, agreement</td></tr>
+    </table>
+
+    <div class="nuance rose-box">
+        <h5>What translation loses: The reciprocity of 教え合う</h5>
+        <p><strong>教え合う (oshieau):</strong> "To teach each other." The verb is a reciprocal compound: 教える (to teach) + 合う (to do together / mutually). This grammar is the moral foundation of the entire novel. Madoka and Kaede are not in a hierarchical relationship. She is not his teacher and he is not her student. They are 教え合う: she teaches him piano, he teaches her English. Each has something the other lacks. Each has something the other needs. The reciprocity is what makes their relationship ethical in a situation where ethics are fragile. A 31-year-old married woman and an 18-year-old boy should not, by most social standards, be meeting alone every Wednesday. But if they are teaching each other, the relationship becomes a form of barter, an exchange of skills rather than a transgression of boundaries. The grammar of 教え合う makes their meetings into a contract of mutual benefit.</p>
+        <p><strong>お互いに (otagai ni):</strong> "Each other, mutually." The word お互い emphasizes the symmetry. It is not "she teaches him and he happens to teach her back." It is お互い: a reciprocal arrangement entered into by two equals. The お prefix adds politeness and formality, which is appropriate for a relationship that begins with caution and maintains boundaries. They are not casual friends. They are お互いに教え合う: two people who have agreed to a structured exchange.</p>
+        <p><strong>毎週水曜日 (maishuu suiyoubi):</strong> "Every Wednesday." The specificity is important. It is not "sometimes" or "when they feel like it." It is every Wednesday. The regularity makes the relationship into a rhythm, a melody with a fixed beat. Wednesday becomes the day that exists outside of her ordinary life. The word 毎週 (every week) makes the promise into a commitment, a small marriage of schedules. In a life where everything else is falling apart, Wednesday is the day that holds.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Age Gap: The Grammar of Distance</h2>
+    <span class="story-label">The Boundary</span>
+
+    <p>The novel's most discussed feature is the fourteen-year age gap. The prose handles it with deliberate restraint.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">14も歳の離れた男女を描く純愛小説</span>
+        </div>
+        <div class="romaji">"Juuyon mo toshi no hanareta danjo wo egaku jun'ai shousetsu."</div>
+        <div class="translation">"A pure-love novel depicting a man and a woman separated by fourteen years."</div>
+        <div class="source">— Review copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">歳</td><td class="reading">toshi</td><td>years (of age)</td></tr>
+        <tr><td class="word">離れる</td><td class="reading">hanareru</td><td>to be separated, to be apart</td></tr>
+        <tr><td class="word">男女</td><td class="reading">danjo</td><td>man and woman, male and female</td></tr>
+        <tr><td class="word">描く</td><td class="reading">egaku</td><td>to depict, to portray</td></tr>
+        <tr><td class="word">純愛</td><td class="reading">jun'ai</td><td>pure love, chaste love</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The neutrality of 離れる</h5>
+        <p><strong>歳の離れた (toshi no hanareta):</strong> "Separated by years." The grammar is a noun phrase: 歳 (years) + の + 離れた (separated). The word 離れる means "to be apart, to be separated, to be distant." It is a neutral word. It does not carry the judgment of 年の差 (nen no sa, age difference), which is the more common phrase. By using 歳の離れた instead of 年の差, the description makes the age gap into a physical fact rather than a social problem. They are separated by years the way two cities are separated by miles. The distance exists. What you do with it is the question.</p>
+        <p><strong>純愛 (jun'ai):</strong> "Pure love." This is the genre Mochizuki assigns to the novel, and it is a declaration of intent. 純愛 means love that is not primarily sexual, love that is emotional, spiritual, and chaste in spirit even if desire is present. By calling the novel 純愛, Mochizuki tells the reader: this is not a story about an affair. This is not a story about a woman leaving her husband for a younger man. This is a story about two people who find something in each other that makes them more fully themselves. The word 純愛 is a contract with the reader. It promises that the relationship will remain within certain boundaries. The fact that the novel keeps this promise is what makes it unusual in a genre that often trades on transgression.</p>
+        <p><strong>〜も (mo):</strong> The particle も after 十四 (juuyon) emphasizes the number. "As many as fourteen" or "a full fourteen." The grammar makes the age gap feel significant. Fourteen years is not a small difference. It is the difference between being able to drink legally and being barely out of childhood. The も makes the reader pause and register the distance before the story begins to close it.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Boy's Gravity: The Grammar of Being Drawn</h2>
+    <span class="story-label">Attraction</span>
+
+    <p>The novel's emotional language for attraction is not about desire but about gravitational pull.</p>
+
+    <div class="passage rose">
+        <div class="jp-text jp">
+            <span class="hl-rose">気になっていた高校生の広瀬楓と言葉を交わすようになる</span>
+        </div>
+        <div class="romaji">"Ki ni natte ita koukousei no Hirose Kaede to kotoba wo kawasu you ni naru."</div>
+        <div class="translation">"She comes to exchange words with Hirose Kaede, the high-school student she had been aware of."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">気になる</td><td class="reading">ki ni naru</td><td>to be on one's mind, to be aware of, to care about</td></tr>
+        <tr><td class="word">言葉を交わす</td><td class="reading">kotoba wo kawasu</td><td>to exchange words, to converse</td></tr>
+        <tr><td class="word">ようになる</td><td class="reading">you ni naru</td><td>to come to (do), to reach the point where</td></tr>
+    </table>
+
+    <div class="nuance rose-box">
+        <h5>What translation loses: The gentleness of 気になる</h5>
+        <p><strong>気になっていた (ki ni natte ita):</strong> "Had been on her mind." 気になる is one of the most useful and nuanced phrases in Japanese. It means "to be on one's mind, to bother one, to be aware of, to care about, to be drawn to." It is weaker than 好き (suki, to like/love) and less physical than 惹かれる (hikareru, to be attracted). 気になる is the feeling you have about someone you notice before you know why you are noticing them. It is pre-desire. It is the stage before attraction becomes conscious. By using 気になっていた (past progressive), Mochizuki tells us that Madoka has been aware of Kaede for some time before anything happens. The feeling has been accumulating. The grammar makes their first conversation the culmination of a long period of silent awareness.</p>
+        <p><strong>言葉を交わす (kotoba wo kawasu):</strong> "To exchange words." Not "to talk to" (話す) or "to chat with" (おしゃべりする). 交わす means "to exchange, to cross, to intersect." When two people 言葉を交わす, their words cross like swords or like roads. The metaphor makes conversation into an intersection, a place where two paths meet. The formality of the phrase is appropriate to the caution of their first exchanges. They are not yet friends. They are people who have begun to exchange words. The grammar makes each word into a small gift passed from hand to hand.</p>
+        <p><strong>ようになる (you ni naru):</strong> "Comes to, reaches the point where." The grammar of ようになる describes a gradual change in habit or capability. She did not suddenly talk to him. She gradually reached the point where she talked to him. The grammar makes the transition sound natural, almost inevitable, like learning to ride a bicycle or getting used to a new neighborhood. This is the opposite of dramatic romance. It is the grammar of small steps.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Line They Do Not Cross: The Grammar of Restraint</h2>
+    <span class="story-label">Ethics</span>
+
+    <p>Readers consistently note that the novel removes the "messy" elements typical of the genre. The relationship remains chaste in spirit because both characters understand what crossing the line would mean.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">その先には行かない。そうしてしまった、夫のやっていることと一緒になってしまう</span>
+        </div>
+        <div class="romaji">"Sono saki ni wa ikanai. Sou shite shimattara, otto no yatte iru koto to issho ni natte shimau."</div>
+        <div class="translation">"They do not go beyond that point. If they did, they would become the same as what the husband is doing."</div>
+        <div class="source">— Reader review, thematic summary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">その先</td><td class="reading">sono saki</td><td>beyond that point, further than that</td></tr>
+        <tr><td class="word">〜てしまう</td><td class="reading">-te shimau</td><td>to do completely / regrettably (auxiliary)</td></tr>
+        <tr><td class="word">一緒</td><td class="reading">issho</td><td>together, the same</td></tr>
+        <tr><td class="word">やっていること</td><td class="reading">yatte iru koto</td><td>what [someone] is doing</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of moral symmetry</h5>
+        <p><strong>その先には行かない (sono saki ni wa ikanai):</strong> "They do not go beyond that point." The grammar is simple and absolute. その先 (beyond that) + には (to there) + 行かない (do not go). The は particle after には creates emphasis: it is THAT point, specifically, that they do not cross. The vagueness of その先 is also important. Mochizuki does not specify what "that point" is. She does not need to. The reader knows. The grammar of deliberate vagueness allows each reader to place the boundary where their own ethics would place it. For some, the boundary is physical. For others, it is emotional. The novel respects all of these readings by not specifying.</p>
+        <p><strong>〜てしまう (te shimau):</strong> The auxiliary てしまう means "to do something completely" or "to do something regrettably." When Madoka thinks そうしてしまったら (if they were to do that), the しまう carries both meanings. If they cross the line, they will have done it completely: there will be no going back. And they will have done it regrettably: the act will diminish them. The grammar of てしまう makes the hypothetical transgression into something that would be both final and damaging. This is why they do not do it. Not because they do not want to. Because they know what てしまう feels like from the other side.</p>
+        <p><strong>夫のやっていることと一緒 (otto no yatte iru koto to issho):</strong> "The same as what the husband is doing." The grammar is devastating in its simplicity. 一緒 means "together" but also "the same." When Madoka realizes that crossing the line would make her 一緒 with her husband, the word creates a moral equation. He cheats. If she acts on her feelings for Kaede while still married, she cheats. The grammar makes her choice into a matter of identity: does she want to be the kind of person her husband is? The answer is no. The restraint is not imposed from outside. It comes from her own refusal to become what has hurt her. This is the novel's ethical center: the victim of betrayal defines herself by refusing to replicate the betrayal.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Boy's Story: The Grammar of What Lies Beneath</h2>
+    <span class="story-label">His Past</span>
+
+    <p>Kaede is not merely a beautiful face. He carries his own damage, which is why he can see Madoka's.</p>
+
+    <div class="passage rose">
+        <div class="jp-text jp">
+            <span class="hl-rose">ちょっと辛い、複雑な家庭環境の高校生の少年</span>
+        </div>
+        <div class="romaji">"Chotto tsurai, fukuzatsu na katei kankyou no koukousei no shounen."</div>
+        <div class="translation">"A high-school boy with a slightly painful, complicated family situation."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">辛い</td><td class="reading">tsurai</td><td>painful, difficult, bitter</td></tr>
+        <tr><td class="word">複雑</td><td class="reading">fukuzatsu</td><td>complicated, complex</td></tr>
+        <tr><td class="word">家庭環境</td><td class="reading">katei kankyou</td><td>family environment, home situation</td></tr>
+        <tr><td class="word">少年</td><td class="reading">shounen</td><td>boy, young man</td></tr>
+    </table>
+
+    <div class="nuance rose-box">
+        <h5>What translation loses: The understatement of ちょっと辛い</h5>
+        <p><strong>ちょっと辛い (chotto tsurai):</strong> "A little painful / slightly difficult." ちょっと is the diminutive, the word Japanese people use to soften everything. ちょっと待って (wait a moment). ちょっと聞いて (listen a sec). By using ちょっと with 辛い, the description performs the same emotional work that Madoka's "幸せだ" does: it minimizes pain by wrapping it in casual language. A "slightly painful, complicated family situation" is almost certainly much more painful than the words admit. The grammar of understatement is the grammar of people who have learned not to make a fuss. Kaede, like Madoka, has learned to package his damage in small words. This is why they recognize each other. They speak the same dialect of self-minimization.</p>
+        <p><strong>家庭環境 (katei kankyou):</strong> "Family environment." This is the standard Japanese euphemism for whatever is wrong at home. It can mean divorce, abuse, neglect, financial stress, illness, or any combination thereof. The vagueness is socially functional: it allows people to acknowledge difficulty without exposing private pain. When the review calls Kaede's background a 複雑な家庭環境, it is using the same phrase a school counselor would use, a teacher would use, a neighbor would use. The grammar of the euphemism protects the boy while signaling to the reader that he has his own reasons for seeking connection with a married woman twice his age. He is not merely a fantasy object. He is a person with damage that matches hers.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Miracle Revisited: The Grammar of Meeting Again</h2>
+    <span class="story-label">The Ending</span>
+
+    <p>The novel's closing movement returns to the title's key word with new weight.</p>
+
+    <div class="passage rose">
+        <div class="jp-text jp">
+            <span class="hl-rose">そうしてまた―――巡り逢う</span>
+        </div>
+        <div class="romaji">"Soushite mata — meguriau."</div>
+        <div class="translation">"And so, once again — they meet by fate's turning."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">そうして</td><td class="reading">soushite</td><td>and so, thus, in that way</td></tr>
+        <tr><td class="word">また</td><td class="reading">mata</td><td>again, once more</td></tr>
+        <tr><td class="word">巡り逢う</td><td class="reading">meguriau</td><td>to meet by fate, to come together after circling</td></tr>
+    </table>
+
+    <div class="nuance rose-box">
+        <h5>What translation loses: The circularity of 巡り逢う</h5>
+        <p><strong>巡り逢う (meguriau):</strong> This is not merely 出会う (deau, to meet by chance). It is 巡り逢う: to meet after circling, to come together through the turning of fate. The word contains 巡る (meguru, to go around, to circulate, to tour). It implies that the two people have been moving in orbits that eventually intersect. This is different from a random meeting. A 巡り逢う is a meeting that feels destined because both parties have been moving toward it without knowing. The word is used for reunions, for lovers who find each other after years apart, for people who keep encountering the same soul in different bodies. By ending with 巡り逢う rather than 出会う, the promotional copy elevates the meeting from chance to fate. The em-dash before the word creates a pause, a breath, a moment of silence before the revelation. The grammar of the dash makes the word feel like an event, not a description.</p>
+        <p><strong>そうしてまた (soushite mata):</strong> "And so, once again." そうして means "and so, thus, in that way." It connects what has happened to what will happen. The events of the novel, the betrayal, the piano lessons, the Wednesdays, the restraint, all of these lead to また (again). The word また implies that this is not the first time they have met, in some spiritual sense. They met in the mornings as strangers. They met on Wednesdays as teachers. They will meet again as something else. The grammar of そうしてまた makes the ending into a beginning. The novel does not conclude. It cycles.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Melody</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜えた</strong> — Potential past: "were able to," the grammar of grateful rarity</li>
+        <li><strong>〜ながら</strong> — While / despite: the grammar of simultaneous contradiction</li>
+        <li><strong>〜てしまう</strong> — To do completely / regrettably: the grammar of irreversible acts</li>
+        <li><strong>〜始める</strong> — To begin to: the grammar of processes that escalate</li>
+        <li><strong>〜合う</strong> — Reciprocal: to do together / mutually: the grammar of equality</li>
+        <li><strong>〜ようになる</strong> — To come to (do): the grammar of gradual change</li>
+        <li><strong>〜ている</strong> — Continuous: the grammar of ongoing states that hide in plain sight</li>
+        <li><strong>〜として</strong> — As / in the capacity of: the grammar of roles that consume selves</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>旋律</strong> — Melody: not a song but a line of music that two hands learn to play</li>
+        <li><strong>出会えた</strong> — Were able to meet: the potential past as gratitude</li>
+        <li><strong>奇跡</strong> — Miracle: the statistically improbable made emotionally necessary</li>
+        <li><strong>言い聞かせながら</strong> — While telling herself: the grammar of self-deception in real time</li>
+        <li><strong>埋もれる</strong> — To be buried: the avalanche of domesticity that covers the self</li>
+        <li><strong>主婦として</strong> — As a housewife: the role as instrument of burial</li>
+        <li><strong>すれ違う</strong> — To pass each other: proximity without connection, the near-miss as daily life</li>
+        <li><strong>唯一の楽しみ</strong> — Her only pleasure: the countable sadness of a life reduced to one moment</li>
+        <li><strong>端正な顔立ち</strong> — Refined features: beauty safe enough to admire from a distance</li>
+        <li><strong>裏切っている</strong> — Is betraying: the continuous present of a parallel timeline</li>
+        <li><strong>狂い始めて</strong> — Began to spin out of control: the grammar of systemic failure</li>
+        <li><strong>何かが動き出す</strong> — Something begins to move: change that arrives from outside the self</li>
+        <li><strong>教え合う</strong> — To teach each other: the reciprocal contract that makes meetings ethical</li>
+        <li><strong>お互いに</strong> — Mutually: the symmetry of two people who each have something to give</li>
+        <li><strong>毎週水曜日</strong> — Every Wednesday: the fixed beat that holds a life together</li>
+        <li><strong>歳の離れた</strong> — Separated by years: distance as physical fact, not social problem</li>
+        <li><strong>純愛</strong> — Pure love: the genre as ethical contract with the reader</li>
+        <li><strong>気になっていた</strong> — Had been on her mind: pre-desire, the accumulation of silent awareness</li>
+        <li><strong>言葉を交わす</strong> — To exchange words: conversation as intersection, words as small gifts</li>
+        <li><strong>その先には行かない</strong> — They do not go beyond that point: the grammar of self-defined boundaries</li>
+        <li><strong>夫のやっていることと一緒</strong> — The same as what the husband is doing: moral symmetry as identity</li>
+        <li><strong>ちょっと辛い</strong> — A little painful: the understatement that matches her own</li>
+        <li><strong>家庭環境</strong> — Family environment: the euphemism that protects while it reveals</li>
+        <li><strong>巡り逢う</strong> — To meet by fate's turning: the circularity of souls that orbit and intersect</li>
+        <li><strong>そうしてまた</strong> — And so, once again: the ending that is also a beginning</li>
+    </ul>
+
+    <h4>Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Eleven directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方がない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづら, 常の心, 替はる事なかれ, 枕をおさふる, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a woman who has buried herself alive learns to play again, one Wednesday at a time, with a boy who understands that some melodies are played best when you do not rush to the final note. Together these eleven writers map the full range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush.</p>
+</section>
+
+</main>
+
+</body>
+</html>

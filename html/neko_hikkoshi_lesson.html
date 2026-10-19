@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cat Washes His Face When Moving House — A Japanese Lesson</title>
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --surface: #141414;
+            --surface-raised: #1a1a1a;
+            --ink: #d4d0c8;
+            --ink-dim: #8a8580;
+            --ink-faint: #5c5854;
+            --accent: #b8a88a;
+            --accent-weak: rgba(184,168,138,0.08);
+            --line: rgba(212,208,200,0.08);
+            --border: rgba(212,208,200,0.12);
+            --radius: 6px;
+            --step--1: clamp(0.8rem, 0.78rem + 0.12vw, 0.88rem);
+            --step-0: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+            --step-1: clamp(1.08rem, 1.02rem + 0.3vw, 1.25rem);
+            --step-2: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+            --step-3: clamp(1.8rem, 1.5rem + 1.5vw, 2.6rem);
+            --step-4: clamp(2.4rem, 2rem + 2vw, 3.6rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f5f2ed;
+                --surface: #faf8f5;
+                --surface-raised: #fff;
+                --ink: #1a1a1a;
+                --ink-dim: #4a4744;
+                --ink-faint: #7a7770;
+                --accent: #6a5a3a;
+                --accent-weak: rgba(106,90,58,0.06);
+                --line: rgba(26,26,26,0.08);
+                --border: rgba(26,26,26,0.12);
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Noto Sans JP", "Hiragino Sans", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "TakaoExMincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: calc(var(--space) * 2.5) var(--space);
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", serif;
+            font-size: var(--step-4);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--ink);
+        }
+
+        header .japanese-title {
+            display: block;
+            font-family: "Noto Serif JP", serif;
+            font-size: 0.5em;
+            font-weight: 400;
+            color: var(--ink-dim);
+            margin-top: 0.6rem;
+        }
+
+        header .subtitle {
+            font-size: var(--step-1);
+            color: var(--ink-dim);
+            margin-top: 0.8rem;
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            margin-top: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section { margin-bottom: calc(var(--space) * 3); }
+
+        h2 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", serif;
+            font-size: var(--step-3);
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: var(--step-2);
+            font-weight: 500;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step--1);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p { margin-bottom: calc(var(--space) * 0.8); }
+
+        .passage {
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.1);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+            opacity: 0.7;
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-size: var(--step-1);
+            color: var(--ink-dim);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.55rem 0.7rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.75rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 2px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+            color: var(--ink-dim);
+        }
+
+        .nuance p:last-child { margin-bottom: 0; }
+
+        .grammar {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+            border: 1px solid var(--line);
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .grammar code {
+            background: var(--surface-raised);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            font-size: 0.85em;
+            color: var(--accent);
+        }
+
+        .hl {
+            background: var(--accent-weak);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--ink-faint);
+            font-size: var(--step-2);
+            letter-spacing: 0.4em;
+            opacity: 0.4;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--ink-dim);
+            margin-bottom: calc(var(--space) * 2);
+            font-weight: 300;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li { margin-bottom: 0.4rem; }
+
+        .disclaimer {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent-weak);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        @media print {
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .passage, .nuance, .grammar, .disclaimer {
+                border: 1px solid #ccc !important;
+                background: #fff !important;
+            }
+            header {
+                background: #fff !important;
+                border-bottom: 1px solid #ccc !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Cat Washes His Face When Moving House<br><span class="japanese-title jp">猫は引っ越しで顔あらう</span></h1>
+    <div class="subtitle">A Japanese lesson through Shibata Yoshiki's novel of a cat detective, a mystery writer, and the grammar of feline deduction in downtown Tokyo</div>
+    <div class="meta">Shibata Yoshiki &middot; Kobunsha &middot; 2006 &middot; Mystery</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, and reader reviews of <em>Neko wa Hikkoshi de Kao Arau</em> (猫は引っ越しで顔あらう), the fourth volume in the Cat Detective Shotaro series by Shibata Yoshiki (柴田よしき), published by Kobunsha in 2006. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published by Kobunsha in 2006 as the fourth volume in the Cat Detective Shotaro series, <em>Neko wa Hikkoshi de Kao Arau</em> (猫は引っ越しで顔あらう) is the work of Shibata Yoshiki (柴田よしき, b. 1959), one of Japan's most prolific and genre-fluid mystery writers. A graduate of Aoyama Gakuin University's French Literature department, Shibata debuted in 1995 by winning the 15th Yokomizo Seishi Prize with <em>RIKO: Megami no Eien</em>, a police procedural that redefined the female detective in Japanese fiction. Since then she has written across virtually every genre: hardboiled police novels, supernatural epics, SF, horror, romance, and, in the Shotaro series, the one genre that might be called "cozy feline deduction." Where previous lessons in this series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, the cage that makes the animal ferocious, the backstage of publishing where editors make authors grovel, the wobbly line that dances Edo back into existence, the wind chime that rings when the murderer's breath disturbs the air, the fitting room where a woman discovers her heart has already decided, and the sidewalk where an 89-year-old man walks away from a house full of problems, this lesson enters a different territory: the world seen from twelve inches above the ground, where a cat calls his owner his "housemate," where a neutered tom and a spayed tabby become consulting detectives, and where the proverb about cats forgetting their old homes is rewritten into a philosophy of adaptation. This is Japanese as the language of species difference, as the grammar of the cat who knows more than the humans around him, as the vocabulary of downtown Tokyo read through whiskers.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Proverb Rewritten</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is a deliberate distortion of a famous Japanese proverb about feline disloyalty.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">猫は引っ越しで顔あらう</span>
+        </div>
+        <div class="romaji">"Neko wa hikkoshi de kao arau."</div>
+        <div class="translation">"The cat washes his face when moving house." / "A cat freshens up after a move."</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>The original proverb</h4>
+    <div class="passage">
+        <div class="jp-text jp">
+            猫は三日餌を与ええずして顔あらう
+        </div>
+        <div class="romaji">"Neko wa mikka esu wo ataeezu shite kao arau."</div>
+        <div class="translation">"A cat forgets its old home after three days without food." / "Feed a cat for three days and it forgets its former master."</div>
+        <div class="source">— Traditional proverb</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td></tr>
+        <tr><td class="word">引っ越し</td><td class="reading">hikkoshi</td><td>moving (house), relocation</td></tr>
+        <tr><td class="word">顔</td><td class="reading">kao</td><td>face</td></tr>
+        <tr><td class="word">洗う</td><td class="reading">arau</td><td>to wash</td></tr>
+        <tr><td class="word">三日</td><td class="reading">mikka</td><td>three days</td></tr>
+        <tr><td class="word">餌</td><td class="reading">esa</td><td>food (for animals), feed</td></tr>
+        <tr><td class="word">与える</td><td class="reading">ataeru</td><td>to give, to provide</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The proverbial rewrite as philosophy</h5>
+        <p><strong>The original proverb:</strong> "A cat forgets its old home after three days without food" is one of the most famous cat-related sayings in Japanese. It expresses a traditional view of cats as opportunistic, disloyal, easily transferred from one household to another. The saying has been used for centuries to describe people who forget their benefactors quickly, or who adapt too readily to new circumstances. The grammar of the proverb is harsh: 与ええずして (without giving) creates a conditional of neglect, and 顔あらう (washes the face) is a metaphor for turning away, for erasing the old allegiance.</p>
+        <p><strong>Shibata's rewrite:</strong> By replacing 三日餌を与ええずして (without food for three days) with 引っ越しで (by moving house), Shibata performs a small but decisive act of rehabilitation. Her title says: a cat does not need to be starved into forgetting. A cat simply washes its face, freshens up, and adapts. The move itself is enough. The cat does not betray; the cat adjusts. The grammar of the rewrite removes the moral accusation from the proverb and replaces it with something closer to admiration. Cats are not disloyal. They are resilient. The title makes Shotaro's entire character implicit before page one: he is a cat who will investigate mysteries in a new city with the same competence he showed at Lake Biwa, because that is what cats do. They wash their faces and get to work.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Author's Life: The Grammar of Genre Fluidity</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Shibata's career explains why a cat detective novel can sit comfortably beside police procedurals and supernatural epics.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">1959年東京生まれ。青山学院大学文学部フランス文学科卒業。『RIKO 女神の永遠』で第15回横溝正史賞を受賞しデビュー</span>
+        </div>
+        <div class="romaji">"Sen-kyūhyaku-gojūkyū-nen Tkyō umare. Aoyama Gakuin Daigaku Bungakubu Furansu Bungakuka sotsugyō. 'RIKO Megami no Eien' de dai-jūgo-kai Yokomizo Seishi-shō wo jushō shi debyū."</div>
+        <div class="translation">"Born in Tokyo in 1959. Graduated from the French Literature Department of the Faculty of Letters at Aoyama Gakuin University. Debuted by winning the 15th Yokomizo Seishi Prize for 'RIKO: The Eternity of the Goddess.'"</div>
+        <div class="source">— Wikipedia / author bio</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">青山学院大学</td><td class="reading">Aoyama Gakuin Daigaku</td><td>Aoyama Gakuin University</td></tr>
+        <tr><td class="word">文学部</td><td class="reading">bungakubu</td><td>Faculty of Letters</td></tr>
+        <tr><td class="word">フランス文学科</td><td class="reading">Furansu Bungakuka</td><td>French Literature Department</td></tr>
+        <tr><td class="word">横溝正史賞</td><td class="reading">Yokomizo Seishi-shō</td><td>Yokomizo Seishi Prize</td></tr>
+        <tr><td class="word">受賞</td><td class="reading">jushō</td><td>receiving an award</td></tr>
+        <tr><td class="word">デビュー</td><td class="reading">debyū</td><td>debut</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The French connection and the prize that named a genre</h5>
+        <p><strong>フランス文学科 (Furansu Bungakuka):</strong> French Literature Department. This is not a trivial biographical detail. Shibata's university training in French literature places her in a lineage that includes Sartre's existential detective fiction, Simenon's Inspector Maigret, and the French tradition of the roman policier as literature. The French cozy mystery, with its attention to atmosphere, food, and domestic detail, is a direct ancestor of the Shotaro series. When Shotaro investigates a mystery while his owner eats tempura soba, he is walking in the pawprints of Maigret investigating a crime while his wife keeps the stove warm. The grammar of Shibata's education makes the cat detective series into a cross-cultural project: Japanese setting, French structure, feline narrator.</p>
+        <p><strong>横溝正史賞 (Yokomizo Seishi-shō):</strong> The Yokomizo Seishi Prize is one of Japan's most prestigious mystery awards, named after Yokomizo Seishi (1902-1981), the father of Japanese Golden Age detective fiction. Winning this prize with a debut novel is like winning the Edgar Award for Best First Novel in the United States. That Shibata won it with a police procedural (<em>RIKO</em>) and then went on to write a cat detective series demonstrates extraordinary range. The grammar of her career makes genre boundaries look like suggestions. A writer who can handle the hardboiled world of female police detectives can certainly handle a cat who thinks his owner is an idiot. In fact, the two projects share a common thread: both center on observers who see more than the humans around them. RIKO sees what male detectives miss. Shotaro sees what all humans miss, because he is twelve inches tall and nobody notices him.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. "My Name Is Shotaro. I Am a Cat": The Grammar of the Feline First Person</h2>
+    <span class="story-label">Narrative voice</span>
+
+    <p>The series opens with a declaration that echoes the most famous cat in Japanese literature.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">オレの名前は正太郎、猫である</span>
+        </div>
+        <div class="romaji">"Ore no namae wa Shōtarō, neko de aru."</div>
+        <div class="translation">"My name is Shotaro. I am a cat."</div>
+        <div class="source">— Series opening line (from <em>Yuki no Sansō no Sangeki</em>)</div>
+    </div>
+
+    <h4>The echo</h4>
+    <div class="passage">
+        <div class="jp-text jp">
+            吾輩は猫である
+        </div>
+        <div class="romaji">"Wagahai wa neko de aru."</div>
+        <div class="translation">"I am a cat." — The opening of Natsume Sōseki's <em>I Am a Cat</em> (1905)</div>
+        <div class="source">— Natsume Sōseki, 1905</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">オレ</td><td class="reading">ore</td><td>I, me (masculine, rough)</td></tr>
+        <tr><td class="word">名前</td><td class="reading">namae</td><td>name</td></tr>
+        <tr><td class="word">正太郎</td><td class="reading">Shōtarō</td><td>Shotaro (character name)</td></tr>
+        <tr><td class="word">吾輩</td><td class="reading">wagahai</td><td>I, me (archaic, haughty)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: From wagahai to ore, from satire to street</h5>
+        <p><strong>吾輩 (wagahai):</strong> Sōseki's narrator uses wagahai, an archaic, self-important first-person pronoun associated with samurai and scholars. It immediately establishes the cat as an intellectual, a superior being looking down on foolish humans. The word carries irony: a cat using the pronoun of a Meiji gentleman. Sōseki's cat is a satirist, a philosopher, a commentator on human folly from the safe height of a bookshelf.</p>
+        <p><strong>オレ (ore):</strong> Shotaro uses ore, the rough, masculine first-person pronoun associated with working-class men, delinquents, and detectives in hardboiled fiction. The difference is enormous. Where Sōseki's cat is a professor, Shibata's cat is a private eye. Ore makes Shotaro sound like he has seen things, like he has worked for his kibble. The grammar of the pronoun shift transforms the entire genre of the cat-narrated novel. Sōseki wrote social satire. Shibata writes detective fiction. And the difference is contained in a single pronoun: wagahai versus ore. The cat who says ore is not looking down on humans from a philosophical distance. He is walking among them, sniffing their shoes, judging their lies.</p>
+        <p><strong>である (de aru):</strong> Both cats use the formal copula である rather than the conversational だ or です. This is the copula of written narrative, of literary declaration. It makes both cats sound like they are writing memoirs. But where Sōseki's 吾輩は猫である sounds like a thesis statement, Shibata's オレの名前は正太郎、猫である sounds like an introduction at a bar. The grammar is the same; the social register is completely different. This is one of the miracles of Japanese: the same sentence ending can sound like a manifesto or a confession depending on what comes before it.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. "Housemate": The Grammar of 同居人</h2>
+    <span class="story-label">Key relationship term</span>
+
+    <p>Shotaro never calls Sakuragawa Hitomi his "owner." He calls her something more interesting.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">同居人のミステリー作家・桜川ひとみ</span>
+        </div>
+        <div class="romaji">"Dōkyonin no misuterī sakka, Sakuragawa Hitomi."</div>
+        <div class="translation">"My housemate, the mystery writer Sakuragawa Hitomi."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">同居人</td><td class="reading">dkyonin</td><td>housemate, cohabitant, person one lives with</td></tr>
+        <tr><td class="word">ミステリー作家</td><td class="reading">misuterī sakka</td><td>mystery writer</td></tr>
+        <tr><td class="word">桜川ひとみ</td><td class="reading">Sakuragawa Hitomi</td><td>Sakuragawa Hitomi (character name)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The political grammar of refusing to say "owner"</h5>
+        <p><strong>同居人 (dōkyonin):</strong> "Housemate, cohabitant, person one lives with." The word contains 同 (same), 居 (dwell, live), and 人 (person). A dōkyonin is someone who shares a dwelling. The word is neutral, reciprocal, and fundamentally egalitarian. It does not imply hierarchy. It does not specify who pays the rent or who fills the food bowl. When Shotaro calls Hitomi his dōkyonin rather than his 飼い主 (kainushi, owner/master), he makes a political statement: I am not property. We share space. The grammar of this word choice is the foundation of the entire series' worldview. Shotaro is not a pet. He is a roommate who happens to be a cat.</p>
+        <p><strong>飼い主 (kainushi):</strong> The word Shotaro refuses to use means "owner, master, person who keeps an animal." It contains 飼 (raise, keep, feed) and 主 (master, owner). The word makes the relationship explicit: one party feeds, the other is fed. One owns, the other is owned. By systematically avoiding kainushi and using dōkyonin instead, Shotaro reclassifies the human-animal relationship from property to partnership. This is not anthropomorphic sentimentality. It is a grammatical revolution carried out in a single word choice, repeated across eight volumes.</p>
+        <p><strong>The mystery writer detail:</strong> That Hitomi is a ミステリー作家 (mystery writer) is not mere characterization. It is structural irony. Her profession means she should be the one solving mysteries. She writes them, after all. But Shotaro consistently sees what she misses, notices what she overlooks, understands what she misinterprets. The grammar of 同居人のミステリー作家 makes the relationship into a competition that the cat always wins. The mystery writer lives with a better detective than herself, and she does not even know it. Or perhaps she does know it. Perhaps that is why she keeps him.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. "Divorced": The Grammar of バツイチ</h2>
+    <span class="story-label">Social vocabulary</span>
+
+    <p>Hitomi's marital status is described in a word that sounds like a comic book sound effect.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">バツイチのミステリー作家</span>
+        </div>
+        <div class="romaji">"Batsuichi no misuterī sakka."</div>
+        <div class="translation">"A divorced mystery writer." / "A once-married mystery writer."</div>
+        <div class="source">— Character description</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">バツイチ</td><td class="reading">batsuichi</td><td>divorced (person), one-time divorcee (slang)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The tally-mark grammar of バツイチ</h5>
+        <p><strong>バツイチ (batsuichi):</strong> This is slang, not standard Japanese. It combines バツ (batsu), the X-shaped tally mark used for counting (like the "count" in "strike count"), with イチ (ichi), the number one. A batsuichi person has one X mark against their marital record. They have been married and divorced once. The word is casual, slightly self-deprecating, and widely used in contemporary Japanese. A twice-divorced person is バツニ (batsuni), with two X marks.</p>
+        <p>The grammar of this word is extraordinary. It treats marriage as a scoring system. One X means one failed attempt. The word does not carry the moral weight of the English "divorced," with its history of stigma and its implication of a broken contract. Batsuichi is closer to "been there, done that" than to "fallen woman." It is matter-of-fact. It is even a little funny. When applied to Hitomi, the word makes her into a contemporary urban woman who has tried marriage, found it did not suit her, and moved on. She is not tragic. She is batsuichi. And she writes mystery novels, lives with a cat who thinks he is her equal, and moves to Tokyo because her boyfriend got a university job there, though, characteristically, she does not actually move in with the boyfriend. The grammar of batsuichi makes her entire life sound like a series of reasonable experiments rather than failures.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. "Neutered Male" and "Spayed Female": The Grammar of Feline Demographics</h2>
+    <span class="story-label">Character description</span>
+
+    <p>The new cats in Shotaro's Tokyo neighborhood are introduced with clinical precision that becomes comic.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">フルフル（アメショー系シルバータビーもどきの大きな去勢雄）とニンニン（茶虎と白の混じった小柄な避妊雌）</span>
+        </div>
+        <div class="romaji">"FuruFuru (Ameshō-ke shirubā tabī modoki no ōkina kyosei o) to Ninnin (chatra to shiro no majitta kokinna hinin mesu)."</div>
+        <div class="translation">"FuruFuru (a large neutered male, an American Shorthair-ish silver tabby) and Ninnin (a small spayed female, a mix of brown tabby and white)."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">アメショー</td><td class="reading">Ameshō</td><td>American Shorthair (cat breed, abbreviated)</td></tr>
+        <tr><td class="word">系</td><td class="reading">-ke</td><td>-type, -style, -lineage</td></tr>
+        <tr><td class="word">シルバータビー</td><td class="reading">shirubā tabī</td><td>silver tabby (coat pattern)</td></tr>
+        <tr><td class="word">もどき</td><td class="reading">modoki</td><td>-ish, quasi-, pseudo-, wannabe</td></tr>
+        <tr><td class="word">去勢雄</td><td class="reading">kyosei o</td><td>neutered male (animal)</td></tr>
+        <tr><td class="word">茶虎</td><td class="reading">chatra</td><td>brown tabby (cat coat)</td></tr>
+        <tr><td class="word">混じる</td><td class="reading">majiru</td><td>to be mixed, blended</td></tr>
+        <tr><td class="word">小柄</td><td class="reading">kokin</td><td>small build, petite</td></tr>
+        <tr><td class="word">避妊</td><td class="reading">hinin</td><td>contraception, birth control</td></tr>
+        <tr><td class="word">雌</td><td class="reading">mesu</td><td>female (animal)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The taxonomy of もどき and the bluntness of 去勢雄／避妊雌</h5>
+        <p><strong>もどき (modoki):</strong> The suffix もどき means "-ish," "quasi-," "pseudo-," or, less formally, "wannabe." It indicates something that resembles the real thing but is not quite it. An アメショー系シルバータビーもどき is an American Shorthair-type silver tabby-ish cat. The taxonomy is comically precise and simultaneously self-undermining. The promotional copy knows exactly what FuruFuru looks like, but it refuses to grant him full breed status. He is modoki. He is almost an American Shorthair. The grammar of modoki makes the description sound like it was written by a cat who has strong opinions about pedigree but no investment in maintaining it. This is how cats actually see other cats: not by breed registry, but by approximate resemblance.</p>
+        <p><strong>去勢雄 (kyosei o) and 避妊雌 (hinin mesu):</strong> "Neutered male" and "spayed female." These are clinical, veterinary terms. 去勢 (kyosei) means castration, neutering. 避妊 (hinin) means contraception, birth prevention. 雄 (o) is male (animal). 雌 (mesu) is female (animal). Using these terms in a cozy mystery promotional blurb is wonderfully incongruous. It is as if a human detective novel described its characters as "a 45-year-old vasectomized male" and "a 38-year-old tubally ligated female." The bluntness serves a purpose. It establishes that these cats live in a managed urban environment where TNR (trap-neuter-return) is normal, where cats are medicalized subjects, and where their reproductive status is simply part of their identity, like their coat color. The grammar of 去勢雄 and 避妊雌 makes the cat world sound as demographically specific as the human world, which is exactly Shibata's point. These are not symbolic cats. They are specific cats with specific bodies.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. "The Tempura Soba Mystery": The Grammar of Everyday Enigma</h2>
+    <span class="story-label">First story</span>
+
+    <p>The first adventure in the Tokyo volume begins with an apartment viewing and a cup of instant noodles.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">ひとみが出した条件は「最低２ＬＤＫで、猫が飼えて、南向きで、渋谷か新宿に乗り換え無しの３０分以内で行けて、家賃が十万円以下」という、きびし～～～い条件</span>
+        </div>
+        <div class="romaji">"Hitomi ga dashita jōken wa 'saitei ni-erudīkē de, neko ga kaete, minami-muki de, Shibuya ka Shinjuku ni norikae-nashi no sanjuppun inai de ikete, yachin ga jūman'en ika' to iu, kibishi～～～i jōken."</div>
+        <div class="translation">"The conditions Hitomi set were: at least a 2LDK, cat-friendly, south-facing, within 30 minutes of Shibuya or Shinjuku with no transfers, and rent under 100,000 yen — an impossibly strict set of requirements."</div>
+        <div class="source">— Reader review / plot summary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">条件</td><td class="reading">jōken</td><td>conditions, requirements</td></tr>
+        <tr><td class="word">２ＬＤＫ</td><td class="reading">ni-erudīkē</td><td>2-bedroom apartment with living/dining/kitchen</td></tr>
+        <tr><td class="word">南向き</td><td class="reading">minami-muki</td><td>south-facing</td></tr>
+        <tr><td class="word">乗り換え無し</td><td class="reading">norikae-nashi</td><td>no transfers (on train)</td></tr>
+        <tr><td class="word">家賃</td><td class="reading">yachin</td><td>rent</td></tr>
+        <tr><td class="word">きびしい</td><td class="reading">kibishii</td><td>strict, severe, tough</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The real estate grammar of Tokyo apartment hunting</h5>
+        <p><strong>２ＬＤＫ (ni-ERU-dī-kē):</strong> This is standard Japanese real estate notation. L = Living room, D = Dining room, K = Kitchen. The number before it indicates bedrooms. A 2LDK has two bedrooms plus the living/dining/kitchen area. For a single mystery writer with one cat in Tokyo, this is a generous requirement. The specificity of the notation makes Hitomi sound like she knows the market, which she does, but the specificity also makes her demands sound absurd given the rent ceiling.</p>
+        <p><strong>渋谷か新宿に乗り換え無しの３０分以内 (within 30 minutes of Shibuya or Shinjuku with no transfers):</strong> This is the geography of literary Tokyo. Shibuya and Shinjuku are where publishers cluster. A mystery writer needs to reach her editors quickly. The 乗り換え無し (no transfers) requirement is crucial: Hitomi does not want to change trains. She wants a direct line. The grammar of this condition makes her into a very specific type of Tokyo professional: the writer who must be able to reach her industry without the friction of transit connections. And the 南向き (south-facing) requirement means she wants sunlight, a precious commodity in Tokyo's dense urban fabric. The entire condition list, read together, makes Hitomi's apartment hunt into a microcosm of Tokyo real estate anxiety: everyone wants too much for too little.</p>
+        <p><strong>きびし～～～い (kibishi～～～i):</strong> The elongated vowels and wave dashes in きびし～～～い are orthographic laughter. The reviewer is stretching out the word 厳しい (strict, severe) to indicate just how unrealistic Hitomi's demands are. It is the written equivalent of saying "impossibllllle" or "riiiidiculous." The grammar of elongation makes the apartment hunt sound comic before the mystery even begins. And of course, the mystery does begin: the instant tempura soba left in the apartment, the real estate uncle's secret, the thing that does not quite fit. Shotaro notices. That is what he does.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. "Busy with New Adventures": The Grammar of 大忙し</h2>
+    <span class="story-label">Tone</span>
+
+    <p>The promotional copy captures the series' energy in a single compound.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">新しい街で、新しい冒険に大忙し！？</span>
+        </div>
+        <div class="romaji">"Atarashii machi de, atarashii bōken ni ōisogashi!?"</div>
+        <div class="translation">"Busy busy busy with new adventures in a new city!?"</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">新しい</td><td class="reading">atarashii</td><td>new</td></tr>
+        <tr><td class="word">街</td><td class="reading">machi</td><td>town, city, neighborhood</td></tr>
+        <tr><td class="word">冒険</td><td class="reading">bōken</td><td>adventure</td></tr>
+        <tr><td class="word">大忙し</td><td class="reading">ōisogashi</td><td>very busy, swamped, hectic</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The onomatopoeic excess of 大忙し</h5>
+        <p><strong>大忙し (ōisogashi):</strong> From 大 (big, great) + 忙し (busy). The word means extremely busy, swamped, hectic, running around with too much to do. The promotional copy uses 大忙し with an interrobang (！？) to create a tone of amused breathlessness. Shotaro is not merely solving mysteries. He is ōisogashi. He is running from apartment viewings to used book fairs to shrine festivals, making new cat friends, investigating tempura soba, and keeping an eye on his housemate, all while learning the geography of a new neighborhood.</p>
+        <p>The grammar of 大忙し makes the cat detective sound like a salaryman during tax season or a mother of three on a school morning. It is a word of comic excess. And the fact that it applies to a cat, who in theory sleeps sixteen hours a day, makes it funnier. Shotaro is ōisogashi because Shibata understands that cats who investigate mysteries do not have time for the standard feline schedule. They have cases. They have deadlines. They have a housemate who might move into the wrong apartment if left unsupervised. The word makes the entire series sound like it moves at a trot, which it does.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. "Fitting into Downtown Atmosphere": The Grammar of 馴染む</h2>
+    <span class="story-label">Setting</span>
+
+    <p>The novel's emotional setting is captured in a verb of slow absorption.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">下町の情緒に馴染み</span>
+        </div>
+        <div class="romaji">"Shitamachi no jōcho ni najimi."</div>
+        <div class="translation">"Fitting into the atmosphere of the downtown neighborhood." / "Growing familiar with the sentiment of old Tokyo."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">下町</td><td class="reading">shitamachi</td><td>downtown (old Edo-era neighborhoods)</td></tr>
+        <tr><td class="word">情緒</td><td class="reading">jōcho</td><td>atmosphere, sentiment, mood, pathos</td></tr>
+        <tr><td class="word">馴染む</td><td class="reading">najimu</td><td>to become familiar with, to fit in, to blend</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The osmotic grammar of 馴染む</h5>
+        <p><strong>馴染む (najimu):</strong> "To become familiar with, to fit in, to blend." The word contains 馴 (get used to, become familiar) and 染 (dye, stain, soak in). The etymology is perfect: fitting in is not a surface adjustment. It is a dyeing process. The new color soaks into the fabric. When Shotaro and Hitomi najimu to the shitamachi, they are not merely learning the streets. They are being colored by them. The grammar of this verb makes adaptation into a slow, irreversible process, like ink spreading through water.</p>
+        <p><strong>下町の情緒 (shitamachi no jōcho):</strong> "The atmosphere/sentiment of downtown." 下町 refers to the old low-lying districts of Tokyo where merchants and craftsmen lived during the Edo period, as opposed to 山の手 (Yamanote), the hilly western districts where samurai and later wealthy modernites lived. Shitamachi is associated with narrow alleys, small shops, neighborhood shrines, public baths, and a human scale that survives in pockets despite Tokyo's constant redevelopment. 情緒 (jōcho) means atmosphere, sentiment, mood, pathos. It is a literary word, not a casual one. Combining shitamachi with jōcho makes the setting sound like something out of a Kawabata novel or an Ozu film. The grammar makes Shotaro's new neighborhood into a place with emotional depth, not merely a location. And the fact that a cat becomes familiar with this atmosphere means the novel takes the shitamachi seriously as a lived environment, not just as nostalgic scenery.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Kansai Dog: The Grammar of Dialect as Character</h2>
+    <span class="story-label">Supporting character</span>
+
+    <p>Shotaro's best friend speaks a different dialect, and that dialect is his entire character.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">飼い主ともども関西弁で話す</span>
+        </div>
+        <div class="romaji">"Kainushi to mo domo Kansai-ben de hanasu."</div>
+        <div class="translation">"Both he and his owner speak in Kansai dialect."</div>
+        <div class="source">— Series description of Sasuke</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">飼い主</td><td class="reading">kainushi</td><td>owner, master</td></tr>
+        <tr><td class="word">ともども</td><td class="reading">tomo domo</td><td>both, together, alike</td></tr>
+        <tr><td class="word">関西弁</td><td class="reading">Kansai-ben</td><td>Kansai dialect</td></tr>
+        <tr><td class="word">話す</td><td class="reading">hanasu</td><td>to speak, to talk</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The social grammar of 飼い主ともども and the regional grammar of 関西弁</h5>
+        <p><strong>飼い主ともども (kainushi to mo domo):</strong> "Both the owner and [the pet]." ともども is an elegant, slightly formal word meaning "both, together, alike." It carries a sense of paired identity. When the series description says Sasuke and his owner speak Kansai-ben 飼い主ともども, the grammar makes them into a matched set. They share dialect the way some people share hats. This is different from Shotaro and Hitomi, who do not share a dialect because they do not share a species. Sasuke and Asamadera Ryunosuke are united by region. Shotaro and Hitomi are united by... something else. Co-dependency, perhaps. Or mutual tolerance. The grammar of tomo domo makes the human-dog relationship sound more harmonious than the human-cat relationship, which is probably accurate.</p>
+        <p><strong>関西弁 (Kansai-ben):</strong> The Kansai dialect, spoken in Osaka, Kyoto, Kobe, and the surrounding region, is one of Japan's most distinctive regional dialects. In popular media, it is often used to mark characters as funny, direct, working-class, or street-smart. Sasuke speaks Kansai-ben because he lives in the mountains of Kyoto with his owner. Shotaro speaks standard Japanese (hyōjungo) because he lives with a writer near Lake Biwa and then in Tokyo. The fact that the animals speak the dialects of their regions while the humans around them may not is one of Shibata's subtlest jokes. Sasuke is more Kyoto than the Kyotoites. He has absorbed the dialect through his paws. The grammar of dialect-as-character makes the animal world in this series more regionally rooted than the human world, where writers and editors move between Tokyo and the provinces without apparent attachment to either.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Cat Who Solves What Humans Cannot See</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜で顔あらう</strong> — Washing the face by [doing X]: the proverb rewritten as resilience</li>
+        <li><strong>〜ともども</strong> — Both X and Y alike: the grammar of paired identity</li>
+        <li><strong>〜に馴染む</strong> — Becoming familiar with, fitting into: the grammar of osmotic adaptation</li>
+        <li><strong>〜に大忙し</strong> — Swamped with, hectic with: the grammar of comic excess</li>
+        <li><strong>〜もどき</strong> — Quasi-, -ish, wannabe: the grammar of approximate taxonomy</li>
+        <li><strong>〜系</strong> — -type, -lineage: the grammar of breed approximation</li>
+        <li><strong>〜で話す</strong> — Speaking in [a dialect]: the grammar of regional voice</li>
+        <li><strong>〜の条件</strong> — The conditions of: the grammar of real estate desire</li>
+        <li><strong>〜に乗り換え無し</strong> — No transfers to: the grammar of urban mobility</li>
+        <li><strong>〜ともども</strong> — Both alike: the grammar of shared characteristics</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>猫は引っ越しで顔あらう</strong> — The cat washes his face when moving: the proverb rehabilitated</li>
+        <li><strong>オレ</strong> — I/me (rough): the hardboiled pronoun that makes Shotaro a detective, not a professor</li>
+        <li><strong>正太郎</strong> — Shotaro: the name that sounds like a boy detective from the 1950s</li>
+        <li><strong>同居人</strong> — Housemate: the political refusal to say "owner"</li>
+        <li><strong>飼い主</strong> — Owner: the word Shotaro systematically avoids</li>
+        <li><strong>桜川ひとみ</strong> — Sakuragawa Hitomi: the mystery writer who does not see what her cat sees</li>
+        <li><strong>バツイチ</strong> — Divorced: the tally-mark grammar of modern marriage</li>
+        <li><strong>ミステリー作家</strong> — Mystery writer: the profession that makes the irony structural</li>
+        <li><strong>フルフル</strong> — FuruFuru: the large neutered quasi-American Shorthair</li>
+        <li><strong>ニンニン</strong> — Ninnin: the small spayed brown tabby mix</li>
+        <li><strong>去勢雄</strong> — Neutered male: the clinical bluntness of feline demographics</li>
+        <li><strong>避妊雌</strong> — Spayed female: the veterinary vocabulary in a cozy mystery</li>
+        <li><strong>もどき</strong> — -ish: the suffix that denies pedigree while describing it perfectly</li>
+        <li><strong>２ＬＤＫ</strong> — Two-bedroom apartment: the real estate notation of Tokyo desire</li>
+        <li><strong>南向き</strong> — South-facing: the direction that means sunlight in the dense city</li>
+        <li><strong>乗り換え無し</strong> — No transfers: the urban luxury of direct transit</li>
+        <li><strong>天ぷらそば</strong> — Tempura soba: the instant noodle that begins a mystery</li>
+        <li><strong>古本市</strong> — Used book fair: the setting where cats and readers meet</li>
+        <li><strong>下町</strong> — Downtown (shitamachi): the old Tokyo that survives in pockets</li>
+        <li><strong>情緒</strong> — Atmosphere, sentiment: the literary word that makes a neighborhood into a mood</li>
+        <li><strong>馴染む</strong> — To become familiar, to blend: the dyeing process of adaptation</li>
+        <li><strong>大忙し</strong> — Very busy, hectic: the comic breathlessness of the detective cat</li>
+        <li><strong>関西弁</strong> — Kansai dialect: the regional voice that makes Sasuke a Kyoto dog</li>
+        <li><strong>飼い主ともども</strong> — Both owner and pet alike: the grammar of shared identity</li>
+        <li><strong>吾輩</strong> — Wagahai: Sōseki's haughty pronoun, the ghost Shotaro refuses to channel</li>
+        <li><strong>横溝正史賞</strong> — Yokomizo Seishi Prize: the award that named a genre and launched a career</li>
+    </ul>
+
+    <h4>Shibata vs. Fujino vs. Ogata vs. Sano vs. Takita vs. Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Twenty-three directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 方不明, やむをない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ), Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる), Takita's are visual and wobbly (落語劇場, 下町風俗, 吹き出し, 無意味な絵, ふにゃふにゃ, 線のゆらぎ, フラのような間, また夢になるといけねえ, 枕元, 天秤棒, 居候, 番台), Sano's are cool and causative (風鈴, 優雅な推理, 社の用, 1200編, 中庸, アッと言わせる, 知的遊戯, マンネリズムに陥る, 一石を投じる, 揚げ足取り, 名探偵否定論, 淡々, アッケラカン), Ogata's are sartorial and diagnostic (試着室, 本気の恋, 片思い, 両思い, 運命の一着, 強がり, 諦め, 素直, 戦闘服, 背中を押す, 相手を慮る, 曖昧, 実らなかった恋, 感情は歳をとらない, 悪い女ほど清楚, 花嫁未満, いったりきたり), Fujino's are stoic and familial (じい散歩, 夫婦あわせて, 健啖家, しつこく疑う, 引きこもり, 自称・長女, 借金まみれ, 無心, いろいろあるけど, 家族である日々は続いてゆく, 飄々, じんわり沁みる, てくてく, 妻の反乱, 老老介護, 難も積もれば幸となる), and Shibata's are genre-fluid and feline-grammatical (猫は引越しで顔あらう, オレ, 同居人, バツイチ, ミステリー作家, 去勢雄, 避妊雌, もどき, ２ＬＤＫ, 南向き, 乗り換え無し, 天ぷらそば, 古本市, 下町, 情緒, 馴染む, 大忙し, 関西弁, 飼い主ともども, 吾輩, 横溝正史賞). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. Higashino asks what happens when you love an industry so much that you cannot stop laughing at it. Takita asks what happens when a man who grew up in a vanished downtown tries to draw the spoken stories of an even more vanished downtown, using a line that wobbles like a hula dancer. Sano asks what happens when a newspaper reporter decides that the perfect mystery is one that makes the reader say "a" in a single involuntary syllable. Ogata asks what happens when a 175cm copywriter decides that the fitting room is the only honest room in the city. Fujino asks what happens when a family accumulates every possible failure and yet the days of being a "family" continue. And Shibata asks what happens when a cat who says ore instead of wagahai, who calls his owner his housemate instead of his master, who investigates mysteries while his housemate eats tempura soba in a south-facing 2LDK within 30 minutes of Shibuya with no transfers, moves from Lake Biwa to downtown Tokyo and discovers that the city makes sense if you are twelve inches tall and nobody notices you are paying attention. Together these twenty-three works map the full range of Japanese narrative art: from divine absence to feline deduction, from bureaucratic erasure to the osmotic adaptation of a cat in a new neighborhood, from aesthetic perception to the hardboiled pronoun that turns a philosopher into a detective.</p>
+</section>
+
+</main>
+
+</body>
+</html>

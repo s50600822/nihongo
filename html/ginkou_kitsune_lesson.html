@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>銀行狐 — 池井戸潤 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-steel: #5a7a9e;
+  --accent-steel-dim: #3d5a73;
+  --accent-steel-glow: rgba(90, 122, 158, 0.12);
+  --accent-gold: #9e8a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-steel-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-steel);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-steel-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-steel-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-steel);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-steel-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-steel), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-steel);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-steel-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-steel); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-steel-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-steel-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-steel);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-steel-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-steel);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-steel);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-steel);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-steel-dim), var(--accent-steel));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-steel);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-steel);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(90, 122, 158, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-steel);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-steel-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>銀行狐</h1>
+  <p class="hero-subtitle">THE BANK FOX</p>
+  <p class="hero-meta">池井戸潤 &middot; 講談社 2001（単行本）/ 2004（文庫）/ 2020（新装版） &middot; 銀行ミステリー短編集</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & The Five Stories</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 銀行狐</h2>
+  <p class="lead">The title is a compound noun that fuses two worlds that are not supposed to touch: <em>ginkou</em> (銀行, "bank") — the institution of trust, the temple of modern capitalism — and <em>kitsune</em> (狐, "fox") — the trickster of Japanese folklore, the shape-shifter, the deceiver. In Japanese mythology, the fox possesses people, creates illusions, and leads travelers astray. In the financial world, a "bank" is the last place one expects to find a fox. Ikeido's title announces his central insight: the institution sworn to safeguard money is itself a creature of deception — and the line between banker and trickster may be thinner than depositors imagine.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">銀行</span>
+        <span class="romaji">ginkou</span>
+        <span class="meaning">"bank" — From <em>gin</em> (銀, "silver") + <em>kou</em> (行, "institution / firm"). The word carries the full weight of Japan's postwar economic miracle and its subsequent traumas: bubble-era excess, the 1990s collapse, the bad-loan crisis, and the consolidation of regional banks. In Ikeido's fiction, a bank is never merely a workplace; it is a battlefield where human ambition, institutional logic, and moral compromise intersect. The bank is the stage; the fox is the actor.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">狐</span>
+        <span class="romaji">kitsune</span>
+        <span class="meaning">"fox" — In Japanese folklore, the fox is a supernatural trickster with the power to shape-shift, possess humans, and create illusions (<em>kitsune no bake</em>, 狐の化け). Foxes are associated with Inari shrines, where they serve as messengers of the rice deity — but they are also feared as deceivers who lead travelers astray with phantom lights (<em>kitsunebi</em>, 狐火). The fox is clever, seductive, and dangerous. In modern slang, <em>kitsune</em> can mean a cunning person, a manipulator. Ikeido's genius is to make the fox both a literal signature (the threatening letters are signed "Fox") and a metaphor for the banking system itself: an institution that appears solid and trustworthy but may be, at its core, a shape-shifting predator.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The compound <em>ginkou kitsune</em> (銀行狐) has no established meaning in Japanese — it is Ikeido's coinage. This neologism forces the reader to confront the unnatural marriage of finance and folklore. The title story's "Fox" sends threatening letters to a bank president with the message <em>"Ahodomo e tenchuu kudasu"</em> (あほどもへ てんちゅー くだす, "Divine punishment upon you fools"). The archaic, almost theatrical language of vengeance, signed by a fox, transforms a corporate crime story into something closer to a morality play — or a ghost story. The bank, with its fluorescent lights and balance sheets, becomes the haunted forest of folklore.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>池井戸潤 &mdash; Ikeido Jun</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">池</div>
+    <div class="author-name-block">
+      <h3>池井戸潤</h3>
+      <p class="author-name-romaji">Ikeido Jun &middot; b. June 16, 1963 &middot; Gifu</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Ikeido Jun is Japan's most commercially successful contemporary novelist — the undisputed king of the <em>keizai shousetsu</em> (経済小説, economic novel), a genre he has virtually redefined for the 21st century. Born in Gifu Prefecture in 1963, he graduated from Keio University with degrees in both literature and law — a dual education that equipped him to write about both the human soul and the legal structures that constrain it. In 1988, he joined Mitsubishi Bank (now MUFG Bank), where he worked for seven years before leaving in 1995 to pursue writing. Those seven years inside one of Japan's megabanks became the raw material for his entire career: he knows where the vaults are, who holds the keys, and what happens when someone decides to open a door that should stay closed.</p>
+    <p style="margin-bottom: var(--space-md);">Ikeido's breakthrough came with his debut novel <em>Hatsuru Sokonaki</em> (果つる底なき / "Bottomless"), which won the 44th Edogawa Rampo Prize in 1998. But his real explosion into the cultural mainstream began with the <em>Hanzawa Naoki</em> (半沢直樹) series, starting in 2004, whose TBS drama adaptation starring Sakai Masato became a national phenomenon — the "baigaeshi da!" (倍返しだ / "I'll pay you back double!") line entering everyday Japanese speech. His works have been adapted into over a dozen films and television dramas, including <em>Shitamachi Rocket</em> (下町ロケット), <em>Roosevelt Game</em> (ルーズヴェルト・ゲーム), <em>Kaishain no Kurotoki</em> (七つの会議 / "Seven Conferences"), and <em>Shylock's Children</em> (シャイロックの子供たち). In 2011, he won the 145th Naoki Prize for <em>Shitamachi Rocket</em>, cementing his status as both a critical and commercial powerhouse.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Ikeido from other corporate novelists is his populist rage. He writes about institutions, but his subject is always the individual crushed by them — the mid-level employee who discovers fraud, the branch manager pressured to make bad loans, the loan officer who must choose between compassion and procedure. His protagonists are not superheroes; they are salarymen with mortgages and anxieties, pushed to the edge by systems they cannot control. The anger in his fiction is real because he has felt it himself. He is not writing about banks from the outside; he is writing from memory.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1963</span>
+        <span>Born in Gifu Prefecture. Later graduates from Keio University, Faculty of Letters and Faculty of Law.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1988</span>
+        <span>Joins Mitsubishi Bank (now MUFG Bank), beginning a seven-year career inside one of Japan's megabanks. This experience becomes the foundation of his entire literary output.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1995</span>
+        <span>Leaves Mitsubishi Bank to pursue writing. The timing is significant: Japan's bubble has burst, banks are drowning in bad loans, and the industry he knew is entering a period of existential crisis.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1998</span>
+        <span>Literary debut with <em>Hatsuru Sokonaki</em> (果つる底なき / "Bottomless"), winning the 44th Edogawa Rampo Prize. The novel establishes his reputation as a crime writer with insider knowledge of the banking world.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2001</span>
+        <span>Publishes <em>Ginkou Kitsune</em> (銀行狐), a collection of five bank-set mystery stories written between 1998 and 2001. The title story introduces Sibusuki Shuhei, who later becomes the protagonist of the <em>Ginkou Soumu Tokume</em> (銀行総務特命) series.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2004</span>
+        <span>Bunko edition of <em>Ginkou Kitsune</em> published. Also publishes the first <em>Hanzawa Naoki</em> novel, <em>Oretachi Bubble Nyukougumi</em> (オレたちバブル入行組), launching the series that will make him a household name.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Wins the 31st Yoshikawa Eiji Literary Newcomer Prize for <em>Tetsu no Hone</em> (鉄の骨 / "Bones of Steel").</span>
+      </li>
+      <li>
+        <span class="timeline-year">2011</span>
+        <span>Wins the 145th Naoki Prize for <em>Shitamachi Rocket</em> (下町ロケット), confirming his status as both a critical and commercial giant.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2013</span>
+        <span>The TBS drama adaptation of <em>Hanzawa Naoki</em> becomes a national phenomenon, with the final episode achieving 42.2% viewership in the Kanto region — one of the highest ratings in Japanese television history.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2020</span>
+        <span>Wins the Nom Publishing Culture Prize. New bunko edition of <em>Ginkou Kitsune</em> published with updated cover design.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2023</span>
+        <span>Wins the Shibata Renzaburo Prize. Continues to publish multiple novels per year while maintaining an extraordinary level of quality and cultural relevance.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>半沢直樹シリーズ</h4>
+        <p class="char-role">Hanzawa Naoki Series &middot; 2004-</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Ikeido's signature blockbuster series about a bank employee who fights corruption and injustice within Japan's banking system. The TBS drama adaptation (2013, 2020) starring Sakai Masato became a national phenomenon. "Baigaeshi da!" entered everyday speech.</p>
+      </div>
+      <div class="char-card">
+        <h4>下町ロケット</h4>
+        <p class="char-role">Shitamachi Rocket / Downtown Rocket &middot; 2010</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 145th Naoki Prize. A small factory owner battles corporate giants to develop a rocket valve. Adapted into TBS dramas (2011, 2018) and a stage play. Ikeido's most celebrated non-bank novel.</p>
+      </div>
+      <div class="char-card">
+        <h4>シャイロックの子供たち</h4>
+        <p class="char-role">Shylock's Children &middot; 2019</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A dark masterpiece about a cash-shortage scandal at a bank branch. Adapted into a 2023 film starring Abe Sadao. Ikeido called it his answer to the challenge of writing entertainment that respects its characters.</p>
+      </div>
+      <div class="char-card">
+        <h4>空飛ぶタイヤ</h4>
+        <p class="char-role">Soratobu Taiya / The Flying Tire &middot; 2006</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A tire manufacturer's recall crisis becomes a vehicle for exploring corporate responsibility, media pressure, and the human cost of industrial accidents. Adapted into film and drama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters & The Five Stories</h2>
+
+  <p class="lead"><em>Ginkou Kitsune</em> is a collection of five mystery stories set in and around Japan's banking industry. Each story uses a different aspect of bank operations as the engine of suspense: the vault, the teller window, the transfer system, the executive suite, and the loan counter. What unifies them is Ikeido's insider knowledge and his moral vision — the belief that crime in a bank is never just about money; it is about power, humiliation, and the slow erosion of conscience that institutional life demands.</p>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>「金庫室の死体」&middot; "Corpse in the Vault Room"</h4>
+      <p class="char-role">The Dismembered Body & The Failed Bank</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">At the failed Jonan Sowa Bank, a dismembered old woman's body is discovered in the vault room. Detectives Komatsu Yoichi and Hanayama Kan investigate. The story uses the bank's collapse as both setting and symbol: a failed institution hiding a literal corpse in its most secure space. The vault — supposed to protect value — has become a tomb.</p>
+    </div>
+    <div class="char-card">
+      <h4>「現金その場限り」&middot; "Cash On-Site Only"</h4>
+      <p class="char-role">The Disappearing Window Cash</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">During business hours, cash keeps disappearing from a branch teller window, creating negative balances. Section chief Haibara suspects embezzlement by a bank employee. The story turns on the most mundane of bank operations — the cash window — and makes it sinister. What passes through a teller's hands thousands of times a day becomes, suddenly, evidence.</p>
+    </div>
+    <div class="char-card">
+      <h4>「口座相違」&middot; "Account Discrepancy"</h4>
+      <p class="char-role">The Mixed-Up Transfer</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">At the Shibuya branch of Toto Bank, a female employee accidentally switches transfer account numbers — a <em>kouza soui</em> (口座相違). Section chief Manda tries to contact the recipient but cannot reach them. A simple clerical error becomes the doorway to a larger truth. Ikeido shows how the smallest mistake in a bureaucracy can expose its deepest secrets.</p>
+    </div>
+    <div class="char-card">
+      <h4>「銀行狐」&middot; "The Bank Fox"</h4>
+      <p class="char-role">The Vengeful Phantom</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The title story. A threatening letter signed "Fox" is delivered to the president of Teito Bank: <em>"Ahodomo e tenchuu kudasu"</em> (あほどもへ てんちゅー くだす, "Divine punishment upon you fools"). No specific demands are made, but the crimes escalate: customer information leaks, attacks on affiliated life insurance employees. Special assignment officer Sibusuki Shuhei and his assistant Kaburagi Kazuma investigate, alongside Metropolitan Police detective Monokura Sumio. The story connects to the <em>henkaku hoken</em> (変額保険, variable insurance) scandal of the bubble era — a real financial product that destroyed lives.</p>
+    </div>
+    <div class="char-card">
+      <h4>「ローンカウンター」&middot; "The Loan Counter"</h4>
+      <p class="char-role">The Detective & The Banker</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Detective Yamakita investigates a serial rape-murder case and encounters Iki Haruka — the protagonist of <em>Hatsuru Sokonaki</em> — working at a bank loan counter. A bank employee's deduction becomes crucial to the criminal investigation. The story bridges Ikeido's crime-fiction and economic-fiction modes, showing that the skills of a loan officer (reading people, assessing risk, spotting inconsistencies) are the same skills that solve murders.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Title Story: "Ginkou Kitsune"</h3>
+    <p>A threatening letter arrives at Teito Bank, addressed to the president, signed with a single character: <em>Kitsune</em> (狐, "Fox"). The message is written in a strange, archaic style — <em>"Ahodomo e tenchuu kudasu"</em> — a declaration of divine vengeance upon fools. There are no ransom demands, no conditions. Just a promise of punishment. Then the crimes begin: confidential customer information is leaked to the media; an employee of an affiliated life insurance company is attacked. The Fox's campaign escalates, and the bank's crisis management team discovers that their own procedures — the very systems designed to protect them — are being turned against them.</p>
+    <p style="margin-top: var(--space-sm);">Sibusuki Shuhei, a special assignment officer in the bank's general affairs department, is tasked with the internal investigation. With his assistant Kaburagi Kazuma, he begins to trace the Fox's identity through the bank's own records. The investigation leads backward in time, to the bubble era and the <em>henkaku hoken</em> (変額保険, variable insurance) scandal — a real financial product sold to unsophisticated customers with promises of high returns, which left many in ruin when the bubble burst. The Fox, it becomes clear, is not a criminal in the conventional sense but an avenger — someone who believes that the bank's sins of the past have never been accounted for.</p>
+    <p style="margin-top: var(--space-sm);">What makes the story remarkable is Ikeido's refusal of simple moral categories. The Fox's actions are criminal, but their grievance is real. The bank's executives are not villains; they are men who made decisions within a system that rewarded aggression and punished caution. Sibusuki is not a hero; he is a company man doing his job, which happens to involve catching someone whose anger he partly understands. The title's compound — <em>ginkou kitsune</em> — asks: who is the real fox? The person sending threats, or the institution that devoured people's savings while calling it "financial advice"?</p>
+  </div>
+
+  <div class="card">
+    <h3>The Collection as a Whole</h3>
+    <p>Across all five stories, Ikeido demonstrates the range of his banker's imagination. Each story isolates a different pressure point in the banking system and asks what happens when someone pushes it. The vault room ("Kinkoshitsu no Shitai") explores what institutions do with their dead — literally and figuratively. The teller window ("Genkin Sono-ba Kagiri") shows how the most routine transaction can become a crime scene. The transfer system ("Kouza Soui") reveals how a single keystroke can redirect a life. The executive suite ("Ginkou Kitsune") exposes the long tail of bubble-era sins. And the loan counter ("Roun Kauntaa") demonstrates that the skills of banking and detection are fundamentally the same: both require reading human need, assessing risk, and knowing when someone is lying.</p>
+    <p style="margin-top: var(--space-sm);">The collection is darker than Ikeido's later, more populist work. There is no "baigaeshi" here, no triumphant reversal. These are hardboiled bank mysteries, written before Ikeido discovered the formula that would make him famous. The anger is more diffuse, the victories more partial, the institutions more implacable. In that sense, <em>Ginkou Kitsune</em> is Ikeido's most honest book — the work of a man who has just left the industry and still has the smell of it on his clothes.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>The institution as accomplice:</strong> In every story, the bank is not merely the setting but an active participant in the crime. Its procedures create opportunities; its hierarchies protect the guilty; its culture of silence prevents discovery. Ikeido's insight is that institutions do not merely fail to prevent crime — they actively generate the conditions for it.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The long memory of money:</strong> Financial sins do not disappear when the fiscal year ends. The variable insurance scandal of the bubble era haunts the title story years later, like a ghost that will not be exorcised. Ikeido understands that in banking, the past is never past; it is simply reclassified as a non-performing loan.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The banality of bank crime:</strong> Ikeido's criminals do not wear masks or carry guns. They use the tools of their ordinary jobs — transfer forms, loan applications, vault access codes. The crime is indistinguishable from the workday. This is what makes it terrifying: there is no moment when the banker becomes a criminal; the criminal was always a banker.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Justice vs. procedure:</strong> Ikeido's protagonists constantly face a choice between what is procedurally correct and what is morally right. The bank's manual will not save anyone; it may, in fact, be the problem. The drama comes from watching decent people navigate a system that penalizes decency.</li>
+      <li><strong>The salaryman as tragic hero:</strong> Ikeido's bank employees are not powerful. They are mid-level functionaries with limited authority and unlimited accountability. Yet they persist, ask questions, and sometimes — not always — expose the truth. This is Ikeido's version of heroism: not the superhuman feat but the ordinary refusal to look away.</li>
+    </ul>
+  </div>
+
+  <div class="film-banner">
+    <div class="film-title">Drama Adaptations</div>
+    <div class="film-detail">2002 &middot; TV Asahi "Doyou Wide Gekijo" (土曜ワイド劇場) &mdash; early television adaptation</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">2015 &middot; NTV "Hanasaki Mai ga Damattenai" Season 2 (花咲舞が黙ってない) starring Anne &mdash; the "Ginkou Kitsune" episode adapted as part of the popular bank drama series</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture Ikeido's characteristic voice: the fusion of bureaucratic precision and moral outrage, the way he makes financial jargon carry emotional weight, and his belief that the most devastating sentences are often the most plain.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Fox's Message</div>
+    <div class="passage-jp">
+      狐と署名された脅迫状が、帝都銀行頭取宛に届けられた。「あほどもへ てんちゅー くだす」。
+    </div>
+    <div class="passage-romaji">
+      Kitsune to shomei sareta kyouhakujou ga, Teito Ginkou Toutou ate ni todokerareta. "Ahodomo e tenchuu kudasu."
+    </div>
+    <div class="passage-en">
+      "A threatening letter signed 'Fox' was delivered to the president of Teito Bank. 'Divine punishment upon you fools.'"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening hook, and every element is calculated for maximum dissonance. <em>Kitsune to shomei sareta</em> (狐と署名された, "signed 'Fox'") uses the formal <em>shomei</em> (署名, "signature") — a legal, bureaucratic word — to describe a folkloric creature. The juxtaposition of legal procedure and supernatural signature creates immediate unease. <em>Kyouhakujou</em> (脅迫状, "threatening letter") is a criminal-document term; <em>toutou ate</em> (頭取宛, "addressed to the president") specifies the highest executive rank. The message itself — <em>"Ahodomo e tenchuu kudasu"</em> — is extraordinary. <em>Ahodomo</em> (あほども) is a dialectal/archaic insult (from <em>aho</em>, "fool," common in Kansai but marked elsewhere) with the pluralizing/contemptuous suffix <em>-domo</em> (ども), creating a tone of righteous condemnation. <em>Tenchuu</em> (てんちゅー / 天誅, "divine punishment / heavenly retribution") is the word used in historical dramas for the vengeance of the gods upon evil-doers — most famously associated with the 47 Ronin. <em>Kudasu</em> (くだす / 下す, "to hand down / to deliver") is the verb used for judicial sentences and divine decrees. The Fox is not making a threat; he is delivering a verdict. The language is simultaneously archaic and childish (the phonetic rendering <em>tenchuu</em> rather than the kanji <em>天誅</em> suggests someone who knows the word by sound rather than education), which makes the sender's identity more mysterious. This is Ikeido at his most linguistically playful: a single sentence that is part legal report, part ghost story.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Nature of Bank Credit</div>
+    <div class="passage-jp">
+      銀行の与信判断って一体なんだ？銀行には将来のことを予知する能力なんてない。あるのは思い込みと、責任逃れの理屈だ。
+    </div>
+    <div class="passage-romaji">
+      Ginkou no yoshin handan tte ittai nanda? Ginkou ni wa shourai no koto wo yochi suru nouryoku nante nai. Aru no wa omoikomi to, sekinin nogare no rikutsu da.
+    </div>
+    <div class="passage-en">
+      "What exactly is a bank's credit judgment? Banks have no ability to predict the future. What they have are assumptions and excuses to evade responsibility."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is one of Ikeido's most famous aphorisms, often quoted in discussions of his work. <em>Yoshin handan</em> (与信判断, "credit judgment / lending decision") is the core function of banking — assessing whether a borrower will repay. Ikeido's rhetorical question <em>itte ittai nanda</em> (って一体なんだ, "what on earth is ~?") demolishes the mystique of this function in a single phrase. The answer is brutal: <em>yochi suru nouryoku nante nai</em> (予知する能力なんてない, "they don't have any ability to predict the future") — the <em>nante nai</em> (なんてない) construction dismisses the possibility with contempt. The final clause delivers the coup de grace: <em>omoikomi</em> (思い込み, "assumptions / fixed ideas / self-delusion") and <em>sekinin nogare no rikutsu</em> (責任逃れの理屈, "excuses to evade responsibility"). <em>Rikutsu</em> (理屈) is a dismissive word for "logic" or "reasoning" — it suggests not genuine reasoning but post-hoc rationalization. The sentence structure is classic Ikeido: a question, a denial, and a replacement. What banks claim to do (predict the future) is impossible. What they actually do (assume and excuse) is unforgivable. This is the voice of an insider who has seen the process from the inside and can no longer pretend it has integrity.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Justice as Power</div>
+    <div class="passage-jp">
+      正義？ある程度までいくと、政治力でねじ曲がるやつのことか？
+    </div>
+    <div class="passage-romaji">
+      Seigi? Aru teido made iku to, seijiryoku de neji magaru yatsu no koto ka?
+    </div>
+    <div class="passage-en">
+      "Justice? When you take it far enough, isn't it just whatever gets twisted by political power?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This line appears on the cover of the 2020 new edition and encapsulates Ikeido's mature cynicism. The single word <em>seigi</em> (正義, "justice") followed by a question mark is a complete rhetorical move — the word itself is now suspect. <em>Aru teido made iku to</em> (ある程度までいくと, "when you take it to a certain point / when it goes far enough") introduces a conditional that implies a threshold of scale: justice works at small scales but fails at large ones. <em>Seijiryoku de neji magaru</em> (政治力でねじ曲がる, "gets twisted / warped by political power") uses <em>seijiryoku</em> (政治力, "political power / influence") — a word that combines <em>seiji</em> (政治, politics) with <em>chikara/ryoku</em> (力, power), suggesting not formal authority but the informal capacity to bend rules. <em>Neji magaru</em> (ねじ曲がる / 捻じ曲がる, "to twist / warp / distort") is a visceral verb — it evokes physical deformation, not mere intellectual disagreement. The final <em>yatsu no koto ka</em> (やつのことか, "isn't it just that thing / that stuff") uses the rough demonstrative <em>yatsu</em> (やつ), which drains "justice" of any remaining dignity. The sentence is not asking a genuine question; it is delivering a verdict. Justice, in the world of big banks and bigger politics, is just another product that can be manufactured to specification.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Writer's Realization</div>
+    <div class="passage-jp">
+      会社や銀行という組織を書くことを目的にした小説ではなく、そこで生きている人たちを書かなければ駄目だ。
+    </div>
+    <div class="passage-romaji">
+      Kaisha ya ginkou to iu soshiki wo kaku koto wo mokuteki ni shita shousetsu de wa naku, soko de ikite iru hitotachi wo kakanakereba dame da.
+    </div>
+    <div class="passage-en">
+      "It can't be a novel whose purpose is to write about companies or banks as organizations. You have to write about the people living inside them."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">From a 2015 Kodansha interview, this sentence explains the evolution of Ikeido's craft. The negative construction <em>de wa naku</em> (ではなく, "not ~ but rather") sets up a contrast between two purposes: writing about organizations versus writing about people. <em>Soshiki</em> (組織, "organization") is a cold, structural word; <em>ikite iru hitotachi</em> (生きている人たち, "people who are living") is warm, organic, and present-tense — these are not characters but living beings. The emphatic <em>kakanakereba dame da</em> (書かなければ駄目だ, "you must write / you have to write") uses the strong obligation form <em>nakereba dame</em> (なければ駄目), leaving no room for compromise. What makes this sentence significant is that it describes exactly what Ikeido learned between <em>Ginkou Kitsune</em> (2001) and <em>Shylock's Children</em> (2019). The early stories in this collection are brilliant procedural mysteries; the later Ikeido became, the more he understood that the vault, the window, and the loan counter were interesting only because of the human hands that operated them. This sentence is his aesthetic manifesto.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, the banking context, and the thematic world of institutional crime.</p>
+
+  <div class="card">
+    <h3>Banking & Finance</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>銀行</td><td>ginkou</td><td class="pos">noun</td><td>bank</td></tr>
+        <tr><td>頭取</td><td>toutou</td><td class="pos">noun</td><td>bank president, CEO</td></tr>
+        <tr><td>与信判断</td><td>yoshin handan</td><td class="pos">noun</td><td>credit judgment, lending decision</td></tr>
+        <tr><td>口座</td><td>kouza</td><td class="pos">noun</td><td>bank account</td></tr>
+        <tr><td>口座相違</td><td>kouza soui</td><td class="pos">noun</td><td>account discrepancy, mixed-up transfer</td></tr>
+        <tr><td>金庫室</td><td>kinkoshitsu</td><td class="pos">noun</td><td>vault room, safe room</td></tr>
+        <tr><td>現金</td><td>genkin</td><td class="pos">noun</td><td>cash</td></tr>
+        <tr><td>ローン</td><td>roun</td><td class="pos">noun</td><td>loan</td></tr>
+        <tr><td>融資</td><td>yuushi</td><td class="pos">noun</td><td>financing, loan (banking term)</td></tr>
+        <tr><td>変額保険</td><td>henkaku hoken</td><td class="pos">noun</td><td>variable insurance (bubble-era product)</td></tr>
+        <tr><td>破綻</td><td>hatan</td><td class="pos">noun</td><td>collapse, bankruptcy, failure</td></tr>
+        <tr><td>系列</td><td>keiretsu</td><td class="pos">noun</td><td>affiliated group, corporate family</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Crime & Investigation</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>脅迫状</td><td>kyouhakujou</td><td class="pos">noun</td><td>threatening letter</td></tr>
+        <tr><td>署名</td><td>shomei</td><td class="pos">noun</td><td>signature</td></tr>
+        <tr><td>天誅</td><td>tenchuu</td><td class="pos">noun</td><td>divine punishment, heavenly retribution</td></tr>
+        <tr><td>漏洩</td><td>rouei</td><td class="pos">noun</td><td>leakage (of information)</td></tr>
+        <tr><td>襲撃</td><td>shugeki</td><td class="pos">noun</td><td>attack, assault</td></tr>
+        <tr><td>犯行</td><td>hankou</td><td class="pos">noun</td><td>criminal act, offense</td></tr>
+        <tr><td>刑事</td><td>keiji</td><td class="pos">noun</td><td>detective, police investigator</td></tr>
+        <tr><td>死体</td><td>shitai</td><td class="pos">noun</td><td>corpse, dead body</td></tr>
+        <tr><td>横領</td><td>ouryou</td><td class="pos">noun</td><td>embezzlement, misappropriation</td></tr>
+        <tr><td>真相</td><td>shinsou</td><td class="pos">noun</td><td>truth, real facts</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Institution & Morality</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>組織</td><td>soshiki</td><td class="pos">noun</td><td>organization, institution</td></tr>
+        <tr><td>正義</td><td>seigi</td><td class="pos">noun</td><td>justice, righteousness</td></tr>
+        <tr><td>政治力</td><td>seijiryoku</td><td class="pos">noun</td><td>political power, influence</td></tr>
+        <tr><td>責任</td><td>sekinin</td><td class="pos">noun</td><td>responsibility, accountability</td></tr>
+        <tr><td>責任逃れ</td><td>sekinin nogare</td><td class="pos">noun</td><td>evasion of responsibility</td></tr>
+        <tr><td>理屈</td><td>rikutsu</td><td class="pos">noun</td><td>logic, reasoning, excuse</td></tr>
+        <tr><td>思い込み</td><td>omoikomi</td><td class="pos">noun</td><td>assumption, preconception, self-delusion</td></tr>
+        <tr><td>欲望</td><td>yokubou</td><td class="pos">noun</td><td>desire, greed, ambition</td></tr>
+        <tr><td>エスカレート</td><td>esukareeto</td><td class="pos">verb</td><td>to escalate</td></tr>
+        <tr><td>リアリティ</td><td>riariti</td><td class="pos">noun</td><td>reality, realism</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Folklore & Language</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>狐</td><td>kitsune</td><td class="pos">noun</td><td>fox; trickster figure in Japanese folklore</td></tr>
+        <tr><td>狐火</td><td>kitsunebi</td><td class="pos">noun</td><td>foxfire, will-o'-the-wisp</td></tr>
+        <tr><td>化け</td><td>bake</td><td class="pos">noun</td><td>transformation, disguise (supernatural)</td></tr>
+        <tr><td>稲荷</td><td>Inari</td><td class="pos">noun</td><td>deity of rice, fertility, foxes</td></tr>
+        <tr><td>あほ</td><td>aho</td><td class="pos">noun</td><td>fool, idiot (Kansai dialect)</td></tr>
+        <tr><td>ども</td><td>domo</td><td class="pos">suffix</td><td>pluralizing/contemptuous suffix</td></tr>
+        <tr><td>くだす</td><td>kudasu</td><td class="pos">verb</td><td>to hand down (judgment), to dispatch</td></tr>
+        <tr><td>サスペンス</td><td>sasupensu</td><td class="pos">noun</td><td>suspense</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Ikeido's prose is famously accessible — he has said that "nothing difficult sells" (<em>nankai na mono de ureru mono wa nai</em>) — but his accessibility conceals layers of institutional jargon, folkloric resonance, and tonal precision that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Tenchuu</em> (天誅) as Cosmic Vengeance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「あほどもへ <strong>てんちゅー</strong> くだす」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Divine punishment upon you fools"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Tenchuu</em> (天誅) is one of the most culturally loaded words in Japanese. It literally means "punishment from heaven" and carries the full weight of Confucian and Shinto cosmology: the belief that the universe itself punishes evil that human justice cannot reach. The word is most famously associated with the 47 Ronin, whose vendetta was retroactively legitimized as <em>tenchuu</em>. In modern usage, it appears in historical dramas and right-wing rhetoric — it is never a neutral word. The English "divine punishment" captures the dictionary meaning but misses the specific cultural resonance: <em>tenchuu</em> is not merely punishment from a deity; it is the moral order of the universe asserting itself against corruption that has escaped human judgment. When the Fox promises <em>tenchuu</em>, he is not threatening violence; he is announcing himself as the instrument of cosmic justice. The phonetic rendering <em>tenchuu</em> (てんちゅー) rather than the kanji <em>天誅</em> adds another layer: the Fox knows the word by sound and feeling, not by education — suggesting someone who has been hurt by the system rather than someone who learned about it in school.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Ahodomo</em> (あほども) as Dialectal Contempt</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「<strong>あほども</strong>へ」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"you fools"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Aho</em> (あほ) is the Kansai-dialect equivalent of <em>baka</em> (馬鹿, "fool") — but it is not identical. In Kansai, <em>aho</em> is softer, more casual, sometimes even affectionate; in Kanto (where Tokyo and the bank are located), it is harsher, more insulting. The suffix <em>-domo</em> (ども) is a pluralizer with a contemptuous edge — it turns an insult into a collective condemnation. <em>Ahodomo</em> is not "you fool" (singular) or even "you fools" (plural); it is "you pack of fools," "you contemptible fools." The dialectal displacement is crucial: a Kansai word used in a threat against a Tokyo bank suggests a specific regional grievance, possibly someone from the Kansai area who was victimized by the bank's bubble-era sales practices. The English "you fools" flattens all of this into generic insult. What is lost is the geography of anger — the sense that this vengeance has a return address.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Yoshin Handan</em> (与信判断) as Institutional Faith</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>与信判断</strong>って一体なんだ？</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"What exactly is a credit judgment?"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Yoshin</em> (与信) is a compound of <em>yo</em> (与, "to give / bestow") and <em>shin</em> (信, "trust / credit"). It means "extending credit" — the act of trusting someone with money. <em>Handan</em> (判断, "judgment / decision") adds the element of human evaluation. Together, <em>yoshin handan</em> names the quasi-religious function at the heart of banking: the decision to trust. Ikeido's question is not merely "how do banks decide to lend?" It is "what gives banks the right to believe they can judge trustworthiness?" The English "credit judgment" or "lending decision" sounds technical and neutral. The Japanese <em>yoshin handan</em> contains a moral claim — the bank is giving its trust — that Ikeido's sentence then demolishes. What is lost is the irony that an institution without prophetic ability claims the authority to predict the future, and the linguistic evidence that this authority is built into the very word for lending.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kouza Soui</em> (口座相違) as Bureaucratic Euphemism</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>口座相違</strong>が発生する</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"an account discrepancy occurs"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kouza soui</em> (口座相違) is bank-internal jargon: <em>kouza</em> (口座, "account") + <em>soui</em> (相違, "discrepancy / difference"). It is a bloodless, bureaucratic term for what is, in effect, a catastrophic error — money sent to the wrong person, a life savings redirected by a single mistyped digit. The Japanese term's very blandness is the point: banks have a vocabulary designed to minimize the human consequences of their errors. <em>Soui</em> (相違) is a formal, almost legal word — it suggests a minor inconsistency between documents, not a potentially ruinous mistake. Ikeido's story reveals that behind this euphemism lies a drama of real human consequence. The English "account discrepancy" reproduces the blandness but may not signal to the reader that this is institutional jargon with a hidden human cost. What is lost is the gap between the language of the bank and the reality of the victim — a gap that is itself one of Ikeido's central subjects.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Ginkou</em> (銀行) + <em>Kitsune</em> (狐) as Forbidden Compound</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>銀行狐</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The Bank Fox"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The compound <em>ginkou kitsune</em> does not exist in standard Japanese. It is Ikeido's invention, and its strangeness is its power. In Japanese folklore, there are <em>kori</em> (狐狸, "foxes and tanuki") — trickster creatures who deceive humans. There are <em>kitsunezuka</em> (狐塚, "fox mounds") and <em>kitsunezuka</em> (狐附き, "fox possession"). But there is no "bank fox" — the institution of trust and the creature of deception are from different worlds. The English "Bank Fox" sounds like a children's story or a mascot. The Japanese <em>ginkou kitsune</em> carries the full weight of this categorical violation: a fox has entered the vault. What is lost is the sense of taboo broken — the feeling that this compound should not exist, that its very existence is an accusation. The title does not merely name a character; it names a condition: the state of being a bank that behaves like a fox. And that, Ikeido suggests, may be the normal state of banks, not an aberration.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, key passages, and the institutional language of banking and crime.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と〜された（受身形・結果）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>To ~ sareta</em>: "was ~ed as / was given the designation of ~" — passive form indicating official classification or naming.</p>
+      <div class="grammar-example">狐と署名された脅迫状</div>
+      <p class="grammar-example-en">"a threatening letter that was signed 'Fox'" — The passive construction removes the sender from the frame, emphasizing the document and its classification over the person who created it.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜宛に（宛先）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ate ni</em>: "addressed to ~" — specifies the intended recipient, often used for formal or official correspondence.</p>
+      <div class="grammar-example">帝都銀行頭取宛に届けられた</div>
+      <p class="grammar-example-en">"was delivered addressed to the president of Teito Bank" — <em>Ate</em> (宛) is a formal word for addressee, elevating the threatening letter to the status of official business.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜って一体なんだ？（強調疑問）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Tte ittai nanda?</em>: "What on earth is ~?" — emphatic, often cynical question demanding fundamental definition.</p>
+      <div class="grammar-example">銀行の与信判断って一体なんだ？</div>
+      <p class="grammar-example-en">"What exactly is a bank's credit judgment?" — The <em>tte</em> topicalizer + <em>ittai</em> (一体) + <em>nanda</em> creates a rhetorical demolition, not a genuine inquiry.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なんてない（全面否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Nante nai</em>: "there is no such thing as ~ / ~ doesn't exist at all" — emphatic, often contemptuous negation.</p>
+      <div class="grammar-example">予知する能力なんてない</div>
+      <p class="grammar-example-en">"they don't have any ability to predict the future" — <em>Nante nai</em> dismisses the possibility with scorn, not merely stating absence but denying legitimacy.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のことか？（定義疑問）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No koto ka?</em>: "is it (the thing called) ~?" — asks whether a term applies to a specific referent, often with skeptical distance.</p>
+      <div class="grammar-example">政治力でねじ曲がるやつのことか？</div>
+      <p class="grammar-example-en">"isn't it just whatever gets twisted by political power?" — The <em>no koto</em> construction creates definitional distance: the speaker is not asserting what justice is but asking whether the word deserves its name.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ではなく、〜（対比・修正）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>De wa naku, ~</em>: "not ~, but rather ~" — corrects a misconception by presenting the true subject.</p>
+      <div class="grammar-example">組織を書くことを目的にした小説ではなく、そこで生きている人たちを書かなければ駄目だ</div>
+      <p class="grammar-example-en">"It can't be a novel about organizations; you have to write about the people living inside them" — The contrast between <em>soshiki</em> (organization) and <em>ikite iru hitotachi</em> (living people) is enacted by the grammar itself.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なければ駄目だ（強い義務）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Nakereba dame da</em>: "must ~ / have to ~" — strong obligation, leaving no room for evasion.</p>
+      <div class="grammar-example">書かなければ駄目だ</div>
+      <p class="grammar-example-en">"you have to write" — The <em>nakereba dame</em> construction is stronger than <em>nakereba naranai</em>; it is a personal, absolute statement of necessity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜までいくと（条件・閾値）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Made iku to</em>: "when it goes as far as ~ / when you push it to ~" — introduces a threshold beyond which something transforms.</p>
+      <div class="grammar-example">ある程度までいくと、政治力でねじ曲がる</div>
+      <p class="grammar-example-en">"when you take it far enough, it gets twisted by political power" — The <em>made iku</em> construction suggests a gradual process that crosses a critical line, after which the nature of the thing changes.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Ikeido's grammar is straightforward (mostly N4-N3), but his sentences achieve their power through juxtaposition rather than complexity. Pay attention to how he places technical bank jargon (<em>yoshin handan</em>, <em>kouza soui</em>) next to folkloric vocabulary (<em>kitsune</em>, <em>tenchuu</em>), and how passive constructions remove agency while obligation constructions (<em>nakereba dame</em>) assert it. His prose is a lesson in how much weight simple grammar can carry when every word has been chosen to wound or to expose.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">銀行狐 &middot; 池井戸潤 &middot; 講談社 2001（単行本）/ 2004（文庫）/ 2020（文庫新装版）</p>
+</footer>
+
+</div>
+</body>
+</html>

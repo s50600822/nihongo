@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Of All Cats, Mine — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e5df;
+            --surface: #f2f0eb;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d3830;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --warm: #6b4c35;
+            --paw: #8b7355;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,56,48,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.warm::before {
+            background: var(--warm);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.warm-box {
+            background: color-mix(in oklab, var(--warm) 8%, var(--surface));
+            border-left-color: var(--warm);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.warm-box h5 {
+            color: var(--warm);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-warm {
+            background: color-mix(in oklab, var(--warm) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-paw {
+            background: color-mix(in oklab, var(--paw) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--warm) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--warm) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Of All Cats, Mine<br><span style="font-size:0.6em; font-weight:300;">うちの猫に限って</span></h1>
+    <div class="subtitle">A Japanese lesson through Kato Yuko's ethology of the cat-obsessed heart</div>
+    <div class="meta">Ethology &middot; The doting owner &middot; What science cannot explain about love</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> I do not have direct access to the full text of this book. The passages below are pedagogical reconstructions based on verified plot summaries, reviews, and the book's established themes. They are designed to teach the vocabulary, grammar, and social context accurately, but they are not direct quotations from the book.
+</div>
+
+<p class="intro">
+    First published in 1986 by Shufu to Seikatsusha (with a later PHP Bunko edition subtitled "Funny Cat Ecology That Nobody Knows"), <em>Uchi no Neko ni Kagitte</em> is one of Kato Yuko's most beloved cat essay collections. Kato, born in 1949 in Oita Prefecture, holds a degree in biology and animal ethology from Japan Women's University. She worked at a mobile zoo and as an animal interpreter at Tama Zoo and Ueno Zoo before becoming a full-time writer in 1976. Unlike Ogihara's gentle fiction about cats healing human loneliness, Kato writes from the intersection of science and devotion: she observes cat behavior with the rigor of an ethologist and describes it with the tenderness of someone who thinks her own cats are works of art. Where Ogihara asks what gets us from one morning to the next, Kato asks why every cat owner believes, against all evidence, that their cat is unique.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of Deluded Devotion</h2>
+
+    <p>The title is built on a grammatical pattern that every Japanese cat owner will recognize instantly. It is simultaneously an expression of specialness and a confession of absurdity.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">うちの猫に限って</span>
+        </div>
+        <div class="romaji">"Uchi no neko ni kagitte."</div>
+        <div class="translation">"Of all cats, mine..." / "Only my cat would..." / "My cat, of all cats,..."</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">うち</td><td class="reading">uchi</td><td>my/our house; my/our (family, pet, etc.)</td></tr>
+        <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td></tr>
+        <tr><td class="word">限る</td><td class="reading">kagiru</td><td>to limit, to restrict; to be limited to</td></tr>
+        <tr><td class="word">〜に限って</td><td class="reading">ni kagitte</td><td>of all...; particularly; only (with irony or specialness)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The irony of 〜に限って</h5>
+        <p><strong>〜に限って (ni kagitte):</strong> This is one of the most emotionally complex grammar patterns in Japanese. On the surface, it means "of all..." or "particularly." But it carries a specific emotional valence. When a Japanese person says うちの猫に限って, they are saying "of all cats, MY cat [is the most beautiful / strange / naughty / special]." The grammar expresses both pride and self-aware absurdity. The speaker knows, on some level, that all cat owners feel this way. The pattern makes the title into a community password. If you have ever owned a cat, you recognize yourself in it immediately.</p>
+        <p>But 〜に限って has a second, darker meaning: "only [something] would [do something unexpected/bad]." 雨の日に限って出かけたくなる (of all days, it's rainy days when I want to go out). The pattern contains a note of exasperation, of Murphy's Law. So the title works in two directions at once: "Of all cats, mine is the most special" AND "Only my cat would do something this ridiculous." It is the grammar of love that cannot decide whether it is awe or complaint.</p>
+        <p><strong>うち (uchi):</strong> Not 私の (watashi no, "my"), not 我が家の (wagaya no, "our household's"), but うちの. うち is the intimate, domestic "we." It includes not just the speaker but the entire household, and by extension, the cat as a member of that household. うちの猫 is not "a cat I own." It is "the cat of our family." The word makes the cat into kin.</p>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜に限って</h5>
+        <p>Pattern: <code>Noun + に限って</code> = "Of all [noun]..." / "Particularly [noun]..." / "Only [noun]..."</p>
+        <p>This pattern selects one item from a group as exceptional, often with irony, exasperation, or doting pride. It implies that the speaker knows the general rule but believes their case is special. うちの猫に限って = "Of all cats, mine [is different/special/strange]." The grammar is the linguistic form of the doting parent, the besotted owner, the person who knows they are being irrational and says it anyway.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Subtitle: Science Meets Affection</h2>
+    <p>The PHP Bunko edition carries a subtitle that tells you exactly what kind of book this is.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">誰も知らないキャットおもしろ生態学</span>
+        </div>
+        <div class="romaji">"Dare mo shiranai kyatto omoshiroi seitaigaku."</div>
+        <div class="translation">"Funny cat ecology that nobody knows."</div>
+        <div class="source">— Subtitle (PHP Bunko edition)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">誰も知らない</td><td class="reading">dare mo shiranai</td><td>nobody knows, that no one knows</td></tr>
+        <tr><td class="word">キャット</td><td class="reading">kyatto</td><td>cat (katakana loanword, playful)</td></tr>
+        <tr><td class="word">おもしろ</td><td class="reading">omoshiro</td><td>interesting, amusing, funny</td></tr>
+        <tr><td class="word">生態学</td><td class="reading">seitaigaku</td><td>ecology, ethology (study of animal behavior in natural conditions)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The collision of registers</h5>
+        <p><strong>生態学 (seitaigaku):</strong> A formal scientific term. Ecology. Ethology. The study of how organisms relate to their environment. By putting this word in the subtitle of a cat essay book, Kato is making a claim: what I am doing is science. I am not merely gushing about my pets. I am observing them with disciplinary rigor. The word elevates the book from "cute cat stories" to "animal behavior research."</p>
+        <p><strong>キャット (kyatto):</strong> Not 猫 (neko), the native Japanese word, but キャット, the katakana loanword from English. Katakana in Japanese creates distance, playfulness, foreignness. By using キャット instead of 猫 right next to 生態学, Kato creates a deliberate register clash. Serious science (生態学) meets playful pop (キャット). The subtitle says: this book is rigorous AND fun. It will teach you real ethology, but it will not bore you.</p>
+        <p><strong>誰も知らない (dare mo shiranai):</strong> "That nobody knows." This is marketing language, the promise of secret knowledge. But in Kato's case, it is also true. As a trained ethologist, she actually knows things about cat behavior that the average owner does not. The phrase is both a come-on and a statement of professional authority.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Cat as Work of Art</h2>
+    <p>One of the book's most famous chapters declares that cats are artworks. This is not metaphor for Kato. It is a statement of ontological fact.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">猫は芸術品である</span>。抱いた猫に顔を<span class="hl-warm">ネコパンチ</span>されても、それさえも「<span class="hl-warm">たまらなく心地よい</span>」
+        </div>
+        <div class="romaji">"Neko wa geijutsuhin de aru. Daita neko ni kao wo nekopanchi saretemo, sore sae mo 'tamaranaku kokochiyoi.'"</div>
+        <div class="translation">"Cats are works of art. Even when the cat I am holding punches me in the face, even that is 'unbearably pleasant.'"</div>
+        <div class="source">— Chapter: "Cats Are Works of Art" (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">芸術品</td><td class="reading">geijutsuhin</td><td>work of art, artwork</td></tr>
+        <tr><td class="word">抱く</td><td class="reading">daku / idaku</td><td>to hold in one's arms, to embrace</td></tr>
+        <tr><td class="word">ネコパンチ</td><td class="reading">nekopanchi</td><td>cat punch (a swipe with the paw, often playful)</td></tr>
+        <tr><td class="word">たまらない</td><td class="reading">tamaranai</td><td>unbearable, irresistible, intolerably (in a good way)</td></tr>
+        <tr><td class="word">心地よい</td><td class="reading">kokochiyoi</td><td>pleasant, comfortable, agreeable</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The masochism of たまらない</h5>
+        <p><strong>芸術品 (geijutsuhin):</strong> "Work of art." The word contains 芸術 (geijutsu, art) and 品 (hin, thing/article). By calling a cat a 芸術品, Kato is saying it is not merely cute or beautiful. It is an object created for aesthetic contemplation. The declaration 猫は芸術品である uses the formal copula である (de aru), the written-language form of "is." This is not casual speech. It is a manifesto. The grammar of academic declaration is being used to describe a creature that has just punched the speaker in the face.</p>
+        <p><strong>ネコパンチ (nekopanchi):</strong> A compound of ネコ (cat) and パンチ (punch). It refers to the quick swiping motion cats make with their front paws, often playfully, sometimes with claws extended. The word is half-cute, half-violent. It is not a serious attack; it is a cat's version of a punch. When Kato gets ネコパンチされた (is cat-punched) by the very cat she is holding, the comedy is immediate: she is trying to express affection, and the cat is expressing... something else.</p>
+        <p><strong>たまらなく心地よい (tamaranaku kokochiyoi):</strong> This is the emotional core of the book. たまらない means "unbearable, intolerable, irresistible." It is a word of excess, of something so strong it cannot be borne. Combined with 心地よい (pleasant, comfortable), it creates an oxymoron: something is so pleasant it is almost painful. The grammar たまらなく + adjective is the standard way to intensify an adjective to the point of excess. When Kato says being punched in the face by her cat is たまらなく心地よい, she is describing the specific masochism of the cat owner: the willingness to reinterpret violence as affection, resistance as charm. The English "unbearably pleasant" captures the meaning but loses the self-aware comedy. She knows this is ridiculous. She is saying it anyway.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Dotting Parent: 親ばか and 猫キチ</h2>
+    <p>Reviews of this book use two words to describe Kato's relationship with her cats. Both are insults turned into badges of honor.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            この本のほうが、加藤さんの<span class="hl">猫キチ</span>・<span class="hl">親ばか</span>度がさらにアップして、まさに本のタイトル通りだ
+        </div>
+        <div class="romaji">"Kono hon no hou ga, Kato-san no nekokichi / oyabaka-do ga sara ni appu shite, masani hon no title doori da."</div>
+        <div class="translation">"In this book, Kato's cat-crazy doting-parent level goes even higher; it is exactly what the title promises."</div>
+        <div class="source">— Review, nekohon.info</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">猫キチ</td><td class="reading">nekokichi / neko-kichi</td><td>cat-crazy person, cat obsessive (slang)</td></tr>
+        <tr><td class="word">親ばか</td><td class="reading">oyabaka</td><td>doting parent, foolish parent who thinks their child is perfect</td></tr>
+        <tr><td class="word">度</td><td class="reading">do</td><td>degree, extent, level</td></tr>
+        <tr><td class="word">アップ</td><td class="reading">appu</td><td>up, increase (from English)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The pride in the insult</h5>
+        <p><strong>親ばか (oyabaka):</strong> Literally "parent fool." A parent so besotted with their child that they cannot see the child's flaws. The word is an insult used by outsiders and a term of pride used by the besotted themselves. When Kato's 親ばか度 (doting-parent degree/level) goes up in this book, the reviewer is saying she has become even more ridiculous in her devotion, and that this is a good thing. The word contains a whole Japanese sociology: the shame and pride of excessive love, the knowledge that you are being foolish and the refusal to stop.</p>
+        <p><strong>猫キチ (nekokichi / neko-kichi):</strong> From 猫 (cat) and キチ, short for 気違い (kichigai, crazy person). It is a vulgar slang term, roughly "cat lunatic." Like 親ばか, it is an insult that cat obsessives wear with pride. The word is much stronger than the English "cat person" or even "crazy cat lady." It suggests a fixation that borders on mental illness. By using this word in a review, the reviewer is acknowledging that Kato's love for cats exceeds normal bounds, and that this excess is precisely what makes her writing authentic.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Paradox of Praise</h2>
+    <p>Kato identifies a strange fact: you can praise a cat to the skies, and it never becomes cloying. The same praise directed at a human child would be grotesque.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            人間の実の子供に対して、このような<span class="hl">賛美</span>を書いたら気持ち悪いが、うちの飼い猫に対してなら、どれほど<span class="hl">賞賛</span>し<span class="hl">賛美</span>し<span class="hl">称えあげて</span>も、少しも<span class="hl">嫌み</span>にならないどころか、ほほえましく美しく感じてしまうのは何故だろう
+        </div>
+        <div class="romaji">"Ningen no jitsu no kodomo ni taishite, kono you na sanbi wo kaitara kimochi warai ga, uchi no kai neko ni taishite nara, dore hodo shousan shi sanbi shi tataeagetemo, sukoshi mo iyami ni naranai dokoroka, hohoemashiku utsukushiku kanjite shimau no wa naze darou."</div>
+        <div class="translation">"If I wrote this kind of praise about my actual human child, it would be creepy. But when it comes to my pet cat, no matter how much I praise, glorify, and exalt it, far from becoming cloying, it feels instead smilingly beautiful. Why is that?"</div>
+        <div class="source">— The paradox of cat praise (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">賛美</td><td class="reading">sanbi</td><td>praise, glorification, adoration</td></tr>
+        <tr><td class="word">賞賛</td><td class="reading">shousan</td><td>praise, admiration, acclaim</td></tr>
+        <tr><td class="word">称えあげる</td><td class="reading">tataeageru</td><td>to exalt, to praise highly, to glorify</td></tr>
+        <tr><td class="word">嫌み</td><td class="reading">iyami</td><td>unpleasantness, sarcasm, cloyingness, something in bad taste</td></tr>
+        <tr><td class="word">どころか</td><td class="reading">dokoroka</td><td>far from, quite the opposite</td></tr>
+        <tr><td class="word">ほほえましい</td><td class="reading">hohoemashii</td><td>heartwarming, smile-inducing</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The theology of cat praise</h5>
+        <p><strong>賛美 (sanbi):</strong> This is the word used for religious praise, for worship. Churches do 賛美. Hymns are 賛美歌. When Kato uses this word for her cat, she is applying the vocabulary of divine worship to a creature that has just punched her in the face. The word makes the cat into a small god, and the owner into a willing worshipper. The English "praise" is too weak. 賛美 is the language of liturgy.</p>
+        <p><strong>賞賛し賛美し称えあげても (shousan shi sanbi shi tataeagetemo):</strong> Three synonyms for praise stacked together, followed by 〜ても (even if). The grammar creates a crescendo: praise, glorify, exalt, and EVEN THEN... The repetition is performative. It enacts the very excess it describes. The cat owner cannot stop at one word of praise. They must use three, four, five. The grammar contains the obsessiveness of the 猫キチ.</p>
+        <p><strong>どころか (dokoroka):</strong> "Far from, quite the opposite." This is a powerful contrastive particle. 嫌みにならないどころか = "Far from becoming cloying, [it becomes beautiful]." The grammar creates a reversal. The more praise is heaped on the cat, the more beautiful it becomes. This is the opposite of how human praise works, where excess becomes flattery, then sarcasm, then disgust. Cats, somehow, absorb infinite praise and remain untarnished. どころか is the grammatical signature of this miracle.</p>
+        <p><strong>ほほえましい (hohoemashii):</strong> "Heartwarming, smile-inducing." From 微笑む (hohoemu), to smile gently. The word describes something that makes you smile without deciding to, something that warms you from the inside. When cat praise becomes ほほえましい, it has crossed from potential annoyance into pure affect. The word is softer than "heartwarming" suggests. It is the feeling of watching something you love being itself.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Scientific Eye: Observation That Refuses to Stop Loving</h2>
+    <p>Kato is not merely a besotted owner. She is a trained ethologist who observes her cats with scientific precision, and the tension between science and love is the book's real subject.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            猫に<span class="hl">メロメロ</span>になりながらも、きちんと<span class="hl">観察</span>しているその<span class="hl">目の確かさ</span>。教えられる所がとても多い
+        </div>
+        <div class="romaji">"Neko ni meromero ni narai nagara mo, kichinto kansatsu shite iru sono me no tashikasa. Oshierareru tokoro ga totemo ooi."</div>
+        <div class="translation">"Even while becoming completely enamored with cats, the reliability of those eyes that observe properly. There is so much to learn."</div>
+        <div class="source">— The ethologist's gaze (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">メロメロ</td><td class="reading">meromero</td><td>completely enamored, head over heels, swooning</td></tr>
+        <tr><td class="word">〜ながらも</td><td class="reading">nagara mo</td><td>even while, although (formal/concessive)</td></tr>
+        <tr><td class="word">観察</td><td class="reading">kansatsu</td><td>observation (scientific)</td></tr>
+        <tr><td class="word">確かさ</td><td class="reading">tashikasa</td><td>certainty, reliability, soundness</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of divided attention</h5>
+        <p><strong>メロメロ (meromero):</strong> An onomatopoeic word for being completely smitten, head over heels, weak in the knees. It suggests a loss of control, a melting. When you are メロメロ, you are not thinking clearly. You are overcome. The word is slightly comic, slightly self-deprecating. It admits that the speaker knows they are being irrational.</p>
+        <p><strong>〜ながらも (nagara mo):</strong> This is the formal, written-language version of 〜ながら (while). The addition of も (mo) creates a concessive: "Even while [doing A], [B is true]." It is the grammar of paradox. 猫にメメロになりながらも、観察している = "Even while becoming completely enamored with cats, she observes." The grammar insists on the simultaneity of love and science. She does not stop loving in order to observe, nor does she stop observing in order to love. The も makes this coexistence emphatic, almost defiant.</p>
+        <p><strong>目の確かさ (me no tashikasa):</strong> Literally "the certainty/reliability of the eyes." Not "she observes well" but "the reliability of her eyes." The noun化 (nominalization) makes the observing eye into a thing, a tool, an instrument. It is the language of scientific evaluation. Even as she melts with affection, her eyes remain reliable instruments. This is the ethologist's discipline.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. Cat Language: ネコ語 and the Semiotics of Meow</h2>
+    <p>Kato writes about "nekogo," the language of cats. But she knows it is not really a language. It is a system of signals designed for human manipulation.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">ネコ語</span>とは、猫が人間を<span class="hl">操る</span>ために<span class="hl">発達させた</span>音の体系である。野良猫同士では、<span class="hl">あまり鳴かない</span>
+        </div>
+        <div class="romaji">"Nekogo to wa, neko ga ningen wo ayatsuru tame ni hattatsu saseta oto no taikei de aru. Noraneko doushi de wa, amari nakanai."</div>
+        <div class="translation">"Nekogo is a system of sounds that cats developed in order to manipulate humans. Feral cats, among themselves, do not meow much."</div>
+        <div class="source">— On cat communication (from reviews/thematic reconstruction)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ネコ語</td><td class="reading">nekogo</td><td>cat language, the language of cats</td></tr>
+        <tr><td class="word">操る</td><td class="reading">ayatsuru</td><td>to manipulate, to control, to operate</td></tr>
+        <tr><td class="word">発達させる</td><td class="reading">hattatsu saseru</td><td>to cause to develop, to evolve (causative)</td></tr>
+        <tr><td class="word">体系</td><td class="reading">taikei</td><td>system, framework, structure</td></tr>
+        <tr><td class="word">鳴く</td><td class="reading">naku</td><td>to cry, to call, to make animal sounds</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The cynicism of 操る</h5>
+        <p><strong>操る (ayatsuru):</strong> "To manipulate, to control." This is a strong word. It suggests puppetry, the pulling of strings. When Kato says cats developed nekogo to 操る humans, she is making a radical claim: cats domesticated US. They evolved vocalizations specifically to trigger human responses. The word 操る contains no sentimentality. It is the cold language of power dynamics, applied to the creature the author has just called a work of art. This is the book's real brilliance: it can hold both truths at once. The cat is a manipulator AND a beloved.</p>
+        <p><strong>〜させた (saseta):</strong> The causative past of 発達する (to develop). 発達させた = "caused to develop / evolved." The causative form is crucial. It means cats actively made this happen. Nekogo did not evolve by accident. Cats shaped it. The grammar makes the cat into an agent of its own domestication, a creature that chose to communicate with humans and then refined that communication over millennia.</p>
+        <p><strong>あまり鳴かない (amari nakanai):</strong> "Do not meow much." The fact that feral cats do not meow at each other is one of the most striking findings in cat ethology. Meowing is a sound cats use almost exclusively for humans. When Kato notes this, she is delivering a scientific fact that also functions as a love letter: the cat's voice, the thing the owner finds so charming, exists because of the relationship between cat and human. Without us, the meow would barely exist.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Hiding Cat: 隠とんの術 and the Ecology of Invisibility</h2>
+    <p>The original edition's subtitle mentions ネコ的隠とんの術, the cat's art of hiding. This is ethology made into poetry.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            猫に<span class="hl">こっそりついて行く</span>と、とんでもない場所に<span class="hl">秘密基地</span>を作っていた。それが<span class="hl">ネコ的隠とんの術</span>だ
+        </div>
+        <div class="romaji">"Neko ni kossori tsuite iku to, tondemonai basho ni himitsu kichi wo tsukutte ita. Sore ga neko-teki kakuton no jutsu da."</div>
+        <div class="translation">"When I secretly followed the cat, it had made a secret base in an outrageous place. That is the cat's art of hiding."</div>
+        <div class="source">— The cat's hiding art (from reviews)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">こっそり</td><td class="reading">kossori</td><td>secretly, stealthily, furtively</td></tr>
+        <tr><td class="word">ついて行く</td><td class="reading">tsuite iku</td><td>to follow (someone)</td></tr>
+        <tr><td class="word">とんでもない</td><td class="reading">tondemonai</td><td>outrageous, unthinkable, incredible</td></tr>
+        <tr><td class="word">秘密基地</td><td class="reading">himitsu kichi</td><td>secret base, hideout</td></tr>
+        <tr><td class="word">隠とんの術</td><td class="reading">kakuton no jutsu</td><td>art of hiding (ninja/martial arts term, playful)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The ninja cat</h5>
+        <p><strong>隠とんの術 (kakuton no jutsu):</strong> From 隠れる (kakureru, to hide) and 術 (jutsu, art/technique). The word is a play on ninja terminology: 隠れ身の術 (kakuremi no jutsu, the art of hiding one's body). By applying this martial arts term to cats, Kato makes the cat into a small ninja, a master of invisibility. The word is humorous because it elevates a common cat behavior (hiding in boxes, under beds, in closets) into a disciplined technique. But it is also accurate. Cats ARE masters of hiding. Their survival in the wild depends on it.</p>
+        <p><strong>秘密基地 (himitsu kichi):</strong> "Secret base." This is the word children use for their forts and hideouts. When applied to a cat's hiding spot, it makes the cat into a child playing at espionage. The word is affectionate and slightly ridiculous. A secret base should belong to a spy or a superhero. The cat, of course, believes it is both.</p>
+        <p><strong>とんでもない場所 (tondemonai basho):</strong> "An outrageous/unthinkable place." とんでもない is one of the most useful words in Japanese. It can mean "outrageous, unthinkable, incredible, terrible, no way." When Kato discovers the cat's secret base in a とんでもない場所, she is expressing both surprise and admiration. Of course the cat chose the most improbable location. That is the point of being a cat.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Purr Decoded: 喉ゴロゴロ as Sign of Trust</h2>
+    <p>Kato the ethologist knows what the purr means. It is not merely contentment. It is a signal of security.</p>
+
+    <div class="passage warm">
+        <div class="jp-text jp">
+            <span class="hl-warm">のどゴロゴロ</span>は<span class="hl-warm">安心</span>と<span class="hl-warm">満足</span>のサインだ
+        </div>
+        <div class="romaji">"Nodo gorogoro wa anshin to manzoku no sain da."</div>
+        <div class="translation">"The throat's gorogoro is a sign of security and contentment."</div>
+        <div class="source">— On purring (from pet-sitter course material quoting Kato)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">のどゴロゴロ</td><td class="reading">nodo gorogoro</td><td>throat purring (onomatopoeia for a cat's purr)</td></tr>
+        <tr><td class="word">安心</td><td class="reading">anshin</td><td>peace of mind, security, relief</td></tr>
+        <tr><td class="word">満足</td><td class="reading">manzoku</td><td>satisfaction, contentment</td></tr>
+        <tr><td class="word">サイン</td><td class="reading">sain</td><td>sign, signal (from English)</td></tr>
+    </table>
+
+    <div class="nuance warm-box">
+        <h5>What translation loses: The semiotic purr</h5>
+        <p><strong>のどゴロゴロ (nodo gorogoro):</strong> The throat's rumble. In the previous lesson on Ogihara, we encountered ゴロゴロ as the sound that fills a room. Here Kato uses it as a technical term. The のど (throat) specifies the anatomical source. The reduplication (gorogoro) mimics the continuous vibration. When an ethologist calls this a サイン (sign), she is applying semiotics to a biological sound. The purr is not merely a noise. It is a signal with meaning: I am safe. I am with you. You may stay.</p>
+        <p><strong>安心と満足 (anshin to manzoku):</strong> "Security and contentment." These are two different states. 安心 is the absence of threat, the relaxation of vigilance. 満足 is the positive presence of satisfaction. A cat that purrs is communicating both: I no longer need to watch for danger, AND I am pleased with my current situation. The ethologist's precision is in distinguishing these two states. A cat may be 安心 (safe) without being 満足 (satisfied), or vice versa. The purr requires both.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>10. Summary: The Grammar of the Cat-Obsessed</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜に限って</strong> — Of all... / Particularly... / Only... (the grammar of specialness and exasperation)</li>
+        <li><strong>〜ながらも</strong> — Even while / Although (the grammar of holding two truths simultaneously)</li>
+        <li><strong>〜ても</strong> — Even if / Even when (the grammar of excess that does not break)</li>
+        <li><strong>〜どころか</strong> — Far from / Quite the opposite (the grammar of reversal)</li>
+        <li><strong>〜させた</strong> — Causative past (the grammar of active evolution)</li>
+        <li><strong>〜であ</strong> — Formal copula (the grammar of manifesto)</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>うちの猫に限って</strong> — The grammar of deluded devotion, the password of cat owners</li>
+        <li><strong>生態学</strong> — Science applied to the creature on your lap</li>
+        <li><strong>キャット</strong> — The katakana that makes science playful</li>
+        <li><strong>芸術品</strong> — The cat as object of worship</li>
+        <li><strong>ネコパンチ</strong> — Violence reinterpreted as charm</li>
+        <li><strong>たまらない</strong> — The masochism of excessive pleasure</li>
+        <li><strong>心地よい</strong> — Comfort that borders on pain</li>
+        <li><strong>親ばか</strong> — The pride in foolish love</li>
+        <li><strong>猫キチ</strong> — The insult worn as badge</li>
+        <li><strong>賛美</strong> — Liturgical praise applied to a purring manipulator</li>
+        <li><strong>どころか</strong> — The miracle of praise that never cloys</li>
+        <li><strong>ほほえましい</strong> — The warmth of watching what you love be itself</li>
+        <li><strong>メロメロ</strong> — The melting of rationality</li>
+        <li><strong>〜ながらも</strong> — Love and science held in one hand</li>
+        <li><strong>目の確かさ</strong> — The reliability of the besotted eye</li>
+        <li><strong>ネコ語</strong> — The language invented to manipulate us</li>
+        <li><strong>操る</strong> — The cat as puppeteer</li>
+        <li><strong>隠とんの術</strong> — The ninja art of the hiding cat</li>
+        <li><strong>秘密基地</strong> — The child's fort in an outrageous place</li>
+        <li><strong>のどゴロゴロ</strong> — The semiotics of the purr</li>
+        <li><strong>安心と満足</strong> — The two conditions of the purring cat</li>
+    </ul>
+
+    <h4>Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Seven directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方がない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special, and answers with ethology, humor, and the confession that she believes it too. Together these seven writers map the emotional and linguistic range of modern Japanese: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded as a sign of security and contentment.</p>
+</section>
+
+</main>
+
+</body>
+</html>

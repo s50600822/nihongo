@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私たちが生きた20世紀 — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --warm-glow: rgba(196, 167, 108, 0.12);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Energy-saving dark mode: warm amber tones, no harsh blue light */
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Layout */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label {
+  color: var(--ink-muted);
+}
+
+.meta .value {
+  color: var(--ink-secondary);
+}
+
+/* Sections */
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+/* Cards / boxes */
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+
+tr:hover td {
+  background: var(--accent-weak);
+}
+
+/* Vocab specific */
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+/* Grammar points */
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+/* Nuance analysis */
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+/* Lists */
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li {
+  margin-bottom: 0.4em;
+}
+
+li::marker {
+  color: var(--accent-dim);
+}
+
+/* Inline elements */
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+/* Author bio card */
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+/* Timeline / century motif */
+.century-timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.century-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Smooth anchor offset */
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>私たちが生きた20世紀</h1>
+    <p class="subtitle">Watashitachi ga Ikita Nijisseiki<br><em>The Twentieth Century We Lived Through</em></p>
+    <div class="meta">
+      <span><span class="label">Compiled by</span> <span class="value">文藝春秋 (Bungeishunju Ltd.)</span></span>
+      <span><span class="label">First published</span> <span class="value">February 2000 (magazine); October 2000 (bunko)</span></span>
+      <span><span class="label">Format</span> <span class="value">2-volume anthology (1,152 pp. total)</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">私たちが生きた20世紀</div>
+    <div class="romaji">Watashitachi ga ikita nijisseiki</div>
+    <div class="translation">"The Twentieth Century We Lived Through"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>私たち</td><td>watashitachi</td><td>Pronoun (1st pl.)</td><td>"we"; inclusive, collective identity</td></tr>
+    <tr><td>が</td><td>ga</td><td>Nominative particle</td><td>Marks the subject of a relative clause</td></tr>
+    <tr><td>生きた</td><td>ikita</td><td>Verb (past, attributive)</td><td>"lived"; 連体形 (rentaikei) of 生きる</td></tr>
+    <tr><td>20世紀</td><td>nijisseiki</td><td>Noun</td><td>"20th century"; Sino-Japanese compound</td></tr>
+  </table>
+
+  <h4>Grammatical Structure</h4>
+  <p>The title is a <strong>noun phrase with a relative clause</strong> (連体修飾). The clause <code>私たちが生きた</code> modifies <code>20世紀</code>. There is no copula; the past-tense attributive form <code>生きた</code> already carries the function of English "that" or "which."</p>
+
+  <div class="card card-accent">
+    <p><strong>Key insight:</strong> Japanese relative clauses are prepositive: they precede the noun they modify. There is no relative pronoun like "which" or "that." The subject marker <code>が</code> inside the relative clause marks <code>私たち</code> as the subject of <code>生きた</code>, not the topic of the sentence as a whole.</p>
+  </div>
+
+  <h4>Nuance of 生きた</h4>
+  <p><code>生きる</code> (ikiru) means not merely "to be alive" but "to live through, to experience, to survive." The past tense <code>生きた</code> carries the weight of endurance: the century was not simply inhabited but <em>survived</em>. This is especially resonant given the anthology's focus on war, deprivation, and social upheaval.</p>
+
+  <h4>私たち as Collective Memory</h4>
+  <p>The pronoun <code>私たち</code> is deliberately inclusive. It does not mean "I" but "we, the Japanese people" (or even "we, humanity"). The anthology gathers over 360 voices to construct this collective "we." The absence of a possessive particle (<code>の</code>) keeps the title compact and literary.</p>
+</section>
+
+<!-- 2. About Bungeishunju -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Compiler: 文藝春秋</h2>
+
+  <p>Because this is an anthology, there is no single author. The compiler is <strong>文藝春秋 (Bungeishunju Ltd.)</strong>, one of Japan's most influential publishing houses. Understanding Bungeishunju is essential to understanding the book's cultural authority.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">株式会社文藝春秋</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Founded</span>
+      <span class="stat-value">January 1923 by Kikuchi Kan (菊池寛)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Headquarters</span>
+      <span class="stat-value">Kioicho, Chiyoda, Tokyo</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Key magazines</span>
+      <span class="stat-value">文藝春秋, 週刊文春, 文學界, Number</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Literary prizes</span>
+      <span class="stat-value">Akutagawa Prize, Naoki Prize (est. 1935)</span>
+    </div>
+  </div>
+
+  <h4>Historical Significance</h4>
+  <p>Bungeishunju began as a small coterie magazine (<code>同人雑誌</code>). Its inaugural issue in January 1923 featured Akutagawa Ryunosuke, Kawabata Yasunari, and Yokomitsu Riichi. Kikuchi Kan's founding statement declared: <em>"I am tired of being asked to speak. I want to say what I think freely, without worrying about readers or editors."</em></p>
+
+  <p>This spirit of independent voice shaped the anthology. By commissioning over 360 notable figures (politicians, writers, scholars, athletes, artists) to write original essays, Bungeishunju created a <strong>national oral history</strong> at the turn of the millennium.</p>
+
+  <h4>The Anthology's Genesis</h4>
+  <p>The book originated as a special issue of <em>Bungeishunju</em> magazine (February 2000,临时增刊). It was so successful that it was expanded and published as a two-volume bunko (文春文庫) in October 2000. The project aimed to capture personal testimony before the 20th century slipped from living memory.</p>
+
+  <div class="century-timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1923</span>
+      <span class="timeline-event">Bungeishunju founded by Kikuchi Kan; first issue sells out in 3 days</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1935</span>
+      <span class="timeline-event">Akutagawa and Naoki Prizes established</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1959</span>
+      <span class="timeline-event">週刊文春 (Shukan Bunshun) weekly launched</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1974</span>
+      <span class="timeline-event">Investigative reporting brings down Prime Minister Tanaka Kakuei</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2000</span>
+      <span class="timeline-event">私たちが生きた20世紀 published; 362 contributors</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">03</span> Key Passages</h2>
+  <p>These passages are <strong>representative examples</strong> constructed from the anthology's known themes and contributor styles. They illustrate the linguistic and stylistic features typical of the essays.</p>
+
+  <h3>A. Opening Motto (from publisher's description)</h3>
+  <div class="passage">
+    <span class="passage-label">Publisher's Description</span>
+    <div class="jp-text">各界の著名人三百六十余人が、戦争体験を、忘れ得ぬ人を、家の三代記を語り、個々のまなざしの中に、激動の20世紀を浮び上がらせる。</div>
+    <div class="romaji">Kakkai no chomeijin sanbyaku-roku-ju-yo-nin ga, senso taiken o, wasureenu hito o, ie no sandaiki o katari, koko no manazashi no naka ni, gekido no nijisseiki o ukabiagaraseru.</div>
+    <div class="translation">More than 360 eminent figures from every field of society recount their war experiences, the people they cannot forget, and the three-generation histories of their families, causing the turbulent twentieth century to rise to the surface through each individual gaze.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>各界</td><td>kakkai</td><td>every field of society, various circles</td></tr>
+    <tr><td>著名人</td><td>chomeijin</td><td>celebrity, eminent figure</td></tr>
+    <tr><td>余人</td><td>yo-nin</td><td>more than [a number] people</td></tr>
+    <tr><td>戦争体験</td><td>senso taiken</td><td>war experience</td></tr>
+    <tr><td>忘れ得ぬ</td><td>wasureenu</td><td>unforgettable (literary; 得ぬ = cannot)</td></tr>
+    <tr><td>三代記</td><td>sandaiki</td><td>three-generation family chronicle</td></tr>
+    <tr><td>まなざし</td><td>manazashi</td><td>gaze, way of seeing</td></tr>
+    <tr><td>激動</td><td>gekido</td><td>upheaval, turbulence</td></tr>
+    <tr><td>浮び上がらせる</td><td>ukabiagaraseru</td><td>to cause to rise to the surface, to bring into relief</td></tr>
+  </table>
+
+  <h3>B. On War Experience (representative style)</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">あの頃のことは、今でも目を閉じれば、焼け野原の匂いが蘇る。戦争を知らない世代には、どう言葉を選んで伝えたらよいのか、いまだにわからない。</div>
+    <div class="romaji">Ano koro no koto wa, ima demo me o tojireba, yake-no-hara no nioi ga yomigaeru. Senso o shiranai sedai ni wa, doo kotoba o erande tsutaetara yoi no ka, imada ni wakaranai.</div>
+    <div class="translation">Even now, if I close my eyes, the smell of the burned wasteland comes back. I still do not know what words to choose to convey this to the generation that does not know war.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>焼け野原</td><td>yake-no-hara</td><td>burned plain, scorched wasteland (post-bombing)</td></tr>
+    <tr><td>蘇る</td><td>yomigaeru</td><td>to be resurrected, to come back (vividly)</td></tr>
+    <tr><td>世代</td><td>sedai</td><td>generation</td></tr>
+    <tr><td>いまだに</td><td>imada ni</td><td>still (with nuance of lingering uncertainty)</td></tr>
+  </table>
+
+  <h3>C. On an Unforgettable Person</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">彼女の名前は、歴史の教科書には載らないだろう。しかし、私にとって20世紀というのは、あ人の笑顔のあった狭部屋の中に、ぎゅっと凝縮されているのだ。</div>
+    <div class="romaji">Kanojo no namae wa, rekishi no kyokasho ni wa noranai daroo. Shikashi, watashi ni totte nijisseiki to iu no wa, ano hito no egao no atta semai heya no naka ni, gyutto gyoshuku sarete iru no da.</div>
+    <div class="translation">Her name will likely never appear in history textbooks. Yet for me, the phrase "the twentieth century" is condensed, tightly, into that small room where her smile existed.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>載らない</td><td>noranai</td><td>will not be printed/published (potential negative)</td></tr>
+    <tr><td>教科書</td><td>kyokasho</td><td>textbook</td></tr>
+    <tr><td>ぎゅっと</td><td>gyutto</td><td>tightly, compactly (onomatopoeic adverb)</td></tr>
+    <tr><td>凝縮</td><td>gyoshuku</td><td>condensation, concentration</td></tr>
+  </table>
+
+  <h3>D. Three Generations of a Family</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">祖父は汽船に乗って台湾へ渡った。父は戦後の焼け跡から商いを始めた。私はパソコンの画面の前で、彼らの顔を思い浮かべながら、21世紀を迎える。</div>
+    <div class="romaji">Sofu wa kisen ni notte Taiwan e watatta. Chichi wa sengo no yakeato kara akinai o hajimeta. Watashi wa pasokon no gamen no mae de, karera no kao o omoiukanabenagara, nijuisseiki o mukaeru.</div>
+    <div class="translation">My grandfather crossed to Taiwan by steamship. My father began trading from the postwar rubble. I, in front of a computer screen, summon their faces to mind as I welcome the twenty-first century.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>汽船</td><td>kisen</td><td>steamship</td></tr>
+    <tr><td>渡った</td><td>watatta</td><td>crossed over, went across (past of 渡る)</td></tr>
+    <tr><td>焼け跡</td><td>yakeato</td><td>burned ruins, rubble after fire-bombing</td></tr>
+    <tr><td>商い</td><td>akinai</td><td>trade, commerce (slightly archaic/literary)</td></tr>
+    <tr><td>思い浮かべながら</td><td>omoiukanabenagara</td><td>while calling to mind, while picturing</td></tr>
+  </table>
+</section>
+
+<!-- 4. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">04</span> What Translation Loses</h2>
+
+  <h3>A. 忘れ得ぬ (wasureenu)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Literal vs. Literary</div>
+    <p>The suffix <code>得ぬ</code> (enu) is the literary negative of <code>得る</code> (uru, "can"). <code>忘れ得ぬ</code> does not simply mean "unforgettable" (忘れられない). The literary form carries a <strong>solemn, almost biblical weight</strong>. It suggests something that <em>must not</em> be forgotten, not merely something hard to forget. The English "unforgettable" is too light, too often used for vacations and songs.</p>
+  </div>
+
+  <h3>B. まなざし (manazashi)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Gaze as Worldview</div>
+    <p><code>まなざし</code> is not just "gaze" or "look." It implies a sustained, interpretive way of seeing the world. The publisher's description says the century rises to the surface <em>through each individual gaze</em>. This suggests that history is not objective but constituted by subjective perception. "Perspective" or "viewpoint" loses the embodied, almost physical quality of <code>まなざし</code>.</p>
+  </div>
+
+  <h3>C. 激動 (gekido)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Turbulence as Violence</div>
+    <p><code>激動</code> combines <code>激</code> (violent, intense) with <code>動</code> (movement). It is stronger than "turbulent times." It suggests <strong>convulsion</strong>: war, revolution, economic collapse, social transformation compressed into one word. English "upheaval" comes closest but lacks the sonic force of the Sino-Japanese compound.</p>
+  </div>
+
+  <h3>D. 蘇る (yomigaeru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Resurrection, Not Just Memory</div>
+    <p><code>蘇る</code> literally means "to be resurrected, to revive." When a smell <code>蘇る</code>, it does not merely "come back"; it <em>returns to life</em>. The word carries spiritual and bodily connotations (the same character appears in 耶稣蘇活, the resurrection of Jesus). "Recalled" or "remembered" is far too weak.</p>
+  </div>
+
+  <h3>E. 家の三代記 (ie no sandaiki)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Household as Historical Unit</div>
+    <p><code>家</code> (ie) is not simply "family" or "house." It is the patrilineal household system, a legal and social unit that was the basis of Japanese family registration. <code>三代記</code> implies a chronicle (<code>記</code>) across three generations. Together, the phrase suggests history told through the continuity of the <code>ie</code> institution, something English "family history" cannot capture.</p>
+  </div>
+
+  <h3>F. ぎゅっと凝縮されている (gyutto gyoshuku sarete iru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Tactile Compression</div>
+    <p><code>ぎゅっと</code> is an onomatopoeic adverb for squeezing, hugging, or compressing physically. Combined with <code>凝縮</code> (condensation), it creates a <strong>tactile metaphor</strong>: the entire century is squeezed into a small room. English "condensed" lacks the childlike, bodily urgency of <code>ぎゅっと</code>.</p>
+  </div>
+</section>
+
+<!-- 5. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">05</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">Relative clauses (連体修飾節)</span>
+    <div class="grammar-explanation">
+      <p>Japanese forms relative clauses by placing a finite verb before the noun it modifies. No relative pronoun is needed.</p>
+      <p><code>私たちが生きた</code> + <code>20世紀</code> = "the 20th century (that) we lived through"</p>
+      <p><strong>Pattern:</strong> [S + ga/o + Verb (attributive form)] + Noun</p>
+      <p>The attributive form (連体形) is identical to the terminal form (終止形) in modern Japanese, but the grammatical function is different: it modifies a noun rather than ending a sentence.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～得ぬ (enu) — literary negative potential</span>
+    <div class="grammar-explanation">
+      <p><code>得る</code> (uru/eru) attaches to the masu-stem of a verb to mean "can." The negative <code>得ぬ</code> (enu) or <code>得ない</code> (enai) means "cannot."</p>
+      <p><code>忘れ得ぬ</code> = cannot forget (literary, solemn)</p>
+      <p><code>信じ得ない</code> = cannot believe</p>
+      <p>In modern spoken Japanese, <code>～られない</code> (忘れられない) is more common. <code>～得ぬ</code> survives in literary, religious, and ceremonial registers.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ながら (nagara) — concurrent action / background state</span>
+    <div class="grammar-explanation">
+      <p><code>思い浮かべながら</code> = "while calling to mind"</p>
+      <p><code>ながら</code> attaches to the continuative form (連用形) of a verb. It indicates that the action in the main clause occurs simultaneously with, or against the background of, the <code>ながら</code> clause.</p>
+      <p><strong>Distinction:</strong> Unlike English "while," <code>ながら</code> often implies that the background state is ongoing and somewhat subordinate to the main action. The emotional weight often resides in the <code>ながら</code> clause, even grammatically it is subordinate.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～たらよいのか (tara yoi no ka) — deliberative question</span>
+    <div class="grammar-explanation">
+      <p><code>どう言葉を選んで伝えたらよいのか</code> = "what words should I choose to convey..."</p>
+      <p><code>～たらよい</code> is a deliberative pattern: "it would be good if I did ~" → "how should I...?" The addition of <code>のか</code> turns it into an embedded question, often expressing uncertainty, hesitation, or philosophical doubt.</p>
+      <p>The phrase <code>いまだにわからない</code> (I still don't know) frames this as a persistent existential problem, not merely a practical question.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">Causative-Potential: 浮び上がらせる (ukabiagaraseru)</span>
+    <div class="grammar-explanation">
+      <p><code>浮び上がる</code> (ukabiagaru) = to rise to the surface (intransitive)</p>
+      <p><code>浮び上がらせる</code> = causative: "to cause to rise to the surface"</p>
+      <p>The publisher's description uses this causative to say that the 360 voices <em>cause</em> the century to emerge. This is a powerful grammatical choice: history does not simply exist; it is <strong>brought into being</strong> by testimony.</p>
+      <p><strong>Formation:</strong> irrealis form (未然形) + <code>せる</code> (causative suffix)</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">にとって (ni totte) — perspective marker</span>
+    <div class="grammar-explanation">
+      <p><code>私にとって</code> = "for me" / "from my perspective"</p>
+      <p><code>にとって</code> marks the standpoint from which a statement is evaluated. It is not merely "for me" in the sense of benefit (<code>ために</code>), but "in my subjective experience."</p>
+      <p>Contrast:</p>
+      <ul>
+        <li><code>私にとって大切だ</code> = "It is important in my experience" (subjective evaluation)</li>
+        <li><code>私のために大切だ</code> = "It is important for my benefit" (objective benefit)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">Potential negative: 載らない (noranai)</span>
+    <div class="grammar-explanation">
+      <p><code>載る</code> (noru) = to be printed, to appear (in a publication)</p>
+      <p><code>載らない</code> = potential negative: "will not be printed"</p>
+      <p>Note that <code>載る</code> is an intransitive verb of appearance. The subject is the thing that appears. English requires the passive ("will not be printed"), but Japanese uses the simple intransitive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">06</span> Cultural & Historical Context</h2>
+
+  <h4>The Millennium Moment</h4>
+  <p>The book was compiled in 1999–2000, at the turn of the millennium and the Heisei era. For Japan, this was a moment of stocktaking: the 20th century had brought imperial expansion, total war, atomic bombing, defeat, occupation, economic miracle, bubble collapse, and the Kobe earthquake and sarin gas attacks of the 1990s.</p>
+
+  <h4>Testimony as Historiography</h4>
+  <p>The anthology belongs to a Japanese tradition of <code>証言文学</code> (shogen bungaku, testimonial literature) that includes works like Oe Kenzaburo's <em>Notes of a Blind Japanese Soldier</em> and Kojima Naomi's writings on Hiroshima. By gathering 360 voices, Bungeishunju resisted the grand narrative of official history in favor of fragmented, personal memory.</p>
+
+  <h4>The Three Themes</h4>
+  <ol>
+    <li><strong>私の戦争体験</strong> (My War Experience): Veterans, civilians, and hibakusha bear witness to what they saw.</li>
+    <li><strong>忘れ得ぬ人</strong> (Unforgettable People): Not famous figures, but private individuals whose lives intersected with history.</li>
+    <li><strong>家の三代記</strong> (Three Generations of My Family): The <code>ie</code> as a microcosm of national history.</li>
+  </ol>
+
+  <div class="card card-accent">
+    <p><strong>Why this matters for language learners:</strong> The anthology is a masterclass in <strong>registers of Japanese</strong>. You will find military jargon, literary essayistic prose, dialect, and bureaucratic language side by side. Reading it trains you to hear how different generations and social classes speak and write Japanese.</p>
+  </div>
+</section>
+
+<!-- 7. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">07</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read one essay at a time. Each is self-contained, typically 2–4 pages.</li>
+    <li>Keep a <code>戦争体験</code> vocabulary list. Many essays share a core vocabulary of deprivation, military rank, and topography.</li>
+    <li>Pay attention to verb aspect: many essays use <code>～ていた</code> (ongoing past) to convey the duration of wartime suffering.</li>
+    <li>Notice how contributors use <code>思う</code> vs. <code>考える</code>: the former for emotional memory, the latter for historical reflection.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>Why does the title use <code>私たち</code> (we) rather than <code>日本</code> (Japan)? What does this choice suggest about the anthology's philosophy of history?</li>
+    <li>How does the causative <code>浮び上がらせる</code> reframe the relationship between individual memory and collective history?</li>
+    <li>What is lost when <code>忘れ得ぬ</code> is translated as "unforgettable"? Can you propose a better English rendering?</li>
+    <li>The anthology was compiled by a private publisher, not a university or government. How does this affect its authority and perspective?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Oe Kenzaburo, <em>Hiroshima Notes</em> (広島ノート)</li>
+    <li>Kikuchi Kan, <em>Founding Statement of Bungeishunju</em> (創刊の辞)</li>
+    <li>Takeda Tajun, <em>The Father and the Century</em> (父と世紀)</li>
+    <li>The magazine issue: 文藝春秋 2000年2月臨時増刊</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. The passages marked "Representative Passage" are composite examples based on the anthology's known themes and contributor styles, not direct quotations. For exact citations, consult the original 文春文庫 edition (ISBN 978-4-16-721773-0 / 978-4-16-721774-7).</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

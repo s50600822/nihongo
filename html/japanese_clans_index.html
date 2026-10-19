@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Index of Japanese Clans & Families | A Learner's Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg: #f7f4ee; --surface: #fffefb; --ink: #1e1b18; --muted: #6e665e;
+--accent: #8b2e2e; --accent-weak: color-mix(in oklab, var(--accent) 10%, var(--surface));
+--line: color-mix(in oklab, var(--ink) 10%, transparent);
+--step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+--step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+--step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+--step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+--step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+--step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+--space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+--radius: 10px;
+--shadow: 0 1px 3px rgba(0,0,0,0.05), 0 8px 24px -10px rgba(0,0,0,0.15);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Crimson Pro", "Noto Serif JP", Georgia, serif; background: var(--bg); color: var(--ink); line-height: 1.7; font-size: var(--step-0); }
+header { background: linear-gradient(160deg, #1e1b18 0%, #3d2f2f 100%); color: #f0ebe3; padding: calc(var(--space)*4) calc(var(--space)*2); text-align: center; position: relative; overflow: hidden; }
+header::before { content: ""; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+.hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+header h1 { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: calc(var(--space)*0.75); }
+.hero-kanji { font-family: "Noto Serif JP", serif; font-size: var(--step-1); color: #c9a86c; font-weight: 400; display: block; margin-top: 0.5rem; letter-spacing: 0.15em; }
+header p { font-size: var(--step-1); color: #c9bfb0; max-width: 560px; margin: 0 auto; line-height: 1.6; }
+.hero-meta { margin-top: calc(var(--space)*1.5); font-size: var(--step--1); color: #a89e90; font-style: italic; }
+nav { background: var(--surface); border-bottom: 1px solid var(--line); padding: calc(var(--space)*0.75) var(--space); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+nav a { font-family: "Noto Sans JP", sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--muted); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 100px; transition: all 0.2s ease; white-space: nowrap; }
+nav a:hover { background: var(--accent-weak); color: var(--accent); }
+main { max-width: 1100px; margin: 0 auto; padding: calc(var(--space)*2) var(--space); }
+section { margin-bottom: calc(var(--space)*3); }
+.section-header { margin-bottom: calc(var(--space)*1.5); padding-bottom: calc(var(--space)*0.75); border-bottom: 2px solid var(--accent); display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.section-header h2 { font-size: var(--step-2); font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.section-header .jp-title { font-family: "Noto Serif JP", serif; font-size: var(--step-0); color: var(--muted); font-weight: 400; }
+.section-intro { color: var(--muted); font-size: var(--step-0); margin-bottom: calc(var(--space)*1.25); max-width: 70ch; }
+.clan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: calc(var(--space)*1); }
+.clan-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: calc(var(--space)*1.1); box-shadow: var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.clan-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 16px 40px -12px rgba(0,0,0,0.18); }
+.clan-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.6rem; gap: 0.5rem; }
+.clan-name-block { flex: 1; }
+.clan-name { font-size: var(--step-1); font-weight: 700; color: var(--ink); line-height: 1.3; }
+.clan-kanji { font-family: "Noto Serif JP", serif; font-size: 1.3rem; color: var(--accent); font-weight: 700; margin-left: 0.4rem; }
+.clan-reading { font-family: "Noto Sans JP", sans-serif; font-size: 0.8rem; color: var(--muted); display: block; margin-top: 0.1rem; }
+.period-badge { font-family: "Noto Sans JP", sans-serif; font-size: 0.7rem; font-weight: 500; background: var(--accent-weak); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
+.meaning { font-size: var(--step--1); color: var(--muted); font-style: italic; margin-bottom: 0.6rem; padding: 0.35rem 0.6rem; background: #f0ece5; border-radius: 6px; border-left: 3px solid #c9a86c; }
+.clan-desc { font-size: var(--step--1); color: var(--ink); margin-bottom: 0.8rem; line-height: 1.65; }
+.famous-people { border-top: 1px dashed var(--line); padding-top: 0.7rem; }
+.famous-label { font-family: "Noto Sans JP", sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.35rem; }
+.famous-list { list-style: none; font-size: var(--step--1); }
+.famous-list li { padding: 0.15rem 0; padding-left: 1rem; position: relative; }
+.famous-list li::before { content: "◦"; position: absolute; left: 0; color: var(--accent); }
+.person-jp { font-family: "Noto Serif JP", serif; color: var(--muted); font-size: 0.85em; }
+.note-box { background: #f0ece5; border: 1px solid var(--line); border-radius: var(--radius); padding: calc(var(--space)*1); margin-bottom: calc(var(--space)*1.5); }
+.note-box h3 { font-size: var(--step-1); margin-bottom: 0.5rem; color: var(--accent); }
+.note-box p, .note-box li { font-size: var(--step--1); color: var(--muted); }
+.note-box ul { margin-left: 1.2rem; }
+.note-box li { margin-bottom: 0.3rem; }
+.era-table { width: 100%; border-collapse: collapse; font-size: var(--step--1); margin-bottom: calc(var(--space)*1.5); }
+.era-table th, .era-table td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--line); }
+.era-table th { font-family: "Noto Sans JP", sans-serif; font-weight: 600; color: var(--accent); background: var(--accent-weak); }
+.era-table td { color: var(--ink); }
+.era-table tr:hover td { background: var(--accent-weak); }
+.surname-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem; }
+.surname-item { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem 0.7rem; font-size: var(--step--1); transition: all 0.15s ease; }
+.surname-item:hover { border-color: var(--accent); box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+.surname-item .nj { font-family: "Noto Serif JP", serif; color: var(--accent); font-weight: 600; font-size: 1.05rem; }
+.surname-item .reading { font-family: "Noto Sans JP", sans-serif; color: var(--muted); font-size: 0.75rem; }
+.surname-item .name-mean { color: var(--muted); font-style: italic; font-size: 0.8rem; display: block; margin-top: 0.15rem; }
+.surname-item .name-note { color: var(--accent); font-size: 0.75rem; display: block; margin-top: 0.1rem; }
+.surname-category { font-family: "Noto Sans JP", sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin: calc(var(--space)*1.2) 0 calc(var(--space)*0.5) 0; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+.surname-count { font-family: "Noto Sans JP", sans-serif; font-size: var(--step--1); color: var(--muted); margin-bottom: calc(var(--space)*0.75); }
+footer { text-align: center; padding: calc(var(--space)*2) var(--space); border-top: 1px solid var(--line); color: var(--muted); font-size: var(--step--1); }
+@media (prefers-reduced-motion: reduce) { .clan-card, .surname-item { transition: none; } }
+@media print { body { background: #fff; } header { background: #1e1b18 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } nav { display: none; } .clan-card, .surname-item { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; } }
+@page { size: A4; margin: 15mm; }
+@media (max-width: 480px) { .clan-grid { grid-template-columns: 1fr; } .surname-grid { grid-template-columns: 1fr; } .section-header { flex-direction: column; gap: 0.25rem; } }
+</style>
+</head>
+<body>
+<header>
+<div class="hero-content">
+<h1>Index of Japanese Clans & Families
+<span class="hero-kanji">日本の氏族・家名索引</span>
+</h1>
+<p>A learner's guide to the great families of Japan: from ancient nobility and samurai warlords to modern political dynasties and everyday surnames, with meanings, readings, and famous figures.</p>
+<p class="hero-meta">Covering the Four Noble Clans, Sengoku warlords, Edo daimyo, Meiji leaders, and 200+ common family names</p>
+</div>
+</header>
+<nav>
+<div class="nav-inner">
+<a href="#four-noble">Four Noble</a>
+<a href="#ancient">Ancient</a>
+<a href="#kamakura">Kamakura</a>
+<a href="#sengoku">Sengoku</a>
+<a href="#unifiers">Unifiers</a>
+<a href="#tokugawa">Tokugawa Era</a>
+<a href="#meiji">Meiji Leaders</a>
+<a href="#common">Common Surnames</a>
+<a href="#eras">Eras</a>
+</div>
+</nav>
+<main>
+<div class="note-box">
+<h3>How to Read This Index</h3>
+<ul>
+<li><strong>Clan name</strong> is given in English, followed by the <strong>kanji</strong> and <strong>reading</strong> in hiragana/romaji.</li>
+<li><strong>Meaning</strong> explains the etymology or literal sense of the name where it is interesting or decipherable.</li>
+<li><strong>Famous people</strong> lists key historical figures with their Japanese names in kanji.</li>
+<li>Clans are grouped by historical period. The "Common Family Names" section covers names you may encounter in modern Japan.</li>
+</ul>
+</div>
+
+<!-- ===== FOUR NOBLE CLANS ===== -->
+<section id="four-noble">
+    <div class="section-header">
+        <h2>The Four Noble Clans</h2>
+        <span class="jp-title">源平藤橘 (Genpei Tōkitsu)</span>
+    </div>
+    <p class="section-intro">The Four Noble Clans (源平藤橘, <em>Genpei Tōkitsu</em>) were the most powerful aristocratic families of the Heian period (794-1185). They shaped imperial politics, produced the first shoguns, and their descendants would dominate Japanese history for a millennium.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Minamoto <span class="clan-kanji">源</span></span>
+                    <span class="clan-reading">みなもと / Minamoto</span>
+                </div>
+                <span class="period-badge">Heian</span>
+            </div>
+            <div class="meaning">"Source" or "origin" — bestowed by emperors on demoted princes</div>
+            <div class="clan-desc">The Minamoto were cadet branches of the imperial line. When an emperor fathered too many sons, some were given the surname Minamoto and removed from succession. This created a vast network of warrior-aristocrats. The Seiwa Genji branch produced Minamoto no Yoritomo, founder of the Kamakura shogunate.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Minamoto no Yoritomo <span class="person-jp">源頼朝</span> — 1st shogun</li>
+                    <li>Minamoto no Yoshitsune <span class="person-jp">源義経</span> — tragic hero</li>
+                    <li>Minamoto no Yoshiie <span class="person-jp">源義家</span> — early warlord</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Taira <span class="clan-kanji">平</span></span>
+                    <span class="clan-reading">たいら / Taira</span>
+                </div>
+                <span class="period-badge">Heian</span>
+            </div>
+            <div class="meaning">"Flat" or "peaceful" — also given to imperial offshoots</div>
+            <div class="clan-desc">Like the Minamoto, the Taira were imperial descendants given a new surname. They reached their zenith under Taira no Kiyomori, who briefly dominated the court in the late 12th century. Their defeat by the Minamoto in the Genpei War (1180-1185) is one of the great tragic narratives of Japanese history.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Taira no Kiyomori <span class="person-jp">平清盛</span> — de facto ruler</li>
+                    <li>Taira no Shigemori <span class="person-jp">平重盛</span> — Kiyomori's son</li>
+                    <li>Taira no Atsumori <span class="person-jp">平敦盛</span> — young noble, Noh subject</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Fujiwara <span class="clan-kanji">藤原</span></span>
+                    <span class="clan-reading">ふじわら / Fujiwara</span>
+                </div>
+                <span class="period-badge">Asuka–Heian</span>
+            </div>
+            <div class="meaning">"Wisteria field" — one of the most poetic clan names in Japan</div>
+            <div class="clan-desc">The Fujiwara dominated Japanese politics for over 500 years through a strategy of marrying their daughters to emperors and ruling as regents. Founded by Nakatomi no Kamatari, they were the power behind the throne through the Nara and Heian periods. Their influence declined with the rise of the samurai.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Fujiwara no Michinaga <span class="person-jp">藤原道長</span> — peak of Fujiwara power</li>
+                    <li>Fujiwara no Teika <span class="person-jp">藤原定家</span> — poet & anthologist</li>
+                    <li>Fujiwara no Hidehira <span class="person-jp">藤原秀衡</span> — Ōshū lord</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Tachibana <span class="clan-kanji">橘</span></span>
+                    <span class="clan-reading">たちばな / Tachibana</span>
+                </div>
+                <span class="period-badge">Nara–Heian</span>
+            </div>
+            <div class="meaning">"Mandarin orange" — a fragrant citrus, symbol of good fortune</div>
+            <div class="clan-desc">The smallest of the Four Noble Clans, the Tachibana were founded by Agata Inukai no Michiyo, a powerful court lady. They never achieved the dominance of the Fujiwara but remained influential aristocrats. The name Tachibana survives today as one of the most common surnames in Japan.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Tachibana no Moroe <span class="person-jp">橘諸兄</span> — 8th c. statesman</li>
+                    <li>Tachibana no Hayanari <span class="person-jp">橘逸勢</span> — calligrapher</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ANCIENT CLANS ===== -->
+<section id="ancient">
+    <div class="section-header">
+        <h2>Ancient Clans (Asuka & Nara Periods)</h2>
+        <span class="jp-title">飛鳥・奈良時代の氏族</span>
+    </div>
+    <p class="section-intro">Before the rise of the samurai, power in Japan was contested between aristocratic clans (<em>uji</em>) who served the imperial court. These families shaped Buddhism, statecraft, and early Japanese literature.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Soga <span class="clan-kanji">蘇我</span></span>
+                    <span class="clan-reading">そが / Soga</span>
+                </div>
+                <span class="period-badge">Asuka</span>
+            </div>
+            <div class="meaning">"Revive I" — obscure etymology, possibly from a place name</div>
+            <div class="clan-desc">The Soga were the first great political clan of Japan. They championed Buddhism against the native Shinto establishment and dominated the court through the 6th and 7th centuries. Their downfall came in the Isshi Incident (645), when they were assassinated by Nakatomi no Kamatari and Prince Naka no Ōe.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Soga no Umako <span class="person-jp">蘇我馬子</span> — brought Buddhism to Japan</li>
+                    <li>Soga no Iruka <span class="person-jp">蘇我入鹿</span> — assassinated in coup</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Mononobe <span class="clan-kanji">物部</span></span>
+                    <span class="clan-reading">もののべ / Mononobe</span>
+                </div>
+                <span class="period-badge">Asuka</span>
+            </div>
+            <div class="meaning">"Thing clan" — from their role as imperial arms-keepers</div>
+            <div class="clan-desc">The Mononobe were a warrior-aristocrat clan who opposed the introduction of Buddhism, defending native Shinto traditions. They were defeated by the pro-Buddhist Soga in a series of political and military clashes, marking a turning point in Japanese religious history.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Mononobe no Moriya <span class="person-jp">物部守屋</span> — anti-Buddhist leader</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Nakatomi <span class="clan-kanji">中臣</span></span>
+                    <span class="clan-reading">なかとみ / Nakatomi</span>
+                </div>
+                <span class="period-badge">Asuka</span>
+            </div>
+            <div class="meaning">"Middle retainer" — hereditary Shinto ritualists</div>
+            <div class="clan-desc">The Nakatomi were one of the most ancient Shinto priestly families. Nakatomi no Kamatari led the coup that overthrew the Soga and was rewarded with the new surname Fujiwara, founding the greatest aristocratic clan in Japanese history.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Nakatomi no Kamatari <span class="person-jp">中臣鎌足</span> — founder of Fujiwara</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ōtomo <span class="clan-kanji">大伴</span></span>
+                    <span class="clan-reading">おおともの / Ōtomo</span>
+                </div>
+                <span class="period-badge">Nara</span>
+            </div>
+            <div class="meaning">"Great companion" — imperial military retainers</div>
+            <div class="clan-desc">The Ōtomo were an ancient military clan who served as imperial guards and generals. Ōtomo no Yakamochi is traditionally credited as the final compiler of the Man'yōshū, Japan's oldest anthology of poetry. The clan declined in the Heian period.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ōtomo no Yakamochi <span class="person-jp">大伴家持</span> — Man'yōshū compiler</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ōe <span class="clan-kanji">大江</span></span>
+                    <span class="clan-reading">おおえ / Ōe</span>
+                </div>
+                <span class="period-badge">Nara–Heian</span>
+            </div>
+            <div class="meaning">"Great bay" — from a geographic origin</div>
+            <div class="clan-desc">The Ōe were a scholarly aristocratic family known for their learning in Chinese classics. Ōe no Masafusa and Ōe no Yasunori were prominent scholars. The name survives in the modern writer Ōe Kenzaburō, though he is not directly descended from this clan.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ōe no Masafusa <span class="person-jp">大江匡房</span> — scholar & statesman</li>
+                    <li>Ōe no Kenzaburō <span class="person-jp">大江健三郎</span> — Nobel laureate (namesake)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Sugawara <span class="clan-kanji">菅原</span></span>
+                    <span class="clan-reading">すがわら / Sugawara</span>
+                </div>
+                <span class="period-badge">Heian</span>
+            </div>
+            <div class="meaning">"Sedge plain" — from a type of marsh grass</div>
+            <div class="clan-desc">The Sugawara were a scholarly clan who produced generations of imperial tutors and diplomats. Sugawara no Michizane was deified as Tenjin, the god of learning, after being unjustly exiled. Today, students pray at Tenjin shrines before exams.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Sugawara no Michizane <span class="person-jp">菅原道真</span> — deified scholar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== KAMAKURA / MUROMACHI ===== -->
+<section id="kamakura">
+    <div class="section-header">
+        <h2>Kamakura & Muromachi Shogunal Clans</h2>
+        <span class="jp-title">鎌倉・室町幕府の氏族</span>
+    </div>
+    <p class="section-intro">The Kamakura (1185-1333) and Muromachi (1336-1573) shogunates were dominated by warrior clans who controlled Japan through military might while maintaining a facade of imperial legitimacy.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Hōjō <span class="clan-kanji">北条</span></span>
+                    <span class="clan-reading">ほうじょう / Hōjō</span>
+                </div>
+                <span class="period-badge">Kamakura</span>
+            </div>
+            <div class="meaning">"North line" — from a place in Izu Province</div>
+            <div class="clan-desc">The Hōjō were the hereditary regents (<em>shikken</em>) of the Kamakura shogunate, effectively ruling Japan while the Minamoto shoguns served as figureheads. They established a sophisticated system of vassal control and survived until their destruction by the restorationist Emperor Go-Daigo.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Hōjō Tokimune <span class="person-jp">北条時宗</span> — repelled Mongol invasion</li>
+                    <li>Hōjō Masako <span class="person-jp">北条政子</span> — "nun shogun," power behind throne</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ashikaga <span class="clan-kanji">足利</span></span>
+                    <span class="clan-reading">あしかが / Ashikaga</span>
+                </div>
+                <span class="period-badge">Muromachi</span>
+            </div>
+            <div class="meaning">"Foot/leg profit" — from a place in Shimotsuke</div>
+            <div class="clan-desc">The Ashikaga were a branch of the Minamoto who established the Muromachi shogunate after overthrowing the Kenmu Restoration. Their era is famous for the development of Zen Buddhism, Noh theater, and tea ceremony, but also for the Ōnin War which plunged Japan into the Sengoku chaos.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ashikaga Takauji <span class="person-jp">足利尊氏</span> — founder of shogunate</li>
+                    <li>Ashikaga Yoshimitsu <span class="person-jp">足利義満</span> — Kitayama golden age</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Hosokawa <span class="clan-kanji">細川</span></span>
+                    <span class="clan-reading">ほそかわ / Hosokawa</span>
+                </div>
+                <span class="period-badge">Muromachi–Present</span>
+            </div>
+            <div class="meaning">"Narrow river" — from a geographic feature</div>
+            <div class="clan-desc">The Hosokawa were one of the most powerful Ashikaga vassal clans, serving as kanrei (deputy shoguns). They survived the Sengoku period, became daimyo of Kumamoto, and produced a prime minister (Hosokawa Morihiro) in the 1990s. They are also famous for their exquisite <em>shodō</em> (calligraphy) and <em>chadō</em> (tea ceremony) traditions.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Hosokawa Katsumoto <span class="person-jp">細川勝元</span> — Ōnin War leader</li>
+                    <li>Hosokawa Gracia <span class="person-jp">細川ガラシャ</span> — Christian convert</li>
+                    <li>Hosokawa Morihiro <span class="person-jp">細川護熙</span> — PM (1993-94)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Yamana <span class="clan-kanji">山名</span></span>
+                    <span class="clan-reading">やまな / Yamana</span>
+                </div>
+                <span class="period-badge">Muromachi</span>
+            </div>
+            <div class="meaning">"Mountain name" — from a place in Harima</div>
+            <div class="clan-desc">The Yamana were a powerful Muromachi-era clan who once controlled half of Japan's provinces. Their rivalry with the Hosokawa triggered the devastating Ōnin War (1467-1477), which destroyed Kyoto and ushered in the Sengoku period.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Yamana Sōzen <span class="person-jp">山名宗全</span> — Ōnin War leader</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SENGOKU WARLORDS ===== -->
+<section id="sengoku">
+    <div class="section-header">
+        <h2>Sengoku Period Warlords</h2>
+        <span class="jp-title">戦国大名</span>
+    </div>
+    <p class="section-intro">The Sengoku period (1467-1615) was an era of near-constant civil war. Powerful regional lords (<em>daimyō</em>) fought for control of Japan, producing some of the most famous names in samurai history.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Takeda <span class="clan-kanji">武田</span></span>
+                    <span class="clan-reading">たけだ / Takeda</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Warrior field" — fitting for a samurai clan</div>
+            <div class="clan-desc">The Takeda of Kai Province were one of the most feared military clans of the Sengoku period. Under Takeda Shingen, they developed the famous Takeda cavalry and nearly conquered all of eastern Japan. Their rivalry with Uesugi Kenshin at Kawanakajima is legendary.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Takeda Shingen <span class="person-jp">武田信玄</span> — "Tiger of Kai"</li>
+                    <li>Takeda Katsuyori <span class="person-jp">武田勝頼</span> — last Takeda lord</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Uesugi <span class="clan-kanji">上杉</span></span>
+                    <span class="clan-reading">うえすぎ / Uesugi</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Upper cedar" — from a place in Tōtōmi</div>
+            <div class="clan-desc">The Uesugi were originally from Tōtōmi but became powerful in Echigo Province. Uesugi Kenshin, known as the "Dragon of Echigo," was one of the greatest generals of the era. The clan later adopted the name through the Nagao-Uesugi succession.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Uesugi Kenshin <span class="person-jp">上杉謙信</span> — "Dragon of Echigo"</li>
+                    <li>Uesugi Kagekatsu <span class="person-jp">上杉景勝</span> — adopted heir</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Date <span class="clan-kanji">伊達</span></span>
+                    <span class="clan-reading">だて / Date</span>
+                </div>
+                <span class="period-badge">Sengoku–Edo</span>
+            </div>
+            <div class="meaning">"Achieve/reach" — from a place in Mutsu</div>
+            <div class="clan-desc">The Date ruled the rugged Tōhoku region from Sendai. Date Masamune, the "One-Eyed Dragon," was known for his ambition, pragmatism, and early support for foreign trade. The Date survived into the Edo period as daimyo of Sendai.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Date Masamune <span class="person-jp">伊達政宗</span> — "One-Eyed Dragon"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Sanada <span class="clan-kanji">真田</span></span>
+                    <span class="clan-reading">さなだ / Sanada</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"True field" — from a place in Shinano</div>
+            <div class="clan-desc">The Sanada were a relatively small clan from Shinano who became legendary for their tenacity. Sanada Yukimura's heroic last stand at Osaka Castle made him a symbol of loyalty in Japanese popular culture. Their castle of Ueda withstood two sieges by the Tokugawa.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Sanada Yukimura <span class="person-jp">真田幸村</span> — "Crimson Demon"</li>
+                    <li>Sanada Nobuyuki <span class="person-jp">真田信之</span> — survivor, Edo daimyo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Mōri <span class="clan-kanji">毛利</span></span>
+                    <span class="clan-reading">もうり / Mōri</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Fur/hair" — from a place in Sagami</div>
+            <div class="clan-desc">The Mōri rose from minor status to control much of western Japan under Mōri Motonari, who famously taught his three sons to cooperate like three arrows that cannot be broken together. They were powerful allies of Toyotomi Hideyoshi.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Mōri Motonari <span class="person-jp">毛利元就</span> — "three arrows" strategist</li>
+                    <li>Mōri Terumoto <span class="person-jp">毛利輝元</span> — Western Army leader</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Shimazu <span class="clan-kanji">島津</span></span>
+                    <span class="clan-reading">しまづ / Shimazu</span>
+                </div>
+                <span class="period-badge">Sengoku–Edo</span>
+            </div>
+            <div class="meaning">"Island inlet" — from a place in Kyūshū</div>
+            <div class="clan-desc">The Shimazu were one of the oldest and most resilient daimyo families, ruling Satsuma in southern Kyūshū for nearly 700 years. They were among the first to use firearms in Japan and later played a central role in the Meiji Restoration.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Shimazu Yoshihisa <span class="person-jp">島津久</span> — unified Kyūshū</li>
+                    <li>Shimazu Yoshihiro <span class="person-jp">島津義弘</span> — Sekigahara commander</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Chōsokabe <span class="clan-kanji">長宗我部</span></span>
+                    <span class="clan-reading">ちょうそかべ / Chōsokabe</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Long clan I part" — complex name from a place in Tosa</div>
+            <div class="clan-desc">The Chōsokabe unified the island of Shikoku under Chōsokabe Motochika, who started as a minor lord and conquered the entire island. They were later reduced by Toyotomi Hideyoshi, who allowed them to keep only Tosa Province.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Chōsokabe Motochika <span class="person-jp">長宗我部元親</span> — "Conqueror of Shikoku"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Amago <span class="clan-kanji">尼子</span></span>
+                    <span class="clan-reading">あまご / Amago</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Nun child" — from a legendary ancestor who was a nun's son</div>
+            <div class="clan-desc">The Amago were a powerful clan from Izumo (modern Shimane) who once controlled much of the San'in region. Their rise and fall was rapid: they went from minor retainers to regional hegemons, then collapsed under pressure from the Mōri.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Amago Tsunehisa <span class="person-jp">尼子経久</span> — founder of Amago power</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Azai <span class="clan-kanji">浅井</span></span>
+                    <span class="clan-reading">あざい / Azai</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Shallow well" — from a place in Ōmi</div>
+            <div class="clan-desc">The Azai were a clan from northern Ōmi who allied with Oda Nobunaga through marriage, then betrayed him to join the anti-Oda alliance. Their tragic story, including the fate of Azai Nagamasa's wife Oichi (Nobunaga's sister), is a staple of Sengoku drama.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Azai Nagamasa <span class="person-jp">浅井長政</span> — tragic daimyo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Asakura <span class="clan-kanji">朝倉</span></span>
+                    <span class="clan-reading">あさくら / Asakura</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Morning warehouse" — from a place in Echizen</div>
+            <div class="clan-desc">The Asakura were cultured daimyo of Echizen who maintained close ties with the imperial court and Kyoto aristocracy. They were destroyed by Oda Nobunaga, who burned their capital of Ichijōdani, a tragedy that preserved a snapshot of Sengoku-era town life.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Asakura Yoshikage <span class="person-jp">朝倉義景</span> — last Asakura lord</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Saitō <span class="clan-kanji">斎藤</span></span>
+                    <span class="clan-reading">さいとう / Saitō</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Purified wisteria" — from a place in Mino</div>
+            <div class="clan-desc">The Saitō were originally retainers of the Toki who seized power in Mino Province. Saitō Dōsan, a ruthless oil merchant turned daimyo, was known as the "Viper of Mino." His son-in-law was Oda Nobunaga, making this one of the most dramatic in-law relationships in Japanese history.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Saitō Dōsan <span class="person-jp">斎藤道三</span> — "Viper of Mino"</li>
+                    <li>Saitō Toshimitsu <span class="person-jp">斎藤利三</span> — Akechi retainer</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Imagawa <span class="clan-kanji">今川</span></span>
+                    <span class="clan-reading">いまがわ / Imagawa</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Now river" — from a place in Suruga</div>
+            <div class="clan-desc">The Imagawa were a prestigious clan claiming Ashikaga descent who ruled Suruga, Tōtōmi, and Mikawa. Imagawa Yoshimoto was the most powerful daimyo in eastern Japan until his shocking defeat and death at Okehazama (1560) at the hands of the young Oda Nobunaga.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Imagawa Yoshimoto <span class="person-jp">今川義元</span> — killed at Okehazama</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Hōjō (Go-Hōjō) <span class="clan-kanji">後北条</span></span>
+                    <span class="clan-reading">ごほうじょう / Go-Hōjō</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Later Hōjō" — unrelated to the Kamakura Hōjō</div>
+            <div class="clan-desc">The Go-Hōjō were originally the Ise family who adopted the prestigious Hōjō name. They built a powerful domain in the Kantō region around Odawara Castle. Their five-generation rule ended with their destruction by Toyotomi Hideyoshi in 1590.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Hōjō Sōun <span class="person-jp">北条早雲</span> — founder</li>
+                    <li>Hōjō Ujiyasu <span class="person-jp">北条氏康</span> — "Lion of Sagami"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Rokkaku <span class="clan-kanji">六角</span></span>
+                    <span class="clan-reading">ろっかく / Rokkaku</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Hexagon" — from a place shaped like a hexagon</div>
+            <div class="clan-desc">The Rokkaku were an ancient aristocratic clan from Ōmi who claimed descent from the Sasaki, a branch of the Minamoto. They were shugo daimyo who struggled to maintain their position against the rising Oda and were eventually reduced to minor status.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Rokkaku Yoshikata <span class="person-jp">六角義賢</span> — survived the Sengoku</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Mogami <span class="clan-kanji">最上</span></span>
+                    <span class="clan-reading">もがみ / Mogami</span>
+                </div>
+                <span class="period-badge">Sengoku–Edo</span>
+            </div>
+            <div class="meaning">"Most upper" — from a place in Dewa</div>
+            <div class="clan-desc">The Mogami ruled Dewa Province in the Tōhoku region. Mogami Yoshiaki expanded their territory significantly and survived into the Edo period, though they were later dispossessed. The Mogami River is one of Japan's fastest-flowing rivers.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Mogami Yoshiaki <span class="person-jp">最上義光</span> — Tōhoku daimyo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ōtomo (Kyūshū) <span class="clan-kanji">大友</span></span>
+                    <span class="clan-reading">おおとも / Ōtomo</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Great friend" — from a place in Bungo</div>
+            <div class="clan-desc">The Ōtomo were one of the great clans of Kyūshū, early adopters of Christianity and Western firearms. Ōtomo Sōrin was baptized as a Christian and encouraged trade with Portugal. They were eventually overwhelmed by the Shimazu.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ōtomo Sōrin <span class="person-jp">大友宗麟</span> — Christian daimyo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ryūzōji <span class="clan-kanji">龍造寺</span></span>
+                    <span class="clan-reading">りゅうぞうじ / Ryūzōji</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Dragon create temple" — from a place in Hizen</div>
+            <div class="clan-desc">The Ryūzōji were a Kyūshū clan who briefly controlled much of the island before being supplanted by the Shimazu and absorbed into the Toyotomi order. They were known for their early use of firearms.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ryūzōji Takanobu <span class="person-jp">龍造寺隆信</span> — "Bear of Hizen"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Tsutsui <span class="clan-kanji">筒井</span></span>
+                    <span class="clan-reading">つつい / Tsutsui</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Cylinder well" — from a well shaped like a pipe/cylinder</div>
+            <div class="clan-desc">The Tsutsui were a clan from Yamato Province (modern Nara) who controlled the area around the ancient capital. They were caught between the rising Oda and the militant Buddhist monks of Kōfuku-ji. Tsutsui Junkei is remembered for being the first to enter Honnō-ji after Nobunaga's death.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Tsutsui Junkei <span class="person-jp">筒井順慶</span> — Yamato daimyo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== THREE UNIFIERS ===== -->
+<section id="unifiers">
+    <div class="section-header">
+        <h2>The Three Unifiers of Japan</h2>
+        <span class="jp-title">天下人 — 三英傑</span>
+    </div>
+    <p class="section-intro">Three men ended the Sengoku chaos and unified Japan: Oda Nobunaga broke the old order, Toyotomi Hideyoshi completed the conquest, and Tokugawa Ieyasu established 250 years of peace.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Oda <span class="clan-kanji">織田</span></span>
+                    <span class="clan-reading">おだ / Oda</span>
+                </div>
+                <span class="period-badge">Sengoku</span>
+            </div>
+            <div class="meaning">"Weave field" — from a place in Echizen</div>
+            <div class="clan-desc">The Oda were a minor clan from Owari Province who rose to dominate Japan under Oda Nobunaga. His innovative tactics, ruthless efficiency, and embrace of firearms shattered the old samurai order. He was betrayed and forced to commit suicide at Honnō-ji by Akechi Mitsuhide in 1582.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Oda Nobunaga <span class="person-jp">織田信長</span> — "Demon King," first unifier</li>
+                    <li>Oda Nobutada <span class="person-jp">織田信忠</span> — heir, died at Honnō-ji</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Toyotomi <span class="clan-kanji">豊臣</span></span>
+                    <span class="clan-reading">とよとみ / Toyotomi</span>
+                </div>
+                <span class="period-badge">Azuchi-Momoyama</span>
+            </div>
+            <div class="meaning">"Abundant retainer" — an imperial-bestowed surname</div>
+            <div class="clan-desc">Toyotomi Hideyoshi was born a peasant named Kinoshita Tōkichirō. He rose through sheer ability to become Nobunaga's top general, then completed the unification of Japan after Nobunaga's death. The emperor granted him the surname Toyotomi, making him one of the few non-aristocrats to receive such an honor.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Toyotomi Hideyoshi <span class="person-jp">豊臣秀吉</span> — "Taikō," second unifier</li>
+                    <li>Toyotomi Hidetsugu <span class="person-jp">豊臣秀次</span> — nephew & heir</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Tokugawa <span class="clan-kanji">徳川</span></span>
+                    <span class="clan-reading">とくがわ / Tokugawa</span>
+                </div>
+                <span class="period-badge">Edo</span>
+            </div>
+            <div class="meaning">"Virtue river" — adopted for its auspicious meaning</div>
+            <div class="clan-desc">Originally the Matsudaira of Mikawa, Tokugawa Ieyasu changed his surname after claiming descent from the Seiwa Genji Minamoto. He waited patiently while Nobunaga and Hideyoshi did the hard work of unification, then seized power at Sekigahara (1600) and established the Tokugawa shogunate that ruled Japan for 268 years.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Tokugawa Ieyasu <span class="person-jp">徳川家康</span> — founder of shogunate</li>
+                    <li>Tokugawa Hidetada <span class="person-jp">徳川秀忠</span> — 2nd shogun</li>
+                    <li>Tokugawa Tsunayoshi <span class="person-jp">徳川綱吉</span> — "Dog Shogun"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TOKUGAWA ERA ===== -->
+<section id="tokugawa">
+    <div class="section-header">
+        <h2>Tokugawa-Era Daimyo Clans</h2>
+        <span class="jp-title">江戸時代の大名氏族</span>
+    </div>
+    <p class="section-intro">Under the Tokugawa shogunate (1603-1868), Japan was divided into domains (<em>han</em>) ruled by daimyo. These clans formed the backbone of the bakuhan system and many survived into the modern era as prominent families.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Matsudaira <span class="clan-kanji">松平</span></span>
+                    <span class="clan-reading">まつだいら / Matsudaira</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Pine flat" — Tokugawa Ieyasu's original surname</div>
+            <div class="clan-desc">The Matsudaira were the original clan of Tokugawa Ieyasu. After he changed his name to Tokugawa, many branches retained the Matsudaira name as cadet houses. They formed a vast network of related daimyo across Japan, including the Matsudaira of Aizu and Echizen.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Matsudaira Katamori <span class="person-jp">松平容保</span> — Aizu lord, Boshin War</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Maeda <span class="clan-kanji">前田</span></span>
+                    <span class="clan-reading">まえだ / Maeda</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Front field" — from a place in Owari</div>
+            <div class="clan-desc">The Maeda were the richest <em>tozama</em> (outside) daimyo, ruling Kaga Province (modern Ishikawa) with over one million <em>koku</em> of rice revenue. Maeda Toshiie was one of Toyotomi Hideyoshi's top generals and his family wisely submitted to the Tokugawa early, preserving their vast domain.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Maeda Toshiie <span class="person-jp">前田利家</span> — Toyotomi general</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Kuroda <span class="clan-kanji">黒田</span></span>
+                    <span class="clan-reading">くろだ / Kuroda</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Black field" — from a place in Harima</div>
+            <div class="clan-desc">The Kuroda were granted Fukuoka Domain in Kyūshū for their service to Toyotomi Hideyoshi and Tokugawa Ieyasu. Kuroda Kanbei (Yoshitaka) was one of the most brilliant strategists of the Sengoku period, surviving imprisonment and torture to serve three unifiers.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Kuroda Kanbei <span class="person-jp">黒田官兵衛</span> — strategist</li>
+                    <li>Kuroda Nagamasa <span class="person-jp">黒田長政</span> — Fukuoka daimyo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ii <span class="clan-kanji">井伊</span></span>
+                    <span class="clan-reading">いい / Ii</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Well I" — from a place in Tōtōmi</div>
+            <div class="clan-desc">The Ii were hereditary <em>fudai</em> (insider) daimyo who served as regents for the Tokugawa. Ii Naomasa was one of the Tokugawa Shitennō (Four Heavenly Kings). Ii Naosuke, as regent in the 1850s, signed the Harris Treaty and was assassinated, triggering the end of the shogunate.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ii Naomasa <span class="person-jp">井伊直政</span> — Tokugawa general</li>
+                    <li>Ii Naosuke <span class="person-jp">井伊直弼</span> — assassinated regent</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Sakai <span class="clan-kanji">酒井</span></span>
+                    <span class="clan-reading">さかい / Sakai</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Alcohol well" — from a place in Mikawa</div>
+            <div class="clan-desc">The Sakai were a prominent <em>fudai</em> daimyo family who served the Tokugawa from their earliest days in Mikawa. They held important posts including <em>rōjū</em> (elder council) positions and ruled domains including Matsushiro and Himeji.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Sakai Tadatsugu <span class="person-jp">酒井忠次</span> — Tokugawa Shitennō</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Honda <span class="clan-kanji">本多</span></span>
+                    <span class="clan-reading">ほんだ / Honda</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Root many" — from a place in Mikawa</div>
+            <div class="clan-desc">The Honda were one of the most trusted Tokugawa retainer families. Honda Tadakatsu was considered one of the greatest warriors of his generation, never having been wounded in over 100 battles. The Honda served the Tokugawa through the entire Edo period.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Honda Tadakatsu <span class="person-jp">本多忠勝</span> — "Warrior who surpassed death"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Nabeshima <span class="clan-kanji">鍋島</span></span>
+                    <span class="clan-reading">なべしま / Nabeshima</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Pot island" — from a place in Hizen</div>
+            <div class="clan-desc">The Nabeshima ruled Saga Domain in Kyūshū and are famous for their exquisite porcelain, known as Imari or Arita ware. They were originally retainers of the Ryūzōji who inherited their domain. Nabeshima Naomasa was a progressive daimyo who modernized Saga.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Nabeshima Naomasa <span class="person-jp">鍋島直正</span> — modernizing daimyo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Katō <span class="clan-kanji">加藤</span></span>
+                    <span class="clan-reading">かとう / Katō</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Add wisteria" — from a place in Owari</div>
+            <div class="clan-desc">The Katō were a samurai clan who served under Toyotomi Hideyoshi. Katō Kiyomasa was known as a fierce warrior and castle-builder who constructed Kumamoto Castle. He was also a devout Nichiren Buddhist and persecuted Christians in his domain.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Katō Kiyomasa <span class="person-jp">加藤清正</span> — "Demon of the East"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Asano <span class="clan-kanji">浅野</span></span>
+                    <span class="clan-reading">あさの / Asano</span>
+                </div>
+                <span class="period-badge">Tokugawa</span>
+            </div>
+            <div class="meaning">"Shallow field" — from a place in Mikawa</div>
+            <div class="clan-desc">The Asano are most famous for the story of the 47 Rōnin. Asano Naganori was forced to commit <em>seppuku</em> after attacking Kira Yoshinaka in Edo Castle. His retainers, led by Ōishi Yoshio, avenged him and became national symbols of loyalty.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Asano Naganori <span class="person-jp">浅野長矩</span> — lord of 47 Rōnin</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MEIJI LEADERS ===== -->
+<section id="meiji">
+    <div class="section-header">
+        <h2>Meiji Restoration Leaders</h2>
+        <span class="jp-title">明治維新の指導者</span>
+    </div>
+    <p class="section-intro">The Meiji Restoration (1868) overthrew the Tokugawa shogunate and transformed Japan into a modern nation-state. These clans and families produced the leaders who guided Japan through this revolutionary transition.</p>
+    <div class="clan-grid">
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Saigō <span class="clan-kanji">西郷</span></span>
+                    <span class="clan-reading">さいごう / Saigō</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"West hometown" — from a place in Satsuma</div>
+            <div class="clan-desc">The Saigō were a low-ranking samurai family from Satsuma who produced one of the most iconic figures in Japanese history. Saigō Takamori led the forces that overthrew the shogunate, then rebelled against the new government in the Satsuma Rebellion (1877), becoming the "Last Samurai" of popular legend.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Saigō Takamori <span class="person-jp">西郷隆盛</span> — "Last Samurai"</li>
+                    <li>Saigō Tsugumichi <span class="person-jp">西郷従道</span> — admiral & politician</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ōkubo <span class="clan-kanji">大久保</span></span>
+                    <span class="clan-reading">おおくぼ / Ōkubo</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"Great long preserve" — from a place in Satsuma</div>
+            <div class="clan-desc">The Ōkubo were a samurai family from Satsuma who produced one of the "Three Great Nobles of the Restoration." Ōkubo Toshimichi was the most powerful figure in early Meiji Japan, overseeing the abolition of feudal domains and the creation of prefectures. He was assassinated in 1878 by disaffected samurai.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ōkubo Toshimichi <span class="person-jp">大久保利通</span> — "Iron Chancellor"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Kido <span class="clan-kanji">木戸</span></span>
+                    <span class="clan-reading">きど / Kido</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"Tree door" — from a place in Chōshū</div>
+            <div class="clan-desc">Kido Takayoshi, born Katsura Kogorō, was the third of the "Three Great Nobles." From Chōshū, he helped forge the Satchō Alliance that overthrew the shogunate. As a Meiji leader, he advocated for a constitutional government and civil rights.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Kido Takayoshi <span class="person-jp">木戸孝允</span> — Restoration noble</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Itō <span class="clan-kanji">伊藤</span></span>
+                    <span class="clan-reading">いとう / Itō</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"That wisteria" — from a place in Chōshū</div>
+            <div class="clan-desc">Itō Hirobumi, born into a low-ranking samurai family in Chōshū, became Japan's first prime minister and the principal author of the Meiji Constitution. He studied in England, served as Resident-General of Korea, and was assassinated by a Korean nationalist in 1909.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Itō Hirobumi <span class="person-jp">伊藤博文</span> — 1st PM of Japan</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Yamagata <span class="clan-kanji">山縣</span></span>
+                    <span class="clan-reading">やまがた / Yamagata</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"Mountain county" — from a place in Chōshū</div>
+            <div class="clan-desc">Yamagata Aritomo was the founder of the modern Imperial Japanese Army and one of the most powerful genrō (elder statesmen). He served twice as prime minister and established the military's political independence through the Imperial Rescript to Soldiers and Sailors.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Yamagata Aritomo <span class="person-jp">山縣有朋</span> — army founder</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Ōkuma <span class="clan-kanji">大隈</span></span>
+                    <span class="clan-reading">おおくま / Ōkuma</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"Great corner" — from a place in Hizen</div>
+            <div class="clan-desc">Ōkuma Shigenobu was a progressive statesman from Saga who founded Waseda University, one of Japan's top private universities. He served twice as prime minister and was a key figure in the Freedom and People's Rights Movement, advocating for parliamentary democracy.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Ōkuma Shigenobu <span class="person-jp">大隈重信</span> — Waseda founder</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Itagaki <span class="clan-kanji">板垣</span></span>
+                    <span class="clan-reading">いたがき / Itagaki</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"Plank fence" — from a place in Tosa</div>
+            <div class="clan-desc">Itagaki Taisuke was a samurai from Tosa who became the leader of the Freedom and People's Rights Movement, Japan's first major democratic political movement. His famous cry "Itagaki may die, but freedom never will!" after surviving an assassination attempt became a rallying cry for democracy.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Itagaki Taisuke <span class="person-jp">板垣退助</span> — "father of democracy"</li>
+                </ul>
+            </div>
+        </div>
+        <div class="clan-card">
+            <div class="clan-card-header">
+                <div class="clan-name-block">
+                    <span class="clan-name">Katsu <span class="clan-kanji">勝</span></span>
+                    <span class="clan-reading">かつ / Katsu</span>
+                </div>
+                <span class="period-badge">Meiji</span>
+            </div>
+            <div class="meaning">"Victory" — auspicious name adopted by the family</div>
+            <div class="clan-desc">Katsu Kaishū was a shogunal official who negotiated the bloodless surrender of Edo Castle to the Restoration forces, saving Japan's capital from destruction. He was a naval reformer, writer, and one of the most cosmopolitan thinkers of his era.</div>
+            <div class="famous-people">
+                <div class="famous-label">Famous People</div>
+                <ul class="famous-list">
+                    <li>Katsu Kaishū <span class="person-jp">勝海舟</span> — saved Edo from war</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== COMMON SURNAMES ===== -->
+<section id="common">
+    <div class="section-header">
+        <h2>Common Japanese Family Names</h2>
+        <span class="jp-title">一般的な日本の名字</span>
+    </div>
+    <p class="section-intro">These are the surnames you are most likely to encounter in modern Japan. Each entry shows the kanji, reading, literal meaning, and a notable bearer. Japan has over 300,000 distinct surnames, but these represent the most common and culturally significant.</p>
+
+    <div class="note-box">
+        <h3>Note on Kanji Variants</h3>
+        <p>Many Japanese surnames have both <strong>新字体 (shinjitai)</strong> (simplified) and <strong>旧字体 (kyūjitai)</strong> (traditional) forms. For example, <strong>小沢</strong> (simplified) and <strong>小澤</strong> (traditional) are both the same surname, Ozawa. The simplified form is standard in modern writing, but families may retain the traditional form on their official register.</p>
+    </div>
+
+    <div class="surname-category">Top 50 Most Common Surnames in Japan</div>
+    <p class="surname-count">These names account for a significant portion of Japan's population.</p>
+    <div class="surname-grid">
+        <div class="surname-item"><span class="nj">佐藤</span> <span class="reading">Satō</span><span class="name-mean">"Help wisteria" — #1 most common</span><span class="name-note">PM Satō Eisaku (Nobel Peace Prize)</span></div>
+        <div class="surname-item"><span class="nj">鈴木</span> <span class="reading">Suzuki</span><span class="name-mean">"Bell tree" — #2; bell-making craft</span><span class="name-note">Musician Suzuki Shinichi</span></div>
+        <div class="surname-item"><span class="nj">高橋</span> <span class="reading">Takahashi</span><span class="name-mean">"High bridge" — #3</span><span class="name-note">Marathon gold medalist Takahashi Naoko</span></div>
+        <div class="surname-item"><span class="nj">田中</span> <span class="reading">Tanaka</span><span class="name-mean">"Rice-field middle" — #4</span><span class="name-note">PM Tanaka Kakuei</span></div>
+        <div class="surname-item"><span class="nj">渡辺 / 渡邊</span> <span class="reading">Watanabe</span><span class="name-mean">"Crossing boundary" — #5</span><span class="name-note">Ancient ferryman clan, Emperor Kammu descent</span></div>
+        <div class="surname-item"><span class="nj">伊藤</span> <span class="reading">Itō</span><span class="name-mean">"That wisteria" — #6</span><span class="name-note">PM Itō Hirobumi (1st PM)</span></div>
+        <div class="surname-item"><span class="nj">山本</span> <span class="reading">Yamamoto</span><span class="name-mean">"Mountain base" — #7</span><span class="name-note">Admiral Yamamoto Isoroku</span></div>
+        <div class="surname-item"><span class="nj">中村</span> <span class="reading">Nakamura</span><span class="name-mean">"Middle village" — #8</span><span class="name-note">Actor Nakamura Kichiemon</span></div>
+        <div class="surname-item"><span class="nj">小林</span> <span class="reading">Kobayashi</span><span class="name-mean">"Small forest" — #9</span><span class="name-note">Animator Kobayashi Shigeru</span></div>
+        <div class="surname-item"><span class="nj">加藤</span> <span class="reading">Katō</span><span class="name-mean">"Add wisteria" — #10</span><span class="name-note">Warrior Katō Kiyomasa</span></div>
+        <div class="surname-item"><span class="nj">吉田</span> <span class="reading">Yoshida</span><span class="name-mean">"Lucky field" — #11</span><span class="name-note">PM Yoshida Shigeru</span></div>
+        <div class="surname-item"><span class="nj">山田</span> <span class="reading">Yamada</span><span class="name-mean">"Mountain field" — #12</span><span class="name-note">Filmmaker Yamada Yōji</span></div>
+        <div class="surname-item"><span class="nj">佐々木</span> <span class="reading">Sasaki</span><span class="name-mean">"Help help tree" — #13</span><span class="name-note">Ancient samurai from Ōmi</span></div>
+        <div class="surname-item"><span class="nj">山口</span> <span class="reading">Yamaguchi</span><span class="name-mean">"Mountain mouth" — #14</span><span class="name-note">Singer Yamaguchi Momoe</span></div>
+        <div class="surname-item"><span class="nj">松本</span> <span class="reading">Matsumoto</span><span class="name-mean">"Pine base" — #15</span><span class="name-note">Actor Matsumoto Hakuō</span></div>
+        <div class="surname-item"><span class="nj">井上</span> <span class="reading">Inoue</span><span class="name-mean">"Above the well" — #16</span><span class="name-note">Boxer Inoue Naoya</span></div>
+        <div class="surname-item"><span class="nj">木村</span> <span class="reading">Kimura</span><span class="name-mean">"Tree village" — #17</span><span class="name-note">Takuya Kimura (SMAP)</span></div>
+        <div class="surname-item"><span class="nj">林</span> <span class="reading">Hayashi</span><span class="name-mean">"Forest" — #18</span><span class="name-note">PM Hayashi Senjūrō</span></div>
+        <div class="surname-item"><span class="nj">斎藤 / 齋藤 / 齊藤</span> <span class="reading">Saitō</span><span class="name-mean">"Purified wisteria" — #19</span><span class="name-note">Multiple kanji variants exist</span></div>
+        <div class="surname-item"><span class="nj">清水</span> <span class="reading">Shimizu</span><span class="name-mean">"Clear water" — #20</span><span class="name-note">Architect Kenzō Tange (born Oshima, adopted)</span></div>
+        <div class="surname-item"><span class="nj">橋本</span> <span class="reading">Hashimoto</span><span class="name-mean">"Bridge origin" — #21</span><span class="name-note">PM Hashimoto Ryūtarō</span></div>
+        <div class="surname-item"><span class="nj">山崎</span> <span class="reading">Yamazaki</span><span class="name-mean">"Mountain promontory" — #22</span><span class="name-note">Whisky Yamazaki distillery</span></div>
+        <div class="surname-item"><span class="nj">中島</span> <span class="reading">Nakashima</span><span class="name-mean">"Middle island" — #23</span><span class="name-note">Singer Nakashima Mika</span></div>
+        <div class="surname-item"><span class="nj">森</span> <span class="reading">Mori</span><span class="name-mean">"Forest" — #24</span><span class="name-note">PM Mori Yoshiro</span></div>
+        <div class="surname-item"><span class="nj">阿部 / 安倍</span> <span class="reading">Abe</span><span class="name-mean">"Corner part" — #25</span><span class="name-note">PM Abe Shinzō (longest-serving)</span></div>
+        <div class="surname-item"><span class="nj">池田</span> <span class="reading">Ikeda</span><span class="name-mean">"Pond field" — #26</span><span class="name-note">PM Ikeda Hayato</</span></div>
+        <div class="surname-item"><span class="nj">前田</span> <span class="reading">Maeda</span><span class="name-mean">"Front field" — #27</span><span class="name-note">Kaga daimyo family</span></div>
+        <div class="surname-item"><span class="nj">岡田</span> <span class="reading">Okada</span><span class="name-mean">"Hill field" — #28</span><span class="name-note">PM Okada Keisuke</span></div>
+        <div class="surname-item"><span class="nj">村上</span> <span class="reading">Murakami</span><span class="name-mean">"Upper village" — #29</span><span class="name-note">Novelist Murakami Haruki</span></div>
+        <div class="surname-item"><span class="nj">近藤</span> <span class="reading">Kondō</span><span class="name-mean">"Near wisteria" — #30</span><span class="name-note">Shinsengumi leader Kondō Isami</span></div>
+        <div class="surname-item"><span class="nj">藤田</span> <span class="reading">Fujita</span><span class="name-mean">"Wisteria field" — #31</span><span class="name-note">From Fujiwara descent</span></div>
+        <div class="surname-item"><span class="nj">後藤</span> <span class="reading">Gotō</span><span class="name-mean">"Rear wisteria" — #32</span><span class="name-note">Doctor Gotō Shinpei</span></div>
+        <div class="surname-item"><span class="nj">小野</span> <span class="reading">Ono</span><span class="name-mean">"Small field" — #33</span><span class="name-note">Artist Ono Yoko</span></div>
+        <div class="surname-item"><span class="nj">藤井</span> <span class="reading">Fujii</span><span class="name-mean">"Wisteria well" — #34</span><span class="name-note">Shogi prodigy Fujii Sōta</span></div>
+        <div class="surname-item"><span class="nj">金子</span> <span class="reading">Kaneko</span><span class="name-mean">"Gold child" — #35</span><span class="name-note">Common throughout Japan</span></div>
+        <div class="surname-item"><span class="nj">青木</span> <span class="reading">Aoki</span><span class="name-mean">"Blue/green tree" — #36</span><span class="name-note">Writer Aoki Shinmon</span></div>
+        <div class="surname-item"><span class="nj">竹内</span> <span class="reading">Takeuchi</span><span class="name-mean">"Inside bamboo" — #37</span><span class="name-note">Actress Takeuchi Yuko</span></div>
+        <div class="surname-item"><span class="nj">和田</span> <span class="reading">Wada</span><span class="name-mean">"Harmony field" — #39</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">石川</span> <span class="reading">Ishikawa</span><span class="name-mean">"Stone river"  #40</span><span class="name-note">Poet Ishikawa Takuboku</span></div>
+        <div class="surname-item"><span class="nj">石井</span> <span class="reading">Ishii</span><span class="name-mean">"Stone well" — #41</span><span class="name-note">Politician Ishii Kikujiro</span></div>
+        <div class="surname-item"><span class="nj">坂本</span> <span class="reading">Sakamoto</span><span class="name-mean">"Book of the slope" — #42</span><span class="name-note">Sakamoto Ryōma, Restoration hero</span></div>
+        <div class="surname-item"><span class="nj">藤原</span> <span class="reading">Fujiwara</span><span class="name-mean">"Wisteria field" — #43</span><span class="name-note">Ancient noble clan</span></div>
+        <div class="surname-item"><span class="nj">森田</span> <span class="reading">Morita</span><span class="name-mean">"Forest field" — #44</span><span class="name-note">Sony co-founder Morita Akio</span></div>
+        <div class="surname-item"><span class="nj">上田</span> <span class="reading">Ueda</span><span class="name-mean">"Upper field" — #45</span><span class="name-note">Common in northern Japan</span></div>
+        <div class="surname-item"><span class="nj">原</span> <span class="reading">Hara</span><span class="name-mean">"Field/plain" — #46</span><span class="name-note">Common, especially in Tōhoku</span></div>
+        <div class="surname-item"><span class="nj">東</span> <span class="reading">Azuma / Higashi</span><span class="name-mean">"East" — #47</span><span class="name-note">Read as Azuma or Higashi</span></div>
+        <div class="surname-item"><span class="nj">柴田</span> <span class="reading">Shibata</span><span class="name-mean">"Brushwood field" — #48</span><span class="name-note">Nobunaga general Shibata Katsuie</span></div>
+        <div class="surname-item"><span class="nj">酒井</span> <span class="reading">Sakai</span><span class="name-mean">"Alcohol well" — #49</span><span class="name-note">Tokugawa retainer family</span></div>
+        <div class="surname-item"><span class="nj">工藤</span> <span class="reading">Kudō</span><span class="name-mean">"Craft wisteria" — #50</span><span class="name-note">Detective Conan: Kudō Shinichi</span></div>
+    </div>
+
+    <div class="surname-category">Surnames #51–100</div>
+    <div class="surname-grid">
+        <div class="surname-item"><span class="nj">宮崎</span> <span class="reading">Miyazaki</span><span class="name-mean">"Shrine cape" — #51</span><span class="name-note">Animator Miyazaki Hayao</span></div>
+        <div class="surname-item"><span class="nj">宮本</span> <span class="reading">Miyamoto</span><span class="name-mean">"Shrine base" — #52</span><span class="name-note">Swordsman Miyamoto Musashi</span></div>
+        <div class="surname-item"><span class="nj">内田</span> <span class="reading">Uchida</span><span class="name-mean">"Inside field" — #53</span><span class="name-note">Actress Uchida Shinji</span></div>
+        <div class="surname-item"><span class="nj">高木</span> <span class="reading">Takagi / Takaki</span><span class="name-mean">"High tree" — #54</span><span class="name-note">Common in Kanto</span></div>
+        <div class="surname-item"><span class="nj">安藤</span> <span class="reading">Andō</span><span class="name-mean">"Peaceful wisteria" — #55</span><span class="name-note">Architect Andō Tadao</span></div>
+        <div class="surname-item"><span class="nj">谷口</span> <span class="reading">Taniguchi</span><span class="name-mean">"Valley mouth" — #56</span><span class="name-note">Manga artist Taniguchi Jirō</span></div>
+        <div class="surname-item"><span class="nj">大野</span> <span class="reading">Ōno</span><span class="name-mean">"Great field" — #57</span><span class="name-note">Comedian Ōno Takashi</span></div>
+        <div class="surname-item"><span class="nj">丸山</span> <span class="reading">Maruyama</span><span class="name-mean">"Round mountain" — #58</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">久保</span> <span class="reading">Kubo</span><span class="name-mean">"Long-time protect" — #59</span><span class="name-note">Manga artist Kubo Tite (Bleach)</span></div>
+        <div class="surname-item"><span class="nj">小山</span> <span class="reading">Koyama</span><span class="name-mean">"Small mountain" — #60</span><span class="name-note">Common in northern Japan</span></div>
+        <div class="surname-item"><span class="nj">川口</span> <span class="reading">Kawaguchi</span><span class="name-mean">"River mouth" — #61</span><span class="name-note">Writer Kawaguchi Toshikazu</span></div>
+        <div class="surname-item"><span class="nj">石田</span> <span class="reading">Ishida</span><span class="name-mean">"Stone field" — #62</span><span class="name-note">Ishida Mitsunari, Sekigahara</span></div>
+        <div class="surname-item"><span class="nj">吉川</span> <span class="reading">Yoshikawa</span><span class="name-mean">"Lucky river" — #63</span><span class="name-note">Writer Yoshikawa Eiji</span></div>
+        <div class="surname-item"><span class="nj">三宅</span> <span class="reading">Miyake</span><span class="name-mean">"Three houses" — #64</span><span class="name-note">Fashion designer Miyake Issey</span></div>
+        <div class="surname-item"><span class="nj">長谷川</span> <span class="reading">Hasegawa</span><span class="name-mean">"Long valley river" — #65</span><span class="name-note">Actor Hasegawa Kazuo</span></div>
+        <div class="surname-item"><span class="nj">松田</span> <span class="reading">Matsuda</span><span class="name-mean">"Pine field" — #66</span><span class="name-note">Actor Matsuda Yūsaku</span></div>
+        <div class="surname-item"><span class="nj">菅原</span> <span class="reading">Sugawara</span><span class="name-mean">"Sedge plain" — #67</span><span class="name-note">Deified scholar Michizane</span></div>
+        <div class="surname-item"><span class="nj">大塚</span> <span class="reading">Ōtsuka</span><span class="name-mean">"Great mound" — #68</span><span class="name-note">Voice actor Ōtsuka Akio</span></div>
+        <div class="surname-item"><span class="nj">西村</span> <span class="reading">Nishimura</span><span class="name-mean">"West village" — #69</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">高田</span> <span class="reading">Takada</span><span class="name-mean">"High field" — #70</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">河野 / 川野</span> <span class="reading">Kōno / Kawano</span><span class="name-mean">"River field" — #71</span><span class="name-note">Politician Kōno Tarō</span></div>
+        <div class="surname-item"><span class="nj">松井</span> <span class="reading">Matsui</span><span class="name-mean">"Pine well" — #72</span><span class="name-note">Baseball player Matsui Hideki</span></div>
+        <div class="surname-item"><span class="nj">杉山</span> <span class="reading">Sugiyama</span><span class="name-mean">"Cedar mountain" — #73</span><span class="name-note">Common in northern Japan</span></div>
+        <div class="surname-item"><span class="nj">黒田 / 黑田</span> <span class="reading">Kuroda</span><span class="name-mean">"Black field" — #74</span><span class="name-note">Fukuoka daimyo family</span></div>
+        <div class="surname-item"><span class="nj">八木</span> <span class="reading">Yagi</span><span class="name-mean">"Eight trees" — #75</span><span class="name-note">Common in Kansai</span></div>
+        <div class="surname-item"><span class="nj">木下</span> <span class="reading">Kinoshita</span><span class="name-mean">"Under the tree" — #76</span><span class="name-note">Hideyoshi's birth name</span></div>
+        <div class="surname-item"><span class="nj">村田</span> <span class="reading">Murata</span><span class="name-mean">"Village field" — #77</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">秋山</span> <span class="reading">Akiyama</span><span class="name-mean">"Autumn mountain" — #78</span><span class="name-note">Common in northern Japan</span></div>
+        <div class="surname-item"><span class="nj">福田</span> <span class="reading">Fukuda</span><span class="name-mean">"Fortunate field" — #79</span><span class="name-note">PMs Fukuda Takeo & Yasuo</span></div>
+        <div class="surname-item"><span class="nj">寺田</span> <span class="reading">Terada</span><span class="name-mean">"Temple field" — #80</span><span class="name-note">Common near temples</span></div>
+        <div class="surname-item"><span class="nj">新井</span> <span class="reading">Arai</span><span class="name-mean">"New well" — #81</span><span class="name-note">Common in eastern Japan</span></div>
+        <div class="surname-item"><span class="nj">山内</span> <span class="reading">Yamauchi</span><span class="name-mean">"Inside the mountain" — #82</span><span class="name-note">Nintendo founder Yamauchi Fusajirō</span></div>
+        <div class="surname-item"><span class="nj">岩崎</span> <span class="reading">Iwasaki</span><span class="name-mean">"Rock cape" — #83</span><span class="name-note">Mitsubishi founder Iwasaki Yatarō</span></div>
+        <div class="surname-item"><span class="nj">中川</span> <span class="reading">Nakagawa</span><span class="name-mean">"Middle river" — #84</span><span class="name-note">Politician Nakagawa Hidenao</span></div>
+        <div class="surname-item"><span class="nj">平野</span> <span class="reading">Hirano</span><span class="name-mean">"Flat field" — #85</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">大西</span> <span class="reading">Ōnishi</span><span class="name-mean">"Great west" — #86</span><span class="name-note">WWII admiral Ōnishi Takijirō</span></div>
+        <div class="surname-item"><span class="nj">北川</span> <span class="reading">Kitagawa</span><span class="name-mean">"North river"  #87</span><span class="name-note">Actress Kitagawa Keiko</span></div>
+        <div class="surname-item"><span class="nj">浅野</span> <span class="reading">Asano</span><span class="name-mean">"Shallow field" — #88</span><span class="name-note">47 Rōnin clan</span></div>
+        <div class="surname-item"><span class="nj">丸田</span> <span class="reading">Maruta</span><span class="name-mean">"Round field" — #89</span><span class="name-note">Less common variant</span></div>
+        <div class="surname-item"><span class="nj">久保田</span> <span class="reading">Kubota</span><span class="name-mean">"Long-time field" — #90</span><span class="name-note">Machinery company Kubota</span></div>
+        <div class="surname-item"><span class="nj">横山</span> <span class="reading">Yokoyama</span><span class="name-mean">"Side mountain" — #91</span><span class="name-note">Manga artist Yokoyama Mitsuteru</span></div>
+        <div class="surname-item"><span class="nj">吉村</span> <span class="reading">Yoshimura</span><span class="name-mean">"Lucky village" — #92</span><span class="name-note">Common in western Japan</span></div>
+        <div class="surname-item"><span class="nj">大橋</span> <span class="reading">Ōhashi</span><span class="name-mean">"Great bridge" — #93</span><span class="name-note">Common near bridges</span></div>
+        <div class="surname-item"><span class="nj">千葉</span> <span class="reading">Chiba</span><span class="name-mean">"Thousand leaves" — #94</span><span class="name-note">Prefecture and city name</span></div>
+        <div class="surname-item"><span class="nj">松岡</span> <span class="reading">Matsuoka</span><span class="name-mean">"Pine hill" — #95</span><span class="name-note">Politician Matsuoka Yōhei</span></div>
+        <div class="surname-item"><span class="nj">野口</span> <span class="reading">Noguchi</span><span class="name-mean">"Field mouth" — #96</span><span class="name-note">Nobel nominee Noguchi Hideyo</span></div>
+        <div class="surname-item"><span class="nj">島田</span> <span class="reading">Shimada</span><span class="name-mean">"Island field" — #97</span><span class="name-note">Common in coastal areas</span></div>
+        <div class="surname-item"><span class="nj">田口</span> <span class="reading">Taguchi</span><span class="name-mean">"Field mouth" — #98</span><span class="name-note">Engineer Taguchi Genichi</span></div>
+        <div class="surname-item"><span class="nj">武</span> <span class="reading">Takeda</span><span class="name-mean">"Warrior field" — #99</span><span class="name-note">Sengoku clan, Shingen</span></div>
+        <div class="surname-item"><span class="nj">川村</span> <span class="reading">Kawamura</span><span class="name-mean">"River village" — #100</span><span class="name-note">Common in eastern Japan</span></div>
+    </div>

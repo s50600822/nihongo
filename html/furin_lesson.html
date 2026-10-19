@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>フリン — 椰月美智子 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-teal: #5a8a8a;
+  --accent-teal-dim: #3d5e5e;
+  --accent-teal-glow: rgba(90, 138, 138, 0.12);
+  --accent-rose: #9e7a7a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-teal-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-teal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-teal-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-teal-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-teal);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-teal-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-teal);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-teal-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-teal); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-teal-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-teal);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-teal-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-teal);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-rose);
+}
+
+.nuance-box h4 {
+  color: var(--accent-rose);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-teal);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-teal-dim), var(--accent-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-teal);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-teal);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Film banner */
+.film-banner {
+  background: linear-gradient(135deg, rgba(90, 138, 138, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.film-banner .film-title {
+  color: var(--accent-teal);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.film-banner .film-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-teal-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>フリン</h1>
+  <p class="hero-subtitle">FURIN</p>
+  <p class="hero-meta">椰月美智子 &middot; 角川書店 2010（単行本）/ 角川文庫 2013 &middot; 連作短編集</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & The Six Stories</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: フリン</h2>
+  <p class="lead">The title is a single word in katakana: <em>furin</em> (フリン). It is the phonetic rendering of <em>furin</em> (不倫), the Japanese word for "adultery" or "extramarital affair" — literally <em>fu</em> (不, "not / un-") + <em>rin</em> (倫, "ethics / morality"), meaning "against ethics." By writing it in katakana rather than kanji, Yuzuki performs a small but decisive act of aesthetic deflation. The kanji <em>不倫</em> carries the full moral weight of Confucian ethics: the heavy <em>fu</em> negating the solemn <em>rin</em>. The katakana <em>フリン</em> is lighter, more casual, almost flirtatious — the word a gossip magazine would use, or a friend confessing over wine. This typographic choice announces the book's method: to examine adultery not as a sin but as a shape — something with contours, variations, and, unexpectedly, tenderness.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">フリン</span>
+        <span class="romaji">furin</span>
+        <span class="meaning">"adultery / extramarital affair" — Written in katakana (フリン) rather than the standard kanji (不倫). The katakana rendering removes the moral scaffolding of the kanji, leaving only the sound. This is significant because the entire book is an argument that <em>furin</em> is not a single transgression but a spectrum of human behavior: the high school girl who sees her stepfather with a neighbor; the housewife who meets her ex-boyfriend; the company employee who falls in love for the last time; the elderly couple who guard a violent past. By refusing the kanji, Yuzuki refuses the judgment that comes with it. The katakana <em>furin</em> floats free of ethics and becomes, instead, a category of experience — like <em>koi</em> (恋, romantic love) or <em>nikushoku</em> (肉食, carnivorous), a thing that exists before morality names it.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary resonance:</strong> The cover of the Kadokawa Bunko edition (illustrated by Kusanagi Shinpei) shows a woman in a yellow dress walking alone along a riverside path, seen from behind, in soft watercolor. The image captures the book's central mood: solitude that looks like freedom, a figure moving away from the viewer toward something we cannot see. The riverside apartment building — the <em>Riverside Mansion</em> where all six stories are set — becomes a vertical village of secrets, each floor holding a different geometry of desire. The river itself is the perfect metaphor: it flows past all the windows, indifferent to what happens inside, connecting everyone's solitude without ever entering it.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>椰月美智子 &mdash; Yuzuki Michiko</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">椰</div>
+    <div class="author-name-block">
+      <h3>椰月美智子</h3>
+      <p class="author-name-romaji">Yuzuki Michiko &middot; b. 1970 &middot; Odawara, Kanagawa</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Yuzuki Michiko is a Japanese novelist of extraordinary range, moving with apparent ease between children's literature, family sagas, young-adult fiction, and adult novels of love and transgression. Born in 1970 in Odawara City, Kanagawa Prefecture — a coastal town beneath the shadow of Mount Hakone — she graduated from a junior college and worked in an office before discovering, relatively late, that she could write. Her debut, <em>Juunisai</em> (十二歳 / "Twelve Years Old"), won the 42nd Kodansha Children's Literature New Writer Award in 2002, establishing her as a voice in children's fiction. But it was <em>Shizuka na Hibi</em> (しずかな日々 / "Quiet Days," 2006) that revealed her full power: a double winner of the 45th Noma Children's Literature Prize and the 23rd Tsubota Joji Literature Prize, it demonstrated her ability to write about childhood with an adult's understanding of grief.</p>
+    <p style="margin-bottom: var(--space-md);">What makes Yuzuki unique among Japanese novelists is her refusal of genre boundaries. She writes for children with the emotional precision of adult literary fiction; she writes about adultery with the gentleness of a children's author who believes that no one is beyond understanding. Her adult novels — <em>Rurie</em> (るり姉 / "Ruri-nee," 2008), <em>Furin</em> (フリン, 2010), <em>Konparu Iro Kanata</em> (こんぱるいろ彼方, 2018) — explore the fault lines of marriage, family, and desire without ever becoming salacious or punitive. She is interested not in condemning her characters but in understanding how they arrived at the choices that will damage them. This compassion is her signature: the belief that even a cheating husband, even a vengeful wife, even a teenager who sees too much, is acting from a comprehensible human need.</p>
+    <p style="margin-bottom: var(--space-md);">In 2021, <em>Ashita no Shokutaku</em> (明日の食卓 / "Tomorrow's Table") was adapted into a film directed by Segawa Keisuke and starring Kanno Miho, becoming her breakthrough to a wider adult audience. In 2024, <em>Mukashi wa Ore to Onaidoshi Datta Tanaka-san to no Yuujo</em> (昔はおれと同い年だった田中さんとの友情 / "My Friendship with Tanaka, Who Used to Be the Same Age as Me") was adapted into an NHK special drama starring Kishitani Kazuo. She continues to live in Odawara with her family, drawing the rhythms of coastal town life into fiction that is simultaneously local and universal.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1970</span>
+        <span>Born in Odawara City, Kanagawa Prefecture. The seaside town beneath Mount Hakone becomes a recurring landscape in her fiction — the river, the coast, the small streets.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2002</span>
+        <span>Literary debut with <em>Juunisai</em> (十二歳 / "Twelve Years Old"), winning the 42nd Kodansha Children's Literature New Writer Award. The novel establishes her as a writer who understands the interiority of children.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2006</span>
+        <span>Publishes <em>Shizuka na Hibi</em> (しずかな日々 / "Quiet Days"), a landmark work that wins both the 45th Noma Children's Literature Prize and the 23rd Tsubota Joji Literature Prize — a rare double recognition of her crossover appeal.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2008</span>
+        <span>Publishes <em>Rurie</em> (るり姉 / "Ruri-nee"), a novel about sisterhood and family secrets that brings her to the attention of adult literary readers. The title character becomes one of her most beloved creations.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Publishes <em>Furin</em> (フリン) with Kadokawa Shoten — her first explicit exploration of adult transgression. The same year sees <em>Dahlia no Egao</em> (ダリアの笑顔 / "Dahlia's Smile") from Kobunsha, demonstrating her remarkable productivity across multiple publishers.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2013</span>
+        <span>Kadokawa Bunko edition of <em>Furin</em> published, bringing the novel to a wider paperback audience. The cover illustration by Kusanagi Shinpei becomes iconic.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2017</span>
+        <span>Wins the Kanagawa Book Grand Prize for <em>Ashita no Shokutaku</em> (明日の食卓 / "Tomorrow's Table"), a novel about three mothers named Ishibashi Yumi raising sons with the same name, which explores child abuse and maternal love with unflinching precision.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2020</span>
+        <span>Wins the 69th Shogakukan Children's Publication Culture Prize for <em>Mukashi wa Ore to Onaidoshi Datta Tanaka-san to no Yuujo</em>, confirming her status as one of Japan's foremost children's authors even as her adult readership grows.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2021</span>
+        <span><em>Ashita no Shokutaku</em> is adapted into a film starring Kanno Miho, bringing Yuzuki's work to a national cinema audience and introducing her to readers who had known her only as a children's author.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span><em>Mukashi wa Ore to Onaidoshi Datta Tanaka-san to no Yuujo</em> adapted into an NHK special drama starring Kishitani Kazuo. Also publishes <em>9-gatsu 1-nichi no Asa e</em> (9月1日の朝へ / "Toward the Morning of September 1"), a young-adult novel about four siblings facing the most statistically dangerous day for Japanese children.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>しずかな日々</h4>
+        <p class="char-role">Shizuka na Hibi / Quiet Days &middot; 2006</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Double winner of the Noma Children's Literature Prize and the Tsubota Joji Literature Prize. The novel that established Yuzuki as a writer of rare emotional depth, following a child's experience of loss and the quiet days that follow.</p>
+      </div>
+      <div class="char-card">
+        <h4>るり姉</h4>
+        <p class="char-role">Rurie / Ruri-nee &middot; 2008</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A novel about sisterhood, family fracture, and the person who holds everyone together. The title character is one of Yuzuki's most enduring creations — a figure of warmth and hidden damage.</p>
+      </div>
+      <div class="char-card">
+        <h4>明日の食卓</h4>
+        <p class="char-role">Ashita no Shokutaku / Tomorrow's Table &middot; 2017</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the Kanagawa Book Grand Prize. Three mothers named Ishibashi Yumi, three sons with the same name, and a crime that connects them. Adapted into a 2021 film starring Kanno Miho. Yuzuki's most devastating adult novel.</p>
+      </div>
+      <div class="char-card">
+        <h4>昔はおれと同い年った田中さんとの友情</h4>
+        <p class="char-role">Mukashi wa Ore to Onaidoshi Datta Tanaka-san to no Yuujo &middot; 2020</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Winner of the 69th Shogakukan Children's Publication Culture Prize. A friendship between a boy and an old man who used to be "the same age" as him — a time-bending meditation on aging and connection. Adapted into a 2024 NHK drama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Characters & The Six Stories</h2>
+
+  <p class="lead"><em>Furin</em> is a linked short-story collection set in a single riverside apartment building — the <em>Riverside Mansion</em>. Each story follows a different resident or visitor, and each explores a different shape of <em>furin</em> (adultery / transgression against marriage). What links them is not plot but geography and theme: the river flows past every window, and desire flows through every life. The stories can be read independently, but together they form a composite portrait of a building where no marriage is quite what it appears, and no betrayal is entirely unforgivable.</p>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>「葵さの初恋」&middot; "Aoi-san's First Love"</h4>
+      <p class="char-role">The Stepfather & The Neighbor OL</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">High school student Manami goes to a love hotel with her boyfriend and sees her stepfather walking with Aoi-san — an OL who lives in the same apartment building. The story is told through Manami's eyes: a girl old enough to understand what she is seeing but young enough to be confused by her own complicity. She does not condemn her stepfather; she observes him, as she observes her own emerging sexuality, with a mixture of curiosity and dread. The "first love" of the title is not Manami's but Aoi's — or perhaps it is Manami's first understanding that love and betrayal can coexist in the same gesture.</p>
+    </div>
+    <div class="char-card">
+      <h4>「シニガミ」&middot; "Shinigami"</h4>
+      <p class="char-role">The Housewife & Her Ex-Boyfriend</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A housewife repeatedly meets her ex-boyfriend for secret trysts. The title <em>Shinigami</em> (死神, "death god / reaper") suggests the fatal gravity of these meetings — not because anyone dies, but because each encounter carries the weight of a life that could have been. Readers frequently cite this as the collection's most chilling story: the recognition that the person you loved before marriage does not disappear when you say vows; they simply go underground, like a river that has been paved over but still flows.</p>
+    </div>
+    <div class="char-card">
+      <h4>「最後の恋」&middot; "Last Love"</h4>
+      <p class="char-role">The Company Employee's Final Romance</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A company employee falls in love — truly, for the last time. The story's power lies in its refusal of cynicism. This is not a midlife crisis or a pathetic attempt at youth; it is a person recognizing, late, that the capacity for romantic love does not expire at marriage. Yuzuki treats the protagonist's feelings with the same respect she brings to a child's first crush in her juvenile fiction. The result is heartbreaking not because the affair is tragic but because it is real, and reality is always more painful than melodrama.</p>
+    </div>
+    <div class="char-card">
+      <h4>「年下の男の子」&middot; "The Younger Man"</h4>
+      <p class="char-role">The Older Woman & The Age Gap</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A story about an affair with a younger man, exploring the power dynamics, social judgment, and unexpected tenderness of age-disparate romance. In Japan, where a woman's value is still often measured by her proximity to youth, choosing a younger lover is a transgression against social order as much as marital vows. Yuzuki examines what the woman gains, what she risks, and what she discovers about herself when she stops performing the role of "appropriate wife."</p>
+    </div>
+    <div class="char-card">
+      <h4>「」&middot; The Superintendent Couple</h4>
+      <p class="char-role">The Elderly Caretakers & Their Violent Past</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The apartment building's elderly superintendent couple guard a "spectacular past" — a history of violence or trauma that has bound them together across decades. Their story asks: what if the worst thing that ever happened to you is also the reason your marriage survived? Yuzuki's elderly characters are never merely background; they carry the full weight of lived experience, and their love, tested by catastrophe, casts the younger characters' comparatively trivial betrayals into sharp relief.</p>
+    </div>
+    <div class="char-card">
+      <h4>「」&middot; The Annual Gathering</h4>
+      <p class="char-role">The Residents Assemble</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The final story brings the residents together at their annual building gathering — a <em>teikeikai</em> (定期会) where the separate stories intersect. What has been private becomes, briefly, communal. The gathering functions as the collection's coda: a demonstration that the building is not merely a setting but a living organism, its inhabitants connected by walls, by the river, and by the shared fact that none of their marriages is simple. Yuzuki's genius is to make this assembly feel not like a contrivance but like the natural result of shared space.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Riverside Mansion as a Vertical Village</h3>
+    <p>The Riverside Mansion stands on the bank of a river — the kind of mid-range apartment building found in every Japanese city, neither luxurious nor dilapidated, home to salarymen, office ladies, housewives, and retirees. From the outside, it is utterly ordinary. From the inside, it is a lattice of secrets: on one floor, a high school girl discovers her stepfather's infidelity; on another, a housewife cannot stop returning to her ex-boyfriend; elsewhere, a company employee falls in love for what he knows will be the final time, and an elderly couple tends the building while guarding a past that would destroy most marriages.</p>
+    <p style="margin-top: var(--space-sm);">Yuzuki does not construct a single plot across these stories; she constructs an atmosphere. The river is the constant — it appears in every window, its sound a background to every conversation, its current a reminder that things move on regardless of human intention. The building's residents do not know each other's secrets, but they share walls, and Yuzuki makes us feel the proximity: the affair happening above the grieving child, the elderly couple's history vibrating through the floorboards of the younger man's apartment. The result is not a soap opera but a meditation on the simultaneity of private lives — the way a building contains, at any given moment, dozens of dramas invisible to one another.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Collection's Central Question</h3>
+    <p>The Kadokawa Bunko cover copy asks: <em>"Ikutsu ni natte mo, hito wa koi wo suru"</em> (いくつになっても、人は恋をする / "No matter how old you get, people fall in love"). This is the book's thesis, and it is more radical than it sounds. In a culture that still largely expects romantic love to expire at marriage — to be replaced by duty, companionship, and parental obligation — Yuzuki insists that the capacity for new love persists across a lifetime. The question is not whether these affairs are right or wrong; the question is what they reveal about the marriages they violate. Every <em>furin</em> in the collection is, in some way, a diagnostic: it exposes what the marriage was missing, what the person needed and could not ask for, what society demanded and the individual could not sustain.</p>
+    <p style="margin-top: var(--space-sm);">Yuzuki's compassion is not permissiveness. She does not celebrate adultery; she humanizes it. The housewife who meets her ex-boyfriend is not a villain; she is a person who made a choice, then another, then found herself on a path she had not intended to take. The stepfather with the neighbor OL is not a monster; he is a man who has found something in Aoi-san that his marriage does not provide — and the novel's genius is to let us see what that something is without letting him off the hook. The company employee in "Last Love" is perhaps the most sympathetic: his love is genuine, his timing catastrophic, his decency intact even as he destroys the life he built. Yuzuki writes about these people as she writes about children — with the belief that understanding precedes judgment, and that most human damage is caused not by malice but by need.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong><em>Furin</em> as shape, not sin:</strong> By writing the title in katakana, Yuzuki frames adultery not as a moral category but as a phenomenon with multiple forms. Each story presents a different geometry: the accidental discovery, the recurring relapse, the late blossoming, the age-transgressive, the trauma-bonded, the communal secret. What unites them is not guilt but desire — the persistence of wanting after society has told you to stop.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The building as confessional:</strong> The Riverside Mansion is more than a setting; it is a structure of concealment. Apartments are private boxes stacked vertically, each containing a drama invisible to the others. The elevator, the lobby, the annual gathering — these are the only places where separate stories touch. Yuzuki uses architecture as metaphor: we live stacked on top of one another's pain, separated by plaster and politeness.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The river as witness and indifference:</strong> The river sees everything and intervenes in nothing. It flows past the love hotel where Manami sees her stepfather, past the windows where the housewife waits for her lover's call, past the elderly couple's quarters where a violent history is stored. In Japanese literature, rivers often symbolize time and forgetting; here, they symbolize the persistence of what society prefers to forget.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Marriage as performance:</strong> Every married character in the collection is, to some degree, performing a role: the faithful wife, the responsible husband, the reconstructed family. Yuzuki's insight is that performance is exhausting, and exhaustion creates the conditions for transgression. The affairs do not happen because the characters are bad; they happen because the roles have become unsustainable.</li>
+      <li><strong>Compassion without absolution:</strong> Yuzuki refuses both the moralism that condemns and the permissiveness that celebrates. Her characters suffer for their choices — marriages crack, children see too much, dignity is lost — but they are never reduced to their worst moment. The housewife is also a good mother; the stepfather is also a kind man; the company employee is also a conscientious worker. This refusal of moral simplification is what makes <em>Furin</em> literature rather than entertainment.</li>
+    </ul>
+  </div>
+
+  <div class="film-banner">
+    <div class="film-title">Adaptation</div>
+    <div class="film-detail">2021 &middot; Film <em>Ashita no Shokutaku</em> (明日の食卓 / "Tomorrow's Table") &mdash; directed by Segawa Keisuke, starring Kanno Miho</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);">2024 &middot; NHK Special Drama <em>Mukashi wa Ore to Onaidoshi Datta Tanaka-san to no Yuujo</em> &mdash; starring Kishitani Kazuo</div>
+    <div class="film-detail" style="margin-top: var(--space-xs);"><em>Furin</em> itself has not been adapted, but its thematic concerns — the fragility of family, the persistence of desire, the damage of secrets — animate all of Yuzuki's adapted works.</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture Yuzuki's characteristic gentleness: the way she writes about transgression without sensationalism, and her belief that the most devastating moments are often the most quietly observed.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Promotional Thesis</div>
+    <div class="passage-jp">
+      いくつになっても、人は恋をする。
+    </div>
+    <div class="passage-romaji">
+      Ikutsu ni natte mo, hito wa koi wo suru.
+    </div>
+    <div class="passage-en">
+      "No matter how old you get, people fall in love."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the Kadokawa Bunko cover copy, and it functions as the novel's philosophical thesis. Grammatically, it is extraordinarily simple: <em>ikutsu ni natte mo</em> (いくつになっても, "no matter how old one becomes") is an N4 conditional pattern (<em>te mo</em>, "even if / no matter"); <em>hito wa koi wo suru</em> (人は恋をする, "people fall in love") is a basic S-O-V sentence using <em>koi wo suru</em> (恋をする, "to fall in love / to be in love"). The simplicity is the point. Yuzuki is not making a complex argument; she is stating a fact that Japanese society prefers to deny. The word <em>koi</em> (恋) is crucial here: it means romantic love, passionate love, the kind of love associated with youth and courtship — not <em>ai</em> (愛, the deeper, more stable love of long partnership). By using <em>koi</em> rather than <em>ai</em>, the sentence insists that the transient, disruptive, youthful form of love persists into middle and old age. This is not a comforting message in a culture that expects adults to graduate from <em>koi</em> to <em>ai</em>, from passion to responsibility. The sentence's quiet radicalism is in its verb: <em>suru</em> (する, "to do"), not <em>wasureru</em> (忘れる, "to forget") or <em>owaru</em> (終わる, "to end"). People do not stop falling in love. They keep doing it. The grammar makes this continuous, inevitable, and ordinary.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Daughter's Discovery</div>
+    <div class="passage-jp">
+      高校生の真奈美は、カレと入ったラブホテルで、自分の父親が同じマンションに住むOLの葵さんと一緒に歩いているのを目撃してしまう。
+    </div>
+    <div class="passage-romaji">
+      Koukousei no Manami wa, kare to haitta rabu hoteru de, jibun no chichioya ga onaji manshon ni sumu OL no Aoi-san to issho ni aruite iru no wo mokugeki shite shimau.
+    </div>
+    <div class="passage-en">
+      "High school student Manami, at the love hotel she had entered with her boyfriend, ended up witnessing her father walking together with Aoi-san, an office lady who lived in the same apartment building."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence is a masterclass in narrative economy. It contains two transgressions: Manami is at a love hotel with her boyfriend (she is sexually active, or about to be), and her father is with another woman (he is committing <em>furin</em>). The sentence places daughter and father in parallel sin: they are both in the same commercial space of illicit sexuality, separated only by timing. The grammar encodes this parallelism. <em>Kare to haitta rabu hoteru de</em> (カレと入ったラブホテルで, "at the love hotel she entered with her boyfriend") uses the relative-clause construction <em>haitta</em> (入った, "entered") modifying <em>rabu hoteru</em> — the hotel is defined by her entry with a man who is not her husband (she has none; she is a student). <em>Jibun no chichioya ga</em> (自分の父親が, "her own father") emphasizes possession and relationship — this is not any man but hers, the man who is supposed to be different from the ones in hotels. <em>Mokugeki shite shimau</em> (目撃してしまう) uses the <em>te-shimau</em> (てしまう) construction, which indicates completion with regret or unintended consequence — she did not seek this sight; it happened to her, and she cannot undo it. The <em>shimau</em> is the emotional core of the sentence: the discovery is a small catastrophe that has already finished occurring. Finally, <em>chichioya</em> (父親, "father") is worth noting: Yuzuki uses the biological/legal term rather than the intimate <em>papa</em> or <em>otosan</em>, creating distance at the moment of greatest intimacy violated. The father becomes, in this sentence, a generic male figure walking with a woman who is not Manami's mother. The grammar strips him of familial particularity just as his action strips him of paternal authority.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Retaliation as Mirror</div>
+    <div class="passage-jp">
+      夫の裏切りに、私は裏切りで仕返しする。
+    </div>
+    <div class="passage-romaji">
+      Otto no uragiri ni, watashi wa uragiri de shikaeshi suru.
+    </div>
+    <div class="passage-en">
+      "For my husband's betrayal, I retaliate with betrayal."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the hardcover edition's promotional tagline, and it announces the book's most unsettling theme: the symmetry of revenge. Grammatically, the sentence is a perfect chiasmus: <em>otto no uragiri ni</em> (夫の裏切りに, "to the husband's betrayal") is answered by <em>watashi wa uragiri de</em> (私は裏切りで, "I with betrayal"). The word <em>uragiri</em> (裏切り, "betrayal") appears twice, once as the injury and once as the response. The particle <em>ni</em> (に, "to / in response to") establishes causation; the particle <em>de</em> (で, "with / by means of") establishes method. The sentence says, in effect: his betrayal creates the condition; my betrayal is the tool. <em>Shikaeshi suru</em> (仕返しする, "to retaliate / pay back") is a domestic word — it is what children do to siblings, what neighbors do to each other. It is not the grand vocabulary of vengeance (<em>fukushuu</em>, 復讐) but the small language of household score-settling. This domestication of revenge is crucial: the speaker is not launching a campaign; she is balancing an account. The sentence's coldness is in its arithmetic — betrayal for betrayal, measure for measure — and its tragedy is in the word <em>watashi</em> (私, "I"). The speaker recognizes herself as someone who has chosen to become what wounded her. This is not liberation; it is infection.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Question the Collection Refuses to Answer</div>
+    <div class="passage-jp">
+      結婚後の恋はいけないことなの？
+    </div>
+    <div class="passage-romaji">
+      Kekkon go no koi wa ikenai koto na no?
+    </div>
+    <div class="passage-en">
+      "Is love after marriage a bad thing?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This question appears in the hardcover promotional copy, and it is the engine of the entire collection. Grammatically, it is simple: <em>kekkon go no koi</em> (結婚後の恋, "love after marriage") — the temporal <em>go</em> (後, "after") modifying <em>koi</em> (恋, romantic love), creating a category of love that society does not officially recognize. <em>Ikenai koto</em> (いけないこと, "a bad thing / something one must not do") uses the permissive-negative construction <em>ikenai</em> (いけない, "must not / cannot be allowed"), which is softer than <em>warui</em> (悪い, "evil / bad") but more judgmental than <em>dasai</em> (ださい, "uncool"). <em>Ikenai</em> is what parents say to children, what teachers say to students — it carries the weight of social instruction rather than moral absolutism. The final <em>na no</em> (なの) is the explanatory/emphatic question marker that seeks not just an answer but an explanation: the speaker is not merely asking whether it is forbidden; she is asking why. This <em>na no</em> transforms the sentence from a yes/no question into a demand for reasoning — and the collection's answer, implicit in every story, is that the question itself is wrong. It is not that love after marriage is "bad"; it is that marriage was never designed to accommodate the persistence of <em>koi</em>. The fault is not in the lovers; it is in the institution's assumption that love can be scheduled to begin before marriage and end at the altar. Yuzuki never states this directly; she lets the stories demonstrate it, story by story, betrayal by betrayal, until the reader is no longer certain that "love after marriage" is the problem. Perhaps the problem is marriage's claim to own love's calendar.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, the thematic world of transgression, and the domestic geography of the Riverside Mansion.</p>
+
+  <div class="card">
+    <h3>Love, Marriage & Transgression</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>フリン</td><td>furin</td><td class="pos">noun</td><td>adultery, affair (katakana rendering of 不倫)</td></tr>
+        <tr><td>不倫</td><td>furin</td><td class="pos">noun</td><td>adultery, extramarital affair (kanji form)</td></tr>
+        <tr><td>恋</td><td>koi</td><td class="pos">noun</td><td>romantic love, passion</td></tr>
+        <tr><td>恋をする</td><td>koi wo suru</td><td class="pos">verb</td><td>to fall in love, to be in love</td></tr>
+        <tr><td>結婚後</td><td>kekkon go</td><td class="pos">noun</td><td>after marriage, post-marital</td></tr>
+        <tr><td>裏切り</td><td>uragiri</td><td class="pos">noun</td><td>betrayal, treachery</td></tr>
+        <tr><td>仕返し</td><td>shikaeshi</td><td class="pos">noun</td><td>retaliation, payback, getting even</td></tr>
+        <tr><td>瀬</td><td>ouse</td><td class="pos">noun</td><td>secret tryst, lovers' meeting</td></tr>
+        <tr><td>情事</td><td>jouji</td><td class="pos">noun</td><td>affair, sexual liaison</td></tr>
+        <tr><td>火遊び</td><td>hi asobi</td><td class="pos">noun</td><td>playing with fire; casual affair</td></tr>
+        <tr><td>道ならぬ恋</td><td>michi naranu koi</td><td class="pos">phrase</td><td>forbidden love, love that defies convention</td></tr>
+        <tr><td>反道徳</td><td>han doutoku</td><td class="pos">noun</td><td>anti-morality, transgression against ethics</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Domestic Space & Social Life</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>マンション</td><td>manshon</td><td class="pos">noun</td><td>apartment building, condominium</td></tr>
+        <tr><td>リバーサイド</td><td>ribasaido</td><td class="pos">noun</td><td>riverside</td></tr>
+        <tr><td>管理人</td><td>kanrinin</td><td class="pos">noun</td><td>building superintendent, caretaker</td></tr>
+        <tr><td>定期会</td><td>teikeikai</td><td class="pos">noun</td><td>regular meeting, annual gathering</td></tr>
+        <tr><td>夫婦</td><td>fuufu</td><td class="pos">noun</td><td>husband and wife, married couple</td></tr>
+        <tr><td>家族</td><td>kazoku</td><td class="pos">noun</td><td>family</td></tr>
+        <tr><td>主婦</td><td>shufu</td><td class="pos">noun</td><td>housewife, homemaker</td></tr>
+        <tr><td>会社員</td><td>kaishain</td><td class="pos">noun</td><td>company employee, salaryman/woman</td></tr>
+        <tr><td>高校生</td><td>koukousei</td><td class="pos">noun</td><td>high school student</td></tr>
+        <tr><td>継父</td><td>kefu</td><td class="pos">noun</td><td>stepfather</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Moral Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>愛憎</td><td>aizou</td><td class="pos">noun</td><td>love and hate, love-hate</td></tr>
+        <tr><td>恐怖</td><td>kyoufu</td><td class="pos">noun</td><td>fear, terror</td></tr>
+        <tr><td>哀しみ</td><td>kanashimi</td><td class="pos">noun</td><td>sorrow, grief</td></tr>
+        <tr><td>葛藤</td><td>kattou</td><td class="pos">noun</td><td>conflict, inner struggle</td></tr>
+        <tr><td>魔が差す</td><td>ma ga sasu</td><td class="pos">verb</td><td>to be tempted by evil, to have a moment of weakness</td></tr>
+        <tr><td>温かさ</td><td>atatakasa</td><td class="pos">noun</td><td>warmth, human kindness</td></tr>
+        <tr><td>人間関係</td><td>ningen kankei</td><td class="pos">noun</td><td>human relationships, interpersonal dynamics</td></tr>
+        <tr><td>微妙</td><td>bimyou</td><td class="pos">adjective</td><td>subtle, delicate, ambiguous</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Narrative & Sensory Details</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>目撃する</td><td>mokugeki suru</td><td class="pos">verb</td><td>to witness, to see (an event)</td></tr>
+        <tr><td>ラブホテル</td><td>rabu hoteru</td><td class="pos">noun</td><td>love hotel</td></tr>
+        <tr><td>川辺</td><td>kawabe</td><td class="pos">noun</td><td>riverside, riverbank</td></tr>
+        <tr><td>情景</td><td>joukei</td><td class="pos">noun</td><td>scene, spectacle, visual moment</td></tr>
+        <tr><td>連作短編集</td><td>rensaku tanpenshuu</td><td class="pos">noun</td><td>linked short-story collection</td></tr>
+        <tr><td>実力派</td><td>jitsuryokuha</td><td class="pos">noun</td><td>established writer, writer of substance</td></tr>
+        <tr><td>新境地</td><td>shinkyouchi</td><td class="pos">noun</td><td>new territory, new frontier (in one's work)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Yuzuki's prose in <em>Furin</em> appears deceptively simple, but it relies on Japanese kinship terms, moral vocabulary, and the cultural weight of marriage as a social institution that do not transfer cleanly into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Furin</em> (フリン / 不倫) as Katakana Defiance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>「<strong>フリン</strong>」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Furin" / "adultery" / "affair"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English "adultery" carries Christian theological weight — it is one of the Ten Commandments, a sin against God as well as spouse. The English "affair" is lighter, more social, almost chic. Neither captures the specific Japanese concept of <em>furin</em> (不倫): <em>fu</em> (不, "not / un-") + <em>rin</em> (倫, "ethics / human relations / moral order"). <em>Furin</em> is not primarily a religious sin; it is a social one — a violation of the ethical order that binds families, workplaces, and communities. The kanji <em>不倫</em> makes this explicit: the character <em>rin</em> (倫) contains the person radical (人) and means the proper ordering of human relations. By writing it in katakana — <em>フリン</em> — Yuzuki removes the ethical scaffolding while keeping the sound. The English translator must choose between "adultery" (too religious), "affair" (too casual), "infidelity" (too clinical), or "betrayal" (too general). None carries the specific cultural meaning of <em>furin</em> as a transgression against the Confucian-ethical order of the Japanese family. What is lost is the sense that this is not merely a private sin but a social one — an act that disturbs the fabric of communal life because marriage in Japan is not merely a contract between two people but a node in a network of obligations.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Koi</em> (恋) vs. <em>Ai</em> (愛) as Love's Lifecycle</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>いくつになっても、人は<strong>恋</strong>をする</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"No matter how old you get, people fall in love"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Japanese distinguishes between <em>koi</em> (恋) and <em>ai</em> (愛), and the distinction is central to <em>Furin</em>'s meaning. <em>Koi</em> is romantic love — passionate, desiring, often unrequited or disruptive. It is the love of courtship, of longing, of the heart that wants what it cannot have. <em>Ai</em> is committed love — the deep, stable attachment of long partnership, of parental devotion, of chosen permanence. The traditional Japanese model expects <em>koi</em> to precede marriage and <em>ai</em> to follow it; the transition from <em>koi</em> to <em>ai</em> is considered maturity. Yuzuki's sentence insists that <em>koi</em> does not end when <em>ai</em> begins — people keep falling in <em>koi</em> even after they have committed to <em>ai</em>. The English "fall in love" collapses this distinction. "Love" in English encompasses both <em>koi</em> and <em>ai</em>; it does not force the reader to recognize that the love that persists after marriage is specifically <em>koi</em> — the disruptive, desiring, romantic form that society expects to graduate into something calmer. What is lost is the precision of the problem: it is not "love" that continues (everyone agrees married people love each other); it is <em>koi</em> — the specific form of love that threatens marriage because it operates outside it.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Chichioya</em> (父親) as Legal Relation, Not Intimacy</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>自分の<strong>父親</strong>が</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"her father" / "her own father"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Yuzuki's choice of <em>chichioya</em> (父親, "father" as a legal/biological relation) rather than <em>otosan</em> (お父さん, "Dad" — intimate, familial) or <em>papa</em> (パパ — childish, affectionate) is crucial. <em>Chichioya</em> is the word used in legal documents, in news reports, in distanced description. It strips the figure of paternal warmth and presents him as a male person with a specific social role. When Manami sees her <em>chichioya</em> with Aoi-san, she is seeing not "Dad" but "the man who is legally my father" — a figure whose authority and intimacy are simultaneously violated. The English "father" cannot fully reproduce this effect because English does not have the same gradation of father-terms. "Her own father" captures some of the shock (the <em>jibun no</em>, 自分の, emphasizes possession and particularity), but it cannot convey the formal distance of <em>chichioya</em> at the moment when distance is most devastating. What is lost is the sense that the father has, by his action, transformed himself from <em>otosan</em> (the man who comes home, who is known) into <em>chichioya</em> (the man who is merely a biological fact, walking with a woman who is not Manami's mother).</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Ma ga Sasu</em> (魔が差す) as Demonic Temptation, Not Character Flaw</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>魔が差した</strong>主婦</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"a housewife who had a moment of weakness" / "a housewife who was tempted"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Ma ga sasu</em> (魔が差す, literally "a demon passes through / a devil momentarily possesses") is one of the most culturally specific phrases in the collection. It describes not a character flaw or a moral failure but a momentary intrusion of evil — as if the person were not fully responsible because something external passed through them. The <em>ma</em> (魔) is the same character as in <em>akuma</em> (悪魔, "demon / devil") and <em>mamono</em> (魔物, "monster"). It is a supernatural explanation for human weakness: the devil made me do it, but rendered in Buddhist-Shinto vocabulary rather than Christian. The English "moment of weakness" domesticates this into psychology; "tempted" retains some religious resonance but loses the specific Japanese cosmology. What is lost is the sense that transgression is not inherent to the person but visits them — a passing presence rather than a stable trait. This matters because Yuzuki's entire method depends on seeing her characters as fundamentally decent people who have been visited by something they could not control. The <em>ma</em> is not an excuse; it is a description of how ordinary people find themselves doing extraordinary damage.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Ouse</em> (逢瀬) as Poetic Tryst</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>元カレと<strong>逢瀬</strong>を繰り返す主婦</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"a housewife who repeatedly meets her ex-boyfriend for secret trysts"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Ouse</em> (逢瀬) is a literary, almost classical word for a lovers' secret meeting. The character <em>ou</em> (逢, "to meet by chance / to encounter fatefully") is the word used for fated meetings in <em>The Tale of Genji</em>; <em>se</em> (瀬, "rapids / shallows") adds a sense of place and peril — the meeting happens at the river's edge, where water moves quickly and footing is unsure. <em>Ouse</em> is not a neutral word for "secret meeting"; it carries the full weight of Japanese literary romanticism. It is the word used for the meetings of Heian-period lovers, for the assignations in kabuki drama, for the encounters in classical poetry that change a life. When Yuzuki uses <em>ouse</em> for a contemporary housewife meeting her ex-boyfriend, she elevates the encounter from sordid to poetic — not to romanticize it but to insist that the emotional reality of the meeting transcends its social classification. The English "secret tryst" captures some of this but sounds either archaic or sleazy; "assignation" is too formal; "affair" is too ongoing. What is lost is the literary dignity that <em>ouse</em> confers — the recognition that even transgressive love participates in a tradition of Japanese romantic expression that stretches back a thousand years.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, key passages, and the thematic language of love, marriage, and transgression.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ても（譲歩・条件）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te mo</em>: "even if / no matter" — indicates that a condition does not prevent the main clause from being true.</p>
+      <div class="grammar-example">いくつになっても、人は恋をする</div>
+      <p class="grammar-example-en">"No matter how old you get, people fall in love" — The <em>te mo</em> construction makes age irrelevant to the capacity for love; the grammar enacts the book's thesis.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・遺憾）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te shimau</em>: "to end up ~ing / to ~ completely (with regret)" — indicates completion, often with a sense of irreversibility or unintended consequence.</p>
+      <div class="grammar-example">目撃してしまう</div>
+      <p class="grammar-example-en">"ends up witnessing / cannot help but witness" — The <em>te shimau</em> conveys that the discovery happens to Manami against her will and cannot be undone.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のを〜する（名詞化・対象）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>No wo ~ suru</em>: "to do ~ [to the fact/sight] that ~" — nominalizes a clause with <em>no</em> and makes it the object of a verb.</p>
+      <div class="grammar-example">歩いているのを目撃する</div>
+      <p class="grammar-example-en">"to witness the fact that [he] is walking" — The <em>no</em> nominalization turns the ongoing action into a discrete event that can be seen.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に、〜で（対応・手段）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni, de</em>: "to ~, [respond] with ~" — <em>ni</em> marks the stimulus; <em>de</em> marks the means of response.</p>
+      <div class="grammar-example">夫の裏切りに、私は裏切りで仕返しする</div>
+      <p class="grammar-example-en">"To my husband's betrayal, I retaliate with betrayal" — The <em>ni / de</em> pairing creates a perfect chiasmus: betrayal as stimulus (ni) and betrayal as tool (de).</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なの？（説明疑問）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Na no?</em>: explanatory question — seeks not just yes/no but reasoning; implies that the speaker expects an explanation.</p>
+      <div class="grammar-example">結婚後の恋はいけないことなの？</div>
+      <p class="grammar-example-en">"Is love after marriage a bad thing? (And if so, why?)" — The <em>na no</em> transforms the question from a request for classification into a demand for justification.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜で（場所・手段）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>De</em>: "at / in / by means of" — marks location of action or means/instrument.</p>
+      <div class="grammar-example">ラブホテルで、父親が歩いてるのを目撃する</div>
+      <p class="grammar-example-en">"at the love hotel, witnesses her father walking" — The <em>de</em> locates the discovery in a space that is itself transgressive, compounding the daughter's disorientation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が（接続・対比）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga</em>: "but / and" — connects clauses with soft contrast or addition; often untranslated but structurally essential.</p>
+      <div class="grammar-example">父親が同じマンションに住むOLの葵さんと一んと一緒に歩いているのを</div>
+      <p class="grammar-example-en">"[her] father was walking together with Aoi-san, an OL who lived in the same apartment building" — The <em>ga</em> subject marker introduces the father as the grammatical subject of the witnessed action, making him the focus of the daughter's catastrophic sight.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と一緒に（共同）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>To issho ni</em>: "together with ~" — indicates accompaniment, often with emotional weight when the companion is inappropriate.</p>
+      <div class="grammar-example">葵さんと一緒に歩いている</div>
+     p class="grammar-example-en">"walking together with Aoi-san" — The phrase is grammatically neutral but contextually devastating: the father's companionship belongs, by social expectation, to the mother.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Yuzuki Michiko's grammar in <em>Furin</em> is accessible (mostly N5-N4) but emotionally loaded. Pay attention to how <em>te shimau</em> encodes regret, how <em>te mo</em> makes defiant generalizations, and how the simplest particles (<em>ni</em>, <em>de</em>, <em>ga</em>) structure sentences of enormous moral weight. Her prose does not dazzle with complexity; it achieves its effects through the careful placement of ordinary grammatical tools in contexts where every choice carries ethical significance. This is the craft of a writer who trusts that grammar itself can hold grief, desire, and the quiet catastrophe of recognition.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">フリン &middot; 椰月美智子 &middot; 角川書店 2010（単行本）/ 角川文庫 2013</p>
+</footer>
+
+</div>
+</body>
+</html>

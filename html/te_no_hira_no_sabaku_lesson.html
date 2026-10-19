@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Desert in the Palm of the Hand — A Japanese Lesson</title>
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --surface: #141414;
+            --surface-raised: #1a1a1a;
+            --ink: #d4d0c8;
+            --ink-dim: #8a8580;
+            --ink-faint: #5c5854;
+            --accent: #b8a88a;
+            --accent-weak: rgba(184,168,138,0.08);
+            --line: rgba(212,208,200,0.08);
+            --border: rgba(212,208,200,0.12);
+            --radius: 6px;
+            --step--1: clamp(0.8rem, 0.78rem + 0.12vw, 0.88rem);
+            --step-0: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+            --step-1: clamp(1.08rem, 1.02rem + 0.3vw, 1.25rem);
+            --step-2: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+            --step-3: clamp(1.8rem, 1.5rem + 1.5vw, 2.6rem);
+            --step-4: clamp(2.4rem, 2rem + 2vw, 3.6rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f5f2ed;
+                --surface: #faf8f5;
+                --surface-raised: #fff;
+                --ink: #1a1a1a;
+                --ink-dim: #4a4744;
+                --ink-faint: #7a7770;
+                --accent: #6a5a3a;
+                --accent-weak: rgba(106,90,58,0.06);
+                --line: rgba(26,26,26,0.08);
+                --border: rgba(26,26,26,0.12);
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Noto Sans JP", "Hiragino Sans", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "TakaoExMincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: calc(var(--space) * 2.5) var(--space);
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", serif;
+            font-size: var(--step-4);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--ink);
+        }
+
+        header .japanese-title {
+            display: block;
+            font-family: "Noto Serif JP", serif;
+            font-size: 0.5em;
+            font-weight: 400;
+            color: var(--ink-dim);
+            margin-top: 0.6rem;
+        }
+
+        header .subtitle {
+            font-size: var(--step-1);
+            color: var(--ink-dim);
+            margin-top: 0.8rem;
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            margin-top: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section { margin-bottom: calc(var(--space) * 3); }
+
+        h2 {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", serif;
+            font-size: var(--step-3);
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: var(--step-2);
+            font-weight: 500;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step--1);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p { margin-bottom: calc(var(--space) * 0.8); }
+
+        .passage {
+            background: var(--surface-raised);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.1);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+            opacity: 0.7;
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-size: var(--step-1);
+            color: var(--ink-dim);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.55rem 0.7rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.75rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--ink-faint);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 2px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+            color: var(--ink-dim);
+        }
+
+        .nuance p:last-child { margin-bottom: 0; }
+
+        .grammar {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+            border: 1px solid var(--line);
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .grammar code {
+            background: var(--surface-raised);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+            font-size: 0.85em;
+            color: var(--accent);
+        }
+
+        .hl {
+            background: var(--accent-weak);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--ink-faint);
+            font-size: var(--step-2);
+            letter-spacing: 0.4em;
+            opacity: 0.4;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--ink-dim);
+            margin-bottom: calc(var(--space) * 2);
+            font-weight: 300;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li { margin-bottom: 0.4rem; }
+
+        .disclaimer {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--ink-faint);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent-weak);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        @media print {
+            body {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .passage, .nuance, .grammar, .disclaimer {
+                border: 1px solid #ccc !important;
+                background: #fff !important;
+            }
+            header {
+                background: #fff !important;
+                border-bottom: 1px solid #ccc !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Desert in the Palm of the Hand<br><span class="japanese-title jp">手のひらの砂漠</span></h1>
+    <div class="subtitle">A Japanese lesson through Yuikawa Kei's novel of domestic violence, women's shelters, and the grammar of escape that becomes the grammar of self-creation</div>
+    <div class="meta">Yuikawa Kei &middot; Shueisha &middot; 2013 &middot; Suspense</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified plot summaries, promotional copy, author interviews, and reader reviews of <em>Te no Hira no Sabaku</em> (手のひらの砂漠) by Yuikawa Kei (唯川恵), originally published by Shueisha in 2013 (hardcover) and 2016 (bunko). The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Published by Shueisha in 2013 and released in bunko in 2016, <em>Te no Hira no Sabaku</em> (手のひらの砂漠) is the work of Yuikawa Kei (唯川恵, b. 1955), one of Japan's most celebrated writers of women's lives. Born Miyatake Yasuko in Kanazawa, she worked at a bank for ten years before debuting in 1984 by winning the 3rd Cobalt Novel Grand Prize with <em>Umi Iro no Gogo</em> (海色の午後). In 2001 she won the 126th Naoki Prize for <em>Katagoshi no Koibito</em> (肩ごしの恋人), confirming her status as what the Japanese media calls the "Queen of Romance Novels." In 2008, <em>Ai ni Nita Mono</em> (愛に似たもの) won the 21st Shibata Renzaburo Prize. Where previous lessons in this series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, the cage that makes the animal ferocious, the backstage of publishing where editors make authors grovel, the wobbly line that dances Edo back into existence, the wind chime that rings when the murderer's breath disturbs the air, the fitting room where a woman discovers her heart has already decided, the sidewalk where an 89-year-old man walks away from a house full of problems, and the cat who investigates mysteries from twelve inches above the ground, this lesson enters darker and more necessary territory: the grammar of violence inside a marriage, the vocabulary of shelters and step houses, the sentence structure of a woman who must unmake herself to survive and then remake herself to live. This is Japanese as the language of emergency, as the grammar of the body that knows before the mind admits, as the vocabulary of places that exist to catch women when the world outside has failed them.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Portable Wasteland</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title contains the entire novel in three words: a desert small enough to fit in a hand, large enough to consume a life.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">手のひらの砂漠</span>
+        </div>
+        <div class="romaji">"Te no hira no sabaku."</div>
+        <div class="translation">"The desert in the palm of the hand." / "A palm-sized desert."</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">手のひら</td><td class="reading">te no hira</td><td>palm of the hand</td></tr>
+        <tr><td class="word">砂漠</td><td class="reading">sabaku</td><td>desert</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The intimacy of scale and the horror of portability</h5>
+        <p><strong>手のひら (te no hira):</strong> "Palm of the hand." This is not merely "hand." It is specifically the palm, the flat inner surface, the part that touches, that receives, that cups. In Japanese, 手のひら has special poetic resonance. It is the measure of small things (手のひらに乗る, fits in the palm). It is the place where lines are read by palmists. It is where a parent places food for a child, where lovers press their hands together. The palm is intimate, domestic, close enough to kiss. By placing a desert there, the title creates an impossible image: an arid wasteland contained in the most human of spaces.</p>
+        <p><strong>砂漠 (sabaku):</strong> "Desert." The word carries connotations of emptiness, dehydration, death by exposure, and endlessness. In Japanese literature, the desert is not a native landscape; Japan has no true deserts. It is always metaphorical, imported, a place of the mind. When Kawabata titled his miniatures <em>Tenohira no Shosetsu</em> (掌の小説, Palm-of-the-Hand Stories), he chose the palm because it signified miniature perfection, something complete enough to hold. Yuikawa's title borrows the scale but inverts the content. Where Kawabata's palm holds crystalline literary perfection, Yuikawa's palm holds a wasteland. The grammar of の makes the desert belong to the palm, possessively, as if the hand itself has generated this emptiness. The title says: this desert is not where you live. It is what you carry.</p>
+        <p><strong>The Kawabata echo:</strong> Kawabata Yasunari's <em>Palm-of-the-Hand Stories</em> (掌の小説, 1923-1972) are miniature masterpieces, each a world compressed to a few pages. Yuikawa's title echoes Kawabata's form but replaces his aesthetic delicacy with social brutality. Where Kawabata gives you a world in a hand, Yuikawa gives you a marriage. The grammar of the echo makes the novel into a dark twin: what if the thing that fits in your palm is not art but suffering? What if the miniature is not beautiful but deadly?</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. "How Long Will This Misfortune Continue?": The Grammar of the Unendurable Present</h2>
+    <span class="story-label">Opening hook</span>
+
+    <p>The novel's opening sentence is a question that no one inside the marriage dares to ask out loud.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">この不幸は、いつまで続くのだろうか</span>
+        </div>
+        <div class="romaji">"Kono fukō wa, itsu made tsuzuku no darō ka."</div>
+        <div class="translation">"How long will this misfortune continue, I wonder." / "This unhappiness, how long will it go on?"</div>
+        <div class="source">— Promotional copy / opening hook</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">不幸</td><td class="reading">fukō</td><td>misfortune, unhappiness, sorrow</td></tr>
+        <tr><td class="word">いつまで</td><td class="reading">itsu made</td><td>how long, until when</td></tr>
+        <tr><td class="word">続く</td><td class="reading">tsuzuku</td><td>to continue, to last</td></tr>
+        <tr><td class="word">だろうか</td><td class="reading">darō ka</td><td>I wonder (speculative question)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The resigned grammar of のだろうか</h5>
+        <p><strong>いつまで続くのだろうか (itsu made tsuzuku no darō ka):</strong> This is not a demand. It is not "When will this end?" with the force of a scream. It is a speculative wonder, softened by のだろうか, which turns a question into a thought that hovers in the air. The grammar of のだろうか makes the sentence into something Kahoko thinks rather than says. It is the question of someone who has learned that asking directly brings consequences. The wonder is resigned, exhausted, almost rhetorical. She does not expect an answer. She has stopped expecting answers. The grammar makes the opening into an interior monologue that has been running for years.</p>
+        <p><strong>不幸 (fukō):</strong> "Misfortune, unhappiness." The word is softer than 暴力 (bōryoku, violence) or 虐待 (gyakutai, abuse). It is the word a woman uses to describe her own marriage to herself before she has the vocabulary to name what is happening to her. Fukō is what you call it when you still believe you might be overreacting, when you still think the problem might be your own sensitivity. The promotional copy uses fukō rather than DV because the novel understands that women do not start with the word "violence." They start with "unhappiness" and spend years learning that the unhappiness has a name, a structure, a pattern that is not their fault. The grammar of この不幸は makes the suffering into a demonstrative, something present and specific: this unhappiness, the one I am living inside, the one that has a shape I can almost see.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. "Escaped with Nothing but Herself": The Grammar of Absolute Departure</h2>
+    <span class="story-label">Plot summary</span>
+
+    <p>The moment of escape is described in a phrase that sounds like poverty but is actually radical freedom.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">夫の暴力から身一つで逃げ出した可穂子</span>
+        </div>
+        <div class="romaji">"Otto no bōryoku kara mi-hitotsu de nigedashita Kahoko."</div>
+        <div class="translation">"Kahoko, who escaped from her husband's violence with nothing but the clothes on her back." / "Kahoko fled her husband's violence with only her body."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夫</td><td class="reading">otto</td><td>husband</td></tr>
+        <tr><td class="word">暴力</td><td class="reading">bōryoku</td><td>violence</td></tr>
+        <tr><td class="word">身一つ</td><td class="reading">mi-hitotsu</td><td>with nothing but oneself, with only the clothes on one's back</td></tr>
+        <tr><td class="word">逃げ出す</td><td class="reading">nigedasu</td><td>to flee, to run away, to escape</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The bodily grammar of 身一つで</h5>
+        <p><strong>身一つ (mi-hitotsu):</strong> Literally "one body," meaning with nothing else, with only oneself, without possessions, without luggage, without preparation. The word 身 means body, self, person. It is the most fundamental unit of human presence. When Kahoko escapes mi-hitotsu de, she leaves behind not only her home and her things but the entire structure of identity that was built inside the marriage. She leaves her kitchen, her closet, her photo albums, her name as it was spoken by her husband. She takes only her body. The grammar of 身一つで makes escape sound like both destitution and purification. She has been reduced to the minimum, but the minimum is enough. She is still a person. She still has a body that can walk through a door and not come back.</p>
+        <p><strong>逃げ出した (nigedashita):</strong> The past tense of 逃げ出す, which combines 逃げる (nigeru, to flee, to escape) with 出す (dasu, to go out, to put out). The compound makes the action more decisive than 逃げる alone. Nigedasu means to break out, to bolt, to make a run for it. It carries urgency and finality. The past tense makes it into an accomplished fact: she did it. The grammar of 逃げ出した turns the escape from a possibility into history. This matters because one of the novel's central insights is that leaving is the hardest verb for a woman in an abusive marriage to conjugate. Every other verb has been conditioned by the abuser's grammar: come home, cook dinner, apologize, stay. Nigedasu is the first verb that belongs entirely to her.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Shelter: The Grammar of シェルター</h2>
+    <span class="story-label">Social vocabulary</span>
+
+    <p>The first place Kahoko goes after escape is named in a borrowed word that has become a Japanese institution.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">夫の暴力に苦しみ、シェルターに逃げ込んだ可穂子</span>
+        </div>
+        <div class="romaji">"Otto no bōryoku ni kurushimi, sherutā ni nigekonda Kahoko."</div>
+        <div class="translation">"Kahoko, suffering from her husband's violence, fled into a shelter."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">シェルター</td><td class="reading">sherutā</td><td>shelter (for DV victims)</td></tr>
+        <tr><td class="word">逃げ込む</td><td class="reading">nigekomu</td><td>to flee into, to run into for refuge</td></tr>
+        <tr><td class="word">苦しむ</td><td class="reading">kurushimu</td><td>to suffer, to agonize</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The directional grammar of 逃げ込む</h5>
+        <p><strong>逃げ込む (nigekomu):</strong> "To flee into, to run into for refuge." The verb combines 逃げる (to flee) with 込む (to go into, to crowd into). The directional suffix 込む makes the action specific: she is not merely fleeing. She is fleeing <em>into</em> something. The shelter is not a destination chosen from many options. It is a container she enters because the outside has become uninhabitable. The grammar of シェルターに逃げ込む makes the shelter into a kind of womb, a protected interior that she must squeeze herself into because the alternative is death. The word シェルター itself, borrowed from English, is significant. Japan does not have a native word for this institution because Japan did not historically acknowledge that married women needed protection from their husbands. The loanword marks the concept as imported, modern, and still somewhat alien to Japanese domestic ideology.</p>
+        <p><strong>The shelter as narrative structure:</strong> In the novel, the shelter is the first of three progressively more autonomous spaces Kahoko moves through: シェルター (shelter, emergency refuge), ステップハウス (step house, transitional housing), and 自然農園 (natural farm, a women-run community). Each space has a different grammar of protection. The shelter is passive: you are hidden. The step house is transitional: you are learning. The farm is active: you are working, producing, belonging. The progression from shelter to farm is the novel's central architecture, and it maps onto Kahoko's psychological journey from victim to subject. The grammar of each space's name tells you what kind of woman it expects to receive.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. "Changing Places, Achieving Independence Bit by Bit": The Grammar of Gradual Self-Creation</h2>
+    <span class="story-label">Central theme</span>
+
+    <p>The novel's emotional project is captured in a participial phrase that refuses the drama of sudden transformation.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">離婚経て、居場所を変えながら少しずつ自立を果たそうとあがく可穂子</span>
+        </div>
+        <div class="romaji">"Rikon wo hete, ibasho wo kaenagara sukoshizutsu jiritsu wo hatashiyō to agaku Kahoko."</div>
+        <div class="translation">"Kahoko, having been through divorce, changing her place of belonging as she struggles bit by bit to achieve independence."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">離婚</td><td class="reading">rikon</td><td>divorce</td></tr>
+        <tr><td class="reading">経て</td><td class="reading">hete</td><td>via, through, after experiencing</td></tr>
+        <tr><td class="word">居場所</td><td class="reading">ibasho</td><td>place where one belongs, place to be</td></tr>
+        <tr><td class="word">変えながら</td><td class="reading">kaenagara</td><td>while changing</td></tr>
+        <tr><td class="word">少しずつ</td><td class="reading">sukoshizutsu</td><td>little by little, bit by bit</td></tr>
+        <tr><td class="word">自立</td><td class="reading">jiritsu</td><td>independence, self-reliance, autonomy</td></tr>
+        <tr><td class="word">果たそうとあがく</td><td class="reading">hatashiyō to agaku</td><td>struggles to achieve</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The struggle encoded in あがく and the belonging in 居場所</h5>
+        <p><strong>あがく (agaku):</strong> "To struggle, to wriggle, to flounder." This is a powerful verb. It describes the movement of a fish on land, a person drowning, someone trying to escape from ropes. It is not noble or dignified. It is desperate, physical, undignified. When the promotional copy says Kahoko agaku to achieve independence, the word makes her struggle sound visceral. She is not "working toward" independence or "pursuing" it. She is floundering toward it, gasping, almost drowning. The grammar of 自立を果たそうとあがく makes independence into something that must be fought for with the whole body, not merely decided upon. This is the truth of leaving an abusive marriage: the legal divorce is only the beginning. The real work is learning to exist as a self-directed person, and that work is agaku. It is floundering.</p>
+        <p><strong>居場所 (ibasho):</strong> "Place where one belongs, place to be." The word combines 居 (dwell, be, stay) with 場所 (place, location). An ibasho is not merely a house or an apartment. It is a place where you have the right to exist, where your presence is not questioned, where you can let your guard down. For Kahoko, the marriage was supposed to be her ibasho, but it became the opposite: a place where her existence was constantly under threat. The grammar of 居場所を変えながら (while changing her place of belonging) makes the novel into a series of experiments in dwelling. Shelter: can she exist here? Step house: can she learn to exist here? Farm: can she build something here? Each ibasho is a test, and the test is always the same: is this a place where she can be without being hit?</p>
+        <p><strong>少しずつ (sukoshizutsu):</strong> "Little by little, bit by bit." The word is crucial because it refuses the fantasy of sudden transformation. Kahoko does not emerge from the shelter fully independent. She does not read a self-help book and become whole. She changes sukoshizutsu, in increments so small they might not be visible to someone watching from the outside. The grammar of 少しずつ自立を果たそうとあがく makes the novel's timeline into something geological. Independence is not an event. It is an accumulation of small survivals.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. "The Queen of Romance Novels Cuts into the Darkness of the Present": The Grammar of Generic Transformation</h2>
+    <span class="story-label">Authorial context</span>
+
+    <p>The promotional copy frames the novel as a deliberate departure from the author's established genre.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">現代の闇に恋愛小説の女王が切り込む、衝撃のノンストップサスペンス</span>
+        </div>
+        <div class="romaji">"Gendai no yami ni ren'ai shōsetsu no joō ga kirikomanu, shōgeki no nonsutoppu sasupensu."</div>
+        <div class="translation">"The Queen of Romance Novels cuts into the darkness of the present day: a shocking nonstop suspense novel."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">現代</td><td class="reading">gendai</td><td>present day, modern era</td></tr>
+        <tr><td class="word">闇</td><td class="reading">yami</td><td>darkness, dark side</td></tr>
+        <tr><td class="word">恋愛小説</td><td class="reading">ren'ai shōsetsu</td><td>romance novel</td></tr>
+        <tr><td class="word">女王</td><td class="reading">joō</td><td>queen</td></tr>
+        <tr><td class="word">切り込む</td><td class="reading">kirikomu</td><td>to cut into, to plunge into</td></tr>
+        <tr><td class="word">衝撃</td><td class="reading">shōgeki</td><td>shock, impact</td></tr>
+        <tr><td class="word">ノンストップ</td><td class="reading">nonsutoppu</td><td>nonstop</td></tr>
+        <tr><td class="word">サスペンス</td><td class="reading">sasupensu</td><td>suspense</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The violence of 切り込む and the irony of the romance queen</h5>
+        <p><strong>切り込む (kirikomu):</strong> "To cut into, to plunge into, to charge into." The verb contains 切る (to cut) and 込む (to go into). It is a martial word, used for charging enemy lines, for a knife entering flesh, for a critic going straight to the heart of a problem. When the promotional copy says Yuikawa "cuts into the darkness of the present day," the grammar makes the novelist into a blade. This is not how romance novelists are usually described. Romance is supposed to soothe, to comfort, to offer the fantasy of love as resolution. Yuikawa's generic transformation is announced grammatically: she has stopped soothing and started cutting. The darkness she cuts into is 現代の闇 (gendai no yami), the darkness of the present day, which in this novel means the darkness inside ordinary marriages, the violence that happens behind closed doors in nice apartments with good addresses.</p>
+        <p><strong>恋愛小説の女 (ren'ai shōsetsu no joō):</strong> "The Queen of Romance Novels." This is media shorthand for Yuikawa's reputation, earned over three decades of writing about love. The title is not merely descriptive. It is a generic contract that the novel deliberately breaks. Readers who come to Yuikawa expecting the comfortable rhythms of romance, the predictable arc of meeting, misunderstanding, and reconciliation, will find instead a narrative where the husband is not a romantic obstacle but a criminal, where love does not resolve the plot but creates the danger, and where the only happy ending possible is that the protagonist survives. The grammar of 恋愛小説の女王が切り込む makes the novel into an act of regicide: the queen turns against her own kingdom. She uses the skills she learned writing about love, about women's interiority, about the small negotiations of intimacy, to write about what happens when intimacy becomes a trap.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. "Happiness Without Men": The Grammar of the Author's Motivation</h2>
+    <span class="story-label">Author interview</span>
+
+    <p>In an interview with Shueisha's Web Bungaku, Yuikawa explained why she wrote this novel.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">「男がいる幸せ」というのもあるけど、「男のいない幸せ」を書きたい、というのが始まりですね</span>
+        </div>
+        <div class="romaji">"'Otoko ga iru shiawase' to iu no mo aru kedo, 'otoko no inai shiawase' wo kakitai, to iu no ga hajimari desu ne."</div>
+        <div class="translation">"There's such a thing as 'happiness with a man,' but wanting to write about 'happiness without men' was the starting point."</div>
+        <div class="source">— Shueisha Web Bungaku interview</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">男</td><td class="reading">otoko</td><td>man, men</td></tr>
+        <tr><td class="word">幸せ</td><td class="reading">shiawase</td><td>happiness</td></tr>
+        <tr><td class="reading">始まり</td><td class="reading">hajimari</td><td>beginning, starting point</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammatical parallelism that contains a manifesto</h5>
+        <p><strong>男がいる幸せ (otoko ga iru shiawase):</strong> "Happiness with a man." The grammar is simple: man + exists + happiness. This is the default setting of the romance genre, the assumption that happiness for women is structurally dependent on the presence of a male partner. Yuikawa spent thirty years writing variations of this grammar. Her Naoki Prize-winning <em>Katagoshi no Koibito</em> (肩ごしの恋人, 2001) is a masterpiece of this form: a woman and a man, the pleasure and pain of their proximity, the happiness that exists because he is there, even when he is over her shoulder, even when he is not fully hers.</p>
+        <p><strong>男のいない幸せ (otoko no inai shiawase):</strong> "Happiness without men." The grammatical parallelism is perfect. The only change is the negation: いる (exists) becomes いない (does not exist). The structure is identical, which is the point. Yuikawa is not saying that happiness without men is a different category from happiness with men. She is saying it is the same category, equally possible, equally real, equally worth writing about. The particle の in 男のいない makes the negation into an adjectival phrase: men-without happiness, happiness characterized by the absence of men. The grammar makes absence into a positive condition rather than a lack. This is the conceptual revolution at the heart of the novel. Kahoko's problem is not that she lacks a man. Her problem is that she has one who hits her. The solution is not a better man. The solution is a life structured around something other than the question of whether men are present or absent.</p>
+        <p><strong>The farm as vision:</strong> Yuikawa says she was inspired by a TV program about women running a farm together. みんなすっぴんで、わいわいやりながらご飯を食べて (everyone without makeup, eating together while chatting noisily). The word わいわい is onomatopoeia for lively, noisy, cheerful communal activity. It is the sound of women enjoying each other's company without performance, without the male gaze, without the need to be beautiful or accommodating. The grammar of this description makes the farm into a utopia of female sociality. And the fact that Yuikawa, the Queen of Romance Novels, saw this and thought "this is what I want to write" tells you everything about the novel's radicalism. She did not see a new love story. She saw a story without love, which is to say, a story without men, which is to say, a story about happiness.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. "The Persistent Shadow of Her Ex-Husband": The Grammar of Stalking</h2>
+    <span class="story-label">Antagonist</span>
+
+    <p>The novel's suspense engine is a grammatical construction that makes pursuit sound like weather.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">どこまでも追ってくる元夫・雄二の執拗な影</span>
+        </div>
+        <div class="romaji">"Doko made mo otte kuru moto-otto Yūji no shitsuyō na kage."</div>
+        <div class="translation">"The persistent shadow of her ex-husband Yuuji, who follows her no matter how far she goes."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">どこまでも</td><td class="reading">doko made mo</td><td>no matter how far, everywhere, to the ends of the earth</td></tr>
+        <tr><td class="word">追ってくる</td><td class="reading">otte kuru</td><td>to follow (someone), to chase after</td></tr>
+        <tr><td class="word">元夫</td><td class="reading">moto-otto</td><td>ex-husband</td></tr>
+        <tr><td class="word">執拗</td><td class="reading">shitsuyō</td><td>persistent, tenacious, obstinate</td></tr>
+        <tr><td class="word">影</td><td class="reading">kage</td><td>shadow</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The directional grammar of 追ってくる and the metaphor of 影</h5>
+        <p><strong>どこまでも (doko made mo):</strong> "No matter how far, to the ends of the earth, everywhere." The phrase combines どこまで (to where, how far) with も (even, also), creating an expression of total extension. There is no limit. There is no distance far enough. The grammar makes Yuuji's pursuit sound absolute, a force of nature rather than a choice. This is how stalking feels to the person being stalked: not like a series of decisions by the stalker, but like a law of physics. Gravity pulls things down. Yuuji follows Kahoko. The も makes the pursuit comprehensive. Even here. Even there. Even to the farm, to the step house, to the shelter. Everywhere.</p>
+        <p><strong>追ってくる (otte kuru):</strong> "To follow (someone), to chase after." The directional auxiliary くる (to come) indicates movement toward the speaker, or in this case toward the protagonist. When combined with 追う (to chase, to follow), it creates a phrase that means "chases toward me." The grammar makes the stalking personal and immediate. He is not merely following her movements from a distance. He is coming toward her, again and again. The directional verb makes every sighting feel like an approach, every phone call like an arrival. The grammar of 追ってくる turns stalking into a continuous intrusion, a perpetual violation of the boundary between his space and hers.</p>
+        <p><strong>執拗な影 (shitsuyō na kage):</strong> "Persistent shadow." 影 means shadow, but in Japanese as in English, it carries metaphorical weight. A shadow is not the thing itself but its trace, its dark double, the evidence of its presence in the form of absence. Calling Yuuji a shadow rather than a man makes him sound less than human, a two-dimensional darkness that attaches to Kahoko's body and moves when she moves. The word 執拗 (shitsuyō, persistent, tenacious, obstinate) is usually applied to efforts, demands, or arguments. Applied to a shadow, it makes the darkness sound willful, almost alive. The grammar of 執拗な影 makes the ex-husband into a haunting, a presence that cannot be reasoned with because it is not fully rational. This is the novel's most accurate insight about stalkers: they do not operate according to the logic of consequences. They operate like shadows, following the body regardless of light source.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. "The Step House and the Natural Farm": The Grammar of Transitional Spaces</h2>
+    <span class="story-label">Setting</span>
+
+    <p>The two spaces that come after the shelter have names that describe their social function.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">シェルターからステップハウス、ＤＶの被害女性だけで運営される自然農園</span>
+        </div>
+        <div class="romaji">"Sherutā kara suteppu hausu, DV no higaisha josei dake de unei sareru shizen nōen."</div>
+        <div class="translation">"From the shelter to the step house, to the natural farm run entirely by women who are victims of DV."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ステップハウス</td><td class="reading">suteppu hausu</td><td>step house, transitional housing</td></tr>
+        <tr><td class="word">被害者</td><td class="reading">higaisha</td><td>victim, injured party</td></tr>
+        <tr><td class="word">運営する</td><td class="reading">unei suru</td><td>to run, to operate, to manage</td></tr>
+        <tr><td class="word">自然農園</td><td class="reading">shizen nōen</td><td>natural farm</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammatical progression from passive to active</h5>
+        <p><strong>ステップハウス (suteppu hausu):</strong> "Step house, transitional housing." Like シェルター, this is a loanword, but it describes a distinct institution. A step house is not emergency refuge. It is transitional: a place where women stay for months rather than days, where they receive counseling, job training, and support for independent living. The word "step" implies progression, as in "stepping stone." The grammar of the novel's spatial sequence, shelter → step house → farm, makes Kahoko's journey sound like a staircase. Each step is higher than the last, closer to autonomy. The step house is the middle space, the place where she is no longer in immediate danger but not yet fully free. It is the grammatical equivalent of a progressive verb: she is becoming independent, not yet independent, no longer merely surviving.</p>
+        <p><strong>ＤＶの被害女性だけで運営される (DV no higaisha josei dake de unei sareru):</strong> "Run entirely by women who are victims of DV." The passive construction 運営される (is run/operated) combined with だけで (only by) creates a phrase of radical specificity. This is not a farm. It is a farm with a very particular labor force and governance structure: women who have been hurt by men, running a space where men are not necessary. The grammar of だけで makes the exclusivity into a feature rather than a limitation. The farm does not happen to be women-only. It is women-only by design, because the women who run it know what Kahoko knows: that some spaces must be built from scratch because the existing ones are contaminated. The natural farm is the novel's answer to the question of 男のいない幸せ. Here it is. It looks like vegetables, like soil, like women eating わいわい without makeup.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. "The Author's Life: From Bank Clerk to Queen of Romance": The Grammar of a Career</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Yuikawa's biography explains why she can write about women's economic vulnerability with such precision.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">1955年石川県金沢市生まれ。金沢女子短期大学情報処理学科卒業。地元の銀行に就職し、10年のOL生活を経験。1984年「海色の午後」で第3回コバルト・ノベル大賞を受賞しデビュー。2001年『肩ごしの恋人』で第126回直木賞受賞。2008年『愛に似たもの』で第21回柴田錬三郎賞受賞</span>
+        </div>
+        <div class="romaji">"Sen-kyūhyaku-gojūgo-nen Ishikawa-ken Kanazawa-shi umare. Kanazawa Joshi Tanki Daigaku jōhō shori gakka sotsugyō. Jimoto no ginkō ni shūshoku shi, jū-nen no ōeru seikatsu wo keiken. Sen-kyūhyaku-hachijūyo-nen 'Umi Iro no Gogo' de dai-san-kai Kobaruto Noberu Taishō wo jushō shi debyū. Ni-sen-ichi-nen 'Katagoshi no Koibito' de dai-hyakunijūroku-kai Naoki-shō jushō. Ni-sen-hachi-nen 'Ai ni Nita Mono' de dai-nijūichi-kai Shibata Renzaburō-shō jushō."</div>
+        <div class="translation">"Born in Kanazawa City, Ishikawa Prefecture in 1955. Graduated from the Information Processing Department of Kanazawa Women's Junior College. Was employed at a local bank and experienced ten years as an office lady. Debuted in 1984 by winning the 3rd Cobalt Novel Grand Prize for 'The Sea-Colored Afternoon.' Won the 126th Naoki Prize in 2001 for 'The Lover Over My Shoulder.' Won the 21st Shibata Renzaburo Prize in 2008 for 'Something Resembling Love.'"</div>
+        <div class="source">— Wikipedia / author bio</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">情報処理</td><td class="reading">jōhō shori</td><td>information processing</td></tr>
+        <tr><td class="word">銀行</td><td class="reading">ginkō</td><td>bank</td></tr>
+        <tr><td class="word">OL</td><td class="reading">ōeru</td><td>office lady</td></tr>
+        <tr><td class="word">直木賞</td><td class="reading">Naoki-shō</td><td>Naoki Prize</td></tr>
+        <tr><td class="word">柴田錬三郎賞</td><td class="reading">Shibata Renzaburō-shō</td><td>Shibata Renzaburo Prize</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The banker's eye and the romance queen's heart</h5>
+        <p><strong>銀行に就職し、10年のOL生活を経験 (shūshoku shi, jū-nen no ōeru seikatsu wo keiken):</strong> "Was employed at a bank and experienced ten years as an OL." Yuikawa's ten years in a bank are not incidental biography. They are the foundation of her understanding of women's economic vulnerability. A bank is where you learn that money is not abstract. It is numbers that determine who can leave and who must stay. When Kahoko considers leaving Yuuji, the question is not only "Will he find me?" but "How will I live?" Yuikawa knows this calculus because she did it herself. She left a stable bank job to become a novelist at twenty-nine. She knows what it costs to walk away from security. The grammar of 経験 (keiken, to experience) makes the bank years into a resource rather than a detour. She did not waste ten years. She accumulated knowledge about how the world allocates risk, and she gives that knowledge to Kahoko.</p>
+        <p><strong>肩ごしの恋人 (Katagoshi no Koibito):</strong> "The Lover Over My Shoulder." This is the novel that won Yuikawa the Naoki Prize, and its title contains her entire thematic world. 肩ごし (katagoshi) means "over the shoulder." It describes a lover who is present but not fully visible, close but not entirely available, there and not there. This is Yuikawa's specialty: the grammar of almost, the happiness that exists in the space between presence and absence. <em>Te no Hira no Sabaku</em> is the negative image of this specialty. Where Katagoshi no Koibito is about the pleasure of a man who is almost close enough, Te no Hira no Sabaku is about the terror of a man who will not let go. The grammar of Yuikawa's career makes the new novel into a deliberate inversion: she has spent her life writing about women who want men who are not fully available. Now she writes about a woman who must escape a man who is too available, too close, too permanent. The shoulder that held a lover's gaze in 2001 becomes the shoulder that takes a blow in 2013.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Woman Who Must Unmake and Remake Herself</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜のだろうか</strong> — Speculative wonder: the grammar of questions too dangerous to ask aloud</li>
+        <li><strong>〜から逃げ出す</strong> — To flee from: the grammar of decisive escape</li>
+        <li><strong>〜に逃げ込む</strong> — To flee into: the grammar of refuge as container</li>
+        <li><strong>身一つで</strong> — With nothing but oneself: the grammar of absolute departure</li>
+        <li><strong>〜を経て</strong> — Via, through, after experiencing: the grammar of passage</li>
+        <li><strong>〜ながら</strong> — While doing: the grammar of simultaneous process</li>
+        <li><strong>少しずつ</strong> — Little by little: the grammar of incremental change</li>
+        <li><strong>〜ようとあがく</strong> — Struggles to: the grammar of desperate effort</li>
+        <li><strong>〜に切り込む</strong> — To cut into: the grammar of violent investigation</li>
+        <li><strong>どこまでも〜</strong> — No matter how far: the grammar of limitless pursuit</li>
+        <li><strong>〜てくる</strong> — Coming toward: the grammar of approach as threat</li>
+        <li><strong>〜だけで</strong> — Only by, with only: the grammar of radical exclusivity</li>
+        <li><strong>〜のいない〜</strong> — Without: the grammar of absence as positive condition</li>
+        <li><strong>わいわい</strong> — Noisily, cheerfully: the onomatopoeia of female communal joy</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>手のひらの砂漠</strong> — The desert in the palm: the wasteland you carry</li>
+        <li><strong>この不幸は</strong> — This unhappiness: the demonstrative that makes suffering visible</li>
+        <li><strong>いつまで続くのだろうか</strong> — How long will it continue: the wonder that becomes a scream</li>
+        <li><strong>身一つで</strong> — With nothing but herself: the minimum that is enough</li>
+        <li><strong>逃げ出した</strong> — She escaped: the accomplished fact that changes everything</li>
+        <li><strong>シェルター</strong> — Shelter: the loanword that marks an imported necessity</li>
+        <li><strong>逃げ込む</strong> — To flee into: the directional grammar of emergency refuge</li>
+        <li><strong>居場所</strong> — Place of belonging: the space where existence is not questioned</li>
+        <li><strong>少しずつ</strong> — Little by little: the refusal of sudden transformation</li>
+        <li><strong>自立</strong> — Independence: the self standing upright</li>
+        <li><strong>あがく</strong> — To struggle, to flounder: the verb that makes survival visceral</li>
+        <li><strong>現代の闇</strong> — The darkness of the present day: what exists behind closed doors</li>
+        <li><strong>切り込む</strong> — To cut into: the novelist as blade</li>
+        <li><strong>恋愛小説の女王</strong> — The Queen of Romance Novels: the reputation being turned against itself</li>
+        <li><strong>男がいる幸せ</strong> — Happiness with a man: the default setting</li>
+        <li><strong>男のいない幸せ</strong> — Happiness without men: the radical alternative</li>
+        <li><strong>わいわい</strong> — Noisily cheerful: the sound of women eating together without performance</li>
+        <li><strong>元夫</strong> — Ex-husband: the grammatical marker of a bond that should be past</li>
+        <li><strong>執拗な影</strong> — Persistent shadow: the stalker as weather, as haunting</li>
+        <li><strong>どこまでも追ってくる</strong> — Follows no matter how far: the grammar of inescapable approach</li>
+        <li><strong>ステップハウス</strong> — Step house: the transitional space between hiding and living</li>
+        <li><strong>自然農園</strong> — Natural farm: the utopia of female self-sufficiency</li>
+        <li><strong>被害女性だけで運営される</strong> — Run entirely by victimized women: the radical specificity of healing</li>
+        <li><strong>肩ごしの恋人</strong> — The lover over the shoulder: the earlier masterpiece that this novel inverts</li>
+        <li><strong>直木賞</strong> — Naoki Prize: the recognition of the queen before she became a blade</li>
+    </ul>
+
+    <h4>Yuikawa vs. Shibata vs. Fujino vs. Ogata vs. Sano vs. Takita vs. Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Twenty-four directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 方不明, やむをない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだます, 基地外, 譫妄, 守らねばならぬ), Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる), Takita's are visual and wobbly (落語劇場, 下町風俗, 吹き出し, 無意味な絵, ふにゃふにゃ, 線のゆらぎ, フラのような間, また夢になるといけねえ, 枕元, 天秤棒, 居候, 番台), Sano's are cool and causative (風鈴, 優雅な推理, 社の用, 1200編, 中庸, アッと言わせる, 知的遊戯, マンネリズムに陥る, 一石を投じる, 揚げ足取り, 名探偵否定論, 淡々, アッケラカン), Ogata's are sartorial and diagnostic (試着室, 本気の恋, 片思い, 両思い, 運命の一着, 強がり, 諦め, 素直, 戦闘服, 背中を押す, 相手を慮る, 曖昧, 実らなかった恋, 感情は歳をとらない, 悪い女ほど清楚, 花嫁未満, いったりきたり), Fujino's are stoic and familial (じい散歩, 夫婦あわせて, 健啖家, しつこく疑う, 引きこもり, 自称・長女, 借金まみれ, 無心, いろいろあるけど, 家族である々は続いてゆく, 飄々, じんわり沁みる, てくてく, 妻の反乱, 老老介護, 難も積もれば幸となる), Shibata's are genre-fluid and feline-grammatical (猫は引越しで顔あらう, オレ, 同居人, バツイチ, ミステリー作家, 去勢雄, 避妊雌, もどき, ２ＬＤＫ, 南向き, 乗り換え無し, 天ぷらそば, 古本市, 下町, 情緒, 馴染む, 大忙し, 関西弁, 飼い主ともども, 吾輩, 横溝正史賞), and Yuikawa's are romantic and revolutionary (手のひらの砂漠, この不幸は, 身一つで, 逃げ出した, シェルター, 逃げ込む, 居場所, 少しずつ, 自立, あがく, 現代の闇, 切り込む, 男がいる幸せ, 男のいない幸せ, わいわい, 元夫, 執拗な影, どこまでも追ってくる, ステップハウス, 自然農園, 被害女性だけで運営される, 肩ごしの恋人, 直木賞). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. Higashino asks what happens when you love an industry so much that you cannot stop laughing at it. Takita asks what happens when a man who grew up in a vanished downtown tries to draw the spoken stories of an even more vanished downtown, using a line that wobbles like a hula dancer. Sano asks what happens when a newspaper reporter decides that the perfect mystery is one that makes the reader say "a" in a single involuntary syllable. Ogata asks what happens when a 175cm copywriter decides that the fitting room is the only honest room in the city. Fujino asks what happens when a family accumulates every possible failure and yet the days of being a "family" continue. Shibata asks what happens when a cat who says ore instead of wagahai investigates mysteries while his housemate eats tempura soba. And Yuikawa asks what happens when a woman who has spent her marriage learning to say "I'm sorry" learns instead to say "I'm leaving," when the palm that held her husband's hand becomes a desert she must cross alone, when the shelter, the step house, and the farm become not waystations back to normal life but the architecture of a new life that does not include men, when the queen of romance novels puts down her crown and picks up a knife, not to kill but to cut, to cut into the darkness behind the closed doors of ordinary apartments where one in six Japanese marriages hides a violence that has never learned its name. Together these twenty-four works map the full range of Japanese narrative art: from divine absence to feline deduction, from bureaucratic erasure to the floundering struggle toward a self that has never before been allowed to stand upright.</p>
+</section>
+
+</main>
+
+</body>
+</html>

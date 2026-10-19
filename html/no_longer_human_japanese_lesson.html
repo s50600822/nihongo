@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Longer Human — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e4e0da;
+            --surface: #eeece8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d3530;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --danger: #5c2d2d;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,53,48,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.danger::before {
+            background: var(--danger);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.danger-box {
+            background: color-mix(in oklab, var(--danger) 6%, var(--surface));
+            border-left-color: var(--danger);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.danger-box h5 {
+            color: var(--danger);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-danger {
+            background: color-mix(in oklab, var(--danger) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .context-note {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--line);
+            padding-left: 0.8rem;
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>No Longer Human<br><span style="font-size:0.6em; font-weight:300;">人間失格</span></h1>
+    <div class="subtitle">A Japanese lesson through Dazai Osamu's most devastating novel</div>
+    <div class="meta">Shame &middot; The clown's face &middot; What it costs to be human</div>
+</header>
+
+<main>
+
+<p class="intro">
+    Published in 1948, one month before Dazai's death by suicide, <em>No Longer Human</em> is the second-best-selling novel in Japanese history. It is a confession, a suicide note in the form of fiction, and a portrait of a man who cannot feel like a person. Where Endo writes about God and guilt, Dazai writes about performance and shame. His narrator, Oba Yozo, does not believe he lacks a soul; he believes he lacks the equipment that would allow him to have one. The prose is raw, theatrical, and almost embarrassingly intimate. That is the point.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: 人間失格</h2>
+
+    <p>Donald Keene, the novel's English translator, chose <em>No Longer Human</em>. The literal translation would be closer to "Disqualified from Being Human." The difference matters.</p>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">人間</td><td class="reading">ningen</td><td>human being, person</td></tr>
+        <tr><td class="word">失格</td><td class="reading">shikkaku</td><td>disqualification, loss of qualification, failure to meet standards</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The bureaucratic cruelty of 失格</h5>
+        <p><strong>失格 (shikkaku):</strong> This is an institutional word. It is what happens when an athlete is disqualified from competition, when a license is revoked, when someone is stripped of a title. It suggests that there was an exam, a standard, a committee, and the subject failed. "No longer human" sounds like a gradual fading, a condition one drifts into. 人間失格 sounds like a verdict. Yozo has not simply ceased to be human; he has been found unworthy of the category. The word carries the violence of judgment without a judge.</p>
+        <p><strong>人間 (ningen):</strong> Not merely "human" in the biological sense. 人間 means a person who functions in society, who can read rooms, who can perform the basic reciprocities of human life. When a Japanese person says "he's not a 人間," they do not mean he is inhuman like a monster. They mean he cannot manage the minimum social contract. Yozo's disqualification is social and existential at once.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Opening Confession</h2>
+    <p>The first sentence of the first notebook is one of the most famous in Japanese literature.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">恥の多い生涯</span>を送って来ました
+        </div>
+        <div class="romaji">"Haji no ooi shougai wo okutte kimashita."</div>
+        <div class="translation">"Mine has been a life of much shame."</div>
+        <div class="source">— First sentence, First Notebook</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">恥</td><td class="reading">haji</td><td>shame, humiliation, disgrace (social, visible)</td></tr>
+        <tr><td class="word">生涯</td><td class="reading">shougai</td><td>one's whole life, lifetime</td></tr>
+        <tr><td class="word">送る</td><td class="reading">okuru</td><td>to spend (time), to live through</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The publicity of 恥</h5>
+        <p><strong>恥 (haji):</strong> Not guilt. Not remorse. 恥 is shame, and in Japanese culture it is primarily social and visible. It is what you feel when others see what you hoped to hide. The word contains a theory of self: you are what others can see of you. When Yozo says his life has been full of 恥, he is saying that his entire existence has been an exposure, a series of moments in which his failure to be human was visible to others. The English "shame" captures the emotion but loses the theatricality. 恥 needs an audience. Guilt does not.</p>
+        <p><strong>送って来ました (okutte kimashita):</strong> The grammar is crucial. This is not "I lived" or "I experienced." It is "I have been sending through / coming through." The 〜て来る pattern indicates a process that began in the past and has continued up to the present moment, with the speaker arriving here, now, having come through it. Yozo is not summarizing his life from a safe distance. He is reporting from the far end of a tunnel he is still inside. The grammar makes the confession immediate, not retrospective.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. I Cannot Understand Human Life</h2>
+    <p>The sentence that follows the opening is even more devastating, because it explains what kind of shame.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            自分には、<span class="hl">人間の生活</span>というものが、<span class="hl">見当つかない</span>です
+        </div>
+        <div class="romaji">"Jibun ni wa, ningen no seikatsu to iu mono ga, mihatou tsukanai no desu."</div>
+        <div class="translation">"I cannot even guess myself what it must be to live the life of a human being."</div>
+        <div class="source">— First Notebook, opening</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">人間の生活</td><td class="reading">ningen no seikatsu</td><td>the life of a human being</td></tr>
+        <tr><td class="word">見当つかない</td><td class="reading">mihatou tsukanai</td><td>cannot get a bearing on, cannot fathom, cannot make out</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The nautical metaphor</h5>
+        <p><strong>見当つかない (mihatou tsukanai):</strong> From 見当 (kentou), meaning bearing, direction, estimate. It is a navigational word. A sailor takes a 見当 to know where he is. When Yozo says he cannot 見当つく human life, he is saying he has no compass for it, no way to triangulate his position relative to it. He is lost at sea in a social world. The English "cannot even guess" sounds casual, almost whimsical. 見当つかない is desperate. It means you have tried to locate yourself and failed.</p>
+        <p><strong>人間の生活 (ningen no seikatsu):</strong> Not 人生 (jinsei, "human existence"), which would sound philosophical and grand. Yozo says 生活 (seikatsu), the ordinary word for daily life: eating, sleeping, working, laughing at the right moments. He is not claiming to misunderstand the meaning of existence. He is claiming to misunderstand how to perform the basic routines that constitute being a person. This is much more frightening. A man who does not understand 人生 can still go to the office. A man who does not understand 生活 cannot leave his room.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Prologue: The Ugly Smile</h2>
+    <p>Before Yozo speaks, an unnamed narrator describes three photographs of him. The first, from childhood, contains the novel in embryo.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            首を三十度ほど左に傾け、<span class="hl">醜く笑っている</span>写真である。醜く？ けれども、<span class="hl">鈍い人たち</span>（つまり、美醜などに関心を持たぬ人たち）は、面白くも何とも無いような顔をして、「可愛い坊ちゃんですね」といい加減なお世辞を言っても、まんざら空お世辞に聞えないくらいの、謂わば通俗の「可愛らしさ」みたいな影もその子供の笑顔に無いわけではないのだが
+        </div>
+        <div class="romaji">"Kubi wo sanjuu do hodo hidari ni katamuke, minikuku waratte iru shashin de aru. Minikuku? Keredomo, nibui hitotachi (tsumari, bishuu nado ni kanshin wo motanu hitotachi) wa, omoshiroku mo nani to mo nai you na kao wo shite, 'Kawaii botchan desu ne' to ii kagen na oseji wo itte mo, manzara kara oseji ni kikoenai kurai no, iwareba tsuuzoku no 'kawairashisa' mitai na kage mo sono kodomo no egao ni nai wake de wa nai no da ga..."</div>
+        <div class="translation">"A photograph of him with his head tilted about thirty degrees to the left, smiling an ugly smile. Ugly? And yet people of dull sensibility (that is, people indifferent to matters of beauty and ugliness) would make a face as if it were neither interesting nor anything at all, and offer some perfunctory compliment like 'What a cute young master,' and it was not entirely flattery, for there was indeed something of what might be called a vulgar 'cuteness' in the child's smile."</div>
+        <div class="source">— Prologue</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">醜い</td><td class="reading">minikui</td><td>ugly, unsightly, repulsive</td></tr>
+        <tr><td class="word">鈍い</td><td class="reading">nibui</td><td>dull, blunt, insensitive</td></tr>
+        <tr><td class="word">いい加減</td><td class="reading">ii kagen</td><td>perfunctory, half-hearted, careless</td></tr>
+        <tr><td class="word">お世辞</td><td class="reading">oseji</td><td>flattery, compliment, polite lie</td></tr>
+        <tr><td class="word">まんざら</td><td class="reading">manzara</td><td>not entirely, not altogether (used with negative)</td></tr>
+        <tr><td class="word">可愛らしい</td><td class="reading">kawairashii</td><td>cute, charming, lovely (with a nuance of innocence)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The class dynamics of seeing</h5>
+        <p><strong>鈍い人たち (nibui hitotachi):</strong> "Dull people," "people of blunt sensibility." 鈍い means blunt, as in a knife that will not cut. Dazai is dividing humanity into those who can see and those who cannot. The ones who cannot see call the smile "cute." The ones who can see call it ugly. The word contains an entire aesthetic theory: perception is a moral capacity. To be 鈍い is not a minor failing. It is a form of spiritual blindness that allows monsters to pass as children.</p>
+        <p><strong>まんざら (manzara):</strong> An adverb that means "not entirely" when paired with a negative. It is a word of careful qualification. The narrator is saying: the flattery was not <em>complete</em> flattery. There was something genuinely cute there, mixed in with the ugliness. まんざら forces the sentence into a double negative that enacts the ambiguity of the face itself. The grammar performs the uncertainty: is this child cute or monstrous? The answer is: not not cute. This is how Yozo has survived: by being just cute enough that his ugliness is not seen.</p>
+        <p><strong>可愛らしさ (kawairashisa):</strong> The abstract noun from 可愛らしい. The narrator adds 通俗 (tsuuzoku, vulgar, common) as a modifier, which turns the word inside out. 可愛らしさ is innocence itself. Vulgar cuteness is innocence performed for an audience that cannot tell the difference. Yozo's childhood smile is a commercial, a product designed to elicit the response "what a cute boy." It is not a smile. It is a defense mechanism that happens to use facial muscles.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Clown</h2>
+    <p>Yozo's central strategy for survival is to become a 道化 (clown, buffoon). This passage is the novel's thesis.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            そこで考え出したのは、<span class="hl">道化</span>でした。それは、自分の、人間に対する<span class="hl">最後の求愛</span>でした。自分は、いつのまにやら、<span class="hl">一言も本当の事を言わない子</span>になっていたのです
+        </div>
+        <div class="romaji">"Soko de kangaedashita no wa, douke deshita. Sore wa, jibun no, ningen ni taisuru saigo no kyuuai deshita. Jibun wa, itsu no ma ni yara, hitokoto mo hontou no koto wo iwanai ko ni natte ita no desu."</div>
+        <div class="translation">"What I thought of was the clown. It was my last plea of love to humanity. Before I knew it, I had become a child who never spoke a single true word."</div>
+        <div class="source">— First Notebook</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">道化</td><td class="reading">douke</td><td>clown, buffoon, jester</td></tr>
+        <tr><td class="word">求愛</td><td class="reading">kyuuai</td><td>courtship, wooing, plea for love</td></tr>
+        <tr><td class="word">一言</td><td class="reading">hitokoto</td><td>a single word</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The clown as courtship</h5>
+        <p><strong>道化 (douke):</strong> Not merely a clown. A 道化 is a court jester, a professional fool who entertains the powerful. The word carries the nuance of performance for survival. Yozo is not funny because he is happy. He is funny because he is terrified. The 道化 laughs so that others will not ask why he is not laughing. The word suggests something ancient and institutional: the fool at court, the one person allowed to speak truth because he wraps it in jokes. Except Yozo's jokes contain no truth at all. He has become pure performance, with no self behind it.</p>
+        <p><strong>最後の求愛 (saigo no kyuuai):</strong> "Last courtship" or "last plea for love." 求愛 is the word for romantic pursuit, for what a man does when he wants a woman to love him. Yozo uses it for his relationship with all of humanity. He is courting the species, performing charm so that we will not reject him. The word makes his clowning intimate and desperate. It is not a job. It is a love letter written in gestures because he does not trust words. And it is his <em>last</em> one: after this, there is no strategy left.</p>
+        <p><strong>一言も本当の事を言わない (hitokoto mo hontou no koto wo iwanai):</strong> "Not one true word." The grammar of 一言も...ない means "not even one." It is absolute. Yozo is not saying he lies sometimes. He is saying that by the time he was a child, his entire relationship to language had become fraudulent. The word 本当 (hontou, truth/reality) contains 本 (hon, root, origin). To speak 本当の事 is to speak from the root of oneself. Yozo has no root. Therefore he has no truth.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Weakling's Fear</h2>
+    <p>One of the novel's most quoted lines comes when Yozo, after a night with a woman, tries to understand his own incapacity for happiness.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            <span class="hl-danger">弱虫は、幸福をさえおそれるものです。綿で怪我をするんです</span>
+        </div>
+        <div class="romaji">"Yowamushi wa, koufuku wo sae osoreru mono desu. Wata de kega wo suru n desu."</div>
+        <div class="translation">"A weakling fears even happiness. He is wounded by cotton."</div>
+        <div class="source">— Second Notebook</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">弱虫</td><td class="reading">yowamushi</td><td>coward, weakling (literally: weak insect)</td></tr>
+        <tr><td class="word">幸福</td><td class="reading">koufuku</td><td>happiness, blessedness, well-being</td></tr>
+        <tr><td class="word">おそれる</td><td class="reading">osoreru</td><td>to fear, to dread, to revere</td></tr>
+        <tr><td class="word">綿</td><td class="reading">wata</td><td>cotton, padding, soft fiber</td></tr>
+        <tr><td class="word">怪我</td><td class="reading">kega</td><td>injury, wound</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The absurdity of being wounded by softness</h5>
+        <p><strong>弱虫 (yowamushi):</strong> Literally "weak insect." It is a contemptuous word, what strong children call frightened children on the playground. By applying it to himself, Yozo is both confessing and preempting judgment. He calls himself what others would call him, thereby stealing their weapon. But the word also contains pity. An insect is small, easily crushed, not responsible for its fragility. Yozo is asking us to see him as a creature too poorly made for the world he was born into.</p>
+        <p><strong>おそれる (osoreru):</strong> Not merely "to be afraid of." おそれる contains reverence. It is the word used for fear of God, for awe before something greater than oneself. When Yozo says he おそれるs happiness, he is saying he stands before it as a sinner stands before divinity: unworthy, certain he will destroy it. The English "fears" is too small. おそれる is a relationship. You おそれる what you cannot trust yourself to approach.</p>
+        <p><strong>綿で怪我をする (wata de kega wo suru):</strong> "To be injured by cotton." This is one of the most perfect sentences in Japanese literature. Cotton is the softest thing that cannot hurt you. And yet Yozo is wounded by it. The absurdity is the point: his sensitivity is not a gift that makes him feel more deeply. It is a defect that makes him unable to bear even the gentlest contact with the world. The grammar is casual, almost comic: 〜んです adds an explanatory tone, as if he is saying "you see, cotton hurts me." The colloquialism makes the confession more unbearable. He is explaining something that should not need explanation.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. Everything Passes</h2>
+    <p>The novel's most famous philosophical statement comes near the end, when Yozo has lost everything and is trying to find one truth he can hold.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            ただ、<span class="hl">いっさいは過ぎていきます</span>。自分が今まで<span class="hl">阿鼻叫喚</span>で生きてきた、いわゆる人間の世界において、たった一つ、真理らしく思われたのは、それだけでした
+        </div>
+        <div class="romaji">"Tada, issai wa sugite ikimasu. Jibun ga ima made abikyoukan de ikite kita, iwayuru ningen no sekai ni oite, tatta hitotsu, shinri rashiku omowareta no wa, sore dake deshita."</div>
+        <div class="translation">"Yet everything passes. In what is called the human world, in which I have lived until now in screaming hell, that was the only thing that seemed to resemble a truth."</div>
+        <div class="source">— Third Notebook</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">いっさい</td><td class="reading">issai</td><td>everything, all things</td></tr>
+        <tr><td class="word">過ぎる</td><td class="reading">sugiru</td><td>to pass, to go by, to elapse</td></tr>
+        <tr><td class="word">阿鼻叫喚</td><td class="reading">abikyoukan</td><td>screaming hell (Buddhist: Avici hell of endless torment)</td></tr>
+        <tr><td class="word">真理</td><td class="reading">shinri</td><td>truth (philosophical, not merely factual)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The Buddhist hell in the room</h5>
+        <p><strong>阿鼻叫喚 (abikyoukan):</strong> A Buddhist term for Avici, the lowest and most painful hell, where sufferers scream endlessly without dying. It is not merely "screaming hell" or "agony." It is a specific theological concept: punishment without release, pain without the mercy of unconsciousness. By using this word for ordinary human society, Yozo is saying that the world of jobs, friendships, marriage, and conversation is, for him, indistinguishable from the worst afterlife Buddhism can imagine. The word elevates his suffering to cosmic scale while simultaneously mocking it: he is in hell not because he sinned, but because he was born without the equipment to be human.</p>
+        <p><strong>いっさいは過ぎていきます (issai wa sugite ikimasu):</strong> "Everything passes." The grammar 〜ていく indicates movement away from the speaker into the future/past. Things do not merely pass; they pass <em>away</em>, leaving the speaker behind. The sentence is flat, resigned, almost peaceful. It is the one truth Yozo has found in hell: nothing lasts, which means his pain will not last either. But it also means nothing he loves will last. The sentence is a Buddhist insight (all is impermanence, 諸行無常) discovered by a man who has arrived at it not through meditation but through damage.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Afterword: A Good Boy</h2>
+    <p>The novel ends not with Yozo's voice but with a woman's. After his institutionalization, a woman who knew him speaks to the narrator.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            「とても<span class="hl">素直</span>で、よく気がきいて（中略）<span class="hl">神様みたいないい子</span>でした」
+        </div>
+        <div class="romaji">"Totemo sunao de, yoku ki ga kiite (... ) Kamisama mitai na ii ko deshita."</div>
+        <div class="translation">"He was so docile, so considerate... a good child, like a god."</div>
+        <div class="source">— Afterword, spoken by a woman who knew Yozo</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">素直</td><td class="reading">sunao</td><td>docile, honest, straightforward, without resistance</td></tr>
+        <tr><td class="word">気がきく</td><td class="reading">ki ga kiku</td><td>to be considerate, to be attentive to others' needs</td></tr>
+        <tr><td class="word">神様みたい</td><td class="reading">kamisama mitai</td><td>like a god, godlike</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The cruelty of 素直</h5>
+        <p><strong>素直 (sunao):</strong> One of the most praised virtues in Japanese. A 素直 child obeys without rebellion, accepts without complaint, bends without breaking. It is the word used for well-trained horses, for good students, for ideal wives. When this woman calls Yozo 素直, she is describing the perfect surface he presented to the world. She never saw what was underneath. The word is a condemnation disguised as praise. If Yozo was so 素直, why is he in an asylum? The question does not occur to her. 素直 is a word for surfaces, and Yozo spent his life making surfaces so perfect that no one looked behind them.</p>
+        <p><strong>神様みたいないい子 (kamisama mitai na ii ko):</strong> "A good child, like a god." This is almost unbearable. The woman means it as the highest praise. But Yozo has spent the novel telling us he has no self, no interior, no humanity. To be called "like a god" is to be called inhuman in the most complimentary way possible. In Japanese, 神様 can mean a deity or simply something beyond ordinary human messiness. She is saying he was too good to be human. She is right. That was his tragedy.</p>
+    </div>
+
+    <div class="context-note">
+        The novel's final cruelty is this: the person who knew Yozo best understood him least. Her praise proves his point. He succeeded so completely at performing humanity that even after his collapse, people remember the performance, not the performer.
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Cigarette and the Sea</h2>
+    <p>In one of the novel's most visually precise scenes, Yozo stands on a beach with a woman who has attempted suicide with him. She lives. He watches her.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            女は<span class="hl-danger">死んでいって</span>、自分は<span class="hl-danger">生きながらえて</span>、いまだに<span class="hl-danger">罰</span>を受けているのだ
+        </div>
+        <div class="romaji">"Onna wa shinde itte, jibun wa iki nagaraete, ima da ni batsu wo ukete iru no da."</div>
+        <div class="translation">"The woman died, and I survived, and I am still being punished."</div>
+        <div class="source">— Second Notebook, after the double suicide attempt</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">生きながらえる</td><td class="reading">iki nagaraeru</td><td>to survive, to live on, to remain alive (with a sense of endurance)</td></tr>
+        <tr><td class="word">罰</td><td class="reading">batsu</td><td>punishment, penalty</td></tr>
+        <tr><td class="word">受ける</td><td class="reading">ukeru</td><td>to receive, to undergo, to suffer</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The unfairness of surviving</h5>
+        <p><strong>生きながらえる (iki nagaraeru):</strong> Not merely "survived." 生きながらえる means to continue living when one expected to die, to endure existence after the point where existence should have ended. The word contains fatigue. Yozo is not grateful to be alive. He is baffled and burdened by it. The grammar 〜ながらえる suggests stretching, enduring, holding on past one's capacity. In English, "survived" can be heroic. 生きながらえる is never heroic. It is the word for prisoners who outlive their sentences, for soldiers who return from wars they should have died in.</p>
+        <p><strong>罰 (batsu):</strong> The same word Endo uses in <em>The Sea and Poison</em>. But where Endo's characters fear 罰 from society, Yozo experiences it as something he receives simply for existing. There is no court, no judge, no sentence. He is punished by the fact of his own continuation. The word suggests that his survival is not a reprieve but a penalty. The woman died and was released. He lived and was condemned. This is Dazai's theology in one sentence: death is mercy, life is punishment.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>10. Summary: The Grammar of the Mask</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜て来る</strong> — a process continuing from past to present (still inside the tunnel)</li>
+        <li><strong>見当つかない</strong> — cannot get a bearing on (lost at sea in human society)</li>
+        <li><strong>一言も...ない</strong> — not even one (absolute negation of truth)</li>
+        <li><strong>〜ながらえる</strong> — to endure, to survive past one's limit</li>
+        <li><strong>まんざら...ない</strong> — not entirely (double negative as ambiguity)</li>
+    </ul>
+
+    <h4>Words that carry the novel's weight</h4>
+    <ul>
+        <li><strong>失格</strong> — disqualification as bureaucratic verdict</li>
+        <li><strong>恥</strong> — shame that needs an audience</li>
+        <li><strong>鈍い</strong> — spiritual blindness, the inability to see ugliness</li>
+        <li><strong>道化</strong> — the clown as survival strategy and last courtship</li>
+        <li><strong>求愛</strong> — courtship directed at all of humanity</li>
+        <li><strong>弱虫</strong> — the coward as a creature too poorly made for the world</li>
+        <li><strong>おそれる</strong> — fear with reverence, not mere fright</li>
+        <li><strong>綿</strong> — cotton as the softest possible weapon</li>
+        <li><strong>阿鼻叫喚</strong> — Buddhist hell discovered in ordinary society</li>
+        <li><strong>素直</strong> — the virtue that describes surfaces, not souls</li>
+        <li><strong>生きながらえる</strong> — survival as fatigue, not triumph</li>
+    </ul>
+
+    <h4>Dazai vs. Endo: Two kinds of untranslatability</h4>
+    <p>Where Endo's untranslatable words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格). Endo writes about what the body knows that the mind cannot say. Dazai writes about what the face shows that the soul cannot feel. If Endo teaches Japanese through the vocabulary of divine absence and unexpected grace, Dazai teaches it through the vocabulary of social survival and self-erasure. Both use small words to carry impossible weight. But where Endo's words tend upward, toward God and meaning, Dazai's tend inward, toward the black hole where a self should be.</p>
+</section>
+
+</main>
+
+</body>
+</html>

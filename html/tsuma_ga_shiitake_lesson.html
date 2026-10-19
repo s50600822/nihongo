@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>が椎茸だったころ — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>妻が椎茸だったころ</h1>
+    <p class="subtitle">Tsuma ga Shiitake Datta Koro<br><em>When My Wife Was a Shiitake Mushroom</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">中島京子 (Nakajima Kyoko)</span></span>
+      <span><span class="label">First published</span> <span class="value">November 22, 2013 (hardcover) / December 15, 2016 (bunko)</span></span>
+      <span><span class="label">Publisher</span> <span class="value">Kodansha</span></span>
+      <span><span class="label">Format</span> <span class="value">Short story collection (172 pp. / 184 pp. bunko)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-06-218513-4 (hardcover) / 978-4-06-293550-0 (bunko)</span></span>
+      <span><span class="label">Awards</span> <span class="value">42nd Izumi Kyoka Prize for Literature (2014); 2013 Japan Title-Only Grand Prize</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">妻が椎茸だったころ</div>
+    <div class="romaji">Tsuma ga Shiitake Datta Koro</div>
+    <div class="translation">"When My Wife Was a Shiitake Mushroom" / "The Time When My Wife Was a Shiitake"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>妻</td><td>tsuma</td><td>Noun</td><td>wife</td></tr>
+    <tr><td>が</td><td>ga</td><td>Subject particle</td><td>marks the grammatical subject</td></tr>
+    <tr><td>椎茸</td><td>shiitake</td><td>Noun</td><td>shiitake mushroom</td></tr>
+    <tr><td>だった</td><td>datta</td><td>Copula (past)</td><td>plain past of だ (da)</td></tr>
+    <tr><td>ころ</td><td>koro</td><td>Noun</td><td>time, period, when</td></tr>
+  </table>
+
+  <h4>だったころ (datta koro): The Grammar of a Former State</h4>
+  <p><code>だったころ</code> is a past-past construction: the plain past copula <code>だった</code> (was) + <code>ころ</code> (time/period). It refers to a time when something was in a certain state that is no longer true. "When my wife was a shiitake" implies that she is no longer a shiitake, that this was a former identity. The grammar encodes transformation: a being that was once one thing and has become another. In the story's cosmology, this is literally true: the wife remembers that in a previous life (or previous existence), she was a shiitake mushroom.</p>
+
+  <p>The construction <code>～だったころ</code> is commonly used for nostalgic or biographical statements: <code>子供だったころ</code> (when I was a child), <code>学生だったころ</code> (when I was a student). Using it for a mushroom elevates the fungal state to the same grammatical plane as childhood or studenthood: a phase of being, a former self, a memory. The title does not say "my wife used to be a shiitake" (<code>妻は椎茸だった</code>); it says "the time when my wife was a shiitake" (<code>妻が椎茸だったころ</code>), which carries a narrative weight, a sense of an era that has ended.</p>
+
+  <h4>が (ga): The Subject of Mystery</h4>
+  <p>The use of <code>が</code> rather than <code>は</code> as the subject marker is significant. <code>は</code> would mark "wife" as the topic, the known frame of reference: "Speaking of my wife, there was a time when she was a shiitake." <code>が</code> marks "wife" as the grammatical subject of a statement that presents new information: "It was my wife who was a shiitake." The <code>が</code> gives the title a slightly surprising, almost revelatory quality, as if the reader is being told something unexpected. It is the particle of discovery, of a fact being unveiled.</p>
+
+  <h4>椎茸 (shiitake): The Mushroom as Soul</h4>
+  <p>The choice of shiitake is not arbitrary. Shiitake is one of the most iconic ingredients in Japanese cuisine: earthy, umami-rich, used in everything from miso soup to nimono (simmered dishes) to chawanmushi (savory egg custard). It is a humble, everyday ingredient, not exotic or luxurious. If the wife had been a matsutake (pine mushroom), the title would suggest rarity and value. A shiitake suggests something more democratic and intimate: the mushroom of home cooking, of mother's kitchen, of the everyday meal.</p>
+
+  <p>This matters because the story is about a husband discovering his late wife through her cooking. The recipes she left behind are not haute cuisine; they are the practical, nourishing dishes of a shared life. That she was a shiitake in her past existence means that the ingredient that now sits in his kitchen, that he struggles to prepare, is not foreign to him; it is his wife, in another form. The title transforms the entire category of home cooking into a form of reincarnation, of continued contact with the dead.</p>
+
+  <h4>The Title as Hook</h4>
+  <p>The title's sheer strangeness won it the 2013 Japan Title-Only Grand Prize (<code>日本タイトルだけ大賞</code>), an award that recognizes exceptionally compelling book titles. A title this odd creates an immediate contract with the reader: you will not be reading ordinary realism. Something fantastical, or at least fabulist, is going to happen. And yet the story itself is grounded in the most ordinary of griefs: a retired man learning to cook after his wife's death. The title promises magic; the story delivers something more subtle: the magic of noticing, of paying attention to what remains.</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's emotional logic:</strong> <code>妻が椎茸だったころ</code> transforms a cooking ingredient into a former identity. By the end of the story, the reader cannot look at a shiitake without thinking of it as a possible soul, a being that was once someone, that may remember being someone. The title does not merely name the premise; it trains a way of seeing.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 中島京子</h2>
+
+  <p>Nakajima Kyoko is one of the most decorated writers of her generation, a novelist of extraordinary range who moves with ease between historical fiction, family sagas, ghost stories, and literary essays. She is known for a prose style that is precise, warm, and quietly uncanny: the everyday world in her hands becomes slightly porous, allowing strangeness to seep through without ever breaking the surface of realism entirely. She has been called a writer of "偏愛" (hen'ai, obsessive or devoted love): her characters love imperfectly, strangely, persistently.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">中島 京子（なかじま きょうこ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">March 23, 1964, Tokyo</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Tokyo Woman's Christian University, Faculty of Arts and Sciences, Department of History</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Early career</span>
+      <span class="stat-value">Publishing company, freelance writer, intern teacher in the US (1997–2003)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">2003, FUTON</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major awards</span>
+      <span class="stat-value">Naoki Prize (2010), Izumi Kyoka Prize (2014), Kawai Hayao Story Prize (2015), etc.</span>
+    </div>
+  </div>
+
+  <h4>From History Graduate to Literary Star</h4>
+  <p>Nakajima's background in history is visible throughout her work. She approaches fiction with the archival patience of a researcher, building worlds from small details: the texture of a futon in 1950s Tokyo, the social codes of a prewar family, the specific brands that filled a Showa-era kitchen. Her historical training gives her fiction a documentary density that distinguishes it from more impressionistic contemporary writing.</p>
+
+  <p>After university, she worked at a publishing company, then as a freelance writer, then spent several years in the United States as an intern teacher before returning to Japan in 1997. This peripatetic early career gave her a wide field of observation: offices, classrooms, foreign suburbs, editorial meetings. When she finally debuted in 2003 with <em>FUTON</em>, she was nearly forty, and her work had the maturity of someone who had already lived several professional lives.</p>
+
+  <h4>The Naoki Prize and National Recognition</h4>
+  <p>Her breakthrough came in 2010 when <em>Chisai Ouchi</em> (小さいおうち, The Little House) won the 143rd Naoki Prize, one of Japan's most prestigious awards for popular fiction. The novel, a servant's-eye view of a prewar Tokyo household, was adapted into a film by legendary director Yoji Yamada (山田洋次) in 2014, bringing her work to a mass audience. The novel's success established her as a major literary figure capable of bridging the gap between critical acclaim and popular appeal.</p>
+
+  <p>Since then, she has accumulated virtually every major literary honor: the Izumi Kyoka Prize for Literature (2014, for this collection), the Kawai Hayao Story Prize (2015), the Historical Fiction Writers Club Award (2015), the Chuo Koron Literary Prize (2015), the Shibata Renzaburo Prize (2015), the Japan Medical Novel Prize (2016), the Murasaki Shikibu Prize (2020), and the Yoshikawa Eiji Literary Prize (2022). In 2022, she also received the Minister of Education, Culture, Sports, Science and Technology's Art Encouragement Prize.</p>
+
+  <h4>The Nakajima Kyoko Method</h4>
+  <p>Nakajima's signature is her ability to make the strange feel domestic and the domestic feel strange. She does not write overt fantasy; she writes about ordinary Japanese lives in which something is slightly off, slightly more than it appears. A recipe notebook contains messages from the dead. A hot spring inn harbors stories within stories. A woman watering plants for an acquaintance discovers a life she never imagined. This gentle uncanniness, what reviewers call "ちょっと怖くて、愛おしい" (a little scary and lovely), is her trademark.</p>
+
+  <p>Her prose is clean, warm, and precise. She does not overwrite; she selects. A single detail, a brand name, a cooking technique, a manner of speech, does the work of ten pages of description. For language learners, this makes her both accessible and rewarding: her sentences are not difficult, but they are dense with cultural and emotional information. Every word earns its place.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1964</span>
+      <span class="timeline-event">Born in Tokyo</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Graduates from Tokyo Woman's Christian University, History Department</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Works at publishing company, then as freelance writer</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1997</span>
+      <span class="timeline-event">Returns from the US after working as an intern teacher</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2003</span>
+      <span class="timeline-event">Debut: FUTON (nominated for 25th Noma Literary New Writer Prize)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2010</span>
+      <span class="timeline-event">Wins 143rd Naoki Prize for Chisai Ouchi</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2011</span>
+      <span class="timeline-event">Wins 1st Hiroshima Book Grand Prize for Habutetoru Habutetoran</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2013</span>
+      <span class="timeline-event">Tsuma ga Shiitake Datta Koro published; wins Japan Title-Only Grand Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2014</span>
+      <span class="timeline-event">Wins 42nd Izumi Kyoka Prize for Literature for this collection</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2015</span>
+      <span class="timeline-event">Kawai Hayao Story Prize, Historical Fiction Writers Club Award, Chuo Koron Literary Prize, Shibata Renzaburo Prize for Katazuno!</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2016</span>
+      <span class="timeline-event">Japan Medical Novel Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2020</span>
+      <span class="timeline-event">Murasaki Shikibu Prize for Yumemiru Teikoku Toshokan</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2022</span>
+      <span class="timeline-event">Yoshikawa Eiji Literary Prize and Art Encouragement Prize for Yasashii Neko</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Tsuma ga Shiitake Datta Koro</em> is a collection of five short stories bound together by a single sensibility: Nakajima's vision of "偏愛" (hen'ai, obsessive or devoted love), the love that fixates, that persists beyond reason, that attaches to objects, places, animals, memories, and people with an intensity that borders on the uncanny. The book's subtitle on promotional material might well be "ちょっと怖くて、愛おしい" (a little scary and lovely), the phrase reviewers have consistently used to describe her work. Each story takes place at the edge of the everyday, where the normal world frays and something else becomes visible.</p>
+
+  <h4>The Five Stories</h4>
+
+  <div class="card card-accent">
+    <p><strong>リズ・イェセンスカのゆるされざる新鮮な出会い</strong> (Rizu Yesensuka no Yurusarezaru Shinsen na Deai / Liz Jesenska's Unforgivable Fresh Encounter) — A young Japanese woman studying abroad in Oregon loses her lodging and is taken in by an elderly woman named Liz Jesenska. Liz has been married five times and begins to tell stories of forbidden love that blur the line between biography and fantasy. The story explores how strangers become temporary family, and how the stories we tell about our lives create the selves we inhabit.</p>
+    <p style="margin-top:0.8em;"><strong>ラフレシアナ</strong> (Rafureshiana / Rafflesiana) — A woman is asked by a nondescript man, introduced through a friend, to water his plants while he is away. The plant is a rafflesia, the world's largest flower, infamous for its corpse-like odor. As she cares for this strange, almost obscene plant, she discovers that he has acquired a girlfriend, and the story becomes a meditation on unrequited observation, on loving someone who does not know you are watching.</p>
+    <p style="margin-top:0.8em;"><strong>妻が椎茸だったころ</strong> (Tsuma ga Shiitake Datta Koro / When My Wife Was a Shiitake Mushroom) — The title story. Taihei, a man who has just retired and lost his wife within days, discovers her recipe notebook and the cooking class she had secretly enrolled in. The first assignment is to prepare shiitake mushrooms. In the notebook, he finds a mysterious message: "I was a shiitake." The story weaves grief, cooking, and a gentle fantasy of reincarnation into a portrait of marriage discovered only after it has ended.</p>
+    <p style="margin-top:0.8em;"><strong>蔵篠猿宿パラサイト</strong> (Kurasuno Sarusuku Parasaito / Kurano Sarusuku Parasite) — During a graduation trip to a hot spring inn, the narrator encounters a strange man obsessed with collecting stones. Their conversation opens onto another story, nested within the first, about the land itself and the beings that inhabit it. The story plays with the idea of parasitism in multiple senses: biological, narrative, and emotional.</p>
+    <p style="margin-top:0.8em;"><strong>ハクビシンを飼う</strong> (Hakubishin o Kau / Raising a Civet) — After the death of a nearly unknown aunt, a man appears at her house and begins to act like family. He tells stories about the aunt's late-life companion, a civet cat (<code>ハクビシン</code>), and the story becomes a comic, slightly eerie meditation on who has the right to mourn, and on the families we construct from strangers when blood family fails.</p>
+  </div>
+
+  <h4>The Title Story: Grief as a Cooking Class</h4>
+  <p>The central story, which gives the collection its name and its emotional anchor, is a masterpiece of indirection. Taihei's wife dies two days after his retirement, at the precise moment when he is supposed to begin the next phase of their life together. The timing is cruelly perfect: he has just acquired the time to be with her, and she is gone. What remains is her absence, her things, and her recipes.</p>
+
+  <p>The cooking class is the story's genius. Grief literature often focuses on memory, on photographs and letters and familiar places. Nakajima chooses something more embodied: cooking, the daily act of transformation that turns raw ingredients into nourishment. For Taihei, who has never cooked, the kitchen is foreign territory. Every recipe is a map of his wife's competence, her patience, her knowledge. The shiitake is not just an ingredient; it is a test. Can he learn what she knew? Can he enter her world from the outside?</p>
+
+  <p>The fantastical element, that the wife remembers being a shiitake in a former existence, is introduced so gently that it hardly feels like fantasy. In the story's cosmology, people who truly understand cooking retain memories of what they were before they were human: ingredients, flavors, textures. The wife's note, "I was a shiitake," is not a joke or a hallucination; it is a memory, a piece of self-knowledge shared with the husband who is only now learning to pay attention. The fantasy does not negate the realism; it deepens it, suggesting that love, pursued with enough attention, reveals the hidden continuities between beings.</p>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">偏愛 (obsessive love)</div>
+    <div class="chapter-tag highlighted">死と記憶</div>
+    <div class="chapter-tag highlighted">料理と魂</div>
+    <div class="chapter-tag highlighted">転生と日常</div>
+    <div class="chapter-tag highlighted">見知らぬ人との絆</div>
+    <div class="chapter-tag highlighted">喪失と発見</div>
+    <div class="chapter-tag highlighted">物語の入れ子構造</div>
+    <div class="chapter-tag">ちょっと怖くて愛おしい</div>
+  </div>
+
+  <h4>"A Little Scary and Lovely"</h4>
+  <p>This phrase, which appears on the book's promotional copy and in virtually every review, is not mere marketing. It describes a specific affective register that Nakajima has made her own. Her stories are not horror; they do not frighten. They are not comedy; they do not primarily amuse. They exist in a middle space where the strange is treated with such ordinary warmth that it becomes touching rather than terrifying. A woman who was once a mushroom. A man who claims relationship to a dead aunt he never met. A rafflesia that becomes the vessel for unspoken feeling. These are odd premises, but Nakajima's prose grounds them in such precise domestic detail that they feel not like departures from reality but like revelations of its hidden texture.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the novel's content, style, and documented quotations from reviewers. They capture Nakajima's voice, the central relationship between Taihei and his late wife's recipes, and the collection's gentle uncanniness.</p>
+
+  <h3>A. The Discovery of the Recipe Notebook</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">定年退職の二日後、泰平は妻を亡くした。葬式も終わり、人の出入りも途絶えて、家の中が急に広くなった。泰平は台所に立ったことなど、ほとんどなかった。妻がいれば、食事は自然現れた。それが当たり前だった。娘から電話があったのは、葬儀の一週間後だった。母さん、料理教室を予約していたんですって。カリスマ料理家の。泰平は、妻の机を開けた。レシピのノートがあった。きれいな字で、材料と分量が並んでいる。最後のページに、鉛筆で小さく書いてあった。——私は椎茸だった。</div>
+    <div class="romaji">Teinen taishoku no futsuka-go, Taihei wa tsuma o nakushita. Sōshiki mo owari, hito no deiri mo todaete, ie no naka ga kyū ni hiroku natta. Taihei wa daidokoro ni tatta koto nado, hotondo nakatta. Tsuma ga ireba, shokuji wa shizen ni arawareta. Sore ga atarimae datta. Musume kara denwa ga atta no wa, sōgi no isshūkan-go datta. Kāsan, ryōri kyōshitsu o yoyaku shite ita n desu tte. Karisuma ryōrika no. Taihei wa, tsuma no tsukue o aketa. Reshipi no nōto ga atta. Kirei na ji de, zairyō to bunryō ga narande iru. Saigo no peeji ni, enpitsu de chiisaku kaite atta. — Watashi wa shiitake datta.</div>
+    <div class="translation">Two days after his retirement, Taihei lost his wife. The funeral ended, people stopped coming and going, and the house suddenly felt vast. Taihei had almost never stood in the kitchen. When his wife was there, meals simply appeared. That was simply how things were. The call from his daughter came a week after the funeral. "Mother had reserved a spot," she said, "in a celebrity chef's cooking class." Taihei opened his wife's desk. There was a recipe notebook. In neat handwriting, ingredients and measurements lined the pages. On the last page, written small in pencil: — I was a shiitake.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>定年退職</td><td>teinen taishoku</td><td>mandatory retirement</td></tr>
+    <tr><td>途絶える</td><td>todaeru</td><td>to cease, to stop</td></tr>
+    <tr><td>当たり前</td><td>atarimae</td><td>natural, taken for granted</td></tr>
+    <tr><td>カリスマ料理家</td><td>karisuma ryōrika</td><td>celebrity chef</td></tr>
+    <tr><td>分量</td><td>bunryō</td><td>quantity, amount (of ingredients)</td></tr>
+    <tr><td>鉛筆</td><td>enpitsu</td><td>pencil</td></tr>
+  </table>
+
+  <h3>B. The First Cooking Assignment</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">料理教室の初日、課題はこうだった。「ちらし寿司用に、椎茸を甘辛く煮て持ってきてください」。泰平は、干し椎を初めて手にした。く、硬く、土の匂いがする。水に浸すと、少しずつ柔らかくなり、形を取り戻していく。まるで、何かが目を覚ますようだった。泰平は、妻がいつもこうして台所に立っていたのだと思った。同じ流し台に手をかけ、同じ包丁を持ち、同じ鍋を見ていたのだ。それなのに、自分は何も見ていなかった。椎茸が煮えていく匂いが、部屋中に立ち込めた。甘辛い、懐かしい匂いだった。</div>
+    <div class="romaji">Ryōri kyōshitsu no shonichi, kadai wa kō datta. "Chirashi-zushi-yō ni, shiitake o amakaraku nite motte kite kudasai." Taihei wa, hoshi-shiitake o hajimete te ni shita. Kuroku, kataku, tsuchi no nioi ga suru. Mizu ni hitasu to, sukoshi zutsu yawarakaku nari, katachi o torimodoshite iku. Maru de, nanika ga me o samasu yō datta. Taihei wa, tsuma ga itsumo kō shite daidokoro ni tatte ita no da to omotta. Onaji nagashidai ni te o kake, onaji hōchō o mochi, onaji nabe o mite ita no da. Sore na no ni, jibun wa nani mo mite inakatta. Shiitake ga niete iku nioi ga, heya-jū ni tachikometta. Amakarai, natsukashii nioi datta.</div>
+    <div class="translation">On the first day of the cooking class, the assignment was this: "For chirashi sushi, please prepare shiitake simmered in sweet and savory broth and bring them with you." Taihei held dried shiitake for the first time. Black, hard, smelling of earth. When soaked in water, they gradually softened, regaining their shape. It was as if something were waking up. Taihei thought: this is how my wife always stood in the kitchen. She placed her hands on the same sink, held the same knife, looked at the same pot. And yet I never saw any of it. The smell of the shiitake simmering filled the room. Sweet and savory, a nostalgic smell.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>干し椎茸</td><td>hoshi-shiitake</td><td>dried shiitake mushroom</td></tr>
+    <tr><td>甘辛い</td><td>amakarai</td><td>sweet and savory</td></tr>
+    <tr><td>煮る</td><td>niru</td><td>to simmer, to boil</td></tr>
+    <tr><td>浸す</td><td>hitasu</td><td>to soak, to immerse</td></tr>
+    <tr><td>目を覚ます</td><td>me o samasu</td><td>to wake up, to awaken</td></tr>
+    <tr><td>立ち込める</td><td>tachikomeru</td><td>to fill (a space, of smell/mist)</td></tr>
+    <tr><td>懐かしい</td><td>natsukashii</td><td>nostalgic, dear, missed</td></tr>
+  </table>
+
+  <h3>C. The Meaning of "I Was a Shiitake"</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">「料理のわかる人は、自分が何だったか覚えているんですって」。料理教室の先生は、さらりと言った。泰平には、それが何を意味するのか、すぐにはわからなかった。「前世、ですか」。「そういうことですね。食材としての記憶。味としての記憶。それが、料理をする人の中に残っているんです」。泰平は、妻のノートを見た。きれいな字で書かれた分の数字、その横に、小さく、私は椎茸だった。妻は、いつもこの味を覚えていたのだ。土の中の暗さを。水を吸って膨らむ感覚を。包丁でスライスされる瞬間の、あの鋭い痛みを——いや、痛みではない、開放感を。</div>
+    <div class="romaji">"Ryōri no wakaru hito wa, jibun ga nan datta ka oboete iru n desu tte." Ryōri kyōshitsu no sensei wa, sarari to itta. Taihei ni wa, sore ga nani o imi suru no ka, sugu ni wa wakaranakatta. "Zense, desu ka." "Sō iu koto desu ne. Shokuzai to shite no kioku. Aji to shite no kioku. Sore ga, ryōri o suru hito no naka ni nokotte iru n desu." Taihei wa, tsuma no nōto o mita. Kirei na ji de kakareta bunryō no sūji, sono yoko ni, chiisaku, watashi wa shiitake datta. Tsuma wa, itsumo kono aji o oboete ita no da. Tsuchi no naka no kurasa o. Mizu o sutte fukuramu kankaku o. Hōchō de suraisu sareru shunkan no, ano surudoi itami o — iya, itami de wa nai, kaihōkan o.</div>
+    <div class="translation">"People who understand cooking remember what they once were," the cooking teacher said lightly. Taihei did not immediately understand what this meant. "A past life?" "Something like that. Memory as an ingredient. Memory as a flavor. It remains inside people who cook." Taihei looked at his wife's notebook. Next to the neatly written numbers of the ingredient measurements, in small letters: I was a shiitake. His wife had always remembered this taste. The darkness inside the earth. The sensation of absorbing water and swelling. In the moment of being sliced by a knife, that sharp pain — no, not pain, a feeling of release.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>さらりと</td><td>sarari to</td><td>lightly, casually, smoothly</td></tr>
+    <tr><td>前世</td><td>zense</td><td>previous life, past existence</td></tr>
+    <tr><td>食材</td><td>shokuzai</td><td>ingredient, foodstuff</td></tr>
+    <tr><td>膨らむ</td><td>fukuramu</td><td>to swell, to expand</td></tr>
+    <tr><td>スライスする</td><td>suraisu suru</td><td>to slice</td></tr>
+    <tr><td>鋭い</td><td>surudoi</td><td>sharp, keen</td></tr>
+    <tr><td>開放感</td><td>kaihōkan</td><td>feeling of liberation, release</td></tr>
+  </table>
+
+  <h3>D. Cooking as Continuation</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">泰平は、妻が作った料理の味を、正確には覚えていなかった。覚えているつもりでいたが、今、自分の手で同じ工程を踏んで初めて、彼女の手の動きが見えてきた。どうしてここで火を弱めるのか。どうしてこの順番で入れるのか。それはすべて、彼女の身体が知っていたことだった。そして今、その身体はない。しかし、レシピはある。椎茸はある。鍋はある。泰平は、初めて、妻が毎日何をしていたのかを理解し始めていた。それは、単に食事を作ることではなった。それは、愛を翻訳することだった。食材の言葉を、味の言葉に。</div>
+    <div class="romaji">Taihei wa, tsuma ga tsukutta ryōri no aji o, seikaku ni wa oboete inakatta. Oboete iru tsumori de ita ga, ima, jibun no te de onaji kōtei o funde hajimete, kanojo no te no ugoki ga miete kita. Dōshite koko de hi o yowameru no ka. Dōshite kono junban de ireru no ka. Sore wa subete, kanojo no karada ga shitte ita koto datta. Soshite ima, sono karada wa nai. Shikashi, reshipi wa aru. Shiitake wa aru. Nabe wa aru. Taihei wa, hajimete, tsuma ga mainichi nani o shite ita no ka o rikai shihajimete ita. Sore wa, tan ni shokuji o tsukuru koto de wa nakatta. Sore wa, ai o hon'yaku suru koto datta. Shokuzai no kotoba o, aji no kotoba ni.</div>
+    <div class="translation">Taihei did not accurately remember the taste of the meals his wife had made. He had thought he remembered, but now, going through the same steps with his own hands for the first time, her hand movements became visible. Why weaken the heat at this point. Why add ingredients in this order. These were all things her body had known. And now, that body was gone. But the recipe remained. The shiitake remained. The pot remained. For the first time, Taihei was beginning to understand what his wife had done every day. It was not simply making meals. It was translating love. The language of ingredients into the language of taste.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>工程</td><td>kōtei</td><td>process, step, procedure</td></tr>
+    <tr><td>踏む</td><td>fumu</td><td>to go through, to follow (steps)</td></tr>
+    <tr><td>弱める</td><td>yowameru</td><td>to weaken, to lower (heat)</td></tr>
+    <tr><td>順番</td><td>junban</td><td>order, sequence</td></tr>
+    <tr><td>翻訳する</td><td>hon'yaku suru</td><td>to translate</td></tr>
+    <tr><td>味</td><td>aji</td><td>taste, flavor</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 椎茸 (shiitake)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">More Than a Mushroom</div>
+    <p><code>椎茸</code> is not merely "shiitake mushroom." It is the foundational umami ingredient of Japanese home cooking, the mushroom that appears in miso soup, nimono, takikomi gohan, and countless other everyday dishes. Its flavor is deep, earthy, and comforting in a specifically Japanese way. To a Japanese reader, the title immediately evokes the kitchen, the mother's cooking, the taste of home. "Shiitake mushroom" in English carries none of this domestic resonance; it is simply an Asian ingredient. The title asks the reader to see the soul in the most ordinary ingredient in the Japanese pantry, and this request depends on the reader's existing relationship with shiitake. A translator must either keep the Japanese term with explanation or accept that the English title will lose the warmth of the original.</p>
+  </div>
+
+  <h3>B. 甘辛く煮る (amakaraku niru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Quintessential Japanese Cooking Method</div>
+    <p><code>甘辛く煮る</code> means to simmer in a broth of soy sauce, mirin, and sugar until the liquid reduces and the ingredient absorbs the sweet-savory flavor. It is one of the most basic and characteristic techniques in Japanese home cooking. The phrase is almost untranslatable in its cultural specificity: "simmered in sweet and savory broth" is accurate but clunky; "braised" is too French; "glazed" is too technical. <code>Amakaraku niru</code> is what Japanese mothers do to shiitake for chirashi sushi, what every Japanese person has eaten countless times. The assignment in the story is not random; it is the most traditional, the most home-like preparation possible. The cooking class begins by asking Taihei to do what his wife would have done without thinking.</p>
+  </div>
+
+  <h3>C. 定年退職 (teinen taishoku)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Ritual End of the Japanese Male Life</div>
+    <p><code>定年退職</code> is mandatory retirement, a uniquely significant moment in Japanese salaryman culture. It is not simply "retirement"; it is a socially scripted transition from the corporate world to the domestic world, from being defined by work to being defined by... what, exactly? Many Japanese men find this transition disorienting, even existentially threatening. The fact that Taihei's wife dies two days after his <code>定年退職</code> is narratively devastating because it means he loses both his professional identity and his primary relationship simultaneously. He is cast into the domestic sphere without the person who defined it. "Retirement" in English does not carry this specific cultural weight of the Japanese salaryman life cycle.</p>
+  </div>
+
+  <h3>D. ちらし寿司 (chirashi-zushi)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Dish of Celebration and Home</div>
+    <p><code>ちらし寿</code> is scattered sushi: vinegared rice topped with a variety of ingredients, including shiitake simmered in sweet-savory broth, shredded egg omelet, shrimp, and vegetables. It is a celebratory dish, served at festivals, birthdays, and special occasions, but also a home-cooked dish that requires preparation and care. The cooking class's assignment is to prepare the shiitake for chirashi sushi, which means the students are learning not just a technique but a dish of gathering, of family, of occasion. Taihei, who has just lost his wife and retired, is being asked to learn the cooking of celebration at the moment when he has the least to celebrate. The dish's cultural associations amplify the poignancy of the assignment.</p>
+  </div>
+
+  <h3>E. カリスマ料理家 (karisuma ryōrika)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Japanese Celebrity Chef</div>
+    <p><code>カリスマ料理家</code> (charisma cook / celebrity chef) is a distinctively Japanese media category. Unlike the Western "celebrity chef," who is often a restaurant owner or TV personality, the Japanese <code>カリスマ料理家</code> is typically a cooking instructor, cookbook author, and media figure who teaches home cooking to ordinary people. Their authority comes not from running Michelin-starred restaurants but from being able to explain technique clearly and inspire confidence in home cooks. The wife's enrollment in such a class suggests not culinary ambition but a desire for community, for structured learning, for a space of her own outside the marriage. "Celebrity chef" makes it sound glamorous; <code>カリスマ料理家</code> makes it sound accessible, domestic, and slightly aspirational in a middle-class way.</p>
+  </div>
+
+  <h3>F. 偏愛 (hen'ai)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Love That Fixates</div>
+    <p><code>偏愛</code> is the word used to describe the common thread of the five stories. It is not simply "love" (<code>愛</code>) or "obsessive love" (which would be <code>執着</code>, shūchaku, with more negative connotations). <code>偏</code> means biased, partial, leaning to one side; <code>愛</code> is love. <code>偏愛</code> is love that is partial, that favors one object disproportionately, that is not evenly distributed. It is the love of a man for his dead wife's recipes, of a woman for a man who has a girlfriend, of a stranger for an elderly woman's stories. "Obsessive love" is too pathological; "devoted love" is too virtuous. <code>Hen'ai</code> is love that has a preferred object, love that is not reasonable, love that persists beyond the boundaries of the normal. It is the emotional engine of the entire collection.</p>
+  </div>
+
+  <h3>G. ちょっと怖くて、愛おしい (chotto kowakute, itooshii)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Affective Signature of Nakajima's World</div>
+    <p>This phrase, which describes the collection's tone, is difficult to render in English. <code>怖い</code> (scary, frightening) + <code>愛おしい</code> (beloved, precious, lovely) creates an oxymoron that is central to Nakajima's aesthetic. "A little scary and lovely" captures the meaning but loses the specific emotional calibration. <code>愛おしい</code> is stronger than "lovely"; it is the word for a child you cannot stop loving, for a memory that hurts because it is so dear. Combined with <code>怖い</code>, it suggests something that touches you so deeply it frightens you, or something so strange that it should be frightening but is instead touching. The comma between the two adjectives is important: they are not blended but held in tension, as Nakajima's stories hold the strange and the tender in suspension.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～たころ (ta koro) — "The time when / Back when"</span>
+    <div class="grammar-explanation">
+      <p><code>妻が椎茸だったころ</code> = "the time when my wife was a shiitake"</p>
+      <p><code>～たころ</code> refers to a period in the past when something was true. It is more narrative and evocative than <code>～たとき</code> (when).</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>子供だったとき</code> = "when I was a child" (neutral, factual)</li>
+        <li><code>子供だったころ</code> = "back when I was a child" (nostalgic, narrative, implies a whole era)</li>
+      </ul>
+      <p>The grammar is central to the title's effect: it does not say "my wife used to be a shiitake" but "the time when my wife was a shiitake," suggesting a whole period of being, a former identity that has its own narrative weight.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～たり～たりする (tari-tari suru) — "Doing things like X and Y"</span>
+    <div class="grammar-explanation">
+      <p><code>葬式も終わり、人の出入りも途絶えて</code> — while not using the <code>たり</code> form explicitly, the structure of listing completed events is common in narrative Japanese. <code>～たり</code> is used to list representative actions.</p>
+      <p><strong>Formation:</strong> [Verb in past tense] + たり + [Verb in past tense] + たり + する</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>買い物したり、映画を見たりした</code> = "did things like shopping and watching movies"</li>
+        <li><code>泣いたり笑ったり</code> = "crying and laughing (by turns)"</li>
+      </ul>
+      <p>Nakajima uses this structure to create a sense of life's varied texture: grief is not one thing but many things happening in sequence and in parallel. The grammar of listing captures the multiplicity of experience.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てしまう (te shimau) — "To end up doing / To do completely"</span>
+    <div class="grammar-explanation">
+      <p><code>水に浸すと、少しずつ柔らかくなってしまう</code> = "when soaked in water, it ends up softening little by little"</p>
+      <p><code>～てしまう</code> indicates completion or unintended consequence. In this context, it gives the shiitake's transformation a sense of inevitability.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>柔らかくなる</code> = "becomes soft" (neutral process)</li>
+        <li><code>柔らかくなってしまう</code> = "ends up becoming soft" (implies an irreversible, somewhat poignant transformation)</li>
+      </ul>
+      <p>The grammar encodes the poignancy of change: the hard, dry mushroom cannot help but soften when soaked. It is a metaphor for grief itself, which transforms the rigid structures of the self whether one wills it or not.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようになる (yō ni naru) — "To reach the point where / To come to"</span>
+    <div class="grammar-explanation">
+      <p><code>彼女の手の動きが見えてきた</code> = "her hand movements became visible (came to be seen)"</p>
+      <p><code>～ようになる</code> indicates a gradual acquisition of perception or ability. Taihei does not immediately see his wife's hands; he <code>見えてくる</code>s them over time, through practice.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>見えた</code> = "saw" (simple past)</li>
+        <li><code>えてきた</code> = "came to be visible / started to become apparent" (gradual emergence)</li>
+      </ul>
+      <p>The grammar captures the novel's central method: understanding comes not in a flash but gradually, through repetition, through the body learning what the mind cannot grasp directly.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～のだ (noda) — Explanatory/emphatic particle</span>
+    <div class="grammar-explanation">
+      <p><code>それが当たり前だったのだ</code> = "that was simply how things were"</p>
+      <p><code>～のだ</code> adds explanatory force to a statement, often implying "the reason is" or "as a matter of fact."</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>当たり前だった</code> = "it was natural" (statement)</li>
+        <li><code>当たり前だったのだ</code> = "it was natural (and this explains something)" (explanatory, often with a note of realization or justification)</li>
+      </ul>
+      <p>Taihei uses <code>のだ</code> when describing his former life, the life in which meals simply appeared. The grammar encodes his dawning awareness that what seemed natural was actually the product of his wife's labor. <code>No da</code> is the sound of retrospect.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～て初めて (te hajimete) — "Only when / Not until"</span>
+    <div class="grammar-explanation">
+      <p><code>自分の手で同じ工程を踏んで初めて、彼女の手の動きが見えてきた</code> = "only when he went through the same steps with his own hands did her hand movements become visible"</p>
+      <p><code>～て初めて</code> indicates that something only becomes true after a prior condition is met. It is the grammar of delayed understanding.</p>
+      <p><strong>Formation:</strong> [Condition in te-form] + 初めて + [Result]</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>失って初めて気づく</code> = "only after losing something does one realize"</li>
+        <li><code>外国に行って初めて日本の良さがわかった</code> = "only after going abroad did I understand Japan's good points"</li>
+      </ul>
+      <p>The grammar is the emotional core of the title story: Taihei only understands his wife <code>初めて</code> when he does what she did. Understanding follows embodiment; grief becomes comprehension through practice.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～わけではない (wake dewa nai) — "It's not that / It doesn't mean that"</span>
+    <div class="grammar-explanation">
+      <p><code>痛みではない、開放感を</code> — while not using <code>わけではない</code> explicitly, the structure "not X, Y" (<code>～ではない、～</code>) is related in its function of negating one interpretation to offer another.</p>
+      <p><code>～わけではない</code> softens a denial by saying "it's not the case that."</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>難しいわけではない</code> = "it's not that it's difficult"</li>
+        <li><code>嫌いなわけではない</code> = "it's not that I dislike it"</li>
+      </ul>
+      <p>Nakajima often uses negation-to-affirmation structures: "not pain, but release" (<code>痛みではない、開放感</code>). This rhetorical pattern allows her to refine emotion precisely, moving from the expected word to the more accurate one. The grammar of correction is the grammar of deepening understanding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>The Izumi Kyoka Prize and the Literary Lineage of the Strange</h4>
+  <p>The fact that this collection won the Izumi Kyoka Prize for Literature (泉鏡花文学賞) in 2014 is deeply appropriate. Izumi Kyoka (1873–1939) was a writer of ghost stories, romantic fantasies, and tales of the demimonde, known for a prose style that blended the elegant and the eerie. His most famous work, <em>Koya Hijiri</em> (高野聖, 1900), tells of a monk's encounter with a witch-like woman in the mountains. The prize named after him honors works that continue this tradition of the Japanese strange: not horror, not fantasy, but literature in which the boundary between the natural and the supernatural is gently, beautifully blurred.</p>
+
+  <p>Nakajima's collection fits this lineage precisely. The wife who remembers being a shiitake is not a ghost; she is a memory, a flavor, a presence that persists in recipes. The man who appears at his aunt's house is not a con artist; he is something more ambiguous, a self-appointed mourner. The rafflesia is not a monster; it is a flower that smells of death and demands care. These are Kyoka-esque premises: the world is slightly more alive, slightly more conscious, slightly more interconnected than rationalism allows. The prize recognized not just Nakajima's skill but her place in a specifically Japanese literary tradition of gentle uncanniness.</p>
+
+  <h4>Cooking and Memory in Japanese Culture</h4>
+  <p>The connection between cooking and memory is universal, but it has specific forms in Japanese culture. The concept of <code>おふくろの味</code> (ofukuro no aji, "mother's taste") refers to the distinctive flavor of one's mother's cooking, which becomes the benchmark of comfort and home. A Japanese person living away from home will often say they miss not their mother's face but her cooking, because flavor encodes relationship more directly than image.</p>
+
+  <p>Nakajima extends this tradition by making cooking not just a form of memory but a form of communication across death. The recipe notebook is a letter from the dead that must be enacted to be read. You cannot simply read a recipe; you must perform it, with your hands, in time, with heat and water and transformation. This makes the dead wife's message fundamentally different from a written letter or a recording. It is a set of instructions that creates an experience, and in creating the experience, the husband recreates the relationship. Cooking becomes a form of séance, but one so grounded in the ordinary that it never feels supernatural.</p>
+
+  <h4>定年退職 (Teinen Taishoku) and the Japanese Salaryman Afterlife</h4>
+  <p>Taihei's retirement is not merely a plot convenience; it is a socially specific condition. The Japanese <code>定年退職</code> system, typically at age 60 or 65, removes men from the corporate world that has defined their identity for decades. The post-retirement period is often described as a crisis: the husband, now home all day, enters a domestic sphere organized by his wife, where he has no role and no competence. The joke that retired salarymen are "large trash" (<code>粗大ゴミ</code>) reflects a genuine social problem.</p>
+
+  <p>Nakajima inverts this narrative. Taihei's wife dies at the moment when he would normally become the dependent, the incompetent, the one who needs to be managed. Instead, he must become competent. He must learn what she knew. The cooking class is not a hobby; it is a forced acquisition of the skills that his wife possessed and he ignored. The story is, among other things, a meditation on how grief can accelerate the personal growth that normal life postpones. Retirement + bereavement = a man who must become what he never was.</p>
+
+  <h4>干し椎茸 (Hoshi-Shiitake) and the Japanese Pantry</h4>
+  <p>Dried shiitake is a staple of the Japanese pantry in a way that has no exact equivalent in Western cooking. It is kept in virtually every Japanese household, rehydrated for countless dishes, its soaking water (<code>だし</code>) used as stock. The process of rehydration, watching the hard, desiccated mushroom slowly regain its plump, living form in water, is a small domestic miracle that every Japanese cook knows.</p>
+
+  <p>Nakajima uses this process as a metaphor for grief itself: the dried, hardened self that encounters water (tears, memory, practice) and slowly, reluctantly, regains a new form of life. The shiitake does not return to its fresh state; it becomes something new, transformed by drying and rehydration. So too Taihei does not return to his former self; he becomes someone who can cook, who can read recipes, who can feel his wife's presence in the movement of his own hands. The mushroom's transformation is the story's hidden structure.</p>
+
+  <h4>Reincarnation and Food in Japanese Buddhism</h4>
+  <p>The idea that beings transmigrate through forms is central to Japanese Buddhist thought, though the specific notion that cooks remember their past lives as ingredients is Nakajima's invention. In Buddhist cosmology, all beings have been all things: humans, animals, gods, inhabitants of hell realms. The Jataka tales, popular in Japan through Buddhist transmission, tell of the Buddha's previous lives as animals and plants.</p>
+
+  <p>Nakajima's gentle fantasy of ingredient-memory draws on this tradition without explicitly invoking it. The wife's note, "I was a shiitake," is not presented as a religious revelation but as a piece of self-knowledge, the kind of thing a person who truly understands food might know about themselves. The Buddhist framework makes this feel plausible rather than absurd: of course a being that has passed through countless forms might remember one of them. The story's achievement is to make this metaphysical possibility feel like common sense, like something any attentive cook might discover.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Nakajima's prose is precise, warm, and accessible, with a vocabulary deeply rooted in Japanese domestic life. The cooking terminology (<code>干し椎茸</code>, <code>甘辛く煮る</code>, <code>だし</code>, <code>ちらし寿司</code>) is practical cultural knowledge as much as literary vocabulary. The grammar of gradual understanding (<code>～て初めて</code>, <code>～ようになる</code>) and the grammar of past states (<code>～たころ</code>) are central to the collection's emotional rhythm. For intermediate to advanced learners interested in contemporary Japanese fiction, food culture, and the literature of grief, this is an ideal text: linguistically approachable, culturally rich, and emotionally profound.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read the title story first, then the others in any order. The title story provides the collection's emotional key; the other stories elaborate its themes from different angles.</li>
+    <li>Pay attention to <strong>domestic details</strong>. Nakajima's world is built from brand names, cooking techniques, household objects, and specific places. Each detail is doing narrative work.</li>
+    <li>Track the <strong>structure of each story</strong>. Nakajima often uses nested narratives, stories within stories, and unexpected narrators. Map who is speaking and to whom.</li>
+    <li>Notice the <strong>role of animals and plants</strong>. The shiitake, the rafflesia, the civet cat (<code>ハクビシン</code>) are not merely settings or symbols; they are characters with their own presence and agency.</li>
+    <li>Read with a <strong>cooking context</strong>. Try to understand what each dish or ingredient actually is in Japanese culinary practice. The more you know about the food, the more you will understand the emotion.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The title won the Japan Title-Only Grand Prize. What makes it so effective? How does the title function as a contract with the reader about the kind of story that will follow?</li>
+    <li>Taihei never cooked while his wife was alive. Is his grief compounded or transformed by the fact that he must acquire a new skill to mourn her? Would the story work if he were already a competent cook?</li>
+    <li>The fantastical element (ingredient reincarnation) is introduced very gently. Why does Nakajima not make more of it? What would be lost if the story were more explicitly supernatural?</li>
+    <li>The five stories are described as sharing "偏愛" (hen'ai). How does each story define this obsessive or devoted love differently? Is there a common structure to how Nakajima portrays love across the collection?</li>
+    <li>Nakajima is often compared to Izumi Kyoka. What elements in these stories place them in the lineage of Japanese "strange tales" (<code>怪談</code>)? What elements distinguish them from traditional ghost stories?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Nakajima Kyoko, <em>Chisai Ouchi</em> (小さいおうち, 2010) — the Naoki Prize-winning novel, adapted by Yoji Yamada; a servant's view of a prewar Tokyo household</li>
+    <li>Nakajima Kyoko, <em>Katazuno!</em> (かたづの！, 2014) — Kawai Hayao Story Prize winner; historical fiction with a fabulist edge</li>
+    <li>Nakajima Kyoko, <em>Nagai Owakare</em> (長いお別れ, 2015) — Chuo Koron Literary Prize; a daughter's long farewell to her father</li>
+    <li>Nakajima Kyoko, <em>Ghost</em> (ゴースト, 2017) — a collection of ghost stories in the Kyoka tradition</li>
+    <li>Izumi Kyoka, <em>Koya Hijiri</em> (高野聖, 1900) — the foundational text of the Japanese literary strange; available in English as <em>The Holy Man of Mount Koya</em></li>
+    <li>Ueda Akinari, <em>Ugetsu Monogatari</em> (雨月物語, 1776) — Tales of Moonlight and Rain; the classical Japanese ghost story collection</li>
+    <li>Lafcadio Hearn (Koizumi Yakumo), <em>Kwaidan</em> (怪談, 1904) — Japanese ghost stories for Western readers; good for understanding the export of Japanese uncanniness</li>
+    <li>Tsuji Shinichi, <em>Ofukuro no Aji</em> (おふくろの味) — any cookbook on the theme of mother's taste, for culinary context</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the novel's content, style, and documented quotations from reviewers, not direct quotations. For exact citations, consult the original hardcover edition (Kodansha, 2013; ISBN 978-4-06-218513-4) or the bunko edition (Kodansha Bunko, 2016; ISBN 978-4-06-293550-0). The collection won the 42nd Izumi Kyoka Prize for Literature in 2014 and the 2013 Japan Title-Only Grand Prize.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

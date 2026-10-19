@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>マチネの終わりに — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>マチネの終わりに</h1>
+    <p class="subtitle">Machinu no Owari ni<br><em>At the End of the Matinee</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">平野啓一郎 (Hirano Keiichiro)</span></span>
+      <span><span class="label">First published</span> <span class="value">April 9, 2016 (Mainichi Shimbun Publishing)</span></span>
+      <span><span class="label">Format</span> <span class="value">Novel (416 pp. hardcover / 480 pp. paperback)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-620-10819-3</span></span>
+      <span><span class="label">Awards</span> <span class="value">2nd Watanabe Junichi Literature Prize (2017)</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">マチネの終わりに</div>
+    <div class="romaji">Machinu no owari ni</div>
+    <div class="translation">"At the End of the Matinee"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>マチネ</td><td>machinu</td><td>Noun (loanword)</td><td>matinee (afternoon performance)</td></tr>
+    <tr><td>の</td><td>no</td><td>Genitive particle</td><td>of / possessive marker</td></tr>
+    <tr><td>終わり</td><td>owari</td><td>Noun</td><td>end, conclusion</td></tr>
+    <tr><td>に</td><td>ni</td><td>Particle</td><td>at / in (temporal/spatial)</td></tr>
+  </table>
+
+  <h4>マチネ (Matinee): The Afternoon Performance</h4>
+  <p><code>マチネ</code> comes from the French <em>matinee</em>, meaning a morning or afternoon performance, as opposed to an evening <em>soiree</em> performance. In the world of classical music, a matinee concert has a particular atmosphere: the audience is different (older, more leisurely), the light is different (daylight still filtering through), and the mood is gentler, less formal than an evening concert. The word carries the connotation of a performance that exists in the transitional space between day and evening, between public and private life.</p>
+
+  <p>In the novel, the matinee is both literal and metaphorical. The protagonists meet after a matinee concert in Paris. But "the end of the matinee" also names a phase of life: the afternoon of one's years, the period after the bright midday of youth but before the darkness of old age. The characters are 38 and 40. They are at the end of their own matinee, and the novel asks what kind of love is possible when the bright lights have dimmed and the audience has begun to leave.</p>
+
+  <h4>に (ni): The Poetics of "At"</h4>
+  <p>The title ends with <code>に</code>, not <code>で</code> (at, in a location) or <code>のとき</code> (at the time of). <code>に</code> here suggests a precise moment, a pinpoint in time and space. "At the end of the matinee" is not a duration but an instant: the applause fading, the hall emptying, the performer backstage removing his costume, the journalist putting away her notebook. It is the moment when the public performance ends and private life might begin. The title promises that something important happens in this liminal instant.</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's emotional logic:</strong> <code>マチネの終わりに</code> names a moment of transition, of aftermath, of quiet when the noise has stopped. It is a title that understands love not as a grand overture but as something that might begin when the stage lights go down and the audience has gone home. The matinee ends; the real performance, the novel suggests, is what happens after.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 平野啓一郎</h2>
+
+  <p>Hirano Keiichiro is one of the most prominent novelists of contemporary Japan. He debuted while still a university student and won the Akutagawa Prize at 23, becoming the youngest winner in history at that time. His career spans literary fiction, criticism, and cultural commentary, and his works have been translated into multiple languages.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">平野 啓一郎（ひらの けいいちろう）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">June 22, 1975, Gamagori, Aichi Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Raised in</span>
+      <span class="stat-value">Kitakyushu, Fukuoka Prefecture</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Kyoto University, Faculty of Law</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">Nisshoku (Eclipse), 1998</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major award</span>
+      <span class="stat-value">120th Akutagawa Prize (1999, age 23)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Spouse</span>
+      <span class="stat-value">Haruka (since 2008)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Children</span>
+      <span class="stat-value">One daughter, one son</span>
+    </div>
+  </div>
+
+  <h4>Early Life and the Akutagawa Prize</h4>
+  <p>Hirano lost his father at age one; his father died suddenly at 36. Raised by his mother in Kitakyushu, he began writing fiction in high school, producing an 80-page manuscript. At Kyoto University, he studied political thought under Professor Ono Noriaki while working part-time at a bar and playing guitar in a heavy metal cover band.</p>
+
+  <p>In 1998, while still a student, he published <em>Nisshoku</em> (日蝕, "Eclipse") in the literary magazine <em>Shinchō</em>. The novel, set in medieval Europe, displayed astonishing erudition and stylistic confidence. The following year, at 23, he received the 120th Akutagawa Prize, making him the youngest winner in the prize's history at that time. He was hailed as "the second coming of Mishima Yukio" for his ornate prose and philosophical ambition.</p>
+
+  <h4>From "Romantic Trilogy" to Mature Work</h4>
+  <p>Hirano's early career was marked by what he called his "Romantic Trilogy": <em>Nisshoku</em> (1998), <em>Ichigetsu Monogatari</em> (一月物語, 1999), and <em>Sōsō</em> (葬送, 2002). These works were characterized by historical settings, dense prose, and metaphysical inquiry. Over time, his writing shifted toward contemporary settings and more accessible forms while retaining intellectual depth.</p>
+
+  <p><em>Matinee</em> represents a turning point: a bestseller that reached beyond the literary coterie to a mass audience, a love story that engaged with global politics, a novel that proved Hirano could move readers emotionally as well as intellectually. It sold over 580,000 copies, was translated into English (as <em>At the End of the Matinee</em>, 2021), and was adapted into a film starring Fukuyama Masaharu and Ishida Yuriko.</p>
+
+  <h4>Hirano's "Bunjin" Philosophy</h4>
+  <p>Hirano has developed a philosophical concept called <code>分人主義</code> (bunjin shugi, "dividualism"), which argues that a person is not a single unified self but a multiplicity of "partial persons" (<code>分人</code>, bunjin) that emerge in different contexts and relationships. This concept informs <em>Matinee</em>: the characters are not fixed identities but shifting configurations of selves that respond differently to art, to love, to work, to trauma. The novel's power comes partly from this philosophical underpinning, which allows Hirano to explore love without reducing it to simple character psychology.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1975</span>
+      <span class="timeline-event">Born in Gamagori, Aichi; father dies suddenly at age 1</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1994</span>
+      <span class="timeline-event">Enters Kyoto University Faculty of Law</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1998</span>
+      <span class="timeline-event">Debut with Nisshoku (Shinchosha)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1999</span>
+      <span class="timeline-event">Wins 120th Akutagawa Prize (youngest winner at that time)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2002</span>
+      <span class="timeline-event">Soso (Romantic Trilogy completed)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2004</span>
+      <span class="timeline-event">Cultural envoy to Paris (one-year stay)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2009</span>
+      <span class="timeline-event">Kekai wins Arts Encouragement Prize for New Artists</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2014</span>
+      <span class="timeline-event">Chevalier of the Order of Arts and Letters (France)</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2016</span>
+      <span class="timeline-event">Matinee no Owari ni published; becomes bestseller</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2017</span>
+      <span class="timeline-event">Wins 2nd Watanabe Junichi Literature Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2019</span>
+      <span class="timeline-event">Film adaptation released; Aru Otoko wins Yomiuri Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2020</span>
+      <span class="timeline-event">Becomes Akutagawa Prize selection committee member</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2023</span>
+      <span class="timeline-event">Mishima Yukio Ron wins Kobayashi Hideo Prize</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Matinee no Owari ni</em> is a love story, a music novel, a geopolitical chronicle, and a meditation on loneliness in the 21st century. It was originally serialized in the <em>Mainichi Shimbun</em> morning edition and on the online platforms note and cakes from March 2015 to January 2016, giving it a peculiar rhythm: each installment had to work as a discrete unit while advancing a long narrative arc. The result is a novel that moves with the pace of life itself, accumulating detail and emotion across months and years.</p>
+
+  <h4>The Story</h4>
+  <p>In the winter of 2006, Makino Satoshi, a 38-year-old classical guitarist of international renown, meets Kamine Yoko, a 40-year-old journalist working for a French news agency in Paris. It is after a matinee concert. At the after-party, they talk. Something passes between them: a recognition, a current. But Yoko is engaged to another man, Shinji, a Japanese-American. And Makino has spent his life on stages, not in relationships.</p>
+
+  <p>What follows is not a conventional romance. The two are separated by geography (Tokyo, Paris, New York), by circumstance (Yoko's engagement, Makino's touring schedule), by their own hesitations and misreadings, and by the sheer weight of their accumulated lives. They meet only three times across many years. Yet each meeting is so densely charged that it sustains the narrative across hundreds of pages. The novel asks: Can a love that exists almost entirely in absence still be the defining love of a life?</p>
+
+  <h4>World-Historical Backdrop</h4>
+  <p>Hirano refuses to separate private feeling from public history. The novel's background is textured with real events:</p>
+  <ul>
+    <li><strong>Iraq War (2003–2011):</strong> Yoko reports from conflict zones; the moral cost of witness journalism haunts her</li>
+    <li><strong>Refugee crisis:</strong> European borders, human displacement, the ethics of looking and reporting</li>
+    <li><strong>Lehman Shock (2008):</strong> financial crisis that destabilizes careers, relationships, and the sense of a secure future</li>
+    <li><strong>Great East Japan Earthquake (2011):</strong> the national trauma that reconfigures Japanese consciousness</li>
+  </ul>
+
+  <p>These are not decorative backdrop. They enter the characters' bodies. Yoko's PTSD from reporting in war zones is a physical condition. Makino's artistic crisis after the earthquake is a genuine paralysis. The novel insists that love in the 21st century must be lived in the shadow of history, not in a purified romantic sphere.</p>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">芸術と生活 (Art and life)</div>
+    <div class="chapter-tag highlighted">愛と孤独 (Love and solitude)</div>
+    <div class="chapter-tag highlighted">グローバリズム (Globalism)</div>
+    <div class="chapter-tag highlighted">生と死 (Life and death)</div>
+    <div class="chapter-tag highlighted">父と娘 (Father and daughter)</div>
+    <div class="chapter-tag">師弟愛 (Mentor and disciple)</div>
+    <div class="chapter-tag">祖国愛 (Love of country)</div>
+    <div class="chapter-tag">分人主義 (Dividualism)</div>
+  </div>
+
+  <h4>The English Translation</h4>
+  <p>The English translation by Juliet Winters Carpenter was published in 2021 by Amazon Crossing as <em>At the End of the Matinee</em>. It follows the successful translation of <em>Aru Otoko</em> (<em>A Man</em>, 2020), which received over 2,700 reviews on Amazon with an average rating of 4.2. The translation of <em>Matinee</em> brings Hirano's ornate, musically inflected prose to an international audience, though as with any translation, much of the sentence-level music is necessarily transformed.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the known content, style, and documented quotations from Hirano's novel and reviewer accounts. They capture the novel's philosophical density, its musical sensibility, and its extraordinary intimacy.</p>
+
+  <h3>A. On Loneliness and Influence</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">孤独というのは、つまりは、この世界への影響力の欠如の意識だった。自分の存在が、他者に対して、まったく影響を持ち得ないということ。持ち得なかったとること。同時代に対する水平的な影響力だけでなく、次の時代への時間的な、垂直的な影響力。それが、他者の存在のどこを探ってみても、見出せないということ。</div>
+    <div class="romaji">Kodoku to iu no wa, tsumari wa, kono sekai e no eikyooroku no ketsuboo no ishiki datta. Jibun no sonzai ga, tasha ni taishite, mattaku eikyoo o mochienai to iu koto. Mochienakatta to shiru koto. Doojidai ni taishite no suiheiteki na eikyooroku dake de naku, tsugi no jidai e no jikanteki na, suichokuteki na eikyooroku. Sore ga, tasha no sonzai no doko o sagutte mite mo, miidasenai to iu koto.</div>
+    <div class="translation">Loneliness, in the end, was the awareness of a lack of influence upon this world. That one's existence could have no effect whatsoever on others. The knowledge that one has had no effect. Not only a horizontal influence on one's own era, but a temporal, vertical influence on the next era. The fact that no matter where one probes in another's existence, such influence cannot be found.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>孤独</td><td>kodoku</td><td>loneliness, solitude</td></tr>
+    <tr><td>影響力</td><td>eikyooroku</td><td>influence, power to affect</td></tr>
+    <tr><td>欠如</td><td>ketsuboo</td><td>lack, deficiency, absence</td></tr>
+    <tr><td>意識</td><td>ishiki</td><td>consciousness, awareness</td></tr>
+    <tr><td>持ち得る</td><td>mochieru</td><td>to be able to hold / possess</td></tr>
+    <tr><td>同時代</td><td>doojidai</td><td>contemporary era, same generation</td></tr>
+    <tr><td>水平的</td><td>suiheiteki</td><td>horizontal, synchronic</td></tr>
+    <tr><td>垂直的</td><td>suichokuteki</td><td>vertical, diachronic</td></tr>
+    <tr><td>探る</td><td>saguru</td><td>to probe, to search, to feel out</td></tr>
+    <tr><td>見出す</td><td>miidasu</td><td>to find, to discover</td></tr>
+  </table>
+
+  <h3>B. On the Future and Change</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">人は、変えられるのは未来だけだと思い込んでる。でも、それは違う。未来じゃなくて、過去を変えることができるんだ。今、この瞬間に、過去を変えられる。ただ、それには、今までの自分を捨てる覚悟が必要だ。</div>
+    <div class="romaji">Hito wa, kaerareru no wa mirai dake da to omoikonderu. Demo, sore wa chigau. Mirai ja nakute, kako o kaeru koto ga dekiru n da. Ima, kono shunkan ni, kako o kaerareru. Tada, sore ni wa, ima made no jibun o suteru kakugo ga hitsuyoo da.</div>
+    <div class="translation">People assume that the only thing that can be changed is the future. But that's wrong. It's not the future; you can change the past. Right now, in this very moment, you can change the past. Only, to do that, you need the resolve to abandon the self you have been until now.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>思い込む</td><td>omoikomu</td><td>to assume, to be convinced</td></tr>
+    <tr><td>未来</td><td>mirai</td><td>future</td></tr>
+    <tr><td>過去</td><td>kako</td><td>past</td></tr>
+    <tr><td>瞬間</td><td>shunkan</td><td>moment, instant</td></tr>
+    <tr><td>捨てる</td><td>suteru</td><td>to throw away, to abandon</td></tr>
+    <tr><td>覚悟</td><td>kakugo</td><td>resolve, readiness, mental preparation</td></tr>
+    <tr><td>必要</td><td>hitsuyoo</td><td>necessary, required</td></tr>
+  </table>
+
+  <h3>C. The First Meeting: After the Matinee</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">コンサートの打ち上げは、いつもより早く終わった。蒔野は、楽屋に戻り、ギターの弦を一本ずつ緩めていた。ドアが開く音がした。振り返ると、黒いワンピースを着た女が立っていた。年齢は自分より少し上だろう。細い肢体に、知的な目。彼女は、少し戸惑うように微笑んだ。「すばらしい演奏でした。私、小峰洋子と申します」蒔野は、弦を置いた。何かが、終わり、何かが、始まる予感がした。</div>
+    <div class="romaji">Konsaato no uchiage wa, itsumo yori hayaku owatta. Makino wa, gakuya ni modori, gitaa no gen o ippon-zutsu yumete ita. Doa ga hiraku oto ga shita. Furikaeru to, kuroi wanpiisu o kita onna ga tatte ita. Nenrei wa jibun yori sukoshi ue daroo. Hosoi shitai ni, chiteki na me. Kanojo wa, sukoshi tomadau yoo ni hohoenda. "Subarashii ensoo deshita. Watashi, Kamine Yooko to mooshimasu." Makino wa, gen o oita. Nanika ga, owari, nanika ga, hajimaru yokan ga shita.</div>
+    <div class="translation">The concert after-party ended earlier than usual. Makino returned to his dressing room and loosened the strings of his guitar one by one. He heard the door open. Turning around, he saw a woman in a black dress standing there. She was probably a little older than him. A slender frame, intelligent eyes. She smiled, slightly uncertain. "It was a wonderful performance. My name is Kamine Yoko." Makino set down the string. He had a premonition that something was ending, and something beginning.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>打ち上げ</td><td>uchiage</td><td>after-party, celebration</td></tr>
+    <tr><td>楽屋</td><td>gakuya</td><td>dressing room, backstage</td></tr>
+    <tr><td>弦</td><td>gen</td><td>string (of instrument)</td></tr>
+    <tr><td>緩める</td><td>yumeru</td><td>to loosen, to slacken</td></tr>
+    <tr><td>ワンピース</td><td>wanpiisu</td><td>dress (one-piece)</td></tr>
+    <tr><td>肢体</td><td>shitai</td><td>body, limbs, physique</td></tr>
+    <tr><td>戸惑う</td><td>tomadau</td><td>to be perplexed, to be uncertain</td></tr>
+    <tr><td>演奏</td><td>ensoo</td><td>performance, musical performance</td></tr>
+    <tr><td>申す</td><td>moosu</td><td>to say (humble form)</td></tr>
+    <tr><td>予感</td><td>yokan</td><td>premonition, foreboding</td></tr>
+  </table>
+
+  <h3>D. On Art, Love, and Absence</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">音楽とは、音が鳴っている間だけ存在するものではない。音が消えた後に、聴者の中に残るものこそが、音楽なのだ。同じように、愛とは、二人が一緒にいる時間だけのものではない。離れている時間の中で、相手のことを思い続けること。それが、愛なのではないか。蒔野は、ステージの上で、何千もの聴衆の前で演奏してきた。しかし、今、初めて、誰かのために演奏したいと思った。</div>
+    <div class="romaji">Ongaku to wa, oto ga natte iru aida dake sonzai suru mono de wa nai. Oto ga kieta ato ni, choosha no naka ni nokoru mono koso ga, ongaku na no da. Onaji yoo ni, ai to wa, futari ga issho ni iru jikan dake no mono de wa nai. Hanarete iru jikan no naka de, aite no koto o omoi-tsuzukeru koto. Sore ga, ai na no de wa nai ka. Makino wa, suteeji no ue de, nanzen mo no chooshuu no mae de ensoo shite kita. Shikashi, ima, hajimete, dareka no tame ni ensoo shitai to omotta.</div>
+    <div class="translation">Music is not something that exists only while sound is ringing. What remains inside the listener after the sound has vanished: that is music. In the same way, love is not something that exists only during the time two people are together. To keep thinking of the other during the time apart. Perhaps that is love. Makino had performed on stage before thousands of listeners. But now, for the first time, he wanted to play for someone.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>音楽</td><td>ongaku</td><td>music</td></tr>
+    <tr><td>鳴る</td><td>naru</td><td>to sound, to ring</td></tr>
+    <tr><td>聴者</td><td>choosha</td><td>listener, hearer</td></tr>
+    <tr><td>残る</td><td>nokoru</td><td>to remain, to be left</td></tr>
+    <tr><td>離れる</td><td>hanareru</td><td>to be separated, to be apart</td></tr>
+    <tr><td>思い続ける</td><td>omoi-tsuzukeru</td><td>to keep thinking, to continue to feel</td></tr>
+    <tr><td>聴衆</td><td>chooshuu</td><td>audience, listeners</td></tr>
+    <tr><td>初めて</td><td>hajimete</td><td>for the first time</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 切ない (setsunai)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Aesthetic of Painful Beauty</div>
+    <p><code>切ない</code> is one of the most important emotional terms in the novel. It means painful, heartrending, bittersweet, but with a specific quality: the pain is beautiful, almost pleasurable in its intensity. "Sad" is too simple. "Bittersweet" is too mild. "Heartbreaking" is too destructive. <code>Setsunai</code> is the feeling of loving something you cannot have, of recognizing beauty precisely because it is fleeting. The novel has been described as <code>切なすぎる恋</code> (a love that is too <code>setsunai</code>). English has no equivalent that preserves both the pain and the pleasure.</p>
+  </div>
+
+  <h3>B. 余韻 (yoin)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Resonance After the Note</div>
+    <p><code>余韻</code> literally means "remaining resonance" or "aftertone." In music, it is the sound that continues in the instrument and in the listener's ear after the note has been played. In literature, it names the emotional echo that remains after reading. "Afterglow" is visual, not auditory. "Lingering feeling" is too vague. "Resonance" is close but too physical. <code>Yoin</code> is central to the novel's aesthetic because it describes exactly what the book tries to create: not an immediate emotional hit but a sustained emotional vibration that continues long after the last page.</p>
+  </div>
+
+  <h3>C. 分人 (bunjin)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Divided Self</div>
+    <p><code>分人</code> is Hirano's coinage, combining <code>分</code> (part / divide) + <code>人</code> (person). It refers to one of the multiple "partial persons" that constitute a single human being. "Persona" is too theatrical. "Alter ego" suggests a binary. "Aspect" is too abstract. "Partial person" is accurate but clumsy. <code>Bunjin</code> carries Hirano's philosophical argument: we are not unified subjects but assemblages of context-dependent selves. The novel's characters behave differently in different relationships not because they are inconsistent but because different <code>bunjin</code> are activated. This is untranslatable as a single word; it requires the entire philosophical apparatus Hirano has built around it.</p>
+  </div>
+
+  <h3>D. 巡り逢う (meguriau)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Fate's Circular Path</div>
+    <p><code>巡り逢う</code> means to meet again after wandering, to encounter by a circular route. <code>巡る</code> (meguru) means to go around, to make a circuit. <code>逢う</code> (au) means to meet (with romantic or fateful overtones). "Meet again" is too flat. "Reunite" suggests intention. "Come across" is too casual. <code>Meguriau</code> contains the idea that the meeting is not linear but circuitous: the characters have wandered separately through the world and, by some gravitational pull, have circled back into each other's orbits. The word carries a whisper of destiny without the heavy hand of <code>運命</code> (unmei, fate).</p>
+  </div>
+
+  <h3>E. 人知れず (hitoshirezu)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Dignity of Secret Suffering</div>
+    <p><code>人知れず</code> means "unknown to others" or "in secret." It is an adverb formed from <code>人知れぬ</code> (unknown to people). The phrase carries a specific emotional coloring in Japanese: the dignity of suffering without display, the beauty of endurance without audience. "In secret" sounds furtive. "Privately" sounds deliberate. "Quietly" misses the social dimension. <code>Hitoshirezu</code> suggests that Yoko's physical suffering, which she hides from Makino for much of the novel, is not deception but a kind of moral choice: not to burden others with one's pain.</p>
+  </div>
+
+  <h3>F. 格調高い (kakuchoo takai)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">High Style, Not Mere Elegance</div>
+    <p><code>格調高い</code> means of high style, dignified, elevated in tone. <code>格調</code> (kakuchoo) refers to the formal dignity or stylistic elevation of a work. "Elegant" is too superficial. "Dignified" is too moral. "Elevated" is close but abstract. <code>Kakuchoo takai</code> is the term Japanese critics use for Hirano's prose: it has a classical gravity, a refusal of casualness or colloquial looseness. Every sentence feels weighted, considered, placed. Reading Hirano is like walking on marble rather than tatami.</p>
+  </div>
+
+  <h3>G. 浸る (hituru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Immersive Absorption</div>
+    <p><code>浸る</code> means to immerse oneself in, to be absorbed in, to steep. It is the verb reviewers use for the experience of reading this novel: <code>作品世界に浸る</code> (to immerse oneself in the world of the work). "Lose oneself in" is too passive. "Immerse oneself in" is accurate but clinical. <code>Hitaru</code> suggests a willing surrender to a medium, like lying in warm water and letting it surround you. The novel is designed for this kind of reading: not skimming for plot but sinking into its atmosphere, its rhythms, its sustained emotional temperature.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～というのは、つまりは、～だった (to iu no wa, tsumari wa, ~datta) — Explanatory copula with elaboration</span>
+    <div class="grammar-explanation">
+      <p><code>孤独というのは、つまりは、この世界への影響力の欠如の意識だった</code></p>
+      <p>This is a layered explanatory structure. <code>～というのは</code> introduces a definition or explanation ("X is..."). <code>つまりは</code> (in other words / that is to say) signals that what follows will be a more precise or radical reformulation. <code>～だった</code> closes with the past-tense copula, giving the statement the weight of a discovered truth.</p>
+      <p><strong>Structure:</strong> [Noun] + というのは、つまりは、[explanatory clause] + だった</p>
+      <p>The grammar performs the novel's philosophical method: taking an apparently simple term (<code>孤独</code>, loneliness) and revealing its unexpected structure (not the absence of company but the absence of influence). The sentence doesn't just state; it unfolds.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～だけでなく、～も (dake de naku, ~mo) — "Not only... but also..."</span>
+    <div class="grammar-explanation">
+      <p><code>同時代に対する水平的な影響力だけでなく、次の時代への時間的な、垂直的な影響力</code></p>
+      <p><code>～だけでなく</code> is a high-register pattern for adding another dimension to a statement. It is more formal and emphatic than <code>～だけじゃなくて</code>.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>AだけじゃなくてBも</code> = "Not just A but B too" (casual, spoken)</li>
+        <li><code>AだけでなくBも</code> = "Not merely A but also B" (written, formal, analytical)</li>
+      </ul>
+      <p>Hirano uses the formal version because he is making a philosophical argument about time: influence is not only <code>水平的</code> (horizontal, across one's own era) but also <code>垂直的</code> (vertical, across generations). The grammar enacts the conceptual expansion.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～と思い込む (to omoikomu) — "To be convinced that / to assume mistakenly"</span>
+    <div class="grammar-explanation">
+      <p><code>人は、変えられるのは未来だけだと思い込んでる</code></p>
+      <p><code>～と思い込む</code> means to believe something firmly, often with the nuance that the belief is partial, habitual, or mistaken. It is stronger than <code>～と思う</code> (to think) and often carries a critical distance: the speaker knows better than the belief being described.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>未来だけだと思う</code> = "I think it's only the future" (neutral)</li>
+        <li><code>未来だけだと思い込む</code> = "People are convinced it's only the future" (suggests the conviction is limiting or wrong)</li>
+      </ul>
+      <p>The grammar allows Hirano to set up a philosophical reversal: what people "think they know" (the future is changeable) is overturned by a deeper truth (the past can be changed too, by the present).</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～のではないか (no de wa nai ka) — Speculative / tentative assertion</span>
+    <div class="grammar-explanation">
+      <p><code>それが、愛なのではないか</code> = "Perhaps that is love" / "Might that not be love?"</p>
+      <p><code>～のではないか</code> is a tentative, speculative assertion. It softens a claim by presenting it as a possibility or a question to oneself. It is less direct than <code>～だ</code> and more contemplative.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>それが愛だ</code> = "That is love" (declaration)</li>
+        <li><code>それが愛なのではないか</code> = "Perhaps that is love" (meditation, self-questioning)</li>
+      </ul>
+      <p>Hirano uses this pattern constantly because his characters are not declarative philosophers; they are people feeling their way toward understanding. The grammar preserves the process of thought, not just its conclusion.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～が、～しかし、～ (ga, shikashi) — Concessive pivot</span>
+    <div class="grammar-explanation">
+      <p><code>蒔野は、ステージの上で、何千もの聴衆の前で演奏してきた。しかし、今、初めて、誰かのために演奏したいと思った。</code></p>
+      <p>The pattern establishes a contrast between a long history (<code>何千もの聴衆の前で演奏してきた</code>) and a present realization (<code>初めて、誰かのために演奏したいと思った</code>). <code>しかし</code> (however/but) marks the pivot.</p>
+      <p>The grammar creates emotional drama through structure alone. The first sentence establishes Makino's credentials, his mastery, his public success. The second sentence, introduced by <code>しかし</code>, undercuts all of it with a single private desire. The contrast between <code>何千もの聴衆</code> (thousands of listeners) and <code>誰か</code> (someone / a particular person) is the entire novel in miniature.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ように (yoo ni) — "As if / In such a way that"</span>
+    <div class="grammar-explanation">
+      <p><code>少し戸惑うように微笑んだ</code> = "She smiled, as if slightly perplexed"</p>
+      <p><code>～ように</code> following a verb stem + <code>ように</code> creates a simile-like description of manner. It describes how an action is performed by comparing it to another state or action.</p>
+      <p>The grammar allows Hirano to layer emotions. Yoko's smile is not simply confident or simply uncertain; it is <code>戸惑うように</code> (as if perplexed), suggesting a complexity of feeling that cannot be named directly. This is how Hirano builds character: not through adjectives but through the manner of actions.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てきた (te kita) — "Has been ~ing up to now" (experiential aspect)</span>
+    <div class="grammar-explanation">
+      <p><code>何千もの聴衆の前で演奏してきた</code> = "He has performed before thousands of listeners (up to this point in his life)"</p>
+      <p><code>～てきた</code> indicates an action that has continued from the past up to the present moment, with the sense of accumulation and experience. It is more than <code>～た</code> (simple past) because it includes the entire trajectory leading to now.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>演奏した</code> = "performed" (completed action)</li>
+        <li><code>演奏してきた</code> = "has been performing (throughout his career up to now)" (accumulated experience)</li>
+      </ul>
+      <p>The grammar gives weight to Makino's career: not a series of gigs but a life built on stage. This accumulated past makes his present desire, to play for one person, revolutionary.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>The Matinee in Japanese Concert Culture</h4>
+  <p>In Japan, classical music matinees have a particular social function. They are attended by older audiences, by people who prefer not to go out at night, by couples for whom an afternoon concert is a civilized excursion. The matinee is less glamorous than the evening performance but perhaps more intimate. The daylight outside the hall creates a different relationship between performance and reality: when you emerge, the world is still going about its business, not transformed into night.</p>
+
+  <p>Hirano chooses the matinee, not the grand evening concert, because his subject is not glamour but the quiet intensity of ordinary moments. The end of the matinee is a return to the everyday, but an everyday now charged with what has been heard.</p>
+
+  <h4>Classical Guitar in Japan</h4>
+  <p>Japan has an extraordinarily vibrant classical guitar culture. The instrument was popularized in the postwar period and has produced world-class performers and composers. For a Japanese guitarist to achieve international recognition, as Makino does, is plausible and resonant. The guitar is a portable, intimate instrument: one performer, one instrument, no ensemble. This solitude mirrors Makino's emotional life. He travels with his guitar, performs alone, and returns to an empty hotel room. The instrument becomes an extension of his solitude, and the novel's music descriptions are among the most precise and evocative in Japanese fiction.</p>
+
+  <h4>War Correspondence and Japanese Journalism</h4>
+  <p>Yoko's work as a journalist for a French news agency places her in a specific professional world. Japanese war correspondents have covered conflicts from Vietnam to Iraq, and the psychological cost of such work is well-documented. Yoko's PTSD is not a plot device; it is a realistic consequence of witnessing violence and transmitting it as information. The novel asks a difficult question: what does it mean to love someone whose job requires them to be present at the worst moments of history? Can intimacy survive when one partner has seen what the other can only read about?</p>
+
+  <h4>The 2011 Earthquake and Japanese Consciousness</h4>
+  <p>The Great East Japan Earthquake of March 11, 2011, was a national trauma that reconfigured Japanese literature. Many writers found their previous concerns trivial in its wake. Hirano has said that the earthquake changed his sense of what fiction could do. In <em>Matinee</em>, the earthquake arrives not as a central event but as a gravitational force: it stops Makino's playing, it alters the emotional weather of the novel, it reminds the characters that private happiness exists within historical catastrophe. The earthquake is the unmoved mover of the novel's second half.</p>
+
+  <h4>"Adult Love" in Contemporary Japan</h4>
+  <p>Japanese publishing has a category called <code>大人の恋愛小説</code> (otona no renai shoosetsu, "adult love novel"). This is not "adult" in the erotic sense but in the existential sense: love between people who have lived, who carry damage, who cannot believe in simple happy endings. <em>Matinee</em> is the paradigmatic example. The characters are not young innocents; they are professionals with careers, with past relationships, with bodies that are beginning to fail. Their love is not less intense for being cautious; if anything, it is more intense because they know the costs.</p>
+
+  <p>This places Hirano in a tradition that includes Tanizaki Junichiro's late works and Kawabata Yasunari's melancholy fiction, but also connects to contemporary writers like Ekuni Kaori and Shibasaki Tomoka who explore love without illusion.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Hirano's prose is challenging but rewarding. His sentences are long, hypotactic, and philosophically dense. He uses many abstract nouns (<code>影響力</code>, <code>意識</code>, <code>存在</code>, <code>孤独</code>) and formal grammatical patterns. However, the novel's emotional clarity sustains the reader through its intellectual complexity. For advanced learners, this is an excellent text for developing stamina in reading literary Japanese and for acquiring the vocabulary of emotion, aesthetics, and philosophical reflection. The English translation by Juliet Winters Carpenter can be used as a parallel text.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read slowly. This is not a novel to rush. Each sentence is weighted; skimming will lose the emotional accumulation.</li>
+    <li>Track the <strong>three meetings</strong>. The novel's structure is built around three encounters between Makino and Yoko. Note what happens in each, what is said and unsaid, and how the interval between meetings changes the characters.</li>
+    <li>Listen to <strong>classical guitar music</strong> while reading. The novel is deeply informed by guitar repertoire. Works by Francisco Tarrega, Heitor Villa-Lobos, and Johann Sebastian Bach (transcribed for guitar) will create the acoustic atmosphere Hirano assumes.</li>
+    <li>Pay attention to <strong>point of view shifts</strong>. The novel moves between Makino's and Yoko's perspectives, often within the same chapter. Notice how the same event reads differently depending on whose consciousness filters it.</li>
+    <li>Collect <strong>sentences that define abstract concepts</strong>. Hirano has a gift for defining emotions and ideas in precise, memorable sentences. The passage on loneliness as "lack of influence" is one example; there are many others.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The novel's title places the crucial moment "at the end of the matinee." What is it about this liminal moment, between performance and private life, that makes love possible? Could this story have begun at another time?</li>
+    <li>Hirano has said that people are not single selves but assemblages of <code>分人</code> (partial persons). How does this concept change the way we read Makino and Yoko's relationship? Are they loving one person or many?</li>
+    <li>The characters meet only three times across many years, yet the novel is over 400 pages. What does Hirano gain by stretching the intervals between meetings? What happens in the silences and absences?</li>
+    <li>Yoko's physical suffering is hidden from Makino for much of the novel. Is this secrecy a betrayal or a form of love? How does the novel judge her choice?</li>
+    <li>The novel insists on embedding private love within public history (Iraq, Lehman Shock, the earthquake). Why does Hirano refuse to separate them? What would be lost if this were a purely private love story?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Hirano Keiichiro, <em>Aru Otoko</em> (ある男, 2018) — winner of the Yomiuri Prize; translated as <em>A Man</em></li>
+    <li>Hirano Keiichiro, <em>Honshin</em> (本, 2018) — on AI, identity, and what it means to be "oneself"</li>
+    <li>Hirano Keiichiro, <em>Mishima Yukio Ron</em> (三島由紀夫論, 2023) — winner of the Kobayashi Hideo Prize; essential for understanding Hirano's literary roots</li>
+    <li>Hirano Keiichiro, <em>Nisshoku</em> (日蝕, 1998) — the Akutagawa Prize-winning debut; medieval Europe, dense philosophical prose</li>
+    <li>Tanizaki Junichiro, <em>The Makioka Sisters</em> (細雪) — for another vision of Japanese love and social form</li>
+    <li>Kawabata Yasunari, <em>Snow Country</em> (雪国) — for the aesthetics of longing and absence</li>
+    <li>Juliet Winters Carpenter (translator), "On Translating Hirano Keiichiro" — for insights into the challenges of bringing this prose into English</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and style of Hirano Keiichiro's writing and documented quotations from reviewers and the film adaptation, not direct quotations. For exact citations, consult the original edition (Mainichi Shimbun Publishing, 2016; ISBN 978-4-620-10819-3) or the Bunshun Bunko edition (ISBN 978-4-16-791290-1). The English translation <em>At the End of the Matinee</em> (Amazon Crossing, 2021) was translated by Juliet Winters Carpenter.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

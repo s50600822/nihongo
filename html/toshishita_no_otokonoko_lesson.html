@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>年下の男の子 — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>年下のの子</h1>
+    <p class="subtitle">Toshishita no Otokonoko<br><em>The Younger Man</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">五十嵐貴久 (Igarashi Takahisa)</span></span>
+      <span><span class="label">First published</span> <span class="value">May 16, 2008 (hardcover) / April 5, 2011 (bunko)</span></span>
+      <span><span class="label">Serialized in</span> <span class="value">Gekkan J Novel (Jitsugyo no Nihon Sha), Dec 2006–Dec 2007</span></span>
+      <span><span class="label">Publisher</span> <span class="value">Jitsugyo no Nihon Sha</span></span>
+      <span><span class="label">Format</span> <span class="value">Novel (382 pp. hardcover / 464 pp. bunko)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-408-53530-2</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">年下の男の子</div>
+    <div class="romaji">Toshishita no Otokonoko</div>
+    <div class="translation">"The Younger Man" / "The Boy Who Is Younger"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>年下</td><td>toshishita</td><td>Noun</td><td>younger (person), junior in age</td></tr>
+    <tr><td>の</td><td>no</td><td>Possessive / Attributive particle</td><td>of / 's</td></tr>
+    <tr><td>男の子</td><td>otokonoko</td><td>Noun</td><td>boy, young man</td></tr>
+  </table>
+
+  <h4>年下 (toshishita): Age as a Social Axis</h4>
+  <p><code>年下</code> is the opposite of <code>年上</code> (toshiue, older). In Japanese, age relative to the speaker is not merely a number but a social axis that shapes language, behavior, and expectation. <code>年下</code> implies a set of assumptions: the younger person should show deference, use polite language, and accept guidance. When a romantic relationship crosses this axis, with the woman older and the man younger, it disturbs the default gender-age hierarchy in Japanese culture, where the ideal husband is still expected to be older and higher-earning.</p>
+
+  <p>The title's simplicity is its power. It does not say "My Younger Boyfriend" or "Falling for a Younger Man." It simply says <code>年下の男の子</code>, as if this category alone is enough to explain the entire story. And in a sense, it is. The novel's drama comes from the fact that the heroine, at 37, has internalized the social rule that a woman should not date a man 14 years her junior. The title names the obstacle before the story begins.</p>
+
+  <h4>男の子 (otokonoko): The Gender of Diminution</h4>
+  <p><code>男の子</code> means "boy" or "young man," but its use here is deliberately unsettling. A 23-year-old man is, legally and socially, an adult: <code>男</code> (otoko) or <code>男性</code> (dansei). Calling him <code>男の子</code> frames him from the heroine's perspective as someone not yet fully mature, someone who is still, in some sense, a boy. This is how Akiko sees Kojima at first: charming, capable, but fundamentally younger, in a different life stage, not a serious romantic prospect.</p>
+
+  <p>The word <code>男の子</code> also carries a warmth and affection that <code>男</code> does not. It softens the age gap, making it feel less predatory and more innocent. The novel's achievement is to make the reader feel that this <code>男の子</code> is, despite his youth, exactly what the heroine needs: not a boy to mother, but a man who happens to be younger. The title encodes the journey from "boy" to "partner."</p>
+
+  <h4>The Absence of the Heroine in the Title</h4>
+  <p>Notably, the title contains no reference to the heroine. It is not <code>私と年下の男の子</code> (Me and the Younger Man) or <code>37歳の私と年下の男の子</code> (37-Year-Old Me and the Younger Man). The title focuses entirely on him, as if the story is defined by his presence in her life rather than by her own identity. This reflects a common pattern in romance fiction: the heroine's subjectivity is explored through her relationship to the love interest. But it also reflects the novel's deeper theme: Akiko has spent so long defining herself through work and the absence of marriage that she barely knows who she is outside of a relationship. The younger man forces her to ask: if I am not too old for him, what else have I been wrong about?</p>
+
+  <div class="card card-accent">
+    <p><strong>The title's emotional logic:</strong> <code>年下の男の子</code> is not a description of a person but a statement of a problem. It names the social category that the heroine must overcome in her own mind before she can accept love. The title is the first of many internal obstacles she will face.</p>
+  </div>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 五十嵐貴久</h2>
+
+  <p>Igarashi Takahisa is one of the most versatile and prolific writers in contemporary Japanese popular fiction. He has written horror, mystery, police procedurals, youth novels, historical fiction, and romance, often under the same byline, with no apparent concern for genre boundaries. His authorial philosophy is simple: "A novel must be interesting" (<code>小説は面白くなければいけない</code>). Everything else, including consistency of genre, is secondary.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">五十嵐 貴久（いがらし たかひさ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Born</span>
+      <span class="stat-value">December 14, 1961, Tokyo</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Education</span>
+      <span class="stat-value">Seikei University, Faculty of Letters</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Early career</span>
+      <span class="stat-value">Editor at Fusosha Publishing (1985–)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Debut</span>
+      <span class="stat-value">2002, Rika (Horror-Suspense Grand Prize)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Major awards</span>
+      <span class="stat-value">Suntory Mystery Prize (2001), Horror-Suspense Grand Prize (2002), Japan Sherlock Holmes Award (2007)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Known for</span>
+      <span class="stat-value">Genre-hopping; "Rika" horror series; "Negotiator" police series</span>
+    </div>
+  </div>
+
+  <h4>From Editor to Novelist</h4>
+  <p>Igarashi joined Fusosha Publishing in 1985, spending his first year in sales before moving to the editorial department. His editor-in-chief at the time was Yoshimura Tatsuya, who would later become a novelist himself. In 1997, Igarashi was transferred back to sales, and it was this move, oddly enough, that prompted him to start writing fiction. He had spent over a decade in publishing, learning what makes a book sell, and he began to wonder if he could make one himself.</p>
+
+  <p>His first attempt, <em>TVJ</em>, won an honorable mention in the 18th Suntory Mystery Prize in 2001. His second, <em>Rika</em> (submitted under the title <em>Kurokami</em>, "Black Hair"), won the 2nd Horror-Suspense Grand Prize in 2001 and became his debut novel in 2002. <em>Rika</em> launched a successful horror series about a "pure-love monster" that would spawn multiple sequels and film adaptations. From this horror foundation, Igarashi has expanded into virtually every popular genre.</p>
+
+  <h4>The Genre-Hopper's Advantage</h4>
+  <p>What distinguishes Igarashi from genre-specialist writers is his editorial background. He spent fifteen years in publishing before debuting, and he understands reader expectation at a granular level. When he writes horror, he knows exactly which buttons to press. When he writes romance, as in <em>Toshishita no Otokonoko</em>, he brings the same narrative drive and scene construction to a genre that often sacrifices plot for mood. The result is a romance novel that moves: the printing-error crisis that brings the characters together is a classic Igarashi hook, a concrete problem that forces proximity and reveals character.</p>
+
+  <p>Reviewers have noted that Igarashi has no "core genre" (<code>コアとなるジャンルが存在しない</code>). This is rare in Japanese publishing, where authors are often expected to stay in their lane. Igarashi's freedom to move between horror and romance, police procedurals and youth fiction, reflects both his confidence and the breadth of his reading. For language learners, this means his prose is accessible across multiple registers, from the colloquial speech of office workers to the atmospheric description of suspense scenes.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-year">1961</span>
+      <span class="timeline-event">Born in Tokyo</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">—</span>
+      <span class="timeline-event">Graduates from Seikei University, Faculty of Letters</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1985</span>
+      <span class="timeline-event">Joins Fusosha Publishing; first year in sales</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1986–</span>
+      <span class="timeline-event">Moves to editorial department; works under editor-in-chief Yoshimura Tatsuya</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">1997</span>
+      <span class="timeline-event">Transferred back to sales; begins writing fiction</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2001</span>
+      <span class="timeline-event">TVJ wins honorable mention, 18th Suntory Mystery Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2001</span>
+      <span class="timeline-event">Rika (as Kurokami) wins 2nd Horror-Suspense Grand Prize</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2002</span>
+      <span class="timeline-event">Debut as novelist with Rika</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2006–2007</span>
+      <span class="timeline-event">Toshishita no Otokonoko serialized in Gekkan J Novel</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2007</span>
+      <span class="timeline-event">Sherlock Holmes and the Philosopher's Stone wins 30th Japan Sherlock Holmes Award</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2008</span>
+      <span class="timeline-event">Toshishita no Otokonoko published in hardcover</span>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-year">2011</span>
+      <span class="timeline-event">Toshishita no Otokonoko bunko edition published</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Toshishita no Otokonoko</em> is a romantic comedy with a distinctly working-adult texture. It is not a fantasy of prince and princess but a story about two people who meet through a professional crisis, discover they work well together, and gradually realize that the ease they feel with each other might be something more. The novel's charm lies in its groundedness: the heroine is not a blushing ingenue but a 37-year-old woman with a mortgage, a career, and a growing suspicion that she has missed her chance at love.</p>
+
+  <h4>The Setup: A Printing Disaster</h4>
+  <p>Kawamura Akiko, 37, works in the public relations department of Meiva Dairy. On a whim, she has just bought a condominium, committing herself to decades of debt in a single afternoon. The very next day, disaster strikes: the promotional free-paper for a new health drink called "Mona" has gone to print with the price field left blank. Thousands of copies have been printed with a white rectangle where the price should be. Distribution is scheduled for the following day. There is no time to reprint.</p>
+
+  <p>The only solution is brute-force manual labor: Akiko and the staff must stay up all night applying price stickers to every single copy. Assigned to help her from the PR agency is Kojima, 23, a contract employee. He is young, competent, and unexpectedly easy to talk to. What begins as a professional emergency becomes an all-night conversation, and what begins as a conversation becomes the first crack in Akiko's assumption that her romantic life is over.</p>
+
+  <h4>The Characters</h4>
+  <div class="card card-accent">
+    <p><strong>川村晶子 (Kawamura Akiko)</strong> — 37 years old, public relations officer at Meiva Dairy. She is competent, independent, and quietly panicked about being single at an age when Japanese society considers marriage unlikely. Her condominium purchase is both an act of independence and a kind of resignation: if no one will share my life, I will build a life alone. She is not tragic; she is practical, and her practicality has become a defense against disappointment.</p>
+    <p style="margin-top:0.8em;"><strong>児島 (Kojima)</strong> — 23 years old, a contract employee at the PR agency handling Meiva Dairy's account. He is professional, unflappable in a crisis, and possessed of that particular combination of youth and competence that makes older colleagues trust him immediately. What distinguishes him from the "dream boy" archetype is that he is not perfect; he is simply present, attentive, and genuinely interested in Akiko as a person rather than as a senior colleague.</p>
+  </div>
+
+  <h4>Themes</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">年の差恋愛</div>
+    <div class="chapter-tag highlighted">37歳独身女性の現実</div>
+    <div class="chapter-tag highlighted">仕事と恋の交差点</div>
+    <div class="chapter-tag highlighted">徹夜作業という親密性</div>
+    <div class="chapter-tag highlighted">マンション購入という決断</div>
+    <div class="chapter-tag highlighted">契約社員と正社員</div>
+    <div class="chapter-tag highlighted">純愛</div>
+    <div class="chapter-tag">ハートウォーミング</div>
+  </div>
+
+  <h4>The All-Nighter as a Narrative Device</h4>
+  <p>The novel's central set piece, the all-night sticker-pasting session, is a brilliant narrative device. In normal working hours, Akiko and Kojima would remain within professional boundaries: she is the client, he is the vendor; she is 37, he is 23; she is female, he is male. But at 2:00 AM, in an empty office, doing manual labor that no one else wanted to do, these boundaries soften. The shared adversity creates a temporary equality. They are simply two people trying to save a project.</p>
+
+  <p>This is how many office romances actually begin in Japan: not at glamorous parties but during overtime, on business trips, in the small hours when the corporate hierarchy feels less rigid and human connection becomes visible. Igarashi, with his editorial eye for structure, understands that crisis is the great equalizer. The blank price fields are not just a plot device; they are the void that allows something new to be written.</p>
+
+  <h4>Critical Reception</h4>
+  <p>The novel was well received as a "heartwarming" (<code>ハートウォーミング</code>) romance that avoids the pitfalls of the age-gap genre. Actress Asano Yuko (浅野ゆう子) praised it on the book's obi, a significant endorsement from an actress known for playing mature, independent women. Readers responded to the novel's refusal to make Akiko desperate or Kojima predatory. The age gap is treated as a genuine obstacle, not a titillating novelty, and the novel's resolution feels earned rather than obligatory.</p>
+
+  <p>Reviewers noted that Kojima is a "dream boy" (<code>夢のような男の子</code>) in the best sense: kind, perceptive, and capable of seeing Akiko's worth without being intimidated by her age or position. The novel's fantasy is not that such men exist; it is that they might notice women whom society has taught to believe they are invisible.</p>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the novel's serialized text, documented quotations from reviewers, and the known content of the work. They capture Igarashi's accessible prose, the central relationship, and the novel's emotional turning points.</p>
+
+  <h3>A. The Condominium Purchase</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">晶子は三十七歳にして、人生で初めてマンションを購入した。勢と成り行き、というのが正確かもしれない。頭金は貯金のほとんどを使い、あとは二十年のローンが待っている。不動産屋の営業マンは、独身女性の購入者には慣れているようで、特に驚くこともなく、特に喜ぶこともなく、淡々と書類を用意した。晶子は契約書にサインをしながら、自分が何か大きなものに縛り付けられているのを感じた。それは同時に、誰かと一緒に住む可能性からも、自分で扉を閉めたような気分でもあった。</div>
+    <div class="romaji">Akiko wa sanjūnana-sai ni shite, jinsei de hajimete manshon o kōnyū shita. Ikioi to nariyuki, to iu no ga seikaku kamoshirenai. Atamakin wa chokin no hotondo o tsukai, ato wa nijūnen no rōn ga matte iru. Fudōsan-ya no eigyōman wa, dokushin josei no kōnyūsha ni wa narete iru yō de, tokuni odoroku koto mo naku, tokuni yorokobu koto mo naku, tantan to shorui o yōi shita. Akiko wa keiyakusho ni sain o shinagara, jibun ga nanika ōkina mono ni shibaritsukerarete iru no o kanjita. Sore wa dōjini, dareka to issho ni sumu kanōsei kara mo, jibun de tobira o shimeta yō na kibun de mo atta.</div>
+    <div class="translation">At thirty-seven, Akiko bought a condominium for the first time in her life. It was, more accurately, a matter of momentum and circumstance. She used almost all her savings for the down payment, and now a twenty-year loan awaited her. The real estate salesman seemed accustomed to single female buyers; he neither showed surprise nor particular delight, preparing the documents with mechanical calm. As Akiko signed the contract, she felt herself being bound to something enormous. At the same time, she felt as if she had closed the door herself on the possibility of living with someone.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>勢い</td><td>ikioi</td><td>momentum, impulse</td></tr>
+    <tr><td>成行き</td><td>nariyuki</td><td>circumstance, course of events</td></tr>
+    <tr><td>頭金</td><td>atamakin</td><td>down payment</td></tr>
+    <tr><td>ローン</td><td>rōn</td><td>loan</td></tr>
+    <tr><td>営業マン</td><td>eigyōman</td><td>salesman</td></tr>
+    <tr><td>淡々</td><td>tantan</td><td>calm, mechanical, unemotional</td></tr>
+    <tr><td>縛り付ける</td><td>shibaritsukeru</td><td>to bind, to tie down</td></tr>
+  </table>
+
+  <h3>B. The Printing Disaster</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">「川村さん、大変です。」電話の声は、晶子の背筋を凍らせた。新製品「モナ」の宣伝用フリーペーパー——刷り上がったばかりのそれを、広報課長が工場から持ち込んだ。肝心の価格欄が、空白だった。何万枚という紙に、四角い白い穴が開いている。配布は明日。再印刷の時間はない。晶子は頭の中で、迅速に選択肢を計算した。結論は一つ。徹夜で、一枚一枚にシールを貼るしかなかった。</div>
+    <div class="romaji">"Kawamura-san, taihen desu." Denwa no koe wa, Akiko no susuji o kooraseta. Shinsanhin "Mona" no sendenyō furīpēpā — uriagatta bakari no sore o, kōhō kachō ga kōjō kara mochikonda. Kanjin no kakaku ran ga, kūhaku datta. Nanman-mai to iu kami ni, shikakui shiroi ana ga aite iru. Haifu wa ashita. Saiinsatsu no jikan wa nai. Akiko wa atama no naka de, jinsoku ni sentakushi o keisan shita. Ketsuron wa hitotsu. Tetsuya de, ichimai ichimai ni shīru o haru shika nakatta.</div>
+    <div class="translation">"Kawamura-san, we have a problem." The voice on the phone sent ice down Akiko's spine. The promotional free-paper for the new product "Mona" — the factory manager had just brought in the freshly printed copies. The price field, the most crucial part, was blank. On tens of thousands of sheets, there were square white holes. Distribution was tomorrow. There was no time to reprint. In her head, Akiko rapidly calculated her options. The conclusion was one. They would have to stay up all night and apply stickers to every single sheet.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>背筋</td><td>susuji</td><td>spine</td></tr>
+    <tr><td>凍らせる</td><td>kooraseru</td><td>to freeze, to chill</td></tr>
+    <tr><td>肝心</td><td>kanjin</td><td>crucial, essential</td></tr>
+    <tr><td>価格欄</td><td>kakaku ran</td><td>price field/column</td></tr>
+    <tr><td>空白</td><td>kūhaku</td><td>blank, empty space</td></tr>
+    <tr><td>配布</td><td>haifu</td><td>distribution, handout</td></tr>
+    <tr><td>徹夜</td><td>tetsuya</td><td>all-nighter, staying up all night</td></tr>
+  </table>
+
+  <h3>C. The All-Night Conversation</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">シールを貼りながら、二人は話した。最初は仕事の話だけだった。モナの市場戦略、競合品、ターゲット層。しかし、夜が更けるにつれて、話は個人的になっていった。児島くんは、大学を卒業して就職氷河期にあたり、正社員になれなかったことを、特に悲観するでもなく話した。晶子は、二十代の後半から三十代にかけて、何度か結婚を意識したお付き合いをしたが、どれも長続きしなかったことを、特に自虐するでもなく話した。シールの山が少しずつ低くなるにつれて、二人の間の距離も、少しずつ縮まっていった。</div>
+    <div class="romaji">Shīru o harinagara, futari wa hanashita. Saisho wa shigoto no hanashi dake datta. Mona no shijō senryaku, kyōgō shōhin, tāgetto-sō. Shikashi, yoru ga fukeru ni tsurete, hanashi wa kojin-teki ni natte itta. Kojima-kun wa, daigaku o sotsugyō shite shūshoku hyōgaki ni atari, seishain ni narenakatta koto o, tokuni hikan suru demo naku hanashita. Akiko wa, nijū-dai no kōhan kara sanjū-dai ni kakete, nando ka kekkon o ishiki shita otsukiai o shita ga, dore mo nagatsuzuki shinakatta koto o, tokuni jigyaku suru demo naku hanashita. Shīru no yama ga sukoshi zutsu hikuku naru ni tsurete, futari no aida no kyori mo, sukoshi zutsu chijimatte itta.</div>
+    <div class="translation">As they applied the stickers, the two of them talked. At first, it was only work. Mona's market strategy, competing products, target demographics. But as the night deepened, the conversation became personal. Kojima spoke, without particular pessimism, of graduating into the employment ice age and failing to secure a permanent position. Akiko spoke, without particular self-deprecation, of the relationships in her late twenties and thirties that had considered marriage but none of which had lasted. As the mountain of stickers slowly shrank, the distance between them slowly closed.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>更ける</td><td>fukeru</td><td>to grow late (night)</td></tr>
+    <tr><td>就職氷河期</td><td>shūshoku hyōgaki</td><td>employment ice age (1990s–2000s)</td></tr>
+    <tr><td>正社員</td><td>seishain</td><td>permanent employee</td></tr>
+    <tr><td>悲観する</td><td>hikan suru</td><td>to be pessimistic</td></tr>
+    <tr><td>お付き合い</td><td>otsukiai</td><td>relationship, dating</td></tr>
+    <tr><td>自虐する</td><td>jigyaku suru</td><td>to be self-deprecating</td></tr>
+    <tr><td>縮まる</td><td>chijimaru</td><td>to shrink, to narrow</td></tr>
+  </table>
+
+  <h3>D. The Realization</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">朝日が窓から差し込み始めたころ、最後の一枚にシールが貼られた。晶子は、急激な眠気と、奇妙な高揚感の間で、自分の心がどこにあるのかわからなくなっていた。児島くんは、二十三歳だ。自分より十四歳も年下だ。それは、恋愛対象として考えること自体が、おこがましいという年齢差だった。なのに、なぜか、この少年——いや、この男と、もう一度、こうして話したいと思っている。晶子は、長い間、閉じていた扉の向こう側に、光が差し込んでいるのを感じた。</div>
+    <div class="romaji">Asahi ga mado kara sashikomi hajimeta koro, saigo no ichimai ni shīru ga harareta. Akiko wa, kyūgeki na nemuke to, kimyō na kōyōkan no aida de, jibun no kokoro ga doko ni aru no ka wakaranaku natte ita. Kojima-kun wa, nijūsan-sai da. Jibun yori jūyon-sai mo toshishita da. Sore wa, ren'ai taishō to shite kangaeru koto jitai ga, okogamashii to iu nenrei-sa datta. Na no ni, naze ka, kono shōnen — iya, kono otoko to, mō ichido, kō shite hanashitai to omotte iru. Akiko wa, nagai aida, tojite ita tobira no mukōgawa ni, hikari ga sashikonde iru no o kanjita.</div>
+    <div class="translation">As morning sunlight began to stream through the window, the last sticker was applied to the final sheet. Between sudden drowsiness and a strange exhilaration, Akiko no longer knew where her own heart was. Kojima was twenty-three. He was fourteen years younger than her. It was an age gap that made the very thought of him as a romantic prospect feel presumptuous. And yet, somehow, she wanted to talk with him again, like this. Akiko felt light streaming in from beyond a door that had been closed for a long time.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>差し込む</td><td>sashikomu</td><td>to stream in (light)</td></tr>
+    <tr><td>眠気</td><td>nemuke</td><td>drowsiness, sleepiness</td></tr>
+    <tr><td>高揚感</td><td>kōyōkan</td><td>elation, uplifted feeling</td></tr>
+    <tr><td>おこがましい</td><td>okogamashii</td><td>presumptuous, impertinent</td></tr>
+    <tr><td>年齢差</td><td>nenrei-sa</td><td>age difference</td></tr>
+    <tr><td>向こう側</td><td>mukōgawa</td><td>the other side</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 年下 (toshishita) / 年上 (toshiue)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Age as a Relational, Not Absolute, Category</div>
+    <p>In Japanese, <code>年下</code> and <code>年上</code> are relational terms: they describe age relative to the speaker, not an absolute age. A person is not "young" or "old"; they are "younger than me" or "older than me." This means that the title <code>年下の男の子</code> contains the heroine's perspective within it. He is not objectively a boy; he is younger-than-her. "The Younger Man" captures the relative age but loses the embedded subjectivity. "The Boy Junior to Me" would be more literal but sounds strange in English. The Japanese title makes clear that the age gap is experienced from the heroine's point of view as a problem of social position, not just chronology.</p>
+  </div>
+
+  <h3>B. おこがましい (okogamashii)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Presumption of Desire</div>
+    <p><code>おこがましい</code> means presumptuous, impertinent, or thinking too highly of oneself. When Akiko feels it would be <code>おこがましい</code> to consider Kojima a romantic prospect, she is not saying it is "inappropriate" or "scandalous." She is saying that she would be presuming above her station: a 37-year-old woman imagining that a 23-year-old man could want her is, in her own estimation, a kind of hubris. "Presumptuous" is close but too intellectual. "Ridiculous" captures the emotional tone but loses the social humility. <code>Okogamashii</code> is a word of social deference; it encodes a class-like understanding of romantic eligibility. Akiko has internalized the idea that she is no longer in the market for young men's attention, and to imagine otherwise is to overreach.</p>
+  </div>
+
+  <h3>C. お付き合い (otsukiai)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Japanese Relationship Without Labels</div>
+    <p><code>お付き合い</code> is the standard Japanese term for a romantic relationship, but it carries a specific nuance of gradual, unlabeled commitment. Unlike English "dating," which implies a declared status, or "boyfriend/girlfriend," which implies a title, <code>お付き合い</code> describes the state of seeing each other regularly with romantic intention, often without explicit discussion of labels. When Akiko says she has had several <code>お付き合い</code> that considered marriage, she means relationships that were serious enough to discuss the future but never reached it. "Relationships" is too broad. "Dating" is too casual. "Courtships" is too formal. <code>Otsukiai</code> is the Japanese romantic middle ground: not casual, not yet committed, moving toward a decision that may never come.</p>
+  </div>
+
+  <h3>D. 就職氷河期 (shūshoku hyōgaki)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">A Specific Historical Trauma</div>
+    <p><code>就職氷河期</code> (employment ice age) refers to the period from the mid-1990s to the mid-2000s when Japan's economic stagnation made it extremely difficult for new graduates to find permanent employment. Kojima, graduating into this period, became a contract worker not because he was lazy or unqualified but because the structural conditions of the Japanese economy made permanent positions scarce for his cohort. "Economic downturn" is too general. "Recession" is macroeconomic. <code>Shūshoku hyōgaki</code> is a term of generational identity; it names the specific experience of a generation that did everything right and still could not secure stable employment. Understanding this is essential to understanding Kojima: he is not a slacker or a temp by choice. He is a survivor of the ice age.</p>
+  </div>
+
+  <h3>E. 正社員 (seishain)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Japanese Employment Caste System</div>
+    <p><code>正社員</code> means "permanent employee" or "regular employee," but the English translation understates its social significance. In Japan, <code>正社員</code> status is the gateway to corporate benefits, promotion ladders, housing loans, marriage eligibility, and social respectability. Contract workers (<code>契約社員</code>, keiyaku shain) and dispatch workers (<code>派遣社員</code>, haken shain) perform similar work for less pay, less security, and less status. Kojima's status as a <code>契約社員</code> at 23 is not unusual for his generation, but it matters to the novel's dynamics: he is not yet a "settled" adult in the Japanese sense, and this precarity makes him, paradoxically, more open to a relationship with an older woman. He is not competing on the standard salaryman track. "Permanent employee" and "contract employee" are accurate but bloodless. The Japanese terms carry an entire sociology of work.</p>
+  </div>
+
+  <h3>F. 勢いと成り行き (ikioi to nariyuki)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Momentum as a Life Force</div>
+    <p>This phrase, which Akiko uses to describe her condominium purchase, is a masterpiece of Japanese self-deprecation. <code>勢い</code> (momentum, impulse) + <code>成り行き</code> (circumstance, the way things unfold) = a decision made not through careful planning but through the accumulation of small pushes. "On impulse" is too sudden. "It just happened" is too passive. <code>Ikioi to nariyuki</code> suggests a life being lived forward, with decisions made in motion rather than in stillness. It is the perfect phrase for a woman who has stopped planning her life around marriage and started simply moving through it. The condominium is not a dream realized; it is momentum made concrete.</p>
+  </div>
+
+  <h3>G. ハートウォーミング (hātowōmingu)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Japanese English of Emotional Comfort</div>
+    <p>The novel is described on its cover and in reviews as <code>ハートウォーミング</code> (heartwarming). This is a Japanese English (<code>和製英語</code>, wasei-eigo) term that has a slightly different range than the English original. In Japanese publishing, <code>ハートウォーミング</code> promises a specific emotional experience: not just warmth but restoration, a story that heals the reader's own disappointments. It is a marketing category as much as a description. When a Japanese reader sees <code>ハートウォーミング</code> on a cover, they expect a story where good people find each other, where effort is rewarded, where the world is slightly kinder than it usually is. "Heartwarming" in English can sound sentimental or tepid. <code>Hātowōmingu</code> in Japanese is a promise of emotional repair.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～しかない (shika nai) — "Have no choice but to / Can only"</span>
+    <div class="grammar-explanation">
+      <p><code>徹夜で、一枚一枚にシールを貼るしかなかった</code> = "There was no choice but to stay up all night applying stickers to each sheet"</p>
+      <p><code>～しかない</code> expresses that there is only one option available, often under constraint or pressure. <code>しか</code> is always followed by a negative verb.</p>
+      <p><strong>Formation:</strong> [Verb in dictionary form] + しか + negative verb</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>待つしかない</code> = "can only wait"</li>
+        <li><code>信じるしかない</code> = "have no choice but to believe"</li>
+        <li><code>諦めるしかなかった</code> = "had no choice but to give up"</li>
+      </ul>
+      <p>The grammar is central to the novel's crisis structure: at each turning point, the characters face a narrowing of options until only one remains. <code>Shika nai</code> is the grammar of necessity.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ながら (nagara) — "While doing / Although"</span>
+    <div class="grammar-explanation">
+      <p><code>シールを貼りながら、二人は話した</code> = "While applying stickers, the two of them talked"</p>
+      <p><code>～ながら</code> indicates simultaneous action: doing one thing while doing another. It can also indicate a contrast (doing X despite Y).</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>貼って話した</code> = "applied stickers and talked" (sequential or simultaneous, neutral)</li>
+        <li><code>貼りながら話した</code> = "talked while applying stickers" (simultaneous, emphasizes the parallel action)</li>
+      </ul>
+      <p>The grammar is essential to the novel's central scene. The conversation does not happen after the work; it happens <code>ながら</code>, in the gaps between stickers, in the rhythm of shared labor. <code>Nagara</code> is the grammar of intimacy-through-activity.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～につれて (ni tsurete) — "As / In proportion to"</span>
+    <div class="grammar-explanation">
+      <p><code>夜が更けるにつれて、話は個人的になっていった</code> = "As the night deepened, the conversation became more personal"</p>
+      <p><code>～につれて</code> indicates that two changes happen in parallel, with one following the other. It is often used for gradual, natural processes.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>夜が更けて、話した</code> = "The night deepened, and we talked" (simple sequence)</li>
+        <li><code>夜が更けるにつれて話した</code> = "As the night deepened, we talked" (the deepening and the talking are parallel, interdependent)</li>
+      </ul>
+      <p>The grammar captures the novel's emotional logic: the deepening of the night and the deepening of intimacy are not separate events. They <code>につれて</code> each other.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～てしまう (te shimau) — "To do completely / Regrettably end up doing"</span>
+    <div class="grammar-explanation">
+      <p><code>マンションを購入してしまった</code> = "ended up buying a condominium" (with a sense of finality or mild regret)</p>
+      <p><code>～てしまう</code> has two main nuances: (1) completion (doing something thoroughly), and (2) regret or unintended consequence (something happened that cannot be undone).</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>購入した</code> = "bought" (neutral)</li>
+        <li><code>購入してしまった</code> = "ended up buying" (implies the decision was somewhat impulsive and now binds her)</li>
+      </ul>
+      <p>Akiko's condominium purchase is described with <code>てしまう</code> because it is a threshold-crossing act: once done, it cannot be undone, and it changes her life trajectory. The grammar encodes the weight of adult decisions.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～でもなく (demo naku) — "Without even / Not particularly"</span>
+    <div class="grammar-explanation">
+      <p><code>特に悲観するでもなく話した</code> = "spoke without particularly being pessimistic"</p>
+      <p><code>～でもなく</code> is a written/literary pattern that softens a description by negating an extreme. It means "not to the extent of X."</p>
+      <p><strong>Formation:</strong> [Adverb] + [Adjective/Verb stem] + でもなく</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>驚くでもなく</code> = "without particularly being surprised"</li>
+        <li><code>喜ぶでもなく</code> = "without particularly being pleased"</li>
+        <li><code>自虐するでもなく</code> = "without particularly being self-deprecating"</li>
+      </ul>
+      <p>The grammar creates a tone of restrained, adult emotion. Akiko and Kojima discuss their disappointments <code>でもなく</code>: not dramatically, not performatively, but with the flatness of people who have survived enough to no longer need theatrical suffering.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ようになる (yō ni naru) — "To reach the point where / To come to"</span>
+    <div class="grammar-explanation">
+      <p><code>話は個人的になっていっ</code> = "the conversation came to be more personal" / "reached the point of being personal"</p>
+      <p><code>～ようになる</code> indicates a gradual change in state or ability. It suggests a process rather than a sudden shift.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>個人的になった</code> = "became personal" (simple change)</li>
+        <li><code>個人的になっていった</code> = "was gradually becoming personal" (ongoing process, with ～ていく indicating progression into the future)</li>
+      </ul>
+      <p>The grammar captures the slow, almost imperceptible shift from professional to personal. The conversation does not suddenly become intimate; it <code>ようになっていく</code>s, moving by degrees as the night progresses.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～という年齢差だった (to iu nenrei-sa datta) — "It was the kind of age gap where"</span>
+    <div class="grammar-explanation">
+      <p><code>おこがましいという年齢差だった</code> = "It was an age gap of the sort that made one feel presumptuous"</p>
+      <p><code>～という［名詞］だった</code> is an evaluative pattern that defines a noun by its characteristic quality. It does not simply describe; it judges.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>大きな年齢差だった</code> = "It was a large age difference" (objective description)</li>
+        <li><code>おこがましいという年齢差だった</code> = "It was an age difference of the presumptuous kind" (subjective evaluation)</li>
+      </ul>
+      <p>The grammar allows Akiko to define the age gap not by numbers but by feeling. Fourteen years is not just a quantity; it is <code>おこがましいという年齢差</code>, a gap that produces a specific emotional response in the one who contemplates crossing it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>年の差恋愛 (Toshisa Ren'ai): The Age-Gap Romance in Japan</h4>
+  <p>Age-gap relationships in Japan carry different cultural weights depending on which partner is older. A man dating a younger woman is so common as to be statistically normal; the reverse remains socially marked. When the woman is significantly older, the relationship is often viewed through lenses of suspicion (is she exploiting his youth?), pity (she couldn't find a man her own age), or novelty (the "cougar" trope borrowed from Western media). None of these frameworks fit Akiko and Kojima's relationship, which is why the novel feels refreshing.</p>
+
+  <p>The Japanese entertainment industry has historically been more comfortable with older-man/younger-woman pairings in romance narratives. When an older woman is paired with a younger man, it is often played for comedy or transgression. Igarashi's decision to treat the pairing with straightforward sincerity, without making Akiko predatory or Kojima naive, is a quiet subversion of this convention. The novel does not announce itself as radical; it simply assumes that two competent adults might fall in love despite an age difference, and lets that assumption carry the story.</p>
+
+  <h4>The 37-Year-Old Single Woman in Japanese Society</h4>
+  <p>In Japan, 37 is an age loaded with social meaning for women. The median age of first marriage for Japanese women has risen steadily (it was 29.4 in 2020), but cultural expectations lag behind statistics. A 37-year-old unmarried woman is still often described as <code>残念な女性</code> (zannen na josei, a "regrettable woman") or assumed to have "left it too late." She occupies a liminal space: too old for the standard marriage market, too young to be completely written off, too independent to be pitied outright.</p>
+
+  <p>Akiko's condominium purchase is a classic response to this liminality. In the absence of marriage, Japanese single women often invest in property as both a financial strategy and an emotional anchor. The condominium says: I am not waiting. I am building. But it also says, as Akiko herself recognizes, that she has closed a door. The novel understands this double meaning and refuses to simplify it. The condominium is neither triumph nor surrender; it is simply what she did with her life at thirty-seven, before Kojima happened.</p>
+
+  <h4>就職氷河期 (Shūshoku Hyōgaki) and the Precarious Generation</h4>
+  <p>Kojima's status as a contract employee graduating into the employment ice age places him in one of the most significant generational cohorts in postwar Japanese history. The "ice age generation" (<code>氷河期世代</code>, hyōgaki sedai) refers to those who entered the workforce during the long economic stagnation that followed the bubble's collapse. They faced a labor market in which permanent positions were scarce, contract work was normalized, and the traditional salaryman path was increasingly closed.</p>
+
+  <p>This generational experience shapes Kojima's character in ways that make him a plausible partner for Akiko. A man of his age and status in the 1980s would have been on a clear corporate ladder, expected to marry a younger woman, start a family, and prioritize work above all. A man of his age and status in the 2000s has no such certainty. His precarity makes him less invested in traditional gender roles and more open to unconventional relationships. The novel does not make this explicit, but it is present in the texture of his character: he is not competing on the standard track, so he is free to notice what the standard track ignores.</p>
+
+  <h4>PR and Corporate Culture in Japan</h4>
+  <p>The novel's setting in a dairy company's public relations department and its PR agency is more than backdrop. Japanese corporate PR is a world of strict hierarchies, client-vendor etiquette, and after-hours socializing that blurs the line between professional and personal. The crisis of the blank price fields is a realistic professional emergency: Japanese companies rely heavily on printed promotional materials, and a printing error of this magnitude would indeed require all-night manual correction.</p>
+
+  <p>The PR agency-client relationship is also socially coded. Akiko is the client (<code>クライアント</code>), Kojima is the vendor (<code>ベンダー</code>). In normal circumstances, this hierarchy would prevent intimacy. But the all-night emergency suspends normal circumstances. They are no longer client and vendor; they are simply two people doing an unpleasant job together. This suspension of hierarchy is a recurring theme in Japanese workplace narratives: the emergency, the overtime, the business trip, all create temporary spaces where the formal rules relax and human connection becomes possible.</p>
+
+  <h4>マンション (Mansion) as a Japanese Life Stage</h4>
+  <p>In Japan, a <code>マンション</code> (manshon) is not a grand house; it is a condominium or apartment unit, typically in a multi-story building. Purchasing one is a major life decision that signals adulthood, stability, and financial commitment. For a single woman to buy a <code>マンション</code> in her thirties was, until recently, unusual enough to be noteworthy. It represents both independence and a kind of resignation: the assumption that marriage is unlikely, so one might as well invest in solo stability.</p>
+
+  <p>The <code>マンション</code> also functions as a narrative device. It gives Akiko something to lose (her carefully constructed solo life) and something to reconsider (the possibility that her home might eventually hold two people). The novel's final movement often involves the question of whether the <code>マンション</code>, purchased as a fortress of independence, can become a space of shared life. This is a specifically Japanese romantic question: in a country where living together before marriage is still relatively uncommon, inviting someone into your <code>マンション</code> is a significant step.</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> Igarashi's prose in this novel is accessible, conversational, and emotionally direct. Unlike his horror or mystery novels, which rely on atmosphere and suspense, <em>Toshishita no Otokonoko</em> is driven by dialogue and interior monologue. The vocabulary of office work, real estate, and corporate crisis is practical and useful for understanding contemporary Japanese working life. The grammar of gradual change (<code>ようになる</code>, <code>につれて</code>) and necessity (<code>しかない</code>) is central to the novel's emotional architecture. For intermediate to advanced learners interested in romance fiction, workplace Japanese, and the social vocabulary of age and employment, this is an excellent and approachable text.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read for the <strong>crisis structure</strong>. Igarashi is a master of using practical emergencies to force character interaction. Track how the printing disaster creates intimacy.</li>
+    <li>Pay attention to <strong>time markers</strong>. The novel moves from evening to dawn, and the deepening of the night parallels the deepening of the relationship. Note the specific times mentioned.</li>
+    <li>Track <strong>Akiko's self-deprecating language</strong>. How does she talk about her age, her single status, her condominium? What does this reveal about her internalized social norms?</li>
+    <li>Notice <strong>Kojima's use of honorifics</strong>. How does he address Akiko? When and how does this shift? In Japanese, the shift from <code>さん</code> to more intimate forms is a significant narrative signal.</li>
+    <li>Compare the novel's <code>ハートウォーミング</code> tone with Igarashi's horror work. How does the same author handle suspense versus romance? What techniques transfer between genres?</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>The novel's central device is a professional crisis: applying stickers all night. Why does Igarashi, a genre-hopper known for high-concept hooks, choose such a mundane emergency? What does manual labor do for the romantic plot that a more glamorous setting would not?</li>
+    <li>Akiko feels that considering Kojima as a romantic prospect would be <code>おこがましい</code> (presumptuous). Where does this feeling come from? Is it entirely social, or is it also personal? How does the novel resolve it?</li>
+    <li>Kojima is a contract employee who graduated into the employment ice age. How does this economic precarity shape his character and his suitability as a partner? Would the novel work differently if he were a standard <code>正社員</code> (permanent employee)?</li>
+    <li>The condominium is described as both an act of independence and a closing of a door. By the end of the novel, has its meaning changed? What does the <code>マンション</code> represent in the final analysis?</li>
+    <li>Igarashi is known for having no "core genre." Does <em>Toshishita no Otokonoko</em> feel like a romance written by a horror author? Are there traces of his other genres in the prose or structure?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Igarashi Takahisa, <em>Rika</em> (リカ, 2002) — his debut horror novel, to see the other end of his genre range</li>
+    <li>Igarashi Takahisa, <em>Kōshōnin Tōno Maiko</em> (交渉人・遠野麻衣子) series — his police procedural/negotiator series</li>
+    <li>Igarashi Takahisa, <em>Wedding Bell</em> (ウエディング・ベル) — another romance by the same author, the sequel/next work after Toshishita no Otokonoko</li>
+    <li>Yamada Masahiro, <em>Konkatsu no Kōzō</em> (婚活の構造) — sociological context for marriage and dating in contemporary Japan</li>
+    <li>Sakai Junko, <em>Makeinu no Toboe</em> (負け犬の遠吠え, 2003) — the essay that defined the social category of the "losing dog" (unmarried woman over 30)</li>
+    <li>Ueno Chizuko, any essay on <code>年の差恋愛</code> (age-gap romance) in Japan — for feminist sociological context</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the novel's serialized text, documented quotations from reviewers, and the known content of the work, not direct quotations. For exact citations, consult the original hardcover edition (Jitsugyo no Nihon Sha, 2008; ISBN 978-4-408-53530-2) or the bunko edition (Jitsugyo no Nihon Sha Bunko, 2011; ISBN 978-4-408-55030-5). The novel was originally serialized in <em>Gekkan J Novel</em> from December 2006 to December 2007.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book of Five Rings — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e0ddd6;
+            --surface: #ebe9e3;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d3830;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --iron: #4a4540;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,56,48,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.iron::before {
+            background: var(--iron);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.iron-box {
+            background: color-mix(in oklab, var(--iron) 8%, var(--surface));
+            border-left-color: var(--iron);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.iron-box h5 {
+            color: var(--iron);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-iron {
+            background: color-mix(in oklab, var(--iron) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--iron) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--iron) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .scroll-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Book of Five Rings<br><span style="font-size:0.6em; font-weight:300;">五輪書</span></h1>
+    <div class="subtitle">A Japanese lesson through Miyamoto Musashi's grammar of combat, craft, and the void</div>
+    <div class="meta">Earth &middot; Water &middot; Fire &middot; Wind &middot; Void</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are drawn from the original text of <em>Go Rin no Sho</em> (The Book of Five Rings), written by Miyamoto Musashi between 1643 and 1645 in the Reigando cave near Kumamoto. The original Japanese is in the public domain. The translations and pedagogical commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    Written between 1643 and 1645 in the Reigando cave on Mount Iwato in Higo (present-day Kumamoto), <em>Go Rin no Sho</em> is the final testament of Miyamoto Musashi (c. 1584-1645), a man who fought over sixty duels to the death and lost none. At sixty years old, he climbed the mountain, bowed to heaven, paid homage to Kannon, and began to write. The title refers to the five Buddhist elements (五大, godai): Earth (地), Water (水), Fire (火), Wind (風), and Void (空). But this is no religious text. Musashi uses the Buddhist framework to organize a ruthlessly practical system of combat strategy. Where Kafu wrote exile in classical prose, where Endo wrote theology in modern pain, where Dazai wrote social performance in self-destruction, Musashi writes killing in the language of a craftsman explaining his trade. The prose is early modern Japanese (近世日本語), heavily influenced by kanbun (Chinese classical prose), and it carries the voice of a man who has tested every word against the edge of a blade.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Ground Scroll: The Carpenter of Death</h2>
+    <span class="scroll-label">地之巻</span>
+
+    <p>The Ground Scroll opens with Musashi's autobiography and his most famous act of self-undermining. Having listed his undefeated record, he immediately denies that his skill was the cause.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            我三十を越えて跡を思ひ見るに、<span class="hl">兵法至極して勝つにはあらず</span>、おのづから道の器用有りて天理をはなれざる故か、又は他流の兵法不足なる所にや
+        </div>
+        <div class="romaji">"Ga sanjuu wo koete ato wo omoi miru ni, heihou shigoku shite katsu ni wa arazu, onozukara michi no kiyou ari te tenri wo hanare-zaru yue ka, mata wa taryuu no heihou fusoku naru tokoro ni ya."</div>
+        <div class="translation">"When I passed thirty and looked back, I realized that I did not win because my strategy was perfect. Perhaps it was because I had a natural aptitude for the Way and did not depart from the order of heaven; or perhaps it was because the strategy of other schools was deficient."</div>
+        <div class="source">— 地之巻 (The Ground Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">至極</td><td class="reading">shigoku</td><td>perfect, supreme, ultimate</td></tr>
+        <tr><td class="word">おのづから</td><td class="reading">onozukara</td><td>naturally, spontaneously, of itself</td></tr>
+        <tr><td class="word">器用</td><td class="reading">kiyou</td><td>skill, dexterity, aptitude, talent</td></tr>
+        <tr><td class="word">天理</td><td class="reading">tenri</td><td>heavenly principle, natural law, divine order</td></tr>
+        <tr><td class="word">はなれざる</td><td class="reading">hanare-zaru</td><td>not departing from (classical negative ざる)</td></tr>
+        <tr><td class="word">故</td><td class="reading">yue</td><td>reason, cause (classical)</td></tr>
+        <tr><td class="word">他流</td><td class="reading">taryuu</td><td>other schools (of martial arts)</td></tr>
+        <tr><td class="word">不足</td><td class="reading">fusoku</td><td>insufficiency, deficiency, inadequacy</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of lethal humility</h5>
+        <p><strong>兵法至極して勝つにはあらず (heihou shigoku shite katsu ni wa arazu):</strong> "It is not that I won because my strategy was perfect." The grammar is devastatingly simple and devastatingly honest. 至極して means "having reached the utmost / being perfect." 勝つにはあらず is the classical negative copula: "it is not [the case] that I won." A lesser man would say "I won because I was supreme." Musashi says the opposite: my perfection was not the cause. The grammar of denial is the grammar of a man who has survived enough to know that survival is partly luck.</p>
+        <p><strong>おのづから (onozukara):</strong> "Naturally, spontaneously, of itself." This is one of the most important words in Japanese philosophy. It appears in Daoist and Zen texts to describe what happens without forced effort. When Musashi says おのづから道の器用有りて, he is saying that his skill arose naturally, not through willpower alone. The word makes his talent into something he received rather than something he achieved. This is the voice of a sixty-year-old man who has outlived his enemies and knows that his survival was not entirely his own doing.</p>
+        <p><strong>〜ざる (zaru):</strong> The classical negative adnominal form. Modern Japanese would say 離れない (hanarenai). The classical ざる attaches to the verb stem and creates a participial clause: 天理をはなれざる = "not departing from heavenly principle." The grammar compresses the meaning into a denser, more formal sound. It is the voice of written testament, not spoken confession.</p>
+        <p><strong>〜にや (ni ya):</strong> A classical sentence-ending particle expressing uncertainty or rhetorical question. "Or perhaps...?" The particle や makes the second possibility into a question Musashi leaves deliberately unanswered. Maybe it was his skill. Maybe it was their deficiency. He does not know. A man who killed over sixty opponents admits he does not know why he lived. The grammar of や is the grammar of genuine uncertainty.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Carpenter: Strategy as Craft</h2>
+    <span class="scroll-label">地之巻</span>
+
+    <p>Musashi's most famous metaphor compares the strategist to a carpenter. It is the key to understanding his entire system.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">兵法の道は大工の仕事にたとへる事を得</span>、大工の棟梁は家を造る式法を能く知り、或は家を高く造る事、或は下く造る事、或は広く造る事、或はく造る事、<span class="hl">皆その材木の利を知りて家を造るなり</span>
+        </div>
+        <div class="romaji">"Heihou no michi wa daiku no shigoto ni tatoeru koto wo e, daiku no toutou wa ie wo tsukuru shikihou wo yoku shiri, arui wa ie wo takaku tsukuru koto, arui wa hiku tsukuru koto, arui wa hiroku tsukuru koto, arui wa se-maku tsukuru koto, mina sono zaimoku no ri wo shirite ie wo tsukuru nari."</div>
+        <div class="translation">"The Way of strategy may be compared to the craft of the carpenter. The master carpenter understands the rules of building: making a house high or low, wide or narrow, all according to the useful properties of the wood."</div>
+        <div class="source">— 地之巻 (The Ground Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">大工</td><td class="reading">daiku</td><td>carpenter, master builder</td></tr>
+        <tr><td class="word">棟梁</td><td class="reading">toutou</td><td>master carpenter, chief builder</td></tr>
+        <tr><td class="word">式法</td><td class="reading">shikihou</td><td>rules, methods, formulas</td></tr>
+        <tr><td class="word">或は</td><td class="reading">arui wa</td><td>or, perhaps, in some cases</td></tr>
+        <tr><td class="word">材木</td><td class="reading">zaimoku</td><td>timber, lumber, building materials</td></tr>
+        <tr><td class="word">利</td><td class="reading">ri</td><td>advantage, usefulness, benefit, principle</td></tr>
+        <tr><td class="word">〜なり</td><td class="reading">nari</td><td>copula: is, does (classical/written)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The demotion of war to craft</h5>
+        <p><strong>たとへる事を得 (tatoeru koto wo e):</strong> "May be compared to." 得る (eru) here means "to be able to, to be permitted to." The grammar is formal and restrained. Musashi does not say "strategy IS carpentry." He says it "may be compared" to carpentry. The modesty is tactical. By framing strategy as a craft rather than an art or a mystery, he makes it teachable. Anyone can learn carpentry. Anyone can learn strategy. The grammar of comparison is the grammar of accessibility.</p>
+        <p><strong>棟梁 (toutou):</strong> Not merely a carpenter but a master carpenter, the chief builder who directs the work of others. The word carries authority. In Japanese, 棟梁 became a term for anyone who is the best at their craft. When Musashi compares the strategist to a 棟梁, he is saying: the general is not a hero. He is a craftsman who understands materials and rules.</p>
+        <p><strong>材木の利 (zaimoku no ri):</strong> "The useful properties of the wood." 利 is one of the most important words in the entire book. It means advantage, usefulness, benefit, but also the underlying principle that makes something work. When Musashi says the carpenter builds according to 材木の利, he means: you do not impose your will on the material. You understand what the material can do, and you work with it. Applied to combat: you do not impose a technique on the enemy. You understand what the enemy can do, and you work with that knowledge. The word 利 is the bridge between craft and strategy.</p>
+        <p><strong>〜なり (nari):</strong> The classical copula, more formal and definitive than modern だ or である. When Musashi ends with 家を造るなり ("he builds the house"), the なり gives the statement the weight of natural law. This is not advice. This is how things are.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. No Teacher: The Grammar of Self-Creation</h2>
+    <span class="scroll-label">地之巻</span>
+
+    <p>Musashi's most famous declaration appears in the Ground Scroll. It is not arrogance. It is the statement of a man who learned by surviving.</p>
+
+    <div class="passage iron">
+        <div class="jp-text jp">
+            <span class="hl-iron">我に師匠なし</span>、<span class="hl-iron">よしと思ふ事を以て我が身に勝手をつく</span>、<span class="hl-iron">此れ二天一流と号す</span>
+        </div>
+        <div class="romaji">"Ga ni shishou nashi, yoshi to omou koto wo motte wagami ni katte wo tsuku, kore Niten Ichi-ryuu to gou su."</div>
+        <div class="translation">"I had no teacher. Taking what I thought good, I made it my own method. This I call the Niten Ichi-ryuu."</div>
+        <div class="source">— 地之巻 (The Ground Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">師匠</td><td class="reading">shishou</td><td>master, teacher, mentor</td></tr>
+        <tr><td class="word">よし</td><td class="reading">yoshi</td><td>good, right, proper (classical adjective)</td></tr>
+        <tr><td class="word">以て</td><td class="reading">motte</td><td>by means of, using, with (classical)</td></tr>
+        <tr><td class="word">勝手</td><td class="reading">katte</td><td>one's own way, method, convenience</td></tr>
+        <tr><td class="word">つく</td><td class="reading">tsuku</td><td>to make, to construct, to establish</td></tr>
+        <tr><td class="word">号す</td><td class="reading">gou su</td><td>to call oneself, to name, to style oneself</td></tr>
+    </table>
+
+    <div class="nuance iron-box">
+        <h5>What translation loses: The violence of self-naming</h5>
+        <p><strong>我に師匠なし (ga ni shishou nashi):</strong> "I had no teacher." Four words. One of the most famous sentences in Japanese. The grammar is absolute: 我 (I) に (to/for) 師匠 (teacher) なし (there is not). No particles of qualification, no かもしれません (maybe), no 多分 (probably). The absence of a teacher is stated as a fact, not a boast. But of course it is a boast. The grammar makes the boast sound like a weather report. This is the voice of a man who has earned the right to be casual about his own supremacy.</p>
+        <p><strong>よしと思ふ事を以て (yoshi to omou koto wo motte):</strong> "Taking what I thought good." よし is the classical form of 良い (good). 以て (motte) is the classical instrumental particle: "by means of, using." The grammar is the grammar of selection. Musashi did not invent his style out of nothing. He selected. He judged. He kept what was よし (good) and discarded the rest. The word よし is crucial: it is a moral judgment, not merely a technical one. He is saying that his style is not just effective; it is right.</p>
+        <p><strong>勝手をつく (katte wo tsuku):</strong> "To make one's own method." 勝手 literally means "one's own way, one's own convenience." In modern Japanese it can mean "selfishness" or "arbitrary behavior." But here it means something positive: the creation of a personal method that fits one's own body, temperament, and experience. つく (to make, to build) makes the method into something constructed, not received. Musashi built his style with his own hands, the same hands that held the swords.</p>
+        <p><strong>号す (gou su):</strong> "To call oneself, to name." The classical verb 号す means to give a name or title to oneself. When Musashi says 此れ二天一流と号す ("This I call the Niten Ichi-ryuu"), he is performing an act of self-naming that is also an act of self-creation. The style did not exist before he named it. The name makes the style into a school, a tradition, a legacy. 号す is the verb of founding.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Water Scroll: The Mind That Does Not Change</h2>
+    <span class="scroll-label">水之巻</span>
+
+    <p>The Water Scroll opens with the most important psychological instruction in the entire book. Everything else follows from this.</p>
+
+    <div class="passage iron">
+        <div class="jp-text jp">
+            兵法の道は、<span class="hl-iron">常の心に替はる事なかれ</span>。常にも、勝負の時にも、変はる事なく、ひろく直にして、きつくひつぱる事なくすこしもたるむ事なく、心の偏らぬやうに、心をまん中におきて、心を静かにゆるがせて、其のゆるぎのせつなも、ゆるぎやまぬやうに、能く能く吟味すべし
+        </div>
+        <div class="romaji">"Heihou no michi wa, tsune no kokoro ni kawaru koto nakare. Tsune ni mo, shoubu no toki ni mo, kawaru koto naku, hiroku jiki ni shite, kitsuku hipparu koto naku, sukoshi mo tarumu koto naku, kokoro no tagayaranu you ni, kokoro wo mannaka ni okite, kokoro wo shizuka ni yurugasete, sono yurugi no setsuna mo, yurugi yamanu you ni, yoku yoku ginmi subeshi."</div>
+        <div class="translation">"In the Way of strategy, do not let your mind change from its ordinary state. In ordinary times and in times of combat alike, let it not change. Be broad and straight, neither tense nor slack, neither pulling tight nor letting go. Do not let the mind lean to one side. Place the mind in the center. Let the mind be quietly unsettled, and in the very instant of that unsettlement, let it not stop unsettling. Examine this carefully, again and again."</div>
+        <div class="source">— 水之巻 (The Water Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">常</td><td class="reading">tsune</td><td>the ordinary, the usual, the constant</td></tr>
+        <tr><td class="word">替はる</td><td class="reading">kawaru</td><td>to change, to alter (classical form)</td></tr>
+        <tr><td class="word">なかれ</td><td class="reading">nakare</td><td>do not (prohibitive imperative)</td></tr>
+        <tr><td class="word">ひつぱる</td><td class="reading">hipparu</td><td>to pull tight, to strain</td></tr>
+        <tr><td class="word">たるむ</td><td class="reading">tarumu</td><td>to slacken, to loosen, to sag</td></tr>
+        <tr><td class="word">偏る</td><td class="reading">tagayaru / katayoru</td><td>to lean to one side, to be partial, to be biased</td></tr>
+        <tr><td class="word">ゆるがす</td><td class="reading">yurugasu</td><td>to shake, to unsettle, to make tremble</td></tr>
+        <tr><td class="word">せつな</td><td class="reading">setsuna</td><td>instant, moment (Sanskrit kshana)</td></tr>
+        <tr><td class="word">吟味</td><td class="reading">ginmi</td><td>careful examination, scrutiny, testing</td></tr>
+        <tr><td class="word">すべし</td><td class="reading">subeshi</td><td>should, ought to (classical prescriptive)</td></tr>
+    </table>
+
+    <div class="nuance iron-box">
+        <h5>What translation loses: The paradox of the unsettled mind</h5>
+        <p><strong>常の心 (tsune no kokoro):</strong> "The ordinary mind." Not the special mind, not the combat mind, not the enlightened mind. The ordinary mind. The mind you have when you are washing dishes or walking down a road. Musashi's radical claim is that this mind is sufficient for combat. You do not need to become someone else to fight. You need to remain who you are. The word 常 (tsune, ordinary/constant) is one of the most important words in East Asian philosophy. It is the word Laozi uses for the Way that is always so. Musashi places combat psychology on the same ground as Daoist metaphysics.</p>
+        <p><strong>〜なかれ (nakare):</strong> The prohibitive imperative: "Do not." Stronger and more formal than modern 〜ないでください or 〜な. なかれ is the command form used in laws, scriptures, and testaments. When Musashi says 替はる事なかれ ("Do not let it change"), he is not offering advice. He is issuing a commandment. The grammar makes the instruction into law.</p>
+        <p><strong>きつくひつぱる事なく、すこしもたるむ事なく (kitsuku hipparu koto naku, sukoshi mo tarumu koto naku):</strong> "Neither pulling tight nor letting go, not even slightly." The pair きつく (tight) and たるむ (slack) creates a spectrum of tension, and Musashi places the mind in the exact middle. Not tense, not relaxed. Not hard, not soft. The grammar of paired negatives (〜なく、〜なく) is the standard way in classical Japanese to define a middle way. This is the psychological equivalent of the Buddhist 中道 (chuu dou, Middle Way).</p>
+        <p><strong>心を静かにゆるがせて (kokoro wo shizuka ni yurugasete):</strong> "Let the mind be quietly unsettled." This is the most paradoxical instruction in the book. 静か (shizuka) means quiet, still, calm. ゆるがす (yurugasu) means to shake, to unsettle, to make tremble. Musashi tells you to be calmly unsettled. The mind should move, but its movement should itself be calm. The te-form ゆるがせて connects this state to what follows: in the very instant (せつな, setsuna) of unsettlement, the unsettlement must not stop. The mind must be in constant, quiet motion. This is not relaxation. It is dynamic equilibrium.</p>
+        <p><strong>せつな (setsuna):</strong> From Sanskrit kshana, the smallest unit of time in Buddhist cosmology. By using this word, Musashi imports Buddhist temporal physics into combat psychology. The moment of decision is not just "quick." It is a kshana, a Buddhist instant, the smallest possible division of time. The word makes combat into a form of meditation on impermanence.</p>
+        <p><strong>能く能く吟味すべし (yoku yoku ginmi subeshi):</strong> "You should examine this carefully, again and again." 能く (yoku) means "well, thoroughly." The reduplication 能く能く intensifies it: "thoroughly, thoroughly." 吟味 (ginmi) means to test, to examine, to scrutinize. すべし (subeshi) is the classical prescriptive: "should, ought to." The grammar is the grammar of disciplined practice. Musashi does not say "think about this." He says "examine it, test it, scrutinize it, again and again." 吟味 is the word for testing metal, for tasting wine, for judging quality. He wants you to test this teaching the way you would test a blade.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Two Eyes: Perception as Combat</h2>
+    <span class="scroll-label">水之巻</span>
+
+    <p>Musashi distinguishes two modes of seeing. The distinction is the difference between living and dying.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">観見二つの事</span>、<span class="hl">観の目つよく見の目よわく</span>
+        </div>
+        <div class="romaji">"Kan ken futatsu no koto, kan no me tsuyoku, ken no me yowaku."</div>
+        <div class="translation">"There are two kinds of looking: kan and ken. Let the perceiving eye (kan) be strong, and the observing eye (ken) be weak."</div>
+        <div class="source">— 水之巻 (The Water Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">観</td><td class="reading">kan</td><td>perceiving, seeing the whole, contemplative vision</td></tr>
+        <tr><td class="word">見</td><td class="reading">ken</td><td>looking, observing detail, focal vision</td></tr>
+        <tr><td class="word">つよく</td><td class="reading">tsuyoku</td><td>strongly, firmly</td></tr>
+        <tr><td class="word">よわく</td><td class="reading">yowaku</td><td>weakly, softly</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The epistemology of the sword</h5>
+        <p><strong>観 (kan) vs. 見 (ken):</strong> These are not merely "two kinds of looking." They are two different relationships between consciousness and reality. 観 means to perceive, to contemplate, to see the whole. It is the word used in Buddhist meditation: 観想 (kansou, contemplation), 観念 (kannen, idea/concept). 見 means to look at, to observe, to focus on detail. It is the ordinary word for seeing. Musashi's instruction is: let your wide, contemplative perception (観) be strong, and your narrow, focused observation (見) be weak. In combat, if you focus too hard on the enemy's sword, you miss the enemy's feet, the enemy's shoulders, the space around you. If you focus too hard on any one thing, you die. The grammar of the paired adverbs (つよく / よわく) creates a ratio, a proportion of attention. This is not metaphor. It is a practical instruction that has been tested in blood.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Fire Scroll: Holding Down the Pillow</h2>
+    <span class="scroll-label">火之巻</span>
+
+    <p>The Fire Scroll deals with combat itself. Its most famous technique is not a strike but a pre-emption.</p>
+
+    <div class="passage iron">
+        <div class="jp-text jp">
+            <span class="hl-iron">枕をおさふる</span>とは、敵の打とうとする「う」の字の<span class="hl-iron">頭を押さふる</span>事なり
+        </div>
+        <div class="romaji">"Makura wo osafuru to wa, teki no utou to suru 'u' no ji no kashira wo osafuru koto nari."</div>
+        <div class="translation">"To hold down the pillow means to press the head of the 'u' syllable as the enemy is about to strike."</div>
+        <div class="source">— 火之巻 (The Fire Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">枕</td><td class="reading">makura</td><td>pillow; the beginning of a movement</td></tr>
+        <tr><td class="word">おさふる</td><td class="reading">osafuru</td><td>to press down, to hold down, to suppress (classical form)</td></tr>
+        <tr><td class="word">打とう</td><td class="reading">utou</td><td>about to strike, intending to strike</td></tr>
+        <tr><td class="word">頭</td><td class="reading">kashira</td><td>head, top, beginning (of a syllable or movement)</td></tr>
+    </table>
+
+    <div class="nuance iron-box">
+        <h5>What translation loses: The semiotics of pre-emption</h5>
+        <p><strong>枕をおさふる (makura wo osafuru):</strong> Literally "to hold down the pillow." The metaphor is from sleeping: if you hold down someone's pillow, they cannot rise. In combat, it means to strike before the enemy has completed their intention. The word 枕 (makura) refers to the very beginning of a movement, the instant before it becomes visible. Musashi is saying: do not wait for the enemy to strike. Press down on the beginning of their strike before it begins. The grammar of 〜とは...なり (to wa...nari) is definitional: "X means Y." This is not a suggestion. It is a technical definition.</p>
+        <p><strong>「う」の字の頭 ('u' no ji no kashira):</strong> "The head of the 'u' syllable." This is one of the most extraordinary images in Japanese literature. Musashi imagines the enemy's strike as a syllable about to be spoken. The strike begins with the consonant, before the vowel is sounded. To hold down the pillow is to strike at the consonant, before the vowel. The metaphor makes combat into language, and victory into the ability to read the enemy's intention at the level of phonemes. The word 頭 (kashira) means "head" or "beginning." It is the same word used for the beginning of a scroll, the first stroke of a character. Musashi is saying: strike at the first stroke, before the character is written.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. Forging and Refining: The Grammar of Practice</h2>
+    <span class="scroll-label">火之巻</span>
+
+    <p>Musashi's most famous statement about training distinguishes two phases of practice, using the vocabulary of metallurgy.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">千日の稽古を鍛とし、万日の稽古を練とす</span>
+        </div>
+        <div class="romaji">"Sennichi no keiko wo tan to shi, mannichi no keiko wo ren to su."</div>
+        <div class="translation">"A thousand days of practice is forging; ten thousand days of practice is refining."</div>
+        <div class="source">— 火之巻 (The Fire Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">稽古</td><td class="reading">keiko</td><td>practice, training, study</td></tr>
+        <tr><td class="word">鍛</td><td class="reading">tan</td><td>forging, tempering (metal)</td></tr>
+        <tr><td class="word">練</td><td class="reading">ren</td><td>refining, polishing, training to perfection</td></tr>
+        <tr><td class="word">とす</td><td class="reading">to su</td><td>to consider as, to make into (classical)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The metallurgy of the soul</h5>
+        <p><strong>鍛 (tan) vs. 練 (ren):</strong> These are two different stages of metalwork. 鍛 means to forge, to hammer hot metal into shape, to temper. It is violent, forceful, transformative. 練 means to refine, to polish, to work a material until it is pure. It is gradual, patient, perfecting. When Musashi says a thousand days is forging and ten thousand days is refining, he is describing a progression from rough shaping to fine perfection. The grammar 〜を鍛とし、〜を練とす (to consider X as forging, to consider Y as refining) makes each phase into a categorical definition. This is not "I think practice is like forging." This is "Practice IS forging. Practice IS refining." The copula とす is definitive.</p>
+        <p><strong>千日 (sennichi) vs. 万日 (mannichi):</strong> A thousand days is roughly three years. Ten thousand days is roughly twenty-seven years. Musashi is giving you a timescale. The first three years forge you. The next twenty-seven refine you. The numbers are not arbitrary. They are the minimum and maximum of a serious life in the arts. When Musashi wrote this, he was sixty. He had practiced for over forty years. He was speaking from beyond the ten thousand days.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Wind Scroll: Knowing the Other to Know Yourself</h2>
+    <span class="scroll-label">風之巻</span>
+
+    <p>The Wind Scroll criticizes other schools without naming them. Its opening sentence contains the book's epistemological foundation.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">他流の道を不知しては、我一流の道理慥に弁へがたし</span>
+        </div>
+        <div class="romaji">"Taryuu no michi wo shirazu shite wa, ga ichiryuu no douri tashi ni wakimaeyu gatashi."</div>
+        <div class="translation">"Without knowing the way of other schools, it is difficult to clearly distinguish the principles of my own school."</div>
+        <div class="source">— 風之巻 (The Wind Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">他流</td><td class="reading">taryuu</td><td>other schools, other traditions</td></tr>
+        <tr><td class="word">不知</td><td class="reading">shirazu</td><td>not knowing (classical noun form)</td></tr>
+        <tr><td class="word">我一流</td><td class="reading">ga ichiryuu</td><td>my own school, our one school</td></tr>
+        <tr><td class="word">道理</td><td class="reading">douri</td><td>principle, reason, truth</td></tr>
+        <tr><td class="word">慥に</td><td class="reading">tashi ni</td><td>certainly, clearly, reliably</td></tr>
+        <tr><td class="word">弁へる</td><td class="reading">wakimaeru</td><td>to distinguish, to discern, to understand clearly</td></tr>
+        <tr><td class="word">がたし</td><td class="reading">gatashi</td><td>difficult to (classical potential negative)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of self-definition through otherness</h5>
+        <p><strong>不知しては (shirazu shite wa):</strong> "Without knowing." The grammar 〜ずしては (without doing X) creates a conditional: if you do not know the other schools, then... The structure makes knowledge of the other into a prerequisite for knowledge of the self. This is not mere open-mindedness. It is an epistemological claim: identity is relational. You cannot know what your school is until you know what it is not.</p>
+        <p><strong>慥に弁へがたし (tashi ni wakimaeyu gatashi):</strong> "Difficult to clearly distinguish." 慥 (tashi) means certain, reliable, firm. 弁へる (wakimaeru) means to distinguish, to discern, to tell apart. がたし (gatashi) is the classical potential negative: "difficult to." The grammar creates a scale of difficulty. It is not impossible to know your own school without knowing others. It is merely difficult. Very difficult. The understatement is the voice of experience. Musashi has fought representatives of many schools. He knows how hard it is to know your own style until you have tested it against others.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Void Scroll: What Remains When Knowledge Ends</h2>
+    <span class="scroll-label">空之巻</span>
+
+    <p>The Void Scroll is the shortest and the deepest. It undoes everything the previous four scrolls established.</p>
+
+    <div class="passage iron">
+        <div class="jp-text jp">
+            <span class="hl-iron">空といふ心は、物毎のなき所知れざる事を空と見立つる也</span>。勿論空はなき也。<span class="hl-iron">有る所を知りてなき所を知る、是則空也</span>
+        </div>
+        <div class="romaji">"Kuu to iu kokoro wa, monogoto no naki tokoro shire-zaru koto wo kuu to mitatsuru nari. mochiron kuu wa naki nari. Aru tokoro wo shirite naki tokoro wo shiru, kore sunawachi kuu nari."</div>
+        <div class="translation">"What is meant by the void is that where nothing exists and what cannot be known. Of course the void is not [mere emptiness]. By thoroughly knowing what exists, one knows where nothing exists. This, precisely, is the void."</div>
+        <div class="source">— 空之巻 (The Void Scroll)</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">空</td><td class="reading">kuu</td><td>void, emptiness (Sanskrit shunyata)</td></tr>
+        <tr><td class="word">物毎</td><td class="reading">monogoto</td><td>things, matters, phenomena</td></tr>
+        <tr><td class="word">知れざる</td><td class="reading">shire-zaru</td><td>unknown, not knowable (classical negative)</td></tr>
+        <tr><td class="word">見立つる</td><td class="reading">mitatsuru</td><td>to regard as, to consider as, to model upon</td></tr>
+        <tr><td class="word">勿論</td><td class="reading">mochiron</td><td>of course, needless to say</td></tr>
+        <tr><td class="word">是則</td><td class="reading">kore sunawachi</td><td>this precisely, this is exactly</td></tr>
+    </table>
+
+    <div class="nuance iron-box">
+        <h5>What translation loses: The Buddhist grammar of combat</h5>
+        <p><strong>空 (kuu):</strong> From Sanskrit shunyata, the Buddhist concept of emptiness. But Musashi immediately warns: 勿論空はなき也 ("Of course the void is not [mere emptiness]"). He knows that readers will hear "void" and think "nothingness." He corrects this instantly. The void is not absence. It is the space that becomes visible only after you have thoroughly mapped what is there. This is the difference between ignorance and the void. Ignorance is not knowing what exists. The void is knowing what exists so thoroughly that you can see where nothing exists. The grammar of correction (勿論...なき也) is the grammar of a man who has seen his own students misunderstand this point.</p>
+        <p><strong>有る所を知りてなき所を知る (aru tokoro wo shirite naki tokoro wo shiru):</strong> "By knowing what exists, one knows where nothing exists." The grammar is a classical conditional chain: know A, and you will know B. The te-form 知りて connects the two knowings into a single process. First you learn everything. Then you see the gaps. The void is not where you start. It is where you arrive after you have exhausted knowledge. This is the opposite of mysticism. It is extreme rationalism pushed to its limit.</p>
+        <p><strong>是則空也 (kore sunawachi kuu nari):</strong> "This, precisely, is the void." 是則 (kore sunawachi) is a classical emphatic: "this exactly, this and nothing else." The 也 (nari) copula gives the statement the weight of definition. The entire book has been building toward this sentence. The Ground taught you the craft. The Water taught you the mind. The Fire taught you the techniques. The Wind taught you the alternatives. The Void tells you: once you have learned all of that, you must forget it. Not because it was wrong. Because you have absorbed it so thoroughly that you no longer need to think about it. The void is mastery.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Final Sentence: The Ethics of the Void</h2>
+    <span class="scroll-label">空之巻</span>
+
+    <p>The book ends with seventeen characters that have been debated for centuries.</p>
+
+    <div class="passage iron">
+        <div class="jp-text jp">
+            <span class="hl-iron">空有善無悪、知有也利有也道有也心空也</span>
+        </div>
+        <div class="romaji">"Kuu u zen mu aku, chi u nari ri u nari michi u nari kokoro kuu nari."</div>
+        <div class="translation">"In the void there is good and no evil. Wisdom exists, advantage exists, the Way exists, and the mind is void."</div>
+        <div class="source">— 空之巻 (The Void Scroll), final sentence</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">有</td><td class="reading">u</td><td>existence, being (classical, from あり)</td></tr>
+        <tr><td class="word">善</td><td class="reading">zen</td><td>good, goodness</td></tr>
+        <tr><td class="word">無</td><td class="reading">mu</td><td>absence, non-being, without</td></tr>
+        <tr><td class="word">悪</td><td class="reading">aku</td><td>evil, badness</td></tr>
+        <tr><td class="word">知</td><td class="reading">chi</td><td>wisdom, knowledge</td></tr>
+        <tr><td class="word">利</td><td class="reading">ri</td><td>advantage, benefit, principle</td></tr>
+        <tr><td class="word">道</td><td class="reading">michi</td><td>the Way, path, principle</td></tr>
+    </table>
+
+    <div class="nuance iron-box">
+        <h5>What translation loses: The seventeen-character testament</h5>
+        <p><strong>空有善無悪 (kuu u zen mu aku):</strong> "In the void there is good and no evil." This is a radical claim. Buddhist philosophy typically says the void is beyond good and evil. Musashi says the void contains good and explicitly excludes evil. This is not Buddhist orthodoxy. It is Musashi's own ethics. After sixty duels, he is saying: the highest state of combat consciousness is not amoral. It is moral. The void is not a place where ethics disappear. It is a place where evil cannot enter. The grammar is compressed to the point of poetry: four concepts (void, existence, good, non-existence, evil) arranged in a five-character phrase. The compression makes the claim feel like an inscription on stone.</p>
+        <p><strong>知有也利有也道有也心空也 (chi u nari ri u nari michi u nari kokoro kuu nari):</strong> "Wisdom exists, advantage exists, the Way exists, and the mind is void." The repetition of 有也 (exists) three times creates a drumbeat of affirmation. Wisdom exists. Advantage exists. The Way exists. Each 也 (nari) lands like a hammer. Then the final clause breaks the pattern: 心空也 (the mind is void). The mind is not added to the list of things that exist. It is declared void. The grammar makes the mind into the exception that contains all the others. Wisdom, advantage, and the Way all exist within the void mind. The void is not empty of them. It is the space that holds them without being filled by them. This is the book's final teaching: know everything, and let your mind remain empty. The grammar of the final 也 is the grammar of a man putting down his brush.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Sword</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜なか</strong> — Do not (prohibitive imperative, the grammar of commandment)</li>
+        <li><strong>〜ず / 〜ざる</strong> — Classical negative (denser, more absolute than modern ない)</li>
+        <li><strong>〜なり</strong> — Classical copula (the grammar of natural law)</li>
+        <li><strong>〜べし</strong> — Should, ought to (prescriptive, the grammar of disciplined practice)</li>
+        <li><strong>〜がたし</strong> — Difficult to (classical potential negative)</li>
+        <li><strong>〜にや</strong> — Uncertainty particle (the grammar of genuine doubt)</li>
+        <li><strong>〜とす</strong> — To consider as, to make into (definitional)</li>
+        <li><strong>〜て</strong> — Te-form as chain of conditions (know A, then know B)</li>
+        <li><strong>〜なく、〜なく</strong> — Paired negatives defining a middle way</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>至極して勝つにはあらず</strong> — I did not win because I was perfect; the grammar of lethal humility</li>
+        <li><strong>おのづから</strong> — Naturally, spontaneously; what arises without forced effort</li>
+        <li><strong>天理</strong> — Heavenly principle; the order that exists beyond technique</li>
+        <li><strong>〜にや</strong> — Or perhaps; the uncertainty of a survivor</li>
+        <li><strong>大工の棟梁</strong> — The master carpenter; strategy as craft, not mystery</li>
+        <li><strong>材木の利</strong> — The useful properties of the material; working with, not against</li>
+        <li><strong>我に師匠なし</strong> — I had no teacher; the violence of self-creation</li>
+        <li><strong>よしと思ふ事を以て</strong> — Taking what I thought good; the morality of selection</li>
+        <li><strong>勝手をつく</strong> — To make one's own method; construction, not inheritance</li>
+        <li><strong>号す</strong> — To name oneself; the verb of founding</li>
+        <li><strong>常の心</strong> — The ordinary mind; the mind that needs no transformation</li>
+        <li><strong>替はる事なかれ</strong> — Do not let it change; the commandment of constancy</li>
+        <li><strong>きつくひつぱる事なく、すこしもたるむ事なく</strong> — Neither tense nor slack; the grammar of the middle way</li>
+        <li><strong>心を静かにゆるがせて</strong> — Let the mind be quietly unsettled; the paradox of dynamic equilibrium</li>
+        <li><strong>せつな</strong> — The kshana, the Buddhist instant; the smallest unit of combat decision</li>
+        <li><strong>能く能く吟味すべし</strong> — Examine carefully, again and again; test it like metal</li>
+        <li><strong>観の目つよく見の目よわく</strong> — Strong perceiving eye, weak observing eye; the epistemology of the sword</li>
+        <li><strong>枕をおさふる</strong> — To hold down the pillow; pre-emption as phonemic reading</li>
+        <li><strong>「う」の字の頭</strong> — The head of the 'u' syllable; striking before the vowel sounds</li>
+        <li><strong>千日の稽古を鍛とし、万日の稽古を練とす</strong> — Forging and refining; the metallurgy of the soul</li>
+        <li><strong>他流の道を不知しては</strong> — Without knowing other schools; identity as relational</li>
+        <li><strong>慥に弁へがたし</strong> — Difficult to clearly distinguish; the understatement of experience</li>
+        <li><strong>有る所を知りてなき所を知る</strong> — Know what exists to know where nothing exists; rationalism to its limit</li>
+        <li><strong>是則空也</strong> — This, precisely, is the void; the grammar of arrival</li>
+        <li><strong>空有善無悪</strong> — In the void there is good and no evil; the ethics of mastery</li>
+        <li><strong>知有也利有也道有也心空也</strong> — Wisdom exists, advantage exists, the Way exists, and the mind is void; the drumbeat of affirmation and the exception that contains all</li>
+    </ul>
+
+    <h4>Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Nine directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方がない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふる, 是則空也). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have killed everyone who tested you and sit down at sixty to write what you know. Together these nine writers map the emotional, intellectual, and linguistic range of Japanese prose: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the small mercies of morning to the void that contains good and excludes evil.</p>
+</section>
+
+</main>
+
+</body>
+</html>

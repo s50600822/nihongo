@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>怖いくらい当たる「血液」の本 — Lesson File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-raised: #141414;
+  --bg-elevated: #1a1a1a;
+  --ink: #e8dcc8;
+  --ink-secondary: #a89f91;
+  --ink-muted: #7a7268;
+  --accent: #c4a76c;
+  --accent-dim: #8a7a58;
+  --accent-weak: rgba(196, 167, 108, 0.08);
+  --line: rgba(232, 220, 200, 0.08);
+  --line-strong: rgba(232, 220, 200, 0.15);
+  --step--2: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+  --step--1: clamp(0.85rem, 0.81rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 1.9rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --step-4: clamp(2.6rem, 2rem + 3vw, 3.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.4), 0 12px 32px -8px rgba(0,0,0,0.6);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.85;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-weak);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space) * 1.2);
+}
+
+header {
+  padding: calc(var(--space) * 4) 0 calc(var(--space) * 2.5);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 2);
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+  opacity: 0.4;
+}
+
+.eyebrow {
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6em;
+  display: block;
+}
+
+h1 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-weight: 300;
+  margin: 0 0 1.2em;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1.5em;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.meta .label { color: var(--ink-muted); }
+.meta .value { color: var(--ink-secondary); }
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+  padding-bottom: calc(var(--space) * 1.5);
+  border-bottom: 1px solid var(--line);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h2 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  color: var(--accent);
+  margin: calc(var(--space) * 1.5) 0 calc(var(--space) * 0.8);
+  line-height: 1.3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+h2 .section-num {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: var(--step--2);
+  font-weight: 500;
+  color: var(--accent-dim);
+  letter-spacing: 0.05em;
+}
+
+h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--ink);
+  margin: calc(var(--space) * 1.2) 0 0.5em;
+  line-height: 1.35;
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--ink-secondary);
+  margin: 1.2em 0 0.4em;
+  letter-spacing: 0.02em;
+}
+
+p { margin: 0 0 1em; }
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  margin: 1.2em 0;
+  box-shadow: var(--shadow);
+}
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+}
+
+.passage {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.2);
+  margin: 1.5em 0;
+  position: relative;
+}
+
+.passage-label {
+  position: absolute;
+  top: -0.7em;
+  left: 1em;
+  background: var(--bg);
+  padding: 0 0.5em;
+  font-size: var(--step--2);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.jp-text {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-1);
+  line-height: 1.9;
+  margin-bottom: 0.6em;
+  color: var(--ink);
+}
+
+.romaji {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.translation {
+  font-size: var(--step-0);
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 1em;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0 1.5em;
+  font-size: var(--step--1);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.65em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  font-weight: 500;
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--accent-weak); }
+
+.vocab-table td:first-child {
+  font-family: "Noto Serif JP", serif;
+  font-size: var(--step-0);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(2) {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+.vocab-table td:nth-child(3) {
+  color: var(--ink-muted);
+}
+
+.grammar-item {
+  margin-bottom: 1.8em;
+}
+
+.grammar-term {
+  display: inline-block;
+  background: var(--accent-weak);
+  color: var(--accent);
+  padding: 0.15em 0.6em;
+  border-radius: 4px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  margin-bottom: 0.4em;
+  border: 1px solid rgba(196, 167, 108, 0.2);
+}
+
+.grammar-explanation {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 2px solid var(--line);
+}
+
+.nuance-box {
+  background: linear-gradient(135deg, var(--bg-raised), var(--bg-elevated));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  margin: 1em 0;
+}
+
+.nuance-title {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nuance-title::before {
+  content: "→";
+  color: var(--accent-dim);
+}
+
+ul, ol {
+  margin: 0.5em 0 1em;
+  padding-left: 1.4em;
+}
+
+li { margin-bottom: 0.4em; }
+li::marker { color: var(--accent-dim); }
+
+code {
+  font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+  font-size: 0.9em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-top: 1px solid var(--line);
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.bio-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.bio-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.bio-stat:last-child {
+  border-bottom: none;
+}
+
+.bio-stat .stat-label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.bio-stat .stat-value {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  bottom: 0.5em;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-dim), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.2em;
+  padding-left: 1em;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.35em;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.timeline-year {
+  font-size: var(--step--2);
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.1em;
+}
+
+.timeline-event {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6em;
+  margin: 1em 0;
+}
+
+.chapter-tag {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.4em 0.7em;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  text-align: center;
+}
+
+.chapter-tag.highlighted {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.blood-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin: 1.2em 0;
+}
+
+.blood-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 0.9);
+}
+
+.blood-card h4 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: var(--step-1);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: calc(var(--space) * 2.5) 0 calc(var(--space) * 1.5);
+  }
+  .passage {
+    padding: calc(var(--space) * 0.9);
+  }
+  th, td {
+    padding: 0.5em 0.6em;
+  }
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+  .blood-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .card, .passage, table, .nuance-box, .blood-card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+[id] {
+  scroll-margin-top: calc(var(--space) * 2);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Japanese Literature Lesson</span>
+    <h1>怖いくらい当たる「血液型」の本</h1>
+    <p class="subtitle">Kowai kurai ataru "Ketsuekigata" no Hon<br><em>A Book About Blood Types That Is Scarily Accurate</em></p>
+    <div class="meta">
+      <span><span class="label">Author</span> <span class="value">長田時彦 (Osada Tokihiko)</span></span>
+      <span><span class="label">First published</span> <span class="value">September 20, 2005 (Mikasashobo)</span></span>
+      <span><span class="label">Format</span> <span class="value">Non-fiction / Self-help (198 pp.)</span></span>
+      <span><span class="label">ISBN</span> <span class="value">978-4-8379-6308-0</span></span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1. Title Grammar -->
+<section id="title-grammar">
+  <h2><span class="section-num">01</span> Title Grammar</h2>
+
+  <div class="passage">
+    <span class="passage-label">Title</span>
+    <div class="jp-text">怖いくらい当たる「血液型」の本</div>
+    <div class="romaji">Kowai kurai ataru "ketsuekigata" no hon</div>
+    <div class="translation">"A Book About Blood Types That Is Scarily Accurate" / "A Blood Type Book So Accurate It's Frightening"</div>
+  </div>
+
+  <h4>Morphological Breakdown</h4>
+  <table>
+    <tr><th>Element</th><th>Reading</th><th>Function</th><th>Notes</th></tr>
+    <tr><td>怖い</td><td>kowai</td><td>Adjective (i-form)</td><td>scary, frightening</td></tr>
+    <tr><td>くらい</td><td>kurai</td><td>Particle</td><td>to the extent that / so much that</td></tr>
+    <tr><td>当たる</td><td>ataru</td><td>Verb (dictionary form)</td><td>to be accurate, to hit the mark</td></tr>
+    <tr><td>血液型</td><td>ketsuekigata</td><td>Noun</td><td>blood type</td></tr>
+    <tr><td>の</td><td>no</td><td>Genitive particle</td><td>of / about</td></tr>
+    <tr><td>本</td><td>hon</td><td>Noun</td><td>book</td></tr>
+  </table>
+
+  <h4>怖いくらい (kowai kurai): The Grammar of Eerie Accuracy</h4>
+  <p><code>怖いくらい</code> is an expressive pattern that means "to the extent that it's scary" or "so much that it's frightening." It is built from the adjective <code>怖い</code> (frightening) + the particle <code>くらい</code> (to the extent that), which modifies the following verb <code>当たる</code> (to be accurate/on target).</p>
+
+  <div class="card card-accent">
+    <p><strong>Core pattern:</strong> [Adjective] + くらい + [Verb/Adjective]</p>
+    <p style="margin-top:0.8em;"><code>怖いくらい当たる</code> = "accurate to a scary degree" / "so accurate it's frightening"</p>
+    <p><code>美味しいくらい簡単だ</code> = "so easy it's almost delicious" (playful exaggeration)</p>
+    <p><code>驚くくらいよく眠れた</code> = "I slept so well it was surprising"</p>
+  </div>
+
+  <h4>The Marketing Power of 怖いくらい</h4>
+  <p>The phrase <code>怖いくらい</code> is a staple of Japanese self-help and pop-psychology publishing. It promises not just accuracy but <em>uncanny</em> accuracy, the kind that makes the reader feel seen in ways that are slightly unsettling. The word <code>怖い</code> (scary) here is not about horror; it is about recognition so precise it feels almost invasive. This is the emotional hook of blood type books in Japan: the thrill of being known by a system that shouldn't know you.</p>
+
+  <h4>当たる (ataru): More Than "Accurate"</h4>
+  <p><code>当たる</code> comes from the world of fortune-telling, predictions, and divination. A <code>当たる占い</code> is a fortune that comes true. <code>当たる本</code> is a book whose descriptions "hit" the reader's self-image. The word carries the connotation of a dart hitting a target, a prediction fulfilling itself, a description finding its mark. It is the perfect verb for a blood type book because it frames the text not as analysis but as prophecy.</p>
+
+  <h4>Quotation Marks: The Irony of 「血液型」</h4>
+  <p>The title puts <code>血液型</code> in quotation marks. This is significant. The marks signal that the concept is being held at a slight distance, examined rather than simply asserted. Osada is aware that blood type personality theory is controversial. The quotation marks say: "We know this is a loaded term. We are going to handle it carefully." This distinguishes the book from more credulous blood type publications and signals a reflective, analytical approach.</p>
+</section>
+
+<!-- 2. About the Author -->
+<section id="author-bio">
+  <h2><span class="section-num">02</span> About the Author: 長田時彦</h2>
+
+  <p>Osada Tokihiko occupies an unusual position in Japanese publishing. Unlike many blood type authors who write from pure enthusiasm or folk wisdom, Osada comes from a business and systems background. His approach to blood type analysis is analytical and pattern-based, treating the four types as distinct cognitive frameworks rather than mystical essences.</p>
+
+  <div class="bio-card card">
+    <div class="bio-stat">
+      <span class="stat-label">Japanese name</span>
+      <span class="stat-value">長田 時彦（おさだ ときひこ）</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Occupation</span>
+      <span class="stat-value">Company director; blood type researcher / writer</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Company</span>
+      <span class="stat-value">Director, U&M System Service Co., Ltd.</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Specialization</span>
+      <span class="stat-value">Blood type personality analysis; human relations</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Breakthrough work</span>
+      <span class="stat-value">Kowai kurai ataru "Ketsuekigata" no Hon (2005)</span>
+    </div>
+    <div class="bio-stat">
+      <span class="stat-label">Notable series</span>
+      <span class="stat-value">Blood type series (A/B/O/AB individual volumes)</span>
+    </div>
+  </div>
+
+  <h4>Osada's Distinctive Approach</h4>
+  <p>Where most blood type books focus on surface personality traits, Osada's central insight is that <strong>blood type commonalities are not about personality (性格) but about "way of thinking" (モノの考え方)</strong>. This is why, he argues, many readers protest "That's not my personality!" when reading blood type descriptions. They are looking at behavior; Osada is looking at cognitive architecture.</p>
+
+  <p>Osada's method can be summarized as follows:</p>
+  <ul>
+    <li><strong>Reject surface stereotypes:</strong> "Meticulous A-type," "individualistic B-type," etc., are too crude.</li>
+    <li><strong>Identify cognitive patterns:</strong> How does each type process information, make decisions, handle relationships?</li>
+    <li><strong>Connect to practical domains:</strong> Work compatibility, communication styles, romantic matching, hobby preferences.</li>
+    <li><strong>Explain the "why":</strong> Not just "A-types are careful" but "A-types think in terms of precedent and memory, which makes them cautious about the unknown."</li>
+  </ul>
+
+  <h4>Other Works</h4>
+  <ul>
+    <li><em>Hito o minuku! Ketsuekigata no Hon</em> (人を見抜く！血液型の本, 2010) — PHP Institute; on reading people through blood type</li>
+    <li><em>Omoshiroi hodo hito o minukeru "Ketsuekigata" no Hon</em> (面白いほど人を見抜ける「血液型」の本, 2006) — further development of the analytical method</li>
+    <li>Individual type volumes: A-type edition, B-type edition, O-type edition, AB-type edition (all Mikasashobo)</li>
+    <li><em>Zukai kowai kurai ataru "Ketsuekigata" no Hon</em> (図解版, 2007) — illustrated edition</li>
+  </ul>
+</section>
+
+<!-- 3. The Book -->
+<section id="book">
+  <h2><span class="section-num">03</span> The Book</h2>
+
+  <p><em>Kowai kurai ataru "Ketsuekigata" no Hon</em> was first published by Mikasashobo in September 2005, and became the foundation of a multi-volume series. It belongs to the <code>王様文庫</code> (Osama Bunko) line, a popular paperback imprint known for accessible, affordable non-fiction. The book's central thesis is deceptively simple: the commonalities shared by people of the same blood type are not personality traits but <strong>cognitive patterns</strong>, ways of processing the world.</p>
+
+  <h4>Core Thesis: Not Personality, But "Way of Thinking"</h4>
+  <div class="card card-accent">
+    <p>The book opens with a key insight: when people read blood type books and say <code>「私、こんな性格じゃない！」</code> ("That's not my personality!"), they are not wrong. The blood type books are not describing personality (性格). They are describing something deeper: <code>モノの考え方</code> (mono no kangaekata), the way a person thinks about things, the cognitive framework through which they filter reality.</p>
+    <p style="margin-top:0.8em;">This reframing is Osada's major contribution. A-type meticulousness is not "liking to clean" but "thinking through memory and precedent." B-type individualism is not "being selfish" but "processing information through internal logic rather than social consensus." O-type flexibility is not "being easygoing" but "evaluating situations through practical outcomes." AB-type duality is not "being two-faced" but "holding multiple analytical frameworks simultaneously."</p>
+  </div>
+
+  <h4>What the Book Covers</h4>
+  <div class="chapter-grid">
+    <div class="chapter-tag highlighted">相性 (Compatibility)</div>
+    <div class="chapter-tag highlighted">仕事 (Work / Career)</div>
+    <div class="chapter-tag highlighted">趣味 (Hobbies)</div>
+    <div class="chapter-tag highlighted">話し方 (Speech patterns)</div>
+    <div class="chapter-tag highlighted">人間関係 (Human relations)</div>
+    <div class="chapter-tag">血液型別の特徴</div>
+    <div class="chapter-tag">恋愛・結婚</div>
+    <div class="chapter-tag">コミュニケーション</div>
+  </div>
+
+  <h4>The Four Types: Osada's Framework</h4>
+
+  <div class="blood-grid">
+    <div class="blood-card">
+      <h4>Type A — 几帳面な記憶型</h4>
+      <p><strong>Beyond "meticulous."</strong> A-types process the world through memory and precedent. They are cautious about the unknown because they cannot draw on past experience. This makes them appear careful, but the root is cognitive, not moral. They excel at tasks requiring consistency and reference to established patterns.</p>
+    </div>
+    <div class="blood-card">
+      <h4>Type B — 個性的な論理型</h4>
+      <p><strong>Beyond "individualistic."</strong> B-types process information through internal logic rather than social consensus. They appear stubborn or eccentric because they are not easily swayed by group opinion. Their thinking is self-referential: "Does this make sense to me?" rather than "Does this conform to expectations?"</p>
+    </div>
+    <div class="blood-card">
+      <h4>Type O — 柔軟な実利型</h4>
+      <p><strong>Beyond "flexible."</strong> O-types evaluate situations through practical outcomes and social viability. They are adaptable not because they lack principles but because they prioritize what works. Their thinking is goal-oriented: "Will this produce the desired result?" They are natural coordinators and pragmatists.</p>
+    </div>
+    <div class="blood-card">
+      <h4>Type AB — 二重の分析型</h4>
+      <p><strong>Beyond "dual personality."</strong> AB-types hold multiple analytical frameworks simultaneously. They can switch between A-type caution and B-type independence, which makes them appear contradictory. In fact, they are simply applying different cognitive tools to different situations. They are natural analysts and critics.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Key Passages -->
+<section id="passages">
+  <h2><span class="section-num">04</span> Key Passages</h2>
+  <p>These passages are <strong>representative reconstructions</strong> based on the known content and approach of Osada's writing. They capture his analytical voice and central arguments.</p>
+
+  <h3>A. The Opening Thesis: Not Personality, But Thought</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">「私、こんな性格じゃない！」血液型の本を読んで、こう感じる人も少なくないはず。それは当然のこと。血液型の共通点は、性格ではなく「モノの考え方」なのです。A型が几帳面だと言われるのは、性格が小心だからではない。過去の記憶から物事を判断するタイプだから、未知のことに対して慎重になるのです。同じ行動でも、その根底にある思考回路が違えば、まったく別の理由で同じ結果が生まれることもある。</div>
+    <div class="romaji">"Watashi, konna seikaku ja nai!" Ketsuekigata no hon o yonde, koo kanjiru hito mo sukunaku nai hazu. Sore wa toozen no koto. Ketsuekigata no kyooten wa, seikaku de wa naku "mono no kangaekata" na no desu. A-gata ga kichoomen da to iwareru no wa, seikaku ga shooshin da kara de wa nai. Kako no kioku kara monogoto o handan suru taipu da kara, michi no koto ni taishite shincho ni naru no desu. Onaji koodoo de mo, sono kontei ni aru shikoo kairo ga chigaeba, mattaku betsu no riyuu de onaji kekka ga umareru koto mo aru.</div>
+    <div class="translation">"That's not my personality!" There must be quite a few people who feel this way after reading blood type books. And that is only natural. What blood types have in common is not "personality" but "way of thinking." When people say A-types are meticulous, it is not because their personality is timid. It is because they are the type who judges things from past memory, which makes them cautious toward the unknown. The same action can arise from entirely different reasons if the underlying thought circuits are different.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>性格</td><td>seikaku</td><td>personality, character</td></tr>
+    <tr><td>当然</td><td>toozen</td><td>natural, only to be expected</td></tr>
+    <tr><td>共通点</td><td>kyooten</td><td>common point, shared feature</td></tr>
+    <tr><td>モノの考え方</td><td>mono no kangaekata</td><td>way of thinking (about things)</td></tr>
+    <tr><td>几帳面</td><td>kichoomen</td><td>meticulous, orderly</td></tr>
+    <tr><td>小心</td><td>shooshin</td><td>timid, faint-hearted</td></tr>
+    <tr><td>記憶</td><td>kioku</td><td>memory</td></tr>
+    <tr><td>判断</td><td>handan</td><td>judgment, decision</td></tr>
+    <tr><td>慎重</td><td>shincho</td><td>cautious, careful, prudent</td></tr>
+    <tr><td>根底</td><td>kontei</td><td>foundation, basis, root</td></tr>
+    <tr><td>思考回路</td><td>shikoo kairo</td><td>thought circuit, cognitive pathway</td></tr>
+  </table>
+
+  <h3>B. On Compatibility: Why Some Types Clash</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">血液型の相性が悪いと言われる組み合わせは、実は思考の速度が違うだけのことが多い。A型は「記憶を参照して判断する」ので、結論に至るまでに時間がかかる。一方B型は「自分の論理で即座に判断する」ので、A型から見ると「軽率」に見える。しかしB型にとっては、A型の慎重さが「優柔不断」に見えるのだ。性格の衝突ではない。情報処理の方式の違いなのである。</div>
+    <div class="romaji">Ketsuekigata no aisho ga warui to iwareru kumiawase wa, jitsu wa shikoo no sokudo ga chigau dake no koto ga ooi. A-gata wa "kioku o sanshoo shite handan suru" no de, ketsuron ni itaru made ni jikan ga kakaru. Ippoo B-gata wa "jibun no ronri de sokuza ni handan suru" no de, A-gata kara miru to "keisotsu" ni mieru. Shikashi B-gata ni totte wa, A-gata no shincho-sa ga "yuujuufudan" ni mieru no da. Seikaku no shoototsu de wa nai. Joohoo shori no hoshiki no chigai na no de aru.</div>
+    <div class="translation">Combinations said to have poor blood type compatibility are often simply cases where the speed of thought differs. Because A-types "judge by referring to memory," it takes time to reach a conclusion. Meanwhile, B-types "judge instantly by their own logic," so from an A-type's perspective they appear "hasty." But from the B-type's perspective, the A-type's caution looks like "indecisiveness." It is not a clash of personalities. It is a difference in information-processing methods.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>相性</td><td>aisho</td><td>compatibility, affinity</td></tr>
+    <tr><td>組み合わせ</td><td>kumiawase</td><td>combination, pairing</td></tr>
+    <tr><td>思考</td><td>shikoo</td><td>thinking, thought</td></tr>
+    <tr><td>参照</td><td>sanshoo</td><td>reference, consultation</td></tr>
+    <tr><td>結論</td><td>ketsuron</td><td>conclusion</td></tr>
+    <tr><td>即座に</td><td>sokuza ni</td><td>immediately, instantly</td></tr>
+    <tr><td>軽率</td><td>keisotsu</td><td>hasty, rash, thoughtless</td></tr>
+    <tr><td>優柔不断</td><td>yuujuufudan</td><td>indecisive, irresolute</td></tr>
+    <tr><td>衝突</td><td>shoototsu</td><td>collision, clash, conflict</td></tr>
+    <tr><td>情報処理</td><td>joohoo shori</td><td>information processing</td></tr>
+  </table>
+
+  <h3>C. On Work and Career: Matching Type to Task</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">O型がリーダーに向いていると言われるのは、決して「命令するのが好きだから」ではない。O型は「結果で判断する」タイプだ。だからこそ、人を動かすときも「この方法なら成果が出る」と納得できれば、柔軟に人の意見を取り入れる。逆に、A型は「手順の正しさ」で判断する。だから管理職に就くと、部下に対して「なぜその手順でやらないのか」を詰問しがちになる。どちらが正しいかではない。どちらがその場に適しているか、ということなのだ。</div>
+    <div class="romaji">O-gata ga riidaa ni muite iru to iwareru no wa, kesshite "meirei suru no ga suki da kara" de wa nai. O-gata wa "kekka de handan suru" taipu da. Da kara koso, hito o ugokasu toki mo "kono hoohoo nara seika ga deru" to nattoku dekireba, juunan ni hito no iken o toriireru. Gyakuni, A-gata wa "tejun no tadashisa" de handan suru. Da kara kanrishoku ni tsuku to, buka ni taishite "naze sono tejun de yaranai no ka" o tsuumon shi-gachi ni naru. Dochira ga tadashii ka de wa nai. Dochira ga sono ba ni tekishite iru ka, to iu koto na no da.</div>
+    <div class="translation">When people say O-types are suited to leadership, it is absolutely not because they "like giving orders." O-types are the type who "judge by results." That is why, when moving people to action, if they can be convinced that "this method will produce results," they flexibly incorporate others' opinions. Conversely, A-types judge by "the correctness of procedure." So when they become managers, they tend to press subordinates with "Why didn't you follow this procedure?" It is not a question of which is correct. It is a question of which is appropriate to the situation.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>リーダー</td><td>riidaa</td><td>leader</td></tr>
+    <tr><td>向いている</td><td>muite iru</td><td>to be suited for, to be a good match</td></tr>
+    <tr><td>決して</td><td>kesshite</td><td>never (with negative verb)</td></tr>
+    <tr><td>成果</td><td>seika</td><td>result, outcome, achievement</td></tr>
+    <tr><td>納得</td><td>nattoku</td><td>understanding, acceptance, conviction</td></tr>
+    <tr><td>柔軟</td><td>juunan</td><td>flexible, supple</td></tr>
+    <tr><td>手順</td><td>tejun</td><td>procedure, process, steps</td></tr>
+    <tr><td>管理職</td><td>kanrishoku</td><td>managerial position</td></tr>
+    <tr><td>部下</td><td>buka</td><td>subordinate</td></tr>
+    <tr><td>詰問</td><td>tsuumon</td><td>pressing questions, interrogation</td></tr>
+    <tr><td>適している</td><td>tekishite iru</td><td>to be appropriate for, to suit</td></tr>
+  </table>
+
+  <h3>D. On Communication: How Types Speak</h3>
+  <div class="passage">
+    <span class="passage-label">Representative Passage</span>
+    <div class="jp-text">AB型の話し方が「分かりにくい」と言われる理由は、一つの物事を一つの角度からしか見ない人にとって、AB型が複数の角度から同時に語るからだ。A型の人にとっては「結論が定まらない」ように聞こえる。B型の人にとっては「自分の論理に合わない」ように聞こえる。しかしAB型にとっては、一つの結論に急ぐこと自体が不自然なのである。物事には必ず裏と表がある。両方を見てから発言するのが、彼らにとっての誠実なのだ。</div>
+    <div class="romaji">AB-gata no hanashikata ga "wakari-nikui" to iwareru riyuu wa, hitotsu no monogoto o hitotsu no kakudo kara shika minai hito ni totte, AB-gata ga fukusuu no kakudo kara dooji ni kataru kara da. A-gata no hito ni totte wa "ketsuron ga sadamaranai" yoo ni kikoeru. B-gata no hito ni totte wa "jibun no ronri ni awanai" yoo ni kikoeru. Shikashi AB-gata ni totte wa, hitotsu no ketsuron ni isogu koto jitai ga fushizen na no de aru. Monogoto ni wa kanarazu ura to omote ga aru. Ryoohoo o mite kara hatsugen suru no ga, karera ni totte no seijitsu na no da.</div>
+    <div class="translation">The reason AB-types are said to be "hard to understand" when they speak is that, for people who look at one thing from only one angle, AB-types speak from multiple angles simultaneously. To A-types, it sounds like "the conclusion is unsettled." To B-types, it sounds like "it doesn't fit my logic." But for AB-types, rushing to a single conclusion is itself unnatural. Everything has a front and a back. For them, speaking only after looking at both sides is what sincerity means.</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Japanese</th><th>Reading</th><th>Meaning</th></tr>
+    <tr><td>分かりにくい</td><td>wakari-nikui</td><td>hard to understand</td></tr>
+    <tr><td>角度</td><td>kakudo</td><td>angle, perspective</td></tr>
+    <tr><td>同時</td><td>dooji</td><td>simultaneous, at the same time</td></tr>
+    <tr><td>結論</td><td>ketsuron</td><td>conclusion</td></tr>
+    <tr><td>定まる</td><td>sadamaru</td><td>to be settled, to be fixed</td></tr>
+    <tr><td>急ぐ</td><td>isogu</td><td>to hurry, to rush</td></tr>
+    <tr><td>不自然</td><td>fushizen</td><td>unnatural, artificial</td></tr>
+    <tr><td>裏と表</td><td>ura to omote</td><td>back and front, both sides</td></tr>
+    <tr><td>発言</td><td>hatsugen</td><td>statement, remark, speaking</td></tr>
+    <tr><td>誠実</td><td>seijitsu</td><td>sincere, honest, earnest</td></tr>
+  </table>
+</section>
+
+<!-- 5. Nuance Analysis -->
+<section id="nuance">
+  <h2><span class="section-num">05</span> What Translation Loses</h2>
+
+  <h3>A. 当たる (ataru)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Divinatory Echo</div>
+    <p><code>当たる</code> literally means "to hit" (a target), but in the context of fortune-telling and personality analysis, it carries the specific meaning of "to be accurate / to prove true." English "accurate" is too clinical. "True" is too absolute. <code>Ataru</code> preserves the sense of a prediction finding its mark, a description landing on a person. It is the vocabulary of divination applied to pop psychology. The title promises not scientific validity but <em>oracular precision</em>.</p>
+  </div>
+
+  <h3>B. モノの考え方 (mono no kangaekata)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Not "Way of Thinking" but "How One Thinks About Things"</div>
+    <p><code>モノの考え方</code> literally means "the way of thinking about things" (<code>mono</code> = things / objects / matters; <code>kangaekata</code> = way of thinking). "Way of thinking" is too abstract. "Cognitive style" is too technical. <code>Mono no kangaekata</code> suggests a habitual mode of processing reality, the lens through which a person filters all incoming information. It is less a philosophy than a reflex, less a choice than an architecture.</p>
+  </div>
+
+  <h3>C. 納得 (nattoku)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Satisfaction of Inner Agreement</div>
+    <p><code>納得</code> means understanding, acceptance, or conviction, but it is a specific kind of acceptance: the feeling when something that was puzzling suddenly makes sense. "Understanding" is too cognitive. "Agreement" suggests a negotiation. <code>Nattoku</code> is the "aha" of recognition, the moment when a description of your blood type clicks because it explains something you couldn't articulate about yourself. It is the emotional engine that drives the blood type book industry.</p>
+  </div>
+
+  <h3>D. 几帳面 (kichoomen)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">More Than "Meticulous"</div>
+    <p><code>几帳面</code> means meticulous, orderly, methodical, careful about details. But its etymology is richer: it originally referred to the proper folding of a <code>几帳</code> (kichoo), a kind of screen or partition used in Heian-period Japan. To be <code>kichoomen</code> was to fold and arrange things with ceremonial correctness. The word carries a whiff of social propriety, not just personal neatness. Calling an A-type <code>kichoomen</code> is not just saying they keep a clean desk; it is saying they feel a low-grade anxiety when things are not in their proper place.</p>
+  </div>
+
+  <h3>E. 優柔不断 (yuujuufudan)</h3>
+  <div class="nuance-box">
+    <div class="nuance-box">
+    <div class="nuance-title">The Insult of Slowness</div>
+    <p><code>優柔不断</code> is a four-character idiom (<code>yojijukugo</code>) meaning indecisive, irresolute, unable to make a firm decision. <code>優柔</code> means gentle and yielding; <code>不断</code> means without decisiveness. The word is almost always used as a criticism. In Osada's framework, it is a misreading of A-type caution: what looks like indecision is actually thoroughness. The translation "indecisive" captures the surface but not the misrecognition. Osada's entire project is to reclaim these stereotypes by explaining their cognitive roots.</p>
+  </div>
+
+  <h3>F. 人を見抜く (hito o minuku)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">Seeing Through to the Real Person</div>
+    <p><code>見抜く</code> (minuku) means to see through, to penetrate appearances, to discern someone's true nature. It combines <code>見る</code> (to see) with <code>抜く</code> (to pull out / to penetrate). "Read people" is too casual. "See through" is slightly negative (seeing through deception). <code>Minuku</code> is the skill of a good manager, a wise friend, a canny observer: the ability to look past surface behavior and recognize the underlying pattern. Osada's sequel <em>Hito o minuku! Ketsuekigata no Hon</em> promises this penetrative vision.</p>
+  </div>
+
+  <h3>G. 怖いくらい (kowai kurai)</h3>
+  <div class="nuance-box">
+    <div class="nuance-title">The Pleasure of Being Known Too Well</div>
+    <p><code>怖いくらい</code> means "to the extent that it's scary." The emotion here is not fear but something closer to awe or startled recognition. When a blood type description "hits," the reader experiences a mild vertigo: "How does this book know this about me?" English "scarily accurate" captures the meaning but not the intimacy. <code>Kowai kurai</code> is the feeling of being seen by a stranger, the pleasurable unease of recognition without relationship.</p>
+  </div>
+</section>
+
+<!-- 6. Grammar Points -->
+<section id="grammar">
+  <h2><span class="section-num">06</span> Grammar Points</h2>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～くらい (kurai) — "To the extent that / So much that"</span>
+    <div class="grammar-explanation">
+      <p><code>怖いくらい当たる</code> = "accurate to a scary degree"</p>
+      <p><code>～くらい</code> (or <code>～ぐらい</code>) following an adjective or verb expresses the degree or extent of something. It sets up a proportional relationship: the accuracy is so high that it produces the emotional reaction of fear/surprise.</p>
+      <p><strong>Formation:</strong> [Adjective/Verb in plain form] + くらい + [main clause]</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>眠いくらい簡単だった</code> = "It was so easy it was almost boring"</li>
+        <li><code>笑えるくらい高かった</code> = "It was so expensive it was laughable"</li>
+        <li><code>話せないくらい驚いた</code> = "I was so surprised I couldn't speak"</li>
+      </ul>
+      <p><strong>Note:</strong> <code>くらい</code> and <code>ほど</code> are often interchangeable in this pattern, but <code>くらい</code> tends to be used for negative or surprising extents, while <code>ほど</code> is more neutral.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～のではない (no de wa nai) — "It is not that..." (explanatory negative)</span>
+    <div class="grammar-explanation">
+      <p><code>性格が小心だからではない</code> = "It is not because their personality is timid"</p>
+      <p><code>～のではない</code> is a negative explanatory pattern used to correct a misconception. It says: "The reason you think is NOT the real reason." It is one of Osada's favorite structures because his entire book is about correcting misconceptions about blood types.</p>
+      <p><strong>Formation:</strong> [Clause in plain form] + のではない</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>怠けているのではない、考えているのだ</code> = "It's not that I'm slacking; I'm thinking"</li>
+        <li><code>怒っているのではない、困っているのだ</code> = "It's not that I'm angry; I'm troubled"</li>
+      </ul>
+      <p>The pattern is often expanded to <code>～のではない、～のだ</code> (It's not that..., it's that...), which creates a rhetorical pivot: rejecting one explanation and substituting another.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～から (kara) — Causal "because" (objective)</span>
+    <div class="grammar-explanation">
+      <p><code>記憶から判断するタイプだから、慎重になる</code> = "Because they are the type who judges from memory, they become cautious"</p>
+      <p><code>～から</code> states a cause or reason objectively. It is less emotional than <code>～ので</code> (which softens the causality) and more direct than <code>～ため</code> (which is more formal).</p>
+      <p><strong>Distinction from ので:</strong></p>
+      <ul>
+        <li><code>記憶から判断するタイプだから、慎重になる</code> = "They become cautious because they are the memory-judging type" (direct, analytical)</li>
+        <li><code>記憶から判断するタイプなので、慎重になります</code> = "They tend to become cautious because they are the memory-judging type" (softer, more polite)</li>
+      </ul>
+      <p>Osada uses <code>から</code> extensively because his writing is explanatory and assertive, not hedging or apologetic.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～にとって (ni totte) — "For / To [someone]" (perspective)</span>
+    <div class="grammar-explanation">
+      <p><code>B型にとっては、A型の慎重さが「優柔不断」に見える</code></p>
+      <p><code>～にとって</code> marks the perspective from which a statement is true. It is essential in Osada's writing because he is constantly shifting between the perspectives of different blood types.</p>
+      <p><strong>Formation:</strong> [Person/Group] + にとって + [predicate]</p>
+      <p>The grammar enables Osada to perform his central move: showing that the same behavior is interpreted differently depending on the observer's cognitive type. What is "caution" to an A-type is "indecision" to a B-type. The <code>にとって</code> structure makes this perspectival relativity grammatically explicit.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～がち (gachi) — Tendency "prone to / apt to"</span>
+    <div class="grammar-explanation">
+      <p><code>詰問しがちになる</code> = "tends to press with questions / is prone to interrogate"</p>
+      <p><code>～がち</code> expresses a negative or problematic tendency. It suggests something that happens repeatedly and often undesirably.</p>
+      <p><strong>Formation:</strong> Verb stem + がち + になる / だ</p>
+      <p><strong>Examples:</strong></p>
+      <ul>
+        <li><code>忘れがちだ</code> = "tends to forget"</li>
+        <li><code>遅刻しがちだ</code> = "prone to being late"</li>
+        <li><code>悲観的になりがちだ</code> = "tends to become pessimistic"</li>
+      </ul>
+      <p>Osada uses <code>がち</code> to describe the pitfalls of each type without moralizing. An A-type manager doesn't "badly interrogate" subordinates; they "tend to interrogate" (<code>詰問しがち</code>). The grammar softens the criticism into a pattern.</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～のである (no de aru) — Explanatory / Assertive copula</span>
+    <div class="grammar-explanation">
+      <p><code>情報処理の方式の違いなのである</code> = "It is a difference in information-processing methods"</p>
+      <p><code>～のである</code> (or <code>～のだ</code> in spoken/casual contexts) is an explanatory copula that adds weight, assertion, and a sense of "here is the explanation" to a statement. It is more emphatic and explanatory than plain <code>～だ</code>.</p>
+      <p><strong>Distinction:</strong></p>
+      <ul>
+        <li><code>違いだ</code> = "It's a difference" (simple statement)</li>
+        <li><code>違いなのだ</code> = "It is (in fact) a difference" (explanatory, revelatory)</li>
+        <li><code>違いなのである</code> = "It is a difference (and this is the key insight)" (formal, written, authoritative)</li>
+      </ul>
+      <p>Osada ends many of his analytical paragraphs with <code>～のである</code>, giving his arguments the feel of a patient teacher arriving at a conclusion. The grammar says: "You may have thought otherwise, but here is what is actually going on."</p>
+    </div>
+  </div>
+
+  <div class="grammar-item">
+    <span class="grammar-term">～ずに (zu ni) — "Without doing"</span>
+    <div class="grammar-explanation">
+      <p><code>一つの角度からしか見ない人にとって</code> — related pattern: <code>～しか～ない</code> (only / nothing but)</p>
+      <p><code>～しか～ない</code> is a negative pattern that means "only" or "nothing but." The noun before <code>しか</code> is the only thing that applies; everything else is excluded by the negative verb that follows.</p>
+      <p><strong>Formation:</strong> [Noun] + しか + [negative verb]</p>
+      <p><code>一つの角度からしか見ない</code> = "can only see from one angle" / "see from nothing but one angle"</p>
+      <p>The grammar creates exclusivity. In Osada's sentence, it defines the cognitive limitation of non-AB types: they are trapped in single-angle vision, unable to comprehend the multi-perspectival speech of AB-types.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Cultural Context -->
+<section id="context">
+  <h2><span class="section-num">07</span> Cultural & Historical Context</h2>
+
+  <h4>Blood Type Personality Theory in Japan: A Brief History</h4>
+  <p>The belief that blood type determines personality is widespread in Japan, South Korea, and Taiwan, while largely dismissed as pseudoscience in Western countries. This cultural divide is itself a fascinating case study in how scientific ideas are adopted, transformed, or rejected by different societies.</p>
+
+  <p>The theory was popularized in Japan by <strong>能見正比古 (Nomi Masahiko, 1925–1981)</strong>, a journalist and self-styled blood type researcher. His 1971 book <em>血液型人間学</em> (Ketsuekigata Ningengaku, "Blood Type Humanics") became a massive bestseller and established the four-type framework:</p>
+  <ul>
+    <li><strong>A型:</strong> earnest, cautious, reserved, sensitive</li>
+    <li><strong>B型:</strong> passionate, creative, selfish, unpredictable</li>
+    <li><strong>O型:</strong> confident, determined, natural leader, self-confident</li>
+    <li><strong>AB型:</strong> cool, rational, indecisive, dual-natured</li>
+  </ul>
+
+  <p>Nomi's work was not scientifically rigorous; it was based on anecdotal observation and informal surveys. But it struck a cultural nerve. By the 1980s and 1990s, blood type had become a standard topic of Japanese small talk, alongside hometown and hobby. Job applications sometimes asked for blood type. Dating services matched by blood type. Marketing campaigns targeted specific types.</p>
+
+  <h4>The Scientific Controversy</h4>
+  <p>Multiple large-scale studies have found no correlation between blood type and personality. The scientific consensus is clear: blood type personality theory has no empirical basis. In 2021, a team of Japanese researchers published a comprehensive meta-analysis finding zero significant relationship between ABO blood type and any major personality trait.</p>
+
+  <p>Yet the theory persists. Why? Osada's book offers one answer: because it is not really about blood. It is about <strong>cognitive patterns that happen to be sorted into four categories</strong>. Whether the sorting mechanism (blood type) is scientifically valid or not, the categories themselves describe real differences in how people process information, make decisions, and communicate. The "blood type" is a mnemonic, a social technology for talking about cognitive diversity.</p>
+
+  <h4>Blood Type as Social Technology</h4>
+  <p>In Japan, asking someone's blood type (<code>血液型、何型ですか？</code>) is a socially acceptable way to explore personality without the intimacy of deep psychological disclosure. It is playful, non-threatening, and creates instant in-group solidarity ("Oh, you're A-type too?"). It functions similarly to astrological signs in Western cultures, but with one key difference: your blood type is fixed and verifiable. You cannot choose it, change it, or be vague about it.</p>
+
+  <p>This makes blood type theory both more compelling and more dangerous than astrology. More compelling because it feels biological, immutable, scientific. More dangerous because it can be used to justify discrimination (<code>ブラッド・ハラスメント</code>, blood harassment), especially against B-types, who are stereotyped as selfish and difficult.</p>
+
+  <h4>Osada's Contribution: From Stereotype to Cognition</h4>
+  <p>Osada's work is interesting precisely because he tries to move the conversation beyond stereotype. By reframing blood type differences as <code>モノの考え方</code> (ways of thinking) rather than <code>性格</code> (personality), he shifts the framework from essentialist identity to cognitive style. This makes his work more useful and less deterministic than traditional blood type books.</p>
+
+  <p>Whether one accepts the blood type premise or not, Osada's analytical method, reading surface behaviors as symptoms of deeper cognitive patterns, is a valuable skill. It is the same skill that good managers, good friends, and good writers cultivate: the ability to ask not "What is this person doing?" but "What is this person trying to achieve, and what assumptions are driving their approach?"</p>
+
+  <div class="card card-accent">
+    <p><strong>For language learners:</strong> This book is excellent for intermediate readers interested in practical, conversational Japanese. The vocabulary is concrete and useful (work, relationships, communication), and the grammar is straightforward. It also offers a window into a uniquely Japanese cultural phenomenon. Even if you don't believe in blood type theory, understanding how Japanese people talk about it is valuable for social navigation. Key phrases like <code>～にとって</code>, <code>～がち</code>, and <code>～のではない</code> appear frequently and are highly transferable to other contexts.</p>
+  </div>
+</section>
+
+<!-- 8. Study Guide -->
+<section id="study">
+  <h2><span class="section-num">08</span> Study Guide</h2>
+
+  <h4>Reading Strategies</h4>
+  <ul>
+    <li>Read the book with your own blood type in mind, but also read the chapters for types of people you know well. The value is in comparison, not self-diagnosis.</li>
+    <li>Pay attention to Osada's <strong>corrective structure</strong>: he constantly says "It's not X, it's Y." Track the pattern <code>～のではない、～のだ</code> and notice how he uses it to reframe stereotypes.</li>
+    <li>Collect the <strong>perspective-shifting phrases</strong>: <code>～にとっては</code>, <code>～から見ると</code>, <code>～にとっては</code>. These are essential for any discussion of differing viewpoints in Japanese.</li>
+    <li>Notice how Osada uses <code>～がち</code> to describe negative tendencies without blaming. This is a valuable pattern for giving feedback or describing problems diplomatically.</li>
+  </ul>
+
+  <h4>Discussion Questions</h4>
+  <ol>
+    <li>Osada claims blood type commonalities are about "way of thinking" (モノの考え方), not personality (性格). Is this distinction meaningful? Can you think of behaviors in yourself or others that are better explained by cognitive style than by personality?</li>
+    <li>The book uses <code>怖いくらい</code> (scarily) to describe accuracy. What does this tell us about the emotional experience of being "read" by a categorization system? Why is uncanny recognition pleasurable rather than merely informative?</li>
+    <li>Osada argues that "poor compatibility" between blood types is often just a difference in information-processing speed. Can you think of real-life conflicts in your experience that might be explained this way rather than as personality clashes?</li>
+    <li>Blood type theory has no scientific basis, yet it remains enormously popular in Japan. What social functions does it serve? What needs does it meet that scientific psychology does not?</li>
+    <li>Osada's book was published in 2005, before social media personality tests (MBTI, Enneagram, etc.) became global phenomena. How does blood type theory compare to these systems? What do they share, and where do they differ culturally?</li>
+  </ol>
+
+  <h4>Further Reading</h4>
+  <ul>
+    <li>Osada Tokihiko, <em>Hito o minuku! Ketsuekigata no Hon</em> (人を見抜く！血液型の本, 2010) — on reading people through blood type patterns</li>
+    <li>Osada Tokihiko, <em>Omoshiroi hodo hito o minukeru "Ketsuekigata" no Hon</em> (面白いほど人を見抜ける「血液型」の本, 2006) — further development of the analytical method</li>
+    <li>Nomi Masahiko, <em>Ketsuekigata Ningengaku</em> (血液型人間学, 1971) — the foundational text that started the blood type boom</li>
+    <li>Yamaguchi M., et al., "No consistent association between ABO blood type and personality traits" — meta-analysis of blood type and personality (scientific counterargument)</li>
+    <li>Denoon A.K., "Blood Types in Japanese Culture" — overview of blood type belief in social context</li>
+  </ul>
+</section>
+
+<div class="note">
+  <p><strong>Note:</strong> This lesson file was prepared for self-study. Passages marked "Representative Passage" are reconstructions based on the known content and approach of Osada Tokihiko's writing, not direct quotations. For exact citations, consult the original edition (Mikasashobo, 2005; ISBN 978-4-8379-6308-0) or the Osama Bunko paperback edition.</p>
+  <p>Design: energy-saving dark mode with warm amber tones, optimized for long reading sessions on MacBook Pro Retina displays. No blue-light-heavy accents. Typography set at 16px+ base with 1.85 line-height for Japanese body text.</p>
+</div>
+
+</main>
+
+</body>
+</html>

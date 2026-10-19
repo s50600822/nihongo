@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Country — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f2f0ec;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #3d4548;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --danger: #5c2d2d;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--ink);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(61,69,72,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.danger::before {
+            background: var(--danger);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.danger-box {
+            background: color-mix(in oklab, var(--danger) 6%, var(--surface));
+            border-left-color: var(--danger);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.danger-box h5 {
+            color: var(--danger);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-danger {
+            background: color-mix(in oklab, var(--danger) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .context-note {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            border-left: 2px solid var(--line);
+            padding-left: 0.8rem;
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Snow Country<br><span style="font-size:0.6em; font-weight:300;">雪国</span></h1>
+    <div class="subtitle">A Japanese lesson through Kawabata Yasunari's most exquisite novel</div>
+    <div class="meta">The tunnel &middot; The mirror &middot; The Milky Way falling</div>
+</header>
+
+<main>
+
+<p class="intro">
+    Written between 1935 and 1947, <em>Snow Country</em> is Kawabata Yasunari's masterpiece and one of the reasons he became the first Japanese writer to win the Nobel Prize in Literature (1968). It tells the story of Shimamura, a wealthy idler from Tokyo who visits a hot-spring town in the snow country three times, and his relationship with Komako, a geisha, and Yuko, a mysterious young woman who appears in the famous opening mirror scene. The prose is haiku-like, imagistic, and almost unbearably delicate. Where Endo writes about theology and Dazai writes about shame, Kawabata writes about perception itself: how the eye turns the world into art, and what is lost in that transformation.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Opening: The Tunnel and the Snow</h2>
+
+    <p>The most famous opening sentence in Japanese literature. It was added only when the novel was collected into book form; the original magazine version began differently.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">国境の長いトンネルを抜けると雪国であった</span>。<span class="hl">夜の底が白くなった</span>。信号所に汽車が止まった。
+        </div>
+        <div class="romaji">"Kokkyou no nagai tonneru wo nukeru to yukiguni de atta. Yoru no soko ga shiroku natta. Shingoujo ni kisha ga tomatta."</div>
+        <div class="translation">"The train came out of the long tunnel into the snow country. The bottom of the night had turned white. The train stopped at a signal station."</div>
+        <div class="source">— Opening</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">国境</td><td class="reading">kokkyou / kunizakai</td><td>border, frontier (between Gunma and Niigata prefectures)</td></tr>
+        <tr><td class="word">抜ける</td><td class="reading">nukeru</td><td>to pass through, to emerge from</td></tr>
+        <tr><td class="word">雪国</td><td class="reading">yukiguni</td><td>snow country, the region of heavy snow</td></tr>
+        <tr><td class="word">夜の底</td><td class="reading">yoru no soko</td><td>the bottom/depths of night</td></tr>
+        <tr><td class="word">信号所</td><td class="reading">shingoujo</td><td>signal station, signal box</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of emergence</h5>
+        <p><strong>国境の長いトンネルを抜けると雪国であった (Kokkyou no nagai tonneru wo nukeru to yukiguni de atta):</strong> This sentence contains no subject. There is no "train" in the Japanese. The English translation adds "the train came out" because English demands a subject. Japanese does not. The effect in Japanese is that the world simply <em>becomes</em> snow country. The reader does not travel through the tunnel; the tunnel passes, and then there is snow. This is the famous "subjectless perception" of Japanese prose. Kawabata is not describing what Shimamura sees. He is describing what happens to vision itself when darkness becomes white.</p>
+        <p><strong>夜の底が白くなった (Yoru no soko ga shiroku natta):</strong> "The bottom of the night turned white." Not "the night became bright" or "snow covered the ground." 夜の底 (yoru no soko) is a profoundly strange phrase. It treats night as a container with a bottom, and that bottom has changed color. The sentence suggests that the snow does not merely lie on the earth; it rises from below, whitening the deepest part of darkness. The grammar 〜くなった (became [adjective]) is a simple state-change pattern, but applied to "the bottom of night" it produces a metaphysical shock. The world has inverted: down is now up, black is now white, and the reader has not been warned.</p>
+    </div>
+
+    <div class="grammar">
+        <h5>Grammar: 〜と...た / 〜と...あった</h5>
+        <p>Pattern: <code>Verb in plain form + to + clause</code> = "When [verb happened], [result]"</p>
+        <p>This pattern describes a discovery made at the moment of action. It is not "whenever" (habitual) or "if" (conditional). It is a single, punctual revelation. When I emerged, it was snow country. The grammar makes the discovery feel simultaneous with the action, not subsequent to it. The English "when" or "as" cannot capture this perfect coincidence of action and recognition.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Mirror: A World Not of This World</h2>
+    <p>In the opening scene, Shimamura watches the evening landscape move past in the window of the train, which functions as a mirror. The face of a girl (Yuko) taking care of a sick man is superimposed on the snow.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            鏡の奥に<span class="hl">夕景色</span>が流れ、鏡の中の人物と鏡の中の風景とが、互いに<span class="hl">無関係</span>のように動きながら、<span class="hl">この世ならぬ象徴の世界</span>のように見えた
+        </div>
+        <div class="romaji">"Kagami no oku ni yuugeshiki ga nagare, kagami no naka no jinbutsu to kagami no naka no fuukei to ga, tagai ni mukankei no you ni ugoki nagara, kono yo naranu shouchou no sekai no you ni mieta."</div>
+        <div class="translation">"In the depths of the mirror, the evening landscape moved by. The figures in the mirror and the landscape in the mirror seemed to move independently of each other, like a symbolic world not of this world."</div>
+        <div class="source">— Opening scene, on the train</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夕景色</td><td class="reading">yuugeshiki</td><td>evening landscape, evening scene</td></tr>
+        <tr><td class="word">無関係</td><td class="reading">mukankei</td><td>unrelated, irrelevant, independent</td></tr>
+        <tr><td class="word">この世ならぬ</td><td class="reading">kono yo naranu</td><td>unearthly, otherworldly, not of this world</td></tr>
+        <tr><td class="word">象徴</td><td class="reading">shouchou</td><td>symbol, emblem</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The world inside the glass</h5>
+        <p><strong>鏡の奥 (kagami no oku):</strong> "The depths of the mirror." Not "in the mirror" or "on the mirror." 奥 means the innermost part, the back room, the place you cannot see from the entrance. Kawabata is saying that the mirror has depth, that the reflected world is not a flat surface but a space one could enter. This is crucial to the novel's entire method: Shimamura lives in reflections, in art, in the "depths" of things rather than in the things themselves. The English "in the mirror" makes the reflection two-dimensional. 鏡の奥 makes it architectural.</p>
+        <p><strong>この世ならぬ (kono yo naranu):</strong> Literally "not becoming this world." The grammar 〜ならぬ is an older/literary negative form of なる (to become). It suggests something that cannot complete the process of becoming worldly, something that remains stuck between realms. "Unearthly" or "otherworldly" in English can be complimentary (unearthly beauty). この世ならぬ is more unsettling. It means the scene cannot be assimilated into ordinary reality. It is not beautiful in a way that transcends the world; it is simply <em>not</em> of the world, and that absence is slightly frightening.</p>
+        <p><strong>無関係 (mukankei):</strong> "Unrelated." The figures and the landscape move independently, as if they have no causal connection. This is how Shimamura sees Komako and Yuko throughout the novel: as beautiful forms that do not quite connect to each other or to him. Kawabata's aesthetic is built on this 無関係. He is interested in the beauty of things that refuse to form a story.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. Komako's Skin: The Vocabulary of Touch</h2>
+    <p>Shimamura's first physical impression of Komako is one of the novel's most sensuous passages.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            その<span class="hl">頬</span>は、<span class="hl">雪の冷たさをおびた</span>、<span class="hl">緋桐</span>のような色をしていた
+        </div>
+        <div class="romaji">"Sono hoho wa, yuki no tsumetasa wo obita, hidari no you na iro wo shite ita."</div>
+        <div class="translation">"Her cheeks had the color of scarlet kiri wood, bearing the coldness of snow upon them."</div>
+        <div class="source">— First meeting with Komako</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">頬</td><td class="reading">hoho</td><td>cheek</td></tr>
+        <tr><td class="word">帯びる</td><td class="reading">obiru</td><td>to bear, to carry, to be endowed with</td></tr>
+        <tr><td class="word">緋桐</td><td class="reading">hidari / hi-giri</td><td>scarlet paulownia wood (a deep red-brown)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: Wood, not flesh</h5>
+        <p><strong>緋桐 (hidari / hi-giri):</strong> Scarlet paulownia wood. Kawabata does not say her cheeks were pink, or rosy, or flushed. He says they were the color of a specific wood. This is the opposite of Dazai's visceral physicality. Where Dazai makes the body unbearably present, Kawabata makes it into a craft object. By comparing Komako's cheek to wood, he is doing two things: he is making her beautiful in a way that excludes vitality (wood is dead but beautiful), and he is preparing us for Shimamura's aesthetic distance. He does not desire her as a woman. He appreciates her as a texture.</p>
+        <p><strong>雪の冷たさをおびた (yuki no tsumetasa wo obita):</strong> "Bearing the coldness of snow." 帯びる means to carry something as an inherent quality, not as a temporary condition. Her cheeks do not merely feel cold. They <em>bear</em> coldness as an essential attribute, the way a mountain bears height. The grammar makes the coldness permanent, almost moral. Komako is not a warm woman who has stepped out into snow. She is a creature whose nature includes snow-coldness.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Moth in the Flame: The Silkworm Room</h2>
+    <p>One of the novel's central scenes takes place in a silkworm-raising room. Komako's deceased lover's family used to raise silkworms there. The room becomes a space where past and present, life and death, blur together.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">蚕</span>の部屋の<span class="hl">古い匂い</span>が、<span class="hl">生きているもの</span>と<span class="hl">死んでいるもの</span>とを、<span class="hl">かきまぜた</span>ように感じられた
+        </div>
+        <div class="romaji">"Kaiko no heya no furui nioi ga, ikite iru mono to shinde iru mono to wo, kakimazeta you ni kanjirareta."</div>
+        <div class="translation">"The old smell of the silkworm room made him feel that living things and dead things had been stirred together."</div>
+        <div class="source">— In the silkworm room</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">蚕</td><td class="reading">kaiko</td><td>silkworm</td></tr>
+        <tr><td class="word">匂い</td><td class="reading">nioi</td><td>scent, smell, fragrance (neutral, can be pleasant or unpleasant)</td></tr>
+        <tr><td class="word">生きているもの</td><td class="reading">ikite iru mono</td><td>living things</td></tr>
+        <tr><td class="word">死んでいるも</td><td class="reading">shinde iru mono</td><td>dead things</td></tr>
+        <tr><td class="word">かきまぜる</td><td class="reading">kakimazeru</td><td>to mix, to stir together, to blend</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The smell of time</h5>
+        <p><strong>蚕の部屋の古い匂い (kaiko no heya no furui nioi):</strong> "The old smell of the silkworm room." In the West, silkworms are exotic. In Japan, they were the foundation of the textile economy for centuries. A silkworm room is a place of intense, concentrated life: thousands of worms eating mulberry leaves, spinning cocoons, being boiled to extract silk. The smell is not merely "old." It is the smell of an industry that turns living creatures into luxury fabric. Kawabata chooses this room for Komako's intimacy because it already contains the transformation of life into commodity, of warmth into thread. The room smells of what Japan used to be, and of what Komako is becoming.</p>
+        <p><strong>かきまぜたように (kakimazeta you ni):</strong> "As if stirred together." The simile is domestic. You かきまぜる soup, or paint. Kawabata uses it for life and death. The grammar 〜ように makes it a simile of manner: the smell does not look like a mixture; it <em>acts</em> like a mixture. It performs the blending of living and dead in the nostrils. This is characteristic of Kawabata's method: he takes the most ordinary domestic verbs and applies them to metaphysical conditions. The result is that death feels like something you could do with a spoon.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. Futility: The Word That Haunts the Novel</h2>
+    <p>Shimamura is a dilettante who studies Western ballet without ever seeing a performance. His favorite word is 徒労 (torou, futility). Komako's passion, her diary, her love for him, all strike him as beautiful precisely because they are futile.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            島村の頭にはまた<span class="hl">徒労</span>という言葉が<span class="hl">浮かんで来た</span>。駒子がいいなずけの約束を守り通したことも、身を落としてで療養させたことも、<span class="hl">すべてこれ徒労でなくてなんであろう</span>
+        </div>
+        <div class="romaji">"Shimamura no atama ni wa mata torou to iu kotoba ga ukande kita. Komako ga ii nazuke no yakusoku wo mamori tooshita koto mo, mi wo otoshite made ryouyou saseta koto mo, subete kore torou de nakute nan de arou."</div>
+        <div class="translation">"The word futility floated up into Shimamura's mind again. That Komako had kept her promise to her fiance, that she had debased herself to pay for his treatment, what was all this if not futility?"</div>
+        <div class="source">— Shimamura's reflection on Komako</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">徒労</td><td class="reading">torou</td><td>futility, vain effort, useless labor</td></tr>
+        <tr><td class="word">浮かぶ</td><td class="reading">ukabu</td><td>to float, to come into one's mind</td></tr>
+        <tr><td class="word">いいなずけ</td><td class="reading">iinazuke</td><td>fiance, betrothed</td></tr>
+        <tr><td class="word">身を落とす</td><td class="reading">mi wo otosu</td><td>to debase oneself, to fall into prostitution</td></tr>
+        <tr><td class="reading">療養</td><td class="reading">ryouyou</td><td>medical treatment, recuperation</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The beauty of wasted effort</h5>
+        <p><strong>徒労 (torou):</strong> This word is the moral center of the novel, and it is a word Shimamura uses to protect himself from feeling. 徒 means "in vain," "empty," "merely." 労 means "labor," "toil," "effort." Together they mean effort that produces nothing, work without result. But in Japanese aesthetics, especially in the Buddhist-influenced tradition, torou is not necessarily negative. The falling cherry blossom is torou: it blooms only to fall. Komako's love is torou: she loves a man who will leave. Kawabata makes Shimamura call this futility because Shimamura is too weak to call it love. The word is Shimamura's defense, and the novel quietly suggests that his defense is cowardly.</p>
+        <p><strong>浮かんで来た (ukande kita):</strong> "Floated up and came." The grammar 〜て来る indicates movement toward the speaker, in this case toward Shimamura's consciousness. The word does not arrive forcefully. It floats, like a leaf on water. This is how thoughts come to Shimamura: gently, without urgency, as if they were weather rather than psychology. The English "came into his mind" is accurate but loses the liquid quality. 浮かんで来た suggests that futility is not something Shimamura thinks; it is something that visits him, like a scent or a sound.</p>
+        <p><strong>すべてこれ徒労でなくてなんであろう (subete kore torou de nakute nan de arou):</strong> "What was all this if not futility?" The grammar 〜でなくてなんであろう is a rhetorical question that actually asserts the opposite: "It can be nothing other than futility." The form is archaic and formal, which makes Shimamura's judgment sound like a philosophical conclusion rather than an emotional evasion. He is dressing his cowardice in the robes of wisdom. The sentence structure is beautiful and cruel, which is exactly Kawabata's point.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. Komako's Diary: Writing into Emptiness</h2>
+    <p>Komako keeps a diary that Shimamura discovers. She has been writing it for years, even though there is no one to read it.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            駒子は<span class="hl">日記</span>をつけていた。<span class="hl">読まれることもない</span>、<span class="hl">読ませることもない</span>日記を
+        </div>
+        <div class="romaji">"Komako wa nikki wo tsukete ita. Yomareru koto mo nai, yomaseru koto mo nai nikki wo."</div>
+        <div class="translation">"Komako kept a diary. A diary that would never be read, that she would never show to anyone."</div>
+        <div class="source">— Shimamura discovers Komako's diary</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">日記</td><td class="reading">nikki</td><td>diary, journal</td></tr>
+        <tr><td class="word">つける</td><td class="reading">tsukeru</td><td>to keep (a record), to write (a diary)</td></tr>
+        <tr><td class="word">読まれる</td><td class="reading">yomareru</td><td>to be read (passive)</td></tr>
+        <tr><td class="word">読ませる</td><td class="reading">yomaseru</td><td>to let someone read, to show to someone (causative)</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The grammar of unreadability</h5>
+        <p><strong>読まれることもない、読ませることもない (Yomareru koto mo nai, yomaseru koto mo nai):</strong> This is a devastating pair. The first is passive: "it will not be read (by anyone)." The second is causative: "she will not let anyone read it." The parallelism makes the diary's solitude into both a condition and a choice. It is not read because no one cares, and she will not show it because she refuses to be known. The two negatives do not cancel out. They reinforce each other. Komako's diary exists in a double exclusion: from the world's interest and from her own willingness to be understood.</p>
+        <p><strong>日記をつける (nikki wo tsukeru):</strong> "To keep a diary." つける is the verb for attaching, adding, keeping records. It suggests that the diary is not an expression of self but an appendage to life, something added on. Komako writes not to discover herself but to have a companion. The diary is her only faithful listener. When Shimamura reads it, he violates not just her privacy but her only sustained relationship.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Voice That Calls the Stationmaster</h2>
+    <p>In the opening scene, the girl (Yuko) leans out of the train window and calls to the stationmaster in a voice of extraordinary beauty.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            娘は窓いっぱいに乗り出して、遠くへ叫ぶように、<br>「<span class="hl">駅長さあん、駅長さあん</span>」<br><span class="hl">悲しいほど美しい声</span>であった
+        </div>
+        <div class="romaji">"Musume wa mado ippai ni noridashite, tooku e sakebu you ni, 'Ekichou-saan, ekichou-saan.' Kanashii hodo utsukushii koe de atta."</div>
+        <div class="translation">"The girl leaned far out of the window and called, as if shouting into the distance: 'Stationmaster! Stationmaster!' It was a voice so beautiful it was sad."</div>
+        <div class="source">— Opening scene</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">駅長</td><td class="reading">ekichou</td><td>stationmaster</td></tr>
+        <tr><td class="word">叫ぶ</td><td class="reading">sakebu</td><td>to shout, to cry out</td></tr>
+        <tr><td class="word">悲しいほど</td><td class="reading">kanashii hodo</td><td>so much that it is sad, to the point of sadness</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The sadness of excessive beauty</h5>
+        <p><strong>悲しいほど美しい声 (kanashii hodo utsukushii koe):</strong> "A voice so beautiful it was sad." The grammar 〜ほど means "to the extent that." It is not merely "very beautiful." It means the beauty has crossed a threshold into melancholy. This is a distinctively Japanese aesthetic concept: mono no aware, the pathos of things, in which beauty is inseparable from its own passing. Yuko's voice is beautiful in a way that announces its own fragility. The elongation of 駅長さあん (Ekichou-saan) with the drawn-out vowel makes the call into something between a shout and a song. Kawabata hears music in a bureaucratic address.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Milky Way Falls: The Ending</h2>
+    <p>The novel's famous ending occurs during a fire. Yuko falls from a burning building, and Shimamura, running toward the scene, sees the Milky Way in the sky.</p>
+
+    <div class="passage danger">
+        <div class="jp-text jp">
+            <span class="hl-danger">銀河</span>は、<span class="hl-danger">かぎりなく</span>、<span class="hl-danger">深く</span>、<span class="hl-danger">透明</span>に、<span class="hl-danger">さかさま</span>に<span class="hl-danger">落ちて来た</span>ように見えた
+        </div>
+        <div class="romaji">"Ginga wa, kagiri naku, fukaku, toumei ni, sakasama ni ochite kita you ni mieta."</div>
+        <div class="translation">"The Milky Way seemed to fall, boundlessly, deeply, transparently, upside down."</div>
+        <div class="source">— Final scene</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">銀河</td><td class="reading">ginga</td><td>Milky Way, galaxy</td></tr>
+        <tr><td class="word">かぎりなく</td><td class="reading">kagiri naku</td><td>boundlessly, infinitely, without limit</td></tr>
+        <tr><td class="word">透明</td><td class="reading">toumei</td><td>transparent, clear</td></tr>
+        <tr><td class="word">さかさま</td><td class="reading">sakasama</td><td>upside down, inverted</td></tr>
+        <tr><td class="word">落ちて来る</td><td class="reading">ochite kuru</td><td>to fall toward the speaker</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The galaxy falling on a village</h5>
+        <p><strong>銀河 (ginga):</strong> The Milky Way. In Japanese poetry, the Milky Way is associated with Tanabata, the festival of separated lovers who meet once a year across the celestial river. By invoking the Milky Way at the moment of Yuko's fall, Kawabata turns a local tragedy into a cosmic event. But he does not say this explicitly. He simply describes what Shimamura sees. The galaxy is not a symbol. It is a physical fact that happens to occur at the same time as a death. This simultaneity, without causal connection, is the essence of Kawabata's art.</p>
+        <p><strong>かぎりなく、深く、透明に (kagiri naku, fukaku, toumei ni):</strong> Three adverbs in a row, each modifying the falling. "Boundlessly, deeply, transparently." The rhythm is haiku-like: five syllables, three syllables, four syllables. Kawabata is not merely describing. He is composing. The adverbs do not clarify the falling; they make it more mysterious. How can something fall transparently? The phrase is almost nonsensical, and that is the point. The galaxy is falling in a way that exceeds physical description. It is falling as light falls, as music falls, as time falls.</p>
+        <p><strong>さかさまに落ちて来た (sakasama ni ochite kita):</strong> "Upside down, it fell toward him." This is the novel's final shock. The galaxy, which should be above, is falling as if it were below. The world has inverted. The sky has become a floor. This is not merely a poetic image; it is a perceptual event. Shimamura has spent the novel looking at reflections, at things reversed in glass. Now the entire cosmos has reversed. The grammar 〜て来る (toward the speaker) makes the falling personal. The galaxy is not falling somewhere else. It is falling on him, into his field of vision, into his consciousness. The novel ends with the universe becoming a reflection.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Cleanliness of Snow</h2>
+    <p>Komako is repeatedly described as "clean" (汚れのない). This is not moral cleanliness but aesthetic and existential.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            雪国の<span class="hl">汚れのない</span>芸者・駒子
+        </div>
+        <div class="romaji">"Yukiguni no kegare no nai geisha, Komako"</div>
+        <div class="translation">"Komako, the clean geisha of the snow country"</div>
+        <div class="source">— Novel's description on book covers</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">汚れ</td><td class="reading">kegare</td><td>impurity, defilement, stain (Shinto/Buddhist concept)</td></tr>
+        <tr><td class="word">ない</td><td class="reading">nai</td><td>not exist, without</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The religious weight of 汚れ</h5>
+        <p><strong>汚れ (kegare):</strong> This is not ordinary dirt. In Shinto, kegare is ritual impurity, the stain that attaches to those who touch death, blood, or childbirth. It is not sin; it is a condition that separates one from the sacred. By calling Komako 汚れのない, Kawabata is saying she has not been touched by the defilements of the world, even though she is a geisha, even though she has sold her body. This is a radical claim. It suggests that purity is not a matter of behavior but of essence, that Komako's soul remains clean despite her circumstances. The word makes her into a Shinto deity rather than a prostitute. English "clean" or "pure" cannot carry this specific religious weight.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>10. Summary: The Grammar of Perception</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>Subjectless sentences</strong> — The world simply becomes; no observer is named</li>
+        <li><strong>〜と...た / 〜と...あった</strong> — Simultaneous discovery: action and recognition coincide</li>
+        <li><strong>〜て来る</strong> — Movement toward consciousness: thoughts float, galaxies fall</li>
+        <li><strong>〜ほど</strong> — To the extent that: beauty crossing into sadness</li>
+        <li><strong>〜ように</strong> — Simile of manner: things act like mixtures, like symbols</li>
+    </ul>
+
+    <h4>Words that carry the novel's weight</h4>
+    <ul>
+        <li><strong>雪国</strong> — Not merely "snow country" but a region defined by its weather</li>
+        <li><strong>夜の底</strong> — The bottom of night, a container that changes color</li>
+        <li><strong>鏡の奥</strong> — The depths of the mirror, an architectural space</li>
+        <li><strong>この世ならぬ</strong> — Not of this world, stuck between realms</li>
+        <li><strong>緋桐</strong> — Wood, not flesh; beauty as craft object</li>
+        <li><strong>帯びる</strong> — To bear as an essential attribute, not a temporary condition</li>
+        <li><strong>徒労</strong> — Futility as aesthetic category and moral evasion</li>
+        <li><strong>日記</strong> — A diary unread and unshown, writing into emptiness</li>
+        <li><strong>悲しいほど</strong> — Beauty that has crossed into melancholy</li>
+        <li><strong>銀河</strong> — The Milky Way as cosmic accident coinciding with human tragedy</li>
+        <li><strong>さかさま</strong> — Upside down: the universe becoming a reflection</li>
+        <li><strong>汚れ</strong> — Ritual impurity; Komako's impossible cleanliness</li>
+    </ul>
+
+    <h4>Kawabata vs. Endo vs. Dazai: Three kinds of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), and Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. All three use small words to carry impossible weight, but their grammars differ: Endo's tends toward the passive and the honorific, Dazai's toward the confessional and the absolute negative, Kawabata's toward the subjectless and the simile. Together they map three directions of modern Japanese literature: inward to God, inward to self, and outward to the world's surfaces.</p>
+</section>
+
+</main>
+
+</body>
+</html>

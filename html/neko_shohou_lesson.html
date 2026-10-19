@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猫を処方いたしま。 — 石田祥 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-sage: #7a9e7e;
+  --accent-sage-dim: #5a7a5e;
+  --accent-sage-glow: rgba(122, 158, 126, 0.12);
+  --accent-warm: #a8c090;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-sage-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-sage);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-sage-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-sage-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-sage);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-sage-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-sage), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-sage);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-sage-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-sage); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-sage-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 4em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Prescription box */
+.prescription-box {
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, rgba(122, 158, 126, 0.05) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  position: relative;
+}
+
+.prescription-box::before {
+  content: "";
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 4rem;
+  color: var(--accent-sage-glow);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.prescription-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--accent-sage);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.prescription-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-sm);
+}
+
+.prescription-en {
+  text-align: center;
+  color: var(--ink-secondary);
+  font-size: var(--step-0);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-sage-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-sage);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-sage-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-sage);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-warm);
+}
+
+.nuance-box h4 {
+  color: var(--accent-warm);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-sage);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-sage);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-sage-dim), var(--accent-sage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-sage);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-sage);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Patient story cards */
+.patient-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.patient-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  border-left: 3px solid var(--accent-sage-dim);
+}
+
+.patient-card h4 {
+  color: var(--accent-sage);
+  margin-top: 0;
+}
+
+.patient-card .patient-tag {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: var(--space-xs);
+}
+
+/* Award banner */
+.award-banner {
+  background: linear-gradient(135deg, rgba(122, 158, 126, 0.08) 0%, var(--bg-elevated) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  text-align: center;
+}
+
+.award-banner .award-title {
+  color: var(--accent-sage);
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  margin-bottom: var(--space-xs);
+}
+
+.award-banner .award-detail {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-sage-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage, .prescription-box {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>猫を処方いたします。</h1>
+  <p class="hero-subtitle">PHP文芸文庫 &middot; Series Vol. 1</p>
+  <p class="hero-meta">石田祥 &middot; PHP研究所 &middot; 2023</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 猫を処方いたします。</h2>
+  <p class="lead">The title is a formal, almost bureaucratic announcement that upends expectations: a mental clinic where the prescription is not pills but cats. The verb <em>shohou suru</em> (処方する) is medical register; pairing it with <em>neko</em> (猫) creates an instant cognitive dissonance that hooks the reader. The humble polite form <em>itashimasu</em> adds a layer of old-fashioned service-industry courtesy, as if the book itself were bowing to you across a pharmacy counter.</p>
+
+  <div class="prescription-box">
+    <div class="prescription-jp">猫を処方いたします。</div>
+    <div class="prescription-romaji">Neko wo shohou itashimasu.</div>
+    <div class="prescription-en">"We hereby prescribe you a cat." / "A cat is prescribed for you."</div>
+    <p style="text-align:center; color: var(--ink-muted); font-size: var(--step--1); margin-top: var(--space-sm);">The period at the end is part of the title: a full stop that turns the sentence into a declarative, almost contractual statement.</p>
+  </div>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">猫を</span>
+        <span class="romaji">neko wo</span>
+        <span class="meaning">"cat [direct object]" — The object particle <em>wo</em> marks the cat as the thing being acted upon, the substance being dispensed.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">処方</span>
+        <span class="romaji">shohou</span>
+        <span class="meaning">"prescription" — A Sino-Japanese noun (<em>sho</em> 処 = dispose/manage + <em>ho</em> 方 = direction/method). Used exclusively in medical contexts: a doctor's written order for medication.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">いたします</span>
+        <span class="romaji">itashimasu</span>
+        <span class="meaning">"humbly do" — The humble form of <em>suru</em> (to do), used when the speaker is lowering their own status to show respect to the listener. Common in customer service, formal letters, and traditional professions.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Register clash:</strong> The humor begins in the title itself. <em>Shohou</em> is cold, clinical, and scientific. <em>Neko</em> is warm, furry, and alive. <em>Itashimasu</em> is obsequiously polite. The combination sounds like a Kyoto pharmacist from the Taisho era announcing, with a deep bow, that your treatment for depression is a tabby. This tonal collision sets the stage for the entire book's blend of whimsy and genuine emotional weight.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Title as Promise</h3>
+    <p>The title functions as a narrative contract with the reader. It promises:</p>
+    <ol style="margin-top: var(--space-sm); padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>A premise:</strong> Cats will be given, like medicine, to people who need them</li>
+      <li style="margin-bottom: 0.5em;"><strong>A setting:</strong> The medical/ceremonial language implies a clinic, a doctor, patients</li>
+      <li style="margin-bottom: 0.5em;"><strong>A tone:</strong> The humble-polite register signals warmth, service, and human care</li>
+      <li><strong>A question:</strong> Can a cat really be a prescription? The book sets out to prove that, in some cases, it can</li>
+    </ol>
+  </div>
+
+  <div class="award-banner">
+    <div class="award-title">第11回京都本大賞受賞</div>
+    <div class="award-detail">11th Kyoto Book Prize (2023) &middot; 第13回うつのみや大賞文庫部門</div>
+    <div class="award-detail" style="margin-top: var(--space-xs);">Series累计100万部突破 &middot; 36か国・地域で翻訳出版</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>石田祥 &mdash; Ishida Syou</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">石</div>
+    <div class="author-name-block">
+      <h3>石田祥</h3>
+      <p class="author-name-romaji">Ishida Syou &middot; b. 1975, Kyoto</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Ishida Syou is a Japanese novelist from Kyoto, best known for the <em>Neko wo Shohou Itashimasu</em> series, which has sold over one million copies worldwide and been translated into 36 countries and territories. Despite his immense success with cat-themed fiction, Ishida is actually a self-described "bird person" (<em>toroha</em>) who has never owned a cat.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1975</span>
+        <span>Born in Kyoto Prefecture.</span>
+      </li>
+      <li>
+        <span class="timeline-year">Post-HS</span>
+        <span>After high school, joined a financial company, then later moved to a telecommunications company. Wrote fiction on the side while working full-time.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2014</span>
+        <span>Debuted with <em>Tomato no Sensei</em> (トマトの先生), winner of the 9th Japan Love Story Grand Prize (第9回日本ラブストーリー大賞). Published by Takarajimasha.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2021</span>
+        <span>Published <em>Moto Kare no Neko wo, Azukarimashite.</em> (元カレの猫を、預かりまして / "I Was Left with My Ex-Boyfriend's Cat"), a precursor to his cat-themed fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2023</span>
+        <span>Published <em>Neko wo Shohou Itashimasu.</em> (猫を処方いたします。), the first volume of what would become a blockbuster series. Won the 11th Kyoto Book Prize.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2024</span>
+        <span>Opened his official website to commemorate his 10th anniversary as a writer. The series surpassed 240,000 copies in Japan.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2025</span>
+        <span>Series surpassed 390,000 copies in Japan. Won the 13th Utsunomiya Prize (Bunko division).</span>
+      </li>
+      <li>
+        <span class="timeline-year">2026</span>
+        <span>Worldwide cumulative sales surpassed 1,000,000 copies across 36 countries and territories. Volume 6 published.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Other Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>元カレの猫を、預かりまして。</h4>
+        <p class="char-role">Novel &middot; Futabasha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A woman is left caring for her ex-boyfriend's cat. The precursor to the prescription-cat concept, adapted into a TV drama starring Kashiwagi Yuki.</p>
+      </div>
+      <div class="char-card">
+        <h4>ドッグカフェ・ワンノアール</h4>
+        <p class="char-role">Series &middot; Takarajimasha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A dog-cafe employee who can see ghosts, together with her puppy Sylvia, solves mysteries around the cafe. A cozy mystery with animal companions.</p>
+      </div>
+      <div class="char-card">
+        <h4>京都お抹茶迷宮</h4>
+        <p class="char-role">Novel &middot; Micro Magazine</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A mystery set in Kyoto's matcha (green tea) world, blending the city's cultural heritage with puzzle-solving.</p>
+      </div>
+      <div class="char-card">
+        <h4>夜は不思議などうぶつえん</h4>
+        <p class="char-role">Novel &middot; Futabasha Bunko</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">"The Wonder Zoo at Night" — animal-themed fiction exploring the mysterious connections between humans and creatures after dark.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Personal note:</strong> Ishida describes himself as a "strong bird person" (<em>kyouretsu na toraha</em>) who, if he starts talking about birds, will continue for about two hours. He has never owned a cat, fearing that the daily care would disrupt his writing schedule. To write the series, he visited cat cafes two or three times. He describes himself as a writer of "fantasy and comedy" who prefers imagination to research: "The more freely I can expand my imagination, the better."
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast</div>
+  <h2>Main Characters</h2>
+
+  <div class="char-grid">
+    <div class="char-card">
+      <h4>ニケ先生 &middot; Nike-sensei</h4>
+      <p class="char-role">Doctor / Proprietor of Nakagyo Kokoro Clinic</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A laid-back, somewhat shady doctor with a light, casual manner of speaking (<em>nori no karui</em>). He runs the mysterious mental clinic on the 5th floor of an old building in Kyoto's Nakagyo ward. Despite his flippant demeanor, he has a secret — and a genuine gift for matching the right cat to the right patient. His name evokes the Greek goddess of victory (Nike), but in Kyoto dialect it reads as a breezy, slightly comical moniker.</p>
+    </div>
+    <div class="char-card">
+      <h4>千歳さん &middot; Chitose-san</h4>
+      <p class="char-role">Nurse</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The clinic's only nurse. Described as a "tsundere Kyoto beauty" — outwardly cool and sharp-tongued but with a warm heart beneath. She manages the practical side of cat prescriptions: selecting cats, instructing patients on "dosage," and tracking outcomes. Her name (千歳, "thousand years") suggests longevity and enduring care.</p>
+    </div>
+    <div class="char-card">
+      <h4>心先生 &middot; Kokoro-sensei</h4>
+      <p class="char-role">Veterinarian</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">A veterinarian who appears in later volumes. His name (心, "heart/mind") mirrors the clinic's focus on mental and emotional healing. He has his own troubles, adding layers to the series' exploration of who heals the healers.</p>
+    </div>
+    <div class="char-card">
+      <h4>椎名 &middot; Shiina</h4>
+      <p class="char-role">Neighbor / Office Worker</p>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Runs a company in the office next to the clinic. Initially skeptical of the "cat prescription" operation, he eventually comes face-to-face with Nike-sensei and the clinic's unusual methods. Represents the rational, everyday world colliding with the clinic's gentle magic.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>The "Prescription Cats":</strong> Each volume introduces new patients with specific emotional wounds, and each receives a cat matched to their needs. The cats are not magical; they are simply cats — fickle, delicate, demanding, and adorable. The healing comes not from supernatural power but from the daily rhythm of caring for another living being, and from being seen by a creature that does not judge.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <p>Deep in a dim alley in Kyoto's Nakagyo ward, on the fifth floor of an old building with no elevator, there is a mental clinic called <em>Nakagyo Kokoro no Byouin</em> (中京こころのびょういん). Patients with troubled hearts find their way here, guided by word-of-mouth and the kind of directions that sound like incantations: "Go up and down Fuyacho-dori and Tomikoji-dori near Rokkaku-dori……"</p>
+    <p style="margin-top: var(--space-sm);">The clinic is run by a strangely casual doctor named Nike-sensei and a cool, sharp-tongued nurse named Chitose-san. But the prescriptions they write are not for antidepressants or anxiolytics. They prescribe cats. Real, living cats. For a set number of days, patients must "take" their cat as directed — feed it, live with it, let it disrupt their routines and their solitude.</p>
+    <p style="margin-top: var(--space-sm);">Each story follows a different patient: a college student anxious about her relationship, an elderly man who has lost his wife, a man working at a cat shelter who cannot connect with people, a father exhausted from childcare, an illustrator burdened by complexes, a company employee facing a crucial presentation. As they live with their prescribed cats, their hearts begin, imperceptibly, to shift. And behind Nike-sensei's flippant exterior lies a reason — a secret — for why he prescribes cats at all.</p>
+  </div>
+
+  <h3>Patients in Volume 1</h3>
+  <div class="patient-grid">
+    <div class="patient-card">
+      <span class="patient-tag">Vol. 1</span>
+      <h4>不眠、耳鳴りの患者</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">A patient suffering from insomnia and tinnitus. The first to discover the clinic's secret — that the prescription is a cat, not a pill. Their confusion and gradual acceptance sets the template for the series.</p>
+    </div>
+    <div class="patient-card">
+      <span class="patient-tag">Vol. 1</span>
+      <h4>彼氏との関係に悩む女子大生</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">A female college student troubled by her relationship with her boyfriend. The emotional turbulence of young love meets the steady, nonjudgmental presence of a cat.</p>
+    </div>
+    <div class="patient-card">
+      <span class="patient-tag">Vol. 1</span>
+      <h4>妻に先立たれた老人</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">An elderly man whose wife has passed away before him. Grief, loneliness, and the question of whether a cat can fill a space that a human has left.</p>
+    </div>
+    <div class="patient-card">
+      <span class="patient-tag">Vol. 1</span>
+      <h4>保護猫センターで働く男</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">A man who works at a cat shelter. Surrounded by cats all day, yet unable to form human connections. The irony of his situation is not lost on Nike-sensei.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Structure:</strong> The book is a <em>rensaku tanpen</em> (連作短編) — a series of interconnected short stories. Each chapter centers on a new patient, but the clinic, Nike-sensei, and Chitose-san provide continuity. The series has now reached six volumes, with over one million copies sold worldwide.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the book's distinctive voice: the Kyoto dialect, the whimsical premise, and the gentle emotional undercurrent that has made the series a global phenomenon.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Clinic's Location</div>
+    <div class="passage-jp">
+      京都市中京区麩屋町通上ル六角通西入……呪文のように長い住所に導かれ、古びたビルの五階にある「中京こころのびょういん」を訪れた患者たち。
+    </div>
+    <div class="passage-romaji">
+      Kyoto-shi Nakagyo-ku Fuyacho-dori Agaru Rokkaku-dori Nishiiru…… jumon no you ni nagai juusho ni michibikare, furubita biru no go-kai ni aru "Nakagyo Kokoro no Byouin" wo otozureta kanja-tachi.
+    </div>
+    <div class="passage-en">
+      "Guided by an address as long as an incantation — 'Kyoto City, Nakagyo Ward, up Fuyacho Street, west on Rokkaku Street…' — the patients arrive at the Nakagyo Kokoro Clinic on the fifth floor of an old building."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">Kyoto addresses are notoriously complex, relying on a grid system of <em>dori</em> (streets) and <em>agaru/itaru/sagaru</em> (go up/go to/go down) rather than street numbers. The comparison to a <em>jumon</em> (呪文, magic spell/incantation) is apt: only those who are meant to find the clinic can navigate its labyrinthine directions. The phrase <em>furu-bita biru</em> (古びたビル, aged/worn building) evokes the slightly run-down, unglamorous reality behind the formal language of the title. The clinic is not sleek or modern; it is a place that has accumulated time.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">Nike-sensei's Welcome</div>
+    <div class="passage-jp">
+      「ここは『中京こころのびょういん』です。ご覧の通り僕と看護師の二人だけで細々とやってますんで、ほんまは新患さんはお断りしてるんですけど、特別ですよ。せっかくここまで来てくれはったんでね」
+    </div>
+    <div class="passage-romaji">
+      "Koko wa 'Nakagyo Kokoro no Byouin' desu. Goran no toori boku to kangoshi no futari dake de hosoboso to yattemasu n de, honma wa shinkan-san wa okotowari shiteru n desu kedo, tokubetsu desu yo. Sekkaku koko made kite kurehatta n de ne."
+    </div>
+    <div class="passage-en">
+      "This is the Nakagyo Kokoro Clinic. As you can see, it's just me and the nurse, barely keeping things running, so normally we turn away new patients. But you're special. You went to all the trouble of finding your way here, after all."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage is rich with Kyoto dialect (<em>Kyo-kotoba</em>). <em>Honma</em> (ほんま) is Kyoto's version of <em>hontou ni</em> (really/truly). <em>Kurehatta</em> (くれはった) is the Kyoto honorific form of <em>kureta</em> (gave/did for me), showing respect toward the patient's effort. <em>Hosoboso to yattemasu</em> (細々とやってます) means "barely managing / keeping things going on a small scale" — a humble expression that downplays the clinic's operations. The casual self-deprecation (<em>we normally turn away new patients, but you're special</em>) is classic Nike-sensei: flippant, charming, and slightly suspicious. The reader immediately senses that this clinic operates by its own rules.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Prescription Revealed</div>
+    <div class="passage-jp">
+      心の不調を抱えてこの病院を訪れた患者に、妙にノリの軽い医者が処方するのは、薬ではなく、本物の猫だった！？
+    </div>
+    <div class="passage-romaji">
+      Kokoro no fuchou wo kakaete kono byouin wo otozureta kanja ni, myou ni nori no karui isha ga shohou suru no wa, kusuri de wa naku, honmono no neko datta!?
+    </div>
+    <div class="passage-en">
+      "To the patients who visit this hospital with troubled hearts, the strangely casual doctor prescribes not medicine, but a real cat!?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Myou ni nori no karui</em> (妙にノリの軽い) is a wonderfully compressed phrase. <em>Myou ni</em> = strangely, oddly. <em>Nori</em> (ノリ) is slang for vibe/mood/energy. <em>Karui</em> = light, casual, flippant. Together: "oddly casual-vibed" or "strangely flippant." The interrobang (!?) is characteristic of Japanese book-copy style, signaling both surprise and amusement. <em>Honmono</em> (本物, "the real thing") is crucial here: the prescription is not a toy, not a robot, not a metaphor. It is a real, living, unpredictable cat. The contrast between <em>kokoro no fuchou</em> (心の不調, troubled heart / mental distress) — serious, clinical — and <em>neko</em> (猫) — domestic, soft, slightly absurd — is the engine of the entire series.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">Taking the Medicine</div>
+    <div class="passage-jp">
+      戸惑いながらも、決められた日数、猫を「服薬」する患者たち。気紛れで繊細、手がかかるけど愛くるしい猫と暮らすことで、彼らの心も少しずつ変化していく。
+    </div>
+    <div class="passage-romaji">
+      Tomadoi nagara mo, kimerareta nissuu, neko wo "fukuyaku" suru kanja-tachi. Kimagure de sensai, te ga kakaru kedo airurushii neko to kurasu koto de, karera no kokoro mo sukoshizutsu henka shite iku.
+    </div>
+    <div class="passage-en">
+      "Bewildered, the patients nonetheless 'take' their cat for the prescribed number of days. By living with cats — fickle, delicate, demanding, yet adorable — their hearts gradually begin to change."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Fukuyaku</em> (服薬, "taking medicine") in quotation marks is the book's central joke and its deepest truth. The scare quotes acknowledge the absurdity of treating a cat like a pill, while the narrative proceeds to prove that, in some ways, a cat functions exactly like medicine: it must be administered regularly, it has side effects, it requires compliance, and it alters the patient's internal chemistry. The four adjectives applied to cats — <em>kimagure</em> (気紛れ, fickle/capricious), <em>sensai</em> (繊細, delicate/sensitive), <em>te ga kakaru</em> (手がかかる, demanding/high-maintenance), <em>airurushii</em> (愛くるしい, adorable/charming) — form a perfect haiku-like portrait of felinity. The phrase <em>sukoshizutsu</em> (少しずつ, little by little) emphasizes that healing is gradual, not miraculous. There are no sudden cures in this clinic.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, synopsis, and key passages, organized by theme.</p>
+
+  <div class="card">
+    <h3>Title & Medical Register</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>処方</td><td>shohou</td><td class="pos">noun</td><td>prescription (medical)</td></tr>
+        <tr><td>処方する</td><td>shohou suru</td><td class="pos">verb</td><td>to prescribe</td></tr>
+        <tr><td>いたします</td><td>itashimasu</td><td class="pos">verb</td><td>humbly do (humble form of <em>suru</em>)</td></tr>
+        <tr><td>服薬</td><td>fukuyaku</td><td class="pos">noun</td><td>taking medicine / medication adherence</td></tr>
+        <tr><td>患者</td><td>kanja</td><td class="pos">noun</td><td>patient</td></tr>
+        <tr><td>新患</td><td>shinkan</td><td class="pos">noun</td><td>new patient</td></tr>
+        <tr><td>病院</td><td>byouin</td><td class="pos">noun</td><td>hospital / clinic</td></tr>
+        <tr><td>心の不調</td><td>kokoro no fuchou</td><td class="pos">phrase</td><td>mental/emotional distress; troubled heart</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Clinic & Setting</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>路地</td><td>roji</td><td class="pos">noun</td><td>alley, backstreet</td></tr>
+        <tr><td>薄暗い</td><td>usugurai</td><td class="pos">adj</td><td>dim, gloomy, dusky</td></tr>
+        <tr><td>雑居ビル</td><td>zakkyo biru</td><td class="pos">noun</td><td>mixed-use building, tenement building</td></tr>
+        <tr><td>古びた</td><td>furubita</td><td class="pos">adj</td><td>aged, worn, old</td></tr>
+        <tr><td>呪文</td><td>jumon</td><td class="pos">noun</td><td>incantation, magic spell, mantra</td></tr>
+        <tr><td>通</td><td>dori / doori</td><td class="pos">suffix</td><td>street, avenue (after street name)</td></tr>
+        <tr><td>上ル</td><td>agaru</td><td class="pos">verb</td><td>to go up (north, in Kyoto addressing)</td></tr>
+        <tr><td>西入ル</td><td>nishiiru</td><td class="pos">verb</td><td>to enter from the west</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Cat Descriptions & Personality</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>気紛れ</td><td>kimagure</td><td class="pos">adj-noun</td><td>fickle, capricious, whimsical</td></tr>
+        <tr><td>繊細</td><td>sensai</td><td class="pos">adj</td><td>delicate, sensitive, fine</td></tr>
+        <tr><td>手がかかる</td><td>te ga kakaru</td><td class="pos">phrase</td><td>to be demanding / high-maintenance</td></tr>
+        <tr><td>愛くるしい</td><td>airurushii</td><td class="pos">adj</td><td>adorable, charming, lovable</td></tr>
+        <tr><td>もふもふ</td><td>mofumofu</td><td class="pos">adv</td><td>fluffy, soft (onomatopoeia)</td></tr>
+        <tr><td>保護猫</td><td>hogo-neko</td><td class="pos">noun</td><td>rescued cat, shelter cat</td></tr>
+        <tr><td>飼う</td><td>kau</td><td class="pos">verb</td><td>to keep (a pet), to raise</td></tr>
+        <tr><td>絆</td><td>kizuna</td><td class="pos">noun</td><td>bond, tie, emotional connection</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Healing</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>戸惑い</td><td>tomadoi</td><td class="pos">noun</td><td>bewilderment, confusion, disorientation</td></tr>
+        <tr><td>癒える</td><td>ieru</td><td class="pos">verb</td><td>to heal, to be cured (emotional)</td></tr>
+        <tr><td>悩み</td><td>nayami</td><td class="pos">noun</td><td>worry, trouble, anguish</td></tr>
+        <tr><td>変化</td><td>henka</td><td class="pos">noun</td><td>change, transformation</td></tr>
+        <tr><td>少しずつ</td><td>sukoshizutsu</td><td class="pos">adv</td><td>little by little, gradually</td></tr>
+        <tr><td>ハートフル</td><td>haatofuru</td><td class="pos">adj</td><td>heartful, warm, touching (loanword)</td></tr>
+        <tr><td>寄り添う</td><td>yorisou</td><td class="pos">verb</td><td>to draw close to, to stay by one's side</td></tr>
+        <tr><td>翻弄する</td><td>honrou suru</td><td class="pos">verb</td><td>to toy with, to play with, to lead around</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">The series' charm depends heavily on Kyoto dialect, medical register, and the cultural specificity of Japanese mental health discourse. Much of this is difficult to replicate in English.</p>
+
+  <div class="card">
+    <h3>1. <em>Shohou Itashimasu</em> (処方いたします) — The Humble-Polite Prescription</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>猫を<strong>処方いたします</strong>。</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"We Prescribe You a Cat" / "A Cat Is Prescribed"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Itashimasu</em> is not merely polite; it is the humble form of <em>suru</em>, used when the speaker lowers themselves to show respect. It evokes traditional shopkeepers, doctors in white coats, and formal service. English "prescribe" is neutral; it carries none of this bowing, self-effacing warmth. The title sounds, in Japanese, like something a kindly old pharmacist would say as they slide a warm bundle of fur across the counter instead of a pill bottle.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. Kyoto Dialect (<em>Kyo-kotoba</em>)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>ほんまは新患さんはお断りしてるんですけど</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Actually, we normally turn away new patients, but……"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Honma</em> (ほんま) is quintessentially Kansai — warmer, softer, and more intimate than standard <em>hontou ni</em>. Nike-sensei's speech is peppered with Kyoto-isms that signal his local roots and his unpretentious character. In English, he becomes merely "casual"; the specifically Kyoto flavor of his flippancy — the way Kyoto people are famously indirect, polite, and slightly elusive — is flattened. A Kyoto reader hears "one of us"; an English reader hears "a laid-back doctor."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Fukuyaku</em> (服薬) — "Taking" a Cat</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>猫を「服薬」する患者たち</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"patients who 'take' their cat as medicine"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Fukuyaku</em> is a formal medical term for medication adherence — the act of following a prescription correctly. It implies dosage, timing, and compliance. Applying it to a cat, even in quotes, creates a conceptual frame: the cat is not a pet; it is a treatment protocol. The English "take" is too generic to carry this bureaucratic precision. The joke is that cats, unlike pills, cannot be taken on schedule; they take <em>you</em> on <em>their</em> schedule. The word <em>fukuyaku</em> sets up this reversal.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kokoro no Fuchou</em> (心の不調)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>心の不調を抱えてこの病院を訪れた患者</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"patients who visit this hospital with troubled hearts"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kokoro no fuchou</em> literally means "disorder of the heart/mind." It is gentler and more holistic than clinical terms like <em>seishin byou</em> (mental illness) or <em>utsu</em> (depression). It encompasses anxiety, grief, burnout, loneliness, and existential malaise without diagnosing. English "troubled hearts" captures some of this but sounds more poetic and less everyday. In Japanese, <em>kokoro no fuchou</em> is the kind of thing ordinary people say about themselves when they know something is wrong but cannot name it medically.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. The Address as Incantation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>麩屋町通上ル六角通西入……呪文のように長い住所</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"an address as long as an incantation…… up Fuyacho Street, west on Rokkaku Street"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Kyoto's addressing system is culturally unique and functionally maddening. Streets are navigated by <em>agaru</em> (go up/north), <em>sagaru</em> (go down/south), <em>nishiiru</em> (enter from west), and <em>higashiiru</em> (enter from east). The joke that these directions sound like a <em>jumon</em> (magic spell) only works if you have experienced the frustration of trying to find a place in Kyoto. For English readers, the charm lies in the metaphor; for Japanese readers, it is a knowing laugh of recognition.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the title, synopsis, and key passages, useful for intermediate to advanced learners.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を〜いたします（謙譲語）</span>
+        <span class="grammar-level">N4-N3 / Keigo</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo ~ itashimasu</em>: the humble form of <em>wo ~ suru</em>, used to lower the speaker's status.</p>
+      <div class="grammar-example">猫を処方いたします。</div>
+      <p class="grammar-example-en">"We humbly prescribe you a cat." — <em>Itashimasu</em> is the humble form of <em>suru</em>. In modern Japanese, this pattern is common in service industries and formal correspondence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜んです（説明・理由）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>N desu</em> (often <em>n' desu</em>): explanatory/emphatic copula, giving a reason or explanation.</p>
+      <div class="grammar-example">ほんまは新患さんはお断りしてるんですけど</div>
+      <p class="grammar-example-en">"The truth is, we normally turn away new patients, but……" — The <em>n desu</em> softens the refusal and invites the listener into the speaker's reasoning. The <em>kedo</em> (but) at the end leaves the sentence open, creating suspense.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくれはった（京都方言・敬語）</span>
+        <span class="grammar-level">N3 / Dialect</span>
+      </div>
+      <p class="grammar-meaning">Kyoto dialect honorific form of <em>te kureta</em> (did for me), showing gratitude for someone's action.</p>
+      <div class="grammar-example">せっかくここまで来てくれはったんでね</div>
+      <p class="grammar-example-en">"You went to all the trouble of coming here, after all……" — <em>Kurehatta</em> is the Kyoto honorific of <em>kureta</em>. Standard Japanese would be <em>kite kureta</em> or <em>kite kudasatta</em>.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ながらも（逆接）</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>Nagara mo</em>: although / even though / despite (stronger contrast than <em>nagara</em> alone).</p>
+      <div class="grammar-example">戸惑いながらも、決められた日数、猫を「服薬」する</div>
+      <p class="grammar-example-en">"Despite their confusion, they 'take' their cat for the prescribed number of days." — The <em>mo</em> intensifies the contrast between bewilderment and compliance.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ことで（手段・方法）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Koto de</em>: by doing / through the act of (nominalizer + particle).</p>
+      <div class="grammar-example">猫と暮らすことで、彼らの心も少しずつ変化していく</div>
+      <p class="grammar-example-en">"By living with cats, their hearts gradually begin to change." — <em>Koto de</em> turns the verb phrase into a noun clause, allowing it to function as a means or method.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ずつ（分配・反復）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Zutsu</em>: apiece / each / gradually / little by little.</p>
+      <div class="grammar-example">彼らの心も少しずつ変化していく</div>
+      <p class="grammar-example-en">"Their hearts gradually change, little by little." — <em>Sukoshizutsu</em> (少しずつ) is one of the most common <em>zutsu</em> collocations, emphasizing incremental change.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜けど（接続助詞）</span>
+        <span class="grammar-level">N5-N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Kedo</em>: but / although (casual form of <em>keredomo</em>).</p>
+      <div class="grammar-example">お断りしてるんですけど、特別ですよ</div>
+      <p class="grammar-example-en">"We turn them away, but you're special." — In casual speech, <em>kedo</em> often functions less as a strong "but" and more as a softener or turn-giver, inviting the listener to infer what comes next.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に導かれて（受身形）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni michibikarete</em>: led/guided by (passive form of <em>michibiku</em>).</p>
+      <div class="grammar-example">呪文のよう長い住所に導かれ……病院を訪れた患者たち</div>
+      <p class="grammar-example-en">"Patients who, led by an address as long as an incantation, visited the clinic……" — The passive form removes the agent; no one actively guides the patients. They are drawn by fate, word-of-mouth, or something almost supernatural.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> This series is excellent for N3-N2 learners because it blends standard written Japanese (descriptions, narration) with authentic Kyoto dialect (Nike-sensei's dialogue). The contrast trains your ear to distinguish register. Pay attention to how Nike-sensei's <em>honma</em>, <em>kurehatta</em>, and <em>yattemasu n de</em> create a voice that is simultaneously professional and deeply local — a Kyoto doctor who happens to prescribe cats.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">猫を処方いたします。 &middot; Vol. 1 &middot; 石田祥</p>
+</footer>
+
+</div>
+</body>
+</html>

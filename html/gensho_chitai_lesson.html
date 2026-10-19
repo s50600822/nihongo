@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dark Laughter Zone — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --venom: #6a4a5a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--venom);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(106,74,90,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.venom::before {
+            background: var(--venom);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.venom-box {
+            background: color-mix(in oklab, var(--venom) 8%, var(--surface));
+            border-left-color: var(--venom);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.venom-box h5 {
+            color: var(--venom);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-venom {
+            background: color-mix(in oklab, var(--venom) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--venom) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--venom) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .essay-list {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+        }
+
+        .essay-list h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .essay-list ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .essay-list li {
+            font-size: var(--step--1);
+            margin-bottom: 0.3rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #6a4a5a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Dark Laughter Zone<br><span style="font-size:0.6em; font-weight:300;">玄笑地帯</span></h1>
+    <div class="subtitle">A Japanese lesson through Tsutsui Yasutaka's essay collection of calculated poison, improvised on deadline without a single line break</div>
+    <div class="meta">Tsutsui Yasutaka &middot; Shinchosha &middot; 1988 &middot; Essays</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified descriptions, promotional copy, and reviews of <em>Gensho Chitai</em> (The Dark Laughter Zone / Phantom Laughter Zone), an essay collection by Tsutsui Yasutaka published by Shinchosha in 1988. The essays were originally written as monthly newsletters (月報) for the 24-volume Tsutsui Yasutaka Complete Works (筒井康隆全集), published between 1984 and 1986. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    First published by Shinchosha in 1988, <em>Gensho Chitai</em> (玄笑地帯) is a collection of essays by Tsutsui Yasutaka (b. 1934), one of Japan's most decorated and uncontainable writers: winner of the Izumi Kyoka Prize (1981), the Tanizaki Prize (1987), the Kawabata Yasunari Prize (1989), the Japan SF Grand Prize (1992), the Yomiuri Prize for Literature (2000), the Mainichi Art Prize (2017), and the Kikuchi Kan Prize (2010), plus the Medal with Purple Ribbon (2002). Where the previous Tsutsui lesson in this series explored <em>Yoru no Konto Fuyu no Konto</em> (Night Contests, Winter Contests), a collection of eighteen comic sketches that accelerate toward madness, <em>Gensho Chitai</em> operates in an adjacent but distinct register: the essay as improvised performance, the monthly deadline as creative constraint, and the complete-works newsletter as a Trojan horse for black humor. The title is a pun on 幻想地帯 (gensou chitai, fantasy zone), replacing 幻 (illusion) with 玄 (dark, mysterious, profound) and 想 (conception) with 笑 (laughter). The result is a title that sounds like a place in a science-fiction novel but names something more dangerous: the territory where profound laughter happens, where dark humor echoes back at you like a sound in a canyon. The essays were written under severe formal constraints: exactly seven manuscript pages plus five lines and twelve characters, no line breaks, every piece starting with a different conjunction. What emerges is not casual blogging but something closer to oulipian prose: literature generated by rules so strict they become a kind of cage, and the cage makes the animal more ferocious. Tsutsui's poison is not random. It is, as the promotional copy insists, 計算された毒: calculated, measured, dosed precisely. This is Japanese as weaponized wit, as improvisation that knows exactly what it is doing.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Pun</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title is a single-character substitution game that turns a familiar phrase into something uncanny.</p>
+
+    <div class="passage venom">
+        <div class="jp-text jp">
+            <span class="hl-venom">玄笑地帯</span>
+        </div>
+        <div class="romaji">"Gensho Chitai"</div>
+        <div class="translation">"The Dark Laughter Zone" / "The Phantom Laughter Zone"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">玄</td><td class="reading">gen</td><td>dark, mysterious, profound, black</td></tr>
+        <tr><td class="word">笑</td><td class="reading">sho/shou</td><td>laughter</td></tr>
+        <tr><td class="word">地帯</td><td class="reading">chitai</td><td>zone, area, belt, district</td></tr>
+        <tr><td class="word">幻想地帯</td><td class="reading">gensou chitai</td><td>fantasy zone (the phrase being punned on)</td></tr>
+    </table>
+
+    <div class="nuance venom-box">
+        <h5>What translation loses: The one-character heist</h5>
+        <p><strong>玄笑地帯 (gensho chitai):</strong> The title is a pun on 幻想地帯 (gensou chitai, fantasy zone), a familiar phrase in Japanese that carries associations with SF, video games, and liminal spaces. Tsutsui changes two characters: 幻 (gen, illusion) stays, but 想 (sou, conception/idea) becomes 笑 (sho/shou, laughter), and the long vowel う disappears. The result is a title that your eye tries to read as "fantasy zone" but your brain keeps stumbling over: something is wrong, something has been altered, and the alteration produces a shiver. The word 玄 means dark, mysterious, profound, the color black. It is the character used in 玄関 (genkan, entrance hall), 玄米 (genmai, brown rice), and 玄義 (genki, profound meaning). By pairing 玄 with 笑, Tsutsui creates a compound that does not exist in standard Japanese: "dark laughter" or "mysterious laughter" or "black laughter." The grammar of the title makes the book into a location you enter rather than a text you read. A 地帯 is a zone, a belt of land, a territory with borders. You do not merely read these essays. You cross into the Gensho Chitai, and once inside, the rules are different.</p>
+        <p><strong>The pun's politics:</strong> Puns in Japanese are not merely playful. They are a form of cognitive disruption. When a reader encounters 玄笑地帯, they experience a moment of double vision: they see 幻想地帯 and 玄笑地帯 simultaneously, the expected and the actual, the safe and the dangerous. This is Tsutsui's method throughout: he makes you comfortable with familiarity, then swaps one character and the whole meaning tilts. The title performs the book's thesis before a single essay is opened. Language is not stable. A single character change can turn fantasy into black laughter. The zone is not where illusions happen. It is where laughter becomes dark enough to qualify as 玄.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Promotional Poison: The Grammar of Calculated Venom</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The publisher's description establishes the book's method in a single compressed sentence.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">毎回改行なしの即興生演奏に、計算された毒が仕組まれた恐怖のエッセイ集</span>
+        </div>
+        <div class="romaji">"Maikai kaidan nashi no sokkou seienso ni, keisan sareta doku ga shikumareta kyoufu no essai-shuu."</div>
+        <div class="translation">"A terrifying essay collection in which calculated poison is embedded in each installment of no-line-break improvisational performance."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">毎回</td><td class="reading">maikai</td><td>each time, every installment</td></tr>
+        <tr><td class="word">改行</td><td class="reading">kaidan</td><td>line break, new paragraph</td></tr>
+        <tr><td class="word">なし</td><td class="reading">nashi</td><td>without, none</td></tr>
+        <tr><td class="word">即興</td><td class="reading">sokkou</td><td>improvisation, extemporization</td></tr>
+        <tr><td class="word">生演奏</td><td class="reading">seienso</td><td>live performance</td></tr>
+        <tr><td class="word">計算される</td><td class="reading">keisan sareru</td><td>to be calculated, measured</td></tr>
+        <tr><td class="word">毒</td><td class="reading">doku</td><td>poison, venom</td></tr>
+        <tr><td class="word">仕組まれる</td><td class="reading">shikumareru</td><td>to be built in, embedded, contrived</td></tr>
+        <tr><td class="word">恐怖</td><td class="reading">kyoufu</td><td>terror, horror</td></tr>
+        <tr><td class="word">エッセイ集</td><td class="reading">essai-shuu</td><td>essay collection</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The paradox of calculated improvisation</h5>
+        <p><strong>即興生演奏 (sokkou seienso):</strong> "Improvisational live performance." This is a musical metaphor applied to prose. 生演奏 means a live performance, not a recording: the musician is there, in the room, making it up as they go. When Tsutsui's essays are called 即興生演奏, the copy is making a claim about their immediacy: these were written month by month, in real time, as the complete works were being published. They are not carefully sculpted literary essays. They are live, improvised, happening NOW. The word 即興 means improvisation, the same word used for jazz solos and freestyle rap. It carries a note of risk: the performer does not know exactly what will come out. The grammar of 即興生演奏 makes the essays into a concert, and the reader into an audience watching a writer think in public.</p>
+        <p><strong>計算された毒 (keisan sareta doku):</strong> "Calculated poison." This is the crucial paradox. The essays are improvised, but the poison is calculated. The venom is not accidental. It is dosed. Tsutsui knows exactly how much toxicity each piece can hold without becoming unreadable. The passive 計算された makes the calculation into something that has been done to the poison, as if a pharmacist had measured it out. The word 毒 in Japanese carries a range of meanings: literal poison, malicious gossip, harmful influence, addictive substance. Tsutsui's 毒 is all of these at once. His essays are bad for you in the way that strong liquor is bad for you: they burn, they alter consciousness, they leave you slightly damaged and grateful for the damage. The grammar of 計算された毒 resolves the paradox of improvisation: the performance is live, but the harm is intentional.</p>
+        <p><strong>仕組まれる (shikumareru):</strong> "To be built in, embedded, contrived." This passive verb makes the poison into a structural feature, not a surface quality. The poison is not sprinkled on top. It is 仕組まれた: built into the mechanism, wired into the circuitry, part of the design. The word contains 仕組み (shikumi, mechanism, structure, contrivance). When something is 仕組まれた, it has been engineered. The grammar makes Tsutsui into an engineer of venom, a writer who designs his essays the way a bomb-maker designs devices: every component has a purpose, and the purpose is detonation. The "terror" (恐怖) promised by the copy is not the terror of horror fiction. It is the subtler terror of recognizing that the person making you laugh is also trying to destroy something you believe in.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Constraint: The Grammar of the Cage</h2>
+    <span class="story-label">Formal structure</span>
+
+    <p>A reader who noticed the hidden architecture reveals the oulipian discipline behind the apparent chaos.</p>
+
+    <div class="passage venom">
+        <div class="jp-text jp">
+            <span class="hl-venom">書く分量は決められていてタイトル部分を省き一回分は原稿用紙にして七枚と五行及び十二字。きっちりこれを守らねばならぬ。この間、改行はない</span>
+        </div>
+        <div class="romaji">"Kaku bunryou wa kimerarete ite title bubun wo sabi ikkai-bun wa genkouyoushi ni shite nanamai to gogyou oyobi juuniji. Kitchiri kore wo mamoranenaranu. Kono aida, kaidan wa nai."</div>
+        <div class="translation">"The word count is fixed: excluding the title, each installment must be exactly seven manuscript pages plus five lines and twelve characters. This must be followed precisely. During this, there are no line breaks."</div>
+        <div class="source">— Reader review, quoting Tsutsui</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">分量</td><td class="reading">bunryou</td><td>amount, quantity, volume</td></tr>
+        <tr><td class="word">決められる</td><td class="reading">kimerareru</td><td>to be decided, to be fixed</td></tr>
+        <tr><td class="word">省く</td><td class="reading">habuku</td><td>to omit, to exclude</td></tr>
+        <tr><td class="word">原稿用紙</td><td class="reading">genkouyoushi</td><td>manuscript paper (Japanese format)</td></tr>
+        <tr><td class="word">七枚</td><td class="reading">nanamai</td><td>seven sheets</td></tr>
+        <tr><td class="word">五行</td><td class="reading">gogyou</td><td>five lines</td></tr>
+        <tr><td class="word">及び</td><td class="reading">oyobi</td><td>and, as well as</td></tr>
+        <tr><td class="word">十二字</td><td class="reading">juuniji</td><td>twelve characters</td></tr>
+        <tr><td class="word">きっちり</td><td class="reading">kitchiri</td><td>exactly, precisely, strictly</td></tr>
+        <tr><td class="word">守らねばならぬ</td><td class="reading">mamoranenaranu</td><td>must obey (literary/archaic)</td></tr>
+    </table>
+
+    <div class="nuance venom-box">
+        <h5>What translation loses: The literary-archaic command of 守らねばならぬ</h5>
+        <p><strong>守らねばならぬ (mamoranenaranu):</strong> "Must obey, must be followed." This is a literary negative form of 守らなければならない, the standard "must" construction. By compressing なければ into ねば and ならない into ならぬ, Tsutsui gives the constraint the sound of a samurai's vow or a monk's rule. The grammar makes the word-count discipline feel like a code of honor. He is not merely following instructions from his publisher. He is submitting to a ねばならぬ, a necessity so absolute it requires archaic language to express. This is characteristic of Tsutsui's humor: he treats trivial constraints with the gravity of moral obligation, which makes both the constraint and the gravity funny. The essays are seven pages, five lines, and twelve characters because きっちりこを守らねばならぬ. The ねばならぬ makes the arbitrary into the imperative.</p>
+        <p><strong>原稿用紙 (genkouyoushi):</strong> "Manuscript paper." This is the traditional Japanese writing paper used by novelists, with a grid of 400 characters per page (20 vertical columns by 20 horizontal rows). When Tsutsui says 原稿用紙にして七枚, he means seven full pages of this grid, plus five additional lines, plus twelve additional characters. The precision is extraordinary: not "about seven pages" but exactly seven pages, five lines, and twelve characters. The grammar of the enumeration (七枚と五行及び十二字) makes the constraint sound like a legal contract or a technical specification. And the reader who noticed this constraint makes an equally extraordinary observation: every single essay in the collection hits exactly this length. The improvisation is not sloppy. It is machined.</p>
+        <p><strong>きっちり (kitchiri):</strong> "Exactly, precisely, strictly." This adverb carries a note of fussiness, of someone who counts. When combined with 守らねばならぬ, it creates a portrait of Tsutsui as a rule-following obsessive, which is funny because his public persona is that of a rule-breaking genius. The truth is that genius often expresses itself through constraints. The きっちり makes the formal discipline audible: he is not approximately following the rule. He is hitting it exactly, every month, for twenty-four months. The grammar of precision makes the essays into a kind of prose poetry, each piece exactly the same size, like sonnets or haiku or jazz solos over the same number of bars.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Black Laughter: The Grammar of Echoing Darkness</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The publisher's most evocative phrase describes the book's emotional weather.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">黒い笑いがこだまする。高い笑いが降ってくる</span>
+        </div>
+        <div class="romaji">"Kuroi warai ga kodama suru. Takai warai ga futte kuru."</div>
+        <div class="translation">"Black laughter echoes back. High laughter rains down."</div>
+        <div class="source">— Promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">黒い</td><td class="reading">kuroi</td><td>black, dark</td></tr>
+        <tr><td class="word">笑い</td><td class="reading">warai</td><td>laughter, laugh</td></tr>
+        <tr><td class="word">こだまする</td><td class="reading">kodama suru</td><td>to echo, to reverberate</td></tr>
+        <tr><td class="word">高い</td><td class="reading">takai</td><td>high, tall; loud, shrill</td></tr>
+        <tr><td class="word">降る</td><td class="reading">furu</td><to fall, to rain down</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The onomatopoeia of こだま</h5>
+        <p><strong>こだまする (kodama suru):</strong> "To echo, to reverberate." The word こだま is etymologically related to 木霊: the spirit of a tree, or the echo that returns from a forest. In Japanese folklore, a kodama is a tree spirit whose voice echoes through the woods. When the promotional copy says 黒い笑いがこだまする, it makes the laughter into something supernatural: not merely sound but a spirit that haunts. The black laughter does not simply happen. It こだまする: it bounces off surfaces and returns to the listener transformed, darker than when it left. The grammar makes the book into a haunted forest. You laugh, and the laugh comes back at you from the trees, and it is not quite your laugh anymore. It has been touched by something.</p>
+        <p><strong>高い笑い (takai warai):</strong> "High laughter." 高い means high in pitch, but also high in altitude, high in status, high in intensity. The laughter that 降ってくる (rains down) from above is not human-scale. It is cosmic, meteorological, divine. The verb 降る is the word for rain, snow, and divine blessing/curses. When laughter 降ってくる, it falls like weather, like something you cannot control or avoid. The grammar of the two sentences creates a vertical axis: the black laughter echoes horizontally, bouncing between walls or trees, while the high laughter falls vertically from above. Together they make a cross, a coordinate system for Tsutsui's humor: dark and echoing at ground level, shrill and descending from the sky. You are surrounded.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Essay Titles: The Grammar of Provocation</h2>
+    <span class="story-label">Contents</span>
+
+    <p>Each essay title is a small bomb designed to detonate in the reader's expectations.</p>
+
+    <div class="essay-list">
+        <h5>Selected essay titles from the collection</h5>
+        <ul>
+            <li><strong>純粋些末事没入力批判</strong> — Junsei samatsuji botsunyuryoku hihan — "Critique of Pure Triviality Non-Input" (a parody of Kant's <em>Critique of Pure Reason</em>)</li>
+            <li><strong>楽器?武器?生殖器?</strong> — Gakki? Buki? Seishokuki? — "Musical Instrument? Weapon? Genital?"</li>
+            <li><strong>鍋やきうどんに気をつけろ</strong> — Nabeyaki udon ni ki wo tsukero — "Beware of Nabeyaki Udon"</li>
+            <li><strong>コンピューターは馬鹿か</strong> — Konpyuutaa wa baka ka — "Is the Computer Stupid?"</li>
+            <li><strong>突発性大量創作症候群</strong> — Toppatsusei tairyou sousaku shoukougun — "Sudden Massive Creative Syndrome"</li>
+            <li><strong>われらが不満の初夏</strong> — Warera ga fuman no shoka — "Our Discontented Early Summer" (parody of <em>Richard III</em>'s "Now is the winter of our discontent")</li>
+            <li><strong>基地外に刃物というが</strong> — Kichigai ni hamono to iu ga — "They Say Weapons to the Insane, But..."</li>
+            <li><strong>馬鹿な神を持つ者の苦悩</strong> — Baka na kami wo motsu mono no kunou — "The Anguish of Those Who Possess a Stupid God"</li>
+            <li><strong>譫妄状態における麻雀</strong> — Senmou joutai ni okeru maajan — "Mahjong in a State of Delirium"</li>
+        </ul>
+    </div>
+
+    <h4>Vocabulary from the titles</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">純粋</td><td class="reading">junsui</td><td>pure</td></tr>
+        <tr><td class="word">些末事</td><td class="reading">samatsuji</td><td>trivial matters, trifles</td></tr>
+        <tr><td class="word">没入力</td><td class="reading">botsunyuryoku</td><td>non-input, failure to enter data</td></tr>
+        <tr><td class="word">批判</td><td class="reading">hihan</td><td>critique, criticism</td></tr>
+        <tr><td class="word">生殖器</td><td class="reading">seishokuki</td><td>genitals, reproductive organs</td></tr>
+        <tr><td class="word">鍋焼きうどん</td><td class="reading">nabeyaki udon</td><td>nabeyaki udon (hot-pot noodle dish)</td></tr>
+        <tr><td class="word">突発性</td><td class="reading">toppatsusei</td><td>sudden onset, eruptive</td></tr>
+        <tr><td class="word">症候群</td><td class="reading">shoukougun</td><td>syndrome</td></tr>
+        <tr><td class="word">基地外</td><td class="reading">kichigai</td><td>lunatic, madman (slang/derogatory)</td></tr>
+        <tr><td class="word">刃物</td><td class="reading">hamono</td><td>blade, edged weapon</td></tr>
+        <tr><td class="word">苦悩</td><td class="reading">kunou</td><td>anguish, torment</td></tr>
+        <tr><td class="word">譫妄</td><td class="reading">senmou</td><td>delirium</td></tr>
+        <tr><td class="word">麻雀</td><td class="reading">maajan</td><td>mahjong</td></tr>
+    </table>
+
+    <div class="nuance venom-box">
+        <h5>What translation loses: The title as hand grenade</h5>
+        <p><strong>純粋些末事没入力批判 (junsei samatsuji botsunyuryoku hihan):</strong> "Critique of Pure Triviality Non-Input." This is a direct parody of Kant's <em>Critique of Pure Reason</em> (純粋理性批判, junsei risei hihan). Tsutsui replaces 理性 (reason) with 些末事 (trivial matters) and adds 没入力 (non-input, failure to enter data). The result is a title that sounds like a philosophical treatise but is actually about... what, exactly? The fact that trivial things never get entered into databases? The failure of systems to record what actually matters? The comedy is in the gap between the grand philosophical frame and the petty bureaucratic content. The grammar of the parody makes Tsutsui into a philosopher of the absurd, applying Kantian rigor to the problem of whether your trivial data was properly inputted.</p>
+        <p><strong>楽器?武器?生殖器? (gakki? buki? seishokuki?):</strong> "Musical Instrument? Weapon? Genital?" The title uses question marks to create a multiple-choice quiz where all three options are objects that extend the body's power: music extends voice, weapons extend reach, genitals extend reproduction. By listing them as equivalents separated by question marks, Tsutsui makes a joke about categorization itself. Why do we classify some extensions as art, others as crime, others as private? The grammar of the title is the grammar of the absurd inventory: three things that do not belong together, forced into the same list, and the reader is asked to choose. There is no correct answer. The question is the joke.</p>
+        <p><strong>基地外に刃物というが (kichigai ni hamono to iu ga):</strong> "They Say Weapons to the Insane, But..." This title references a Japanese proverb or policy idea: don't give weapons to lunatics. The が at the end hangs, creating an unfinished sentence. "They say don't give weapons to the insane, but..." But what? But we do anyway? But the insane are already armed? But the sane are more dangerous? The grammar of the hanging が makes the title into an invitation to conspiracy. Tsutsui will complete the thought inside the essay, and the completion will not be comforting. The word 基地 (kichigai) is a loaded term: it literally means "outside the base," referring to someone outside the military base's boundaries, and by extension someone outside the boundaries of sanity. It is considered offensive in contemporary Japanese, which makes Tsutsui's use of it deliberately provocative.</p>
+        <p><strong>譫妄状態における麻雀 (senmou joutai ni okeru maajan):</strong> "Mahjong in a State of Delirium." The grammar is academic: 〜における (in, within, regarding). This is the construction used for scholarly papers: "Education in Rural Communities," "Trade in the Edo Period." By applying it to mahjong played during delirium, Tsutsui parodies academic sobriety while actually describing something that might be genuinely interesting: what happens to a game of skill and calculation when the players are feverish, hallucinating, no longer sure which tile is real? The grammar of the academic title makes the content sound like a dissertation, which makes the actual subject (fever mahjong) funnier by contrast.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. The Four Adjectives: The Grammar of Total Freedom</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>A reader's four-character summary captures the book's spirit with the precision of a poet.</p>
+
+    <div class="passage venom">
+        <div class="jp-text jp">
+            <span class="hl-venom">縦横無尽、自由奔放、天衣無縫、天下御免のエッセイ</span>
+        </div>
+        <div class="romaji">"Juuou mujin, jiyuu honpou, ten'i muhou, tenka gomen no essai."</div>
+        <div class="translation">"Essays that are boundlessly expansive, wildly free, flawlessly seamless, and licensed by heaven."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">縦横無尽</td><td class="reading">juuou mujin</td><td>boundless, freely in all directions</td></tr>
+        <tr><td class="word">自由奔放</td><td class="reading">jiyuu honpou</td><td>unrestrained, free and unfettered</td></tr>
+        <tr><td class="word">天衣無縫</td><td class="reading">ten'i muhou</td><td>flawless, seamless, divine</td></tr>
+        <tr><td class="word">天下御免</td><td class="reading">tenka gomen</td><td>licensed by heaven, universally permitted</td></tr>
+    </table>
+
+    <div class="nuance venom-box">
+        <h5>What translation loses: The four-character cascade</h5>
+        <p><strong>縦横無尽 (juuou mujin):</strong> "Freely in all directions, boundlessly expansive." Literally: vertical and horizontal without exhaustion. This four-character compound describes movement that extends in every direction without limit. When applied to prose, it means the writing goes wherever it wants: forward, backward, sideways, into digression, into non sequitur, into sudden intimacy and sudden abstraction. The compound makes Tsutsui's essays into a landscape rather than a path. You are not walking from point A to point B. You are wandering across an open plain where any direction is permitted.</p>
+        <p><strong>自由奔放 (jiyuu honpou):</strong> "Unrestrained, free and unfettered." 自由 means freedom. 奔放 means to run freely, to gallop without reins. The compound is often used for personalities that cannot be contained: free spirits, wild horses, artists who refuse discipline. The irony here is that Tsutsui's prose is simultaneously 自由奔放 and subject to the strictest formal constraints (seven pages, five lines, twelve characters, no line breaks). The reader who calls the essays 自由奔放 has understood something essential: the cage does not diminish the freedom. It intensifies it. The horse that gallops inside a corral is still galloping. The grammar of the compound makes Tsutsui into a mustang, and the newsletter format into a very large field.</p>
+        <p><strong>天衣無縫 (ten'i muhou):</strong> "Flawless, seamless, divine." Literally: heavenly garment without seams. The compound comes from Buddhist mythology: the garments of celestial beings have no stitches, no joins, no visible construction. When applied to prose, it means the writing appears effortless, as if it had always existed in this form and had never been assembled. This is the highest compliment in Chinese and Japanese literary criticism: not that the writing is good, but that it seems not to have been made. The irony, again, is that we know Tsutsui's essays were made under severe constraint, which makes the 天衣無縫 quality into a kind of magic trick. The seams are there, but you cannot see them.</p>
+        <p><strong>天下御免 (tenka gomen):</strong> "Licensed by heaven, universally permitted." This is the most audacious of the four compounds. 天下 means "all under heaven," i.e., the world. 御免 means permission, license, pardon. Together they describe something so authorized that it needs no further approval from anyone. When applied to Tsutsui's essays, the compound makes a joke about impunity: he can say whatever he wants because he has a heavenly license. The grammar of the four compounds in sequence creates an escalating claim: the essays are boundless (縦横無尽), then free (自由奔放), then flawless (天衣無縫), then divinely licensed (天下御免). By the end of the sequence, Tsutsui has been promoted from wandering writer to celestial authority. The reader has given him permission to be as toxic as he likes. The 御免 is yours to grant.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. The Monthly Origin: The Grammar of the Newsletter</h2>
+    <span class="story-label">Publication history</span>
+
+    <p>The essays were born as monthly reports for a complete works, which explains their hybrid nature.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">筒井康隆全集全24巻の月報を一冊にまとめたものである。24ヶ月、つまり2年間にわたって書かれたエッセイなのだ</span>
+        </div>
+        <div class="romaji">"Tsutsui Yasutaka zenshuu zen nijuuyonkan no geppou wo issatsu ni matometa mono de aru. Nijuuyokka-getsu, tsumari ninenkan ni watatte kakareta essai na no da."</div>
+        <div class="translation">"It is a collection that gathers the monthly newsletters for the 24-volume Tsutsui Yasutaka Complete Works into a single book. They are essays written over 24 months, that is, two years."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">全集</td><td class="reading">zenshuu</td><td>complete works</td></tr>
+        <tr><td class="word">月報</td><td class="reading">geppou</td><td>monthly newsletter/report</td></tr>
+        <tr><td class="reading">一冊</td><td class="reading">issatsu</td><td>one volume, one book</td></tr>
+        <tr><td class="word">まとめる</td><td class="reading">matomeru</td><td>to gather, to compile</td></tr>
+        <tr><td class="word">及ぶ</td><td class="reading">oyobu</td><td>to extend over, to last</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The humble grandeur of 月報</h5>
+        <p><strong>月報 (geppou):</strong> "Monthly newsletter, monthly report." This is a humble format. A 月報 is what companies send to shareholders, what museums send to members, what publishers include as a bonus with expensive complete works. It is not a prestigious literary venue. It is administrative, supplementary, disposable. The genius of <em>Gensho Chitai</em> is that Tsutsui treated this humble format as a serious literary stage. The 月報 was supposed to be a minor accompaniment to the major event of the complete works. Tsutsui made it into a parallel major event. The grammar of 月報 makes the origin sound modest, which makes the achievement more impressive: he took a throwaway format and made it into a book that has outlived many of the novels it was supposed to promote.</p>
+        <p><strong>24ヶ月、つまり2年間 (nijuuyokka-getsu, tsumari ninenkan):</strong> "24 months, that is, two years." The clarification (つまり, tsumari, "that is/i.e.") makes the duration explicit: two years of monthly essays, each one hitting exactly the same length, each one without line breaks, each one starting with a different conjunction. The grammar of the enumeration makes the project sound like a marathon. Two years is long enough for moods to change, for obsessions to develop and fade, for the writer to get bored and then find new energy. The 24 months become a kind of autobiography in real time: not a memoir written after the fact, but a diary of consciousness as it happened, constrained by format but free in content.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The Conjunction Constraint: The Grammar of Varied Beginnings</h2>
+    <span class="story-label">Formal structure</span>
+
+    <p>A reader noticed a hidden rule that reveals Tsutsui's obsessive craftsmanship.</p>
+
+    <div class="passage venom">
+        <div class="jp-text jp">
+            <span class="hl-venom">書き出しを全て事なる接続詞で始める趣向がある</span>
+        </div>
+        <div class="romaji">"Kakidashi wo subete kotonaru setsuzokushi de hajimeru kufuu ga aru."</div>
+        <div class="translation">"There is a contrivance whereby each piece begins with a different conjunction."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">書き出し</td><td class="reading">kakidashi</td><td>beginning, opening (of a text)</td></tr>
+        <tr><td class="word">接続詞</td><td class="reading">setsuzokushi</td><td>conjunction, conjunctive word</td></tr>
+        <tr><td class="word">趣向</td><td class="reading">kufuu</td><td>contrivance, device, ingenuity</td></tr>
+    </table>
+
+    <div class="nuance venom-box">
+        <h5>What translation loses: The oulipian elegance of 趣向</h5>
+        <p><strong>趣向 (kufuu):</strong> "Contrivance, device, ingenuity." This is a word for deliberate artistic craft, the extra effort that transforms competence into brilliance. When the reader says there is a 趣向 whereby each essay begins with a different conjunction, she is identifying the kind of hidden rule that Oulipo writers cherish: a constraint so specific that no reader would notice it unless they were paying extraordinary attention. Twenty-four essays. Twenty-four different opening conjunctions. No repeats. The 趣向 makes Tsutsui into a crossword constructor, a sudoku master, a writer who plays games with himself and lets the reader discover the rules afterward. The grammar of 趣向がある (there is a contrivance) makes the discovery sound like finding a secret door in a house you thought you knew.</p>
+        <p><strong>接続詞 (setsuzokushi):</strong> "Conjunction." In Japanese, conjunctions are the words that connect sentences to each other: しかし (however), また (also), そこで (therefore), なぜなら (because), ところが (however/and then). By requiring each essay to start with a different conjunction, Tsutsui forces himself into a different rhetorical posture every month. One essay begins with contradiction. Another with addition. Another with causality. Another with narrative transition. The constraint is invisible to casual readers but it shapes every essay's first breath. The grammar of the first sentence determines the grammar of everything that follows. Tsutsui's 趣向 means that no two essays can start from the same place, even though they all end at exactly the same length.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Reader's Warning: The Grammar of Dangerous Taste</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>One reader's opening line captures the social risk of admiring Tsutsui too openly.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">筒井康隆を好きな奴とは友達になりたくない。それが小学生のときに読んでいた奴ならなおさら</span>
+        </div>
+        <div class="romaji">"Tsutsui Yasutaka wo suki na yatsu to wa tomodachi ni naritakunai. Sore ga shougakusei no toki ni yonde ita yatsu nara naosara."</div>
+        <div class="translation">"I don't want to be friends with anyone who likes Tsutsui Yasutaka. If they read him in elementary school, even less so."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">奴</td><td class="reading">yatsu</td><td>guy, fellow (rough/colloquial)</td></tr>
+        <tr><td class="word">友達</td><td class="reading">tomodachi</td><td>friend</td></tr>
+        <tr><td class="word">なおさら</td><td class="reading">naosara</td><td>even more, still less, all the more</td></tr>
+        <tr><td class="word">小学生</td><td class="reading">shougakusei</td><td>elementary school student</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The social poison of なおさら</h5>
+        <p><strong>なおさら (naosara):</strong> "Even more, still less, all the more." This adverb intensifies a negative preference. The reader has already said they don't want to be friends with Tsutsui fans. Then they add: if the person read him in elementary school, なおさら. The word makes the early exposure into a kind of contamination. Someone who encountered Tsutsui's black laughter as a child has been damaged at a formative stage. They have been warped by his humor before they had defenses. The なおさら makes the elementary-school reader into the most suspect category, which is funny because it is exactly the category Tsutsui would most want to claim as his ideal audience. The grammar of the sentence makes liking Tsutsui into a social liability, which is itself a very Tsutsui-esque joke: the writer who specializes in calculated poison has successfully poisoned his own fans' social prospects.</p>
+        <p><strong>奴 (yatsu):</strong> "Guy, fellow." This is a rough, slightly contemptuous word for a person. It is not 人 (hito, person) or 者 (mono, individual) or 方 (kata, honorable person). It is 奴: that guy, that character, that suspicious figure. By calling Tsutsui fans 奴, the reviewer makes them sound like members of a disreputable club, people you might see at the racetrack or the underground poker game. The grammar of 好きな奴 (a guy who likes) makes fandom into a personality defect. You don't merely read Tsutsui. You are a 奴 who reads Tsutsui. The distinction is important. The word makes the preference into an identity, and the identity into something slightly shameful.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Self-Deprecation: The Grammar of the Genius Pretending to Be Ordinary</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>Another reader detects a surprising note in the essays: Tsutsui pretending he is just a regular person.</p>
+
+    <div class="passage venom">
+        <div class="jp-text jp">
+            <span class="hl-venom">テンサイ・ツツイが庶民のレベルに降りてきているのだろうか</span>
+        </div>
+        <div class="romaji">"Tensai Tsutsui ga shomin no reberu ni orite kite iru no darou ka."</div>
+        <div class="translation">"Could it be that Genius Tsutsui is descending to the level of ordinary people?"</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">天才</td><td class="reading">tensai</td><td>genius</td></tr>
+        <tr><td class="word">庶民</td><td class="reading">shomin</td><td>common people, ordinary folk</td></tr>
+        <tr><td class="word">レベル</td><td class="reading">reberu</td><td>level</td></tr>
+        <tr><td class="word">降りる</td><td class="reading">oriru</td><td>to descend, to get off, to step down</td></tr>
+    </table>
+
+    <div class="nuance venom-box">
+        <h5>What translation loses: The irony of テンサイ・ツツイ</h5>
+        <p><strong>テンサイ・ツツイ (Tensai Tsutsui):</strong> "Genius Tsutsui." The reader uses the English loanword 天才 (tensai) in katakana, which makes it sound like a stage name or a superhero identity. Genius Tsutsui. The Man of a Thousand Masks. The writer who cannot be contained by genre, by decorum, by the rules of polite essay-writing. By calling him テンサイ・ツツイ, the reader makes the descent to 庶民のレベル (the level of ordinary people) into a narrative event: Superman visiting Smallville, the Emperor walking among the commoners. The irony, of course, is that the essays are full of precisely the kind of petty grievances and mundane observations that ordinary people have. Tsutsui complains about computers, about noodles, about mahjong, about the annoyances of daily life. The genius has always been human. The reader just noticed.</p>
+        <p><strong>降りてきている (orite kite iru):</strong> "Is descending, is coming down." The grammar uses the directional てくる (te kuru), which means movement toward the speaker. Genius Tsutsui is not just descending. He is descending TOWARD US, the ordinary readers. The verb makes his self-deprecation into a gift. He is coming down to our level so we can understand him, or so he can understand us, or so we can all complain about nabeyaki udon together. The ている (progressive) makes the descent ongoing, not completed. He is still in the process of becoming ordinary, which means the essays capture a genius mid-transformation, like a photograph of a falling object. The grammar makes the book into a document of descent, which is also, secretly, a document of approach.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Cage That Makes the Animal Ferocious</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜ねばならぬ</strong> — Must (literary/archaic): the grammar of constraints as moral obligation</li>
+        <li><strong>〜てくる</strong> — Movement toward the speaker: the grammar of approach and descent</li>
+        <li><strong>〜における</strong> — In, within (academic): the grammar of scholarly absurdity</li>
+        <li><strong>〜というが</strong> — They say... but (hanging): the grammar of the unfinished proverb</li>
+        <li><strong>〜のだが</strong> — Explanatory + but: the grammar of the unresolved thought</li>
+        <li><strong>〜が仕組まれた</strong> — Poison embedded: the grammar of structural venom</li>
+        <li><strong>〜なし</strong> — Without, none: the grammar of deliberate absence</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>玄笑地帯</strong> — The Dark Laughter Zone: the one-character heist that turns fantasy into poison</li>
+        <li><strong>計算された毒</strong> — Calculated poison: the paradox of engineered improvisation</li>
+        <li><strong>即興生演奏</strong> — Improvisational live performance: the essay as jazz solo</li>
+        <li><strong>改行なし</strong> — No line breaks: the deliberate absence that creates claustrophobia</li>
+        <li><strong>七枚と五行及び十二字</strong> — Seven pages, five lines, and twelve characters: the cage</li>
+        <li><strong>守らねばならぬ</strong> — Must be followed: the archaic grammar of absolute constraint</li>
+        <li><strong>きっちり</strong> — Exactly, precisely: the fussiness of genius</li>
+        <li><strong>黒い笑い</strong> — Black laughter: the echo that returns darker than it left</li>
+        <li><strong>こだまする</strong> — To echo: the supernatural return of sound</li>
+        <li><strong>高い笑い</strong> — High laughter: the rain that falls from above</li>
+        <li><strong>純粋些末事没入力批判</strong> — Critique of Pure Triviality Non-Input: Kant for the digital age</li>
+        <li><strong>基地外に刃物というが</strong> — They say weapons to the insane, but: the hanging proverb</li>
+        <li><strong>譫妄状態における麻雀</strong> — Mahjong in a state of delirium: the academic title as joke</li>
+        <li><strong>縦横無尽</strong> — Boundlessly expansive: movement in all directions without exhaustion</li>
+        <li><strong>自由奔放</strong> — Unrestrained: the mustang inside the corral</li>
+        <li><strong>天衣無縫</strong> — Flawless, seamless: the garment without stitches</li>
+        <li><strong>天下御免</strong> — Licensed by heaven: the claim to universal impunity</li>
+        <li><strong>月報</strong> — Monthly newsletter: the humble format that became literature</li>
+        <li><strong>趣向</strong> — Contrivance: the hidden rule that only attentive readers find</li>
+        <li><strong>接続詞</strong> — Conjunction: the rhetorical posture that shapes the essay's first breath</li>
+        <li><strong>なおさら</strong> — Even more, still less: the intensifier of social poison</li>
+        <li><strong>テンサイ・ツツイ</strong> — Genius Tsutsui: the superhero identity in katakana</li>
+        <li><strong>降りてきている</strong> — Is descending toward us: the genius becoming approachable</li>
+    </ul>
+
+    <h4>Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Sixteen directions of Japanese prose</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, 手ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ハートウォーミング, 賛否両論, 乗り越える), and Tsutsui's are — depending on which Tsutsui you meet — either accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智) or constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ). The Tsutsui of <em>Yoru no Konto</em> writes sketches that speed toward madness, that accumulate disaster through sheer velocity, that make laughter into a natural disaster. The Tsutsui of <em>Gensho Chitai</em> writes essays that are exactly seven pages, five lines, and twelve characters long, with no line breaks, starting with a different conjunction every month, and the poison is not in the speed but in the precision. One Tsutsui is a hurricane. The other is a bomb-maker. Both are laughing. But the hurricane laughs while it destroys, and the bomb-maker laughs while he measures. Together they show the full range of Japanese comic prose: from the tempest that blows through eighteen sketches to the cage that makes the animal more ferocious, from the grammar of acceleration to the grammar of the calculated dose, from the comedy that outruns sanity to the comedy that measures exactly how much poison a reader can survive.</p>
+</section>
+
+</main>
+
+</body>
+</html>

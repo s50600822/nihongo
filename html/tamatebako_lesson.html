@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玉手箱 — 小手鞠るい | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-rose: #b85c6e;
+  --accent-rose-dim: #8a4352;
+  --accent-rose-glow: rgba(184, 92, 110, 0.12);
+  --accent-warm: #c98b7a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-rose-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-rose);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-rose-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-rose-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-rose);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-rose-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-rose), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-rose);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-rose-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-rose); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-rose-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 3em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Folktale box */
+.folktale-box {
+  background: linear-gradient(135deg, var(--bg-elevated) 0%, rgba(184, 92, 110, 0.05) 100%);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+  position: relative;
+}
+
+.folktale-box::before {
+  content: "";
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 4rem;
+  color: var(--accent-rose-glow);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.folktale-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--accent-rose);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+}
+
+.folktale-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-sm);
+}
+
+.folktale-en {
+  text-align: center;
+  color: var(--ink-secondary);
+  font-size: var(--step-0);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-rose-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-rose);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-rose-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-rose);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-warm);
+}
+
+.nuance-box h4 {
+  color: var(--accent-warm);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-rose);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-rose);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-rose-dim), var(--accent-rose));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-rose);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Story cards */
+.story-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.story-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  border-left: 3px solid var(--accent-rose-dim);
+}
+
+.story-card h4 {
+  color: var(--accent-rose);
+  margin-top: 0;
+}
+
+.story-card .story-tag {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-rose-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage, .folktale-box {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>玉手箱</h1>
+  <p class="hero-subtitle">幻のデビュー小説集</p>
+  <p class="hero-meta">小手鞠るい &middot; 河書房新社 &middot; 1995 / 2007（文庫）</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#stories"><span class="toc-num">03</span> The Three Stories</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 玉手箱</h2>
+  <p class="lead">The title draws directly from the Urashima Taro folktale, where the <em>tamatebako</em> is the forbidden box given by Princess Otohime. Opening it releases white smoke and transforms Urashima into an old man. In Kotemari's hands, the box becomes a metaphor for a daughter whose inner world remains closed, and for the secrets women keep about their bodies, desires, and choices.</p>
+
+  <div class="folktale-box">
+    <div class="folktale-jp">浦島太郎の玉手箱</div>
+    <div class="folktale-romaji">Urashima Taro no Tamatebako</div>
+    <div class="folktale-en">"The Jewel Casket of Urashima Taro"</div>
+    <p style="text-align:center; color: var(--ink-muted); font-size: var(--step--1); margin-top: var(--space-sm);">A box given by Princess Otohime with the warning "never open it." When Urashima breaks the taboo, white smoke pours out and he ages instantly. The box contained his stolen time.</p>
+  </div>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">玉</span>
+        <span class="romaji">tama</span>
+        <span class="meaning">"jewel, gem, sphere" — A prefix of beauty and preciousness. In classical Japanese, <em>tama</em> is an honorific prefix denoting something beautiful or precious.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">手箱</span>
+        <span class="romaji">tebako</span>
+        <span class="meaning">"hand box / casket" — A small traditional Japanese box for holding accessories, cosmetics, or valuables. Historically used by noblewomen to store combs and makeup.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">玉手箱</span>
+        <span class="romaji">tamatebako</span>
+        <span class="meaning">"jewel casket" — The compound fuses beauty (<em>tama</em>) with intimacy (<em>tebako</em>). It suggests something small, precious, and dangerously full of secrets.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Literary nuance:</strong> The title is written without any particles or verbs, creating a noun-phrase stillness that mirrors the sealed box itself. This is a classic Japanese titling strategy: the object stands alone as a symbol, inviting the reader to supply the action (open it? leave it closed?).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Title as Metaphor</h3>
+    <p>In the book's title story, a woman who has suffered from infertility decides on surrogacy and finally obtains her "own" child. But the daughter's <em>tamatebako</em> — her inner self, her origins, her relationship to the woman who raised her — remains closed. The title thus operates on multiple levels:</p>
+    <ol style="margin-top: var(--space-sm); padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Folktale level:</strong> The forbidden box whose opening brings irreversible transformation</li>
+      <li style="margin-bottom: 0.5em;"><strong>Body level:</strong> The womb as a box that may or may not open, that may carry another's child</li>
+      <li style="margin-bottom: 0.5em;"><strong>Psychological level:</strong> The secrets we keep from those closest to us, and from ourselves</li>
+      <li><strong>Narrative level:</strong> Each story is itself a box the reader opens, releasing emotions the characters have contained</li>
+    </ol>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>小手鞠るい &mdash; Kotemari Rui</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">鞠</div>
+    <div class="author-name-block">
+      <h3>小手鞠るい</h3>
+      <p class="author-name-romaji">Kotemari Rui &middot; b. 1956, Okayama</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Kotemari Rui is a Japanese novelist, poet, and essayist who has lived in Woodstock, New York since 1992. She is one of Japan's most versatile contemporary writers, producing everything from adult romance novels to acclaimed children's books, while maintaining a poetic sensibility that runs through all her work.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1956</span>
+        <span>Born in Bizen City, Okayama Prefecture. Birth name: Kawataki Kaori (川滝かおり).</span>
+      </li>
+      <li>
+        <span class="timeline-year">~1978</span>
+        <span>Graduated from Doshisha University, Faculty of Law. Worked as a publishing editor, cram school teacher, and bookstore clerk before becoming a freelance writer.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1981</span>
+        <span>Won the 7th Sanrio "Shi to Meruhen" (Poetry and Fairy Tales) Prize. Published three poetry collections under her real name, Kawataki Kaori.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1992</span>
+        <span>Moved to Woodstock, New York, where she has lived ever since.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1993</span>
+        <span>Won the 12th Umigame New Literary Prize for <em>Otogibanashi</em> (おとぎ話 / "Fairy Tale"), a story about a Japanese woman's physical and emotional turmoil witnessing an American couple's divorce.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1995</span>
+        <span>Published <em>Tamatebako</em>, her fiction debut as Kotemari Rui — a "re-departure" (<em>sai-shuttatsu</em>) as a novelist after beginning as a poet. The book was later described as a "phantom debut collection" (<em>maboroshi no debut shosetsushu</em>) after going out of print.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2005</span>
+        <span>Won the 12th Shimase Love Literature Prize for <em>Hoshii no wa, Anata Dake</em> (欲しいのは、あなただけ / "All I Want Is You").</span>
+      </li>
+      <li>
+        <span class="timeline-year">2009</span>
+        <span>The picture book <em>Ruu to Rinden &mdash; Tabi to Orusuban</em> (ルウとリンデン 旅とおるすばん) won the Bologna International Children's Book Fair Prize.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2019</span>
+        <span>Won the Shogakukan Children's Publishing Culture Prize for <em>Aru Hareta Natsu no Asa</em> (ある晴れた夏の朝 / "One Sunny Summer Morning").</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <strong>Personal note:</strong> Kotemari has been married to Glenn Sullivan, an American, since her move to the United States. Her life straddling two cultures — the rural tranquility of Woodstock and the intense emotional landscapes of her Japanese fiction — gives her work a unique binocular vision. She has described her motivation simply: "I just love to write." This single feeling, she says, is the only thing she has, yet it is also what sets her free.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- The Three Stories -->
+<section id="stories">
+  <div class="section-label">Contents</div>
+  <h2>The Three Stories</h2>
+  <p class="lead"><em>Tamatebako</em> is a short story collection containing three thematically linked works. Each explores the body, desire, and the gap between what women want and what society allows them to have.</p>
+
+  <div class="story-grid">
+    <div class="story-card">
+      <span class="story-tag">Title Story</span>
+      <h4>玉手箱 &middot; Tamatebako</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">A woman tormented by infertility decides on surrogacy and finally obtains the child she has longed for. But her daughter's inner world — her "tamatebako" — remains closed. A story of maternal love, bodily alienation, and the question of what makes a mother a mother.</p>
+      <p style="font-size: var(--step--1); color: var(--ink-muted);">Themes: infertility, surrogacy, motherhood, bodily autonomy</p>
+    </div>
+    <div class="story-card">
+      <span class="story-tag">Award-Winning</span>
+      <h4>おとぎ話 &middot; Otogibanashi</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">Winner of the 12th Umigame New Literary Prize. A Japanese woman in America witnesses an American couple's divorce and finds herself caught in the physical and emotional turmoil of their separation. Love and sexuality are depicted with unflinching, sensational honesty.</p>
+      <p style="font-size: var(--step--1); color: var(--ink-muted);">Themes: divorce, sexuality, cross-cultural encounter, bodily desire</p>
+    </div>
+    <div class="story-card">
+      <span class="story-tag">Third Story</span>
+      <h4>卵を忘れたカナリア &middot; Tamago wo Wasureta Kanaria</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary); margin-bottom: var(--space-xs);">"The Canary Who Forgot Her Eggs." A story about a woman who wants a child, capturing the trembling, contradictory emotions of maternal desire. The canary — a fragile bird traditionally used in coal mines to detect danger — becomes a metaphor for female vulnerability and reproductive anxiety.</p>
+      <p style="font-size: var(--step--1); color: var(--ink-muted);">Themes: childlessness, reproductive longing, female fragility, hope</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>玉手箱 &middot; Tamatebako</h3>
+    <p>A woman has suffered deeply from infertility. After much anguish, she decides on surrogacy and finally obtains the child she has so desperately wanted. But the daughter's <em>tamatebako</em> — her inner world, her genetic origins, her relationship to the woman who carries and raises her — remains closed. The story traces the emotional entanglement of love and possession, asking: What makes a mother? Is it blood, gestation, or the act of raising? The "box" of the title is both the daughter's inaccessible psyche and the womb that could not, and then could, produce a child.</p>
+  </div>
+
+  <div class="card">
+    <h3>おとぎ話 &middot; Otogibanashi (Fairy Tale)</h3>
+    <p>A Japanese woman living in America becomes entangled in the divorce of an American couple she knows. The story depicts the raw physical and emotional chaos of marital dissolution with a directness that earned it the Umigame New Literary Prize. Love, sex, jealousy, and the body are laid bare without romantic varnish. The title is deeply ironic: there is nothing fairy-tale-like about the pain of separation, yet the phrase also hints at the archetypal nature of the drama — every divorce is both utterly unique and a story as old as marriage itself.</p>
+  </div>
+
+  <div class="card">
+    <h3>卵を忘れたカナリア &middot; Tamago wo Wasureta Kanaria</h3>
+    <p>A canary that has forgotten her eggs. The title evokes a bird that has lost its reproductive instinct, or perhaps a woman who fears she has forgotten how to become a mother. Canaries were historically used in coal mines to detect toxic gas — their fragility made them early warning systems. In this story, the canary becomes a symbol for the fragility of female reproductive hope, and for the way society places the burden of "warning" (of biological clocks, of declining fertility) on women's bodies.</p>
+  </div>
+
+  <div class="note">
+    <strong>Collection arc:</strong> Read together, the three stories form a triptych of female bodily experience: the body that cannot conceive (Tamatebako), the body caught in the crossfire of others' desires (Otogibanashi), and the body that fears it has forgotten its reproductive purpose (Tamago wo Wasureta Kanaria). Kotemari's poetic background is evident in the way each title is a compressed image rather than a declarative statement.
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These representative passages capture the book's tone, thematic concerns, and linguistic features. Note: The original text is not widely excerpted online; the passages below are reconstructed from the book's synopsis language and Kotemari's known stylistic tendencies, based on publisher descriptions and critical reception.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Closed Box</div>
+    <div class="passage-jp">
+      不妊に苦しみ、代理出産を決意して得たわが子。だけど娘の玉手箱は閉じたままだった……。
+    </div>
+    <div class="passage-romaji">
+      Funin ni kurushimi, dairi-shussan wo ketsui shite eta wa ga ko. Dakedo musume no tamatebako wa tojita mama datta…….
+    </div>
+    <div class="passage-en">
+      "A child obtained after suffering from infertility and resolving upon surrogacy. But the daughter's jewel casket remained closed……"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the book's core sentence, appearing in publisher descriptions. The phrase <em>wa ga ko</em> (わが子, "one's own child") carries immense weight in Japanese: <em>wa</em> is an archaic/literary first-person possessive, elevating the emotional stakes beyond casual <em>watashi no ko</em>. The ellipsis at the end is characteristic of Japanese book-copy style, inviting the reader to imagine what remains unsaid. The juxtaposition of <em>eta</em> (得た, obtained/acquired) with <em>wa ga ko</em> (one's own child) creates a subtle tension: is this child truly "obtained," or truly "one's own"?</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">Love's Entanglement</div>
+    <div class="passage-jp">
+      愛の葛藤を描き高い評価を得た初期傑作。
+    </div>
+    <div class="passage-romaji">
+      Ai no kattou wo egaki takai hyouka wo eta shoki kessaku.
+    </div>
+    <div class="passage-en">
+      "An early masterpiece that depicts the conflicted entanglements of love and won high acclaim."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Kattou</em> (葛藤) is stronger than "conflict" or "struggle." It implies vines tangled together, mutually constraining — an image of love as something that binds both parties inextricably. <em>Shoki kessaku</em> (初期傑作, "early masterpiece") is critical vocabulary indicating a work of mature artistry from the very beginning of a career. The sentence structure, with the verb <em>egaku</em> (描く, to depict) preceding the result <em>takai hyouka wo eta</em> (won high praise), is typical of Japanese promotional copy, building toward the evaluative climax.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Sensational Honesty</div>
+    <div class="passage-jp">
+      愛と性をセンセショナルに描いた「海燕」新人文学賞受賞作「おとぎ話」。
+    </div>
+    <div class="passage-romaji">
+      Ai to sei wo senseshonaru ni egaita "Umigame" Shinjin Bungaku-shou jushou-saku "Otogibanashi."
+    </div>
+    <div class="passage-en">
+      "<em>Otogibanashi</em>, winner of the Umigame New Literary Prize, sensationally depicts love and sexuality."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The word <em>senseshonaru ni</em> (センセーショナルに, "sensationally") is a loanword deployed here with precision. In Japanese literary discourse, it signals that the work deals with sex and the body without euphemism or modesty — a departure from traditional Japanese reticence about female desire. The juxtaposition of this word with <em>otogibanashi</em> (おとぎ話, "fairy tale") creates a deliberate friction: fairy tales are supposed to be innocent, yet this one is sensational. The effect is subversive.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Forgotten Eggs</div>
+    <div class="passage-jp">
+      子を望む女性の揺れる気持ちを描いた「卵を忘れたカナリア」。
+    </div>
+    <div class="passage-romaji">
+      Ko wo nozomu josei no yureru kimochi wo egaita "Tamago wo Wasureta Kanaria."
+    </div>
+    <div class="passage-en">
+      "<em>The Canary Who Forgot Her Eggs</em>, depicting the trembling emotions of a woman who desires a child."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Yureru</em> (揺れる) means "to sway, tremble, waver." Applied to <em>kimochi</em> (気持ち, feelings), it captures not indecision but the physical sensation of emotion in flux — like a tree in wind. The canary (<em>kanaria</em>) is a Western-imported symbol in Japan, associated with fragility, song, and (through the mining context) vulnerability to invisible danger. <em>Tamago wo wasureru</em> (卵を忘れた, "forgot her eggs") is an almost absurdly delicate way to describe infertility anxiety: not "cannot conceive" but "has forgotten" — as if motherhood were a memory that might return.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the title, synopsis, and thematic context, organized by theme.</p>
+
+  <div class="card">
+    <h3>Title & Folktale</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>玉手箱</td><td>tamatebako</td><td class="pos">noun</td><td>jewel casket; the forbidden box from Urashima Taro</td></tr>
+        <tr><td>玉</td><td>tama</td><td class="pos">prefix</td><td>jewel, sphere; honorific prefix for beauty/preciousness</td></tr>
+        <tr><td>手箱</td><td>tebako</td><td class="pos">noun</td><td>small box, casket (trad. for accessories/cosmetics)</td></tr>
+        <tr><td>浦島太</td><td>Urashima Taro</td><td class="pos">name</td><td>protagonist of the famous Japanese folktale</td></tr>
+        <tr><td>乙姫</td><td>Otohime</td><td class="pos">name</td><td>Princess of the Dragon Palace in Urashima Taro</td></tr>
+        <tr><td>開ける</td><td>akeru</td><td class="pos">verb</td><td>to open (transitive)</td></tr>
+        <tr><td>閉じる</td><td>tojiru</td><td class="pos">verb</td><td>to close, to remain shut</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Body & Reproduction</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>不妊</td><td>funin</td><td class="pos">noun</td><td>infertility</td></tr>
+        <tr><td>代理出産</td><td>dairi-shussan</td><td class="pos">noun</td><td>surrogacy (lit. "proxy childbirth")</td></tr>
+        <tr><td>わが子</td><td>wa ga ko</td><td class="pos">noun</td><td>one's own child (literary/poetic)</td></tr>
+        <tr><td>娘</td><td>musume</td><td class="pos">noun</td><td>daughter; young woman</td></tr>
+        <tr><td>卵</td><td>tamago</td><td class="pos">noun</td><td>egg; ovum</td></tr>
+        <tr><td>子を望む</td><td>ko wo nozomu</td><td class="pos">phrase</td><td>to desire/long for a child</td></tr>
+        <tr><td>カナリア</td><td>kanaria</td><td class="pos">noun</td><td>canary (bird)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Conflict</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>葛藤</td><td>kattou</td><td class="pos">noun</td><td>conflict, struggle, entanglement (like vines)</td></tr>
+        <tr><td>揺れる</td><td>yureru</td><td class="pos">verb</td><td>to sway, tremble, waver</td></tr>
+        <tr><td>気持ち</td><td>kimochi</td><td class="pos">noun</td><td>feelings, emotions, heart</td></tr>
+        <tr><td>愛</td><td>ai</td><td class="pos">noun</td><td>love</td></tr>
+        <tr><td>性</td><td>sei</td><td class="pos">noun</td><td>sex, sexuality</td></tr>
+        <tr><td>苦しみ</td><td>kurushimi</td><td class="pos">noun</td><td>suffering, anguish</td></tr>
+        <tr><td>決意</td><td>ketsui</td><td class="pos">noun</td><td>resolution, determination</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Literary & Publishing</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>おとぎ話</td><td>otogibanashi</td><td class="pos">noun</td><td>fairy tale, folktale</td></tr>
+        <tr><td>傑作</td><td>kessaku</td><td class="pos">noun</td><td>masterpiece</td></tr>
+        <tr><td>初期</td><td>shoki</td><td class="pos">noun</td><td>early period (of a career)</td></tr>
+        <tr><td>新人文学賞</td><td>shinjin bungaku-shou</td><td class="pos">noun</td><td>new writer literary prize</td></tr>
+        <tr><td>受賞作</td><td>jushou-saku</td><td class="pos">noun</td><td>prize-winning work</td></tr>
+        <tr><td>デビュー作</td><td>debyuu-saku</td><td class="pos">noun</td><td>debut work</td></tr>
+        <tr><td>幻の</td><td>maboroshi no</td><td class="pos">adj</td><td>phantom, legendary (of out-of-print works)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loses</h2>
+  <p class="lead">Kotemari's prose is poetic, allusive, and emotionally compressed. Much of its power depends on cultural and literary references that do not travel easily into English.</p>
+
+  <div class="card">
+    <h3>1. <em>Wa ga Ko</em> (わが子)  The Poetic Possessive</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>代理出産を決意して得た<strong>わが子</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the child she obtained through surrogacy"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Wa ga</em> (わが) is an archaic/literary first-person possessive, closer to "my very own" than neutral <em>watashi no</em>. It carries the weight of poetry and prayer. A mother calling her child <em>wa ga ko</em> is making a claim that transcends biology — it is the voice of the <em>Manyoshu</em>, of classical waka, of maternal love as an almost sacred bond. English "her child" flattens this into mere possession.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Tamatebako</em> as Cultural shorthand</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>娘の玉手箱は閉じたままだった</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Her daughter's jewel casket remained closed"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>For Japanese readers, <em>tamatebako</em> instantly evokes the Urashima Taro folktale: the box that must not be opened, the secret that transforms everything once revealed. The English "jewel casket" sounds decorative; it lacks the taboo charge. A Japanese reader understands that the daughter's inner world is not merely "closed" but <em>dangerously</em> closed — that opening it would change the mother-daughter relationship irreversibly, just as opening Urashima's box changed him into an old man.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Otogibanashi</em> (おとぎ話) as Irony</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>愛と性をセンセーショナルに描いた「おとぎ話」</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"A 'fairy tale' that sensationally depicts love and sexuality"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Otogibanashi</em> carries the warmth of childhood innocence. Applying it to a story of divorce, adulterous desire, and bodily turmoil is a calculated irony. The English "fairy tale" has been so overused by Disney that it has lost some of its innocence; in Japanese, <em>otogibanashi</em> still retains the flavor of the <em>otogizoshi</em> tradition — medieval illustrated storybooks for children. The gap between that innocence and the story's adult content is the point.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kattou</em> (葛藤) — Entangled Vines</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>愛の葛藤を描き</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"depicting the conflicts of love"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Kattou</em> is written with the characters for <em>kuzu</em> (葛, arrowroot vine) and <em>fuji</em> (藤, wisteria vine) — both climbing plants that tangle around whatever they touch. The word thus encodes a specific image: love not as battle (<em>sentou</em>) but as entanglement, two lives twined together so thoroughly that separation damages both. English "conflict" or "struggle" loses this botanical, organic quality.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Maboroshi no Debut Shosetsushu</em> (幻のデビュー小説集)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>幻のデビュー小説集</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The legendary phantom debut short-story collection"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Maboroshi</em> (幻) means phantom, illusion, mirage — something that almost seems not to have existed because it was so hard to find. In Japanese publishing discourse, <em>maboroshi no</em> is a term of art for out-of-print works that acquire legendary status among collectors and devoted readers. The English "phantom" or "legendary" captures some of this, but misses the specific affect of Japanese book-collecting culture, where finding a <em>maboroshi no</em> book is a triumph.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns drawn from the book's synopsis language and thematic context, useful for intermediate to advanced learners.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に苦しむ</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni kurushimu</em>: to suffer from (a condition, emotion, or situation).</p>
+      <div class="grammar-example">不妊に苦しみ……</div>
+      <p class="grammar-example-en">"Suffering from infertility……" — <em>Kurushimu</em> implies ongoing, bodily suffering rather than temporary distress.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を決意して</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo ketsui shite</em>: having resolved to, having made up one's mind to.</p>
+      <div class="grammar-example">代理出産を決意して得たわが子</div>
+      <p class="grammar-example-en">"A child obtained after resolving upon surrogacy" — <em>Ketsui</em> (決意) is stronger than <em>kimeru</em>; it implies a solemn, life-altering decision.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たまま（継続）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ta mama</em>: remaining in a state; having done X and stayed that way.</p>
+      <div class="grammar-example">閉じたままだった</div>
+      <p class="grammar-example-en">"Remained closed" — The continuative <em>mama</em> emphasizes that the state of being closed has persisted over time, with a hint of regret or tension.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を描く</span>
+        <span class="grammar-level">N3-Literary</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo egaku</em>: to depict, portray, render (in art or literature).</p>
+      <div class="grammar-example">愛の葛藤を描き高い評価を得た</div>
+      <p class="grammar-example-en">"Depicted the entanglements of love and won high praise" — <em>Egaku</em> is the standard literary verb for what writers and painters do; it implies craft and intentionality.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を得る</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo eru</em>: to obtain, gain, acquire (slightly formal/literary).</p>
+      <div class="grammar-example">高い評価を得た初期傑作</div>
+      <p class="grammar-example-en">"An early masterpiece that obtained high praise" — <em>Eru</em> is more elevated than <em>morau</em> or <em>te ni ireru</em>; it suggests something earned or achieved.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に（様態・程度）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni</em> as an adverbial marker: in a X manner, to a X degree.</p>
+      <div class="grammar-example">センセーショナルに描いた</div>
+      <p class="grammar-example-en">"Depicted sensationally" — The adverbial <em>ni</em> turns the loanword <em>senseshonaru</em> into a manner adverb describing how the depiction was done.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の（連体修飾）</span>
+        <span class="grammar-level">N5-N1</span>
+      </div>
+      <p class="grammar-meaning">The attributive particle <em>no</em>, here in literary compound formation.</p>
+      <div class="grammar-example">幻のデビュー小説集</div>
+      <p class="grammar-example-en">"The phantom debut short-story collection" — <em>Maboroshi no</em> is a set literary phrase; the <em>no</em> links the abstract noun to the concrete one it modifies.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を望む</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo nozomu</em>: to desire, hope for, long for.</p>
+      <div class="grammar-example">子を望む女の揺れる気持ち</div>
+      <p class="grammar-example-en">"The trembling emotions of a woman who desires a child" — <em>Nozomu</em> is more elevated than <em>hoshii</em>; it carries a sense of yearning toward something that may be difficult to attain.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Kotemari's prose, shaped by her background in poetry, uses elevated diction (<em>wa ga</em>, <em>eru</em>, <em>nozomu</em>) alongside modern grammatical structures. Reading her work trains sensitivity to register shifts in Japanese — the difference between poetic and prosaic ways of saying the same thing. Compare <em>watashi no ko</em> (my child, casual), <em>watashi no kodomo</em> (my child, neutral), and <em>wa ga ko</em> (my child, literary/poetic) to feel the gradations.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">幻のデビュー小説集 &middot; 小手鞠るい</p>
+</footer>
+
+</div>
+</body>
+</html>

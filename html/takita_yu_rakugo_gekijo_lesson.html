@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakugo Theater — A Japanese Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e8e4de;
+            --surface: #f0ede8;
+            --ink: #1a1a1a;
+            --muted: #5c5854;
+            --accent: #5a4a3a;
+            --accent-weak: color-mix(in oklab, var(--accent) 8%, var(--surface));
+            --line: color-mix(in oklab, var(--ink) 10%, transparent);
+            --edo: #6a5a4a;
+            --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+            --step-0: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+            --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+            --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+            --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --step-4: clamp(2.8rem, 2.2rem + 3vw, 4.5rem);
+            --space: clamp(1.2rem, 1rem + 1vw, 2rem);
+            --radius: 4px;
+        }
+
+        * { box-sizing: border-box; margin: 0; }
+
+        body {
+            font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            font-size: var(--step-0);
+        }
+
+        .jp {
+            font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+            line-height: 1.9;
+        }
+
+        header {
+            background: var(--edo);
+            color: var(--bg);
+            padding: calc(var(--space) * 3) var(--space);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 100%, rgba(106,90,74,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-4);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        header .subtitle {
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: var(--step-1);
+            color: color-mix(in oklab, var(--bg) 65%, transparent);
+            margin-top: 0.8rem;
+            position: relative;
+        }
+
+        header .meta {
+            font-size: var(--step--1);
+            color: color-mix(in oklab, var(--bg) 45%, transparent);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: calc(var(--space) * 2) var(--space);
+        }
+
+        section {
+            margin-bottom: calc(var(--space) * 3);
+        }
+
+        h2 {
+            font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+            font-size: var(--step-3);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: var(--space);
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-2);
+            font-weight: 600;
+            margin-top: calc(var(--space) * 1.5);
+            margin-bottom: calc(var(--space) * 0.5);
+            color: var(--ink);
+        }
+
+        h4 {
+            font-size: var(--step-0);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-top: calc(var(--space) * 1.2);
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        p {
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        .passage {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.2);
+            margin: calc(var(--space) * 1.2) 0;
+            position: relative;
+        }
+
+        .passage::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--accent);
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        .passage.edo::before {
+            background: var(--edo);
+        }
+
+        .passage .jp-text {
+            font-size: var(--step-1);
+            margin-bottom: calc(var(--space) * 0.6);
+        }
+
+        .passage .romaji {
+            font-size: var(--step--1);
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: calc(var(--space) * 0.4);
+        }
+
+        .passage .translation {
+            font-family: "Cormorant Garamond", serif;
+            font-size: var(--step-1);
+            color: var(--muted);
+            font-style: italic;
+            border-top: 1px solid var(--line);
+            padding-top: calc(var(--space) * 0.5);
+            margin-top: calc(var(--space) * 0.5);
+        }
+
+        .source {
+            font-size: var(--step--1);
+            color: var(--muted);
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: calc(var(--space) * 0.8) 0;
+            font-size: var(--step--1);
+        }
+
+        .vocab-table th,
+        .vocab-table td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .vocab-table th {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .vocab-table .word {
+            font-family: "Noto Serif JP", serif;
+            font-size: 1.05rem;
+        }
+
+        .vocab-table .reading {
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .nuance {
+            background: var(--accent-weak);
+            border-left: 3px solid var(--accent);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .nuance.edo-box {
+            background: color-mix(in oklab, var(--edo) 8%, var(--surface));
+            border-left-color: var(--edo);
+        }
+
+        .nuance h5 {
+            font-size: var(--step--1);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+
+        .nuance.edo-box h5 {
+            color: var(--edo);
+        }
+
+        .nuance p {
+            margin-bottom: 0.4rem;
+            font-size: var(--step--1);
+        }
+
+        .nuance p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grammar {
+            background: color-mix(in oklab, var(--ink) 4%, var(--bg));
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.7);
+            margin: calc(var(--space) * 0.6) 0;
+        }
+
+        .grammar h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .grammar code {
+            background: var(--surface);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-family: "Source Sans 3", monospace;
+            font-size: 0.9em;
+        }
+
+        .hl {
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .hl-edo {
+            background: color-mix(in oklab, var(--edo) 15%, transparent);
+            padding: 0 0.15rem;
+            border-radius: 2px;
+        }
+
+        .divider {
+            text-align: center;
+            margin: calc(var(--space) * 2) 0;
+            color: var(--accent);
+            font-size: var(--step-2);
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+        }
+
+        .intro {
+            font-size: var(--step-1);
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: calc(var(--space) * 2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        ul {
+            margin-left: 1.2rem;
+            margin-bottom: calc(var(--space) * 0.8);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        .disclaimer {
+            background: color-mix(in oklab, var(--edo) 5%, var(--surface));
+            border: 1px solid color-mix(in oklab, var(--edo) 15%, transparent);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin-bottom: calc(var(--space) * 1.5);
+            font-size: var(--step--1);
+            color: var(--muted);
+        }
+
+        .story-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.15rem 0.5rem;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .rakugo-list {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 0.8);
+            margin: calc(var(--space) * 0.8) 0;
+        }
+
+        .rakugo-list h5 {
+            font-size: var(--step--1);
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .rakugo-list ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .rakugo-list li {
+            font-size: var(--step--1);
+            margin-bottom: 0.3rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: var(--step-3);
+            }
+            .passage .jp-text {
+                font-size: var(--step-0);
+            }
+        }
+
+        @media print {
+            body { background: #fff; }
+            header { background: #6a5a4a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .passage, .nuance, .grammar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Rakugo Theater<br><span style="font-size:0.6em; font-weight:300;">滝田ゆう落語劇場</span></h1>
+    <div class="subtitle">A Japanese lesson through Takita Yū's manga of thirty-eight classic rakugo stories, where Edo's downtown rises from the page in wobbly lines and speech bubbles hide secrets in their margins</div>
+    <div class="meta">Takita Yū &middot; Various editions (Bunshun 1983, Chikuma 1988, Futabasha 1991) &middot; Manga</div>
+</header>
+
+<main>
+
+<div class="disclaimer">
+    <strong>Note:</strong> The passages below are pedagogical reconstructions based on verified descriptions, plot summaries, and reviews of <em>Takita Yū Rakugo Gekijō</em> (滝田ゆう落語劇場), a manga adaptation of thirty-eight classical rakugo stories by Takita Yū (1931–1990). The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+    First published in two volumes by Bungeishunjū in 1983, then collected in a single volume by Chikuma Shobō in 1988, <em>Takita Yū Rakugo Gekijō</em> (滝田ゆう落語劇場) is one of the most unusual entries in this lesson series so far: not a novel, not a collection of essays, but a manga, a comic-book adaptation of classical rakugo stories. Its author, Takita Yū (滝田ゆう, 1931–1990), was born in Tokyo's shitamachi (downtown) and raised in Terajima-chō, Mukōjima (now Sumida-ku), in the former red-light district of Tamanoi, where his foster parents ran a stand bar. He apprenticed under Tagawa Suihō (creator of the legendary <em>Norakuro</em>), won the 20th Bungeishunjū Manga Prize (1974) for <em>Terajima-chō Kitan</em> and the 16th Japan Cartoonists Association Award Grand Prize (1987) for <em>Uramachi Serenade</em>, and received the Medal with Purple Ribbon in 1990, the year of his death. Where previous lessons in this series have explored theological wounds, slapstick tempests, bureaucratic erasure, the slow seepage of autumn feeling, the melody two people learn not to rush, the grammar of women's waiting, the horizon where sky and sea meet, the office at midnight where stickers become courtship, the cage that makes the animal ferocious, and the backstage of publishing where editors make authors grovel, this lesson enters a different territory entirely: the visual language of Edo-period comedy, the problem of translating spoken performance into silent images, and the unique genius of a man who grew up inside the world that rakugo depicts. Takita's line is famously wobbly, his backgrounds impossibly detailed, his speech bubbles contain not just words but small, "meaningless" drawings that somehow express everything the words cannot. This is Japanese as performance, as oral tradition, as the art of the pause that manga must learn to draw.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section>
+    <h2>1. The Title: The Grammar of the Theater</h2>
+    <span class="story-label">Title</span>
+
+    <p>The title announces its subject with the simplicity of a theater marquee.</p>
+
+    <div class="passage edo">
+        <div class="jp-text jp">
+            <span class="hl-edo">滝田ゆう落語劇場</span>
+        </div>
+        <div class="romaji">"Takita Yū Rakugo Gekijō"</div>
+        <div class="translation">"Takita Yū's Rakugo Theater"</div>
+        <div class="source">— Title</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">落語</td><td class="reading">rakugo</td><td>rakugo, traditional Japanese comic storytelling</td></tr>
+        <tr><td class="word">劇場</td><td class="reading">gekijō</td><td>theater, playhouse</td></tr>
+        <tr><td class="word">滝田ゆう</td><td class="reading">Takita Yū</td><td>Author's pen name (real name: Takita Yūsaku)</td></tr>
+    </table>
+
+    <div class="nuance edo-box">
+        <h5>What translation loses: The possessive grammar of 滝田ゆう落語劇場</h5>
+        <p><strong>落語劇場 (rakugo gekijō):</strong> "Rakugo theater." The compound makes the book into a venue rather than a text. A 劇場 is a place where performances happen, where audiences gather, where the lights go down and a single voice holds the room. When Takita calls his manga a 落語劇場, he is making a claim: this book is not merely an adaptation of rakugo stories. It is a theater in which those stories are performed anew, on the stage of the page, with Takita as the director, set designer, and lighting technician. The grammar of the title makes the reader into an audience member who has purchased a ticket. You do not read this book. You attend it.</p>
+        <p><strong>The author's name as marquee:</strong> In Japanese, putting the author's name before the title (滝田ゆう落語劇場) functions like a possessive: "Takita Yū's Rakugo Theater." But it also functions like a theater marquee, where the star's name appears above the play's title. Takita Yū IS the theater. His vision, his line, his wobbly shitamachi aesthetic IS the venue in which these ancient stories will be performed. The grammar makes the author inseparable from the work in a way that is rare even in manga, where the artist's hand is always visible. This is not "Rakugo Stories, illustrated by Takita Yū." This is "The Theater That Takita Yū Built, in Which Rakugo Will Happen."</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section>
+    <h2>2. The Author's Origin: The Grammar of the Shitamachi</h2>
+    <span class="story-label">Biography</span>
+
+    <p>Takita's biography is inseparable from his art. He did not research Edo-period downtown life. He grew up in its last surviving echoes.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">1931年、東京都向島区寺島町（現墨田区向島）に生まれる。墨田川高校卒。漫画を志し、田河水泡の内弟子となり、「ガロ」に「寺島町奇譚」を発表、一躍脚光を浴びる</span>
+        </div>
+        <div class="romaji">"Sen-kyūhyaku-sanjūichi-nen, Tōkyō-to Mukōjima-ku Terajima-chō (gen Sumida-ku Mukōjima) ni nareru. Sumidagawa kōkō sotsu. Manga wo kokorozashi, Tagawa Suihō no uchi-deshi to nari, 'Garo' ni 'Terajima-chō Kitan' wo happyō, ikyaku kyakkō wo abiru."</div>
+        <div class="translation">"Born in 1931 in Terajima-chō, Mukōjima-ku, Tokyo (now Mukōjima, Sumida-ku). Graduated from Sumidagawa High School. Aspiring to manga, he became an apprentice under Tagawa Suihō, and shot to fame with the publication of 'Terajima-chō Kitan' in 'Garo'."</div>
+        <div class="source">— Chikuma Shobō author bio</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">向島</td><td class="reading">Mukōjima</td><td>Mukōjima (downtown Tokyo district)</td></tr>
+        <tr><td class="word">寺島町</td><td class="reading">Terajima-chō</td><td>Terajima-chō (neighborhood)</td></tr>
+        <tr><td class="word">墨田区</td><td class="reading">Sumida-ku</td><td>Sumida Ward</td></tr>
+        <tr><td class="word">志す</td><td class="reading">kokorozasu</td><td>to aspire to, to aim for</td></tr>
+        <tr><td class="word">内弟子</td><td class="reading">uchi-deshi</td><td>live-in apprentice, disciple</td></tr>
+        <tr><td class="word">一躍</td><td class="reading">ikkyaku</td><td>in one leap, suddenly, overnight</td></tr>
+        <tr><td class="word">脚光</td><td class="reading">kyakkō</td><td>limelight, spotlight</td></tr>
+        <tr><td class="word">浴びる</td><td class="reading">abiru</td><td>to bathe in, to bask in</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The apprenticeship grammar of 内弟子</h5>
+        <p><strong>内弟子 (uchi-deshi):</strong> "Live-in apprentice, disciple." This is a specifically Japanese institution. An 内弟子 does not merely study with a master. He lives in the master's house, performs domestic labor, observes the master's entire life, and absorbs craft through total immersion. The word 内 (uchi, inside) is crucial: the apprentice is inside the master's world, inside his house, inside his daily routine. Takita did not attend manga school. He moved in with Tagawa Suihō, one of the giants of prewar Japanese manga (creator of <em>Norakuro</em>, the adventures of a black stray dog in an army unit). The grammar of 内弟子 makes Takita's education into a form of adoption. He inherited not just technique but a worldview: the shitamachi perspective, the affection for losers and eccentrics, the belief that comedy and pathos are the same emotion seen from different angles.</p>
+        <p><strong>一躍脚光を浴びる (ikkyaku kyakkō wo abiru):</strong> "To shoot to fame, to bask in the limelight overnight." The idiom combines 一躍 (one leap) with 脚光 (footlights, limelight) and 浴びる (to bathe in). The image is of a performer who has been in the shadows suddenly stepping into the pool of light at the front of the stage. The 脚光 are the footlights at the edge of the stage, the lights that illuminate the performer's face from below. To 浴びる in them is to be flooded with attention. The grammar makes fame into a physical sensation, like standing under a waterfall. Takita's leap came with <em>Terajima-chō Kitan</em> (寺島町奇譚, 1968), his semi-autobiographical manga about growing up in Tamanoi, which established the aesthetic he would bring to the rakugo stories: the wobbly line, the crowded shitamachi streetscapes, the humor that hurts.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section>
+    <h2>3. The Publisher's Praise: The Grammar of Shitamichi Mastery</h2>
+    <span class="story-label">Promotional copy</span>
+
+    <p>The publisher's description identifies exactly what makes Takita the ideal rakugo adapter.</p>
+
+    <div class="passage edo">
+        <div class="jp-text jp">
+            <span class="hl-edo">下町風俗を描いてピカ一の滝田ゆうが意欲満々取り組んだ古典落語の世界</span>
+        </div>
+        <div class="romaji">"Shitamachi fūzoku wo kaite pika-ichi no Takita Yū ga ikyoku manman torikunda koten rakugo no sekai."</div>
+        <div class="translation">"Takita Yū, second to none at depicting downtown customs, tackled the world of classical rakugo with full enthusiasm."</div>
+        <div class="source">— Chikuma Shobō promotional copy</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">下町</td><td class="reading">shitamachi</td><td>downtown (old low-lying districts of Tokyo)</td></tr>
+        <tr><td class="word">風俗</td><td class="reading">fūzoku</td><td>customs, manners, folkways</td></tr>
+        <tr><td class="word">ピカ一</td><td class="reading">pika-ichi</td><td>second to none, number one (slang)</td></tr>
+        <tr><td class="word">意欲満々</td><td class="reading">ikyoku manman</td><td>full of enthusiasm, eager</td></tr>
+        <tr><td class="word">取り組む</td><td class="reading">torikumu</td><td>to tackle, to grapple with</td></tr>
+        <tr><td class="word">古典</td><td class="reading">koten</td><td>classical, classic</td></tr>
+    </table>
+
+    <div class="nuance edo-box">
+        <h5>What translation loses: The card-sharp grammar of ピカ一</h5>
+        <p><strong>ピカ一 (pika-ichi):</strong> "Second to none, number one, the ace." This is slang with gambling origins. ピカ (pika) comes from ピカン (pikan), the sound or flash of something shiny, and in card slang it refers to the ace of spades (the shiniest card). 一 (ichi, one) reinforces the meaning: the number one ace, the top of the deck. When the publisher calls Takita ピカ一 at depicting shitamachi customs, the word carries a note of underground credibility. This is not a formal literary judgment. It is the recognition of a card sharp, a gambler, someone who knows the streets well enough to know who is the real thing. The grammar of ピカ一 makes Takita's mastery sound like a reputation earned in back rooms and alleyways, not in critical journals. And that is exactly right: his authority on shitamachi life came from living it, not from studying it.</p>
+        <p><strong>下町風俗 (shitamachi fūzoku):</strong> "Downtown customs, folkways." 下町 refers specifically to the old low-lying districts of eastern Tokyo, the areas along the Sumida River that were home to merchants, craftsmen, and entertainers, as opposed to the 山の手 (Yamanote) hills where the wealthy lived. The word carries a nostalgic charge: shitamachi is not merely a geographic location but a vanished way of life, a culture of small shops, public baths, back-alley bars, and neighborhood solidarity. 風俗 means customs or manners, but in this context it means something closer to "the texture of daily life": how people spoke, what they ate, how they greeted each other, how they endured poverty with humor. The grammar of 下町風俗を描いて (in depicting shitamachi customs) makes Takita into an ethnographer of a lost civilization, which is exactly what a rakugo adapter must be. Rakugo is the literature of shitamachi. Without understanding its customs, you cannot understand its jokes.</p>
+        <p><strong>意欲満々 (ikyoku manman):</strong> "Full of enthusiasm, brimming with eagerness." 満々 is a reduplicative form meaning "brimming, overflowing." When combined with 意欲 (will, eagerness), it creates an image of someone whose enthusiasm is pouring over the rim of their container. The publisher's choice of this word is significant. Takita was not merely assigned to adapt rakugo. He approached it with 意欲満々, with the excitement of a man who has finally been given the keys to the treasure house. Rakugo was his native literature, the stories that flowed from the same streets that had formed him. The grammar of 意欲満々取り組んだ makes the adaptation sound like a labor of love rather than a commercial project, which is the highest praise a publisher can give.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section>
+    <h2>4. The Signature Technique: The Grammar of the Meaningless Picture</h2>
+    <span class="story-label">Artistic technique</span>
+
+    <p>Takita's most distinctive innovation as a manga artist is described in a single phrase that contains an entire philosophy of comics.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">吹き出しの中に無意味な絵が書かれる手法</span>
+        </div>
+        <div class="romaji">"Fukidashi no naka ni muimi na e ga kakareru shuhō."</div>
+        <div class="translation">"The technique of drawing meaningless pictures inside speech bubbles."</div>
+        <div class="source"> Wikipedia description of Takita's style</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">吹き出し</td><td class="reading">fukidashi</td><td>speech bubble, dialogue balloon</td></tr>
+        <tr><td class="word">無意味</td><td class="reading">muimi</td><td>meaningless, pointless</td></tr>
+        <tr><td class="word">絵</td><td class="reading">e</td><td>picture, drawing</td></tr>
+        <tr><td class="word">手法</td><td class="reading">shuhō</td><td>technique, method</td></tr>
+        <tr><td class="word">挿絵</td><td class="reading">sashi-e</td><td>illustration, inset picture</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The paradox of meaningful meaninglessness</h5>
+        <p><strong>無意味な絵 (muimi na e):</strong> "Meaningless pictures." The word 無意味 means "without meaning, pointless." But the paradox of Takita's technique is that these "meaningless" pictures are often the most expressive elements on the page. Inside a speech bubble that contains a character's dialogue, Takita would draw a small image: a deba-bōchō knife, a padlock, a cat's face, a cloud, a pair of geta sandals. These images do not illustrate the text. They are not "about" what the character is saying. They are, formally speaking, meaningless. And yet they convey the character's inner state with a precision that words cannot match. When a character is trapped, the padlock appears. When a character is angry, the knife appears. When a character is dreamy, the cloud appears. The "meaninglessness" is actually a different kind of meaning: imagistic, emotional, non-verbal. The grammar of 無意味な絵 makes a philosophical claim about comics: that the space around words can carry information that the words themselves cannot.</p>
+        <p><strong>吹き出し (fukidashi):</strong> "Speech bubble, dialogue balloon." The word literally means "something that blows out," from 吹く (fuku, to blow) and 出す (dasu, to come out). A speech bubble is the container for spoken language in comics. Takita's innovation was to treat the inside of the container as additional canvas. The speech bubble is not merely a frame for words. It is a small theater in which a secondary image can perform. This is crucial for rakugo adaptation because rakugo is an oral art form whose power depends on timing, intonation, and the physical presence of the performer. Manga has no sound, no timing, no body. Takita's "meaningless pictures" are his solution to this problem: they are the visual equivalent of a raised eyebrow, a pause, a change in tone. They make the silent page heard.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section>
+    <h2>5. The Thirty-Eight Stories: A Grammar of Edo Comedy</h2>
+    <span class="story-label">Contents</span>
+
+    <p>The collection adapts thirty-eight classical rakugo stories, each one a masterpiece of compressed narrative.</p>
+
+    <div class="rakugo-list">
+        <h5>Selected stories from the collection</h5>
+        <ul>
+            <li><strong>富久</strong> — Fukutoku — "Fortune's Kyūzō" — A drunken taikomachi loses his job, buys a lottery ticket, and dreams of riches</li>
+            <li><strong>芝浜</strong> — Shibahama — "Shiba Beach" — A fishmonger finds a fortune in a wallet, gets drunk, and his wife tells him it was all a dream</li>
+            <li><strong>死神</strong> — Shinigami — "The God of Death" — A failed man meets the God of Death, who teaches him the secret of who lives and dies</li>
+            <li><strong>青菜</strong> — Aonana — "Green Vegetables" — A greengrocer's clever wife outwits a samurai who tries to cheat her husband</li>
+            <li><strong>湯屋番</strong> — Yuyaban — "The Bathhouse Attendant" — A disowned playboy works at a bathhouse and daydreams about romance</li>
+            <li><strong>付き馬</strong> — Tsukiuma — "The Bill Collector" — A Yoshiwara bill collector gets outsmarted by the very man he is chasing</li>
+            <li><strong>猫の災難</strong> — Neko no Sainan — "The Cat's Misfortune" — A man's lie about his cat causes escalating chaos</li>
+            <li><strong>強情灸</strong> — Gojōkyū — "The Stubborn Moxibustion" — A patient too stubborn to admit pain receives moxibustion treatment</li>
+            <li><strong>粗忽の使者</strong> — Sokotsu no Shisha — "The Careless Messenger" — A messenger's incompetence turns a simple errand into disaster</li>
+            <li><strong>千両みかん</strong> — Senryō Mikan — "The Thousand-Ryō Mandarin Orange" — A mandarin orange that might be worth a fortune</li>
+            <li><strong>ぬけ雀</strong> — Nukesuzume — "The Escaped Sparrow" — A sparrow's escape leads to unexpected consequences</li>
+            <li><strong>時そば</strong> — Toki Soba — "Soba by the Clock" — A soba-eating contest measured by time, not quantity</li>
+        </ul>
+    </div>
+
+    <h4>Vocabulary from the story titles</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">幇間</td><td class="reading">taikomachi</td><td>male entertainer at parties (Edo-period profession)</td></tr>
+        <tr><td class="word">富くじ</td><td class="reading">tomi-kuji</td><td>lottery (Edo-period form)</td></tr>
+        <tr><td class="word">天秤棒</td><td class="reading">tenbin-bō</td><td>carrying pole with buckets at both ends</td></tr>
+        <tr><td class="word">魚屋</td><td class="reading">sakana-ya</td><td>fishmonger</td></tr>
+        <tr><td class="word">女房</td><td class="reading">nyōbō</td><td>wife (humble/traditional)</td></tr>
+        <tr><td class="word">死神</td><td class="reading">shinigami</td><td>God of Death, Grim Reaper</td></tr>
+        <tr><td class="word">若旦那</td><td class="reading">wakadanna</td><td>young master (of a merchant house)</td></tr>
+        <tr><td class="word">勘当</td><td class="reading">kandō</td><td>disowning, expulsion from family</td></tr>
+        <tr><td class="word">居候</td><td class="reading">isōrō</td><td>lodger, dependent, person living off others</td></tr>
+        <tr><td class="word">銭湯</td><td class="reading">sentō</td><td>public bathhouse</td></tr>
+        <tr><td class="word">番台</td><td class="reading">bandai</td><td>attendant's platform (at a bathhouse)</td></tr>
+        <tr><td class="word">吉原</td><td class="reading">Yoshiwara</td><td>Yoshiwara (Edo's licensed pleasure quarter)</td></tr>
+        <tr><td class="word">遊廓</td><td class="reading">yūkaku</td><td>pleasure quarter, red-light district</td></tr>
+        <tr><td class="word">千両</td><td class="reading">senryō</td><td>one thousand ryō (a fortune)</td></tr>
+    </table>
+
+    <div class="nuance edo-box">
+        <h5>What translation loses: The occupational poetry of rakugo titles</h5>
+        <p><strong>幇間 (taikomachi):</strong> "Male entertainer at parties." This is a specifically Edo-period profession: a man hired to entertain at drinking parties, to tell jokes, to play the taiko drum, to keep the conversation flowing. The 幇間 of "Fukutoku" is named Kyūzō, and he has lost his job because of drinking, which is the occupational hazard of a man whose job is to drink with others. The word 幇間 carries a note of pathos: these men were skilled performers who lived on the edge of respectability, dependent on the whims of their patrons. When Kyūzō buys a lottery ticket, he is buying the dream of escaping a profession that has already discarded him. The grammar of the story makes the lottery into a last hope, and the hope is funny because it is so desperate.</p>
+        <p><strong>天秤棒 (tenbin-bō):</strong> "Carrying pole with buckets at both ends." This is the tool of the fishmonger in "Shibahama," a simple wooden pole balanced across the shoulder with a bucket of fish hanging from each end. The image of a man walking through Edo with a tenbin-bō is one of the most iconic in Japanese visual culture: the small merchant, the humble worker, the man who carries his livelihood on his shoulders. When this fishmonger finds a wallet with a fortune at Shiba Beach, the gap between his tool and his discovery is the source of the comedy. A man with a tenbin-bō is not supposed to find a thousand ryō. The grammar of the image makes the discovery into a cosmic joke played on class.</p>
+        <p><strong>番台 (bandai):</strong> "The attendant's platform at a bathhouse." In a traditional Japanese public bath (銭湯, sentō), the bandai is the raised platform near the entrance where the attendant sits, collects fees, and keeps an eye on both the men's and women's sides. The bandai is a liminal space: the attendant can see everything but belongs nowhere. In "Yuyaban," the disowned playboy who becomes a bathhouse attendant sits on the bandai and daydreams about the women in the women's bath. The bandai makes him a voyeur by profession, which is funny because he wanted to be a voyeur for free and now he is being paid for it. The grammar of the setting makes the protagonist's sin into his job description.</p>
+        <p><strong>居候 (isōrō):</strong> "Lodger, dependent, person living off others." This is a loaded word in Japanese. An isōrō is not merely a guest. He is someone who has overstayed his welcome, who eats another family's food, who sleeps in another family's space, who has no independent means of support. The word carries a note of shame and comedy simultaneously. The disowned playboy in "Yuyaban" is an isōrō at his carpenter friend's house before he gets the bathhouse job. The grammar of 居候 makes his position clear: he is a man with no place of his own, which is both pitiful and funny, the exact emotional mixture that rakugo specializes in.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section>
+    <h2>6. "Shibahama": The Grammar of the Dream That Saves</h2>
+    <span class="story-label">Story highlight</span>
+
+    <p>The most beloved story in the collection turns on a single sentence that transforms greed into love.</p>
+
+    <div class="passage edo">
+        <div class="jp-text jp">
+            <span class="hl-edo">「また夢になるといけねえ」</span>
+        </div>
+        <div class="romaji">"Mata yume ni naru to ike nē."</div>
+        <div class="translation">"It might turn into a dream again." / "We can't have it turning into another dream."</div>
+        <div class="source">— The wife's closing line in "Shibahama"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">夢</td><td class="reading">yume</td><td>dream</td></tr>
+        <tr><td class="word">なる</td><td class="reading">naru</td><td>to become</td></tr>
+        <tr><td class="word">いけねえ</td><td class="reading">ike nē</td><td>can't have that, that won't do (colloquial)</td></tr>
+        <tr><td class="word">勝</td><td class="reading">Katsu</td><td>Katsu (the fishmonger protagonist)</td></tr>
+        <tr><td class="word">女房</td><td class="reading">nyōbō</td><td>wife</td></tr>
+        <tr><td class="word">うだつ</td><td class="reading">udatsu</td><td>udatsu (fire-prevention wall); success/prosperity</td></tr>
+    </table>
+
+    <div class="nuance edo-box">
+        <h5>What translation loses: The wife's devastating kindness</h5>
+        <p><strong>「また夢になるといけねえ」:</strong> "It might turn into a dream again." In "Shibahama," the fishmonger Katsu finds a wallet containing a fortune at the beach, gets drunk celebrating, and tells his wife. The next morning, hungover, he remembers the money. But his wife tells him there was no wallet. He dreamed it all in a drunken stupor. Katsu believes her, accepts his poverty, and goes back to work. Years later, after he has built a successful business through honest labor, his wife reveals the truth on her deathbed: the wallet was real. She hid it because she knew that if he believed he had found a fortune, he would stop working and drink it all away. She told him it was a dream to save his life. Her final line, また夢になるといけねえ, is her explanation: "I couldn't let it turn into another dream." The grammar of いけねえ (ike nē, a rough colloquial form of いけない, "that won't do") makes the wife's decision sound casual, almost offhand, which makes its cruelty and its love more devastating. She destroyed his miracle to save his soul, and she explains it as if she had simply moved a pot off a hot stove.</p>
+        <p><strong>うだつが上がらない (udatsu ga agaranai):</strong> "Cannot get ahead, fails to prosper." Literally: "the udatsu does not rise." An udatsu was a small fire-prevention wall that projected above the roofline between wooden houses in Edo. Only wealthier families could afford to build them properly. When someone's udatsu had not risen, it meant they were still poor, still living in a house without proper fire protection. The idiom makes prosperity into architecture. Katsu is a man whose udatsu has not risen, a man whose roofline is bare. The grammar of the idiom makes poverty visible: you can see who has made it and who has not by looking at their roof. When Katsu finally prospers, his udatsu has literally risen, and the reader understands that his wife's lie made the wall possible.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section>
+    <h2>7. "Shinigami": The Grammar of Death's Secret</h2>
+    <span class="story-label">Story highlight</span>
+
+    <p>The story of the God of Death contains one of rakugo's most chilling narrative devices.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">病人の枕元に死神が座っていればその人は必ず死ぬ。足の方に座っていればその人は生きる</span>
+        </div>
+        <div class="romaji">"Byōnin no makura-moto ni shinigami ga suwatte ireba sono hito wa kanarazu shinu. Ashi no hō ni suwatte ireba sono hito wa ikiru."</div>
+        <div class="translation">"If the God of Death sits at the head of a sick person's pillow, that person will certainly die. If he sits at the foot, that person will live."</div>
+        <div class="source">— From "Shinigami"</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">病人</td><td class="reading">byōnin</td><td>sick person, patient</td></tr>
+        <tr><td class="word">枕元</td><td class="reading">makura-moto</td><td>beside the pillow, bedside</td></tr>
+        <tr><td class="word">座る</td><td class="reading">suwaru</td><td>to sit</td></tr>
+        <tr><td class="word">必ず</td><td class="reading">kanarazu</td><td>certainly, without fail</td></tr>
+        <tr><td class="word">呪文</td><td class="reading">jumon</td><td>incantation, charm, magic spell</td></tr>
+        <tr><td class="word">消える</td><td class="reading">kieru</td><td>to disappear, to vanish</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The geometry of mortality</h5>
+        <p><strong>枕元 (makura-moto):</strong> "Beside the pillow, bedside." In traditional Japanese sleeping arrangements, the pillow end of the futon is the head, the most sacred part of the sleeping body. The God of Death who sits at the makura-moto is sitting at the boundary between life and death, at the place where consciousness rests. The word makes the bedside into a ritual space, like an altar. When the God of Death sits there, he is not merely visiting. He is officiating. The grammar of the position makes death into a ceremony, and the pillow into the threshold.</p>
+        <p><strong>足の方 (ashi no hō):</strong> "The foot end, the direction of the feet." The contrast between 枕元 and 足の方 creates a vertical axis of mortality. The head is life, consciousness, identity. The feet are the opposite: the part of the body that touches the ground, that carries us forward, that is farthest from the face. The God of Death who sits at the feet is waiting, not claiming. He is present but not active. The geometry of the story makes the human body into a map of fate: head equals death, feet equal life. The man who learns this secret becomes a healer by driving away the God of Death from the pillow end, forcing him to retreat to the feet. He becomes rich by controlling the geometry of mortality. Until, of course, he sees the God of Death sitting at his own pillow, and understands that no one controls death forever.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section>
+    <h2>8. The "Ma" Problem: The Grammar of Silence in Manga</h2>
+    <span class="story-label">Adaptation theory</span>
+
+    <p>A reader who understands both rakugo and manga identifies the central problem of adaptation.</p>
+
+    <div class="passage edo">
+        <div class="jp-text jp">
+            <span class="hl-edo">落語の前提となる背景を伝える必要らどうしてもふき出しの文字量が多くなり、落語特有の「間」が上手く描けない</span>
+        </div>
+        <div class="romaji">"Rakugo no zentei to naru haikei wo tsutaeru hitsuyō kara dōshite mo fukidashi no moji-ryō ga ōku nari, rakugo tokuyū no 'ma' ga umaku egakenai."</div>
+        <div class="translation">"Because of the need to convey the background that serves as the premise for rakugo, the amount of text in the speech bubbles inevitably increases, and rakugo's distinctive 'ma' cannot be drawn well."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">前提</td><td class="reading">zentei</td><td>premise, precondition</td></tr>
+        <tr><td class="word">背景</td><td class="reading">haikei</td><td>background, setting</td></tr>
+        <tr><td class="word">文字量</td><td class="reading">moji-ryō</td><td>amount of text, word count</td></tr>
+        <tr><td class="word">間</td><td class="reading">ma</td><td>interval, pause, timing, negative space</td></tr>
+        <tr><td class="word">上手く</td><td class="reading">umaku</td><td>well, skillfully</td></tr>
+        <tr><td class="word">描く</td><td class="reading">egaku</td><td>to draw, to depict</td></tr>
+    </table>
+
+    <div class="nuance edo-box">
+        <h5>What translation loses: The untranslatable 間</h5>
+        <p><strong>間 (ma):</strong> "Interval, pause, timing, negative space." This is one of the most important aesthetic concepts in Japanese culture, and it is central to rakugo. In rakugo, ma is the pause between sentences, the silence that lets a joke land, the timing that makes an audience laugh before the punchline arrives. A master rakugo performer can create ma with a glance, a breath, a shift in posture. Manga has no sound, no real-time performance, no breathing performer. The reader controls the pace. They can race through a page or stare at a single panel for an hour. The ma of rakugo is destroyed by the reader's freedom. The reviewer who says 落語特有の「間」が上手く描けない is identifying the fundamental impossibility of the project: you cannot draw a pause. You can only draw what happens during the pause and hope the reader understands that silence is happening.</p>
+        <p><strong>Takita's solution:</strong> Takita solves the ma problem in three ways. First, his "meaningless pictures" in the speech bubbles create a visual rhythm that mimics the timing of spoken delivery. Second, his wobbly, fluid line creates a sense of movement and hesitation that suggests the performer's physical presence. Third, his impossibly detailed backgrounds slow the reader down: you cannot race through a page that contains a fully realized Edo streetscape with every shop sign legible, every roof tile distinct, every passerby individualized. The background becomes the ma. The reader pauses to look at the world, and in that pause, the story breathes. The grammar of Takita's solution makes the setting into the timing, which is a profound insight: in rakugo, the world is not merely background. It is the silence between the words.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 9 ==================== -->
+<section>
+    <h2>9. The Wobbly Line: The Grammar of the Unsteady Hand</h2>
+    <span class="story-label">Artistic style</span>
+
+    <p>Takita's line has been described with an onomatopoeia that captures its essential instability.</p>
+
+    <div class="passage">
+        <div class="jp-text jp">
+            <span class="hl">ふにゃふにゃした描線</span>
+        </div>
+        <div class="romaji">"Funyafunya shita byōsen."</div>
+        <div class="translation">"Wobbly, floppy, unsteady lines."</div>
+        <div class="source">— Art critic's description</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">ふにゃふにゃ</td><td class="reading">funyafunya</td><td>wobbly, floppy, limp, unsteady</td></tr>
+        <tr><td class="word">線</td><td class="reading">byōsen</td><td>drawn line, contour line</td></tr>
+        <tr><td class="word">グニャグニャ</td><td class="reading">gunyagunya</td><td>twisted, warped, wiggly</td></tr>
+        <tr><td class="word">陰影</td><td class="reading">in'ei</td><td>shade, shading, light and shadow</td></tr>
+    </table>
+
+    <div class="nuance">
+        <h5>What translation loses: The pathos of the unsteady line</h5>
+        <p><strong>ふにゃふにゃ (funyafunya):</strong> "Wobbly, floppy, unsteady." This is an onomatopoeic word for something that lacks rigidity, that bends too easily, that cannot hold its shape. When applied to a manga artist's line, it sounds like criticism: the lines are not crisp, not confident, not professional. But Takita's funyafunya line is his genius. The unsteadiness makes his characters look like they are constantly in motion, like they might collapse or dance at any moment. It makes the buildings of Edo look like they are made of wood that has warped in the humidity, which they were. It makes the entire world look slightly drunk, which is appropriate for stories about drunkards, dreamers, and men who have lost their way. The grammar of the funyafunya line makes Takita's Edo into a place where nothing is fixed, everything is in flux, and the only constant is the possibility of a joke.</p>
+        <p><strong>グニャグニャ (gunyagunya):</strong> "Twisted, warped, wiggly." Another critic used this word to describe Takita's post-<em>Terajima-chō Kitan</em> line, which had shifted from the rounded solid lines of his early work to something thinner, more twisted, more influenced by Tsuge Yoshiharu (another <em>Garo</em> legend). The gunyagunya line is the line of a man who has seen too much to draw the world as stable. It is the line of someone who grew up in a red-light district, who watched his neighborhood burn in the Tokyo air raids, who spent his life drawing the world that had disappeared. The wobble is not incompetence. It is memory shaking the artist's hand.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 10 ==================== -->
+<section>
+    <h2>10. The Reader's Verdict: The Grammar of the Imperfect Success</h2>
+    <span class="story-label">Reader response</span>
+
+    <p>A reader who loves both rakugo and Takita gives the most honest assessment possible.</p>
+
+    <div class="passage edo">
+        <div class="jp-text jp">
+            <span class="hl-edo">凄い良いとはいいませんが、悪くはありません。やっぱり、ふき出しの文字量は多いのですが、滝田ゆうの描く独特の線のゆらぎがまるで「フラ」のような間を作っていますし、ふき出しのなかの「絵（とんかちやらかんなやら）」が人物の気持ちを表しており、文字頼りにならずに済んでいる</span>
+        </div>
+        <div class="romaji">"Sugoi yoi to wa imasen ga, waruku wa arimasen. Yappari, fukidashi no moji-ryō wa ōi no desu ga, Takita Yū no kaku dokutoku no sen no yuragi ga marude 'fura' no yō na ma wo tsukutte imashi, fukidashi no naka no 'e (tonkachi ya rakan na yara)' ga jinbutsu no kimochi wo arawashite ori, moji-dairi ni narazu ni sunde iru."</div>
+        <div class="translation">"I can't say it's amazingly good, but it's not bad. As expected, the amount of text in the speech bubbles is large, but the unique wavering of Takita Yū's line creates a kind of 'ma' like a hula dance, and the 'pictures (hammers, padlocks, and such)' inside the speech bubbles express the characters' feelings, so it manages not to rely entirely on text."</div>
+        <div class="source">— Reader review</div>
+    </div>
+
+    <h4>Vocabulary</h4>
+    <table class="vocab-table">
+        <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+        <tr><td class="word">凄い</td><td class="reading">sugoi</td><td>amazing, incredible</td></tr>
+        <tr><td class="word">ゆらぎ</td><td class="reading">yuragi</td><td>wavering, fluctuation, sway</td></tr>
+        <tr><td class="word">フラ</td><td class="reading">fura</td><td>hula (dance); swaying movement</td></tr>
+        <tr><td class="word">とんかち</td><td class="reading">tonkachi</td><td>hammer (dialect/childish)</td></tr>
+        <tr><td class="word">らかん</td><td class="reading">rakan</td><td>padlock (dialect/variant)</td></tr>
+        <tr><td class="word">文字頼り</td><td class="reading">moji-dairi</td><td>reliance on text, text-dependent</td></tr>
+    </table>
+
+    <div class="nuance edo-box">
+        <h5>What translation loses: The hula-dance grammar of フラのような間</h5>
+        <p><strong>フラのような間 (fura no yō na ma):</strong> "A ma like a hula dance." This is a remarkable critical insight. The reader has noticed that Takita's wavering line (線のゆらぎ) creates a visual rhythm that resembles the swaying hips of a hula dancer: continuous, rhythmic, never quite still. The comparison makes the manga page into a performance. The line does not merely describe Edo. It dances it. The フラ comparison also captures something about the relationship between text and image in Takita's work: just as a hula dancer tells a story through movement while music plays, Takita's lines tell a story through movement while words occupy the speech bubbles. The grammar of the comparison makes the critic into a poet, and the manga into a dance.</p>
+        <p><strong>凄い良いとはいいませんが、悪くはありません (Sugoi yoi to wa imasen ga, waruku wa arimasen):</strong> "I can't say it's amazingly good, but it's not bad." This is the most Japanese of critical assessments. It is modest, qualified, carefully balanced. The reviewer will not claim greatness. But they will not dismiss the work either. The grammar of the double negative (悪くはありません, "it is not bad") is a classic Japanese form of praise: by refusing to criticize, the reviewer implies approval without committing to enthusiasm. This is the perfect critical stance for Takita's rakugo manga: it is not a masterpiece, because the ma problem is real and the text bubbles are crowded. But it is not bad, because Takita's line, his backgrounds, his "meaningless pictures" find a way to make the impossible adaptation work. The qualified praise is the highest form of honesty, and in Japanese criticism, it is often the highest form of respect.</p>
+    </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<section>
+    <h2>11. Summary: The Grammar of the Wobbly Line That Dances Edo</h2>
+
+    <h4>Key patterns</h4>
+    <ul>
+        <li><strong>〜てピカ一</strong> — Second to none at doing: the grammar of underground mastery</li>
+        <li><strong>〜と naru</strong> — To become, to turn into: the grammar of transformation (dream into reality, fortune into dream)</li>
+        <li><strong>〜といけない／いけねえ</strong> — Can't have that: the grammar of protective destruction</li>
+        <li><strong>〜ずに済む</strong> — To manage without doing: the grammar of the workaround</li>
+        <li><strong>〜が上手く描けない</strong> — Cannot draw well: the grammar of acknowledged limitation</li>
+        <li><strong>〜のような間</strong> — An interval like: the grammar of metaphorical timing</li>
+        <li><strong>〜とはいいませんが</strong> — Can't say that, but: the grammar of qualified praise</li>
+    </ul>
+
+    <h4>Words that carry the book's weight</h4>
+    <ul>
+        <li><strong>落語劇場</strong> — Rakugo theater: the book as venue, the page as stage</li>
+        <li><strong>下町風俗</strong> — Downtown customs: the vanished texture of Edo life</li>
+        <li><strong>ピカ一</strong> — Second to none: the card-sharp's praise</li>
+        <li><strong>意欲満々</strong> — Brimming with enthusiasm: the overflow of eagerness</li>
+        <li><strong>内弟子</strong> — Live-in apprentice: the grammar of total immersion</li>
+        <li><strong>一躍脚光を浴びる</strong> — To bask in the limelight overnight: the leap into visibility</li>
+        <li><strong>吹き出し</strong> — Speech bubble: the container that became canvas</li>
+        <li><strong>無意味な絵</strong> — Meaningless pictures: the paradox of expressive meaninglessness</li>
+        <li><strong>間</strong> — Ma: the pause that manga cannot draw but must suggest</li>
+        <li><strong>ふにゃふにゃ</strong> — Wobbly: the unsteady line that dances</li>
+        <li><strong>線のゆらぎ</strong> — The wavering of the line: the hula-dance rhythm</li>
+        <li><strong>フラのような間</strong> — A ma like a hula: the swaying silence between words</li>
+        <li><strong>幇間</strong> — Taikomachi: the entertainer who drinks himself out of work</li>
+        <li><strong>天秤棒</strong> — Carrying pole: the tool that makes the fortune absurd</li>
+        <li><strong>女房</strong> — Wife: the woman who destroys a miracle to save a man</li>
+        <li><strong>また夢になるといけねえ</strong> — Can't have it turning into another dream: the kindest cruelty</li>
+        <li><strong>うだつが上がらない</strong> — The udatsu has not risen: architecture as prosperity</li>
+        <li><strong>枕元</strong> — Beside the pillow: the threshold between life and death</li>
+        <li><strong>死神</strong> — God of Death: the geometry of mortality</li>
+        <li><strong>若旦那</strong> — Young master: the disowned heir who becomes a voyeur by profession</li>
+        <li><strong>居候</strong> — Lodger: the shame of having no place of one's own</li>
+        <li><strong>番台</strong> — The attendant's platform: the liminal space of the bathhouse</li>
+        <li><strong>吉原</strong> — Yoshiwara: the pleasure quarter where the bill collector becomes the collected</li>
+        <li><strong>千両</strong> — A thousand ryō: the fortune that fits in a mandarin orange</li>
+        <li><strong>文字頼りにならずに済む</strong> — To manage without relying on text: the triumph of the image</li>
+    </ul>
+
+    <h4>Takita Yū vs. Higashino vs. Tsutsui (Gensho Chitai) vs. Tsutsui (Yoru no Konto) vs. Igarashi vs. Kotemari vs. Niitsu vs. Mochizuki vs. Fujita vs. Musashi vs. Kafu vs. Kato vs. Ogihara vs. Endo vs. Dazai vs. Kawabata vs. Yuzuki: Nineteen directions of Japanese prose (and line)</h4>
+    <p>Where Endo's words are theological and physical (麻痺, 踏む, 分つ, 沈黙), Dazai's are social and performative (恥, 道化, 素直, 失格), Kawabata's are perceptual and spatial (鏡の奥, 夜の底, かぎりなく, さかさま), Yuzuki's are bureaucratic and structural (無戸籍, 不審死, 行方不明, やむを得ない), Ogihara's are domestic and modest (猫さえ, たいてい, どうにか, 仕方ない, 怖くなくなった), Kato's are scientific and besotted (限って, 生態学, ネコパンチ, たまらない, 賛美, 操る), Kafu's are exilic and classical (遊びて, 去るに臨み, 如く, 無聊, 寂寥, 隱家), Musashi's are martial and metaphysical (至極, おのづから, 常の心, 替はる事なかれ, 枕をおさふ, 是則空也), Fujita's are gentle and cumulative (わかって下さい, 温もり, 不満もないが充実もない, ジワジワ, ひそかな思慕, ほどき), Mochizuki's are melodic and restrained (旋律, 出会えた, 埋もれる, すれ違う, 教え合う, 巡り逢う), Niitsu's are precise and merciless (待, 婚姻届, 奨学金, 掛け持ち, まさか, 手遅れ, どんでん返し, 保活, 世話), Kotemari's are lyrical and liminal (空と海, 出会う場所, 魂の愛, 届く, 棘だらけの薊, 煌めく, 散詩, 触れ合い), Igarashi's are brisk and genre-fluid (年下の男の子, 勢いと成り行き, 空白のまま, 徹夜, 話が合った, 痒いところに手が届く, ハートウォーミング, 賛否両論, 乗り越える), Tsutsui's (Yoru no Konto) are accelerative and chaotic (コント, 鬱屈, 苛烈を極め, 狂気, 疾風怒濤, ドタバタ, 叡智), Tsutsui's (Gensho Chitai) are constrained and venomous (玄笑, 計算された毒, 改行なし, 即興生演奏, こだまする, 基地外, 譫妄, 守らねばならぬ), Higashino's are satirical and affectionate (歪笑, 禁断の舞台裏, 笑劇場, 土下座落し, 伝説の編集者, 新米, 舞い上がる, ブラックな笑い, 灸英社, 序ノ口, 罪な女, 職業小説家, 詐欺, 身にしみる), and Takita's are visual and wobbly (落語劇場, 下町風俗, 吹き出し, 無意味な絵, ふにゃふにゃ, 線のゆらぎ, フラのような間, また夢になるといけねえ, 枕元, 天秤棒, 居候, 番台). Endo asks what the body knows. Dazai asks what the face hides. Kawabata asks what the eye invents. Yuzuki asks what the state refuses to record. Ogihara asks what gets us from one morning to the next. Kato asks why we believe our cats are special. Kafu asks what happens to the soul in exile. Musashi asks what remains when you have exhausted knowledge. Fujita asks what love looks like when the body has aged but the heart has not. Mochizuki asks what happens when a buried woman learns to play again. Tsutsui (Yoru no Konto) asks what happens when the world goes mad and the only sane response is to laugh faster than the madness. Tsutsui (Gensho Chitai) asks what happens when you write under such severe constraints that the cage makes the animal ferocious. Niitsu asks what women are expected to wait for, to hunt for, to care for. Kotemari asks what happens when two people who can only wound each other discover that their wounds are the same shape. Igarashi asks what happens when a printing error forces a 37-year-old woman and a 23-year-old boy to spend a night putting stickers on flyers. Higashino asks what happens when you love an industry so much that you cannot stop laughing at it. And Takita asks what happens when a man who grew up in a vanished downtown tries to draw the spoken stories of an even more vanished downtown, using a line that wobbles like a hula dancer and speech bubbles that contain hammers, padlocks, and clouds where the words should be. Together these nineteen works map the full range of Japanese narrative art: from divine absence to bureaucratic erasure, from aesthetic perception to the purr decoded, from the grammar of exile to the grammar of the sword, from the slow seepage of autumn feeling to the melody two people learn not to rush, to the tempest that blows through eighteen sketches, to the cage that makes the animal ferocious, to the crossroads where a woman must choose before someone else chooses for her, to the horizon where sky and sea meet and a promise arrives shimmering across the years, to the office at midnight where a blank price column becomes the beginning of everything, to the backstage of a publishing house where a legendary editor makes authors grovel, to the wobbly line that dances Edo back into existence one speech bubble at a time.</p>
+</section>
+
+</main>
+
+</body>
+</html>

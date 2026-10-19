@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rain (レイン) — SID &middot; Full Lyrics Breakdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+JP:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c1016;
+  --surface: #131a24;
+  --surface-raised: #1c2532;
+  --ink: #e0e4eb;
+  --ink-dim: #8894a8;
+  --accent: #5a8ab8;
+  --accent-glow: #8ab4d8;
+  --accent-weak: rgba(90, 138, 184, 0.10);
+  --accent2: #7a9a6a;
+  --accent2-glow: #a0c090;
+  --accent2-weak: rgba(122, 154, 106, 0.10);
+  --line: rgba(224, 228, 235, 0.08);
+  --line-strong: rgba(90, 138, 184, 0.30);
+  --space: clamp(1.25rem, 1rem + 1vw, 2rem);
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --step-3: clamp(2.2rem, 1.6rem + 2.4vw, 3.6rem);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -8px rgba(0,0,0,0.5);
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  position: relative;
+  padding: calc(var(--space) * 4) var(--space) calc(var(--space) * 3);
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(90, 138, 184, 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 90%, rgba(122, 154, 106, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+header .eyebrow {
+  position: relative;
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin-bottom: var(--space);
+}
+
+header h1 {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: calc(var(--space) * 0.6);
+}
+
+header .subtitle {
+  position: relative;
+  color: var(--ink-dim);
+  font-size: var(--step-0);
+  max-width: 55ch;
+  margin: 0 auto calc(var(--space) * 1.2);
+}
+
+header .meta {
+  position: relative;
+  color: var(--accent2-glow);
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.15em;
+  margin-bottom: calc(var(--space) * 1.5);
+}
+
+header .full-lyrics {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2.2;
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--ink);
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) var(--space);
+}
+
+.section-title {
+  font-family: "Cinzel", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin-bottom: calc(var(--space) * 1.25);
+  padding-bottom: calc(var(--space) * 0.5);
+  border-bottom: 1px solid var(--line-strong);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+}
+
+.section-title .num {
+  font-size: 0.55em;
+  color: var(--accent-glow);
+  letter-spacing: 0.05em;
+}
+
+.line-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: calc(var(--space) * 1.1) calc(var(--space) * 1.2);
+  margin-bottom: calc(var(--space) * 1.25);
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+}
+
+.line-header {
+  margin-bottom: calc(var(--space) * 0.9);
+  padding-bottom: calc(var(--space) * 0.6);
+  border-bottom: 1px solid var(--line);
+}
+
+.japanese-line {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.35em;
+  color: var(--ink);
+}
+
+.romaji-line {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: var(--step-0);
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.english-line {
+  font-size: var(--step-0);
+  color: #a8b0c0;
+  font-style: italic;
+  margin-top: 0.4em;
+  line-height: 1.6;
+}
+
+.word-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+
+.word-table th {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  color: var(--ink-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+  border-bottom: 1px solid var(--line);
+}
+
+.word-table td {
+  padding: 0.65em 0.8em;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.word-table tr:last-child td {
+  border-bottom: none;
+}
+
+.word-table .col-jp {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.15em;
+  color: var(--ink);
+  width: 18%;
+}
+
+.word-table .col-romaji {
+  color: #a8b0c0;
+  width: 20%;
+}
+
+.word-table .col-pos {
+  color: var(--accent-glow);
+  font-weight: 600;
+  width: 22%;
+}
+
+.word-table .col-gloss {
+  color: var(--ink-dim);
+  width: 40%;
+}
+
+.grammar-note {
+  background: var(--surface-raised);
+  border-left: 2px solid var(--accent);
+  padding: 0.9em 1.1em;
+  margin-top: calc(var(--space) * 0.8);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--step--1);
+  color: #a8b0c0;
+  line-height: 1.65;
+}
+
+.grammar-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  margin: calc(var(--space) * 2) 0;
+}
+
+.chorus-badge {
+  display: inline-block;
+  font-family: "Cinzel", serif;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent2-glow);
+  background: var(--accent2-weak);
+  border: 1px solid rgba(122, 154, 106, 0.25);
+  padding: 0.2em 0.8em;
+  border-radius: 4px;
+  margin-bottom: 0.6em;
+}
+
+@media (max-width: 640px) {
+  .word-table .col-pos, .word-table .col-gloss {
+    width: auto;
+  }
+  .line-card {
+    padding: var(--space);
+  }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  header, .line-card, .grammar-note, .section-title {
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+  header::before, header::after { display: none; }
+}
+
+@page { size: A4; margin: 14mm; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">SID &middot; Fullmetal Alchemist: Brotherhood OP5</div>
+  <h1>レイン</h1>
+  <p class="subtitle">Rain &mdash; A full grammatical and lexical breakdown of SID's iconic opening theme for Fullmetal Alchemist: Brotherhood.</p>
+  <div class="meta">Lyrics: Mao &nbsp;&bull;&nbsp; Music: Yuya</div>
+  <div class="full-lyrics">六月の嘘 目の前の本当
+セピアにしまいこみ
+寄り添うとか 温もりとか
+わからなくなってた
+
+「君はひとりで平気だから ね」と
+押しつけて さよなら
+その類の気休めなら
+聞き飽きた筈なのに
+
+鳴り止まない 容赦ない思い出たちは
+許してくれそうにもない
+目を閉じれば 勢いは増すばかりで
+遠巻きで 君が笑う
+
+雨は いつか止むのでしょうか
+ずいぶん長い間 冷たい
+雨は どうして僕を選ぶの
+逃げ場のない 僕を選ぶの
+
+やっと見つけた 新しい朝は
+月日が邪をする
+向かう先は 「次」じゃなくて
+「過」ばかり追いかけた
+
+慰めから っかけをくれた君と
+恨めしく 怖がりな僕
+そろそろかな 手探り 疲れた頬を
+葛藤がこぼれ落ちる
+
+過去を知りたがらない瞳
+洗い流してくれる指
+優しい歩幅で 癒す傷跡
+届きそうで 届かない距離
+
+雨は いつか止むのでしょうか
+ずいぶん長い間 冷たい
+雨は どうして僕を選ぶの
+包まれて いいかな
+
+雨は 止むことを知らずに
+今日も降り続くけれど
+そっと 差し出した傘の中で
+温もりに 寄り添いながら</div>
+</header>
+
+<main>
+
+<section>
+<h2 class="section-title"><span class="num">01</span> Verse 1</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">六月の嘘 目の前の本当 セピアにしまいこみ</div>
+    <div class="romaji-line">Rokugatsu no uso, me no mae no hontou, sepia ni shimaikomi.</div>
+    <div class="english-line">"June's lies, the truth before my eyes, locked away in sepia."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">六月</td><td class="col-romaji">rokugatsu</td><td class="col-pos">Noun</td><td class="col-gloss">June — the sixth month</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of; 's</td></tr>
+    <tr><td class="col-jp">嘘</td><td class="col-romaji">uso</td><td class="col-pos">Noun</td><td class="col-gloss">lie; falsehood</td></tr>
+    <tr><td class="col-jp">目の前</td><td class="col-romaji">me no mae</td><td class="col-pos">Noun phrase</td><td class="col-gloss">before one's eyes; right in front</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of</td></tr>
+    <tr><td class="col-jp">本当</td><td class="col-romaji">hontou</td><td class="col-pos">Noun / Na-adjective</td><td class="col-gloss">truth; reality</td></tr>
+    <tr><td class="col-jp">セピア</td><td class="col-romaji">sepia</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">sepia — brownish monochrome tone</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Locative particle</td><td class="col-gloss">into; in</td></tr>
+    <tr><td class="col-jp">しまいこみ</td><td class="col-romaji">shimaikomi</td><td class="col-pos">Verb (continuative)</td><td class="col-gloss">shutting away; locking up — continuative of 仕舞い込む <em>shimaikomu</em></td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> This is a sequence of noun phrases with the verb しまいこみ (continuative form) at the end, creating a compressed, poetic syntax. セピアにしまいこむ means "to shut away into sepia" — the metaphor suggests that both the lies and the truth of June (a past relationship) have been preserved like an old photograph, faded into a nostalgic brown tone. The continuative form links this phrase to the next line without a conjunction.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">寄り添うとか 温もりとか わからなくなってた</div>
+    <div class="romaji-line">Yorisou to ka, nukumori to ka, wakaranaku natteta.</div>
+    <div class="english-line">"Things like drawing close, like warmth — I had lost my understanding of them."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">寄り添う</td><td class="col-romaji">yorisou</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">to draw close; to nestle against; to snuggle up</td></tr>
+    <tr><td class="col-jp">とか</td><td class="col-romaji">to ka</td><td class="col-pos">Listing particle</td><td class="col-gloss">~ or ~; things like ~</td></tr>
+    <tr><td class="col-jp">温もり</td><td class="col-romaji">nukumori</td><td class="col-pos">Noun</td><td class="col-gloss">warmth; bodily warmth; coziness</td></tr>
+    <tr><td class="col-jp">とか</td><td class="col-romaji">to ka</td><td class="col-pos">Listing particle</td><td class="col-gloss">~ or ~; things like ~</td></tr>
+    <tr><td class="col-jp">わからなく</td><td class="col-romaji">wakaranaku</td><td class="col-pos">Adjective (negative adverbial)</td><td class="col-gloss">not understanding — negative adverbial of 分かる <em>wakaru</em></td></tr>
+    <tr><td class="col-jp">なってた</td><td class="col-romaji">natteta</td><td class="col-pos">Verb (past progressive)</td><td class="col-gloss">had become — colloquial past progressive of なる <em>naru</em></td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> [Verb] + とか lists examples in a casual, somewhat wistful way: "things like ~ and ~." わからなくなってた is a colloquial contraction of わからなくなっていた (had become unable to understand), using the past progressive te-iru form. The contraction なってた gives the line a raw, conversational intimacy. The speaker has been in a state of emotional numbness for some time.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">「はひとりで平気だから ね」と 押しつけて さよなら</div>
+    <div class="romaji-line">"Kimi wa hitori de heiki da kara ne" to oshitsukete sayonara.</div>
+    <div class="english-line">"'You'll be fine on your own, right?' — forcing those words, goodbye."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">君</td><td class="col-romaji">kimi</td><td class="col-pos">Pronoun</td><td class="col-gloss">you — intimate second-person</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for you</td></tr>
+    <tr><td class="col-jp">ひとりで</td><td class="col-romaji">hitori de</td><td class="col-pos">Noun + particle</td><td class="col-gloss">alone; by oneself — ひとり + instrumental で</td></tr>
+    <tr><td class="col-jp">平気</td><td class="col-romaji">heiki</td><td class="col-pos">Na-adjective / Noun</td><td class="col-gloss">fine; okay; all right</td></tr>
+    <tr><td class="col-jp">だ</td><td class="col-romaji">da</td><td class="col-pos">Copula</td><td class="col-gloss">is; are</td></tr>
+    <tr><td class="col-jp">から</td><td class="col-romaji">kara</td><td class="col-pos">Conjunction</td><td class="col-gloss">because; since</td></tr>
+    <tr><td class="col-jp">ね</td><td class="col-romaji">ne</td><td class="col-pos">Final particle</td><td class="col-gloss">right?; isn't it? — seeks confirmation</td></tr>
+    <tr><td class="col-jp">と</td><td class="col-romaji">to</td><td class="col-pos">Quotative particle</td><td class="col-gloss">marks quoted speech</td></tr>
+    <tr><td class="col-jp">押しつけて</td><td class="col-romaji">oshitsukete</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">forcing (upon); pushing (onto) — te-form of 押し付ける <em>oshitsukeru</em></td></tr>
+    <tr><td class="col-jp">さよなら</td><td class="col-romaji">sayonara</td><td class="col-pos">Noun / Interjection</td><td class="col-gloss">goodbye; farewell</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> The quoted line 「君はひとりで平気だから ね」 is the excuse the other person gave for leaving — or possibly what the speaker told themselves. The trailing ね is heartbreaking: it turns a statement into a half-question, as if seeking validation for a cruel decision. 押しつける means "to force something upon someone / to push onto," suggesting the goodbye was not mutual but imposed. The te-form 押しつけて connects directly to さよなら, compressing the action into a single devastating motion: forcing the words, then leaving.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">その類の気休めなら 聞き飽きた筈なのに</div>
+    <div class="romaji-line">Sono tagui no kiyasume nara, kikiakita hazu na no ni.</div>
+    <div class="english-line">"If it's that sort of empty comfort, I should be sick of hearing it by now, and yet..."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">その</td><td class="col-romaji">sono</td><td class="col-pos">Determiner</td><td class="col-gloss">that</td></tr>
+    <tr><td class="col-jp">類</td><td class="col-romaji">tagui</td><td class="col-pos">Noun</td><td class="col-gloss">kind; sort; class; ilk</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of</td></tr>
+    <tr><td class="col-jp">気休め</td><td class="col-romaji">kiyasume</td><td class="col-pos">Noun</td><td class="col-gloss">empty comfort; consolation; palliative</td></tr>
+    <tr><td class="col-jp">なら</td><td class="col-romaji">nara</td><td class="col-pos">Conditional particle</td><td class="col-gloss">if; if it is the case that</td></tr>
+    <tr><td class="col-jp">聞き飽きた</td><td class="col-romaji">kikiakita</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">sick of hearing — past of 聞き飽きる <em>kikiakiru</em></td></tr>
+    <tr><td class="col-jp">筈</td><td class="col-romaji">hazu</td><td class="col-pos">Noun / Auxiliary</td><td class="col-gloss">should; ought to; expected to</td></tr>
+    <tr><td class="col-romaji">na no ni</td><td class="col-pos">Concessive phrase</td><td class="col-gloss">and yet; but — explanatory + concessive</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 筈 (はず) expresses expectation or logical conclusion: "should be; ought to be." 聞き飽きた筈 = "I should be sick of hearing." なのに combines the explanatory/emphatic のだ with the concessive に, creating a phrase of frustrated contradiction: "and yet / but [it is not so]." The speaker logically knows they should be over this kind of hollow consolation, but emotionally they are not — the pain persists despite reason.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">02</span> Verse 1 (Continued)</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">鳴り止まない 容赦ない思い出たちは 許してくれそうにもない</div>
+    <div class="romaji-line">Nariyamanai, yousha nai omoide-tachi wa, yurushite kuresou ni mo nai.</div>
+    <div class="english-line">"These memories that won't stop echoing, these merciless memories, don't seem like they'll forgive me either."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">鳴り止まない</td><td class="col-romaji">nariyamanai</td><td class="col-pos">Verb (negative)</td><td class="col-gloss">won't stop ringing/echoing — negative of 鳴り止む <em>nariyamu</em></td></tr>
+    <tr><td class="col-jp">容赦ない</td><td class="col-romaji">yousha nai</td><td class="col-pos">Adjective phrase</td><td class="col-gloss">merciless; relentless; unforgiving</td></tr>
+    <tr><td class="col-jp">思い出</td><td class="col-romaji">omoide</td><td class="col-pos">Noun</td><td class="col-gloss">memory; recollection</td></tr>
+    <tr><td class="col-jp">たち</td><td class="col-romaji">tachi</td><td class="col-pos">Plural suffix</td><td class="col-gloss">~s; plural marker for animates (here personifying memories)</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">許して</td><td class="col-romaji">yurushite</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">forgiving — te-form of 許す <em>yurusu</em></td></tr>
+    <tr><td class="col-jp">くれ</td><td class="col-romaji">kure</td><td class="col-pos">Auxiliary</td><td class="col-gloss">do for me — imperative of くれる <em>kureru</em></td></tr>
+    <tr><td class="col-jp">そうに</td><td class="col-romaji">sou ni</td><td class="col-pos">Adverbial</td><td class="col-gloss">seemingly; appearing to — adverbial form of そうだ (conjectural)</td></tr>
+    <tr><td class="col-jp">も</td><td class="col-romaji">mo</td><td class="col-pos">Inclusive particle</td><td class="col-gloss">even; also</td></tr>
+    <tr><td class="col-jp">ない</td><td class="col-romaji">nai</td><td class="col-pos">Adjective (negative)</td><td class="col-gloss">not; nonexistent</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 鳴り止む combines 鳴る (to ring/sound) + 止む (to stop): "to stop echoing / ringing out." The negative 鳴り止まない personifies the memories as sounds that refuse to go silent. 〜てくれそうに(も)ない is a complex construction: 〜てくれる (do for me) + そうだ (seem/appear) + にもない (not even). Literally: "they don't even appear likely to forgive me." The personification is powerful: memories are treated as active agents that could choose to forgive but refuse to.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">目を閉じれば 勢いは増すばかりで 遠巻きで 君が笑う</div>
+    <div class="romaji-line">Me wo tojireba, ikioi wa masu bakari de, toomaki de kimi ga warau.</div>
+    <div class="english-line">"If I close my eyes, the force only grows stronger; from afar, you smile."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">目</td><td class="col-romaji">me</td><td class="col-pos">Noun</td><td class="col-gloss">eye(s)</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">閉じれば</td><td class="col-romaji">tojireba</td><td class="col-pos">Verb (conditional)</td><td class="col-gloss">if (I) close — conditional of 閉じる <em>tojiru</em></td></tr>
+    <tr><td class="col-jp">勢い</td><td class="col-romaji">ikioi</td><td class="col-pos">Noun</td><td class="col-gloss">force; momentum; intensity</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">増す</td><td class="col-romaji">masu</td><td class="col-pos">Verb</td><td class="col-gloss">to increase; to grow</td></tr>
+    <tr><td class="col-jp">ばかり</td><td class="col-romaji">bakari</td><td class="col-pos">Adverbial particle</td><td class="col-gloss">only; merely; nothing but</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Gerundive particle</td><td class="col-gloss">and; while — te-form of だ</td></tr>
+    <tr><td class="col-jp">遠巻き</td><td class="col-romaji">toomaki</td><td class="col-pos">Noun / Adverb</td><td class="col-gloss">surrounding from afar; circling at a distance</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Locative particle</td><td class="col-gloss">in; at; from</td></tr>
+    <tr><td class="col-jp">君</td><td class="col-romaji">kimi</td><td class="col-pos">Pronoun</td><td class="col-gloss">you</td></tr>
+    <tr><td class="col-jp">が</td><td class="col-romaji">ga</td><td class="col-pos">Subject particle</td><td class="col-gloss">marks the subject</td></tr>
+    <tr><td class="col-jp">笑う</td><td class="col-romaji">warau</td><td class="col-pos">Verb</td><td class="col-gloss">to smile; to laugh</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> [Verb in conditional] + ば = "if / when [verb]." 増すばかりで means "only increasing / doing nothing but increasing." 遠巻き (literally "far-encircling") describes something surrounding from a distance, like vultures circling or people gathering around but keeping their distance. The image is haunting: when the speaker closes their eyes, memories intensify, and the lost person's smile appears at a remove — close enough to see but too far to touch.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">03</span> Chorus 1</h2>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">雨は いつか止むのでしょうか ずいぶん長間 冷たい</div>
+    <div class="romaji-line">Ame wa itsuka yamu no deshou ka, zuibun nagai aida, tsumetai.</div>
+    <div class="english-line">"Will the rain stop someday? It's been so long — cold."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">雨</td><td class="col-romaji">ame</td><td class="col-pos">Noun</td><td class="col-gloss">rain</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">いつか</td><td class="col-romaji">itsuka</td><td class="col-pos">Adverb</td><td class="col-gloss">someday; sometime; eventually</td></tr>
+    <tr><td class="col-jp">止む</td><td class="col-romaji">yamu</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">to stop; to cease — for rain, snow, etc.</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Nominalizer</td><td class="col-gloss">nominalizes the clause</td></tr>
+    <tr><td class="col-jp">でしょう</td><td class="col-romaji">deshou</td><td class="col-pos">Copula (conjectural)</td><td class="col-gloss">I wonder; probably — polite conjectural</td></tr>
+    <tr><td class="col-jp">か</td><td class="col-romaji">ka</td><td class="col-pos">Question particle</td><td class="col-gloss">question marker</td></tr>
+    <tr><td class="col-jp">ずいぶん</td><td class="col-romaji">zuibun</td><td class="col-pos">Adverb</td><td class="col-gloss">quite; very; considerably</td></tr>
+    <tr><td class="col-jp">長い</td><td class="col-romaji">nagai</td><td class="col-pos">I-adjective (attributive)</td><td class="col-gloss">long (in duration)</td></tr>
+    <tr><td class="col-jp">間</td><td class="col-romaji">aida</td><td class="col-pos">Noun</td><td class="col-gloss">interval; period; while</td></tr>
+    <tr><td class="col-jp">冷たい</td><td class="col-romaji">tsumetai</td><td class="col-pos">I-adjective</td><td class="col-gloss">cold; chilly</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> のでしょうか is a polite, conjectural question form: "I wonder if ~ / Will ~, I wonder?" It carries a tone of wistful uncertainty rather than direct inquiry. The adjective 冷たい at the end stands alone as a fragment, modifying the implied rain: "[It has been] cold." The rain is the central metaphor of the song — representing both the tears/sadness and the emotional storm that won't pass.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">雨は どうして僕を選ぶの 逃げ場のない 僕を選ぶの</div>
+    <div class="romaji-line">Ame wa doushite boku wo erabu no, nigeba no nai boku wo erabu no.</div>
+    <div class="english-line">"Why does the rain choose me? It chooses me, who has nowhere to escape."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">雨</td><td class="col-romaji">ame</td><td class="col-pos">Noun</td><td class="col-gloss">rain</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">どうして</td><td class="col-romaji">doushite</td><td class="col-pos">Interrogative adverb</td><td class="col-gloss">why; how come</td></tr>
+    <tr><td class="col-jp">僕</td><td class="col-romaji">boku</td><td class="col-pos">Pronoun</td><td class="col-gloss">I; me — masculine, somewhat soft</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">選ぶ</td><td class="col-romaji">erabu</td><td class="col-pos">Verb</td><td class="col-gloss">to choose; to select</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">softens question — feminine/soft ending</td></tr>
+    <tr><td class="col-jp">逃げ場</td><td class="col-romaji">nigeba</td><td class="col-pos">Noun</td><td class="col-gloss">place to escape; way out — from 逃げる + 場</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of</td></tr>
+    <tr><td class="col-jp">ない</td><td class="col-romaji">nai</td><td class="col-pos">Adjective (negative)</td><td class="col-gloss">nonexistent; without</td></tr>
+    <tr><td class="col-jp">僕</td><td class="col-romaji">boku</td><td class="col-pos">Pronoun</td><td class="col-gloss">I; me</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">選ぶ</td><td class="col-romaji">erabu</td><td class="col-pos">Verb</td><td class="col-gloss">to choose; to select</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">softens question</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 逃げ場のない is an attributive phrase modifying 僕: "me, [who is] without a place to escape." The repetition of the entire clause 僕を選ぶの with the descriptive phrase inserted creates emphasis through variation. The rain's "choice" of the speaker personifies the weather as a deliberate force — why does sorrow keep finding me, even when I have no refuge? The の final particle softens the question into a lament rather than an angry demand.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">04</span> Verse 2</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">やっと見けた 新しい朝は 月日が邪魔をする</div>
+    <div class="romaji-line">Yatto mitsuketa, atarashii asa wa, tsukihi ga jama wo suru.</div>
+    <div class="english-line">"The new morning I finally found — time itself gets in the way."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">やっと</td><td class="col-romaji">yatto</td><td class="col-pos">Adverb</td><td class="col-gloss">finally; at last</td></tr>
+    <tr><td class="col-jp">見つけた</td><td class="col-romaji">mitsuketa</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">found; discovered — past of 見つける <em>mitsukeru</em></td></tr>
+    <tr><td class="col-jp">新しい</td><td class="col-romaji">atarashii</td><td class="col-pos">I-adjective (attributive)</td><td class="col-gloss">new; fresh</td></tr>
+    <tr><td class="col-jp">朝</td><td class="col-romaji">asa</td><td class="col-pos">Noun</td><td class="col-gloss">morning; dawn</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">月日</td><td class="col-romaji">tsukihi</td><td class="col-pos">Noun</td><td class="col-gloss">time; months and days; passage of time</td></tr>
+    <tr><td class="col-jp">が</td><td class="col-romaji">ga</td><td class="col-pos">Subject particle</td><td class="col-gloss">marks the subject</td></tr>
+    <tr><td class="col-jp">邪魔</td><td class="col-romaji">jama</td><td class="col-pos">Noun / Suru-verb</td><td class="col-gloss">hindrance; obstacle; interference</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">する</td><td class="col-romaji">suru</td><td class="col-pos">Verb</td><td class="col-gloss">to do — here: "to interfere / get in the way"</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 邪魔をする is a set phrase meaning "to interfere; to get in the way; to be a hindrance." The contrast between 新しい朝 (new morning / fresh start) and 月日が邪魔をする (time gets in the way) is poignant: the speaker has found a chance to move on, but the accumulated weight of time and memory prevents them from embracing it. 月日 (months and days) is a poetic word for the relentless passage of time.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">向かう先は 「次」じゃなくて 「過」ばかり追いかけた</div>
+    <div class="romaji-line">Mukau saki wa "tsugi" ja nakute, "su" bakari oikaketa.</div>
+    <div class="english-line">"The place I head toward isn't 'next' — I only chased after 'past.'"</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">向かう</td><td class="col-romaji">mukau</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">to face; to head toward</td></tr>
+    <tr><td class="col-jp">先</td><td class="col-romaji">saki</td><td class="col-pos">Noun</td><td class="col-gloss">ahead; destination; beyond</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">次</td><td class="col-romaji">tsugi</td><td class="col-pos">Noun</td><td class="col-gloss">next</td></tr>
+    <tr><td class="col-jp">じゃなくて</td><td class="col-romaji">ja nakute</td><td class="col-pos">Copula (negative te-form)</td><td class="col-gloss">is not; rather than being — negative te-form of だ</td></tr>
+    <tr><td class="col-jp">過</td><td class="col-romaji">su</td><td class="col-pos">Noun</td><td class="col-gloss">past — from 過ぎ <em>sugi</em>, written as a single kanji for poetic effect</td></tr>
+    <tr><td class="col-jp">ばかり</td><td class="col-romaji">bakari</td><td class="col-pos">Adverbial particle</td><td class="col-gloss">only; merely; nothing but</td></tr>
+    <tr><td class="col-jp">追いかけた</td><td class="col-romaji">oikaketa</td><td class="col-pos">Verb (past)</td><td class="col-gloss">chased; pursued — past of 追いかける <em>oikakeru</em></td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> This is one of the song's most clever lyrical devices. 次 (tsugi, "next") and 過 (su, "past" — from 過ぎる sugiru) are juxtaposed as single kanji in quotation marks, creating a visual and conceptual wordplay. じゃなくて is the negative te-form of だ, used here for contrast: "is not X, [but rather] Y." The speaker admits that instead of moving forward (次), they have been running after what has already gone (過). The single-kanji 過 is particularly striking — a fragment of a word representing a fragment of a life.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">慰めから きっかけをくれた君と 恨めしく 怖がりな僕</div>
+    <div class="romaji-line">Nagusame kara, kikkake wo kureta kimi to, urameshiku kowagari na boku.</div>
+    <div class="english-line">"You, who gave me a beginning from consolation, and me — resentful, cowardly."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">慰め</td><td class="col-romaji">nagusame</td><td class="col-pos">Noun</td><td class="col-gloss">consolation; comfort; solace</td></tr>
+    <tr><td class="col-jp">から</td><td class="col-romaji">kara</td><td class="col-pos">Ablative particle</td><td class="col-gloss">from</td></tr>
+    <tr><td class="col-jp">きっかけ</td><td class="col-romaji">kikkake</td><td class="col-pos">Noun</td><td class="col-gloss">opportunity; trigger; starting point; chance</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">くれた</td><td class="col-romaji">kureta</td><td class="col-pos">Auxiliary (past)</td><td class="col-gloss">gave (to me) — past of くれる <em>kureru</em></td></tr>
+    <tr><td class="col-jp">君</td><td class="col-romaji">kimi</td><td class="col-pos">Pronoun</td><td class="col-gloss">you</td></tr>
+    <tr><td class="col-jp">と</td><td class="col-romaji">to</td><td class="col-pos">Comitative particle</td><td class="col-gloss">and; with</td></tr>
+    <tr><td class="col-jp">恨めしく</td><td class="col-romaji">urameshiku</td><td class="col-pos">Adverb</td><td class="col-gloss">resentfully; reproachfully — adverbial form of 恨めしい <em>urameshii</em></td></tr>
+    <tr><td class="col-jp">怖がりな</td><td class="col-romaji">kowagari na</td><td class="col-pos">Na-adjective (attributive)</td><td class="col-gloss">cowardly; timid; fearful — from 怖がる <em>kowagaru</em></td></tr>
+    <tr><td class="col-jp">僕</td><td class="col-romaji">boku</td><td class="col-pos">Pronoun</td><td class="col-gloss">I; me</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 慰めからきっかけをくれた is a beautiful compressed phrase: "from consolation, gave [me] a starting point." It suggests the relationship began from the other person comforting the speaker — a dynamic where the speaker was emotionally dependent. 怖がりな is a noun-derived na-adjective from 怖がる (to be afraid / frightened): "cowardly; fearful by nature." The line juxtaposes the two people: the one who gave, and the one who could only resent and fear. The と is not just "and" but carries the weight of a relationship now fractured.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">そろそろかな 手探り 疲れた頬を 葛藤がこぼれ落ちる</div>
+    <div class="romaji-line">Sorosoro kana, tesaguri, tsukareta hoho wo, kattou ga kobore ochiru.</div>
+    <div class="english-line">"Perhaps it's about time. Groping in the dark, conflict spills from my weary cheeks."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">そろそろ</td><td class="col-romaji">sorosoro</td><td class="col-pos">Adverb</td><td class="col-gloss">soon; about time; gradually</td></tr>
+    <tr><td class="col-jp">かな</td><td class="col-romaji">kana</td><td class="col-pos">Final particle</td><td class="col-gloss">I wonder; perhaps — soft conjectural</td></tr>
+    <tr><td class="col-jp">手探り</td><td class="col-romaji">tesaguri</td><td class="col-pos">Noun / Adverb</td><td class="col-gloss">groping; fumbling in the dark — from 手 (hand) + 探り (searching)</td></tr>
+    <tr><td class="col-jp">疲れた</td><td class="col-romaji">tsukareta</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">weary; tired — past of 疲れる <em>tsukareru</em></td></tr>
+    <tr><td class="col-jp">頬</td><td class="col-romaji">hoho</td><td class="col-pos">Noun</td><td class="col-gloss">cheek(s)</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">葛藤</td><td class="col-romaji">kattou</td><td class="col-pos">Noun</td><td class="col-gloss">conflict; inner struggle; turmoil</td></tr>
+    <tr><td class="col-jp">が</td><td class="col-romaji">ga</td><td class="col-pos">Subject particle</td><td class="col-gloss">marks the subject</td></tr>
+    <tr><td class="col-jp">こぼれ落ちる</td><td class="col-romaji">kobore ochiru</td><td class="col-pos">Compound verb</td><td class="col-gloss">spills and falls; overflows and drops — こぼれる + 落ちる</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> そろそろかな is a soft, self-directed musing: "I suppose it's about time [to let go / to accept]." 手探り (groping with one's hands) describes moving forward blindly without guidance. 葛藤がこぼれ落ちる personifies inner conflict as a liquid that spills from the cheeks — suggesting tears, but the word 葛藤 (conflict/struggle) elevates it beyond simple crying. The compound verb こぼれ落ちる combines "to spill / overflow" with "to fall / drop," creating an image of emotional overflow that the speaker can no longer contain.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">05</span> Bridge</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">過去を知りたがらない瞳 洗い流してくれる指</div>
+    <div class="romaji-line">Kako wo shiritagaranai hitomi, arai nagashite kureru yubi.</div>
+    <div class="english-line">"Eyes that don't want to know the past, fingers that wash it away for me."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">過去</td><td class="col-romaji">kako</td><td class="col-pos">Noun</td><td class="col-gloss">past; bygone days</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">知りたがらない</td><td class="col-romaji">shiritagaranai</td><td class="col-pos">Verb (negative)</td><td class="col-gloss">doesn't want to know — negative of 知りたがる <em>shiritagaru</em></td></tr>
+    <tr><td class="col-jp">瞳</td><td class="col-romaji">hitomi</td><td class="col-pos">Noun</td><td class="col-gloss">eyes; pupils</td></tr>
+    <tr><td class="col-jp">洗い流して</td><td class="col-romaji">arai nagashite</td><td class="col-pos">Compound verb (te-form)</td><td class="col-gloss">washing away — te-form of 洗い流す <em>arai nagasu</em></td></tr>
+    <tr><td class="col-jp">くれる</td><td class="col-romaji">kureru</td><td class="col-pos">Auxiliary</td><td class="col-gloss">does for me — directional auxiliary (toward speaker)</td></tr>
+    <tr><td class="col-jp">指</td><td class="col-romaji">yubi</td><td class="col-pos">Noun</td><td class="col-gloss">finger(s)</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> [Verb stem] + たがる expresses a third person's desire: "wants to [verb]." 知りたがらない = "doesn't want to know." 洗い流す is a compound verb: 洗う (to wash) + 流す (to flow / wash away). Combined with くれる (to do for me), it creates a tender image: someone else's fingers washing away the speaker's past pain. The bridge introduces a new presence — someone who offers cleansing and doesn't need to know the speaker's history. This is the first hint of possible healing.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">優しい歩幅で 癒す傷跡 届きそうで 届かない距離</div>
+    <div class="romaji-line">Yasashii hohaba de, iyasu kizuato, todokisou de, todokanai kyori.</div>
+    <div class="english-line">"With a gentle stride, healing scars; a distance that seems reachable, yet cannot be reached."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">優しい</td><td class="col-romaji">yasashii</td><td class="col-pos">I-adjective (attributive)</td><td class="col-gloss">gentle; kind; soft</td></tr>
+    <tr><td class="col-jp">歩幅</td><td class="col-romaji">hohaba</td><td class="col-pos">Noun</td><td class="col-gloss">stride; pace; step width</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Instrumental particle</td><td class="col-gloss">with; by means of</td></tr>
+    <tr><td class="col-jp">癒す</td><td class="col-romaji">iyasu</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">to heal; to soothe; to cure</td></tr>
+    <tr><td class="col-jp">傷跡</td><td class="col-romaji">kizuato</td><td class="col-pos">Noun</td><td class="col-gloss">scar; trace of a wound</td></tr>
+    <tr><td class="col-jp">届きそう</td><td class="col-romaji">todokisou</td><td class="col-pos">Verb + auxiliary</td><td class="col-gloss">seems reachable — 届く + そうだ (conjectural)</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Gerundive particle</td><td class="col-gloss">and; while — te-form of だ</td></tr>
+    <tr><td class="col-jp">届かない</td><td class="col-romaji">todokanai</td><td class="col-pos">Verb (negative)</td><td class="col-gloss">cannot reach; unreachable — negative of 届く <em>todoku</em></td></tr>
+    <tr><td class="col-jp">距離</td><td class="col-romaji">kyori</td><td class="col-pos">Noun</td><td class="col-gloss">distance</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 癒す傷跡 is an object phrase with the verb implied: "[healing] scars." 届きそうで is the conjectural form of 届く (to reach / arrive) + そうだ: "seems reachable." The juxtaposition 届きそうで届かない is a classic Japanese rhetorical pattern where a positive conjecture is immediately negated, creating a sense of tantalizing near-miss. The new person's gentle presence heals, but a gap remains — the speaker is not fully ready to be reached.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">06</span> Chorus 2 (Final)</h2>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">雨は いつか止むのでしょうか ずいぶん長い間 冷たい</div>
+    <div class="romaji-line">Ame wa itsuka yamu no deshou ka, zuibun nagai aida, tsumetai.</div>
+    <div class="english-line">"Will the rain stop someday? It's been so long — cold."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">雨</td><td class="col-romaji">ame</td><td class="col-pos">Noun</td><td class="col-gloss">rain</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">いつか</td><td class="col-romaji">itsuka</td><td class="col-pos">Adverb</td><td class="col-gloss">someday; sometime; eventually</td></tr>
+    <tr><td class="col-jp">止む</td><td class="col-romaji">yamu</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">to stop; to cease</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Nominalizer</td><td class="col-gloss">nominalizes the clause</td></tr>
+    <tr><td class="col-jp">でしょう</td><td class="col-romaji">deshou</td><td class="col-pos">Copula (conjectural)</td><td class="col-gloss">I wonder; probably</td></tr>
+    <tr><td class="col-jp">か</td><td class="col-romaji">ka</td><td class="col-pos">Question particle</td><td class="col-gloss">question marker</td></tr>
+    <tr><td class="col-jp">ずいぶん</td><td class="col-romaji">zuibun</td><td class="col-pos">Adverb</td><td class="col-gloss">quite; very; considerably</td></tr>
+    <tr><td class="col-jp">長い</td><td class="col-romaji">nagai</td><td class="col-pos">I-adjective (attributive)</td><td class="col-gloss">long (in duration)</td></tr>
+    <tr><td class="col-jp">間</td><td class="col-romaji">aida</td><td class="col-pos">Noun</td><td class="col-gloss">interval; period; while</td></tr>
+    <tr><td class="col-jp">冷たい</td><td class="col-romaji">tsumetai</td><td class="col-pos">I-adjective</td><td class="col-gloss">cold; chilly</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> Same structure as the first chorus, but now it follows the bridge's glimpse of healing. The repetition carries new weight: the speaker has experienced a moment of possible connection, yet still asks if the rain will end. The question is no longer purely despairing — there is now a faint hope embedded in it.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">雨は どうして僕を選ぶの 包まれて いいかな</div>
+    <div class="romaji-line">Ame wa doushite boku wo erabu no, tsutsumarete ii kana.</div>
+    <div class="english-line">"Why does the rain choose me? I wonder if it's okay to be enveloped."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">雨</td><td class="col-romaji">ame</td><td class="col-pos">Noun</td><td class="col-gloss">rain</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">どうして</td><td class="col-romaji">doushite</td><td class="col-pos">Interrogative adverb</td><td class="col-gloss">why; how come</td></tr>
+    <tr><td class="col-jp">僕</td><td class="col-romaji">boku</td><td class="col-pos">Pronoun</td><td class="col-gloss">I; me</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">選ぶ</td><td class="col-romaji">erabu</td><td class="col-pos">Verb</td><td class="col-gloss">to choose; to select</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Final particle</td><td class="col-gloss">softens question</td></tr>
+    <tr><td class="col-jp">包まれて</td><td class="col-romaji">tsutsumarete</td><td class="col-pos">Verb (passive te-form)</td><td class="col-gloss">being enveloped — passive te-form of 包む <em>tsutsumu</em></td></tr>
+    <tr><td class="col-jp">いい</td><td class="col-romaji">ii</td><td class="col-pos">Adjective</td><td class="col-gloss">good; fine; okay</td></tr>
+    <tr><td class="col-jp">かな</td><td class="col-romaji">kana</td><td class="col-pos">Final particle</td><td class="col-gloss">I wonder; perhaps — soft conjectural</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> This is a key variation from the first chorus. Where the first chorus ended with 逃げ場のない僕を選ぶの (choosing me, who has nowhere to escape) — a line of despair — this second chorus ends with 包まれていいかな (I wonder if it's okay to be enveloped). [Te-form] + いい means "it is okay to [verb]." The passive 包まれて (being enveloped/wrapped) suggests allowing oneself to be embraced by the rain — or by another person's warmth. The shift from resistance (逃げ場のない) to tentative acceptance (包まれていいかな) marks the song's emotional turning point.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">雨は 止むことを知らずに 今日も降り続くけれど</div>
+    <div class="romaji-line">Ame wa yamu koto wo shirazu ni, kyou mo furitsuzuku keredo.</div>
+    <div class="english-line">"The rain, not knowing how to stop, keeps falling today as well, and yet..."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">雨</td><td class="col-romaji">ame</td><td class="col-pos">Noun</td><td class="col-gloss">rain</td></tr>
+    <tr><td class="col-jp">は</td><td class="col-romaji">wa</td><td class="col-pos">Topic particle</td><td class="col-gloss">as for</td></tr>
+    <tr><td class="col-jp">止む</td><td class="col-romaji">yamu</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">to stop; to cease</td></tr>
+    <tr><td class="col-jp">こと</td><td class="col-romaji">koto</td><td class="col-pos">Nominalizer</td><td class="col-gloss">the act of ~ing; how to ~</td></tr>
+    <tr><td class="col-jp">を</td><td class="col-romaji">o</td><td class="col-pos">Object particle</td><td class="col-gloss">marks the object</td></tr>
+    <tr><td class="col-jp">知らずに</td><td class="col-romaji">shirazu ni</td><td class="col-pos">Verb (negative adverbial)</td><td class="col-gloss">without knowing — negative adverbial of 知る <em>shiru</em></td></tr>
+    <tr><td class="col-jp">今日</td><td class="col-romaji">kyou</td><td class="col-pos">Temporal noun</td><td class="col-gloss">today</td></tr>
+    <tr><td class="col-jp">も</td><td class="col-romaji">mo</td><td class="col-pos">Inclusive particle</td><td class="col-gloss">also; too; again</td></tr>
+    <tr><td class="col-jp">降り続く</td><td class="col-romaji">furitsuzuku</td><td class="col-pos">Compound verb</td><td class="col-gloss">continues to fall — 降る + 続く</td></tr>
+    <tr><td class="col-jp">けれど</td><td class="col-romaji">keredo</td><td class="col-pos">Conjunction</td><td class="col-gloss">but; although; and yet</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> [Verb] + ことを知らずに means "without knowing how to [verb] / without knowing [verb]." It personifies the rain as something ignorant of its own cessation — it falls not out of malice but out of not knowing any other way. 降り続く is a compound verb: 降る (to fall, for rain) + 続く (to continue). The conjunction けれど at the end of the line creates suspense, setting up the final line's gentle resolution.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="chorus-badge">Chorus</div>
+  <div class="line-header">
+    <div class="japanese-line">そっと 差し出した傘の中で 温もりに 寄り添いながら</div>
+    <div class="romaji-line">Sotto sashidashita kasa no naka de, nukumori ni yorisoi nagara.</div>
+    <div class="english-line">"Gently, inside the umbrella you held out, drawing close to the warmth."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">そっと</td><td class="col-romaji">sotto</td><td class="col-pos">Adverb</td><td class="col-gloss">gently; softly; quietly</td></tr>
+    <tr><td class="col-jp">差し出した</td><td class="col-romaji">sashidashita</td><td class="col-pos">Verb (attributive / past)</td><td class="col-gloss">held out; extended — past of 差し出す <em>sashidasu</em></td></tr>
+    <tr><td class="col-jp">傘</td><td class="col-romaji">kasa</td><td class="col-pos">Noun</td><td class="col-gloss">umbrella</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Genitive particle</td><td class="col-gloss">of; 's</td></tr>
+    <tr><td class="col-jp">中</td><td class="col-romaji">naka</td><td class="col-pos">Noun</td><td class="col-gloss">inside; within</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Locative particle</td><td class="col-gloss">in; at; inside</td></tr>
+    <tr><td class="col-jp">温もり</td><td class="col-romaji">nukumori</td><td class="col-pos">Noun</td><td class="col-gloss">warmth; bodily warmth</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Directional particle</td><td class="col-gloss">toward; to</td></tr>
+    <tr><td class="col-jp">寄り添い</td><td class="col-romaji">yorisoi</td><td class="col-pos">Verb (continuative)</td><td class="col-gloss">drawing close; nestling — continuative of 寄り添う <em>yorisou</em></td></tr>
+    <tr><td class="col-jp">ながら</td><td class="col-romaji">nagara</td><td class="col-pos">Adverbial particle</td><td class="col-gloss">while ~ing; as — marks simultaneous action</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> The song's resolution is contained in this single line. [Verb continuative] + ながら means "while ~ing." 差し出した modifies 傘: "the umbrella [that was] held out" — implying another person offered shelter. 温もりに寄り添いながら = "while drawing close to the warmth." The word 温もり, which appeared in the first verse as something the speaker had forgotten (わからなくなってた), is now reclaimed. The song ends on this simultaneous action, suggesting an ongoing process of healing rather than a completed one. The rain still falls, but there is now an umbrella, and there is warmth to draw close to.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">07</span> Key Grammar Patterns Summary</h2>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜のに / 〜なのに</div>
+    <div class="english-line">"Although / even though / and yet" — concessive particle expressing regret, disappointment, or emotional contradiction. Central to the song's emotional logic.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ばかり</div>
+    <div class="english-line">"Only; merely; nothing but" — expresses limitation or continuous repetitive action. "Does nothing but ~."</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜てくれる / 〜てくれそうに(も)ない</div>
+    <div class="english-line">"Do for me" auxiliary + conjectural + negative — "doesn't even seem like it will ~ for me." Personifies memories as agents capable of forgiveness.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜そうだ / 〜そうに(も)ない</div>
+    <div class="english-line">Conjectural auxiliary: "seems like / appears that." Combined with negative: "doesn't even appear likely to ~."</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ながら</div>
+    <div class="english-line">"While ~ing" — marks simultaneous action. The song ends on this note of ongoing, incomplete healing.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ずに</div>
+    <div class="english-line">Negative adverbial: "without ~ing." Classical/literary negative form. "Not knowing how to stop."</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜たがる</div>
+    <div class="english-line">"Wants to ~" — expresses a third person's desire. "Eyes that don't want to know the past."</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜そうで / 〜そうで〜ない</div>
+    <div class="english-line">Conjectural + contrast: "seems ~ and yet [is] not ~." Creates tantalizing near-miss: "seems reachable, yet unreachable."</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+</body>
+</html>

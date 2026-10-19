@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Companion — 私たちが生きた20世紀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #f7f5f0;
+  --surface: #fffef9;
+  --ink: #1e1e1e;
+  --muted: #6e6a64;
+  --accent: #8b2635;
+  --accent-weak: color-mix(in oklab, var(--accent) 10%, var(--surface));
+  --accent-medium: color-mix(in oklab, var(--accent) 25%, transparent);
+  --line: color-mix(in oklab, var(--ink) 10%, transparent);
+  --line-strong: color-mix(in oklab, var(--ink) 18%, transparent);
+  --highlight: #f4e8c1;
+  --green: #2d5f3f;
+  --green-weak: color-mix(in oklab, var(--green) 10%, var(--surface));
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.2vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 2.8rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.05), 0 6px 16px -6px rgba(0,0,0,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: var(--step-0);
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); margin-top: calc(var(--space)*1.8); margin-bottom: calc(var(--space)*0.6); }
+h3 { font-size: var(--step-1); margin-top: calc(var(--space)*1.2); margin-bottom: calc(var(--space)*0.4); }
+
+p { margin-bottom: calc(var(--space)*0.7); max-width: 68ch; }
+
+/* Header */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line-strong);
+  padding: calc(var(--space)*1.5) var(--space);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+header h1 {
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+
+header .book-title {
+  font-family: "Noto Serif JP", serif;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+header .subtitle {
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+/* Layout */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space);
+}
+
+/* Tab navigation */
+.tab-bar {
+  display: flex;
+  gap: 0.25rem;
+  margin: calc(var(--space)*1.2) 0 calc(var(--space)*1);
+  border-bottom: 2px solid var(--line-strong);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-family: inherit;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover { color: var(--accent); }
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Tab panels */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel.active { animation: none; }
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space)*1);
+  margin-bottom: calc(var(--space)*0.8);
+  box-shadow: var(--shadow);
+}
+
+.card h3 { margin-top: 0; }
+
+/* Vocabulary table */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+  margin-top: 0.5rem;
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.vocab-table th {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--accent-weak);
+}
+
+.vocab-table tr:hover td {
+  background: var(--accent-weak);
+}
+
+.vocab-table .col-ja { width: 22%; }
+.vocab-table .col-romaji { width: 22%; color: var(--muted); font-style: italic; }
+.vocab-table .col-pos { width: 14%; }
+.vocab-table .col-meaning { width: 42%; }
+
+.pos-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--green-weak);
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.pos-tag.noun { background: #e8e0f5; color: #4a3b6b; }
+.pos-tag.verb { background: #fde2d4; color: #6b3410; }
+.pos-tag.adj { background: #d4f0e0; color: #1a4d33; }
+.pos-tag.adv { background: #d4e8f7; color: #1a3d5c; }
+.pos-tag.particle { background: #f0e8d4; color: #5c4a1a; }
+.pos-tag.expression { background: #f0d4e0; color: #5c1a3d; }
+
+/* Romaji line */
+.romaji {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+/* Japanese text with reading aid */
+.ja-line {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  font-size: 1.05em;
+  line-height: 1.9;
+}
+
+/* Grammar box */
+.grammar-box {
+  background: var(--green-weak);
+  border-left: 3px solid var(--green);
+  padding: 0.8rem 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 0.8rem;
+}
+
+.grammar-box .pattern {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 0.2rem;
+}
+
+.grammar-box .romaji { margin-bottom: 0.3rem; display: block; }
+
+/* Phrase item */
+.phrase-item {
+  border-bottom: 1px solid var(--line);
+  padding: 0.8rem 0;
+}
+
+.phrase-item:last-child { border-bottom: none; }
+
+.phrase-ja {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.phrase-meta {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+/* Forms */
+.form-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.form-row input, .form-row select {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: var(--step--1);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.form-row input:focus, .form-row select:focus {
+  outline: 2px solid var(--accent-medium);
+  outline-offset: 1px;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: var(--step--1);
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.btn:hover { opacity: 0.9; }
+
+.btn:active { transform: translateY(1px); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+/* My vocab list */
+.user-vocab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.user-vocab-item button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* Tracker */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+.tracker-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--surface);
+  transition: background 0.15s;
+  user-select: none;
+}
+
+.tracker-cell.done {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+.tracker-cell:hover:not(.done) { background: var(--green-weak); }
+
+/* Intro hero */
+.hero {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: calc(var(--space)*1.2);
+  margin-bottom: calc(var(--space)*1);
+  box-shadow: var(--shadow);
+}
+
+.hero h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.hero .ja-line {
+  font-size: 1.15em;
+  margin-bottom: 0.3rem;
+}
+
+/* Section labels */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+/* Search/filter */
+.search-box {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: var(--step--1);
+  margin-bottom: 0.8rem;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* Print */
+@media print {
+  body { background: #fff; }
+  header { position: static; border-bottom-color: #ccc; }
+  .tab-bar, .no-print { display: none !important; }
+  .tab-panel { display: block !important; }
+  .card { break-inside: avoid; box-shadow: none; border-color: #ccc; }
+}
+
+@page { size: A4; margin: 16mm; }
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .vocab-table .col-romaji,
+  .vocab-table .col-pos { display: none; }
+  .tracker-grid { grid-template-columns: repeat(10, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <h1>Reading Companion</h1>
+      <div class="subtitle">For <span class="book-title">私たちが生きた20世紀</span> (Bunshun Bunko)</div>
+    </div>
+    <div class="subtitle">Japanese Learner Study Guide</div>
+  </div>
+</header>
+
+<main>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="section-label">About This Book</div>
+  <div class="ja-line">私たちが生きた20世紀</div>
+  <div class="romaji">Watashitachi ga ikita nijisseiki</div>
+  <p style="margin-top:0.6rem;">A collection of essays by 369 notable figures reflecting on the turbulent 20th century. This companion provides vocabulary, grammar, phrases, and tools to help you read the original Japanese text.</p>
+</div>
+
+<!-- Tabs -->
+<div class="tab-bar no-print">
+  <button class="tab-btn active" data-tab="vocab">Starter Vocabulary</button>
+  <button class="tab-btn" data-tab="grammar">Grammar</button>
+  <button class="tab-btn" data-tab="phrases">Key Phrases</button>
+  <button class="tab-btn" data-tab="mynotes">My Notes</button>
+  <button class="tab-btn" data-tab="tracker">Reading Tracker</button>
+</div>
+
+<!-- PANEL: Starter Vocabulary -->
+<div class="tab-panel active" id="panel-vocab">
+  <div class="card">
+    <div class="section-label">How to use</div>
+    <p>These are high-frequency words you will encounter across many essays. Use the search box to filter. Add your own words in the <strong>My Notes</strong> tab as you read.</p>
+    <input type="text" class="search-box" id="vocabSearch" placeholder="Search Japanese, romaji, or English..." onkeyup="filterVocab()">
+  </div>
+
+  <div class="card">
+    <h3>War & History</h3>
+    <table class="vocab-table" id="vocab-war">
+      <thead>
+        <tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-ja">戦争</td><td class="col-romaji">sensō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">war</td></tr>
+        <tr><td class="col-ja">平和</td><td class="col-romaji">heiwa</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">peace</td></tr>
+        <tr><td class="col-ja">体験</td><td class="col-romaji">taiken</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">personal experience</td></tr>
+        <tr><td class="col-ja">体験する</td><td class="col-romaji">taiken suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to experience</td></tr>
+        <tr><td class="col-ja">激動</td><td class="col-romaji">gekidō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">turbulence, upheaval</td></tr>
+        <tr><td class="col-ja">時代</td><td class="col-romaji">jidai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">era, period, age</td></tr>
+        <tr><td class="col-ja">証言</td><td class="col-romaji">shōgen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">testimony</td></tr>
+        <tr><td class="col-ja">記憶</td><td class="col-romaji">kioku</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">memory</td></tr>
+        <tr><td class="col-ja">記憶に残る</td><td class="col-romaji">kioku ni nokoru</td><td class="col-pos"><span class="pos-tag expression">Expr</span></td><td class="col-meaning">to remain in memory</td></tr>
+        <tr><td class="col-ja">生き延びる</td><td class="col-romaji">ikinobiru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to survive</td></tr>
+        <tr><td class="col-ja">負の遺産</td><td class="col-romaji">fu no isan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">negative legacy</td></tr>
+        <tr><td class="col-ja">敗戦</td><td class="col-romaji">haisen</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">defeat in war (esp. WWII)</td></tr>
+        <tr><td class="col-ja">復興</td><td class="col-romaji">fukkō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reconstruction, revival</td></tr>
+        <tr><td class="col-ja">繁栄</td><td class="col-romaji">han'ei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">prosperity</td></tr>
+        <tr><td class="col-ja">革命</td><td class="col-romaji">kakumei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">revolution</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Society & People</h3>
+    <table class="vocab-table" id="vocab-society">
+      <thead>
+        <tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-ja">著名人</td><td class="col-romaji">chomeijin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">celebrity, notable person</td></tr>
+        <tr><td class="col-ja">各界</td><td class="col-romaji">kakai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">various fields / circles</td></tr>
+        <tr><td class="col-ja">分野</td><td class="col-romaji">bunya</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">field, domain, area</td></tr>
+        <tr><td class="col-ja">政界</td><td class="col-romaji">seikai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">political world</td></tr>
+        <tr><td class="col-ja">財界</td><td class="col-romaji">zaikai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">business world, financial circles</td></tr>
+        <tr><td class="col-ja">学界</td><td class="col-romaji">gakkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">academic world</td></tr>
+        <tr><td class="col-ja">文壇</td><td class="col-romaji">bundan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">literary world</td></tr>
+        <tr><td class="col-ja">論壇</td><td class="col-romaji">rondan</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">punditry, opinion circles</td></tr>
+        <tr><td class="col-ja">芸能界</td><td class="col-romaji">geinōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">show business, entertainment world</td></tr>
+        <tr><td class="col-ja">法曹界</td><td class="col-romaji">hōsōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">legal profession</td></tr>
+        <tr><td class="col-ja">国民</td><td class="col-romaji">kokumin</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">citizens, the people</td></tr>
+        <tr><td class="col-ja">世代</td><td class="col-romaji">sedai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">generation</td></tr>
+        <tr><td class="col-ja">人々</td><td class="col-romaji">hitobito</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">people</td></tr>
+        <tr><td class="col-ja">大衆</td><td class="col-romaji">taishū</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">the masses, general public</td></tr>
+        <tr><td class="col-ja">生活</td><td class="col-romaji">seikatsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">life, livelihood, daily life</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Writing & Expression</h3>
+    <table class="vocab-table" id="vocab-writing">
+      <thead>
+        <tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-ja">書き記す</td><td class="col-romaji">kakishirusu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to write down, record</td></tr>
+        <tr><td class="col-ja">網羅する</td><td class="col-romaji">mōra suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to cover comprehensively</td></tr>
+        <tr><td class="col-ja">基づく</td><td class="col-romaji">motozuku</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to be based on</td></tr>
+        <tr><td class="col-ja">振り返る</td><td class="col-romaji">furikaeru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to look back (on)</td></tr>
+        <tr><td class="col-ja">見つめ直す</td><td class="col-romaji">mitsumenaosu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to re-examine, reconsider</td></tr>
+        <tr><td class="col-ja">捉える</td><td class="col-romaji">toraeru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to grasp, perceive, capture</td></tr>
+        <tr><td class="col-ja">語る</td><td class="col-romaji">kataru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to narrate, speak of (literary)</td></tr>
+        <tr><td class="col-ja">述べる</td><td class="col-romaji">noberu</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to state, express</td></tr>
+        <tr><td class="col-ja">想起する</td><td class="col-romaji">sōki suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to recall, bring to mind</td></tr>
+        <tr><td class="col-ja">証し</td><td class="col-romaji">akashi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">proof, testimony</td></tr>
+        <tr><td class="col-ja">物語</td><td class="col-romaji">monogatari</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">story, tale</td></tr>
+        <tr><td class="col-ja">エッセイ</td><td class="col-romaji">essei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">essay</td></tr>
+        <tr><td class="col-ja">感想</td><td class="col-romaji">kansō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">impressions, thoughts</td></tr>
+        <tr><td class="col-ja">随筆</td><td class="col-romaji">zuihitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">essay, miscellaneous writing</td></tr>
+        <tr><td class="col-ja">回顧</td><td class="col-romaji">kaiko</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reminiscence, looking back</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Abstract & Evaluation</h3>
+    <table class="vocab-table" id="vocab-abstract">
+      <thead>
+        <tr><th>Japanese</th><th>Romaji</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-ja">価値</td><td class="col-romaji">kachi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">value, worth</td></tr>
+        <tr><td class="col-ja">意味</td><td class="col-romaji">imi</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">meaning</td></tr>
+        <tr><td class="col-ja">意味する</td><td class="col-romaji">imi suru</td><td class="col-pos"><span class="pos-tag verb">Verb</span></td><td class="col-meaning">to mean, signify</td></tr>
+        <tr><td class="col-ja">本当</td><td class="col-romaji">hontō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">truth, reality</td></tr>
+        <tr><td class="col-ja">真実</td><td class="col-romaji">shinjitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">truth</td></tr>
+        <tr><td class="col-ja">姿</td><td class="col-romaji">sugata</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">figure, form, appearance</td></tr>
+        <tr><td class="col-ja">本質</td><td class="col-romaji">honshitsu</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">essence, true nature</td></tr>
+        <tr><td class="col-ja">課題</td><td class="col-romaji">kadai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">issue, challenge, task</td></tr>
+        <tr><td class="col-ja">教訓</td><td class="col-romaji">kyōkun</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">lesson, moral</td></tr>
+        <tr><td class="col-ja">反省</td><td class="col-romaji">hansei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">reflection, self-examination</td></tr>
+        <tr><td class="col-ja">誇り</td><td class="col-romaji">hokori</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">pride</td></tr>
+        <tr><td class="col-ja">後悔</td><td class="col-romaji">kōkai</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">regret</td></tr>
+        <tr><td class="col-ja">希望</td><td class="col-romaji">kibō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">hope</td></tr>
+        <tr><td class="col-ja">絶望</td><td class="col-romaji">zetsubō</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">despair</td></tr>
+        <tr><td class="col-ja">再生</td><td class="col-romaji">saisei</td><td class="col-pos"><span class="pos-tag noun">Noun</span></td><td class="col-meaning">rebirth, regeneration</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PANEL: Grammar -->
+<div class="tab-panel" id="panel-grammar">
+  <div class="card">
+    <div class="section-label">Essay Grammar Patterns</div>
+    <p>These patterns appear frequently in formal Japanese essays and literary prose. Each entry shows the pattern, romaji, function, and an example.</p>
+  </div>
+
+  <div class="card">
+    <h3>Nominalization & Abstraction</h3>
+    <div class="grammar-box">
+      <div class="pattern">〜こと</div>
+      <span class="romaji">~koto</span>
+      <p><strong>Function:</strong> Nominalizes a verb clause into a noun phrase. Common in reflective writing.</p>
+      <p><strong>Example:</strong> 生きた<strong>こと</strong> (ikita <strong>koto</strong>) — "the fact of having lived"</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜の</div>
+      <span class="romaji">~mono</span>
+      <p><strong>Function:</strong> Nominalizer with an emotional or experiential nuance. "The thing that..."</p>
+      <p><strong>Example:</strong> 忘れられない<strong>もの</strong> (wasurerarenai <strong>mono</strong>) — "something unforgettable"</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜のである / 〜んだ</div>
+      <span class="romaji">~no de aru / ~n da</span>
+      <p><strong>Function:</strong> Explanatory/emphatic copula. Gives essays their characteristic authoritative tone.</p>
+      <p><strong>Example:</strong> それが真実<strong>のである</strong> (sore ga shinjitsu <strong>no de aru</strong>) — "That is the truth."</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜という</div>
+      <span class="romaji">~to iu</span>
+      <p><strong>Function:</strong> Quotative / definitional marker. "The so-called..." / "What is called..."</p>
+      <p><strong>Example:</strong> 20世紀<strong>という</strong>時代 (nijisseiki <strong>to iu</strong> jidai) — "the era called the 20th century"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Passive & Humble Forms</h3>
+    <div class="grammar-box">
+      <div class="pattern">〜れる / 〜られる (passive)</div>
+      <span class="romaji">~reru / ~rareru</span>
+      <p><strong>Function:</strong> Passive voice. Common in historical narrative to focus on events rather than agents.</p>
+      <p><strong>Example:</strong> 戦争に巻き込ま<strong>れる</strong> (sensō ni makikoma<strong>reru</strong>) — "to be caught up in war"</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜させられる (causative-passive)</div>
+      <span class="romaji">~saserareru</span>
+      <p><strong>Function:</strong> Forced action. "Was made to..." Conveys powerlessness.</p>
+      <p><strong>Example:</strong> 苦しみを味わ<strong>させられる</strong> (kurushimi wo ajiwa<strong>saserareru</strong>) — "was made to taste suffering"</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">お〜になる / 〜なさる (honorific)</div>
+      <span class="romaji">o~ni naru / ~nasaru</span>
+      <p><strong>Function:</strong> Honorific verbs when describing actions of respected figures.</p>
+      <p><strong>Example:</strong> 天皇が<strong>おっしゃった</strong> (tennō ga <strong>ossharuta</strong>) — "the Emperor said"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Conjunctions & Transitions</h3>
+    <div class="grammar-box">
+      <div class="pattern">〜一方(で)</div>
+      <span class="romaji">~ippō (de)</span>
+      <p><strong>Function:</strong> "On the one hand..." / "while..." Shows contrast between two aspects.</p>
+      <p><strong>Example:</strong> 繁栄した<strong>一方で</strong>、問題も残った。(han'ei shita <strong>ippō de</strong>, mondai mo nokotta.)</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜反面</div>
+      <span class="romaji">~hanmen</span>
+      <p><strong>Function:</strong> "On the contrary / on the other hand." Stronger contrast than 一方.</p>
+      <p><strong>Example:</strong> 技術は進歩した<strong>反面</strong>、環境は破壊された。(gijutsu wa shinpo shita <strong>hanmen</strong>, kankyō wa hakai sareta.)</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">つまり</div>
+      <span class="romaji">tsumari</span>
+      <p><strong>Function:</strong> "In other words, that is to say." Clarifies or rephrases.</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">すなわち</div>
+      <span class="romaji">sunawachi</span>
+      <p><strong>Function:</strong> Formal "in other words, namely." More literary than つまり.</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">しかしながら</div>
+      <span class="romaji">shikashi nagara</span>
+      <p><strong>Function:</strong> Formal "however, nevertheless." Common in essays and speeches.</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">なぜら(〜からだ)</div>
+      <span class="romaji">nazenara (~kara da)</span>
+      <p><strong>Function:</strong> "The reason is that..." / "because." Gives justification.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Modality & Hedging</h3>
+    <div class="grammar-box">
+      <div class="pattern">〜ように思う</div>
+      <span class="romaji">~yō ni omou</span>
+      <p><strong>Function:</strong> "I think that..." Softens a statement. Common in personal essays.</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜のではないか</div>
+      <span class="romaji">~no de wa nai ka</span>
+      <p><strong>Function:</strong> "Is it not the case that...?" / "I wonder if..." Rhetorical questioning.</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜べきだ</div>
+      <span class="romaji">~beki da</span>
+      <p><strong>Function:</strong> "Should / ought to." Expresses obligation or recommendation.</p>
+      <p><strong>Example:</strong> 歴史から学ぶ<strong>べきだ</strong> (rekishi kara manabu <strong>beki da</strong>) — "We should learn from history."</p>
+    </div>
+    <div class="grammar-box">
+      <div class="pattern">〜に違いない</div>
+      <span class="romaji">~ni chigai nai</span>
+      <p><strong>Function:</strong> "Must be / no doubt." Strong inference.</p>
+      <p><strong>Example:</strong> 彼は正しい<strong>に違いない</strong> (kare wa tadashii <strong>ni chigai nai</strong>) — "He must be right."</p>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL: Phrases -->
+<div class="tab-panel" id="panel-phrases">
+  <div class="card">
+    <div class="section-label">Key Phrases for This Book</div>
+    <p>These phrases are likely to recur or appear in introductions and transitions across the essays.</p>
+  </div>
+
+  <div class="card">
+    <h3>Opening & Framing</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">20世紀を振り返ると</div>
+      <div class="romaji">Nijisseiki wo furikaeru to</div>
+      <div class="phrase-meta">"Looking back at the 20th century..." — Common essay opening.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">私にとって20世紀とは</div>
+      <div class="romaji">Watashi ni totte nijisseiki to wa</div>
+      <div class="phrase-meta">"For me, the 20th century is..." — Personal framing device.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜の記憶は今も鮮明だ</div>
+      <div class="romaji">~no kioku wa ima mo senmei da</div>
+      <div class="phrase-meta">"The memory of ~ is still vivid." — Emotional recollection.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">生きた証しとして</div>
+      <div class="romaji">Ikita akashi to shite</div>
+      <div class="phrase-meta">"As testimony of having lived." — Central theme of the book.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">体験にもとづいて</div>
+      <div class="romaji">Taiken ni motozuite</div>
+      <div class="phrase-meta">"Based on (my) experience." — Signals personal narrative.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Evaluation & Reflection</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜ということは忘れてはならない</div>
+      <div class="romaji">~to iu koto wa wasurete wa naranai</div>
+      <div class="phrase-meta">"We must not forget that..." — Strong admonition.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に尽きる</div>
+      <div class="romaji">~ni kiru</div>
+      <div class="phrase-meta">"Nothing but ~ / It all comes down to ~" — "感謝に尽きる" (nothing but gratitude).</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に値する</div>
+      <div class="romaji">~ni atai suru</div>
+      <div class="phrase-meta">"To be worthy of ~ / deserve ~" — Formal evaluation.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を前提として</div>
+      <div class="romaji">~wo zentei to shite</div>
+      <div class="phrase-meta">"On the premise of ~ / assuming ~" — Logical framing.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜ゆえに</div>
+      <div class="romaji">~yue ni</div>
+      <div class="phrase-meta">"Because of ~ / therefore." Literary/archaic causal connector.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜とはいえ</div>
+      <div class="romaji">~to wa ie</div>
+      <div class="phrase-meta">"Having said that / although." Concessive transition.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Time & Change</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">時代の流れとともに</div>
+      <div class="romaji">Jidai no nagare to tomo ni</div>
+      <div class="phrase-meta">"Along with the flow of time / as times change."</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を経て</div>
+      <div class="romaji">~wo hete</div>
+      <div class="phrase-meta">"Through ~ / via ~" — "戦争を経て" (through the war).</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に至るまで</div>
+      <div class="romaji">~ni itaru made</div>
+      <div class="phrase-meta">"Up until ~ / all the way to ~" — Temporal scope.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を境に</div>
+      <div class="romaji">~wo sakai ni</div>
+      <div class="phrase-meta">"With ~ as a turning point." — "敗戦を境に" (with defeat as the turning point).</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に至る</div>
+      <div class="romaji">~ni itaru</div>
+      <div class="phrase-meta">"To reach / lead to ~" — Causal or temporal culmination.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Emotion & Subjectivity</h3>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜と感じる</div>
+      <div class="romaji">~to kanjiru</div>
+      <div class="phrase-meta">"I feel that ~" — Subjective marker.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜を胸に</div>
+      <div class="romaji">~wo mune ni</div>
+      <div class="phrase-meta">"With ~ in one's heart." Poetic emotional framing.</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に耐える</div>
+      <div class="romaji">~ni taeru</div>
+      <div class="phrase-meta">"To endure ~ / withstand ~" — "苦しみに耐える" (endure suffering).</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に打ち勝つ</div>
+      <div class="romaji">~ni kachiu-katsu</div>
+      <div class="phrase-meta">"To overcome ~" — "困難に打ち勝つ" (overcome difficulties).</div>
+    </div>
+    <div class="phrase-item">
+      <div class="phrase-ja">〜に満ちた</div>
+      <div class="romaji">~ni michita</div>
+      <div class="phrase-meta">"Full of ~ / filled with ~" — "希望に満ちた" (full of hope).</div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL: My Notes -->
+<div class="tab-panel" id="panel-mynotes">
+  <div class="card no-print">
+    <div class="section-label">Add New Entry</div>
+    <p>Add vocabulary, phrases, or grammar points you encounter while reading.</p>
+    <div class="form-row">
+      <input type="text" id="noteJa" placeholder="Japanese" style="flex:1; min-width:120px;">
+      <input type="text" id="noteRomaji" placeholder="Romaji" style="flex:1; min-width:120px;">
+    </div>
+    <div class="form-row">
+      <select id="notePos">
+        <option value="Noun">Noun</option>
+        <option value="Verb">Verb</option>
+        <option value="Adjective">Adjective</option>
+        <option value="Adverb">Adverb</option>
+        <option value="Particle">Particle</option>
+        <option value="Expression">Expression</option>
+        <option value="Grammar">Grammar</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="noteMeaning" placeholder="Meaning / notes" style="flex:2; min-width:160px;">
+      <input type="text" id="notePage" placeholder="Page" style="width:70px;">
+    </div>
+    <div class="form-row">
+      <button class="btn" onclick="addNote()">Add Entry</button>
+      <button class="btn btn-secondary" onclick="exportNotes()">Export JSON</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">Import JSON</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importNotes(event)">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Your Personal Notes</div>
+    <div style="margin:0.5rem 0;">
+      <input type="text" class="search-box" id="noteSearch" placeholder="Search your notes..." onkeyup="renderNotes()" style="margin-bottom:0;">
+    </div>
+    <div id="notesList" style="margin-top:0.8rem;">
+      <p style="color:var(--muted);">No notes yet. Add entries as you read.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL: Reading Tracker -->
+<div class="tab-panel" id="panel-tracker">
+  <div class="card">
+    <div class="section-label">Reading Tracker</div>
+    <p>Click a chapter/essay number to mark it as read. Your progress is saved automatically in this browser.</p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin:0.8rem 0;">
+      <div><strong id="progressText">0 / 369</strong> essays</div>
+      <div style="color:var(--muted);">(<span id="progressPct">0%</span>)</div>
+    </div>
+    <div class="tracker-grid" id="trackerGrid"></div>
+  </div>
+
+  <div class="card no-print">
+    <div class="section-label">Reset</div>
+    <button class="btn btn-secondary" onclick="resetTracker()">Reset All Progress</button>
+  </div>
+</div>
+
+</main>
+
+<footer style="text-align:center; padding: calc(var(--space)*2) var(--space); color: var(--muted); font-size: 0.85rem;">
+  <p>Reading companion for 私たちが生きた20世紀 (Bunshun Bunko, 2000)</p>
+  <p>Built for self-study. Data stays in your browser.</p>
+</footer>
+
+<script>
+/* ===== TABS ===== */
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ===== VOCAB FILTER ===== */
+function filterVocab() {
+  const q = document.getElementById('vocabSearch').value.toLowerCase();
+  document.querySelectorAll('.vocab-table tbody tr').forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+/* ===== NOTES (localStorage) ===== */
+const NOTES_KEY = 'watashi20_notes';
+const TRACKER_KEY = 'watashi20_tracker';
+
+function getNotes() {
+  try { return JSON.parse(localStorage.getItem(NOTES_KEY)) || []; }
+  catch(e) { return []; }
+}
+
+function saveNotes(notes) {
+  localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+}
+
+function addNote() {
+  const ja = document.getElementById('noteJa').value.trim();
+  const romaji = document.getElementById('noteRomaji').value.trim();
+  const pos = document.getElementById('notePos').value;
+  const meaning = document.getElementById('noteMeaning').value.trim();
+  const page = document.getElementById('notePage').value.trim();
+  if (!ja) { alert('Please enter Japanese text.'); return; }
+  const notes = getNotes();
+  notes.unshift({ ja, romaji, pos, meaning, page, id: Date.now() });
+  saveNotes(notes);
+  document.getElementById('noteJa').value = '';
+  document.getElementById('noteRomaji').value = '';
+  document.getElementById('noteMeaning').value = '';
+  document.getElementById('notePage').value = '';
+  renderNotes();
+}
+
+function deleteNote(id) {
+  saveNotes(getNotes().filter(n => n.id !== id));
+  renderNotes();
+}
+
+function renderNotes() {
+  const q = document.getElementById('noteSearch').value.toLowerCase();
+  const notes = getNotes().filter(n =>
+    (n.ja + n.romaji + n.meaning + n.pos + n.page).toLowerCase().includes(q)
+  );
+  const container = document.getElementById('notesList');
+  if (!notes.length) {
+    container.innerHTML = '<p style="color:var(--muted);">No matching notes.</p>';
+    return;
+  }
+  container.innerHTML = notes.map(n => {
+    const posClass = {
+      Noun:'noun', Verb:'verb', Adjective:'adj', Adverb:'adv',
+      Particle:'particle', Expression:'expression', Grammar:'expression', Other:'noun'
+    }[n.pos] || 'noun';
+    return '<div class="user-vocab-item">' +
+      '<div>' +
+        '<strong>' + n.ja + '</strong> ' +
+        '<span class="romaji">' + n.romaji + '</span> ' +
+        '<span class="pos-tag ' + posClass + '">' + n.pos + '</span> ' +
+        '<span style="color:var(--muted); margin-left:0.4rem;">' + n.meaning + '</span> ' +
+        (n.page ? '<span style="color:var(--accent); font-size:0.8rem; margin-left:0.4rem;">p.' + n.page + '</span>' : '') +
+      '</div>' +
+      '<button onclick="deleteNote(' + n.id + ')" aria-label="Delete">&#10005;</button>' +
+    '</div>';
+  }).join('');
+}
+
+function exportNotes() {
+  const data = JSON.stringify(getNotes(), null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'watashi20_notes.json';
+  a.click();
+}
+
+function importNotes(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (Array.isArray(data)) {
+        saveNotes(data);
+        renderNotes();
+        alert('Notes imported: ' + data.length + ' entries');
+      } else { alert('Invalid file format.'); }
+    } catch(err) { alert('Error reading file.'); }
+  };
+  reader.readAsText(file);
+}
+
+/* ===== TRACKER ===== */
+function getTracker() {
+  try { return JSON.parse(localStorage.getItem(TRACKER_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+
+function saveTracker(t) {
+  localStorage.setItem(TRACKER_KEY, JSON.stringify(t));
+}
+
+function buildTracker() {
+  const grid = document.getElementById('trackerGrid');
+  grid.innerHTML = '';
+  const tracker = getTracker();
+  let done = 0;
+  for (let i = 1; i <= 369; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'tracker-cell' + (tracker[i] ? ' done' : '');
+    cell.textContent = i;
+    cell.onclick = () => {
+      tracker[i] = !tracker[i];
+      saveTracker(tracker);
+      buildTracker();
+    };
+    grid.appendChild(cell);
+    if (tracker[i]) done++;
+  }
+  document.getElementById('progressText').textContent = done + ' / 369';
+  document.getElementById('progressPct').textContent = Math.round(done/369*100) + '%';
+}
+
+function resetTracker() {
+  if (confirm('Reset all reading progress?')) {
+    saveTracker({});
+    buildTracker();
+  }
+}
+
+/* ===== INIT ===== */
+renderNotes();
+buildTracker();
+</script>
+
+</body>
+</html>

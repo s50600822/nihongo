@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>くまの里山日記 — 日本語学習ノート・拡張版（ふりがな付き）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f3ec;
+  --surface: #fffdfa;
+  --surface-warm: #faf6ee;
+  --ink: #2a2420;
+  --muted: #6b6055;
+  --accent: #5a7c5a;
+  --accent-strong: #3d5c3d;
+  --accent-weak: rgba(90,124,90,0.10);
+  --accent-wash: rgba(90,124,90,0.06);
+  --terracotta: #b86b4a;
+  --terracotta-weak: rgba(184,107,74,0.10);
+  --sky: #6b8fa8;
+  --sky-weak: rgba(107,143,168,0.10);
+  --line: rgba(42,36,32,0.10);
+  --line-strong: rgba(42,36,32,0.18);
+  --step--1: clamp(0.85rem, 0.82rem + 0.2vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.25vw, 1.1rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.55vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1.2vw, 2.2rem);
+  --step-3: clamp(2rem, 1.6rem + 2.2vw, 3.2rem);
+  --space: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px -10px rgba(0,0,0,0.12);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--step-0);
+  line-height: 1.85;
+}
+
+ruby { ruby-position: over; ruby-align: center; }
+rt {
+  font-size: 0.55em;
+  color: var(--muted);
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.toggle-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 0.6em 1.5em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.toggle-bar button {
+  background: var(--accent-weak);
+  border: 1px solid var(--accent);
+  color: var(--accent-strong);
+  padding: 0.4em 1.2em;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: var(--step--1);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.toggle-bar button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.toggle-bar button.active {
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+header {
+  background: linear-gradient(160deg, #e8e4db 0%, var(--bg) 60%, var(--accent-wash) 100%);
+  padding: calc(var(--space) * 4) calc(var(--space) * 1.5) calc(var(--space) * 3);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: "";
+  position: absolute;
+  top: -60px; right: -40px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, var(--accent-weak) 0%, transparent 70%);
+  opacity: 0.6; border-radius: 50%;
+}
+header::after {
+  content: "";
+  position: absolute;
+  bottom: -40px; left: -30px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, var(--terracotta-weak) 0%, transparent 70%);
+  opacity: 0.5; border-radius: 50%;
+}
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  background: var(--accent-weak);
+  padding: 0.35em 1em;
+  border-radius: 999px;
+  margin-bottom: 1.2em;
+}
+h1 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.5em;
+}
+.subtitle {
+  font-size: var(--step-1);
+  color: var(--muted);
+  max-width: 52ch;
+  line-height: 1.7;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) calc(var(--space) * 1.5);
+}
+
+section {
+  margin-bottom: calc(var(--space) * 3.5);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75em;
+  margin-bottom: 1.25em;
+  padding-bottom: 0.6em;
+  border-bottom: 2px solid var(--line-strong);
+}
+.section-number {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+h2 {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.section-desc {
+  color: var(--muted);
+  font-size: var(--step--1);
+  margin-top: 0.3em;
+}
+
+/* Single column layout - cards stack vertically */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1.1);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 0.9);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:last-child {
+  margin-bottom: 0;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px -8px rgba(0,0,0,0.15);
+}
+.card h3 {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  font-weight: 600;
+  color: var(--accent-strong);
+  margin-bottom: 0.6em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.card-icon {
+  width: 32px; height: 32px;
+  background: var(--accent-weak);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+  margin-top: 0.5em;
+}
+th, td {
+  padding: 0.55em 0.5em;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+th {
+  font-weight: 700;
+  color: var(--muted);
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--line-strong);
+}
+tr:last-child td { border-bottom: none; }
+.word {
+  font-weight: 700;
+  color: var(--ink);
+}
+.word ruby { font-size: 1.15em; }
+.word rt { font-size: 0.5em; }
+.reading {
+  color: var(--muted);
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+.meaning {
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* Phrase blocks - single column */
+.phrase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+.phrase-item {
+  background: var(--surface-warm);
+  border-radius: var(--radius-sm);
+  padding: 0.9em 1.1em;
+  border-left: 4px solid var(--accent);
+}
+.phrase-item.sky-border { border-left-color: var(--sky); background: var(--sky-weak); }
+.phrase-item.terra-border { border-left-color: var(--terracotta); background: var(--terracotta-weak); }
+
+.phrase {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.2em;
+}
+.phrase ruby { font-size: 1.3em; }
+.phrase rt { font-size: 0.45em; }
+.phrase-reading {
+  font-size: 0.85em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.3em;
+}
+.phrase-meaning {
+  color: var(--muted);
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+.phrase-example {
+  display: block;
+  margin-top: 0.4em;
+  padding: 0.5em 0.7em;
+  background: var(--surface);
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.phrase-example ruby { font-size: 1.1em; }
+.phrase-example rt { font-size: 0.5em; }
+.phrase-example .en {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-top: 0.15em;
+}
+
+/* Pattern cards - single column */
+.pattern-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+  margin-bottom: calc(var(--space) * 0.8);
+}
+.pattern-card:last-child {
+  margin-bottom: 0;
+}
+.pattern-formula {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--terracotta);
+  background: var(--terracotta-weak);
+  padding: 0.4em 0.8em;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 0.6em;
+}
+.pattern-desc {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin-bottom: 0.5em;
+}
+.pattern-example {
+  background: var(--surface-warm);
+  padding: 0.6em 0.9em;
+  border-radius: 8px;
+  font-size: 0.92em;
+}
+.pattern-example ruby { font-size: 1.15em; }
+.pattern-example rt { font-size: 0.5em; }
+
+/* Onomatopoeia - single column stacked */
+.ono-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.8em 1em;
+  margin-bottom: 0.7em;
+}
+.ono-item:last-child {
+  margin-bottom: 0;
+}
+.ono-word {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--accent-strong);
+  display: block;
+}
+.ono-meaning {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-top: 0.2em;
+}
+
+/* Adjective items - single column stacked */
+.adj-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.7em 1em;
+  margin-bottom: 0.7em;
+}
+.adj-item:last-child {
+  margin-bottom: 0;
+}
+.adj-word {
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+}
+.adj-word ruby { font-size: 1.15em; }
+.adj-word rt { font-size: 0.5em; }
+.adj-meaning {
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+/* Video title cards - single column */
+.video-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
+  margin-bottom: 0.8em;
+}
+.video-card:last-child {
+  margin-bottom: 0;
+}
+.video-title {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.3em;
+}
+.video-title ruby { font-size: 1.2em; }
+.video-title rt { font-size: 0.48em; }
+.video-meta {
+  font-size: 0.8em;
+  color: var(--muted);
+  margin-bottom: 0.5em;
+  display: block;
+}
+.video-breakdown {
+  font-size: 0.92em;
+  color: var(--muted);
+  line-height: 1.7;
+  padding: 0.6em 0.8em;
+  background: var(--surface-warm);
+  border-radius: 8px;
+}
+.video-breakdown strong {
+  color: var(--accent-strong);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: calc(var(--space) * 2) calc(var(--space) * 1.5);
+  color: var(--muted);
+  font-size: var(--step--1);
+  border-top: 1px solid var(--line);
+  margin-top: calc(var(--space) * 2);
+}
+
+@media print {
+  body { background: #fff; }
+  header { background: #f0ede6; padding: 2rem 1rem; }
+  .card, .pattern-card, .ono-item, .phrase-item, .video-card, .adj-item {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  .toggle-bar { display: none; }
+}
+@page { size: A4; margin: 14mm; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card:hover { transform: none; }
+}
+
+body.hide-furigana rt { display: none; }
+</style>
+</head>
+<body>
+
+<div class="toggle-bar no-print">
+  <button id="btn-furigana-on" class="active" onclick="setFurigana(true)">ふりがな ON</button>
+  <button id="btn-furigana-off" onclick="setFurigana(false)">ふりがな OFF</button>
+</div>
+
+<header>
+  <div class="hero-inner">
+    <span class="eyebrow">日本語学習ノート・拡張版</span>
+    <h1><ruby>くま<rt>くま</rt></ruby>の<ruby>里山日記<rt>さとやまにっき</rt></ruby><br><span style="font-size:0.6em; color:var(--muted);">ふりがな付き — 田舎暮らし・動物・自然・料理・DIYの語彙と表現</span></h1>
+    <p class="subtitle">
+      <ruby>ヤギ<rt>やぎ</rt></ruby>の<ruby>ジョン<rt>じょん</rt></ruby>と<ruby>猫<rt>ねこ</rt></ruby>たちに<ruby>囲<rt>かこ</rt></ruby>まれて<ruby>のんびり<rt>のんびり</rt></ruby><ruby>暮<rt>く</rt></ruby>らす「くまの<ruby>里山日記<rt>さとやまにっき</rt></ruby>」から、
+      <ruby>田暮<rt>いなかぐ</rt></ruby>らし・<ruby>動物<rt>どうぶつ</rt></ruby>・<ruby>自然<rt>しぜん</rt></ruby>・<ruby>料理<rt>りょうり</rt></ruby>・DIY・<ruby>日常<rt>にちじょう</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>語彙<rt>ごい</rt></ruby>、<ruby>慣用句<rt>かんようく</rt></ruby>、<ruby>文法<rt>ぶんぽう</rt></ruby>パターン、<ruby>擬音語<rt>ぎおんご</rt></ruby>を<ruby>集<rt>あつ</rt></ruby>めました。
+    </p>
+  </div>
+</header>
+
+<main>
+
+<!-- ====== SECTION 1: 田舎暮らし ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <div>
+      <h2><ruby>田舎暮<rt>いなかぐ</rt></ruby>らし（Country Life）</h2>
+      <p class="section-desc"><ruby>畑<rt>はたけ</rt></ruby>・<ruby>家<rt>いえ</rt></ruby>・<ruby>季節<rt>きせつ</rt></ruby>・<ruby>道具<rt>どうぐ</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>基本語彙<rt>きほんごい</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🏡</span> <ruby>家<rt>いえ</rt></ruby>と<ruby>住<rt>す</rt></ruby>まい</h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>里山<rt>さとやま</rt></ruby></td><td class="reading">さとやま</td><td class="meaning">village mountain, rural hills</td></tr>
+      <tr><td class="word"><ruby>田舎<rt>いなか</rt></ruby></td><td class="reading">いなか</td><td class="meaning">countryside, rural area</td></tr>
+      <tr><td class="word"><ruby>古民家<rt>こみんか</rt></ruby></td><td class="reading">こみんか</td><td class="meaning">old traditional Japanese house</td></tr>
+      <tr><td class="word"><ruby>縁側<rt>えんがわ</rt></ruby></td><td class="reading">えんがわ</td><td class="meaning">veranda, porch</td></tr>
+      <tr><td class="word"><ruby>囲炉裏<rt>いろり</rt></ruby></td><td class="reading">いろり</td><td class="meaning">hearth, sunken fireplace</td></tr>
+      <tr><td class="word"><ruby>物置<rt>ものおき</rt></ruby></td><td class="reading">ものおき</td><td class="meaning">storage shed</td></tr>
+      <tr><td class="word"><ruby>井戸<rt>いど</rt></ruby></td><td class="reading">いど</td><td class="meaning">water well</td></tr>
+      <tr><td class="word"><ruby>用水路<rt>ようすいろ</rt></ruby></td><td class="reading">ようすいろ</td><td class="meaning">irrigation canal</td></tr>
+      <tr><td class="word"><ruby>小屋<rt>こや</rt></ruby></td><td class="reading">こや</td><td class="meaning">hut, small shed, barn</td></tr>
+      <tr><td class="word"><ruby>裏山<rt>うらやま</rt></ruby></td><td class="reading">うらやま</td><td class="meaning">hill behind the house</td></tr>
+      <tr><td class="word"><ruby>林道<rt>りんどう</rt></ruby></td><td class="reading">りんどう</td><td class="meaning">forest road, logging road</td></tr>
+      <tr><td class="word"><ruby>集落<rt>しゅうらく</rt></ruby></td><td class="reading">しゅうらく</td><td class="meaning">settlement, hamlet</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🌾</span> <ruby>畑<rt>はたけ</rt></ruby>と<ruby>農作業<rt>のうさぎょう</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>畑<rt>はたけ</rt></ruby></td><td class="reading">はたけ・はた</td><td class="meaning">field, vegetable garden</td></tr>
+      <tr><td class="word"><ruby>耕<rt>たがや</rt></ruby>す</td><td class="reading">たがやす</td><td class="meaning">to plow, to cultivate</td></tr>
+      <tr><td class="word"><ruby>草<rt>くさ</rt></ruby>むしり</td><td class="reading">くさむしり</td><td class="meaning">weeding</td></tr>
+      <tr><td class="word"><ruby>草刈<rt>くさか</rt></ruby>り</td><td class="reading">くさかり</td><td class="meaning">grass cutting, mowing</td></tr>
+      <tr><td class="word"><ruby>種<rt>たね</rt></ruby>まき</td><td class="reading">たねまき</td><td class="meaning">sowing seeds</td></tr>
+      <tr><td class="word"><ruby>収穫<rt>しゅうかく</rt></ruby></td><td class="reading">しゅうかく</td><td class="meaning">harvest</td></tr>
+      <tr><td class="word"><ruby>土<rt>つち</rt></ruby>いじり</td><td class="reading">つちいじり</td><td class="meaning">working the soil, gardening</td></tr>
+      <tr><td class="word"><ruby>草<rt>くさ</rt></ruby>が<ruby>伸<rt>の</rt></ruby>び<ruby>放題<rt>ほうだい</rt></ruby></td><td class="reading">くさがのびほうだい</td><td class="meaning">grass growing unchecked</td></tr>
+      <tr><td class="word"><ruby>片付<rt>かたづ</rt></ruby>ける</td><td class="reading">かたづける</td><td class="meaning">to tidy up, clear away</td></tr>
+      <tr><td class="word"><ruby>堆肥<rt>たいひ</rt></ruby></td><td class="reading">たいひ</td><td class="meaning">compost</td></tr>
+      <tr><td class="word"><ruby>苗<rt>なえ</rt></ruby></td><td class="reading">なえ</td><td class="meaning">seedling, young plant</td></tr>
+      <tr><td class="word"><ruby>実<rt>み</rt></ruby>がなる</td><td class="reading">みがなる</td><td class="meaning">to bear fruit</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🍉</span> <ruby>作物<rt>さくもつ</rt></ruby>と<ruby>食材<rt>しょくざい</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>採<rt>と</rt></ruby>れたて</td><td class="reading">とれたて</td><td class="meaning">freshly picked/harvested</td></tr>
+      <tr><td class="word"><ruby>野菜<rt>やさい</rt></ruby></td><td class="reading">やさい</td><td class="meaning">vegetables</td></tr>
+      <tr><td class="word"><ruby>家庭菜園<rt>かていさいえん</rt></ruby></td><td class="reading">かていさいえん</td><td class="meaning">home garden</td></tr>
+      <tr><td class="word"><ruby>自家製<rt>じかせい</rt></ruby></td><td class="reading">じかせい</td><td class="meaning">homemade, homegrown</td></tr>
+      <tr><td class="word"><ruby>スイカ<rt>すいか</rt></ruby></td><td class="reading">すいか</td><td class="meaning">watermelon</td></tr>
+      <tr><td class="word"><ruby>小松菜<rt>こまつな</rt></ruby></td><td class="reading">こまつな</td><td class="meaning">komatsuna (greens)</td></tr>
+      <tr><td class="word"><ruby>大根<rt>だいこん</rt></ruby></td><td class="reading">だいこん</td><td class="meaning">daikon radish</td></tr>
+      <tr><td class="word"><ruby>収穫期<rt>しゅうかくき</rt></ruby></td><td class="reading">しゅうかくき</td><td class="meaning">harvest season</td></tr>
+      <tr><td class="word"><ruby>新鮮<rt>しんせん</rt></ruby></td><td class="reading">しんせん</td><td class="meaning">fresh</td></tr>
+      <tr><td class="word"><ruby>旬<rt>しゅん</rt></ruby></td><td class="reading">しゅん</td><td class="meaning">in season (food)</td></tr>
+      <tr><td class="word"><ruby>味噌汁<rt>みそしる</rt></ruby></td><td class="reading">みそしる</td><td class="meaning">miso soup</td></tr>
+      <tr><td class="word"><ruby>目玉焼<rt>めだまや</rt></ruby>き</td><td class="reading">めだまやき</td><td class="meaning">fried egg</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🌿</span> <ruby>自然<rt>しぜん</rt></ruby>と<ruby>季節<rt>きせつ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>里山<rt>さとやま</rt></ruby>の<ruby>風景<rt>ふうけい</rt></ruby></td><td class="reading">さとやまのふうけい</td><td class="meaning">satoyama landscape</td></tr>
+      <tr><td class="word"><ruby>散策<rt>さんさく</rt></ruby></td><td class="reading">さんさく</td><td class="meaning">stroll, walk</td></tr>
+      <tr><td class="word"><ruby>小川<rt>おがわ</rt></ruby></td><td class="reading">おがわ</td><td class="meaning">stream, brook</td></tr>
+      <tr><td class="word"><ruby>野鳥<rt>やちょう</rt></ruby></td><td class="reading">やちょう</td><td class="meaning">wild bird</td></tr>
+      <tr><td class="word"><ruby>夕暮<rt>ゆうぐ</rt></ruby>れ</td><td class="reading">ゆうぐれ</td><td class="meaning">dusk, twilight</td></tr>
+      <tr><td class="word"><ruby>朝露<rt>あさつゆ</rt></ruby></td><td class="reading">あさつゆ</td><td class="meaning">morning dew</td></tr>
+      <tr><td class="word"><ruby>木漏<rt>こも</rt></ruby>れ<ruby>日<rt>び</rt></ruby></td><td class="reading">こもれび</td><td class="meaning">sunlight through trees</td></tr>
+      <tr><td class="word"><ruby>虫<rt>むし</rt></ruby>の<ruby>声<rt>こえ</rt></ruby></td><td class="reading">むしのこえ</td><td class="meaning">sound of insects</td></tr>
+      <tr><td class="word"><ruby>川遊<rt>かわあそ</rt></ruby>び</td><td class="reading">かわあそび</td><td class="meaning">playing in the river</td></tr>
+      <tr><td class="word"><ruby>涼<rt>すず</rt></ruby>しい</td><td class="reading">すずしい</td><td class="meaning">cool, refreshing</td></tr>
+      <tr><td class="word"><ruby>日中<rt>にっちゅう</rt></ruby></td><td class="reading">にっちゅう</td><td class="meaning">daytime</td></tr>
+      <tr><td class="word"><ruby>何気<rt>なにげ</rt></ruby>ない<ruby>日常<rt>にちじょう</rt></ruby></td><td class="reading">なにげないにちじょう</td><td class="meaning">casual everyday life</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== SECTION 2: 動物 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <div>
+      <h2><ruby>動物<rt>どうぶつ</rt></ruby>（Animals）</h2>
+      <p class="section-desc"><ruby>ジョン<rt>じょん</rt></ruby>、ふわちゃん、<ruby>野生動物<rt>やせいどうぶつ</rt></ruby>・<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>語彙<rt>ごい</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🐐</span> <ruby>ヤギ<rt>やぎ</rt></ruby>・ペットの<ruby>世話<rt>せわ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>ヤギ<rt>やぎ</rt></ruby></td><td class="reading">やぎ</td><td class="meaning">goat</td></tr>
+      <tr><td class="word"><ruby>子<rt>こ</rt></ruby>ヤギ</td><td class="reading">こやぎ</td><td class="meaning">kid (young goat)</td></tr>
+      <tr><td class="word"><ruby>角<rt>つの</rt></ruby></td><td class="reading">つの</td><td class="meaning">horn, antler</td></tr>
+      <tr><td class="word"><ruby>蹄<rt>ひづめ</rt></ruby></td><td class="reading">ひづめ</td><td class="meaning">hoof</td></tr>
+      <tr><td class="word"><ruby>削蹄<rt>さくてい</rt></ruby></td><td class="reading">さくてい</td><td class="meaning">hoof trimming</td></tr>
+      <tr><td class="word"><ruby>頭突<rt>ずつ</rt></ruby>き</td><td class="reading">ずつき</td><td class="meaning">headbutt</td></tr>
+      <tr><td class="word"><ruby>散歩<rt>さんぽ</rt></ruby></td><td class="reading">さんぽ</td><td class="meaning">walk, stroll</td></tr>
+      <tr><td class="word"><ruby>飼<rt>か</rt></ruby>う</td><td class="reading">かう</td><td class="meaning">to keep (a pet), to raise</td></tr>
+      <tr><td class="word"><ruby>餌<rt>えさ</rt></ruby></td><td class="reading">えさ</td><td class="meaning">feed, fodder</td></tr>
+      <tr><td class="word"><ruby>鳴<rt>な</rt></ruby>き<ruby>声<rt>ごえ</rt></ruby></td><td class="reading">なきごえ</td><td class="meaning">animal cry, call</td></tr>
+      <tr><td class="word"><ruby>毛並<rt>けな</rt></ruby>み</td><td class="reading">けなみ</td><td class="meaning">coat (fur), fleece</td></tr>
+      <tr><td class="word"><ruby>仲良<rt>なかよ</rt></ruby>し</td><td class="reading">なかよし</td><td class="meaning">close friends, getting along</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🐈</span> <ruby>猫<rt>ねこ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>猫<rt>ねこ</rt></ruby></td><td class="reading">ねこ</td><td class="meaning">cat</td></tr>
+      <tr><td class="word"><ruby>子猫<rt>こねこ</rt></ruby></td><td class="reading">こねこ</td><td class="meaning">kitten</td></tr>
+      <tr><td class="word"><ruby>野良猫<rt>のらねこ</rt></ruby></td><td class="reading">のらねこ</td><td class="meaning">stray cat</td></tr>
+      <tr><td class="word"><ruby>三毛猫<rt>みけねこ</rt></ruby></td><td class="reading">みけねこ</td><td class="meaning">calico cat</td></tr>
+      <tr><td class="word"><ruby>黒猫<rt>くろねこ</rt></ruby></td><td class="reading">くろねこ</td><td class="meaning">black cat</td></tr>
+      <tr><td class="word">ゴロゴロ</td><td class="reading">—</td><td class="meaning">purring sound</td></tr>
+      <tr><td class="word">ひなたぼっこ</td><td class="reading">—</td><td class="meaning">basking in the sun</td></tr>
+      <tr><td class="word"><ruby>見守<rt>みまも</rt></ruby>る</td><td class="reading">みまもる</td><td class="meaning">to watch over, observe</td></tr>
+      <tr><td class="word"><ruby>日向<rt>ひなた</rt></ruby></td><td class="reading">ひなた</td><td class="meaning">sunny spot</td></tr>
+      <tr><td class="word"><ruby>膝<rt>ひざ</rt></ruby>の<ruby>上<rt>うえ</rt></ruby></td><td class="reading">ひざのうえ</td><td class="meaning">on one's lap</td></tr>
+      <tr><td class="word"><ruby>撫<rt>な</rt></ruby>でる</td><td class="reading">なでる</td><td class="meaning">to pet, stroke</td></tr>
+      <tr><td class="word"><ruby>寝転<rt>ねころ</rt></ruby>ぶ</td><td class="reading">ねころぶ</td><td class="meaning">to lie down, sprawl</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🦡</span> <ruby>野生動物<rt>やせいどうぶつ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>野生動物<rt>やせいどうぶつ</rt></ruby></td><td class="reading">やせいどうぶつ</td><td class="meaning">wild animal</td></tr>
+      <tr><td class="word"><ruby>お客<rt>おきゃく</rt></ruby>さん</td><td class="reading">おきゃくさん</td><td class="meaning">guest, visitor (affectionate)</td></tr>
+      <tr><td class="word">たぬき</td><td class="reading">—</td><td class="meaning">raccoon dog</td></tr>
+      <tr><td class="word">あなぐま</td><td class="reading">—</td><td class="meaning">badger</td></tr>
+      <tr><td class="word">きつね</td><td class="reading">—</td><td class="meaning">fox</td></tr>
+      <tr><td class="word">とかげ</td><td class="reading">—</td><td class="meaning">lizard</td></tr>
+      <tr><td class="word">かえる</td><td class="reading">—</td><td class="meaning">frog</td></tr>
+      <tr><td class="word"><ruby>突然現<rt>とつぜんあらわ</rt></ruby>れる</td><td class="reading">とつぜんあらわれる</td><td class="meaning">to appear suddenly</td></tr>
+      <tr><td class="word"><ruby>遊<rt>あそ</rt></ruby>びに<ruby>来<rt>く</rt></ruby>る</td><td class="reading">あそびにくる</td><td class="meaning">to come visit (casual)</td></tr>
+      <tr><td class="word"><ruby>正体<rt>しょうたい</rt></ruby></td><td class="reading">しょうたい</td><td class="meaning">true identity</td></tr>
+      <tr><td class="word"><ruby>寄生虫<rt>きせいちゅう</rt></ruby></td><td class="reading">きせいちゅう</td><td class="meaning">parasite</td></tr>
+      <tr><td class="word"><ruby>治療<rt>ちりょう</rt></ruby></td><td class="reading">ちりょう</td><td class="meaning">treatment, medical care</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🐝</span> <ruby>虫<rt>むし</rt></ruby>・<ruby>水生生物<rt>すいせいせいぶつ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>虫<rt>むし</rt></ruby></td><td class="reading">むし</td><td class="meaning">insect, bug</td></tr>
+      <tr><td class="word"><ruby>蝶<rt>ちょう</rt></ruby></td><td class="reading">ちょう</td><td class="meaning">butterfly</td></tr>
+      <tr><td class="word">せみ</td><td class="reading">—</td><td class="meaning">cicada</td></tr>
+      <tr><td class="word">ほたる</td><td class="reading">—</td><td class="meaning">firefly</td></tr>
+      <tr><td class="word">かたつむり</td><td class="reading">—</td><td class="meaning">snail</td></tr>
+      <tr><td class="word"><ruby>金魚<rt>きんぎょ</rt></ruby></td><td class="reading">きんぎょ</td><td class="meaning">goldfish</td></tr>
+      <tr><td class="word"><ruby>飼育<rt>いく</rt></ruby></td><td class="reading">しいく</td><td class="meaning">breeding, raising (animals)</td></tr>
+      <tr><td class="word"><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby></td><td class="reading">いきもの</td><td class="meaning">living creature</td></tr>
+      <tr><td class="word"><ruby>カブトムシ<rt>かぶとむし</rt></ruby></td><td class="reading">かぶとむし</td><td class="meaning">rhinoceros beetle</td></tr>
+      <tr><td class="word"><ruby>成長<rt>せいちょう</rt></ruby></td><td class="reading">せいちょう</td><td class="meaning">growth</td></tr>
+      <tr><td class="word"><ruby>成長記録<rt>せいちょうきろく</rt></ruby></td><td class="reading">せいちょうきろく</td><td class="meaning">growth record</td></tr>
+      <tr><td class="word"><ruby>謎<rt>なぞ</rt></ruby>の<ruby>魚<rt>さかな</rt></ruby></td><td class="reading">なぞのさかな</td><td class="meaning">mystery fish</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== SECTION 3: 料理・食事 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <div>
+      <h2><ruby>料理<rt>りょうり</rt></ruby>・<ruby>食事<rt>しょくじ</rt></ruby>（Cooking & Meals</h2>
+      <p class="section-desc"><ruby>田舎<rt>いなか</rt></ruby>で<ruby>作<rt>つく</rt></ruby>る<ruby>食事<rt>しょくじ</rt></ruby>・<ruby>調理<rt>ちょうり</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>語彙<rt>ごい</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🍳</span> <ruby>調理<rt>ちょうり</rt></ruby>・<ruby>料理<rt>りょうり</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>料理<rt>りょうり</rt></ruby></td><td class="reading">りょうり</td><td class="meaning">cooking, dish</td></tr>
+      <tr><td class="word"><ruby>手料理<rt>てりょうり</rt></ruby></td><td class="reading">てりょうり</td><td class="meaning">home-cooked meal</td></tr>
+      <tr><td class="word"><ruby>調理<rt>ちょうり</rt></ruby>する</td><td class="reading">ちょうりする</td><td class="meaning">to cook, prepare food</td></tr>
+      <tr><td class="word"><ruby>洗<rt>あら</rt></ruby>う</td><td class="reading">あらう</td><td class="meaning">to wash (rice, vegetables)</td></tr>
+      <tr><td class="word"><ruby>炊<rt>た</rt></ruby>く</td><td class="reading">たく</td><td class="meaning">to cook (rice)</td></tr>
+      <tr><td class="word"><ruby>炒<rt>い</rt></ruby>める</td><td class="reading">いためる</td><td class="meaning">to stir-fry</td></tr>
+      <tr><td class="word"><ruby>煮<rt>に</rt></ruby>る</td><td class="reading">にる</td><td class="meaning">to boil, simmer</td></tr>
+      <tr><td class="word"><ruby>焼<rt>や</rt></ruby>く</td><td class="reading">やく</td><td class="meaning">to grill, bake</td></tr>
+      <tr><td class="word"><ruby>切<rt>き</rt></ruby>る</td><td class="reading">きる</td><td class="meaning">to cut</td></tr>
+      <tr><td class="word"><ruby>混<rt>ま</rt></ruby>ぜる</td><td class="reading">まぜる</td><td class="meaning">to mix</td></tr>
+      <tr><td class="word"><ruby>盛<rt>も</rt></ruby>り<ruby>付<rt>つ</rt></ruby>ける</td><td class="reading">もりつける</td><td class="meaning">to plate, arrange food</td></tr>
+      <tr><td class="word"><ruby>包丁<rt>ほうちょう</rt></ruby></td><td class="reading">ほうちょう</td><td class="meaning">kitchen knife</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🍚</span> <ruby>食事<rt>しょくじ</rt></ruby>・<ruby>食品<rt>しょくひん</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>朝食<rt>ちょうしょく</rt></ruby></td><td class="reading">ちょうしょく</td><td class="meaning">breakfast</td></tr>
+      <tr><td class="word"><ruby>昼食<rt>ちゅうしょく</rt></ruby></td><td class="reading">ちゅうしょく</td><td class="meaning">lunch</td></tr>
+      <tr><td class="word"><ruby>夕食<rt>ゆうしょく</rt></ruby></td><td class="reading">ゆうしょく</td><td class="meaning">dinner</td></tr>
+      <tr><td class="word"><ruby>ご飯<rt>ごはん</rt></ruby></td><td class="reading">ごはん</td><td class="meaning">rice, meal</td></tr>
+      <tr><td class="word"><ruby>味噌汁<rt>みそしる</rt></ruby></td><td class="reading">みそしる</td><td class="meaning">miso soup</td></tr>
+      <tr><td class="word"><ruby>目玉焼<rt>めだまや</rt></ruby>き</td><td class="reading">めだまやき</td><td class="meaning">fried egg</td></tr>
+      <tr><td class="word"><ruby>漬物<rt>つけもの</rt></ruby></td><td class="reading">つけもの</td><td class="meaning">pickles</td></tr>
+      <tr><td class="word"><ruby>おやつ<rt>おやつ</rt></ruby></td><td class="reading">おやつ</td><td class="meaning">snack, treat</td></tr>
+      <tr><td class="word"><ruby>栄養<rt>えいよう</rt></ruby></td><td class="reading">えいよう</td><td class="meaning">nutrition</td></tr>
+      <tr><td class="word"><ruby>一品<rt>いっぴん</rt></ruby><ruby>追加<rt>ついか</rt></ruby></td><td class="reading">いっぴんついか</td><td class="meaning">one extra dish</td></tr>
+      <tr><td class="word"><ruby>手作<rt>てづく</rt></ruby>り</td><td class="reading">てづくり</td><td class="meaning">handmade, homemade</td></tr>
+      <tr><td class="word"><ruby>定食<rt>ていしょく</rt></ruby></td><td class="reading">ていしょく</td><td class="meaning">set meal</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🥬</span> <ruby>野菜<rt>やさい</rt></ruby>・<ruby>食材<rt>しょくざい</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>小松菜<rt>こまつな</rt></ruby></td><td class="reading">こまつな</td><td class="meaning">komatsuna greens</td></tr>
+      <tr><td class="word"><ruby>大根<rt>だいこん</rt></ruby></td><td class="reading">だいこん</td><td class="meaning">daikon radish</td></tr>
+      <tr><td class="word"><ruby>茄子<rt>なす</rt></ruby></td><td class="reading">なす</td><td class="meaning">eggplant</td></tr>
+      <tr><td class="word"><ruby>胡瓜<rt>きゅうり</rt></ruby></td><td class="reading">きゅうり</td><td class="meaning">cucumber</td></tr>
+      <tr><td class="word"><ruby>南瓜<rt>かぼちゃ</rt></ruby></td><td class="reading">かぼちゃ</td><td class="meaning">pumpkin, squash</td></tr>
+      <tr><td class="word"><ruby>里芋<rt>さといも</rt></ruby></td><td class="reading">さといも</td><td class="meaning">taro</td></tr>
+      <tr><td class="word"><ruby>生姜<rt>しょうが</rt></ruby></td><td class="reading">しょうが</td><td class="meaning">ginger</td></tr>
+      <tr><td class="word"><ruby>大蒜<rt>にんにく</rt></ruby></td><td class="reading">にんにく</td><td class="meaning">garlic</td></tr>
+      <tr><td class="word"><ruby>味噌<rt>みそ</rt></ruby></td><td class="reading">みそ</td><td class="meaning">miso paste</td></tr>
+      <tr><td class="word"><ruby>醤油<rt>しょうゆ</rt></ruby></td><td class="reading">しょうゆ</td><td class="meaning">soy sauce</td></tr>
+      <tr><td class="word"><ruby>出汁<rt>だし</rt></ruby></td><td class="reading">だし</td><td class="meaning">dashi broth</td></tr>
+      <tr><td class="word"><ruby>酢<rt>す</rt></ruby></td><td class="reading">す</td><td class="meaning">vinegar</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🍮</span> <ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>の<ruby>状態<rt>じょうたい</rt></ruby>・<ruby>味<rt>あじ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>美味<rt>おい</rt></ruby>しい</td><td class="reading">おいしい</td><td class="meaning">delicious</td></tr>
+      <tr><td class="word"><ruby>甘<rt>あま</rt></ruby>い</td><td class="reading">あまい</td><td class="meaning">sweet</td></tr>
+      <tr><td class="word"><ruby>辛<rt>から</rt></ruby>い</td><td class="reading">からい</td><td class="meaning">spicy</td></tr>
+      <tr><td class="word"><ruby>苦<rt>にが</rt></ruby>い</td><td class="reading">にがい</td><td class="meaning">bitter</td></tr>
+      <tr><td class="word"><ruby>新鮮<rt>しんせん</rt></ruby></td><td class="reading">しんせん</td><td class="meaning">fresh</td></tr>
+      <tr><td class="word"><ruby>柔<rt>やわ</rt></ruby>らかい</td><td class="reading">やわらかい</td><td class="meaning">soft, tender</td></tr>
+      <tr><td class="word"><ruby>歯応<rt>はごた</rt></ruby>え</td><td class="reading">はごたえ</td><td class="meaning">texture, bite (food)</td></tr>
+      <tr><td class="word"><ruby>温<rt>あたた</rt></ruby>かい</td><td class="reading">あたたかい</td><td class="meaning">warm (food/thing)</td></tr>
+      <tr><td class="word"><ruby>熱<rt>あつ</rt></ruby>い</td><td class="reading">あつい</td><td class="meaning">hot (to touch/taste)</td></tr>
+      <tr><td class="word"><ruby>冷<rt>つめ</rt></ruby>たい</td><td class="reading">つめたい</td><td class="meaning">cold (to touch)</td></tr>
+      <tr><td class="word"><ruby>温<rt>あたた</rt></ruby>める</td><td class="reading">あたためる</td><td class="meaning">to warm up (food)</td></tr>
+      <tr><td class="word"><ruby>冷<rt>ひ</rt></ruby>やす</td><td class="reading">ひやす</td><td class="meaning">to chill, cool down</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== SECTION 4: DIY・小屋改装 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <div>
+      <h2>DIY・<ruby>小屋<rt>こや</rt></ruby><ruby>改装<rt>かいそう</rt></ruby>（DIY & Renovation）</h2>
+      <p class="section-desc"><ruby>小屋<rt>こや</rt></ruby>リフォーム・<ruby>手作<rt>てづく</rt></ruby>りに<ruby>関<rt>かん</rt></ruby>する<ruby>語彙<rt>ごい</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🔨</span> DIY・<ruby>道具<rt>どうぐ</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word">DIY</td><td class="reading">ディーアイワイ</td><td class="meaning">do-it-yourself</td></tr>
+      <tr><td class="word"><ruby>改装<rt>かいそう</rt></ruby></td><td class="reading">かいそう</td><td class="meaning">renovation, remodeling</td></tr>
+      <tr><td class="word"><ruby>リフォーム<rt>りふぉーむ</rt></ruby></td><td class="reading">りふぉーむ</td><td class="meaning">remodel, home improvement</td></tr>
+      <tr><td class="word"><ruby>手作<rt>てづく</rt></ruby>り</td><td class="reading">てづくり</td><td class="meaning">handmade</td></tr>
+      <tr><td class="word"><ruby>道具<rt>どうぐ</rt></ruby></td><td class="reading">どうぐ</td><td class="meaning">tool, instrument</td></tr>
+      <tr><td class="word"><ruby>釘<rt>くぎ</rt></ruby></td><td class="reading">くぎ</td><td class="meaning">nail</td></tr>
+      <tr><td class="word"><ruby>槌<rt>つち</rt></ruby></td><td class="reading">つち</td><td class="meaning">hammer</td></tr>
+      <tr><td class="word"><ruby>鋸<rt>のこ</rt></ruby>ぎり</td><td class="reading">のこぎり</td><td class="meaning">saw</td></tr>
+      <tr><td class="word"><ruby>木材<rt>もくざい</rt></ruby></td><td class="reading">もくざい</td><td class="meaning">lumber, timber</td></tr>
+      <tr><td class="word"><ruby>板<rt>いた</rt></ruby></td><td class="reading">いた</td><td class="meaning">board, plank</td></tr>
+      <tr><td class="word"><ruby>釘打<rt>くぎう</rt></ruby>ち</td><td class="reading">くぎうち</td><td class="meaning">nailing</td></tr>
+      <tr><td class="word"><ruby>塗<rt>ぬ</rt></ruby>る</td><td class="reading">ぬる</td><td class="meaning">to paint, coat</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🏠</span> <ruby>小屋<rt>こや</rt></ruby>・<ruby>部屋<rt>へや</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>単語<rt>たんご</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>小屋<rt>こや</rt></ruby></td><td class="reading">こや</td><td class="meaning">hut, shed, small house</td></tr>
+      <tr><td class="word"><ruby>部屋<rt>へや</rt></ruby></td><td class="reading">へや</td><td class="meaning">room</td></tr>
+      <tr><td class="word"><ruby>寝室<rt>しんしつ</rt></ruby></td><td class="reading">しんしつ</td><td class="meaning">bedroom</td></tr>
+      <tr><td class="word"><ruby>居間<rt>いま</rt></ruby></td><td class="reading">いま</td><td class="meaning">living room</td></tr>
+      <tr><td class="word"><ruby>台所<rt>だいどころ</rt></ruby></td><td class="reading">だどころ</td><td class="meaning">kitchen</td></tr>
+      <tr><td class="word"><ruby>風呂<rt>ふろ</rt></ruby></td><td class="reading">ふろ</td><td class="meaning">bath</td></tr>
+      <tr><td class="word"><ruby>縁側<rt>えんがわ</rt></ruby></td><td class="reading">えんがわ</td><td class="meaning">veranda, porch</td></tr>
+      <tr><td class="word"><ruby>庭<rt>にわ</rt></ruby></td><td class="reading">にわ</td><td class="meaning">garden, yard</td></tr>
+      <tr><td class="word"><ruby>観葉植物<rt>かんようしょくぶつ</rt></ruby></td><td class="reading">かんようしょくぶつ</td><td class="meaning">houseplant</td></tr>
+      <tr><td class="word"><ruby>植物<rt>しょくぶつ</rt></ruby>と<ruby>暮<rt>く</rt></ruby>らす</td><td class="reading">しょくぶつとくらす</td><td class="meaning">living with plants</td></tr>
+      <tr><td class="word"><ruby>掃除<rt>そうじ</rt></ruby></td><td class="reading">そうじ</td><td class="meaning">cleaning</td></tr>
+      <tr><td class="word"><ruby>片付<rt>かたづ</rt></ruby>け</td><td class="reading">かたづけ</td><td class="meaning">tidying up</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== SECTION 5: 形容詞 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <div>
+      <h2><ruby>頻出<rt>ひんしゅつ</rt></ruby><ruby>形容詞<rt>けいようし</rt></ruby>・<ruby>形容動詞<rt>けいようどうし</rt></ruby>（Key Adjectives）</h2>
+      <p class="section-desc"><ruby>動画<rt>どうが</rt></ruby>でよく<ruby>使<rt>つか</rt></ruby>われる<ruby>感情<rt>かんじょう</rt></ruby>・<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>表<rt>あらわ</rt></ruby>す<ruby>言葉<rt>ことば</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">✨</span> い<ruby>形容詞<rt>けいようし</rt></ruby></h3>
+    <div class="adj-item"><span class="adj-word"><ruby>美味<rt>おい</rt></ruby>しい</span><span class="adj-meaning">delicious (oishii)</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>楽<rt>たの</rt></ruby>しい</span><span class="adj-meaning">fun, enjoyable</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>面白<rt>おもしろ</rt></ruby>い</span><span class="adj-meaning">interesting, funny</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>涼<rt>すず</rt></ruby>しい</span><span class="adj-meaning">cool, refreshing</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>暑<rt>あつ</rt></ruby>い</span><span class="adj-meaning">hot (weather)</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>寒<rt>さむ</rt></ruby>い</span><span class="adj-meaning">cold (weather)</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>嬉<rt>うれ</rt></ruby>しい</span><span class="adj-meaning">happy, glad</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>忙<rt>いそが</rt></ruby>しい</span><span class="adj-meaning">busy</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>難<rt>むずか</rt></ruby>しい</span><span class="adj-meaning">difficult</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>易<rt>やさ</rt></ruby>しい</span><span class="adj-meaning">easy, gentle</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>新<rt>あたら</rt></ruby>しい</span><span class="adj-meaning">new</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>古<rt>ふる</rt></ruby>い</span><span class="adj-meaning">old</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大<rt>おお</rt></ruby>きい</span><span class="adj-meaning">big</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>小<rt>ちい</rt></ruby>さい</span><span class="adj-meaning">small</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>長<rt>なが</rt></ruby>い</span><span class="adj-meaning">long</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>短<rt>みじか</rt></ruby>い</span><span class="adj-meaning">short</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>近<rt>ちか</rt></ruby>い</span><span class="adj-meaning">near, close</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>遠<rt>とお</rt></ruby>い</span><span class="adj-meaning">far</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>高<rt>たか</rt></ruby>い</span><span class="adj-meaning">high, tall, expensive</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>安<rt>やす</rt></ruby>い</span><span class="adj-meaning">cheap, inexpensive</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>多<rt>おお</rt></ruby>い</span><span class="adj-meaning">many, much</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>少<rt>すく</rt></ruby>ない</span><span class="adj-meaning">few, little</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>早<rt>はや</rt></ruby>い</span><span class="adj-meaning">early, fast</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>遅<rt>おそ</rt></ruby>い</span><span class="adj-meaning">late, slow</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>弱<rt>よわ</rt></ruby>い</span><span class="adj-meaning">weak</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>強<rt>つよ</rt></ruby>い</span><span class="adj-meaning">strong</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>怖<rt>こわ</rt></ruby>い</span><span class="adj-meaning">scary, afraid</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>可愛<rt>かわい</rt></ruby>い</span><span class="adj-meaning">cute, adorable</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>美<rt>うつく</rt></ruby>しい</span><span class="adj-meaning">beautiful</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>優<rt>やさ</rt></ruby>しい</span><span class="adj-meaning">kind, gentle</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🌸</span> な<ruby>形容詞<rt>けいようし</rt></ruby></h3>
+    <div class="adj-item"><span class="adj-word"><ruby>好<rt>す</rt></ruby>き</span><span class="adj-meaning">liked, favorite (na-adj)</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>嫌<rt>きら</rt></ruby>い</span><span class="adj-meaning">disliked, hated</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>上手<rt>じょうず</rt></ruby></span><span class="adj-meaning">skilled, good at</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>下手<rt>へた</rt></ruby></span><span class="adj-meaning">unskilled, bad at</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>有名<rt>ゆうめい</rt></ruby></span><span class="adj-meaning">famous</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>静<rt>しず</rt></ruby>か</span><span class="adj-meaning">quiet, peaceful</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>賑<rt>にぎ</rt></ruby>やか</span><span class="adj-meaning">lively, bustling</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>元気<rt>げんき</rt></ruby></span><span class="adj-meaning">energetic, healthy</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>簡単<rt>かんたん</rt></ruby></span><span class="adj-meaning">simple, easy</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>複雑<rt>ふくざつ</rt></ruby></span><span class="adj-meaning">complicated</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>便利<rt>べんり</rt></ruby></span><span class="adj-meaning">convenient</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>不便<rt>ふべん</rt></ruby></span><span class="adj-meaning">inconvenient</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>安全<rt>あんぜん</rt></ruby></span><span class="adj-meaning">safe</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>危険<rt>きけん</rt></ruby></span><span class="adj-meaning">dangerous</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>丈夫<rt>じょうぶ</rt></ruby></span><span class="adj-meaning">durable, sturdy</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大好<rt>だいす</rt></ruby>き</span><span class="adj-meaning">love (something)</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大切<rt>たいせつ</rt></ruby></span><span class="adj-meaning">important, precious</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大好物<rt>だいこうぶつ</rt></ruby></span><span class="adj-meaning">favorite food</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>得意<rt>とくい</rt></ruby></span><span class="adj-meaning">good at, specialty</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>苦手<rt>にがて</rt></ruby></span><span class="adj-meaning">not good at, weak point</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>親切<rt>しんせつ</rt></ruby></span><span class="adj-meaning">kind</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>丁寧<rt>ていねい</rt></ruby></span><span class="adj-meaning">polite, careful</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>綺麗<rt>きれい</rt></ruby></span><span class="adj-meaning">beautiful, clean</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>汚<rt>きたな</rt></ruby>い</span><span class="adj-meaning">dirty</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>色々<rt>いろいろ</rt></ruby></span><span class="adj-meaning">various</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>同<rt>おな</rt></ruby>じ</span><span class="adj-meaning">same</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>違<rt>ちが</rt></ruby>う</span><span class="adj-meaning">different</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大丈夫<rt>だいじょうぶ</rt></ruby></span><span class="adj-meaning">okay, all right</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>駄目<rt>だめ</rt></ruby></span><span class="adj-meaning">no good, useless</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>十分<rt>じゅうぶん</rt></ruby></span><span class="adj-meaning">enough, sufficient</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">🌿</span> <ruby>田舎暮<rt>いなかぐ</rt></ruby>らし<ruby>特有<rt>とくゆう</rt></ruby>の<ruby>表現<rt>ひょうげん</rt></ruby></h3>
+    <div class="adj-item"><span class="adj-word"><ruby>のんびり<rt>のんびり</rt></ruby></span><span class="adj-meaning">relaxed, leisurely</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>ゆるい<rt>ゆるい</rt></ruby></span><span class="adj-meaning">loose, relaxed, laid-back</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>穏<rt>おだ</rt></ruby>やか</span><span class="adj-meaning">calm, gentle, peaceful</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>癒<rt>い</rt></ruby>やされる</span><span class="adj-meaning">healing, soothing</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>何気<rt>なにげ</rt></ruby>ない</span><span class="adj-meaning">casual, unintentional</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>思<rt>おも</rt></ruby>い<ruby>通<rt>どお</rt></ruby>り</span><span class="adj-meaning">as one wishes</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>険悪<rt>けんあく</rt></ruby></span><span class="adj-meaning">hostile, strained (relations)</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>無事<rt>ぶじ</rt></ruby></span><span class="adj-meaning">safe, unharmed</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>意外<rt>いがい</rt></ruby></span><span class="adj-meaning">unexpected, surprising</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>不思議<rt>ふしぎ</rt></ruby></span><span class="adj-meaning">mysterious, strange</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>愉快<rt>ゆかい</rt></ruby></span><span class="adj-meaning">cheerful, delightful</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>平和<rt>へいわ</rt></ruby></span><span class="adj-meaning">peaceful</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>豊<rt>ゆた</rt></ruby>か</span><span class="adj-meaning">abundant, rich</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>懐<rt>なつ</rt></ruby>かしい</span><span class="adj-meaning">nostalgic</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>新鮮<rt>しんせん</rt></ruby></span><span class="adj-meaning">fresh</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>自然<rt>しぜん</rt></ruby></span><span class="adj-meaning">natural</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>素朴<rt>そぼく</rt></ruby></span><span class="adj-meaning">simple, rustic</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>手軽<rt>てがる</rt></ruby></span><span class="adj-meaning">easy, convenient</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>本格的<rt>ほんかくてき</rt></ruby></span><span class="adj-meaning">authentic, full-scale</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大変<rt>たいへん</rt></ruby></span><span class="adj-meaning">tough, hard, very</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>大変身<rt>だいへんしん</rt></ruby></span><span class="adj-meaning">dramatic transformation</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>満足<rt>まんぞく</rt></ruby></span><span class="adj-meaning">satisfied, content</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>感動<rt>かんどう</rt></ruby></span><span class="adj-meaning">moved, touched</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>驚<rt>おどろ</rt></ruby>き</span><span class="adj-meaning">surprise, amazement</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>幸<rt>しあわ</rt></ruby>せ</span><span class="adj-meaning">happiness, happy</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>充実<rt>じゅうじつ</rt></ruby></span><span class="adj-meaning">fulfilling, enriched</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>心地<rt>ここち</rt></ruby>いい</span><span class="adj-meaning">comfortable, pleasant</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>気持<rt>きも</rt></ruby>ちいい</span><span class="adj-meaning">feels good</span></div>
+    <div class="adj-item"><span class="adj-word"><ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>く</span><span class="adj-meaning">calming, relaxing</span></div>
+  </div>
+</section>
+
+<!-- ====== SECTION 6: 慣用句 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <div>
+      <h2><ruby>慣用句<rt>かんようく</rt></ruby>・よく<ruby>使<rt>つか</rt></ruby>う<ruby>表現<rt>ひょうげん</rt></ruby>（Idioms & Common Phrases）</h2>
+      <p class="section-desc"><ruby>動画<rt>どうが</rt></ruby>で<ruby>頻出<rt>ひんしゅつ</rt></ruby>する<ruby>表現<rt>ひょうげん</rt></ruby>と<ruby>自然<rt>しぜん</rt></ruby>な<ruby>日本語<rt>にほんご</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="phrase-list">
+    <div class="phrase-item">
+      <span class="phrase"><ruby>のんびり<rt>のんびり</rt></ruby><ruby>暮<rt>く</rt></ruby>らす</span>
+      <span class="phrase-reading">のんびりくらす</span>
+      <span class="phrase-meaning">To live a relaxed, unhurried life. A core theme of the channel.</span>
+      <span class="phrase-example">「<ruby>田舎<rt>いなか</rt></ruby>で<ruby>ヤギ<rt>やぎ</rt></ruby>と<ruby>猫<rt>ねこ</rt></ruby>に<ruby>囲<rt>かこ</rt></ruby>まれて、<ruby>のんびり<rt>のんびり</rt></ruby><ruby>暮<rt>く</rt></ruby>らしています。」<span class="en">"I live a relaxed life in the countryside, surrounded by my goat and cats."</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase">～に<ruby>囲<rt>かこ</rt></ruby>まれて</span>
+      <span class="phrase-reading">～にかこまれて</span>
+      <span class="phrase-meaning">"Surrounded by ~" — used constantly to describe living with animals and nature.</span>
+      <span class="phrase-example">「<ruby>自然<rt>しぜん</rt></ruby>に<ruby>囲<rt>かこ</rt></ruby>まれて<ruby>暮<rt>く</rt></ruby>らすのは<ruby>幸<rt>しあわ</rt></ruby>せです。」<span class="en">"Living surrounded by nature is happiness."</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase"><ruby>思<rt>おも</rt></ruby>わぬ<ruby>出会<rt>であ</rt></ruby>い</span>
+      <span class="phrase-reading">おもわぬであい</span>
+      <span class="phrase-meaning">An unexpected encounter. Often used when wild animals appear.</span>
+      <span class="phrase-example">「<ruby>田舎<rt>いなか</rt></ruby>で<ruby>暮<rt>く</rt></ruby>らしていると、<ruby>動物<rt>どうぶつ</rt></ruby>たちとの<ruby>思<rt>おも</rt></ruby>わぬ<ruby>出会<rt>であ</rt></ruby>いがあります。」<span class="en">"When you live in the countryside, there are unexpected encounters with animals."</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase">～<ruby>放題<rt>ほうだい</rt></ruby></span>
+      <span class="phrase-reading">～ほうだい</span>
+      <span class="phrase-meaning">Suffix meaning "unchecked / to one's heart's content." <ruby>伸<rt>の</rt></ruby>び<ruby>放題<rt>ほうだい</rt></ruby> = growing wild, <ruby>荒<rt>あ</rt></ruby>れ<ruby>放題<rt>ほうだい</rt></ruby> = completely overgrown.</span>
+      <span class="phrase-example">「<ruby>畑<rt>はたけ</rt></ruby>が<ruby>荒<rt>あ</rt></ruby>れ<ruby>放題<rt>ほうだい</rt></ruby>になってしまった。」<span class="en">"The field had become completely overgrown."</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase"><ruby>久<rt>ひさ</rt></ruby>しぶりの～</span>
+      <span class="phrase-reading">ひさしぶりの～</span>
+      <span class="phrase-meaning">"~ for the first time in a while." Common when returning to garden work.</span>
+      <span class="phrase-example">「<ruby>久<rt>ひさ</rt></ruby>しぶりの<ruby>畑仕事<rt>はたしごと</rt></ruby>だったので、まずは<ruby>草<rt>くさ</rt></ruby>を<ruby>片付<rt>かたづ</rt></ruby>けた。」<span class="en">"Since it was farm work for the first time in a while, I started by clearing the weeds."</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase">～<ruby>勝<rt>が</rt></ruby>ち</span>
+      <span class="phrase-reading">～がち</span>
+      <span class="phrase-meaning">Suffix meaning "tending to ~ / prone to ~." サボり<ruby>勝<rt>が</rt></ruby>ち = tending to slack off.</span>
+      <span class="phrase-example">「<ruby>畑<rt>はたけ</rt></ruby>をサボ<ruby>勝<rt>が</rt></ruby>ちな<ruby>人<rt>にんげん</rt></ruby>」<span class="en">"A person who tends to neglect the field"</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase">～だけでなく</span>
+      <span class="phrase-reading">～だけでなく</span>
+      <span class="phrase-meaning">"Not only ~ but also." Useful for describing multiple animals or tasks.</span>
+      <span class="phrase-example">「<ruby>猫<rt>ねこ</rt></ruby>だけでなく、<ruby>ヤギ<rt>やぎ</rt></ruby>も<ruby>家族<rt>かぞく</rt></ruby>の<ruby>一員<rt>いちいん</rt></ruby>です。」<span class="en">"Not only the cat, but the goat is also a member of the family."</span></span>
+    </div>
+    <div class="phrase-item">
+      <span class="phrase">～<ruby>事<rt>こと</rt></ruby>にしました</span>
+      <span class="phrase-reading">～ことにしました</span>
+      <span class="phrase-meaning">"I have decided to ~." Polite way to announce a decision, often used when adopting animals.</span>
+      <span class="phrase-example">「<ruby>我<rt>わ</rt></ruby>が<ruby>家<rt>や</rt></ruby>で<ruby>飼<rt>か</rt></ruby>う<ruby>事<rt>こと</rt></ruby>にしました。」<span class="en">"We have decided to raise it at our home."</span></span>
+    </div>
+    <div class="phrase-item sky-border">
+      <span class="phrase"><ruby>友情<rt>ゆうじょう</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby></span>
+      <span class="phrase-reading">ゆうじょうにきれつ</span>
+      <span class="phrase-meaning">"A crack in friendship" — humorous expression used when the goat John is uncooperative during hoof trimming.</span>
+      <span class="phrase-example">「<ruby>田舎<rt>いなか</rt></ruby>で<ruby>暮<rt>く</rt></ruby>らす<ruby>女<rt>おんな</rt></ruby>、<ruby>友情<rt>ゆうじょう</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby>！？」<span class="en">"A woman living in the countryside, a crack in friendship!?" (humorous video title)</span></span>
+    </div>
+    <div class="phrase-item sky-border">
+      <span class="phrase"><ruby>一体<rt>いったい</rt></ruby>どこから…</span>
+      <span class="phrase-reading">いったいどこから…</span>
+      <span class="phrase-meaning">"Where on earth from..." — used when wondering where a mystery fish came from.</span>
+      <span class="phrase-example">「<ruby>一体<rt>いったい</rt></ruby>どこからやってきたのか<ruby>分<rt>わ</rt></ruby>からないまま<ruby>飼育<rt>しいく</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めた。」<span class="en">"I started raising it without knowing where on earth it came from."</span></span>
+    </div>
+    <div class="phrase-item terra-border">
+      <span class="phrase"><ruby>果<rt>は</rt></ruby>たして～<ruby>無事<rt>ぶじ</rt></ruby>に…</span>
+      <span class="phrase-reading">はたして～ぶじに…</span>
+      <span class="phrase-meaning">"Will ~ safely..." — used to create suspense. <ruby>果<rt>は</rt></ruby>たして = "will it really / can it really."</span>
+      <span class="phrase-example">「<ruby>果<rt>は</rt></ruby>たして<ruby>畑<rt>はたけ</rt></ruby>は<ruby>無事<rt>ぶじ</rt></ruby>に<ruby>綺麗<rt>きれい</rt></ruby>になるのか？」<span class="en">"Will the field really become clean safely?"</span></span>
+    </div>
+    <div class="phrase-item terra-border">
+      <span class="phrase"><ruby>なかなか<rt>なかなか</rt></ruby>～ない</span>
+      <span class="phrase-reading">なかなか～ない</span>
+      <span class="phrase-meaning">"Not easily ~ / Hard to ~" — expresses difficulty. Common when work doesn't go as planned.</span>
+      <span class="phrase-example">「<ruby>なかなか<rt>なかなか</rt></ruby><ruby>作業<rt>さぎょう</rt></ruby>が<ruby>進<rt>すす</rt></ruby>みません。」<span class="en">"The work isn't progressing easily."</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 7: 文法パターン ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">07</span>
+    <div>
+      <h2><ruby>頻出<rt>ひんしゅつ</rt></ruby><ruby>文法<rt>ぶんぽう</rt></ruby>パターン（Grammar Patterns）</h2>
+      <p class="section-desc"><ruby>日常<rt>にちじょう</rt></ruby>の<ruby>出来事<rt>できごと</rt></ruby>を<ruby>話<rt>はな</rt></ruby>すときによく<ruby>使<rt>つか</rt></ruby>われる<ruby>構文<rt>こうぶん</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～てしまった</span>
+    <p class="pattern-desc">"Ended up ~ing" (often with regret). Used when the garden gets overgrown.</p>
+    <div class="pattern-example"><ruby>畑<rt>はたけ</rt></ruby>が<ruby>荒<rt>あ</rt></ruby>れ<ruby>放題<rt>ほうだい</rt></ruby>になって<strong>しまった</strong>。<br><span style="color:var(--muted);font-size:0.9em;">The field ended up completely overgrown.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～てみたら</span>
+    <p class="pattern-desc">"When I tried ~ing." Common when experimenting with rural life tasks.</p>
+    <div class="pattern-example"><ruby>動画<rt>どうが</rt></ruby>にして<ruby>投稿<rt>とうこう</rt></ruby>して<strong>みたら</strong><ruby>面白<rt>おもしろ</rt></ruby>かった。<br><span style="color:var(--muted);font-size:0.9em;">When I tried posting videos, it was fun.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～ながら</span>
+    <p class="pattern-desc">"While ~ing." Doing two things at once, e.g., watching cats while working.</p>
+    <div class="pattern-example"><ruby>猫<rt>ねこ</rt></ruby>を<ruby>見守<rt>みまも</rt></ruby>り<strong>ながら</strong><ruby>畑仕事<rt>はたしごと</rt></ruby>をする。<br><span style="color:var(--muted);font-size:0.9em;">I do farm work while watching over the cat.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～ばかりだ</span>
+    <p class="pattern-desc">"Just keeps ~ing." Used for ongoing states, like grass growing.</p>
+    <div class="pattern-example"><ruby>草<rt>くさ</rt></ruby>が<ruby>伸<rt>の</rt></ruby>びる<strong>ばかりだ</strong>。<br><span style="color:var(--muted);font-size:0.9em;">The grass just keeps growing.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～ようになる</span>
+    <p class="pattern-desc">"To become able to ~ / to come to ~." Describes changes in lifestyle.</p>
+    <div class="pattern-example"><ruby>自然<rt>しぜん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>暮<rt>く</rt></ruby>らす<strong>ようになった</strong>。<br><span style="color:var(--muted);font-size:0.9em;">I came to live in nature.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～と<ruby>言<rt>い</rt></ruby>われた</span>
+    <p class="pattern-desc">"Was told that ~." Used when recounting advice or comments.</p>
+    <div class="pattern-example"><ruby>面白<rt>おもしろ</rt></ruby>いんじゃないか<strong>と<ruby>言<rt>い</rt></ruby>われた</strong>。<br><span style="color:var(--muted);font-size:0.9em;">I was told it might be interesting.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">てくれる</span>
+    <p class="pattern-desc">"Does ~ for me" (favor). Used when animals do something nice.</p>
+    <div class="pattern-example"><ruby>遊<rt>あそ</rt></ruby>びに<ruby>来<rt>き</rt></ruby>て<strong>くれた</strong>。<br><span style="color:var(--muted);font-size:0.9em;">They came to visit (for me).</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～てもらう</span>
+    <p class="pattern-desc">"Have someone do ~ for me." Receiving a favor from animals/people.</p>
+    <div class="pattern-example"><ruby>応援<rt>おうえん</rt></ruby>して<strong>もらえたら</strong><ruby>嬉<rt>うれ</rt></ruby>しいです。<br><span style="color:var(--muted);font-size:0.9em;">I'd be happy if you supported me.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～ずに</span>
+    <p class="pattern-desc">"Without ~ing." Used when doing something while skipping another action.</p>
+    <div class="pattern-example"><ruby>分<rt>わ</rt></ruby>からないまま<strong>飼育を始めた</strong>。<br><span style="color:var(--muted);font-size:0.9em;">Started raising it without understanding.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～<ruby>様子<rt>ようす</rt></ruby></span>
+    <p class="pattern-desc">"The state/appearance of ~ing." Used to describe how something looks.</p>
+    <div class="pattern-example"><ruby>成長<rt>せいちょう</rt></ruby>していく<strong><ruby>様子<rt>ようす</rt></ruby></strong>を<ruby>記録<rt>きろく</rt></ruby>した。<br><span style="color:var(--muted);font-size:0.9em;">Recorded the appearance of growing.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～<ruby>様<rt>よう</rt></ruby>に</span>
+    <p class="pattern-desc">"So that ~ / in order to ~." Expresses purpose or intention.</p>
+    <div class="pattern-example"><ruby>元気<rt>げんき</rt></ruby>に<ruby>暮<rt>く</rt></ruby>らせる<strong><ruby>様<rt>よう</rt></ruby>に</strong><ruby>準備<rt>じゅんび</rt></ruby>した。<br><span style="color:var(--muted);font-size:0.9em;">Prepared so they can live healthily.</span></div>
+  </div>
+
+  <div class="pattern-card">
+    <span class="pattern-formula">～<ruby>途中<rt>とちゅう</rt></ruby>で</span>
+    <p class="pattern-desc">"In the middle of ~ing / halfway through." Common when getting distracted.</p>
+    <div class="pattern-example"><strong><ruby>途中<rt>とちゅう</rt></ruby>で</strong><ruby>猫<rt>ねこ</rt></ruby>と<ruby>遊<rt>あそ</rt></ruby>んだりした。<br><span style="color:var(--muted);font-size:0.9em;">Along the way, I played with the cat.</span></div>
+  </div>
+</section>
+
+<!-- ====== SECTION 8: 擬音語 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">08</span>
+    <div>
+      <h2><ruby>擬音語<rt>ぎおんご</rt></ruby>・<ruby>擬態語<rt>ぎたいご</rt></ruby>（Onomatopoeia）</h2>
+      <p class="section-desc"><ruby>動物<rt>どうぶつ</rt></ruby>の<ruby>声<rt>こえ</rt></ruby>、<ruby>自然<rt>しぜん</rt></ruby>の<ruby>音<rt>おと</rt></ruby>、<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>表<rt>あらわ</rt></ruby>す<ruby>表現<rt>ひょうげん</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="ono-item"><span class="ono-word">ゴロゴロ</span><span class="ono-meaning">purring (cat) / rumbling</span></div>
+  <div class="ono-item"><span class="ono-word">のんびり</span><span class="ono-meaning">leisurely, relaxed</span></div>
+  <div class="ono-item"><span class="ono-word">ふわふわ</span><span class="ono-meaning">fluffy, soft</span></div>
+  <div class="ono-item"><span class="ono-word">ガサガサ</span><span class="ono-meaning">rustling / wading in water</span></div>
+  <div class="ono-item"><span class="ono-word">じっと</span><span class="ono-meaning">still, motionless</span></div>
+  <div class="ono-item"><span class="ono-word">ぴょんぴょん</span><span class="ono-meaning">hopping (rabbit, frog)</span></div>
+  <div class="ono-item"><span class="ono-word">ひんやり</span><span class="ono-meaning">cool and refreshing</span></div>
+  <div class="ono-item"><span class="ono-word">ぽかぽか</span><span class="ono-meaning">warm and pleasant</span></div>
+  <div class="ono-item"><span class="ono-word">しんと</span><span class="ono-meaning">perfectly quiet, still</span></div>
+  <div class="ono-item"><span class="ono-word">めーめー</span><span class="ono-meaning">bleating (goat)</span></div>
+  <div class="ono-item"><span class="ono-word">にゃーにゃー</span><span class="ono-meaning">meowing (cat)</span></div>
+  <div class="ono-item"><span class="ono-word">ざあざあ</span><span class="ono-meaning">pouring rain</span></div>
+  <div class="ono-item"><span class="ono-word">こんこん</span><span class="ono-meaning">barking (fox)</span></div>
+  <div class="ono-item"><span class="ono-word">ぽたぽた</span><span class="ono-meaning">dripping water</span></div>
+  <div class="ono-item"><span class="ono-word">そよそよ</span><span class="ono-meaning">gentle breeze</span></div>
+  <div class="ono-item"><span class="ono-word">さらさら</span><span class="ono-meaning">rustling leaves / smooth</span></div>
+  <div class="ono-item"><span class="ono-word">ぬくぬく</span><span class="ono-meaning">warm and cozy</span></div>
+  <div class="ono-item"><span class="ono-word">うとうと</span><span class="ono-meaning">dozing off</span></div>
+  <div class="ono-item"><span class="ono-word">びっくり</span><span class="ono-meaning">surprised, startled</span></div>
+  <div class="ono-item"><span class="ono-word">ゆるゆる</span><span class="ono-meaning">loose, relaxed</span></div>
+  <div class="ono-item"><span class="ono-word">わくわく</span><span class="ono-meaning">excited, thrilled</span></div>
+  <div class="ono-item"><span class="ono-word">ほっこり</span><span class="ono-meaning">heartwarming, cozy</span></div>
+  <div class="ono-item"><span class="ono-word">きらきら</span><span class="ono-meaning">sparkling, glittering</span></div>
+  <div class="ono-item"><span class="ono-word">じめじめ</span><span class="ono-meaning">damp, humid</span></div>
+</section>
+
+<!-- ====== SECTION 9: 動画タイトル ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">09</span>
+    <div>
+      <h2><ruby>動画<rt>どうが</rt></ruby>タイトルから<ruby>学<rt>まな</rt></ruby>ぶ<ruby>表現<rt>ひょうげん</rt></ruby></h2>
+      <p class="section-desc"><ruby>実際<rt>じっさい</rt></ruby>の<ruby>動画<rt>どうが</rt></ruby>タイトルに<ruby>出<rt>で</rt></ruby>てくる<ruby>自然<rt>しぜん</rt></ruby>な<ruby>日本語<rt>にほんご</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>我<rt>わ</rt></ruby>が<ruby>家<rt>や</rt></ruby>にやってくる、ちょっと<ruby>変<rt>か</rt></ruby>わった<ruby>お客<rt>おきゃく</rt></ruby>さんたち【<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし】</span>
+    <span class="video-meta">68万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>10<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>我<rt>わ</rt></ruby>が<ruby>家<rt>や</rt></ruby></strong> = our home (humble) · <strong>やってくる</strong> = to come (toward speaker) · <strong>ちょっと<ruby>変<rt>か</rt></ruby>わった</strong> = somewhat unusual/peculiar · <strong><ruby>お客<rt>おきゃく</rt></ruby>さん</strong> = guest (affectionate for animals)
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>畑<rt>はたけ</rt></ruby>をサボり<ruby>勝<rt>が</rt></ruby>ちな<ruby>人間<rt>にんん</rt></ruby>と、<ruby>見守<rt>みまも</rt></ruby>るだけのネコと、<ruby>働<rt>はたら</rt></ruby>かないヤギ【<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし】</span>
+    <span class="video-meta">24万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>9<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong>サボり<ruby>勝<rt>が</rt></ruby>ち</strong> = tending to slack off · <strong><ruby>見守<rt>みまも</rt></ruby>るだけ</strong> = only watching over · <strong><ruby>働<rt>はたら</rt></ruby>かない</strong> = doesn't work. Great example of <strong>parallel structure</strong> and humor in Japanese.
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title">またまた<ruby>用水路<rt>ようすいろ</rt></ruby>に<ruby>金魚<rt>きんぎょ</rt></ruby>が…<ruby>我<rt>わ</rt></ruby>が<ruby>家<rt>や</rt></ruby>で<ruby>飼<rt>か</rt></ruby>う<ruby>事<rt>こと</rt></ruby>にしました</span>
+    <span class="video-meta">24万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>9<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong>またまた</strong> = again and again · <strong>…</strong> = trailing off for suspense · <strong>～<ruby>事<rt>こと</rt></ruby>にしました</strong> = decided to (polite). Note the ellipsis creating curiosity.
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>田舎<rt>いなか</rt></ruby>で<ruby>暮<rt>く</rt></ruby>らす<ruby>女<rt>おんな</rt></ruby>、<ruby>友情<rt>ゆうじょう</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby>！？【ヤギの<ruby>お世話<rt>おせわ</rt></ruby><ruby>編<rt>へん</rt></ruby>】</span>
+    <span class="video-meta">12万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>9<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>友情<rt>ゆうじょう</rt></ruby>に<ruby>亀裂<rt>きれつ</rt></ruby></strong> = a crack in friendship (dramatic/humorous) · <strong>！？</strong> = shock/surprise marker · <strong>～<ruby>編<rt>へん</rt></ruby></strong> = episode / chapter about ~
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>田舎<rt>いなか</rt></ruby>で<ruby>暮<rt>く</rt></ruby>らす<ruby>女<rt>おんな</rt></ruby>。<ruby>ゆる<rt>ゆる</rt></ruby>い<ruby>日常<rt>にちじょう</rt></ruby></span>
+    <span class="video-meta">54万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>8<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>ゆる<rt>ゆる</rt></ruby>い</strong> = loose, relaxed, laid-back — a very common modern Japanese word for a chill vibe. <strong><ruby>日常<rt>にちじょう</rt></ruby></strong> = everyday life.
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>発泡<rt>はっぽう</rt></ruby>スチロールに1<ruby>匹<rt>ぴき</rt></ruby>だけいた<ruby>謎<rt>なぞ</rt></ruby>の<ruby>魚<rt>かな</rt></ruby>。<ruby>成長<rt>せいちょう</rt></ruby>を<ruby>見守<rt>みまも</rt></ruby>りました【<ruby>成長記録<rt>せいちょうきろく</rt></ruby>】</span>
+    <span class="video-meta">20万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>8<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>発泡<rt>はっぽう</rt></ruby>スチロール</strong> = styrofoam · <strong>1<ruby>匹<rt>ぴき</rt></ruby>だけ</strong> = only one (fish counter) · <strong><ruby>謎<rt>なぞ</rt></ruby>の</strong> = mysterious · <strong>【<ruby>成長記録<rt>せいちょうきろく</rt></ruby>】</strong> = growth record (video category tag)
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>採<rt>と</rt></ruby>れたてスイカと<ruby>川<rt>かわ</rt></ruby>でガサガサ｜<ruby>夏休<rt>なつやす</rt></ruby>みの<ruby>一日<rt>いちにち</rt></ruby>【<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし】</span>
+    <span class="video-meta">13万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>8<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>採<rt>と</rt></ruby>れたて</strong> = freshly picked · <strong>ガサガサ</strong> = onomatopoeia for wading/rustling in water · <strong>｜</strong> = divider between scenes · <strong><ruby>夏休<rt>なつやす</rt></ruby>み</strong> = summer vacation
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>裏山<rt>うらやま</rt></ruby>で<ruby>気<rt>き</rt></ruby>になっていた<ruby>声<rt>こえ</rt></ruby>、ついに<ruby>正体<rt>しょうたい</rt></ruby>がわかりました【<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし】</span>
+    <span class="video-meta">7.6万<ruby>再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>8<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>裏山<rt>うらやま</rt></ruby></strong> = hill behind the house · <strong><ruby>気<rt>き</rt></ruby>になっていた</strong> = had been curious about · <strong>ついに</strong> = finally · <strong><ruby>正体<rt>しょうたい</rt></ruby>がわかる</strong> = to learn the true identity
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>気<rt>き</rt></ruby>ままなヤギと<ruby>早朝<rt>そうちょう</rt></ruby>デート【<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし】</span>
+    <span class="video-meta">13万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>7<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>気<rt>き</rt></ruby>まま</strong> = selfish, willful, doing as one pleases · <strong><ruby>早朝<rt>そうちょう</rt></ruby></strong> = early morning · <strong>デート</strong> = date (playful use with a goat!)
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>昔<rt>むかし</rt></ruby>カブトムシが<ruby>大量<rt>たいりょう</rt></ruby>にいたと<ruby>聞<rt>き</rt></ruby>いた<ruby>林道<rt>りんどう</rt></ruby>へ。<ruby>今<rt>いま</rt></ruby>の<ruby>様子<rt>ようす</rt></ruby>に<ruby>驚<rt>おどろ</rt></ruby>きました【<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし <ruby>林道探検<rt>りんどうたんけん</rt></ruby>】</span>
+    <span class="video-meta">9.3万<ruby>回再生<rt>かいさいせい</rt></ruby> · 2026<ruby>年<rt>ねん</rt></ruby>7<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>昔<rt>むかし</rt></ruby></strong> = long ago · <strong><ruby>大量<rt>たいりょう</rt></ruby></strong> = large amount · <strong>～と<ruby>聞<rt>き</rt></ruby>いた</strong> = heard that ~ · <strong><ruby>林道探検<rt>りんどうたんけん</rt></ruby></strong> = forest road exploration
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>雨<rt>あめ</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>の<ruby>田舎暮<rt>いなかぐ</rt></ruby>らし。<ruby>部屋<rt>へや</rt></ruby>の<ruby>中<rt>なか</rt></ruby>を<ruby>少<rt>すこ</rt></ruby>しだけ…<ruby>明日<rt>あした</rt></ruby>本<ruby>編<rt>へん</rt></ruby><ruby>公開<rt>こうかい</rt></ruby>🌱</span>
+    <span class="video-meta">3.8万<ruby>回再生<rt>かいさいせい</rt></ruby> · Short · 2025<ruby>年<rt>ねん</rt></ruby>11<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong><ruby>雨<rt>あめ</rt></ruby>の<ruby>日<rt>ひ</rt></ruby></strong> = rainy day · <strong><ruby>少<rt>すこ</rt></ruby>しだけ</strong> = just a little · <strong>…</strong> = trailing off · <strong><ruby>明日<rt>あした</rt></ruby>本<ruby>編<rt>へん</rt></ruby><ruby>公開<rt>こうかい</rt></ruby></strong> = full version releasing tomorrow (teaser format)
+    </div>
+  </div>
+
+  <div class="video-card">
+    <span class="video-title"><ruby>ジョン<rt>じょん</rt></ruby>もびっくり？<ruby>小屋<rt>こや</rt></ruby>を<ruby>改装<rt>かいそう</rt></ruby>しました🐐</span>
+    <span class="video-meta">3.6万<ruby>回再生<rt>かいさいせい</rt></ruby> · Short · 2025<ruby>年<rt>ねん</rt></ruby>11<ruby>月<rt>がつ</rt></ruby></span>
+    <div class="video-breakdown">
+      <strong>～もびっくり</strong> = "~ is also surprised" (marketing/humorous pattern) · <strong>？</strong> = creates intrigue · <strong>～ました</strong> = polite past (done something)
+    </div>
+  </div>
+</section>
+
+<!-- ====== SECTION 10: 日常会話・挨拶 ====== -->
+<section>
+  <div class="section-header">
+    <span class="section-number">10</span>
+    <div>
+      <h2><ruby>日常会話<rt>にちじょうかいわ</rt></ruby>・<ruby>挨拶<rt>あいさつ</rt></ruby>（Daily Conversation & Greetings）</h2>
+      <p class="section-desc"><ruby>動画<rt>どうが</rt></ruby>の<ruby>冒頭<rt>ぼうとう</rt></ruby>や<ruby>日常<rt>にちじょう</rt></ruby>で<ruby>使<rt>つか</rt></ruby>う<ruby>表現<rt>ひょうげん</rt></ruby></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">👋</span> <ruby>挨拶<rt>あいさつ</rt></ruby>・<ruby>決<rt>き</rt></ruby>まり<ruby>文句<rt>もんく</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>表現<rt>ひょうげん</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>皆<rt>みな</rt></ruby>さんこんにちは</td><td class="reading">みなさんこんにちは</td><td class="meaning">Hello everyone (standard opening)</td></tr>
+      <tr><td class="word">くまです</td><td class="reading">くまです</td><td class="meaning">It's Kuma (self-introduction)</td></tr>
+      <tr><td class="word"><ruby>今日<rt>きょう</rt></ruby>も<ruby>一日<rt>いちにち</rt></ruby>いい<ruby>日<rt>ひ</rt></ruby>になりますように</td><td class="reading">きょうもいちにちいいひになりますように</td><td class="meaning">"May today be a good day too" (wish)</td></tr>
+      <tr><td class="word"><ruby>最後<rt>さいご</rt></ruby>まで<ruby>御覧<rt>ごらん</rt></ruby>ください</td><td class="reading">さいごまでごらんください</td><td class="meaning">"Please watch until the end"</td></tr>
+      <tr><td class="word"><ruby>最後<rt>さいご</rt></ruby>まで<ruby>見<rt>み</rt></ruby>てくれてありがとう</td><td class="reading">さいごまでみてくれてありがとう</td><td class="meaning">"Thanks for watching until the end"</td></tr>
+      <tr><td class="word"><ruby>応援<rt>おうえん</rt></ruby>していただけたら<ruby>嬉<rt>うれ</rt></ruby>しいです</td><td class="reading">おうえんしていだけたらうれしいです</td><td class="meaning">"I'd be happy if you supported me"</td></tr>
+      <tr><td class="word"><ruby>高評価<rt>こうひょうか</rt></ruby>・<ruby>登録<rt>とうろく</rt></ruby>お<ruby>願<rt>ねが</rt></ruby>いします</td><td class="reading">こうひょうか・とうろくおねがいします</td><td class="meaning">"Please like and subscribe"</td></tr>
+      <tr><td class="word"><ruby>良<rt>よ</rt></ruby>かったら</td><td class="reading">よかったら</td><td class="meaning">"If you'd like" (invitation)</td></tr>
+      <tr><td class="word">ぜひ</td><td class="reading">ぜひ</td><td class="meaning">"By all means, please do"</td></tr>
+      <tr><td class="word"><ruby>今回<rt>こんかい</rt></ruby>は</td><td class="reading">こんかいは</td><td class="meaning">"This time / In this video"</td></tr>
+      <tr><td class="word"><ruby>今回<rt>こんかい</rt></ruby>は～をご<ruby>紹介<rt>しょうかい</rt></ruby>します</td><td class="reading">こんかいは～をごしょうかいします</td><td class="meaning">"This time I'll introduce ~"</td></tr>
+      <tr><td class="word">～をまとめてみました</td><td class="reading">～をまとめてみました</td><td class="meaning">"I tried compiling ~"</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="card-icon">💬</span> <ruby>日常<rt>にちじょう</rt></ruby><ruby>表現<rt>ひょうげん</rt></ruby></h3>
+    <table>
+      <tr><th><ruby>表現<rt>ひょうげん</rt></ruby></th><th><ruby>読<rt>よ</rt></ruby>み</th><th><ruby>意味<rt>いみ</rt></ruby></th></tr>
+      <tr><td class="word"><ruby>最近<rt>さいきん</rt></ruby>は</td><td class="reading">さいきんは</td><td class="meaning">"Recently / Lately"</td></tr>
+      <tr><td class="word"><ruby>夜<rt>よ</rt></ruby>になると</td><td class="reading">よるになると</td><td class="meaning">"When night falls"</td></tr>
+      <tr><td class="word"><ruby>過<rt>す</rt></ruby>ごし<ruby>易<rt>やす</rt></ruby>くなってきた</td><td class="reading">すごしやすくなってきた</td><td class="meaning">"Has become comfortable to spend time"</td></tr>
+      <tr><td class="word"><ruby>少<rt>すこ</rt></ruby>しずつ</td><td class="reading">すこしずつ</td><td class="meaning">"Little by little"</td></tr>
+      <tr><td class="word"><ruby>大<rt>だい</rt></ruby><ruby>変身<rt>へんしん</rt></ruby></td><td class="reading">だいへんしん</td><td class="meaning">"Dramatic transformation"</td></tr>
+      <tr><td class="word"><ruby>一緒<rt>いっしょ</rt></ruby>に</td><td class="reading">いっしょに</td><td class="meaning">"Together"</td></tr>
+      <tr><td class="word"><ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>暮<rt>く</rt></ruby>らす</td><td class="reading">いっしょにくらす</td><td class="meaning">"Live together with"</td></tr>
+      <tr><td class="word"><ruby>普段<rt>ふだん</rt></ruby>とは<ruby>少<rt>すこ</rt></ruby>し<ruby>違<rt>ちが</rt></ruby>う</td><td class="reading">ふだんとはすこしちがう</td><td class="meaning">"A bit different from usual"</td></tr>
+      <tr><td class="word"><ruby>裏側<rt>うらがわ</rt></ruby>コンテンツ</td><td class="reading">うらがわこんてんつ</td><td class="meaning">"Behind-the-scenes content"</td></tr>
+      <tr><td class="word"><ruby>限定<rt>げんてい</rt></ruby>スタンプ</td><td class="reading">げんていすたんぷ</td><td class="meaning">"limited stamps" (membership perk)</td></tr>
+      <tr><td class="word"><ruby>筋<rt>きん</rt></ruby>トレ</td><td class="reading">きんとれ</td><td class="meaning">"muscle training" (workout)</td></tr>
+      <tr><td class="word">ロードバイク</td><td class="reading">ろーどばいく</td><td class="meaning">road bike</td></tr>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><ruby>くま<rt>くま</rt></ruby>の<ruby>里山日記<rt>さとやまにっき</rt></ruby> — <ruby>日本語学習<rt>にほんごがくしゅう</rt></ruby>ノート・<ruby>拡張版<rt>かくちょうばん</rt></ruby></p>
+  <p style="margin-top:0.3em; opacity:0.7;"><ruby>田舎暮<rt>いなかぐ</rt></ruby>らし・<ruby>動物<rt>どうぶつ</rt></ruby>・<ruby>自然<rt>しぜん</rt></ruby>・<ruby>料理<rt>りょうり</rt></ruby>・DIY・<ruby>日常<rt>にちじょう</rt></ruby>の<ruby>語彙<rt>ごい</rt></ruby>と<ruby>表現<rt>ひょうげん</rt></ruby>を<ruby>集<rt>あつ</rt></ruby>めました</p>
+</footer>
+
+<script>
+function setFurigana(on) {
+  document.body.classList.toggle("hide-furigana", !on);
+  document.getElementById("btn-furigana-on").classList.toggle("active", on);
+  document.getElementById("btn-furigana-off").classList.toggle("active", !on);
+}
+</script>
+
+</body>
+</html>

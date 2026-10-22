@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>荒れた裏山を本気で伐採してみた &mdash; Full Transcript Breakdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+JP:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f140a;
+  --surface: #1a2214;
+  --surface-raised: #242e1c;
+  --ink: #e0e8d8;
+  --ink-dim: #a0b090;
+  --accent: #6a8a4a;
+  --accent-glow: #8aaa6a;
+  --accent-weak: rgba(106, 138, 74, 0.10);
+  --accent2: #8a6a3a;
+  --accent2-glow: #b08a5a;
+  --accent2-weak: rgba(138, 106, 58, 0.10);
+  --line: rgba(224, 232, 216, 0.08);
+  --line-strong: rgba(106, 138, 74, 0.35);
+  --space: clamp(1.25rem, 1rem + 1vw, 2rem);
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --step-3: clamp(2.2rem, 1.6rem + 2.4vw, 3.6rem);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -8px rgba(0,0,0,0.5);
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+header {
+  position: relative;
+  padding: calc(var(--space) * 4) var(--space) calc(var(--space) * 3);
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-strong);
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(106, 138, 74, 0.12), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 90%, rgba(138, 106, 58, 0.08), transparent 60%);
+  pointer-events: none;
+}
+header .eyebrow {
+  position: relative;
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin-bottom: var(--space);
+}
+header h1 {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: calc(var(--space) * 0.6);
+}
+header .subtitle {
+  position: relative;
+  color: var(--ink-dim);
+  font-size: var(--step-0);
+  max-width: 55ch;
+  margin: 0 auto calc(var(--space) * 1.2);
+}
+header .meta {
+  position: relative;
+  color: var(--accent2-glow);
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.15em;
+  margin-bottom: calc(var(--space) * 1.5);
+}
+header .full-lyrics {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2.2;
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--ink);
+  white-space: pre-wrap;
+  text-align: left;
+}
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) var(--space);
+}
+.section-title {
+  font-family: "Cinzel", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin-bottom: calc(var(--space) * 1.25);
+  padding-bottom: calc(var(--space) * 0.5);
+  border-bottom: 1px solid var(--line-strong);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+}
+.section-title .num {
+  font-size: 0.55em;
+  color: var(--accent-glow);
+  letter-spacing: 0.05em;
+}
+.line-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: calc(var(--space) * 1.1) calc(var(--space) * 1.2);
+  margin-bottom: calc(var(--space) * 1.25);
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+}
+.line-header {
+  margin-bottom: calc(var(--space) * 0.9);
+  padding-bottom: calc(var(--space) * 0.6);
+  border-bottom: 1px solid var(--line);
+}
+.japanese-line {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.35em;
+  color: var(--ink);
+}
+.romaji-line {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: var(--step-0);
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.english-line {
+  font-size: var(--step-0);
+  color: #a0b090;
+  font-style: italic;
+  margin-top: 0.4em;
+  line-height: 1.6;
+}
+.word-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+.word-table th {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  color: var(--ink-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+  border-bottom: 1px solid var(--line);
+}
+.word-table td {
+  padding: 0.65em 0.8em;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.word-table tr:last-child td {
+  border-bottom: none;
+}
+.word-table .col-jp {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.15em;
+  color: var(--ink);
+  width: 18%;
+}
+.word-table .col-romaji {
+  color: #a0b090;
+  width: 20%;
+}
+.word-table .col-pos {
+  color: var(--accent-glow);
+  font-weight: 600;
+  width: 22%;
+}
+.word-table .col-gloss {
+  color: var(--ink-dim);
+  width: 40%;
+}
+.grammar-note {
+  background: var(--surface-raised);
+  border-left: 2px solid var(--accent);
+  padding: 0.9em 1.1em;
+  margin-top: calc(var(--space) * 0.8);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--step--1);
+  color: #a0b090;
+  line-height: 1.65;
+}
+.grammar-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  margin: calc(var(--space) * 2) 0;
+}
+.asr-note {
+  display: inline-block;
+  background: var(--accent2-weak);
+  border: 1px solid var(--accent2-glow);
+  color: var(--accent2-glow);
+  font-size: 0.75em;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  font-family: "Source Sans 3", sans-serif;
+  letter-spacing: 0.05em;
+}
+@media (max-width: 640px) {
+  .word-table .col-pos, .word-table .col-gloss {
+    width: auto;
+  }
+  .line-card {
+    padding: var(--space);
+  }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  header, .line-card, .grammar-note, .section-title {
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+  header::before, header::after { display: none; }
+}
+@page { size: A4; margin: 14mm; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Country Life Vlog &middot; Hillside Clearing &middot; Chainsaw &middot; 3-Day Project</div>
+  <h1>荒れた裏山を本気で伐採してみた</h1>
+  <p class="subtitle">I Seriously Tried Clearing the Overgrown Hillside Behind My House &mdash; A full grammatical and lexical breakdown of a three-day chainsaw and brush-clearing project, steep-slope struggles, bamboo repurposing, goat-feed logistics, and Kansai-dialect rural labor narration.</p>
+  <div class="meta">Vlogger: Kuma &nbsp;&bull;&nbsp; Location: Back Hillside &middot; Country Home &nbsp;&bull;&nbsp; Genre: DIY / Forestry / Rural Life Vlog</div>
+  <div class="full-lyrics">こんにちは、くまです。今日はこの裏山を伐っていこうと思います。家の中風が悪くなったら結構蚊だらけになっちゃうんで、今日は気を買って、つるとかも全部綺麗に伐っていこうと思います。どこまでできるかわからんけど、ちょっと頑張ります。
+家の裏の上とそこに多分柿の木あるからちょっと伐ったあかんのと、南天よりこっち側の木を綺麗に伐っていきます。
+冬は木が休んでいる時期なので切っても負担が少ないと言われています。それに以前出てきたスズメバチもこの時期は静かになるので安全に作業できます。
+うわ、何これ。虫やばい。これ全部貝殻虫か。みっちりついてるわ。すっごいな。
+上がらなあかんか。ああ、無理あるな。きつそう。今夕方5時。全然取れてなかった。よく頑張りました。お疲れや。
+作業2日目。1日目で切り残していた家の裏の部分を少し伐っていきます。今回の伐採では見た目重視というより木が元気でいられるくらいに短く切って斜面の日当たりと風通しを良くするのが目的です。
+かなりの急斜面です。日照不足のせいか奥の方は枯れている木や枯れ下枝などが目立っていました。草の根が地面をしっかり支えてくれているので、枯れてしまうと土砂崩れの原因になることもあります。そのため今回は必要な長さだけ伐ることにしました。
+枝が絡まって思うように架下ろせません。作業中は目の保護のためにサングラスを使っていますが、危険な場面もあったので状況を見ながら外したりしています。
+南の木はちょっと置いといて。で、梅の木も置いとく。あとちょっと木、太いやつは持ち手で切ろうかな。ちょっと今日の作業はもうこれまで。下がすごいことなってる。
+これまた木と葉っぱで分けてやります。梅の木食べた後の種、山に掘り投げたらこう勝手に生えてきた。気づいたら大きくなってる。もう見なれへんから伐たろかとか言っとったら、見なり始めたからずっと置いてる。だいぶ大きくなってきた。
+綺麗に切っていきます。今日することはあそこの梅の木切るのと、窓ちょっと切り忘れてる木を切っていこうと思います。柿の木もこれ以上上に伸びられると管理できなくなるので少し切ることにしました。
+え、これ多分わかるかな? なんか案外動画やったら草いっぱいあるの分からへんかな? 今から片付けていくか。ああ、頑張ろう。
+かわいそうに。ちょっと捕まえるわ。えい。安全なところにバイバイ。ごめんね。
+葉っぱと太い枝を分けていきます。葉っぱはゴミ出すため小さくカットします。こんなレース作れそうや。適当に。なんかここにあった、あった。こうつけたらええんちゃう。こんなまつけた。ちゃ、ほんまふざけてるわ。え、なんかダサいな。こんなことしてる場合じゃないのに。なんかよくわからんデスみたいなやつ。うん。あ、痛た痛い。絡まったじゃん。ースみたいなよくわからんけどバタ。置いとこう。
+なので竹の刃を落としていきます。気をつけて作業します。この竹は畑の手すりのに使います。園芸用のキュウリとかに使います。で、こんな竿とかは束ねて畑の野菜に紐で縛って霜除けにします。なので後でこの根元をロープで縛って置いときます。吹きは別で使うんでこんな感じで短くカット。大体同じぐらいの、うん、そうでもないかも。大体長さそれっぽく揃えて切りました。これはまた別で使うんで、これは置いときます。この葉っぱの山はもう捨てる。ここに置いてる梅の葉っぱはジョンのご飯にします。めっちゃいっぱいある。唯一ジョンが食べる木の葉っぱかもせえへん。なんかあんまり木の葉っぱも食べへんから。
+3日目終わりました。裏山だいぶ綺麗になった。やったか。めちゃくちゃ疲れた。あと大きい木1本だけ残ってるのはチェーンソーでやって終わり。めっちゃ綺麗にめっちゃ綺麗になった。ちっと切りすぎたかもせえへんけど、なんか動画にしたらあんま分からへんな。終わった。やった。今日はぐっすり寝れそうです。お疲れや。バイバイ。</div>
+</header>
+
+<main>
+
+<section>
+<h2 class="section-title"><span class="num">01</span> Introduction &mdash; The Plan and the Reason</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">こんにちは、くまです。今日はこの裏山を伐っていこうと思います。家の中風が悪くなったら結構蚊だらけになっちゃうんで、今日は気を買って、つるとかも全部綺麗に伐っていこうと思います。どこまでできるかわからんけど、ちょっと頑張ります。</div>
+    <div class="romaji-line">Konnichiwa, Kuma desu. Kyou wa kono urayama wo kattte ikou to omoimasu. Ie no naka kaze ga waruku nattara kekkou ka darake ni nacchau n de, kyou wa ki wo katte, tsuru to ka mo zenbu kirei ni kattte ikou to omoimasu. Doko made dekiru ka wakaran kedo, chotto ganbarimasu.</div>
+    <div class="english-line">"Hello, [it&apos;s] Kuma. Today [I] think [I&apos;ll] go cut down this back hillside. If the airflow inside the house gets bad, [it] gets full of mosquitoes, so today [I&apos;ll] buy/cut the trees and [I] think [I&apos;ll] go cut everything cleanly, including the vines. [I] don&apos;t know how far [I] can do [it], but [I&apos;ll] try a bit."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">こんにちは</td><td class="col-romaji">konnichiwa</td><td class="col-pos">Greeting</td><td class="col-gloss">hello; good afternoon</td></tr>
+    <tr><td class="col-jp">くま</td><td class="col-romaji">Kuma</td><td class="col-pos">Proper noun</td><td class="col-gloss">Kuma [vlogger&apos;s name]</td></tr>
+    <tr><td class="col-jp">です</td><td class="col-romaji">desu</td><td class="col-pos">Copula (polite)</td><td class="col-gloss">is &mdash; polite copula</td></tr>
+    <tr><td class="col-jp">今日</td><td class="col-romaji">kyou</td><td class="col-pos">Temporal noun</td><td class="col-gloss">today</td></tr>
+    <tr><td class="col-jp">裏山</td><td class="col-romaji">urayama</td><td class="col-pos">Compound noun</td><td class="col-gloss">back hillside; hill behind the house &mdash; 裏 + 山</td></tr>
+    <tr><td class="col-jp">伐る</td><td class="col-romaji">kiru/karu</td><td class="col-pos">Verb</td><td class="col-gloss">to cut down [trees]; to fell &mdash; ASR: 買う</td></tr>
+    <tr><td class="col-jp">ていこう</td><td class="col-romaji">te ikou</td><td class="col-pos">Compound verb (volitional)</td><td class="col-gloss">go [and do] &mdash; ていく volitional</td></tr>
+    <tr><td class="col-jp">思う</td><td class="col-romaji">omou</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">think; intend &mdash; 思う modifying ます</td></tr>
+    <tr><td class="col-jp">家</td><td class="col-romaji">ie</td><td class="col-pos">Noun</td><td class="col-gloss">house; home</td></tr>
+    <tr><td class="col-jp">中</td><td class="col-romaji">naka</td><td class="col-pos">Noun</td><td class="col-gloss">inside; interior</td></tr>
+    <tr><td class="col-jp">風</td><td class="col-romaji">kaze</td><td class="col-pos">Noun</td><td class="col-gloss">wind; airflow; draft</td></tr>
+    <tr><td class="col-jp">悪い</td><td class="col-romaji">warui</td><td class="col-pos">I-adjective</td><td class="col-gloss">bad; poor; unfavorable</td></tr>
+    <tr><td class="col-jp">なったら</td><td class="col-romaji">nattara</td><td class="col-pos">Verb (conditional)</td><td class="col-gloss">if [it] becomes &mdash; なる conditional</td></tr>
+    <tr><td class="col-jp">結構</td><td class="col-romaji">kekkou</td><td class="col-pos">Adverb</td><td class="col-gloss">quite; considerably; rather</td></tr>
+    <tr><td class="col-jp">蚊</td><td class="col-romaji">ka</td><td class="col-pos">Noun</td><td class="col-gloss">mosquito</td></tr>
+    <tr><td class="col-jp">だらけ</td><td class="col-romaji">darake</td><td class="col-pos">Suffix</td><td class="col-gloss">full of; riddled with &mdash; negative connotation</td></tr>
+    <tr><td class="col-jp">なっちゃう</td><td class="col-romaji">nacchau</td><td class="col-pos">Verb (colloquial)</td><td class="col-gloss">ends up becoming &mdash; なってしまう contracted</td></tr>
+    <tr><td class="col-jp">んで</td><td class="col-romaji">n de</td><td class="col-pos">Contraction (colloquial)</td><td class="col-gloss">because; since &mdash; ので contracted</td></tr>
+    <tr><td class="col-jp">気</td><td class="col-romaji">ki</td><td class="col-pos">Noun</td><td class="col-gloss">tree; wood; spirit/mood &mdash; here: tree</td></tr>
+    <tr><td class="col-jp">買う</td><td class="col-romaji">kau</td><td class="col-pos">Verb (ASR error)</td><td class="col-gloss">buy &mdash; ASR misheard 伐る/刈る (cut)</td></tr>
+    <tr><td class="col-jp">つる</td><td class="col-romaji">tsuru</td><td class="col-pos">Noun</td><td class="col-gloss">vine; creeper; tendril</td></tr>
+    <tr><td class="col-jp">綺麗</td><td class="col-romaji">kirei</td><td class="col-pos">Na-adjective</td><td class="col-gloss">clean; neat; tidy; completely</td></tr>
+    <tr><td class="col-jp">わからん</td><td class="col-romaji">wakaran</td><td class="col-pos">Verb (Kansai negative)</td><td class="col-gloss">[I] don&apos;t know &mdash; Kansai negative of わかる</td></tr>
+    <tr><td class="col-jp">けど</td><td class="col-romaji">kedo</td><td class="col-pos">Concessive particle</td><td class="col-gloss">but; though &mdash; softens statement</td></tr>
+    <tr><td class="col-jp">頑張る</td><td class="col-romaji">ganbaru</td><td class="col-pos">Verb (polite)</td><td class="col-gloss">to do [one&apos;s] best; to persevere &mdash; polite</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> こんにちは、くまです is the standard vlogger opening: "Hello, [it&apos;s] Kuma." The copula です marks polite self-introduction. 今日はこの裏山を伐っていこうと思います uses the volitional auxiliary いこう (let&apos;s go) attached to the te-form of 伐る (to cut down trees): "Today [I] think [I&apos;ll] go cut down this back hillside." The と思います (think; intend) frames the action as a planned intention rather than an immediate command. The ASR has rendered 伐る as 買う (to buy), a common phonetic confusion in Japanese ASR systems, especially with Kansai dialect where vowel distinctions can blur. 家の中風が悪くなったら uses the conditional なたら (if [it] becomes) after the adjective phrase 悪く (bad): "If the airflow inside the house gets bad...&quot; 風 (kaze) here means airflow or draft, not illness. 結構蚊だらけになっちゃうんで uses the adverb 結構 (quite; considerably) + noun 蚊 (mosquito) + suffix だらけ (full of) + になっちゃう (ends up becoming) + contracted causal んで (from ので): "... [it] ends up becoming full of quite a lot of mosquitoes, so...&quot; The ちゃう auxiliary (from てしまう) adds a sense of inevitable, slightly regrettable outcome. The causal chain (bad airflow → mosquitoes → therefore cutting trees) establishes the pragmatic reason for the forestry work. 今日は気を買って uses another ASR-misheard 買って (katte, buying) for what should be 伐って/刈って (cutting): "today [I&apos;ll] cut the trees.&quot; つるとかも全部綺麗に伐っていこうと思います uses とか (and such; including) + も (also) + 全部 (all) + adverb 綺麗に (cleanly; completely) + volitional ていこうと思います: "[I] think [I&apos;ll] go cut everything cleanly, including the vines.&quot; 綺麗に before a verb of destruction (伐る) means "completely; thoroughly&quot; rather than "beautifully.&quot; どこまでできるかわからんけど uses the embedded question どこまでできるか (how far [I] can do [it]) + Kansai negative わからん (don&apos;t know) + concessive けど: "[I] don&apos;t know how far [I] can do [it], but...&quot; The けど softens the admission of uncertainty before the commitment that follows. ちょっと頑張ります uses the diminutive ちょっと (a bit) + polite 頑張ります: "[I&apos;ll] try a bit.&quot; The ちょっと downplays the massive effort that the video will reveal, a classic Japanese humility formula.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">家の裏の上とそこに多分柿の木あるからちょっと伐ったあかんのと、南天よりこっち側の木を綺麗に伐っていきます。冬は木が休んでいる時期なので切っても負担が少ないと言われています。それ以前出てきたスズメバチもこの時期は静かになるので安全に作業できます。</div>
+    <div class="romaji-line">Ie no ura no ue to soko ni tabun kaki no ki aru kara chotto katta akan no to, nanten yori kocchi gawa no ki wo kirei ni kattte ikimasu. Fuyu wa ki ga yasunde iru jiki na node kitte mo futan ga sukunai to iwarete imasu. Sore ni izen dete kita suzumebachi mo kono jiki wa shizuka ni naru node anzen ni sagyou dekimasu.</div>
+    <div class="english-line">"Because there is probably a persimmon tree up there and over there on the back of the house, [and] I have to cut [it] a bit, [and] rather than the nandina, [I&apos;ll] go cut the trees on this side cleanly. [They] say that in winter, [it] is the season when trees are resting, so even if [you] cut [them], the burden is small. In addition, the hornets that appeared before are also quiet at this time of year, so [I] can work safely."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">裏</td><td class="col-romaji">ura</td><td class="col-pos">Noun</td><td class="col-gloss">back; rear; behind</td></tr>
+    <tr><td class="col-jp">上</td><td class="col-romaji">ue</td><td class="col-pos">Noun</td><td class="col-gloss">above; up; upper part</td></tr>
+    <tr><td class="col-jp">多分</td><td class="col-romaji">tabun</td><td class="col-pos">Adverb</td><td class="col-gloss">probably; perhaps; likely</td></tr>
+    <tr><td class="col-jp">柿</td><td class="col-romaji">kaki</td><td class="col-pos">Noun</td><td class="col-gloss">persimmon (tree/fruit)</td></tr>
+    <tr><td class="col-jp">木</td><td class="col-romaji">ki</td><td class="col-pos">Noun</td><td class="col-gloss">tree; wood</td></tr>
+    <tr><td class="col-jp">あかん</td><td class="col-romaji">akan</td><td class="col-pos">I-adjective (Kansai)</td><td class="col-gloss">no good; must; have to &mdash; Kansai for だめ/いけない</td></tr>
+    <tr><td class="col-jp">の</td><td class="col-romaji">no</td><td class="col-pos">Nominalizer</td><td class="col-gloss">[the fact that] &mdash; nominalizer</td></tr>
+    <tr><td class="col-jp">南天</td><td class="col-romaji">nanten</td><td class="col-pos">Noun</td><td class="col-gloss">nandina; sacred bamboo (Nandina domestica)</td></tr>
+    <tr><td class="col-jp">より</td><td class="col-romaji">yori</td><td class="col-pos">Comparative particle</td><td class="col-gloss">than; rather than; instead of</td></tr>
+    <tr><td class="col-jp">こっち側</td><td class="col-romaji">kocchi gawa</td><td class="col-pos">Demonstrative + noun</td><td class="col-gloss">this side &mdash; こっち + 側</td></tr>
+    <tr><td class="col-jp">冬</td><td class="col-romaji">fuyu</td><td class="col-pos">Temporal noun</td><td class="col-gloss">winter</td></tr>
+    <tr><td class="col-jp">休む</td><td class="col-romaji">yasumu</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">resting; dormant &mdash; 休んでいる</td></tr>
+    <tr><td class="col-jp">時期</td><td class="col-romaji">jiki</td><td class="col-pos">Noun</td><td class="col-gloss">season; period; time</td></tr>
+    <tr><td class="col-jp">切る</td><td class="col-romaji">kiru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">to cut &mdash; te-form</td></tr>
+    <tr><td class="col-jp">負担</td><td class="col-romaji">futan</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">burden; load; strain</td></tr>
+    <tr><td class="col-jp">少ない</td><td class="col-romaji">sukunai</td><td class="col-pos">I-adjective</td><td class="col-gloss">few; little; small [amount]</td></tr>
+    <tr><td class="col-jp">言われている</td><td class="col-romaji">iwarete iru</td><td class="col-pos">Verb (passive progressive)</td><td class="col-gloss">is said; [they] say &mdash; passive + progressive</td></tr>
+    <tr><td class="col-jp">以前</td><td class="col-romaji">izen</td><td class="col-pos">Temporal noun</td><td class="col-gloss">before; previously; earlier</td></tr>
+    <tr><td class="col-jp">出てくる</td><td class="col-romaji">dete kuru</td><td class="col-pos">Compound verb</td><td class="col-gloss">appear; come out &mdash; 出る + てくる</td></tr>
+    <tr><td class="col-jp">スズメバチ</td><td class="col-romaji">suzumebachi</td><td class="col-pos">Noun</td><td class="col-gloss">Asian giant hornet (Vespa mandarinia)</td></tr>
+    <tr><td class="col-jp">静か</td><td class="col-romaji">shizuka</td><td class="col-pos">Na-adjective</td><td class="col-gloss">quiet; silent; calm</td></tr>
+    <tr><td class="col-jp">安全</td><td class="col-romaji">anzen</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">safe; secure; safety</td></tr>
+    <tr><td class="col-jp">作業</td><td class="col-romaji">sagyou</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">work; labor; operation</td></tr>
+    <tr><td class="col-jp">できる</td><td class="col-romaji">dekiru</td><td class="col-pos">Verb (potential)</td><td class="col-gloss">can do; able to do &mdash; potential</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 家の裏の上とそこに多分柿の木あるから uses the ablative から (because) after a complex locational clause: "Because there is probably a persimmon tree up there and over there on the back of the house...&quot; The 多分 (probably) softens the identification, showing the vlogger is working from memory rather than certainty. 柿の木 (kaki no ki, persimmon tree) is a specific tree type that requires careful handling, as persimmon wood is hard and valued. ちょっと伐ったあかんのと uses the Kansai negative adjective あかん (akan, no good; must not; have to) + nominalizer の: "[and] the [fact that I] have to cut [it] a bit.&quot; あかん in Kansai can mean both prohibition (must not) and necessity (must/have to) depending on context; here with the negative 〜たあかん pattern (〜てはいけない in standard), it means "must cut.&quot; 南天よりこっち側の木を綺麗に伐っていきます uses the comparative より (than; rather than) + こっち側 (this side) + directional progressive 伐っていきます: "[I&apos;ll] go cut the trees on this side cleanly rather than [cutting] the nandina.&quot; The より establishes a preference: nandina will be spared, but trees on the near side will be cleared. 冬は木が休んでいる時期ので uses the topic は + relative clause 木が休んでいる (trees are resting/dormant) modifying 時期 (season) + causal ので: "[It] is the season when trees are resting, so...&quot; The anthropomorphizing verb 休む (to rest) is the standard Japanese term for dormancy in plants and animals. 切っても負担が少ないと言われています uses the concessive ても (even if) + passive 言われている (is said): "[They] say that even if [you] cut [them], the burden is small.&quot; The passive 言われている frames this as received wisdom, common knowledge among gardeners and foresters. それに (in addition; furthermore) adds another reason. 以前出てきたスズメバチもこの時期は静かになるので uses the attributive past 出てきた (appeared; came out) modifying スズメバチ (Asian giant hornet) + も (also) + temporal topic この時期は (this time of year [topic]) + 静かになる (become quiet) + causal ので: "In addition, the hornets that appeared before are also quiet at this time of year, so...&quot; The スズメバチ reference connects to a previous video, creating narrative continuity. 安全に作業できます uses the adverbial 安全に (safely) + potential できます (can work): "[I] can work safely.&quot; The two causal chains (dormant trees = less stress; quiet hornets = safe) form a rational justification for winter forestry work.
+  </div>
+</div>
+</section>
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">02</span> Day 1 &mdash; Insect Shock, Exhaustion, and Quitting</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">うわ、何これ。虫やばい。これ部貝殻虫か。みっちりついてるわ。すっごいな。上がらなあかんか。ああ、無理あるな。きつそう。今夕方5時。全然取れてなかった。よく頑張りました。お疲れや。もうヘルメットから髪の毛がもうめっちゃボサボサ。もう暗すぎてわからへんな。どんだけ伐ったとか。もう今日はこれで作業終わります。また明日続きこの後ろやります。</div>
+    <div class="romaji-line">Uwa, nan kore. Mushi yabai. Kore zenbu kaigara-mushi ka. Mitchiri tsuiteru wa. Suggoi na. Agaran akan ka. Aa, muri aru na. Kitsusou. Ima yuugata go-ji. Zenzen toretete nakatta. Yoku ganbarimashita. Otsukare ya. Mou herumetto kara kaminoke ga mou meccha bosabosa. Mou kurasugite wakarahen na. Don dake katta to ka. Mou kyou wa kore de sagyou owarimasu. Mata ashita tsuzuki kono ushiro yarimasu.</div>
+    <div class="english-line">"Wow, what [is] this. The bugs [are] insane. Are these all scale insects? [They&apos;re] packed on tight, wa. Amazing, na. [Do I] have to go up? Ah, [that&apos;s] impossible. [It looks] tough. Now [it&apos;s] 5 PM. [I] hadn&apos;t taken [any] at all. [You] worked hard. [Good] work, ya. Already [my] hair from [under] the helmet [is] super messy. Already [it&apos;s] too dark [I] don&apos;t know, na. How much [I] cut and such. Already today [I&apos;ll] end work with this. Tomorrow [I&apos;ll] do the rest of this back [area]."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">うわ</td><td class="col-romaji">uwa</td><td class="col-pos">Interjection</td><td class="col-gloss">wow; whoa; ugh &mdash; surprise/disgust</td></tr>
+    <tr><td class="col-jp">何</td><td class="col-romaji">nan</td><td class="col-pos">Interrogative pronoun</td><td class="col-gloss">what</td></tr>
+    <tr><td class="col-jp">虫</td><td class="col-romaji">mushi</td><td class="col-pos">Noun</td><td class="col-gloss">bug; insect; pest</td></tr>
+    <tr><td class="col-jp">やばい</td><td class="col-romaji">yabai</td><td class="col-pos">I-adjective (slang)</td><td class="col-gloss">insane; bad; intense; yikes</td></tr>
+    <tr><td class="col-jp">貝殻虫</td><td class="col-romaji">kaigara-mushi</td><td class="col-pos">Compound noun</td><td class="col-gloss">scale insect (Coccoidea) &mdash; 貝殻 + 虫</td></tr>
+    <tr><td class="col-jp">みっちり</td><td class="col-romaji">mitchiri</td><td class="col-pos">Adverb / onomatopoeia</td><td class="col-gloss">packed tight; densely; thickly</td></tr>
+    <tr><td class="col-jp">つく</td><td class="col-romaji">tsuku</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">attached; stuck &mdash; progressive of 付く</td></tr>
+    <tr><td class="col-jp">わ</td><td class="col-romaji">wa</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[emphatic] &mdash; feminine/soft assertive</td></tr>
+    <tr><td class="col-jp">すっごい</td><td class="col-romaji">suggoi</td><td class="col-pos">I-adjective (colloquial)</td><td class="col-gloss">amazing; incredible &mdash; for すごい</td></tr>
+    <tr><td class="col-jp">上がる</td><td class="col-romaji">agaru</td><td class="col-pos">Verb</td><td class="col-gloss">to go up; to ascend; to climb</td></tr>
+    <tr><td class="col-jp">なあかん</td><td class="col-romaji">n akan</td><td class="col-pos">Verb + Kansai negative</td><td class="col-gloss">must; have to &mdash; 〜なければならない</td></tr>
+    <tr><td class="col-jp">無理</td><td class="col-romaji">muri</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">impossible; unreasonable; too much</td></tr>
+    <tr><td class="col-jp">ある</td><td class="col-romaji">aru</td><td class="col-pos">Verb</td><td class="col-gloss">there is; exists &mdash; inanimate</td></tr>
+    <tr><td class="col-jp">きつい</td><td class="col-romaji">kitsui</td><td class="col-pos">I-adjective</td><td class="col-gloss">tough; hard; strenuous; severe</td></tr>
+    <tr><td class="col-jp">そう</td><td class="col-romaji">sou</td><td class="col-pos">Auxiliary (conjectural)</td><td class="col-gloss">seems; looks like &mdash; conjectural</td></tr>
+    <tr><td class="col-jp">夕方</td><td class="col-romaji">yuugata</td><td class="col-pos">Temporal noun</td><td class="col-gloss">evening; late afternoon</td></tr>
+    <tr><td class="col-jp">全然</td><td class="col-romaji">zenzen</td><td class="col-pos">Adverb</td><td class="col-gloss">not at all; completely [with negative]</td></tr>
+    <tr><td class="col-jp">取る</td><td class="col-romaji">toru</td><td class="col-pos">Verb (potential past negative)</td><td class="col-gloss">take; remove &mdash; potential past neg</td></tr>
+    <tr><td class="col-jp">よく</td><td class="col-romaji">yoku</td><td class="col-pos">Adverb</td><td class="col-gloss">well; hard; admirably</td></tr>
+    <tr><td class="col-jp">頑張る</td><td class="col-romaji">ganbaru</td><td class="col-pos">Verb (polite past)</td><td class="col-gloss">did [your] best &mdash; polite past</td></tr>
+    <tr><td class="col-jp">お疲れ</td><td class="col-romaji">otsukare</td><td class="col-pos">Noun / set phrase</td><td class="col-gloss">good work; tired &mdash; abbreviated お疲れ様</td></tr>
+    <tr><td class="col-jp">ヘルメット</td><td class="col-romaji">herumetto</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">helmet; hard hat</td></tr>
+    <tr><td class="col-jp">髪の毛</td><td class="col-romaji">kaminoke</td><td class="col-pos">Compound noun</td><td class="col-gloss">hair &mdash; 髪 + の + 毛</td></tr>
+    <tr><td class="col-jp">めっちゃ</td><td class="col-romaji">meccha</td><td class="col-pos">Adverb (slang)</td><td class="col-gloss">super; extremely &mdash; for めちゃくちゃ</td></tr>
+    <tr><td class="col-jp">ボサボサ</td><td class="col-romaji">bosabosa</td><td class="col-pos">Onomatopoeia / adverb</td><td class="col-gloss">messy; disheveled; unkempt</td></tr>
+    <tr><td class="col-jp">暗い</td><td class="col-romaji">kurai</td><td class="col-pos">I-adjective</td><td class="col-gloss">dark; dim</td></tr>
+    <tr><td class="col-jp">すぎる</td><td class="col-romaji">sugiru</td><td class="col-pos">Auxiliary (excessive)</td><td class="col-gloss">too much; excessively &mdash; excessive</td></tr>
+    <tr><td class="col-jp">わからへん</td><td class="col-romaji">wakarahen</td><td class="col-pos">Verb (Kansai negative)</td><td class="col-gloss">[I] don&apos;t know &mdash; Kansai negative</td></tr>
+    <tr><td class="col-jp">どんだけ</td><td class="col-romaji">don dake</td><td class="col-pos">Interrogative phrase</td><td class="col-gloss">how much; to what extent &mdash; casual</td></tr>
+    <tr><td class="col-jp">終わる</td><td class="col-romaji">owaru</td><td class="col-pos">Verb (polite)</td><td class="col-gloss">end; finish &mdash; polite of 終わる</td></tr>
+    <tr><td class="col-jp">明日</td><td class="col-romaji">ashita</td><td class="col-pos">Temporal noun</td><td class="col-gloss">tomorrow</td></tr>
+    <tr><td class="col-jp">続き</td><td class="col-romaji">tsuzuki</td><td class="col-pos">Noun</td><td class="col-gloss">continuation; rest; remainder</td></tr>
+    <tr><td class="col-jp">後ろ</td><td class="col-romaji">ushiro</td><td class="col-pos">Noun</td><td class="col-gloss">back; rear; behind</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> うわ、何これ is a compound exclamation: "Wow, what [is] this." The omission of the copula creates a telegraphic, startled tone appropriate for encountering an insect infestation. 虫やばい uses the slang adjective やばい (insane; bad; intense) as a standalone predicate: "The bugs [are] insane.&quot; The colloquial ellipsis of the copula (だ/です) is standard in live narration. これ全部貝殻虫か uses the demonstrative これ (this) + universal 全部 (all) + noun 貝殻虫 (scale insect) + question particle か: "Are these all scale insects?&quot; The ASR may have rendered this as 貝殻ム, but 貝殻虫 (kaigara-mushi, scale insect) is the correct term for the armored sap-sucking insects common on trees. みっちりついてるわ uses the onomatopoeia みっちり (packed tight; densely) + progressive ついてる (is attached) + particle わ: "[They&apos;re] packed on tight, wa.&quot; わ is a soft assertive/feminine sentence-ending particle that adds a tone of resigned observation. すっごいな uses the colloquial emphatic form of すごい (amazing; incredible) + exclamatory な: "Amazing, na.&quot; The な expresses awe mixed with dismay at the scale of the infestation. 上がらなあかんか uses the Kansai necessity pattern 〜なあかん (from 〜なければなない, must/have to) + question か: "[Do I] have to go up?&quot; The Kansai contraction なあかん (nakan) replaces standard なければならない, and the question か turns the obligation into a reluctant self-query. ああ、無理あるな uses the exclamation ああ + noun 無理 (impossibility; unreasonableness) + existential ある + exclamatory な: "Ah, [that&apos;s] impossible.&quot; The structure 無理がある (there is impossibility = it is impossible) is a colloquial variant of 無理だ. きつそう uses the adjective stem きつ (from きつい, tough; hard) + conjectural そう: "[It looks] tough.&quot; The conjectural そう marks the assessment as visual inference from the slope or conditions. 今夕方5時 is a temporal announcement: "Now [it&apos;s] 5 PM evening.&quot; The juxtaposition of time with the following 全然取れてなかった creates a narrative of failure: the entire day produced almost nothing. 全然取れてなかった uses 全然 (not at all) + negative past progressive 取れてなかった (had not been able to take/remove): "[I] hadn&apos;t taken [any] at all.&quot; The potential progressive negative emphasizes the sustained inability to make progress. よく頑張りました is the standard Japanese commendation: "[You] worked hard.&quot; The vlogger is likely addressing himself or speaking to the camera audience. お疲れや uses the abbreviated greeting お疲れ (otsukare, short for お疲れ様) + Kansai copula や: "[Good] work, ya.&quot; The Kansai や replaces standard です/だ. もうヘルメットから髪の毛がもうめっちゃボサボサ uses the time marker もう (already) + source ヘルメットから (from [under] the helmet) + subject 髪の毛が (hair [subject]) + adverb めっちゃ (super) + onomatopoeia ボサボサ (messy; disheveled): "Already [my] hair from [under] the helmet [is] super messy.&quot; The repetition of もう (already) at the start and before the adverb creates emphasis. もう暗すぎてわからへんな uses the excessive auxiliary すぎる (too much) + te-form + Kansai negative わからへん + exclamatory な: "Already [it&apos;s] too dark [I] don&apos;t know, na.&quot; The な is an exclamatory particle of mild frustration. どんだけ伐ったとか uses the colloquial interrogative どんだけ (how much; to what extent) + past verb 伐った (cut) + listing とか: "How much [I] cut and such.&quot; The とか marks the question as vague and rhetorical, since darkness prevents assessment. もう今日はこれで作業終わります uses もう (already) + topic 今日は (today [topic]) + instrumental これで (with this) + polite 終わります: "Already today [I&apos;ll] end work with this.&quot; また明日続きこの後やります uses また (again) + temporal 明日 (tomorrow) + noun 続き (continuation) + object この後ろ (this back [area]) + polite やります (will do): "Tomorrow [I&apos;ll] do the rest of this back [area].&quot;
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">03</span> Day 2 &mdash; Steep Slopes, Purpose, and Wind Cancellation</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">ちょうど家の裏はもう今日狩わったから明日はこっちこの山川伐っていきます。おやすみなさい。私はお風呂に入って寝ます。お風呂入って寝る。うわあ、やばい、やばい。めちゃくちゃ風強い。ちょっと今日は中止や。作業2日目。1日目で切り残していた家の裏の部分を少し伐っていきます。今回の伐採では見た目重視というより木が元気でいらるくらいに短く切って斜面の日当たりと風通しを良くするのが目的です。</div>
+    <div class="romaji-line">Choudo ie no ura wa mou kyou kariwatta kara ashita wa kocchi kono yamakawa kattte ikimasu. Oyasuminasai. Watashi wa ofuro ni haitte nemasu. Ofuro haitte neru. Uwaa, yabai, yabai. Mecchakucha kaze tsuyoi. Chotto kyou wa chuushi ya. Sagyou futsuka-me. Ichi-nichi-me de kiri-nokoshite ita ie no ura no bubun wo sukoshi kattte ikimasu. Konkai no bassai de wa mitame juushi to iu yori ki ga genki de irareru kurai ni mijikaku kitte shamen no hi-atari to kaze-tooshi wo yoku suru no ga mokuteki desu.</div>
+    <div class="english-line">"[It so happens that] the back of the house [was] already cut today, so tomorrow [I&apos;ll] go cut this mountain-stream [area] over here. Good night. I will take a bath and sleep. Take a bath and sleep. Wow, yikes, yikes. The wind [is] insanely strong. [Let&apos;s] cancel today a bit. Work day 2. [I&apos;ll] go cut a bit of the back-of-the-house portion that was left uncut on day 1. In this [round of] logging, rather than prioritizing appearance, the purpose is to cut short enough that the trees can stay healthy and improve the slope&apos;s sunlight and ventilation."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">ちょうど</td><td class="col-romaji">choudo</td><td class="col-pos">Adverb</td><td class="col-gloss">just; exactly; as it happens</td></tr>
+    <tr><td class="col-jp">狩る</td><td class="col-romaji">karu</td><td class="col-pos">Verb (ASR error)</td><td class="col-gloss">hunt &mdash; ASR for 伐る/刈る (cut)</td></tr>
+    <tr><td class="col-jp">山川</td><td class="col-romaji">yamakawa</td><td class="col-pos">Compound noun</td><td class="col-gloss">mountain stream area &mdash; 山 + 川</td></tr>
+    <tr><td class="col-jp">おやすみなさい</td><td class="col-romaji">oyasuminasai</td><td class="col-pos">Set phrase</td><td class="col-gloss">good night &mdash; polite</td></tr>
+    <tr><td class="col-jp">私</td><td class="col-romaji">watashi</td><td class="col-pos">Pronoun</td><td class="col-gloss">I &mdash; standard polite</td></tr>
+    <tr><td class="col-jp">お風呂</td><td class="col-romaji">ofuro</td><td class="col-pos">Noun (honorific)</td><td class="col-gloss">bath &mdash; お + 風呂</td></tr>
+    <tr><td class="col-jp">入る</td><td class="col-romaji">hairu</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">enter &mdash; te-form of 入る</td></tr>
+    <tr><td class="col-jp">寝る</td><td class="col-romaji">neru</td><td class="col-pos">Verb</td><td class="col-gloss">to sleep</td></tr>
+    <tr><td class="col-jp">めちゃくちゃ</td><td class="col-romaji">mecchakucha</td><td class="col-pos">Adverb (slang)</td><td class="col-gloss">insanely; absurdly; wildly</td></tr>
+    <tr><td class="col-jp">風</td><td class="col-romaji">kaze</td><td class="col-pos">Noun</td><td class="col-gloss">wind</td></tr>
+    <tr><td class="col-jp">強い</td><td class="col-romaji">tsuyoi</td><td class="col-pos">I-adjective</td><td class="col-gloss">strong; powerful; intense</td></tr>
+    <tr><td class="col-jp">中止</td><td class="col-romaji">chuushi</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">cancellation; suspension; calling off</td></tr>
+    <tr><td class="col-jp">や</td><td class="col-romaji">ya</td><td class="col-pos">Copula (Kansai)</td><td class="col-gloss">is &mdash; Kansai for だ</td></tr>
+    <tr><td class="col-jp">2日目</td><td class="col-romaji">futsuka-me</td><td class="col-pos">Number + counter + suffix</td><td class="col-gloss">day 2 &mdash; 二日 + 目</td></tr>
+    <tr><td class="col-jp">切り残す</td><td class="col-romaji">kiri-nokosu</td><td class="col-pos">Compound verb</td><td class="col-gloss">to leave uncut; to fail to cut all &mdash; 切り + 残す</td></tr>
+    <tr><td class="col-jp">部分</td><td class="col-romaji">bubun</td><td class="col-pos">Noun</td><td class="col-gloss">part; portion; section</td></tr>
+    <tr><td class="col-jp">伐採</td><td class="col-romaji">bassai</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">logging; felling; cutting down [trees]</td></tr>
+    <tr><td class="col-jp">見た目</td><td class="col-romaji">mitame</td><td class="col-pos">Compound noun</td><td class="col-gloss">appearance; looks &mdash; 見 + 目</td></tr>
+    <tr><td class="col-jp">重視</td><td class="col-romaji">juushi</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">emphasis; priority; attaching importance to</td></tr>
+    <tr><td class="col-jp">というより</td><td class="col-romaji">to iu yori</td><td class="col-pos">Conjunction</td><td class="col-gloss">rather than; more than [saying]</td></tr>
+    <tr><td class="col-jp">元気</td><td class="col-romaji">genki</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">healthy; vigorous; energetic</td></tr>
+    <tr><td class="col-jp">いられる</td><td class="col-romaji">irareru</td><td class="col-pos">Verb (potential passive)</td><td class="col-gloss">can stay; can remain &mdash; potential of いる</td></tr>
+    <tr><td class="col-jp">くらい</td><td class="col-romaji">kurai</td><td class="col-pos">Particle (extent)</td><td class="col-gloss">to the extent that; about; approximately</td></tr>
+    <tr><td class="col-jp">短い</td><td class="col-romaji">mijikai</td><td class="col-pos">I-adjective</td><td class="col-gloss">short [in length]</td></tr>
+    <tr><td class="col-jp">斜面</td><td class="col-romaji">shamen</td><td class="col-pos">Noun</td><td class="col-gloss">slope; incline; hillside</td></tr>
+    <tr><td class="col-jp">日当たり</td><td class="col-romaji">hi-atari</td><td class="col-pos">Compound noun</td><td class="col-gloss">sunlight exposure; sunny spot &mdash; 日 + 当たり</td></tr>
+    <tr><td class="col-jp">風通し</td><td class="col-romaji">kaze-tooshi</td><td class="col-pos">Compound noun</td><td class="col-gloss">ventilation; draft; airflow &mdash; 風 + 通し</td></tr>
+    <tr><td class="col-jp">良い</td><td class="col-romaji">yoi</td><td class="col-pos">I-adjective</td><td class="col-gloss">good; favorable &mdash; classical/variant of いい</td></tr>
+    <tr><td class="col-jp">目的</td><td class="col-romaji">mokuteki</td><td class="col-pos">Noun</td><td class="col-gloss">purpose; objective; aim; goal</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> ちょうど家の裏はもう今日狩わったから uses the adverb ちょうど (just; exactly; as it happens) + topic 家の裏は (the back of the house [topic]) + もう (already) + temporal 今日 (today) + ASR-misheard 狩わった (karuwatta, hunted) for 伐った/刈った (cut) + causal から (because): "[It so happens that] the back of the house [was] already cut today, so...&quot; The ちょうど frames the completed work as fortunate timing. 明日はこっちこの山川伐っていきます uses topic 明日は (tomorrow [topic]) + demonstrative chain こっちこの (this here) + noun 山川 (yamakawa, mountain stream area) + directional progressive 伐っていきます: "tomorrow [I&apos;ll] go cut this mountain-stream area over here.&quot; The double demonstrative こっちこの is a colloquial pointing device that layers proximity (こっち = this direction) with specificity (この = this [one]). おやすみなさい is the standard polite good-night formula. 私はお風呂に入って寝ます uses the polite pronoun 私 (watashi) + topic は + お風呂に入って (having entered the bath) + 寝ます (will sleep): "I will take a bath and sleep.&quot; The te-form chain creates a sequential relationship. お風呂入って寝る is the casual variant without particles, typical of self-directed or intimate speech: "Take a bath and sleep.&quot; うわあ、やばい、やばい uses the exclamation うわあ + repeated やばい (yikes; bad): "Wow, yikes, yikes.&quot; The repetition of やばい escalates the alarm at the wind conditions. めちゃくちゃ風強い uses the slang adverb めちゃくゃ (insanely; absurdly) + noun 風 + adjective 強い (strong): "The wind [is] insanely strong.&quot; ちょっと今日は中止や uses ちょっと (a bit) + topic 今日は (today [topic]) + noun 中止 (cancellation) + Kansai copula や: "[Let&apos;s] cancel today a bit.&quot; The ちょっと softens the cancellation announcement, and や marks the Kansai dialect. 作業2日目 is a heading-style noun phrase: "Work day 2.&quot; 1日目で切り残していた家の裏の部分を少し伐っていきます uses the temporal locative 1日目で (on day 1) + attributive past progressive 切り残していた (had left uncut) modifying 家の裏の部分 (the back-of-the-house portion) + adverb 少し (a bit) + directional progressive 伐っていきます: "[I&apos;ll] go cut a bit of the back-of-the-house portion that was left uncut on day 1.&quot; The compound verb 切り残す (to leave uncut; to fail to cut all) combines 切る (cut) + 残す (leave behind), and its past progressive 切り残していた frames the uncut portion as a state persisting from day 1 into day 2. 今回の伐採では見た目重視といより uses the topic 今回の伐採では (in this [round of] logging [topic]) + noun phrase 見た目重視 (appearance-priority) + comparative conjunction というより (rather than [saying]): "In this logging, rather than prioritizing appearance...&quot; 木が元気でいられるくらいに短く切って uses the extent clause 木が元気でいられる (the trees can stay healthy) + extent particle くらいに (to the extent that) + adverb 短く (shortly) + te-form 切って (cutting): "cutting short to the extent that the trees can stay healthy.&quot; The potential passive いられる (can stay/remain) combines the potential and continuative aspects, expressing sustained health. The くらいに marks the cutting length as calibrated to tree health rather than aesthetic preference. 斜面の日当たりと風通しを良くするのが目的です uses the genitive chain 斜面の日当たりと風通し (the slope&apos;s sunlight and ventilation) + object を + adverbial 良く (well) + verb する (to make) + nominalizer の + subject が + noun 目的 (purpose) + copula です: "[It] is the purpose to improve the slope&apos;s sunlight and ventilation.&quot; The nominalized clause のが目的です is the standard Japanese explanatory structure for stating objectives. The compound nouns 日当たり (sunlight exposure; hi-atari) and 風通し (ventilation; kaze-tooshi) are technical forestry/gardening terms for environmental conditions.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">だいぶすっきり明るくなった。めっちゃ鬱としてたのに。よし、あと下履かなか。切った枝をかけ下ろします。落ちてるか。かなりの急斜面です。日照不足のせいか奥の方は枯れている木や枯れ枝などが目立っていました。草の根が地面をしっかり支えてくれているので、枯れてしまうと土砂崩れの原因になることもあります。そのため今回は必要な長さだけ伐ることにしました。枝が絡まって思うように架け下ろせません。</div>
+    <div class="romaji-line">Daibu sukkiri akaruku natta. Meccha uttooshite ta no ni. Yoshi, ato shitabakanaka. Kitta eda wo kake-oroshimasu. Ochiteru ka. Kanari no kyuushamen desu. Nisshou busoku no sei ka oku no hou wa karete iru ki ya kare-eda nado ga medatte imashita. Kusa no ne ga jimen wo shikkari sasaete kurete iru node, karete shimau to dosha-kuzure no gen&apos;in ni naru koto mo arimasu. Sonotame konkai wa hitsuyou na nagasa dake karu koto ni shimashita. Eda ga karamatte omou you ni kake-orosenmasen.</div>
+    <div class="english-line">"[It] became considerably refreshed and bright. Even though [it] was super gloomy. Alright, also [I wonder if I need] work boots. [I will] lower the cut branches [down]. Are [they] falling? [It is] quite a steep slope. Perhaps due to insufficient sunlight, dead trees and dead branches were conspicuous in the back area. Because grass roots firmly support the ground, if [trees] die, [it] can also become a cause of landslides. Therefore this time [I] decided to cut only the necessary length. Branches are tangled, [so I] cannot lower [them] as [I] wish."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">すっきり</td><td class="col-romaji">sukkiri</td><td class="col-pos">Adverb / onomatopoeia</td><td class="col-gloss">refreshed; uncluttered; clear; tidy</td></tr>
+    <tr><td class="col-jp">明るい</td><td class="col-romaji">akarui</td><td class="col-pos">I-adjective</td><td class="col-gloss">bright; light; cheerful</td></tr>
+    <tr><td class="col-jp">鬱とする</td><td class="col-romaji">uttoosu</td><td class="col-pos">Verb (progressive past)</td><td class="col-gloss">gloomy; overgrown; oppressive &mdash; ASR variant</td></tr>
+    <tr><td class="col-jp">のに</td><td class="col-romaji">no ni</td><td class="col-pos">Concessive particle</td><td class="col-gloss">even though; despite &mdash; nominalizer + に</td></tr>
+    <tr><td class="col-jp">下履き</td><td class="col-romaji">shitabaki</td><td class="col-pos">Noun (ASR variant)</td><td class="col-gloss">work boots/footwear &mdash; ASR: 下履かなか</td></tr>
+    <tr><td class="col-jp">架け下ろす</td><td class="col-romaji">kake-orosu</td><td class="col-pos">Compound verb</td><td class="col-gloss">to lower [down a slope] &mdash; 架ける + 下ろす</td></tr>
+    <tr><td class="col-jp">落ちる</td><td class="col-romaji">ochiru</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">falling; dropping &mdash; progressive</td></tr>
+    <tr><td class="col-jp">かなり</td><td class="col-romaji">kanari</td><td class="col-pos">Adverb</td><td class="col-gloss">quite; considerably; rather</td></tr>
+    <tr><td class="col-jp">急斜面</td><td class="col-romaji">kyuushamen</td><td class="col-pos">Compound noun</td><td class="col-gloss">steep slope; steep incline &mdash; 急 + 斜面</td></tr>
+    <tr><td class="col-jp">日照</td><td class="col-romaji">nisshou</td><td class="col-pos">Noun</td><td class="col-gloss">sunlight; sunshine; insolation</td></tr>
+    <tr><td class="col-jp">不足</td><td class="col-romaji">busoku</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">insufficiency; shortage; lack</td></tr>
+    <tr><td class="col-jp">せい</td><td class="col-romaji">sei</td><td class="col-pos">Nominal suffix</td><td class="col-gloss">due to; because of; fault of</td></tr>
+    <tr><td class="col-jp">奥</td><td class="col-romaji">oku</td><td class="col-pos">Noun</td><td class="col-gloss">interior; back; depths; inner part</td></tr>
+    <tr><td class="col-jp">枯れる</td><td class="col-romaji">kareru</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">dying; withering; dead &mdash; progressive</td></tr>
+    <tr><td class="col-jp">枯れ枝</td><td class="col-romaji">kare-eda</td><td class="col-pos">Compound noun</td><td class="col-gloss">dead branch &mdash; 枯れ + 枝</td></tr>
+    <tr><td class="col-jp">目立つ</td><td class="col-romaji">medatsu</td><td class="col-pos">Verb (progressive past polite)</td><td class="col-gloss">standing out; conspicuous &mdash; polite past prog</td></tr>
+    <tr><td class="col-jp">根</td><td class="col-romaji">ne</td><td class="col-pos">Noun</td><td class="col-gloss">root</td></tr>
+    <tr><td class="col-jp">地面</td><td class="col-romaji">jimen</td><td class="col-pos">Noun</td><td class="col-gloss">ground; earth; surface</td></tr>
+    <tr><td class="col-jp">しかり</td><td class="col-romaji">shikkari</td><td class="col-pos">Adverb</td><td class="col-gloss">firmly; solidly; securely; properly</td></tr>
+    <tr><td class="col-jp">支える</td><td class="col-romaji">sasaeru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">to support; to hold up; to sustain</td></tr>
+    <tr><td class="col-jp">くれる</td><td class="col-romaji">kureru</td><td class="col-pos">Auxiliary (benefactive)</td><td class="col-gloss">[do] for me &mdash; benefactive auxiliary</td></tr>
+    <tr><td class="col-jp">土砂崩れ</td><td class="col-romaji">dosha-kuzure</td><td class="col-pos">Compound noun</td><td class="col-gloss">landslide; mudslide; collapse &mdash; 土砂 + 崩れ</td></tr>
+    <tr><td class="col-jp">原因</td><td class="col-romaji">gen&apos;in</td><td class="col-pos">Noun</td><td class="col-gloss">cause; origin; reason</td></tr>
+    <tr><td class="col-jp">なる</td><td class="col-romaji">naru</td><td class="col-pos">Verb</td><td class="col-gloss">to become; to turn into</td></tr>
+    <tr><td class="col-jp">必要</td><td class="col-romaji">hitsuyou</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">necessary; needed; essential</td></tr>
+    <tr><td class="col-jp">長さ</td><td class="col-romaji">nagasa</td><td class="col-pos">Noun</td><td class="col-gloss">length</td></tr>
+    <tr><td class="col-jp">だけ</td><td class="col-romaji">dake</td><td class="col-pos">Restrictive particle</td><td class="col-gloss">only; just; merely</td></tr>
+    <tr><td class="col-jp">ことにする</td><td class="col-romaji">koto ni suru</td><td class="col-pos">Set phrase</td><td class="col-gloss">decide to; make a rule to &mdash; nominalizer + にする</td></tr>
+    <tr><td class="col-jp">絡まる</td><td class="col-romaji">karamaru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">to tangle; to get entangled; to intertwine</td></tr>
+    <tr><td class="col-jp">思う</td><td class="col-romaji">omou</td><td class="col-pos">Verb (attributive)</td><td class="col-gloss">think; wish; intend &mdash; modifying ように</td></tr>
+    <tr><td class="col-jp">ように</td><td class="col-romaji">you ni</td><td class="col-pos">Adverbializer</td><td class="col-gloss">as; like; in the way that &mdash; よう + に</td></tr>
+    <tr><td class="col-jp">架け下ろせない</td><td class="col-romaji">kake-orosenai</td><td class="col-pos">Verb (potential negative)</td><td class="col-gloss">cannot lower [down] &mdash; potential negative</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> だいぶすっきり明るくなった uses the adverb だいぶ (considerably) + onomatopoeia すっきり (refreshed; uncluttered) + adjective 明るく (bright) + past なった (became): "[It] became considerably refreshed and bright.&quot; すっきり is a common Japanese onomatopoeia for the feeling of clarity and tidiness after cleaning or organizing. めっちゃ鬱としてたのに uses the slang adverb めっちゃ (super) + verb 鬱としてた (was gloomy/overgrown) + concessive のに (even though): "Even though [it] was super gloomy.&quot; The ASR rendered this as 鬱としてた, but the intended word is likely 鬱蒼とした (ussou to shita, gloomy; overgrown; dense with vegetation), a literary term for thick, dark foliage. The のに creates a contrast between the previous gloom and the current brightness. よし、あと下履かなか uses the readiness interjection よし (alright) + あと (also; in addition) + ASR-fragment 下履かなか (shitabakanaka), which likely represents 下履きかな、か (Do I need work boots? [wondering]): "Alright, also [I wonder if I need] work boots.&quot; The かな is a self-directed question marker, and the trailing か may be a dialectal or ASR artifact. 切った枝をかけ下ろします uses the attributive past 切った (cut) modifying 枝 (branches) + object marker を + compound verb かけ下ろします (lower [down a slope]): "[I will] lower the cut branches [down].&quot; かけ下ろす is a specialized forestry term for lowering cut material down a slope using ropes or by throwing, combining 架ける (to suspend; to span) + 下ろす (to lower). 落ちてるか uses the progressive 落ちてる (is falling) + question か: "Are [they] falling?&quot; The vlogger is checking whether the branches are successfully sliding down the slope. かなりの急斜面です uses かなりの (quite a; considerable) modifying 急斜面 (steep slope) + copula です: "[It is] quite a steep slope.&quot; 日照不足のせいか奥の方は枯れている木や枯れ枝などが目立っていました uses the causal phrase 日照不足のせいか (perhaps due to insufficient sunlight) + topic 奥の方は (the back area [topic]) + subject 枯れている木や枯れ枝など (dead trees and dead branches and such) + progressive past polite 目立っていました (were standing out/conspicuous): "Perhaps due to insufficient sunlight, dead trees and dead branches were conspicuous in the back area.&quot; The せいか (due to; because of + question) frames the sunlight deficiency as a probable cause rather than a certainty. 目立つ (medatsu, to stand out; to be conspicuous) is the standard Japanese term for visual prominence, and its progressive past polite form creates an observational, documentary tone. 草の根が地面をしっかり支えてくれているので uses the subject 草の根が (grass roots [subject]) + object 地面を (the ground [object]) + adverb しっかり (firmly) + verb 支えて (supporting) + benefactive くれている (doing [for me/us]) + causal ので: "Because grass roots firmly support the ground [for us]...&quot; The benefactive くれる frames the grass roots&apos; support as a favor to humans, a common Japanese rhetorical device that personifies nature as cooperative. 枯れてしまうと土砂崩れの原因になることもあります uses the conditional 枯れてしまうと (if [trees] die [regrettably]) + noun phrase 土砂崩れの原因 (cause of landslides) + になる (become) + こともあります (there are times when = it can also happen): "if [trees] die, [it] can also become a cause of landslides.&quot; The てしまう auxiliary adds regret at the ecological consequence of tree death, and the existential こともあります generalizes the risk from specific to possible. そのため今回は必要な長さだけ伐ることにしました uses the demonstrative そのため (therefore; for that reason) + topic 今回は (this time [topic]) + attributive 必要な (necessary) modifying 長さ (length) + restrictive だけ (only) + verb 伐る (to cut) + nominalizer こと + decision pattern にしました (decided to): "Therefore this time [I] decided to cut only the necessary length.&quot; The ことにする pattern marks a deliberate decision or rule, and the restrictive だけ emphasizes selective rather than wholesale cutting. 枝が絡まって思うように架け下ろせません uses the subject 枝が (branches [subject]) + te-form 絡まって (being tangled) + manner clause 思うように (as [I] think = as [I] wish) + potential negative 架け下ろせません (cannot lower): "Branches are tangled, [so I] cannot lower [them] as [I] wish.&quot; The ように after a verb creates a manner adverbial meaning "in the way that [I] think,&quot; and the potential negative 架け下ろせません expresses inability due to the physical constraint of tangled branches.
+  </div>
+</div>
+</section>
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">04</span> Day 2 Continued &mdash; Safety, Selective Cutting, and Wind</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">作業中は目の保護のためにサングラスを使っていますが、危険な場面もあったので状況を見ながら外したりしています。南天はちょっと置いといて。で、梅の木も置いとく。あとちょっと木、太いやつは持ち手で切ろうかな。ちょっと今日の作業はもうこれまで。下がすごいことなってる。</div>
+    <div class="romaji-line">Sagyou-chuu wa me no gogo no tame ni sangurasu wo tsukatte imasu ga, kiken na bamen mo atta node joukyou wo minagara hazushitari shite imasu. Nanten wa chotto oitoite. De, ume no ki mo oitoku. Ato chotto ki, futoi yatsu wa mochite de kirou ka na. Chotto kyou no sagyou wa mou kore made. Shita ga sugoi koto natteru.</div>
+    <div class="english-line">"During work, [I] use sunglasses for eye protection, but since there were also dangerous scenes, [I] remove [them] while watching the situation. [I&apos;ll] leave the nandina aside for a bit. And, [I&apos;ll] also leave the plum tree. Also, [for] a bit of tree, the thick ones [I] might cut with a handle [attachment], [I] wonder. [For] today&apos;s work, [it&apos;s] already up to here. The bottom [area has] become an amazing [mess]."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">作業中</td><td class="col-romaji">sagyou-chuu</td><td class="col-pos">Temporal noun</td><td class="col-gloss">during work; while working &mdash; 作業 + 中</td></tr>
+    <tr><td class="col-jp">目</td><td class="col-romaji">me</td><td class="col-pos">Noun</td><td class="col-gloss">eye</td></tr>
+    <tr><td class="col-jp">保護</td><td class="col-romaji">gogo</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">protection; safeguarding</td></tr>
+    <tr><td class="col-jp">サングラス</td><td class="col-romaji">sangurasu</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">sunglasses</td></tr>
+    <tr><td class="col-jp">使う</td><td class="col-romaji">tsukau</td><td class="col-pos">Verb (progressive polite)</td><td class="col-gloss">using &mdash; 使っている polite</td></tr>
+    <tr><td class="col-jp">危険</td><td class="col-romaji">kiken</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">dangerous; danger; hazard</td></tr>
+    <tr><td class="col-jp">場面</td><td class="col-romaji">bamen</td><td class="col-pos">Noun</td><td class="col-gloss">scene; moment; situation</td></tr>
+    <tr><td class="col-jp">状況</td><td class="col-romaji">joukyou</td><td class="col-pos">Noun</td><td class="col-gloss">situation; circumstances; conditions</td></tr>
+    <tr><td class="col-jp">見る</td><td class="col-romaji">miru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">looking; watching &mdash; 見ながら</td></tr>
+    <tr><td class="col-jp">ながら</td><td class="col-romaji">nagara</td><td class="col-pos">Simultaneous particle</td><td class="col-gloss">while; as &mdash; simultaneous action</td></tr>
+    <tr><td class="col-jp">外す</td><td class="col-romaji">hazusu</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">to remove; to take off; to detach</td></tr>
+    <tr><td class="col-jp">たり</td><td class="col-romaji">tari</td><td class="col-pos">Listing auxiliary</td><td class="col-gloss">doing things like; and so on &mdash; たり</td></tr>
+    <tr><td class="col-jp">南天</td><td class="col-romaji">nanten</td><td class="col-pos">Noun</td><td class="col-gloss">nandina; sacred bamboo (Nandina domestica)</td></tr>
+    <tr><td class="col-jp">置いとく</td><td class="col-romaji">oite oku / oitoku</td><td class="col-pos">Compound verb (colloquial)</td><td class="col-gloss">to leave aside; to put aside for now &mdash; 置いておく contracted</td></tr>
+    <tr><td class="col-jp">梅</td><td class="col-romaji">ume</td><td class="col-pos">Noun</td><td class="col-gloss">plum; Japanese apricot (Prunus mume)</td></tr>
+    <tr><td class="col-jp">太い</td><td class="col-romaji">futoi</td><td class="col-pos">I-adjective</td><td class="col-gloss">thick; fat; stout; bulky</td></tr>
+    <tr><td class="col-jp">やつ</td><td class="col-romaji">yatsu</td><td class="col-pos">Noun (colloquial)</td><td class="col-gloss">one; thing; guy &mdash; casual demonstrative</td></tr>
+    <tr><td class="col-jp">持ち手</td><td class="col-romaji">mochite</td><td class="col-pos">Compound noun</td><td class="col-gloss">handle; grip; haft &mdash; 持ち + 手</td></tr>
+    <tr><td class="col-jp">切る</td><td class="col-romaji">kiru</td><td class="col-pos">Verb (volitional)</td><td class="col-gloss">shall cut &mdash; volitional of 切る</td></tr>
+    <tr><td class="col-jp">かな</td><td class="col-romaji">ka na</td><td class="col-pos">Question particle + particle</td><td class="col-gloss">[I] wonder; probably &mdash; self-directed speculation</td></tr>
+    <tr><td class="col-jp">これまで</td><td class="col-romaji">kore made</td><td class="col-pos">Temporal phrase</td><td class="col-gloss">up to here; up to now; this far</td></tr>
+    <tr><td class="col-jp">下</td><td class="col-romaji">shita</td><td class="col-pos">Noun</td><td class="col-gloss">bottom; below; lower part</td></tr>
+    <tr><td class="col-jp">すごい</td><td class="col-romaji">sugoi</td><td class="col-pos">I-adjective</td><td class="col-gloss">amazing; incredible; intense; terrible</td></tr>
+    <tr><td class="col-jp">なる</td><td class="col-romaji">naru</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">becoming; has become &mdash; なっている</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 作業中は目の保護のためにサングラスを使っていますが uses the temporal noun 作業中 (during work) + topic は + purpose phrase 目の保護のために (for the protection of [my] eyes) + progressive polite 使っていますが (am using, but...): "During work, [I] use sunglasses for eye protection, but...&quot; The が sets up a contrast with the following clause about removing them. 危険な場面もあったので uses the adjective 危険な (dangerous) modifying 場面 (scene; moment) + も (also) + existential past あった (there were) + causal ので: "since there were also dangerous scenes...&quot; 状況を見ながら外したりしています uses the simultaneous-action particle ながら (while) after the te-form 見て (looking): "while watching the situation&quot; + verb 外したり (removing [them] and such) + progressive polite しています: "[I] remove [them] while watching the situation.&quot; The たり...たり pattern (here reduced to a single たり with しています) marks representative actions from a set of possibilities, indicating that the vlogger removes the sunglasses selectively depending on conditions. 南天はちょっと置いといて uses the topic は + adverb ちょっと (a bit) + colloquial contraction 置いといて (from 置いておいて, leave aside for now): "[I&apos;ll] leave the nandina aside for a bit.&quot; The ておく auxiliary expresses doing something in preparation or as a temporary measure, and its contraction to とく/といて is standard in casual speech. The hortative/imperative te-form 置いといて here functions as a self-directed decision: "Let me leave [it] aside.&quot; で、梅の木も置いとく uses the continuative particle で (and; then) + topic 梅の木も (the plum tree also) + colloquial 置いとく (will leave [it] aside): "And, [I&apos;ll] also leave the plum tree [aside].&quot; The も marks the plum tree as an additional item in the same category as the nandina (things to be spared). あとちょっと木、太いやつは持ち手で切ろうかな uses あと (also; in addition) + ちょっと木 (a bit of tree) + topic 太いやつは (the thick ones [topic]) + instrumental 持ち手で (with a handle [attachment]) + volitional 切ろう (shall cut) + speculation かな (I wonder): "Also, [for] a bit of tree, the thick ones [I] might cut with a handle [attachment], [I] wonder.&quot; The やつ is the colloquial demonstrative for things/people, and the volitional + かな creates a self-directed deliberation about tool choice. 持ち手 (mochite, handle/grip) likely refers to a chainsaw handle extension or auxiliary handle for cutting thicker branches safely. ちょっと今日の作業はもうこれまで uses ちょっと (a bit; [let me say]) + topic 今日の作業は (today&apos;s work [topic]) + もう (already) + これまで (up to here): "[For] today&apos;s work, [it&apos;s] already up to here.&quot; これまで is a common Japanese work-stopping formula that frames the current moment as the natural endpoint. 下がすごいことなってる uses the topic 下が (the bottom [area] [subject]) + noun phrase すごいこと (an amazing/intense thing = a mess) + progressive なってる (from なっている, has become): "The bottom [area has] become an amazing [mess].&quot; The noun すごいこと turns the adjective into a nominalized state, and the progressive なってる emphasizes the resulting condition.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">05</span> Sorting, Reuse, and Goat Feed &mdash; The Circular Economy of Clearing</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">これまた木と葉っぱで分けてやります。梅の木食べた後の種、山に掘り投げたらこう勝手に生えてきた。気づいたら大きくなってる。もう見なれへんから伐たろかとか言っとったら、見なり始めたからずっと置いてる。だいぶ大きくなってきた。</div>
+    <div class="romaji-line">Kore mata ki to happa de wakete yarimasu. Ume no ki tabeta ato no tane, yama ni hori-nagetara kou katte ni haete kita. Kidzuitara ookiku natteru. Mou minarehen kara karutarou ka to ka ittottara, minari hajimeta kara zutto oiteru. Daibu ookiku natte kita.</div>
+    <div class="english-line">"This too [I&apos;ll] sort into wood and leaves. The seeds from after eating the plum tree, [I] threw [them] into the hillside [by] digging, and [they] grew on [their] own like this. [When I] noticed, [they had] gotten big. [I] was saying [I] should cut [them] because [I] can&apos;t stand [them] anymore, but since [they] started bearing fruit, [I&apos;ve] left [them] [there] the whole time. [They&apos;ve] gotten quite big."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">また</td><td class="col-romaji">mata</td><td class="col-pos">Adverb</td><td class="col-gloss">again; also; too; likewise</td></tr>
+    <tr><td class="col-jp">分ける</td><td class="col-romaji">wakeru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">to divide; to separate; to sort &mdash; te-form</td></tr>
+    <tr><td class="col-jp">やる</td><td class="col-romaji">yaru</td><td class="col-pos">Auxiliary (colloquial)</td><td class="col-gloss">[I will] do [for you/for benefit] &mdash; casual auxiliary</td></tr>
+    <tr><td class="col-jp">食べる</td><td class="col-romaji">taberu</td><td class="col-pos">Verb (past attributive)</td><td class="col-gloss">ate &mdash; past modifying 後</td></tr>
+    <tr><td class="col-jp">後</td><td class="col-romaji">ato</td><td class="col-pos">Temporal noun</td><td class="col-gloss">after; later</td></tr>
+    <tr><td class="col-jp">種</td><td class="col-romaji">tane</td><td class="col-pos">Noun</td><td class="col-gloss">seed; pit; kernel</td></tr>
+    <tr><td class="col-jp">山</td><td class="col-romaji">yama</td><td class="col-pos">Noun</td><td class="col-gloss">mountain; hillside</td></tr>
+    <tr><td class="col-jp">掘り投げる</td><td class="col-romaji">hori-nageru</td><td class="col-pos">Compound verb</td><td class="col-gloss">to throw [into the ground] by digging &mdash; 掘り + 投げる</td></tr>
+    <tr><td class="col-jp">たら</td><td class="col-romaji">tara</td><td class="col-pos">Conditional particle</td><td class="col-gloss">if/when [I did] &mdash; conditional</td></tr>
+    <tr><td class="col-jp">こう</td><td class="col-romaji">kou</td><td class="col-pos">Manner adverb</td><td class="col-gloss">like this; in this way; thus</td></tr>
+    <tr><td class="col-jp">勝手に</td><td class="col-romaji">katte ni</td><td class="col-pos">Adverbial phrase</td><td class="col-gloss">on [one&apos;s] own; arbitrarily; without permission</td></tr>
+    <tr><td class="col-jp">生える</td><td class="col-romaji">haeru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">grew; sprouted &mdash; past of 生える</td></tr>
+    <tr><td class="col-jp">気づく</td><td class="col-romaji">kidzuku</td><td class="col-pos">Verb (conditional)</td><td class="col-gloss">noticed; realized &mdash; 気づいたら</td></tr>
+    <tr><td class="col-jp">大きい</td><td class="col-romaji">ookii</td><td class="col-pos">I-adjective</td><td class="col-gloss">big; large; grown</td></tr>
+    <tr><td class="col-jp">見る</td><td class="col-romaji">miru</td><td class="col-pos">Verb (potential negative Kansai)</td><td class="col-gloss">cannot stand [seeing] &mdash; 見なれへん</td></tr>
+    <tr><td class="col-jp">伐る</td><td class="col-romaji">karu</td><td class="col-pos">Verb (volitional)</td><td class="col-gloss">shall cut &mdash; volitional of 伐る/刈る</td></tr>
+    <tr><td class="col-jp">言う</td><td class="col-romaji">iu</td><td class="col-pos">Verb (colloquial progressive past)</td><td class="col-gloss">was saying &mdash; 言っとったら</td></tr>
+    <tr><td class="col-jp">実る</td><td class="col-romaji">minaru</td><td class="col-pos">Verb (stem + auxiliary)</td><td class="col-gloss">to bear fruit &mdash; 実 + なる</td></tr>
+    <tr><td class="col-jp">始める</td><td class="col-romaji">hajimeru</td><td class="col-pos">Auxiliary (past)</td><td class="col-gloss">started to &mdash; 始めた</td></tr>
+    <tr><td class="col-jp">ずっと</td><td class="col-romaji">zutto</td><td class="col-pos">Adverb</td><td class="col-gloss">the whole time; all along; continuously</td></tr>
+    <tr><td class="col-jp">置く</td><td class="col-romaji">oku</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">leaving; keeping &mdash; 置いている</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> これまた木と葉っぱで分けてやります uses the demonstrative これ (this) + adverb また (also; too) + instrumental 木と葉っぱで (by [into] wood and leaves) + te-form 分けて (dividing) + benefactive auxiliary やります (will do [for benefit]): "This too [I&apos;ll] sort into wood and leaves [for the purpose]." The auxiliary やる is a casual variant of あげる/さしあげる used for doing something for someone (or something) of lower or equal status, and here it marks the sorting as a service to the household or the land. 梅の木食べた後の種 uses the attributive past 食べた (ate) modifying 後 (after) + genitive の + noun 種 (seed): "the seeds from after eating the plum tree.&quot; The 後の pattern creates a temporal-genitive chain that specifies the origin of the seeds. 山に掘り投げたらこう勝手に生えてきた uses the directional 山に (into the hillside) + compound verb 掘り投げたら (if/when [I] threw [into the ground] by digging) + manner adverb こう (like this; thus) + adverb 勝手に (on [their] own; without permission) + directional past 生えてきた (grew [toward me]): "[I] threw [them] into the hillside [by] digging, and [they] grew on [their] own like this.&quot; The compound 掘り投げる combines 掘る (to dig) + 投げる (to throw), describing the casual planting method of tossing seeds into dug earth. The directional 生えてきた (haete kita, grew [toward me]) frames the growth as approaching the vlogger&apos;s awareness, a common Japanese narrative perspective. 気づいたら大きくなってる uses the conditional 気づいたら (when [I] noticed; [if I] noticed): "[When I] noticed, [they had] gotten big.&quot; The たら conditional with perception verbs creates a "before I knew it" sense, emphasizing how quickly the trees grew unnoticed. もう見なれへんから伐たろかとか言っとったら uses もう (already) + Kansai potential negative 見なれへん (minarehen, cannot stand seeing = cannot bear to look at) + causal から (because) + volitional 伐たろう (shall cut) + question か + listing とか (and such) + progressive past 言っとったら (was saying [when]): "[I] was saying [I] should cut [them] because [I] can&apos;t stand [them] anymore, but [when...].&quot; The Kansai 見なれへん combines 見る (to see) + 慣れる (to become accustomed to) in the potential negative: "cannot become accustomed to seeing = cannot stand the sight of.&quot; The volitional + か creates a self-directed deliberation, and とか lists representative utterances. 言っとったら is the Kansai progressive past of 言っている (was saying), with the とった contraction characteristic of Kansai dialect. 見なり始めたからずっと置いてる uses the compound verb 実る (minaru, to bear fruit) + inceptive auxiliary 始めた (started to) + causal から (because) + adverb ずっと (the whole time) + progressive 置いてる (have been leaving): "since [they] started bearing fruit, [I&apos;ve] left [them] [there] the whole time.&quot; The inceptive 始めた marks the transition from non-fruiting to fruiting as the decisive event that changed the vlogger&apos;s mind about cutting. だいぶ大きくなってきた uses the adverb だいぶ (quite; considerably) + adverbial 大きく (big) + directional progressive なってきた (have been becoming [toward me]): "[They&apos;ve] gotten quite big.&quot; The directional てくる with change-of-state verbs marks the process as having been ongoing and now visible.
+  </div>
+</div>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">綺麗に切っていきます。今日することはあそこの梅の木切るのと、窓ちょっと切り忘れてる木を切っていこうと思います。柿の木もこれ以上上に伸びられると管理できなくなるので少し切ることにしました。え、これ多分わかるかな? なんか案外動画やったら草いっぱいあるの分からへんかな? 今から片付けていくか。ああ、頑張ろう。</div>
+    <div class="romaji-line">Kirei ni kitte ikimasu. Kyou suru koto wa asoko no ume no ki kiru no to, mado chotto kiri-wasureru ki wo kitte ikou to omoimasu. Kaki no ki mo kore ijou ue ni nobirareru to kanri dekinaku naru node sukoshi kiru koto ni shimashita. E, kore tabun wakaru ka na? Nan ka angai douga yattara kusa ippai aru no wakarahen ka na? Ima kara katazukete iku ka. Aa, ganbarou.</div>
+    <div class="english-line">"[I&apos;ll] go cut cleanly. What [I] will do today is cut that plum tree over there and [I] think [I&apos;ll] go cut the tree [that I] forgot to cut a bit by the window. Since the persimmon tree too will become unmanageable if [it] grows upward beyond this [point], [I] decided to cut [it] a little. Huh, [I] wonder if [you] can probably tell [the difference]? [I] wonder if [it] won&apos;t be clear [that] there are lots of weeds [when] [I] do the video, somehow unexpectedly? Shall [I] start cleaning up now? Ah, let&apos;s do [our] best."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">綺麗</td><td class="col-romaji">kirei</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">clean; neat; tidy; completely</td></tr>
+    <tr><td class="col-jp">切る</td><td class="col-romaji">kiru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">cutting &mdash; te-form of 切る</td></tr>
+    <tr><td class="col-jp">いく</td><td class="col-romaji">iku</td><td class="col-pos">Auxiliary (directional)</td><td class="col-gloss">go [and do] &mdash; directional auxiliary</td></tr>
+    <tr><td class="col-jp">あそこ</td><td class="col-romaji">asoko</td><td class="col-pos">Demonstrative</td><td class="col-gloss">over there; that place</td></tr>
+    <tr><td class="col-jp">窓</td><td class="col-romaji">mado</td><td class="col-pos">Noun</td><td class="col-gloss">window</td></tr>
+    <tr><td class="col-jp">切り忘れる</td><td class="col-romaji">kiri-wasureru</td><td class="col-pos">Compound verb</td><td class="col-gloss">to forget to cut &mdash; 切り + 忘れる</td></tr>
+    <tr><td class="col-jp">柿</td><td class="col-romaji">kaki</td><td class="col-pos">Noun</td><td class="col-gloss">persimmon (tree/fruit)</td></tr>
+    <tr><td class="col-jp">以上</td><td class="col-romaji">ijou</td><td class="col-pos">Noun / particle</td><td class="col-gloss">more than; beyond; above</td></tr>
+    <tr><td class="col-jp">上</td><td class="col-romaji">ue</td><td class="col-pos">Noun</td><td class="col-gloss">up; above; upward</td></tr>
+    <tr><td class="col-jp">伸びる</td><td class="col-romaji">nobiru</td><td class="col-pos">Verb (passive potential)</td><td class="col-gloss">be allowed to grow &mdash; passive potential</td></tr>
+    <tr><td class="col-jp">管理</td><td class="col-romaji">kanri</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">management; control; upkeep</td></tr>
+    <tr><td class="col-jp">できない</td><td class="col-romaji">dekinai</td><td class="col-pos">Verb (potential negative)</td><td class="col-gloss">cannot do; unable to do &mdash; potential neg</td></tr>
+    <tr><td class="col-jp">案外</td><td class="col-romaji">angai</td><td class="col-pos">Adverb</td><td class="col-gloss">unexpectedly; surprisingly; contrary to expectations</td></tr>
+    <tr><td class="col-jp">動画</td><td class="col-romaji">douga</td><td class="col-pos">Noun</td><td class="col-gloss">video; footage</td></tr>
+    <tr><td class="col-jp">草</td><td class="col-romaji">kusa</td><td class="col-pos">Noun</td><td class="col-gloss">grass; weed; vegetation</td></tr>
+    <tr><td class="col-jp">片付ける</td><td class="col-romaji">katazukeru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">to clean up; to tidy; to put in order &mdash; te-form</td></tr>
+    <tr><td class="col-jp">頑張る</td><td class="col-romaji">ganbaru</td><td class="col-pos">Verb (volitional)</td><td class="col-gloss">let&apos;s do [our] best &mdash; volitional of 頑張る</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 綺麗に切っていきます uses the adverbial 綺麗に (cleanly; completely) + directional progressive 切っていきます: "[I&apos;ll] go cut cleanly.&quot; The directional いく marks the cutting as a process that will continue away from the current position. 今日することはあそこの梅の木切るのと uses the nominalized clause 今日すること (what [I] will do today) + topic は + noun phrase あそこの梅の木切るの (cutting that plum tree over there) + listing particle と (and): "What [I] will do today is cut that plum tree over there and...&quot; The nominalizer の turns the verb phrase into a noun that can be listed with と. 窓ちょっと切り忘れてる木を切っていこうと思います uses the attributive progressive 切り忘れてる (have forgotten to cut) modifying 木 (tree) + object を + volitional 切っていこう (let&apos;s go cut) + と思います (think): "[I] think [I&apos;ll] go cut the tree [that I] forgot to cut a bit by the window.&quot; The compound verb 切り忘れる (to forget to cut) combines 切る + 忘れる, and its progressive attributive form creates a reduced relative clause: "the tree that I have forgotten to cut.&quot; 柿の木もこれ以上上に伸びられると管理できなくなるので uses the topic 柿の木も (the persimmon tree also) + extent これ以上 (beyond this; more than this) + directional 上に (upward) + passive potential 伸びられる (be allowed to grow = if [it] grows) + conditional と (if/when) + potential negative 管理できなくなる (will become unable to manage) + causal ので: "Since the persimmon tree too will become unmanageable if [it] grows upward beyond this [point]...&quot; The passive potential 伸びられる with と conditional creates a future conditional: "if [it] is allowed to grow = if [it] grows.&quot; The potential negative できなくなる (become unable to do) marks a change of state from capable to incapable. 少し切ることにしました uses the decision pattern ことにしました: "[I] decided to cut [it] a little.&quot; え、これ多分わかるかな? uses the interjection え (huh) + demonstrative これ (this) + adverb 多分 (probably) + potential わかる (can tell/understand) + speculation かな: "Huh, [I] wonder if [you] can probably tell [the difference]?&quot; The self-directed question reflects the vlogger&apos;s concern about whether the video will convey the scale of the clearing work. なんか案外動画やったら草いっぱいあるの分からへんかな? uses なんか (somehow) + adverb 案外 (unexpectedly; surprisingly) + conditional 動画やったら (if [I] do the video) + subject 草いっぱいあるの (that there are lots of weeds) + Kansai potential negative 分からへん (won&apos;t be clear) + speculation かな: "[I] wonder if [it] won&apos;t be clear [that] there are lots of weeds [when] [I] do the video, somehow unexpectedly?&quot; The の nominalizes the clause 草いっぱいある (there are lots of weeds), making it the subject of 分からへん. 今から片付けていくか uses the temporal 今から (from now) + directional progressive 片付けていく (go clean up) + question か: "Shall [I] start cleaning up now?&quot; The volitional question か turns the statement into a self-directed decision prompt. ああ、頑張ろう uses the exclamation ああ + volitional 頑張ろう (let&apos;s do [our] best): "Ah, let&apos;s do [our] best.&quot;
+  </div>
+</div>
+</section>
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">07</span> Day 3 Finale &mdash; Completion, Chainsaw, and Satisfaction</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">3日目終わりました。裏山だいぶ綺麗になった。やったか。めちゃくちゃ疲れた。あと大きい木1本だけ残ってるのはチェーンソーでやって終わり。めっちゃ綺麗にめっちゃ綺麗になった。ちょっと切りすぎたかもせえへんけど、なんか動画にしたらあんま分からへんな。終わった。やった。今日はぐっすり寝れそうです。お疲れや。バイバイ。</div>
+    <div class="romaji-line">Mikka-me owarimashita. Urayama daibu kirei ni natta. Yatta ka. Mecchakucha tsukareta. Ato ookii ki ippon dake nokotteru no wa cheensoo de yatte owari. Meccha kirei ni meccha kirei ni natta. Chotto kirisugita kamoseehen kedo, nan ka douga ni shitara anma wakarahen na. Owatta. Yatta. Kyou wa gussuri nereresou desu. Otsukare ya. Baibai.</div>
+    <div class="english-line">"Day 3 [is] finished. The back hillside became quite clean. Did [I] do it? [I&apos;m] insanely tired. The [thing where] only one big tree remains [will be] done with the chainsaw and [then it&apos;s] the end. [It] became super clean, super clean. [I] might have cut a bit too much, but somehow [when] [I] make [it into] a video, [it] won&apos;t be very clear, na. [It&apos;s] finished. [I] did it. Today [I] seem [I&apos;ll] be able to sleep soundly. [Good] work, ya. Bye-bye."</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">3日目</td><td class="col-romaji">mikka-me</td><td class="col-pos">Number + counter + suffix</td><td class="col-gloss">day 3 &mdash; 三日 + 目</td></tr>
+    <tr><td class="col-jp">終わる</td><td class="col-romaji">owaru</td><td class="col-pos">Verb (polite past)</td><td class="col-gloss">finished; ended &mdash; polite past of 終わる</td></tr>
+    <tr><td class="col-jp">裏山</td><td class="col-romaji">urayama</td><td class="col-pos">Compound noun</td><td class="col-gloss">back hillside &mdash; 裏 + 山</td></tr>
+    <tr><td class="col-jp">だいぶ</td><td class="col-romaji">daibu</td><td class="col-pos">Adverb</td><td class="col-gloss">quite; considerably; largely</td></tr>
+    <tr><td class="col-jp">綺麗</td><td class="col-romaji">kirei</td><td class="col-pos">Na-adjective</td><td class="col-gloss">clean; neat; tidy; beautiful</td></tr>
+    <tr><td class="col-jp">なる</td><td class="col-romaji">naru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">became; turned into &mdash; past of なる</td></tr>
+    <tr><td class="col-jp">やる</td><td class="col-romaji">yaru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">did [it] &mdash; past of やる (do)</td></tr>
+    <tr><td class="col-jp">か</td><td class="col-romaji">ka</td><td class="col-pos">Question particle</td><td class="col-gloss">? &mdash; question marker</td></tr>
+    <tr><td class="col-jp">めちゃくちゃ</td><td class="col-romaji">mecchakucha</td><td class="col-pos">Adverb (slang)</td><td class="col-gloss">insanely; absurdly; wildly</td></tr>
+    <tr><td class="col-jp">疲れ</td><td class="col-romaji">tsukareru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">got tired; became exhausted &mdash; past of 疲れる</td></tr>
+    <tr><td class="col-jp">大きい</td><td class="col-romaji">ookii</td><td class="col-pos">I-adjective</td><td class="col-gloss">big; large; tall</td></tr>
+    <tr><td class="col-jp">1本</td><td class="col-romaji">ippon</td><td class="col-pos">Number + counter</td><td class="col-gloss">one [long object] &mdash; 一 + 本</td></tr>
+    <tr><td class="col-jp">残る</td><td class="col-romaji">nokoru</td><td class="col-pos">Verb (progressive)</td><td class="col-gloss">remaining; left over &mdash; 残っている</td></tr>
+    <tr><td class="col-jp">チェーンソー</td><td class="col-romaji">cheensoo</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">chainsaw</td></tr>
+    <tr><td class="col-jp">やる</td><td class="col-romaji">yaru</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">do [it] &mdash; te-form of やる</td></tr>
+    <tr><td class="col-jp">終わり</td><td class="col-romaji">owari</td><td class="col-pos">Noun</td><td class="col-gloss">end; finish; conclusion</td></tr>
+    <tr><td class="col-jp">切りすぎる</td><td class="col-romaji">kirisugiru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">cut too much &mdash; past of 切りすぎる</td></tr>
+    <tr><td class="col-jp">かもせえへん</td><td class="col-romaji">kamoseehen</td><td class="col-pos">Auxiliary (Kansai)</td><td class="col-gloss">might; may &mdash; Kansai for かもしれない</td></tr>
+    <tr><td class="col-jp">動画</td><td class="col-romaji">douga</td><td class="col-pos">Noun</td><td class="col-gloss">video; footage</td></tr>
+    <tr><td class="col-jp">する</td><td class="col-romaji">suru</td><td class="col-pos">Verb (conditional)</td><td class="col-gloss">if [I] make/do &mdash; conditional of する</td></tr>
+    <tr><td class="col-jp">あんま</td><td class="col-romaji">anma</td><td class="col-pos">Adverb (colloquial)</td><td class="col-gloss">not very; not much &mdash; for あまり</td></tr>
+    <tr><td class="col-jp">分からへん</td><td class="col-romaji">wakarahen</td><td class="col-pos">Verb (Kansai negative)</td><td class="col-gloss">[it] won&apos;t be clear &mdash; Kansai negative of わかる</td></tr>
+    <tr><td class="col-jp">な</td><td class="col-romaji">na</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[I suppose] &mdash; exclamatory/soft</td></tr>
+    <tr><td class="col-jp">ぐっすり</td><td class="col-romaji">gussuri</td><td class="col-pos">Adverb / onomatopoeia</td><td class="col-gloss">soundly; deeply [sleep]</td></tr>
+    <tr><td class="col-jp">寝る</td><td class="col-romaji">neru</td><td class="col-pos">Verb (potential)</td><td class="col-gloss">can sleep &mdash; potential of 寝る</td></tr>
+    <tr><td class="col-jp">そう</td><td class="col-romaji">sou</td><td class="col-pos">Auxiliary (conjectural)</td><td class="col-gloss">seems; looks like; probably &mdash; conjectural</td></tr>
+    <tr><td class="col-jp">です</td><td class="col-romaji">desu</td><td class="col-pos">Copula (polite)</td><td class="col-gloss">is &mdash; polite copula</td></tr>
+    <tr><td class="col-jp">お疲れ</td><td class="col-romaji">otsukare</td><td class="col-pos">Noun / set phrase</td><td class="col-gloss">good work; tired &mdash; abbreviated お疲れ様</td></tr>
+    <tr><td class="col-jp">や</td><td class="col-romaji">ya</td><td class="col-pos">Copula (Kansai)</td><td class="col-gloss">is &mdash; Kansai for だ</td></tr>
+    <tr><td class="col-jp">バイバイ</td><td class="col-romaji">baibai</td><td class="col-pos">Interjection (loanword)</td><td class="col-gloss">bye-bye; goodbye</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 3日目終わりました uses the temporal noun 3日目 (day 3) + polite past 終わりました (finished): "Day 3 [is] finished.&quot; The 目 suffix marks ordinal enumeration of days in a sequence. 裏山だいぶ綺麗になった uses the adverb だいぶ (considerably) + na-adjective 綺麗に (cleanly; neatly) + past なった (became): "The back hillside became quite clean.&quot; The resultative なる marks the transformation from overgrown to cleared as a completed change of state. やったか uses the past verb やった (did [it]) + question particle か: "Did [I] do it?&quot; The self-directed question reflects the vlogger&apos;s attempt to assess whether the three-day effort achieved its goal, a humble evaluation formula. めちゃくちゃ疲れた uses the slang adverb めちゃくちゃ (insanely; absurdly) + past 疲れた (got tired): "[I&apos;m] insanely tired.&quot; The slang intensifier elevates the exhaustion from ordinary to extreme, fitting the scale of the manual labor. あと大きい木1本だけ残ってるのはチェーンソーでやって終わり uses the topic phrase あと大きい木1本だけ残ってるのは (the [thing where] only one big tree remains) + topic は + instrumental チェーンソーで (with a chainsaw) + te-form やって (doing) + noun 終わり (end): "The [thing where] only one big tree remains [will be] done with the chainsaw and [then it&apos;s] the end.&quot; The nominalized clause のは topicalizes the remaining task, and the noun 終わり serves as the predicate: "[it is] the end.&quot; めっちゃ綺麗にめっちゃ綺麗になった uses the slang adverb めっちゃ (super; extremely) repeated with the adverbial 綺麗に and the past なった: "[It] became super clean, super clean.&quot; The repetition creates a crescendo of satisfaction, emphasizing the dramatic visual transformation. ちょっと切りすぎたかもせえへんけど uses the diminutive ちょっと (a bit) + excessive past 切りすぎた (cut too much) + Kansai conjectural かもせえへん (might; may) + concessive けど (but): "[I] might have cut a bit too much, but...&quot; The excessive suffix すぎる marks the action as beyond the optimal amount, and the Kansai かもせえへん softens the self-criticism into speculation. なんか動画にしたらあんま分からへんな uses なんか (somehow) + conditional 動画にしたら (if [I] make [it into] a video) + colloquial adverb あんま (not very much) + Kansai negative 分からへん (won&apos;t be clear) + exclamatory な: "somehow [when] [I] make [it into] a video, [it] won&apos;t be very clear, na.&quot; The conditional たら with media creation verbs creates a "once edited&quot; scenario, and the Kansai な is an exclamatory particle of resigned observation. The vlogger recognizes that video compression and framing may not convey the full scale of the clearing work. 終わった is the simple past announcement: "[It&apos;s] finished.&quot; やった is the canonical success exclamation: "[I] did it.&quot; Its use here marks the culmination of three days of physical labor. 今日はぐっすり寝れそうです uses the topic 今日は (today [topic]) + onomatopoeia ぐっすり (soundly; deeply) + potential conjectural 寝れそう (seems [I] can sleep) + polite です: "Today [I] seem [I&apos;ll] be able to sleep soundly.&quot; The onomatopoeia ぐっすり is the standard Japanese word for deep, uninterrupted sleep, and its use here frames the exhaustion as a guarantee of good rest. The potential 寝れる (can sleep) + conjectural そう creates a confident prediction. お疲れや uses the abbreviated greeting お疲れ (otsukare, short for お疲れ様) + Kansai copula や: "[Good] work, ya.&quot; The Kansai や replaces standard です/だ, and the abbreviated form is a casual sign-off among workers. バイバイ is the English loanword "bye-bye,&quot; a standard friendly vlog closing.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">08</span> Key Grammar Patterns Summary</h2>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜てしまう / 〜ちゃう (Regret / Completion Auxiliary)</div>
+    <div class="english-line">なっちゃう, 枯れてしまう. "Ends up becoming;&quot; "regrettably dies.&quot; The grammar of unintended outcomes and ecological consequences in forestry narration.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜だらけ (Excessive Suffix)</div>
+    <div class="english-line">蚊だらけ. "Full of mosquitoes.&quot; The grammar of negative environmental excess applied to hillside conditions.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ておく / 〜とく (Preparatory Auxiliary)</div>
+    <div class="english-line">置いといて, 置いときます, 置いとこう. "Leave aside for now;&quot; "will leave [aside].&quot; The grammar of temporary decisions and deferred action in selective clearing.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ことにする (Decision Pattern)</div>
+    <div class="english-line">伐ることにしました. "Decided to cut.&quot; The grammar of deliberate, reasoned choices in sustainable forestry.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜せいか (Probable Cause)</div>
+    <div class="english-line">日照不足のせいか. "Perhaps due to insufficient sunlight.&quot; The grammar of tentative causal reasoning from environmental observation.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Kansai Dialect Forestry Narrative</div>
+    <div class="english-line">わからん, あかん, せえへん, へん, やな, お疲れや, かもせえへん, あんま. The particles and contractions of three days of rural labor narration in Kansai dialect.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">〜ように (Manner / Purpose Adverbializer)</div>
+    <div class="english-line">思うように架け下ろせません. "Cannot lower [them] as [I] wish.&quot; The grammar of physical constraint and intention mismatch in manual labor.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Directional Auxiliaries (ていく / てくる)</div>
+    <div class="english-line">伐っていきます, 生えてきた, 分けていきます, 落としていきます. The grammar of spatial progression in hillside work, growth toward the observer, and process unfolding.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Horticultural &amp; Forestry Technical Vocabulary</div>
+    <div class="english-line">日照不足, 風通し, 日当たり, 急斜面, 霜除け, 土砂崩れ, 根元, 手すり, 枯れ枝, スズメバチ. The specialized lexicon of Japanese hillside management, ecology, and traditional rural craft.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Live-Narrative Self-Correction &amp; Resignation</div>
+    <div class="english-line">大体同じぐらいの、うん、そうでもないかも, こんなことしてる場合じゃないのに. The grammar of on-the-fly assessment, self-correction, and pragmatic return to task in unscripted physical labor.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+</body>
+</html>

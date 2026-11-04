@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>悪道 — 森村 誠一 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-burgundy: #6a2d3a;
+  --accent-burgundy-dim: #4a1a24;
+  --accent-burgundy-glow: rgba(106, 45, 58, 0.12);
+  --accent-gold: #8a6a3a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-burgundy-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-burgundy-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-burgundy-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-burgundy-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-burgundy), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-burgundy-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-burgundy-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 4em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-burgundy-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-burgundy-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-burgundy-dim), var(--accent-burgundy));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Series grid */
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-md);
+}
+
+.series-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.series-card h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.series-card .series-year {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-burgundy-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>悪道</h1>
+  <p class="hero-subtitle">AKUDŌ</p>
+  <p class="hero-meta">森 誠一 &middot; 講談社 2010 &middot; 第45回吉川英治文学賞受賞 &middot; 544ページ</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#characters"><span class="toc-num">04</span> Characters & Series</a></li>
+    <li><a href="#synopsis"><span class="toc-num">05</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">06</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">07</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">08</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">09</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 悪道</h2>
+  <p class="lead">The title <em>Akudō</em> (悪道) is a two-character compound of devastating compression. <em>Aku</em> (悪) means "evil / bad / wickedness / wrong" — one of the most morally absolute characters in Japanese, a judgment that brooks no qualification. <em>Dō</em> (道) means "path / road / way / principle" — the same character that appears in <em>bushidō</em> (武士道, "the way of the warrior"), <em>chidō</em> (地道, "the way of the earth"), and <em>Shinto</em> (神道, "the way of the gods"). Combined, <em>akudō</em> means "the evil path" or "the way of evil" — but the title carries multiple layers of meaning that unfold throughout the novel. In Buddhist cosmology, <em>akudō</em> (悪道) refers to the "evil destinies" or "evil paths of rebirth" — the three lower realms of the six paths (<em>rokudō</em> / 六道): hell (<em>jigoku</em> / 地獄), the realm of hungry ghosts (<em>gaki</em> / 餓鬼), and the realm of animals (<em>chikushō</em> / 畜生). To fall into the <em>akudō</em> is to be reborn into suffering as a consequence of evil karma. In the context of the novel, the title thus carries a Buddhist moral framework: the characters who choose power over compassion, conspiracy over truth, are walking the <em>akudō</em> — not merely a bad road but a karmic path that leads to spiritual destruction. At the same time, <em>akudō</em> can be read more prosaically as "evil ways" or "villainy" — the methods by which the powerful maintain their control. The novel's antagonists, led by Yanagisawa Yoshiyasu, operate through assassination, deception, and the systematic elimination of those who know too much. Their <em>dō</em> is indeed <em>aku</em>. The title's genius is that it operates on both the metaphysical and the political levels simultaneously: the <em>akudō</em> is both a Buddhist warning and a description of Tokugawa politics. What is lost in English is the specifically Buddhist resonance of the term — an English reader sees "The Evil Path" as a moral judgment; a Japanese reader hears the echo of <em>rokudō</em> cosmology, the fear of falling into the lower realms, the sense that evil is not merely wrong but cosmically dangerous.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">悪</span>
+        <span class="romaji">aku</span>
+        <span class="meaning">"evil / bad / wickedness" — The character <em>aku</em> (悪) is one of the most morally charged in the Japanese lexicon. It combines <em>ya</em> (亜, "second / sub-") with <em>kokoro</em> (心, "heart / mind"), suggesting a heart that is twisted or secondary to its proper function. In Buddhist usage, <em>aku</em> is the standard term for moral evil across all traditions — the evil deed (<em>akugyō</em> / 悪行), evil karma (<em>akugō</em> / 悪業), evil realm (<em>akuse</em> / 悪世). The character appears in compounds that describe the full spectrum of moral failure: <em>akujin</em> (悪人, "evil person"), <em>akuji</em> (悪事, "evil deed"), <em>akuyō</em> (悪用, "misuse / abuse"), <em>akugyō</em> (悪業, "evil act / sinful deed"). In the novel, <em>aku</em> describes not merely individual villains but the systemic evil of a political structure that rewards conspiracy and punishes integrity. The antagonists are not cartoonish evildoers; they are administrators and courtiers who have chosen the <em>akudō</em> because it is the most efficient path to maintaining power. The title thus announces that the book's subject is not merely adventure but moral philosophy: what happens when a society's ruling class collectively chooses the evil path?</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">道</span>
+        <span class="romaji">dō / michi</span>
+        <span class="meaning">"path / road / way / principle" — The character <em>dō</em> (道) is one of the most philosophically significant in East Asian thought. It means "road" in its most concrete sense and "way / principle / doctrine" in its abstract senses. It is the <em>dō</em> of <em>Daoism</em> (道教), the <em>dō</em> of <em>bushidō</em> (武士道), the <em>dō</em> of <em>kadō</em> (華道, "flower arrangement"), <em>sadō</em> (茶道, "tea ceremony"), and <em>kōdō</em> (香道, "incense appreciation"). In each case, <em>dō</em> suggests not merely a technique but a spiritual discipline, a path of self-cultivation that leads to mastery and enlightenment. When Morimura pairs <em>aku</em> with <em>dō</em>, he creates an oxymoron with philosophical depth: an "evil way" is not merely a bad choice but an inverted spiritual discipline, a systematic approach to wrongdoing that has its own logic, its own rituals, its own practitioners. The novel's assassins — the Sarumino-shū (猿蓑衆) — are professionals of the <em>akudō</em>: they have trained, they have codes, they have loyalties, they have a <em>dō</em>. This is what makes them terrifying — not that they are chaotic or insane but that they are disciplined, methodical, and convinced of the rightness of their path. The title thus transforms political violence from an aberration into a system: the <em>akudō</em> is not a deviation from the proper path but an alternative path with its own internal coherence. What is lost in English is the full philosophical weight of <em>dō</em> — the English "path" or "way" cannot carry the centuries of accumulated meaning that <em>dō</em> has acquired in Japanese intellectual history. The English reader sees a moral judgment; the Japanese reader sees a philosophical category.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Series context:</strong> The <em>Akudō</em> series spans five volumes (2010–2017), each expanding the alternate-history premise of the first. The sequels are: <em>Akudō: Saigoku Muhon</em> (悪道 西国謀反, 2011), <em>Akudō: Gosanke no Shikaku</em> (悪道 御三家の刺客, 2013), <em>Akudō: Goemon no Fukushū</em> (悪道 五右衛門の復讐, 2015), and <em>Akudō: Saigo no Mitsumei</em> (悪道 最後の密命, 2017). Each subtitle uses a different historical or literary reference — the Saigoku (western provinces), the Gosanke (three Tokugawa branch houses), Ishikawa Goemon (the legendary bandit) — creating a tapestry of Edo-period culture that rewards readers with historical knowledge. The series as a whole can be read as Morimura's answer to the question: "What if the Tokugawa shogunate had contained within it the seed of its own moral redemption — and what if that seed had to be defended by the most unlikely of guardians?"
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>森村 誠一 &mdash; Morimura Seiichi (1933–2023)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">森</div>
+    <div class="author-name-block">
+      <h3>森村 誠一</h3>
+      <p class="author-name-romaji">Morimura Seiichi &middot; 1933–2023 &middot; Saitama / Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Morimura Seiichi was one of Japan's most prolific and versatile writers, a novelist who moved between genres with the ease of a master craftsman — from hotel mysteries to social-problem fiction, from war-crime reportage to historical novels of startling ambition. Born on January 2, 1933, in Kumagaya, Saitama Prefecture, he was twelve years old when the Pacific War ended, old enough to remember the Kumagaya air raid of August 14-15, 1945 that destroyed his family home and beloved book collection — an experience he later described as the "original trauma" that shaped his desire to become a writer. The boy whose books were burned by war grew into the man who refused to let history be buried, whether in the form of Unit 731's crimes (<em>Akuma no Hōshoku</em> / 悪魔の飽食) or the moral complexities of the Tokugawa era (<em>Akudō</em> / 悪道).</p>
+    <p style="margin-bottom: var(--space-md);">After graduating from Aoyama Gakuin University's Department of English and American Literature, Morimura spent nearly a decade working in hotels — first in Tokyo, then in Osaka. The hotel world gave him an intimate knowledge of social hierarchy and class difference, and his hotel mysteries — beginning with <em>Kōsō no Shikaku</em> (高層の死角, "The Blind Spot in the High-Rise," 1969), which won the Edogawa Rampo Prize — are masterpieces of social observation. In 1976, <em>Ningen no Shōmei</em> (人間の証明, "Proof of the Man") became a cultural phenomenon, selling over 7.7 million copies and spawning a hit film. The "proof" (<em>shōmei</em> / 証明) series made him a household name and provided the financial independence that allowed him to pursue the investigative work that would define his moral reputation: <em>Akuma no Hōshoku</em> (悪魔の飽食, 1981), the exposé of Unit 731 that subjected him to years of right-wing harassment and death threats.</p>
+    <p style="margin-bottom: var(--space-md);">By the 2000s, Morimura had entered his eighth decade and his seventh as a professional writer. He had produced over 300 works, sold more than 100 million copies, and received every major mystery award in Japan. And yet he was not finished. <em>Akudō</em> (悪道), published in 2010 when Morimura was 77 years old, was his first original hardcover novel in ten years — a return to the form with a work of astonishing ambition. It won the 45th Yoshikawa Eiji Literature Prize in 2011, one of Japan's most prestigious literary honors, confirming that Morimura's powers had not diminished with age. The citation praised the novel's "bold conception" and "profound exploration of human nature under the pressure of power." The book was published as part of Kōdansha's centennial commemoration — a fitting honor for a writer who had spent his career embodying the publisher's mission of bringing serious entertainment to a mass audience.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes <em>Akudō</em> within Morimura's vast oeuvre is its synthesis of everything he had learned across six decades of writing. The puzzle-plot precision of his mysteries is present in the novel's intricate conspiracy. The social criticism of his <em>shakai-ha</em> (社会派) fiction is present in its analysis of how power corrupts. The moral passion of <em>Akuma no Hōshoku</em> is present in its outrage at systemic evil. And the narrative drive of his bestsellers is present in its relentless pacing — a 544-page novel that readers describe as impossible to put down. Morimura once said, "A writer must report on their era" (<em>Sakka wa jidai wo ripōto shinakya ikenai</em> / 作家は時代をリポートしなきゃいけない). In <em>Akudō</em>, he reported not only on his own era but on every era in which power has tempted human beings to choose the evil path — which is to say, on all of history.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1933</span>
+        <span>Born January 2 in Kumagaya, Saitama Prefecture. The eldest of five siblings.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1945</span>
+        <span>The Kumagaya air raid destroys his family home and beloved book collection. The trauma of war becomes the seed of his literary consciousness.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1955</span>
+        <span>Graduates from Aoyama Gakuin University, Faculty of Letters, Department of English and American Literature. Begins working in hotels — a nearly decade-long career.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1969</span>
+        <span>Wins the 15th Edogawa Rampo Prize for <em>Kōsō no Shikaku</em> (高層の死角), establishing him as a professional novelist.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1973</span>
+        <span>Wins the 26th Japan Mystery Writers Association Prize for <em>Fushoku no Kōzō</em> (腐蝕の構造), confirming his leadership of the social-school mystery movement.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1976</span>
+        <span>Publishes <em>Ningen no Shōmei</em> (人間の証明), which sells over 7.7 million copies and becomes a cultural phenomenon. The film adaptation's theme song becomes one of Japan's best-selling singles.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1981</span>
+        <span>Publishes <em>Akuma no Hōshoku</em> (悪魔の飽食), the exposé of Unit 731. The book sells millions but subjects him to years of right-wing harassment, threats, and police protection.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1986</span>
+        <span>Publishes <em>Chūshingura</em> (忠臣蔵), a major historical novel, demonstrating his range beyond mystery and reportage.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2003</span>
+        <span>Receives the 7th Japan Mystery Literature Grand Prize, a lifetime achievement award.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2010</span>
+        <span>Publishes <em>Akudō</em> (悪道) with Kōdansha — his first original hardcover novel in ten years, and the work that would win him Japan's most prestigious historical-fiction prize.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2011</span>
+        <span>Wins the 45th Yoshikawa Eiji Literature Prize for <em>Akudō</em>. At 78, he joins the ranks of Japan's most honored literary craftsmen.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2017</span>
+        <span>Publishes <em>Akudō: Saigo no Mitsumei</em> (悪道 最後の密命), the fifth and final volume of the <em>Akudō</em> series, concluding the epic at the age of 84.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2023</span>
+        <span>Dies on July 24 in Tokyo at the age of 90 from pneumonia. His death is widely mourned as the passing of a writer who used every genre at his command to insist on moral clarity in the face of power.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Major Awards</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>江戸川乱歩賞 (1969)</h4>
+        <p class="char-role">Edogawa Rampo Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">For <em>Kōsō no Shikaku</em> (高層の死角). Japan's most prestigious mystery debut award.</p>
+      </div>
+      <div class="char-card">
+        <h4>日本推理作家協会賞 (1973)</h4>
+        <p class="char-role">Japan Mystery Writers Association Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">For <em>Fushoku no Kōzō</em> (腐蝕の構造). Confirmed his leadership of the social-school mystery movement.</p>
+      </div>
+      <div class="char-card">
+        <h4>日本ミステリー文学大賞 (2003)</h4>
+        <p class="char-role">Japan Mystery Literature Grand Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Lifetime achievement award for contributions to Japanese mystery literature over four decades.</p>
+      </div>
+      <div class="char-card">
+        <h4>吉川英治文学賞 (2011)</h4>
+        <p class="char-role">Yoshikawa Eiji Literature Prize &middot; 45th</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">For <em>Akudō</em> (悪道). One of Japan's most prestigious literary honors, awarded for excellence in historical and popular fiction. Prize money: 3 million yen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Genroku Era & The World of <em>Akudō</em></h2>
+
+  <div class="card">
+    <h3>Tokugawa Tsunayoshi and the "Dog Shogun"</h3>
+    <p>The novel is set in the Genroku era (1688–1704), the high point of Tokugawa prosperity and also the period of the fifth shogun, Tokugawa Tsunayoshi (徳川綱吉, 1646–1709), known to history as the <em>Inu-Kubō</em> (犬公方, "Dog Shogun"). Tsunayoshi's reputation is complex and largely negative: he is remembered primarily for the <em>Shōjū Rui-ai no Rei</em> (生類憐みの令, "Edicts of Compassion for Living Things"), a series of laws that made the killing of dogs — and eventually all animals — a capital offense. The edicts were rooted in Tsunayoshi's Buddhist convictions and his mother's influence, but they were enforced with such severity that they became a symbol of tyrannical absurdity: dogs roamed the streets of Edo with impunity, samurai who harmed them were forced to commit seppuku, and the populace lived in fear of accidental violation.</p>
+    <p style="margin-top: var(--space-sm);">But Tsunayoshi's reign was more than eccentric legislation. He was a scholar-shogun who promoted Neo-Confucian learning, established the Shoheizaka Gakumonjo (the predecessor of Tokyo University), and presided over a cultural flowering that produced the kabuki of Chikamatsu Monzaemon, the haiku of Matsuo Bashō, and the ukiyo-e of Hishikawa Moronobu. The Genroku era was Japan's "long eighteenth century" — a period of economic growth, urban culture, and artistic innovation that paralleled Europe's Enlightenment in its complexity and contradictions. Morimura's novel captures this double nature: the glittering surface of Genroku culture and the rot beneath it, the coexistence of artistic brilliance and political paranoia.</p>
+  </div>
+
+  <div class="card">
+    <h3>Yanagisawa Yoshiyasu: The Power Behind the Throne</h3>
+    <p>The novel's primary antagonist is based on the historical Yanagisawa Yoshiyasu (柳沢吉保, 1658–1714), Tsunayoshi's favorite and one of the most powerful figures of the Genroku era. Yoshiyasu rose from relatively modest origins to become Tsunayoshi's closest advisor, accumulating titles, wealth, and influence that made him effectively the shogun's proxy. Historical accounts describe him as intelligent, cultured, and utterly ruthless — a man who understood that power in the Tokugawa system depended on proximity to the shogun and who cultivated that proximity with skill and determination.</p>
+    <p style="margin-top: var(--space-sm);">In Morimura's novel, Yoshiyasu becomes the embodiment of the <em>akudō</em>: a man who has chosen the evil path not from sadism but from calculation, who understands that maintaining power requires the elimination of threats, and who has created the Sarumino-shū (猿蓑衆) — an assassination corps named after the haikai anthology <em>Sarumino</em> (猿蓑, "Monkey's Raincoat," 1691) — as the instrument of that elimination. The name is characteristic of Morimura's method: the <em>Sarumino</em> was one of the most important anthologies of Bashō's disciples, a monument of Genroku literary culture. To name a death squad after it is to suggest that the era's artistic achievements and its political violence were two sides of the same coin — that the same society that produced Bashō's haiku also produced Yoshiyasu's assassins.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Shadow Shogun" — Morimura's Alternate History</h3>
+    <p>The novel's central conceit — the "shadow" (<em>kage</em> / 影) who waits in the depths of Edo Castle — is Morimura's most daring fictional invention. The historical Tsunayoshi had no known double, but the premise allows Morimura to explore a profound question: what if the evil of Tsunayoshi's reign was not the whole story? What if, behind the Dog Shogun's madness, there existed a secret ruler who had used the cover of Tsunayoshi's eccentricity to govern wisely and well? The "shadow shogun" (<em>kage-shōgun</em> / 影将軍) is both a plot device and a moral symbol: he represents the possibility that goodness can exist even within the most corrupt systems, hidden, waiting, sustained by those who know the truth and are willing to die to protect it.</p>
+    <p style="margin-top: var(--space-sm);">This alternate-history premise places <em>Akudō</em> in a tradition of Japanese fiction that reimagines the Tokugawa period — from Yamamoto Shūgorō's <em>Nemuri Kyōshirō</em> to the <em>Onihei</em> series — but Morimura's approach is distinct in its philosophical ambition. The shadow shogun is not merely a hidden hero; he is a commentary on the nature of legitimate authority. If the people are governed well, does it matter whether the governor is officially recognized? If a ruler's goodness must be hidden to survive, what does that say about the political system that makes goodness dangerous? The novel does not answer these questions directly; it dramatizes them through the choices of its characters, particularly Nagare Eijirō, who must decide whether to serve a hidden goodness or expose it to a world that may not be ready to receive it.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Oku no Hosomichi Connection</h3>
+    <p>One of the novel's most elegant structural devices is its use of Matsuo Bashō's <em>Oku no Hosomichi</em> (おくのほそ道, "The Narrow Road to the Deep North," 1702) as both a geographical and a spiritual framework. Bashō's journey through northern Japan in 1689–1690 becomes, in Morimura's novel, the escape route for Eijirō and Osode — their flight from Edo follows Bashō's path in reverse, and the famous places (<em>meisho</em> / 名所) that Bashō celebrated in his haiku become the backdrop for their pursuit by the Sarumino-shū. The novel thus creates a dialogue between two Genroku masterpieces: Bashō's travelogue, which sought transcendence through immersion in nature and history, and Morimura's thriller, which seeks moral clarity through confrontation with political evil. Where Bashō found the <em>kokoro</em> (心, "heart / spirit") of places, Morimura finds their <em>ki</em> (気, "energy / atmosphere / intention") — the hidden forces that move beneath the surface of history.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast & Series</div>
+  <h2>Characters & The <em>Akudō</em> Series</h2>
+
+  <div class="card">
+    <h3>The Central Characters</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>流 英次郎（ながれ・えいじろう）</h4>
+        <p class="char-role">Nagare Eijirō / The Protagonist</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A descendant of Iga ninja (<em>Iga ninja no matsuei</em> / 伊賀忍者の末裔), Eijirō is a "low-ranking ninja" (<em>genin</em> / 下忍) who becomes the guardian of a secret that could destroy the Tokugawa shogunate. His surname <em>Nagare</em> (流) means "flow / current / stream" — suggesting both his adaptability and his role as a carrier of historical forces. He is a "hunter on a lonely road" (<em>kodoku no kōro no kariudo</em> / 孤独の行路の狩人), a man who has chosen to protect rather than to kill, to serve a hidden goodness rather than the visible power. His ninja heritage gives him the skills to survive against overwhelming odds; his moral choice gives him the reason to do so. Eijirō is Morimura's ideal hero: not a superman but a professional, a technician of survival who discovers that his craft has a moral dimension he had not previously acknowledged.</p>
+      </div>
+      <div class="char-card">
+        <h4>おそで</h4>
+        <p class="char-role">Osode / The Genius Woman Doctor</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A "genius woman doctor" (<em>tensai joi</em> / 天才女医) who becomes Eijirō's companion and charge. In an era when women were excluded from formal medical education, Osode's genius is both her power and her vulnerability — her knowledge makes her indispensable to those who would use her, and dangerous to those who fear what she knows. Her name, <em>Osode</em> (おそで), evokes the traditional female name while carrying a suggestion of <em>sode</em> (袖, "sleeve"), the part of the kimono that in classical poetry symbolizes longing, separation, and the touch of the beloved. She is not merely a damsel in distress but a scientific mind in a world that does not know what to do with female intelligence. Her medical knowledge becomes crucial to the plot — both as a tool of healing and as a form of evidence that the conspiracy must suppress.</p>
+      </div>
+      <div class="char-card">
+        <h4>柳沢 吉保（やなぎさわ・よしやす）</h4>
+        <p class="char-role">Yanagisawa Yoshiyasu / The Antagonist</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The historical Yanagisawa Yoshiyasu, reimagined as the architect of the <em>akudō</em>. In Morimura's portrayal, Yoshiyasu is not merely ambitious but existentially committed to the maintenance of power — he has invested so much of himself in the system that he cannot imagine its collapse without collapsing himself. His creation of the Sarumino-shū is the ultimate expression of the <em>akudō</em>: the transformation of literary culture into murder, of aesthetic refinement into political terror. Yoshiyasu is intelligent enough to understand the moral cost of his choices and ruthless enough to pay it. He is, in Morimura's schema, a tragedy without redemption — a man who chose the evil path so gradually that he never noticed when he could no longer turn back.</p>
+      </div>
+      <div class="char-card">
+        <h4>影（かげ）</h4>
+        <p class="char-role">Kage / The Shadow Shogun</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The "living corpse" (<em>ikiru shikabane</em> / 生きる屍) who waits in the depths of Edo Castle — the shadow double of Tokugawa Tsunayoshi, the secret ruler whose existence must be protected at all costs. The <em>kage</em> is the novel's moral center: a man who has accepted imprisonment, invisibility, and the denial of his own identity in order to govern wisely on behalf of a people who will never know his name. His existence raises the novel's deepest questions about legitimacy, sacrifice, and the relationship between appearance and reality in politics. Is a hidden good ruler better than a visible bad one? Does the people's welfare justify the deception of the people? The <em>kage</em> does not answer these questions; he embodies them.</p>
+      </div>
+      <div class="char-card">
+        <h4>猿蓑衆（さるみのしゅう）</h4>
+        <p class="char-role">Sarumino-shū / The Assassination Corps</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The "monkey-raincoat corps" — an assassination squad named after the haikai anthology <em>Sarumino</em> (猿蓑, 1691), edited by Bashō's disciple Bonchō. The name is Morimura's most bitter irony: the <em>Sarumino</em> represents the highest achievement of Genroku literary culture, and the Sarumino-shū represents its lowest moral degradation. They are professionals of death, trained in the arts of stealth, poison, and silent killing, and their presence in the novel transforms political intrigue into mortal danger. They are the <em>akudō</em> made flesh — practitioners of an evil way who have refined their craft to the level of a <em>dō</em>, a spiritual discipline.</p>
+      </div>
+      <div class="char-card">
+        <h4>徳川 綱吉（とくがわ・つなよし）</h4>
+        <p class="char-role">Tokugawa Tsunayoshi / The Dog Shogun</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The fifth Tokugawa shogun, known to history as the <em>Inu-Kubō</em> (犬公方, "Dog Shogun") for his edicts protecting animals. In Morimura's alternate history, Tsunayoshi is not merely eccentric but a screen — a public figure whose bizarre behavior conceals the existence of the shadow shogun. The historical Tsunayoshi's combination of genuine learning and genuine cruelty makes him the perfect vehicle for Morimura's exploration of how power can be simultaneously ridiculous and deadly. The Dog Shogun's edicts, which seemed absurd to contemporaries, become in the novel a form of misdirection — the public's attention focused on dogs while the real business of governance happens in shadows.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The <em>Akudō</em> Series (5 Volumes)</h3>
+    <div class="series-grid">
+      <div class="series-card">
+        <h4>悪道</h4>
+        <p class="series-year">2010 &middot; Kōdansha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The original. Eijirō discovers the shadow shogun's secret and flees Edo with Osode, pursued by the Sarumino-shū. Yoshikawa Eiji Literature Prize winner.</p>
+      </div>
+      <div class="series-card">
+        <h4>悪道 西国謀反</h4>
+        <p class="series-year">2011 &middot; Kōdansha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Akudō: Saigoku Muhon</em> — "The Evil Path: Western Provinces Rebellion." The shadow shogun faces a new crisis in the western domains. The Asano-style domain conspiracy.</p>
+      </div>
+      <div class="series-card">
+        <h4>悪道 御三家の刺客</h4>
+        <p class="series-year">2013 &middot; Kōdansha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Akudō: Gosanke no Shikaku</em> — "The Evil Path: Assassins of the Three Houses." The Tokugawa branch houses become involved in the shadow's secret.</p>
+      </div>
+      <div class="series-card">
+        <h4>悪道 五右衛門の復讐</h4>
+        <p class="series-year">2015 &middot; Kōdansha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Akudō: Goemon no Fukushū</em> — "The Evil Path: Goemon's Revenge." Ishikawa Goemon's descendants enter the conflict. Morimura brings the legendary bandit into his alternate Edo.</p>
+      </div>
+      <div class="series-card">
+        <h4>悪道 最後の密命</h4>
+        <p class="series-year">2017 &middot; Kōdansha</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Akudō: Saigo no Mitsumei</em> — "The Evil Path: The Final Secret Order." The series conclusion. The shadow shogun's succession and the ultimate test of Eijirō's loyalty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Incident at the Yanagisawa Residence</h3>
+    <p>The novel opens at a moment of maximum political vulnerability: Tokugawa Tsunayoshi is paying a formal visit (<em>gori</em> / 御成り) to the residence of his favorite, Yanagisawa Yoshiyasu. Such visits are both an honor and a danger — they concentrate the shogunal presence in a single location, creating a target for assassination and a opportunity for coup. During this visit, an incident occurs that threatens to plunge Japan into chaos: a "change event" (<em>henji</em> / 変事) that suggests the existence of a secret that could destroy the Tokugawa regime. Yoshiyasu, understanding immediately the stakes, orders the Sarumino-shū to carry out a <em>minagoroshi</em> (みなごろし / 鏖, "total slaughter / massacre") of everyone who knows the secret. The word <em>minagoroshi</em> is one of the most brutal in Japanese — it means killing every single person, leaving no survivors, no witnesses, no one to carry the story. It is the <em>akudō</em> in its purest form: the elimination of truth through the elimination of people.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Flight</h3>
+    <p>Nagare Eijirō, a low-ranking ninja who has stumbled upon the secret, finds himself suddenly transformed from an agent of the system into its target. His only choice is flight — and his only companion is Osode, the genius woman doctor whose medical knowledge has made her equally dangerous to those who would keep the secret buried. Together they flee Edo along the route of Bashō's <em>Oku no Hosomichi</em>, the narrow road to the deep north that becomes, in Morimura's hands, a road of blood. The Sarumino-shū pursue them with professional relentlessness, and the flight becomes a test not merely of Eijirō's ninja skills but of his moral courage — at every point, he could abandon Osode and save himself; at every point, he chooses to stay.</p>
+    <p style="margin-top: var(--space-sm);">The flight structure allows Morimura to do two things simultaneously: to create a thriller of relentless momentum, and to paint a portrait of Genroku Japan through the eyes of those who are fleeing through it. The famous places that Bashō celebrated — the shrines, the mountains, the coastal villages — become waystations in a journey of survival. The beauty of the landscape contrasts with the brutality of the pursuit, creating a specifically Japanese aesthetic tension: <em>mono no aware</em> (物の哀れ, "the pathos of things") in the midst of violence. Eijirō and Osode are not merely running; they are witnessing, and what they witness is a Japan whose surface prosperity conceals a machinery of death.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Shadow in the Castle</h3>
+    <p>Interwoven with the flight narrative is the story of the <em>kage</em> — the shadow shogun who waits in the depths of Edo Castle. The <em>kage</em> is a "living corpse" (<em>ikiru shikabane</em> / 生きる屍), a man who has been kept alive not for his own sake but for the sake of the order he maintains. His existence is the novel's deepest secret, and the revelation of its nature is the plot's central engine. The <em>kage</em> is not merely a double; he is a moral alternative — a ruler who has chosen invisibility in order to govern justly, who has accepted that his goodness must remain hidden because the system cannot survive its exposure.</p>
+    <p style="margin-top: var(--space-sm);">The relationship between the visible shogun (Tsunayoshi) and the hidden shogun (the <em>kage</em>) is the novel's philosophical core. Morimura asks: what is the value of legitimate authority if it is exercised through deception? Is a hidden good ruler better than a visible bad one? Does the welfare of the people justify the maintenance of a lie? These are not abstract questions in the novel; they are lived realities for Eijirō, who must decide whether to protect the <em>kage</em>'s secret or expose it, whether to serve a hidden goodness or demand its public acknowledgment. The novel's answer, if it has one, is embedded in Eijirō's choice: he protects the secret not because he believes deception is right but because he has seen what happens when truth confronts power unprepared — the <em>minagoroshi</em>, the total slaughter, the <em>akudō</em> in action.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Unyielding "Inchworm"</h3>
+    <p>The novel's most moving metaphor is the "inchworm" (<em>issun no mushi</em> / 一寸の虫) — the small, vulnerable creature that nevertheless confronts the throat of a powerful enemy. The phrase comes from a classical expression: <em>issun no mushi ni mo gobū no ki ari</em> (一寸の虫にも五分の魂あり, "even an inchworm has a five-<em>bu</em> soul" — roughly, "even the smallest creature has its pride / spirit"). In Morimura's novel, Eijirō and Osode are the inchworms — small, vulnerable, apparently insignificant before the machinery of the Tokugawa state. And yet they persist. They do not defeat the Sarumino-shū through superior force; they survive through superior will, through the refusal to surrender that Morimura identifies as the essence of human dignity. The "inchworm at the throat" is not a threat of violence but a promise of persistence: we may be small, but we will be here, at your most vulnerable point, until you acknowledge us. This is the novel's moral: the <em>akudō</em> is powerful but not invincible, because those who walk the evil path cannot imagine the stubbornness of those who refuse to walk it.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Fate (<em>shukumei</em> / 宿命) vs. Resistance:</strong> The novel's epigraph declares that "human beings are animals that compete within the cage of fate." Eijirō's entire journey is a demonstration that the cage can be resisted — not broken, perhaps, but resisted — and that resistance itself has meaning regardless of outcome.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The corruption of power:</strong> Yoshiyasu is not a monster but a man who has made incremental choices that have led him to monstrous actions. The novel traces the <em>akudō</em> not as a single decision but as a gradual accommodation to evil.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Hidden goodness:</strong> The shadow shogun embodies the possibility that virtue can exist even in the most corrupt systems — but at a terrible cost. The novel asks whether hidden goodness is sufficient, or whether goodness must be visible to be real.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The professional ethic:</strong> Eijirō is a ninja — a professional killer — who discovers that his craft contains a moral dimension. The novel explores how even the most technical of professions can become a vehicle for conscience.</li>
+      <li style="margin-bottom: 0.5em;"><strong>History as possibility:</strong> By creating an alternate Genroku era, Morimura suggests that history is not fixed but contingent — that the past contained possibilities that were never realized, and that fiction can restore them to imagination.</li>
+      <li><strong>The way of the warrior reimagined:</strong> The novel is a commentary on <em>bushidō</em> — not the sanitized code of popular imagination but the lived reality of samurai and ninja who had to choose, daily, between loyalty to power and loyalty to principle.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the novel's moral philosophy, its historical audacity, and the voice of a writer who, at 77, was still discovering new territory.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Novel's Epigraph</div>
+    <div class="passage-jp">
+      人間とは、宿命という檻の中で競り合う動物なのだ。
+    </div>
+    <div class="passage-romaji">
+      "Ningen to wa, shukumei to iu ori no naka de kiri-au dōbutsu na no da."
+    </div>
+    <div class="passage-en">
+      "Human beings are animals that compete within the cage of fate."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, which appears on the novel's first page and serves as its philosophical epigraph, is one of Morimura's most compressed statements of humanism. The grammar is deceptively simple: <em>ningen to wa</em> (人間とは, "as for human beings / what it is to be human") + <em>shukumei to iu ori no naka de</em> (宿命という檻の中で, "within the cage called fate") + <em>kiri-au dōbutsu na no da</em> (競り合う動物なのだ, "are animals that compete / struggle against each other"). Let's examine each element. <em>Ningen to wa</em> (人間とは) uses the topicalizing construction <em>to wa</em> (とは), which signals a definition or a philosophical statement — "when we say 'human being,' what we mean is..." This is not casual description but categorical assertion. <em>Shukumei</em> (宿命, "fate / destiny / predestination") is a weighty compound: <em>shuku</em> (宿, "lodging / inn / pre-existing") + <em>mei</em> (命, "life / fate / command"), suggesting a fate that has been lodged in one's existence from before birth — the Buddhist concept of karma made personal. <em>Ori</em> (檻, "cage / pen / enclosure") is a physical container for animals, and its use here transforms fate from an abstract concept into a spatial prison. The phrase <em>shukumei to iu ori</em> (宿命という檻, "the cage called fate") uses the quotative <em>to iu</em> (という) to create a named entity — this is not merely fate but "the cage-called-fate," a specific, identifiable structure. <em>Naka de</em> (中で, "inside / within") makes the spatial metaphor explicit: we are inside this cage, not merely affected by fate from outside. <em>Kiri-au</em> (競り合う, "to compete / to vie / to struggle against each other") is a compound verb: <em>kiru</em> (競る, "to compete / to bid at auction") + <em>au</em> (合う, "mutually / together"), suggesting competition as mutual, reciprocal, unavoidable — we do not merely suffer fate; we compete within it, against each other, for the limited space the cage allows. Finally, <em>dōbutsu na no da</em> (動物なのだ, "are animals") uses the explanatory <em>na no da</em> (なのだ) construction — not merely "are animals" but "it is that they are animals," a revelation, a stripping away of illusions. The sentence thus performs its own meaning: it removes human beings from the category of the special, the spiritual, the transcendent, and places us firmly in the animal kingdom — but animals who are aware of our cage, who compete knowingly, who suffer our fate with consciousness. What is lost in English is the specifically Japanese philosophical context of <em>shukumei</em> — a word that carries Buddhist, Confucian, and modern existentialist resonances simultaneously. The English "fate" is flatter; <em>shukumei</em> is a lived reality, a weight, a cage one wakes up inside every morning. The English reader sees a metaphor; the Japanese reader feels a condition.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Promise of Resistance</div>
+    <div class="passage-jp">
+      おれは宿命というものと、命ある限り対決する。
+    </div>
+    <div class="passage-romaji">
+      "Ore wa shukumei to iu mono to, inochi aru kagiri taiketsu suru."
+    </div>
+    <div class="passage-en">
+      "I will confront this thing called fate as long as I have life."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, which appears in the promotional copy as Eijirō's declaration of purpose, is the novel's moral spine. The grammar is a masterpiece of masculine determination. <em>Ore wa</em> (おれは, "as for me / I") uses the rough first-person pronoun <em>ore</em> (おれ), the marker of a working-class or warrior male — not the polite <em>watashi</em> (私) of the educated classes but the self-identifier of someone who has lived by his body and his skills. This is Eijirō's voice, not Morimura's: the novelist has submerged his own prose in the character's consciousness. <em>Shukumei to iu mono to</em> (宿命というものと, "with this thing called fate") uses <em>to iu mono</em> (というもの, "the thing called / what is called") to create distance and specificity — fate is not an abstraction but a particular opponent, a <em>mono</em> (もの, "thing") that can be named and therefore fought. The particle <em>to</em> (と) marks the opponent of confrontation, the <em>aite</em> (相手, "partner / opponent") in a duel. <em>Inochi aru kagiri</em> (命ある限り, "as long as there is life / to the limit of having life") uses the <em>kagiri</em> (限り, "limit / as long as") construction to create an absolute temporal boundary: the confrontation will continue until life ends — not until victory, not until defeat, but until death. This is not a conditional commitment (<em>if</em> I live) but a categorical one (<em>for the entire duration of</em> my life). <em>Taiketsu suru</em> (対決する, "to confront / to clash / to showdown") is a modern, somewhat dramatic verb — the vocabulary of rivalry and final confrontation, of the showdown that resolves a conflict. It is stronger than <em>tatakau</em> (戦う, "to fight") because it implies a direct, face-to-face encounter; stronger than <em>teiko suru</em> (抵抗する, "to resist") because it implies engagement rather than mere opposition. The sentence as a whole is a declaration of war against fate itself — not a claim that fate can be defeated but a refusal to accept it without struggle. What is lost in English is the gendered voice of <em>ore</em>, the warrior's self-naming that places this declaration in a tradition of masculine defiance stretching from the <em>Heike Monogatari</em> to modern yakuza cinema. The English "I will confront" captures the determination but loses the roughness, the class marker, the sense that this promise is being made by someone who has never had the luxury of polite speech. The Japanese reader hears a voice from the margins — a ninja, a low-ranking man, someone who has been acted upon by fate and has decided, finally, to act back.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Critic's Verdict</div>
+    <div class="passage-jp">
+      大胆不敵な着想をベースにした逃亡と抵抗のドラマが、権力への怒りと、人間性への共感を呼ぶ。これが物語だ、これが森村誠一だ。
+    </div>
+    <div class="passage-romaji">
+      "Daitan-futeki na chakusō wo bēsu ni shita tōbō to teikō no dorama ga, kenryoku e no ikari to, ningen-sei e no kyōkan wo yobu. Kore ga monogatari da, kore ga Morimura Seiichi da."
+    </div>
+    <div class="passage-en">
+      "A drama of flight and resistance based on a daring, fearless conception calls forth anger at power and sympathy for humanity. This is story; this is Morimura Seiichi."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This blurb from literary critic Hosoya Masamitsu (細谷正充) appears on the book's cover and encapsulates what critics valued in the novel. The grammar is the grammar of critical praise — balanced, rhythmic, declarative. <em>Daitan-futeki na chakusō</em> (大胆不敵な着想, "daring, fearless conception") uses a four-character compound (<em>yojijukugo</em> / 四字熟語) that combines <em>daitan</em> (大胆, "bold / audacious") and <em>futeki</em> (不敵, "fearless / defiant / insolent"). The combination suggests not merely courage but a kind of creative audacity that borders on impudence — the audacity of reimagining Tokugawa history, of inventing a shadow shogun, of placing a ninja and a woman doctor at the center of Genroku politics. <em>Chakusō</em> (着想, "conception / idea / literary plan") is a specifically literary term — the initial spark from which a work grows. <em>Bēsu ni shita</em> (ベースにした, "based on / using as a base") employs the English loanword <em>bēsu</em> (ベース), giving the critical language a modern, professional quality. <em>Tōbō to teikō no dorama</em> (逃亡と抵抗のドラマ, "a drama of flight and resistance") pairs two nouns that structure the novel's action: <em>tōbō</em> (逃亡, "flight / escape / fugitivity") and <em>teikō</em> (抵抗, "resistance / opposition"). The English loanword <em>dorama</em> (ドラマ) frames the novel as a dramatic construction, a work of narrative art rather than merely a historical reconstruction. <em>Kenryoku e no ikari</em> (権力への怒り, "anger at power") and <em>ningen-sei e no kyōkan</em> (人間性への共感, "sympathy for humanity") create a balanced moral equation — the novel generates both negative emotion (anger at oppression) and positive emotion (sympathy for the oppressed). The particle <em>e</em> (へ) in both phrases suggests directionality: anger <em>toward</em> power, sympathy <em>toward</em> human nature — emotions that move, that have vectors, that connect the reader to the text's moral world. The final sentence — <em>Kore ga monogatari da, kore ga Morimura Seiichi da</em> (これが物語だ、これが森村誠一だ, "This is story; this is Morimura Seiichi") — uses the demonstrative <em>kore</em> (これ, "this") twice to create an equation: the novel <em>is</em> story in its essence, and it <em>is</em> Morimura in his essence. The copula <em>da</em> (だ) gives each clause the force of a definition. The critic is not merely praising a book; he is defining what literature should do and identifying Morimura as the writer who does it. What is lost in English is the rhythm of the original — the balanced phrases, the repetition of <em>kore ga</em>, the progression from critical analysis to existential declaration. The Japanese reader feels the buildup of praise toward a climax of identification; the English reader receives the meaning without the crescendo.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Inchworm at the Throat</div>
+    <div class="passage-jp">
+      強大な敵の喉元に迫るは不屈の一寸の虫たち。
+    </div>
+    <div class="passage-romaji">
+      "Kyōdai na teki no nodomoto ni semaru wa fukutsu no issun no mushi-tachi."
+    </div>
+    <div class="passage-en">
+      "What presses upon the throat of the mighty enemy are the unyielding inchworms."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the promotional copy encapsulates the novel's underdog poetics in a single compressed image. The grammar is classical in its elegance: <em>Kyōdai na teki no nodomoto ni semaru wa</em> (強大な敵の喉元に迫るは, "what presses upon the throat of the mighty enemy") + <em>fukutsu no issun no mushi-tachi</em> (不屈の一寸の虫たち, "the unyielding inchworms"). The topic marker <em>wa</em> (は) creates suspense — "as for what presses upon the throat..." — and the delayed predicate creates a moment of revelation when the "inchworms" appear. <em>Kyōdai na</em> (強大な, "mighty / powerful / huge") describes the enemy as physically and politically overwhelming. <em>Teki</em> (敵, "enemy / foe") is blunt and absolute — there is no negotiation, no ambiguity. <em>Nodomoto</em> (喉元, "throat / Adam's apple / vital point of the neck") is one of the most vulnerable points of the human body, and "pressing upon the throat" (<em>nodomoto ni semaru</em> / 喉元に迫る) is a standard expression for approaching a critical, dangerous point — the moment before a blade cuts, before breath stops. The verb <em>semaru</em> (迫る, "to press upon / to approach / to close in") suggests inexorable movement, something that cannot be stopped. And then the subject is revealed: <em>fukutsu no issun no mushi-tachi</em> (不屈の一寸の虫たち, "the unyielding inchworms"). <em>Fukutsu</em> (不屈, "unyielding / indomitable / never bending") is a compound of <em>fu</em> (不, "not") + <em>kutsu</em> (屈, "bend / yield / submit") — the refusal to bend that defines moral courage. <em>Issun no mushi</em> (一寸の虫, "inchworm / inch-long insect") is a humble, almost comic creature — the smallest of the small, the weakest of the weak. The classical expression <em>issun no mushi ni mo gobū no ki ari</em> (一寸の虫にも五分の魂あり, "even an inchworm has a five-<em>bu</em> soul") underlies the image: even the smallest creature has its dignity, its will, its refusal to be crushed. The plural suffix <em>-tachi</em> (たち) transforms the singular inchworm into a collective — Eijirō and Osode together, the small against the great, the many-who-seem-few against the few-who-seem-many. What is lost in English is the specifically Japanese cultural resonance of the inchworm proverb and the physical comedy of the image — the idea that a creature so small, so apparently ridiculous, could threaten the throat of a mighty enemy. The English "inchworm" is accurate but lacks the proverbial weight; the Japanese <em>issun no mushi</em> carries centuries of folk wisdom about the dignity of the small. The English reader sees a metaphor; the Japanese reader recognizes a friend from childhood sayings, a creature they have been taught to respect.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the world of Genroku Edo, ninja craft, and moral philosophy.</p>
+
+  <div class="card">
+    <h3>The Title & Moral Philosophy</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>悪道</td><td>akudō</td><td class="pos">noun</td><td>the evil path; the way of evil</td></tr>
+        <tr><td>悪</td><td>aku</td><td class="pos">noun</td><td>evil, wickedness, wrong</td></tr>
+        <tr><td>道</td><td>dō / michi</td><td class="pos">noun</td><td>path, road, way, principle</td></tr>
+        <tr><td>宿命</td><td>shukumei</td><td class="pos">noun</td><td>fate, destiny, predestination</td></tr>
+        <tr><td>檻</td><td>ori</td><td class="pos">noun</td><td>cage, pen, enclosure</td></tr>
+        <tr><td>競り合う</td><td>kiri-au</td><td class="pos">verb</td><td>to compete, to vie, to struggle</td></tr>
+        <tr><td>動物</td><td>dōbutsu</td><td class="pos">noun</td><td>animal</td></tr>
+        <tr><td>命</td><td>inochi</td><td class="pos">noun</td><td>life</td></tr>
+        <tr><td>限り</td><td>kagiri</td><td class="pos">noun</td><td>limit, as long as</td></tr>
+        <tr><td>対決する</td><td>taiketsu suru</td><td class="pos">verb</td><td>to confront, to clash, showdown</td></tr>
+        <tr><td>不屈</td><td>fukutsu</td><td class="pos">noun</td><td>unyielding, indomitable</td></tr>
+        <tr><td>一寸の虫</td><td>issun no mushi</td><td class="pos">phrase</td><td>inchworm; small but proud creature</td></tr>
+        <tr><td>人間性</td><td>ningen-sei</td><td class="pos">noun</td><td>human nature, humanity</td></tr>
+        <tr><td>共感</td><td>kyōkan</td><td class="pos">noun</td><td>sympathy, empathy, resonance</td></tr>
+        <tr><td>権力</td><td>kenryoku</td><td class="pos">noun</td><td>power, authority</td></tr>
+        <tr><td>怒り</td><td>ikari</td><td class="pos">noun</td><td>anger, rage</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Historical & Political Terms</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>元禄</td><td>Genroku</td><td class="pos">noun</td><td>Genroku era (1688–1704)</td></tr>
+        <tr><td>江戸</td><td>Edo</td><td class="pos">noun</td><td>Edo (Tokyo)</td></tr>
+        <tr><td>将軍</td><td>shōgun</td><td class="pos">noun</td><td>shogun, military dictator</td></tr>
+        <tr><td>犬公方</td><td>Inu-Kubō</td><td class="pos">noun</td><td>Dog Shogun (Tsunayoshi)</td></tr>
+        <tr><td>生類憐みの令</td><td>Shōjū Rui-ai no Rei</td><td class="pos">noun</td><td>Edicts of Compassion for Living Things</td></tr>
+        <tr><td>御三家</td><td>Gosanke</td><td class="pos">noun</td><td>Three Tokugawa branch houses</td></tr>
+        <tr><td>御成り</td><td>gori</td><td class="pos">noun</td><td>formal visit by shogun</td></tr>
+        <tr><td>大奥</td><td>Ōoku</td><td class="pos">noun</td><td>shogun's harem / inner chambers</td></tr>
+        <tr><td>幕府</td><td>bakufu</td><td class="pos">noun</td><td>shogunate, military government</td></tr>
+        <tr><td>藩</td><td>han</td><td class="pos">noun</td><td>domain, feudal clan territory</td></tr>
+        <tr><td>家老</td><td>karō</td><td class="pos">noun</td><td>domain elder, senior retainer</td></tr>
+        <tr><td>密命</td><td>mitsumei</td><td class="pos">noun</td><td>secret order, confidential command</td></tr>
+        <tr><td>謀反</td><td>muhon</td><td class="pos">noun</td><td>rebellion, treason, mutiny</td></tr>
+        <tr><td>刺客</td><td>shikaku</td><td class="pos">noun</td><td>assassin</td></tr>
+        <tr><td>鏖</td><td>minagoroshi</td><td class="pos">noun</td><td>total slaughter, massacre</td></tr>
+        <tr><td>影</td><td>kage</td><td class="pos">noun</td><td>shadow, double, hidden presence</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Ninja & Action Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>忍者</td><td>ninja</td><td class="pos">noun</td><td>ninja, covert agent</td></tr>
+        <tr><td>末裔</td><td>matsuei</td><td class="pos">noun</td><td>descendant, scion</td></tr>
+        <tr><td>下忍</td><td>genin</td><td class="pos">noun</td><td>low-ranking ninja</td></tr>
+        <tr><td>伊賀</td><td>Iga</td><td class="pos">noun</td><td>Iga (ninja heartland)</td></tr>
+        <tr><td>狩人</td><td>kariudo</td><td class="pos">noun</td><td>hunter</td></tr>
+        <tr><td>逃亡</td><td>tōbō</td><td class="pos">noun</td><td>flight, escape, fugitivity</td></tr>
+        <tr><td>抵抗</td><td>teikō</td><td class="pos">noun</td><td>resistance, opposition</td></tr>
+        <tr><td>死闘</td><td>shitō</td><td class="pos">noun</td><td>mortal combat, death struggle</td></tr>
+        <tr><td>暗殺</td><td>ansatsu</td><td class="pos">noun</td><td>assassination</td></tr>
+        <tr><td>集団</td><td>shūdan</td><td class="pos">noun</td><td>group, corps, collective</td></tr>
+        <tr><td>喉元</td><td>nodomoto</td><td class="pos">noun</td><td>throat, vital point of neck</td></tr>
+        <tr><td>迫る</td><td>semaru</td><td class="pos">verb</td><td>to press upon, to approach</td></tr>
+        <tr><td>護る</td><td>mamoru</td><td class="pos">verb</td><td>to protect, to guard</td></tr>
+        <tr><td>仕掛け</td><td>shikake</td><td class="pos">noun</td><td>device, trap, mechanism</td></tr>
+        <tr><td>見破る</td><td>mi-yaburu</td><td class="pos">verb</td><td>to see through, to penetrate</td></tr>
+        <tr><td>壮絶</td><td>sōzetsu</td><td class="pos">na-adj</td><td>magnificent, intense, heroic</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Literary & Cultural Terms</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>おくのほそ道</td><td>Oku no Hosomichi</td><td class="pos">noun</td><td>The Narrow Road to the Deep North</td></tr>
+        <tr><td>猿蓑</td><td>Sarumino</td><td class="pos">noun</td><td>Monkey's Raincoat (haikai anthology)</td></tr>
+        <tr><td>俳諧</td><td>haikai</td><td class="pos">noun</td><td>haikai poetry, linked verse</td></tr>
+        <tr><td>名所</td><td>meisho</td><td class="pos">noun</td><td>famous place, scenic spot</td></tr>
+        <tr><td>着想</td><td>chakusō</td><td class="pos">noun</td><td>conception, idea, literary plan</td></tr>
+        <tr><td>物語</td><td>monogatari</td><td class="pos">noun</td><td>story, tale, narrative</td></tr>
+        <tr><td>時代小説</td><td>jidai-shōsetsu</td><td class="pos">noun</td><td>historical novel</td></tr>
+        <tr><td>群像</td><td>gunzō</td><td class="pos">noun</td><td>group portrait, ensemble cast</td></tr>
+        <tr><td>百花繚乱</td><td>hyakka-ryōran</td><td class="pos">noun</td><td>myriad flowers blooming in profusion</td></tr>
+        <tr><td>人間群像</td><td>ningen gunzō</td><td class="pos">noun</td><td>human panorama, cast of characters</td></tr>
+        <tr><td>大胆不敵</td><td>daitan-futeki</td><td class="pos">na-adj</td><td>daring and fearless, audacious</td></tr>
+        <tr><td>傑作</td><td>kessaku</td><td class="pos">noun</td><td>masterpiece</td></tr>
+        <tr><td>書き下ろし</td><td>kaki-oroshi</td><td class="pos">noun</td><td>original newly written work</td></tr>
+        <tr><td>受賞作</td><td>jushō-saku</td><td class="pos">noun</td><td>prize-winning work</td></tr>
+        <tr><td>最高峰</td><td>saikōhō</td><td class="pos">noun</td><td>highest peak, summit, best</td></tr>
+        <tr><td>文芸評論家</td><td>bungei-hyōronka</td><td class="pos">noun</td><td>literary critic</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Morimura's prose in <em>Akudō</em> is the prose of a mature master — spare, rhythmic, and philosophically dense. Much of what makes it distinctive is embedded in Japanese historical vocabulary, Buddhist moral concepts, and the gendered voice of the warrior narrator.</p>
+
+  <div class="card">
+    <h3>1. <em>Akudō</em> (悪道) as Buddhist Cosmology</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>悪道</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The Evil Path" / "The Way of Evil"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The title <em>akudō</em> (悪道) carries a specifically Buddhist cosmological resonance that English cannot reproduce. In the <em>rokudō</em> (六道, "six paths of rebirth") cosmology shared across East Asian Buddhism, <em>akudō</em> (悪道) refers to the three lower destinies: hell (<em>jigoku</em> / 地獄), the realm of hungry ghosts (<em>gaki</em> / 餓鬼), and the realm of animals (<em>chikushō</em> / 畜生). To fall into the <em>akudō</em> is not merely to do evil but to be reborn into suffering as a karmic consequence of evil actions. The title thus carries a metaphysical warning: the evil path is not merely a bad choice in this life but a trajectory that extends across lifetimes. This Buddhist framework is not explicit in the novel — Morimura does not have his characters discuss karma or rebirth — but it operates as a subliminal moral architecture for Japanese readers who have absorbed Buddhist cosmology through education, funeral rites, and cultural osmosis. When a Japanese reader sees <em>akudō</em> as a title, they feel the weight of centuries of moral theology, the fear of the lower realms, the sense that evil is cosmically dangerous in a way that transcends individual psychology. The English "The Evil Path" captures the literal meaning but loses the cosmological resonance. An English reader sees a moral judgment; a Japanese reader feels a metaphysical threat. The difference is the difference between ethics and soteriology — between "this is wrong" and "this leads to damnation."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Shukumei</em> (宿命) as Lived Fate</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>宿命</strong>という檻</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the cage of fate" / "the cage called fate"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>shukumei</em> (宿命) is one of the most emotionally charged in Japanese, and it operates at the intersection of multiple philosophical traditions. <em>Shuku</em> (宿) means "lodging / inn / pre-existing / accumulated" — it is the <em>shuku</em> of <em>shukugō</em> (宿業, "karma from previous lives") and <em>shukuzai</em> (宿罪, "inherited sin"). <em>Mei</em> (命) means "life / fate / command / decree" — the same character that appears in <em>inochi</em> (命, "life") and <em>teimei</em> (命令, "order / command"). Combined, <em>shukumei</em> suggests a fate that has been lodged in one's existence from before birth — not merely circumstances but a pre-existing condition, a karma-made-manifest. The English "fate" is too neutral, too abstract. <em>Shukumei</em> is personal, heavy, inherited — it is the reason your life has gone the way it has, the explanation for suffering that has no visible cause, the weight you carry without knowing why. In the novel's epigraph — <em>shukumei to iu ori no naka de</em> (宿命という檻の中で, "within the cage called fate") — the metaphor of the cage transforms <em>shukumei</em> from an abstraction into a physical prison. But the cage is named, which means it can be known; and what can be known can be resisted. The English "cage of fate" captures the metaphor but loses the specifically karmic weight of <em>shukumei</em> — the sense that this cage was built not by society or politics but by the accumulated weight of past actions, one's own and others', stretching back through time. The Japanese reader feels the Buddhist and Confucian resonances simultaneously: the karma that binds and the family/social destiny that constrains. The English reader sees a philosophical metaphor.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ore</em> (おれ) as Class and Gender Voice</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>おれ</strong>は宿命というものと、命ある限り対決する。</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"I will confront this thing called fate as long as I have life."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The first-person pronoun <em>ore</em> (おれ) is one of the most socially coded words in Japanese, and its use in this sentence is a deliberate choice that places Eijirō in a specific social and gender position. <em>Ore</em> is the rough masculine pronoun used by working-class men, warriors, yakuza, and boys asserting their masculinity. It is not the polite <em>watashi</em> (私) of the educated middle class, not the formal <em>watakushi</em> (私) of professional contexts, not the feminine <em>atashi</em> (あたし). It carries connotations of physical labor, of violence, of a masculinity that does not apologize for itself. When Eijirō says <em>ore wa</em> (おれは), he is not merely identifying himself; he is claiming a tradition of masculine defiance that stretches from the samurai of the <em>Heike Monogatari</em> to the heroes of modern yakuza film. The English "I" cannot carry this social information. English has no pronoun that distinguishes class, gender performance, and warrior ethos in the way <em>ore</em> does. A translator could render <em>ore</em> through dialect — "I'm gonna confront fate" — but this introduces regional associations that may not fit. Or they could add description — "I, a low-ranking ninja, will confront fate" — but this destroys the sentence's compressed power. What is lost is the voice itself: the sound of a man who has never spoken politely, who has lived by his body and his craft, who addresses fate as an equal because he has never learned to bow. The Japanese reader hears this voice instantly; the English reader hears only the content, not the speaker.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Minagoroshi</em> (みなごろし / 鏖) as Total Annihilation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>秘密を知る者の<strong>鏖</strong>（みなごろし）</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the total slaughter of those who know the secret" / "massacre"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>minagoroshi</em> (みなごろし / 鏖) is one of the most brutal in Japanese, and its use in the novel's promotional copy signals the moral stakes with terrible precision. The kanji <em>鏖</em> (minagoroshi) is a rare character that combines <em>shika</em> (鹿, "deer") with <em>kin</em> (金, "metal / gold / weapon"), suggesting the slaughter of animals (or people treated as animals) with metal weapons. The reading <em>minagoroshi</em> breaks down into <em>mina</em> (皆, "all / everyone") + <em>goroshi</em> (殺し, "killing / slaughter"), meaning literally "all-killing" — the extermination of every single person in a group, leaving no survivors. This is not merely "massacre," which can describe the killing of many; <em>minagoroshi</em> describes the killing of <em>all</em>, the absolute elimination of a category of people. In the novel, Yoshiyasu orders the <em>minagoroshi</em> of everyone who knows the shadow shogun's secret — a command that transforms political caution into cosmic evil, because it includes not merely enemies but friends, not merely adults but children, not merely the guilty but anyone who happens to have heard something they should not have. The word thus carries a philosophical horror: it is the <em>akudō</em> in its administrative form, the transformation of human beings into a problem to be solved through total elimination. The English "massacre" or "total slaughter" captures the meaning but loses the specificity of <em>minagoroshi</em> as a term that includes the concept of completeness — the killing is not excessive but exhaustive, not passionate but systematic. The Japanese reader feels the chill of administrative evil in the very sound of the word; the English reader understands the horror but may miss the bureaucratic precision.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Sarumino</em> (猿蓑) as Literary Irony</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>暗殺集団<strong>猿蓑衆</strong>（さるみのしゅう）</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"the Sarumino-shū assassination corps" / "the Monkey's Raincoat assassins"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The name <em>Sarumino-shū</em> (猿蓑衆, "Monkey's Raincoat Corps") is one of Morimura's most bitter and brilliant ironies, and much of its force is lost in English. <em>Sarumino</em> (猿蓑, "Monkey's Raincoat") is the title of one of the three most important haikai anthologies of the Bashō school, published in 1691 — squarely in the Genroku era in which the novel is set. Edited by Bonchō and Kyorai, disciples of Bashō, the anthology contains some of the finest haiku of the period and represents the highest achievement of Genroku literary culture. To name an assassination squad after it is to suggest that the same society that produced Bashō's poetic refinement also produced political murder — that aesthetics and violence were not opposites but twins. The English "Monkey's Raincoat" sounds merely whimsical; in Japanese, <em>Sarumino</em> is a sacred name in literary history, a monument of cultural achievement. The shock of seeing it attached to killers is therefore much greater for a Japanese reader, who has likely studied the anthology in school, than for an English reader, who has probably never heard of it. Furthermore, the <em>-shū</em> (衆, "corps / group / multitude") suffix transforms a literary title into a military designation — the vocabulary of poetry becomes the vocabulary of death. What is lost in English is the entire cultural education that makes this name meaningful: the Japanese reader's knowledge of Bashō, of Genroku culture, of the <em>Sarumino</em>'s place in the canon. The English reader sees a strange name; the Japanese reader feels a desecration.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from Morimura's philosophical prose, his warrior narrator's voice, and the critical language used to praise the novel.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜とは（定義・本質）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...to wa</em>: topicalizing definition — "as for ~ / what it is to be ~ / the essence of ~ is"</p>
+      <div class="grammar-example">人間とは、宿命という檻の中で競り合う動物なのだ。</div>
+      <p class="grammar-example-en">"Human beings are animals that compete within the cage of fate." — The <em>to wa</em> construction signals that this is not casual description but categorical philosophical assertion.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜という〜（特定・命名）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...to iu...</em>: "the ~ called / the so-called ~" — creates a specific named entity from a general concept.</p>
+      <div class="grammar-example">宿命という檻 / 宿命というもの</div>
+      <p class="grammar-example-en">"the cage called fate" / "this thing called fate" — The <em>to iu</em> construction transforms abstract fate into a concrete, nameable opponent.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なのだ（説明・断定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...na no da</em>: explanatory copula — "it is that ~ / the fact is that ~" — adds weight and revelation to a statement.</p>
+      <div class="grammar-example">競り合う動物なのだ</div>
+      <p class="grammar-example-en">"it is that they are animals that compete" — The <em>na no da</em> form strips away illusion and presents the definition as a discovered truth.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ある限り（条件・限度）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...aru kagiri</em>: "as long as ~ / to the extent that ~ exists" — creates an absolute temporal boundary.</p>
+      <div class="grammar-example">命ある限り対決する</div>
+      <p class="grammar-example-en">"I will confront [it] as long as I have life" — The <em>kagiri</em> construction makes the commitment categorical, bounded only by death.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に迫る（接近・危機）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni semaru</em>: "to press upon / to approach / to close in on" — suggests inexorable movement toward a critical point.</p>
+      <div class="grammar-example">強大な敵の喉元に迫る</div>
+      <p class="grammar-example-en">"press upon the throat of the mighty enemy" — <em>Semaru</em> implies approach that cannot be stopped, movement toward a decisive moment.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜をベースにした（根拠・基盤）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...wo bēsu ni shita</em>: "based on / using ~ as a foundation" — the vocabulary of critical and creative construction.</p>
+      <div class="grammar-example">大胆不敵な着想をベースにした逃亡と抵抗のドラマ</div>
+      <p class="grammar-example-en">"a drama of flight and resistance based on a daring conception" — The loanword <em>bēsu</em> (ベース) gives the critical language a modern, professional quality.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を呼ぶ（喚起・生じさせる）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...wo yobu</em>: "to call forth / to evoke / to summon" — suggests that the drama generates emotions in the reader.</p>
+      <div class="grammar-example">権力への怒りと、人間性への共感を呼ぶ</div>
+      <p class="grammar-example-en">"calls forth anger at power and sympathy for humanity" — The verb <em>yobu</em> (呼ぶ) makes the text an active agent that summons the reader's moral response.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が、〜が（並列・対照）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ga, ...ga</em>: paired subjects — creates balanced moral equation between two emotions or forces.</p>
+      <div class="grammar-example">権力への怒りと、人間性への共感</div>
+      <p class="grammar-example-en">"anger at power and sympathy for humanity" — The parallel structure creates a moral balance: negative emotion toward oppression, positive emotion toward the oppressed.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Morimura's grammar in <em>Akudō</em> is the grammar of philosophical assertion — declarative, weighty, and morally charged. Pay attention to how <em>to wa</em> transforms description into definition, how <em>to iu</em> makes abstractions concrete, how <em>na no da</em> adds the force of revelation, and how <em>kagiri</em> turns conditional commitment into categorical imperative. The grammar is as unyielding as the inchworm at the throat of power.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">悪道 &middot; 森村 誠一 &middot; 講談社 2010 &middot; ISBN 978-4-06-216486-3 &middot; 544ページ</p>
+  <p style="margin-top: var(--space-xs);">第45回吉川英治文学賞受賞 &middot; 講談社創業100周年記念出版</p>
+  <p style="margin-top: var(--space-xs);">シリーズ全5巻：悪道(2010)・西国謀反(2011)・御三家の刺客(2013)・五右衛門の復讐(2015)・最後の密命(2017)</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教授のパン屋さん — 近江 泉美 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-amber: #8a6a3a;
+  --accent-amber-dim: #5a4020;
+  --accent-amber-glow: rgba(138, 106, 58, 0.12);
+  --accent-gold: #a08040;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-amber-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-amber);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-amber-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-amber-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-amber);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-amber-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-amber), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-amber);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-amber-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-amber); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-amber-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-amber-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-amber-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-amber);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-amber);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-amber);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-amber-dim), var(--accent-amber));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-amber);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-amber);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-amber-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>教授のパン屋さん</h1>
+  <p class="hero-subtitle">KYŌJU NO PANYA-SAN</p>
+  <p class="hero-meta">近江 泉美 &middot; ポプラ社 2025 &middot; ベーカリーエウレカの謎解きレシピ &middot; 252ページ</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#characters"><span class="toc-num">03</span> Characters & Stories</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 教授のパン屋さん</h2>
+  <p class="lead">The title <em>Kyōju no Panya-san</em> (教授のパン屋さん) is a deceptively simple noun phrase that creates an immediate cognitive dissonance: a "professor" (<em>kyōju</em> / 教授) and a "bakery" (<em>panya</em> / パン屋) do not belong in the same semantic field. In Japanese academic culture, a <em>kyōju</em> is the highest rank of university professor — a figure of institutional authority, research specialization, and often, social distance from manual labor and commerce. A <em>panya-san</em> (パン屋さん), by contrast, is a neighborhood bread shop — warm, fragrant, unpretentious, the opposite of the lecture hall. The genitive particle <em>no</em> (の) that connects them is doing extraordinary work: it claims that the professor possesses, operates, or somehow is the bakery. The title thus announces the book's central joke and its central method: the collision of high theory and daily nourishment, of academic abstraction and sensory pleasure, of the mind that thinks and the hands that knead. The honorific suffix <em>-san</em> (さん) attached to <em>panya</em> softens the commercial relationship into something personal and neighborly — this is not a corporation but a <em>san</em>, a person with a shop. The title's grammar is the grammar of Japanese domestic life: [professional title] + <em>no</em> + [shop type] + <em>-san</em>. But the combination is absurd — like saying "The Prime Minister's Laundromat" or "The Neurosurgeon's Ramen Stand." This absurdity is the engine of the book's charm.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">教授</span>
+        <span class="romaji">kyōju</span>
+        <span class="meaning">"professor / full professor" — The highest academic rank in the Japanese university system. The word <em>kyōju</em> (教授) combines <em>kyō</em> (教, "to teach / instruct") and <em>ju</em> (授, "to confer / bestow"), and it refers specifically to a university professor who has achieved the top of the academic hierarchy: above <em>jokyo</em> (助教, assistant professor), above <em>junkyōju</em> (准教授, associate professor), the <em>kyōju</em> is the senior scholar who directs research, advises doctoral students, and represents institutional authority. In Japanese society, the title carries significant social weight: a <em>kyōju</em> is addressed as <em>~kyōju</em> rather than <em>~san</em>, and the title functions almost as an honorific in itself. By placing <em>kyōju</em> at the beginning of the title, the book foregrounds institutional authority — only to immediately undercut it with what follows. The professor in question, Watari Hifumi, is not merely a professor but a professor of engineering (<em>kōgakubu kyōju</em> / 工学部教授), which adds another layer of incongruity: engineering is the most practical, hands-on of academic disciplines, and yet its professor has chosen the most hands-on of commercial activities — baking bread. The title thus creates a double paradox: the abstract thinker who works with dough, the senior academic who serves customers.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">genitive particle — The particle <em>no</em> (の) indicates possession, attribution, or association. In <em>kyōju no panya-san</em>, the <em>no</em> creates a genitive relationship that could be interpreted in multiple ways: the bakery belonging to the professor (possession), the bakery operated by the professor (agency), or the professor conceived as a bakery (metaphorical identity). This ambiguity is productive: the book explores all three possibilities. The <em>no</em> is the grammatical hinge that allows the absurd combination to feel like a coherent entity — not "a professor and a bakery" but "the professor's bakery," a single conceptual unit. In Japanese, the <em>no</em> construction is how family shops are named: <em>Tanaka no mise</em> (田中の店, "Tanaka's shop"), <em>Yamamoto no panya</em> (山本のパン屋, "Yamamoto's bakery"). By using this construction with <em>kyōju</em>, the title domesticates the professor — he becomes someone with a shop, a proprietor, a member of the neighborhood economy. The <em>no</em> thus performs a small social revolution: it turns an institutional figure into a shopkeeper, and it does so with the most ordinary of grammatical particles.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">パン屋</span>
+        <span class="romaji">panya</span>
+        <span class="meaning">"bakery / bread shop" — A loanword compound: <em>pan</em> (パン, from Portuguese <em>pão</em>, "bread") + <em>ya</em> (屋, "shop / store / vendor"). The word <em>panya</em> (パン屋) is one of the oldest loanword compounds in Japanese — bread arrived in Japan via Portuguese missionaries in the 16th century, and the word <em>pan</em> has been part of the language for over 400 years. A <em>ya</em> (屋) is a traditional Japanese commercial suffix indicating a shop or business: <em>sakaya</em> (酒屋, liquor shop), <em>hon'ya</em> (本屋, bookstore), <em>kissaten</em> (喫茶店, coffee shop). The combination <em>panya</em> thus carries a nostalgic, neighborhood quality — it is not a modern <em>beikari</em> (ベーカリー, "bakery," from English) but a <em>panya</em>, a word that connects to centuries of Japanese commercial life. The choice of <em>panya</em> over <em>beikari</em> is significant: <em>beikari</em> suggests European-style artisan bread, fashionable and somewhat upscale; <em>panya</em> suggests the local bread shop where children stop on the way home from school. The professor's shop is called <em>Bakery Eureka</em> (ベーカリー エウレカ), using the English loanword — but the title uses <em>panya</em>, grounding the story in Japanese commercial tradition even as the shop's name invokes European science (Eureka = Archimedes' cry of discovery). The tension between <em>panya</em> and <em>Bakery Eureka</em> mirrors the tension between the professor's Japanese institutional identity and his cosmopolitan intellectual ambitions.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">さん</span>
+        <span class="romaji">-san</span>
+        <span class="meaning">honorific suffix — The suffix <em>-san</em> (さん) is the default honorific in Japanese, used for people and, by extension, for shops and businesses to create a sense of personal relationship. When attached to a shop type, <em>-san</em> transforms a commercial establishment into a familiar presence: <em>panya-san</em> (パン屋さん) is not merely "a bakery" but "the bakery (we know and patronize)." The <em>-san</em> creates intimacy and respect simultaneously — it acknowledges the shop as an entity with a kind of social personhood. In the title, <em>-san</em> softens the absurdity of <em>kyōju no panya</em> by making it sound like a neighborhood fixture: "The Professor's Bakery" sounds like an establishment with history, regular customers, and a place in the community. Without <em>-san</em>, <em>Kyōju no Panya</em> would sound like a conceptual art piece; with <em>-san</em>, it sounds like a place you could walk into and buy a croissant. The suffix thus performs the book's central magic: it makes the impossible combination feel cozy, inviting, and real. What is lost in English is the specifically Japanese social coding of <em>-san</em> applied to a shop — English can say "The Professor's Bakery" but cannot reproduce the neighborly warmth of <em>panya-san</em>, the sense that this shop is not merely a business but a member of the community, someone you greet, someone who remembers your order.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Subtitle context:</strong> The book's full title includes the subtitle <em>Beikari Eureka no Nazotoki Reshipi</em> (ベーカリーエウレカの謎解きレシピ, "Bakery Eureka's Mystery-Solving Recipes"). <em>Eureka</em> (エウレカ) is the famous exclamation attributed to Archimedes — "I have found it!" — and its use as a bakery name encapsulates the book's method: every loaf is a discovery, every pastry a solution. The subtitle's grammar — [shop name] + <em>no</em> + [mystery-solving] + [recipes] — frames the stories as recipes in both the culinary and the deductive sense: instructions for making bread and for solving problems. The English "Eureka" carries scientific connotations; in Japanese <em>ekureka</em> (エウレカ) has become a general exclamation of discovery, familiar from quiz shows and product names. The bakery's name thus sounds simultaneously intellectual and approachable — exactly like its proprietor.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>近江 泉美 &mdash; Oumi Izumi</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">近</div>
+    <div class="author-name-block">
+      <h3>近江 泉美</h3>
+      <p class="author-name-romaji">Oumi Izumi &middot; Tokyo &middot; Debut 2012</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Oumi Izumi is a Tokyo-born novelist who has built a career on an unusual combination: the puzzle-plot precision of mystery fiction and the emotional warmth of young-adult and light-novel storytelling. She made her debut in 2012 with <em>Koakuma-chan to MP0 no Shōnen</em> (小悪魔ちゃんとMP0の少年, "The Little Devil and the MP0 Boy"), a school battle-action novel published by Dengeki Bunko — the light-novel imprint that has launched some of the most successful series in contemporary Japanese popular fiction. This debut established her ability to write fast-paced, concept-driven narratives for a young readership, but it was her next major series that would define her reputation: <em>Order wa Tantei ni</em> (オーダーは探偵に, "The Order Is for the Detective"), which began serialization in Media Works Bunko and went on to become one of the imprint's most successful series, with cumulative sales exceeding 500,000 copies.</p>
+    <p style="margin-bottom: var(--space-md);">The <em>Order wa Tantei ni</em> series — which pairs a "sadistic prince-type" boy (<em>do-S ōji-kei danshi</em> / ドS王子系男子) with a high-school girl detective — established Oumi's signature approach to mystery: clever puzzles embedded in emotionally resonant character dynamics, with a light, witty prose style that makes complex deductions feel like conversation. The series ran for multiple volumes and built a devoted readership before concluding, freeing Oumi to explore new territory. In 2022, she published <em>Shinya 0-ji no Shisho Minarai</em> (深夜0時の司書見習い, "The Midnight Apprentice Librarian"), a "biblio-fantasy" (<em>biburio fantajī</em> / ビブリオファンタジー) about a mysterious library mansion, which sold well enough to go into a second printing within a month of release and was later adapted into manga form. The book confirmed her ability to move beyond the mystery genre while retaining the puzzle-plot structures that define her work.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Kyōju no Panya-san</em> (2025) represents a new direction: the "cozy mystery" (<em>kōjii misuterii</em> / コージーミステリー) or, in Japanese marketing terms, the "warm everyday mystery" (<em>hokkori nichijō-kei misuterii</em> / ほっこり日常系ミステリー). Unlike her previous work, which targeted young-adult and light-novel readers, this series aims at a broader audience — from upper elementary school readers (<em>shōgakusei</em> / 小学生) to adults and seniors — and uses a real-world setting (Sapporo, Hokkaido) rather than the stylized school environments of her earlier fiction. The choice of Sapporo is significant: Oumi is a Tokyo writer, but she has set this series in one of Japan's most distinctive cities — the northern metropolis known for its snow, its food culture, its grid street plan, and its combination of urban sophistication and frontier openness. The result is a mystery series that feels rooted in place while maintaining the intellectual playfulness that defines Oumi's work.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Oumi as a writer is her ability to make thinking feel like fun. Her professors and detectives do not merely solve problems; they take visible pleasure in the act of deduction, and they share that pleasure with the reader. The "sadistic prince" of her early series and the "handsome old man" (<em>ike-oji</em> / イケオジ) professor of her current series are both characters who use their intelligence as a form of charm — they dazzle others with their minds, and the reader gets to enjoy the dazzle from a safe distance. This is a distinctly feminine approach to the mystery genre: where classic detective fiction often emphasizes the detective's isolation and superiority, Oumi's fiction emphasizes connection — the detective needs a partner, a foil, an audience, and the solution is always shared. In <em>Kyōju no Panya-san</em>, that sharing happens over bread — the professor's deductions are exchanged for the young policeman's bread advice, creating an economy of knowledge and nourishment that structures every story.</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">2012</span>
+        <span>Debut with <em>Koakuma-chan to MP0 no Shōnen</em> (小悪魔ちゃんとMP0の少年), a school battle-action novel published by Dengeki Bunko (電撃文庫). Establishes her ability to write concept-driven fiction for young readers.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2012–2021</span>
+        <span>Publishes the <em>Order wa Tantei ni</em> (オーダーは探偵に) series through Media Works Bunko. The series — featuring a sadistic prince-type boy and a high-school girl detective who solve mysteries together — becomes a major hit, with cumulative sales exceeding 500,000 copies and establishing Oumi as a leading mystery writer in the light-novel field.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2021</span>
+        <span>Publishes the final volumes of the <em>Order wa Tantei ni</em> series, bringing the long-running franchise to a conclusion and freeing her to pursue new projects.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2022</span>
+        <span>Publishes <em>Shinya 0-ji no Shisho Minarai</em> (深夜0時の司書見習い, "The Midnight Apprentice Librarian"), a biblio-fantasy about a mysterious library mansion. The book goes into a second printing within a month of release, confirming her popularity beyond the mystery genre. Later adapted into manga.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2025</span>
+        <span>Publishes <em>Kyōju no Panya-san: Beikari Eureka no Nazotoki Reshipi</em> (教授のパン屋さん ベーカリーエウレカの謎解きレシピ) with Poplar-sha (ポプラ社). The first volume of a new cozy mystery series set in Sapporo, featuring an engineering professor who runs a mobile bakery and solves everyday mysteries. Released May 8. ISBN 978-4-591-18606-0. 252 pages.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2026</span>
+        <span>Publishes the second volume, <em>Kyōju no Panya-san: Futari no Himitsu to Yakitate Suiri</em> (教授のパン屋さん ふたりの秘密と焼きたて推理, "The Professor's Bakery: The Pair's Secrets and Fresh-Baked Deductions"). The series continues to gain readers and goes into multiple printings. ISBN 978-4-591-18990-0. 279 pages.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Notable Works</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>オーダーは探偵に</h4>
+        <p class="char-role">Order wa Tantei ni / The Order Is for the Detective</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Oumi's breakthrough series — a light-novel mystery franchise about a sadistic prince-type boy and a high-school girl detective. Cumulative sales exceed 500,000 copies. Established her reputation for clever puzzles embedded in emotionally engaging character dynamics.</p>
+      </div>
+      <div class="char-card">
+        <h4>雨ときどき、編集者</h4>
+        <p class="char-role">Ame Tokidoki, Henshūsha / Rain, Sometimes, Editor</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A novel about the publishing world, demonstrating Oumi's range beyond mystery and fantasy. Shows her interest in the institutions and crafts that surround storytelling.</p>
+      </div>
+      <div class="char-card">
+        <h4>深夜0時の司書見習い</h4>
+        <p class="char-role">Shinya 0-ji no Shisho Minarai / The Midnight Apprentice Librarian &middot; 2022</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A biblio-fantasy set in a mysterious library mansion. Went into a second printing within a month. Later adapted into manga, confirming Oumi's ability to create visually compelling fantasy worlds.</p>
+      </div>
+      <div class="char-card">
+        <h4>教授のパン屋さん</h4>
+        <p class="char-role">Kyōju no Panya-san / The Professor's Bakery &middot; 2025–</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A cozy mystery series set in Sapporo, featuring an engineering professor who runs a mobile bakery. Combines Oumi's puzzle-plot skills with a warmer, more adult sensibility and a deep appreciation for bread, Hokkaido culture, and the comedy of cross-generational friendship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Characters -->
+<section id="characters">
+  <div class="section-label">Cast & Contents</div>
+  <h2>Characters & The Four Stories</h2>
+
+  <div class="card">
+    <h3>The Odd Couple of Sapporo</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>亘理一二三（わたり・ひふみ）</h4>
+        <p class="char-role">Watari Hifumi / The Professor</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A full professor in the Faculty of Engineering at a national university — a "handsome old man" (<em>ike-oji</em> / イケオジ) who dresses like a British gentleman and bakes bread as a side business. Watari is the book's intellectual center: he sees the world through engineering principles, approaching human problems with the same analytical rigor he brings to structural mechanics or thermodynamics. His name, <em>Hifumi</em> (一二三), literally means "one-two-three" — a sequence that suggests both his methodical nature and his position as the first in a potential series. The surname <em>Watari</em> (亘理) contains the kanji for "spanning / extending across" (亘) and "reason / principle" (理), suggesting someone who bridges theory and practice. He is a <em>kawarimono</em> (変わり者, "eccentric / oddball") in the best Japanese sense: someone whose quirks are inseparable from his genius. His bakery, <em>Bakery Eureka</em>, appears and disappears around Sapporo like a culinary phantom — mobile, unpredictable, and always where it is needed.</p>
+      </div>
+      <div class="char-card">
+        <h4>福丸あさひ（ふくまる・あさひ）</h4>
+        <p class="char-role">Fukumaru Asahi / The Young Policeman</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A young police officer assigned to a local <em>kōban</em> (交番, neighborhood police box) in Sapporo. His hobby is <em>pan tabe-aruki</em> (パン食べ歩き, "bread-eating walks") — visiting bakeries, sampling their offerings, and maintaining a mental map of the city's bread culture. His late grandmother ran a bakery, and his love of bread is both a connection to her memory and a form of personal identity. <em>Asahi</em> (あさひ, "morning sun") suggests optimism and warmth; <em>Fukumaru</em> (福丸, "fortune circle") contains the kanji for good luck. He is the reader's surrogate — the ordinary person who encounters the extraordinary professor and becomes his Watson, his apprentice, and eventually his friend. Where Watari thinks in abstractions, Asahi thinks in people: he is <em>ninjō ni atsui</em> (人情に厚い, "warm-hearted / full of human feeling"), the emotional complement to the professor's intellectual brilliance. His police work gives him access to the small mysteries of everyday life — neighborhood disputes, missing items, strange occurrences — that become the cases the professor solves.</p>
+      </div>
+      <div class="char-card">
+        <h4>ベーカリー エウレカ</h4>
+        <p class="char-role">Bakery Eureka / The Third Character</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The mobile bakery is almost a character in itself — a phantom bread shop that appears in different locations around Sapporo, seemingly guided by the professor's intuition about where good bread is needed. Its name, <em>Eureka</em> (エウレカ), is Archimedes' cry of discovery, and every loaf that emerges from its oven is a small revelation. The bakery's mobility is crucial to the series' structure: because it moves, it can enter different neighborhoods, encounter different people, and solve different kinds of problems. The shop is described as having a "British gentleman" aesthetic — like its proprietor — which creates a visual signature that makes it recognizable wherever it appears. The bakery's menu changes with each story, and each bread type becomes a clue, a metaphor, and a solution.</p>
+      </div>
+      <div class="char-card">
+        <h4>札幌（さっぽろ）</h4>
+        <p class="char-role">Sapporo / The Setting</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The city of Sapporo is more than backdrop; it is the series' fourth protagonist. Famous locations appear throughout: the Sapporo Clock Tower (<em>Sapporo-shi Tokeidai</em> / 札幌市時計台), the Hokkaido Shrine (<em>Hokkaidō Jingū</em> / 北海道神宮), the underground shopping passages (<em>chikagai</em> / 地下街), Odori Park (<em>Ōdōri Kōen</em> / 大通り公園). Sapporo's distinctive grid street plan — rare in Japanese cities, which tend to follow organic historical patterns — makes it a city of logic and order, a fitting environment for an engineering professor. Its cold winters and warm bread culture create the atmospheric contrast that defines the series: outside, snow; inside, the smell of fresh-baked croissants. Hokkaido's food culture — including its distinctive <em>chikuwa-pan</em> (ちくわパン, bread shaped like fish cake) — provides local color and plot elements.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The Four Stories (Volume 1)</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>第1話 至福のクリームパン</h4>
+        <p class="char-role">Episode 1: Blissful Cream Bread</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The story that introduces the series' method. Asahi encounters the mobile bakery and its mysterious professor, and their first case involves a cream bread (<em>kurīmu pan</em> / クリームパン) that is more than it appears. The "blissful" (<em>shifuku</em> / 至福) of the title suggests both gastronomic pleasure and the philosophical satisfaction of a puzzle solved.</p>
+      </div>
+      <div class="char-card">
+        <h4>第2話 カカオ香るビターな濃厚チョココロネ</h4>
+        <p class="char-role">Episode 2: Bitter, Rich Chocolate Corone, Fragrant with Cacao</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A <em>choko korone</em> (チョココロネ, chocolate cornet / horn-shaped bread) becomes the key to a mystery. The elaborate title — with its layered adjectives (<em>kakao kaoru</em> / カカオ香る, "fragrant with cacao"; <em>bitā na nōkō</em> / ビターな濃厚, "bitter and rich") — mimics the language of gourmet food writing and signals the story's attention to sensory detail.</p>
+      </div>
+      <div class="char-card">
+        <h4>第3話 熱視線、北海道の味ちくわパン</h4>
+        <p class="char-role">Episode 3: Intense Attention — The Taste of Hokkaido: Chikuwa Bread</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Chikuwa-pan</em> (ちくわパン) — bread shaped to resemble <em>chikuwa</em> (竹輪, a tubular fish-paste cake) — is a Hokkaido specialty that baffles outsiders and delights locals. The story uses this distinctly northern Japanese bread as both a cultural marker and a plot device. The "intense attention" (<em>netsu shisen</em> / 熱視線) of the title suggests both media attention and the focused gaze of deduction.</p>
+      </div>
+      <div class="char-card">
+        <h4>第4話 どっしりにっこりあんパン</h4>
+        <p class="char-role">Episode 4: Sturdy, Smiling Anpan</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);"><em>Anpan</em> (あんパン / 餡パン) — bread filled with sweet red bean paste — is the most traditional of Japanese breads, invented in the Meiji era and beloved across generations. The title's alliterative adjectives (<em>dosshiri</em> / どっしり, "sturdy / solid / substantial"; <em>nikkori</em> / にっこり, "smiling / beaming") personify the bread, suggesting both physical heft and emotional warmth. The story uses this most Japanese of breads to explore themes of tradition, continuity, and the comfort of familiar flavors.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Volume 2: Four More Stories</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>第1話 小麦と発酵バターのクロワッサン</h4>
+        <p class="char-role">Episode 1: Wheat and Fermented-Butter Croissant</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A croissant story that brings French technique to Hokkaido ingredients. The mention of "fermented butter" (<em>hakkō batā</em> / 発酵バター) signals the story's attention to artisanal bread-making and the chemistry of flavor.</p>
+      </div>
+      <div class="char-card">
+        <h4>第2話 愛嬌たっぷり、ロバと豆パン</h4>
+        <p class="char-role">Episode 2: Full of Charm — Donkey and Bean Bread</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A bean bread (<em>mame pan</em> / 豆パン) story with a donkey somehow involved — the kind of whimsical premise that Oumi handles with deceptive lightness. The "charm" (<em>aikyō</em> / 愛嬌) of the title suggests that the story's heart will be as important as its puzzle.</p>
+      </div>
+      <div class="char-card">
+        <h4>3話 噂のサンドウィッチ</h4>
+        <p class="char-role">Episode 3: The Rumored Sandwich</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A sandwich becomes the talk of the town — <em>uwasa</em> (噂, "rumor / gossip") is one of the most powerful forces in Japanese social life, and this story explores how a simple food item can become a vehicle for community narrative.</p>
+      </div>
+      <div class="char-card">
+        <h4>第4話 愛をひも解くドーナッツ</h4>
+        <p class="char-role">Episode 4: The Doughnut That Untangles Love</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">The most emotionally explicit title in the series: a doughnut (<em>dōnatsu</em> / ドーナッツ) becomes the tool for unraveling (<em>himo-toku</em> / ひも解く, literally "to untie strings") a romantic entanglement. The metaphor of "untying" suggests both the puzzle structure and the emotional release of a problem solved.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis</h2>
+
+  <div class="card">
+    <h3>The Encounter at Bakery Eureka</h3>
+    <p>Fukumaru Asahi is a young police officer in Sapporo whose passion is bread. On his days off, he walks the city eating bread — not as a critic but as a lover, someone who tastes with memory and emotion as much as with his palate. His late grandmother was a baker, and every loaf he eats is a conversation with her absence. One day, chasing rumors of a phantom mobile bakery, he discovers <em>Bakery Eureka</em> — a stylish food truck presided over by a man who looks like a British gentleman and talks like an engineering textbook.</p>
+    <p style="margin-top: var(--space-sm);">The man is Watari Hifumi, a full professor of engineering at a national university, who has taken up bread-making as a side business because he loves it with the same intensity he brings to his research. To Watari, bread is applied engineering: the gluten network is a structural problem, the fermentation is a chemical process, the crust formation is a heat-transfer equation. He does not merely bake; he understands. And he has discovered that the same analytical skills that make him a brilliant engineer also make him a brilliant solver of human problems — because human problems, he believes, are simply systems that have not yet been properly modeled.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Method: Bread for Deduction</h3>
+    <p>The series' central transaction is established in their first meeting: Asahi brings the professor a problem — a neighborhood mystery, a personal dilemma, a small injustice — and in exchange, the professor offers not just a solution but bread advice. The professor's deductions are powered by engineering concepts: structural analysis reveals why a relationship is unstable; thermodynamics explains why a business is failing; topology (as in the second volume's doughnut story) maps the connections between people who seem unrelated. This is not merely gimmickry — Oumi has thought deeply about how engineering thinking can illuminate human experience, and the result is a mystery series that genuinely educates while it entertains.</p>
+    <p style="margin-top: var(--space-sm);">But the professor does not solve problems in the manner of a classic detective who exposes guilt and delivers judgment. Watari's approach is gentler: he identifies the structural cause of a problem, explains it to those involved, and allows them to reach their own resolution. As one reviewer noted, he "clarifies the essence of the problem but does not step into the resolution" — a restraint that reflects both his engineering mindset (engineers diagnose; they do not dictate) and the series' cozy ethos (these are not crimes but misunderstandings, not villains but people who have lost their way). The professor's role is to make visible the patterns that others cannot see, and then to trust them to act on that knowledge.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Partnership</h3>
+    <p>Asahi and Watari are an odd couple in the classic tradition: the young, warm-hearted policeman and the older, cerebral professor; the man of action and the man of thought; the bread-eater and the bread-maker. Their relationship develops across the stories from transaction to friendship — what begins as an exchange of bread advice for mystery-solving gradually becomes a genuine connection between two people who recognize in each other complementary strengths.</p>
+    <p style="margin-top: var(--space-sm);">Asahi provides what the professor lacks: access to the human world, the patience to listen to long stories, the instinct to know when someone is hurting. The professor provides what Asahi lacks: analytical distance, the ability to see patterns across seemingly unrelated facts, the intellectual courage to name problems that others prefer to ignore. Together, they form a complete detective — one who can both feel and think, both comfort and clarify. The series' warmth comes from this partnership: it is not merely a device for delivering puzzles but a relationship that deepens with each case, creating the emotional continuity that keeps readers returning.</p>
+  </div>
+
+  <div class="card">
+    <h3>The World of the Stories</h3>
+    <p>Each story in the first volume uses a specific bread type as its organizing metaphor. The cream bread of Episode 1 is a study in hidden richness — ordinary exterior, extraordinary interior. The chocolate corone of Episode 2 explores bitterness and sweetness as emotional states. The <em>chikuwa-pan</em> of Episode 3 examines local identity and the comedy of cultural specificity. The <em>anpan</em> of Episode 4 returns to tradition and the comforts of the familiar. In every case, the bread is not merely a clue but a key: its ingredients suggest relationships, its shape suggests structure, its flavor suggests memory.</p>
+    <p style="margin-top: var(--space-sm);">The second volume expands the method. The croissant story brings French technique to Japanese ingredients, exploring how foreign ideas are adapted to local conditions. The bean bread with a donkey introduces whimsy and the unexpected. The rumored sandwich examines how communities create narratives around objects. The love-untying doughnut uses topology — the mathematics of connectedness — as a metaphor for emotional entanglement. Throughout, Oumi's prose creates what Japanese reviewers call <em>meshi-tero</em> (飯テロ, "food terrorism"): descriptions so vivid they make readers hungry, turning the mystery novel into a kind of culinary experience.</p>
+  </div>
+
+  <div class="card">
+    <h3>Themes</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>Thinking as a form of care:</strong> The series' deepest theme is that analytical thinking is not cold but caring — that understanding a problem deeply is a prerequisite to solving it kindly. The professor's engineering approach is not detached; it is precisely attentive, a way of taking someone's situation seriously enough to model it accurately.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Food as memory and identity:</strong> Every bread in the series carries personal and cultural memory. Asahi's bread-eating is a way of staying connected to his grandmother; the professor's bread-making is a way of making abstract knowledge tangible; the customers' bread choices reveal their histories and hopes.</li>
+      <li style="margin-bottom: 0.5em;"><strong>The comedy of expertise:</strong> The series finds humor in the gap between the professor's intellectual confidence and the humble reality of bread-making, and between Asahi's professional authority as a policeman and his amateur enthusiasm as a bread fan. Both characters are slightly ridiculous — and entirely lovable.</li>
+      <li style="margin-bottom: 0.5em;"><strong>Place as character:</strong> Sapporo is not merely a setting but a participant in every story. The city's cold winters make warm bread meaningful; its grid streets make navigation logical; its food culture provides the specific breads that structure each case.</li>
+      <li><strong>The gentle mystery:</strong> Unlike conventional detective fiction, which often depends on violence and guilt, this series finds its mysteries in everyday confusions — misunderstandings, small deceptions, temporary losses of direction. The stakes are human scale, and the resolutions are healing rather than punishing.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the series' tonal range — the promotional language that frames the concept, the reviewer's appreciation of its method, and the specific vocabulary that makes its world distinct.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Premise</div>
+    <div class="passage-jp">
+      パンを愛しすぎるあまり副業で移動式ベーカリーを営む大学教授が、パンの食べ歩きが趣味の青年とタッグを組んで、工学をヒントに人々が抱える悩みやナゾを解き明かしていくストーリーです。
+    </div>
+    <div class="passage-romaji">
+      "Pan wo aishisugiru amari fukugyō de idōshiki beikari wo itonamu daigaku kyōju ga, pan no tabe-aruki ga shumi no seinen to taggu wo kunde, kōgaku wo hinto ni hitobito ga kakaeru nayami ya nazo wo toki-akashite iku sutōrī desu."
+    </div>
+    <div class="passage-en">
+      "The story of a university professor who loves bread so much that he runs a mobile bakery as a side business, teaming up with a young man whose hobby is eating his way through bakeries, to unravel the worries and mysteries people carry, using engineering as a hint."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This publisher's description is a masterclass in compressed narrative grammar. The sentence is a single extended noun phrase describing "the story" (<em>sutōrī desu</em> / ストーリーです), with the main clause embedded in a cascade of participial phrases. Let's trace the grammar: <em>Pan wo aishisugiru amari</em> (パンを愛しすぎるあまり, "loving bread too much / to the extent of loving bread excessively") — the <em>amari</em> (あまり) construction indicates excess, the state of having gone beyond normal limits. It is followed by <em>fukugyō de idōshiki beikari wo itonamu daigaku kyōju ga</em> (副業で移動式ベーカリーを営む大学教授が, "a university professor who runs a mobile bakery as a side business"). The verb <em>itonamu</em> (営む, "to run / to conduct / to carry on") is a formal, slightly literary word for operating a business — it suggests dedication and propriety, elevating the professor's bread-making above mere commerce. <em>Idōshiki</em> (移動式, "mobile / movable") specifies the bakery's phantom-like quality; <em>beikari</em> (ベーカリー) is the English loanword, more upscale than <em>panya</em>. The subject marker <em>ga</em> (が) introduces the professor as the grammatical subject of the main clause, but the verb is delayed until the end of the sentence — a classic Japanese suspended grammar that creates anticipation. Next: <em>pan no tabe-aruki ga shumi no seinen to taggu wo kunde</em> (パンの食べ歩きが趣味の青年とタッグを組んで, "teaming up with a young man whose hobby is bread-eating walks"). <em>Tabe-aruki</em> (食べ歩き, "eating while walking / sampling food at various places") is a distinctly Japanese cultural practice — the leisurely exploration of a city's food offerings on foot. The <em>to</em> (と) marks the partnership, and <em>taggu wo kunde</em> (タッグを組んで, "forming a tag-team / teaming up") uses the English loanword <em>taggu</em> (タッグ), giving the partnership a casual, almost sporty feel. Finally: <em>kōgaku wo hinto ni hitobito ga kakaeru nayami ya nazo wo toki-akashite iku</em> (工学をヒントに人々が抱える悩みやナゾを解き明かしていく, "using engineering as a hint, unraveling the worries and mysteries that people carry"). The phrase <em>kōgaku wo hinto ni</em> (工学をヒントに, "with engineering as a hint") uses the <em>wo</em> + <em>ni</em> construction to transform engineering from a discipline into a tool — not "using engineering" but "with engineering as hint," a lighter, more playful formulation. <em>Kakaeru</em> (抱える, "to hold / to carry / to be burdened with") describes the worries and mysteries as things people bear like packages; <em>nayami ya nazo</em> (悩みやナゾ, "worries and mysteries") pairs the everyday (<em>nayami</em>, the anxieties of ordinary life) with the dramatic (<em>nazo</em>, the puzzles of mystery fiction). The compound verb <em>toki-akashite iku</em> (解き明かしていく, "unraveling and clarifying / going on to make clear") combines <em>toki</em> (解き, "untying / solving") with <em>akashite</em> (明かして, "making clear / revealing"), suggesting not merely solution but illumination — the professor does not just solve problems; he brings them into the light. The progressive <em>te iku</em> (ていく, "going on to / continuing to") form implies ongoing action, a series that will continue. What is lost in English is the sentence's breathless, single-sentence compression — the way Japanese grammar allows an entire premise to unfold as one continuous syntactic gesture, like pulling a thread that keeps revealing more thread.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Method</div>
+    <div class="passage-jp">
+      理論的な視点で冷静に物事を捉える教授の推理と、人情に厚青年の行動力によって、人々の心がほぐれていく展開は爽快です。
+    </div>
+    <div class="passage-romaji">
+      "Rironteki na shiten de reisei ni monogoto wo toraeru kyōju no suiri to, ninjō ni atsui seinen no kōdōryoku ni yotte, hitobito no kokoro ga hokurote iku tenkai wa sōkai desu."
+    </div>
+    <div class="passage-en">
+      "The development in which people's hearts are loosened by the professor's deductions — which calmly grasp matters from a theoretical perspective — and by the young man's action-power, rooted in his warmth of human feeling, is exhilarating."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence from the publisher's promotional copy captures the series' ethical structure with elegant symmetry. The grammar is a balanced compound: [Professor's deduction] + [young man's action-power] + [result: hearts loosening]. Let's examine each element. <em>Rironteki na shiten de reisei ni monogoto wo toraeru kyōju no suiri</em> (理論的な視点で冷静に物事を捉える教授の推理, "the professor's deductions, which calmly grasp matters from a theoretical perspective"): <em>Rironteki na shiten</em> (理論的な視点, "theoretical perspective / viewpoint") establishes the intellectual frame; <em>de</em> (で, instrumental) makes it the tool of perception; <em>reisei ni</em> (冷静に, "calmly / dispassionately") describes the manner; <em>monogoto wo toraeru</em> (物事を捉える, "to grasp / capture things") uses <em>toraeru</em> (捉える), a verb that suggests seizing something elusive — the professor's analytical mind as a net that captures the truth. <em>Kyōju no suiri</em> (教授の推理, "the professor's deduction") is the grammatical head of the first noun phrase. The second element: <em>ninjō ni atsui seinen no kōdōryoku</em> (人情に厚い青年の行動力, "the young man's action-power, rooted in his warmth of human feeling"). <em>Ninjō ni atsui</em> (人情に厚い, "thick with human feeling / warm-hearted") is a classic Japanese compliment — <em>ninjō</em> (人情, "human feeling / human compassion / the bonds between people") is one of the most important values in Japanese ethics, and to be <em>atsui</em> (厚い, "thick / deep / warm") in it is to be genuinely good. <em>Kōdōryoku</em> (行動力, "action-power / power to act / initiative") is a compound that makes action into a form of energy — the young man does not merely act; he possesses the power to act, a kind of kinetic virtue. The conjunction <em>ni yotte</em> (によって, "by means of / through") connects the two sources of change. The result: <em>hitobito no kokoro ga hokurote iku</em> (人々の心がほぐれていく, "people's hearts are loosening / unclenching / thawing"). <em>Hokurote iku</em> (ほぐれていく) is the progressive form of <em>hogureru</em> (ほぐれる, "to loosen / to relax / to thaw"), and it is the perfect verb for a cozy mystery: hearts do not break or transform; they loosen, like dough relaxing after kneading, like a clenched hand opening. The adjective <em>sōkai</em> (爽快, "exhilarating / refreshing / invigorating") describes the reader's experience of this thawing — it feels like a cool breeze on a warm day, like the first bite of a perfect croissant. What is lost in English is the physicality of <em>hogureru</em> — the word belongs to the same semantic family as bread-making (kneading, relaxing, rising), and its use here subtly connects emotional healing to the culinary process that structures the series. The English "hearts are loosened" captures the meaning but loses the dough-like quality of the metaphor.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Reviewer's Eye</div>
+    <div class="passage-jp">
+      ページを開くたびに、こんがり焼けた生地と芳醇なバターの香りがほわっと漂ってくるようだ。飯テロ級の絶品パンと温かな謎解きに心満たされる、イケオジ工学部教授✕新米警官のコージーミステリー。
+    </div>
+    <div class="passage-romaji">
+      "Pēji wo hiraku tabi ni, kongari yaketa kiji to hōjun na batā no kaori ga howatto tadayotte kuru yō da. Meshi-tero-kyū no zeppin pan to atataka na nazotoki ni kokoro mitasareru, ike-oji kōgaku-bu kyōju × shinmai keikan no kōjii misuterii."
+    </div>
+    <div class="passage-en">
+      "Every time you open a page, it is as though the aroma of perfectly browned dough and fragrant butter comes drifting softly toward you. A cozy mystery featuring a handsome-old-man engineering professor and a rookie policeman, in which the heart is filled by meal-terror-level supreme bread and warm puzzle-solving."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This review excerpt from <em>Da Vinci Web</em> demonstrates the series' reception in Japanese literary culture — and the specifically Japanese vocabulary that frames it. The first sentence is a masterpiece of sensory prose: <em>Pēji wo hiraku tabi ni</em> (ページを開くたびに, "every time you open a page") establishes the reading experience as a repeated, almost ritual act. <em>Kongari yaketa kiji</em> (こんがり焼けた生地, "perfectly browned dough") uses the mimetic adverb <em>kongari</em> (こんがり), which describes the golden-brown perfection of baked goods — a word that carries the sound of crispness, the visual of caramelization, the satisfaction of proper heat application. <em>Hōjun na batā no kaori</em> (芳醇なバターの香り, "fragrant / mellow butter aroma") uses <em>hōjun</em> (芳醇), a sophisticated adjective meaning "richly fragrant / mellow / full-bodied" — a wine-tasting word applied to butter, elevating the ingredient to gourmet status. <em>Howatto tadayotte kuru yō da</em> (ほわっと漂ってくるようだ, "comes drifting softly as though") uses the mimetic <em>howatto</em> (ほわっと), which describes a soft, gentle, diffusing movement — the way aroma spreads without urgency, enveloping rather than attacking. The construction <em>tadayotte kuru</em> (漂ってくる, "drifts toward") uses the directional <em>kuru</em> (来る, "comes") to suggest the aroma is approaching the reader, crossing the boundary between fiction and reality. The second sentence is a compressed critical appraisal. <em>Meshi-tero-kyū</em> (飯テロ級, "meal-terror-level") is a distinctly contemporary Japanese internet coinage: <em>meshi</em> (飯, "food / meal") + <em>tero</em> (テロ, "terrorism," from English) describes food writing or imagery so vivid it makes the reader painfully hungry — a playful exaggeration that acknowledges the physical response triggered by sensory description. The <em>-kyū</em> (級, "class / level") suffix makes it a rating: this is terrorism-class bread, the highest grade of appetite-induction. <em>Zeppin pan</em> (絶品パン, "supreme bread / peerless bread") uses <em>zeppin</em> (絶品), a superlative that literally means "a product without peer" — the same word used for masterpieces of craft. <em>Atataka na nazotoki</em> (温かな謎解き, "warm puzzle-solving") uses <em>atataka</em> (温かな, "warm / gentle") rather than <em>atatakai</em> (温かい) — the adnominal form that prepares the noun <em>nazotoki</em> (謎解き, "puzzle-solving / mystery-solving"), creating a soft, enveloping quality. The compound <em>ike-oji kōgaku-bu kyōju</em> (イケオジ工学部教授, "handsome-old-man engineering professor") uses the internet slang <em>ike-oji</em> (イケオジ), a portmanteau of <em>ikeru</em> (イケる, "attractive / cool") and <em>oji</em> (おじ, "uncle / middle-aged man") — a term for older men who are stylish and attractive, a category that has become increasingly visible in Japanese popular culture. The multiplication sign (<em>×</em>) between the professor and the rookie policeman (<em>shinmai keikan</em> / 新米警官) frames their relationship as a pairing, a ship, a dynamic duo — the visual symbol making the partnership explicit. Finally, <em>kōjii misuterii</em> (コージーミステリー) is the Japanese rendering of "cozy mystery," a genre term that has been adopted from English but carries slightly different connotations in Japanese: less about the absence of violence and more about the presence of warmth, community, and sensory pleasure. What is lost in English is the sheer density of contemporary Japanese cultural reference packed into this one sentence — internet slang (<em>meshi-tero</em>, <em>ike-oji</em>), genre terminology (<em>kōjii misuterii</em>), mimetic vocabulary (<em>kongari</em>, <em>howatto</em>), and the multiplication-sign visual grammar of shipping culture. The English reader sees a review; the Japanese reader sees a whole subcultural vocabulary activated by a single book.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Doughnut's Topology</div>
+    <div class="passage-jp">
+      愛をひも解くドーナッツ
+    </div>
+    <div class="passage-romaji">
+      "Ai wo himo-toku dōnatsu."
+    </div>
+    <div class="passage-en">
+      "The Doughnut That Untangles Love."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This story title from Volume 2 is a small masterpiece of conceptual compression. The grammar is simple: <em>ai wo himo-toku</em> (愛をひも解く, "untying / unraveling love") + <em>dōnatsu</em> (ドーナッツ, "doughnut"). But each element carries multiple layers of meaning. <em>Ai</em> (愛, "love") is the broadest and deepest word for love in Japanese — distinct from <em>koi</em> (恋, "romantic love"), <em>suki</em> (好き, "liking / fondness"), and <em>suki</em>'s many intensifiers. <em>Ai</em> suggests enduring commitment, familial bond, and selfless care — the love that remains after romance has cooled or deepened. <em>Himo-toku</em> (ひも解く / 紐解く) is a compound verb made from <em>himo</em> (紐, "string / cord / lace") and <em>toku</em> (解く, "to untie / to unravel / to solve"). It literally means "to untie strings" and is used metaphorically for unraveling complex problems, tracing historical threads, or clarifying entangled situations. The image is tactile and precise: love as a knotted cord that must be carefully untied rather than cut. This is the professor's method in miniature: he does not break problems; he unties them. The word <em>dōnatsu</em> (ドーナッツ) introduces the mathematical dimension. In topology, a branch of mathematics that studies properties preserved under continuous deformation, a doughnut (torus) is the classic example of a shape with a hole — distinct from a sphere because of the hole's presence. Topologists joke that a doughnut is equivalent to a coffee cup (both have one hole), and this equivalence — the recognition that seemingly different objects share deep structural properties — is precisely the professor's insight. The story uses the doughnut's topology as a metaphor for romantic entanglement: two people who seem separate may be connected by an invisible loop; two paths that seem divergent may be part of the same continuous surface. The title thus contains a mathematical pun that is also an emotional promise: the doughnut that untangles love does so not by cutting the knot but by revealing the topology of connection. What is lost in English is the specifically Japanese resonance of <em>himo-toku</em> as a traditional verb of careful unraveling — it is the word used for untying the cords of a gift, for tracing the threads of a historical argument, for loosening the knots in a relationship. The English "untangles" captures the meaning but loses the cord-imagery and the sense of patient, tactile care. And the topological pun, while present in English "doughnut," is less surprising to English speakers because doughnuts are everyday food; in Japan, where doughnuts are a foreign import associated with American culture, the word carries a faint exoticism that makes the mathematical connection more unexpected and delightful.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the world of bread, engineering, and cozy mystery — from Hokkaido specialties to the language of deduction.</p>
+
+  <div class="card">
+    <h3>Bread & Baking</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>パン</td><td>pan</td><td class="pos">noun</td><td>bread (from Portuguese)</td></tr>
+        <tr><td>パン屋</td><td>panya</td><td class="pos">noun</td><td>bakery, bread shop</td></tr>
+        <tr><td>ベーカリー</td><td>beikari</td><td class="pos">noun</td><td>bakery (from English)</td></tr>
+        <tr><td>クリームパン</td><td>kurīmu pan</td><td class="pos">noun</td><td>cream bread, cream-filled bun</td></tr>
+        <tr><td>コロネ</td><td>korone</td><td class="pos">noun</td><td>corone, horn-shaped bread</td></tr>
+        <tr><td>チョココロネ</td><td>choko korone</td><td class="pos">noun</td><td>chocolate cornet</td></tr>
+        <tr><td>ちくわパン</td><td>chikuwa pan</td><td class="pos">noun</td><td>chikuwa bread (Hokkaido specialty)</td></tr>
+        <tr><td>あんパン</td><td>anpan</td><td class="pos">noun</td><td>anpan, sweet bean paste bread</td></tr>
+        <tr><td>クロワッサン</td><td>kurowassan</td><td class="pos">noun</td><td>croissant</td></tr>
+        <tr><td>豆パン</td><td>mame pan</td><td class="pos">noun</td><td>bean bread</td></tr>
+        <tr><td>サンドウィッチ</td><td>sandowicchi</td><td class="pos">noun</td><td>sandwich</td></tr>
+        <tr><td>ドーナッツ</td><td>dōnatsu</td><td class="pos">noun</td><td>doughnut</td></tr>
+        <tr><td>発酵バター</td><td>hakkō batā</td><td class="pos">noun</td><td>fermented butter</td></tr>
+        <tr><td>小麦</td><td>komugi</td><td class="pos">noun</td><td>wheat</td></tr>
+        <tr><td>生地</td><td>kiji</td><td class="pos">noun</td><td>dough, pastry</td></tr>
+        <tr><td>焼きたて</td><td>yakitate</td><td class="pos">noun</td><td>fresh-baked, just out of the oven</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Mystery & Deduction</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>謎解き</td><td>nazotoki</td><td class="pos">noun</td><td>puzzle-solving, mystery-solving</td></tr>
+        <tr><td>推理</td><td>suiri</td><td class="pos">noun</td><td>deduction, inference, reasoning</td></tr>
+        <tr><td>ミステリー</td><td>misuterii</td><td class="pos">noun</td><td>mystery (genre)</td></tr>
+        <tr><td>コーーミステリー</td><td>kōjii misuterii</td><td class="pos">noun</td><td>cozy mystery</td></tr>
+        <tr><td>日常系</td><td>nichijō-kei</td><td class="pos">noun</td><td>everyday-life genre, slice-of-life</td></tr>
+        <tr><td>ほっこり</td><td>hokkori</td><td class="pos">adverb</td><td>warmly, heartwarmingly, cozy</td></tr>
+        <tr><td>名推理</td><td>mei suiri</td><td class="pos">noun</td><td>brilliant deduction</td></tr>
+        <tr><td>解き明かす</td><td>toki-akasu</td><td class="pos">verb</td><td>to unravel, to clarify, to reveal</td></tr>
+        <tr><td>ひも解く</td><td>himo-toku</td><td class="pos">verb</td><td>to untie strings, to unravel</td></tr>
+        <tr><td>ヒント</td><td>hinto</td><td class="pos">noun</td><td>hint, clue</td></tr>
+        <tr><td>ナゾ</td><td>nazo</td><td class="pos">noun</td><td>mystery, puzzle, riddle</td></tr>
+        <tr><td>悩み</td><td>nayami</td><td class="pos">noun</td><td>worry, trouble, concern</td></tr>
+        <tr><td>事件</td><td>jiken</td><td class="pos">noun</td><td>incident, case, event</td></tr>
+        <tr><td>真相</td><td>shinsō</td><td class="pos">noun</td><td>truth, real situation</td></tr>
+        <tr><td>犯人</td><td>hannin</td><td class="pos">noun</td><td>culprit, perpetrator</td></tr>
+        <tr><td>動機</td><td>dōki</td><td class="pos">noun</td><td>motive</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Characters & Roles</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>教授</td><td>kyōju</td><td class="pos">noun</td><td>professor (full professor)</td></tr>
+        <tr><td>工学部</td><td>kōgaku-bu</td><td class="pos">noun</td><td>faculty of engineering</td></tr>
+        <tr><td>理系</td><td>rikei</td><td class="pos">noun</td><td>science/engineering field</td></tr>
+        <tr><td>変わり者</td><td>kawarimono</td><td class="pos">noun</td><td>eccentric, oddball, unusual person</td></tr>
+        <tr><td>イケオジ</td><td>ike-oji</td><td class="pos">noun</td><td>handsome old man, attractive middle-aged man</td></tr>
+        <tr><td>警察官</td><td>keisatsukan</td><td class="pos">noun</td><td>police officer</td></tr>
+        <tr><td>新米</td><td>shinmai</td><td class="pos">noun</td><td>novice, rookie, new (rice)</td></tr>
+        <tr><td>交番</td><td>kōban</td><td class="pos">noun</td><td>police box, neighborhood police station</td></tr>
+        <tr><td>青年</td><td>seinen</td><td class="pos">noun</td><td>young man, youth</td></tr>
+        <tr><td>人情</td><td>ninjō</td><td class="pos">noun</td><td>human feeling, compassion, empathy</td></tr>
+        <tr><td>タッグ</td><td>taggu</td><td class="pos">noun</td><td>tag team, partnership</td></tr>
+        <tr><td>副業</td><td>fukugyō</td><td class="pos">noun</td><td>side business, secondary occupation</td></tr>
+        <tr><td>店主</td><td>tenshu</td><td class="pos">noun</td><td>shopkeeper, proprietor</td></tr>
+        <tr><td>客</td><td>kyaku</td><td class="pos">noun</td><td>customer, guest, client</td></tr>
+        <tr><td>常連</td><td>jōren</td><td class="pos">noun</td><td>regular customer, frequent visitor</td></tr>
+        <tr><td>孫</td><td>mago</td><td class="pos">noun</td><td>grandchild</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Sapporo, Hokkaido & Food Culture</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>札幌</td><td>Sapporo</td><td class="pos">noun</td><td>Sapporo (city in Hokkaido)</td></tr>
+        <tr><td>北海道</td><td>Hokkaidō</td><td class="pos">noun</td><td>Hokkaido (northernmost prefecture)</td></tr>
+        <tr><td>札幌市時計台</td><td>Sapporo-shi Tokeidai</td><td class="pos">noun</td><td>Sapporo Clock Tower</td></tr>
+        <tr><td>北海道神宮</td><td>Hokkaidō Jingū</td><td class="pos">noun</td><td>Hokkaido Shrine</td></tr>
+        <tr><td>大通り公園</td><td>Ōdōri Kōen</td><td class="pos">noun</td><td>Odori Park</td></tr>
+        <tr><td>地下街</td><td>chikagai</td><td class="pos">noun</td><td>underground shopping mall</td></tr>
+        <tr><td>食べ歩き</td><td>tabe-aruki</td><td class="pos">noun</td><td>food walk, eating at various places</td></tr>
+        <tr><td>飯テロ</td><td>meshi-tero</td><td class="pos">noun</td><td>food terrorism (vivid food descriptions)</td></tr>
+        <tr><td>絶品</td><td>zeppin</td><td class="pos">noun</td><td>supreme article, peerless product</td></tr>
+        <tr><td>芳醇</td><td>hōjun</td><td class="pos">na-adj</td><td>richly fragrant, mellow, full-bodied</td></tr>
+        <tr><td>こんがり</td><td>kongari</td><td class="pos">adverb</td><td>perfectly browned, golden and crisp</td></tr>
+        <tr><td>ほわっと</td><td>howatto</td><td class="pos">adverb</td><td>softly, gently, diffusing</td></tr>
+        <tr><td>ほっこり</td><td>hokkori</td><td class="pos">adverb</td><td>warmly, heartwarmingly</td></tr>
+        <tr><td>どっしり</td><td>dosshiri</td><td class="pos">adverb</td><td>solidly, sturdily, substantial</td></tr>
+        <tr><td>にっこり</td><td>nikkori</td><td class="pos">adverb</td><td>smilingly, beaming</td></tr>
+        <tr><td>至福</td><td>shifuku</td><td class="pos">noun</td><td>bliss, supreme happiness</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Oumi's prose in <em>Kyōju no Panya-san</em> is light, witty, and full of sensory pleasure — but much of what makes it distinctive is embedded in Japanese food vocabulary, internet slang, and the specific cultural coding of the cozy mystery genre as it has developed in Japan.</p>
+
+  <div class="card">
+    <h3>1. <em>Panya-san</em> (パン屋さん) as Neighborhood Intimacy</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>教授の<strong>パン屋さん</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The Professor's Bakery"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The suffix <em>-san</em> (さん) attached to <em>panya</em> (パン屋) creates a specific social relationship that English cannot reproduce. In Japanese, adding <em>-san</em> to a shop type transforms a commercial establishment into a familiar, person-like presence. A <em>panya</em> is a bread shop; a <em>panya-san</em> is "the bakery (we know)," "our bakery," "that nice bread shop." The <em>-san</em> acknowledges the shop as an entity with a kind of social dignity — not a corporation or a brand but a member of the neighborhood, someone you greet, someone who recognizes you. This is why children in Japan say <em>omochi-kaeri-shimasu</em> (お持ち帰りします, "I'll take it to go") to the <em>panya-san</em> with the same politeness they would use to a person: the shop has been grammatically personified by the honorific. When the title says <em>Kyōju no Panya-san</em>, it is not merely naming a business; it is introducing a character — a neighborhood presence with personality and history. The English "The Professor's Bakery" sounds like a possessive description; the Japanese <em>Kyōju no Panya-san</em> sounds like an introduction: "Have you met the professor's bakery? It's that lovely place on the corner." What is lost is the warmth of this personification, the sense that the bakery is not merely a setting but a member of the community with whom readers are being invited to become acquainted.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Meshi-tero</em> (飯テロ) as Internet-Age Sensory Violence</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>飯テロ</strong>級の絶品パン</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"meal-terror-level supreme bread" / "appetite-assault-class peerless bread"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Meshi-tero</em> (飯テロ, "food terrorism") is a distinctly 21st-century Japanese internet coinage that has no English equivalent because it describes a specifically digital-age experience: the deliberate posting of vivid food images or descriptions at times when others are likely to be hungry, with the intention of causing them physical discomfort (hunger pangs, salivation, craving). The word combines <em>meshi</em> (飯, "food / meal," a slightly rough, masculine term) with <em>tero</em> (テロ, clipped from <em>terorizumu</em> / テロリズム, "terrorism"). The hyperbole is intentional and comic — no one believes that posting a photo of ramen is actual terrorism, but the exaggeration captures the intensity of the physiological response: seeing perfect <em>katsudon</em> at 11 PM genuinely hurts. In the context of <em>Kyōju no Panya-san</em>, calling the bread descriptions <em>meshi-tero-kyū</em> (飯テロ級, "food-terror-class") is a compliment of the highest order: Oumi's prose is so vivid that it triggers the same physical hunger as a perfectly lit Instagram photo. The <em>-kyū</em> (級, "class / level / grade") suffix makes it a rating system, as if food-description intensity could be measured like earthquake magnitude or spice heat. What is lost in English is the specifically internet-native quality of the term — <em>meshi-tero</em> emerged from Japanese social media culture (particularly Twitter and Instagram) and carries the self-aware humor of online discourse. An English translation could say "mouthwatering" or "appetite-whetting," but these are conventional adjectives; <em>meshi-tero</em> is a generational statement, a claim that this book participates in the same sensory economy as viral food posts. The English reader sees a description; the Japanese reader sees a subcultural credential.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ike-oji</em> (イケオジ) as Contemporary Gender Aesthetics</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>イケオジ</strong>工学部教授</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"handsome-old-man engineering professor" / "attractive middle-aged professor"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Ike-oji</em> (イケオジ) is a portmanteau of <em>ikeru</em> (イケる, "attractive / cool / stylish") and <em>oji</em> (おじ, "uncle / middle-aged man"), and it represents a significant shift in Japanese popular culture's representation of older men. Traditionally, Japanese media has emphasized youth in male attractiveness; the <em>ike-oji</em> phenomenon — which gained traction in the 2010s — celebrates men in their 40s, 50s, and beyond who maintain style, fitness, and emotional intelligence. The term is not merely descriptive but aspirational: it suggests that age can be an enhancement rather than a diminishment of male appeal. In the context of <em>Kyōju no Panya-san</em>, calling Watari an <em>ike-oji</em> does several things simultaneously: it signals to potential readers that the professor is not a dry academic but a romantic figure; it places the book within a contemporary cultural conversation about attractive older men; and it creates a specific visual expectation — the reader knows, upon seeing <em>ike-oji</em>, that the professor will be tall, well-dressed, perhaps slightly silver-haired, with the confidence that comes from professional success and the warmth that comes from emotional maturity. The English "handsome old man" or "attractive middle-aged man" captures the meaning but loses the pop-cultural specificity. <em>Ike-oji</em> is a genre label as much as a description — it tells the reader that this character belongs to a recognizable type in contemporary Japanese fiction, a type that carries associations from advertising, dramas, and manga. The English reader sees a physical description; the Japanese reader sees a character archetype.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Hokkorite Iku</em> (ほぐれていく) as Emotional Dough</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>人々の心が<strong>ほぐれていく</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"people's hearts loosen / thaw / unclench"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The verb <em>hogureru</em> (ほぐれる) is one of the most physically evocative words in Japanese, and its use in the promotional copy for <em>Kyōju no Panya-san</em> is deeply connected to the book's bread-making theme. <em>Hogureru</em> means "to loosen / to relax / to come undone / to thaw," and it belongs to a family of words that describe the relaxation of tension in soft materials. It is the word used for dough that has been kneaded and then left to rest, allowing the gluten network to relax before shaping. It is the word used for muscles that have been massaged until they release their tension. It is the word used for a clenched jaw that finally relaxes, for a guarded expression that softens into a smile. In the context of the series, <em>hitobito no kokoro ga hokurote iku</em> (人々の心がほぐれていく, "people's hearts are loosening / thawing") is not merely a metaphor; it is the book's central process, made explicit. The professor's deductions and the young man's kindness work on troubled hearts the way kneading and resting work on dough — first applying the pressure of understanding, then allowing the relaxation of relief. The progressive <em>te iku</em> (ていく) form suggests ongoing, gradual change: hearts do not snap open; they slowly, gently loosen. What is lost in English is the specifically dough-like quality of the metaphor. English "thaw" suggests ice melting; "loosen" suggests ropes or screws; "unclench" suggests fists. None of these captures the soft, yielding, glutenous quality of <em>hogureru</em> — the sense of something that was tight and resistant becoming pliable and receptive, like dough that has finally relaxed enough to be shaped into something beautiful. The Japanese reader who knows bread-making feels this metaphor in their hands; the English reader receives only the abstract meaning.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Chikuwa-pan</em> (ちくわパン) as Hokkaido Specificity</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>ちくわパン</strong> — 北海道の味</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"chikuwa bread — the taste of Hokkaido"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span><em>Chikuwa-pan</em> (ちくわパン) is a bread so specific to Hokkaido that many Japanese people from other regions have never encountered it — and those who do often find it baffling. It consists of a soft bread dough shaped to resemble <em>chikuwa</em> (竹輪), a tubular processed fish cake with a hole down the middle. The bread is typically filled with something savory — often a variation on the <em>chikuwa</em> theme, creating a bread that looks like fish cake and may contain fish cake. For Hokkaido residents, <em>chikuwa-pan</em> is a nostalgic childhood taste, a school-lunch staple, a source of regional pride. For outsiders, it is a culinary joke — "bread that looks like fish cake" sounds like something invented on a dare. This double status makes <em>chikuwa-pan</em> the perfect vehicle for a cozy mystery about local identity: it is simultaneously beloved and ridiculous, familiar to insiders and exotic to outsiders, a food that embodies the particularity of place. The title of Episode 3 — <em>Netsu Shisen, Hokkaidō no Aji Chikuwa Pan</em> (熱視線、北海道の味ちくわパン, "Intense Attention — The Taste of Hokkaido: Chikuwa Bread") — plays on this double status: the "intense attention" is both the media gaze that discovers <em>chikuwa-pan</em> as a quirky regional specialty and the detective's focused observation of how this bread becomes a clue. What is lost in English is the entire cultural context of <em>chikuwa-pan</em> as a Hokkaido institution — the history of its invention, its role in school lunches, the pride and embarrassment it generates among locals, its status as a test of whether someone is "really" from Hokkaido. The English reader sees a funny bread name; the Japanese reader sees a cultural shibboleth, a food that separates those who understand from those who do not. The series uses this separation as a plot element and a thematic resource, and much of that richness disappears in translation.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from Oumi's promotional prose, her story titles, and the conversational grammar of cozy mystery fiction.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜すぎるあまり（過度・結果）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...sugiru amari</em>: "so much that ~ / to the extent of excessively ~ing" — indicates a result of excessive action or feeling.</p>
+      <div class="grammar-example">パンを愛しすぎるあまり副業で移動式ベーカリーを営む</div>
+      <p class="grammar-example-en">"loving bread so much that he runs a mobile bakery as a side business" — The <em>amari</em> construction explains the motivation for the professor's eccentric behavior: excess love as cause, mobile bakery as effect.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜をヒントに（手がかり・方法）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo hinto ni</em>: "using ~ as a hint / with ~ as a clue" — transforms a discipline or concept into a problem-solving tool.</p>
+      <div class="grammar-example">工学をヒントに人々が抱える悩みやナゾを解き明かす</div>
+      <p class="grammar-example-en">"using engineering as a hint to unravel people's worries and mysteries" — The <em>wo hinto ni</em> construction makes engineering playful and accessible rather than imposing.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜によって（手段・方法）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni yotte</em>: "by means of / through / via" — indicates the agent or means by which something is accomplished.</p>
+      <div class="grammar-example">教授の推理と、人情に厚い青年の行動力によって、人々の心がほぐれていく</div>
+      <p class="grammar-example-en">"people's hearts are loosened by the professor's deductions and the young man's action-power" — The <em>ni yotte</em> construction creates a balanced compound agent: intellect + compassion as joint causes of emotional change.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ていく（継続・方向）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Te iku</em>: progressive aspect with directional "away" — describes ongoing action that continues forward.</p>
+      <div class="grammar-example">解き明かしていく / ほぐれていく</div>
+      <p class="grammar-example-en">"going on to unravel / going on to loosen" — The <em>te iku</em> form implies continuation and development: the unraveling and the loosening are processes that extend across time and stories.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が漂ってくるようだ（知覚・推量）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Ga tadayotte kuru yō da</em>: "it seems that ~ comes drifting" — perceptual evidential suggesting sensory experience.</p>
+      <div class="grammar-example">芳醇なバターの香りがほわっと漂ってくるようだ</div>
+      <p class="grammar-example-en">"it is as though the aroma of fragrant butter comes drifting softly" — The <em>yō da</em> (ようだ) evidential makes the sensory experience tentative and dreamlike; the directional <em>kuru</em> (来る) brings the aroma toward the reader.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に満たされる（充足・受身）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Ni mitasareru</em>: "to be filled by / to be satisfied by" — passive construction indicating emotional fulfillment.</p>
+      <div class="grammar-example">温かな謎解きに心満たされる</div>
+      <p class="grammar-example-en">"the heart is filled by warm puzzle-solving" — The passive <em>mitasareru</em> (満たされる) suggests that the filling happens to the reader, a gift received rather than an achievement attained.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜をひも解く（比喩・解明）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>Wo himo-toku</em>: "to untangle / to unravel ~" — metaphorical compound verb suggesting careful, patient clarification.</p>
+      <div class="grammar-example">愛をひも解くドーナッツ</div>
+      <p class="grammar-example-en">"The Doughnut That Untangles Love" — <em>Himo-toku</em> combines string-imagery with the act of solving, creating a tactile metaphor for emotional clarification.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜級の〜（等級・程度）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>-kyū no</em>: "class-/level-~" — rating construction that transforms adjectives into measurable grades.</p>
+      <div class="grammar-example">飯テロ級の絶品パン</div>
+      <p class="grammar-example-en">"meal-terror-class supreme bread" — The <em>-kyū</em> suffix creates a pseudo-objective rating system for subjective experience, a common pattern in Japanese promotional language.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Oumi's grammar in <em>Kyōju no Panya-san</em> is the grammar of light-novel and promotional prose — casual, concept-driven, and full of contemporary coinages. Pay attention to how <em>sugiru amari</em> turns excessive love into narrative motivation, how <em>wo hinto ni</em> makes engineering into a playful tool, how <em>ni yotte</em> balances intellect and compassion as joint agents of change, and how <em>te iku</em> turns every solution into an ongoing process. The grammar is as warm as the bread, and as precisely constructed.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">教授のパン屋さん ベーカリーエウレカの謎解きレシピ &middot; 近江 泉美 &middot; ポプラ社 2025 &middot; ISBN 978-4-591-18606-0 &middot; 252ページ</p>
+  <p style="margin-top: var(--space-xs);">第2弾: 教授のパン屋さん ふたりの秘密と焼きたて推理 &middot; 2026 &middot; ISBN 978-4-591-18990-0</p>
+</footer>
+
+</div>
+</body>
+</html>

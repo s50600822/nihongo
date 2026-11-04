@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>悪魔の飽食 — 森村 誠一 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0a0c;
+  --bg-surface: #111114;
+  --bg-elevated: #1a1a1e;
+  --bg-card: #1e1e24;
+  --ink-primary: #e8e4dc;
+  --ink-secondary: #b8b2a8;
+  --ink-muted: #7a756d;
+  --ink-faint: #4a4640;
+  --accent-crimson: #8a3540;
+  --accent-crimson-dim: #5a2028;
+  --accent-crimson-glow: rgba(138, 53, 64, 0.12);
+  --accent-bronze: #7a5a3a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-crimson-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-crimson);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-crimson-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-crimson-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-crimson);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-crimson-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-crimson), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-crimson);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-crimson-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-crimson); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-crimson-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-crimson-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-crimson);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-crimson-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-crimson);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-bronze);
+}
+
+.nuance-box h4 {
+  color: var(--accent-bronze);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-crimson);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-crimson);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-crimson-dim), var(--accent-crimson));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-crimson);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-crimson);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-crimson-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>悪魔の飽食</h1>
+  <p class="hero-subtitle">AKUMA NO HŌSHOKU</p>
+  <p class="hero-meta">森村 誠一 &middot; 光文社 1981 &middot; 関東軍第731部隊 &middot; ノンフィクション・告発</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 悪魔の飽食</h2>
+  <p class="lead">The title <em>Akuma no Hōshoku</em> (悪魔の飽食) is a noun phrase of devastating simplicity: [devil] + [genitive] + [gluttony / satiation]. The word <em>akuma</em> (悪魔, "devil / demon / evil spirit") is not a casual metaphor in Japanese; it carries the full weight of Buddhist and Christian demonology, of beings that have abandoned their humanity for absolute evil. The genitive particle <em>no</em> (の) creates a possessive relationship that is also descriptive: this is not merely "the devil's gluttony" but "devilish gluttony" — gluttony of such magnitude and moral depravity that it can only be described as demonic. <em>Hōshoku</em> (飽食) combines <em>hō</em> (飽, "satiety / having eaten enough") and <em>shoku</em> (食, "food / eating / meal"), and it means "gluttony / eating to satiation / feasting." But <em>hōshoku</em> is not merely overeating; in the context of this book, it is the satiation of scientific curiosity through the consumption of human lives — the "feeding" of a research apparatus on living human bodies. The title thus transforms Unit 731 from a military institution into a demonic organism with an appetite, a creature that devours people in order to grow its knowledge. The grammar is the grammar of horror: two nouns, one particle, and a universe of moral condemnation.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">悪魔</span>
+        <span class="romaji">akuma</span>
+        <span class="meaning">"devil / demon / evil spirit" — The word <em>akuma</em> (悪魔) combines <em>aku</em> (悪, "evil / bad / wickedness") and <em>ma</em> (魔, "demon / devil / magic / that which obstructs Buddhist practice"). In Japanese religious vocabulary, <em>ma</em> refers specifically to the forces that obstruct enlightenment — the <em>Mara</em> of Buddhist cosmology who tempted the Buddha. Combined with <em>aku</em>, the word becomes a comprehensive term for absolute moral evil, a being that has not merely committed evil acts but has become evil itself. By calling Unit 731 "devils," Morimura is making a theological judgment, not merely a moral one: these were not soldiers following orders or scientists pursuing knowledge; they were beings who had crossed a line into a category of existence defined by the destruction of others. The choice of <em>akuma</em> over milder terms like <em>waru</em> (悪, "evil") or <em>akutoku</em> (悪徳, "vice / immorality") is significant: <em>akuma</em> is a category of being, not merely a quality of action. Once you are an <em>akuma</em>, you are no longer human; you have become something else. The title thus frames the book's investigation as an inquiry into non-humanity — the process by which human beings, through the structures of war and institutional loyalty, transform themselves into demons. The word also carries Christian connotations for Japanese readers familiar with Western literature and film: the devil as the adversary, the tempter, the one who bargains for souls. Unit 731's scientists made precisely such a bargain — trading their medical ethics for military advancement, their Hippocratic oaths for data points.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">genitive particle — The particle <em>no</em> (の) creates a possessive or attributive relationship between <em>akuma</em> and <em>hōshoku</em>. In <em>akuma no hōshoku</em>, the <em>no</em> can be read in multiple ways: possession ("the devil's gluttony"), attribution ("devilish gluttony"), or even apposition ("the gluttony that is devilish"). This ambiguity is productive because it allows the title to function on multiple levels simultaneously. On the surface, it refers to the gluttony of the devils who ran Unit 731 — their insatiable appetite for experimental subjects, for data, for the power that knowledge conferred. At a deeper level, it describes the gluttony itself as demonic — the very act of consuming human beings for research purposes is a form of devilishness, regardless of who performs it. The <em>no</em> thus both particularizes (this was the gluttony of specific devils) and universalizes (this gluttony is itself demonic). The grammatical simplicity of the title — just two nouns and a particle — creates a density of meaning that a longer title could not achieve. There are no verbs, no qualifiers, no excuses: just the fact of demonic gluttony, stated as a noun phrase that functions as an accusation.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">飽食</span>
+        <span class="romaji">hōshoku</span>
+        <span class="meaning">"gluttony / satiation / eating one's fill" — The word <em>hōshoku</em> (飽食) is composed of <em>hō</em> (飽, "satiety / having had enough / being full") and <em>shoku</em> (食, "food / eating / meal"). In ordinary usage, <em>hōshoku</em> describes the state of having eaten to satisfaction — a neutral or even positive condition. But in the context of this title, the word takes on horrifying connotations: the "satiety" is achieved not through food but through human suffering; the "eating" is the consumption of lives in the name of science. The word suggests not merely hunger but excess — the Unit did not just experiment on a few people; it conducted experiments on thousands, with a systematic thoroughness that can only be described as gluttonous. The <em>hō</em> (飽) element is particularly important: it means "having had enough," which implies that the devils could have stopped but chose not to. They were not starving; they were gorging. They had sufficient data, sufficient subjects, sufficient knowledge — and yet they continued, because the structure of the institution and the logic of war demanded ever more consumption. The title thus contains a theory of evil: evil is not always the result of necessity or ignorance; sometimes it is the result of satiation without limit, of appetite without conscience. What is lost in English is the specifically visceral quality of <em>hōshoku</em> — the word carries the physical memory of eating, of fullness, of the body's satisfaction. In English, "gluttony" is a theological sin; in Japanese, <em>hōshoku</em> is a physical state that has become morally charged. The English reader sees a moral judgment; the Japanese reader feels a bodily revulsion.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Full title context:</strong> The complete title of the first edition was <em>Akuma no Hōshoku: "Kantōgun Saikinsen Butai" Kyōfu no Zenbō!</em> (悪魔の飽食 「関東軍細菌戦部隊」恐怖の全貌!, "The Devil's Gluttony: The Terrifying Full Picture of the 'Kwantung Army Bacteriological Warfare Unit'!"). The subtitle performs an important documentary function: it identifies the specific institution being accused (<em>Kantōgun Saikinsen Butai</em> / 関東軍細菌戦部隊, "Kwantung Army Bacteriological Warfare Unit") and promises the "full picture" (<em>zenbō</em> / 全貌) of its horror (<em>kyōfu</em> / 恐怖). The quotation marks around the unit's official designation signal Morimura's skepticism toward the military's sanitizing language — this was not merely a "prevention and water supply unit" (<em>bōeki kyūsui-bu</em> / 防疫給水部) as the army claimed, but a bacteriological warfare unit. The exclamation mark at the end of the subtitle is the only emotional punctuation in the title, and it functions as a cry of outrage — the author's own voice breaking through the documentary restraint.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>森村 誠一 &mdash; Morimura Seiichi (1933–2023)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">森</div>
+    <div class="author-name-block">
+      <h3>森村 誠一</h3>
+      <p class="author-name-romaji">Morimura Seiichi &middot; 1933–2023 &middot; Saitama / Tokyo</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Morimura Seiichi was one of Japan's most prolific and socially engaged writers, a novelist who used the skills of mystery fiction to investigate real crimes — both individual and historical. Born on January 2, 1933, in Kumagaya, Saitama Prefecture, he was twelve years old when the Pacific War ended, old enough to remember the final air raids and the atmosphere of militarism, young enough to spend his adult life questioning what his country had done. The Kumagaya air raid of August 14-15, 1945 destroyed his family home and his beloved book collection — an experience he later described as the "original trauma" that shaped his desire to become a writer. The boy whose books were burned by war grew into the man who refused to let history be buried.</p>
+    <p style="margin-bottom: var(--space-md);">After graduating from Aoyama Gakuin University's Department of English and American Literature, Morimura spent nearly a decade working in hotels — first in Tokyo, then in Osaka. The hotel world gave him two things that would define his fiction: an intimate knowledge of social hierarchy and class difference, and a front-row seat to the hidden lives of strangers. His hotel mysteries — beginning with his debut — are masterpieces of social observation, using the confined space of a luxury hotel to expose the inequalities and secrets of Japanese society. In 1965, he made his literary debut under the pen name Yukishiro Keitarō with a business book; in 1969, he won the 15th Edogawa Rampo Prize for <em>Kōsō no Shikaku</em> (高層の死角, "The Blind Spot in the High-Rise"), a hotel-set mystery that launched his career as a professional novelist.</p>
+    <p style="margin-bottom: var(--space-md);">The 1970s established Morimura as the leading practitioner of <em>shakai-ha</em> (社会派, "social school") mystery fiction — mysteries that used the puzzle-plot structure to investigate social problems: corruption, discrimination, environmental destruction, the dark side of Japan's economic miracle. <em>Fushoku no Kōzō</em> (腐蝕の構造, "The Structure of Corrosion," 1973) won the Japan Mystery Writers Association Prize and confirmed his reputation. But it was <em>Ningen no Shōmei</em> (人間の証明, "Proof of the Man," 1976) that made him a household name — a blockbuster that sold over 7.7 million copies, was adapted into a hit film, and established the "proof" (<em>shōmei</em> / 証明) series that would define his popular reputation. The novel's famous tagline — "Read it first, or see it first" — became a cultural phenomenon, and the theme song became one of the best-selling singles in Japanese music history.</p>
+    <p style="margin-bottom: var(--space-md);">By 1981, Morimura was at the height of his commercial success — and he chose to risk it all. While serializing a novel about nuclear power (<em>Shi no Utsuwa</em> / 死の器, "Vessel of Death") in the newspaper <em>Akahata</em> (赤旗, "Red Flag"), the organ of the Japan Communist Party, he received a letter from a former Unit 731 member: "What you've written about Unit 731 is nothing compared to the reality. If you want to know the truth, I'll cooperate with your investigation." This letter changed Morimura's life. With the financial resources from <em>Ningen no Shōmei</em> and the journalistic assistance of Shimosato Masaki, a reporter for <em>Akahata</em>, Morimura embarked on an investigation that would take him to Harbin, the former site of Unit 731's headquarters, and into interviews with former unit members, victims, and historians. The result was <em>Akuma no Hōshoku</em> (悪魔の飽食), published in November 1981 by Kōbunsha — a book that would sell over three million copies, be translated into multiple languages, and subject its author to years of harassment, threats, and physical danger.</p>
+    <p style="margin-bottom: var(--space-md);">The backlash was immediate and vicious. When the sequel contained erroneously included photographs (some unrelated images mixed among genuine materials), right-wing media and political groups seized on the error to attack the entire work as fraudulent. Morimura's office door was splashed with red paint. He received continuous threatening phone calls. Stones were thrown at his windows at night. Right-wing sound trucks (<em>gaisensha</em> / 街宣車) surrounded his home. He was forced to wear a bulletproof vest when leaving his house, and the Kanagawa Prefectural Police provided constant protection, warning him to avoid leaving the prefecture. The book was temporarily discontinued — but Kadokawa Shoten later republished it, with Kadokawa's president himself requiring security protection. Morimura never retracted the book's central claims; he corrected the photo error and continued to stand by his investigation. He went on to publish sequels: <em>Zoku Akuma no Hōshoku</em> (続・悪魔の飽食, 1982), <em>Akuma no Hōshoku Dai-san-bu</em> (悪魔の飽食 第三部, 1983), <em>Akuma no Hōshoku Nōto</em> (悪魔の飽食 ノート, 1982), and <em>No More Akuma no Hōshoku</em> (ノーモア悪魔の飽食, 1984). In 2002, he published a revised and expanded edition.</p>
+    <p style="margin-bottom: var(--space-md);">Morimura continued writing until his late 80s, producing over 300 works across mystery, historical fiction, essays, and reportage. His total sales exceeded 100 million copies. He received the Japan Mystery Literature Grand Prize in 2003 and the Yoshikawa Eiji Literature Prize in 2011 for <em>Akudō</em> (悪道, "The Wicked Path"), a historical novel. He founded the "Yamamura Classroom" (山村教室) in 1999 to nurture young writers. In his final years, he wrote about aging itself — <em>Oiru Imi</em> (老いる意味, "The Meaning of Aging"). He died on July 24, 2023, at the age of 90, from pneumonia. His epitaph might be the words he lived by: "A writer must report on their era" (<em>Sakka wa jidai wo ripōto shinakya ikenai</em> / 作家は時代をリポートしなきゃいけない).</p>
+
+    <ul class="timeline">
+      <li>
+        <span class="timeline-year">1933</span>
+        <span>Born January 2 in Kumagaya, Saitama Prefecture. The eldest of five siblings.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1945</span>
+        <span>The Kumagaya air raid (August 14-15) destroys his family home and beloved book collection. The trauma of war becomes the seed of his literary consciousness.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1951</span>
+        <span>Enters Aoyama Gakuin University, Faculty of Letters, Department of English and American Literature. Joins the hiking club and develops a passion for mountain walking.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1955</span>
+        <span>Graduates from Aoyama Gakuin. Begins working at a hotel, first in Tokyo and later in Osaka — a nearly decade-long career that provides the material for his hotel mysteries.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1965</span>
+        <span>Debut as a writer under the pen name Yukishiro Keitarō with <em>Sararīman Akutoku Seminar</em> (サラリーマン悪徳セミナー), a business book. Works as a lecturer at a business school while continuing to write.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1967</span>
+        <span>Publishes <em>Dai-tokai</em> (大都会, "The Big City"), his debut mystery novel.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1969</span>
+        <span>Wins the 15th Edogawa Rampo Prize for <em>Kōsō no Shikaku</em> (高層の死角, "The Blind Spot in the High-Rise"), a hotel-set mystery. This prize establishes him as a professional novelist and launches his career.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1970</span>
+        <span><em>Shinkansen Satsujin Jiken</em> (新幹線殺人事件, "The Shinkansen Murder Case") becomes a bestseller, selling 600,000 copies and establishing him as a popular mystery writer.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1973</span>
+        <span>Wins the 26th Japan Mystery Writers Association Prize for <em>Fushoku no Kōzō</em> (腐蝕の構造, "The Structure of Corrosion"). Confirmed as the leading practitioner of social-school mystery fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1976</span>
+        <span>Publishes <em>Ningen no Shōmei</em> (人間の証明, "Proof of the Man"). The novel becomes a cultural phenomenon, selling over 7.7 million copies and spawning a hit film adaptation. The "proof" series establishes Morimura as a blockbuster author.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1980</span>
+        <span>While serializing <em>Shi no Utsuwa</em> (死の器, "Vessel of Death") — a novel about nuclear power — in <em>Akahata</em>, receives a letter from a former Unit 731 member offering to reveal the truth about the unit's activities.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1981</span>
+        <span>Publishes <em>Akuma no Hōshoku</em> (悪魔の飽食) with Kōbunsha in November. The book becomes a bestseller, selling over three million copies, and subjects Morimura to years of right-wing harassment, threats, and physical danger. He is forced to wear a bulletproof vest and receives police protection.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1982</span>
+        <span>Publishes <em>Zoku Akuma no Hōshoku</em> (続・悪魔の飽食, "The Devil's Gluttony Continued") and <em>Akuma no Hōshoku Nōto</em> (悪魔の飽食 ノート, "The Devil's Gluttony Notes"). The sequel's photo controversy leads to temporary discontinuation; Kadokawa Shoten later republishes revised editions.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1983</span>
+        <span>Publishes <em>Akuma no Hōshoku Dai-san-bu</em> (悪魔の飽食 第三部, "The Devil's Gluttony Part Three"), based on on-site research in China and victim testimonies — the first book in the series to center victim perspectives.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1984</span>
+        <span>Publishes <em>No More Akuma no Hōshoku</em> (ノーモア悪魔の飽食), calling for the prevention of future atrocities through remembrance.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1986</span>
+        <span>Publishes <em>Chūshingura</em> (忠臣蔵), a major historical novel, demonstrating his range beyond mystery and reportage.</span>
+      </li>
+      <li>
+        <span class="timeline-year">1999</span>
+        <span>Becomes honorary principal of the "Yamamura Classroom" (山村教室), a workshop for nurturing young writers.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2002</span>
+        <span>Publishes a revised and expanded edition of <em>Akuma no Hōshoku</em> incorporating new research and documentation.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2003</span>
+        <span>Receives the 7th Japan Mystery Literature Grand Prize, a lifetime achievement award recognizing his contributions to Japanese mystery fiction.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2008</span>
+        <span>Launches <em>Shin Oku no Hosomichi</em> (新・おくのほそ道), a series combining photography and haiku, demonstrating his creative range into his 70s.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2011</span>
+        <span>Wins the 45th Yoshikawa Eiji Literature Prize for <em>Akudō</em> (悪道, "The Wicked Path"), a historical novel. One of Japan's most prestigious literary honors.</span>
+      </li>
+      <li>
+        <span class="timeline-year">2023</span>
+        <span>Dies on July 24 in Tokyo at the age of 90 from pneumonia. His death is widely mourned as the passing of a writer who used popular fiction as a tool of social conscience.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Major Awards & Series</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>江戸川乱歩賞 (1969)</h4>
+        <p class="char-role">Edogawa Rampo Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Won for <em>Kōsō no Shikaku</em> (高層の死角), establishing him as a professional novelist. Japan's most prestigious mystery award for debut works.</p>
+      </div>
+      <div class="char-card">
+        <h4>日本推理作家協会賞 (1973)</h4>
+        <p class="char-role">Japan Mystery Writers Association Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Won for <em>Fushoku no Kōzō</em> (腐蝕の構造), confirming his leadership of the social-school mystery movement.</p>
+      </div>
+      <div class="char-card">
+        <h4>人間の証明 (1976)</h4>
+        <p class="char-role">Ningen no Shōmei / Proof of the Man</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">His bestselling novel, selling over 7.7 million copies. Adapted into a hit film. The "proof" series made him a household name and provided the financial resources for his later investigative work.</p>
+      </div>
+      <div class="char-card">
+        <h4>日本ミステリー文学大賞 (2003)</h4>
+        <p class="char-role">Japan Mystery Literature Grand Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Lifetime achievement award for his contributions to Japanese mystery literature over four decades.</p>
+      </div>
+      <div class="char-card">
+        <h4>吉川英治文学賞 (2011)</h4>
+        <p class="char-role">Yoshikawa Eiji Literature Prize</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Won for <em>Akudō</em> (悪道), a historical novel. One of Japan's most prestigious literary awards, recognizing his range beyond mystery.</p>
+      </div>
+      <div class="char-card">
+        <h4>悪魔の飽食 シリーズ</h4>
+        <p class="char-role">Akuma no Hōshoku Series (1981–1984)</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Five volumes of investigative non-fiction that brought Unit 731 to public consciousness. Sold over 3 million copies despite — or because of — the controversy. Translated into Chinese, Korean, English, and other languages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Unit 731: The Historical Context</h2>
+
+  <div class="card">
+    <h3>What Was Unit 731?</h3>
+    <p>Unit 731 — officially known as the Epidemic Prevention and Water Supply Department of the Kwantung Army (<em>Kantōgun Bōeki Kyūsui Bu</em> / 関東軍防疫給水部), and later as the <em>Man-shū Dai 731 Butai</em> (満州第七三一部隊, "Manchuria Unit 731") — was a covert biological and chemical warfare research and development unit of the Imperial Japanese Army that operated primarily in Harbin, Manchuria (northeastern China) during the Second Sino-Japanese War and World War II. Under the command of Lieutenant General Ishii Shiro (石井四郎), a microbiologist and army medical officer, the unit conducted lethal human experimentation on Chinese, Korean, Mongolian, Russian, and other prisoners of war.</p>
+    <p style="margin-top: var(--space-sm);">The unit's activities included: vivisection without anesthesia to study the effects of diseases and injuries; forced infection with pathogens including plague, cholera, anthrax, and typhoid; frostbite experiments in which prisoners' limbs were frozen and then struck with sticks to test tissue damage; weapons testing including the use of prisoners as targets for grenades and flamethrowers; and the development of biological weapons including plague-infested fleas dropped from aircraft onto Chinese cities. Victims were referred to as <em>maruta</em> (丸太, "logs" / "lumber") — a dehumanizing term that reduced living human beings to experimental material, much as Nazi Germany used numbers to erase individual identity.</p>
+    <p style="margin-top: var(--space-sm);">Estimates of the death toll vary, but most historians agree that at least 3,000 people died in Unit 731's facilities, with the total number of victims of Japan's biological warfare program — including field experiments and attacks on civilian populations — reaching into the hundreds of thousands. The unit's headquarters at Pingfang (平房), a suburb of Harbin, covered six square kilometers and included over 150 buildings, including laboratories, prisons, an airfield, and a crematorium.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Postwar Cover-Up</h3>
+    <p>At the end of the war in August 1945, Unit 731's members destroyed most of the physical evidence — burning documents, blowing up buildings, and killing remaining prisoners. Ishii Shiro and other senior officers were initially detained by American occupation authorities, but instead of being tried as war criminals, they were granted immunity in exchange for providing the United States with their research data on biological warfare. This arrangement, documented in what became known as the "Thompson Report" and other declassified American documents, meant that the full extent of Unit 731's crimes remained largely unknown to the Japanese public for decades.</p>
+    <p style="margin-top: var(--space-sm);">The Tokyo War Crimes Tribunal (1946-1948) did not prosecute Unit 731's leaders, and the Soviet Union's Khabarovsk War Crime Trials (1949), which did try some lower-ranking members, received little attention in Japan or the West. For thirty years after the war, Unit 731 existed in a peculiar historical limbo: known to specialists, occasionally mentioned in foreign publications, but largely absent from Japanese public consciousness. This was not accidental — the Japanese government, the American occupation authorities, and the medical establishment all had reasons to keep the story buried. The doctors who had participated in the experiments returned to civilian life as respected physicians, researchers, and medical school professors. The structure of silence was reinforced by shame, by institutional self-protection, and by the Cold War logic that made Japan's biological warfare data valuable to American military planners.</p>
+  </div>
+
+  <div class="card">
+    <h3>Before Morimura: The Slow Emergence</h3>
+    <p>Before Morimura's book, there had been scattered attempts to bring Unit 731 to light. In 1970, journalist Tsuneishi Keiichi (常石敬一) began researching the unit's history. In May 1981, months before Morimura's book, Tsuneishi published <em>Kieta Saikinsen Butai</em> (消えた細菌戦部隊, "The Disappeared Bacteriological Warfare Unit") through a small publisher (Kaiminsha / 海鳴社). This was a serious academic investigation, but it appeared from an obscure press and did not reach a mass audience. Morimura's achievement was not to be the first to discover Unit 731 — he was not — but to be the first to tell the story with the narrative power and moral urgency that could break through the wall of public indifference. A famous novelist, a bestselling author, was accusing his own country's military of crimes comparable to Auschwitz. The combination of Morimura's literary reputation and the horror of the material made the book impossible to ignore.</p>
+  </div>
+
+  <div class="card">
+    <h3>The International Dimension</h3>
+    <p>The book's impact extended far beyond Japan. It was translated into Chinese, Korean, Russian, English, and other languages, becoming a key text in the international understanding of Japanese war crimes. In China, where Unit 731's victims were primarily located, the book confirmed what many had known from family memory but could not prove. In South Korea, it resonated with the experience of colonial domination. In the United States, it raised uncomfortable questions about the postwar immunity deal. The book became a focal point for debates about historical memory, war responsibility, and the politics of apology — debates that continue to shape Japan's relationships with its neighbors today.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Story</div>
+  <h2>Synopsis & Structure</h2>
+
+  <div class="card">
+    <h3>The Investigation</h3>
+    <p>The book opens with Morimura's account of how the investigation began: the letter from a former Unit 731 member, the gradual establishment of trust, the first horrifying testimonies. Morimura adopts the stance of a detective novelist approaching a real case — he follows leads, corroborates testimony, builds a picture from fragments. But this is not fiction, and the narrator is not detached: his voice carries shock, anger, and a relentless determination to make the truth visible. The book's power comes from this combination of investigative rigor and moral passion — Morimura is not merely documenting; he is accusing, mourning, and demanding accountability.</p>
+    <p style="margin-top: var(--space-sm);">The first part of the book focuses on the perpetrators' testimonies — former unit members who, decades after the events, were willing to speak about what they had seen and done. These testimonies are the book's evidentiary core: descriptions of laboratories where prisoners were infected with plague and cholera; of frostbite experiments conducted in the Manchurian winter; of vivisections performed without anesthesia because anesthesia would have affected the experimental results; of the crematoriums that disposed of the bodies; of the "comfort system" that provided women for the unit's personnel. Morimura presents these testimonies with minimal editorial intervention, allowing the facts to speak with their own terrible eloquence. But his arrangement of the material is itself an argument: by placing the banal details of daily life in the unit alongside the atrocities, he shows how ordinary people — doctors, nurses, technicians, soldiers — could participate in extraordinary evil without feeling themselves to be evil.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Structure of Evil</h3>
+    <p>The book's middle sections examine the institutional and ideological structures that made Unit 731 possible. Morimura traces the career of Ishii Shiro, the unit's founder and commander — a brilliant, charismatic, and utterly amoral medical officer who convinced the army to fund his vision of biological warfare. He examines the recruitment of doctors and scientists from Japan's top medical schools, men who saw the unit as an opportunity for career advancement and research funding. He analyzes the ideology of the "superior race" (<em>minzoku</em> / 民族) that allowed Japanese personnel to view Chinese and Russian prisoners as subhuman — not worthy of the protections extended to fellow Japanese, let alone the ethical constraints of medical practice.</p>
+    <p style="margin-top: var(--space-sm);">But Morimura's analysis goes beyond the easy explanation of racism. He shows how the structure of military bureaucracy — the chain of command, the culture of obedience, the compartmentalization of knowledge — allowed individuals to participate in atrocities while maintaining a sense of personal innocence. The doctor who designed the experiment did not perform the vivisection; the nurse who prepared the patient did not choose the pathogen; the soldier who guarded the facility did not know what happened inside the laboratories. Each person had only a partial view, and each could tell themselves that their own role was minor, technical, necessary. The book's title — <em>The Devil's Gluttony</em> — refers not to any single individual's appetite but to the collective appetite of an institution that consumed human beings as a system consumes fuel.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Aftermath and the Cover-Up</h3>
+    <p>The later sections of the book trace what happened after the war: the destruction of evidence, the American immunity deal, the reintegration of Unit 731 personnel into Japanese society. Morimura documents the specific fates of key figures: Ishii Shiro, who died in 1959 after a postwar career as a businessman and continued contact with American intelligence; other doctors who became professors at medical schools, heads of pharmaceutical companies, respected members of their communities. The book's anger is most visible in these passages — not just at what was done during the war, but at what was not done after it. The absence of trials, the absence of apology, the absence of any systematic reckoning with the medical profession's complicity in war crimes.</p>
+    <p style="margin-top: var(--space-sm);">The sequels expand the investigation. <em>Zoku Akuma no Hōshoku</em> (続・悪魔の飽食) focuses on the postwar fate of the unit's research and the American connection, using declassified documents including the Thompson Report. <em>Akuma no Hōshoku Dai-san-bu</em> (悪魔の飽食 第三部) shifts perspective to the victims — based on Morimura's 1982 trip to China, where he interviewed survivors and visited the ruins of the Pingfang facility. This third volume is the most emotionally devastating of the series, because it restores humanity to those who had been reduced to <em>maruta</em> — names, faces, family memories, and the ongoing pain of a wound that history refused to close.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Photo Controversy</h3>
+    <p>The book's history includes a significant controversy that must be acknowledged. In the sequel, <em>Zoku Akuma no Hōshoku</em>, some photographs included in the book's gravure section were later found to be unrelated to Unit 731 — images from other sources that had been mistakenly or fraudulently provided to Morimura by a source. Right-wing critics seized on this error to attack the entire work as fraudulent, claiming that if the photos were fake, the content must be fake as well — a logical fallacy that ignored the thousands of pages of testimony, documentary evidence, and archival research that supported the book's claims. Morimura acknowledged the error, corrected it in subsequent editions, and continued to stand by the book's central thesis. The controversy had a chilling effect on public discussion of Unit 731 in Japan for years, and it remains a cautionary tale about the vulnerability of investigative journalism to discreditation campaigns — and about how a single error can be weaponized to dismiss an entire body of truth.</p>
+  </div>
+
+  <div class="card">
+    <h3>Chapter Overview (Volume 1)</h3>
+    <ul style="padding-left: 1.5em; color: var(--ink-secondary);">
+      <li style="margin-bottom: 0.5em;"><strong>序章 現代に覗いた恐るべき素顔:</strong> Prologue — The terrifying true face glimpsed in the present day. Morimura explains why, forty years after the war, it is necessary to tell this story.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第1章 特殊軍事区域:</strong> The Special Military Zone — The geography of evil: Pingfang, Harbin, and the six-square-kilometer facility that housed the unit.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第2章 残酷オンパレード:</strong> A Parade of Cruelties — The experiments themselves: frostbite, vivisection, infection, weapons testing.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第3章 暗黒の小宇宙・七三一:</strong> The Dark Microcosm of 731 — The internal structure of the unit: departments, personnel, daily routines.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第4章 人間への跳躍:</strong> The Leap to Humanity — The <em>maruta</em> (丸太) system: how prisoners were dehumanized and processed.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第5章 細菌戦のノウ・ハウ:</strong> The Know-How of Bacteriological Warfare — The technical development of biological weapons and their deployment.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第6章 悪魔の姉妹・一〇〇:</strong> The Devil's Sister: Unit 100 — The related unit that conducted parallel research on chemical and biological weapons.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第7章 飽食の日々:</strong> Days of Gluttony — The daily life of the unit: the contrast between the perpetrators' comfortable existence and their victims' suffering.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第8章 日本陸軍の私生児:</strong> The Bastard Child of the Japanese Army — The "youth corps" members: teenagers recruited into the unit and their moral education.</li>
+      <li style="margin-bottom: 0.5em;"><strong>第9章 仮面の"軍神":</strong> The Masked "War God" — The biography of Ishii Shiro: his rise, his methods, his postwar protection.</li>
+      <li><strong>第10章 七三一崩壊す:</strong> The Collapse of 731 — August 1945: the destruction of evidence, the killing of remaining prisoners, the flight of personnel.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the book's moral urgency, its investigative method, and the price its author paid for telling the truth.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Author's Own Words</div>
+    <div class="passage-jp">
+      全作品約３００点中、これほど物議を醸した作品はない。関東軍第７３１部隊の戦争犯罪を告発したこの作品は、元隊員から提供された写真の中にインチキ写真が混入されていた。これを見分けることができず、グラビア写真に誤用したことから、マスコミに袋叩きにされ、右筋からも攻撃を受けた。抗議電話は鳴りつづけ、夜中、窓に投石され。仕事場のドアに赤ペンキをぶちまけられ、連日、抗議の手紙や脅迫状が配達された。右翼の街宣車が押しかけて来た。私は外出時、防弾チョッキを着た。神奈川県警が常に護衛してくれて、県外にはなるべく出ないようにと警告された。
+    </div>
+    <div class="passage-romaji">
+      "Zen-sakuhin yaku sanbyaku-ten-chū, kore hodo mōgi wo kamoshita sakuhin wa nai. Kantōgun dai-nana-san-ichi butai no sensō-zai wo kokuhatsu shita kono sakuhin wa, moto-taiin kara teikyō sareta shashin no naka ni inchiki shashin ga konnyū sarete ita. Kore wo miwakeru koto ga dekizu, gurabia shashin ni goyō shita koto kara, masukomi ni fukuro-daki ni sare, ukyoku kara mo kōgeki wo uketa. Kōgi-denwa wa nari-tsuzuke, yonaka, mado ni tōseki sareta. Shigoto-ba no doa ni aka-penki wo buchimakerare, renjitsu, kōgi no tegami ya kyōhaku-jō ga haitatsu sareta. Uyoku no ga-isensha ga oshikakete kita. Watashi wa shusshutsu-ji, bōdan-chokki wo kita. Kanagawa-kenkei ga tsune ni goei-shite kurete, kengai ni wa narubeku de-nai yō ni to keikoku sareta."
+    </div>
+    <div class="passage-en">
+      "Of approximately 300 works, none has stirred up so much controversy. This work, which accused the Kwantung Army's Unit 731 of war crimes, had fake photographs mixed in among images provided by former unit members. Unable to distinguish them, I mistakenly used them in the gravure section, and as a result was beaten like a drum by the mass media and attacked by the right wing as well. Protest phone calls rang continuously; in the middle of the night, stones were thrown at my windows. Red paint was splashed on my office door, and day after day, protest letters and threatening notes were delivered. Right-wing sound trucks descended on my home. When I went out, I wore a bulletproof vest. The Kanagawa Prefectural Police constantly escorted me and warned me to avoid leaving the prefecture if possible."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage, from Morimura's 2002 author's commentary on the book, is one of the most important statements about the cost of truth-telling in modern Japan. The grammar is deceptively simple — declarative sentences in the passive and active voices, recounting facts — but the cumulative effect is devastating. Let's examine the key phrases. <em>Zen-sakuhin yaku sanbyaku-ten-chū, kore hodo mōgi wo kamoshita sakuhin wa nai</em> (全作品約作品約３００点中、これほど物議を醸した作品はない): The construction <em>kore hodo... wa nai</em> (これほど…はない, "never before so much...") is an absolute superlative — of 300 works, this one stands alone in the intensity of controversy it generated. <em>Mōgi wo kamoshita</em> (物議を醸した, "stirred up controversy / fermented dispute") uses <em>kamosu</em> (醸す, "to brew / to ferment"), a verb associated with the slow transformation of ingredients into something potent — suggesting that the controversy was not immediate but developed over time, like alcohol or vinegar. <em>Kokuhatsu shita</em> (告発した, "accused / denounced / exposed") is the key verb of the book's purpose: not merely "wrote about" or "described" but <em>kokuhatsu</em> — a public accusation, a legal and moral charge. <em>Fukuro-daki ni sare</em> (袋叩きにされ, "was beaten like a drum / was ganged up on") is a vivid idiom: <em>fukuro-daki</em> (袋叩き) literally means "beating a bag" and refers to a group of people surrounding and attacking someone from all sides — the media, the right wing, the political establishment, all converging on a single target. The passive <em>ni sare</em> (にされ, "was made to be / was subjected to") emphasizes Morimura's victimhood in this assault. The list of harassments that follows uses the passive voice consistently — stones "were thrown" (<em>tōseki sareta</em> / 投石された), paint "was splashed" (<em>buchimakerare</em> / ぶちまけられ), letters "were delivered" (<em>haitatsu sareta</em> / 配達された) — creating a grammar of relentless persecution in which Morimura is the object of actions initiated by unseen agents. The shift to active voice in the final sentences — <em>watashi wa... bōdan-chokki wo kita</em> (私は…防弾チョッキを着た, "I wore a bulletproof vest") — marks a change: Morimura refuses to remain merely the object of persecution. He takes action, even if that action is only defensive. The bulletproof vest becomes a symbol of the writer's body as a target — the physical reality of moral courage. What is lost in English is the specifically Japanese cultural coding of these harassments: the <em>ga-isensha</em> (街宣車, right-wing sound trucks) as a recognized feature of Japanese political life; the <em>aka-penki</em> (赤ペンキ, red paint) as a traditional marker of accusation and shame; the involvement of the prefectural police as both protectors and implicitly as validators of the danger (if the police assign protection, the threat is real). The English reader sees a list of threats; the Japanese reader sees a familiar pattern of political intimidation applied to a writer who broke a national taboo.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The "Logs"</div>
+    <div class="passage-jp">
+      実験体はマルタと呼ばれ、モノとして扱われる。
+    </div>
+    <div class="passage-romaji">
+      "Jikkentai wa maruta to yobare, mono to shite atsukawareru."
+    </div>
+    <div class="passage-en">
+      "The experimental subjects were called 'logs' and treated as things."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, which appears in reader summaries and discussions of the book, encapsulates the moral horror of Unit 731 in eleven Japanese syllables. The grammar is devastatingly simple: <em>jikkentai wa</em> (実験体は, "as for the experimental subjects") + <em>maruta to yobare</em> (マルタと呼ばれ, "were called 'logs'") + <em>mono to shite atsukawareru</em> (モノとして扱われる, "are treated as things / objects"). The passive voice runs through both clauses — the subjects "were called" and "are treated" — emphasizing that this was not their choice but something done to them. The word <em>jikkentai</em> (実験体, "experimental subject / test body") is itself a dehumanizing term — <em>tai</em> (体) means "body," not "person"; the compound reduces a human being to a material substrate for experimentation. But the true horror is <em>maruta</em> (丸太, "log / timber / lumber") — a word from the timber industry applied to living people. In the unit's internal euphemism, prisoners were "logs" because they were delivered to the facility like lumber to a mill, processed like raw material, and burned in the crematorium like waste wood. The word <em>maruta</em> also carried a practical function: it allowed unit members to discuss the disposal of human beings in logistical terms — "how many logs today?" — without confronting the reality of what they were doing. The final clause — <em>mono to shite atsukawareru</em> (モノとして扱われる, "treated as things") — uses the grammar of instrumentalization: <em>mono to shite</em> (モノとして, "as things") + passive verb <em>atsukawareru</em> (扱われる, "are handled / are treated"). The word <em>mono</em> (モノ / 物) is the most generic word for "thing" in Japanese — an object without consciousness, without rights, without subjectivity. To be treated <em>mono to shite</em> is to be removed from the category of the human entirely. What is lost in English is the specifically industrial resonance of <em>maruta</em> — the word belongs to logging, to construction, to the processing of natural resources into usable products. In English, "logs" sounds almost rustic; in Japanese, <em>maruta</em> is a commercial term, a unit of industrial inventory. The prisoners were not merely renamed; they were reclassified — from human beings to raw material for a production process whose output was scientific data.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Writer's Duty</div>
+    <div class="passage-jp">
+      作家は時代をリポートしなきゃいけない。
+    </div>
+    <div class="passage-romaji">
+      "Sakka wa jidai wo ripōto shinakya ikenai."
+    </div>
+    <div class="passage-en">
+      "A writer has to report on their era."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, Morimura's most famous statement of authorial purpose, is grammatically casual and morally absolute. The construction <em>...shinakya ikenai</em> (…しなきゃいけない) is a colloquial contraction of <em>shinakereba ikenai</em> (…しなければいけない), the standard pattern for expressing moral or practical necessity — "must / have to / cannot avoid ~ing." The colloquial form <em>shinakya</em> (しなきゃ) gives the sentence the quality of a personal credo spoken in conversation rather than a formal manifesto — this is not a grand statement of literary theory but a working writer's rule of thumb. The verb <em>ripōto suru</em> (リポートする, "to report") is a loanword from English journalism, and its use here is significant: Morimura does not say "a writer must <em>write about</em> their era" or "must <em>criticize</em> their era" but must <em>report</em> on it — using the vocabulary of journalism rather than literature. This choice reflects his social-school mystery background: the writer as investigator, as witness, as the one who records what others prefer to forget. The word <em>jidai</em> (時代, "era / age / times") is broad and encompassing — not "society" (<em>shakai</em> / 社会) or "the nation" (<em>kuni</em> / 国) but <em>jidai</em>, the whole temporal span in which the writer lives, with all its contradictions, horrors, and possibilities. The particle <em>wo</em> (を) marks <em>jidai</em> as the direct object of <em>ripōto</em> — the era is something the writer acts upon, something they have a responsibility to capture and transmit. What is lost in English is the specifically Japanese cultural weight of this statement. In the context of postwar Japanese literature, where many writers had either supported or silently acquiesced to militarism, Morimura's declaration is a repudiation of aesthetic detachment. It is also a claim to the legacy of <em>tenkō</em> (転向, ideological conversion) literature — the tradition of writers who, having once supported the war, turned to documenting its crimes. But Morimura was not a converted militarist; he was a child during the war, too young to be complicit. His statement thus carries a generational meaning: those who were not responsible for the crimes are responsible for the memory. The English "A writer has to report on their era" captures the meaning but loses the moral urgency embedded in <em>shinakya ikenai</em> — the sense that this is not optional, not a career choice but a categorical imperative.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Victim's Turn</div>
+    <div class="passage-jp">
+      第一、二部が加害者の証言の上に成されたのに対し、本書は現地取材に基づく被害者側からの告発の書である。
+    </div>
+    <div class="passage-romaji">
+      "Dai-ikku, ni-bu ga kagaisha no shōgen no ue ni nasareta no ni taishi, honsho wa genchi-shuzai ni motozuku higaisha-gawa kara no kokuhatsu no sho de aru."
+    </div>
+    <div class="passage-en">
+      "While the first and second parts were built upon the testimonies of the perpetrators, this book is a work of accusation from the victims' side, based on on-site research."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, from the introduction to <em>Akuma no Hōshoku Dai-san-bu</em> (Part Three, 1983), marks a crucial shift in Morimura's method and in the book's ethical architecture. The grammar creates a deliberate contrast: <em>Dai-ikku, ni-bu ga kagaisha no shōgen no ue ni nasareta no ni taishi</em> (第一、二部が加害者の証言の上に成されたのに対し, "while the first and second parts were built upon the testimonies of the perpetrators"). The phrase <em>no ni taishi</em> (のに対し, "in contrast to / while") establishes a formal opposition between the first two volumes and the third. <em>Kagaisha</em> (加害者, "perpetrator / assailant / offender") is the legal and moral term for those who commit harm — distinct from <em>hannin</em> (犯人, "criminal / culprit"), which implies legal conviction. By using <em>kagaisha</em>, Morimura acknowledges that these were the ones who caused harm, regardless of whether they were ever prosecuted. The phrase <em>shōgen no ue ni nasareta</em> (証言の上に成された, "were built upon testimony") uses the honorific passive <em>nasareta</em> (成された), the respectful form of <em>nasu</em> (成す, "to build / to form / to accomplish") — a strangely elevated verb for describing the construction of a book from war criminals' testimonies, as if Morimura is acknowledging the moral ambiguity of his own method in the first two volumes: he built his case on the words of those who had participated in the crimes. The second half of the sentence shifts perspective entirely: <em>honsho wa genchi-shuzai ni motozuku higaisha-gawa kara no kokuhatsu no sho de aru</em> (本書は現地取材に基づく被害者側からの告発の書である, "this book is a work of accusation from the victims' side, based on on-site research"). <em>Genchi-shuzai</em> (現地取材, "on-site research / local coverage") is the vocabulary of investigative journalism — Morimura went to China, walked the ruins of Pingfang, interviewed survivors. <em>Higaisha-gawa</em> (被害者側, "the victims' side") uses the suffix <em>-gawa</em> (側, "side / party / faction") to indicate perspective — not merely "victims" but "the victims' side," a positionality rather than an identity. <em>Kokuhatsu no sho</em> (告発の書, "a work of accusation / a book of denunciation") uses <em>sho</em> (書, "book / writing"), a formal, almost legal term that elevates the book to the status of a formal indictment. The copula <em>de aru</em> (である), the written-language form of "is," gives the sentence the declarative authority of a legal document. What is lost in English is the moral trajectory encoded in the grammar: the book moves from <em>kagaisha</em> (perpetrator) to <em>higaisha</em> (victim), from <em>shōgen</em> (testimony offered by the accused) to <em>kokuhatsu</em> (accusation made by the injured), from archival research to <em>genchi-shuzai</em> (being present at the site of the crime). The sentence is not merely descriptive; it is a confession of the limits of the first two volumes and a promise that the third will correct the imbalance. In a work about crimes that reduced humans to <em>maruta</em>, the shift to the victims' perspective is not merely methodological; it is a restoration of the humanity that the unit tried to destroy.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the world of war crimes investigation, historical memory, and moral accusation.</p>
+
+  <div class="card">
+    <h3>Unit 731 & War Crimes</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>第七三一部隊</td><td>dai-nana-san-ichi butai</td><td class="pos">noun</td><td>Unit 731</td></tr>
+        <tr><td>関東軍</td><td>Kantōgun</td><td class="pos">noun</td><td>Kwantung Army</td></tr>
+        <tr><td>細菌戦</td><td>saikinsen</td><td class="pos">noun</td><td>bacteriological warfare</td></tr>
+        <tr><td>防疫給水部</td><td>bōeki kyūsui-bu</td><td class="pos">noun</td><td>epidemic prevention & water supply dept.</td></tr>
+        <tr><td>人体実験</td><td>jintai jikken</td><td class="pos">noun</td><td>human experimentation</td></tr>
+        <tr><td>生体実験</td><td>seitai jikken</td><td class="pos">noun</td><td>vivisection / experiment on living body</td></tr>
+        <tr><td>生体解剖</td><td>seitai kaibō</td><td class="pos">noun</td><td>vivisection / dissection of living body</td></tr>
+        <tr><td>凍傷実験</td><td>tōshō jikken</td><td class="pos">noun</td><td>frostbite experiment</td></tr>
+        <tr><td>丸太</td><td>maruta</td><td class="pos">noun</td><td>log / lumber (euphemism for prisoners)</td></tr>
+        <tr><td>戦争犯罪</td><td>sensō-zai</td><td class="pos">noun</td><td>war crime</td></tr>
+        <tr><td>虐殺</td><td>gyakusatsu</td><td class="pos">noun</td><td>massacre, slaughter</td></tr>
+        <tr><td>捕虜</td><td>horo</td><td class="pos">noun</td><td>POW, prisoner of war</td></tr>
+        <tr><td>満州</td><td>Man-shū</td><td class="pos">noun</td><td>Manchuria</td></tr>
+        <tr><td>ハルビン</td><td>Harubin</td><td class="pos">noun</td><td>Harbin</td></tr>
+        <tr><td>平房</td><td>Heihō</td><td class="pos">noun</td><td>Pingfang (site of Unit 731 HQ)</td></tr>
+        <tr><td>細菌兵器</td><td>saikin heiki</td><td class="pos">noun</td><td>biological weapon</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Book & Its Impact</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>告発</td><td>kokuhatsu</td><td class="pos">noun</td><td>accusation, denunciation, exposure</td></tr>
+        <tr><td>ノンフィクション</td><td>non-fikushon</td><td class="pos">noun</td><td>non-fiction</td></tr>
+        <tr><td>ドキュメント</td><td>dokyumento</td><td class="pos">noun</td><td>documentary</td></tr>
+        <tr><td>実録</td><td>jitsuroku</td><td class="pos">noun</td><td>true record, factual account</td></tr>
+        <tr><td>証言</td><td>shōgen</td><td class="pos">noun</td><td>testimony, witness account</td></tr>
+        <tr><td>取材</td><td>shuzai</td><td class="pos">noun</td><td>interviewing, news coverage</td></tr>
+        <tr><td>現地取材</td><td>genchi-shuzai</td><td class="pos">noun</td><td>on-site research</td></tr>
+        <tr><td>全貌</td><td>zenbō</td><td class="pos">noun</td><td>full picture, whole picture</td></tr>
+        <tr><td>実態</td><td>jittai</td><td class="pos">noun</td><td>true state, reality</td></tr>
+        <tr><td>実像</td><td>jitsuzō</td><td class="pos">noun</td><td>true image, real form</td></tr>
+        <tr><td>衝撃</td><td>shōgeki</td><td class="pos">noun</td><td>shock, impact</td></tr>
+        <tr><td>物議</td><td>mōgi</td><td class="pos">noun</td><td>controversy, dispute</td></tr>
+        <tr><td>物議を醸す</td><td>mōgi wo kamasu</td><td class="pos">phrase</td><td>to stir up controversy</td></tr>
+        <tr><td>袋叩き</td><td>fukuro-daki</td><td class="pos">noun</td><td>gang attack, beating from all sides</td></tr>
+        <tr><td>脅迫状</td><td>kyōhaku-jō</td><td class="pos">noun</td><td>threatening letter</td></tr>
+        <tr><td>ベストセラー</td><td>besuto-serā</td><td class="pos">noun</td><td>bestseller</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Moral & Political Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>悪魔</td><td>akuma</td><td class="pos">noun</td><td>devil, demon</td></tr>
+        <tr><td>飽食</td><td>hōshoku</td><td class="pos">noun</td><td>gluttony, satiation</td></tr>
+        <tr><td>加害者</td><td>kagaisha</td><td class="pos">noun</td><td>perpetrator, offender</td></tr>
+        <tr><td>被害者</td><td>higaisha</td><td class="pos">noun</td><td>victim</td></tr>
+        <tr><td>非人道的</td><td>hi-jindō-teki</td><td class="pos">na-adj</td><td>inhumane</td></tr>
+        <tr><td>狂気</td><td>kyōki</td><td class="pos">noun</td><td>madness, insanity</td></tr>
+        <tr><td>恐怖</td><td>kyōfu</td><td class="pos">noun</td><td>terror, horror</td></tr>
+        <tr><td>戦慄</td><td>senritsu</td><td class="pos">noun</td><td>shuddering, trembling with fear</td></tr>
+        <tr><td></td><td>yami</td><td class="pos">noun</td><td>darkness (moral/historical)</td></tr>
+        <tr><td>歴史の闇</td><td>rekishi no yami</td><td class="pos">phrase</td><td>the darkness of history</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory</td></tr>
+        <tr><td>忘却</td><td>bōkyaku</td><td class="pos">noun</td><td>forgetting, oblivion</td></tr>
+        <tr><td>責任</td><td>sekinin</td><td class="pos">noun</td><td>responsibility</td></tr>
+        <tr><td>告発</td><td>kokuhatsu</td><td class="pos">noun</td><td>accusation, denunciation</td></tr>
+        <tr><td>証明</td><td>shōmei</td><td class="pos">noun</td><td>proof, demonstration</td></tr>
+        <tr><td>人間の証明</td><td>ningen no shōmei</td><td class="pos">phrase</td><td>proof of the man / proof of humanity</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Author & Literary Terms</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>社会派ミステリー</td><td>shakai-ha misuterii</td><td class="pos">noun</td><td>social-school mystery</td></tr>
+        <tr><td>推理作家</td><td>suiri-sakka</td><td class="pos">noun</td><td>mystery writer</td></tr>
+        <tr><td>ベストセラー作家</td><td>besuto-serā sakka</td><td class="pos">noun</td><td>bestselling author</td></tr>
+        <tr><td>リポートする</td><td>ripōto suru</td><td class="pos">verb</td><td>to report</td></tr>
+        <tr><td>時代</td><td>jidai</td><td class="pos">noun</td><td>era, age, times</td></tr>
+        <tr><td>右翼</td><td>uyoku</td><td class="pos">noun</td><td>right wing</td></tr>
+        <tr><td>街宣車</td><td>ga-isensha</td><td class="pos">noun</td><td>sound truck, propaganda vehicle</td></tr>
+        <tr><td>防弾チョッキ</td><td>bōdan-chokki</td><td class="pos">noun</td><td>bulletproof vest</td></tr>
+        <tr><td>護衛</td><td>goei</td><td class="pos">noun</td><td>escort, protection</td></tr>
+        <tr><td>絶版</td><td>zeppan</td><td class="pos">noun</td><td>out of print, discontinuation</td></tr>
+        <tr><td>復刊</td><td>fukkan</td><td class="pos">noun</td><td>republication</td></tr>
+        <tr><td>改訂版</td><td>kaitei-ban</td><td class="pos">noun</td><td>revised edition</td></tr>
+        <tr><td>累計</td><td>ruikei</td><td class="pos">noun</td><td>cumulative total</td></tr>
+        <tr><td>発行部数</td><td>hakkō-busū</td><td class="pos">noun</td><td>print run, copies issued</td></tr>
+        <tr><td>受賞</td><td>jushō</td><td class="pos">noun</td><td>receiving an award</td></tr>
+        <tr><td>デビュー</td><td>debyū</td><td class="pos">noun</td><td>debut</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Morimura's prose in <em>Akuma no Hōshoku</em> is the prose of documentary restraint — but much of what makes it powerful is embedded in Japanese vocabulary of war memory, moral judgment, and the specific grammar of accusation and victimhood.</p>
+
+  <div class="card">
+    <h3>1. <em>Kokuhatsu</em> (告発) vs. "Exposure" or "Revelation"</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>戦争犯罪を<strong>告発</strong>した</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"accused of war crimes" / "exposed war crimes" / "denounced war crimes"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>kokuhatsu</em> (告発) is one of the most legally and morally charged words in Japanese, and no English equivalent captures its full weight. <em>Kokuhatsu</em> combines <em>tsugu</em> (告, "to tell / to inform / to announce") and <em>hatsu</em> (発, "to issue forth / to emit / to send out"), and it means "to accuse / to denounce / to report to authorities / to indict." But it is not merely "exposing" a fact or "revealing" a secret — <em>kokuhatsu</em> is an active accusation that demands a response from society, from the legal system, from history itself. In Japanese law, <em>kokuhatsu</em> refers to the act of reporting a crime to prosecutors; in journalism, it describes investigative reporting that names perpetrators; in literature, it is the genre of moral witness. When Morimura says his book <em>kokuhatsu shita</em> (告発した) Unit 731's war crimes, he is not saying he "wrote about" them or "revealed" them — he is saying he accused the unit, in the court of public opinion, of crimes against humanity. The English "exposed" suggests the removal of a cover; <em>kokuhatsu</em> suggests the filing of a charge. "Denounced" captures the moral intensity but loses the legal precision. "Accused" captures the legal dimension but loses the public, performative quality — <em>kokuhatsu</em> is something done before others, a speech act that calls for witnesses. What is lost in English is the sense that Morimura understood his book as a formal indictment, not merely a historical account. The title <em>kokuhatsu no sho</em> (告発の書, "a work of accusation") frames the book as a legal document as much as a literary one — a charge sheet against an institution that had escaped prosecution.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Maruta</em> (丸太) as Dehumanization</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>実験体は<strong>マルタ</strong>と呼ばれた</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The experimental subjects were called 'logs'"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The translation of <em>maruta</em> (丸太) as "logs" is accurate but inadequate. In English, "log" is a neutral word for a piece of wood — it can be rustic, cozy, even poetic (a log fire, a log cabin). In Japanese, <em>maruta</em> is a commercial and industrial term: it refers to timber in its raw, unprocessed form — the product of logging operations, measured in units, transported, sold, and milled. A <em>maruta</em> is not a piece of firewood; it is inventory. It is a commodity before it becomes a product. By calling prisoners <em>maruta</em>, Unit 731 performed a double erasure: it removed the prisoners from the category of the human (<em>ningen</em> / 人間), and it placed them in the category of raw material for industrial processing. The English "logs" captures the wooden metaphor but loses the commercial coding. A more accurate translation might be "lumber" or "raw timber" — but these sound awkward when applied to people. And that awkwardness is precisely the point: the Japanese word <em>maruta</em> was also awkward when applied to people, and the unit used it precisely to create distance, to make the unthinkable thinkable by making it part of a logistics vocabulary. What is also lost is the visual specificity of <em>maruta</em>: <em>maru</em> (丸) means "round / circular," and <em>ta</em> (太) means "thick / fat" — a <em>maruta</em> is specifically a thick, round piece of timber, the trunk of a tree before it has been split or shaped. The word thus carries a visual image of cylindrical rawness, of unformed mass — an image that, when applied to human bodies, carries a horrifying suggestion of the body reduced to mere mass, to meat, to material without form or soul. The English "logs" is too slender, too shaped, too domesticated to carry this resonance.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Rekishi no Yami</em> (歴史の闇) as Historical Darkness</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>歴史の闇</strong>のヴェールに包まれていた</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"wrapped in the veil of the darkness of history" / "shrouded in the veil of historical darkness"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>rekishi no yami</em> (歴史の闇, "the darkness of history") is a common expression in Japanese discourse about war memory, but it carries a specifically Japanese philosophical resonance. <em>Yami</em> (闇) means "darkness" — physical darkness, moral darkness, and the Buddhist <em>avidyā</em> (無明, ignorance / spiritual darkness). In Japanese, <em>yami</em> is not merely the absence of light; it is a positive force, a presence that obscures and conceals. When history is described as having <em>yami</em>, the suggestion is not merely that some facts are unknown but that there are forces — institutional, political, psychological — that actively maintain the darkness. The "veil" (<em>vēru</em> / ヴェール) that wraps Unit 731's history is thus not a passive covering but an active concealment, maintained by the American immunity deal, the Japanese government's silence, the medical establishment's self-protection, and the collective shame of a society that preferred not to know. The English "darkness of history" captures the metaphor but loses the Buddhist undertone of <em>yami</em> as spiritual ignorance — the darkness that comes from refusing to see what is before you. In Japanese war memory discourse, <em>rekishi no yami</em> is also a call to action: the darkness can be dispelled, the veil can be lifted, but only by those willing to look. Morimura's entire book is an exercise in <em>yami</em>-dispelling — the writer as a light source directed at the dark corners of national memory. What is lost in English is the moral agency embedded in the metaphor: in Japanese, history does not merely "have" darkness; the darkness is something done to history by those who benefit from concealment.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kagaisha</em> (加害者) and <em>Higaisha</em> (被害者) as Moral Categories</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>加害者</strong>の証言 / <strong>被害者側</strong>からの告発</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"perpetrators' testimony" / "accusation from the victims' side"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The paired terms <em>kagaisha</em> (加害者, "perpetrator / offender / assailant") and <em>higaisha</em> (被害者, "victim / injured party") form a moral and legal binary that structures Japanese discourse on war crimes and historical responsibility. The grammar of these words is revealing: both end in <em>-sha</em> (者, "person / one who"), making them identities rather than merely descriptions of action. A <em>kagaisha</em> is not merely someone who committed harm; they are a "harm-causing person" — the harm becomes part of their categorical identity. Similarly, a <em>higaisha</em> is a "harm-receiving person" — the victimhood is not an event but a status. This grammatical structure has important implications: in Japanese, one can "become" a <em>higaisha</em> (被害者になる) or "be" a <em>kagaisha</em> (加害者である) — these are states of being, not merely historical facts. The English "perpetrator" and "victim" are also identities, but they lack the transparent etymology of the Japanese terms. <em>Kagaisha</em> breaks down into <em>ka</em> (加, "to add / to inflict") + <em>gai</em> (害, "harm / damage / injury") + <em>sha</em> (者, "person") — literally "a person who inflicts harm." <em>Higaisha</em> breaks down into <em>hi</em> (被, "to receive / to suffer") + <em>gai</em> (害, "harm") + <em>sha</em> (者)  literally "a person who receives harm." The symmetry is perfect and morally transparent: the same <em>gai</em> (harm) flows from the <em>ka</em>-person to the <em>hi</em>-person. What is lost in English is this etymological clarity — the way the Japanese words make visible the transfer of harm from one category of person to another. The English reader sees "perpetrator" and "victim" as legal terms; the Japanese reader sees a moral equation written into the structure of the language itself. When Morimura shifts his book's perspective from <em>kagaisha</em> to <em>higaisha</em>, he is not merely changing sources; he is crossing a moral boundary, moving from the side of those who caused harm to the side of those who received it — and in doing so, he restores the balance that the unit's euphemisms (<em>maruta</em>) had destroyed.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Shinakya Ikenai</em> (しなきゃいけない) as Moral Necessity</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>作家は時代をリポート<strong>しなきゃいけない</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"A writer <strong>has to</strong> report on their era"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The grammatical pattern <em>...nakya ikenai</em> (…なきゃいけない) is a colloquial contraction of <em>...nakereba ikenai</em> (…なければいけない), one of the most important patterns for expressing necessity in Japanese. The full form contains a conditional (<em>nakereba</em>, "if [one] does not") and a negative evaluation (<em>ikenai</em>, "it is not good / it will not do"), creating a double-negative logic: "if I do not do X, it will not be good" = "I must do X." The colloquial <em>shinakya</em> (しなきゃ) compresses this logic into a single fluid syllable cluster that feels almost like a single word — the grammatical complexity hidden inside casual speech. This pattern is distinct from other necessity expressions in Japanese: <em>...nakereba naranai</em> (…なければならない) is more formal and objective; <em>...nai to ikenai</em> (…ないといけない) is slightly softer; <em>...ni chigainai</em> (…に違いない) expresses certainty rather than obligation. <em>...nakya ikenai</em> carries a personal, almost intimate quality — it is what you say when you are explaining why you are doing something difficult, not because you want to but because you cannot not do it. When Morimura uses this pattern to describe a writer's duty, he is not issuing a grand proclamation; he is stating a personal rule, a working principle that has guided him through death threats and harassment. The English "has to" or "must" captures the obligation but loses the colloquial warmth and the double-negative logic that makes the Japanese expression feel like a discovery rather than a decree. What is also lost is the specifically Japanese cultural context of writerly responsibility — the legacy of writers like Ishikawa Tatsuzō and Ōoka Shōhei who believed that literature must engage with the moral catastrophes of the age. Morimura's <em>shinakya ikenai</em> places him in this lineage not as a theoretician but as a practitioner — someone who discovered through doing that a writer must report on their era, because the alternative is a kind of moral silence that is itself a form of complicity.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from Morimura's documentary prose, his statements of authorial purpose, and the legal-moral vocabulary of accusation and witness.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜しなきゃいけない（義務・必然）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...shinakya ikenai</em>: colloquial necessity — "must / have to / cannot avoid ~ing"</p>
+      <div class="grammar-example">作家は時代をリポートしなきゃいけない</div>
+      <p class="grammar-example-en">"A writer has to report on their era" — The colloquial <em>nakya</em> form makes moral necessity sound like personal conviction.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に対し（対照・比較）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni taishi</em>: "in contrast to / while / whereas" — establishes formal opposition between two propositions.</p>
+      <div class="grammar-example">加害者の証言の上に成されたのに対し、本書は被害者側からの告発の書である</div>
+      <p class="grammar-example-en">"while [the first volumes] were built on perpetrators' testimony, this book is a work of accusation from the victims' side" — The <em>ni taishi</em> construction creates a moral and methodological pivot.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の上に成された（根拠・基盤）</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>...no ue ni nasareta</em>: honorific passive — "was built upon / was formed on the basis of"</p>
+      <div class="grammar-example">加害者の証言の上に成された</div>
+      <p class="grammar-example-en">"was built upon the testimonies of the perpetrators" — The honorific <em>nasareta</em> carries a strange elevation, acknowledging the moral weight of building on perpetrators' words.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜によって（受身の動作主）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni yotte</em>: passive agent marker — "by [agent]" in passive constructions.</p>
+      <div class="grammar-example">マスコミに袋叩きにされ、右筋からも攻撃を受けた</div>
+      <p class="grammar-example-en">"was ganged up on by the mass media and attacked by the right wing" — The passive with <em>ni</em> creates a grammar of persecution in which the subject is the object of others' actions.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と呼ばれ、〜として扱われる（受身・分類）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...to yobare, ...to shite atsukawareru</em>: passive classification — "is called ~ and is treated as ~"</p>
+      <div class="grammar-example">実験体はマルタと呼ばれ、モノとして扱われる</div>
+      <p class="grammar-example-en">"The experimental subjects were called 'logs' and treated as things" — The double passive creates a grammar of systematic dehumanization.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ずに（打消し・方法）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...zu ni</em>: "without ~ing" — negative gerund indicating absence of action.</p>
+      <div class="grammar-example">見分けることができず、グラビア写真に誤用した</div>
+      <p class="grammar-example-en">"unable to distinguish them, I mistakenly used them in the gravure" — The <em>zu ni</em> form creates a causal link between failure and consequence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ようにと警告された（引用・受身）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō ni to keikoku sareta</em>: "was warned to ~" — quotative passive with imperative force.</p>
+      <div class="grammar-example">県外にはなるべく出ないようにと警告れた</div>
+      <p class="grammar-example-en">"was warned to avoid leaving the prefecture if possible" — The <em>yō ni to</em> construction embeds an imperative within a passive, showing authority's reach.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の書である（断定・文語）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...no sho de aru</em>: formal written copula — "is a work of ~" — declarative authority.</p>
+      <div class="grammar-example">被害者側からの告発の書である</div>
+      <p class="grammar-example-en">"is a work of accusation from the victims' side" — The <em>de aru</em> copula gives the sentence the formal authority of a legal or historical document.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Morimura's grammar in <em>Akuma no Hōshoku</em> is the grammar of documentary witness — declarative, restrained, and morally charged. Pay attention to how the passive voice creates a grammar of persecution and victimhood, how <em>ni taishi</em> creates moral pivots between perpetrator and victim perspectives, how <em>shinakya ikenai</em> turns personal conviction into categorical imperative, and how <em>de aru</em> transforms testimony into historical record. The grammar is as sober as the subject demands, and as uncompromising.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from bibliographic data and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">悪魔の飽 &middot; 森村 誠一 &middot; 光文社 1981 &middot; カッパ・ノベルス</p>
+  <p style="margin-top: var(--space-xs);">続・悪魔の飽食 1982 &middot; 悪魔の飽食 第三部 1983 &middot; ノーモア悪魔の飽食 1984 &middot; 新版 2012</p>
+</footer>
+
+</div>
+</body>
+</html>

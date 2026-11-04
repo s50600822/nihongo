@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヤギに〇〇プレゼントしてみた_breakdown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Noto+Serif+JP:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f1410;
+  --surface: #1a221a;
+  --surface-raised: #242e24;
+  --ink: #d8e8d8;
+  --ink-dim: #90b090;
+  --accent: #4a8a4a;
+  --accent-glow: #6aaa6a;
+  --accent-weak: rgba(74,138,74,0.10);
+  --accent2: #6a8a3a;
+  --accent2-glow: #8aaa5a;
+  --accent2-weak: rgba(106,138,58,0.10);
+  --line: rgba(216,232,216,0.08);
+  --line-strong: rgba(74,138,74,0.35);
+  --space: clamp(1.25rem, 1rem + 1vw, 2rem);
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --step-3: clamp(2.2rem, 1.6rem + 2.4vw, 3.6rem);
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -8px rgba(0,0,0,0.5);
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+header {
+  position: relative;
+  padding: calc(var(--space) * 4) var(--space) calc(var(--space) * 3);
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-strong);
+}
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(74,138,74,0.12), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 90%, rgba(106,138,58,0.08), transparent 60%);
+  pointer-events: none;
+}
+header .eyebrow {
+  position: relative;
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin-bottom: var(--space);
+}
+header h1 {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: calc(var(--space) * 0.6);
+}
+header .subtitle {
+  position: relative;
+  color: var(--ink-dim);
+  font-size: var(--step-0);
+  max-width: 55ch;
+  margin: 0 auto calc(var(--space) * 1.2);
+}
+header .meta {
+  position: relative;
+  color: var(--accent2-glow);
+  font-family: "Cinzel", serif;
+  font-size: var(--step--1);
+  letter-spacing: 0.15em;
+  margin-bottom: calc(var(--space) * 1.5);
+}
+header .full-lyrics {
+  position: relative;
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2.2;
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--ink);
+  white-space: pre-wrap;
+  text-align: left;
+}
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2.5) var(--space);
+}
+.section-title {
+  font-family: "Cinzel", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin-bottom: calc(var(--space) * 1.25);
+  padding-bottom: calc(var(--space) * 0.5);
+  border-bottom: 1px solid var(--line-strong);
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+}
+.section-title .num {
+  font-size: 0.55em;
+  color: var(--accent-glow);
+  letter-spacing: 0.05em;
+}
+.line-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: calc(var(--space) * 1.1) calc(var(--space) * 1.2);
+  margin-bottom: calc(var(--space) * 1.25);
+  box-shadow: var(--shadow);
+  border-left: 3px solid var(--accent);
+}
+.line-header {
+  margin-bottom: calc(var(--space) * 0.9);
+  padding-bottom: calc(var(--space) * 0.6);
+  border-bottom: 1px solid var(--line);
+}
+.japanese-line {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.35em;
+  color: var(--ink);
+}
+.romaji-line {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: var(--step-0);
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.english-line {
+  font-size: var(--step-0);
+  color: #b0c0b0;
+  font-style: italic;
+  margin-top: 0.4em;
+  line-height: 1.6;
+}
+.word-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+.word-table th {
+  text-align: left;
+  padding: 0.6em 0.8em;
+  color: var(--ink-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85em;
+  border-bottom: 1px solid var(--line);
+}
+.word-table td {
+  padding: 0.65em 0.8em;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.word-table tr:last-child td {
+  border-bottom: none;
+}
+.word-table .col-jp {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.15em;
+  color: var(--ink);
+  width: 18%;
+}
+.word-table .col-romaji {
+  color: #90b090;
+  width: 20%;
+}
+.word-table .col-pos {
+  color: var(--accent-glow);
+  font-weight: 600;
+  width: 22%;
+}
+.word-table .col-gloss {
+  color: var(--ink-dim);
+  width: 40%;
+}
+.grammar-note {
+  background: var(--surface-raised);
+  border-left: 2px solid var(--accent);
+  padding: 0.9em 1.1em;
+  margin-top: calc(var(--space) * 0.8);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--step--1);
+  color: #90b090;
+  line-height: 1.65;
+}
+.grammar-note strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  margin: calc(var(--space) * 2) 0;
+}
+.asr-note {
+  background: var(--accent-weak);
+  border-left: 2px solid var(--accent-glow);
+  padding: 0.7em 1em;
+  margin-top: 0.6em;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: var(--step--1);
+  color: #a0c0a0;
+}
+.asr-note strong {
+  color: var(--accent-glow);
+}
+@media (max-width: 640px) {
+  .word-table .col-pos, .word-table .col-gloss {
+    width: auto;
+  }
+  .line-card {
+    padding: var(--space);
+  }
+}
+@media print {
+  body { background: #fff; color: #000; }
+  header, .line-card, .grammar-note, .section-title, .asr-note {
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+  header::before, header::after { display: none; }
+}
+@page { size: A4; margin: 14mm; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">ASR Transcript Breakdown &middot; くまの里山日記 &middot; ヤギに〇〇プレゼントしてみた</div>
+  <h1>ヤギに〇〇プレゼントしてみた</h1>
+  <p class="subtitle">A complete grammatical, lexical, and contextual breakdown of the ASR transcript from the video &quot;ヤギに〇〇プレゼントしてみた&quot; (Trying to Give a Present to the Goat). Features extensive ASR error annotation, corrected readings, and rural Japanese vocabulary.</p>
+  <div class="meta">Channel: くまの里山日記 &nbsp;&bull;&nbsp; Theme: Goat care, rural life, wildlife encounters &nbsp;&bull;&nbsp; File: f1</div>
+  <div class="full-lyrics">どう? どうぞ。はい。
+どうぞ。どうぞ。うわあ。サビちゃん。
+あ、ある。お、
+ちょっと、ちょっと待って。
+行くぞ。
+なんか止まってしまった。いいね。
+美味しいか?
+ああ、タンポポがほらいっぱい。
+近い。
+魔法を使ってこなくます。 [ASR: garbled]
+のため [ASR: fragment]
+だいぶ入ったで。
+ああ、3キャップ [ASR: misheard]
+次に
+焦 [ASR: fragment]
+のチャップ開いてみた。 [ASR: misheard]
+オッケー。もあげとくか。 [ASR: unclear]
+じどう [ASR: fragment]
+どうぞ。う。
+い、
+投げちゃったじゃん。プレゼント投げちゃった。はい、どうぞ。はい。おい。
+どうぞ。どうぞ。うわあ。置いてきてんじゃん。
+回収行くわ。ちょっと赤抜いてよ。ブラシ取りに行きたい。
+さあ、けよ。けんで。これが目に入らんのか。 [ASR: garbled]
+ほら、嬉しいな。
+レジない。 [ASR: misheard]
+これやもんね。 [ASR: unclear]
+これく [ASR: fragment]
+ペシペシペシペシ
+見てるる [ASR: misheard]
+うわあ。お前顔すりつけた。
+おい。
+うわあ。靴の泥ついてんじゃん。
+うあ。
+おい、おい、
+じん、ジん、 [ASR: misheard name]
+ちょっと待ってくれ。じん [ASR: misheard]
+おい。
+これいるとこに無理ちゃう。 [ASR: garbled]
+これはもってたらいいの?
+動いてるじゃん。
+動いてるわ。
+はい。お話したろか。
+行けん。
+これもたけ [ASR: fragment]
+違う。こっちだ。こっちだ。
+やった。
+え、これでも潰れそうじゃない?
+やばい。像以上に激しい可能性。これあったのはしどっか。あ、え、外れたで。 [ASR: garbled]
+これちゃんとできてなかった。
+どうする? ジャンプしと [ASR: unclear]
+ああ。なんでや?
+違うだろ。
+違うだろ。
+違うだろ。
+あれブラシ行ってもブラシよりこっちの太もの方がいいって。 [ASR: partially garbled]
+ああ、浮いて。
+大丈夫? これ。なんでよ。なんでよ。ブラしときなよ。 [ASR: misheard]
+太もの間からこんにちはや。ほら、やっぱりブラシより人間の足の方がいいって。ほらほら。今度これちもこれでお尻描くこかな。 [ASR: heavily garbled]
+にゃー。今度からこっちの太もできいわ。うちこっち。今度からこっちでお尻かも。結局これのもんやな。ほら。はい。 [ASR: heavily garbled]
+123ではい。はい。
+は、捕まえたかもしれないよ。よん。
+やもり捕まえた。
+え、可愛いな。
+なんか色黒いな、この子。あら、うん。
+ち出してる。 [ASR: misheard]
+は早。 [ASR: fragment]
+今日のおやつはこれ
+デデん。マカダミアナッツと [ASR: misheard]
+マカダミアナッツおかきと [ASR: misheard]
+じゃん。 [ASR: fragment]
+けてあげよう。ココアの豆乳蒸しパン。朝からちょっと簡単に作ったやつ。 [ASR: partially garbled]
+これ食べて畑作業頑張ります。豪華だよ。
+今日のおやつは豪華だよ。ほら。
+じゃあ今回の動画はこれくらいで終わります。それではまた次の動画でお会いしましょう。バイバイ。
+ご視聴ありがとうございました。チャンネル登録、高評価、コメントしてもらえると嬉しいです。
+InstagramとXのフォローもよろしくお願いします。シップもに更新しています。是非チェック。それでは次回の動画でお会いしましょう。</div>
+</header>
+
+<main>
+
+<section>
+<h2 class="section-title"><span class="num">01</span> Giving a Present to the Goat &mdash; サビちゃん登場</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">どう? どうぞ。はい。 / どうぞ。どうぞ。うわあ。サビちゃん。 / ちょっと、ちょっと待って。 / 行くぞ。 / なんか止まってしまった。いいね。 / 美味しいか?</div>
+    <div class="romaji-line">Dou? Douzo. Hai. / Douzo. Douzo.Uwaa. Sabi-chan. / Chotto, chotto matte. / Iku zo. / Nanka tomatte shimatta. Ii ne. / Oishii ka?</div>
+    <div class="english-line">&quot;How is it? Here you go. Yes. / Here. Here. Wow. Sabi-chan. / Wait, wait a moment. / Here we go. / It kind of stopped. Nice. / Is it delicious?&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">どう</td><td class="col-romaji">dou</td><td class="col-pos">Adverb</td><td class="col-gloss">how; what [about it]</td></tr>
+    <tr><td class="col-jp">どうぞ</td><td class="col-romaji">douzo</td><td class="col-pos">Adverb</td><td class="col-gloss">here you are; please [offering]</td></tr>
+    <tr><td class="col-jp">はい</td><td class="col-romaji">hai</td><td class="col-pos">Interjection</td><td class="col-gloss">yes; here</td></tr>
+    <tr><td class="col-jp">うわあ</td><td class="col-romaji">uwaa</td><td class="col-pos">Interjection</td><td class="col-gloss">wow; whoa [expression of surprise]</td></tr>
+    <tr><td class="col-jp">サビちゃん</td><td class="col-romaji">Sabi-chan</td><td class="col-pos">Proper noun + suffix</td><td class="col-gloss">Sabi-chan [goat&apos;s name, from 錆 &quot;rust&quot;]</td></tr>
+    <tr><td class="col-jp">ちょっと</td><td class="col-romaji">chotto</td><td class="col-pos">Adverb</td><td class="col-gloss">a moment; a little; hey [attention-getter]</td></tr>
+    <tr><td class="col-jp">待つ</td><td class="col-romaji">matsu</td><td class="col-pos">Verb (te-form imperative)</td><td class="col-gloss">wait &mdash; 待って</td></tr>
+    <tr><td class="col-jp">行く</td><td class="col-romaji">iku</td><td class="col-pos">Verb (volitional/informal)</td><td class="col-gloss">go; here we go &mdash; 行くぞ</td></tr>
+    <tr><td class="col-jp">ぞ</td><td class="col-romaji">zo</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[masculine emphatic]</td></tr>
+    <tr><td class="col-jp">なんか</td><td class="col-romaji">nanka</td><td class="col-pos">Adverb</td><td class="col-gloss">kind of; somehow; something [colloquial]</td></tr>
+    <tr><td class="col-jp">止まる</td><td class="col-romaji">tomaru</td><td class="col-pos">Verb (te-form + shimau)</td><td class="col-gloss">stop; halt &mdash; 止まってしまった</td></tr>
+    <tr><td class="col-jp">しまう</td><td class="col-romaji">shimau</td><td class="col-pos">Auxiliary verb (past)</td><td class="col-gloss">regrettably; completely &mdash; しまった</td></tr>
+    <tr><td class="col-jp">いい</td><td class="col-romaji">ii</td><td class="col-pos">I-adjective</td><td class="col-gloss">good; nice</td></tr>
+    <tr><td class="col-jp">ね</td><td class="col-romaji">ne</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">right?; isn&apos;t it?</td></tr>
+    <tr><td class="col-jp">美味しい</td><td class="col-romaji">oishii</td><td class="col-pos">I-adjective</td><td class="col-gloss">delicious; tasty</td></tr>
+    <tr><td class="col-jp">か</td><td class="col-romaji">ka</td><td class="col-pos">Question particle</td><td class="col-gloss">[question marker]</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> どうぞ is an offering expression used when giving something to someone (or an animal). 行くぞ uses the informal verb 行く + emphatic masculine particle ぞ, creating a &quot;here we go&quot; announcement. なんか止まってしまった uses the colloquial adverb なんか (somehow) + te-form 止まって (stopped) + auxiliary しまった (regrettably/completely ended up): &quot;It somehow stopped [working].&quot; The auxiliary しまう adds a sense of unintended completion. 美味しいか uses the i-adjective 美味しい + question particle か for a direct question: &quot;Is it delicious?&quot; In casual speech, か can be used without です/だ for direct questions to animals or intimate contexts.
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> サビちゃん correctly recognized. The opening is clear casual speech with typical rural Japanese intonation patterns.
+  </div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title"><span class="num">02</span> Dandelions and Distractions &mdash; タンポポとプレゼント</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">ああ、タンポポがほらいっぱい。 / 近い。 / だいぶ入ったで。 / 次に / オッケー。もあげとくか。 / どうぞ。う。 / 投げちゃったじゃん。プレゼント投げちゃった。はい、どうぞ。はい。い。</div>
+    <div class="romaji-line">Aaa, tanpopo ga hora ippai. / Chikai. / Daibu haitta de. / Tsugi ni. / Okkee. Mo agetoku ka. / Douzo. U. / Nagechatta jan. Purezento nagechatta. Hai, douzo. Hai. Oi.</div>
+    <div class="english-line">&quot;Ah, look, lots of dandelions. / Close. / Quite a bit went in. / Next. / Okay. Shall I give [you] more too? / Here you go. Mm. / You threw it away! I threw the present away. Here, here you go. Yes. Hey.&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">タンポポ</td><td class="col-romaji">tanpopo</td><td class="col-pos">Noun</td><td class="col-gloss">dandelion</td></tr>
+    <tr><td class="col-jp">ほら</td><td class="col-romaji">hora</td><td class="col-pos">Interjection</td><td class="col-gloss">look; see; hey [drawing attention]</td></tr>
+    <tr><td class="col-jp">いっぱい</td><td class="col-romaji">ippai</td><td class="col-pos">Adverb / noun</td><td class="col-gloss">lots; full; plenty</td></tr>
+    <tr><td class="col-jp">近い</td><td class="col-romaji">chikai</td><td class="col-pos">I-adjective</td><td class="col-gloss">close; near</td></tr>
+    <tr><td class="col-jp">だいぶ</td><td class="col-romaji">daibu</td><td class="col-pos">Adverb</td><td class="col-gloss">quite; fairly; considerably</td></tr>
+    <tr><td class="col-jp">入る</td><td class="col-romaji">hairu</td><td class="col-pos">Verb (past)</td><td class="col-gloss">enter; go in &mdash; 入った</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Sentence-ending particle [dialect]</td><td class="col-gloss">[emphatic, Kansai/rural]</td></tr>
+    <tr><td class="col-jp">次</td><td class="col-romaji">tsugi</td><td class="col-pos">Noun</td><td class="col-gloss">next</td></tr>
+    <tr><td class="col-jp">に</td><td class="col-romaji">ni</td><td class="col-pos">Particle</td><td class="col-gloss">to; for [temporal/sequential]</td></tr>
+    <tr><td class="col-jp">オッケー</td><td class="col-romaji">okkee</td><td class="col-pos">Noun/Interjection (loanword)</td><td class="col-gloss">OK; okay</td></tr>
+    <tr><td class="col-jp">も</td><td class="col-romaji">mo</td><td class="col-pos">Particle</td><td class="col-gloss">too; also; more</td></tr>
+    <tr><td class="col-jp">あげる</td><td class="col-romaji">ageru</td><td class="col-pos">Verb (te-form + oku)</td><td class="col-gloss">give &mdash; あげとく</td></tr>
+    <tr><td class="col-jp">おく</td><td class="col-romaji">oku</td><td class="col-pos">Auxiliary verb</td><td class="col-gloss">do in advance; put aside &mdash; とく</td></tr>
+    <tr><td class="col-jp">か</td><td class="col-romaji">ka</td><td class="col-pos">Question particle</td><td class="col-gloss">[question]</td></tr>
+    <tr><td class="col-jp">投げる</td><td class="col-romaji">nageru</td><td class="col-pos">Verb (te-form + shimau)</td><td class="col-gloss">throw &mdash; 投げちゃった</td></tr>
+    <tr><td class="col-jp">じゃん</td><td class="col-romaji">jan</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[colloquial surprise/complaint]</td></tr>
+    <tr><td class="col-jp">プレゼント</td><td class="col-romaji">purezento</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">present; gift</td></tr>
+    <tr><td class="col-jp">おい</td><td class="col-romaji">oi</td><td class="col-pos">Interjection</td><td class="col-gloss">hey [attention/calling]</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> タンポポがほらいっぱい uses the subject タンポポが (dandelions [subject]) + attention particle ほら (look) + adverb いっぱい (lots): &quot;Look, lots of dandelions.&quot; The particle ほら is placed after the subject for emphasis. だいぶ入ったで uses the adverb だいぶ (quite) + past verb 入った (entered) + dialectal sentence-ending particle で: &quot;Quite a bit went in, [didn&apos;t it]?&quot; The particle で is characteristic of Kansai and western Japanese dialects, adding emphasis or seeking agreement. もあげとくか uses the particle も (also/more) + verb te-form あげて (giving) + auxiliary おく (do in advance = とく) + question か: &quot;Shall I give [you] more too?&quot; The auxiliary おく (〜とく in casual speech) means to do something in advance or put it aside for later use. 投げちゃったじゃん uses the te-form + shimau contraction 投げちゃった (threw away/regrettably threw) + sentence-ending じゃん (colloquial surprise/complaint): &quot;You threw it away!&quot; The particle じゃん (from じゃない) expresses surprised complaint or realization in casual speech.
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> タンポポ correctly recognized. だいぶ入ったで shows rural/western Japanese particle usage. もあげとくか shows the contracted form 〜とく (from 〜ておく). 投げちゃったじゃん is accurately captured colloquial speech.
+  </div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title"><span class="num">03</span> Retrieving and Brushing &mdash; 回収とブラシ</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">どうぞ。どうぞ。うわあ置いてきてんじゃん。 / 回収行くわ。ちょっと赤抜いてよ。ブラシ取りに行きたい。 / ほら、嬉しいな。 / うわあ。お前顔すりつけた。 / うわあ。靴の泥ついてんじゃん。</div>
+    <div class="romaji-line">Douzo. Douzo. Uwaa. Oite kiten jan. / Kaishuu iku wa. Chotto aka-nuite yo. Burashi tori ni ikitai. / Hora, ureshii na. / Uwaa. Omae kao suritsuketa. / Uwaa. Kutsu no doro tsuiten jan.</div>
+    <div class="english-line">&quot;Here. Here. Wow. You left it behind! / I&apos;ll go retrieve it. Hey, move aside a bit. I want to go get the brush. / Look, [you&apos;re] happy, huh. / Wow. You rubbed your face [against it]. / Wow. Your shoes have mud on them.&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">置く</td><td class="col-romaji">oku</td><td class="col-pos">Verb (te-form + iku)</td><td class="col-gloss">put; place &mdash; 置いて</td></tr>
+    <tr><td class="col-jp">くる</td><td class="col-romaji">kuru</td><td class="col-pos">Auxiliary verb (te-form)</td><td class="col-gloss">come &mdash; きて</td></tr>
+    <tr><td class="col-jp">ん</td><td class="col-romaji">n</td><td class="col-pos">Nominalizer</td><td class="col-gloss">[explanatory] &mdash; 〜てくるん</td></tr>
+    <tr><td class="col-jp">じゃん</td><td class="col-romaji">jan</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[surprised realization]</td></tr>
+    <tr><td class="col-jp">回収</td><td class="col-romaji">kaishuu</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">collection; retrieval; picking up</td></tr>
+    <tr><td class="col-jp">行く</td><td class="col-romaji">iku</td><td class="col-pos">Verb (volitional/informal)</td><td class="col-gloss">go &mdash; 行くわ</td></tr>
+    <tr><td class="col-jp">わ</td><td class="col-romaji">wa</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[feminine/emphatic assertion]</td></tr>
+    <tr><td class="col-jp">赤抜く</td><td class="col-romaji">aka-nuku</td><td class="col-pos">Compound verb (imperative)</td><td class="col-gloss">move aside; get out of the way [literally &quot;pull out red&quot;]</td></tr>
+    <tr><td class="col-jp">よ</td><td class="col-romaji">yo</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[assertion]</td></tr>
+    <tr><td class="col-jp">ブラシ</td><td class="col-romaji">burashi</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">brush [grooming brush]</td></tr>
+    <tr><td class="col-jp">取りに行く</td><td class="col-romaji">tori ni iku</td><td class="col-pos">Compound verb</td><td class="col-gloss">go get; go fetch</td></tr>
+    <tr><td class="col-jp">嬉しい</td><td class="col-romaji">ureshii</td><td class="col-pos">I-adjective</td><td class="col-gloss">happy; glad; pleased</td></tr>
+    <tr><td class="col-jp">な</td><td class="col-romaji">na</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[emotional reflection]</td></tr>
+    <tr><td class="col-jp">お前</td><td class="col-romaji">omae</td><td class="col-pos">Pronoun</td><td class="col-gloss">you [rough/intimate, to animals]</td></tr>
+    <tr><td class="col-jp">顔</td><td class="col-romaji">kao</td><td class="col-pos">Noun</td><td class="col-gloss">face</td></tr>
+    <tr><td class="col-jp">すりつける</td><td class="col-romaji">suritsukeru</td><td class="col-pos">Compound verb (past)</td><td class="col-gloss">rub against; press against &mdash; すりつけた</td></tr>
+    <tr><td class="col-jp">靴</td><td class="col-romaji">kutsu</td><td class="col-pos">Noun</td><td class="col-gloss">shoe</td></tr>
+    <tr><td class="col-jp">泥</td><td class="col-romaji">doro</td><td class="col-pos">Noun</td><td class="col-gloss">mud; dirt</td></tr>
+    <tr><td class="col-jp">つく</td><td class="col-romaji">tsuku</td><td class="col-pos">Verb (te-form + iru)</td><td class="col-gloss">attach; be on &mdash; ついてる</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 置いてきてんじゃん uses the te-form compound 置いてきて (placed and came = 置く + て + くる + て) + explanatory nominalizer ん + surprised complaint じゃん: &quot;You left it behind [and came back]!&quot; The auxiliary くる (〜てくる) marks movement toward the speaker after an action. 回収行くわ uses the noun 回収 (retrieval) + verb 行くわ (go + emphatic feminine particle わ): &quot;I&apos;ll go retrieve it.&quot; The particle わ is commonly used by speakers from western Japan regardless of gender. ちょっと赤抜いてよ uses the colloquial compound verb 赤抜く (aka-nuku, literally &quot;pull out red&quot; = move aside/get out of the way) + te-form imperative + particle よ: &quot;Hey, move aside.&quot; This is rural/colloquial command language. 靴の泥ついてんじゃん uses the possessive 靴の (shoe&apos;s) + noun 泥 (mud) + verb ついてる (is attached = つく + て + いる, contracted) + じゃん: &quot;Your shoes have mud on them!&quot; The progressive contraction ついてる (from ついている) is standard casual speech.
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> 置いてきてんじん correctly captured. 赤抜いて is a rural/colloquial expression accurately recognized. すりつけた correctly captured. ついてんじゃん shows proper casual contraction ついているんじゃない → ついてんじゃん.
+  </div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title"><span class="num">04</span> The Goat&apos;s Preferences &mdash; ヤギのこだわり</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">動いてるじゃん。 / 動いてるわ。 / 違う。こっちだ。こっちだ。 / え、これでも潰れそうじゃない? / やばい。像以上に激しい可能性。 / ちゃんとできてなかった。 / 違うだろ。 / 違うだろ。 / 違うだろ。 / ブラシ行ってもブラシよりこっちの太もの方がいいって。 / ああ、浮いて。 / 大丈夫? これ。なんでよ。なんでよ。ブラしときなよ。 / 太もも間からこんにちはや。ほら、やっぱりブラより人間の足の方がいいって。ほらほら。今度これでお尻かくこかな。 [Reconstructed]</div>
+    <div class="romaji-line">Ugoiteru jan. / Ugoiteru wa. / Chigau. Kotchi da. Kotchi da. / E, kore demo tsuburesou janai? / Yabai. Zou ijou ni hageshii kanousei. / Chanto dekite nakatta. / Chigau daro. / Chigau daro. / Chigau daro. / Burashi itte mo burashi yori kotchi no futomono hou ga ii tte. / Aa, uite. / Daijoubu? Kore. Nande yo. Nande yo. Bura shitoki na yo. / Futomomo aida kara konnichiwa ya. Hora, yappari burashi yori ningen no ashi no hou ga ii tte. Hora hora. Kondo kore de oshiri kaku koka na.</div>
+    <div class="english-line">&quot;It&apos;s moving! / It&apos;s moving, I tell you. / Wrong. This way. This way. / Huh, won&apos;t this get crushed too? / Wow. Possibly more intense than an elephant. / It wasn&apos;t done properly. / That&apos;s not right. / That&apos;s not right. / That&apos;s not right. / Even if I go get the brush, [the goat says] this thick thing [human leg] is better than the brush. / Ah, it&apos;s floating. / Is this okay? Why? Why? You should brush [it]. / Hello from between the thighs. Look, after all, the human leg is better than the brush. Look, look. Maybe I&apos;ll scratch [your] butt with this next time.&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">動く</td><td class="col-romaji">ugoku</td><td class="col-pos">Verb (te-form + iru)</td><td class="col-gloss">move &mdash; 動いてる</td></tr>
+    <tr><td class="col-jp">違う</td><td class="col-romaji">chigau</td><td class="col-pos">Verb</td><td class="col-gloss">wrong; different; not right</td></tr>
+    <tr><td class="col-jp">こっち</td><td class="col-romaji">kotchi</td><td class="col-pos">Demonstrative</td><td class="col-gloss">this way; over here</td></tr>
+    <tr><td class="col-jp">潰れる</td><td class="col-romaji">tsubureru</td><td class="col-pos">Verb (potential + sou)</td><td class="col-gloss">be crushed; collapse &mdash; 潰れそう</td></tr>
+    <tr><td class="col-jp">やばい</td><td class="col-romaji">yabai</td><td class="col-pos">I-adjective / slang</td><td class="col-gloss">wow; intense; dangerous; amazing [slang]</td></tr>
+    <tr><td class="col-jp">像</td><td class="col-romaji">zou</td><td class="col-pos">Noun</td><td class="col-gloss">elephant</td></tr>
+    <tr><td class="col-jp">以上</td><td class="col-romaji">ijou</td><td class="col-pos">Suffix / noun</td><td class="col-gloss">more than; above; over</td></tr>
+    <tr><td class="col-jp">激しい</td><td class="col-romaji">hageshii</td><td class="col-pos">I-adjective</td><td class="col-gloss">intense; fierce; violent</td></tr>
+    <tr><td class="col-jp">可能性</td><td class="col-romaji">kanousei</td><td class="col-pos">Noun</td><td class="col-gloss">possibility; potential</td></tr>
+    <tr><td class="col-jp">ちゃんと</td><td class="col-romaji">chanto</td><td class="col-pos">Adverb</td><td class="col-gloss">properly; correctly; neatly</td></tr>
+    <tr><td class="col-jp">できている</td><td class="col-romaji">dekite iru</td><td class="col-pos">Verb (te-form + iru, past negative)</td><td class="col-gloss">be done; be made &mdash; できてなかった</td></tr>
+    <tr><td class="col-jp">だろ</td><td class="col-romaji">daro</td><td class="col-pos">Copula (informal)</td><td class="col-gloss">isn&apos;t it?; right? [rhetorical]</td></tr>
+    <tr><td class="col-jp">太もも</td><td class="col-romaji">futomomo</td><td class="col-pos">Noun</td><td class="col-gloss">thigh</td></tr>
+    <tr><td class="col-jp">間</td><td class="col-romaji">aida</td><td class="col-pos">Noun</td><td class="col-gloss">space; gap; between</td></tr>
+    <tr><td class="col-jp">こんにちは</td><td class="col-romaji">konnichiwa</td><td class="col-pos">Greeting</td><td class="col-gloss">hello [greeting]</td></tr>
+    <tr><td class="col-jp">や</td><td class="col-romaji">ya</td><td class="col-pos">Sentence-ending particle [dialect]</td><td class="col-gloss">[emphatic, Kansai]</td></tr>
+    <tr><td class="col-jp">やっぱり</td><td class="col-romaji">yappari</td><td class="col-pos">Adverb</td><td class="col-gloss">after all; as expected; still</td></tr>
+    <tr><td class="col-jp">人間</td><td class="col-romaji">ningen</td><td class="col-pos">Noun</td><td class="col-gloss">human; person</td></tr>
+    <tr><td class="col-jp">足</td><td class="col-romaji">ashi</td><td class="col-pos">Noun</td><td class="col-gloss">leg; foot</td></tr>
+    <tr><td class="col-jp">方</td><td class="col-romaji">hou</td><td class="col-pos">Noun</td><td class="col-gloss">direction; side; the way of</td></tr>
+    <tr><td class="col-jp">お尻</td><td class="col-romaji">oshiri</td><td class="col-pos">Noun</td><td class="col-gloss">buttocks; bottom</td></tr>
+    <tr><td class="col-jp">かく</td><td class="col-romaji">kaku</td><td class="col-pos">Verb</td><td class="col-gloss">scratch; scrape</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 動いてるじゃん uses the progressive contraction 動いてる (動いている) + surprised realization じゃん: &quot;It&apos;s moving!&quot; 像以上に激しい可能性 uses the comparison suffix 以上に (more than = 以上 + に) + i-adjective 激しい (intense) + noun 可能性 (possibility): &quot;possibly more intense than an elephant.&quot; The pattern [noun] + 以上に marks exceeding a reference point. ちゃんとできてなかった uses the adverb ちゃんと (properly) + negative past progressive できてなかった (wasn&apos;t done properly = できている + なかった, contracted): &quot;It wasn&apos;t done properly.&quot; The contraction できてなかった (from できていなかった) is standard casual speech. ブラシよりこっちの太もの方がいいって uses the comparative より (than) + demonstrative こっちの (this side&apos;s) + noun 太もの (thick thing/leg) + preference structure 方がいい (is better) + quotative って: &quot;[The goat says] this thick thing is better than the brush.&quot; The pattern [noun A] + より + [noun B] + の + 方がいい creates a comparative preference. The quotative って marks reported speech or thought attribution. 太もも間からこんにちはや uses the locative 太もも間から (from between the thighs) + greeting こんにちは + dialectal emphatic や: &quot;Hello from between the thighs!&quot; The playful use of a greeting to announce the goat&apos;s head emerging between the speaker&apos;s legs creates comedic rural charm. お尻かくこかな uses the noun お尻 (buttocks) + verb かく (scratch) + speculative こかな (maybe = こ + か + な): &quot;Maybe I&apos;ll scratch [your] butt.&quot; The speculative form 〜こかな (from 〜う/よう + か + な) is a soft, self-directed question about future action.
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> This section contains significant ASR degradation. 太もの was partially garbled. 太もも間からこんにちはや was heavily corrupted in ASR. お尻かくこかな was nearly unrecognizable. The reconstruction is based on context, goat behavior patterns, and the speaker&apos;s established speech style. 像 above に激しい was clear. The triple 違うだろ repetition is accurately captured.
+  </div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title"><span class="num">05</span> Catching a Gecko &mdash; ヤモリ捕獲</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">123ではい。はい。 / は、捕まえたかもしれないよ。よん。 / ヤモリ捕まえた。 / え、可愛いな。 / なんか色黒いな、この子。あら、うん。</div>
+    <div class="romaji-line">Ichi-ni-san de hai. Hai. / Ha, tsukamaeta kamoshirenai yo. Yon. / Yamori tsukamaeta. / E, kawaii na. / Nanka irokuroi na, kono ko. Ara, un.</div>
+    <div class="english-line">&quot;One-two-three, here. Here. / Ha, I might have caught it. Four. / I caught a gecko. / Huh, it&apos;s cute. / It&apos;s kind of dark-colored, this one. Oh, yes.&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">123</td><td class="col-romaji">ichi-ni-san</td><td class="col-pos">Numeral phrase</td><td class="col-gloss">one-two-three [counting]</td></tr>
+    <tr><td class="col-jp">で</td><td class="col-romaji">de</td><td class="col-pos">Particle</td><td class="col-gloss">with; by; on [temporal/sequential]</td></tr>
+    <tr><td class="col-jp">はい</td><td class="col-romaji">hai</td><td class="col-pos">Interjection</td><td class="col-gloss">here; yes [offering]</td></tr>
+    <tr><td class="col-jp">捕まえる</td><td class="col-romaji">tsukamaeru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">catch; capture &mdash; 捕まえた</td></tr>
+    <tr><td class="col-jp">かもしれない</td><td class="col-romaji">kamoshirenai</td><td class="col-pos">Auxiliary / phrase</td><td class="col-gloss">might; may; possibly</td></tr>
+    <tr><td class="col-jp">よ</td><td class="col-romaji">yo</td><td class="col-pos">Sentence-ending particle</td><td class="col-gloss">[assertion]</td></tr>
+    <tr><td class="col-jp">よん</td><td class="col-romaji">yon</td><td class="col-pos">Numeral</td><td class="col-gloss">four [counting continuation]</td></tr>
+    <tr><td class="col-jp">ヤモリ</td><td class="col-romaji">yamori</td><td class="col-pos">Noun</td><td class="col-gloss">gecko; house lizard</td></tr>
+    <tr><td class="col-jp">可愛い</td><td class="col-romaji">kawaii</td><td class="col-pos">I-adjective</td><td class="col-gloss">cute; adorable</td></tr>
+    <tr><td class="col-jp">色黒い</td><td class="col-romaji">irokuroi</td><td class="col-pos">Compound i-adjective</td><td class="col-gloss">dark-complexioned; dark-colored</td></tr>
+    <tr><td class="col-jp">この子</td><td class="col-romaji">kono ko</td><td class="col-pos">Demonstrative + noun</td><td class="col-gloss">this child/one [affectionate]</td></tr>
+    <tr><td class="col-jp">あら</td><td class="col-romaji">ara</td><td class="col-pos">Interjection</td><td class="col-gloss">oh; my [feminine surprise]</td></tr>
+    <tr><td class="col-jp">うん</td><td class="col-romaji">un</td><td class="col-pos">Interjection</td><td class="col-gloss">yes; uh-huh; mm</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 123ではい uses the counting phrase 123 (いちにさん) + particle で (with/on) + interjection はい: &quot;On three, here.&quot; The pattern [number] + で marks a counted moment of action. 捕まえたかもしれないよ uses the past verb 捕まえた (caught) + possibility phrase かもしれない (might = かも + 知れない) + assertion particle よ: &quot;I might have caught it.&quot; The pattern [verb-past] + かもしれない expresses possibility based on evidence. ヤモリ捕まえた uses the object-fronting common in casual speech: [object] + [verb-past]: &quot;[I] caught a gecko.&quot; In casual Japanese, the subject and particle を are often omitted when context is clear. 色黒いな、この子 uses the compound i-adjective 色黒い (dark-colored = 色 + 黒い) + emotional particle な + topic この子 (this one): &quot;This one is dark-colored, isn&apos;t it?&quot; The postposed topic この子 after the predicate is a common casual speech pattern for adding commentary after observation.
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> ヤモリ correctly recognized. 色黒い correctly captured. The counting sequence 123...よん was clear. あら shows feminine speech particle usage.
+  </div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title"><span class="num">06</span> Snack Time &mdash; おやつと畑作業</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">今日のおやつはこれ / デデん。マカダミアナッツと / マカダミアナッツおかきと / けてあげよう。ココアの豆乳蒸しパン。朝からちょっと簡単に作ったやつ。 / これ食べて畑作業頑張ります。豪華だよ。 / 今日のおやつは豪華だよ。ほら。</div>
+    <div class="romaji-line">Kyou no oyatsu wa kore / Deden. Makadamia nattsu to / Makadamia nattsu okaki to / Kete ageyou. Kokoa no tounyuu mushi pan. Asa kara chotto kantan ni tsukutta yatsu. / Kore tabete hatake sagyou ganbarimasu. Gouka da yo. / Kyou no oyatsu wa gouka da yo. Hora.</div>
+    <div class="english-line">&quot;Today&apos;s snack is this / Ta-da. Macadamia nuts and / Macadamia nut rice crackers and / I&apos;ll give [you some]. Cocoa soy milk steamed bread. Something I made simply from this morning. / I&apos;ll eat this and do my best at farm work. It&apos;s luxurious. / Today&apos;s snack is luxurious. Look.&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">今日</td><td class="col-romaji">kyou</td><td class="col-pos">Noun</td><td class="col-gloss">today</td></tr>
+    <tr><td class="col-jp">おやつ</td><td class="col-romaji">oyatsu</td><td class="col-pos">Noun</td><td class="col-gloss">snack; afternoon treat</td></tr>
+    <tr><td class="col-jp">デデん</td><td class="col-romaji">deden</td><td class="col-pos">Onomatopoeia</td><td class="col-gloss">ta-da; fanfare sound</td></tr>
+    <tr><td class="col-jp">マカダミアナッツ</td><td class="col-romaji">makadamia nattsu</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">macadamia nuts</td></tr>
+    <tr><td class="col-jp">おかき</td><td class="col-romaji">okaki</td><td class="col-pos">Noun</td><td class="col-gloss">rice cracker [mochi rice type]</td></tr>
+    <tr><td class="col-jp">ココア</td><td class="col-romaji">kokoa</td><td class="col-pos">Noun (loanword)</td><td class="col-gloss">cocoa</td></tr>
+    <tr><td class="col-jp">豆乳</td><td class="col-romaji">tounyuu</td><td class="col-pos">Noun</td><td class="col-gloss">soy milk</td></tr>
+    <tr><td class="col-jp">蒸しパン</td><td class="col-romaji">mushi pan</td><td class="col-pos">Compound noun</td><td class="col-gloss">steamed bread; steamed cake</td></tr>
+    <tr><td class="col-jp">朝</td><td class="col-romaji">asa</td><td class="col-pos">Noun</td><td class="col-gloss">morning</td></tr>
+    <tr><td class="col-jp">から</td><td class="col-romaji">kara</td><td class="col-pos">Particle</td><td class="col-gloss">from; since</td></tr>
+    <tr><td class="col-jp">簡単</td><td class="col-romaji">kantan</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">simple; easy</td></tr>
+    <tr><td class="col-jp">作る</td><td class="col-romaji">tsukuru</td><td class="col-pos">Verb (past)</td><td class="col-gloss">make; prepare &mdash; 作った</td></tr>
+    <tr><td class="col-jp">やつ</td><td class="col-romaji">yatsu</td><td class="col-pos">Pronoun / noun</td><td class="col-gloss">thing; one [casual]</td></tr>
+    <tr><td class="col-jp">食べる</td><td class="col-romaji">taberu</td><td class="col-pos">Verb (te-form)</td><td class="col-gloss">eat &mdash; 食べて</td></tr>
+    <tr><td class="col-jp">畑</td><td class="col-romaji">hatake</td><td class="col-pos">Noun</td><td class="col-gloss">field; farm plot</td></tr>
+    <tr><td class="col-jp">作業</td><td class="col-romaji">sagyou</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">work; labor; task</td></tr>
+    <tr><td class="col-jp">頑張る</td><td class="col-romaji">ganbaru</td><td class="col-pos">Verb (polite)</td><td class="col-gloss">do one&apos;s best; persevere &mdash; 頑張ります</td></tr>
+    <tr><td class="col-jp">豪華</td><td class="col-romaji">gouka</td><td class="col-pos">Na-adjective / noun</td><td class="col-gloss">luxurious; gorgeous; lavish</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> 今日のおやつはこれ uses the possessive 今日の (today&apos;s) + topic おやつは (snack [topic]) + predicate これ (this): &quot;Today&apos;s snack is this.&quot; The demonstrative これ functions as a predicate nominal in casual speech. マカダミアナッツと...おかきと uses the enumerative particle と (and) to list items, with the final verb implied: &quot;Macadamia nuts and... rice crackers and...&quot; The trailing と marks an incomplete list, common in spoken Japanese. けてあげよう uses the verb ける (to give/share [colloquial/rural variant of くれる/あげる in some dialects]) + auxiliary あげよう (let&apos;s give = あげる + よう): &quot;I&apos;ll give [you some].&quot; Note: ける here is likely a colloquial form or dialectal variant in the context of offering food. 朝からちょっと簡単に作ったやつ uses the temporal 朝から (from morning = 朝 + から) + adverb ちょっと (a little) + adverbial 簡単に (simply = 簡単 + に) + past attributive 作った (made) + casual noun やつ (thing): &quot;Something I made simply from this morning.&quot; The pattern [time] + から marks starting point. これ食べて畑作業頑張ります uses the object これ (this) + te-form 食べて (eating) + compound noun 畑作業 (farm work = 畑 + 作業) + polite verb 頑張ります (will do my best): &quot;I&apos;ll eat this and do my best at farm work.&quot; The te-form 食べて connects the action of eating to the following effort, implying &quot;having eaten this, I will...&quot;
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> マカダミアナッツ was corrupted as マカダみマカダミにゃッつんまか and マカダにゃつおかきと. The ASR struggled with the foreign loanword and rapid enumeration. ココアの豆乳蒸しパン was partially garbled as ココアの豆乳ムシパン (ムシ vs 蒸し is acceptable since same reading). けてあげよう was unclear in ASR.
+  </div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title"><span class="num">07</span> Outro &mdash; 動画終了</h2>
+
+<div class="line-card">
+  <div class="line-header">
+    <div class="japanese-line">じゃあ今回の動画はこれくらいで終わります。それではまた次の動画でお会いしましょう。バイバイ。 / ご視聴ありがとうございました。チャンネル登録、高評価、コメントしてもらえると嬉しいです。 / InstagramとXのフォローもよろしくお願いします。シップもに更新しています。是非チェック。それでは次回の動画でお会いしましょう。</div>
+    <div class="romaji-line">Jaa kono kai no douga wa kore kurai de owarimasu. Sore dewa mata tsugi no douga de oai shimashou. Baibai. / Goshichou arigatou gozaimashita. Channeru touroku, kouhyouka, komento shite moraeru to ureshii desu. / Instagram to X no foroo mo yoroshiku onegai shimasu. Shippu mo ni koushin shite imasu. Zehi chekku. Sore dewa jikai no douga de oai shimashou.</div>
+    <div class="english-line">&quot;Well then, this video will end around here. So then, let&apos;s meet again in the next video. Bye-bye. / Thank you for watching. I&apos;d be happy if you could subscribe to the channel, give a high rating, and comment. / Please follow on Instagram and X too. I also update on [membership]. Please check. So then, let&apos;s meet in the next video.&quot;</div>
+  </div>
+  <table class="word-table">
+    <tr><th>Japanese</th><th>Romaji</th><th>Part of Speech</th><th>Gloss</th></tr>
+    <tr><td class="col-jp">じゃあ</td><td class="col-romaji">jaa</td><td class="col-pos">Conjunction</td><td class="col-gloss">well then; so; in that case</td></tr>
+    <tr><td class="col-jp">今回</td><td class="col-romaji">konkai</td><td class="col-pos">Noun / adverb</td><td class="col-gloss">this time; this occasion</td></tr>
+    <tr><td class="col-jp">動画</td><td class="col-romaji">douga</td><td class="col-pos">Noun</td><td class="col-gloss">video</td></tr>
+    <tr><td class="col-jp">これくらい</td><td class="col-romaji">kore kurai</td><td class="col-pos">Demonstrative + suffix</td><td class="col-gloss">about this much; around here</td></tr>
+    <tr><td class="col-jp">終わる</td><td class="col-romaji">owaru</td><td class="col-pos">Verb (polite)</td><td class="col-gloss">end; finish &mdash; 終わります</td></tr>
+    <tr><td class="col-jp">それでは</td><td class="col-romaji">sore dewa</td><td class="col-pos">Conjunction</td><td class="col-gloss">then; well then; in that case</td></tr>
+    <tr><td class="col-jp">また</td><td class="col-romaji">mata</td><td class="col-pos">Adverb</td><td class="col-gloss">again; once more</td></tr>
+    <tr><td class="col-jp">次</td><td class="col-romaji">tsugi</td><td class="col-pos">Noun</td><td class="col-gloss">next</td></tr>
+    <tr><td class="col-jp">お会いする</td><td class="col-romaji">oai suru</td><td class="col-pos">Honorific verb</td><td class="col-gloss">meet [polite] &mdash; お会いしましょう</td></tr>
+    <tr><td class="col-jp">ましょう</td><td class="col-romaji">mashou</td><td class="col-pos">Auxiliary (hortative)</td><td class="col-gloss">let&apos;s [polite]</td></tr>
+    <tr><td class="col-jp">バイバイ</td><td class="col-romaji">baibai</td><td class="col-pos">Interjection (loanword)</td><td class="col-gloss">bye-bye</td></tr>
+    <tr><td class="col-jp">ご視聴</td><td class="col-romaji">goshichou</td><td class="col-pos">Honorific noun</td><td class="col-gloss">viewing; watching [polite]</td></tr>
+    <tr><td class="col-jp">ありがとうございました</td><td class="col-romaji">arigatou gozaimashita</td><td class="col-pos">Set phrase (past polite)</td><td class="col-gloss">thank you [for completed action]</td></tr>
+    <tr><td class="col-jp">チャンネル登録</td><td class="col-romaji">channeru touroku</td><td class="col-pos">Compound noun</td><td class="col-gloss">channel subscription</td></tr>
+    <tr><td class="col-jp">高評価</td><td class="col-romaji">kouhyouka</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">high rating; like; thumbs up</td></tr>
+    <tr><td class="col-jp">コメント</td><td class="col-romaji">komento</td><td class="col-pos">Noun / suru-verb (loanword)</td><td class="col-gloss">comment</td></tr>
+    <tr><td class="col-jp">もらえる</td><td class="col-romaji">moraeru</td><td class="col-pos">Verb (potential)</td><td class="col-gloss">can receive; could get &mdash; もらえると</td></tr>
+    <tr><td class="col-jp">嬉しい</td><td class="col-romaji">ureshii</td><td class="col-pos">I-adjective</td><td class="col-gloss">happy; glad; pleased</td></tr>
+    <tr><td class="col-jp">フォロー</td><td class="col-romaji">foroo</td><td class="col-pos">Noun / suru-verb (loanword)</td><td class="col-gloss">follow [social media]</td></tr>
+    <tr><td class="col-jp">よろしくお願いします</td><td class="col-romaji">yoroshiku onegai shimasu</td><td class="col-pos">Set phrase</td><td class="col-gloss">please [do]; nice to meet you</td></tr>
+    <tr><td class="col-jp">シップ</td><td class="col-romaji">shippu</td><td class="col-pos">Noun (loanword/abbreviation)</td><td class="col-gloss">membership [from &quot;membership&quot;]</td></tr>
+    <tr><td class="col-jp">更新</td><td class="col-romaji">koushin</td><td class="col-pos">Noun / suru-verb</td><td class="col-gloss">update; renewal</td></tr>
+    <tr><td class="col-jp">是非</td><td class="col-romaji">zehi</td><td class="col-pos">Adverb</td><td class="col-gloss">by all means; please do</td></tr>
+    <tr><td class="col-jp">チェック</td><td class="col-romaji">chekku</td><td class="col-pos">Noun / suru-verb (loanword)</td><td class="col-gloss">check</td></tr>
+    <tr><td class="col-jp">次回</td><td class="col-romaji">jikai</td><td class="col-pos">Noun / adverb</td><td class="col-gloss">next time</td></tr>
+  </table>
+  <div class="grammar-note">
+    <strong>Grammar:</strong> じゃあ今回の動画はこれくらいで終わます uses the conjunction じゃあ (well then) + possessive 今回の (this time&apos;s) + topic 動画は (video [topic]) + extent これくらいで (around here = これ + くらい + で) + polite verb 終わります (will end): &quot;Well then, this video will end around here.&quot; The pattern [demonstrative] + くらいで marks an approximate extent or point. それではまた次の動画でお会いしましょう uses the conjunction それでは (then) + adverb また (again) + locative 次の動画で (in the next video = 次 + の + 動画 + で) + hortative polite お会いしましょう (let&apos;s meet = お会いする + ましょう): &quot;Then, let&apos;s meet again in the next video.&quot; The hortative ましょう is the polite invitation form. コメントしてもらえると嬉しいです uses the te-form コメントして (commenting = コメントする + て) + potential receptive もらえる (can receive = もらう + える) + conditional と + predicate 嬉しいです (am happy): &quot;If I can receive comments, I am happy.&quot; The pattern [te-form] + もらえると marks conditional gratitude for others&apos; actions. シップもに更新しています uses the object シップも (membership too = シップ + も) + locative に (to/on) + progressive polite 更新しています (am updating = 更新する + ています): &quot;I am also updating on membership.&quot; The particle に marks the platform/location of updating. Note: シップ is an abbreviation of メンバーシップ (membership), common in creator speech.
+  </div>
+  <div class="asr-note">
+    <strong>ASR Note:</strong> The outro was clearly recognized. シップもに更新しています was slightly garbled as シップもに更新しています (the に placement is slightly awkward but comprehensible). The standard YouTube outro pattern is accurately captured.
+  </div>
+</div>
+</section>
+
+<div class="section-divider"></div>
+
+<section>
+<h2 class="section-title"><span class="num">08</span> Key Grammar Patterns Summary</h2>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Casual Speech Contractions: 〜てる, 〜とく, 〜ちゃった, 〜てん</div>
+    <div class="english-line">動いてる (動いている), あげとく (あげておく), 投げちゃった (投げてしまった), ついてんじゃん (ついているんじゃない). Rural Japanese and standard casual speech heavily contract progressive, auxiliary, and explanatory forms.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Dialectal and Rural Particles: 〜で, 〜や, 〜わ, 〜じゃん</div>
+    <div class="english-line">だいぶ入ったで (emphatic Kansai/rural), こんにちはや (Kansai emphatic や), 動いてるわ (western Japanese わ), 置いてきてんじゃん (colloquial surprise). The speaker uses western Japanese dialectal features consistent with rural life settings.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Colloquial Expressions and Compound Verbs: 〜てしまう, 〜ておく, 〜てみる, 〜てくる</div>
+    <div class="english-line">止まってしまった (regrettably stopped), あげとく (give in advance), 置いてきて (placed and came), すりつけた (rubbed against). Compound verb auxiliaries add aspectual and emotional nuance to core actions in casual rural speech.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Comparative and Preference Structures: 〜より〜方がいい, 〜以上に, 〜そう</div>
+    <div class="english-line">ブラシよりこっちの太もの方がいい (this thick thing is better than the brush), 像以上に激しい (more intense than an elephant), 潰れそう (seems like it will be crushed). Comparative and appearance structures evaluate objects and predict outcomes.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Possibility and Speculation: 〜かもしれない, 〜こかな, 〜可能性</div>
+    <div class="english-line">捕まえたかもしれない (might have caught), お尻かくこかな (maybe I&apos;ll scratch the butt), 激しい可能性 (possibility of being intense). Modal expressions range from epistemic possibility to self-directed speculative questions.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">Rural and Animal Care Vocabulary</div>
+    <div class="english-line">ヤギ (goat), サビちゃん (Sabi-chan [rust-colored goat]), ブラシ (brush/grooming), タンポポ (dandelion), ヤモリ (gecko), 畑作業 (farm work), 蒸しパン (steamed bread), おかき (rice crackers). The vocabulary reflects daily rural life, animal care, and home cooking.</div>
+  </div>
+</div>
+
+<div class="line-card" style="border-left-color: var(--accent2-glow);">
+  <div class="line-header">
+    <div class="japanese-line" style="font-size: var(--step-1);">ASR Error Patterns in Rural/Casual Speech</div>
+    <div class="english-line">Foreign loanwords (マカダミアナッツ → マカダみマカダミにゃッつ), rapid enumeration, dialectal particles, and physical action descriptions show highest ASR error rates. Reconstruction relies on context, topic consistency, and speaker style patterns.</div>
+  </div>
+</div>
+</section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japanese Dictionary</title>
+<style>
+:root{--bg:#faf7f2;--card:#fff;--text:#1f1b16;--muted:#7a7066;--accent:#c0392b;--line:#e6dfd5;--chip:#f0e9de;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17140f;--card:#211d17;--text:#efe8dd;--muted:#a1968a;--accent:#ff7a68;--line:#342f27;--chip:#2c271f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17140f;--card:#211d17;--text:#efe8dd;--muted:#a1968a;--accent:#ff7a68;--line:#342f27;--chip:#2c271f;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.6rem;margin:0 0 4px}h1 span{color:var(--accent)}
+.sub{color:var(--muted);margin:0 0 18px;font-size:.9rem}
+input{width:100%;padding:14px 16px;font-size:1.05rem;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);outline:none}
+input:focus{border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--text);padding:4px 12px;border-radius:999px;font-size:.82rem;cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.count{color:var(--muted);font-size:.82rem;margin:6px 0 10px}
+.entry{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:8px;cursor:pointer}
+.row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.jp{font-size:1.6rem;font-weight:600}
+.kana{color:var(--accent);font-size:1rem}
+.lvl{margin-left:auto;font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.mean{margin-top:2px}
+.more{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:.9rem;color:var(--muted)}
+.entry.open .more{display:block}
+.more b{color:var(--text);font-weight:600}
+.btn{margin-top:8px;border:1px solid var(--line);background:var(--chip);color:var(--text);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:.82rem}
+.empty{text-align:center;color:var(--muted);padding:32px 0}
+</style>
+</head>
+<body>
+<main>
+<h1>日本語 <span>Dictionary</span></h1>
+<p class="sub">Search by English, kanji, kana or romaji. Tap an entry for details.</p>
+<input id="q" type="search" placeholder="e.g. water, mizu, みず, 水" autocomplete="off" autofocus>
+<div class="chips" id="lv"></div>
+<div class="chips" id="ps"></div>
+<div class="count" id="count"></div>
+<div id="list"></div>
+</main>
+<script>
+// kanji|kana|romaji|meaning|part of speech|JLPT|example JP|example EN
+const RAW=`水|みず|mizu|water|noun|N5|水を飲みます。|I drink water.
+火|ひ|hi|fire|noun|N5|火が熱いです。|The fire is hot.
+山|やま|yama|mountain|noun|N5|山に登ります。|I climb the mountain.
+川|かわ|kawa|river|noun|N5|川で泳ぎます。|I swim in the river.
+木|き|ki|tree, wood|noun|N5|大きい木があります。|There is a big tree.
+花|はな|hana|flower|noun|N5|花がきれいです。|The flowers are beautiful.
+空|そら|sora|sky|noun|N4|空が青いです。|The sky is blue.
+海|うみ|umi|sea, ocean|noun|N5|海に行きたいです。|I want to go to the sea.
+雨|あめ|ame|rain|noun|N5|今日は雨です。|It is rainy today.
+雪|ゆき|yuki|snow|noun|N4|雪が降っています。|Snow is falling.
+犬|いぬ|inu|dog|noun|N5|犬が好きです。|I like dogs.
+猫|ねこ|neko|cat|noun|N5|猫がいます。|There is a cat.
+魚|さかな|sakana|fish|noun|N5|魚を食べます。|I eat fish.
+鳥|とり|tori|bird|noun|N4|鳥が飛びます。|Birds fly.
+人|ひと|hito|person, people|noun|N5|あの人は先生です。|That person is a teacher.
+友達|ともだち|tomodachi|friend|noun|N5|友達と遊びます。|I play with friends.
+家族|かぞく|kazoku|family|noun|N4|家族は四人です。|My family has four people.
+先生|せんせい|sensei|teacher|noun|N5|先生は優しいです。|The teacher is kind.
+学生|がくせい|gakusei|student|noun|N5|私は学生です。|I am a student.
+母|はは|haha|mother (own)|noun|N5|母は料理が上手です。|My mother cooks well.
+父|ちち|chichi|father (own)|noun|N5|父は忙しいです。|My father is busy.
+子供|こども|kodomo|child|noun|N4|子供が遊んでいます。|The children are playing.
+私|わたし|watashi|I, me|pronoun|N5|私は日本人です。|I am Japanese.
+名前|なまえ|namae|name|noun|N5|お名前は何ですか。|What is your name?
+家|いえ|ie|house, home|noun|N5|家に帰ります。|I go home.
+学校|がっこう|gakkou|school|noun|N5|学校は九時に始まります。|School starts at nine.
+会社|かいしゃ|kaisha|company|noun|N4|会社で働いています。|I work at a company.
+駅|えき|eki|station|noun|N5|駅はどこですか。|Where is the station?
+店|みせ|mise|shop, store|noun|N4|あの店は安いです。|That shop is cheap.
+電車|でんしゃ|densha|train|noun|N5|電車に乗ります。|I ride the train.
+車|くるま|kuruma|car|noun|N5|車を買いました。|I bought a car.
+道|みち|michi|road, way|noun|N4|道が分かりません。|I don’t know the way.
+本|ほん|hon|book|noun|N5|本を読みます。|I read a book.
+お金|おかね|okane|money|noun|N5|お金がありません。|I have no money.
+時間|じかん|jikan|time, hour|noun|N5|時間がありません。|I have no time.
+今日|きょう|kyou|today|noun|N5|今日は暑いです。|Today is hot.
+明日|あした|ashita|tomorrow|noun|N5|明日会いましょう。|Let’s meet tomorrow.
+昨日|きのう|kinou|yesterday|noun|N5|昨日は休みでした。|Yesterday was a day off.
+朝|あさ|asa|morning|noun|N5|朝ご飯を食べます。|I eat breakfast.
+夜|よる|yoru|night|noun|N5|夜は静かです。|The night is quiet.
+天気|てんき|tenki|weather|noun|N5|いい天気ですね。|Nice weather, isn’t it?
+食べ物|たべもの|tabemono|food|noun|N5|好きな食べ物は何ですか。|What is your favorite food?
+ご飯|ごはん|gohan|cooked rice, meal|noun|N5|ご飯を食べましょう。|Let’s eat.
+お茶|おちゃ|ocha|tea|noun|N5|お茶をください。|Tea, please.
+肉|にく|niku|meat|noun|N5|肉が好きです。|I like meat.
+野菜|やさい|yasai|vegetables|noun|N5|野菜を買います。|I buy vegetables.
+果物|くだもの|kudamono|fruit|noun|N4|果物は体にいいです。|Fruit is good for you.
+食べる|たべる|taberu|to eat|verb|N5|寿司を食べる。|I eat sushi.
+飲む|のむ|nomu|to drink|verb|N5|コーヒーを飲む。|I drink coffee.
+行く|いく|iku|to go|verb|N5|日本に行く。|I go to Japan.
+来る|くる|kuru|to come|verb|N5|友達が来る。|A friend is coming.
+見る|みる|miru|to see, to watch|verb|N5|映画を見る。|I watch a movie.
+聞く|きく|kiku|to hear, to ask, to listen|verb|N5|音楽を聞く。|I listen to music.
+話す|はなす|hanasu|to speak, to talk|verb|N5|日本語を話す。|I speak Japanese.
+読む|よむ|yomu|to read|verb|N5|新聞を読む。|I read the newspaper.
+書く|かく|kaku|to write|verb|N5|手紙を書く。|I write a letter.
+買う|かう|kau|to buy|verb|N5|服を買う。|I buy clothes.
+作る|つくる|tsukuru|to make, to create|verb|N4|料理を作る。|I make a meal.
+待つ|まつ|matsu|to wait|verb|N5|ここで待つ。|I wait here.
+教える|おしえる|oshieru|to teach, to tell|verb|N5|英語を教える。|I teach English.
+習う|ならう|narau|to learn (from someone)|verb|N5|ピアノを習う。|I learn piano.
+分かる|わかる|wakaru|to understand|verb|N5|意味が分かる。|I understand the meaning.
+寝る|ねる|neru|to sleep, to go to bed|verb|N5|十時に寝る。|I go to bed at ten.
+起きる|おきる|okiru|to wake up, to get up|verb|N5|六時に起きる。|I get up at six.
+働く|はたらく|hataraku|to work|verb|N4|毎日働く。|I work every day.
+遊ぶ|あそぶ|asobu|to play, to hang out|verb|N5|公園で遊ぶ。|I play in the park.
+歩く|あるく|aruku|to walk|verb|N4|駅まで歩く。|I walk to the station.
+走る|はしる|hashiru|to run|verb|N4|毎朝走る。|I run every morning.
+忘れる|わすれる|wasureru|to forget|verb|N4|宿題を忘れた。|I forgot my homework.
+思う|おもう|omou|to think, to feel|verb|N4|いいと思います。|I think it’s good.
+大きい|おおきい|ookii|big, large|i-adjective|N5|大きい家です。|It’s a big house.
+小さい|ちいさい|chiisai|small, little|i-adjective|N5|小さい犬です。|It’s a small dog.
+新しい|あたらしい|atarashii|new|i-adjective|N5|新しい車です。|It’s a new car.
+古い|ふるい|furui|old (not for people)|i-adjective|N5|古い本です。|It’s an old book.
+高い|たかい|takai|high, expensive, tall|i-adjective|N5|この時計は高い。|This watch is expensive.
+安い|やすい|yasui|cheap, inexpensive|i-adjective|N5|この店は安い。|This shop is cheap.
+美味しい|おいしい|oishii|delicious|i-adjective|N5|このケーキは美味しい。|This cake is delicious.
+楽しい|たのしい|tanoshii|fun, enjoyable|i-adjective|N5|旅行は楽しい。|Travel is fun.
+難しい|むずかしい|muzukashii|difficult|i-adjective|N5|漢字は難しい。|Kanji is difficult.
+易しい|やさしい|yasashii|easy, simple|i-adjective|N4|この問題は易しい。|This problem is easy.
+優しい|やさしい|yasashii|kind, gentle|i-adjective|N4|彼女は優しい。|She is kind.
+暑い|あつい|atsui|hot (weather)|i-adjective|N5|今日は暑い。|It’s hot today.
+寒い|さむい|samui|cold (weather)|i-adjective|N5|冬は寒い。|Winter is cold.
+綺麗|きれい|kirei|beautiful, clean|na-adjective|N5|綺麗な町です。|It’s a beautiful town.
+元気|げんき|genki|healthy, energetic|na-adjective|N5|お元気ですか。|How are you?
+有名|ゆうめい|yuumei|famous|na-adjective|N5|有名な歌手です。|He’s a famous singer.
+好き|すき|suki|to like, liked|na-adjective|N5|犬が好きです。|I like dogs.
+静か|しずか|shizuka|quiet|na-adjective|N5|静かな部屋です。|It’s a quiet room.
+大切|たいせつ|taisetsu|important, precious|na-adjective|N4|家族は大切です。|Family is important.
+こんにちは|こんにちは|konnichiwa|hello, good afternoon|expression|N5|こんにちは、元気ですか。|Hello, how are you?
+ありがとう|ありがとう|arigatou|thank you|expression|N5|どうもありがとう。|Thank you very much.
+すみません|すみません|sumimasen|excuse me, sorry|expression|N5|すみません、駅はどこですか。|Excuse me, where’s the station?
+お願いします|おねがいします|onegaishimasu|please (request)|expression|N5|水をお願いします。|Water, please.
+おはよう|おはよう|ohayou|good morning|expression|N5|おはようございます。|Good morning.
+さようなら|さようなら|sayounara|goodbye|expression|N5|さようなら、また明日。|Goodbye, see you tomorrow.
+頑張る|がんばる|ganbaru|to do one’s best, to persevere|verb|N4|試験を頑張る。|I’ll do my best on the exam.
+一|いち|ichi|one|number|N5|一つください。|One, please.
+二|に|ni|two|number|N5|二人で行く。|Two people go.
+三|さん|san|three|number|N5|三時に会う。|We meet at three o’clock.
+十|じゅう|juu|ten|number|N5|十分待った。|I waited ten minutes.
+百|ひゃく|hyaku|hundred|number|N5|百円です。|It’s 100 yen.
+千|せん|sen|thousand|number|N5|千円あります。|I have 1,000 yen.
+保証|ほしょう|hoshou|warranty, guarantee|noun|—|この製品には一年の保証があります。|This product has a one-year warranty.
+保証書|ほしょうしょ|hoshousho|warranty card, certificate of warranty|noun|—|保証書をなくさないでください。|Please don’t lose the warranty card.
+保証期間|ほしょうきかん|hoshou kikan|warranty period|noun|—|保証期間は二年です。|The warranty period is two years.
+無料保証|むりょうほしょう|muryou hoshou|free warranty|noun|—|無料保証が付いています。|It comes with a free warranty.
+品質保証|ひんしつほしょう|hinshitsu hoshou|quality assurance|noun|—|品質保証を重視しています。|We emphasize quality assurance.
+製品|せいひん|seihin|product, manufactured goods|noun|—|新しい製品を発売する。|We are releasing a new product.
+修理|しゅうり|shuuri|repair|noun|—|時計を修理に出す。|I send my watch in for repair.
+故障|こしょう|koshou|breakdown, malfunction|noun|—|パソコンが故障しました。|My computer broke down.
+交換|こうかん|koukan|exchange, replacement|noun|—|新しいものと交換します。|I will exchange it for a new one.
+返品|へんぴん|henpin|returned goods, return|noun|—|返品をお願いします。|I would like to return this item.
+領収書|りょうしゅうしょ|ryoushuusho|receipt|noun|—|領収書をください。|Please give me a receipt.
+保証とアフターサービス|ほしょうとアフターサービス|hoshou to afutaa saabisu|warranty and after-sales service|phrase|—|保証とアフターサービスが充実しています。|Our warranty and after-sales service are comprehensive.
+保証期間内です|ほしょうきかんないです|hoshou kikan nai desu|it is within the warranty period|phrase|—|まだ保証期間内です。|It is still within the warranty period.
+保証が切れています|ほしょうがきれています|hoshou ga kirete imasu|the warranty has expired|phrase|—|保証が切れています。|The warranty has expired.
+修理は無料です|しゅうりはむりょうです|shuuri wa muryou desu|the repair is free of charge|phrase|—|保証期間内なので修理は無料です。|It is under warranty, so the repair is free.
+返品できますか|へんぴんできますか|henpin dekimasu ka|can I return this?|phrase|—|これは返品できますか。|Can I return this?
+領収書をお願いします|りょうしゅうしょをおねがいします|ryoushuusho o onegaishimasu|a receipt, please|phrase|—|領収書をお願いします。|A receipt, please.
+取扱説明書|とりあつかいせつめいしょ|toriatsukai setsumeisho|instruction manual|phrase|—|取扱説明書を読んでください。|Please read the instruction manual.
+不良品|ふりょうひん|furyouhin|defective product|phrase|—|不良品が届きました。|A defective product arrived.
+お問い合わせ|おといあわせ|otoiawase|inquiry, contact us|phrase|—|お問い合わせはこちらです。|Inquiries go here.
+カードは使えますか|カードはつかえますか|kaado wa tsukaemasu ka|can I use a card?|phrase|—|カードは使えますか。|Can I use a card?
+いくらですか|いくらですか|ikura desu ka|how much is it?|phrase|N5|これはいくらですか。|How much is this?
+送料無料|そうりょうむりょう|souryou muryou|free shipping|phrase|—|送料無料でお届けします。|We deliver with free shipping.
+よろしくお願いします|よろしくおねがいします|yoroshiku onegaishimasu|please treat me well, nice to meet you|phrase|N5|はじめまして、よろしくお願いします。|Nice to meet you.
+お疲れ様です|おつかれさまです|otsukaresama desu|thank you for your hard work|phrase|N4|お疲れ様です、お先に失礼します。|Good work today, I’ll be leaving first.
+いただきます|いただきます|itadakimasu|said before eating (I humbly receive)|phrase|N5|いただきます。|Let’s eat.
+ごちそうさまでした|ごちそうさまでした|gochisousama deshita|said after a meal, thank you for the food|phrase|N5|ごちそうさまでした。|Thank you for the meal.
+大丈夫です|だいじょうぶです|daijoubu desu|it’s okay, I’m fine|phrase|N5|はい、大丈夫です。|Yes, it’s fine.
+ちょっと待ってください|ちょっとまってください|chotto matte kudasai|please wait a moment|phrase|N5|ちょっと待ってください。|Please wait a moment.
+もう一度お願いします|もういちどおねがいします|mou ichido onegaishimasu|one more time, please|phrase|N5|もう一度お願いします。|Once more, please.
+分かりません|わかりません|wakarimasen|I don’t understand|phrase|N5|すみません、分かりません。|Sorry, I don’t understand.
+英語を話せますか|えいごをはなせますか|eigo o hanasemasu ka|do you speak English?|phrase|N5|英語を話せますか。|Do you speak English?
+トイレはどこですか|トイレはどこですか|toire wa doko desu ka|where is the restroom?|phrase|N5|すみません、トイレはどこですか。|Excuse me, where is the restroom?
+お久しぶりです|おひさしぶりです|ohisashiburi desu|long time no see|phrase|N4|お久しぶりです、お元気ですか。|Long time no see, how are you?
+どういたしまして|どういたしまして|douitashimashite|you’re welcome|phrase|N5|どういたしまして。|You’re welcome.
+気をつけて|きをつけて|ki o tsukete|take care, be careful|phrase|N4|気をつけて帰ってね。|Take care getting home.
+夕立|ゆうだち|yuudachi|evening shower, sudden summer downpour|noun|—|帰り道で夕立に遭った。|I got caught in a sudden shower on the way home.
+夕方|ゆうがた|yuugata|evening, late afternoon|noun|N5|夕方に買い物に行く。|I go shopping in the late afternoon.
+夕日|ゆうひ|yuuhi|setting sun|noun|—|海に沈む夕日が綺麗だ。|The sun setting into the sea is beautiful.
+夕焼け|ゆうやけ|yuuyake|sunset glow, evening sky|noun|—|空が夕焼けで赤い。|The sky is red with the sunset.
+梅雨|つゆ|tsuyu|rainy season (early summer)|noun|—|梅雨は六月から七月です。|The rainy season is from June to July.
+台風|たいふう|taifuu|typhoon|noun|N4|台風が近づいています。|A typhoon is approaching.
+雷|かみなり|kaminari|thunder, lightning|noun|—|雷が鳴っている。|Thunder is rumbling.
+虹|にじ|niji|rainbow|noun|—|雨の後に虹が出た。|A rainbow appeared after the rain.
+霧|きり|kiri|fog, mist|noun|—|朝は霧が深かった。|The fog was thick in the morning.
+風|かぜ|kaze|wind|noun|N4|今日は風が強い。|The wind is strong today.
+雲|くも|kumo|cloud|noun|N4|空に白い雲がある。|There are white clouds in the sky.
+嵐|あらし|arashi|storm|noun|—|嵐で電車が止まった。|The trains stopped because of the storm.
+大雨|おおあめ|ooame|heavy rain|noun|—|大雨で試合が中止になった。|The game was cancelled due to heavy rain.
+小雨|こさめ|kosame|light rain, drizzle|noun|—|小雨が降っています。|It is drizzling.
+曇り|くもり|kumori|cloudy weather|noun|—|明日は曇りでしょう。|Tomorrow will probably be cloudy.
+晴れ|はれ|hare|clear weather, sunny|noun|—|明日は晴れです。|Tomorrow will be sunny.
+天道|てんどう|tendou|the way of heaven, divine providence; the heavenly realm in Buddhism (also read てんとう, the sun)|noun|—|天道は人を見捨てない。|Providence does not abandon people.
+お天道様|おてんとうさま|otentousama|the sun; heaven watching over us|noun|—|お天道様はお見通しだ。|Heaven sees everything.
+武士道|ぶしどう|bushidou|the way of the samurai|noun|—|武士道の精神を学ぶ。|I study the spirit of bushido.
+茶道|さどう|sadou|tea ceremony|noun|—|茶道を習っています。|I am learning the tea ceremony.
+華道|かどう|kadou|flower arranging (ikebana)|noun|—|華道の先生に会う。|I meet my ikebana teacher.
+書道|しょどう|shodou|calligraphy|noun|—|書道が好きです。|I like calligraphy.
+柔道|じゅうどう|juudou|judo|noun|—|柔道を始めた。|I started judo.
+剣道|けんどう|kendou|kendo, Japanese fencing|noun|—|剣道の試合がある。|There is a kendo match.
+神道|しんとう|shintou|Shinto|noun|—|神道は日本の伝統的な宗教だ。|Shinto is Japan’s traditional religion.
+神社|じんじゃ|jinja|Shinto shrine|noun|—|神社に初詣に行く。|I visit a shrine for the New Year.
+お寺|おてら|otera|Buddhist temple|noun|—|京都のお寺を見学した。|I visited temples in Kyoto.
+仏教|ぶっきょう|bukkyou|Buddhism|noun|—|仏教は六世紀に伝わった。|Buddhism arrived in the sixth century.
+祭り|まつり|matsuri|festival|noun|N4|夏祭りに行きます。|I go to the summer festival.
+着物|きもの|kimono|kimono, traditional clothing|noun|N4|着物を着てみたい。|I want to try wearing a kimono.
+侍|さむらい|samurai|samurai, warrior|noun|—|侍の映画が好きだ。|I like samurai films.
+忍者|にんじゃ|ninja|ninja|noun|—|忍者の里を訪れる。|I visit a ninja village.
+花見|はなみ|hanami|cherry blossom viewing|noun|—|公園で花見をする。|We hold a blossom viewing in the park.
+お正月|おしょうがつ|oshougatsu|New Year holiday|noun|—|お正月は家族と過ごす。|I spend New Year with my family.
+おもてなし|おもてなし|omotenashi|hospitality, wholehearted service|noun|—|日本のおもてなしは有名だ。|Japanese hospitality is famous.
+わびさび|わびさび|wabi-sabi|beauty in imperfection and transience|noun|—|わびさびの美学を感じる。|I feel the aesthetic of wabi-sabi.
+縁|えん|en|fate, connection, bond|noun|—|ご縁があればまた会いましょう。|If fate allows, let’s meet again.
+運命|うんめい|unmei|destiny, fate|noun|—|運命の出会いだった。|It was a fateful encounter.
+義理|ぎり|giri|social duty, obligation|noun|—|義理を果たす。|I fulfill my obligation.
+恩|おん|on|debt of gratitude, favor|noun|—|恩を忘れない。|I won’t forget the favor.
+和|わ|wa|harmony; Japanese style|noun|—|和を大切にする。|We value harmony.
+一期一会|いちごいちえ|ichigo ichie|treasure every encounter, it only happens once|idiom|—|茶会は一期一会の精神で行う。|A tea gathering is held in the spirit of ichigo ichie.
+以心伝心|いしんでんしん|ishin denshin|understanding without words, heart to heart|idiom|—|二人は以心伝心で通じ合う。|The two understand each other without words.
+自業自得|じごうじとく|jigou jitoku|you reap what you sow|idiom|—|失敗は自業自得だ。|The failure is of my own making.
+人間道|にんげんどう|ningendou|the human realm, one of the six Buddhist realms of rebirth|noun|—|人間道は六道の一つです。|The human realm is one of the six realms.
+六道|ろくどう|rokudou|the six realms of rebirth (Buddhism)|noun|—|六道を輪廻する。|One wanders through the six realms of rebirth.
+地獄道|じごくどう|jigokudou|the hell realm|noun|—|地獄道は苦しみの世界だ。|The hell realm is a world of suffering.
+餓鬼道|がきどう|gakidou|the realm of hungry ghosts|noun|—|餓鬼道は飢えの世界だ。|The realm of hungry ghosts is a world of hunger.
+畜生道|ちくしょうどう|chikushoudou|the animal realm|noun|—|畜生道に落ちる。|To fall into the animal realm.
+修羅道|しゅらどう|shuradou|the realm of fighting spirits (asuras)|noun|—|修羅道は争いの世界だ。|The asura realm is a world of conflict.
+輪廻|りんね|rinne|reincarnation, the cycle of rebirth|noun|—|輪廻転生を信じる。|I believe in reincarnation.
+業|ごう|gou|karma, deeds of past lives|noun|—|それは前世の業だ。|That is karma from a past life.
+外国人ぶるな|がいこくじんぶるな|gaikokujin buru na|don’t act like a foreigner, stop pretending to be a foreigner|phrase|—|日本人なのに外国人ぶるな。|You’re Japanese, so stop acting like a foreigner.
+〜ぶる|ぶる|buru|to act like, to put on airs of, to pretend to be (suffix)|suffix|—|彼はいつも先輩ぶる。|He always acts like a senior.
+〜るな|るな|runa|don’t do ... (blunt prohibitive, verb dictionary form + な)|suffix|—|ここで走るな。|Don’t run here.
+偉ぶる|えらぶる|eraburu|to act important, to put on airs|verb|—|偉ぶるのはやめなさい。|Stop acting so important.
+いい子ぶる|いいこぶる|iiko buru|to play the good kid, to act innocent|verb|—|いい子ぶるな。|Stop acting like a good kid.
+気取る|きどる|kidoru|to put on airs, to act stylish or affected|verb|—|気取るな。|Don’t put on airs.
+かっこつけるな|かっこつけるな|kakko tsukeru na|don’t show off, stop posing|phrase|—|かっこつけるなよ。|Don’t show off.
+調子に乗るな|ちょうしにのるな|choushi ni noru na|don’t get carried away, don’t get cocky|phrase|—|少し勝ったからって調子に乗るな。|Don’t get cocky just because you won a little.
+偉そうに|えらそうに|erasou ni|in a self-important manner, bossily|expression|—|偉そうに言うな。|Don’t talk so high and mighty.
+知らないふりをするな|しらないふりをするな|shiranai furi o suru na|don’t pretend you don’t know|phrase|—|知らないふりをするな。|Don’t pretend you don’t know.
+日暮|ひぐらし|higurashi|evening cicada; also dusk (also read ひぐれ)|noun|—|山で日暮が鳴いている。|An evening cicada is singing in the mountains.
+日暮れ|ひぐれ|higure|dusk, nightfall|noun|—|日暮れまでに帰ります。|I will be back by dusk.
+夕暮れ|ゆうぐれ|yuugure|dusk, twilight|noun|—|夕暮れの街を歩く。|I walk through the town at dusk.
+黄昏|たそがれ|tasogare|twilight; the declining years|noun|—|黄昏の空が美しい。|The twilight sky is beautiful.
+暮れる|くれる|kureru|to grow dark, to draw to a close (day, year)|verb|—|もう日が暮れる。|The day is already growing dark.
+日没|にちぼつ|nichibotsu|sunset, sundown|noun|—|日没は六時です。|Sunset is at six o’clock.
+蝉|せみ|semi|cicada|noun|—|夏は蝉の声がうるさい。|The cicadas are noisy in summer.
+処方|しょほう|shohou|prescription, prescribing (medicine)|noun|—|医者が薬を処方する。|The doctor prescribes medicine.
+処方箋|しょほうせん|shohousen|written prescription|noun|—|処方箋を薬局に出す。|I hand the prescription to the pharmacy.
+処方薬|しょほうやく|shohouyaku|prescription drug|noun|—|処方薬は医師の指示通りに飲む。|Take prescription drugs as the doctor instructs.
+薬|くすり|kusuri|medicine, drug|noun|N5|薬を飲みましたか。|Did you take your medicine?
+薬局|やっきょく|yakkyoku|pharmacy|noun|N4|薬局で薬をもらう。|I get medicine at the pharmacy.
+病院|びょういん|byouin|hospital|noun|N5|病院に行きます。|I go to the hospital.
+医者|いしゃ|isha|doctor|noun|N5|医者に診てもらう。|I see a doctor.
+診察|しんさつ|shinsatsu|medical examination, consultation|noun|—|午後から診察が始まる。|Consultations start in the afternoon.
+症状|しょうじょう|shoujou|symptoms|noun|—|症状はいつからですか。|Since when have you had the symptoms?
+副作用|ふくさよう|fukusayou|side effect|noun|—|この薬には副作用があります。|This medicine has side effects.
+保険証|ほけんしょう|hokenshou|health insurance card|noun|—|保険証を持ってきてください。|Please bring your insurance card.
+食後|しょくご|shokugo|after a meal|noun|—|食後に薬を飲んでください。|Please take the medicine after meals.
+一日三回|いちにちさんかい|ichinichi sankai|three times a day|phrase|—|一日三回飲んでください。|Please take it three times a day.
+可哀想|かわいそう|kawaisou|pitiful, poor thing, to feel sorry for|na-adjective|—|迷子の子犬がかわいそうだ。|That lost puppy is so pitiful.
+かわいそうに|かわいそうに|kawaisou ni|oh, you poor thing; how sad for them|expression|—|かわいそうに、風邪をひいているのね。|Poor thing, you have a cold.
+かわいそうな人|かわいそうなひと|kawaisou na hito|a pitiable person|phrase|—|かわいそうな人を助けたい。|I want to help people who are in a pitiful situation.
+気の毒|きのどく|kinodoku|unfortunate, pitiable, sorry for (formal)|na-adjective|—|ご家族のことを思うと気の毒です。|I feel for your family.
+お気の毒に|おきのどくに|okinodoku ni|I’m sorry to hear that, my condolences|expression|—|このたびは、ご気の毒に。|I am sorry for your loss.
+残念|ざんねん|zannen|regrettable, too bad, disappointing|na-adjective|N4|残念ですね。|That’s too bad.
+大変だったね|たいへんだったね|taihen datta ne|that must have been tough|phrase|—|今日は大変だったね。|Today must have been tough.
+辛い|つらい|tsurai|painful, hard to bear|i-adjective|—|辛いときは休んで。|Rest when it gets hard.
+惨め|みじめ|mijime|miserable, wretched|na-adjective|—|惨めな気持ちになった。|I felt miserable.
+哀れ|あわれ|aware|pitiful, pathetic; poignant|na-adjective|—|哀れな姿を見た。|I saw a pitiful sight.
+不憎|ふびん|fubin|pitiable, deserving of compassion|na-adjective|—|不憎に思う。|I feel compassion for them.
+同情|どうじょう|doujou|sympathy, compassion|noun|—|同情を誘う話だ。|It’s a story that stirs sympathy.
+同情する|どうじょうする|doujou suru|to sympathize with|verb|—|彼には同情する。|I sympathize with him.
+心配|しんぱい|shinpai|worry, concern|noun|N4|心配しないでください。|Please don’t worry.
+お大事に|おだいじに|odaijini|take care, get well soon|expression|N4|お大事に。|Take care of yourself.
+元気出して|げんきだして|genki dashite|cheer up|phrase|—|元気出して、また頑張ろう。|Cheer up, let’s try again.
+ドンマイ|どんまい|donmai|don’t worry about it, never mind|expression|—|ドンマイ、次があるよ。|Don’t sweat it, there’s a next time.
+ご愁傷様です|ごしゅうしょうさまです|goshuushousama desu|my condolences (bereavement; sometimes sarcastic)|phrase|—|このたびはご愁傷様です。|My deepest condolences.
+いい気味|いいきみ|ii kimi|serves them right (unsympathetic)|expression|—|あいつはいい気味だ。|It serves him right.
+ざまあみろ|ざまあみろ|zamaa miro|serves you right (rude)|expression|—|ざまあみろ、自業自得だ。|Serves you right, you brought it on yourself.`;
+const D=RAW.split("\n").map((l,i)=>{const[a,b,c,d,e,f,g,h]=l.split("|");return{id:i,w:a,k:b,r:c,m:d,p:e,l:f,ex:g,et:h}});
+const $=id=>document.getElementById(id);
+let lvl="All",pos="All";
+const toHira=s=>s.replace(/[\u30a1-\u30f6]/g,c=>String.fromCharCode(c.charCodeAt(0)-96));
+const mk=(el,opts,get,set)=>{el.innerHTML="";opts.forEach(o=>{const b=document.createElement("button");b.className="chip"+(get()===o?" on":"");b.textContent=o;b.onclick=()=>{set(o);mk(el,opts,get,set);render()};el.appendChild(b)})};
+function score(e,q){
+  const h=toHira(q),m=e.m.toLowerCase();
+  if(e.w===q||e.k===h||e.r===q||m===q)return 0;
+  if(m.split(/,\s*/).includes(q))return 1;
+  if(m.startsWith(q)||e.r.startsWith(q)||e.k.startsWith(h)||e.w.startsWith(q))return 2;
+  if(m.includes(q)||e.r.includes(q)||e.k.includes(h)||e.w.includes(q))return 3;
+  return -1;
+}
+function render(){
+  const q=$("q").value.trim().toLowerCase();
+  let r=D.filter(e=>(lvl==="All"||e.l===lvl)&&(pos==="All"||e.p===pos));
+  if(q){r=r.map(e=>[score(e,q),e]).filter(x=>x[0]>=0).sort((a,b)=>a[0]-b[0]).map(x=>x[1])}
+  $("count").textContent=r.length+" of "+D.length+" entries";
+  const L=$("list");L.innerHTML="";
+  if(!r.length){L.innerHTML='<div class="empty">No matches found.</div>';return}
+  r.forEach(e=>{
+    const d=document.createElement("div");d.className="entry";
+    d.innerHTML=`<div class="row"><span class="jp">${e.w}</span><span class="kana">${e.k}</span><span class="lvl">${e.l}</span></div>
+    <div class="mean">${e.m} <span style="color:var(--muted);font-size:.8rem">· ${e.p}</span></div>
+    <div class="more"><div><b>Romaji:</b> ${e.r}</div><div style="margin-top:4px"><b>Example:</b> ${e.ex}</div><div>${e.et}</div>
+    <button class="btn">🔊 Pronounce</button></div>`;
+    d.onclick=()=>d.classList.toggle("open");
+    d.querySelector(".btn").onclick=ev=>{ev.stopPropagation();try{const u=new SpeechSynthesisUtterance(e.k);u.lang="ja-JP";speechSynthesis.cancel();speechSynthesis.speak(u)}catch(x){}};
+    L.appendChild(d);
+  });
+}
+mk($("lv"),["All","N5","N4"],()=>lvl,v=>lvl=v);
+mk($("ps"),["All",...new Set(D.map(e=>e.p))],()=>pos,v=>pos=v);
+$("q").addEventListener("input",render);
+render();
+</script>
+</body>
+</html>

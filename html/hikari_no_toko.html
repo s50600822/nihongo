@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光とこにいてね — 一穂ミチ | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1210;
+  --bg-surface: #161a16;
+  --bg-elevated: #1e231e;
+  --bg-card: #242b24;
+  --ink-primary: #e8ece8;
+  --ink-secondary: #c4ccc4;
+  --ink-muted: #8a9a8a;
+  --ink-faint: #5a6a5a;
+  --accent-gold: #8a8a5a;
+  --accent-gold-dim: #5a5a3a;
+  --accent-gold-glow: rgba(138, 138, 90, 0.12);
+  --accent-rose: #8a6a6a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-rose);
+}
+
+.nuance-box h4 {
+  color: var(--accent-rose);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>光のとこにいてね</h1>
+  <p class="hero-subtitle">Hikari no Toko ni Ite ne / Stay in the Light</p>
+  <p class="hero-meta">一穂 ミチ &middot; 文藝春秋 2022年11月 &middot; 464ページ &middot; 2023本屋大賞第3位 &middot; 第30回島清恋愛文学賞</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 光のとこにいてね</h2>
+  <p class="lead">The title <em>Hikari no Toko ni Ite ne</em> (光のとこにいてね) is a study in gentle imperative and luminous longing. In just seven syllables, it captures the entire emotional architecture of the novel: a prayer disguised as a request, a wish that the beloved remain in the light because the speaker cannot bear the thought of them in darkness. The title is not a command; it is a holding — an attempt to keep someone safe through the force of wanting.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">光</span>
+        <span class="romaji">hikari</span>
+        <span class="meaning">"light" — The word <em>hikari</em> (光) is one of the most symbolically rich in Japanese. It denotes physical light — sunlight, lamplight, the glow of afternoon that the novel's opening describes so precisely — but it also carries metaphysical weight: hope, goodness, visibility, the condition of being seen and being safe. In Japanese literary tradition, <em>hikari</em> is the opposite of <em>yami</em> (闇, "darkness"), and the two form a dialectic that runs from the <em>Man'yōshū</em> through Kawabata Yasunari to contemporary fiction. For Ichiho, <em>hikari</em> is the specific quality of afternoon light that falls on the housing complex where Kanon lives — "not as intense as morning, not as brazen as noon, but light that has been gently kneaded by the passage of time" — and it is also the moral condition that Yuzu wishes for Kanon: that she remain in the light of safety, visibility, and love, rather than falling into the darkness of solitude, poverty, and despair. The title's <em>hikari</em> is both literal and figurative, both the light that illuminates the balcony where two girls meet and the light of a life that is worth living. What is lost in English is the specifically Japanese aesthetic of <em>hikari</em> as a quality that can be gentle, filtered, attenuated — the way light behaves in Japanese architecture, through shoji screens, under eaves, at the edge of shadow. The English "light" is accurate but flat; it does not carry the sensory precision that <em>hikari</em> carries in Japanese, where light is not merely the absence of darkness but a presence with texture, temperature, and emotional weight.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">のとこ</span>
+        <span class="romaji">no toko</span>
+        <span class="meaning">"the place of / where the... is" — The construction <em>no toko</em> (のとこ) is the casual, intimate form of <em>no tokoro</em> (の所), meaning "the place where..." or "the spot where..." <em>Tokoro</em> (所) means "place / location / point," and its casual form <em>toko</em> is what children say, what lovers say, what people who know each other well say. It is not the formal <em>no tokoro</em> of written prose but the <em>no toko</em> of spoken intimacy — the kind of language that passes between people who share a history. The title thus begins to establish, before the novel even opens, that the relationship between the speaker and the addressee is close, personal, and rooted in shared experience. The phrase <em>hikari no toko</em> (光のとこ) means "the place where the light is" — not "the world of light" (<em>hikari no sekai</em> / 光の世界) or "the side of light" (<em>hikari no ho</em> / 光の方) but the specific, local, intimate "place where the light falls." This is crucial: the title is not making a grand metaphysical claim but a small, precise, domestic one. Stay in that place, it says — the place I can see, the place I know, the place where I found you once and might find you again. What is lost in English is the childlike intimacy of <em>no toko</em>. "The place where the light is" captures the meaning but loses the tenderness; "stay in the light" captures the tenderness but loses the specificity. The Japanese title contains both: the metaphysical hope and the concrete memory of a particular patch of afternoon sun on a particular balcony.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">にいてね</span>
+        <span class="romaji">ni ite ne</span>
+        <span class="meaning">"stay there, okay? / be there, alright?" — The grammar is precise and heartbreaking. <em>Ni</em> (に) is the locative particle marking <em>hikari no toko</em> as the place where the action occurs. <em>Ite</em> (いて) is the <em>-te</em> form of <em>iru</em> (いる), the verb of existence for animate beings — "to be / to exist / to stay." The <em>-te</em> form here functions as a gentle imperative, a request rather than a command: "be there" rather than "be there!" And <em>ne</em> (ね) is the sentence-ending particle that seeks confirmation, creates intimacy, and softens the request into a plea: "stay in the light, okay?" The full title is thus not an order but a negotiation — the speaker is asking, with the <em>ne</em> that hopes for agreement, that the addressee remain where light falls. The grammar encodes the entire emotional situation of the novel: one person who cannot control where the other goes, who cannot follow, who can only ask — and who adds <em>ne</em> because the asking is itself a kind of prayer, a hope that the wish will be granted not by force but by love. What is lost in English is the specifically Japanese gentleness of this imperative. English "Stay in the light" is either a command or a piece of advice; the Japanese <em>Hikari no toko ni ite ne</em> is a wish wrapped in a request wrapped in a prayer. The <em>ne</em> at the end transforms everything that precedes it: without <em>ne</em>, the title would be a command; with <em>ne</em>, it is a love letter.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Hardcover: Bungeishunjū, November 7, 2022, 464 pages, ISBN 978-4-16-391618-7. Bunko edition: Bungei Shunjū Bunko, September 3, 2025, 512 pages, ISBN 978-4-16-792409-6. The cover features a sculptural image of a winged female figure by artist Matsubara Rie — an object that embodies the novel's themes of lightness, fragility, and the desire to be held. The bunko edition includes a bonus short story "Aoi Hina" (青い雛) and a bookmark with illustration by manga artist Shimura Takako.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>一穂 ミチ &mdash; Ichiho Michi (1978–)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">穂</div>
+    <div class="author-name-block">
+      <h3>一穂 ミチ / Ichiho Michi</h3>
+      <p class="author-name-romaji">Naoki Prize winner &middot; Osaka-born &middot; Kansai University graduate &middot; BL and general fiction novelist</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Ichiho Michi was born in 1978 in Osaka Prefecture — the city of merchants, of comedy, of a dialect so distinctive that it functions as a second language within Japan. She grew up in a household where books were central: her mother was a reader who took her to the library regularly, and Ichiho read voraciously across genres, from the classics assigned in school to whatever she could find on the shelves. Two works from her adolescence left permanent marks: Ishimure Michiko's <em>Kugai Jūdō: Waga Minamata-byō</em> (苦海浄土―わが水俣病, "The Pure Land of Thirst: My Minamata Disease"), the documentary account of the mercury poisoning tragedy that created modern Japanese environmentalism; and Natsume Sōseki's <em>Garō no Uchi</em> (硝子戸の中, "Inside the Glass Door"), a late novel of domestic life and quiet despair. That these two works — one a scream of social protest, the other a whisper of private grief — should both shape Ichiho's imagination tells us something about the range of her sensibility: she is a writer who can hold the political and the personal in the same sentence without either collapsing into the other.</p>
+    <p style="margin-bottom: var(--space-md);">She graduated from Kansai University's Faculty of Sociology in 2000 and worked as an office employee (<em>kaishain</em> / 会社員) before her writing career began. Her entry into literature was through <em>dōjinshi</em> (同人誌) — self-published works, primarily secondary-creation fiction based on existing manga and anime. An editor discovered her through these <em>dōjinshi</em> activities and invited her to write professionally. In 2007, she made her commercial debut with <em>Yuki yo Ringo no Ka no Gotoku</em> (雪よ林檎の香のごとく, "Snow, Like the Scent of Apples"), published in the summer issue of <em>Shōsetsu Dia Plus</em> — the title borrowed from a Kitahara Hakushū poem. The novel established her as a writer of BL (Boys' Love) fiction, a genre she would continue to work in for over a decade, building a devoted readership with her emotionally precise, psychologically complex portrayals of male-male relationships. Her "Yes ka No ka Hanbun ka" (イエスかノーか半分か, "Yes or No or Half") series was adapted into a film, bringing her work to an even wider audience.</p>
+    <p style="margin-bottom: var(--space-md);">The turning point came in 2021 with <em>Small Worlds</em> (スモールワールズ), her first work of general fiction (<em>ippan bungei</em> / 一般文芸) published in hardcover. The novel — a portrait of a family across generations, centered on a woman who runs a small bar — won the 43rd Yoshikawa Eiji Literary Newcomer Prize and was nominated for the 165th Naoki Prize. It placed 3rd in the 2022 Honya Taisho, bringing Ichiho's name to a general readership far beyond the BL community. The success of <em>Small Worlds</em> proved that Ichiho's gifts — her ability to render emotional complexity with crystalline precision, her sensitivity to the textures of class and family, her understanding of how love can be both salvation and trap — were not genre-bound. She had simply been practicing them in one form; now she would apply them to another.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Hikari no Toko ni Ite ne</em> (2022) was originally serialized in <em>Bessatsu Bungei Shunjū</em> (別冊文藝春秋) beginning in 2021. The novel continued her exploration of relationships that exist outside conventional categories — not friendship, not romance, not family, but something that draws from all three and is reducible to none. It was nominated for the 168th Naoki Prize, placed 3rd in the 2023 Honya Taisho, and in 2024 won the 30th Shimase Love Literature Prize (島清恋愛文学賞), one of Japan's most prestigious awards for fiction about love. In the same year, 2024, she won the 171st Naoki Prize for <em>Tsumi Demikku</em> (ツミデミック), a novel about life during the COVID-19 pandemic — cementing her status as one of the most important writers of her generation. She also received the Sakuya Konohana Prize (咲くやこの花賞) in 2022 for her contributions to Osaka culture. Other works include <em>Suna-arashi ni Hoshikuzu</em> (砂嵐に星屑, "Stardust in the Sandstorm"), <em>Utakata Mozaiku</em> (うたかたモザイク), <em>Koi to ka Ai to ka Yasashisa nara</em> (恋とか愛とかやさしさなら), and <em>After You</em> (アフター・ユー).</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Ichiho as a writer is her capacity to render emotional states with the precision of a chemist identifying compounds. She does not describe feelings from the outside; she writes from inside them, using grammar and vocabulary to make the reader experience what the character experiences. In interview after interview, she has said that she writes to understand what she does not yet know about human relationships — that the act of writing is itself a form of discovery. "This work is not a sisterhood novel," she said of <em>Hikari no Toko ni Ite ne</em>. "They are not facing the same direction. They are only looking at each other. It is a very closed relationship. There are no walls to overcome together, no battles to fight hand in hand." This statement — that love can exist without common cause, without shared struggle, without the forward momentum that novels usually require — is the key to her art. She writes the love that remains when everything else falls away.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Danchi, Class, and the Architecture of Girlhood</h2>
+
+  <div class="card">
+    <h3>The Danchi: Postwar Dreams and Contemporary Decay</h3>
+    <p>The <em>danchi</em> (団地, "housing complex / housing estate") is one of the most symbolically loaded spaces in postwar Japan. Built in large numbers from the 1950s through the 1970s to address acute housing shortages, <em>danchi</em> were originally aspirational — modern apartments with flush toilets and separate kitchens, inhabited by young nuclear families leaving the cramped wooden row-houses of the old city. They represented the future: clean, rational, egalitarian. But by the 1990s and 2000s, many <em>danchi</em> had become symbols of decline — aging buildings, aging residents, insufficient maintenance, and the social stigma of "<em>danchi</em> life" as something to escape rather than aspire to. The <em>danchi</em> where Kanon lives is one of these: "run-down" (<em>urabureta</em> / 古びれた), at the margins of the city, home to single mothers and working-class families who cannot afford better.</p>
+    <p style="margin-top: var(--space-sm);">For Yuzu, who lives in a wealthy household and attends a private elementary school, the <em>danchi</em> is another world — not merely poorer but differently organized, differently lit, differently inhabited. The novel's opening scene, in which Yuzu sees Kanon leaning over the fifth-floor balcony railing and reaches up from the ground below as if to catch her, encodes this spatial and social difference in a single image: Yuzu on the ground, looking up; Kanon in the air, looking down; the distance between them both physical and social. The <em>danchi</em> balcony is a liminal space — inside and outside, private and public, safe and dangerous — and Kanon's position on it suggests a life that has already learned to inhabit edges. What the novel understands, and what Yuzu will spend years learning, is that the <em>danchi</em> is not merely a place of poverty but a place of community: people know each other, watch each other's children, share what they have. The "light" of the title falls on the <em>danchi</em> too — attenuated, filtered, but real.</p>
+  </div>
+
+  <div class="card">
+    <h3>Class Difference in Contemporary Japan</h3>
+    <p>Japan has historically prided itself on being a "classless" society — a myth that obscures significant and growing inequality. The gap between Yuzu's world (private school, piano lessons, ballet, swimming, calligraphy, English conversation) and Kanon's world (a single mother who works irregularly, a <em>danchi</em> apartment, no extracurricular activities) is not merely financial; it is experiential, linguistic, and imaginative. Yuzu's calendar is filled with "lessons" (<em>narai-goto</em> / 習い事) — the structured enrichment activities that middle-class Japanese children undergo from an early age. Kanon has no <em>narai-goto</em>; her education is the <em>danchi</em> itself, the street, the necessity of managing a mother who is beautiful but socially inept, impulsive, and unreliable.</p>
+    <p style="margin-top: var(--space-sm);">The novel does not moralize this difference. It does not make Kanon noble in her poverty or Yuzu shallow in her wealth. Instead, it shows how class shapes what each girl can imagine for herself — and how their love for each other opens possibilities that neither could have discovered alone. Yuzu learns from Kanon a kind of emotional directness that her privileged upbringing has muted; Kanon learns from Yuzu a kind of sustained attention, the capacity to really see another person, that her chaotic home life has not taught her. The novel's deepest insight about class is that it does not determine character but it does constrain possibility — and that love, while it cannot erase class difference, can sometimes create a space where class matters less than it does everywhere else.</p>
+  </div>
+
+  <div class="card">
+    <h3>"Yuri" and the Literature of Female-Female Love</h3>
+    <p>The Japanese term <em>yuri</em> (百合, "lily") refers to fiction depicting romantic or emotional love between women — the female equivalent of BL (<em>bara</em> / 薔薇, "rose," for male-male love). The genre has a long history in Japan, from the "S" (sister) relationships of early 20th-century girls' school fiction to the contemporary <em>yuri</em> manga and light novel industry. But Ichiho has been explicit that <em>Hikari no Toko ni Ite ne</em> is "not a sisterhood novel" (<em>shisutāfuddo shōsetsu de wa nai</em> / シスターフッド小説ではありません) — it is not about women facing common obstacles together, supporting each other through shared struggle, or building solidarity against patriarchy. The relationship between Yuzu and Kanon is, in her words, "very closed" (<em> hijō ni tojita</em> / 非常に閉じた) — they look only at each other, not in the same direction, not toward a common goal.</p>
+    <p style="margin-top: var(--space-sm);">This refusal of the <em>yuri</em> / sisterhood template is what makes the novel radical. Most fiction about love between women, particularly in Japan, frames that love within a larger narrative of social struggle — against discrimination, against family expectations, against the pressure to marry. Ichiho removes all of these frameworks. Yuzu and Kanon are not fighting society; they are simply trying to be near each other. Their love has no political program, no social agenda, no claim to legitimacy. It exists in the interstices of their lives — the once-a-week meetings when their mothers happen to be in the same place, the stolen moments at school, the letters and phone calls that sustain a connection across years of separation. The novel's achievement is to show that this "closed" love — love that looks only at its object, that asks nothing from the world — is as real, as consequential, and as capable of shaping a life as any love that marches in the streets.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Raw Essence of Love" and the Problem of Categories</h3>
+    <p>In her interview about the novel, Ichiho used a striking phrase: <em>aijō no gen'eki wo gen'eki no mama kakaete otona ni nattara</em> (愛情の原液を原液のまま抱えて大人になったら, "If you carry the raw essence of love into adulthood without diluting it"). The word <em>gen'eki</em> (原液) means "undiluted solution / concentrate / raw essence" — the form of a substance before it has been mixed with anything else. Applied to love, it suggests an emotion that has not been tempered by experience, moderated by social convention, or diluted by the compromises of adult life. Yuzu and Kanon meet at seven, an age when love is still pre-categorical — it has not yet been sorted into "friendship," "romance," "family," "crush." They simply feel what they feel, and what they feel is so intense that it will shape the next twenty-five years of their lives.</p>
+    <p style="margin-top: var(--space-sm);">The novel's exploration of this "raw essence" is what makes it so difficult to categorize — and so powerful. Is it a love story? Yes. Is it a friendship story? Yes. Is it about two girls who happen to meet and happen to change each other's lives? Yes. The novel refuses to choose among these readings because the characters themselves do not experience their relationship as choosing among categories. They experience it as a fact, like gravity, like the need to breathe. Ichiho's title — <em>Stay in the Light</em> — is the voice of someone who has known this raw essence and has learned, over decades, that the only way to protect it is to ask the beloved to remain visible, to remain reachable, to remain in the place where love first found them. The light is not a metaphor for happiness; it is a specific, remembered quality of afternoon sun on a specific balcony, and the prayer that the person who stood in that light will not disappear into the darkness that waits for everyone.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>A Quarter Century of Light</h2>
+
+  <div class="card">
+    <h3>The Meeting: Age Seven, the Balcony, the Light</h3>
+    <p>The novel opens with an adult Yuzu remembering: "When I think of her, I always return to being seven years old." The grammar — <em>kanojo wo omou toki, itsumo watashi wa shichi-sai ni kaeru</em> (彼女を思う時、いつもわたしは七歳に返る) — uses <em>ni kaeru</em> (に返る, "return to"), a verb of reversal that suggests time is not linear but spiral: every memory of Kanon brings Yuzu back to the age when they met, the age when everything was still possible. The scene she returns to is specific and devastating: her mother has taken her, still in her school uniform, to a <em>danchi</em> on a Wednesday afternoon — the one day of the week when Yuzu has no extracurricular lessons. Her mother claims they are going to "volunteer" (<em>borantia</em> / ボランティア), but Yuzu will later understand that her mother is visiting a man.</p>
+    <p style="margin-top: var(--space-sm);">While waiting in the parking lot, Yuzu looks up at the housing complex and sees a girl on the fifth-floor balcony, leaning so far over the railing that she seems about to fall. Without thinking, Yuzu reaches up both hands — as if she could catch the girl from below, as if the distance between ground and fifth floor were nothing, as if love could defy gravity. The girl on the balcony is Kanon, and she is not trying to jump; she is simply looking out, inhabiting the edge of her world as she has learned to do. But Yuzu's gesture — those outstretched hands, that impulse to catch before knowing whether there is a fall — is the novel's founding image. It is the moment when two solitudes recognize each other across every distance that separates them: class, architecture, the physics of gravity itself. And Kanon, looking down at the girl on the ground with her hands raised, sees something she has never seen before: someone who sees her.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Closed World: Once a Week, in Secret</h3>
+    <p>The girls' relationship develops in the only space available to them: the hours when their mothers are together. Yuzu's mother continues her "volunteer" visits; Kanon's mother welcomes or endures them. For Yuzu, these Wednesdays become the center of her week — the day she lives toward, the day that gives shape to all the others. For Kanon, they are something more complicated: a window into a world she cannot enter, a reminder of everything she does not have, and yet — because Yuzu is in it — a world she cannot stop wanting. The girls read books together, talk about everything and nothing, develop a language of glances and gestures that needs no translation. They are, in the most literal sense, each other's only friends — not because they have no other acquaintances but because no one else sees them as they see each other.</p>
+    <p style="margin-top: var(--space-sm);">The novel renders this closed world with extraordinary precision. Ichiho understands that the intensity of childhood friendship — particularly childhood friendship that exists outside adult supervision — comes from its secrecy, its self-sufficiency, its absolute indifference to the world's categories. Yuzu and Kanon do not know whether what they feel is "normal" or not, and they do not care. They know only that when they are together, the world becomes bearable; that when they are apart, something is wrong. The novel's middle section follows this relationship through elementary school — the small betrayals, the misunderstandings, the moments of piercing happiness that seem, to the girls, to be the whole purpose of existence. And then, inevitably, the adult world intervenes: Yuzu's mother ends her affair, the visits stop, and the girls lose the only context their relationship has ever had.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Separation: Eight Years of Absence</h3>
+    <p>The novel's temporal structure is one of its most powerful elements. After their abrupt separation in elementary school, Yuzu and Kanon do not see each other for eight years. This gap — from roughly age ten to age eighteen — is narrated from both perspectives, and it is a study in how a single relationship can shape a life even in absence. Yuzu continues her privileged trajectory: middle school, high school entrance exams, the pressure to succeed that defines the lives of Japanese students in elite tracks. But she carries Kanon with her — in memory, in the books they read together, in the standard against which she unconsciously measures every other relationship. Kanon's path is less linear: her mother's instability, financial pressure, the constant negotiation of a life without the safety net that Yuzu takes for granted. She too carries Yuzu — as a memory of being seen, as proof that someone once reached up for her, as the voice that says <em>hikari no toko ni ite ne</em> even when the light seems to have gone out.</p>
+    <p style="margin-top: var(--space-sm);">What the novel understands, and what makes its portrayal of separation so painful, is that absence is not the opposite of presence but a form of it. Yuzu and Kanon are not "over" each other; they are suspended in relation to each other, held in a kind of emotional stasis that prevents them from fully inhabiting their separate lives. They date boys, make friends, pursue education and work — but some part of each remains at age seven, on that balcony, in that light. The novel's refusal to pathologize this — its refusal to say that they should "move on" or "get over it" — is one of its most radical gestures. Ichiho treats their attachment not as fixation but as fidelity: they are remaining true to something that was real, even if the world has no name for it.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Reunion: A Prestigious Girls' School, Age Fifteen</h3>
+    <p>The reunion occurs at a prestigious girls' high school — a setting that brings the novel's class themes to the foreground. Yuzu has followed the expected path; Kanon has, against the odds, arrived at the same destination through a different route. Their recognition of each other is immediate and total — not the slow reacquaintance of former friends but the shock of seeing someone who has existed inside you for years suddenly made flesh. The novel handles this reunion with characteristic restraint: no dramatic declarations, no tearful embraces in the rain, just the quiet catastrophe of two people discovering that what they thought was memory is actually still alive.</p>
+    <p style="margin-top: var(--space-sm);">What follows — the rekindling of their relationship in the new context of adolescence, the navigation of desires that have become more complex with physical maturity, the renewed threat of separation as graduation and adult life approach — is best discovered in the reading. What can be said is that Ichiho refuses every easy resolution. The girls do not run away together; they do not renounce the world for each other; they do not find a label that explains them to themselves or to others. What they do — what the novel argues is the only thing anyone can do with a love that exceeds categories — is continue. They continue to meet, to talk, to fail each other and forgive each other, to choose each other again and again across the years. The novel's final pages, which bring the story to its conclusion after twenty-five years, do not offer a conventional happy ending. They offer something more difficult and more true: the knowledge that a love which has survived everything that should have destroyed it has earned the right to be called what it is — not friendship, not romance, not family, but simply <em>this</em>, the thing that happens when two people refuse to stop seeing each other.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the crystalline precision, emotional intensity, and luminous tenderness of Ichiho's prose — a voice that has made her one of the most celebrated writers in contemporary Japan.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Opening: Memory as Return</div>
+    <div class="passage-jp">
+      彼女を思う時、いつもわたしは七歳に返る。幼いあの子、幼いわたし。振り返った時、陽だまりの中に佇んでいた彼女。濃いえんじ色のスカートの秩序だったプリーツ、そこから伸びた棒みたいな脚を包んでいた真っ白なソッス。夕方の翳りが混じり始めた日なた。朝ほど強烈ではなく、真昼ほどあっけらかんともしていない、時間によってやわらかく揉まれた後みたいな午後の光。ずっと、ずっとそこにいてほしい。これがわたしの祈り、わたしの恋。
+    </div>
+    <div class="passage-romaji">
+      "Kanojo wo omou toki, itsumo watashi wa shichi-sai ni kaeru. Osanai ano ko, osanai watashi. Furikaetta toki, hidamari no naka ni tadashunde ita kanojo. Koi enji-iro no sukāto no chitsujo datta purītsu, soko kara nobita bō mitai na ashi wo tsutsunde ita masshiro na sokkusu. Yūgata no kageri ga majiri hajimeta hinata. Asa hodo kyōretsu de wa naku, mahiru hodo akkerakan to mo shite inai, jikan ni yotte yawaraku momareta ato mitai na gogo no hikari. Zutto, zutto soko ni ite hoshii. Kore ga watashi no inori, watashi no koi."
+    </div>
+    <div class="passage-en">
+      "When I think of her, I always return to being seven years old. That child, young; me, young. When I turned around, she was standing in a patch of sunlight. The pleats of her dark burgundy skirt, perfectly ordered; the stick-thin legs extending from them, wrapped in pure white socks. A sunny spot into which evening's shadow had begun to mix. Not as intense as morning, not as brazen as noon — afternoon light, like something that has been gently kneaded by the passage of time. Always, always, I want you to be there. This is my prayer; this is my love."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This opening paragraph is a masterpiece of Japanese prose — a single sentence sequence that establishes the novel's entire emotional geography in fewer than two hundred words. The first sentence — <em>kanojo wo omou toki, itsumo watashi wa shichi-sai ni kaeru</em> (彼女を思う時、いつもわたしは七歳に返る) — uses <em>ni kaeru</em> (に返る, "return to") rather than the more common <em>ni modoru</em> (に戻る, "go back to"). <em>Kaeru</em> suggests not merely going back but reverting, reversing, becoming again what one was — a transformation that undoes the years between. The word <em>itsumo</em> (いつも, "always") establishes that this is not a occasional memory but a permanent condition: every thought of Kanon resets Yuzu to age seven. The description of Kanon in the sunlight is a study in sensory precision. <em>Hidamari</em> (陽だまり, "patch of sunlight / sunny spot") is a specifically Japanese word for the pools of sunlight that form in enclosed spaces — the word contains both <em>hi</em> (日, "sun") and <em>damaru</em> (黙る/溜まる, "to pool / to gather"), suggesting light as something that accumulates, that rests in a place. The pleated skirt with its <em>chitsujo datta purītsu</em> (秩序だったプリーツ, "ordered pleats") contrasts with Kanon's <em>bō mitai na ashi</em> (棒みたいな脚, "stick-like legs") — the formality of the uniform against the vulnerability of the body inside it. But the paragraph's greatest achievement is the description of light: <em>asa hodo kyōretsu de wa naku, mahiru hodo akkerakan to mo shite inai, jikan ni yotte yawaraku momareta ato mitai na gogo no hikari</em> (朝ほど強烈ではなく、真昼ほどあっけらかんともしていない、時間によってやわらかく揉まれた後みたいな午後の光). This is untranslatable in its specificity. <em>Akkerakan</em> (あっけらかん) is an onomatopoeic adverb meaning "brazenly / shamelessly / unconcernedly" — it describes the quality of noon light that exposes everything without tact. The afternoon light, by contrast, has been <em>yawaraku momareta</em> (やわらかく揉まれた, "gently kneaded / massaged") by time — the verb <em>momu</em> (揉む) is what you do to dough, to muscles, to something that needs softening through pressure. The light is not merely fading; it has been worked on, shaped, made tender by the hours. And then the turn: <em>zutto, zutto soko ni ite hoshii</em> (ずっと、ずっとそこにいてほしい) — the repetition of <em>zutto</em> (ずっと, "always / forever / continuously") stretching the wish across time, and <em>ite hoshii</em> (いてほしい, "I want you to be there / I want you to stay") — the <em>-hoshii</em> form that makes desire explicit. The final sentence — <em>kore ga watashi no inori, watashi no koi</em> (これがわたしの祈り、わたしの恋, "This is my prayer; this is my love") — places the entire paragraph under two signs: the religious (<em>inori</em> / 祈り, "prayer") and the romantic (<em>koi</em> / 恋, "love"). The semicolon (、) between them is a caesura that allows both meanings to exist simultaneously without collapsing into each other. What is lost in English is the sensory density of the Japanese — the way that <em>hidamari</em>, <em>enji-iro</em>, <em>akkerakan</em>, and <em>momareta</em> create a texture that English cannot reproduce without expansion. The English translation must choose between precision and brevity; the Japanese has both.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Balcony: Reaching Across Gravity</div>
+    <div class="passage-jp">
+      五階のベランダの手すりから身を乗り出している果遠を見た結珠が、地上から果遠に向かって両手を伸ばしたのだ。まるで抱きとめるからここに落ちてきて欲しいと願うかのように。
+    </div>
+    <div class="passage-romaji">
+      "Go-kai no beranda no tesuri kara mi wo noridashite iru Kanon wo mita Yuzu ga, chijō kara Kanon ni mukatte ryōte wo nobashita no da. Marude dakitomeru kara koko ni ochite kite hoshii to negau ka no yō ni."
+    </div>
+    <div class="passage-en">
+      "Yuzu saw Kanon leaning her body out from the fifth-floor balcony railing, and from the ground below, stretched both hands toward her. As if to say: I will catch you, so I want you to fall here — I am wishing for it."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's founding image — the moment that everything else flows from — and its grammar encodes the entire relationship. The first clause — <em>go-kai no beranda no tesuri kara mi wo noridashite iru Kanon wo mita Yuzu ga</em> (五階のベランダの手すりから身を乗り出している果遠を見た結珠が) — is a masterpiece of Japanese sentence construction. The subject (<em>Yuzu ga</em> / 結珠が) is delayed until the end of a long subordinate clause that describes what Yuzu saw: Kanon, on the fifth floor, leaning out from the balcony railing, her body (<em>mi</em> / 身) extended beyond the safe boundary of the architecture. The verb <em>noridasu</em> (乗り出す) means "to lean out / to jut out" — it contains the danger of overbalance, the thrill of exceeding a limit. Kanon is not merely standing on the balcony; she is inhabiting its edge, making the architecture's boundary her own. When Yuzu stretches both hands toward her — <em>chijō kara Kanon ni mukatte ryōte wo nobashita</em> (地上から果遠に向かって両手を伸ばした) — the grammar makes the gesture both physical and absurd: <em>chijō</em> (地上, "the ground / earth") against <em>go-kai</em> (五階, "fifth floor"), the horizontal reach of arms against the vertical distance of stories. Yuzu cannot possibly catch Kanon from the ground. The gesture is not practical; it is emotional — a body speaking before the mind can intervene. And then the simile: <em>marude dakitomeru kara koko ni ochite kite hoshii to negau ka no yō ni</em> (まるで抱きとめるからここに落ちてきて欲しいと願うかのように). <em>Marude... ka no yō ni</em> (まるで…かのように, "as if / just as though") introduces a counterfactual wish: Yuzu reaches as if she were saying "I will hold you, so I want you to fall here." The verb <em>dakitomeru</em> (抱きとめる, "to catch in one's arms / to embrace and stop") combines <em>daku</em> (抱く, "to embrace / to hold") with <em>tomeru</em> (止める, "to stop / to halt") — it is the verb for catching a falling person, for interrupting gravity with the body. And <em>ochite kite hoshii</em> (落ちてきて欲しい, "I want you to fall [toward me]") uses the <em>-te kite</em> (てきて) directional form — "fall and come [toward me]" — which makes Kanon's hypothetical fall a movement in Yuzu's direction, a delivery. The wish (<em>negau</em> / 願う) is the verb of prayer, of deep desire, of the kind of wanting that approaches the religious. What is lost in English is the terrible beauty of this sentence — the way it makes a potential suicide (or what looks like one) into an invitation to love. The English "as if to say: I will catch you, so I want you to fall here" captures the meaning but loses the physical immediacy of <em>dakitomeru</em> and the directional intimacy of <em>ochite kite</em>. The Japanese sentence makes Yuzu's gesture simultaneously an act of rescue and an act of desire — she wants to catch Kanon because she wants Kanon, and she wants Kanon because she has recognized, in that figure on the balcony, something that answers a need she did not know she had.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Promise: Stay in the Light</div>
+    <div class="passage-jp">
+      ずっと、ずっとそこにいてほしい。
+    </div>
+    <div class="passage-romaji">
+      "Zutto, zutto soko ni ite hoshii."
+    </div>
+    <div class="passage-en">
+      "Always, always, I want you to be there." / "Forever, forever, stay there."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's emotional core and the seed from which its title grew — is a study in the grammar of longing. <em>Zutto</em> (ずっと) is an adverb of temporal extension meaning "always / continuously / all the way / forever." Its repetition — <em>zutto, zutto</em> — is not redundant but intensifying: each <em>zutto</em> stretches further than the last, creating a sense of desire that exceeds any single word's capacity. The first <em>zutto</em> says "forever"; the second <em>zutto</em> says "and even beyond that." The grammar of <em>...te hoshii</em> (〜てほしい) is the Japanese construction for expressing a desire that someone else do something — "I want you to..." It is distinct from a command (<em>...te kudasai</em> / 〜てください, "please do...") in that it makes the speaker's desire explicit rather than assuming the listener's compliance. Yuzu is not ordering Kanon to stay; she is confessing that she wants Kanon to stay — a confession that leaves Kanon free to refuse. This grammatical freedom is crucial to the novel's ethics: Yuzu never tries to possess Kanon, never demands, never controls. She only wants, and she says she wants, and in saying it she makes her wanting visible — which is, the novel suggests, the only honest way to love. The <em>soko</em> (そこ, "there") refers back to the <em>hidamari</em> (陽だまり, "patch of sunlight") where Kanon was standing — a specific place that has become, through the alchemy of memory, a state of being. To "be there" is not merely to occupy a location but to remain in the condition of being seen, being reachable, being present to the one who loves you. What is lost in English is the childlike directness of the Japanese. "Always, always, I want you to be there" is accurate but slightly formal; "Forever, forever, stay there" captures the urgency but loses the explicitness of desire. The Japanese <em>zutto, zutto soko ni ite hoshii</em> is how a child would say it — simple words, repeated for emphasis, stripped of adult sophistication. It is a sentence that could only have been spoken by a seven-year-old or remembered by an adult who has never stopped being seven in the part of herself that loves.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Raw Essence of Love</div>
+    <div class="passage-jp">
+      愛情の原液を原液のまま抱えて大人になったら、この二人のようなことも起こるんじゃないか。
+    </div>
+    <div class="passage-romaji">
+      "Aijō no gen'eki wo gen'eki no mama kakaete otona ni nattara, kono futari no yō na koto mo okoru n ja nai ka."
+    </div>
+    <div class="passage-en">
+      "If you carry the raw essence of love into adulthood without diluting it, maybe something like these two could happen."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — from Ichiho's interview about the novel — is the key to understanding what the book is doing and why it is so difficult to categorize. The phrase <em>aijō no gen'eki</em> (愛情の原液, "the raw essence of love / the undiluted concentrate of love") uses <em>gen'eki</em> (原液), a scientific term for the concentrated form of a substance before dilution — the "mother liquor" in chemistry, the pure form before it is mixed with solvent. Applied to love, it is a striking metaphor: most adult love is <em>diluted</em> — by experience, by caution, by the knowledge that love can hurt and be hurt, by the compromises that make relationships sustainable. Yuzu and Kanon, who loved each other at seven before they learned to dilute their feelings, carry <em>gen'eki</em> into adulthood — and the novel asks what happens when undiluted love encounters the adult world. The phrase <em>gen'eki no mama</em> (原液のまま, "in its raw essence / without dilution") uses <em>no mama</em> (のまま, "as it is / in the state of"), a construction that emphasizes preservation against change. They have not altered the essence; they have only carried it. The verb <em>kakaeru</em> (抱える, "to hold / to carry / to bear") suggests a burden as well as a treasure — <em>gen'eki</em> is not easy to carry; it is heavy, volatile, potentially destructive. And the conditional <em>...tara</em> (〜たら, "if / when") with the speculative <em>...n ja nai ka</em> (〜んじゃないか, "maybe / perhaps / I wonder if") creates a tone of hypothesis rather than assertion: Ichiho is not saying this <em>will</em> happen; she is saying it <em>could</em> happen, that the novel is an exploration of a possibility that the world has not yet recognized. What is lost in English is the scientific precision of <em>gen'eki</em> as a metaphor. "Raw essence" captures some of it; "undiluted concentrate" is more accurate but clumsy; "pure form" loses the chemical specificity. The Japanese <em>gen'eki</em> carries the implication that love, like a chemical solution, has different concentrations — that what we call "love" in adult life is often a diluted version of something that exists in stronger form, and that encountering the stronger form can be as destabilizing as any intoxicant. The novel is, among other things, a study in the effects of <em>gen'eki</em> on two people who never learned to dilute it — and on everyone around them who has only ever known the diluted form.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of light, longing, girlhood, and love that exceeds every category.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>光</td><td>hikari</td><td class="pos">noun</td><td>light; hope; luminous presence</td></tr>
+        <tr><td>陽だまり</td><td>hidamari</td><td class="pos">noun</td><td>patch of sunlight; sunny spot</td></tr>
+        <tr><td>翳り</td><td>kageri</td><td class="pos">noun</td><td>shadow; dimness; decline; fading</td></tr>
+        <tr><td>日なた</td><td>hinata</td><td class="pos">noun</td><td>sunny spot; in the sun</td></tr>
+        <tr><td>祈り</td><td>inori</td><td class="pos">noun</td><td>prayer; wish; supplication</td></tr>
+        <tr><td>恋</td><td>koi</td><td class="pos">noun</td><td>love; romantic longing</td></tr>
+        <tr><td>愛情</td><td>aijō</td><td class="pos">noun</td><td>love; affection; deep feeling</td></tr>
+        <tr><td>原液</td><td>gen'eki</td><td class="pos">noun</td><td>raw essence; concentrate; mother liquor</td></tr>
+        <tr><td>運命</td><td>unmei</td><td class="pos">noun</td><td>fate; destiny</td></tr>
+        <tr><td>惹かれ合う</td><td>hikareau</td><td class="pos">verb</td><td>to be drawn to each other</td></tr>
+        <tr><td>閉じた</td><td>tojita</td><td class="pos">adj</td><td>closed; enclosed; intimate</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>切ない</td><td>setsunai</td><td class="pos">adj</td><td>heartrending; poignant; painfully beautiful</td></tr>
+        <tr><td>美しい</td><td>utsukushii</td><td class="pos">adj</td><td>beautiful; fine; lovely</td></tr>
+        <tr><td>激しい</td><td>hashigeshii</td><td class="pos">adj</td><td>intense; fierce; violent; passionate</td></tr>
+        <tr><td>静謐</td><td>seihitsu</td><td class="pos">adj</td><td>serene; tranquil; still</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Girlhood, Class & the Danchi</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>団地</td><td>danchi</td><td class="pos">noun</td><td>housing complex; housing estate</td></tr>
+        <tr><td>古びれた</td><td>furabureta</td><td class="pos">adj</td><td>run-down; aged; worn</td></tr>
+        <tr><td>ベランダ</td><td>beranda</td><td class="pos">noun</td><td>balcony; veranda</td></tr>
+        <tr><td>手すり</td><td>tesuri</td><td class="pos">noun</td><td>railing; handrail; banister</td></tr>
+        <tr><td>身を乗り出す</td><td>mi wo noridasu</td><td class="pos">verb</td><td>to lean out; to jut out one's body</td></tr>
+        <tr><td>私立小学校</td><td>shiritsu shōgakkō</td><td class="pos">noun</td><td>private elementary school</td></tr>
+        <tr><td>習いごと</td><td>narai-goto</td><td class="pos">noun</td><td>lessons; extracurricular activities</td></tr>
+        <tr><td>シングルマザー</td><td>shinguru mazā</td><td class="pos">noun</td><td>single mother</td></tr>
+        <tr><td>裕福</td><td>yūfuku</td><td class="pos">adj</td><td>wealthy; affluent; well-off</td></tr>
+        <tr><td>貧乏</td><td>binbō</td><td class="pos">adj</td><td>poor; impoverished</td></tr>
+        <tr><td>階級</td><td>kaikyū</td><td class="pos">noun</td><td>class; social class</td></tr>
+        <tr><td>境遇</td><td>kyōgū</td><td class="pos">noun</td><td>circumstances; situation; lot in life</td></tr>
+        <tr><td>幼い</td><td>osanai</td><td class="pos">adj</td><td>young; childish; immature</td></tr>
+        <tr><td>少女</td><td>shōjo</td><td class="pos">noun</td><td>young girl</td></tr>
+        <tr><td>思春期</td><td>shishunki</td><td class="pos">noun</td><td>puberty; adolescence</td></tr>
+        <tr><td>大人</td><td>otona</td><td class="pos">noun</td><td>adult; grown-up</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Time, Memory & Separation</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>思う</td><td>omou</td><td class="pos">verb</td><td>to think of; to remember; to long for</td></tr>
+        <tr><td>返る</td><td>kaeru</td><td class="pos">verb</td><td>to return; to revert; to become again</td></tr>
+        <tr><td>ずっと</td><td>zutto</td><td class="pos">adv</td><td>always; continuously; forever</td></tr>
+        <tr><td>いてほしい</td><td>ite hoshii</td><td class="pos">expr</td><td>I want you to be/stay (there)</td></tr>
+        <tr><td>別れ</td><td>wakare</td><td class="pos">noun</td><td>parting; separation; farewell</td></tr>
+        <tr><td>再会</td><td>saikai</td><td class="pos">noun</td><td>reunion; meeting again</td></tr>
+        <tr><td>四半世紀</td><td>shihanseiki</td><td class="pos">noun</td><td>quarter century; 25 years</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory; recollection</td></tr>
+        <tr><td>忘れる</td><td>wasureru</td><td class="pos">verb</td><td>to forget</td></tr>
+        <tr><td>抱える</td><td>kakaeru</td><td class="pos">verb</td><td>to hold; to carry; to bear (a burden)</td></tr>
+        <tr><td>願う</td><td>negau</td><td class="pos">verb</td><td>to wish; to desire; to pray for</td></tr>
+        <tr><td>待つ</td><td>matsu</td><td class="pos">verb</td><td>to wait</td></tr>
+        <tr><td>逢う</td><td>au</td><td class="pos">verb</td><td>to meet; to encounter (literary)</td></tr>
+        <tr><td>見つめる</td><td>mitsumeru</td><td class="pos">verb</td><td>to gaze at; to stare at; to fix one's eyes on</td></tr>
+        <tr><td>振り返る</td><td>furikaeru</td><td class="pos">verb</td><td>to turn around; to look back</td></tr>
+        <tr><td>佇む</td><td>tadashumu</td><td class="pos">verb</td><td>to stand still; to linger; to remain</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Ichiho Michi's prose carries the precision of a poet and the emotional density of a memory you cannot stop returning to. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Hidamari</em> (陽だまり) as Accumulated Light</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>陽だまり</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>patch of sunlight</strong>" / "<strong>sunny spot</strong>" / "<strong>sunpool</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>hidamari</em> (陽だまり) is doing extraordinary sensory work in the novel's opening, and no English translation can fully capture it. The word is composed of <em>hi</em> (日/陽, "sun") and <em>damari</em> (黙り/溜まり, "pooling / gathering / accumulation"), suggesting light not as something that merely falls but as something that collects, that rests in a place, that creates a temporary habitation. A <em>hidamari</em> is not just "sunlight"; it is the specific patch of warmth and brightness that forms in a particular spot at a particular time of day — the place where a cat will go to sleep, where an old person will sit in winter, where a child will stand to be seen from below. The word carries connotations of shelter, of refuge, of the sun's generosity in creating places where life can gather. In the novel, the <em>hidamari</em> is where Kanon stands when Yuzu first sees her — a pool of afternoon light on a fifth-floor balcony, attenuated by the onset of evening, made tender by the passage of hours. The English "patch of sunlight" is accurate but botanical; "sunny spot" is casual; "sunpool" is poetic but invented. None carries the Japanese sense of <em>hidamari</em> as a place that has been created by light's accumulation — a place that exists only as long as the light remains, and that disappears when the sun moves on. The novel's title — <em>Stay in the Light</em> — is a plea to remain in the <em>hidamari</em>, to not step out of the pool of visibility and warmth into the shadow that waits at the balcony's edge. What is lost in English is the specifically Japanese intimacy of <em>hidamari</em> as a domestic phenomenon — the way it names a experience that every Japanese person has had, of finding the sunny spot in a room and feeling, for a moment, that the world has made a place specifically for you.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Ite hoshii</em> (いてほしい) as the Grammar of Longing</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>そこに<strong>いてほし</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>I want you to be there</strong>" / "<strong>I want you to stay</strong>" / "<strong>please stay</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The construction <em>...te hoshii</em> (〜てほしい) is one of the most emotionally precise in Japanese. It expresses a desire that someone else do something — "I want you to..." — and it does so by making the speaker's wanting explicit. Unlike a command (<em>...te kudasai</em> / 〜てください, "please do..."), which assumes the listener's compliance, <em>te hoshii</em> exposes the speaker's vulnerability: I am telling you what I want, and I am trusting you with the knowledge of my wanting. In the novel's title and its founding sentence — <em>zutto, zutto soko ni ite hoshii</em> (ずっと、ずっとそこにいてほしい) — this vulnerability is everything. Yuzu is not commanding Kanon to stay in the light; she is confessing that she wants Kanon to stay, that her own happiness depends on Kanon's presence in that luminous place. The grammar makes love a request rather than a demand — which is, the novel suggests, the only ethical form love can take. What is lost in English is the specifically Japanese quality of <em>te hoshii</em> as a construction that makes desire both explicit and non-coercive. "I want you to stay" captures the explicitness but sounds more assertive than the Japanese; "please stay" captures the gentleness but loses the explicitness of desire; "I wish you would stay" captures the vulnerability but adds a hypotheticals that the Japanese lacks. The Japanese <em>ite hoshii</em> is a simple, direct statement of wanting that contains, in its very grammar, a respect for the other's freedom. It is the sentence of someone who loves enough to ask rather than demand — and who knows, in asking, that the answer might be no.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ni kaeru</em> (に返る) as Spiral Time</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>七歳に<strong>返る</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>return to</strong> being seven" / "<strong>go back to</strong> being seven" / "<strong>become</strong> seven again"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The verb <em>kaeru</em> (返る) in <em>shichi-sai ni kaeru</em> (七歳に返る) is distinct from the more common <em>modoru</em> (戻る, "to go back / to return"). <em>Kaeru</em> suggests reversal, reversion, the undoing of a process — like a chemical reaction running backward, like a tape rewinding. When Yuzu says she "returns to being seven" (<em>shichi-sai ni kaeru</em>), she is not merely remembering age seven; she is becoming seven again, reverting to the self she was before time moved forward. This is not nostalgia; it is temporal collapse — the discovery that love has created a wormhole through which the present self can access the past self directly. The English "return to" captures the movement but loses the sense of reversal; "go back to" is more casual and suggests a choice; "become again" captures the transformation but loses the directionality. What is lost in English is the specifically Japanese precision of <em>kaeru</em> as a verb of undoing. The novel's entire structure — its movement between present and past, its use of memory not as reflection but as re-entry — is encoded in this single verb. Time in Ichiho's novel is not a line but a spiral: every memory of Kanon brings Yuzu back to the age when they met, and every return to that age makes the present more bearable. The English reader who encounters "return to being seven" will understand the meaning; the Japanese reader who encounters <em>shichi-sai ni kaeru</em> will feel the spiral.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Akkerakan</em> (あっけらかん) as the Brazenness of Noon</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>真昼ほど<strong>あっけらかん</strong>ともしていない</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"not as <strong>brazen</strong> as noon" / "not as <strong>shameless</strong> as midday" / "not as <strong>blunt</strong> as noon"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>akkerakan</em> (あっけらかん) is an onomatopoeic adverb that describes an attitude of unconcern, shamelessness, brazenness — the quality of someone who exposes everything without tact or hesitation. Applied to light, it creates a personification that is both precise and unexpected: noon light is "brazen" because it exposes every flaw, hides nothing, makes no accommodation for sensitivity or privacy. The afternoon light, by contrast, has been softened by time — <em>jikan ni yotte yawaraku momareta</em> (時間によってやわらかく揉まれた, "gently kneaded by the passage of time") — and is therefore capable of tact, of gentleness, of making things beautiful rather than merely visible. What is lost in English is the specifically Japanese onomatopoeia that makes this description sensory rather than merely figurative. <em>Akkerakan</em> is a word you feel in your body before you understand it intellectually; it carries the sensation of being looked at too directly, of having nowhere to hide. The English "brazen" is accurate but abstract; "shameless" carries moral judgment; "blunt" loses the quality of exposure. The Japanese <em>akkerakan</em> makes noon light into a kind of social violation — light that has not learned manners — and in doing so, makes the afternoon light's gentleness feel earned rather than merely observed.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Dakitomeru</em> (抱きとめる) as Embrace-Interception</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>抱きとめる</strong>からここに落ちてきて欲しい</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>I will catch you</strong>" / "<strong>I will hold you</strong>" / "<strong>I will embrace you and stop you</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The compound verb <em>dakitomeru</em> (抱きとめる) is doing something in Japanese that English cannot fully reproduce. It combines <em>daku</em> (抱く, "to embrace / to hold / to hug") with <em>tomeru</em> (止める, "to stop / to halt / to prevent"), creating a verb that means specifically "to catch someone in one's arms" — to intercept a falling body with an embrace that both receives and stops. This is not merely "catching" (which could be done with the hands alone) and not merely "embracing" (which does not imply interception); it is the specific act of using the entire body to receive another body's fall and bring it to safety. In the novel's founding image, Yuzu reaches up toward Kanon <em>marude dakitomeru kara koko ni ochite kite hoshii to negau ka no yō ni</em> (まるで抱きとめるからここに落ちてきて欲しいと願うかのように, "as if wishing that [Kanon] would fall here because [Yuzu] will catch her in her arms"). The verb makes Yuzu's gesture simultaneously an act of rescue and an act of love — she wants to catch Kanon because she wants to hold her, and she wants to hold her because she has recognized, in that figure on the balcony, someone who must not fall. What is lost in English is the integration of embrace and interception into a single action. "I will catch you" suggests a practical rescue; "I will hold you" suggests emotional comfort; "I will embrace you and stop you" is accurate but wordy. The Japanese <em>dakitomeru</em> is a single word for a single act that is both physical and emotional — the act of love as gravity-defiance, the body offering itself as a safe landing for another.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of memory, longing, light, and the love that refuses every category.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に返る（回帰・逆行）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni kaeru</em>: "to return to / to revert to" — suggests reversal, undoing, becoming again what one was.</p>
+      <div class="grammar-example">彼女を思う時、いつもわたしは七歳に返る</div>
+      <p class="grammar-example-en">"When I think of her, I always return to being seven" — <em>Kaeru</em> makes memory a temporal reversal, not merely a recollection.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てほしい（願望・依頼）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...te hoshii</em>: "I want you to..." — expresses desire for another's action, making the speaker's wanting explicit and vulnerable.</p>
+      <div class="grammar-example">ずっと、ずっとそこにいてしい</div>
+      <p class="grammar-example-en">"Always, always, I want you to be there" — The grammar of longing that respects the other's freedom.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜かのように（比況・反実仮想）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ka no yō ni</em>: "as if / as though" — introduces a counterfactual simile, a wish presented as appearance.</p>
+      <div class="grammar-example">まるで抱きとめるからここに落ちてきて欲しいと願うかのように</div>
+      <p class="grammar-example-en">"as if wishing that she would fall here because I will catch her" — The grammar of desire disguised as simile.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てきて（方向・近づき）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kite</em>: "do... and come [toward me]" — directional <em>-te form</em> + <em>kuru</em> (来る) marks movement toward the speaker.</p>
+      <div class="grammar-example">ここに落ちてきて欲しい</div>
+      <p class="grammar-example-en">"I want you to fall [toward me] here" — <em>Kite</em> makes the fall a delivery, a movement in the lover's direction.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のまま（維持・無変化）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no mama</em>: "as it is / in the state of / without changing" — emphasizes preservation against alteration or dilution.</p>
+      <div class="grammar-example">原液のまま抱えて大人になったら</div>
+      <p class="grammar-example-en">"If you carry [it] into adulthood without diluting the raw essence" — <em>No mama</em> makes preservation the novel's central theme.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たら〜んじゃないか（仮想・推量）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tara...n ja nai ka</em>: "if... then maybe... / I wonder if..." — conditional + speculative, suggesting possibility rather than certainty.</p>
+      <div class="grammar-example">この二人のようなことも起こるんじゃないか</div>
+      <p class="grammar-example-en">"maybe something like these two could happen" — The grammar of hypothesis that makes the novel an exploration, not a claim.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜によって〜た（受け身・作用）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni yotte...ta</em>: "[done] by / through the action of..." — marks the agent or force that produces a change.</p>
+      <div class="grammar-example">間によってやわらかく揉まれた後みたいな午後の光</div>
+      <p class="grammar-example-en">"afternoon light, like something that has been gently kneaded by the passage of time" — Time as the agent that softens light.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜みたいな（比況・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...mitai na</em>: "like / similar to / something like" — casual simile that creates approximation rather than exact comparison.</p>
+      <div class="grammar-example">棒みたいな脚</div>
+      <p class="grammar-example-en">"stick-like legs" — <em>Mitai na</em> makes the description childlike in its directness, a seven-year-old's perception.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Ichiho Michi's grammar is the grammar of a love that exists before and beyond categories. Pay attention to how <em>ni kaeru</em> makes memory a form of time travel, how <em>te hoshii</em> transforms command into vulnerable request, how <em>ka no yō ni</em> allows desire to hide inside simile, and how <em>no mama</em> makes preservation the novel's deepest theme. The grammar is as precise as the light it describes — and as impossible to hold.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『光のとこにいてね』 &middot; 一穂ミチ &middot; 文藝春秋 2022年11月7日刊 &middot; 464ページ &middot; ISBN 978-4-16-391618-7</p>
+  <p style="margin-top: var(--space-xs);">文春文庫版 2025年9月3日発売 &middot; 512ページ &middot; ISBN 978-4-16-792409-6</p>
+  <p style="margin-top: var(--space-xs);">2023本屋大賞 第3位 &middot; 第168回直木賞候補 &middot; 第30回島清恋愛文学賞受賞（2024年）</p>
+  <p style="margin-top: var(--space-xs);">著者：一穂ミチ（1978年生・大阪府出身・関西大学社会学部卒） &middot; 2024年『ツミデミック』で第171回直木賞受賞</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>傲慢と善良 — 辻村深月 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f0e12;
+  --bg-surface: #18141a;
+  --bg-elevated: #221c24;
+  --bg-card: #2a222c;
+  --ink-primary: #ece8ec;
+  --ink-secondary: #d0c8d0;
+  --ink-muted: #a098a0;
+  --ink-faint: #706870;
+  --accent-gold: #9a7a8a;
+  --accent-gold-dim: #6a4a5a;
+  --accent-gold-glow: rgba(154, 122, 138, 0.12);
+  --accent-rose: #8a5a6a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-rose);
+}
+
+.nuance-box h4 {
+  color: var(--accent-rose);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>傲慢と善良</h1>
+  <p class="hero-subtitle">Gōman to Zenryō / Pride and Goodness</p>
+  <p class="hero-meta">辻村 深月 &middot; 朝日新聞出版 2019年3月 &middot; 416ページ &middot; 第7回ブクログ大賞小説部門大賞 &middot; 累計100万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 傲慢と善良</h2>
+  <p class="lead">The title <em>Gōman to Zenryō</em> (傲慢と善良) is a study in oxymoron: two nouns connected by the simplest of particles, <em>to</em> (と, "and"), that together name the central paradox of the novel. Arrogance and goodness are not opposites that cancel each other out; they are twins that grow from the same root — the self's conviction that it knows what is right. The title echoes Jane Austen's <em>Pride and Prejudice</em> (高慢と偏見 / Kōman to Henken in Japanese), but replaces "prejudice" with "goodness" — a substitution that is itself a thesis. Where Austen showed how pride and prejudice distort judgment, Tsujimura shows how arrogance and goodness conspire to keep us from seeing ourselves clearly. The person who believes they are good — who has been taught to be humble, to avoid hurting others, to follow the rules — may be the most dangerous kind of arrogant: the arrogance that does not know its own name.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">傲慢</span>
+        <span class="romaji">gōman</span>
+        <span class="meaning">"arrogance / pride / haughtiness / overweening self-regard" — The word <em>gōman</em> (傲) is a Sino-Japanese compound formed from <em>gō</em> (傲, "proud / haughty / looking down on others") + <em>man</em> (慢, "disdainful / negligent / self-important"). It is a strong moral term in Japanese, carrying the weight of Buddhist and Confucian condemnation — the sin of excessive self-estimation, the vice of considering oneself superior to others. Unlike <em>jiman</em> (自慢, "pride / boastfulness"), which can be playful or even endearing, <em>gōman</em> is unambiguously negative: it describes the kind of pride that makes genuine relationship impossible. In the novel, arrogance takes many forms: Kakeru's belief that he can "always get married whenever he wants" because he is handsome and successful; his assumption that he understands Mami without having truly listened to her; the broader cultural arrogance of a society that teaches women to be "good" while punishing them for having needs. What is lost in English is the specifically moral/religious resonance of <em>gōman</em>. "Arrogance" in English is a character flaw; <em>gōman</em> in Japanese is a spiritual error — the distortion of the self that Buddhism identifies as one of the fundamental obstacles to enlightenment. The novel's title thus does not merely describe a personality trait; it names a condition of the soul.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">と</span>
+        <span class="romaji">to</span>
+        <span class="meaning">"and / with / together with" — The particle <em>to</em> (と) is the most basic coordinating conjunction in Japanese, used to connect nouns, noun phrases, and (in some constructions) clauses. Its simplicity is deceptive. Unlike English "and," which can coordinate anything from grocery lists to philosophical concepts, Japanese <em>to</em> between two nouns creates a relationship of equivalence and co-presence: A and B exist together, are considered together, are somehow of the same order. The title does not say "傲慢な善良" (<em>gōman na zenryō</em>, "arrogant goodness") or "傲慢的な善良" (<em>gōman-teki na zenryō</em>, "goodness that is arrogant") — either of which would make one quality modify the other. It says "傲慢と善良" — arrogance AND goodness, as two separate things that somehow belong together. The particle <em>to</em> thus encodes the novel's central claim: that these are not accidental co-occupants of the human heart but necessary companions, that the person who is arrogant is often also the person who is good, and that the person who is good is often also, in ways they cannot see, arrogant. What is lost in English is the equality that <em>to</em> establishes. "Pride and Goodness" or "Arrogance and Kindness" in English tends to create a hierarchy — the first noun gets more emphasis, or the two are read as contrasting rather than coextensive. The Japanese <em>gōman to zenryō</em> gives neither term priority; they are simply there together, as they are in every human being who has ever believed themselves to be basically decent while remaining fundamentally opaque to themselves.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">善良</span>
+        <span class="romaji">zenryō</span>
+        <span class="meaning">"goodness / kindness / virtue / decency" — The word <em>zenryō</em> (善良) is a Sino-Japanese compound formed from <em>zen</em> (善, "good / virtuous / right") + <em>ryō</em> (良, "good / excellent / virtuous"). The duplication of "good" makes this a strongly affirmative term — not merely "not bad" but actively, recognizably, socially approved good. <em>Zenryō</em> is the word used to describe the model citizen, the well-behaved child, the person who follows the rules, who does not make trouble, who is pleasant and cooperative and easy to be around. It is, in other words, the quality that Mami has been trained to embody since birth — the "good girl" (<em>ii ko</em> / いい子) who does what her mother says, who does not complain, who adjusts herself to the needs of others. And it is precisely this <em>zenryō</em> — this socially sanctioned, performative goodness — that the novel reveals as a form of <em>gōman</em>. Because to be "good" in the way Mami has been taught is to believe that one's own needs are less important than others', which is itself a kind of arrogance: the arrogance of self-denial, the pride of the martyr, the haughtiness of the person who believes they are above the ordinary human requirement to want things for themselves. What is lost in English is the specifically social dimension of <em>zenryō</em>. "Goodness" or "kindness" in English sounds like an individual virtue; <em>zenryō</em> in Japanese is a social category — the quality that makes someone a "good person" (<em>zenryō na hito</em> / 善良な人) in the eyes of parents, teachers, neighbors, society. The novel's title thus names not merely a psychological paradox but a social one: the "good" person, approved by all, may be the most imprisoned by arrogance  the arrogance of believing that their suffering is virtuous, that their silence is noble, that their disappearance is a gift.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Asahi Shimbun Publications, March 5, 2019, 416 pages, ISBN 978-4-02-251595-7 (hardcover). Bunko edition: September 7, 2022, ISBN 978-4-02-265059-7. The novel won the 7th Booklog Prize (Novel category), the 2020 Utsunomiya Prize, and has sold over 1 million copies. A film adaptation starring Fujigaya Taisuke and Nao was released on September 27, 2024. The cover design features a fractured mirror image that captures the novel's theme of selves split between what they show and what they hide.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>辻村 深月 &mdash; Tsujimura Mizuki (1980–)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">辻</div>
+    <div class="author-name-block">
+      <h3>辻村 深月 / Tsujimura Mizuki</h3>
+      <p class="author-name-romaji">Naoki Prize winner &middot; Honya Taisho winner &middot; Doraemon screenwriter &middot; Shibata Rensaburō Prize winner (2026)</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Tsujimura Mizuki was born on February 29, 1980 — a leap-year baby — in Isawa-cho, Yamanashi Prefecture (now Fuefuki City), a town in the fruit-growing region at the foot of Mount Fuji. Her father worked at the town office; her mother was a public health nurse. Her grandparents were peach farmers, and Tsujimura spent her childhood playing in their orchards, helping with pollination, absorbing the rhythms of agricultural life that would later inform the regional consciousness of her characters — the gap between Tokyo and "the provinces" that runs through <em>Gōman to Zenryō</em> like a fault line. An aunt who was a librarian gave her twenty picture books when she was born, and from that gift grew a love of reading that would define her life. The mobile library that came every two weeks was a cherished event; the school library felt "like a vast forest."</p>
+    <p style="margin-bottom: var(--space-md);">In third grade, she wrote her first novel — a horror story titled <em>Samayoeru Akuryō no Naka ni</em> (さまよえる悪霊の中に, "Among the Wandering Evil Spirits") — inspired by a classroom fad for writing and sharing romance novels. Hers was the only horror story; it did not win her many readers. But finishing it taught her something crucial: that she could complete a narrative, that the act of writing to the end was itself a kind of victory. She was influenced by anime, manga, and games as well as literature; in middle school, she discovered mystery novels and was never the same. She graduated from Chiba University's Faculty of Education, a background that gives her writing about young people an unusual authenticity — she understands schools, teachers, and students from the inside.</p>
+    <p style="margin-bottom: var(--space-md);">In 2004, at age 24, she won the 31st Mephisto Prize with <em>Tsumetai Kōsha no Toki wa Tomaru</em> (冷たい校舎の時は止まる, "Time Stops in the Cold School Building") and made her debut as a novelist. The awards followed with remarkable consistency: the 32nd Yoshikawa Eiji Bungaku Shinjin Prize for <em>Tsunagu</em> (ツナグ, 2011); the 147th Naoki Prize for <em>Kagi no Nai Yume wo Miru</em> (鍵のない夢を見る, "Dreaming a Dream Without a Key," 2012); and the 15th Honya Taisho (Booksellers' Award) for <em>Kagami no Kojō</em> (かがみの孤城, "The Lonely Castle in the Mirror," 2017), a novel that sold over a million copies and made her a household name. She also wrote the screenplay for <em>Doraemon: Nobita's Chronicle of the Moon Exploration</em> (2019), demonstrating a range that extends from children's fantasy to the bitterest adult realism. Her 2026 novel <em>Fire Dome</em> (ファイア・ドーム) won the Shibata Rensaburō Prize. She is married with two children and lives in Tokyo.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Gōman to Zenryō</em> was published in 2019 to mark the 15th anniversary of her debut — a novel that surprised readers who knew her from <em>Kagami no Kojō</em>'s gentle fantasy. This is a work of adult realism, bitter and precise, about marriage hunting (<em>konkatsu</em> / 婚活) and the evaluation culture that surrounds it. Tsujimura spent years listening to friends in their 30s talk about marriage apps,相亲 parties, the pressure from parents, the fear of being left behind. What she heard was not merely the practical difficulty of finding a partner but the existential crisis of being forced to see oneself as a product on a market — to assign scores to others and to receive scores in return, to perform a version of oneself that might attract a buyer while wondering if anyone would want the real thing. The novel is her answer to that crisis: not a self-help guide or a romance but a forensic examination of how we lie to ourselves about love, and what it costs.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Konkatsu, Self-Love, and the Market of Marriage</h2>
+
+  <div class="card">
+    <h3>Konkatsu: Marriage as Activity</h3>
+    <p>The term <em>konkatsu</em> (婚活, "marriage hunting / marriage activity") is a Japanese neologism formed by combining <em>kon</em> (婚, "marriage") + <em>katsu</em> (活, short for <em>katsudō</em> / 活動, "activity"), modeled on the earlier <em>shūkatsu</em> (就活, "job hunting"). It emerged in the mid-2000s as Japan's marriage rate plummeted and the birthrate crisis became a national emergency. <em>Konkatsu</em> describes the deliberate, systematic pursuit of marriage — using apps, matchmaking services,相亲 parties, and strategic self-presentation — as a form of work, a project requiring planning, effort, and calculation. The term itself is revealing: marriage is no longer something that happens as a natural consequence of falling in love; it is a goal to be actively pursued, a mountain to be climbed, a market in which one is both buyer and product.</p>
+    <p style="margin-top: var(--space-sm);">What Tsujimura understands — and what makes her novel so uncomfortable to read — is that <em>konkatsu</em> does not merely describe a social phenomenon; it describes a transformation in how people relate to themselves. When Kakeru evaluates potential partners on a marriage app, he is not merely choosing a wife; he is performing a version of himself that can afford to be choosy. When Mami presents herself as a "good girl" — earnest, accommodating, undemanding — she is not merely trying to attract a husband; she is trying to survive a system that punishes women for having standards. The novel's genius is to show that both of them are trapped in the same structure: the structure of evaluation, in which human beings become items on a shelf, each with a price tag formed from education, income, appearance, age, and "personality." The "arrogance" of the title is the arrogance of the evaluator; the "goodness" is the performance of the evaluated. And the novel's devastating insight is that these roles are not fixed by gender — Kakeru is evaluated too, by Mami, by her mother, by the society that tells him a man in his 30s should be married — but that the evaluation hurts differently depending on which side of the score sheet you are on.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Good Girl" Trap and Japanese Femininity</h3>
+    <p>Mami's character embodies a specifically Japanese ideal of feminine goodness: the <em>sunao na ii ko</em> (素直ないい子, "honest / docile good girl") who does what she is told, who does not make waves, who puts others first, who smiles when she is hurting. This ideal has deep roots in Japanese culture — in the <em>ryōsai kenbo</em> (良妻賢母, "good wife, wise mother") ideology of the Meiji period, in the postwar gender division of labor that made women's primary responsibility the emotional maintenance of the family, and in the contemporary pressure on women to be "cute" (<em>kawaii</em> / かわいい) and non-threatening while also being accomplished and employable. Mami has done everything right by these standards: she followed her mother's advice about her education, she works hard, she does not complain, she is grateful for what she has. And it is killing her.</p>
+    <p style="margin-top: var(--space-sm);">What the novel reveals is that "goodness" in this context is a form of self-erasure — the systematic suppression of one's own desires, boundaries, and anger in order to maintain the comfort of others. Mami's "goodness" makes her an ideal daughter, a reliable employee, and a seemingly perfect fiancée. It also makes her invisible — even to herself. She has never been taught that her own needs matter, that saying "no" is a legitimate choice, that anger is a valid response to violation. When a stalker invades her apartment, her first concern is not her own safety but the inconvenience she is causing others. This is not virtue; it is conditioning. And the novel's title names it for what it is: a form of arrogance, the arrogance of believing that one's own suffering is less important than other people's comfort, the pride of the person who has been taught that love means self-denial. Tsujimura's novel is, among other things, a feminist intervention in this tradition — not by offering a triumphant narrative of liberation but by showing, with painful precision, what liberation from "goodness" might actually require.</p>
+  </div>
+
+  <div class="card">
+    <h3>Stalking and Violence Against Women in Japan</h3>
+    <p>The stalking incident that catalyzes Kakeru and Mami's engagement is not merely a plot device; it is a window into one of Japan's most serious social problems. Despite the passage of the Stalker Control Law (<em>Sutōkā Kisei Hō</em> / ストーカー規制法) in 2000, following the much-publicized murder of a university student by her ex-boyfriend, stalking remains a pervasive threat to women in Japan. The law has been criticized as inadequate — police often dismiss early reports, restraining orders are difficult to obtain, and the penalties for violation are relatively light. The cultural context makes reporting even harder: women who complain about stalking are often told they are overreacting, that the man is just "enthusiastic" (<em>netsuretsu</em> / 熱烈), that making a fuss will damage their own reputation.</p>
+    <p style="margin-top: var(--space-sm);">In the novel, the stalker's invasion of Mami's apartment — the theft of her accessories, the violation of her private space — is the event that makes Kakeru decide to marry her. He frames it as protection: he will save her from this danger by making her his wife. What the novel gradually reveals is that this "rescue" is itself a form of possession — that Kakeru's desire to protect Mami is inseparable from his desire to own her, to be the hero of her story, to have his generosity confirmed by her gratitude. The stalker and the fiancé are not moral opposites; they are points on a continuum of male entitlement, and the novel's courage is to let Kakeru discover this about himself without letting him off the hook. The stalking incident is the novel's primal scene: everything that follows is an unpacking of what it meant, what it revealed about both of them, and why Mami — whose apartment was invaded by a stranger and then by her own fiancé's assumptions — might feel that disappearing is the only act of self-determination left to her.</p>
+  </div>
+
+  <div class="card">
+    <h3>Pride and Prejudice, Then and Now</h3>
+    <p>The novel's title deliberately echoes Jane Austen's <em>Pride and Prejudice</em> (高慢と偏見 / Kōman to Henken in Japanese), and Tsujimura has said that she considers Austen's novel "the ultimate marriage novel" (<em>kyūkyoku no kekkon shōsetsu</em> / 究極の結婚小説). The comparison is not decorative; it is structural. Austen's novel, published in 1813, examines how two people of good character can fail to see each other clearly because of pride (Darcy's) and prejudice (Elizabeth's). Tsujimura's novel, published 206 years later, examines how two people of good character can fail to see each other clearly because of arrogance (the belief that one understands without listening) and goodness (the performance of virtue that prevents authentic self-disclosure). The historical distance is vast — Regency England and contemporary Japan share almost nothing in terms of social structure — but the emotional problem is identical: how do two people, each carrying the wounds and illusions of their upbringing, learn to see each other as they actually are rather than as they appear through the lens of their own needs?</p>
+    <p style="margin-top: var(--space-sm);">What changes between Austen and Tsujimura is the market. In Austen's world, marriage is an economic necessity for women; in Tsujimura's, it is a choice that has become, paradoxically, more fraught precisely because it is no longer economically mandatory. Women like Mami can survive without marriage — they can work, live alone, build lives — and this independence makes the choice to marry, when it is made, carry more existential weight. Why, then, does she want to marry? Why does he? The novel refuses easy answers. Kakeru marries partly from genuine concern, partly from the desire to be a hero, partly from social pressure, partly from the fear of being alone. Mami accepts partly from love, partly from gratitude, partly from the belief that this is what she is supposed to want, partly from exhaustion. The arithmetic of their motives is never fully calculable, and this opacity — this refusal to reduce human motivation to a single cause — is what makes the novel feel so authentically contemporary. We are all, Tsujimura suggests, walking bundles of contradictory desires, and the arrogance is believing that we are simpler than we are.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>The Disappearance That Reveals Everything</h2>
+
+  <div class="card">
+    <h3>The Setup: A Perfect Match, A Sudden Void</h3>
+    <p>Nishizawa Kakeru (西澤架) is a man who has always had it easy. Born in Tokyo, good-looking, professionally successful, he has moved through life with the unconscious confidence of someone who has never been seriously rejected. He has had relationships, he has ended relationships, and he has assumed — without ever quite articulating it — that he could get married whenever he chose. By his mid-30s, however, he notices that his friends are marrying, having children, building families, while he remains single. The discovery is not painful so much as inconvenient, a social lag that he decides to correct. He downloads a marriage app (<em>konkatsu apuri</em> / 婚活アプリ) and begins the work of <em>konkatsu</em> — evaluating profiles, going on dates, performing a version of himself that is honest enough to be trustworthy but polished enough to be attractive.</p>
+    <p style="margin-top: var(--space-sm);">Sakaniwa Mami (坂庭真実) is from Maebashi, Gunma Prefecture — "the provinces" from a Tokyo perspective — and has lived her life according to other people's instructions. Her mother chose her school, her mother approved her job, her mother encouraged her to try the marriage app. Mami is earnest, kind, and accommodating — the kind of woman who apologizes when other people bump into her. On the app, she presents herself modestly, without the strategic self-promotion that Kakeru has learned to deploy. They meet, they date, and after two years they become engaged. It seems, from the outside, like a success story: two people of good character, similar ages, compatible goals, ready to build a life together. Then, two months before the wedding, Mami disappears. No note. No explanation. She is simply gone — her phone unanswered, her apartment empty, her presence erased from the life they were building.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Search: Kakeru Confronts the Woman He Did Not Know</h3>
+    <p>The novel's first half follows Kakeru as he searches for Mami — not merely physically (though he does that too) but psychologically, as he begins to realize that the woman he was about to marry was someone he had never actually seen. The search takes him to Maebashi, to Mami's mother, to her childhood friends, to the places where she lived before she became "his fiancée." Each conversation reveals a dimension of Mami that Kakeru did not know: her fear of disappointing her mother, her history of being the "good girl" who never complained, her exhaustion from years of performing a self that was acceptable to others. The stalking incident — the break-in at her apartment, the theft of her accessories — which Kakeru had understood as the event that brought them together, takes on a different meaning as he learns more. He had thought he was rescuing her; he begins to understand that he was colonizing her, inserting himself into her life as the solution to a problem she had never fully named.</p>
+    <p style="margin-top: var(--space-sm);">The novel's structure is a masterpiece of gradual revelation. Tsujimura gives us Kakeru's perspective first — his confusion, his hurt, his growing sense that something was wrong in their relationship that he had chosen not to see. And then, in the novel's second half, she gives us Mami's — the interior life of a woman who has spent thirty-plus years being good, who has learned to disappear her own needs so thoroughly that she no longer knows what they are, who wakes up one day to the realization that she is about to marry a man who loves the idea of her more than her actual self. Mami's disappearance is not cowardice; it is the first autonomous act of her adult life. The novel does not romanticize it — it causes real pain to real people — but it understands it, and in understanding it, it asks the reader to understand too: what would you do, if you had spent your whole life being good and discovered, on the eve of your wedding, that goodness had left you with nothing that was truly your own?</p>
+  </div>
+
+  <div class="card">
+    <h3>The Confrontation: What Arrogance Looks Like from the Other Side</h3>
+    <p>The novel's climax is not a chase or a revelation in the conventional mystery sense; it is a conversation — or rather, a series of conversations in which the accumulated unspoken truths of Kakeru and Mami's relationship are finally articulated. Kakeru discovers that what he called "protection" Mami experienced as control; that what he called "generosity" she experienced as obligation; that what he called "love" was often the desire to be loved in return, to be confirmed as a good man by the gratitude of a good woman. The novel does not make Kakeru a villain. He is, by most standards, a decent man — he does not hit, he does not cheat, he does not deliberately humiliate. His arrogance is precisely this: the arrogance of the decent man who believes that decency is enough, who assumes that because he has never been cruel he must have been kind, who has never thought to ask whether the comfort he offers is the comfort that is needed.</p>
+    <p style="margin-top: var(--space-sm);">Mami, meanwhile, must confront her own arrogance — the arrogance of her "goodness." She has believed that by being accommodating, by not making demands, by accepting what is offered with gratitude rather than questioning whether it is what she wants, she was being virtuous. The novel shows her that this virtue was also a kind of pride: the pride of the person who believes their suffering is noble, who mistakes self-erasure for love, who has never allowed herself to want something enough to risk the disappointment of not getting it. Her disappearance was an escape, but it was also a test — a way of discovering whether Kakeru could find her not as a fiancée to be recovered but as a person to be known. The novel's ending (which this lesson will not spoil) is not a fairy-tale resolution; it is something harder and more valuable — a provisional agreement between two people who have finally seen each other, to try to see each other still more clearly, knowing that the attempt may fail but that the failure would be preferable to the success of their previous blindness.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Wider Circle: Friends, Family, and the Culture of Evaluation</h3>
+    <p>The novel's power is amplified by its secondary characters — the people who surround Kakeru and Mami, each carrying their own version of the arrogance-goodness paradox. Kakeru's sister Nao (尚) sees her brother's blindness with the clarity of sibling distance; Mami's mother sees her daughter's disappearance through the lens of her own disappointed hopes; friends on both sides offer advice that is simultaneously well-meaning and self-serving. Tsujimura uses these voices to create a chorus of contemporary Japanese attitudes toward marriage: the romantic, the pragmatic, the desperate, the resigned, the hopeful, the cynical. No single perspective is endorsed; all are shown to be partial, conditioned by the speaker's own wounds and illusions.</p>
+    <p style="margin-top: var(--space-sm);">What emerges from this chorus is a portrait of a society in which marriage has become both more optional and more loaded — a choice that is supposed to express individual desire while remaining subject to massive social pressure. The novel does not offer a solution to this contradiction; it offers something more valuable — a clear-eyed description of what it feels like to live inside it. The reader who has never been on a marriage app will recognize the evaluation culture from job interviews, from social media, from every context in which human beings are asked to present themselves as products; the reader who has never been stalked will recognize Mami's fear from every time they have felt their boundaries ignored; the reader who has never disappeared will recognize the temptation from every time they have wanted to escape a self that felt like a prison. This is the novel's universality: it is about marriage, but it is also about any relationship in which one person believes they are being good while the other person is being erased.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the psychological precision, moral courage, and unflinching honesty of Tsujimura's prose — a voice that sees through our self-deceptions because it has seen through its own.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">Self-Love in Disguise</div>
+    <div class="passage-jp">
+      皆さん、謙虚だし、自己評価が低い一方で、自己愛の方はとても強いんです。傷つきたくない、変わりたくない。
+    </div>
+    <div class="passage-romaji">
+      "Minasan, kenkyo da shi, jiko hyōka ga hikui ippō de, jikoai no hō wa totemo tsuyoi n desu. Kizutsuki takunai, kawari takunai."
+    </div>
+    <div class="passage-en">
+      "Everyone is humble, and while their self-evaluation is low, their self-love is very strong. They don't want to be hurt. They don't want to change."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — spoken by a counselor character to Kakeru — is the novel's most widely quoted line, and it distills the book's entire psychology into a single sentence. The grammar is precise and devastating. <em>Minasan</em> (皆さん, "everyone / all of you") is an inclusive address that implicates the reader as well as the listener; <em>kenkyo da shi</em> (謙虚だし, "humble, and...") uses the <em>shi</em> (し) enumerative particle to establish a list of qualities, beginning with the socially approved virtue of humility. <em>Jiko hyōka ga hikui ippō de</em> (自己評価が低い一方で, "while self-evaluation is low / on the one hand self-evaluation is low") uses the <em>ippō de</em> (一方で) construction of contrast — on one hand this, on the other hand that — to set up the central paradox. And <em>jikoai no hō wa totemo tsuyoi n desu</em> (自己愛の方はとても強いんです, "self-love is very strong") delivers the punch: the <em>hō</em> (方, "side / direction") marking self-love as the other side of the contrast, the <em>totemo</em> (とても, "very") intensifying its strength, and the <em>n desu</em> (んです) explanatory form presenting this not as an accusation but as an observation — "the thing is, self-love is very strong." The final clauses — <em>kizutsuki takunai, kawari takunai</em> (傷つきたくない、変わりたくない, "don't want to be hurt, don't want to change") — are bare infinitives, stripped of grammatical complexity, as if the fear itself is speaking directly. What is lost in English is the shock of the Japanese terms. <em>Jiko hyōka</em> (自己評価, "self-evaluation") and <em>jikoai</em> (自己愛, "self-love") are near-homophones — both begin with <em>jiko</em> (自己, "self") — and the contrast between them is the novel's central insight: the person who thinks poorly of themselves (<em>jiko hyōka ga hikui</em>) may be the person most fiercely attached to their own self-image (<em>jikoai ga tsuyoi</em>). The English "low self-esteem" and "strong self-love" do not capture this phonetic proximity or the specifically Japanese cultural context in which humility (<em>kenkyo</em>) is a social requirement that may mask, rather than diminish, the desire to protect the self from change.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Arrogance of That Thought</div>
+    <div class="passage-jp">
+      そんなふうに思うこと自体が傲慢であり、間違いだった。
+    </div>
+    <div class="passage-romaji">
+      "Son na fū ni omou koto jitai ga gōman de ari, machigai datta."
+    </div>
+    <div class="passage-en">
+      "The very act of thinking that way was arrogant, and wrong."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Kakeru's recognition of his own arrogance — is the novel's turning point, and its grammar encodes the precision of that recognition. <em>Son na fū ni omou koto jitai</em> (そんなふうに思うこと自体が, "the very act of thinking that way") uses <em>jitai</em> (自体, "itself / in itself / the very") to focus on the act of thinking rather than its content — it is not merely that Kakeru's specific thought was wrong but that the <em>mode</em> of thinking itself, the assumption that he could understand Mami without asking her, was the problem. The predicate <em>gōman de ari, machigai datta</em> (傲慢であり、間違いだった) uses the formal <em>de ari</em> (であり) connective form of the copula, creating a parallel structure: "was arrogant, and was wrong." The two qualities are not presented as cause and effect but as coextensive — the arrogance and the wrongness are the same thing seen from different angles. The past tense <em>datta</em> (だった, "was") is doing crucial work: Kakeru is not saying "this is arrogant and wrong" as a general truth but "this <em>was</em> arrogant and wrong" — a specific act of his own, now recognized and repudiated. What is lost in English is the weight of <em>jitai</em>. "The very act of thinking that way" captures some of it, but the Japanese <em>omou koto jitai</em> makes the act of thinking itself the subject of the sentence — not "I was arrogant" but "thinking itself was arrogant" — a formulation that removes the ego from the center and makes the error structural rather than personal. This is the novel's ethics: not "you are bad" but "this way of thinking is flawed, and you have been caught in it."</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Malice Nobody Teaches</div>
+    <div class="passage-jp">
+      生きてくために必要な悪意や打算の方は誰も教えてくれない。
+    </div>
+    <div class="passage-romaji">
+      "Ikiteku tame ni hitsuyō na akui ya dasan no hō wa dare mo oshiete kurenai."
+    </div>
+    <div class="passage-en">
+      "Nobody teaches us the malice and calculation we need in order to live."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — one of the novel's most bitter observations — uses grammar to create a devastating paradox. <em>Ikiteku tame ni</em> (生きてくために, "in order to live / for the sake of living") establishes survival as the goal; <em>hitsuyō na</em> (必要な, "necessary / required") makes what follows not optional but essential; and then comes the shock: <em>akui ya dasan</em> (悪意や打算, "malice and calculation / ill will and self-interest"). These are not words we expect to see modified by "necessary." <em>Akui</em> (悪意, "malice / ill will / bad intent") is the word for deliberate harm; <em>dasan</em> (打算, "calculation / self-interest / scheming") is the word for acting with an eye to one's own advantage. Together they name qualities that Japanese education, family upbringing, and social norms explicitly condemn — and yet the novel says they are <em>hitsuyō</em> (必要, "necessary"), required for survival. The <em>no hō wa</em> (の方は, "the side of / as for") construction makes these qualities the topic — "as for the malice and calculation" — and <em>dare mo oshiete kurenai</em> (誰も教えてくれない, "nobody teaches us / nobody gives us the gift of teaching") uses the benefactive <em>kureru</em> (くれる) to make the absence of teaching a deprivation, a kindness withheld. What is lost in English is the moral vertigo of the Japanese. "Nobody teaches us the malice and calculation we need in order to live" is accurate but slightly abstract; the Japanese <em>ikiteku tame ni hitsuyō na akui ya dasan</em> makes the necessity visceral — these are not philosophical concepts but survival tools, like knowing how to find water or build a fire, and their absence from our education leaves us defenseless in a world that demands them. The novel's claim is not cynical but realistic: to be "good" without understanding the necessity of "malice" (the capacity to say no, to set boundaries, to recognize when one is being exploited) is to be not virtuous but naive — and naivety, in Tsujimura's world, is the most dangerous form of arrogance.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">Marriage Is the Start, Not the Goal</div>
+    <div class="passage-jp">
+      結婚はゴールではなく、スタートだった。
+    </div>
+    <div class="passage-romaji">
+      "Kekkon wa gōru de wa naku, sutāto datta."
+    </div>
+    <div class="passage-en">
+      "Marriage was not the goal, but the start."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — deceptively simple, almost a cliché — becomes, in Tsujimura's context, a radical redefinition. The grammar is elementary: <em>kekkan wa</em> (結婚は, "as for marriage") topic-marking; <em>gōru de wa naku</em> (ゴールではなく, "not the goal / not the finish line") using the <em>de wa naku</em> (ではなく) negative connective form; <em>sutāto datta</em> (スタートだった, "was the start") the copula in past tense. And yet the sentence lands with the force of a revelation because the entire novel has been building toward it. In <em>konkatsu</em> culture, marriage IS the goal — the endpoint of a project, the achievement that justifies the effort, the status change that resolves the anxiety of being single. The app profiles, the相亲 parties, the strategic self-presentation — all are oriented toward this telos. To say that marriage is not the goal but the start is to reframe it from an achievement to a commitment, from an endpoint to a threshold, from something one obtains to something one enters and must then sustain. The past tense <em>datta</em> (だった) is crucial: this is not a general truth being announced but a specific discovery being reported — "it turned out that marriage was not the goal but the start." The realization comes after the fact, as so many of the novel's realizations do. What is lost in English is the cultural specificity of the Japanese <em>konkatsu</em> context that makes this sentence necessary. In English-speaking cultures where cohabitation is common and marriage is increasingly optional, "marriage is the start, not the goal" might sound like conventional wisdom. In Japan, where <em>konkatsu</em> has become a national industry and where unmarried women over 30 are still stigmatized as <em>make-inu</em> (負け犬, "losers"), the sentence is a quiet revolution — a refusal to accept marriage as the resolution of a narrative and an insistence that it is, instead, the opening of a much more difficult story: the story of two people who must learn, day by day, to see each other clearly and choose each other anyway.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of marriage hunting, self-deception, and the courage to see oneself as one actually is.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>傲慢</td><td>gōman</td><td class="pos">noun</td><td>arrogance; haughtiness; overweening pride</td></tr>
+        <tr><td>善良</td><td>zenryō</td><td class="pos">noun</td><td>goodness; kindness; virtue; decency</td></tr>
+        <tr><td>婚活</td><td>konkatsu</td><td class="pos">noun</td><td>marriage hunting; marriage activity</td></tr>
+        <tr><td>自己愛</td><td>jikoai</td><td class="pos">noun</td><td>self-love; narcissism; attachment to self-image</td></tr>
+        <tr><td>自己評価</td><td>jiko hyōka</td><td class="pos">noun</td><td>self-evaluation; self-assessment</td></tr>
+        <tr><td>謙虚</td><td>kenkyo</td><td class="pos">noun</td><td>humility; modesty</td></tr>
+        <tr><td>悪意</td><td>akui</td><td class="pos">noun</td><td>malice; ill will; bad intent</td></tr>
+        <tr><td>打算</td><td>dasan</td><td class="pos">noun</td><td>calculation; self-interest; scheming</td></tr>
+        <tr><td>結婚</td><td>kekkan</td><td class="pos">noun</td><td>marriage; wedding</td></tr>
+        <tr><td>婚約者</td><td>kon'yakusha</td><td class="pos">noun</td><td>fiancé; fiancée; betrothed</td></tr>
+        <tr><td>失踪</td><td>shissō</td><td class="pos">noun</td><td>disappearance; going missing</td></tr>
+        <tr><td>ストーカー</td><td>sutōkā</td><td class="pos">noun</td><td>stalker; stalking</td></tr>
+        <tr><td>素直</td><td>sunao</td><td class="pos">adj</td><td>honest; docile; straightforward; meek</td></tr>
+        <tr><td>いい子</td><td>ii ko</td><td class="pos">noun</td><td>good child; well-behaved girl</td></tr>
+        <tr><td>傷つ</td><td>kizutsuku</td><td class="pos">verb</td><td>to be hurt; to be wounded</td></tr>
+        <tr><td>変わる</td><td>kawaru</td><td class="pos">verb</td><td>to change; to be transformed</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Konkatsu, Evaluation & Modern Relationships</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>婚活アプリ</td><td>konkatsu apuri</td><td class="pos">noun</td><td>marriage-hunting app</td></tr>
+        <tr><td>お見い</td><td>omiai</td><td class="pos">noun</td><td>arranged marriage meeting</td></tr>
+        <tr><td>出会い</td><td>deai</td><td class="pos">noun</td><td>encounter; meeting; chance meeting</td></tr>
+        <tr><td>点数化</td><td>tensūka</td><td class="pos">noun</td><td>scoring; assigning points</td></tr>
+        <tr><td>値踏み</td><td>nebumi</td><td class="pos">noun</td><td>appraisal; sizing up; valuation</td></tr>
+        <tr><td>ピンとこない</td><td>pin to ko nai</td><td class="pos">expr</td><td>not clicking; not feeling it</td></tr>
+        <tr><td>駆け引き</td><td>kakehiki</td><td class="pos">noun</td><td>tactics; maneuvering; gamesmanship</td></tr>
+        <tr><td>相性</td><td>aishō</td><td class="pos">noun</td><td>compatibility; affinity</td></tr>
+        <tr><td>価値観</td><td>kachikan</td><td class="pos">noun</td><td>values; sense of values</td></tr>
+        <tr><td>自己主張</td><td>jiko shuchō</td><td class="pos">noun</td><td>self-assertion; standing up for oneself</td></tr>
+        <tr><td>我慢</td><td>gaman</td><td class="pos">noun</td><td>endurance; patience; self-restraint</td></tr>
+        <tr><td>押し付け</td><td>oshitsuke</td><td class="pos">noun</td><td>imposition; forcing on others</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place to belong; where one fits</td></tr>
+        <tr><td>居心地</td><td>igokochi</td><td class="pos">noun</td><td>comfort; how one feels (in a place)</td></tr>
+        <tr><td>息苦しい</td><td>ikigurushii</td><td class="pos">adj</td><td>suffocating; stifling; hard to breathe</td></tr>
+        <tr><td>生きづらさ</td><td>ikizurasa</td><td class="pos">noun</td><td>difficulty of living; hardship of life</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Psychology, Gender & Social Pressure</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>自己認識</td><td>jiko ninshiki</td><td class="pos">noun</td><td>self-awareness; self-recognition</td></tr>
+        <tr><td>無自覚</td><td>mjikaku</td><td class="pos">noun</td><td>unawareness; lack of self-awareness</td></tr>
+        <tr><td>甘え</td><td>amae</td><td class="pos">noun</td><td>dependence; presumption upon others' love</td></tr>
+        <tr><td>自立</td><td>jiritsu</td><td class="pos">noun</td><td>independence; self-reliance</td></tr>
+        <tr><td>葛藤</td><td>katto</td><td class="pos">noun</td><td>conflict; struggle; inner turmoil</td></tr>
+        <tr><td>忸怩たる</td><td>jikunijimi taru</td><td class="pos">adj</td><td>ashamed; conscience-stricken</td></tr>
+        <tr><td>世間</td><td>seken</td><td class="pos">noun</td><td>society; the world; public opinion</td></tr>
+        <tr><td>周囲</td><td>shūi</td><td class="pos">noun</td><td>surroundings; those around one</td></tr>
+        <tr><td>期待</td><td>kitai</td><td class="pos">noun</td><td>expectation; hope; anticipation</td></tr>
+        <tr><td>失望</td><td>shitsubō</td><td class="pos">noun</td><td>disappointment; despair</td></tr>
+        <tr><td>傷跡</td><td>kizuato</td><td class="pos">noun</td><td>scar; wound mark</td></tr>
+        <tr><td>過去</td><td>kako</td><td class="pos">noun</td><td>past; history; previous experiences</td></tr>
+        <tr><td>向き合う</td><td>mukiau</td><td class="pos">verb</td><td>to face; to confront; to engage with</td></tr>
+        <tr><td>見抜く</td><td>minuku</td><td class="pos">verb</td><td>to see through; to penetrate; to discern</td></tr>
+        <tr><td>見守る</td><td>mimamoru</td><td class="pos">verb</td><td>to watch over; to keep an eye on</td></tr>
+        <tr><td>寄り添う</td><td>yorisou</td><td class="pos">verb</td><td>to draw close; to stay by one's side</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Tsujimura Mizuki's prose carries the precision of a psychological diagnostician and the moral urgency of someone who believes that self-deception is the root of all cruelty. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Gōman</em> (傲慢) as Spiritual Error</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>傲慢</strong>と善良</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>Arrogance</strong> and Goodness" / "<strong>Pride</strong> and Kindness" / "<strong>Haughtiness</strong> and Virtue"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>gōman</em> (傲慢) carries a weight in Japanese that "arrogance" in English does not fully convey. <em>Gōman</em> is not merely a personality trait; it is a moral and spiritual category with roots in Buddhist psychology and Confucian ethics. The character <em>gō</em> (傲) means "proud / haughty / looking down from above"; the character <em>man</em> (慢) means "disdainful / negligent / treating others with contempt." Together they describe a distortion in one's relationship to the world — the belief that one occupies a higher position than one actually does, whether that position is social, moral, or epistemic. In Buddhist thought, <em>man</em> (慢) is one of the fundamental afflictions (<em>bonnō</em> / 煩悩), the distorted self-assessment that prevents clear perception of reality. The English "arrogance" is a social judgment — we call someone arrogant when they behave as if they are better than others. The Japanese <em>gōman</em> is an ontological judgment — it describes a misalignment between one's self-perception and one's actual place in the interdependent web of existence. The novel's title thus names not merely a character flaw but a spiritual condition: the condition of believing one understands without having truly listened, of assuming one's goodness exempts one from the need for self-examination. What is lost in English is this philosophical depth. "Arrogance and Goodness" sounds like a description of two traits; <em>gōman to zenryō</em> names a single paradox — the way that what we call goodness can itself be a form of spiritual arrogance, a pride that does not know its own name.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Pin to ko nai</em> (ピンとこない) as Untranslatable Disconnection</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>彼女には<strong>ピンとこなかった</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>she didn't click with him</strong>" / "<strong>it didn't click</strong>" / "<strong>she didn't feel it</strong>" / "<strong>something was missing</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>pin to ko nai</em> (ピンとこない) is one of the most expressive untranslatables in contemporary Japanese. <em>Pin</em> (ピン) is an onomatopoeic word suggesting a sudden, precise connection — like a pin dropping into exactly the right hole, or a switch clicking into place. <em>To konai</em> (とこない) is the negative form of <em>to kuru</em> (と来る), meaning "to come / to arrive" — so literally, "the pin does not come." The phrase describes the experience of almost-but-not-quite connecting with someone: the conversation is pleasant, the person is attractive, there is nothing objectively wrong — and yet something essential fails to connect, some frequency fails to resonate, some inner switch fails to click. In the context of <em>konkatsu</em>, <em>pin to ko nai</em> is the nightmare phrase — the description of a relationship that is fine on paper but dead in the heart. What is lost in English is the physicality of the Japanese. "Didn't click" captures the mechanical metaphor but loses the precision — a click is binary, on or off; a <em>pin</em> suggests something more delicate, a fit so exact that its absence is felt as a kind of dimensional wrongness. "Didn't feel it" captures the emotional content but loses the metaphor entirely. "Something was missing" is accurate but vague. The Japanese <em>pin to ko nai</em> makes the absence specific — it is not that something is missing but that something failed to arrive, that a connection that should have been made was not, and the space where it should have been remains conspicuously empty.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Jiko hyōka ga hikui ippō de, jikoai no hō wa tsuyoi</em> (自己評価が低い一方で、自己愛の方は強い) as the Paradox of the Wounded Self</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>自己評価が低い<strong>一方で</strong>、自己愛の<strong>方は</strong>とても強い</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>while</strong> self-evaluation is low, <strong>self-love is</strong> very strong" / "<strong>on the one hand</strong> low self-esteem, <strong>on the other</strong> strong narcissism"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The grammatical construction <em>ippō de... no hō wa</em> (一方で...の方は) is doing important work in this sentence. <em>Ippō de</em> (一方で, "on the one hand / while") establishes a contrast between two coexisting states; <em>no hō wa</em> (方は, "as for the side of / the... aspect") makes self-love the marked term, the aspect that stands out against the background of low self-evaluation. The grammar thus encodes the novel's insight: low self-evaluation is the visible, socially acknowledged condition ("I'm not good enough," "I don't deserve better"), while strong self-love is the hidden, unacknowledged engine that drives the behavior ("but I don't want to change," "but my way of suffering is special"). The English "while self-evaluation is low, self-love is very strong" captures the contrast but loses the spatial metaphor of <em>no hō</em> — the sense that these are two sides of the same person, two directions in which the self extends, one visible and one concealed. What is also lost is the phonetic echo between <em>jiko hyōka</em> (自己評価) and <em>jikoai</em> (自己愛) — both begin with <em>jiko</em> (自己, "self"), creating a near-rhyme that makes the contrast feel like an internal division rather than an external comparison. The English "self-evaluation" and "self-love" share the prefix "self-" but do not resonate with each other in the same way. The Japanese sentence makes the paradox feel like a crack running through the word <em>jiko</em> itself — the self that evaluates itself poorly and the self that loves itself fiercely are not two different people but one person split against itself.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Omou koto jitai</em> (思うこと自体) as the Error of the Act Itself</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>そんなふうに思うこと<strong>自体が</strong>傲慢であり、間違いだった</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>the very act of</strong> thinking that way was arrogant and wrong" / "<strong>thinking that way itself</strong> was arrogant and wrong"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>jitai</em> (自体, "itself / in itself / the very") is a focus particle that shifts attention from the content of a thought to the act of thinking itself. When Kakeru says <em>omou koto jitai ga gōman de ari, machigai datta</em> (思うこと自体が傲慢であり、間違いだった), he is not saying "my thought was arrogant" or "I was arrogant to think that"; he is saying that the <em>structure</em> of thinking in that way — the assumption that one can understand another person without asking, the confidence that one's interpretation is correct, the privilege of evaluating without being evaluated — is itself the error. The English "the very act of thinking that way" captures some of this but still locates the error in a specific act performed by a specific person. The Japanese <em>omou koto jitai</em> makes the error more general, more structural — it is not merely that Kakeru thought wrong but that a certain <em>way</em> of thinking, available to anyone, is inherently flawed when applied to the project of understanding another consciousness. <em>Jitai</em> is doing philosophical work that English "itself" cannot fully reproduce: it turns a personal confession into a general observation, a moment of self-recognition into a claim about the limits of human knowledge. The novel is full of these moments — moments when a character's private realization opens onto something universal, when the grammar of a sentence makes the personal political and the political philosophical.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Ikiteku tame ni hitsuyō na akui ya dasan</em> (生きてくために必要な悪意や打算) as the Necessity of the Forbidden</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>生きてくために<strong>必要な</strong>悪意や打算</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>the malice and calculation necessary</strong> to live" / "<strong>the ill will and self-interest required</strong> for survival"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>ikiteku tame ni hitsuyō na akui ya dasan</em> (生きてくために必要な悪意や打算) creates its effect through the shocking juxtaposition of <em>hitsuyō</em> (必要, "necessary / required") with <em>akui</em> (悪意, "malice / ill will") and <em>dasan</em> (打算, "calculation / self-interest"). In Japanese moral education, these are precisely the qualities that children are taught to avoid — the "bad" qualities that define the antisocial individual, the bully, the villain. To call them <em>hitsuyō</em> is to violate a fundamental taboo of Japanese pedagogy. The grammar reinforces this violation: <em>ikiteku tame ni</em> (生きてくために, "in order to live / for the sake of living") makes survival the justification, and the relative clause <em>hitsuyō na</em> (必要な, "necessary") modifies the nouns that follow as if this were an uncontroversial statement of fact. The effect is something like saying, in English, "the murder and theft necessary for success" — the shock comes not from the words themselves but from their combination, from the suggestion that qualities universally condemned might be universally required. What is lost in English is the specifically Japanese context of this shock. In a culture that places enormous emphasis on social harmony (<em>wa</em> / 和), on reading the air (<em>kuuki wo yomu</em> / 空気を読む), on not causing trouble (<em>meiwaku wo kakenai</em> / 迷惑をかけない), the claim that "malice" and "calculation" are necessary for survival is not merely provocative but revolutionary. It suggests that the entire edifice of Japanese social morality is built on a denial — the denial that living requires, at times, the willingness to harm, to scheme, to put oneself first. The novel does not celebrate this necessity; it mourns it. But it insists on naming it, and in naming it, it offers the possibility of a more honest life — one in which "goodness" is not the denial of one's own darkness but the conscious negotiation with it.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of self-examination, paradox, and the difficult work of seeing oneself clearly.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と（名詞の並列・対等）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>A to B</em>: "A and B" — coordinates two nouns as coextensive, equivalent, and co-present.</p>
+      <div class="grammar-example">傲慢と善良</div>
+      <p class="grammar-example-en">"Arrogance and Goodness" — Not one modifying the other but two forces that occupy the same heart.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜一方で（対比・逆接）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ippō de</em>: "on the one hand... / while..." — establishes contrast between two coexisting states.</p>
+      <div class="grammar-example">自己評価が低い一方で、自己愛の方は強い</div>
+      <p class="grammar-example-en">"While self-evaluation is low, self-love is strong" — The grammar of paradox: two truths that should contradict but don't.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の方は（話題化・対比強調）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no hō wa</em>: "as for the... side / the... aspect" — marks one term of a contrast as the topic under discussion.</p>
+      <div class="grammar-example">自己愛の方はとても強い</div>
+      <p class="grammar-example-en">"As for self-love, it is very strong" — The hidden force made visible by grammatical highlighting.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜こと自体（行為そのものを焦点化）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...koto jitai</em>: "the very act of... / ...itself" — shifts focus from content to the act or thing itself.</p>
+      <div class="grammar-example">そんなふうに思うこと自体が傲慢だった</div>
+      <p class="grammar-example-en">"The very act of thinking that way was arrogant" — Not the thought but thinking itself is the error.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜であり、〜だった（文語的並列・断定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...de ari,...datta</em>: "was... and was..." — formal copulative connective creating parallel predicates.</p>
+      <div class="grammar-example">傲慢であり、間違いだった</div>
+      <p class="grammar-example-en">"Was arrogant, and was wrong" — Two names for the same error, formally declared.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくれる（受益・他者の好意）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kureru</em>: "does... for me / gives me the gift of..." — benefactive marking the other's action as a kindness.</p>
+      <div class="grammar-example">誰も教えてくれない</div>
+      <p class="grammar-example-en">"Nobody teaches us [as a gift / for our benefit]" — The deprivation of a kindness that should have been given.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜わけではない（部分否定・誤解の解消）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...wake de wa nai</em>: "it doesn't mean that... / not necessarily..." — partial negation that corrects a misconception without asserting the opposite.</p>
+      <div class="grammar-example">結婚がゴールだというわけではない</div>
+      <p class="grammar-example-en">"It doesn't mean that marriage is the goal" — The grammar of qualified truth, refusing binary thinking.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たら（仮定・条件）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tara</em>: "if / when" — conditional form that opens a hypothetical scenario and its consequences.</p>
+      <div class="grammar-example">自分を変えたら、何かが変わるのか</div>
+      <p class="grammar-example-en">"If I change myself, will something change?" — The conditional grammar of hope and fear.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Tsujimura Mizuki's grammar is the grammar of someone who has learned that clarity is a form of kindness — even when what is made clear is painful. Pay attention to how <em>to</em> makes arrogance and goodness coextensive rather than hierarchical, how <em>ippō de... no hō wa</em> creates the paradox of low self-evaluation and high self-love, how <em>koto jitai</em> shifts the error from content to structure, how <em>de ari</em> makes arrogance and wrongness parallel predicates of the same sin, and how <em>te kureru</em> in the negative transforms the absence of teaching into a specific deprivation. The grammar is as precise as the self-knowledge it describes — and as difficult to achieve.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『傲慢と善良』 &middot; 辻村深月 &middot; 朝日新聞出版 2019年3月5日刊 &middot; 416ページ &middot; ISBN 978-4-02-251595-7</p>
+  <p style="margin-top: var(--space-xs);">文庫版 2022年9月7日発売 &middot; ISBN 978-4-02-265059-7 &middot; 累計100万部突破</p>
+  <p style="margin-top: var(--space-xs);">第7回ブクログ大賞小説部門大賞 &middot; 2020年うつのみや大賞 &middot; 2024年9月27日映画公開（藤ヶ谷太輔・奈緒主演）</p>
+  <p style="margin-top: var(--space-xs);">著者：辻村深月（1980年2月29日生・山梨県笛吹市出身・千葉大学教育学部卒）</p>
+  <p style="margin-top: var(--space-xs);">受賞歴：第31回メフィスト賞（2004年） &middot; 第32回吉川英治文学新人賞（2011年） &middot; 第147回直木賞（2012年） &middot; 第15回本屋大賞（2018年） &middot; 第20回柴田錬三郎賞（2026年）</p>
+</footer>
+
+</div>
+</body>
+</html>

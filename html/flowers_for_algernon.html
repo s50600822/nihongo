@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アルジャーノンに花束を — ダニエル・キイス | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>アルジャーノンに花束を</h1>
+  <p class="hero-subtitle">Arujānon ni Hanataba wo / Flowers for Algernon</p>
+  <p class="hero-meta">ダニエル・キイス 著 &middot; 小尾芙佐 訳 &middot; 早川書房 ハヤカワ文庫NV &middot; 464ページ &middot; ヒューゴー賞（1959年） &middot; ネビュラ賞（1966年） &middot; 日本累計400万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: アルジャーノンに花束を</h2>
+  <p class="lead">The Japanese title <em>Arujānon ni Hanataba wo</em> (アルジャーノンに花束を) is a translation of Daniel Keyes's <em>Flowers for Algernon</em>, but the grammatical shift from English to Japanese transforms the title from a simple dedication into a complex ethical statement. In English, "Flowers for Algernon" is a prepositional phrase: flowers, directed toward Algernon. It sounds like an inscription on a grave, a gift at a memorial, a gesture of respect. The Japanese title, through its particles, makes the act of giving explicit and relational: <em>ni</em> (に) marks Algernon as the recipient, and <em>wo</em> (を) marks the bouquet as the object being given. What the English leaves implicit (who gives? in what spirit? with what intention?) the Japanese makes structurally present. The title is not merely "flowers for Algernon"; it is "[I give] a bouquet to Algernon" — a sentence fragment in which the subject (the giver) and the verb (give) have been elided, leaving only the ethical relationship between giver and recipient. This elision is significant: the novel's entire meaning is contained in the question of who has the right to give, who deserves to receive, and what the gift costs both parties. The title's grammar makes Charlie both the giver and the given — the one who offers the flowers and the one who, like Algernon, is the subject of an experiment that will kill him.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">アルジャーノン</span>
+        <span class="romaji">arujānon</span>
+        <span class="meaning">"Algernon" — The name written in katakana (アラタカナ), the syllabary for foreign words, marking Algernon as non-Japanese — which he is, being a laboratory mouse in an American scientific experiment. But the katakana does something else: it makes Algernon sound like a proper name, a person, an individual. In English, "Algernon" is already a person's name (the name has aristocratic British connotations — Oscar Wilde's <em>The Importance of Being Earnest</em> features an Algernon Moncrieff), and its application to a mouse creates an immediate elevation: this is not "Subject A-14" or "Lab Mouse 7" but <em>Algernon</em>, a being with a name, a history, a fate. The Japanese katakana reinforces this personification by making the name stand out visually from the hiragana particles around it. <em>Arujānon</em> is also phonetically close to the Japanese word <em>aruji</em> (主人, "master / owner / master of the house"), though this is almost certainly a false etymology with no intentional resonance. What matters is that the katakana rendering makes Algernon visible as a foreign, named, individual being — the first experimental subject, the one who precedes Charlie, the one whose fate foreshadows Charlie's own. The title thus begins with the name of the one who will die first, the one whose grave will receive the flowers before Charlie's own metaphorical grave is dug by the same experimental procedure.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">に</span>
+        <span class="romaji">ni</span>
+        <span class="meaning">"to / for / toward" — The particle <em>ni</em> (に) is one of the most multifunctional particles in Japanese, and its use here as a marker of the recipient (与格 / dative) carries the full weight of Japanese gift-giving ethics. In Japanese, <em>ni</em> marks the target of an action, the endpoint of movement, the recipient of a gift, and the beneficiary of an action. When you give something <em>ni</em> someone, you are entering into a social relationship defined by obligation, gratitude, and reciprocity. The Japanese language has an elaborate system for distinguishing gifts given upward (to a superior), downward (to an inferior), and horizontally (to an equal), each with different verbs (<em>ageru</em> / 上げる, <em>yaru</em> / 遣る, <em>sashiageru</em> / 差し上げる for giving; <em>kureru</em> / くれる, <em>kudasaru</em> / 下さる for receiving). The title's use of <em>ni</em> without a visible verb leaves the directionality of the gift ambiguous: is Charlie giving flowers to Algernon as an equal, a fellow experimental subject? As a superior, a human mourning an animal? As an inferior, a later subject honoring the one who went before? The ambiguity is productive. The novel's deepest ethical question is whether Charlie and Algernon are equals (both victims of the same experiment) or hierarchically related (human and animal, scientist and subject, giver and given). The title's <em>ni</em> refuses to resolve this question. It simply marks Algernon as the recipient and leaves the nature of the relationship for the novel to explore. What is lost in the English "for" is this relational density. English "for" can mean "on behalf of," "in honor of," "intended for," or "to be given to" — it is a preposition with multiple possible meanings. Japanese <em>ni</em> is more specific as a recipient marker, and its specificity makes the gift relationship more concrete, more ethically charged. The flowers are not merely "for" Algernon in a vague dedicatory sense; they are directed <em>to</em> him, across a social and species boundary that the novel will spend its entire length interrogating.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">花束</span>
+        <span class="romaji">hanataba</span>
+        <span class="meaning">"bouquet / bunch of flowers" — The word <em>hanataba</em> (花束, literally "flower-bundle") is a Sino-Japanese compound: <em>hana</em> (花, "flower / blossom") + <em>taba</em> (束, "bundle / bunch / sheaf"). The word carries connotations that English "flowers" does not. A <em>hanataba</em> is not merely flowers; it is flowers deliberately gathered, arranged, and tied — a human artifact made from natural materials. It is the word for the bouquet you bring to a hospital room, to a funeral, to a first date, to a teacher on graduation day. It implies intention, selection, and presentation. The English title says "Flowers for Algernon" — any flowers, perhaps wildflowers picked from a field, perhaps a single stem, perhaps a wreath. The Japanese <em>hanataba</em> makes the gift more formal, more deliberate, more human. Someone has chosen these flowers, gathered them, bound them, and brought them to Algernon. The word also carries the cultural specificity of Japanese flower-giving: in Japan, flowers are not casual gifts; they carry precise meanings (white chrysanthemums for funerals, red camellias for danger, cherry blossoms for the transience of life). A <em>hanataba</em> to a dead mouse is not merely sentimental; it is a ritual act, a performance of mourning that claims the deceased as worthy of human grief. The title's use of <em>hanataba</em> rather than simply <em>hana</em> (花, "flower") thus makes the gesture more significant, more ceremonial, more like a funeral offering than a casual remembrance. And because the novel is structured as Charlie's "progress reports" — documents written for the scientists who experiment on him — the <em>hanataba</em> becomes a metaphor for the entire text: Charlie's reports are his bouquet to Algernon, his attempt to honor his predecessor with the only materials he has (language, memory, grief) in the only form he knows (writing). The title is thus not merely descriptive; it is programmatic. It tells us what the novel is doing: gathering the flowers of Charlie's experience into a bundle called a book, and laying them at the grave of a white mouse.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">を</span>
+        <span class="romaji">wo</span>
+        <span class="meaning">"[object marker]" — The particle <em>wo</em> (を / を) marks <em>hanataba</em> as the direct object of an implicit verb. In Japanese, it is grammatically acceptable to omit the verb when context makes it clear — a phenomenon known as <em>danraku</em> (段落, "paragraph / section") or simply conversational ellipsis. The title "アルジャーノンに花束を" is a classic example of this: it means "[I give] a bouquet to Algernon," with "give" (<em>ageru</em> / 上げる, <em>sashiageru</em> / 差し上げる, or <em>okuru</em> / 贈る) understood from context. The ellipsis of the verb does something profound: it makes the act of giving present without specifying its form. We do not know whether Charlie is giving, the scientists are giving, the novel itself is giving, or the reader is giving. The absence of the verb universalizes the gesture: anyone who reads the novel, anyone who remembers Algernon, anyone who mourns the cost of scientific progress, is implicitly included in the "I" who gives the bouquet. What is lost in English is this grammatical openness. "Flowers for Algernon" is a closed phrase: it names a gift and a recipient. "アルジャーノンに花束を" is an open sentence: it names a recipient and a gift but leaves the giver and the act undefined, inviting the reader to complete the sentence with their own ethical position. Are you, the reader, also giving flowers to Algernon? Are you complicit in the experiment that killed him? Are you mourning, celebrating, or merely observing? The Japanese title, through its grammatical incompleteness, makes these questions part of the reading contract in a way that the English title does not.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Original short story: <em>The Magazine of Fantasy & Science Fiction</em>, April 1959. Hugo Award for Best Short Story, 1960. Expanded novel: Harcourt, Brace & World, March 1966. Nebula Award for Best Novel, 1966. Japanese translation (long-form): 小尾芙佐 (Ono Fusa) tr., Hayakawa Publishing, 1978; Hayakawa Bunko NV, 1989; new edition 2015, 464 pages, ISBN 978-4-15-041333-0. New edition (新装版) published 2026 with cover illustration by Higuchi Yuko. The novel has sold over 5 million copies worldwide and over 4 million copies in Japan alone. It has been translated into 27 languages. Japanese TV drama adaptations: TBS 2002 (script by Nojima Shinji) and TBS 2015 (starring Yamashita Tomohisa, script by Nojima Shinji). The 2015 drama was supervised by Nojima and became a social phenomenon. Film adaptation: <em>Charly</em> (1968), starring Cliff Robertson, who won an Academy Award for Best Actor. The novel was also adapted into a stage musical. The Japanese title's resonance was amplified by Kyosuke Himuro's 1988 solo album <em>Flowers for Algernon</em> and its track "Dear Algernon," which introduced the novel to a generation of Japanese music fans.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>ダニエル・キイス &mdash; Daniel Keyes (1927–2014)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">DK</div>
+    <div class="author-name-block">
+      <h3>ダニエル・キイス / Daniel Keyes</h3>
+      <p class="author-name-romaji">Hugo & Nebula Award winner &middot; Professor of English &middot; Author of one of the most beloved novels in world literature</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Daniel Keyes was born on August 9, 1927, in Brooklyn, New York — the same borough that would later produce Charlie Gordon's fictional world of bakeries, street corners, and adult education centers. He joined the U.S. Maritime Service at age 17 and went to sea as a ship's purser, an experience that gave him the sense of displacement and longing for connection that would characterize his most famous protagonist. After leaving the sea, he resumed his studies at Brooklyn College (now part of CUNY), where he received his B.A. in psychology in 1950 and his M.A. in English in 1961. The combination — psychology and literature — would prove to be the foundation of his entire career: a writer who understood the mind from both the inside (as a student of human behavior) and the outside (as a craftsman of narrative).</p>
+    <p style="margin-bottom: var(--space-md);">His early career was a portrait of mid-century American creative life: he worked as an associate fiction editor for Marvel Science Fiction, tried his hand at fashion photography, earned a license to teach English in New York's public high schools, and eventually joined the faculty of Ohio University as a professor of English. It was during his time as a high school teacher, working with students in an "ungraded" class of slow learners, that the seed of <em>Flowers for Algernon</em> was planted. Keyes later described the moment of inspiration: a student asked him, "Mr. Keyes, if I work hard, will I ever be like the other kids?" The question haunted him. He found himself wondering what would happen if a person's intelligence could be artificially increased — and whether the result would be happiness or horror. The novel's dedication — "For my mother, and for my students, with love and gratitude" — encodes this autobiographical origin: the mother who never gave up on him, and the students who could not become "like the other kids" no matter how hard they tried.</p>
+    <p style="margin-bottom: var(--space-md);">The short story version of <em>Flowers for Algernon</em> was published in <em>The Magazine of Fantasy & Science Fiction</em> in April 1959 and won the Hugo Award for Best Short Story in 1960 — one of the most prestigious awards in science fiction. But Keyes was not satisfied. He felt that the short form had not allowed him to explore Charlie's inner life with sufficient depth, and over the next seven years he expanded the story into a novel. The expanded version, published in 1966, won the Nebula Award for Best Novel — making Keyes one of the few writers to have won both the Hugo and Nebula for the same narrative in different forms. The novel's success was immediate and enduring: it has never been out of print, has sold over 5 million copies in English and millions more in translation, and has been adapted into film, television, stage musicals, and radio dramas across the world.</p>
+    <p style="margin-bottom: var(--space-md);">Keyes's other works include <em>The Minds of Billy Milligan</em> (1981), a non-fiction account of a man with multiple personality disorder that became a landmark in popular psychology; <em>The Fifth Sally</em> (1980); <em>Desalination</em> (not published); and <em>Algernon, Charlie, and I: A Writer's Journey</em> (2000), a memoir about the creation of his masterpiece. He taught creative writing and literature at Ohio University for decades, influencing generations of writers while continuing to write himself. He died on June 15, 2014, in Boca Raton, Florida, at the age of 86, leaving behind a body of work that, while small in quantity, is almost unmatched in quality and impact. <em>Flowers for Algernon</em> remains one of the most widely taught novels in American schools, one of the most frequently challenged (for its frank treatment of sexuality and its use of slurs against people with intellectual disabilities), and one of the most universally loved — a novel that makes readers of every age cry, think, and reconsider what it means to be human.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Cold War Science, Disability Rights, and the Ethics of Enhancement</h2>
+
+  <div class="card">
+    <h3>1950s America: The Science of Better Brains</h3>
+    <p>The novel was conceived and first published in the late 1950s, a period of intense American optimism about science's ability to solve social problems. The postwar era saw unprecedented investment in scientific research, the expansion of higher education through the G.I. Bill, and the rise of what would later be called "cognitive enhancement" — the idea that human intelligence could be improved through drugs, surgery, or other interventions. The space race had begun (Sputnik launched in 1957, two years before the short story), and American anxiety about falling behind the Soviet Union in scientific achievement created a cultural obsession with intelligence, IQ testing, and educational tracking. The novel's scientists — Dr. Nemur and Dr. Strauss — are products of this world: genuinely committed to helping humanity, but also deeply embedded in a competitive research culture that values discovery over the discoverer, progress over the person progress destroys.</p>
+    <p style="margin-top: var(--space-sm);">What Keyes saw — and what the novel exposes with devastating precision — is that this scientific optimism had a blind spot: the experimental subjects. In the 1950s, people with intellectual disabilities were routinely institutionalized, sterilized (under eugenics laws that remained on the books in some American states until the 1970s), and used as research subjects without fully informed consent. The novel's depiction of Charlie's "consent" to the experiment — his eager, childlike signing of forms he cannot read — is a direct commentary on this history. Charlie wants to be "smart" because he has been told that being smart is the only way to be fully human, and he does not understand that the experiment may cost him the very humanity he is trying to claim. The novel is thus not merely science fiction; it is a moral indictment of a scientific culture that treats some humans as means rather than ends, and a prophetic warning about the human costs of cognitive enhancement technologies that are, in the 21st century, moving from fiction to fact.</p>
+  </div>
+
+  <div class="card">
+    <h3>Disability, Language, and the Right to Be "Retarded"</h3>
+    <p>The novel's treatment of intellectual disability is remarkably ahead of its time. In 1959, the polite term for people with intellectual disabilities was "mentally retarded" — a clinical term that had not yet acquired the pejorative weight it carries today. Keyes uses the word "retarded" (and its variants) extensively in the novel, both in Charlie's self-description and in the language of those around him, and this usage has made the book one of the most frequently challenged novels in American libraries. But Keyes's use of the word is not casual; it is documentary. He is showing us how Charlie is seen by the world, and how Charlie sees himself through the world's eyes. The word's appearance in the novel's early progress reports — in Charlie's own misspelled handwriting — is not an endorsement but a record of damage.</p>
+    <p style="margin-top: var(--space-sm);">What the novel understands, and what disability rights activists would not fully articulate for another two decades, is that intelligence is not the measure of humanity. Charlie is fully human before the experiment, fully human during his peak intelligence, and fully human after his decline. His worth does not fluctuate with his IQ. The tragedy of the novel is not that Charlie becomes "retarded" again; it is that the world — including Charlie himself, during his peak — has been taught to see low intelligence as a form of sub-humanity. The novel's most radical claim is that Charlie's pre-operative life was not a tragedy to be fixed but a life to be respected. His friends at the bakery (who turn out to have been laughing at him, not with him) are not villains because they associated with a "retarded" man; they are villains because they could not see his humanity while he was "retarded," and because they abandon him when he becomes "smart" and then cannot bear to be around him when he becomes "retarded" again. The novel is, in this sense, a pre-emptive critique of what disability theorists would later call "ableism" — the assumption that intelligence, mobility, and other "normal" capacities are prerequisites for full personhood.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Japanese Reception: Why Algernon Became a Phenomenon</h3>
+    <p><em>Flowers for Algernon</em> is not merely popular in Japan; it is a cultural institution. With over 4 million copies sold in a country of 125 million people, it is one of the most widely read foreign novels in Japanese history. Its popularity has been driven by multiple waves of cultural attention: the 1988 solo debut album <em>Flowers for Algernon</em> by Kyosuke Himuro (former vocalist of BOØWY), which included the song "Dear Algernon" and introduced the novel to a generation of Japanese music fans; the 2002 TBS television drama starring Kusanagi Tsuyoshi (of SMAP); the 2015 TBS television drama starring Yamashita Tomohisa, with a script by the legendary Nojima Shinji, which became a social phenomenon and introduced the novel to a new generation; and the steady, word-of-mouth power of the novel itself, which is taught in Japanese schools, discussed in book clubs, and passed from parent to child with the recommendation "this will make you cry."</p>
+    <p style="margin-top: var(--space-sm);">Why has this particular American novel resonated so deeply in Japan? Part of the answer lies in the Japanese cultural valuation of <em>monomane</em> (物真似, "imitation / mimicry") and <em>henshin</em> (変身, "transformation") narratives — stories in which a person changes form and must navigate the social consequences. From <em>The Tale of Genji</em> to modern manga, Japanese literature has been fascinated by the question of whether the self survives radical change. Part of the answer lies in the Japanese educational system's emphasis on effort (<em>doryoku</em> / 努力) and improvement: Charlie's desperate desire to "be smart" mirrors the pressure that Japanese students feel to improve their academic performance, and his discovery that intelligence does not bring happiness challenges the assumption that better grades mean a better life. And part of the answer lies in the quality of the Japanese translation itself. 小尾芙佐's rendering of Charlie's progress reports — the way she makes his misspellings and grammatical errors feel authentically Japanese while preserving the emotional arc of his transformation — is widely considered a masterpiece of translation, a work of literary art in its own right that has enabled generations of Japanese readers to feel Charlie's story as their own.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Progress Report as Form: Literature as Scientific Document</h3>
+    <p>The novel's formal innovation — the entire story told through Charlie Gordon's "progress reports" (経過報告書 / <em>keika hōkokusho</em>), written at the request of the scientists who experiment on him — is one of the most significant structural choices in 20th-century fiction. The progress report is a bureaucratic genre: objective, standardized, designed for administrative review. By adopting this form for a novel about consciousness, memory, love, and grief, Keyes creates a devastating irony: the scientists read Charlie's reports for data, but the reader reads them for soul. Every spelling error, every grammatical mistake, every childish locution in the early reports is a sign of Charlie's limited cognition — and also a sign of his earnestness, his desire to please, his trust in the system that is using him. As Charlie's intelligence increases, the prose becomes more complex, more analytical, more emotionally guarded — and, paradoxically, less moving. The peak-IQ Charlie writes like a scientist because he has become one, and in becoming one, he has lost the direct emotional access that the pre-operative Charlie had to his own experience.</p>
+    <p style="margin-top: var(--space-sm);">The Japanese translation faces a unique challenge here. English has a highly irregular orthography: misspelling words is easy and immediately visible. Japanese, with its regular phonetic system, does not naturally produce the same kinds of spelling errors. 小尾芙佐 solved this problem through a combination of strategies: using hiragana where a more educated writer would use kanji, introducing childish grammatical errors, mixing kana forms, and occasionally using non-standard character choices that create a visual impression of "wrongness" without making the text unreadable. The result is one of the most admired feats in Japanese literary translation — a text that changes its linguistic register in parallel with Charlie's cognitive state, making the reader feel the transformation in their own reading experience. When Charlie's IQ peaks, the Japanese prose becomes dense with kanji and complex syntax; when he declines, it dissolves back into simple hiragana and broken grammar. The translation is not merely faithful; it is performative. It enacts the novel's meaning through its own material form.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>The Progress of a Soul Through the Laboratory of Intelligence</h2>
+
+  <div class="card">
+    <h3>Progris Report 1–7: "I Want to Be Smart"</h3>
+    <p>The novel opens with Charlie Gordon's first "progris report" (progress report) — misspelled, unpunctuated, written in the simple declarative sentences of a child. Charlie is 32 years old, works as a janitor and delivery boy at Donner's Bakery in New York, and attends classes at the Beekman College Center for Retarded Adults three nights a week. He is eager to learn, desperate to please, and utterly unaware that his "friends" at the bakery are laughing at him, not with him. His teacher, Alice Kinnian, recognizes his genuine desire to improve and recommends him to Dr. Nemur and Dr. Strauss, who are seeking a human subject for an experimental surgical procedure that has already been tested on mice — most notably on a white mouse named Algernon, who can now solve complex mazes faster than any normal mouse.</p>
+    <p style="margin-top: var(--space-sm);">Charlie's pre-operative reports are heartbreaking in their innocence. He wants to be "smart" because he believes that intelligence will make people like him, will give him friends, will make him "normal." He does not understand the experiment's risks; he does not fully understand what is being done to him; he trusts the scientists because they are "smart" and therefore, in his worldview, good. The early reports establish the novel's central dramatic irony: the reader sees what Charlie cannot — the condescension of the scientists, the cruelty of his "friends," the tragedy that is being prepared for him — and this knowledge makes Charlie's optimism almost unbearable to read. We want to protect him from the experiment that will destroy him, even as we understand that the experiment is the only chance he believes he has.</p>
+  </div>
+
+  <div class="card">
+    <h3>Progress Report 8–12: The Ascent — From Child to Genius</h3>
+    <p>The surgery works. Charlie's reports begin to show improvement: first in spelling, then in vocabulary, then in sentence structure, then in conceptual complexity. He learns to read critically, to absorb information at an extraordinary rate, to speak multiple languages, to master advanced mathematics and scientific theory. His IQ, which began at 68, climbs to 185 — placing him in the top fraction of a percent of human intelligence. But the intelligence brings not happiness but alienation. Charlie discovers that his "friends" at the bakery were tormenting him for their own amusement. He remembers, with sudden and devastating clarity, the abuse he suffered from his mother — a woman who loved him but could not accept his disability, who beat him for not being "normal," who eventually forced his father to send him away. He understands, for the first time, the condescension of the scientists who treat him as a specimen rather than a person, and he begins to challenge their assumptions, their methods, and their ethics.</p>
+    <p style="margin-top: var(--space-sm);">The relationship with Alice Kinnian becomes the novel's emotional core. Alice loved Charlie before the operation — loved his sweetness, his earnestness, his willingness to try. After the operation, she finds herself attracted to the new Charlie — his brilliance, his intensity, his passion — but also disturbed by his emotional coldness, his arrogance, and his inability to connect with her as an equal. Their attempted sexual relationship fails because Charlie cannot escape the memory of his mother's disgust at his childish body, and because Alice cannot see the new Charlie as fully separate from the old one. The novel's treatment of sexuality — frank, painful, and deeply human — was one of the reasons it has been frequently challenged in schools, but it is essential to the story's meaning: Charlie's intellectual growth has outpaced his emotional growth, and the gap between them is destroying him. He can analyze the physics of a kiss but cannot feel it without terror.</p>
+  </div>
+
+  <div class="card">
+    <h3>Progress Report 13–16: The Peak — "I Am the Experiment"</h3>
+    <p>At the height of his powers, Charlie becomes aware of the experiment's fundamental flaw. Algernon, the mouse who preceded him, has begun to show signs of cognitive decline — erratic behavior, aggression, inability to solve mazes he once mastered. Charlie studies the data himself, applies his own statistical and biological analysis, and concludes that the intelligence enhancement is temporary. The neural changes produced by the surgery are unstable; the enhanced intelligence will peak and then deteriorate, and the deterioration may be faster than the ascent. He presents his findings to the scientists at a conference in Chicago, where he confronts them with their own arrogance: "I am the experiment," he tells them, "and you are just the experimenters." The scene is one of the most powerful in American literature — a "subject" reclaiming authority over his own story, a "patient" diagnosing the doctors' blindness, a man who was treated as data asserting his personhood in the language of the system that tried to reduce him to a number.</p>
+    <p style="margin-top: var(--space-sm);">Charlie's relationship with Fay, a free-spirited artist who lives across the hall, provides a brief period of sexual and emotional release. Unlike Alice, Fay does not know Charlie's history; she meets him only as a brilliant, attractive man, and their relationship is uncomplicated by memory or expectation. But Fay cannot save Charlie from what is coming, and Charlie knows it. He breaks off the relationship to spare her the pain of watching his decline, and in doing so, he demonstrates the emotional maturity that his intelligence was supposed to have destroyed. The novel's deepest insight is here: Charlie does not become less human as he becomes more intelligent, nor does he become more human. He simply becomes more <em>aware</em> of what being human has always cost him. The intelligence does not change his capacity for love, grief, or dignity; it only gives him the vocabulary to name what he has always felt.</p>
+  </div>
+
+  <div class="card">
+    <h3>Progress Report 17: The Descent — "P.S. please if you get a chanse put some flowrs on Algernons grave in the bak yard"</h3>
+    <p>The final progress reports are among the most devastating passages in world literature. Charlie's prose deteriorates: complex sentences collapse into simple ones, correct spelling dissolves into the childish misspellings of the early reports, punctuation disappears, and the voice that had become so sophisticated returns to its original innocence — but now with the memory of what has been lost. Charlie knows what is happening to him. He reads his own earlier reports with the painful awareness that he can no longer understand what he once wrote. He visits Alice one last time, not to rekindle their relationship but to say goodbye, to thank her, to let her go before he becomes someone who might hurt her with his confusion and fear. He returns to the bakery, where the new owner hires him back out of genuine kindness — not the mocking "kindness" of his former coworkers but a real recognition of his humanity. And finally, he asks that someone put flowers on Algernon's grave — the title's request made explicit, the bouquet laid not by Charlie (who is losing the ability to leave the house) but by the reader, by the world, by anyone who has understood what the experiment cost.</p>
+    <p style="margin-top: var(--space-sm);">The novel's ending is not tragic; it is heroic. Charlie has lost his intelligence, but he has not lost his dignity. He faces his decline with the same courage he brought to his ascent, and his final request — for flowers for Algernon — is an act of moral imagination that his peak intelligence could not have produced. The genius Charlie was too angry, too isolated, too aware of injustice to think of flowers. The declining Charlie, returning to his original sweetness but now with the memory of what he has learned, asks for something simple, beautiful, and generous: that the mouse who went before him be remembered. This is the novel's final assertion: intelligence is not virtue, knowledge is not wisdom, and the measure of a human being is not their IQ but their capacity for love. Charlie Gordon, at IQ 68 or IQ 185, is one of the most fully human characters in literature — and his request for flowers for Algernon is one of the most moving sentences ever written.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the linguistic transformation, ethical depth, and emotional power of Keyes's masterpiece — a novel that changes its language as its protagonist changes his mind, and in doing so, makes the reader feel the cost of every gained IQ point.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The First Report</div>
+    <div class="passage-jp">
+      ぼくの名まえはチャーリイ・ゴードンといいます。ぼくは三十二さいです。それからぼくのこえは、ちゅうごくのマンドリンのようにうつくしいとみんなにいわれています。ぼくはぜんぜんそんなことはおもいません。ぼくはみじかいひげをはやしていて、ひとりでいくことができません。ぼくはいまドナーさんのパンやでつとめています。ドナーさんはぼくによくしてくれて、ぼくがいちばんすきなものをくれます。それは、ぼくがうまくやったときにくれるべーぐるとコーヒーです。
+    </div>
+    <div class="passage-romaji">
+      "Boku no namae wa Chārī Gōdon to imasu. Boku wa sanjūni-sai desu. Soshite boku no koe wa, Chūgoku no mandorin no yō ni utsukushii to minna ni iwarete imasu. Boku wa zenzen sonna koto wa omoimasen. Boku wa mijikai hi-ge wo hayashite ite, hitori de iku koto ga dekimasen. Boku wa ima Donā-san no pan'ya de tsutomete imasu. Donā-san wa boku ni yoku shite kurete, boku ga ichiban suki na mono wo kuremasu. Sore wa, boku ga umaku yatta toki ni kureru bēguru to kōhī desu."
+    </div>
+    <div class="passage-en">
+      "My name is Charlie Gordon. I am 32 years old. And people tell me that my voice is as beautiful as a Chinese mandolin. I don't think so at all. I have a short beard and I can't go places by myself. I work at Mr. Donner's bakery now. Mr. Donner is good to me and gives me the things I like best. That is the bagels and coffee he gives me when I do good."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the opening of Charlie's first progress report in the Japanese translation, and it demonstrates the extraordinary challenge and achievement of translating Charlie's pre-operative prose. In the original English, Charlie's writing is characterized by misspellings ("progris report," "rezist," "intelljak"), missing punctuation, and simple grammatical errors. In Japanese, there is no exact equivalent of English misspelling because Japanese orthography is phonetically regular: you spell words the way they sound. 小尾芙佐's solution is to use a combination of strategies that together create the impression of a person with limited literacy writing in Japanese. First, she writes almost entirely in hiragana (ひらがな), avoiding kanji (漢字) even where a typical adult would use them: <em>namae</em> (名まえ) splits the Sino-Japanese compound, writing the first character in kanji and the second in hiragana; <em>sanjuuni-sai</em> (三十二さい) writes the number in kanji but the counter <em>sai</em> (歳) in hiragana; <em>pan'ya</em> (パンや) uses katakana for the loanword <em>pan</em> (パン, "bread") but hiragana for the suffix <em>ya</em> (屋, "shop"). This mixed orthography creates a visual impression of partial literacy — someone who knows some kanji but not many, who can read katakana (used for foreign words) but struggles with the complex kanji that educated Japanese adults use routinely. Second, she uses childishly simple grammar: <em>boku wa</em> (ぼくは) as the self-referential pronoun (used by young boys and men in casual contexts, but here carrying a sense of innocence and vulnerability); <em>to imasu</em> (といいます, "am called / my name is") in its most basic form; <em>zenzen sonna koto wa omoimasen</em> (ぜんぜんそんなことはおもいません, "I don't think so at all") with the emphatic <em>zenzen</em> (ぜんぜん, "not at all") that sounds childlike in its absoluteness. Third, she introduces slight awkwardnesses that suggest someone writing without full grammatical control: <em>hitori de iku koto ga dekimasen</em> (ひとでいくことができません, "I can't go places by myself") is grammatically correct but phrased with the nominalizing <em>koto ga dekiru</em> (ことができる, "able to do") construction that sounds slightly formal and effortful — the construction a student would use when learning to write, not the casual phrasing of a fluent adult. What is lost in English translation of the Japanese is the specifically Japanese poignancy of a 32-year-old man writing in the script of a first-grader. In English, Charlie's misspellings make him sound uneducated; in Japanese, his all-hiragana prose makes him sound young, innocent, and protected — the writing of someone who has not yet entered the world of adult kanji, with all its social and educational baggage. The effect is more tender in Japanese than in English, more like reading a child's diary than a disabled adult's report. This tenderness makes the later deterioration more devastating, because the reader has come to associate Charlie's hiragana with his sweetness, and watching it dissolve feels like watching childhood itself dissolve.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Peak of Intelligence</div>
+    <div class="passage-jp">
+      私はこの数週間、自分が誰であったか、そして今誰であるかについて、ひたすら考えつづけてきた。そして今、はっきりと理解している。チャーリイ・ゴードンは、知能の増大以前と以後の両方において、人間であったのだ。
+    </div>
+    <div class="passage-romaji">
+      "Watashi wa kono sū-shūkan, jibun ga dare de atta ka, soshite ima dare de aru ka ni tsuite, hitasura kangaetsuzukete kita. Soshite ima, hakkiri to rikai shite iru. Chārī Gōdon wa, chinō no zōdai izen to igo no ryōhō ni oite, ningen de atta no da."
+    </div>
+    <div class="passage-en">
+      "I have been thinking a great deal these past several weeks about who I was before and who I am now. And I understand now, with perfect clarity, that Charlie Gordon — both before his intelligence increased and after — was a human being."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — from the height of Charlie's intelligence — marks a crucial shift in pronoun, register, and philosophical confidence, and the Japanese translation captures each shift with precision. The first change is the pronoun: Charlie switches from <em>boku</em> (ぼく), the boyish, humble first-person pronoun of the early reports, to <em>watashi</em> (私), the standard adult pronoun used in formal writing and educated speech. This is not merely a translation choice; it is a narrative event. In Japanese, pronoun choice is a primary marker of social identity, and Charlie's shift from <em>boku</em> to <em>watashi</em> signals his entry into adult, educated, professional identity. The early Charlie, writing <em>boku</em>, is a child in the world's eyes; the peak Charlie, writing <em>watashi</em>, is a man. The grammar of the sentence reinforces this maturity. <em>Watashi wa kono sū-shūkan</em> (私はこの数週間, "I, these past several weeks") opens with the topic-marked subject and a precise temporal phrase (<em>sū-shūkan</em> / 数週間, "several weeks"), creating a formal, reflective tone. <em>Jibun ga dare de atta ka, soshite ima dare de aru ka</em> (自分が誰であったか、そして今誰であるか, "who I was, and who I am now") uses the nominalized question form (<em>...ka</em> / か) embedded within a prepositional phrase (<em>ni tsuite</em> / について, "about / concerning"), a syntactic complexity that the early Charlie could not have managed. The phrase <em>hitasura kangaetsuzukete kita</em> (ひたすら考えつづけてきた, "have been thinking single-mindedly / devotedly") uses <em>hitasura</em> (ひたすら, "devotedly / solely / intently") — a literary adverb that carries connotations of monastic concentration — and the <em>-te kita</em> (てきた) aspectual construction indicating a process continuing up to the present. The philosophical climax — <em>Chārī Gōdon wa, chinō no zōdai izen to igo no ryōhō ni oite, ningen de atta no da</em> (チャーリイ・ゴードンは、知能の増大以前と以後の両方において、人間であったのだ) — is a masterpiece of Japanese philosophical prose. <em>Chinō no zōdai izen to igo</em> (知能の増大以前と以後, "before and after the increase of intelligence") uses the Sino-Japanese compound <em>zōdai</em> (増大, "increase / enlargement") rather than a simpler word, giving the phrase a clinical, scientific precision. <em>Ryōhō ni oite</em> (両方において, "in both / in regard to both") uses the formal locative construction <em>ni oite</em> (において, "in / at / with regard to") — the kind of phrase used in academic papers and legal documents, not in casual speech. And <em>ningen de atta no da</em> (人間であったのだ, "was a human being") uses the explanatory/emphatic <em>no da</em> (のだ) construction to make the statement not merely descriptive but declarative — a finding, a conclusion, a truth that has been discovered through effort. What is lost in English is the full social weight of the pronoun shift. An English reader notices that Charlie's prose has become more sophisticated, but the shift from "I" to "I" is invisible because English has only one first-person pronoun. A Japanese reader experiences Charlie's transformation as a change in social self: the boy who wrote <em>boku</em> has become the man who writes <em>watashi</em>, and this change is as significant as any change in IQ. The passage is thus not merely a philosophical statement; it is a social metamorphosis enacted through grammar.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Discovery of the Flaw</div>
+    <div class="passage-jp">
+      アルジャーノンの行動がおかしくなってきた。それは、まさに自分の中でおこっていることのはっきりとした反映のように思われる。……ぼくたちはふたりとも、同じような運命をたどっているのだ。
+    </div>
+    <div class="passage-romaji">
+      "Arujānon no kōdō ga okashiku natte kita. Sore wa, masani jibun no naka de okotte iru koto no hakkiri to shita han'ei no yō ni omoeru. ...Bokutachi wa futari tomo, onaji yō na unmei wo tadotte iru no da."
+    </div>
+    <div class="passage-en">
+      "Algernon's behavior has become erratic. It seems like a clear reflection of what is happening inside me. ...We are both following the same fate."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage marks the moment when Charlie recognizes that Algernon's decline foreshadows his own, and the Japanese translation captures the emotional and grammatical complexity of this recognition with extraordinary precision. The first sentence — <em>Arujānon no kōdō ga okashiku natte kita</em> (アルジャーノンの行動がおかしくなってきた, "Algernon's behavior has become strange / odd / erratic") — uses <em>okashiku natte kita</em> (おかしくなってきた), the change-of-state construction (<em>...ku naru</em> / くなる, "become...") in its <em>-te kita</em> (てきた) aspectual form, indicating a process that has been developing over time and has now reached a state of concern. The word <em>okashii</em> (おかしい) is doing double duty: it means "strange / odd / funny" in a clinical sense (describing behavior), but it also carries the emotional connotation of "worrying / disturbing" — the word a parent uses when a child's behavior seems off. Charlie is watching Algernon the way a parent watches a child, and the grammar makes this relationship visceral. The second sentence — <em>Sore wa, masani jibun no naka de okotte iru koto no hakkiri to shita han'ei no yō ni omoeru</em> (それは、まさに自分の中でおこっていることのはっきりとした反映のように思われる, "it seems like a clear reflection of what is happening inside me") — is syntactically complex and emotionally devastating. <em>Masani</em> (まさに, "exactly / precisely / truly") is an emphatic adverb that makes the identification absolute — this is not merely similar to what is happening to Charlie; it is <em>exactly</em> what is happening. <em>Hakkiri to shita</em> (はっきりとした, "clear / distinct") modifies <em>han'ei</em> (反映, "reflection / mirror image") — a Sino-Japanese compound that suggests not merely similarity but optical duplication, as if Algernon were a mirror in which Charlie can see his own future. And <em>omoeru</em> (思える, "seem / appear / feel") is the spontaneous potential form of <em>omou</em> (思う, "think"), suggesting that this realization comes to Charlie unbidden — he does not decide that Algernon reflects him; he cannot help but see it. The final sentence — <em>Bokutachi wa futari tomo, onaji yō na unmei wo tadotte iru no da</em> (ぼくたちはふたりとも、同じような運命をたどっているのだ, "we are both following the same fate") — contains a crucial pronoun shift. Charlie has been writing <em>watashi</em> (私) at the peak of his intelligence, but here he uses <em>bokutachi</em> (ぼくたち, "we" with the boyish <em>boku</em> as the base). The return to <em>boku</em> signals the beginning of his cognitive decline — his adult, educated self is slipping, and the childish self is re-emerging. But the use of <em>bokutachi</em> (inclusive "we") rather than <em>watashitachi</em> (inclusive "we" with adult <em>watashi</em>) makes the identification with Algernon more intimate, more tender, more like the speech of a child who includes his pet in his own identity. <em>Futari tomo</em> (ふたりとも, "both of us / the two of us") emphasizes the dyad — there are only two of them in this experimental world, the mouse and the man, and they are in it together. <em>Onaji yō na unmei</em> (同じような運命, "the same kind of fate") uses <em>yō na</em> (ような, "like / similar to") to soften the absoluteness of <em>onaji</em> (同じ, "same") — Charlie cannot quite bring himself to say they share the <em>exact</em> fate, though he knows they do. And <em>tadotte iru no da</em> (たどっているのだ, "are following / tracing") uses the continuative <em>-te iru</em> (ている) with the explanatory <em>no da</em> (のだ) to make the statement a realization, a finding, a truth that has just become clear. What is lost in English is the emotional arc encoded in the pronoun shift from <em>watashi</em> to <em>bokutachi</em>. English "we" does not change; Japanese <em>bokutachi</em> tells us that Charlie's peak self is already dissolving, that the man who could write <em>watashi</em> is losing control of his own narrative voice, and that the child who once wrote <em>boku</em> is returning to finish the story. The grammar of the passage is thus the grammar of impending loss — every construction carries the weight of what Charlie knows is coming and what he is trying, with his remaining eloquence, to prepare us for.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Final Request</div>
+    <div class="passage-jp">
+      追伸　もしよかったら、どうかアルジャーノンのおはかに花をそなえてください。裏の庭にあります。ぼくといっしょにおねがいします。……ぼくのためにも、いくつかの花をそなえてください。……それから、ドナーさんのパンやにもどることをおねがいします。
+    </div>
+    <div class="passage-romaji">
+      "Tsuisoku. Moshi yokattara, dōka Arujānon no ohaka ni hana wo sonaete kudasai. Ura no niwa ni arimasu. Boku to issho ni onegai shimasu. ...Boku no tame ni mo, ikutsu ka no hana wo sonaete kudasai. ...Sorekara, Donā-san no pan'ya ni modoru koto wo onegai shimasu."
+    </div>
+    <div class="passage-en">
+      "P.S. please if you get a chanse put some flowrs on Algernons grave in the bak yard. pleas do it for me. ...And put some on my grave too. ...P.P.S. please tel Mr. Donner I will be back to work soon."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's final paragraph (before the postscript), and it is one of the most moving endings in world literature. The Japanese translation faces the same challenge as the opening — how to render Charlie's deteriorating prose — but now the challenge is reversed: instead of making simple prose feel authentically limited, the translator must make deteriorating prose feel authentically sad. The English original uses misspellings ("chanse," "flowrs," "Algernons," "bak," "pleas," "tel," "P.P.S.") to show Charlie's regression. The Japanese cannot misspell in the same way, so 小尾芙佐 uses a different strategy: she makes the prose grammatically simpler, more childlike, and more polite — as if Charlie, losing his intelligence, is also losing his adult assertiveness and returning to the eager-to-please voice of the early reports. <em>Tsuisoku</em> (追伸, "P.S. / postscript") is written correctly, suggesting that Charlie still remembers the form of a letter even as he loses the ability to write complex thoughts. <em>Moshi yokattara</em> (もしよかったら, "if it's okay / if you don't mind") is a deferential conditional phrase — the kind of language used when asking a favor of a superior. The peak Charlie would not have used this phrase; he would have demanded. The declining Charlie, returning to his original social position, resumes the language of subordination. <em>Dōka... sonaete kudasai</em> (どうか……そなえてください, "please, by all means, lay/offer [flowers]") uses <em>dōka</em> (どうか, "please / I beg you"), an intensifier of polite request, and <em>kudasai</em> (ください, "please give me / please do for me"), the standard polite request form. The verb <em>sonaeru</em> (そなえる / 備える, "to prepare / to lay / to offer") is more formal than <em>oku</em> (置く, "to put") or <em>ageru</em> (上げる, "to give"), suggesting that Charlie conceives of the flowers as an offering, a ritual gesture, not merely a casual placement. <em>Boku to issho ni onegai shimasu</em> (ぼくといっしょにおねがいしま, "I ask this together with [Algernon] / I join in this request") is a phrase of heartbreaking ambiguity: is Charlie saying "please do this for me as well as for Algernon"? Or is he saying "I am together with Algernon in this request" — identifying himself so completely with the dead mouse that their graves become one? The phrase <em>boku no tame ni mo</em> (ぼくのためにも, "for my sake too") makes the identification explicit: Charlie knows he will die (metaphorically, as the person he has become; literally, as the subject of an experiment that is destroying his brain), and he wants his grave to receive flowers too. But he cannot say this directly; he asks "for me too," as if he were asking for a second bagel, not for the acknowledgment of his own mortality. The final sentence — <em>Sorekara, Donā-san no pan'ya ni modoru koto wo onegai shimasu</em> (それから、ドナーさんのパンやにもどることをおねがいします, "And then, please [tell them] I will return to Mr. Donner's bakery") — uses the nominalized verb phrase <em>modoru koto</em> (戻ること, "returning / the fact of returning") as the object of <em>onegai shimasu</em> (お願いします, "I request / please"), a construction that sounds both formal and childishly indirect — like a child asking a parent to tell the teacher he will be back tomorrow. What is lost in English is the specifically Japanese poignancy of Charlie's return to politeness. In the English original, Charlie's regression is shown through error — misspellings, grammatical mistakes, childish phrasing. In the Japanese translation, Charlie's regression is shown through deference — the return to <em>boku</em>, the use of <em>kudasai</em> and <em>onegai shimasu</em>, the avoidance of complex syntax. The English Charlie becomes less competent; the Japanese Charlie becomes smaller, humbler, more eager not to be a burden. Both effects are tragic, but the Japanese effect is specifically Japanese — it shows Charlie re-entering the social world of <em>amae</em> (甘え, "dependence / indulgence") and <em>enryo</em> (遠慮, "restraint / reserve") that Japanese culture expects from those who are not fully autonomous adults. The final request for flowers is thus not merely a sentimental gesture; it is a social act — Charlie's last attempt to maintain his place in the human community by asking, politely, to be remembered.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of intelligence, memory, grief, and the grammar of being human.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>花束</td><td>hanataba</td><td class="pos">noun</td><td>bouquet; bunch of flowers</td></tr>
+        <tr><td>花</td><td>hana</td><td class="pos">noun</td><td>flower; blossom</td></tr>
+        <tr><td>束</td><td>taba</td><td class="pos">noun</td><td>bundle; bunch; sheaf</td></tr>
+        <tr><td>知能</td><td>chinō</td><td class="pos">noun</td><td>intelligence; intellectual faculty</td></tr>
+        <tr><td>知能指数</td><td>chinō shisū</td><td class="pos">noun</td><td>IQ; intelligence quotient</td></tr>
+        <tr><td>経過報告</td><td>keika hōkoku</td><td class="pos">noun</td><td>progress report</td></tr>
+        <tr><td>手術</td><td>shujutsu</td><td class="pos">noun</td><td>surgery; operation</td></tr>
+        <tr><td>実験</td><td>jikken</td><td class="pos">noun</td><td>experiment</td></tr>
+        <tr><td>被験者</td><td>hikensha</td><td class="pos">noun</td><td>test subject; experimental subject</td></tr>
+        <tr><td>人間</td><td>ningen</td><td class="pos">noun</td><td>human being; person</td></tr>
+        <tr><td>運命</td><td>unmei</td><td class="pos">noun</td><td>fate; destiny</td></tr>
+        <tr><td>人格</td><td>jinkaku</td><td class="pos">noun</td><td>personality; character; personhood</td></tr>
+        <tr><td>自我</td><td>jiga</td><td class="pos">noun</td><td>ego; self; identity</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory; recollection</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude; isolation</td></tr>
+        <tr><td>追伸</td><td>tsuisoku</td><td class="pos">noun</td><td>P.S.; postscript</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Science, the Body & the Experiment</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>脳</td><td>nō</td><td class="pos">noun</td><td>brain</td></tr>
+        <tr><td>神経</td><td>shinkei</td><td class="pos">noun</td><td>nerve; neural</td></tr>
+        <tr><td>心理学</td><td>shinrigaku</td><td class="pos">noun</td><td>psychology</td></tr>
+        <tr><td>心理学博士</td><td>shinrigaku hakase</td><td class="pos">noun</td><td>Ph.D. in psychology</td></tr>
+        <tr><td>外科医</td><td>gekai</td><td class="pos">noun</td><td>surgeon</td></tr>
+        <tr><td>神経外科</td><td>shinkei geka</td><td class="pos">noun</td><td>neurosurgery</td></tr>
+        <tr><td>論文</td><td>ronbun</td><td class="pos">noun</td><td>thesis; academic paper</td></tr>
+        <tr><td>学会</td><td>gakkai</td><td class="pos">noun</td><td>academic conference; learned society</td></tr>
+        <tr><td>発表</td><td>happyō</td><td class="pos">noun</td><td>presentation; announcement; publication</td></tr>
+        <tr><td>仮説</td><td>kasetsu</td><td class="pos">noun</td><td>hypothesis</td></tr>
+        <tr><td>検証</td><td>kenshō</td><td class="pos">noun</td><td>verification; confirmation</td></tr>
+        <tr><td>後退</td><td>kōtai</td><td class="pos">noun</td><td>retreat; regression; decline</td></tr>
+        <tr><td>増大</td><td>zōdai</td><td class="pos">noun</td><td>increase; enlargement; growth</td></tr>
+        <tr><td>変化</td><td>henka</td><td class="pos">noun</td><td>change; transformation</td></tr>
+        <tr><td>反映</td><td>han'ei</td><td class="pos">noun</td><td>reflection; mirror image</td></tr>
+        <tr><td>白ネズミ</td><td>shiro nezumi</td><td class="pos">noun</td><td>white mouse</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Emotion, Relationship & Social World</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>嘲笑</td><td>chōshō</td><td class="pos">noun</td><td>ridicule; mockery; scorn</td></tr>
+        <tr><td>同</td><td>dōjō</td><td class="pos">noun</td><td>sympathy; compassion</td></tr>
+        <tr><td>愛情</td><td>aijō</td><td class="pos">noun</td><td>affection; love; fondness</td></tr>
+        <tr><td>憎しみ</td><td>nikushimi</td><td class="pos">noun</td><td>hatred; animosity</td></tr>
+        <tr><td>喜び</td><td>yorokobi</td><td class="pos">noun</td><td>joy; delight; happiness</td></tr>
+        <tr><td>悲しみ</td><td>kanashimi</td><td class="pos">noun</td><td>sadness; sorrow; grief</td></tr>
+        <tr><td>恥</td><td>haji</td><td class="pos">noun</td><td>shame; humiliation; disgrace</td></tr>
+        <tr><td>尊厳</td><td>songen</td><td class="pos">noun</td><td>dignity; majesty</td></tr>
+        <tr><td>友だち</td><td>tomodachi</td><td class="pos">noun</td><td>friend</td></tr>
+        <tr><td>先生</td><td>sensei</td><td class="pos">noun</td><td>teacher; doctor; mentor</td></tr>
+        <tr><td>パン屋</td><td>pan'ya</td><td class="pos">noun</td><td>bakery; baker</td></tr>
+        <tr><td>裏庭</td><td>uraniwa</td><td class="pos">noun</td><td>backyard</td></tr>
+        <tr><td>お墓</td><td>ohaka</td><td class="pos">noun</td><td>grave; tomb</td></tr>
+        <tr><td>そなえる</td><td>sonaeru</td><td class="pos">verb</td><td>to lay (flowers); to prepare; to furnish</td></tr>
+        <tr><td>ひたすら</td><td>hitasura</td><td class="pos">adv</td><td>devotedly; solely; intently</td></tr>
+        <tr><td>まさに</td><td>masani</td><td class="pos">adv</td><td>exactly; precisely; truly</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Daniel Keyes wrote in English, but Charlie Gordon lives in Japanese through one of the most admired translations in modern Japanese literature. These are the moments where the act of translation becomes part of the novel's meaning.</p>
+
+  <div class="card">
+    <h3>1. The Progress Report as Japanese Document</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>progris report</strong>" / "<strong>progris ripot</strong>" — misspelled English</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>経過報告</strong>／<strong>けえかほおこく</strong> — hiragana-dominant Japanese with non-standard orthography</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The novel's most famous formal feature is Charlie's misspelling of "progress report" as "progris report" and "progris ripot" in the early entries. In English, this is immediately visible and funny and sad: the reader sees Charlie trying to write a word he has heard but not fully learned, and the misspelling becomes a measure of his cognitive distance from literacy. In Japanese, there is no exact equivalent of this kind of misspelling because Japanese orthography is phonetically regular. 小尾芙佐's solution is to render the early reports in predominantly hiragana with occasional non-standard choices: <em>keeka hookoku</em> (けえかほおこく) with extended vowels where standard orthography would use different representations, or mixing hiragana and katakana in unexpected ways. The effect is different from the English but equally powerful: instead of seeing Charlie misspell words, the Japanese reader sees Charlie write like a child — using the script that Japanese first-graders use before they have mastered kanji. What is lost is the specifically English comedy of misspelling (the visual shock of "progris" where "progress" should be); what is gained is the specifically Japanese pathos of a 32-year-old man writing in the script of a child. The English reader laughs at "progris" and then feels guilty for laughing; the Japanese reader feels tenderness at the hiragana and then devastation when it returns at the end. Both effects are valid; both are art. But they are not the same effect, and the difference is instructive: the English novel makes Charlie's limitation visible through error; the Japanese novel makes it visible through developmental delay. Error suggests incompetence; developmental delay suggests innocence. The Japanese Charlie is, if anything, more sympathetic in his early reports than the English Charlie — and his fall is therefore more tragic.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. The Pronoun Arc: Boku → Watashi → Boku</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>I</strong>" throughout — English has only one first-person pronoun</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>ぼく</strong>（boku）→ <strong>私</strong>（watashi）→ <strong>ぼく</strong>（boku）— Japanese pronoun shift marks social and cognitive transformation</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>This is the most significant untranslatable element of the entire novel, and it is not Keyes's fault — it is a structural feature of English. English has only one first-person pronoun, "I," and it does not change based on the speaker's social position, emotional state, or self-perception. Japanese has dozens of first-person pronouns, and the choice among them is one of the most important social signals in the language. 小尾芙佐's decision to have early Charlie use <em>boku</em> (ぼく), peak Charlie use <em>watashi</em> (私), and declining Charlie return to <em>boku</em> is a stroke of translational genius that adds a dimension to the novel that does not exist in English. <em>Boku</em> is the pronoun of boys and young men, of casual intimacy, of self-deprecation, of innocence. <em>Watashi</em> is the pronoun of adults, of formal writing, of educated discourse, of professional identity. When Charlie shifts from <em>boku</em> to <em>watashi</em>, he is not merely becoming more intelligent; he is becoming a different kind of social being — an adult, an intellectual, a person who writes in the register of formal Japanese prose. When he shifts back to <em>boku</em>, he is not merely losing IQ points; he is losing his adult social self and returning to the social position of a child. The English reader sees this only through prose complexity; the Japanese reader sees it in every sentence, in the pronoun that precedes every verb. What is lost in English translation of the Japanese is this social metamorphosis. An English reader of the Japanese translation (in English) would not see the pronoun shift at all; they would see only "I" throughout. The Japanese reader experiences Charlie's transformation as a change in social identity as profound as any change in intelligence — and this experience is unavailable to readers of the original English. The translation is, in this sense, richer than the original — a rare case where translation adds rather than subtracts meaning.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ningen de atta no da</em> (人間であったのだ) as Philosophical Declaration</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"was a <strong>human being</strong>" — simple past tense copular statement</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>人間であったのだ</strong>（ningen de atta no da）— explanatory/emphatic past copula with philosophical weight</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The sentence "Charlie Gordon was a human being" is, in English, a simple statement of fact — almost too simple to carry the philosophical weight that the novel has earned by the time it appears. In Japanese, <em>ningen de atta no da</em> (人間であったのだ) is a declaration. The copula <em>de atta</em> (であった) is the literary past tense of <em>de aru</em> (である), the formal written copula used in essays, novels, and philosophical discourse — not the casual <em>desu</em> (です) or the spoken <em>da</em> (だ). The <em>no da</em> (のだ) ending is the explanatory/emphatic construction that makes a statement into a realization, a discovery, a truth that has been arrived at through effort. Together, <em>de atta no da</em> makes "Charlie Gordon was a human being" sound like the conclusion of a philosophical treatise — which, in the context of the novel, it is. What is lost in English is the performative weight of the Japanese construction. "Was a human being" sounds like a description; <em>ningen de atta no da</em> sounds like a verdict. The Japanese sentence does not merely state Charlie's humanity; it announces it, defends it, insists upon it against all the forces — scientific, social, and psychological — that have tried to deny it. The <em>no da</em> makes the statement personal (this is what <em>I</em>, Charlie, have discovered) and universal (this is true for all people like me). The English cannot capture this double register because English grammar does not have an equivalent of <em>no da</em> — the closest would be "it is the case that" or "the fact is that," both of which sound bureaucratic rather than philosophical. The Japanese translation thus makes Charlie's philosophical climax more powerful than the original English — another case where translation enhances rather than diminishes.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Sonaete kudasai</em> (そなえてください) as Ritual Request</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>put some flowrs</strong> on Algernons grave" — simple verb, misspelled, childlike</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>花をそなえてください</strong>（hana wo sonaete kudasai）— formal, ritualistic, almost religious</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English "put some flowrs" is childlike in its simplicity and its misspelling — the word "put" is one of the most basic verbs in English, and Charlie's inability to spell "flowers" reminds us of his cognitive decline. The Japanese <em>hana wo sonaete kudasai</em> (花をそなえてください) uses the verb <em>sonaeru</em> (備える / そなえる), which means "to prepare / to furnish / to lay / to offer" and is used in ritual contexts: laying flowers at a grave, preparing offerings at a shrine, furnishing a ceremony with the required items. Combined with <em>kudasai</em> (ください, "please do for me"), the phrase becomes a formal, polite request with religious or ceremonial overtones. What is lost in English is this ritual dimension. "Put some flowers" is a casual instruction; <em>hana wo sonaete kudasai</em> is a prayer. The Japanese translation elevates Charlie's final request from a sentimental favor to a sacred duty — something the reader is morally obligated to perform. This elevation is consistent with the Japanese cultural practice of <em>ohaka-mairi</em> (お墓参り, "grave-visiting"), in which living descendants regularly bring flowers, incense, and water to the graves of ancestors. By using <em>sonaeru</em>, the translation connects Charlie's request to this cultural practice and makes Algernon not merely a dead mouse but an ancestor, a predecessor, a being who deserves the same ritual respect that Japanese culture accords to the dead. The English reader feels sad when Charlie asks for flowers; the Japanese reader feels called to action. The translation has transformed a request into an obligation — and in doing so, has made the novel's ending more ethically demanding in Japanese than it is in English.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. The Orthographic Arc: Hiragana → Kanji → Hiragana</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>Misspelling → correct spelling → misspelling (same alphabet throughout)</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>Hiragana-dominant → Kanji-dense formal prose → Hiragana-dominant (three distinct orthographic registers)</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>In the English original, Charlie's transformation is visible primarily through spelling and grammar: he misspells words early, spells them correctly at the peak, and misspells them again at the end. The alphabet remains the same; only the competence with which it is used changes. In the Japanese translation, the transformation is visible through the entire writing system: early Charlie writes predominantly in hiragana (the 46-character syllabary learned by Japanese children in their first year of school), peak Charlie writes in dense kanji (the Sino-Japanese characters that require years of study to master) with complex syntactic structures, and declining Charlie dissolves back into hiragana. This orthographic arc is invisible to English readers and is one of the most brilliant achievements of the Japanese translation. The early hiragana makes Charlie's prose look childish not because it is "wrong" but because it is "undeveloped" — the writing of someone who has not yet progressed to the adult writing system. The peak kanji makes his prose look authoritative, educated, powerful — the writing of someone who has mastered the most difficult writing system in the world. And the return to hiragana makes his decline visible on the page in a way that English misspelling cannot replicate: the reader literally watches the kanji disappear and the hiragana return, letter by letter, report by report, until the final entries look almost identical to the first ones. What is lost in English is this visual dimension of Charlie's transformation. An English reader knows Charlie has declined because the words are misspelled; a Japanese reader knows because the writing system itself has regressed. The Japanese translation makes Charlie's cognitive journey not merely a story but a visual experience — you can see his mind changing by looking at the shapes on the page. This is translation as art at the highest level: 小尾芙佐 has not merely translated Keyes's meanings; she has recreated his formal innovation in a medium that operates by entirely different principles, and in doing so, has produced a text that is arguably as powerful as the original — and in some respects, more so.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of intelligence, memory, ritual, and the courage to ask for flowers on a mouse's grave.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に〜を（与格＋対格）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni...wo</em>: "[give] ... to ..." — dative + accusative particle combination marking recipient and object in a gift relationship.</p>
+      <div class="grammar-example">アルジャーノンに花束を</div>
+      <p class="grammar-example-en">"[I give] a bouquet to Algernon" — The ethical relationship encoded in two particles.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と言います（名り・自称）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...to imasu</em>: "am called / my name is..." — self-naming construction, here in childlike simple form.</p>
+      <div class="grammar-example">ぼくの名まえはチャーリイ・ゴードンといいます</div>
+      <p class="grammar-example-en">"My name is Charlie Gordon" — The innocent self-introduction of the pre-operative Charlie.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくれる（受益・他者の好意）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kureru</em>: "does ... for me / gives me the favor of..." — benefactive construction marking an action done for the speaker's benefit.</p>
+      <div class="grammar-example">ドナーさんはぼくによくしてくれて、ぼくがいちばんすきなものをくれます</div>
+      <p class="grammar-example-en">"Mr. Donner is good to me and gives me the things I like best" — The grammar of Charlie's gratitude.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜について（話題・対象）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni tsuite</em>: "about / concerning / regarding" — prepositional construction marking the topic of thought or discourse.</p>
+      <div class="grammar-example">自分が誰であったか、そして今誰であるかについて、ひたら考えつづけてきた</div>
+      <p class="grammar-example-en">"I have been thinking devotedly about who I was and who I am now" — The grammar of philosophical self-examination.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜において（場所・文脈・範囲）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni oite</em>: "in / at / with regard to" — formal locative construction used in academic and philosophical discourse.</p>
+      <div class="grammar-example">知能の増大以前と以後の両方において、人間であったのだ</div>
+      <p class="grammar-example-en">"In both before and after the increase of intelligence, [he] was a human being" — The grammar of philosophical precision.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てきた（継続・変化の過程）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kita</em>: "has been...ing / has come to..." — indicates a process continuing from the past to the present, often with a sense of gradual change.</p>
+      <div class="grammar-example">アルジャーノンの行動がおかしくなってきた</div>
+      <p class="grammar-example-en">"Algernon's behavior has been becoming strange" — The grammar of impending tragedy.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のように思える（推量・自発的認識）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...no yō ni omoeru</em>: "it seems like... / it feels as if..." — spontaneous potential construction indicating an unbidden realization.</p>
+      <div class="grammar-example">まさに自分の中でおこっていることのはっきりとした反映のように思える</div>
+      <p class="grammar-example-en">"It seems like a clear reflection of what is happening inside me" — The grammar of unavoidable recognition.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てください（丁寧な依頼）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kudasai</em>: "please do..." — polite request form, here carrying the weight of a final wish.</p>
+      <div class="grammar-example">どうかアルジャーノンのおはかに花をそなえてください</div>
+      <p class="grammar-example-en">"Please, by all means, lay flowers on Algernon's grave" — The grammar of ritual and remembrance.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Flowers for Algernon</em> in Japanese is the grammar of a soul moving through three stages of linguistic competence — the simple deference of <em>boku</em> and <em>te kureru</em>, the philosophical precision of <em>watashi</em> and <em>ni oite</em>, and the returning humility of <em>boku</em> and <em>te kudasai</em>. Pay attention to how the particles <em>ni</em> and <em>wo</em> in the title create an ethical relationship before the novel begins, how <em>to imasu</em> makes Charlie's self-introduction sound like a child's earnest attempt at formality, how <em>te kureru</em> encodes the bakery's complicated "kindness," how <em>ni tsuite</em> and <em>ni oite</em> make Charlie's peak reports sound like philosophy dissertations, how <em>te kita</em> makes Algernon's decline feel inevitable, how <em>no yō ni omoeru</em> makes Charlie's realization feel spontaneous and unstoppable, and how <em>te kudasai</em> transforms a dying man's request into a ritual obligation that the reader inherits. The grammar is the novel's second experiment — and it succeeds as completely as the first one fails.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『アルジャーノンに花束を』 &middot; ダニエル・キイス 著 &middot; 小尾芙佐 訳 &middot; 早川書房 ハヤカワ文庫NV &middot; 新版2015年3月13日刊 &middot; 464ページ &middot; ISBN 978-4-15-041333-0</p>
+  <p style="margin-top: var(--space-xs);">新装版2026年6月19日発売 &middot; 装画：ヒグチユウコ &middot; 日本累計400万部突破（2025年時点） &middot; 全世界27カ国語翻訳</p>
+  <p style="margin-top: var(--space-xs);">原著：Flowers for Algernon &middot; The Magazine of Fantasy & Science Fiction 1959年4月号（中編・ヒューゴー賞1960年） &middot; Harcourt, Brace & World 1966年3月（長編・ネビュラ賞1966年）</p>
+  <p style="margin-top: var(--space-xs);">著者：ダニエル・キイス（1927年8月9日–2014年6月15日） &middot; ブルックリン生まれ &middot; ブルックリン大学文学部心理学科卒・同大学院英文学科修士 &middot; オハオ大学教授</p>
+  <p style="margin-top: var(--space-xs);">映像化：映画『Charly』（1968年・クリフ・ロバートソン主演・アカデミー主演男優賞） &middot; TBSドラマ（2002年・草彅剛主演・脚本野島伸司） &middot; TBSドラマ（2015年・山下智久主演・脚本野島伸司）</p>
+  <p style="margin-top: var(--space-xs);">日本での受容：氷室京介ソロデビューアルバム『Flowers for Algernon』（1988年）・楽曲「DEAR ALGERNON」から大きなブームに</p>
+</footer>
+
+</div>
+</body>
+</html>

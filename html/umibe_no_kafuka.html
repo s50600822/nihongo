@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海辺のカフカ — 村上春樹 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>海辺のカフカ</h1>
+  <p class="hero-subtitle">Umibe no Kafuka / Kafka on the Shore</p>
+  <p class="hero-meta">村上春樹 著 &middot; 新潮社 2002年9月12日刊 &middot; 上下巻（上397頁／下429頁） &middot; 英訳 Philip Gabriel &middot; 世界幻想文学大賞受賞 &middot; 『ニューヨーク・タイムズ』年間ベストブック10選</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 海辺のカフカ</h2>
+  <p class="lead">The Japanese title <em>Umibe no Kafuka</em> (海辺のカフカ, "Kafka by the Seaside / Kafka on the Shore") is one of the most resonant titles in contemporary Japanese literature, and its grammatical simplicity conceals a complex architecture of literary allusion, spatial metaphor, and ontological ambiguity. The title consists of three elements: <em>umi</em> (海, "sea / ocean"), <em>be</em> (辺, "vicinity / edge / shore / side"), and <em>no</em> (の, the genitive/possessive particle), followed by <em>Kafuka</em> (カフカ, "Kafka" written in katakana). The genitive construction <em>umibe no Kafuka</em> is structurally identical to countless Japanese place-name phrases (<em>yama no hotori</em> / 山のほとり, "by the mountain"; <em>machi no naka</em> / 町の中, "in the town"), but its application to a person's name transforms the grammar from the descriptive to the mythic. "Kafka by the shore" is not merely a location; it is a condition, a state of being, a liminal space between land and sea, consciousness and unconsciousness, reality and dream. The title tells us before we open the book that its protagonist exists at a boundary — the boundary where solid ground meets fluid depth, where the known world touches the unknown, where the self encounters what lies beyond the self. And because the name "Kafka" is not merely a name but the name of one of modern literature's most famous boundary-dwellers (Franz Kafka, the poet of bureaucratic labyrinths and existential displacement), the title encodes an entire literary genealogy in three words and five kana.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">海</span>
+        <span class="romaji">umi</span>
+        <span class="meaning">"sea / ocean" — The character 海 (海 / うみ) is one of the most visually evocative in Japanese: the radical 氵(three drops of water) on the left signals its semantic domain, while the phonetic component on the right (每 / 毎) gives it sound. In Japanese literature, the sea is never merely a body of water; it is a metaphysical space. From the <em>Man'yōshū</em> to Mishima Yukio's <em>The Sound of Waves</em> (潮騒 / <em>Shiosai</em>), from Abe Kōbō's <em>Woman in the Dunes</em> to Murakami's own earlier works, the sea in Japanese fiction represents the unconscious, the maternal, the boundary of the known world, and the source of both life and obliteration. In <em>Kafka on the Shore</em>, the sea is present throughout as a physical reality (the novel is set in and around Takamatsu, on the island of Shikoku, facing the Seto Inland Sea) and as a metaphysical symbol. The private library where Kafka takes refuge is called the "Komura Memorial Library" (甲村記念図書館), and its garden looks out over the sea — a visual metaphor for the library as a space where the solid world of books meets the fluid world of dreams. The sea is also the origin of the novel's most famous metaphor: the "small sandstorm" (小さな砂嵐 / <em>chiisuna suna-arashi</em>) that Kafka's alter-ego, the boy called Crow, uses to describe fate — a storm that comes from the sea, moves across the land, and changes everything in its path. The sea in the title is thus not decorative; it is the novel's elemental force, the source of its weather, its dreams, and its transformations.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">辺</span>
+        <span class="romaji">be</span>
+        <span class="meaning">"vicinity / edge / shore / side" — The character 辺 (辺 / べ / なべ) is a fascinating choice for a title. It means "edge," "vicinity," "side," or "border area" — the zone near something but not inside it. In classical Japanese, <em>hotori</em> (辺り / ほとり) means "vicinity / nearby," and <em>be</em> (辺 / べ) is a bound form that appears in compounds like <em>shūhen</em> (周辺, "surroundings / periphery") and <em>henkyō</em> (辺境, "frontier / remote region"). The choice of <em>be</em> rather than <em>hama</em> (浜, "beach / shore") or <em>kaigan</em> (海岸, "coast / seashore") is significant. <em>Hama</em> would suggest a recreational beach — sand, swimmers, summer. <em>Kaigan</em> would suggest a geographic coastline — a place on a map. <em>Umibe</em> (海辺) suggests something more liminal: the area near the sea, the zone where the sea's influence is felt but not yet the sea itself. It is the strip of land that is always slightly damp, always aware of the tide, always listening for waves. This liminality is the novel's central spatial metaphor. Kafka exists at the edge of many things: the edge of childhood and adulthood (he is fifteen), the edge of his father's house and the world beyond it, the edge of consciousness and dream, the edge of the "real" world and the "other" world that exists through the stone entrance (入口の石 / <em>iriguchi no ishi</em>). The title's <em>be</em> makes this liminality grammatical: Kafka is not "in" the sea, not "on" the beach, but "at the edge of" the sea — perpetually adjacent to something vast and unknowable, never fully inside it, never fully outside it. The English translation's "on the shore" captures some of this but loses the specifically Japanese sense of <em>be</em> as a zone of influence rather than a line of demarcation. In Japanese, <em>umibe</em> is an area, not a boundary; in English, "shore" is a boundary. The Japanese title thus makes Kafka's position more comfortable, more habitable — he lives in the vicinity of the sea, not merely on its edge. This difference matters because the novel is about learning to live at boundaries, not about being trapped by them.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">"[genitive particle]" — The particle <em>no</em> (の) is the most versatile particle in Japanese, functioning as a genitive marker ("of"), a nominalizer (turning phrases into nouns), and a marker of apposition ("the X that is Y"). In <em>Umibe no Kafuka</em>, <em>no</em> performs all three functions simultaneously. As a genitive, it means "Kafka of the seaside" — Kafka who belongs to the seaside, who is defined by his relationship to it. As a nominalizer, it makes "by the seaside" into a nominal phrase that can modify "Kafka" — "the seaside Kafka," as opposed to some other Kafka (the Prague Kafka, the urban Kafka, the Kafka of offices and courts). As an appositional marker, it suggests equivalence: "the seaside, which is Kafka" — the sea-edge as a state of being that shares Kafka's name, that becomes Kafka in the same way that Kafka becomes the sea-edge. This triple function makes the title extraordinarily dense. Every time a Japanese reader encounters <em>no</em> in the title, they are unconsciously activating all three readings: Kafka belongs to the seaside; the seaside defines Kafka; the seaside is, in some sense, Kafka himself. The English "Kafka on the Shore" cannot replicate this density because English "on" is a simple preposition of location. "Kafka of the Shore" would capture the genitive but sound archaic; "The Shore's Kafka" would capture the possessive but sound possessive in the wrong way; "Kafka, the Shore" would capture the appositional but sound like a title card in a film. The Japanese title's <em>no</em> makes all of these meanings available without committing to any of them — a grammatical indeterminacy that mirrors the novel's thematic indeterminacy about what is real, what is dream, and who Kafka really is.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">カフカ</span>
+        <span class="romaji">Kafuka</span>
+        <span class="meaning">"Kafka" — The name "Kafka" is written in katakana (カフカ), the syllabary for foreign words, and this orthographic choice does something profound: it marks the protagonist as someone whose name is not fully Japanese, not fully his own, not fully real. Kafka Tamura (田村カフカ / <em>Tamura Kafuka</em>) has chosen this name for himself — his real name is something else, something he has abandoned along with his father's house. The katakana rendering makes "Kafka" stand out on the page, visually distinct from the kanji of his family name (<em>Tamura</em> / 田村) and from the hiragana and kanji that surround it in the text. This visual foreignness is thematically essential: Kafka has named himself after a Czech-Jewish writer who wrote in German and died in a sanatorium near Vienna, a writer whose characters are always displaced, always on the wrong side of some invisible boundary, always trying to enter a castle or a court or a door that will not open. By calling himself "Kafka," the protagonist has already told us what kind of story he is in — a story of displacement, of labyrinthine bureaucracy (in his case, the bureaucracy of fate), of a self that cannot quite connect with the world around it. But Murakami's Kafka is not merely an allusion to Franz Kafka. He is also a reversal of the Franz Kafka template. Where Franz Kafka's protagonists are trapped in systems they cannot understand, Murakami's Kafka actively flees his system (his father's house, his father's curse) and seeks a new one (the library, the sea, the other world). Where Franz Kafka's characters are paralyzed by indecision, Murakami's Kafka makes choices — painful, ambiguous, possibly predetermined choices, but choices nonetheless. The name "Kafka" in katakana thus marks both inheritance and transformation: the protagonist carries the name of modernism's most famous trapped man, but he uses it as a ticket to freedom. The katakana makes this paradox visible: "Kafka" is foreign, borrowed, not quite real — and therefore available for reinvention. The English translation cannot show this because "Kafka" looks the same as any other name in English. In Japanese, <em>Kafuka</em> (カフカ) looks different from <em>Tamura</em> (田村) in a way that makes the protagonist's self-naming immediately visible as an act of self-creation — and self-escape.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Original Japanese: 新潮社, September 12, 2002, 2 volumes (upper: 397 pages, ISBN 4-10-353413-3; lower: 429 pages, ISBN 4-10-353414-1). Paperback edition (新潮文庫): March 2, 2005 (upper ISBN 978-4-10-100154-8; lower ISBN 978-4-10-100155-5). English translation by Philip Gabriel: Alfred A. Knopf / Vintage International, January 2005, 436 pages. The English edition was a <em>New York Times</em> Notable Book, a <em>Publishers Weekly</em> Best Book, and was selected as one of the 10 Best Books of the Year by the <em>New York Times Book Review</em>. It won the World Fantasy Award (2006) and was a finalist for the PEN Translation Prize. Murakami created a dedicated website for the novel in 2002 where he exchanged over 1,200 emails with readers; these exchanges were later published as <em>Shōnen Kafuka</em> (少年カフカ, "Boy Kafka," 2003). Stage adaptations: directed by Ninagawa Yukio, 2012 (Bunkamura Theatre) and 2014 (Tokyo Art Theatre). The novel has been translated into over 40 languages and has sold millions of copies worldwide. Critical studies include Kōmori Yōichi's <em>Murakami Haruki Ron</em> (村上春樹論, 2006), a controversial Marxist reading that argues the novel conceals nationalist and militarist ideology beneath its surface of "healing" and "salvation."
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>村上春樹 &mdash; Haruki Murakami (b. 1949)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">春</div>
+    <div class="author-name-block">
+      <h3>村上春樹 / Haruki Murakami</h3>
+      <p class="author-name-romaji">Novelist, translator, essayist &middot; Japan's most translated author &middot; perennial Nobel Prize candidate</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Haruki Murakami was born on January 12, 1949, in Kyoto, and grew up in Kobe, the son of a Buddhist priest father and an Osaka merchant-class mother. His childhood was shaped by two formative experiences that would resonate throughout his fiction: the daily presence of American culture (jazz records, Hollywood films, paperback books) in postwar Kobe, and his father's service as a conscript in the Imperial Japanese Army during the Second Sino-Japanese War and World War II — a history that Murakami would only fully confront decades later, in his 2022 autobiographical essay "The Death of My Father" (棄猫 / <em>Sute Neko</em>, "Abandoned Cat"). He studied drama at Waseda University in Tokyo, where he met his wife Yoko, and after graduation ran a jazz coffeehouse called "Peter Cat" in Kokubunji with her before publishing his first novel.</p>
+    <p style="margin-bottom: var(--space-md);">That first novel, <em>Hear the Wind Sing</em> (風の歌を聴け / <em>Kaze no Uta wo Kike</em>, 1979), won the Gunzo Prize for New Writers and launched a career that would make him the most widely read Japanese author in history. His breakthrough came with <em>Norwegian Wood</em> (ノルウェイの森 / <em>Noruwei no Mori</em>, 1987), which sold over 4 million copies in Japan alone and created a social phenomenon known as the "Noruwei phenomenon." But it was his longer, more complex novels — <em>A Wild Sheep Chase</em> (羊をめぐる冒険 / 1982), <em>Hard-Boiled Wonderland and the End of the World</em> (世界の終りとハードボイルド・ワンダーランド / 1985), <em>The Wind-Up Bird Chronicle</em> (ねじまき鳥クロニクル / 1994–1995), and <em>Kafka on the Shore</em> (海辺のカフカ / 2002) — that established him as a major figure in world literature. These novels combine the narrative drive of hardboiled detective fiction with the metaphysical depth of Kafka and Borges, the emotional intensity of Japanese classical literature, and a distinctly Murakamian universe of wells, cats, jazz, cooking, and parallel worlds.</p>
+    <p style="margin-bottom: var(--space-md);">Murakami is also one of the most important literary translators in Japanese history. His translations of Raymond Carver, F. Scott Fitzgerald, J.D. Salinger, Truman Capote, and others have introduced generations of Japanese readers to American literature, and his translation practice has profoundly influenced his own prose style — the flat, declarative sentences, the precise observation of physical detail, the refusal of overt emotional display that characterizes his fiction all bear the mark of his engagement with American minimalism. He is a serious marathon runner (he has completed over 30 marathons and written a memoir about running, <em>What I Talk About When I Talk About Running</em> / 走ることについて語るときに僕の語ること, 2007), a radio DJ ("Murakami Radio" on TOKYO FM), and a public intellectual who has commented on topics from the Aum Shinrikyo subway attacks (<em>Underground</em> / アンダーグラウン, 1997–1998) to the Fukushima nuclear disaster.</p>
+    <p style="margin-bottom: var(--space-md);">His major awards include the Noma Literary Prize (新人賞, 1982), the Tanizaki Prize (谷崎潤一郎賞, 1985), the Yomiuri Prize (読売文学賞, 1996), the Kuwabara Takeo Prize (桑原武夫学芸賞, 1999), the Franz Kafka Prize (2006), the Jerusalem Prize (2009), the Hans Christian Andersen Literature Award (2016), and the Princess of Asturias Award (2023). He has been considered a perennial candidate for the Nobel Prize in Literature since the early 2000s, and while he has not yet received it, his global readership — estimated at over 100 million readers across more than 50 languages — makes him one of the most significant living writers in any language. <em>Kafka on the Shore</em>, published when he was 53, represents the fullest expression of his mature style: the parallel narrative structure, the interweaving of music and literature, the exploration of violence and memory, and the creation of what John Updike called "subconscious tunnels" — passages in which the boundary between waking and dreaming dissolves entirely.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Postmodern Myth, Postwar Memory, and the Global Murakami Phenomenon</h2>
+
+  <div class="card">
+    <h3>2002 Japan: The Murakami Moment</h3>
+    <p><em>Kafka on the Shore</em> was published in September 2002, at a pivotal moment in both Murakami's career and Japanese cultural history. Murakami had spent much of the 1990s writing <em>The Wind-Up Bird Chronicle</em> (1994–1995), a massive novel that confronted Japan's wartime violence in Manchuria and its aftermath, and then producing the non-fiction <em>Underground</em> (1997–1998), his oral history of the Aum Shinrikyo sarin gas attacks on the Tokyo subway. These works marked a turn toward historical and political engagement that some critics saw as a departure from the lighter, more playful fiction of his early career. <em>Kafka on the Shore</em> arrived as a synthesis: it retained the metaphysical playfulness of <em>Hard-Boiled Wonderland</em> and the narrative complexity of <em>The Wind-Up Bird Chronicle</em>, while adding a new emotional directness and a willingness to confront violence, sexuality, and trauma with an openness that shocked some readers and enthralled others.</p>
+    <p style="margin-top: var(--space-sm);">The novel's publication was a major media event. Shinchosha printed 100,000 copies of the first edition — an enormous number for a literary novel in Japan — and sold out within days. Murakami, who had maintained a relatively low public profile since the "Norwegian Wood" frenzy of 1987, launched a dedicated website where he answered readers' questions about the novel, eventually exchanging over 1,200 emails that were published as <em>Shōnen Kafuka</em> (少年カフカ, 2003). This direct engagement with readers was unprecedented for a Japanese literary author of his stature and signaled a new relationship between writer and audience in the digital age. The novel's success confirmed what <em>Norwegian Wood</em> had suggested and what <em>The Wind-Up Bird Chronicle</em> had proven: Murakami was not merely a popular writer but a cultural institution, an author whose books defined the literary consciousness of an era.</p>
+  </div>
+
+  <div class="card">
+    <h3>Greek Tragedy, Japanese Classics, and the Art of Literary Remix</h3>
+    <p>The novel's most striking structural feature is its deliberate engagement with multiple literary traditions. The odd-numbered chapters follow fifteen-year-old Kafka Tamura, whose father has cursed him with an Oedipal prophecy ("You will kill your father and sleep with your mother and sister"), and whose flight from this curse replays the plot of Sophocles' <em>Oedipus Rex</em> with a crucial difference: where Oedipus tries to escape his fate and inadvertently fulfills it, Kafka actively seeks his fate while remaining uncertain whether he has fulfilled it or merely dreamed that he did. The even-numbered chapters follow Satoru Nakata, an elderly man who lost his ability to read and write after a mysterious childhood incident during World War II (he fell into a coma while on a school field trip in the forest, and when he woke up, his "shadow had become half its original size" — a direct allusion to the "shadow" in Hans Christian Andersen's "The Shadow" and to the shadowlessness of beings who have lost part of their soul in Japanese folklore). Nakata can talk to cats, and his journey westward — accompanied by the truck driver Hoshino — replays the Grail Quest in comic-degraded form: instead of seeking a chalice, they seek a stone; instead of a noble knight, they have an illiterate old man; instead of a faithful squire, they have a young man who only wants to listen to music and eat good food.</p>
+    <p style="margin-top: var(--space-sm);">Interwoven with these Western mythological frameworks are deep references to Japanese classical literature. The "entrance stone" (入口の石 / <em>iriguchi no ishi</em>) that separates the real world from the other world alludes to the <em>iwakura</em> (磐座, "sacred rock") of Shinto and to the stone door in the <em>Kojiki</em> myths. The scene in which Kafka enters the other world through this stone and encounters the fifteen-year-old ghost of Miss Saeki replays the <em>ukiyo</em> (浮世, "floating world") encounters of <em>The Tale of Genji</em> and the <em>kakuremino</em> (隠れ蓑, "invisibility cloak") tales of Japanese folklore. The novel's treatment of memory, forgetting, and the persistence of the past draws on the <em>mono no aware</em> (物の哀れ, "the pathos of things") aesthetic of classical Japanese literature, while its treatment of violence and war trauma connects to the postwar Japanese literature of Ōe Kenzaburō, Ibuse Masuji, and others who confronted the legacy of Japanese militarism. Murakami has described the novel as a "comprehensive exercise" (総合演習 / <em>sōgō enshū</em>) — a summation of everything he had learned as a novelist up to that point — and the density of its literary allusions supports this claim. What makes the novel extraordinary is not the presence of these allusions but their seamless integration into a narrative that reads, on the surface, like a contemporary fantasy adventure. The Greek tragedy, the Grail Quest, the <em>Genji</em>, and the <em>Kojiki</em> are not displayed as decorations but embedded as structural DNA.</p>
+  </div>
+
+  <div class="card">
+    <h3>The English Translation and the Global Canon</h3>
+    <p>The English translation of <em>Kafka on the Shore</em> by Philip Gabriel, published by Knopf in January 2005, was a landmark in the globalization of Japanese literature. Gabriel, one of Murakami's two primary English translators (the other being Jay Rubin), had previously translated <em>Norwegian Wood</em> and <em>South of the Border, West of the Sun</em>, and his rendering of <em>Kafka on the Shore</em> was widely praised for capturing the novel's combination of narrative drive and metaphysical depth. John Updike's long review in <em>The New Yorker</em> ("Subconscious Tunnels," January 17, 2005) called the novel "a real page-turner, as well as an insistently metaphysical mind-bender" and situated Murakami within the tradition of Kafka, Borges, and García Márquez. The <em>New York Times</em> selected it as one of the 10 Best Books of 2005, and it won the World Fantasy Award in 2006 — one of the few translated novels to receive this honor.</p>
+    <p style="margin-top: var(--space-sm);">The translation's success had significant consequences for Japanese literature as a whole. Before Murakami, Japanese novels in translation were primarily the domain of academic publishers and small presses; after Murakami, major commercial publishers like Knopf, Vintage, and Harvill Secker regularly published Japanese fiction in large print runs with substantial marketing budgets. Murakami became, in effect, the gateway through which readers around the world discovered not only his own work but the broader tradition of Japanese literature — Kawabata, Tanizaki, Mishima, Ōe, Yoshimoto, and the generations that followed them. The translation also sparked scholarly interest in Murakami's work that went far beyond Japanology: literary critics, philosophers, and psychologists around the world began writing about his fiction, producing a body of academic work that now numbers in the thousands of articles and books. The English title, "Kafka on the Shore," has itself become a cultural reference point — a shorthand for a certain kind of liminal, dreamlike, intertextual narrative that blurs the boundaries between reality and imagination, self and other, East and West.</p>
+  </div>
+
+  <div class="card">
+    <h3>Music as Narrative Engine: Beethoven, Schubert, and the Novel's Soundtrack</h3>
+    <p>No discussion of <em>Kafka on the Shore</em> would be complete without addressing its extraordinary use of music. The novel is saturated with references to classical music, jazz, and popular songs, and these references are not merely atmospheric; they are structural. The piece most central to the novel is Schubert's "Trout" Quintet (ピアノ五重奏「ます」 / <em>Piano Gojūsō "Masu"</em>, Piano Quintet in A major, D. 667), which Miss Saeki plays on the library's sound system and which becomes a leitmotif for memory, loss, and the possibility of return. Miss Saeki's own song "Kafka on the Shore" (海辺のカフカ), which she wrote at nineteen and which made her briefly famous, is described in the novel but never given lyrics — a brilliant device that allows each reader to imagine their own version of the song. Other crucial musical references include Beethoven's Archduke Trio, Janáček's Sinfonietta (which also opens <em>1Q84</em>), Prince's "Little Red Corvette," the Beach Boys' "California Girls," and the jazz standards that Hoshino listens to on his truck's stereo.</p>
+    <p style="margin-top: var(--space-sm);">Murakami has said that he cannot write without music, and that he chooses specific pieces to play while writing specific scenes — the music becomes a kind of tuning fork for the emotional register he wants to achieve. In <em>Kafka on the Shore</em>, music functions as a bridge between worlds: between the real and the other world, between past and present, between characters who cannot communicate in words. When Nakata listens to music, he experiences a kind of pre-verbal understanding that bypasses his cognitive limitations; when Kafka listens to "Kafka on the Shore," he hears his own story before he has lived it; when Hoshino listens to jazz, he discovers a capacity for loyalty and courage that he did not know he had. The novel's English translator, Philip Gabriel, has noted the difficulty of translating musical references — not because the words are hard ("Trout Quintet" is "Trout Quintet" in any language) but because the cultural resonance differs: a Japanese reader hears Schubert differently than an American reader, and the translation must find ways to compensate for this difference through context and description. The result is a novel that is, in a very real sense, a piece of music in prose form — a long, complex composition with recurring themes, modulations, and a final movement that returns to the tonic key.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Two Narratives, One Fate: The Architecture of a Liminal Novel</h2>
+
+  <div class="card">
+    <h3>The Odd Chapters: Kafka Tamura's Flight from Prophecy</h3>
+    <p>Fifteen-year-old Kafka Tamura — not his real name, but the name he has chosen for himself — runs away from his father's house in Tokyo on his birthday, taking with him a backpack full of carefully chosen items: cash, an old lighter, a folding knife, a pocket flashlight, a pair of sky-blue Ray-Ban sunglasses, and a photograph of himself as a child with his older sister. His father, the famous sculptor Tamura Kōichi, has cursed him with a prophecy that echoes Oedipus: "Someday you will kill your father and sleep with your mother and your sister." Kafka's mother abandoned him when he was four, taking his sister with her; he has not seen either of them since, and he does not know where they are. His flight is thus both an escape from the prophecy and, paradoxically, a journey toward its fulfillment — for how can he avoid sleeping with his mother if he does not know who she is?</p>
+    <p style="margin-top: var(--space-sm);">He takes a night bus to Takamatsu, on the island of Shikoku — the smallest of Japan's four main islands, a place of pilgrimage and spiritual retreat. There, with the help of a mysterious boy named Crow (カラス / <em>Karasu</em>) who may be his alter-ego, his imaginary friend, or something else entirely, he finds refuge in the Komura Memorial Library, a private library housed in a beautiful old building overlooking the sea. The library is run by Oshima (大島), a brilliant, androgynous young man who is a hemophiliac and a sexual minority, and by Miss Saeki (佐伯さん), a woman in her fifties who was once a famous singer-songwriter and who wrote, at nineteen, a song called "Kafka on the Shore" that made her briefly famous before she disappeared from public life. As Kafka settles into his new existence — sleeping in the library's guest room, reading voraciously, running every morning to strengthen his body — he becomes aware that the library is not merely a building but a threshold. The room he sleeps in was once Miss Saeki's lover's room; the painting on the wall is a portrait of Miss Saeki at fifteen, the age Kafka is now; and the "entrance stone" in the nearby forest is a gateway to another world, a world where time flows differently and where the dead and the living can meet.</p>
+    <p style="margin-top: var(--space-sm);">The novel's central mystery deepens when Kafka discovers that Miss Saeki may be his mother, and that the ghost who visits him at night in his room — a fifteen-year-old girl who looks exactly like the girl in the painting — may be Miss Saeki's younger self, or his sister, or some fusion of both. He enters the other world through the entrance stone, guided by the ghostly girl, and there he experiences a kind of timeless intimacy with her that may or may not be sexual, real, or incestuous. When he returns to the real world, he learns that his father has been murdered in Tokyo — stabbed with a knife that may or may not be Kafka's own. The prophecy, it seems, has begun to fulfill itself, though Kafka has no memory of killing his father and no clear understanding of what has happened. The odd chapters thus trace a descent into the underworld that is simultaneously a journey into the self — a psychoanalytic <em>katabasis</em> in which Kafka must confront the violence of his own origins before he can emerge as a person capable of independent life.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Even Chapters: Nakata's Westward Journey with Cats and Music</h3>
+    <p>The even-numbered chapters tell the story of Satoru Nakata (中田 聡 / <em>Nakata Satoru</em>), an elderly man who lives in Nakano, Tokyo, on a government disability pension. As a child during World War II, Nakata was part of a group of schoolchildren on a field trip in the Yamanashi forests when a mysterious incident occurred — all the children fell into comas, and when they woke up, Nakata alone had lost his ability to read, write, and think in abstractions. In exchange, he gained the ability to talk to cats. The novel presents this ability without explanation or apology: Nakata simply speaks to cats, and they speak back, and the reader accepts this as a fact of the fictional world. Nakata's simple, direct speech — he refers to himself in the third person as "Nakata" (中田さんは) and uses plain, childlike grammar — provides a comic and deeply moving counterpoint to Kafka's complex, literary introspection.</p>
+    <p style="margin-top: var(--space-sm);">Nakata's adventure begins when he is hired to find a missing cat named Goma and instead encounters a man calling himself Johnny Walker (ジョニー・ウォーカー) — a reference to the whisky brand, but also, as the novel reveals, to Kafka's father, Tamura Kōichi, who has adopted this persona for reasons that remain partially mysterious. Johnny Walker is killing cats and making flutes from their souls, and he forces Nakata to kill him — an act that Nakata, who is constitutionally incapable of violence, performs in a trance-like state. After the killing, Nakata begins a journey westward, driven by an instinct he cannot explain, accompanied by a young truck driver named Hoshino (星野) who abandons his delivery route to follow the old man. Their journey replays the Grail Quest in deliberately degraded form: they seek not a chalice but a stone (the "entrance stone" that Kafka will also seek), and their adventures involve encounters with a philosophical Colonel Sanders figure who runs a love hotel in Shikoku, discussions of Beethoven and jazz, and a growing bond between the illiterate old man and the uneducated young truck driver that becomes one of the novel's most genuinely moving relationships.</p>
+    <p style="margin-top: var(--space-sm);">Nakata's journey ends at the Komura Memorial Library — the same place where Kafka has taken refuge — where he opens the entrance stone and enters the other world, not to retrieve something but to close the passage, to seal the wound in reality that Johnny Walker's violence has opened. In doing so, he sacrifices himself: Nakata dies peacefully after the stone is closed, his task complete. Hoshino, left alone, closes the stone and returns to his ordinary life, but he is no longer the same person — he has heard Beethoven, he has touched the transcendent, he has been the companion of a holy fool. The even chapters thus tell a story of comic grace: Nakata, the simplest character in the novel, performs the most profound act — the sealing of the breach between worlds — and does so without understanding its significance, driven only by an instinctive sense of what must be done. His illiteracy, which the world sees as a disability, becomes a kind of spiritual gift: because he cannot read, he cannot be deceived by words; because he cannot think abstractly, he experiences reality directly; because he is "empty" (空っぽ / <em>karappo</em>), the divine can fill him.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Convergence: Where the Two Worlds Meet</h3>
+    <p>The novel's two narrative strands converge in its final chapters, though not in the way that conventional plotting would suggest. Kafka and Nakata never meet in the ordinary sense — Nakata dies before Kafka fully understands who he was — but their fates are intertwined in ways that the novel only partially explains. Kafka's killing of his father (whether literal or symbolic, conscious or unconscious) and Nakata's killing of Johnny Walker are the same act viewed from different sides of reality: Johnny Walker is Kafka's father, and Nakata's act of killing him is the fulfillment of the Oedipal prophecy from the other side of the stone. The ghostly fifteen-year-old girl who visits Kafka is connected to Miss Saeki's lost love and to Kafka's own missing sister; the "entrance stone" that Nakata opens and closes is the same stone through which Kafka enters the other world; and the library that shelters both narratives is the place where time folds back on itself, where the past and present can touch, where a fifty-year-old woman and a fifteen-year-old boy can be, momentarily, the same person.</p>
+    <p style="margin-top: var(--space-sm);">The novel's ending is deliberately ambiguous — Murakami has refused to provide a definitive interpretation, and the emails collected in <em>Shōnen Kafuka</em> show him encouraging readers to find their own meanings. Kafka returns to Tokyo, but he is not the same boy who left: he has confronted his father's violence, he has experienced a form of love that transcends ordinary categories, and he has learned what Oshima tells him early in the novel — that "reality" is not singular, that there are multiple realities, and that the task of living is to navigate among them without losing oneself. The final image of the novel — Kafka leaving the library, looking back at the sea, ready to begin his life as "the world's toughest fifteen-year-old" — is not a resolution but a commencement. The prophecy has been fulfilled and escaped simultaneously; the stone has been closed but the memory of what lies beyond it remains; and the boy who was running away has become, finally, a person who is walking toward something. The novel's greatest achievement is to make this ambiguity feel not like a failure of narrative closure but like a faithful representation of what it means to be alive: never fully knowing, never fully certain, but continuing to move forward because the alternative is to stand still at the edge of the sea forever.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the metaphysical daring, emotional intensity, and linguistic beauty of Murakami's most structurally ambitious novel — a book in which every sentence is a threshold and every metaphor opens onto a deeper reality.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Sandstorm of Fate</div>
+    <div class="passage-jp">
+      運命ってやつは、ちょっとした砂嵐みたいなものだとカラスは言った。どこからともなくさらさらとやってきて、形を少しずつ変えながら、あなたのまわりをくるくると回る。目をはばたかせ、くしゃみをして、細い指のあいだをすり抜けてゆく。あなたは目を閉じ、両手で顔を覆い、砂が目に入るのを防ごうとする。だけどそれは、まるで砂を目に入れようとしているようなものだ。
+    </div>
+    <div class="passage-romaji">
+      "Unmei tte yatsu wa, chotto shita suna-arashi mitai na mono da to Karasu wa itta. Doko kara to mo naku sarasara to yatte kite, katachi wo sukoshi zutsu kaenagara, anata no mawari wo kuru kuru to mawaru. Me wo habataka se, kushami wo shite, hosoi yubi no aida wo surinukete yuku. Anata wa me wo toji, ryōte de kao wo ooi, suna ga me ni hairu no wo fuseyou to suru. Dakedo sore wa, marude suna wo me ni ireyou to shite iru yō na mono da."
+    </div>
+    <div class="passage-en">
+      "Fate is like a small sandstorm, Crow said. It comes from somewhere and goes somewhere, changing shape as it goes, spinning around you. You blink, you sneeze, and it slips through the gaps between your fingers. You close your eyes and cover your face with both hands, trying to keep the sand out of your eyes. But that is exactly like trying to get sand in your eyes."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening passage — spoken by "Crow" (カラス / <em>Karasu</em>), Kafka's alter-ego or imaginary companion, and it establishes the novel's tone, themes, and narrative method in a single paragraph. The grammar is deceptively simple, and every construction carries thematic weight. <em>Unmei tte yatsu wa</em> (運命ってやつは, "fate, that thing / that guy") uses the colloquial topic marker <em>tte</em> (って) and the informal noun <em>yatsu</em> (やつ, "guy / thing / fellow") to personify fate as a kind of trickster character — not an abstract concept but a living presence with agency and mischief. This personification is crucial to the novel's worldview: fate is not a philosophical problem for Murakami but a character, an antagonist, a force that acts upon people with something like intention. <em>Chotto shita suna-arashi mitai na mono da</em> (ちょっとした砂嵐みたいなものだ, "is something like a small sandstorm") uses the hedging construction <em>mitai na mono da</em> (みたいなものだ, "is something like / is the kind of thing that") to make the metaphor tentative, provisional, almost apologetic — as if Crow is saying "fate is sort of like a sandstorm, but not exactly, because nothing is exactly like anything else in this novel." The word <em>suna-arashi</em> (砂嵐, "sandstorm") is a compound of <em>suna</em> (砂, "sand") and <em>arashi</em> (嵐, "storm / tempest"), and it carries connotations of desert landscapes, of vision obscured, of small particles that collectively become overwhelming — a perfect metaphor for the accumulation of small events that constitute "fate" in Murakami's universe. The passage's most brilliant grammatical moment is the final sentence: <em>Dakedo sore wa, marude suna wo me ni ireyou to shite iru yō na mono da</em> (だけどそれは、まるで砂を目に入れようとしているようなものだ, "but that is exactly like trying to get sand in your eyes"). The volitional form <em>ireyou</em> (入れよう, "let's put in / try to put in") combined with <em>to shite iru</em> (としている, "is trying to") creates a paradox: the harder you try to keep sand out, the more you are acting like someone who wants sand in their eyes. The grammar enacts the paradox: the verb of exclusion (<em>fuseyou</em> / 防ごう, "try to prevent") is grammatically transformed into a verb of inclusion (<em>ireyou</em> / 入れよう, "try to put in") through the logic of the simile. What is lost in English is the specifically Japanese poignancy of <em>yatsu</em> (やつ) as a term of rough affection. "That guy" in English sounds dismissive; <em>yatsu</em> in Japanese can be used with a kind of rueful fondness, the way you might talk about a troublesome uncle. Crow is not afraid of fate; he knows it too well to be afraid. He calls it <em>yatsu</em> because he has been through the sandstorm before, because he is, in some sense, the sandstorm himself — the part of Kafka that creates the fate he is trying to escape. The passage's rhythm is also worth noting: the short, breathless sentences with their chains of <em>te</em>-forms (<em>yatte kite, kaenagara, mawaru, habataka se, shite, surinukete yuku</em>) create a sense of continuous motion, of events cascading too quickly to be controlled. The reader is caught in the sandstorm from the first sentence, and the grammar makes escape impossible.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"The World's Toughest Fifteen-Year-Old"</div>
+    <div class="passage-jp">
+      君はこれから世界でいちばんタフな十五歳の少年にならなくちゃいけないんだ。なにがあろうさ。そうする以外に君がこの世界を生きのびていく道はないんだからね。そしてそのためには、ほんとうにタフであるというのがどういうことなのか、君は自分で理解しなくちゃならない。
+    </div>
+    <div class="passage-romaji">
+      "Kimi wa korekara sekai de ichiban tafu na jūgo-sai no shōnen ni naranakucha ikenai n da. Nani ga arō to sa. Sō suru igai ni kimi ga kono sekai wo ikinobite iku michi wa nai n da kara ne. Soshite sono tame ni wa, hontō ni tafu de aru to iu no ga dō iu koto na no ka, kimi wa jibun de rikai shinakucha naranai."
+    </div>
+    <div class="passage-en">
+      "You have to be the world's toughest fifteen-year-old boy. No matter what happens. Because that's the only way you'll survive in this world. And in order to do that, you have to understand for yourself what it really means to be tough."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's most famous sentence — spoken by Crow to Kafka before Kafka leaves home — and it has become a cultural touchstone in Japan, quoted in graduation speeches, self-help books, and social media posts. The grammar is rich with colloquial force and philosophical precision. <em>Kimi wa korekara</em> (君はこれから, "you, from now on") opens with the second-person pronoun <em>kimi</em> (君), which in Japanese carries a specific social register: it is used by adults to children, by men to women, by superiors to inferiors, and by close male friends. Crow's use of <em>kimi</em> establishes his relationship to Kafka as simultaneously intimate and authoritative — he is Kafka's other self, speaking to him with the authority of someone who knows him completely. <em>Sekai de ichiban tafu na jūgo-sai no shōnen</em> (世界でいちばんタフな十五歳の少年, "the world's toughest fifteen-year-old boy") uses the superlative construction <em>sekai de ichiban</em> (世界でいちん, "number one in the world / the most in the world") — a phrase that in Japanese carries the hyperbolic enthusiasm of sports commentary or youth manga. The word <em>tafu</em> (タフ) is a loanword from English "tough," written in katakana, and its foreignness is significant: the quality Crow is naming does not have a traditional Japanese equivalent. Japanese has words for endurance (<em>gaman</em> / 我慢), perseverance (<em>nintai</em> / 忍耐), and resilience (<em>fukutsu no seishin</em> / 不屈の精神), but none of these quite capture the combination of physical toughness, emotional resilience, and moral independence that "tough" implies in English. By using the katakana <em>tafu</em>, Crow is importing a concept from another linguistic world — the world of American hardboiled fiction, of boxing movies, of street survival — and applying it to a Japanese fifteen-year-old. The construction <em>naranakucha ikenai n da</em> (ならなくちゃいけないんだ, "have to become / must become") uses the colloquial contraction <em>nakucha</em> (なくちゃ) for <em>nakereba</em> (なければ), combined with <em>ikenai</em> (いけない, "must not / cannot") and the explanatory <em>n da</em> (んだ) — a string of modal markers that makes the obligation both absolute and personal. This is not a general rule ("one must be tough"); it is a specific command addressed to a specific person for specific reasons (<em>n da</em> makes it so). <em>Nani ga arō to sa</em> (なにがあろうとさ, "no matter what happens / whatever may happen") uses the concessive construction <em>...ga arō to</em> (...があろうと, "even if there is...") with the emphatic sentence-final particle <em>sa</em> (さ), which in masculine speech adds a note of rough determination — the verbal equivalent of squaring one's shoulders. And the final clause — <em>hontō ni tafu de aru to iu no ga dō iu koto na no ka, kimi wa jibun de rikai shinakucha naranai</em> (ほんとうにタフであるとうのがどういうことなのか、君は自分で理解しなくちゃならない, "what it really means to be tough, you have to understand for yourself") — uses the nominalized question construction <em>...to iu no ga dō iu koto na no ka</em> (...というのがどういうことなのか, "what it means that...") embedded as the object of <em>rikai suru</em> (理解する, "understand"), with the reflexive <em>jibun de</em> (自分で, "by oneself / for oneself") emphasizing that this understanding cannot be given, only discovered. What is lost in English is the full colloquial force of the Japanese. "You have to be the world's toughest fifteen-year-old boy" sounds like a coach's pep talk; <em>Kimi wa korekara sekai de ichiban tafu na jūgo-sai no shōnen ni naranakucha ikenai n da</em> sounds like a prophecy delivered by someone who loves you and knows exactly how much it will cost. The <em>n da</em> at the end makes it a confession as much as a command — Crow is telling Kafka something he wishes were not true, something he knows from experience. The English translation captures the meaning but loses the emotional texture: the rough tenderness of <em>kimi</em>, the imported toughness of <em>tafu</em>, the reluctant necessity of <em>nakucha ikenai n da</em>. In Japanese, this sentence is not merely advice; it is a legacy, a burden, and a gift.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">Nakata's Self-Introduction</div>
+    <div class="passage-jp">
+      ナカタは頭が悪いので、いろいろとわからないことがたくさんあります。本も新聞も字も読めませんし、時計も見られません。ですから、たいていのことはナカタにはよくわからないのです。ナカタはバカですが、猫とはお話ができます。
+    </div>
+    <div class="passage-romaji">
+      "Nakata wa atama ga warui node, iroiro to wakaranai koto ga takusan arimasu. Hon mo shinbun mo ji mo yomemasen shi, tokei mo miraremasen. Dakara, taitei no koto wa Nakata ni wa yoku wakaranai no desu. Nakata wa baka desu ga, neko to wa o-hanashi ga dekimasu."
+    </div>
+    <div class="passage-en">
+      "Nakata is not very bright, so there are many things he does not understand. He cannot read books or newspapers or letters, and he cannot tell time by a clock. Therefore, most things are not well understood by Nakata. Nakata is dumb, but he can talk to cats."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — Nakata's characteristic self-introduction, repeated with variations throughout the novel — is a masterpiece of grammatical simplicity and philosophical depth. The first thing to notice is the third-person self-reference: Nakata calls himself "Nakata" (中田 / ナカタ) rather than using <em>boku</em> (僕) or <em>watashi</em> (私). In Japanese, third-person self-reference is associated with young children, people with cognitive disabilities, and certain regional dialects. It is not merely a grammatical choice but a social marker: by referring to himself in the third person, Nakata places himself outside the ordinary system of Japanese self-reference, with its complex gradations of status, intimacy, and gender. He does not claim an "I" because he does not possess the social equipment to maintain one — or, alternatively, because his "I" has been so thoroughly emptied by his childhood trauma that third-person reference is the most accurate way to speak of himself. The grammar of the passage reinforces this emptiness. <em>Nakata wa atama ga warui node</em> (ナカタは頭が悪いので, "because Nakata is not bright / because Nakata's head is bad") uses the causal particle <em>node</em> (ので, "because / since") in its polite form, creating a strangely formal explanation for a personal limitation — as if Nakata is reporting on himself from a distance. <em>Iroiro to wakaranai koto ga takusan arimasu</em> (いろいろとわからないことがたくさんあります, "there are many things that are not understood") uses the existential construction <em>...ga arimasu</em> (...があります, "there is/are...") with the polite <em>masu</em> form, making Nakata's ignorance sound like an objective fact rather than a personal failing. The list of incapacities — <em>Hon mo shinbun mo ji mo yomemasen shi, tokei mo miraremasen</em> (本も新聞も字も読めませんし、時計も見られません, "cannot read books or newspapers or letters, and cannot look at a clock") — uses the <em>mo...mo...mo</em> (も...も...も) construction for exhaustive listing and the potential negative <em>yomemasen</em> (読めません, "cannot read") and <em>miraremasen</em> (見られません, "cannot see / cannot look"), with the connective particle <em>shi</em> (し, "and / moreover") adding a note of resigned enumeration. Nakata is not complaining; he is inventorying. The passage's emotional climax is the final sentence: <em>Nakata wa baka desu ga, neko to wa o-hanashi ga dekimasu</em> (ナカタはバカですが、猫とはお話ができます, "Nakata is dumb, but he can talk to cats"). The contrastive conjunction <em>ga</em> (が, "but") sets up a paradox that the novel will spend hundreds of pages exploring: the man who cannot read has access to a form of communication that literate people do not; the man who is "dumb" possesses a wisdom that intelligent people lack; the man who has lost his shadow (and therefore, in Japanese folklore, part of his soul) has gained the ability to speak across species boundaries. The honorific prefix <em>o-</em> in <em>o-hanashi</em> (お話, "conversation / talk") is particularly touching: Nakata uses polite language (<em>o-hanashi ga dekimasu</em> / お話ができます, "can hold a conversation") even when describing his own disability, and even when talking about talking to cats. The politeness is not pretension; it is habit, the residue of a social self that persists despite cognitive damage. What is lost in English is the social poignancy of Nakata's consistent self-distancing. "Nakata is dumb" in English sounds like self-deprecation or internalized ableism; <em>Nakata wa baka desu</em> in Japanese sounds like a simple statement of fact, delivered without shame or self-pity, by someone who has made peace with his own limitations. The English "I" that the translation must insert ("I am dumb") changes the grammar of selfhood entirely: English makes Nakata claim his disability as part of his "I," while Japanese allows him to observe it from outside. The third-person self-reference is thus not merely a quirk but a philosophical position — a way of being in the world that refuses the modern, Western, Cartesian "I" in favor of something more fluid, more relational, more open to the non-human world that Nakata inhabits with such grace.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Nature of Reality</div>
+    <div class="passage-jp">
+      現実というものは、いつもひとつだけだとは限らないんだよ、大島は静かに言った。現実というものは、おそらくいくつかあるんだ。そしてその現実のひとつひとつが、それぞれの責任を、それぞれの過ちを、それぞれの悲しみを抱えている。それがどういうことか、君は自分で体験を通じて学でいくことになるよ。
+    </div>
+    <div class="passage-romaji">
+      "Genjitsu to iu mono wa, itsumo hitotsu dake da to wa kagiranai n da yo, Oshima wa shizuka ni itta. Genjitsu to iu mono wa, osoraku ikutsu ka aru n da. Soshite sono genjitsu no hitotsu hitotsu ga, sorezore no sekinin wo, sorezore no ayamachi wo, sorezore no kanashimi wo kakaete iru. Sore ga dō iu koto ka, kimi wa jibun de taiken wo tsūjite manande iku koto ni naru yo."
+    </div>
+    <div class="passage-en">
+      "Reality is not always singular, Oshima said quietly. There are probably several realities. And each of those realities bears its own responsibility, its own mistakes, its own grief. What that means, you will learn through your own experience."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — spoken by Oshima to Kafka in the library — is the novel's philosophical thesis statement, and its grammar encodes a radical epistemology in deceptively simple forms. <em>Genjitsu to iu mono wa</em> (現実というものは, "the thing called reality / what we call reality") uses the nominalizing construction <em>...to iu mono</em> (...というもの, "the thing called... / what is called...") to create distance between the word and the concept — Oshima is not talking about "reality" as a given but about "what we call reality" as a provisional category. This distancing is essential to the novel's metaphysics: if reality is not singular, then the word "reality" is itself a kind of mistake, a singular label applied to a plural phenomenon. <em>Itsumo hitotsu dake da to wa kagiranai n da yo</em> (いつもひとつだけだとは限らないんだよ, "it is not necessarily always only one") uses the negative potential construction <em>...to wa kagiranai</em> (...とは限らない, "it is not limited to... / it is not necessarily the case that...") with the explanatory <em>n da</em> (んだ) and the softening sentence-final particle <em>yo</em> (よ) — a combination that makes the statement both tentative and firm. Oshima is not declaring that there are multiple realities; he is saying that we cannot assume there is only one. The grammar of doubt becomes, paradoxically, a form of certainty: we can be sure that reality is not necessarily singular, even if we cannot be sure what it actually is. The passage's most beautiful construction is the triplet that follows: <em>sono genjitsu no hitotsu hitotsu ga, sorezore no sekinin wo, sorezore no ayamachi wo, sorezore no kanashimi wo kakaete iru</em> (その現実のひとつひとつが、それぞれの責任を、それぞれの過ちを、それぞれの悲しみを抱えている, "each one of those realities bears its own responsibility, its own mistakes, its own grief"). The anaphoric repetition of <em>sorezore no</em> (それぞれの, "each / respective") creates a liturgical rhythm — three times the same phrase, each time attached to a different noun (<em>sekinin</em> / 責任, "responsibility"; <em>ayamachi</em> / 過ち, "mistakes / errors"; <em>kanashimi</em> / 悲しみ, "grief / sadness"). The effect is to make each reality sound like a fully constituted world, complete with its own moral universe. This is not the "many worlds" of quantum physics, where realities branch at decision points; this is the "many worlds" of moral experience, where each reality has its own weight, its own costs, its own debts. The verb <em>kakaete iru</em> (抱えている, "bears / carries / holds in one's arms") is physically evocative — it suggests not an abstract bearing of responsibility but an actual embrace, as if each reality were a child that must be carried. The final clause — <em>Sore ga dō iu koto ka, kimi wa jibun de taiken wo tsūjite manande iku koto ni naru yo</em> (それがどういうことか、君は自分で体験を通じて学んでいくことになるよ, "what that means, you will come to learn through your own experience") — uses the inceptive construction <em>...koto ni naru</em> (...ことになる, "will come to... / will end up...") to make the learning process sound inevitable rather than chosen. Kafka will not decide to learn this; he will be brought to it by experience. The <em>yo</em> at the end softens the prophecy into a gentle warning — Oshima is not threatening Kafka; he is preparing him. What is lost in English is the specifically Japanese philosophical weight of <em>genjitsu to iu mono</em> (現実というもの). "Reality" in English is a philosophical term of art; <em>genjitsu to iu mono</em> in Japanese is a phrase that a parent might use when explaining something difficult to a child — "the thing we call reality." This domestication of the metaphysical makes Oshima's statement more accessible and more profound: he is not invoking Kant or Hegel; he is describing, in plain language, what it feels like to live in a world where the ground keeps shifting. The English translation captures the meaning but loses the gentleness, the pedagogical patience, the sense that this is wisdom being passed from one person to another across a library desk on an ordinary afternoon.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of liminality, prophecy, music, and the courage to be the world's toughest fifteen-year-old.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>海辺</td><td>umibe</td><td class="pos">noun</td><td>seaside; shore; vicinity of the sea</td></tr>
+        <tr><td>海</td><td>umi</td><td class="pos">noun</td><td>sea; ocean</td></tr>
+        <tr><td>辺</td><td>be / hotori</td><td class="pos">noun</td><td>vicinity; edge; border; side</td></tr>
+        <tr><td>運命</td><td>unmei</td><td class="pos">noun</td><td>fate; destiny</td></tr>
+        <tr><td>予言</td><td>yogen</td><td class="pos">noun</td><td>prophecy; prediction</td></tr>
+        <tr><td>呪い</td><td>noroi</td><td class="pos">noun</td><td>curse; hex</td></tr>
+        <tr><td>現実</td><td>genjitsu</td><td class="pos">noun</td><td>reality; actuality</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory; recollection</td></tr>
+        <tr><td>忘却</td><td>bōkyaku</td><td class="pos">noun</td><td>forgetting; oblivion</td></tr>
+        <tr><td>影</td><td>kage</td><td class="pos">noun</td><td>shadow; shade</td></tr>
+        <tr><td>入口</td><td>iriguchi</td><td class="pos">noun</td><td>entrance; doorway</td></tr>
+        <tr><td>石</td><td>ishi</td><td class="pos">noun</td><td>stone; rock</td></tr>
+        <tr><td>図書館</td><td>toshokan</td><td class="pos">noun</td><td>library</td></tr>
+        <tr><td>魂</td><td>tamashii</td><td class="pos">noun</td><td>soul; spirit</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>旅</td><td>tabi</td><td class="pos">noun</td><td>journey; travel; trip</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Characters, the Body & the Other World</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>家出</td><td>iede</td><td class="pos">noun</td><td>running away from home</td></tr>
+        <tr><td>少年</td><td>shōnen</td><td class="pos">noun</td><td>boy; young man; juvenile</td></tr>
+        <tr><td>老人</td><td>rōjin</td><td class="pos">noun</td><td>old person; elderly person</td></tr>
+        <tr><td>猫</td><td>neko</td><td class="pos">noun</td><td>cat</td></tr>
+        <tr><td>カラス</td><td>karasu</td><td class="pos">noun</td><td>crow; raven</td></tr>
+        <tr><td>司書</td><td>shisho</td><td class="pos">noun</td><td>librarian</td></tr>
+        <tr><td>館長</td><td>kanchō</td><td class="pos">noun</td><td>director; curator; head librarian</td></tr>
+        <tr><td>運転手</td><td>unten-shu</td><td class="pos">noun</td><td>driver</td></tr>
+        <tr><td>異界</td><td>ikai</td><td class="pos">noun</td><td>other world; spirit world</td></tr>
+        <tr><td>冥界</td><td>meikai</td><td class="pos">noun</td><td>underworld; Hades; realm of the dead</td></tr>
+        <tr><td>結界</td><td>kekkai</td><td class="pos">noun</td><td>spiritual boundary; barrier</td></tr>
+        <tr><td>心</td><td>kokoro</td><td class="pos">noun</td><td>heart; mind; spirit; inner self</td></tr>
+        <tr><td>無意識</td><td>muishiki</td><td class="pos">noun</td><td>unconscious (mind)</td></tr>
+        <tr><td>責任</td><td>sekinin</td><td class="pos">noun</td><td>responsibility; duty; accountability</td></tr>
+        <tr><td>過ち</td><td>ayamachi</td><td class="pos">noun</td><td>mistake; error; fault</td></tr>
+        <tr><td>悲しみ</td><td>kanashimi</td><td class="pos">noun</td><td>sadness; sorrow; grief</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Music, Violence & the Texture of the Novel</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>音楽</td><td>ongaku</td><td class="pos">noun</td><td>music</td></tr>
+        <tr><td>曲</td><td>kyoku</td><td class="pos">noun</td><td>piece of music; song; track</td></tr>
+        <tr><td>五重奏</td><td>gojūsō</td><td class="pos">noun</td><td>quintet (musical)</td></tr>
+        <tr><td>砂嵐</td><td>suna-arashi</td><td class="pos">noun</td><td>sandstorm</td></tr>
+        <tr><td>殺人</td><td>satsujin</td><td class="pos">noun</td><td>murder; homicide</td></tr>
+        <tr><td>暴力</td><td>bōryoku</td><td class="pos">noun</td><td>violence; force</td></tr>
+        <tr><td>戦争</td><td>sensō</td><td class="pos">noun</td><td>war</td></tr>
+        <tr><td>空白</td><td>kūhaku</td><td class="pos">noun</td><td>blank space; void; vacuum; lacuna</td></tr>
+        <tr><td>空っぽ</td><td>karappo</td><td class="pos">na-adj</td><td>empty; hollow; vacant</td></tr>
+        <tr><td>タフ</td><td>tafu</td><td class="pos">na-adj</td><td>tough; resilient; hardy (loanword)</td></tr>
+        <tr><td>理解</td><td>rikai</td><td class="pos">noun</td><td>understanding; comprehension</td></tr>
+        <tr><td>体験</td><td>taiken</td><td class="pos">noun</td><td>experience (personal)</td></tr>
+        <tr><td>世界</td><td>sekai</td><td class="pos">noun</td><td>world</td></tr>
+        <tr><td>生き延びる</td><td>ikinobiru</td><td class="pos">verb</td><td>to survive; to live through</td></tr>
+        <tr><td>語る</td><td>katari</td><td class="pos">verb</td><td>to tell; to narrate; to speak of</td></tr>
+        <tr><td>語る</td><td>kataru</td><td class="pos">verb</td><td>to narrate; to recount; to tell a story</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Murakami writes in Japanese, but his imagination is global — and the translation of his work into English raises fascinating questions about what can and cannot cross the boundary between languages, realities, and worlds.</p>
+
+  <div class="card">
+    <h3>1. <em>Umibe no Kafuka</em> vs. "Kafka on the Shore": The Genitive and the Preposition</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>海辺のカフカ</strong>（Umibe no Kafuka）— genitive: "Kafka of the seaside / the seaside's Kafka / the seaside, which is Kafka"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Kafka on the Shore</strong> — prepositional: "Kafka located on the shore"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Japanese genitive <em>no</em> (の) creates a relationship of belonging, definition, and apposition that English "on" cannot replicate. "Kafka on the Shore" tells us where Kafka is; <em>Umibe no Kafuka</em> tells us who Kafka is — a person defined by his relationship to a liminal space. The English title makes the shore a location; the Japanese title makes it an identity. The loss is most acute in the appositional reading: "the seaside, which is Kafka" — a reading that suggests the entire novel is an extended metaphor in which the sea-edge and the boy are interchangeable, each standing for the other's condition of being at a boundary. This metaphysical equivalence is unavailable in English because "on" does not permit it. The English title is not wrong — "on the shore" is a reasonable rendering of <em>umibe</em> — but it is thinner than the Japanese, less ontologically charged, more geographic than existential. What is gained in English is clarity: an English reader immediately knows that the novel is about someone named Kafka who is near the sea. What is lost is depth: the Japanese reader knows, before reading a single sentence, that this novel is about the condition of being at a boundary, and that the protagonist's name is not merely a label but a state of being.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Kimi</em> (君) as Intimate Authority</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>君</strong>（kimi）— second-person pronoun with complex social register: intimate, slightly superior-to-inferior, affectionate, masculine</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"You"</strong> — undifferentiated second-person pronoun with no social information</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>kimi</em> (君) is one of the most emotionally loaded pronouns in Japanese. It can be used between close male friends of equal status, by a man to a woman he loves, by an adult to a child, or by a superior to an inferior. Its use by Crow to Kafka carries all of these registers simultaneously: Crow is Kafka's equal (they are the same person), Crow is Kafka's lover (in the novel's psychosexual logic), Crow is Kafka's elder (he knows more), and Crow is Kafka's superior (he gives commands). The English "you" cannot capture this complexity because English has only one second-person pronoun. A translator might try to compensate by adding context — "you, my friend," "you, boy," "you, Kafka" — but any addition would reduce the ambiguity that makes <em>kimi</em> powerful. The Japanese reader hears the full social chord of <em>kimi</em> every time Crow speaks; the English reader hears only a note. This loss is particularly significant in the novel's most famous sentence — "You have to be the world's toughest fifteen-year-old boy" — where the <em>kimi</em> makes the command simultaneously an act of love, a transmission of wisdom, and a prophecy. In English, it sounds like advice; in Japanese, it sounds like a legacy.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. Nakata's Third-Person Self-Reference as Ontological Emptiness</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>ナカタは…</strong>（Nakata wa...）— third-person self-reference, grammatically objective, socially marked as childlike or cognitively different</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"I..."</strong> — first-person self-reference, grammatically subjective, socially unmarked</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>This is one of the most significant untranslatable elements of the novel. Nakata consistently refers to himself in the third person — "Nakata thinks," "Nakata does not understand," "Nakata can talk to cats" — and this grammatical choice is not a quirk but a worldview. In Japanese, third-person self-reference marks the speaker as outside the normal system of selfhood: children use it before they learn pronouns, people with certain cognitive differences use it because they have not internalized the first-person position, and characters in fiction use it to signal their difference from the ordinary social world. Nakata's third-person reference makes him sound, to a Japanese reader, like a holy fool — someone who has lost the ordinary "I" and gained, in exchange, direct access to reality. The English translation must use "I" because English does not permit sustained third-person self-reference without sounding like a sports star's autobiography ("Kobe Bryant always knew he would be great"). The result is that Nakata sounds more self-aware in English than he does in Japanese — more like a person with an "I" who is choosing to speak simply, rather than a person who has never fully acquired an "I" and speaks from a position of radical openness to the world. What is lost is the specifically Japanese poignancy of a self that has been emptied — not destroyed, not denied, but simplified to the point where it can contain the divine. Nakata's emptiness (<em>karappo</em> / 空っぽ) is a spiritual gift in the Japanese context; in English, it becomes a disability that he overcomes through charm and goodness. Both readings are valid, but they are not the same reading, and the difference matters for how we understand the novel's deepest theme: that the loss of the modern self may be a form of liberation, not a tragedy.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Genjitsu to iu mono</em> (現実というもの) as Domesticated Metaphysics</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>現実というもの</strong>（genjitsu to iu mono）— "the thing called reality / what we call reality" with nominalizing distance</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"reality"</strong> — bare philosophical term, no distance, no domestication</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The construction <em>...to iu mono</em> (...というもの, "the thing called... / what is called...") is one of the most characteristic features of Murakami's prose style, and it appears throughout his fiction whenever he wants to create philosophical distance without sounding academic. <em>Genjitsu to iu mono</em> (現実というもの) does not simply mean "reality"; it means "what we call reality, that thing that goes by the name of reality, the phenomenon that answers to the word 'reality.'" This distance is essential to Murakami's method: he never assumes that the words he uses correspond to stable concepts. By saying <em>genjitsu to iu mono</em> rather than simply <em>genjitsu</em>, Oshima is signaling that "reality" is a word we use, a category we have constructed, not a self-evident feature of the universe. The English "reality" cannot create this distance because English has no equivalent of <em>to iu mono</em> that can be used so casually. A translator might write "what we call reality" or "the thing we call reality," but both phrases sound more emphatic in English than <em>genjitsu to iu mono</em> does in Japanese. In Japanese, <em>to iu mono</em> is a softening device, a way of making big concepts approachable; in English, "what we call" sounds like a challenge or a quotation. The loss is thus not merely lexical but tonal: Murakami's metaphysics sounds gentle, almost homely in Japanese, while the same ideas in English can sound portentous or pretentious. Philip Gabriel's translation handles this as well as any translation could, but the fundamental problem remains: Japanese can domesticate the metaphysical through grammar in ways that English cannot easily replicate.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. The Musical References: Untranslatable Cultural Resonance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>ピアノ五重奏「ます」</strong>（Piano Gojūsō "Masu"）— Schubert's "Trout" Quintet, with the Japanese title carrying culinary and literary associations</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Trout Quintet"</strong> — the standard English title, with anglophone classical music associations</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The novel's musical references are, in one sense, perfectly translatable: Schubert's Piano Quintet in A major is the Trout Quintet in any language, and Beethoven's Archduke Trio is the Archduke Trio whether you are in Tokyo or New York. But the cultural resonance of these pieces differs profoundly between Japan and the English-speaking world. In Japan, classical music has a specific class and educational association: it signals cultivation, refinement, and often a certain distance from mainstream popular culture. A Japanese reader who encounters Schubert in a Murakami novel understands that this is "serious" music, music that requires concentration and education, music that belongs to the same world as the Komura Memorial Library with its old books and its view of the sea. An American reader may have very different associations: classical music as background for films, as something heard in elevators, as the music of grandparents. The "Trout" Quintet in particular has a complicated cultural history in Japan: it is one of the most frequently performed chamber works, beloved for its melodic accessibility, and its association with the song "Die Forelle" (The Trout) gives it a literary dimension that Japanese readers, with their strong tradition of nature poetry, may feel more acutely than English readers. The Japanese title <em>Masu</em> (ます, "trout") is written in katakana, marking it as a foreign word, but the fish itself is familiar to Japanese readers from cuisine and from the natural world. The English "Trout" carries none of this culinary-natural-literary resonance for most readers; it is simply the name of a fish and a piece of music. What is lost is the way the musical reference anchors the novel in a specific Japanese cultural landscape — the landscape of educated, middle-class, postwar Japan, where classical music on vinyl was a marker of cultural aspiration and where Schubert's melodies could be heard as both European and somehow, through repetition and familiarity, Japanese. The translation preserves the reference but cannot preserve its cultural weight, because that weight is built from decades of Japanese listening, performing, and associating — a history that does not exist in the same form in English.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of prophecy, liminality, and the courage to speak from the edge of the sea.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の（連体・属格）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...no</em>: genitive/possessive particle marking belonging, definition, or apposition.</p>
+      <div class="grammar-example">海辺のカフカ</div>
+      <p class="grammar-example-en">"Kafka of the seaside" — The genitive that makes a location into an identity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ってやつは（話題提示・擬人化）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tte yatsu wa</em>: colloquial topic marker + personifying noun, making an abstract concept into a character.</p>
+      <div class="grammar-example">運命ってやつは、ちょっとした砂嵐みたいなものだ</div>
+      <p class="grammar-example-en">"Fate, that guy, is something like a small sandstorm" — The grammar of personified destiny.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜みたいなものだ（比況・婉曲）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...mitai na mono da</em>: "is something like... / is the kind of thing that..." — hedged simile making metaphors provisional.</p>
+      <div class="grammar-example">ちょっとした砂嵐みたいなものだ</div>
+      <p class="grammar-example-en">"It is something like a small sandstorm" — The grammar of tentative metaphor.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なくちゃいけないんだ（強制・説明）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...nakucha ikenai n da</em>: colloquial obligation (<em>nakereba ikenai</em> contracted) + explanatory <em>n da</em> — absolute necessity made personal.</p>
+      <div class="grammar-example">世界でいちばんタフな十五歳の少年にならなくちゃいけないんだ</div>
+      <p class="grammar-example-en">"You have to become the world's toughest fifteen-year-old boy" — The grammar of reluctant prophecy.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜があろうと（譲歩・条件）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ga arō to</em>: concessive conditional "no matter what may happen / even if there is..."</p>
+      <div class="grammar-example">なにがあろうとさ</div>
+      <p class="grammar-example-en">"No matter what happens" — The grammar of unconditional resolve.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のでは…が（対比・逆接）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no desu ga / ...desu ga</em>: polite copula + contrastive conjunction, marking a paradox or unexpected truth.</p>
+      <div class="grammar-example">ナカタはバカですが、猫とはお話ができます</div>
+      <p class="grammar-example-en">"Nakata is dumb, but he can talk to cats" — The grammar of holy-fool paradox.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜とは限らない（否定可能・推量）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...to wa kagiranai</em>: "it is not limited to... / it is not necessarily the case that..." — negative potential of limitation, creating epistemological openness.</p>
+      <div class="grammar-example">現実というものは、いつもひとつだけだとは限らないんだよ</div>
+      <p class="grammar-example-en">"Reality is not necessarily always only one" — The grammar of metaphysical doubt.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ことになる（不意志的帰結）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...koto ni naru</em>: "will come to... / will end up..." — inceptive/resultative construction indicating an outcome that arrives without being chosen.</p>
+      <div class="grammar-example">君は自分で体験を通じて学んでいくことになるよ</div>
+      <p class="grammar-example-en">"You will come to learn through your own experience" — The grammar of inevitable becoming.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Kafka on the Shore</em> is the grammar of liminality — every construction exists at the edge of something. The genitive <em>no</em> makes a place into an identity; the colloquial <em>tte yatsu wa</em> makes fate into a person; the hedged simile <em>mitai na mono da</em> makes metaphors provisional; the contracted obligation <em>nakucha ikenai n da</em> makes necessity intimate; the concessive <em>ga arō to</em> makes resolve unconditional; the contrastive <em>ga</em> makes paradox bearable; the negative potential <em>to wa kagiranai</em> makes doubt productive; and the inceptive <em>koto ni naru</em> makes becoming inevitable. Pay attention to how these constructions work together to create a prose style that is simultaneously colloquial and metaphysical — the voice of a fifteen-year-old boy who is also a prophet, an old man who is also a saint, and a library that is also a threshold between worlds. The grammar is the shore; the meaning is the sea.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『海辺のカフカ』 &middot; 村上春樹 著 &middot; 新潮社 2002年9月12日 &middot; 上下巻（上397頁 ISBN 4-10-353413-3／下429頁 ISBN 4-10-353414-1）</p>
+  <p style="margin-top: var(--space-xs);">新潮文庫版 2005年3月2日刊 &middot; 上 ISBN 978-4-10-100154-8 &middot; 下 ISBN 978-4-10-100155-5</p>
+  <p style="margin-top: var(--space-xs);">英訳 <em>Kafka on the Shore</em> &middot; Philip Gabriel 訳 &middot; Alfred A. Knopf / Vintage International 2005年1月刊 &middot; 436ページ</p>
+  <p style="margin-top: var(--space-xs);">受賞：世界幻想文学大賞（2006年） &middot; 『ニューヨーク・タイムズ』年間ベストブック10選（2005年） &middot; パブリッシャーズ・ウィークリー年間ベストブック</p>
+  <p style="margin-top: var(--space-xs);">著者：村上春樹（1949年1月12日生・京都市出身・神戸市育ち・早稲田大学第一文学部演劇専修卒）</p>
+  <p style="margin-top: var(--space-xs);">舞台化：蜷川幸雄演出 &middot; 2012年5月（Bunkamuraシアターコクーン） &middot; 2014年6月（東京芸術劇場プレイハウス）</p>
+  <p style="margin-top: var(--space-xs);">読者とのメール交換集：『少年カフカ』（2003年・新潮社） &middot; 全1220通のやり取り収録</p>
+  <p style="margin-top: var(--space-xs);">主要論評：小森陽一『村上春樹論』（平凡社新書・2006年） &middot; John Updike "Subconscious Tunnels" <em>The New Yorker</em> 2005年1月17日号</p>
+</footer>
+
+</div>
+</body>
+</html>

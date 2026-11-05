@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生きるぼくら — 原田マハ | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f120e;
+  --bg-surface: #181c14;
+  --bg-elevated: #20281a;
+  --bg-card: #283220;
+  --ink-primary: #e8ece4;
+  --ink-secondary: #c8d0c0;
+  --ink-muted: #98a890;
+  --ink-faint: #687860;
+  --accent-gold: #8a9a5a;
+  --accent-gold-dim: #5a6a3a;
+  --accent-gold-glow: rgba(138, 170, 90, 0.12);
+  --accent-earth: #8a7a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-earth);
+}
+
+.nuance-box h4 {
+  color: var(--accent-earth);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>生きるぼくら</h1>
+  <p class="hero-subtitle">Ikiru Bokura / We Who Live</p>
+  <p class="hero-meta">原田 マハ &middot; 徳間書店 2012年9月 &middot; 432ページ &middot; 第2回徳間文庫大賞受賞</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 生きるぼくら</h2>
+  <p class="lead">The title <em>Ikiru Bokura</em> (生きるぼくら) is deceptively simple — three syllables in Japanese, four in English — and yet it carries the entire weight of the novel's argument. It is not "We Live" (a statement of fact) or "Living Us" (a description) but "We Who Live" — a noun phrase with an embedded relative clause that makes living not merely what the characters do but who they are. The title is a declaration of identity forged through survival, a refusal to be defined by what has been done to them, and an affirmation that to be alive — simply, stubbornly, inexpertly alive — is already a form of victory.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">生きる</span>
+        <span class="romaji">ikiru</span>
+        <span class="meaning">"to live / to be alive / to exist" — The verb <em>ikiru</em> (生きる) is one of the most fundamental in Japanese, and one of the most loaded. It derives from <em>iki</em> (生き, "life / living") + <em>ru</em> (る, verb suffix), and it means not merely biological survival (<em>seizon suru</em> / 生存する) but the active, continuous process of being alive — making choices, enduring pain, experiencing joy, growing, changing, remaining. In Japanese literary tradition, <em>ikiru</em> carries special weight because of Kurosawa Akira's 1952 film <em>Ikiru</em> (生きる), in which a dying bureaucrat discovers the meaning of life through a single act of public service. The verb in the novel's title is in the dictionary form (終止形), which functions as a relative clause modifier when placed before a noun: <em>ikiru</em> (生きる) + <em>bokura</em> (ぼくら) = "we who live" — not "we are living" (生きている僕ら) or "let us live" (生きよう) but the eternal present of those for whom living is an ongoing, unfinished act. What is lost in English is the specifically Japanese resonance of <em>ikiru</em> as a verb that contains both struggle and affirmation. "Live" in English can be an imperative ("Live!"), an adjective ("live broadcast"), or a verb ("I live here"); <em>ikiru</em> is always the active process of maintaining life against entropy, despair, and death. The title's <em>ikiru</em> is not a command or a description but a definition: these characters are the ones who live — who continue, who persist, who refuse to stop.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">ぼくら</span>
+        <span class="romaji">bokura</span>
+        <span class="meaning">"we / us (masculine-familiar plural)" — The pronoun <em>bokura</em> (僕ら/ぼくら) is the plural of <em>boku</em> (僕), the first-person pronoun used primarily by males, especially young men and boys. <em>Boku</em> is softer than <em>ore</em> (俺, the rough masculine "I") and more personal than <em>watashi</em> (私, the gender-neutral formal "I"); it carries connotations of youth, vulnerability, and a certain gentle self-deprecation. The plural <em>bokura</em> thus suggests a "we" that is young, male or male-identified, and unpretentious — a "we" that does not claim authority or universality. In the novel, this "we" refers most directly to Jinsei, the 24-year-old hikikomori narrator, but it expands to include Tsubomi (his unexpected stepsister), Martha (his senile grandmother), and by extension every character who has been broken by life and is learning to live again. The choice of <em>bokura</em> over <em>watashitachi</em> (私たち, the standard plural "we") is significant: it makes the novel's "we" intimate rather than collective, personal rather than political. What is lost in English is the gender and generational specificity of <em>bokura</em>. "We" in English is entirely neutral; <em>bokura</em> tells a Japanese reader that the voice is young, male, and unguarded. The English "We Who Live" sounds grand and universal; the Japanese <em>Ikiru Bokura</em> sounds like something a young man might say to his friends — tentative, earnest, a little embarrassed by its own sincerity.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Tokuma Shoten, September 5, 2012, 432 pages, ISBN 978-4-19-863300-6 (hardcover). Bunko edition: Tokuma Bunko. The novel won the 2nd Tokuma Bunko Taisho (徳間文庫大賞), a prize that recognizes outstanding works published in the Tokuma Bunko line. The cover features a rural landscape evoking the Tateshina highlands — an image that captures both the novel's agricultural setting and its theme of growth from barren ground.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>原田 マハ &mdash; Harada Maha (1962–)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">真</div>
+    <div class="author-name-block">
+      <h3>原田 マハ / Harada Maha</h3>
+      <p class="author-name-romaji">Novelist &middot; Curator &middot; Art Historian &middot; 52nd Izumi Kyoka Prize winner (2024)</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Harada Maha was born on July 14, 1962, in Kodaira, Tokyo — but her formative years were spent in Okayama, where she lived from sixth grade through high school graduation. This bifurcated childhood — Tokyo-born, Okayama-raised — gave her a double perspective on Japan that would inform her fiction: the urban, cosmopolitan view of the capital and the slower, more grounded sensibility of the provinces. She is the younger sister of novelist Harada Munenori (原田宗典), and her pen name "Maha" derives from Francisco Goya's famous pair of paintings, <em>La maja vestida</em> (The Clothed Maja) and <em>La maja desnuda</em> (The Naked Maja) — a choice that signals from the outset her fascination with art, with surfaces and depths, with what clothing reveals and conceals.</p>
+    <p style="margin-bottom: var(--space-md);">Her academic credentials are formidable: she graduated from Kwansei Gakuin University's Faculty of Letters, Japanese Literature Department, and then from Waseda University's Second Faculty of Letters, Art History Department. This dual training in Japanese literature and art history created the distinctive sensibility that would define her career — a writer who moves as comfortably among paintings as among sentences, who can describe a canvas with the precision of a scholar and a human heart with the precision of a novelist. She worked at the Marunouchi Art Museum, Itochu Corporation, the Mori Building/Mori Art Museum founding preparation office, and the Museum of Modern Art (MoMA) in New York before becoming a freelance curator and culture writer in 2002. She began her writing career in 2003 as a culture columnist and won the 1st Japan Love Story Taisho in 2005 for <em>Kafū wo Machiwabite</em> (カフーを待ちわびて, "Waiting for Kafū"), debuting as a novelist in 2006.</p>
+    <p style="margin-bottom: var(--space-md);">Harada is best known for her "art novels" — fiction built around the lives of artists, the history of paintings, and the world of museums and galleries. <em>Rakuen no Kanbasu</em> (楽園のカンヴァス, "The Canvas of Paradise," 2012) won the 25th Yamamoto Shūgorō Prize; <em>Rīchi-sensei</em> (リーチ先生, 2017) won the 36th Shintarō Nitta Literary Prize; and <em>Itajō ni Saku</em> (板上に咲く, 2024) won the 52nd Izumi Kyōka Literary Prize. Her other works include <em>Honjitsu wa Ohigara mo Yoku</em> (本日は、お日柄もよく, adapted into a WOWOW drama), <em>Kinema no Kamisama</em> (キネマの神様), <em>Tayutaedomo Shizumazu</em> (たゆたえども沈まず), and <em>Revolver</em> (リボルバー). She is a member of the Japan PEN Club and lives in Tokyo.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Ikiru Bokura</em> (2012) stands apart from her art-novel oeuvre — it contains no paintings, no museums, no auction houses. Instead, it is a novel about rice: about planting it, tending it, harvesting it, eating it. For a writer whose previous work had moved among the masterpieces of European art to turn her attention to a half-acre paddy in Nagano is itself a kind of statement — that beauty and meaning are not the exclusive property of genius and genius's works, but can be found in the most ancient, most humble human activities. Harada brings to rice farming the same eye she brings to a Van Gogh canvas: the capacity to see what is actually there, to describe it with precision, and to understand that the way something is made is inseparable from what it means. The novel is, in this sense, an art novel about the art of staying alive.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Hikikomori, Rural Decline, and the Rice That Binds a Nation</h2>
+
+  <div class="card">
+    <h3>Hikikomori: The Shut-In Crisis in Contemporary Japan</h3>
+    <p>The Japanese term <em>hikikomori</em> (引きこもり) refers to the phenomenon of acute social withdrawal — individuals, typically young adults, who remain confined to their homes for months or years, avoiding school, work, and social contact. The word derives from <em>hiku</em> (引く, "to pull / to withdraw") + <em>komoru</em> (籠もる, "to shut oneself in / to seclude oneself"), and it describes both the behavior and the person who exhibits it. Estimates suggest that over a million Japanese suffer from <em>hikikomori</em>, and the phenomenon has become one of the most discussed social problems in contemporary Japan — linked to bullying (<em>ijime</em> / いじめ), academic pressure, family breakdown, and the collapse of the lifetime employment system that once gave young people a clear path into adulthood.</p>
+    <p style="margin-top: var(--space-sm);">Jinsei's case is a textbook example: severe bullying in high school (<em>ijime</em> / いじめ) leads to school refusal (<em>tōkō kyohi</em> / 登校拒否), which leads to complete withdrawal from society. By age 24, he has been a NEET (<em>nīto</em> / ニート, "Not in Education, Employment, or Training") for four years, living with his mother in a small apartment, with no friends, no romantic relationships, and no prospects. What Harada understands — and what distinguishes her treatment from more sensational accounts — is that <em>hikikomori</em> is not a character flaw or a mental illness in the simple sense but a rational response to intolerable circumstances. Jinsei did not choose to withdraw; he was driven to it by the violence of his peers and the failure of adults to protect him. The novel's power lies in its refusal to pathologize him: he is not "sick" but injured, and injuries can heal if the conditions for healing are provided. The conditions, in his case, turn out to be not therapy or medication but something older and more elemental: earth, water, rice, and the stubborn presence of people who need him.</p>
+  </div>
+
+  <div class="card">
+    <h3>Tateshina and the Landscape of Recovery</h3>
+    <p>The novel's setting — Tateshina (蓼科) in Nagano Prefecture — is a highland area in the Yatsugatake mountain range, known for its cool summers, pristine lakes (including Lake Shirakaba and Mishaka Pond / 御射鹿池), and agricultural traditions that predate modern Japan. Mishaka Pond, in particular, is famous in Japanese culture as the subject of Higashiyama Kaii's painting <em>Midori Hibiku</em> (緑響く, "Green Resonance" / "The Resounding Green") — a work that captures the pond's emerald waters and surrounding forest with a spiritual intensity that has made the location a place of pilgrimage for nature lovers and art enthusiasts alike. Harada, with her art historian's sensibility, chose this landscape deliberately: it is a place where nature and culture, agriculture and aesthetics, the bodily and the spiritual, have been intertwined for generations.</p>
+    <p style="margin-top: var(--space-sm);">For Jinsei, arriving in Tateshina after four years of confinement, the landscape is a shock — not merely because it is beautiful but because it demands engagement. Rice farming is not a spectator sport; it requires the body to bend, to wade into cold water, to carry heavy loads, to submit to the rhythms of weather and season. The novel's agricultural passages are rendered with the same precision Harada brings to her descriptions of paintings: the color of the seedlings, the texture of the mud, the sound of water entering the paddy, the particular quality of light on green rice in July. What Jinsei discovers is that the body, which has been the site of his shame (the body that was bullied, that hid, that failed), can become the site of his recovery — not through talking about his trauma but through using his hands to make something grow. The landscape of Tateshina does not heal him by being pretty; it heals him by being demanding.</p>
+  </div>
+
+  <div class="card">
+    <h3>Rice: The Sacred Staple and the Work of Survival</h3>
+    <p>Rice (<em>kome</em> / 米) is not merely a food in Japan; it is the foundation of Japanese civilization, the sacred grain at the center of Shinto ritual, the economic basis of the feudal order, and the daily sustenance that has nourished the population for millennia. The word for "meal" (<em>gohan</em> / ご飯) literally means "cooked rice," and the word for "farmer" (<em>nōmin</em> / 農民) historically meant "rice cultivator." To grow rice is to participate in one of the oldest continuous human activities on the Japanese archipelago — an activity that has shaped the landscape, the calendar, the social structure, and the spiritual imagination of the nation. The novel's choice of rice farming as the medium of Jinsei's recovery is thus deeply symbolic: he is not merely finding a job; he is reconnecting with the most fundamental activity of his culture, the work that made Japan possible.</p>
+    <p style="margin-top: var(--space-sm);">But Harada is too honest a writer to romanticize agriculture. Rice farming is hard, dirty, uncertain work. The paddies must be prepared, the seedlings planted, the water managed, the weeds controlled, the pests guarded against — and at the end of all this labor, a late frost or a typhoon can destroy the crop. The novel shows Jinsei learning this reality day by day: the back pain, the insect bites, the anxiety of watching the weather, the humility of recognizing that human effort is necessary but not sufficient. What rice farming teaches him is not that nature is benevolent but that it is responsive — that if you attend to it properly, it will (usually, not always) attend to you in return. This is the novel's deepest insight about recovery: not that the world owes us healing, but that healing becomes possible when we enter into a reciprocal relationship with something larger than ourselves — a field, a community, a tradition, a grandmother who needs to be cared for.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Found Family" in an Aging Society</h3>
+    <p>Japan's population is aging faster than any other developed nation's, and the traditional family structure — three generations living together, with the elderly cared for by their children and grandchildren — has largely collapsed under the pressures of urbanization, nuclearization, and economic change. The novel's central household is a kind of improvised family: a senile grandmother, a withdrawn grandson who barely knows her, and a step-granddaughter who is not related by blood to either of them. They have no legal obligation to each other, no shared history, and no reason to trust each other. What they have is necessity — the grandmother cannot live alone, the grandson has nowhere else to go, the step-granddaughter has lost both her parents — and, gradually, something more than necessity: the discovery that chosen bonds can be as strong as biological ones.</p>
+    <p style="margin-top: var(--space-sm);">This "found family" structure (<em>kizuna</em> / 絆, "bonds / ties") is a recurring theme in contemporary Japanese fiction, reflecting a society in which the traditional family can no longer be taken for granted. What distinguishes Harada's treatment is her refusal to make the arrangement sentimental. The three characters annoy each other, misunderstand each other, and struggle with the daily friction of shared life. Martha's dementia is not cute; it is frightening, exhausting, and sometimes cruel. Jinsei's social anxiety does not evaporate in the mountain air; it persists, and he must work with it rather than against it. Tsubomi's grief for her dead parents does not resolve into acceptance; it remains, a permanent feature of her inner landscape. The novel's claim is not that found family fixes everything but that it makes living possible — that the presence of others who need you, and whom you need in return, is the minimum condition for a life that is not merely survival but actually <em>living</em>.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>From the Shut Room to the Open Paddy</h2>
+
+  <div class="card">
+    <h3>The Disappearance: A Mother Leaves, a Life Begins</h3>
+    <p>Aso Jinsei (麻生人生) is 24 years old and has not left his apartment in four years. A victim of severe bullying in high school, he retreated first from school and then from the world entirely, becoming a <em>hikikomori</em> dependent on his mother for everything — food, money, shelter, human contact. His days have no structure, no purpose, no future. He is, in his own estimation, a failure in every dimension that Japanese society measures: no education, no job, no friends, no romantic experience, no prospects. His name — <em>Jinsei</em> (人生), which means "human life" or "a lifetime" — feels like a cruel joke: he is not living a life but enduring an existence.</p>
+    <p style="margin-top: var(--space-sm);">Then, one morning, his mother disappears. She leaves a note, a bundle of New Year's cards (<em>nengajō</em> / 年賀状), and 50,000 yen (about $500) — enough to survive for a short while, not enough to survive for long. The note does not explain where she has gone or when she will return; it simply announces that she has left. For Jinsei, this is both catastrophe and liberation. He has lost his only source of support; he has also lost the person whose presence allowed him to remain frozen. Among the New Year's cards, he finds one that seizes his attention: a card from his paternal grandmother, Nakamura Maasa (中村麻朝) — known as "Martha" (マーサ) — with a message that reads like a last will disguised as a greeting: "I hope we can meet again. While my life still remains" (<em>Mō ichido aemasu yō ni. Watashi no inochi ga, aru uchi ni</em> / もう一度会えますように。私の命が、あるうちに). The implication is clear: the grandmother is dying. And Jinsei, who has not seen her in years and has barely thought about his father's family since his parents' divorce, makes a decision that surprises even himself: he will go to her. It is the first voluntary movement outward he has made in four years.</p>
+  </div>
+
+  <div class="card">
+    <h3>Tateshina: The Grandmother, the Stepsister, the Stranger's House</h3>
+    <p>Jinsei travels to Tateshina in Nagano Prefecture — a journey that requires him to leave the apartment, take public transportation, interact with strangers, and navigate an unfamiliar landscape. Each of these actions, which would be routine for most people, is a trial for someone who has not left his room in four years. The novel renders his anxiety with painful precision: the sensation of being looked at, the fear of doing something wrong, the overwhelming sensory input of the world outside. When he arrives, he finds not the dignified deathbed scene he had imagined but a chaotic household: Martha is not merely old but demented, her mind slipping in and out of the present, her house disordered, her affairs neglected. And she is not alone. Living with her is Nakamura Tsubomi (中村つぼみ), 21 years old — the daughter of the woman Jinsei's father remarried after divorcing Jinsei's mother.</p>
+    <p style="margin-top: var(--space-sm);">Tsubomi is, in the strict sense, nothing to Jinsei: not his sister (they share no parents), not his cousin, not even his stepsister in the usual sense (her mother was married to his father, but both are now dead). She is a stranger connected to him by the ghost of a marriage that ended before he was old enough to understand it. And yet she is the one who has been keeping Martha alive — shopping, cooking, managing the household, coping with the old woman's increasingly erratic behavior. She too is damaged: both her parents are dead, she has no other family, and she suffers from social anxiety that makes interaction with the village community difficult. The three of them — the demented grandmother, the withdrawn grandson, the orphaned step-granddaughter — form a household that makes no sense on paper and works, after a fashion, in practice. The novel's middle section follows the slow, awkward, sometimes comic process by which three people who have every reason to avoid each other learn to need each other.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Rice: Learning to Grow, Learning to Live</h3>
+    <p>The turning point comes when Jinsei and Tsubomi decide to plant rice in Martha's paddies — fields that have been fallow or poorly maintained, part of a small family farm that has been slipping toward abandonment. Neither of them knows anything about rice farming. They must learn everything: how to prepare the seedlings, how to flood the fields, how to plant at the correct depth and spacing, how to manage water levels, how to recognize problems before they become disasters. They learn from Martha (who remembers more than her dementia suggests), from neighbors (especially Kume Shino, who runs a soba shop and knows everyone), and from the accumulated wisdom of a farming community that has been growing rice in these mountains for centuries.</p>
+    <p style="margin-top: var(--space-sm);">The rice-growing sequences are the novel's technical and emotional core. Harada renders the agricultural calendar with the precision of a documentary and the symbolic resonance of a parable: the planting in spring, the growth through summer, the heading (when the grain appears), the ripening, the harvest. Each stage of the rice's life corresponds to a stage in Jinsei's recovery. The seedlings, fragile and dependent, are Jinsei at the beginning — barely alive, requiring constant attention. The mid-season growth, when the rice turns the paddies emerald, is Jinsei learning confidence — discovering that he can do this, that his body and mind are capable of something useful. The late-season anxiety, when weather and pests threaten the crop, is Jinsei confronting the reality that life is never secure, that effort does not guarantee success. And the harvest — the golden fields, the cutting, the drying, the threshing, the moment when the grain that was planted becomes the food that sustains — is Jinsei's discovery that a life can be made, not merely endured; that the work of one's hands can become the substance of one's days; that to feed others is a form of love that does not require words.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Father's Truth: What Remains When the Story Changes</h3>
+    <p>Running beneath the surface of the present-tense narrative is the mystery of Jinsei's father, Nakamura Shinta (中村新多), who died of cancer before Jinsei could know him as an adult. Jinsei has grown up with his mother's version of the divorce: his father abandoned them, chose another woman, started a new family. This story has justified his mother's bitterness and Jinsei's own sense of rejection — the sense that he was not worth staying for. But in Tateshina, among people who knew his father, a different story emerges. Shinta was not the villain of his mother's narrative; he was a complex man who made difficult choices, who loved both his families imperfectly, who tried to bridge worlds that would not be bridged. The discovery does not exonerate him — he did leave, he did remarry, he did fail to maintain the relationship with his son — but it humanizes him, and in humanizing him, it frees Jinsei from the binary of victim and villain that has structured his understanding of his own life.</p>
+    <p style="margin-top: var(--space-sm);">What the novel understands is that recovery from trauma is not merely a matter of feeling better; it is a matter of revising the story one tells about one's life. Jinsei's story, as he has told it to himself, is: I was bullied, I withdrew, my mother abandoned me, my father rejected me, I am a failure. The story he learns in Tateshina is: I was bullied, I survived, my mother did what she could until she couldn't, my father was complicated, I am capable of growing rice, of caring for a grandmother, of being needed by another person. These are not mutually exclusive — the bullying was real, the abandonment was real — but the second story has room in it for agency, for connection, for a future. The novel's final chapters do not offer a fairy-tale ending. Jinsei does not become "normal" overnight; his social anxiety does not disappear; his relationship with Tsubomi remains complicated by their shared history and their different wounds. What he has gained is the knowledge that he can live — that living is not a gift bestowed by others but a skill that can be practiced, a muscle that can be strengthened, a choice that can be made again each morning when the sun rises over the paddies and the rice is waiting.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the warmth, resilience, and quiet wisdom of Harada's prose — a voice that believes in the possibility of recovery without ever denying the reality of pain.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Grandmother's Call</div>
+    <div class="passage-jp">
+      「もう一度会えますように。私の命が、あるうちに」
+    </div>
+    <div class="passage-romaji">
+      "Mō ichido aemasu yō ni. Watashi no inochi ga, aru uchi ni."
+    </div>
+    <div class="passage-en">
+      "I hope we can meet again. While my life still remains."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the message on Martha's New Year's card that pulls Jinsei out of his four-year seclusion — is a masterpiece of Japanese indirection. New Year's cards (<em>nengajō</em> / 年賀状) in Japan are typically cheerful, formulaic greetings — "Happy New Year," "Please continue to support me this year," "Wishing you health and happiness." To find a message about the end of life on a <em>nengajō</em> is already a shock; to find it written with this degree of restraint is devastating. The first clause — <em>mō ichido aemasu yō ni</em> (もう一度会えますように, "I hope we can meet again") — uses the <em>yō ni</em> (ように) construction of wishing, the grammar of prayer rather than demand. It is what one says at a shrine, tossing a coin into the offering box: "May it be that..." The second clause — <em>watashi no inochi ga, aru uchi ni</em> (私の命が、あるうちに, "while my life still remains / while I still have life") — uses <em>inochi</em> (命), the sacred word for "life," and <em>aru uchi ni</em> (あるうちに, "while it exists / before it is gone"), a temporal construction that acknowledges impermanence without naming death directly. Martha does not say "before I die"; she says "while my life is still here" — as if life were a possession that could be misplaced, a light that could go out. The comma after <em>inochi ga</em> creates a pause, a breath, a moment of hesitation before the admission of finitude. What is lost in English is the specifically Japanese quality of this message as a <em>nengajō</em> text. The English "I hope we can meet again. While my life still remains" captures the meaning but loses the context: this is a holiday greeting, a card that should contain good wishes, transformed by necessity into a farewell. The Japanese reader feels the violation of genre — the grandmother breaking the rules of the <em>nengajō</em> because she has no other channel, because she does not know if she will survive to send another card. The sentence is thus not merely a message but an event: the moment when the social form cracks open and something real emerges.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Onigiri's Shape</div>
+    <div class="passage-jp">
+      「おにぎりって、なんかこう、実にいいかたちをしてると思わない？」<br><br>
+      「どうしていいかたちかっていうとね。人の手で結ばれたかたちをしているからだよ」
+    </div>
+    <div class="passage-romaji">
+      "Onigiri tte, nanka kō, jitsu ni ii katachi wo shiteru to omowanai?"<br><br>
+      "Dōshite ii katachi ka tte iu to ne. Hito no te de musubareta katachi wo shite iru kara da yo."
+    </div>
+    <div class="passage-en">
+      "Don't you think rice balls have a truly wonderful shape?"<br><br>
+      "The reason they have a wonderful shape is this: they are made in a form that has been tied together by human hands."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This exchange — between Kume Shino, the soba shop owner, and Jinsei — is the novel's most famous passage, and it encapsulates the entire philosophy of the book in a conversation about food. The word <em>onigiri</em> (おにぎり, "rice ball") literally means " Grip" or "hold" — <em>nigiru</em> (握る, "to grasp / to hold in the hand") + <em>ri</em> (り, noun suffix). An <em>onigiri</em> is not merely cooked rice; it is rice that has been shaped by human hands, compressed into a triangle or cylinder, often with a filling at the center and a wrapping of nori seaweed. It is the most basic, most portable, most universal form of Japanese food — the thing mothers make for children's lunches, the thing convenience stores sell by the millions, the thing hikers carry in their packs. Shino's observation — <em>jitsu ni ii katachi wo shiteru</em> (実にいいかたちをしてる, "has a truly wonderful shape") — uses <em>jitsu ni</em> (実に, "truly / really / indeed"), an adverb that adds weight to what might otherwise sound casual. And the explanation — <em>hito no te de musubareta katachi</em> (人の手で結ばれたかたち, "a form tied together by human hands") — contains the verb <em>musubu</em> (結ぶ), which means "to tie / to bind / to connect / to form bonds." <em>Musubu</em> is the verb of <em>kizuna</em> (絆, "bonds / ties"), of marriage (<em>kekkon wo musubu</em> / 結婚を結ぶ), of relationship itself. To say that an <em>onigiri</em> is a shape "tied together by human hands" is to say that it embodies relationship — that even the simplest food is a form of connection between the one who makes and the one who eats. What is lost in English is the multivalence of <em>musubu</em>. "Tied together" captures the physical action but loses the relational resonance; "formed by human hands" captures the craftsmanship but loses the sense of binding; "bound" captures the connection but sounds more abstract than the Japanese. The Japanese <em>hito no te de musubareta katachi</em> makes the <em>onigiri</em> into a metaphor for every human-made thing that carries the warmth of the hands that shaped it — a warmth that Jinsei, who has been eating alone in the dark for four years, is only now learning to receive.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">You Are Not Pathetic</div>
+    <div class="passage-jp">
+      縮こまってないで、堂々と自分の人生を生きろ。あなたのことを、くだらないともなさけないとも思わない。あなたはちっともなさけなくなかない。堂々と自分の人生を自分の好きなように生きなさい。それでいいじゃない。
+    </div>
+    <div class="passage-romaji">
+      "Chidjikomatte naide, dōdō to jibun no jinsei wo ikiro. Anata no koto wo, kudaranai to mo nasakenai to mo omowanai. Anata wa chitto mo nasakenaku nanka nai. Dōdō to jibun no jinsei wo jibun no suki na yō ni iki nasai. Sore de ii ja nai."
+    </div>
+    <div class="passage-en">
+      "Don't cower. Live your life with dignity. I don't think you're worthless or pathetic. You're not pathetic at all. Live your life with dignity, in whatever way you choose. That's enough, isn't it?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — spoken to Jinsei at a crucial moment of despair — is the novel's moral center, and its grammar encodes a philosophy of self-acceptance that is both simple and radical. The opening command — <em>chidjikomatte naide</em> (縮こまってないで, "don't cower / don't shrink up") — uses the <em>-te naide</em> (〜てないで) negative request form, which is softer than a direct prohibition (<em>-na</em> / 〜な) but still firm. <em>Chidjikomaru</em> (縮こまる) means "to cower / to huddle up / to shrink into oneself" — the physical posture of shame, the body trying to become invisible. The contrast is <em>dōdō to</em> (堂々と, "with dignity / boldly / confidently"), an adverb derived from <em>dōdō</em> (堂々, "magnificent / imposing / dignified"), which describes the open posture of self-acceptance — the body occupying its full space in the world. The repetition of <em>dōdō to jibun no jinsei wo</em> (堂々と自分の人生を, "live your life with dignity") — once at the beginning and once at the end of the passage — creates a frame that encloses the central affirmation. That affirmation — <em>anata wa chitto mo nasakenaku nanka nai</em> (あなたはちっともなさけなくなんかない) — is a masterpiece of Japanese negation. <em>Chitto mo</em> (ちっとも, "not at all / not in the slightest") is an emphatic negative adverb; <em>nasakenai</em> (なさけない, "pathetic / pitiful / wretched") is the adjective of shame; and <em>nanka nai</em> (なんかない, "is not... or anything / is not... at all") is a casual emphatic negative. The triple negative construction (<em>chitto mo... nanka nai</em>) makes the denial of Jinsei's self-denial absolute — not merely "you're not pathetic" but "you are not, in any way, to any degree, under any description, pathetic." The final sentence — <em>sore de ii ja nai</em> (それでいいじゃない, "that's enough, isn't it? / that's fine, isn't it?") — uses the negative question form <em>ja nai</em> (じゃない) to seek agreement, turning a statement into an invitation: the speaker is not commanding Jinsei to accept himself but asking him to consider that self-acceptance might be possible. What is lost in English is the cumulative force of the Japanese negations. "You're not pathetic at all" is accurate but flat; the Japanese <em>chitto mo nasakenaku nanka nai</em> is a wall of negation built to keep shame out — each negative particle a stone in the fortress. The passage is not merely comforting; it is reconstructive, rebuilding the foundation of Jinsei's self-worth word by word.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">Breathing with the Eyes</div>
+    <div class="passage-jp">
+      この頃の稲は青年期。青春時代そのままに、生き生きと、エネルギーに満ちて、生きることを謳歌しているみたい。七月頃の水田の風景を見れば、目で深呼吸したような気分になるのよ。
+    </div>
+    <div class="passage-romaji">
+      "Kono koro no ine wa seinenki. Seishun jidai sono mama ni, ikiiki to, enerugī ni michite, ikiru koto wo ōka shite iru mitai. Shichigatsu goro no suiden no fūkei wo mireba, me de shinkokyū shita yō na kibun ni naru no yo."
+    </div>
+    <div class="passage-en">
+      "The rice at this time of year is in its youth. Just like adolescence itself — vibrant, full of energy, as if singing the praises of being alive. If you look at the paddy field landscape around July, you feel as if you have taken a deep breath with your eyes."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — Martha speaking to Jinsei and Tsubomi about the rice in midsummer — contains one of the novel's most beloved phrases: <em>me de shinkokyū shita yō na kibun</em> (目で深呼吸したような気分, "a feeling as if taking a deep breath with one's eyes"). The metaphor is extraordinary: it transfers the action of breathing from the lungs to the eyes, suggesting that looking at something beautiful can have the same physiological effect as inhaling fresh air — the chest expands, the body relaxes, the mind clears. The grammar is precise: <em>me de</em> (目で, "with the eyes / by means of the eyes") uses the instrumental particle <em>de</em> (で) to make the eyes the agent of the breathing; <em>shinkokyū shita yō na</em> (深呼吸したような, "as if having taken a deep breath") uses the <em>yō na</em> (ような) simile construction to create a counterfactual sensation; and <em>kibun ni naru</em> (気分になる, "to feel / to become a feeling") makes the experience a state that one enters rather than a perception one merely registers. The passage's larger context is equally rich. Martha describes the rice as being in its <em>seinenki</em> (青年期, "youth / adolescence") — a personification that makes the plants not merely crops but beings with a life cycle analogous to human development. <em>Ikiiki to</em> (生き生きと, "vibrantly / vividly / full of life") is an adverb formed from the reduplication of <em>iki</em> (生き, "life"), suggesting intensity through repetition; <em>enerugī ni michite</em> (エネルギーに満ちて, "full of energy") uses the <em>ni michite</em> (に満ちて) construction of plenitude; and <em>ikiru koto wo ōka shite iru</em> (生きることを謳歌している, "singing the praises of living / celebrating life") uses <em>ōka suru</em> (謳歌する), a literary verb meaning "to celebrate / to sing praises of," typically applied to human joy. The rice is not merely growing; it is <em>celebrating</em> its own aliveness — and in doing so, it teaches Jinsei that living can be a form of joy rather than merely a burden to be endured. What is lost in English is the sensory paradox of <em>me de shinkokyū</em>. "A deep breath with your eyes" is comprehensible but slightly strange; the Japanese is both stranger and more natural, because it captures an experience that most people have had but lack words for — the way that beauty can feel like oxygen. The phrase has become one of the novel's signature contributions to contemporary Japanese — a way of naming the restorative power of looking at the world with attention and allowing its beauty to enter the body.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of withdrawal, recovery, rice, and the stubborn art of continuing to live.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>生きる</td><td>ikiru</td><td class="pos">verb</td><td>to live; to be alive; to exist fully</td></tr>
+        <tr><td>ぼくら</td><td>bokura</td><td class="pos">pronoun</td><td>we; us (young male, intimate)</td></tr>
+        <tr><td>人生</td><td>jinsei</td><td class="pos">noun</td><td>human life; a lifetime</td></tr>
+        <tr><td>命</td><td>inochi</td><td class="pos">noun</td><td>life; soul; vital spirit</td></tr>
+        <tr><td>堂々</td><td>dōdō</td><td class="pos">adv</td><td>with dignity; boldly; magnificently</td></tr>
+        <tr><td>縮こまる</td><td>chidjikomaru</td><td class="pos">verb</td><td>to cower; to shrink; to huddle</td></tr>
+        <tr><td>なさけない</td><td>nasakenai</td><td class="pos">adj</td><td>pathetic; pitiful; wretched</td></tr>
+        <tr><td>希望</td><td>kibō</td><td class="pos">noun</td><td>hope</td></tr>
+        <tr><td>絆</td><td>kizuna</td><td class="pos">noun</td><td>bonds; ties; emotional connection</td></tr>
+        <tr><td>温もり</td><td>nukumori</td><td class="pos">noun</td><td>warmth (physical/emotional)</td></tr>
+        <tr><td>自立</td><td>jiritsu</td><td class="pos">noun</td><td>independence; self-reliance</td></tr>
+        <tr><td>再生</td><td>saisei</td><td class="pos">noun</td><td>recovery; rebirth; regeneration</td></tr>
+        <tr><td>勇気</td><td>yūki</td><td class="pos">noun</td><td>courage; bravery</td></tr>
+        <tr><td>謳歌</td><td>ōka</td><td class="pos">noun</td><td>celebration; singing praises</td></tr>
+        <tr><td>気分</td><td>kibun</td><td class="pos">noun</td><td>feeling; mood; sensation</td></tr>
+        <tr><td>深呼吸</td><td>shinkokyū</td><td class="pos">noun</td><td>deep breath</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Hikikomori, Trauma & Social Withdrawal</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>引きこもり</td><td>hikikomori</td><td class="pos">noun</td><td>shut-in; acute social withdrawal</td></tr>
+        <tr><td>いじめ</td><td>ijime</td><td class="pos">noun</td><td>bullying</td></tr>
+        <tr><td>ニート</td><td>nīto</td><td class="pos">noun</td><td>NEET (Not in Education, Employment, or Training)</td></tr>
+        <tr><td>対人恐怖症</td><td>taijin kyōfushō</td><td class="pos">noun</td><td>social anxiety disorder</td></tr>
+        <tr><td>登校拒否</td><td>tōkō kyohi</td><td class="pos">noun</td><td>school refusal</td></tr>
+        <tr><td>失踪</td><td>shissō</td><td class="pos">noun</td><td>disappearance; going missing</td></tr>
+        <tr><td>置き手紙</td><td>okitegami</td><td class="pos">noun</td><td>farewell note; letter left behind</td></tr>
+        <tr><td>年賀状</td><td>nengajō</td><td class="pos">noun</td><td>New Year's card/greeting</td></tr>
+        <tr><td>トラウマ</td><td>trauma</td><td class="pos">noun</td><td>trauma</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place to belong; where one fits</td></tr>
+        <tr><td>縮小</td><td>shukushō</td><td class="pos">noun</td><td>reduction; shrinking</td></tr>
+        <tr><td>外出</td><td>gaishutsu</td><td class="pos">noun</td><td>going outside</td></tr>
+        <tr><td>社会</td><td>shakai</td><td class="pos">noun</td><td>society</td></tr>
+        <tr><td>人間関係</td><td>ningen kankei</td><td class="pos">noun</td><td>human relationships</td></tr>
+        <tr><td>自信</td><td>jishin</td><td class="pos">noun</td><td>self-confidence</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Rice, Agriculture & the Rural Landscape</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>米</td><td>kome</td><td class="pos">noun</td><td>rice (uncooked)</td></tr>
+        <tr><td>稲</td><td>ine</td><td class="pos">noun</td><td>rice plant</td></tr>
+        <tr><td>おにぎり</td><td>onigiri</td><td class="pos">noun</td><td>rice ball</td></tr>
+        <tr><td>水田</td><td>suiden</td><td class="pos">noun</td><td>paddy field</td></tr>
+        <tr><td>稲作</td><td>inasaku</td><td class="pos">noun</td><td>rice cultivation</td></tr>
+        <tr><td>苗</td><td>nae</td><td class="pos">noun</td><td>seedling; rice shoot</td></tr>
+        <tr><td>田植え</td><td>taue</td><td class="pos">noun</td><td>rice planting</td></tr>
+        <tr><td>収穫</td><td>shūkaku</td><td class="pos">noun</td><td>harvest</td></tr>
+        <tr><td>農業</td><td>nōgyō</td><td class="pos">noun</td><td>agriculture; farming</td></tr>
+        <tr><td>農家</td><td>nōka</td><td class="pos">noun</td><td>farm household; farmer</td></tr>
+        <tr><td>村</td><td>mura</td><td class="pos">noun</td><td>village</td></tr>
+        <tr><td>蓼科</td><td>Tateshina</td><td class="pos">noun</td><td>Tateshina (highland area, Nagano)</td></tr>
+        <tr><td>御射鹿池</td><td>Mishaka-ike</td><td class="pos">noun</td><td>Mishaka Pond (famous scenic spot)</td></tr>
+        <tr><td>八ヶ岳</td><td>Yatsugatake</td><td class="pos">noun</td><td>Yatsugatake Mountains</td></tr>
+        <tr><td>風景</td><td>fūkei</td><td class="pos">noun</td><td>landscape; scenery</td></tr>
+        <tr><td>自然</td><td>shizen</td><td class="pos">noun</td><td>nature</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Harada Maha's prose carries the precision of an art historian and the warmth of someone who believes that beauty can save us. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Ikiru</em> (生きる) as Active Survival</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>生きる</strong>ぼくら</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>We Who Live</strong>" / "<strong>Us Who Live</strong>" / "<strong>Living We</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The verb <em>ikiru</em> (生きる) in the title is doing something that the English "live" cannot fully capture. <em>Ikiru</em> is not merely the state of being alive (<em>seizon suru</em> / 生存する); it is the active, continuous process of maintaining life — making choices, enduring pain, experiencing small joys, getting up each morning and continuing. The dictionary form <em>ikiru</em> placed before the noun <em>bokura</em> creates a relative clause: "we who live" — a definition of identity rather than a description of activity. The English "We Who Live" captures the grammar but loses the active quality of <em>ikiru</em>; "Living We" captures the activity but loses the definitional force; "Those of Us Who Live" is closer but wordier and more abstract. What is lost in English is the sense that <em>ikiru</em> is something one does, not merely something one is. The novel's characters are not "the living" in the sense of being alive rather than dead; they are "those who live" in the sense of those who practice the art of living — who get up, who work, who eat together, who fail and try again. The title is not a category but a vocation.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Musubareta katachi</em> (結ばれたかたち) as Bound Form</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>人の手で<strong>結ばれたかたち</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>a form tied together by human hands</strong>" / "<strong>a shape bound by human hands</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>musubareta katachi</em> (結ばれたかたち) is the novel's most famous line, and its power lies in the verb <em>musubu</em> (結ぶ). <em>Musubu</em> means "to tie / to bind / to knot / to connect / to form bonds / to conclude (a relationship or agreement)." It is the verb of <em>kizuna</em> (絆, "bonds"), of marriage (<em>kekkon wo musubu</em> / 結婚を結ぶ), of the ties that bind people together. The passive form <em>musubareta</em> (結ばれた, "tied / bound") makes the <em>onigiri</em> not merely shaped but <em>bound</em> — held together by the force of the hands that made it. The word <em>katachi</em> (かたち/形, "form / shape") is not merely "shape" in the geometric sense but "form" in the philosophical sense — the way something appears because of how it has been made. What is lost in English is the relational density of <em>musubu</em>. "Tied together" suggests physical binding; "bound" suggests obligation or constraint; "formed" suggests craftsmanship. The Japanese <em>musubareta katachi</em> contains all of these and something more: the idea that the <em>onigiri</em>'s shape is a record of human connection, that every time hands shape rice into that form, a bond is created between the maker and the eater. The English "a form tied together by human hands" is accurate but cannot carry the weight of <em>musubu</em> as the verb of relationship itself.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Chitto mo nasakenaku nanka nai</em> (ちっともなさけなくなんかない) as the Wall of Negation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>ちっとも<strong>なさけなくなんかない</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>not pathetic at all</strong>" / "<strong>not wretched in the slightest</strong>" / "<strong>not pitiful at all</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>chitto mo nasakenaku nanka nai</em> (ちっともなさけなくなんかない) is a triple negative construction that builds a fortress around Jinsei's self-worth. <em>Chitto mo</em> (ちっとも, "not at all / not in the slightest") is an emphatic negative adverb that requires a negative verb; <em>nasakenai</em> (なさけない, "pathetic / pitiful / wretched") is the negative form of <em>nasake</em> (情け, "pity / compassion / sympathy"), so that <em>nasakenai</em> literally means "without pity" — extended to mean "so pitiful that no pity can reach it"; and <em>nanka nai</em> (なんかない, "is not... or anything / is not... at all") is a casual emphatic negative that dismisses the possibility being raised. The construction is thus: "not (chitto mo) pathetic (nasakenai) at all (nanka nai)" — three negations that together create an absolute denial. What is lost in English is the cumulative, almost physical force of this negation. "Not pathetic at all" is a single negation; "not wretched in the slightest" captures the <em>chitto mo</em> but loses the <em>nanka nai</em>; "not pitiful at all" is accurate but flat. The Japanese reader feels each negative particle as a stone in the wall — <em>chitto mo</em> (not even a little), <em>nasakenai</em> (not worthy of pity), <em>nanka nai</em> (not... or anything) — and the cumulative effect is not merely reassurance but reconstruction. The speaker is not just saying Jinsei is not pathetic; she is dismantling the entire category of "pathetic" as it applies to him, negating it at every level of intensity and formality.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Me de shinkokyū</em> (目で深呼吸) as Sensory Metaphor</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>目で深呼吸</strong>したような気分</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>a deep breath with one's eyes</strong>" / "<strong>as if breathing deeply through the eyes</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>me de shinkokyū shita yō na kibun</em> (目で深呼吸したような気分, "a feeling as if taking a deep breath with one's eyes") is a metaphor that works against the physiology of the body — eyes do not breathe — and yet captures an experience that most people recognize: the way that looking at something beautiful can feel like inhaling fresh air. The grammar is precise: <em>me de</em> (目で, "with the eyes") uses the instrumental particle <em>de</em> (で) to make the eyes the tool or agent of the breathing; <em>shinkokyū shita yō na</em> (深呼吸したような) is the <em>yō na</em> simile construction; and <em>kibun</em> (気分, "feeling / mood / sensation") makes the experience a state of being rather than merely a perception. What is lost in English is the paradoxical freshness of the Japanese. "A deep breath with your eyes" sounds like a yoga instruction; "as if breathing deeply through the eyes" sounds like a New Age affirmation. The Japanese <em>me de shinkokyū</em> is neither; it is a precise description of a specific sensation — the expansion of the chest, the relaxation of the shoulders, the clearing of the mind — triggered not by air entering the lungs but by beauty entering through the eyes. The phrase has become one of the novel's signature contributions to Japanese because it names something that had no name: the restorative power of looking at the world with full attention. In English, we might say "breathtaking," but that means the view is so beautiful it stops your breath — the opposite of what Harada is describing. Her metaphor is about breath <em>returning</em>, not being taken away.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Inochi ga aru uchi ni</em> (命があるうちに) as Finitude's Courtesy</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>私の<strong>命が、あるうちに</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>while my life still remains</strong>" / "<strong>while I still have life</strong>" / "<strong>before my life runs out</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>inochi ga aru uchi ni</em> (命があるうちに) is a study in Japanese indirection. Martha does not say "before I die" (<em>shinu mae ni</em> / 死ぬ前に) or "while I am still alive" (<em>ikite iru aida ni</em> / 生きている間に); she says "while my life is still here" — using <em>inochi</em> (命), the sacred word for life, and <em>aru uchi ni</em> (あるうちに, "while it exists / before it is gone"), a temporal construction that treats life as a possession that can be present or absent. The comma after <em>inochi ga</em> creates a pause, a breath, a moment of hesitation before naming the condition of finitude. What is lost in English is the courtesy of this indirection. "While my life still remains" is accurate but slightly formal; "while I still have life" captures the possession but loses the sacredness of <em>inochi</em>; "before my life runs out" captures the urgency but loses the gentleness. The Japanese <em>inochi ga, aru uchi ni</em> is how a Japanese grandmother would say this — not with drama, not with self-pity, but with the quiet acknowledgment that life is a gift that can be withdrawn. The comma is doing emotional work that English cannot easily reproduce: it is the breath between recognizing one's mortality and asking for one last meeting, the space where dignity lives.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of survival, self-worth, rice, and the courage to keep breathing.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">生きる＋名詞（連体形・関係節）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning">Dictionary-form verb + noun: "[noun] who/that [verbs]" — creates a relative clause that defines identity through action.</p>
+      <div class="grammar-example">生きるぼくら</div>
+      <p class="grammar-example-en">"We who live" — Living is not what they do; it is who they are.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ように（願望・祈り）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō ni</em>: "may it be that... / I hope that..." — the grammar of wishing, prayer, and hope.</p>
+      <div class="grammar-example">もう一度会えますように</div>
+      <p class="grammar-example-en">"I hope we can meet again" — The grammar of a grandmother's last wish.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜うちに（時間・期限）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...uchi ni</em>: "while... / before... (is gone)" — temporal construction marking a limited window of opportunity.</p>
+      <div class="grammar-example">私の命が、あるうちに</div>
+      <p class="grammar-example-en">"While my life still remains" — Life as a possession that can be withdrawn.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てないで（依頼・禁止）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te naide</em>: "don't... (soft prohibition)" — negative request, gentler than <em>-na</em> but firm.</p>
+      <div class="grammar-example">縮こまってないで</div>
+      <p class="grammar-example-en">"Don't cower" — The grammar of encouragement that respects the listener's fragility.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なくなんかない（強調否定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...naku nanka nai</em>: "not... at all / not... or anything" — emphatic casual negative, triple negation for absolute denial.</p>
+      <div class="grammar-example">ちっともなさけなくなんかない</div>
+      <p class="grammar-example-en">"Not pathetic at all" — Each negative particle a stone in the fortress of self-worth.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たような気分（比況・感覚）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ta yō na kibun</em>: "a feeling as if..." — simile construction that makes sensation the object of description.</p>
+      <div class="grammar-example">目で深呼吸したような気分</div>
+      <p class="grammar-example-en">"A feeling as if taking a deep breath with one's eyes" — The grammar of synesthetic experience.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜で（道具・手段）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...de</em> (instrumental particle): "with / by means of" — marks the tool or agent of an action.</p>
+      <div class="grammar-example">目で深呼吸したような</div>
+      <p class="grammar-example-en">"as if breathing with the eyes" — Eyes as the instrument of respiration in metaphor.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てみる（試行・体験）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te miru</em>: "to try...ing / to experience...ing" — the grammar of tentative action and discovery.</p>
+      <div class="grammar-example">生きてみる</div>
+      <p class="grammar-example-en">"to try living / to give living a try" — The novel's implicit grammar: living as an experiment one can attempt.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Harada Maha's grammar is the grammar of someone who has looked closely at the world and found that precision is a form of love. Pay attention to how <em>ikiru</em> + noun makes living an identity rather than an activity, how <em>yō ni</em> transforms a wish into a prayer, how <em>te naide</em> makes encouragement gentle enough to be heard, how the triple negative <em>chitto mo... nanka nai</em> builds a fortress against shame, and how <em>me de shinkokyū</em> makes beauty into oxygen. The grammar is as nourishing as the rice it describes.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『生きるぼくら』 &middot; 原田マハ &middot; 徳間書店 2012年9月5日刊 &middot; 432ページ &middot; ISBN 978-4-19-863300-6</p>
+  <p style="margin-top: var(--space-xs);">第2回徳間文庫大賞受賞</p>
+  <p style="margin-top: var(--space-xs);">著者：原田マハ（1962年生・東京都小平市出身・関西学院大学文学部卒・早稲田大学第二文学部美術史科卒）</p>
+  <p style="margin-top: var(--space-xs);">受賞歴：第1回日本ラブストーリー大賞（2005年） &middot; 第25回山本周五郎賞（2012年） &middot; 第36回新田次郎文学賞（2017年） &middot; 第52回泉鏡花文学賞（2024年）</p>
+</footer>
+
+</div>
+</body>
+</html>

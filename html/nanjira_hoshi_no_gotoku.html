@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汝、星のごとく — 凪良ゆう | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0c14;
+  --bg-surface: #111424;
+  --bg-elevated: #181d30;
+  --bg-card: #1e2338;
+  --ink-primary: #e4e6f0;
+  --ink-secondary: #b4b8d0;
+  --ink-muted: #7a80a0;
+  --ink-faint: #4a5070;
+  --accent-star: #6a7aaa;
+  --accent-star-dim: #3a4a7a;
+  --accent-star-glow: rgba(106, 122, 170, 0.12);
+  --accent-gold: #8a7a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-star-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-star);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-star-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-star-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-star);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-star-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-star), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-star);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-star-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-star); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-star-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-star-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-star);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-star-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-star);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.nuance-box h4 {
+  color: var(--accent-gold);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-star);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-star);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-star-dim), var(--accent-star));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.timeline li:last-child { border-bottom: none; }
+
+.timeline-year {
+  color: var(--accent-star);
+  font-weight: 500;
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-star);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Comparison table */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.8em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.comparison-table th {
+  color: var(--accent-star);
+  font-weight: 500;
+  background: var(--bg-elevated);
+}
+
+.comparison-table td:first-child {
+  font-weight: 500;
+  color: var(--ink-secondary);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-star-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>汝、星のごとく</h1>
+  <p class="hero-subtitle">Nanjira, Hoshi no Gotoku / You, Like a Star</p>
+  <p class="hero-meta">凪良 ゆう &middot; 講談社 2022年8月 &middot; 2023年第20回本屋大賞受賞 &middot; シリーズ累計200万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 汝、星のごとく</h2>
+  <p class="lead">The title <em>Nanjira, Hoshi no Gotoku</em> (汝、星のごとく) is a masterpiece of compressed meaning. In just five kanji and four kana, it invokes an entire cosmology of distance, light, and unreachable intimacy. The title is built around an archaic second-person pronoun, a celestial metaphor, and a classical comparative construction that together create a tone of solemn, almost biblical address. To understand the title is to understand the novel's central paradox: the people we love most are often as distant from us as stars — visible, radiant, and forever beyond our reach.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">汝</span>
+        <span class="romaji">nanji / nanjira</span>
+        <span class="meaning">"thou / you" (archaic, biblical, solemn) — The character 汝 (nanji) is an archaic second-person pronoun that survives in modern Japanese primarily in religious, literary, and historical contexts. It is the "thou" of Japanese: the pronoun used in Bible translations for address to God or from God to humanity, the pronoun of classical poetry and imperial edicts, the pronoun that marks the speaker's relationship to the addressee as one of profound, almost sacred significance. In the King James Bible, "Thou shalt not kill" is 汝、人を殺すなかれ. In Buddhist scriptures, the Buddha addresses his disciples as 汝ら (nanjira, "ye / you all"). The use of 汝 rather than the modern あなた (anata), 君 (kimi), or お前 (omae) immediately elevates the title from the realm of ordinary romance into something closer to prayer or prophecy. Nagira Yuu has said in interviews that the title came to her before the story was fully formed — she heard the phrase 汝、星のごとく and knew it was the name of something she had to write. The archaic pronoun creates a distance between speaker and addressee that mirrors the distance between the novel's lovers: they are bound by something deeper than modern intimacy, something that requires a vocabulary from before the modern era. What is lost in English is the specifically Japanese quality of 汝 as a pronoun that has been preserved for sacred and literary address. The English "You" is too casual; "Thou" captures the archaism but carries specifically English biblical associations that may not match the Japanese resonance. "Thee" is too Elizabethan. The Japanese reader who encounters 汝 in a contemporary novel title feels immediately that this is not an ordinary love story  it is a story addressed to someone with the gravity of prayer.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">星</span>
+        <span class="romaji">hoshi</span>
+        <span class="meaning">"star" — The word <em>hoshi</em> (星) is one of the most symbolically rich in Japanese. Unlike the English "star," which can mean a celebrity or a shape, <em>hoshi</em> in Japanese carries primarily celestial and metaphorical weight: a point of light in the darkness, a distant sun, a guide for navigation, a marker of fate. In the context of the Seto Inland Sea setting, stars are not merely decorative; they are practical — fishermen navigate by them, lovers meet under them, the island's isolation makes the night sky a central fact of life. But <em>hoshi</em> also carries the weight of Japanese literary tradition: the <em>tanabata</em> (七夕) legend of separated lovers who meet once a year across the Milky Way; the <em>hoshi</em> of the <em>Man'yōshū</em> that mark the passage of time; the "star" as a metaphor for a person's soul or destiny. In Nagira's title, the star functions on multiple levels: it is the lover as distant light, the self as isolated point in a vast darkness, the memory that persists across years and separation. The novel's island setting — where light pollution is minimal and the stars are vivid — makes <em>hoshi</em> a literal presence as well as a metaphorical one. What is lost in English is the specifically Japanese cultural weight of <em>hoshi</em> as a symbol of separation and reunion (via <em>tanabata</em>), of fate (<em>unmei</em> / 運命, literally "the command of the stars"), and of the soul's persistence after death. The English "star" can carry some of this, but it also carries Hollywood glamour and geometric shape — associations that dilute the title's specifically Japanese cosmology.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">のごとく</span>
+        <span class="romaji">no gotoku</span>
+        <span class="meaning">"like / as / in the manner of" — The construction <em>no gotoku</em> (のごとく) is the classical/literary form of the modern <em>no yō ni</em> (のように), meaning "like" or "as." <em>Gotoku</em> (如く) is the adverbial form of the classical adjective <em>gotoshi</em> (如し), which derives from the Chinese 如 (ru, "like / as"). The use of <em>no gotoku</em> rather than the colloquial <em>mitai</em> (みたい) or <em>no yō ni</em> creates a tone of literary solemnity that matches the archaic <em>nanji</em>. Together, 汝 and のごとく frame the title as a piece of classical Japanese — a line from a <em>waka</em>, a phrase from a sutra, an address from one eternal soul to another. The full title can be parsed as: "[O] Thou, [who art] like a star" — an address that names the beloved not by name but by simile, not by proximity but by distance. The comma (、) after 汝 creates a caesura, a breath, a moment of address before the comparison: "You — like a star." This pause is crucial; it separates the act of naming from the act of comparing, making the title feel like an invocation. What is lost in English is the specifically Japanese literary register of <em>no gotoku</em> as a form that belongs to classical poetry and religious text. The English "like a star" is accurate but flat; "as a star" is biblical but not quite right; "star-like" is adjectival and loses the address. The Japanese <em>no gotoku</em> carries centuries of literary usage — it is the form in which poets have compared their beloved to moon, flower, and star since the Heian period. Nagira's title places her novel in this lineage while insisting on its modernity: this is not a classical romance but a contemporary story that requires classical language to express what modern language cannot.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Hardcover: Kodansha, August 4, 2022, 352 pages, ISBN 978-4-06-528149-9. Bunko edition: Kodansha Bunko (な 101-1), July 15, 2025, ISBN 978-4-06-540188-0. The hardcover cover features a photograph of beaded jewelry against a purple background; removing the dust jacket reveals a black cover with small stars scattered like a galaxy — a design that embodies the title's cosmology.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>凪良 ゆう &mdash; Nagira Yuu (1973–)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">凪</div>
+    <div class="author-name-block">
+      <h3>凪良 ゆう / Nagira Yuu</h3>
+      <p class="author-name-romaji">Novelist &middot; Two-time Honya Taisho winner &middot; Born January 25, 1973, Otsu, Shiga Prefecture</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Nagira Yuu was born on January 25, 1973, in Otsu City, Shiga Prefecture — the ancient capital region on the shores of Lake Biwa, a landscape of water and mountains that would inform her later fascination with islands and isolation. She was raised in a single-parent household; her mother worked long hours and was often absent, leaving Nagira to manage household tasks from an early age. In sixth grade, she was left alone for approximately ten days, her money and food running dangerously low, her mother not returning. It was her teacher who finally noticed something was wrong. This experience of early self-sufficiency, of learning to survive without reliable adult care, of understanding that the people who should protect you might disappear — this is the emotional foundation of everything Nagira writes.</p>
+    <p style="margin-bottom: var(--space-md);">Nagira debuted as a writer in 2006 with BL (Boys' Love) fiction — the genre of male-male romance that has been a vital part of Japanese popular literature since the 1970s. For over a decade, she wrote prolifically in this genre, publishing as many as eight books a year and building a reputation for psychologically complex characters and emotionally devastating plots. Her BL masterpiece, <em>Utsukushii Kare</em> (美しい彼, "My Beautiful Man," 2014), became a cultural phenomenon, spawning sequels, a live-action TV drama (2021), and a feature film (2023). But Nagira's ambitions extended beyond genre boundaries. In 2017, she published <em>Kamisama no Biotope</em> (神さまのビオトープ, "God's Biotope") through Kodansha Taiga, her first major non-BL work, which established her as a writer capable of addressing broader themes of family, faith, and isolation.</p>
+    <p style="margin-bottom: var(--space-md);">The turning point came in 2019 with <em>Rurō no Tsuki</em> (流浪の月, "The Wandering Moon"), a novel about a young girl kidnapped by an older man and the complex moral universe that surrounds their relationship. The book won the 2020 Honya Taisho (本屋大賞, "Booksellers' Award") — the prestigious prize chosen by bookstore employees nationwide — and was adapted into a critically acclaimed film directed by Lee Sang-il in 2022. Nagira had crossed over from genre fiction to national literary prominence. In 2021, her novel <em>Horobi no Mae no Shangri-La</em> (滅びの前のシャングリラ, "Shangri-La Before the Fall") was nominated for the Honya Taisho, making her one of the few authors to achieve consecutive nominations.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Nanjira, Hoshi no Gotoku</em> (2022) represents the culmination of Nagira's artistic development — the novel in which her BL-honed sensitivity to emotional intensity, her general-fiction capacity for social observation, and her own life experience of hardship and survival converge into a single, devastating narrative. The book won the 2023 Honya Taisho (20th edition), making Nagira only the second author in the award's history to win twice, after Onda Riku (恩田陸, winner for <em>Yoru no Pikunikku</em> in 2005 and <em>Mitsubachi to Enrai</em> in 2017). It was also nominated for the 168th Naoki Prize and the 44th Yoshikawa Eiji Literary Newcomer Prize, among numerous other honors. The series has sold over 2 million copies. A sequel, <em>Hoshi wo Amu</em> (星を編む, "Weaving Stars," 2023), continues the story. The film adaptation, directed by Fujii Michihito and starring Yokohama Ryusei and Hirose Suzu, was released on October 9, 2026.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Nagira as a writer is her refusal to judge her characters. In interview after interview, she insists that she writes neither heroes nor villains — she writes people, in all their contradictory, self-destructive, unexpectedly noble humanity. "There are almost no 'correct people' in this story," she said of <em>Nanjira, Hoshi no Gotoku</em>. "People aren't made only of correct things. I want to write fairly about both the good and the bad in a person." This ethical stance — neither moralistic nor nihilistic, but clear-eyed and compassionate — is what makes her work resonate so deeply with readers. She does not offer easy answers because she knows, from her own life, that easy answers are a luxury not everyone can afford.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Seto Inland Sea, Young Caregivers, and the Burden of "Correctness"</h2>
+
+  <div class="card">
+    <h3>The Seto Inland Sea: Islands at the Edge of Japan</h3>
+    <p>The Seto Inland Sea (瀬戸内海, <em>Seto Naikai</em>) is the body of water between Honshu, Shikoku, and Kyushu — a Mediterranean-like expanse of calm waters dotted with over 3,000 islands, many of them inhabited only by a handful of families. The region is famous for its beauty: the "three views of Japan" (<em>Nihon Sankei</em> / 日本三景) include the Inland Sea's Miyajima, and the area has inspired artists from the <em>ukiyo-e</em> master Hiroshige to the contemporary architect Ando Tadao. But beneath the scenic surface lies a region in decline. Rural depopulation, aging demographics, and the closure of schools and services have left many islands with shrinking populations and uncertain futures.</p>
+    <p style="margin-top: var(--space-sm);">In Nagira's novel, the island is both paradise and prison. For Akimi, it is home — the place where she was born, where she knows every path and every face, where the sea and sky define the boundaries of her world. For Kai, it is exile — the place his mother has dragged him to in pursuit of yet another man, a community where they are outsiders from the start. The island's beauty is inseparable from its suffocation: everyone knows everyone, privacy is impossible, and the only escape is the ferry to the mainland. The novel captures the double-edged quality of island life with precision — the way that intense natural beauty can coexist with intense social constraint, the way that community support can become community surveillance. The Seto Inland Sea is not merely a backdrop; it is a character in the novel, a force that shapes the possibilities available to those who live within its horizons.</p>
+  </div>
+
+  <div class="card">
+    <h3>Young Caregivers and Invisible Labor</h3>
+    <p>Akimi is a <em>yangu keāgā</em> (ヤングケアラー, "young caregiver") — a child or adolescent who provides ongoing care for a family member with illness, disability, or mental health challenges. Japan has an estimated 1.7 million young caregivers, though the true number is likely higher because the phenomenon is underreported and often invisible. These children cook, clean, manage medications, provide emotional support, and sometimes miss school or abandon their own aspirations to care for parents or siblings. Until recently, Japan had no legal framework for identifying or supporting young caregivers; the issue only entered public discourse in the late 2010s.</p>
+    <p style="margin-top: var(--space-sm);">Akimi's situation is a textbook case: her father has left for another woman, her mother has developed mental health problems in the aftermath, and Akimi has become the de facto head of the household — managing the house, mediating between her parents, and suppressing her own needs to maintain the family's fragile equilibrium. The novel's opening line — <em>Tsuki ni ichido, watashi no otto wa koibito ni ai ni iku</em> (月に一度、私の夫は恋人に会いにいく, "Once a month, my husband goes to meet his lover") — is spoken from the mother's perspective in the prologue, but the novel's true subject is the daughter who must live in the wreckage of this sentence. Nagira's portrayal of young caregiving is neither sentimental nor accusatory; it simply shows what happens to a child when the adults around her fail to function as adults. The "correctness" (<em>tadashisa</em> / 正しさ) that Akimi has been taught — be good, study hard, don't complain — becomes a cage from which only economic independence can free her.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Tyranny of "Correctness" in Contemporary Japan</h3>
+    <p>The word <em>tadashisa</em> (正しさ, "correctness / righteousness / propriety") appears throughout Nagira's novel as both a theme and a trap. Japanese society places enormous emphasis on <em>tadashii</em> (正しい) behavior — the correct way to speak, the correct path through education and employment, the correct age to marry, the correct way to maintain a family. This "correctness" is not merely social pressure; it is internalized as a moral imperative. To deviate from <em>tadashisa</em> is not merely to be different but to be wrong — morally, socially, existentially wrong.</p>
+    <p style="margin-top: var(--space-sm);">The novel's characters are all, in different ways, victims of <em>tadashisa</em>. Akimi's mother believes she should be a "correct" wife who tolerates her husband's infidelity. Akimi believes she should be a "correct" daughter who protects her mother. Kai's mother believes she should be a "correct" woman who follows her heart regardless of the cost to her son. Kitahara-sensei believes he should be a "correct" teacher who guides his students toward "correct" lives. And yet, the novel insists, <em>tadashisa</em> alone is not enough to live by. "Bound by correctness, cursed by love, and yet we go on living" (正しさに縛られ、愛に呪われ、それでもわたしたちは生きていく) — the tagline on the book's obi — captures the central tension: the characters cannot abandon correctness entirely, but they cannot live by it alone. They need something else — love, error, folly, choice — to make life bearable. Nagira's novel is, in this sense, a philosophical investigation into what happens when the "correct" life and the livable life diverge, and what we owe to ourselves when they do.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>A Fifteen-Year Constellation</h2>
+
+  <div class="card">
+    <h3>The Architecture of the Novel</h3>
+    <p><em>Nanjira, Hoshi no Gotoku</em> is structured as a dual-time narrative that follows its two protagonists — Inoue Akimi (井上暁海) and Aono Kai (青埜櫂) — from their meeting at age seventeen through their early thirties, with alternating chapters that shift between their perspectives and across time. The novel's structure mirrors the movement of stars: the characters orbit each other at varying distances, sometimes close enough to touch, sometimes separated by years and silence, always bound by a gravitational pull that neither can escape nor fully surrender to.</p>
+    <p style="margin-top: var(--space-sm);"><strong>Prologue:</strong> The novel opens with a devastating sentence from the perspective of Akimi's mother: "Once a month, my husband goes to meet his lover." This is the world Akimi inhabits — a world where the adult she depends on has already chosen someone else, where the family she thought was hers has a secret door. The prologue establishes the novel's method: it will show us the world through the eyes of those who are wounded by it, and it will refuse to simplify their wounds into categories of victim and perpetrator.</p>
+    <p style="margin-top: var(--space-sm);"><strong>Part One: The Island (Age 17):</strong> Akimi lives on a small island in the Seto Inland Sea with her mother, who has never recovered from her husband's departure. Akimi has become her mother's caretaker — managing the house, managing her mother's emotions, managing the family's image in a community where everyone knows everyone. Into this suffocating stability comes Kai, a transfer student whose free-spirited mother has followed a lover to the island and opened a snack bar. Kai and his mother are outsiders, objects of gossip and suspicion. Akimi and Kai are drawn together not by shared interests but by shared damage: both are children of mothers who have prioritized their own desires over their children's needs, both have learned to be self-sufficient too early, both carry a loneliness that the island's beauty cannot cure. Their love begins not with romance but with recognition — the shock of seeing one's own damage reflected in another's eyes.</p>
+    <p style="margin-top: var(--space-sm);"><strong>Part Two: Tokyo (Ages 25–32):</strong> After high school, Akimi and Kai leave the island for Tokyo — the classic Japanese narrative of escape from the provinces to the capital. But Tokyo does not solve their problems; it merely changes their form. Akimi pursues economic independence with ferocious determination, understanding that money is the only reliable protection against the vulnerability she experienced as a child. Kai struggles to find his path, caught between his desire to become an adult who can protect others and his fear that he is doomed to repeat his mother's pattern of destructive love. They separate, reconnect, separate again — their relationship a map of approach and avoidance, intimacy and retreat. Other characters enter their orbits: Kitahara-sensei, the teacher who offers wisdom he cannot always follow; Hayashi Toko, the embroidery artist who is Akimi's father's lover, a woman who has made her own "incorrect" choices; Naoto, Kai's half-brother, who carries his own version of the family wound.</p>
+    <p style="margin-top: var(--space-sm);"><strong>The Novel's Question:</strong> At the heart of the novel is a question that each character must answer in their own way: Is it permissible to "err" one's life for love? The phrase <em>watashi wa aisuru otoko no tame ni jinsei wo ayamaritai</em> (わたしは愛する男のために人生を誤りたい, "I want to err my life for the man I love") — which appears on the book's promotional materials — is not a declaration of romantic abandon but a philosophical position. To "err" (<em>ayamaru</em> / 誤る) one's life is to choose a path that society deems wrong, to make mistakes deliberately, to prioritize love over correctness. The novel does not endorse this position uncritically; it shows the cost of such choices — the pain to oneself, the pain to others, the irreversibility of certain decisions. But it also shows the cost of the alternative: a "correct" life that is empty of passion, a life lived according to rules that were made by people who did not know your particular damage. The novel's achievement is to make both choices comprehensible, to refuse the easy moralism that would condemn either path.</p>
+  </div>
+
+  <div class="card">
+    <h3>Characters as Constellations</h3>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>井上暁海 / Inoue Akimi</h4>
+        <p class="char-role">Protagonist &middot; The island girl who learns to survive</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Raised on a Seto Inland Sea island by a mother incapacitated by her husband's infidelity, Akimi becomes a young caregiver long before she has the word for it. Her defining quality is her ferocious commitment to economic independence — she understands, with the clarity of someone who has experienced its absence, that money is freedom. Her love for Kai is inseparable from her fear of becoming her mother: she will not depend on a man, will not lose herself in love, will not repeat the error that destroyed her mother's life. And yet, the novel asks, is a life without such error a life at all?</p>
+      </div>
+      <div class="char-card">
+        <h4>青埜櫂 / Aono Kai</h4>
+        <p class="char-role">Protagonist &middot; The boy tossed by his mother's love</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Kai has spent his childhood being dragged from place to place by a mother who follows her heart without considering the cost to her son. He arrives on the island already exhausted by love — not his own, but his mother's, which has made him perpetual collateral damage. His attraction to Akimi is both a recognition of shared damage and a hope that he might become, with her, someone who can protect rather than be protected. But the novel refuses this easy redemption: Kai must learn that the capacity to love and the capacity to wound are not opposites but twins.</p>
+      </div>
+      <div class="char-card">
+        <h4>北原先生 / Kitahara-sensei</h4>
+        <p class="char-role">Teacher &middot; The adult who tries to help</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">A teacher who sees what is happening to Akimi and Kai and attempts to offer guidance without imposing his own "correctness." His most important lesson is not academic but existential: "People are animals that live in groups. So one cannot live without belonging to something. What I'm saying is the freedom to decide what you belong to. The chains that bind you, you choose yourself." He is the rare adult in the novel who acknowledges that adulthood is not a state of having all the answers but of having learned which questions matter.</p>
+      </div>
+      <div class="char-card">
+        <h4>林瞳子 / Hayashi Toko</h4>
+        <p class="char-role">Embroidery artist &middot; The "other woman"</p>
+        <p style="font-size: var(--step--1); color: var(--ink-secondary);">Akimi's father's lover, an embroidery artist who lives on the mainland. She is, in conventional moral terms, the villain of Akimi's childhood — the woman who destroyed her family. But Nagira refuses this simplification. Toko is a fully realized character with her own history, her own damage, her own claim to happiness. The novel's willingness to extend compassion even to the "other woman" is a measure of its ethical ambition: it will not divide its world into innocent victims and guilty perpetrators because it knows that such divisions are themselves a form of violence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the philosophical precision, emotional devastation, and linguistic beauty of Nagira's prose — a voice that has made her one of the most celebrated writers in contemporary Japan.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Opening Wound</div>
+    <div class="passage-jp">
+      月に一度、私の夫は恋人に会いにいく。
+    </div>
+    <div class="passage-romaji">
+      "Tsuki ni ichido, watashi no otto wa koibito ni ai ni iku."
+    </div>
+    <div class="passage-en">
+      "Once a month, my husband goes to meet his lover."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is one of the most devastating opening lines in contemporary Japanese fiction, and its power lies in its calm, almost bureaucratic precision. The phrase <em>tsuki ni ichido</em> (月に一度, "once a month") establishes a schedule, a routine — the husband's infidelity is not a passionate aberration but a regular appointment, as predictable as a salaryman's monthly report. The word <em>otto</em> (夫, "husband") is the legal, formal term — not <em>shujin</em> (主人, "master/husband," with its patriarchal overtones) or <em>kare</em> (彼, "he/boyfriend," with its casual intimacy) but the neutral, official <em>otto</em>: the man to whom the speaker is married, regardless of what he does. The verb phrase <em>ai ni iku</em> (会いにいく, "goes to meet") is deliberately neutral — not <em>ai ni kakureru</em> (会いに隠れる, "sneaks to meet") or <em>ai ni kakekomeru</em> (会いに駆け込む, "rushes to meet") but simply "goes to meet," as one might go to meet a client or a friend. The effect is chilling: the speaker has so thoroughly absorbed the fact of her husband's infidelity that she can describe it in the same tone she might use for his commute. The sentence is spoken by Akimi's mother in the prologue, but its true subject is Akimi, the daughter who must live in a house where this sentence is true. What is lost in English is the specifically Japanese quality of <em>tsuki ni ichido</em> as a temporal marker of routine — the way it suggests not merely frequency but normalization, the transformation of betrayal into schedule. The English "once a month" captures the meaning but loses the sense of exhausted resignation encoded in the Japanese. The Japanese reader feels, in this single sentence, the entire weight of a woman's accommodation to her own humiliation — and the daughter who will inherit that weight.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Philosophy of Chains</div>
+    <div class="passage-jp">
+      人は群れで暮らす動物です。だからなにかに属さないと生きていけない。ぼくが言っているのは、自分がなにに属するかを決める自由です。自分を縛る鎖は自分で選ぶ。
+    </div>
+    <div class="passage-romaji">
+      "Hito wa mure de kurasu dōbutsu desu. Da kara nanika ni zokusanai to ikite ikenai. Boku ga itte iru no wa, jibun ga nani ni zokusuru ka wo kimeru jiyū desu. Jibun wo shibaru kusari wa jibun de erabu."
+    </div>
+    <div class="passage-en">
+      "People are animals that live in groups. So one cannot live without belonging to something. What I'm saying is the freedom to decide what you belong to. The chains that bind you, you choose yourself."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage, spoken by Kitahara-sensei to his students, is the novel's philosophical centerpiece. It begins with a biological fact — <em>hito wa mure de kurasu dōbutsu desu</em> (人は群れで暮らす動物です, "people are animals that live in groups") — stated with the calm authority of the <em>desu</em> (です) copula, the neutral, teachable form of "is." The word <em>mure</em> (群れ, "group / flock / herd") is the term used for animals, not the human-centered <em>shūdan</em> (集団, "group / collective") or <em>chiimu</em> (チーム, "team"); by using <em>mure</em>, Kitahara strips away human exceptionalism and establishes that our need for belonging is biological, not cultural. The consequence follows logically: <em>nanika ni zokusanai to ikite ikenai</em> (なにかに属さないと生きていけない, "one cannot live without belonging to something"). The verb <em>zokusuru</em> (属する, "to belong to") is a <em>suru</em>-verb with formal, almost legal connotations — one "belongs to" an organization, a category, a species. The negative conditional <em>...nai to ikite ikenai</em> (〜ないと生きていけない, "cannot live without...") is the grammar of necessity, not preference. But the crucial turn comes in the next sentence: <em>jibun ga nani ni zokusuru ka wo kimeru jiyū</em> (自分がなにに属するかを決める自由, "the freedom to decide what you belong to"). The word <em>jiyū</em> (自由, "freedom / liberty") transforms the biological necessity into a moral choice: we must belong, but we can choose what we belong to. The final sentence — <em>jibun wo shibaru kusari wa jibun de erabu</em> (自分を縛る鎖は自分で選, "The chains that bind you, you choose yourself") — is the novel's most quoted line, and its grammar is as precise as its philosophy. <em>Kusari</em> (鎖, "chains / fetters") evokes both physical bondage and the Buddhist concept of earthly attachment; <em>shibaru</em> (縛る, "to bind / to tie") is the verb of constraint; and <em>jibun de erabu</em> (自分で選ぶ, "choose yourself / choose by yourself") places agency in the subject's own hands. The sentence structure — object (<em>jibun wo shibaru kusari</em>) + topic marker (<em>wa</em>) + subject (<em>jibun</em>) + instrumental (<em>de</em>) + verb (<em>erabu</em>) — creates a mirror effect: the chains that bind <em>you</em>, <em>you</em> choose. The repetition of <em>jibun</em> (自分, "oneself") emphasizes that the agent of binding and the agent of choice are the same person. What is lost in English is the full weight of <em>kusari</em> as a Buddhist metaphor for the attachments that keep us in the cycle of suffering (<em>karma</em> / 業), and the specifically Japanese grammar of <em>jibun de</em> as a self-executing construction — "by oneself" as both the means and the responsibility. The English "you choose yourself" is ambiguous (does it mean "you choose for yourself" or "you choose your own self"?); the Japanese <em>jibun de erabu</em> is unambiguously "you, by your own action, choose."</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Ego of Living</div>
+    <div class="passage-jp">
+      わたしは愛する男のために人生を誤りたい。
+    </div>
+    <div class="passage-romaji">
+      "Watashi wa aisuru otoko no tame ni jinsei wo ayamaritai."
+    </div>
+    <div class="passage-en">
+      "I want to err my life for the man I love."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — which appears on the book's promotional obi and has become the novel's most famous line — is a philosophical manifesto disguised as a romantic declaration. The verb <em>ayamaru</em> (誤る, "to err / to make a mistake / to go astray") is the crucial word. It derives from the same root as <em>ayamachi</em> (誤ち, "error / mistake") and <em>ayashii</em> (怪しい, "suspicious / dubious"), and it carries connotations not merely of making a mistake but of deviating from the correct path. In Buddhist terminology, <em>ayamaru</em> is the error that leads one away from enlightenment; in moral discourse, it is the choice of wrong over right. To "err one's life" (<em>jinsei wo ayamaru</em> / 人生を誤る) is therefore not merely to make mistakes but to choose a life that society judges incorrect — to prioritize love over stability, passion over propriety, the heart's demand over the social contract. The particle <em>ni</em> (に) marks <em>aisuru otoko no tame</em> (愛する男のために, "for the sake of the man I love") as the beneficiary of the error: the speaker wants to err not for herself but for him, to make of her life a gift that is also a mistake. The desire-form <em>ayamaritai</em> (誤りたい, "want to err") is shocking in its frankness — most people hide their errors, excuse them, regret them. To openly want to err is to reject the entire moral framework that judges actions as correct or incorrect. What is lost in English is the specifically Japanese gravity of <em>jinsei wo ayamaru</em> (人生を誤る) as an idiom. In Japanese, to "err one's life" is a recognized, if grave, concept — it means to have taken a wrong turn so fundamental that the entire life trajectory is affected. The English "err" is too mild (it suggests a minor mistake); "ruin" is too strong (it suggests destruction, not chosen deviation); "waste" is too judgmental. The Japanese <em>ayamaru</em> contains all of these and something more: the sense of a deliberate, knowing choice to depart from the path of correctness — a choice that the speaker makes not despite understanding its cost but because she understands it and chooses it anyway. This is the novel's radical proposition: that there are errors worth making, lives worth erring, and that love may be the only justification strong enough to bear the weight of such error.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Freedom of Money</div>
+    <div class="passage-jp">
+      お金があるから自由でいられる。
+    </div>
+    <div class="passage-romaji">
+      "Okane ga aru kara jiyū de irareru."
+    </div>
+    <div class="passage-en">
+      "Because there is money, one can be free."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This deceptively simple sentence encapsulates Akimi's entire philosophy of survival. The grammar is precise: <em>okane ga aru</em> (お金がある, "money exists / there is money") + <em>kara</em> (から, "because") + <em>jiyū de irareru</em> (自由でいられる, "can be free / can maintain a state of freedom"). The potential-passive form <em>irareru</em> (いられる) — from <em>iru</em> (いる, "to be") + potential <em>-rareru</em> — creates a sense of maintained possibility: freedom is not a single achievement but a state that must be continuously sustained, and money is the condition that makes this sustaining possible. The sentence is not "money brings freedom" or "money creates freedom" but "because money exists, one can be in a state of freedom" — a formulation that makes money a necessary condition without claiming it is sufficient. Akimi knows this from experience: she has lived without money, has felt the constriction of dependence, has understood that the "correct" path of filial devotion becomes indistinguishable from imprisonment when one has no economic escape. Her ferocious pursuit of financial independence is not materialism; it is the pragmatism of someone who has learned that love without money is vulnerable, that correctness without resources is hollow, and that the only chains one cannot choose are the chains of poverty. What is lost in English is the specifically Japanese resonance of this sentence in a culture where economic independence for women is a relatively recent and still contested achievement. The English "money makes you free" sounds like a slogan; the Japanese <em>okane ga aru kara jiyū de irareru</em> is a personal discovery, hard-won and specific. The particle <em>ga</em> (が) marks <em>okane</em> as the subject — money is the actor, freedom the result — while the potential-passive <em>irareru</em> preserves the speaker's agency within the condition: one <em>can</em> be free, if money is present. The sentence is Akimi's answer to her mother's life: her mother had no money of her own, and so she could not be free. Akimi will not repeat that error.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of love, error, economic survival, and the chains we choose.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>汝</td><td>nanji / nanjira</td><td class="pos">pronoun</td><td>thou, you (archaic, biblical)</td></tr>
+        <tr><td>星</td><td>hoshi</td><td class="pos">noun</td><td>star; celestial body; fate</td></tr>
+        <tr><td>如く</td><td>gotoku</td><td class="pos">adverb</td><td>like, as, in the manner of (classical)</td></tr>
+        <tr><td>正しさ</td><td>tadashisa</td><td class="pos">noun</td><td>correctness, righteousness, propriety</td></tr>
+        <tr><td>正しい</td><td>tadashii</td><td class="pos">adj</td><td>correct, right, proper, just</td></tr>
+        <tr><td>縛る</td><td>shibaru</td><td class="pos">verb</td><td>to bind, to tie, to restrict, to fetter</td></tr>
+        <tr><td>呪う</td><td>norou</td><td class="pos">verb</td><td>to curse, to damn, to hex</td></tr>
+        <tr><td>愛</td><td>ai</td><td class="pos">noun</td><td>love (deep, committed)</td></tr>
+        <tr><td>恋</td><td>koi</td><td class="pos">noun</td><td>love (romantic, passionate)</td></tr>
+        <tr><td>人生</td><td>jinsei</td><td class="pos">noun</td><td>life, one's lifetime, human life</td></tr>
+        <tr><td>誤る</td><td>ayamaru</td><td class="pos">verb</td><td>to err, to make a mistake, to go astray</td></tr>
+        <tr><td>欠落</td><td>ketsuraku</td><td class="pos">noun</td><td>lack, deficiency, missing piece, absence</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness, solitude, isolation</td></tr>
+        <tr><td>すれ違い</td><td>surechigai</td><td class="pos">noun</td><td>passing each other, missing each other, misunderstanding</td></tr>
+        <tr><td>惹かれ合う</td><td>hikareau</td><td class="pos">verb</td><td>to be drawn to each other, to attract each other</td></tr>
+        <tr><td>自由奔放</td><td>jiyū honpō</td><td class="pos">adj</td><td>free-spirited, unrestrained, footloose</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Family, Society & Survival</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>夫</td><td>otto</td><td class="pos">noun</td><td>husband (formal/neutral)</td></tr>
+        <tr><td>恋人</td><td>koibito</td><td class="pos">noun</td><td>lover, sweetheart, boyfriend/girlfriend</td></tr>
+        <tr><td>不倫</td><td>furin</td><td class="pos">noun</td><td>extramarital affair, infidelity</td></tr>
+        <tr><td>転校生</td><td>tenkōsei</td><td class="pos">noun</td><td>transfer student</td></tr>
+        <tr><td>振り回す</td><td>furimawasu</td><td class="pos">verb</td><td>to wield, to brandish; to toss about, to manipulate</td></tr>
+        <tr><td>ヤングケアラー</td><td>yangu keāgā</td><td class="pos">noun</td><td>young caregiver</td></tr>
+        <tr><td>経済的自立</td><td>keizaiteki jiritsu</td><td class="pos">noun</td><td>economic independence, financial self-reliance</td></tr>
+        <tr><td>お金</td><td>okane</td><td class="pos">noun</td><td>money (polite)</td></tr>
+        <tr><td>自由</td><td>jiyū</td><td class="pos">noun</td><td>freedom, liberty</td></tr>
+        <tr><td>鎖</td><td>kusari</td><td class="pos">noun</td><td>chain, fetters; bond, attachment</td></tr>
+        <tr><td>群れ</td><td>mure</td><td class="pos">noun</td><td>group, flock, herd, pack (of animals)</td></tr>
+        <tr><td>属する</td><td>zokusuru</td><td class="pos">verb</td><td>to belong to, to be affiliated with</td></tr>
+        <tr><td>生きていく</td><td>ikite iku</td><td class="pos">verb</td><td>to go on living, to live on</td></tr>
+        <tr><td>切ない</td><td>setsunai</td><td class="pos">adj</td><td>heartrending, poignant, painful (in a beautiful way)</td></tr>
+        <tr><td>心の奥</td><td>kokoro no oku</td><td class="pos">noun</td><td>the depths of one's heart</td></tr>
+        <tr><td>運命</td><td>unmei</td><td class="pos">noun</td><td>fate, destiny (lit. "command of the stars")</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Island, the Sea & the Sky</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>瀬戸内海</td><td>Seto Naikai</td><td class="pos">noun</td><td>Seto Inland Sea</td></tr>
+        <tr><td>島</td><td>shima</td><td class="pos">noun</td><td>island</td></tr>
+        <tr><td>風光明媚</td><td>fūkō meibi</td><td class="pos">adj</td><td>scenic, beautiful (of landscape)</td></tr>
+        <tr><td>海</td><td>umi</td><td class="pos">noun</td><td>sea, ocean</td></tr>
+        <tr><td>空</td><td>sora</td><td class="pos">noun</td><td>sky, heavens</td></tr>
+        <tr><td>夜空</td><td>yozora</td><td class="pos">noun</td><td>night sky</td></tr>
+        <tr><td>銀河</td><td>ginga</td><td class="pos">noun</td><td>galaxy, Milky Way</td></tr>
+        <tr><td>星座</td><td>seiza</td><td class="pos">noun</td><td>constellation</td></tr>
+        <tr><td>輝く</td><td>kagayaku</td><td class="pos">verb</td><td>to shine, to sparkle, to glitter</td></tr>
+        <tr><td>距離</td><td>kyori</td><td class="pos">noun</td><td>distance, gap</td></tr>
+        <tr><td>出会い</td><td>deai</td><td class="pos">noun</td><td>encounter, meeting</td></tr>
+        <tr><td>別れ</td><td>wakare</td><td class="pos">noun</td><td>parting, separation, farewell</td></tr>
+        <tr><td>再会</td><td>saikai</td><td class="pos">noun</td><td>reunion, meeting again</td></tr>
+        <tr><td>郷愁</td><td>kyōshū</td><td class="pos">noun</td><td>nostalgia, homesickness</td></tr>
+        <tr><td>帰郷</td><td>kikyō</td><td class="pos">noun</td><td>returning to one's hometown</td></tr>
+        <tr><td>上京</td><td>jōkyō</td><td class="pos">noun</td><td>going up to Tokyo (from the provinces)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Nagira Yuu's prose is deceptively simple — sentences that appear straightforward on the surface carry layers of cultural, philosophical, and emotional weight that resist easy translation. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Nanji</em> (汝) as Sacred Address</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>汝</strong>、星のごとく</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>You</strong>, Like a Star" / "<strong>Thou</strong>, Like a Star"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The pronoun <em>nanji</em> (汝) is doing extraordinary work in this title. In modern Japanese, the second-person pronoun has become so fraught with social complexity that many speakers avoid it entirely — <em>anata</em> (あなた) can mean "you" or "darling" depending on context; <em>kimi</em> (君) is masculine and slightly condescending; <em>omae</em> (お前) is rough and intimate; <em>anta</em> (あんた) is casual and potentially rude. <em>Nanji</em> bypasses all of these modern complications by belonging to a different era entirely. It is the pronoun of scripture, of poetry, of address from one eternal being to another. When Nagira uses <em>nanji</em> in a contemporary novel title, she is doing something analogous to an English writer using "thee" or "thou" — but with greater effect, because <em>nanji</em> has been so thoroughly preserved for sacred and literary contexts that it carries almost no everyday baggage. The English "You" cannot capture this elevation; "Thou" captures the archaism but adds English biblical associations that may not align with the Japanese resonance. What is lost is the sense that the addressee is being addressed across a gulf of time and register — that the speaker is reaching for a vocabulary adequate to the gravity of their feeling. The Japanese reader who sees 汝 on a book cover knows, before reading a word, that this is a story about love as something that requires ancient words.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Ayamaru</em> (誤る) as Chosen Error</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>人生を<strong>誤りたい</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"want to <strong>err</strong> my life" / "want to <strong>throw away</strong> my life" / "want to <strong>ruin</strong> my life"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The verb <em>ayamaru</em> (誤る) exists in a semantic space that English struggles to map. It means "to make a mistake," but with the specific connotation of deviating from a path — the <em>ayamachi</em> (誤ち) is not a random error but a wrong turn, a step off the correct road. In the context of <em>jinsei wo ayamaru</em> (人生を誤る), the phrase suggests not merely making mistakes in life but choosing a life that is, by social standards, a mistake — marrying the wrong person, pursuing the wrong career, loving the wrong man. The desire-form <em>ayamaritai</em> (誤りたい) is what makes the line shocking: most people do not <em>want</em> to err. They err despite themselves, against their will, and spend their lives recovering or regretting. To want to err is to reject the moral framework that calls certain choices mistakes. It is to say: I know this is wrong by your standards, and I choose it anyway. The English "err" is too weak (it suggests a spelling mistake); "ruin" is too strong (it suggests destruction); "throw away" is too contemptuous. The Japanese <em>ayamaru</em> carries the sense of a navigational error — of setting one's course deliberately away from the marked path, into territory that is uncharted because society has marked it as wrong. What is lost is the specifically Japanese sense of life as a path (<em>michi</em> / 道) from which one can deviate — a conceptual metaphor that underlies the entire novel's philosophy of choice and consequence.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Setsunai</em> (切ない) as Beautiful Pain</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>その愛は、あまりにも<strong>切ない</strong>。</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"That love is too <strong>painful</strong>." / "That love is <strong>heartrending</strong>."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>setsunai</em> (切ない) is one of the most untranslatable in Japanese. It describes a pain that is simultaneously beautiful — the pain of loving something you may lose, the pain of happiness that is aware of its own fragility, the pain of a moment so perfect it hurts. The etymology is suggestive: <em>setsu</em> (切) means "to cut," and <em>setsunai</em> carries the sense of something so sharp it cuts the heart — but cuts it open rather than destroys it. The promotional tagline <em>sono ai wa, amari ni mo setsunai</em> (その愛は、あまりにも切ない, "That love is too heartrending") uses <em>setsunai</em> to describe a love that is not merely sad or tragic but painfully beautiful — a love whose very intensity makes it unbearable. English "painful" is too purely negative; "heartrending" captures the physicality but loses the beauty; "bittersweet" captures the mixture but loses the sharpness. The Japanese <em>setsunai</em> is the emotional register of the entire novel: not tragedy in the classical sense, but the exquisite pain of watching people you care about make choices that will hurt them — and understanding that those choices may be the only way they can live. What is lost in English is the specifically Japanese aesthetic of <em>mono no aware</em> (物の哀れ, "the pathos of things") that <em>setsunai</em> invokes — the awareness that beauty and transience are inseparable, and that the deepest emotions are those that contain their own ending.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kusari</em> (鎖) as Chosen Bondage</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>自分を縛る<strong>鎖</strong>は自分で選</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"The <strong>chains</strong> that bind you, you choose yourself."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>kusari</em> (鎖, "chain / fetters") carries in Japanese a double resonance that English "chain" only partially captures. On one hand, <em>kusari</em> is the physical object — metal links, imprisonment, bondage. On the other hand, it is a Buddhist metaphor for <em>bonnō</em> (煩悩, "earthly desires / attachments") — the chains that keep sentient beings trapped in the cycle of birth and death. When Kitahara-sensei says <em>jibun wo shibaru kusari wa jibun de erabu</em> (自分を縛る鎖は自分で選ぶ), he is invoking both resonances: the chains are both real (social expectations, family obligations, economic necessities) and spiritual (the attachments we form, the desires we pursue). The verb <em>shibaru</em> (縛る, "to bind / to tie") reinforces the physicality — this is not abstract constraint but something that wraps around the body, that limits movement, that can be felt. And yet, the sentence insists, these chains are <em>chosen</em> (<em>erabu</em> / 選ぶ). This is not the false optimism of "you can be free if you try"; it is the harder wisdom that even our constraints are the result of choices we have made or continue to make — and that recognizing this is the first step toward choosing differently. What is lost in English is the Buddhist undertone of <em>kusari</em> as the bondage of desire, and the specifically Japanese grammar of <em>jibun de</em> (自分で, "by oneself") as both an assertion of agency and a burden of responsibility. The English "you choose yourself" cannot capture the way that <em>jibun de erabu</em> makes choice simultaneously an act of freedom and an act of self-definition: in choosing your chains, you choose who you are.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Jibun de Erabu</em> (自分で選ぶ) as Self-Authorship</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>自分で選ぶ</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>choose yourself</strong>" / "<strong>choose by yourself</strong>" / "<strong>choose for yourself</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>jibun de erabu</em> (自分で選ぶ) is doing triple duty in Kitahara's sentence. <em>Jibun</em> (自分) is the reflexive pronoun — "oneself" — and its use here (rather than <em>anata</em> / あなた, "you") creates a universalizing effect: this applies not to "you" specifically but to "oneself" generally, to anyone who might hear the sentence. The particle <em>de</em> (で) is the instrumental marker — "by means of oneself," "through one's own action" — emphasizing that the choosing is an act that requires the self's participation, not merely the self's preference. And <em>erabu</em> (選ぶ, "to choose / to select") is a verb of active decision, not passive acceptance. The three English translations each capture part of this: "choose yourself" suggests self-definition (existentialist); "choose by yourself" suggests independence (individualist); "choose for yourself" suggests agency (liberal). But none captures the specifically Japanese integration of these meanings into a single grammatical form. <em>Jibun de erabu</em> means: you, through your own action, make a selection that defines who you are. The grammar makes selfhood the product of choice, not its precondition. What is lost in English is this integration — the way that a single Japanese phrase can carry existentialist, individualist, and liberal meanings without distinguishing them, because in Japanese they have not been separated into philosophical categories. The sentence is not making a philosophical argument; it is stating a fact about how selves are made.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of love, error, economic survival, and the chains we choose to bind us.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のごとく古典的比喩）</span>
+        <span class="grammar-level">Literary</span>
+      </div>
+      <p class="grammar-meaning"><em>...no gotoku</em>: "like... / as... / in the manner of..." — classical/literary comparative form, more solemn than modern <em>no yō ni</em>.</p>
+      <div class="grammar-example">汝、星のごとく</div>
+      <p class="grammar-example-en">"You, Like a Star" — The classical form elevates the comparison from casual simile to literary invocation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に会いにいく（移動の目的）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni ai ni iku</em>: "go to meet..." — <em>-ni iku</em> after the stem indicates purpose of movement.</p>
+      <div class="grammar-example">恋人に会いにいく</div>
+      <p class="grammar-example-en">"goes to meet his lover" — The neutral grammar makes the infidelity sound like a routine appointment.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ために（目的・受益者）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no tame ni</em>: "for the sake of... / for the benefit of..." — marks the beneficiary of an action.</p>
+      <div class="grammar-example">愛する男のために人生を誤りたい</div>
+      <p class="grammar-example-en">"I want to err my life for the man I love" — The error is a gift, and <em>tame ni</em> names its recipient.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たい（欲求・願望）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...tai</em>: "want to..." — desire-form suffix that transforms a verb into a statement of wanting.</p>
+      <div class="grammar-example">誤りたい</div>
+      <p class="grammar-example-en">"want to err" — The shock of the line comes from <em>tai</em> attached to <em>ayamaru</em>: wanting to make a mistake.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ている→〜ていられる（可能＋継続）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...te irareru</em>: potential + progressive — "can maintain a state of... / can continue to be..."</p>
+      <div class="grammar-example">お金があるから自由でいられる</div>
+      <p class="grammar-example-en">"Because there is money, one can be free" — Freedom is not a single achievement but a maintained state.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ないと〜けない（必要・条件）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...nai to...ikenai</em>: negative conditional + "cannot" — "cannot... without..." — grammar of necessity.</p>
+      <div class="grammar-example">なにかに属さないと生きていけない</div>
+      <p class="grammar-example-en">"one cannot live without belonging to something" — The grammar makes belonging a biological imperative.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜は自分で選ぶ（主題＋手段＋動詞）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...wa jibun de erabu</em>: "[topic], one chooses by oneself" — the grammar of self-authorship.</p>
+      <div class="grammar-example">自分を縛る鎖は自分で選ぶ</div>
+      <p class="grammar-example-en">"The chains that bind you, you choose yourself" — Mirror structure: the bound self and the choosing self are the same.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に縛られる（受け身・影響）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni shibarareru</em>: passive — "be bound by..." — the agent (<em>ni</em>) is the force that binds.</p>
+      <div class="grammar-example">正しさに縛られる</div>
+      <p class="grammar-example-en">"to be bound by correctness" — <em>Tadashisa</em> (correctness) is the agent; the speaker is its patient.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Nagira Yuu's grammar is the grammar of choice under constraint. Pay attention to how <em>no gotoku</em> elevates comparison into invocation, how <em>tame ni</em> transforms error into gift, how <em>te irareru</em> makes freedom a maintained state rather than an achievement, and how <em>jibun de erabu</em> makes selfhood the product of choice. The grammar is as precise as the philosophy it expresses — and as resistant to simplification.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『汝、星のごとく』 &middot; 凪良ゆう &middot; 講談社 2022年8月4日刊 &middot; 352ページ &middot; ISBN 978-4-06-528149-9</p>
+  <p style="margin-top: var(--space-xs);">講談社文庫版 2025年7月15日発売 &middot; な 101-1 &middot; ISBN 978-4-06-540188-0 &middot; シリーズ累計200万部突破</p>
+  <p style="margin-top: var(--space-xs);">2023年第20回本大賞受賞 &middot; 第168回直木賞候補 &middot; 第44回吉川英治文学新人賞候補</p>
+  <p style="margin-top: var(--space-xs);">続編『星を編む』（2023年11月） &middot; 映画化 2026年10月9日公開（監督：藤井道人／主演：横浜流星、広瀬すず）</p>
+</footer>
+
+</div>
+</body>
+</html>

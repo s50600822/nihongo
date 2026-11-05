@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方舟 — 夕木春央 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0a0e12;
+  --bg-surface: #111820;
+  --bg-elevated: #182028;
+  --bg-card: #1e2830;
+  --ink-primary: #e0e6ec;
+  --ink-secondary: #b0bcc8;
+  --ink-muted: #788898;
+  --ink-faint: #485868;
+  --accent-teal: #4a8a8a;
+  --accent-teal-dim: #2a5a5a;
+  --accent-teal-glow: rgba(74, 138, 138, 0.12);
+  --accent-crimson: #8a5a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-teal-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-teal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-teal-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-teal-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-teal);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-teal-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-teal);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-teal-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-teal); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-teal-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-teal);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-teal-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-teal);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-crimson);
+}
+
+.nuance-box h4 {
+  color: var(--accent-crimson);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-teal);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-teal-dim), var(--accent-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-teal);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-teal-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>方舟</h1>
+  <p class="hero-subtitle">Hakobune / The Ark</p>
+  <p class="hero-meta">夕木 春央 &middot; 講談社 2022年9月 &middot; 週刊文春ミステリーベスト10 第1位 &middot; MRC大賞2022 受賞 &middot; 2023本屋大賞ノミネート</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 方舟</h2>
+  <p class="lead">The title <em>Hakobune</em> (方舟) is a study in biblical allusion and ironic reversal. In just two kanji, it invokes the entire narrative of Noah's Ark — salvation, selection, divine judgment, and the covenant of survival — while simultaneously subverting every element of that story. Where Noah's ark was a vessel of salvation that carried the worthy through divine punishment, Yūki's "Ark" is an underground tomb that drowns its occupants unless one of them is sacrificed. The title is not merely a name; it is a theological accusation.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">方</span>
+        <span class="romaji">hō</span>
+        <span class="meaning">"square / direction / vessel" — The character 方 is a multipurpose kanji with a wide semantic range: direction, place, method, side, and (in classical usage) a square or rectangular shape. In the compound 方舟, it functions as the "ark" or "vessel" component — the physical container that holds something. The character 方 also carries connotations of "the right way" or "the proper direction" (<em>hōkō</em> / 方向), which adds a layer of irony: the "ark" in this novel is precisely the wrong place to be, the direction from which there is no escape. In Buddhist terminology, 方 can refer to the "ten directions" (<em>jippō</em> / 十方) — the entirety of space — giving 方舟 a cosmic resonance that transcends its literal meaning. What is lost in English is the visual and semantic compactness of 方 as a character that contains both physical container and metaphysical direction. The English "ark" is a specific object; the Japanese 方舟 is a concept that contains within it the idea of a vessel oriented toward salvation — a salvation that, in this novel, never arrives.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">舟</span>
+        <span class="romaji">fune / bune</span>
+        <span class="meaning">"boat / ship / vessel" — The character 舟 is the pictograph of a boat — one of the most visually transparent kanji, its shape resembling a simple craft viewed from above. In Japanese, <em>fune</em> (舟/船) is the generic word for boat or ship, but 舟 carries a more archaic, poetic, and sacred resonance than 船, which is the everyday term. <em>Hakobune</em> (方舟) is the specific Japanese term for Noah's Ark — the vessel that, in the biblical story, preserved life through the flood. The choice of 方舟 rather than a more generic word for underground shelter or bunker is crucial: Yūki is invoking not merely a place of refuge but a place of divine selection, where some are saved and others are not. The novel's "Ark" is an underground building shaped like a cargo ship, buried in a mountain — a vessel that has become a tomb, a ship that sails not on water but under it, and that will eventually be consumed by the very element it was meant to survive. What is lost in English is the specifically Japanese quality of <em>hakobune</em> as a biblical term. English readers encountering "The Ark" may think of Noah, but they may also think of Indiana Jones or animal shelters. The Japanese reader who sees 方舟 on a book cover knows immediately that this is Noah's Ark — the original, the archetype, the story of salvation through destruction — and understands that the novel will engage with that archetype in a way that is likely to be subversive. The title is a contract with the reader: you know this story, it says. Now watch me break it.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Biblical intertext:</strong> The novel's Japanese title directly names Noah's Ark (ノアの方舟 / <em>Noa no Hakobune</em>). In the biblical story, God destroys the world by flood but saves Noah, his family, and pairs of animals in an ark. In Yūki's novel, the "ark" is an underground structure that will be destroyed by flood unless one person is sacrificed — an inversion of the biblical logic of salvation. Where Noah's ark preserved the worthy, Yūki's ark demands that the unworthy be identified and abandoned. The title is thus a theological trap: readers who expect redemption will find only ethical catastrophe.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>夕木 春央 &mdash; Yūki Haruo (1993–)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">夕</div>
+    <div class="author-name-block">
+      <h3>夕木 春央 / Yūki Haruo</h3>
+      <p class="author-name-romaji">Mystery novelist &middot; 60th Mephisto Prize winner &middot; Born 1993</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Yūki Haruo was born in 1993 — a child of Japan's post-bubble, post-disaster generation, though his specific biography sets him apart from almost every other writer in contemporary Japan. He grew up in a household that followed a cult religion (<em>shūkyō nisei</em> / 宗教2世, "second-generation religious believer"), a background that gave him an early and intimate acquaintance with the power of irrational belief, the logic of exclusion, and the violence that can hide behind sacred language. His family was strict; he was not allowed to read manga, and his entertainment was limited to books — children's versions of classics, encyclopedias, and, fatefully, mystery novels. The rewritten-for-children version of Edogawa Ranpo's <em>Yūki no Tō</em> (幽鬼の塔, "The Phantom Tower") was a formative experience: here was a world where the irrational could be confronted with reason, where the terrifying could be understood through logic, where the closed world of cultic belief could be opened by the detective's gaze.</p>
+    <p style="margin-bottom: var(--space-md);">After middle school, Yūki stopped attending school entirely. He did not go to high school. He did not go to university. For years he lived at home, reading — a <em>hikikomori</em> (引きこもり) not by dramatic breakdown but by gradual withdrawal, by the sense that the world outside had nothing to offer him that the world inside books could not provide in greater abundance. This period of intense, undirected reading — mystery novels above all, but also the classics of Japanese and world literature — became his education. When he began to write, he brought to his craft not the training of a literature department but the autodidact's ferocious self-certainty and the cult survivor's deep suspicion of any system that claims to know who deserves to live.</p>
+    <p style="margin-bottom: var(--space-md);">In 2019, at the age of 26, Yūki won the 60th Mephisto Prize (メフィスト賞) — the prestigious award for mystery fiction named after Mephistopheles, the demon who bargains for souls — with his debut work <em>Kōshū Shōkai no Kōkeinin</em> (絞首商会の後継人, "The Successor of the Gallows Trading Company"), published the same year under the modified title <em>Kōshū Shōkai</em> (絞首商會). The novel was set in the Taishō era (1912–1926), a period of Japanese history that Yūki would return to in his second novel, <em>Circus kara Kita Shitatsiji</em> (サーカスから来た執達吏, "The Bailiff from the Circus," 2021). Both early works are "honkaku misuterī" (本格ミステリー, "orthodox mysteries") in the classic mode — closed-circle puzzles, fair-play clues, logical deduction — set in a historical period that allows Yūki to explore the aesthetics of the genre without the complications of contemporary technology.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Hakobune</em> (2022) was his third novel and his first set in the present day. The shift was dramatic: where the Taishō novels were elegant period pieces, <em>Hakobune</em> is a raw, urgent confrontation with contemporary Japanese reality. The novel was an immediate phenomenon. It won the Weekly Bunshun Mystery Best 10 (週刊文春ミステリーベスト10) domestic category #1 and the MRC Grand Prize (MRC大賞) 2022 — a rare double. It was nominated for the 2023 Honya Taisho (本屋大賞), where it placed 7th, bringing Yūki's work to a general readership far beyond mystery fandom. It also ranked #2 in the Honkaku Mystery Best 10 (本格ミステリ・ベスト10) 2023, #4 in <em>Kono Mystery ga Sugoi!</em> (このミステリーがすごい！), and #6 in <em>Mystery ga Yomitai!</em> (ミステリが読みたい！). The bunko edition was published in August 2024 (Kodansha Bunko, 416 pages, ISBN 978-4-06-535854-2) and became a bestseller. Yūki has continued the "extreme closed circle" series with <em>Jikkai</em> (十戒, "The Ten Commandments," 2023) and <em>Rakuen</em> (楽園, "Paradise," 2026), forming a loose trilogy of survival mysteries.</p>
+    <p style="margin-bottom: var(--space-md);">Yūki's influences — Yamada Fuutarou (山田風太郎), Renzaburō Kikushima (連城三紀彦), Awasaka Tsumao (泡坂妻夫) — are the masters of Japanese mystery's golden age, and his work carries their DNA: the love of impossible situations, the belief that logic can confront the irrational, the understanding that the human heart is the greatest mystery of all. But Yūki adds something that belongs to his generation and his biography: a profound skepticism about any system — religious, social, or logical — that claims the right to decide who deserves to survive. <em>Hakobune</em> is, among other things, a novel about the cruelty of selection, and it is impossible to read it without sensing that its author knows, from the inside, what it means to be part of a community that believes it knows God's will.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Closed-Circle Mysteries, Death Games, and the Trolley Problem</h2>
+
+  <div class="card">
+    <h3>The Closed Circle: A Century of Locked-Room Terror</h3>
+    <p>The "closed circle" (<em>kurōzudo sākuru</em> / クローズドサークル) is one of the foundational conventions of mystery fiction worldwide, but it has a special status in Japan. The form was pioneered in the West by Agatha Christie (<em>And Then There Were None</em>, 1939) and John Dickson Carr, but Japanese writers — beginning with Edogawa Ranpo (戸川乱歩) in the 1920s and continuing through Yokomizo Seishi (横溝正史), Ayatsuji Yukito (綾辻行人), and Shimada Soji (島田荘司) — have elevated the closed circle to an art form. The convention is simple: a group of people are isolated in a location from which they cannot escape (an island, a mountain lodge, a train, a submarine), and murder occurs. The detective must solve the crime without outside help, and the killer must be one of the people present.</p>
+    <p style="margin-top: var(--space-sm);">What distinguishes Japanese closed-circle mysteries is their tendency to push the form toward existential extremes. Where Christie uses the closed circle as a puzzle frame, Japanese writers have increasingly used it as a pressure chamber for human nature — a space where social masks drop and the fundamental questions of survival, trust, and betrayal become inescapable. <em>Hakobune</em> is the culmination of this tendency: the closed circle is not merely a narrative convenience but the novel's entire subject. The characters are not trying to escape a murderer; they are trying to escape a building that will drown them, and the murderer is their only hope of identifying who must be sacrificed for the rest to live. The mystery is not "who killed X?" but "who deserves to die?" — a question that transforms the genre from puzzle into ethics.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Death Game: From Battle Royale to Squid Game</h3>
+    <p>The "death game" (<em>desu gēmu</em> / デスゲーム) is a distinct subgenre that emerged in Japan in the late 1990s and achieved global prominence with the success of <em>Battle Royale</em> (バトルロワイアル, Takami Kōshun, 1999), <em>Liar Game</em> (ライアーゲーム, Kaitani Shinobu, 2005), and <em>Squid Game</em> (イカゲーム, Hwang Dong-hyuk, 2021). The convention is simple: a group of people are placed in a situation where they must compete, betray, or sacrifice each other to survive, usually under the supervision of an indifferent or malevolent system. The genre speaks to a generation that feels trapped by economic precarity, social competition, and the sense that success is a zero-sum game.</p>
+    <p style="margin-top: var(--space-sm);"><em>Hakobune</em> occupies a unique position at the intersection of the closed-circle mystery and the death game. Unlike <em>Battle Royale</em> or <em>Squid Game</em>, there is no external organizer forcing the characters to compete — the "game" emerges organically from the situation. The building itself, with its flooding mechanism and its requirement of a single operator, is the game master. And unlike typical death games, the characters in <em>Hakobune</em> do not want to play. They are not thrill-seekers or debtors who signed up for this; they are ordinary people — college friends, a family on a drive — who stumbled into a nightmare. This makes the novel's ethical questions more devastating: these are not people who chose to participate in a system of sacrifice; they are people who discovered, too late, that they were already inside one.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Trolley Problem and Japanese Ethics</h3>
+    <p>The "trolley problem" — the ethical thought experiment in which one must choose between allowing a runaway trolley to kill five people or pulling a lever to divert it onto a track where it will kill one — has become a staple of both philosophy classrooms and internet discourse. <em>Hakobune</em> is, in essence, a 300-page trolley problem with no lever and no correct answer. The building's mechanism requires one person to remain behind and operate the machinery; that person will drown. Everyone else can escape. The question is not whether to sacrifice one for many — the building has already decided that — but who that one should be.</p>
+    <p style="margin-top: var(--space-sm);">The novel's brilliant twist on this framework is the introduction of the murder. When a killing occurs in the ark, the survivors immediately seize on a solution: the murderer should be the sacrifice. This seems ethically elegant — the guilty pays for the innocent — but the novel systematically dismantles this comfort. What if the murderer had reasons? What if the "murder" was not what it seemed? What if identifying the murderer requires the survivors to become investigators, judges, and executioners — a role for which none of them are qualified? And beneath all of this lies the novel's darkest question: is the person who chooses who dies any less guilty than the person who kills? The trolley problem assumes a neutral decision-maker; <em>Hakobune</em> shows what happens when the decision-maker is also a potential victim, desperate and afraid.</p>
+  </div>
+
+  <div class="card">
+    <h3>"Second-Generation Believers" and the Cult of Selection</h3>
+    <p>Yūki's background as a "second-generation believer" (<em>shūkyō nisei</em> / 宗教2世) — a child raised in a household belonging to a new religious movement — informs the novel's deepest thematic layer. In Japan, the issue of children raised in cults gained national attention after the 1995 Aum Shinrikyō (オウム真理教) sarin gas attacks on the Tokyo subway, when it was revealed that many members had raised their children within the cult's closed ideological system. More recently, the assassination of former Prime Minister Abe Shinzō in 2022 by a man whose mother had donated the family's entire savings to the Unification Church (世界平和統一家庭連合) brought the issue of <em>shūkyō nisei</em> back into public discourse.</p>
+    <p style="margin-top: var(--space-sm);">The connection to <em>Hakobune</em> is structural rather than explicit. The novel never mentions religion. But the logic of the ark — the idea that salvation is limited, that some must be excluded for others to survive, that there is a correct answer to the question of who deserves to live — is the logic of cultic belief. Yūki grew up with the certainty that his community knew who was saved and who was not, who belonged and who did not, who was worthy and who was expendable. <em>Hakobune</em> takes this logic and places it in a secular, rationalist frame: the characters believe they are making logical decisions about survival, but they are reenacting the oldest religious drama — the selection of the sacrifice. The novel's title is not merely allusive; it is autobiographical. The ark was Yūki's childhood; the flood is his liberation.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>The Architecture of the Trap</h2>
+
+  <div class="card">
+    <h3>The Setup: An Ordinary Day Becomes a Nightmare</h3>
+    <p>Shūichi (柊一), the protagonist, is a young man who has brought his college friends and his cousin to a remote mountain location to see an unusual underground building called "Hakobune" — a cargo-ship-shaped structure buried in the earth, built as a private shelter by an eccentric millionaire. The visit is casual, almost a lark: they will spend the night underground, experience the strangeness of the place, and leave in the morning. Also present are a family of three — a father, mother, and daughter — who stumbled upon the location by chance, their car having gotten lost on mountain roads. Ten people in total. A closed circle in the making, though no one knows it yet.</p>
+    <p style="margin-top: var(--space-sm);">The building is extraordinary: a fully equipped underground facility with living quarters, storage, and — crucially — a mechanical system for moving the massive rock that blocks the entrance. The system requires a single operator to remain inside and activate it; once activated, the rock moves, the others can escape, but the operator is trapped as the building floods. The builder, it becomes clear, designed the ark as a test: in an emergency, who would choose to stay? The answer, built into the mechanism, is that no one would choose it voluntarily — so the building makes the choice necessary. One stays, or all die.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Earthquake: The Circle Closes</h3>
+    <p>At dawn, an earthquake strikes. The rock that blocks the entrance shifts, becoming immovable. Then water begins to seep in — not from the entrance but from the ground itself, the water table disturbed by the seismic activity. The characters calculate: at the current rate of flooding, the building will be completely submerged in approximately one week. There is enough food and water for that time. But there is no way out that does not require the sacrifice of one person to operate the mechanism. The building has become, in effect, a timed death chamber with a single exit ticket.</p>
+    <p style="margin-top: var(--space-sm);">It is at this point — with the trap fully closed and the water rising — that a murder occurs. One of the ten is found dead, clearly killed by another. And the survivors, faced with the impossible choice of who will be the sacrifice, seize on a solution that seems to solve both problems at once: the murderer will be the sacrifice. The guilty will pay with their life so the innocent can escape. The logic is elegant, almost beautiful in its symmetry. It is also, as the novel will demonstrate, catastrophically wrong — not because the murderer does not deserve punishment, but because the survivors' assumption that they can correctly identify the guilty party, and that their identification entitles them to execute a sentence of death, is itself a form of murder.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Investigation: Ten People, Nine Lives</h3>
+    <p>The middle section of the novel is a classic closed-circle investigation, but with a ticking clock that transforms every conversation into a potential death sentence. Shūichi, who emerges as the de facto detective, must navigate not only the physical evidence but the rapidly deteriorating psychology of the group. Trust collapses. Accusations fly. The family of three suspects the college friends; the college friends suspect the family. Old grievances surface. The pressure of the rising water makes every minor conflict potentially fatal — a harsh word, a suspicious glance, a remembered slight can become the "evidence" that condemns someone to death.</p>
+    <p style="margin-top: var(--space-sm);">What distinguishes this investigation from a standard mystery is that the stakes are not merely justice but survival. In a conventional mystery, identifying the wrong suspect leads to embarrassment or injustice; in <em>Hakobune</em>, it leads to the death of an innocent person and the escape of a murderer. The characters know this, and their knowledge corrupts their reasoning. They do not want to find the truth; they want to find a solution that allows them to live with themselves. This is the novel's deepest insight: under sufficient pressure, the desire for a clean moral answer becomes more dangerous than the crime it seeks to solve. The survivors are not trying to find the murderer; they are trying to find someone they can agree to kill.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Twist: The Last Ten Pages</h3>
+    <p>The novel's reputation rests on its ending — specifically, the last ten pages, which recontextualize everything that has come before. Yūki has constructed the novel with extraordinary care, laying clues that seem to point in one direction while secretly preparing another. The twist is not merely a surprise; it is a moral inversion that forces the reader to reconsider every assumption they have made about guilt, innocence, sacrifice, and survival. The novel's famous final line — <em>sayonara</em> (さよなら, "goodbye") — has become one of the most discussed endings in contemporary Japanese fiction, a single word that reverses the entire emotional polarity of the narrative.</p>
+    <p style="margin-top: var(--space-sm);">What can be said without spoiling the novel is this: <em>Hakobune</em> is a mystery that understands the danger of mysteries. The genre's promise — that logic can restore order, that the detective's revelation can heal the wound of crime — is itself a kind of faith, and Yūki is deeply suspicious of faith. The novel does not end with the satisfying click of a solved puzzle; it ends with the sound of water rising, of a door closing, of a voice saying goodbye. The mystery is solved, but the solution does not save anyone. In fact, the solution may be the final cruelty — the moment when understanding arrives too late to change anything. This is Yūki's revision of the closed-circle convention: not only is the killer among us, but the killer may be the only one who truly understands the building, the water, and the terrible arithmetic of survival.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the claustrophobic intensity, ethical precision, and devastating irony of Yūki's prose — a voice that has redefined what the closed-circle mystery can do.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Hook</div>
+    <div class="passage-jp">
+      ９人のうち、死んでもいいのは、ーー死ぬべきなのは誰か？
+    </div>
+    <div class="passage-romaji">
+      "Kyū-nin no uchi, shinde mo ii no wa, —— shinu beki na no wa dare ka?"
+    </div>
+    <div class="passage-en">
+      "Of the nine, the one who can die — the one who should die — who is it?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's promotional hook, printed on the cover's obi, and it is a masterpiece of Japanese rhetorical compression. The phrase <em>kyū-nin no uchi</em> (９人のうち, "of the nine / among the nine") immediately establishes the arithmetic of survival: there are nine people who can escape, and one who cannot. The number is crucial — nine is the largest single-digit number, the last stop before the double digits, and its use here creates a sense of a complete set with one element that must be removed. The phrase <em>shinde mo ii no wa</em> (死んでもいいのは, "the one who can die / the one for whom it is acceptable to die") uses the permission construction <em>shinde mo ii</em> (死んでもいい, "it's okay to die") — the same construction that Kanzaki Iori uses in "Inochi ni Kirawarete iru." to express indifference to one's own death. But here the permission is being granted by the group, not the self: someone else will decide that your death is "acceptable." The dash and repetition — <em>shinu beki na no wa dare ka</em> (死(死ぬべきなのは誰か, "who is it that should die?") — transforms the casual permission into moral obligation. <em>Beki</em> (べき) is the modal suffix of duty and correctness: not "who can die" but "who ought to die," "who has a duty to die." The question is not asking for a volunteer; it is asking for a verdict. What is lost in English is the devastating progression from <em>ii</em> (いい, "okay / acceptable") to <em>beki</em> (べき, "should / ought to") — the way the sentence transforms a possibility into a moral necessity, the way it makes death first permissible and then obligatory. The English "who should die" captures the second half but loses the first; "who can die" captures the first but loses the second. The Japanese sentence does both in eleven syllables, and in doing so, announces the novel's entire ethical program: we will start by asking who can be sacrificed, and we will end by deciding who must be.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Premise</div>
+    <div class="passage-jp">
+      だれか一人を犠牲にすれば脱出できる。生贄には、その犯人がなるべきだ。ーー犯人以外の全員が、そう思った。
+    </div>
+    <div class="passage-romaji">
+      "Dareka hitori wo gisei ni sureba dasshutsu dekiru. Nie ni wa, sono han'nin ga narubeki da. —— Han'nin igai no zen'nin ga, sō omotta."
+    </div>
+    <div class="passage-en">
+      "If one person is sacrificed, we can escape. The sacrifice should be the murderer. —— Everyone except the murderer thought so."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage, from the novel's back-cover copy, contains the central moral proposition and its devastating qualifier. The first sentence — <em>dareka hitori wo gisei ni sureba dasshutsu dekiru</em> (だれか一人を犠牲にすれば脱出できる, "if one person is sacrificed, we can escape") — uses the conditional <em>ba</em> (ば) form to establish a simple if-then relationship that seems to offer hope: there is a way out, if only we can accept the cost. The word <em>gisei</em> (犠牲, "sacrifice") carries religious weight — it is the word for animal sacrifice, for Christ's sacrifice, for the victim offered to appease a higher power. The second sentence — <em>nie ni wa, sono han'nin ga narubeki da</em> (生には、その犯人がなるべきだ, "the sacrifice should be the murderer") — introduces the ethical "solution" that will drive the plot. <em>Nie</em> (生贄, "living sacrifice / scapegoat") is an even more specific religious term than <em>gisei</em> — it refers to a living being offered to a deity, and by extension to anyone who bears the blame for others. The use of <em>narubeki</em> (なるべき, "should become / ought to be") frames the murderer's death not as punishment but as destiny — this is what the murderer should become, the role they should fulfill. But the final sentence is the blade: <em>han'nin igai no zen'nin ga, sō omotta</em> (犯人以外の全員が、そう思った, "everyone except the murderer thought so"). The phrase <em>han'nin igai no zen'nin</em> (犯人以外の全員, "everyone except the murderer") creates an absolute division of the group into the one and the many — a division that will become increasingly unstable as the novel progresses. And <em>sō omotta</em> (そう思った, "thought so") is in the past tense, suggesting that this consensus, this comfortable agreement, was already beginning to crack when it was formed. What is lost in English is the specifically Japanese quality of <em>narubeki</em> as a word of fate and propriety — the sense that the murderer's becoming-sacrifice is not merely convenient but correct, aligned with some natural or divine order. The English "should be" is too weak; "deserves to be" is too moralistic; "is fated to be" is too fatalistic. The Japanese <em>narubeki da</em> contains all three: convenience, morality, and fate, compressed into a single grammatical form.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Ethics of Selection</div>
+    <div class="passage-jp">
+      映画でもあるよね。殺されそうな人が、自分には恋人がいるとか、家族がいるとかって命乞いするシーン。家族とか恋人がいなかったら殺していいのかって話だよね。
+    </div>
+    <div class="passage-romaji">
+      "Eiga demo aru yo ne. Korosaresō na hito ga, jibun ni wa koibito ga iru to ka, kazoku ga iru to ka tte inogoi suru shīn. Kazoku to ka koibito ga inakattara koroshite ii no ka tte hanashi da yo ne."
+    </div>
+    <div class="passage-en">
+      "There are scenes like that in movies, right? Where the person about to be killed begs for their life, saying they have a lover, they have a family. It's like — if they didn't have family or a lover, would it be okay to kill them?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage, spoken by one of the characters as the group discusses who should be the sacrifice, is the novel's most direct engagement with the ethics of selection — and it is devastating in its simplicity. The speaker begins with casual recognition — <em>eiga demo aru yo ne</em> (映画でもあるよね, "there are scenes like that in movies, right?") — the <em>yo ne</em> (よね) seeking confirmation, establishing common ground. The description of the scene — <em>korosaresō na hito ga... inogoi suru shīn</em> (殺されそうな人が…命乞いするシーン, "the person about to be killed... begging for their life") — uses <em>korosaresō</em> (殺されそう, "about to be killed / likely to be killed"), the seeming-to-be-killed form that makes the violence imminent but not yet accomplished. The plea itself — <em>jibun ni wa koibito ga iru to ka, kazoku ga iru to ka tte</em> (自分には恋人がいるとか、家族がいるとかって, "saying they have a lover, they have a family") — is rendered in the quotative <em>to ka</em> (とか) form, which lists examples without exhausting them: lover, family, and whatever other connections might make a life seem worth preserving. And then the blade: <em>kazoku to ka koibito ga inakattara koroshite ii no ka tte hanashi da yo ne</em> (家族とか恋人がいなかったら殺していいのかって話だよね, "it's like — if they didn't have family or a lover, would it be okay to kill them?"). The question is rhetorical but unanswerable. The grammar — <em>koroshite ii no ka</em> (殺していいのか, "would it be okay to kill?") — uses the permission form <em>te ii</em> (ていい) in a question that expects a negative answer, but the novel has already shown us that permission is exactly what the group is trying to grant itself. What is lost in English is the devastating flatness of the Japanese. The speaker is not making an impassioned philosophical argument; they are pointing out a logical inconsistency with the tone of someone noticing a plot hole in a movie. This flatness makes the insight more powerful, not less: it suggests that the cruelty of selection is so obvious that it does not require raised voices, only clear sight. The English "would it be okay to kill them?" captures the question but loses the casual, conversational quality that makes the passage feel like a comment made over popcorn — a comment that happens to cut to the heart of everything the novel is about.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Last Word</div>
+    <div class="passage-jp">
+      さよなら。
+    </div>
+    <div class="passage-romaji">
+      "Sayonara."
+    </div>
+    <div class="passage-en">
+      "Goodbye."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">The novel's final word — <em>sayonara</em> (さよなら, "goodbye") — is the most famous ending in contemporary Japanese mystery fiction, and its power depends entirely on context. <em>Sayonara</em> is not the casual <em>ja ne</em> (じゃね, "see ya") or the temporary <em>mata ne</em> (またね, "until next time"); it is the formal, final goodbye used when parting for an extended period or forever. In Japanese, <em>sayonara</em> carries a weight of finality that "goodbye" in English has partially lost — the word has become so routine in English that it can be used for everyday partings, but in Japanese, <em>sayonara</em> still retains the sense of a significant, possibly permanent separation. The novel's final line is a single word, standing alone as its own paragraph, its own sentence, its own world. What makes it devastating is the reversal it performs. When the reader first encounters the word, in the context of the scene, it appears to mean one thing — a farewell from one character to others, a sacrifice accepted, a death embraced. Only in the final pages does the novel reveal that <em>sayonara</em> means something entirely different — not a farewell from the dying but a farewell from the living, not an acceptance of sacrifice but a recognition of betrayal, not a noble death but a condemned one. The word does not change; its context does. This is Yūki's masterstroke: he has made a single word carry two opposite meanings, and the reader's discovery of the second meaning rewrites their entire experience of the novel. What is lost in English is the specifically Japanese emotional weight of <em>sayonara</em> as a word that primary-school children learn to sing in graduation songs, a word that appears in every story of parting, a word that carries within it the entire culture's poetry of separation. The English "goodbye" cannot carry this weight; it is too ordinary, too secular, too stripped of ritual resonance. The Japanese reader who reaches the final page and sees <em>sayonara</em> standing alone feels, in that single word, every parting they have ever experienced — and understands, with terrible clarity, that this parting is not what it seemed.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of survival, sacrifice, and the closed circle.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>方舟</td><td>hakobune</td><td class="pos">noun</td><td>ark (Noah's Ark); vessel of salvation</td></tr>
+        <tr><td>生贄</td><td>nie</td><td class="pos">noun</td><td>living sacrifice, scapegoat, offering</td></tr>
+        <tr><td>犠牲</td><td>gisei</td><td class="pos">noun</td><td>sacrifice, victim</td></tr>
+        <tr><td>クローズドサークル</td><td>kurōzudo sākuru</td><td class="pos">noun</td><td>closed circle (mystery convention)</td></tr>
+        <tr><td>水没</td><td>suibotsu</td><td class="pos">noun</td><td>submersion, flooding, sinking</td></tr>
+        <tr><td>流入</td><td>ryūnyū</td><td class="pos">noun</td><td>inflow, influx</td></tr>
+        <tr><td>脱出</td><td>dasshutsu</td><td class="pos">noun</td><td>escape, breakout</td></tr>
+        <tr><td>タイムリミット</td><td>taimu rimitto</td><td class="pos">noun</td><td>time limit, deadline</td></tr>
+        <tr><td>どんでん返し</td><td>donden gaeshi</td><td class="pos">noun</td><td>sudden reversal, twist ending</td></tr>
+        <tr><td>極限状況</td><td>kyokugen jōkyō</td><td class="pos">noun</td><td>extreme situation, limit condition</td></tr>
+        <tr><td>地下建築</td><td>chika kenchiku</td><td class="pos">noun</td><td>underground building/structure</td></tr>
+        <tr><td>閉じ込める</td><td>tojikomeru</td><td class="pos">verb</td><td>to shut in, to confine, to trap</td></tr>
+        <tr><td>扉</td><td>tobira</td><td class="pos">noun</td><td>door, gate, portal</td></tr>
+        <tr><td>塞がる</td><td>fusagaru</td><td class="pos">verb</td><td>to be blocked, to be obstructed</td></tr>
+        <tr><td>犯人</td><td>han'nin</td><td class="pos">noun</td><td>criminal, perpetrator, murderer</td></tr>
+        <tr><td>殺人</td><td>satsujin</td><td class="pos">noun</td><td>murder, homicide</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Human Nature Under Pressure</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>命乞い</td><td>inogoi</td><td class="pos">noun</td><td>begging for one's life</td></tr>
+        <tr><td>蓋然性</td><td>gaizensei</td><td class="pos">noun</td><td>plausibility, probability, likelihood</td></tr>
+        <tr><td>茫漠</td><td>bōbaku</td><td class="pos">adj</td><td>vast, vague, boundless</td></tr>
+        <tr><td>ヒロイック</td><td>hiroikku</td><td class="pos">adj</td><td>heroic</td></tr>
+        <tr><td>醜悪</td><td>shūaku</td><td class="pos">adj</td><td>ugly, hideous, repulsive</td></tr>
+        <tr><td>合理的</td><td>gōriteki</td><td class="pos">adj</td><td>rational, logical, reasonable</td></tr>
+        <tr><td>正論</td><td>seiron</td><td class="pos">noun</td><td>correct argument, valid point</td></tr>
+        <tr><td>詭弁</td><td>kiben</td><td class="pos">noun</td><td>sophistry, specious argument</td></tr>
+        <tr><td>疑心暗鬼</td><td>gishin anki</td><td class="pos">noun</td><td>suspicion breeding suspicion</td></tr>
+        <tr><td>疑心</td><td>gishin</td><td class="pos">noun</td><td>doubt, suspicion, distrust</td></tr>
+        <tr><td>信頼</td><td>shinrai</td><td class="pos">noun</td><td>trust, confidence, reliance</td></tr>
+        <tr><td>裏切り</td><td>uragiri</td><td class="pos">noun</td><td>betrayal, treachery</td></tr>
+        <tr><td>共犯</td><td>kyōhan</td><td class="pos">noun</td><td>accomplice, co-conspirator</td></tr>
+        <tr><td>沈黙</td><td>chinmoku</td><td class="pos">noun</td><td>silence</td></tr>
+        <tr><td>絶句</td><td>zekku</td><td class="pos">noun</td><td>speechlessness, being at a loss for words</td></tr>
+        <tr><td>戦慄</td><td>senritsu</td><td class="pos">noun</td><td>shudder, trembling, thrill of fear</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Mechanism & The Flood</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>地震</td><td>jishin</td><td class="pos">noun</td><td>earthquake</td></tr>
+        <tr><td>地盤</td><td>jiban</td><td class="pos">noun</td><td>ground, foundation, substratum</td></tr>
+        <tr><td>岩</td><td>iwa</td><td class="pos">noun</td><td>rock, boulder</td></tr>
+        <tr><td>水</td><td>mizu</td><td class="pos">noun</td><td>water</td></tr>
+        <tr><td>溺死</td><td>dekishi</td><td class="pos">noun</td><td>drowning, death by drowning</td></tr>
+        <tr><td>避難所</td><td>hinanjo</td><td class="pos">noun</td><td>shelter, refuge, evacuation center</td></tr>
+        <tr><td>巻き上げ機</td><td>makiageki</td><td class="pos">noun</td><td>hoist, winding machine</td></tr>
+        <tr><td>作動</td><td>sadō</td><td class="pos">noun</td><td>operation, activation</td></tr>
+        <tr><td>機械</td><td>kikai</td><td class="pos">noun</td><td>machine, mechanism</td></tr>
+        <tr><td>操作</td><td>sōsa</td><td class="pos">noun</td><td>operation, manipulation</td></tr>
+        <tr><td>山奥</td><td>yamaoku</td><td class="pos">noun</td><td>deep in the mountains</td></tr>
+        <tr><td>貨物船</td><td>kamotsusen</td><td class="pos">noun</td><td>cargo ship, freighter</td></tr>
+        <tr><td>施設</td><td>shisetsu</td><td class="pos">noun</td><td>facility, institution</td></tr>
+        <tr><td>密閉</td><td> mippei</td><td class="pos">noun</td><td>sealing, hermetic sealing</td></tr>
+        <tr><td>酸素</td><td>sanso</td><td class="pos">noun</td><td>oxygen</td></tr>
+        <tr><td>食料</td><td>shokuryō</td><td class="pos">noun</td><td>food supplies, provisions</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Yūki Haruo's prose is deceptively plain — sentences that read like casual conversation carry the weight of life-and-death decisions. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Hakobune</em> (方舟) as Biblical Accusation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>方舟</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>The Ark</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The title <em>Hakobune</em> (方舟) is the specific Japanese term for Noah's Ark — not a generic word for boat or shelter but the biblical vessel that preserved life through divine destruction. In English, "The Ark" can refer to many things: Noah's Ark, the Ark of the Covenant, Indiana Jones's lost ark, an animal shelter. The Japanese 方舟 has none of this ambiguity. It is Noah's Ark, full stop — the original story of salvation through selection, of survival through exclusion. The novel's entire thematic structure depends on this intertextual reference: the biblical ark saved the worthy; Yūki's ark drowns everyone unless one is condemned. The title is thus a kind of theological trap — readers who know the biblical story will bring to the novel an expectation of redemption that the narrative systematically violates. What is lost in English is the specificity of this allusion. An English reader might miss the biblical reference entirely, seeing "The Ark" as merely a name for an underground shelter. The Japanese reader cannot miss it — 方舟 is not a name one gives to a building casually. It is a name that announces: this story will engage with the deepest questions of who deserves to live and who deserves to die, and it will do so in the vocabulary of the sacred.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Nie</em> (生贄) vs. <em>Gisei</em> (犠牲)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>生贄</strong>／<strong>犠牲</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>sacrifice</strong>" / "<strong>victim</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Japanese distinguishes between two words that English collapses into "sacrifice." <em>Gisei</em> (犠牲) is the modern, secular word — the sacrifice one makes for a cause, the victims of an accident, the cost of a decision. It derives from the same root as the Chinese <em>xīshēng</em> (牺牲), which originally referred to the animals offered in ritual sacrifice. <em>Nie</em> (生贄) is the older, more specifically religious term — a living being offered to a deity, a scapegoat who bears the sins of the community. The novel uses both words strategically: <em>gisei</em> when the characters are speaking rationally about who must stay behind, <em>nie</em> when the religious and ritual dimensions of their choice become unavoidable. The shift from <em>gisei</em> to <em>nie</em> in the narrative marks the moment when the characters' secular, logical discussion of survival reveals itself as a reenactment of the oldest religious drama — the selection of the one who must die so the many can live. What is lost in English is this distinction between secular and sacred sacrifice. English "sacrifice" can mean both, but it cannot signal the shift from one register to the other. The Japanese reader who notices the novel's movement from <em>gisei</em> to <em>nie</em> understands that the characters are not merely making a practical decision; they are performing a ritual they do not know they believe in.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Shinde mo ii</em> (死んでもいい) as Permission to Die</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>死んでも<strong>いい</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"it's <strong>okay</strong> to die" / "can die" / "may die"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The construction <em>shinde mo ii</em> (死んでもいい) — the <em>te mo ii</em> (てもいい) permission form — is doing extraordinary ethical work in the novel's central question. <em>Te mo ii</em> literally means "it is acceptable even if..." — it is the grammar of permission, of tolerance, of the minimum standard of acceptability. When the novel asks <em>kyū-nin no uchi, shinde mo ii no wa dare ka</em> (９人のうち、死んでもいいのは誰か, "of the nine, who is the one for whom it is acceptable to die?"), it is using the grammar of casual permission to describe a life-and-death decision. The effect is chilling: the question makes the death of a human being sound like a minor inconvenience, a thing that is "okay" in the same way that being five minutes late is "okay." This is the language of bureaucratic murder, of administrative killing, of the casual cruelty that emerges when decisions about life and death are made by committee. The English "who can die" captures the capability but loses the permission; "who may die" captures the permission but adds a formality that the Japanese lacks; "it's okay to die" captures the casualness but sounds like self-help advice. What is lost is the specifically Japanese quality of <em>te mo ii</em> as the grammar of minimum acceptable standards — the way it transforms a catastrophe into a regulation, a murder into a policy.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Sayonara</em> (さよなら) as Finality</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>さよなら</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>Goodbye</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The final word of the novel — <em>sayonara</em> (さよなら) — is a cultural artifact as much as a lexical one. In Japanese, <em>sayonara</em> occupies a specific position in the ecology of parting: it is more formal than <em>ja ne</em> (じゃね) or <em>mata ne</em> (またね), more final than <em>itte kimasu</em> (行ってきます), more solemn than <em>bai bai</em> (バイバイ). It is the word used at graduations, at funerals, at the ends of relationships — the word for partings that matter. The etymology is suggestive: <em>sayonara</em> derives from <em>sore nara</em> (それなら, "if that is so / if it must be so"), carrying within it a sense of resigned acceptance — this is how things are, so we must part. The novel's use of <em>sayonara</em> as its final word draws on all of these resonances: the formality, the finality, the resigned acceptance. But the twist is that the word's meaning is reversed by the revelation that precedes it — what seemed to be a noble farewell becomes something else entirely, and the word that carried the weight of sacrifice is revealed to have been spoken by the saved, not the damned. What is lost in English is the specifically Japanese emotional register of <em>sayonara</em> as a word that children learn to sing with tears in their eyes at graduation, a word that carries the entire culture's poetry of parting. The English "goodbye" has been flattened by overuse; it can be texted, it can be ironic, it can be automatic. <em>Sayonara</em> in Japanese still requires an occasion. And the novel's final page provides one — an occasion so terrible that no other word would suffice.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Han'nin igai no zen'nin</em> (犯人以外の全員) as Democratic Murder</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>犯人以外の全員</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>everyone except the murderer</strong>" / "<strong>all but the criminal</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>han'nin igai no zen'nin</em> (犯人以外の全員, "everyone except the murderer") is the grammatical expression of the novel's central horror: the division of a group into the one and the many, the condemned and the saved, the sacrifice and the survivors. The grammar is precise and devastating: <em>han'nin</em> (犯人, "the criminal / the murderer") is the excluded center; <em>igai</em> (以外, "except / other than") marks the boundary of exclusion; <em>zen'nin</em> (全員, "all members / everyone") is the included mass. The phrase creates a perfect binary: there is the murderer, and there is everyone else. No ambiguity, no middle ground, no extenuating circumstances. This binary is what allows the group to make its terrible decision: if the murderer is not us, then we are innocent, and our hands are clean. The novel's genius is to show how this binary collapses — how the process of identifying the murderer corrupts the innocent, how the decision to sacrifice someone makes sacrificers of everyone, how "everyone except the murderer" becomes, by the end, a group of people who have committed a collective crime. What is lost in English is the compact absolutism of the Japanese phrase. "Everyone except the murderer" is accurate but wordy; "all but the criminal" is more compact but archaic. The Japanese <em>han'nin igai no zen'nin</em> is six syllables that contain an entire theory of collective guilt — the theory that the novel will spend 300 pages dismantling.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of survival, sacrifice, and the ethics of selection.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てもいい（許可・容認）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...te mo ii</em>: "it's okay to... / it's acceptable to..." — permission form that transforms action into tolerability.</p>
+      <div class="grammar-example">死んでもいいのは誰か</div>
+      <p class="grammar-example-en">"Who is the one for whom it is acceptable to die?" — The grammar of bureaucratic murder.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜べきだ（義務・当然）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...beki da</em>: "should / ought to" — modal of duty, correctness, and moral obligation.</p>
+      <div class="grammar-example">生贄には、その犯人がなるべきだ</div>
+      <p class="grammar-example-en">"The sacrifice should be the murderer" — <em>beki</em> transforms convenience into moral necessity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ば〜できる（条件・可能性）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ba...dekiru</em>: "if... then can..." — conditional that establishes the arithmetic of survival.</p>
+      <div class="grammar-example">だれか一人を犠牲にすれば脱出できる</div>
+      <p class="grammar-example-en">"If one person is sacrificed, we can escape" — The <em>ba</em> form makes survival a simple if-then proposition.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜以外の〜（除外・境界）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...igai no...</em>: "except... / other than..." — creates binary division between excluded and included.</p>
+      <div class="grammar-example">犯人以外の全員が、そう思った</div>
+      <p class="grammar-example-en">"Everyone except the murderer thought so" — The grammar of collective exclusion.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のか（疑問・反語）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no ka</em>: question form that seeks explanation; often rhetorical, expecting negative answer.</p>
+      <div class="grammar-example">殺していいのか</div>
+      <p class="grammar-example-en">"Would it be okay to kill?" — The <em>no ka</em> form makes the question philosophical, not practical.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たら〜のか（反実仮想・批判）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tara...no ka</em>: "if... then...?" — counterfactual conditional that exposes logical inconsistency.</p>
+      <div class="grammar-example">家族とか恋人がいなかったら殺していいのか</div>
+      <p class="grammar-example-en">"If they didn't have family or a lover, would it be okay to kill them?" — The grammar of ethical reductio ad absurdum.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・不帰）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te shimau</em>: completive auxiliary — "end up...ing / unfortunately..." — marks irreversible completion.</p>
+      <div class="grammar-example">水没してしまう</div>
+      <p class="grammar-example-en">"The building will end up submerged" — <em>Shimau</em> adds a sense of regrettable inevitability.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だろう（推量・不確実）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...darou</em>: conjectural — "probably / I suppose" — marks uncertainty and speculation.</p>
+      <div class="grammar-example">そう遠くないうちにこの建物は水没するだろう</div>
+      <p class="grammar-example-en">"The building will probably be submerged before long" — <em>Darou</em> makes doom a probability, not a certainty.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Yūki Haruo's grammar is the grammar of systems that decide who lives and who dies. Pay attention to how <em>te mo ii</em> transforms murder into policy, how <em>beki</em> transforms convenience into duty, how <em>igai</em> creates the binary of innocent and guilty, and how <em>no ka</em> turns practical questions into philosophical traps. The grammar is as precise as the mechanism of the ark itself — and as deadly.</n  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『方舟』 &middot; 夕木春央 &middot; 講談社 2022年9月8日刊 &middot; 304ページ &middot; ISBN 978-4-06-529128-3</p>
+  <p style="margin-top: var(--space-xs);">講談社文庫版 2024年8月9日発売 &middot; 416ページ &middot; ISBN 978-4-06-535854-2</p>
+  <p style="margin-top: var(--space-xs);">週刊文春ミステリーベト10 2022 国内部門 第1位 &middot; MRC大賞2022 受賞 &middot; 2023本屋大賞 ノミネート（第7位）</p>
+  <p style="margin-top: var(--space-xs);">本格ミステリ・ベスト10 2023 第2位 &middot; このミステリーがすごい！2023 国内編 第4位 &middot; ミステリが読みたい！2023 国内篇 第6位</p>
+  <p style="margin-top: var(--space-xs);">同シリーズ：『十戒』（2023年） &middot; 『楽園』（2026年）</p>
+</footer>
+
+</div>
+</body>
+</html>

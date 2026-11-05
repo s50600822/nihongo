@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コンビニ人間 — 村田沙耶香 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1210;
+  --bg-surface: #161a16;
+  --bg-elevated: #1e241e;
+  --bg-card: #262e26;
+  --ink-primary: #e8ece8;
+  --ink-secondary: #c8d0c8;
+  --ink-muted: #a0a8a0;
+  --ink-faint: #707870;
+  --accent-gold: #8aaa7a;
+  --accent-gold-dim: #5a7a4a;
+  --accent-gold-glow: rgba(138, 170, 122, 0.12);
+  --accent-spring: #6a9a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-spring);
+}
+
+.nuance-box h4 {
+  color: var(--accent-spring);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>コンビニ人間</h1>
+  <p class="hero-subtitle">Konbini Ningen / Convenience Store Woman</p>
+  <p class="hero-meta">村田 沙耶香 &middot; 文藝春秋 2016年7月 &middot; 160ページ &middot; 第155回芥川龍之介賞 &middot; 英訳版全米100万部突破・44カ国語翻訳</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: コンビニ人間</h2>
+  <p class="lead">The title <em>Konbini Ningen</em> (コンビニ人間) is a compound noun that fuses two words into a single, unsettling identity. It does not say "a person who works at a convenience store" or "a woman in a convenience store" — it says "convenience-store human," as if the store and the human have become one organism, one species, one ontological category. The grammar is simple: two nouns placed side by side in a direct, headless compound that refuses to specify which noun modifies which. Is Keiko a human who happens to work at a convenience store, or has the convenience store so thoroughly shaped her humanity that she has become something new — a "konbini-human," a being whose personhood is constituted by the fluorescent lights, the beeping scanners, the reheated fried chicken, and the endless loop of "Irasshaimase"? The title is not a description; it is a diagnosis.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">コンビニ</span>
+        <span class="romaji">konbini</span>
+        <span class="meaning">"convenience store / konbini" — The word <em>konbini</em> (コンビニ) is a loanword from English "convenience (store)," written in katakana (カタカナ), the syllabary reserved for foreign words, emphasis, and technical terminology. The use of katakana is significant: it marks the convenience store as something slightly apart from traditional Japanese commerce, a foreign import that has been so thoroughly naturalized that most Japanese speakers no longer hear it as English. The konbini is one of the defining institutions of modern Japanese life: there are over 55,000 convenience stores in Japan (roughly one for every 2,300 people), open 24 hours a day, 365 days a year, selling everything from onigiri and oden to concert tickets, photocopies, and postal services. The konbini is not merely a shop; it is infrastructure — a node in the network of daily life so essential that many Japanese cannot imagine functioning without it. For Keiko, it is more than infrastructure; it is identity. The katakana rendering makes the konbini sound technical, almost clinical — a machine for living rather than a place of business. What is lost in English is the specifically Japanese intimacy of the word. "Convenience store" in English is a generic retail category; <em>konbini</em> in Japanese is a proper noun in all but grammar, a brand-name concept that names a specific Japanese way of being. When Keiko says she is a <em>konbini</em> person, she is not saying she works in retail; she is saying she belongs to a particular ecosystem, a particular rhythm of existence, a particular form of being-human that the konbini makes possible. The English title <em>Convenience Store Woman</em> domesticates this specificity: "woman" is a generic human category, and "convenience store" is a generic place. The Japanese <em>konbini ningen</em> makes the compound itself the subject — not a woman in a store but a new kind of human.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">人間</span>
+        <span class="romaji">ningen</span>
+        <span class="meaning">"human being / person / human" — The word <em>ningen</em> (人間) is a Sino-Japanese compound formed from <em>jin</em> (人, "person / human") + <em>gen</em> (間, "space / interval / between"), literally "the space between people" — a beautifully philosophical etymology that suggests humanity is not an individual quality but a relational one, something that exists in the gap between selves. In modern Japanese, <em>ningen</em> is the standard word for "human being," but it carries a weight that English "person" or "human" does not. <em>Ningen</em> is the word used in philosophical and ethical discourse; it is the word for "humanity" as a moral category, not merely a biological one. To call someone a <em>ningen</em> is to invoke their full humanity — their capacity for thought, feeling, relationship, and moral choice. The title's use of <em>ningen</em> rather than <em>hito</em> (人, the simpler word for "person") or <em>josei</em> (女性, "woman") is thus crucial: it makes Keiko's identity a question of ontology, not merely sociology. She is not "a woman who works at a convenience store" (コンビニで働く女性); she is a "convenience-store human" (コンビニ人間) — a being whose humanity has been redefined by the institution that employs her. What is lost in English is the philosophical resonance of <em>ningen</em>. "Human" in English can sound abstract or scientific; <em>ningen</em> in Japanese is warm, familiar, and deeply ethical — the word you would use to ask whether someone is treating another person as a person. The title thus asks, with quiet radicalism: Is Keiko a human being? Does her 18 years in the konbini make her more human, or less? Does the store complete her humanity or replace it? The novel's answer — that the konbini makes her human in a way that "normal" society never could — is encoded in the title's grammar: the two words are not separated by a particle; they are fused, suggesting that for Keiko, there is no space between the convenience store and the human. They are one thing.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Hardcover: Bungeishunjū, July 27, 2016, 160 pages, ISBN 978-4-16-390434-4. Bunko edition: Bungeishunjū Bunko, September 5, 2017, 168 pages, ISBN 978-4-16-790940-6. Originally published in <em>Bungakukai</em> (文學界) June 2016 issue. The English translation by Ginny Tapley Takemori was published by Portobello Books (UK) in 2018 and Grove Press (US) in 2018, and has sold over 1 million copies in the US alone. It has been translated into 44 languages. The novel won the 155th Akutagawa Prize (2016) and was a <em>Los Angeles Times</em> Bestseller, a <em>New York Times</em> Notable Book, and a <em>TIME</em> magazine Must-Read Book. The French translation (<em>La Femme de la supérette</em>) won the 2023 Prix de l'Embouchure.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>村田 沙耶香 &mdash; Murata Sayaka (1979–)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">村</div>
+    <div class="author-name-block">
+      <h3>村田 沙耶香 / Murata Sayaka</h3>
+      <p class="author-name-romaji">Akutagawa Prize winner &middot; Part-time konbini worker &middot; 44-language phenomenon</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Murata Sayaka was born on August 14, 1979, in Inzai City, Chiba Prefecture — a suburban area on the eastern edge of the Tokyo metropolitan sprawl, the kind of place where convenience stores outnumber parks and where the rhythms of daily life are measured in train schedules and store opening hours. She was, by her own account, a child who did not understand the rules that other children seemed to absorb without instruction — the unspoken codes of friendship, the expected responses to social situations, the automatic performance of "normal" that most people master by adolescence. She found refuge in books, reading voraciously from elementary school, and discovered that writing allowed her to construct worlds where the rules were explicit, where behavior could be explained, where the strangeness she felt in "real life" could be given form and meaning.</p>
+    <p style="margin-bottom: var(--space-md);">She graduated from Tamagawa University's Faculty of Letters, Department of Art and Culture — a background that gave her an unusual sensitivity to the aesthetics of everyday life, to the way spaces and objects shape human behavior. During university, she attended the Yokohama Literature School (横浜文学学校), where she studied under Miyahara Akio, a novelist and critic who encouraged her to pursue her distinctive voice rather than conforming to literary expectations. In 2003, her short story "Junyū" (授乳, "Breast-Feeding") received an honorable mention in the 46th Gunzō New Writers' Award, making her literary debut. The story — about a woman who breastfeeds her elderly father-in-law — announced the themes that would define her career: the body, family, social taboo, and the gap between what people do and what they are willing to name.</p>
+    <p style="margin-bottom: var(--space-md);">The awards followed with the patience of a slow-building career: the 31st Noma Prize for New Writers for <em>Gin'iro no Uta</em> (ギンイロノウタ, "Silver Song," 2009); the 26th Mishima Yukio Prize for <em>Shiroiro no Machi no, Sono Hone no Taion no</em> (しろいろの街の、その骨の体温の, "The Heat of the Bones in the White City," 2013); and finally, the 155th Akutagawa Prize for <em>Konbini Ningen</em> (2016). She also won the 78th Noma Literary Prize in 2025 for <em>Sekai 99</em> (世界99). Her other works include <em>Chikyū Seijin</em> (地球星人, "Earthlings," 2018), a novel about child abuse and alienation so disturbing that it made <em>Konbini Ningen</em> seem cheerful by comparison; <em>Satsujin Shussan</em> (殺人出産, "Murder Birth"); <em>Seimeishiki</em> (生命式, "Life Ceremony"); and many others. She has been called "Crazy Sayaka" (クレイジー沙耶香) by her writer friends — a nickname she wears with pride.</p>
+    <p style="margin-bottom: var(--space-md);">What makes Murata's biography inseparable from her art is that she has continued to work part-time at a convenience store throughout her literary career — even after winning the Akutagawa Prize, even after becoming an international literary phenomenon. She works three days a week, wearing the same uniform as Keiko, performing the same tasks, hearing the same sounds. "I am a konbini worker who writes novels," she has said, "not a novelist who once worked at a konbini." This is not a marketing strategy; it is an existential fact. The konbini gives her the structure that Keiko describes in the novel — the daily rhythm, the manual, the sense of being a "normal part of the world." Without it, she has said, her writing rhythm collapses, her autonomic nervous system goes haywire, she becomes nauseous and cannot work. The konbini is not merely her subject; it is her life-support system. This is the novel's deepest authenticity: it was written by someone who knows, from the inside, what it means to be a konbini human.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Konbini, Futsū, and the Tyranny of the Normal</h2>
+
+  <div class="card">
+    <h3>The Japanese Konbini as Social Infrastructure</h3>
+    <p>The Japanese convenience store — <em>konbini</em> (コンビニエンスストア, from English "convenience store," universally shortened to <em>konbini</em>) — is not merely a retail outlet; it is one of the most distinctive and essential institutions of contemporary Japanese life. The first Japanese convenience store, a 7-Eleven, opened in 1974 in Kōtō-ku, Tokyo. By 2024, the three major chains (7-Eleven, Lawson, FamilyMart) operate over 55,000 stores across Japan — a density unmatched anywhere else on Earth. The konbini is open 24 hours a day, 365 days a year. It sells food, drinks, magazines, toiletries, and basic groceries; it accepts package deliveries, issues event tickets, provides photocopying and fax services, sells postage stamps, functions as a bill-payment center, and serves as a pickup point for online purchases. During natural disasters, konbini are often the first businesses to reopen, providing essential supplies and communication when everything else has failed.</p>
+    <p style="margin-top: var(--space-sm);">What the novel understands about the konbini is that it is a total environment — a space where every action is scripted, every sound is meaningful, every object has a place. The manual (<em>manyuaru</em> / マニュアル) that Keiko memorizes is not merely an employee handbook; it is a complete ontology — a system that tells her not just what to do but who to be. "When the door chime rings, look toward the entrance and say 'Irasshaimase.' When a customer picks up a chilled beverage, move to the refrigerated case. When the fryer beeps, check the chicken." These instructions, repeated thousands of times over 18 years, have become the architecture of Keiko's consciousness. The konbini is the one place where she does not have to guess what is expected of her — the one place where the rules are written down, where her strangeness can be absorbed into the system, where she can be "normal" by following the manual rather than by imitating other people. The novel's genius is to see that this is not a prison but a liberation — that for someone who has never understood the unwritten rules of human interaction, a space where all rules are written is a kind of paradise.</p>
+  </div>
+
+  <div class="card">
+    <h3>Futsū: The Tyranny of the "Normal"</h3>
+    <p>The word <em>futsū</em> (普通, "normal / ordinary / regular / standard") is one of the most powerful words in Japanese social life. It appears constantly in everyday conversation: "Isn't that normal?" (<em>Futsū ja nai?</em> / 普通じゃない？), "That's not normal" (<em>Futsū ja nai</em> / 普通じゃない), "I just want to live a normal life" (<em>Futsū no seikatsu ga shitai</em> / 普通の生活がしたい). The word carries enormous moral weight: to be <em>futsū</em> is to be acceptable, comprehensible, worthy of inclusion; to be not-<em>futsū</em> is to be strange, worrying, potentially dangerous. The novel's central insight is that <em>futsū</em> is not a neutral description but a coercive norm — a standard that everyone is expected to meet without ever having agreed to it, a set of invisible rules that punish deviation without ever explicitly stating what conformity requires.</p>
+    <p style="margin-top: var(--space-sm);">For Keiko, the list of <em>futsū</em> requirements is endless and contradictory. A woman her age should have a "proper" job (not part-time work). She should be married, or at least trying to get married. She should want children, or at least be open to the possibility. She should have moved up the career ladder, not stayed in the same entry-level position for 18 years. She should care about fashion, relationships, her "future." She should not be more comfortable with the beeping of a scanner than with the conversation of friends. The novel shows that each of these "shoulds" comes from a different source — family, friends, colleagues, media, the ambient pressure of a society that constantly monitors women for signs of abnormality — and that together they form a web so dense that escape seems impossible. Keiko's sister, who loves her, nevertheless cannot stop trying to "fix" her; her friends, who have known her since college, gradually drift away because her life no longer fits the narrative they understand; her coworkers admire her efficiency while pitying her "wasted" life. The novel's quiet horror is that no one is cruel. Everyone is "concerned." And it is this concern — this well-meaning, relentless pressure to be <em>futsū</em> — that the novel identifies as the true violence of social life.</p>
+  </div>
+
+  <div class="card">
+    <h3>Part-Time Work and the Disposable Self</h3>
+    <p>Keiko's employment status — <em>arubaito</em> (アルバイト, from German <em>Arbeit</em>, "work"), part-time, non-regular — is as central to the novel's meaning as the konbini itself. In Japan, non-regular workers (<em>hiseiki koyōsha</em> / 非正規雇用者) now make up over 35% of the workforce, and the majority of them are women. These workers receive lower wages, fewer benefits, no job security, and little prospect of advancement. They are, in the economic logic of contemporary capitalism, disposable — interchangeable units that can be replaced when no longer needed. The novel takes this economic reality and turns it into an existential question: What does it mean to be a disposable person? Keiko's answer is unexpected: it means being free from the pressure to be unique, to have a "career," to develop a "self" that must be constantly improved and marketed. The part-time worker who follows the manual is not failing at selfhood; she has discovered a form of selfhood that does not require the exhausting performance of individuality that "regular" employment demands.</p>
+    <p style="margin-top: var(--space-sm);">This is the novel's most subversive claim. In a culture that tells everyone to "find their passion," "develop their brand," and "maximize their potential," Keiko's commitment to a job that requires no passion, no brand, and no potential is read as a kind of death. But the novel asks us to consider the possibility that this reading is itself a form of violence — the violence of a culture that cannot imagine dignity without ambition, worth without advancement, humanity without striving. Keiko does not want to be a manager; she does not want to "move up"; she does not want to turn her konbini job into a "career." She wants to do the work, follow the manual, be a useful component, and go home. The novel's radicalism is to suggest that this desire is not pathology but preference — not a symptom of damage but a legitimate way of being human. The konbini does not dehumanize Keiko; it gives her a form of humanity that "normal" society has denied her. The question is whether we can recognize it as humanity at all.</p>
+  </div>
+
+  <div class="card">
+    <h3>Gender, Marriage, and the Unmarried Woman</h3>
+    <p>The novel's gender politics are precise and devastating. Keiko is 36, unmarried, childless, working part-time — a combination that in Japan places her in a category of social suspicion so routine that most people do not even notice it. The unmarried woman over 30 — the <em>make-inu</em> (負け犬, "loser dog / loser bitch") in Ueno Chizuko's famous formulation — is a figure of pity and anxiety, someone who has "failed" at the primary task of Japanese femininity: attracting and keeping a husband. Keiko's family, her friends, and eventually her coworkers all share the same unspoken assumption: there is something wrong with a woman who does not want what women are supposed to want. The novel does not make Keiko a feminist hero who rejects marriage as patriarchal oppression; it makes her something far more disturbing — a woman who genuinely does not understand why marriage matters, who cannot feel the desire that other women seem to feel naturally, who watches her sister's maternal exhaustion with the same detached curiosity she brings to everything else.</p>
+    <p style="margin-top: var(--space-sm);">Shiraha's appearance in the novel brings this gender dynamic into sharp focus. He is a misogynist — explicitly, proudly so — who believes that society is rigged against men, that women have it easy, that the "strong" exploit the "weak." And yet the novel's genius is to show that Shiraha and the "concerned" people in Keiko's life are making the same basic demand: she must conform to gender norms. Her sister wants her to be a "normal" woman (married, maternal, domestic); Shiraha wants her to be a "normal" woman (subordinate, useful, silent). Both are trying to force her into a shape she does not fit. The novel's ending — in which Keiko returns to the konbini after a brief attempt at "normal" life — is not a defeat but a declaration of independence. She has tried their world and found it incomprehensible. She is going back to the one place where she knows who she is. The konbini is not an escape from adulthood; it is her chosen form of adulthood — the only one that does not require her to pretend to be someone she is not.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>A Human Being in the Shape of a Convenience Store</h2>
+
+  <div class="card">
+    <h3>The Sound of Being: Keiko's Konbini Consciousness</h3>
+    <p>The novel opens with a sound: the symphony of the convenience store. "A convenience store is filled with sound," Keiko tells us, and then she catalogues what she hears — the door chime, the beep of the scanner, the rustle of plastic bags, the clink of coins, the hum of the refrigerator, the sizzle of the fryer, the rustle of customers' clothing, the murmur of voices. These sounds do not merely surround her; they constitute her. Keiko has worked at the same Smile Mart (a fictional konbini chain) for 18 years, since she was 18, and in that time she has become so attuned to the store's acoustic ecology that she can read its condition the way a sailor reads the weather. When a sound is wrong — a beep that comes too early, a refrigerator that hums at the wrong pitch — she knows something needs attention before her conscious mind has registered what it is.</p>
+    <p style="margin-top: var(--space-sm);">This sensitivity is not merely professional competence; it is the form that Keiko's humanity has taken. From childhood, she did not understand the unwritten rules of social interaction. When a dead bird appeared on the playground, she suggested they cook and eat it — the most logical solution to the problem of a dead bird, from her perspective. When two boys were fighting, she hit one with a shovel to stop the conflict — the most efficient method, in her analysis. These incidents, which earned her the label of "strange child," revealed a mind that processed the world through logic and function rather than through the emotional and social filters that most people develop instinctively. The konbini changed everything. On her first day, wearing the uniform, following the manual, she had a revelation: "At that moment, for the first time, I was able to become a component of the world. A normal component, of the world, had certainly been born on that day." The manual told her what to do. The uniform told her who to be. The sounds told her when to act. For the first time, she fit.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Pressure Mounts: Family, Friends, and the Need for Cover</h3>
+    <p>For 18 years, Keiko has maintained a delicate balance. She works at the konbini, she visits her family at appropriate intervals, she sees her college friends occasionally, and she has constructed a persona — polite, vague, agreeable — that allows her to pass as merely eccentric rather than genuinely different. But as she enters her late 30s, the pressure intensifies. Her sister, now a mother, cannot stop trying to "help" Keiko become "normal" — suggesting counseling, suggesting job changes, suggesting that perhaps it's time to think about marriage. Her friends, who have followed the expected path (career, marriage, children), treat her with a mixture of fascination and pity. Her coworkers, who rotate through the store on short-term contracts, come and go, each one bringing a fresh set of assumptions about what a 36-year-old woman should be doing with her life.</p>
+    <p style="margin-top: var(--space-sm);">Into this already unstable equilibrium comes Shiraha — a young man hired as a part-time worker who is everything Keiko is not: lazy, resentful, misogynistic, obsessed with his own victimhood, and convinced that society is rigged against him. He is fired almost immediately for stealing, but not before he has made an impression on Keiko with his bitter pronouncements about gender and power. Later, when Keiko happens to encounter him again, she makes a pragmatic proposal: they will pretend to be in a relationship. He needs a place to live; she needs a "cover story" that will stop people from asking why she is still single. It is not romance; it is infrastructure. Shiraha will move into her small apartment, sleep in the bathtub (literally — he sets up a nest in her tub), and play the role of "boyfriend" when her sister visits. In exchange, Keiko will feed him and tolerate his presence. The arrangement is, in its way, a perfect expression of the novel's worldview: two people who do not fit "normal" using each other as camouflage, not out of affection but out of mutual need for social invisibility.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Breakdown: When the Konbini Stops</h3>
+    <p>The middle section of the novel follows Keiko's brief attempt at "normal" life. Under pressure from her sister and the accumulating weight of social disapproval, she quits the konbini. She stays home. She tries to imagine a future that does not involve the store. And she discovers that without the konbini, she has no self. The sounds that once structured her consciousness are gone, replaced by an undifferentiated silence. The manual that told her how to be is no longer in effect. The uniform that made her visible as a person is in her closet, unworn. She becomes nauseous, disoriented, unable to sleep or eat normally. Her body, which has been trained for 18 years to the rhythms of the store, rebels against the absence of structure. The novel presents this not as mental illness but as a logical consequence: a being that has been shaped by a particular environment cannot simply be removed from it and expected to function. Keiko is not "depressed"; she is unmoored. The konbini was not her job; it was her ecosystem.</p>
+    <p style="margin-top: var(--space-sm);">Shiraha, meanwhile, proves to be exactly the parasite Keiko suspected he was — and yet the novel refuses to make him simply villainous. He is pathetic, self-pitying, and genuinely miserable. He wants to be a "winner" in a society he believes has rigged the game against him, and his misogyny is the ideology of a loser who cannot admit that his failure is his own. Keiko, with her characteristic clarity, sees through him completely: "I understood that Shiraha was a person who could not survive without someone to take care of him." And yet she does not despise him for this. She simply notes it, as she notes everything, with the detached accuracy of an anthropologist observing a species she does not belong to. Their coexistence is not friendship, not love, not even partnership; it is a temporary alliance between two people who have been rejected by the "normal" world and have found, in each other, a way to simulate the appearance of conformity. The novel's comedy — and it is often very funny — comes from the gap between Shiraha's self-importance and Keiko's absolute indifference to his ideology. He talks about "the strong and the weak"; she thinks about whether the konbini has enough fried chicken for the evening rush.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Return: Choosing the Konbini, Choosing Herself</h3>
+    <p>The novel's ending is one of the most debated in contemporary Japanese literature. Keiko, having discovered that life without the konbini is not "freedom" but chaos, makes a decision: she will return. Not to her old store — that would be too simple — but to a new konbini, where she can begin again, where the sounds will reconstitute her, where the manual will tell her who to be. She leaves Shiraha in her apartment (he shows no signs of leaving, and she does not care enough to make him) and walks through the early morning streets until she finds a store with a "Staff Wanted" sign. She enters. The door chime rings. She hears the sounds. And she knows, with absolute certainty, that she has come home.</p>
+    <p style="margin-top: var(--space-sm);">Is this a happy ending? The novel refuses to say. What it shows is that Keiko has made a choice — the first truly autonomous choice of her life. She has tried "normal" and found it incomprehensible; she has tried independence from the konbini and discovered that independence, for her, is not liberation but annihilation. She is not "giving up"; she is choosing. The novel's final image — Keiko in a new uniform, in a new store, listening to the sounds that make her who she is — is not tragic and not triumphant. It is simply true. This is who she is. This is what makes her human. The konbini is not a prison she has failed to escape; it is the only world that has ever made room for her exactly as she is. The novel's deepest ethical claim is that we must learn to recognize forms of human flourishing that do not match our expectations — that a life spent following a manual, wearing a uniform, and listening for beeps may be, for some people, a richer life than one spent pursuing passion, ambition, or romance. Keiko is not a victim. She is a person who has found her place. The question the novel leaves us with is whether we are capable of seeing that place as worthy of a human being.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the acoustic precision, ontological strangeness, and quietly revolutionary philosophy of Murata's prose — a voice that hears the world differently and, in doing so, makes us hear it differently too.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Birth of a Component</div>
+    <div class="passage-jp">
+      そのとき、私は、初めて、世界の部品になることができたのだった。（略）世界の正常な部品としての私が、この日、確かに誕生したのだ。
+    </div>
+    <div class="passage-romaji">
+      "Sono toki, watashi wa, hajimete, sekai no buhin ni naru koto ga dekita no datta. Sekai no seijō na buhin to shite no watashi ga, kono hi, tashika ni tanjō shita no da."
+    </div>
+    <div class="passage-en">
+      "At that moment, I was able, for the first time, to become a component of the world. As a normal component of the world, I had certainly been born on that day."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — Keiko's description of her first day working at the konbini — is the novel's foundational statement, and its grammar encodes the entire philosophical architecture of the book. <em>Sono toki</em> (そのとき, "at that moment / at that time") is a temporal marker that gives the moment the weight of an origin story — this is not merely a memory but a genesis. <em>Hajimete</em> (初めて, "for the first time") makes clear that everything before this moment was a kind of pre-existence, a waiting. <em>Sekai no buhin ni naru koto ga dekita</em> (世界の部品になることができた, "was able to become a component of the world") uses the potential form <em>dekita</em> (できた, "was able to") rather than the simple past <em>natta</em> (なった, "became") — a crucial choice that makes the transformation not automatic but achieved, something that required effort and conditions. The word <em>buhin</em> (部品, "component / part / spare part") is doing extraordinary work. It is a mechanical term — the word for parts in a machine, components in a system — and its use here is simultaneously devastating and celebratory. Keiko is saying that she became a "part" of the world, not a "person" in it. And yet the grammar of the sentence makes this an achievement, not a diminishment: <em>dekite</em> (できて, "being able to") is a positive capability. What follows — <em>sekai no seijō na buhin to shite no watashi ga</em> (世界の正常な部品としての私が, "I, as a normal component of the world") — uses the <em>to shite no</em> (としての, "as / in the capacity of") construction to make "normal component of the world" a role, an identity, a way of being. And <em>tashika ni tanjō shita</em> (確かに誕生した, "certainly / definitely been born") uses <em>tashika ni</em> (確かに, "certainly / surely") to make the birth absolute and <em>tanjō</em> (誕生, "birth / coming into being") to give it the weight of a cosmic event. What is lost in English is the specifically Japanese resonance of <em>buhin</em> and <em>tanjō</em> together. "Component" in English sounds mechanical and alienating; <em>buhin</em> in Japanese, combined with <em>tanjō</em>, creates a paradox: a mechanical part that has been spiritually born. The passage is not saying "I became a cog in the machine" (a Marxist lament); it is saying "I was born as the part I was always meant to be" (a mystical affirmation). The English translation captures the meaning but loses the spiritual weight of <em>tanj</em> — a word usually reserved for the birth of Christ, the founding of a nation, or the emergence of a new species. Keiko's first day at the konbini is, for her, a nativity.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Jōmon Android</div>
+    <div class="passage-jp">
+      私は縄文時代から生き延びてきた人間なのかもしれない。機能不全の世界で、ただ生き延びるために、コンビニという現代のシステムに寄生しているのかもしれない。
+    </div>
+    <div class="passage-romaji">
+      "Watashi wa Jōmon jidai kara ikinobite kita ningen na no ka mo shirenai. Kinō fizen no sekai de, tada ikinobiru tame ni, konbini to iu gendai no shisutemu ni kisei shite iru no ka mo shirenai."
+    </div>
+    <div class="passage-en">
+      "Perhaps I am a human being who has survived since the Jōmon period. In a dysfunctional world, perhaps I am simply parasitic on the modern system called the convenience store in order to survive."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — one of the novel's most famous — uses two <em>ka mo shirenai</em> (かもしれない, "might / perhaps / may be") constructions to create a double hypothesis that is also a double self-diagnosis. The grammar of speculation becomes the grammar of identity. <em>Jōmon jidai kara ikinobite kita ningen</em> (縄文時代から生き延びてきた人間, "a human being who has survived since the Jōmon period") uses <em>ikinobiru</em> (生き延びる, "to survive / to live through") rather than simply <em>ikiru</em> (生きる, "to live") — the <em>nobiru</em> (延びる, "to extend / stretch") component making survival an act of extension across time, a stretching of existence from a distant past into the present. The Jōmon period (縄文時代, c. 14,000–900 BCE) is Japan's prehistoric era, before agriculture, before metal, before the social structures of "civilization" — and Keiko's comparison of herself to a Jōmon survivor suggests that she experiences modernity as something she has not evolved to inhabit. She is, in her own analysis, a Stone Age human trying to survive in a world of fluorescent lights and barcode scanners. The second clause — <em>kinō fizen no sekai de, tada ikinobiru tame ni, konbini to iu gendai no shisutemu ni kisei shite iru</em> (機能不全の世界で、ただ生き延びるために、コンビニという現代のシステムに寄生している, "in a dysfunctional world, simply in order to survive, parasitic on the modern system called the convenience store") — uses <em>kinō fizen</em> (機能不全, "dysfunctional / malfunctioning / not functioning properly") — a technical term, almost medical, that diagnoses the world as a broken machine. <em>Tada</em> (ただ, "simply / merely / only") minimizes her agency; she is not choosing but surviving. And <em>kisei shite iru</em> (寄生している, "parasitic / living as a parasite") uses the <em>-te iru</em> progressive form to make the parasitism ongoing, continuous, a state of being rather than an action. What is lost in English is the layered strangeness of the Japanese. "Parasitic" in English is purely negative; <em>kisei</em> (寄生) in Japanese carries the biological specificity of parasitism — one organism living on another without contributing — but in the context of the sentence, it is almost tender. Keiko is not condemning herself; she is describing an ecological relationship. She is the orchid on the tree, the mite in the fur. The konbini is her host, and she is its grateful parasite. The passage's power comes from the gap between the clinical vocabulary (<em>kinō fizen</em>, <em>kisei</em>) and the emotional reality it describes: a woman who has found, in the most commercialized space in contemporary Japan, a form of belonging so complete that she can only describe it in the language of evolutionary biology.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Force of the Normal World</div>
+    <div class="passage-jp">
+      正常な世界はとても強引だから。
+    </div>
+    <div class="passage-romaji">
+      "Seijō na sekai wa totemo gōin da kara."
+    </div>
+    <div class="passage-en">
+      "Because the normal world is terribly forceful." / "Because the normal world is so pushy."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — seven syllables, eleven characters — is the novel's political thesis in miniature. The grammar is elementary: <em>seijō na sekai wa</em> (正常な世界は, "the normal world [topic]") + <em>totemo gōin da</em> (とても強引だ, "is very forceful / pushy / overbearing") + <em>kara</em> (から, "because"). And yet the word choice does extraordinary work. <em>Seijō</em> (正常, "normal / healthy / proper") is a medical and statistical term — it describes not merely what is common but what is correct, what is functioning as it should. To call the social world <em>seijō</em> is to grant it the authority of medical diagnosis: it is the world that claims to be healthy, and therefore to label someone as not-<em>seijō</em> is to diagnose them as sick. <em>Totemo</em> (とても, "very / terribly") intensifies what follows, and what follows is <em>gōin</em> (強引, "forceful / pushy / high-handed / overbearing") — a word that describes not mere strength but strength applied without consent, power exercised against resistance. <em>Gōin</em> is the word for someone who pushes into a line, who forces a kiss, who makes a decision without asking. The normal world, in Keiko's analysis, is not merely powerful; it is a bully. And <em>kara</em> (から, "because") at the end makes this not a declaration but a reason — the answer to an implied "why?" Why does Keiko need camouflage? Why does she hide? Why does she pretend? Because the normal world is terribly, pushily, unaskedly forceful. What is lost in English is the clinical precision of <em>seijō</em>. "Normal world" in English sounds like a neutral description; <em>seijō na sekai</em> in Japanese carries the full weight of psychiatric and social authority. The normal world is not just "the way things are"; it is "the way things ought to be," and its forcefulness is not accidental but structural — the violence of a system that believes its own norms are natural law. The sentence's brevity is also significant. In a novel full of detailed observation and careful explanation, this sentence arrives like a verdict — short, absolute, unarguable. The normal world is forceful. That is why Keiko cannot simply be left alone. That is why she needs the konbini. That is why she needs Shiraha. The sentence explains everything by explaining nothing; it names a force and steps back, letting the reader feel its weight.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Symphony of the Store</div>
+    <div class="passage-jp">
+      コンビニエンスストアは、音で満ちている。全てが混ざり合い、「コンビニの音」になって、私の鼓膜にずっと触れている。
+    </div>
+    <div class="passage-romaji">
+      "Konbiniensu sutoa wa, oto de michite iru. Subete ga mazari ai, 'konbini no oto' ni natte, watashi no komaku ni zutto furete iru."
+    </div>
+    <div class="passage-en">
+      "A convenience store is filled with sound. Everything mixes together, becomes 'the sound of the convenience store,' and continually touches my eardrums."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening sentence, and it establishes everything that follows: the acoustic consciousness, the synesthetic perception, the intimacy between self and store. The grammar is deceptively simple. <em>Konbiniensu sutoa wa</em> (コンビニエンストアは, "as for the convenience store") uses the topic particle <em>wa</em> to make the store the subject of a general truth — not "this convenience store" but "the convenience store" as a category, as a type of space. <em>Oto de michite iru</em> (音で満ちている, "is filled with sound") uses the <em>-te iru</em> progressive form to make the fullness continuous and active — the store is not merely "full of sound" (a static state) but "filling with sound" (an ongoing process). <em>Subete ga mazari ai</em> (全てが混ざり合い, "everything mixes together / blends") uses the reciprocal verb <em>mazariau</em> (混ざり合う, "to mix with each other / blend together") — the sounds are not merely combined by an external mixer but are actively interpenetrating, each one becoming part of the others. <em>'Konbini no oto' ni natte</em> (「コンビニの音」になって, "becomes 'the sound of the convenience store'") uses the quotative markers to make "the sound of the convenience store" a named entity, a proper noun in quotation marks — the store has its own sound, its own acoustic signature, as distinctive as a person's voice. And <em>watashi no komaku ni zutto furete iru</em> (私の鼓膜にずっと触れている, "continually touches my eardrums") uses <em>zutto</em> (ずっと, "continuously / all along / constantly") with <em>furete iru</em> (触れている, "touching") to create a sensation of permanent contact — the sound is not something Keiko hears; it is something that touches her, physically, continuously, the way water touches a fish's gills. What is lost in English is the specifically Japanese sensory vocabulary. "Eardrums" in English is clinical; <em>komaku</em> (鼓膜) in Japanese, while also anatomical, carries the <em>tsuzumi</em> (鼓, "drum") root that makes the eardrum an instrument being played. The store is not merely making noise; it is playing Keiko's body like a drum. The passage establishes the novel's central metaphor: Keiko does not perceive the konbini; she is permeated by it. The sounds enter her body, mix in her consciousness, and become indistinguishable from her own thoughts. By the end of the novel, when she says "I am a convenience store human," she is not making a metaphor; she is making a physiological report.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of the konbini, the pressure to be normal, and the courage to be a component.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>コンビニ</td><td>konbini</td><td class="pos">noun</td><td>convenience store; konbini</td></tr>
+        <tr><td>人間</td><td>ningen</td><td class="pos">noun</td><td>human being; person</td></tr>
+        <tr><td>普通</td><td>futsū</td><td class="pos">noun</td><td>normal; ordinary; standard</td></tr>
+        <tr><td>正常</td><td>seijō</td><td class="pos">noun</td><td>normal; healthy; proper functioning</td></tr>
+        <tr><td>部品</td><td>buhin</td><td class="pos">noun</td><td>component; part; spare part</td></tr>
+        <tr><td>歯車</td><td>haguruma</td><td class="pos">noun</td><td>gear; cog; cogwheel</td></tr>
+        <tr><td>機能不全</td><td>kinō fizen</td><td class="pos">noun</td><td>dysfunction; malfunction</td></tr>
+        <tr><td>寄生</td><td>kisei</td><td class="pos">noun</td><td>parasitism; living as a parasite</td></tr>
+        <tr><td>縄文時代</td><td>Jōmon jidai</td><td class="pos">noun</td><td>Jōmon period (prehistoric Japan)</td></tr>
+        <tr><td>生き延びる</td><td>ikinobiru</td><td class="pos">verb</td><td>to survive; to live through</td></tr>
+        <tr><td>誕生</td><td>tanjō</td><td class="pos">noun</td><td>birth; coming into being</td></tr>
+        <tr><td>強引</td><td>gōin</td><td class="pos">adj</td><td>forceful; pushy; high-handed</td></tr>
+        <tr><td>マニュアル</td><td>manyuaru</td><td class="pos">noun</td><td>manual; handbook</td></tr>
+        <tr><td>規格</td><td>kikaku</td><td class="pos">noun</td><td>standard; specification; norm</td></tr>
+        <tr><td>規範</td><td>kihan</td><td class="pos">noun</td><td>norm; standard; criterion</td></tr>
+        <tr><td>常識</td><td>jōshiki</td><td class="pos">noun</td><td>common sense; conventional wisdom</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Konbini: Sounds, Objects, and Rituals</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>いらっしゃいませ</td><td>irasshaimase</td><td class="pos">expr</td><td>welcome (store greeting)</td></tr>
+        <tr><td>レジ</td><td>reji</td><td class="pos">noun</td><td>cash register; checkout counter</td></tr>
+        <tr><td>バーコード</td><td>bākōdo</td><td class="pos">noun</td><td>barcode</td></tr>
+        <tr><td>スキャナー</td><td>sukyanā</td><td class="pos">noun</td><td>scanner</td></tr>
+        <tr><td>袋</td><td>fukuro</td><td class="pos">noun</td><td>bag; sack</td></tr>
+        <tr><td>おにぎり</td><td>onigiri</td><td class="pos">noun</td><td>rice ball</td></tr>
+        <tr><td>から揚げ</td><td>karaage</td><td class="pos">noun</td><td>Japanese fried chicken</td></tr>
+        <tr><td>おでん</td><td>oden</td><td class="pos">noun</td><td>Japanese hot pot (konbini staple)</td></tr>
+        <tr><td>陳列</td><td>chinretsu</td><td class="pos">noun</td><td>display; arrangement of products</td></tr>
+        <tr><td>品出し</td><td>shinedashi</td><td class="pos">noun</td><td>restocking; putting out merchandise</td></tr>
+        <tr><td>廃棄</td><td>haiki</td><td class="pos">noun</td><td>disposal; throwing away (expired food)</td></tr>
+        <tr><td>朝礼</td><td>chōrei</td><td class="pos">noun</td><td>morning assembly; morning meeting</td></tr>
+        <tr><td>制服</td><td>seifuku</td><td class="pos">noun</td><td>uniform</td></tr>
+        <tr><td>エプロン</td><td>epuron</td><td class="pos">noun</td><td>apron</td></tr>
+        <tr><td>名札</td><td>nafuda</td><td class="pos">noun</td><td>name tag</td></tr>
+        <tr><td>店長</td><td>tenchō</td><td class="pos">noun</td><td>store manager</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Social Pressure, Identity & the Body</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>結婚</td><td>kekkon</td><td class="pos">noun</td><td>marriage</td></tr>
+        <tr><td>彼氏</td><td>kareshi</td><td class="pos">noun</td><td>boyfriend</td></tr>
+        <tr><td>未婚</td><td>mikon</td><td class="pos">noun</td><td>unmarried</td></tr>
+        <tr><td>就職</td><td>shūshoku</td><td class="pos">noun</td><td>finding employment; getting a job</td></tr>
+        <tr><td>正社員</td><td>seishain</td><td class="pos">noun</td><td>full-time employee; regular worker</td></tr>
+        <tr><td>アルバイト</td><td>arubaito</td><td class="pos">noun</td><td>part-time job; part-time worker</td></tr>
+        <tr><td>非規</td><td>hiseiki</td><td class="pos">noun</td><td>non-regular (employment)</td></tr>
+        <tr><td>心配</td><td>shinpai</td><td class="pos">noun</td><td>worry; concern</td></tr>
+        <tr><td>変</td><td>hen</td><td class="pos">adj</td><td>strange; weird; odd</td></tr>
+        <tr><td>空気を読む</td><td>kūki wo yomu</td><td class="pos">expr</td><td>to read the air; to read the room</td></tr>
+        <tr><td>同調</td><td>dōchō</td><td class="pos">noun</td><td>conformity; falling in line</td></tr>
+        <tr><td>存在意義</td><td>sonzai igi</td><td class="pos">noun</td><td>reason for being; meaning of existence</td></tr>
+        <tr><td>鼓膜</td><td>komaku</td><td class="pos">noun</td><td>eardrum</td></tr>
+        <tr><td>自律神経</td><td>jiritsu shinkei</td><td class="pos">noun</td><td>autonomic nervous system</td></tr>
+        <tr><td>吐き気</td><td>hakike</td><td class="pos">noun</td><td>nausea</td></tr>
+        <tr><td>ぼんやり</td><td>bonyari</td><td class="pos">adv</td><td>vaguely; dimly; absently</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Murata Sayaka's prose carries the clarity of someone who has learned that precision is a form of kindness — to herself, to her characters, and to readers who have never had their strangeness named. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Konbini</em> (コンビニ) as Cultural Proper Noun</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>コンビニ</strong>人間</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>Convenience Store</strong> Woman" / "<strong>Convenience Store</strong> Human"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>konbini</em> (コンビニ) in Japanese is not merely a shortened form of "convenience store"; it is a cultural institution with a specificity that the English phrase cannot convey. In Japan, the konbini is a 24-hour ecosystem that handles food, banking, ticketing, postal services, bill payment, package delivery, and disaster relief. It is staffed by part-time workers who follow detailed manuals, restock shelves according to precise schedules, and dispose of unsold food at legally mandated times. The konbini is not "a" convenience store; it is the konbini — a concept so central to Japanese life that most urban residents visit one daily. The katakana rendering (コンビニ) marks it as foreign in origin but domesticated in practice — a loanword that has become more Japanese than the Japanese words around it. The English title <em>Convenience Store Woman</em> loses this specificity: American convenience stores are different institutions — often associated with gas stations, open late but not 24 hours, selling different products, serving different functions. The British " cornershop" is different still. The Japanese <em>konbini</em> is its own thing, and the novel's entire meaning depends on the reader understanding what kind of thing it is. What is also lost is the phonetic quality of <em>konbini</em> — the bouncy, friendly, almost childlike sound of the word, which makes the institution sound approachable, unthreatening, almost cute. "Convenience store" is bureaucratic by comparison. The Japanese title makes the konbini sound like a place you could fall in love with — which is exactly what Keiko has done.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Ningen</em> (人間) vs. "Woman" or "Person"</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>コンビニ<strong>人間</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"Convenience Store <strong>Woman</strong>" / "Convenience Store <strong>Human</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English translation's choice of "Woman" rather than "Human" is understandable — Keiko is female, and the novel explores specifically gendered pressures — but it fundamentally changes the title's philosophical register. <em>Ningen</em> (人間, "human being") is the word used in existential, ethical, and philosophical discourse; it asks the question "What is a human?" in a way that "woman" does not. The Japanese title <em>Konbini Ningen</em> is asking, with genuine philosophical seriousness, whether a person whose humanity has been shaped by a commercial institution is still fully human — or whether she has become something else, a new kind of being. "Convenience Store Woman" asks a sociological question (what does society expect of women who work in retail?) rather than an ontological one (what is the nature of a human being constituted by a store?). The English title also introduces a gender specificity that the Japanese avoids. <em>Ningen</em> is gender-neutral; "woman" is not. By making Keiko's gender the primary category, the English title subtly reinforces the very norms the novel critiques — the assumption that a woman's story is, first and foremost, a woman's story, rather than a human story. The Japanese title refuses this categorization. Keiko is not "a woman" who works at a konbini; she is a new kind of human being. The novel's radicalism depends on this refusal.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Futsū</em> (普通) as Coercive Norm</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>普通</strong>じゃない／<strong>普通</strong>の生活</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"not <strong>normal</strong>" / "<strong>normal</strong> life" / "<strong>ordinary</strong> life"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>futsū</em> (普通) is one of the most powerful and dangerous words in Japanese social life, and its translation as "normal" or "ordinary" loses almost everything that makes it coercive. <em>Futsū</em> is not merely a statistical term ("what most people do"); it is a moral term ("what people should do"), an aesthetic term ("what looks right"), and a social term ("what will not attract negative attention") all at once. When Keiko's sister says her life is not <em>futsū</em>, she is not making an observation; she is making a diagnosis, a warning, and a demand. The English "not normal" can sound clinical or even playful ("I'm not normal, haha"); the Japanese <em>futsū ja nai</em> (普通じゃない) is a statement of social emergency. What is lost in English is the specifically Japanese grammar of <em>futsū</em> as an unmarked, unexamined standard that everyone is expected to meet without ever having been told what it is. There is no manual for <em>futsū</em> — which is precisely why Keiko cannot follow it. The konbini manual tells her exactly what to do; <em>futsū</em> tells her only that she has failed. The novel's entire political argument is contained in this contrast: between a system that makes its rules explicit (the konbini) and a system that keeps its rules implicit (<em>futsū</em>). The English "normal" cannot carry this critique because it does not have the same social weight. In English-speaking cultures, "normal" has been problematized for decades — we have "the new normal," "normal is overrated," "why be normal?" In Japan, <em>futsū</em> remains, for the most part, an unchallenged good. The novel's challenge to it is therefore more radical in Japanese than it can be in English.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Buhin</em> (部品) as Mechanical Selfhood</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>世界の<strong>部品</strong>になる</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"become a <strong>component</strong> of the world" / "become a <strong>part</strong> of the world" / "become a <strong>cog</strong> in the world"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>buhin</em> (部品, "component / part / spare part") is a technical term from engineering and manufacturing — the word for the parts that make up a machine. When Keiko says she has become a <em>buhin</em> of the world, she is using a vocabulary that English translations struggle to reproduce. "Component" is accurate but bloodless; "part" is too generic; "cog" carries Marxist overtones of alienation that are not quite right for Keiko's meaning. What is lost in English is the specifically Japanese resonance of <em>buhin</em> as something both mechanical and precious — a part that is necessary, that has a specific function, that cannot be replaced by just any other part. In Japanese manufacturing philosophy (and Japan is a manufacturing culture in its bones), every <em>buhin</em> matters; the quality of the whole depends on the quality of each component. When Keiko calls herself a <em>buhin</em>, she is not saying she is disposable; she is saying she has a function, a fit, a place where she belongs. The English "cog" suggests interchangeability and exploitation; the Japanese <em>buhin</em> suggests specificity and integration. The novel's genius is to take a word that, in a Western context, would signal alienation and make it mean belonging. Keiko does not want to be a "unique individual"; she wants to be a <em>buhin</em> — a part that fits, that functions, that is necessary to the whole. The English translation cannot fully capture this reversal because the vocabulary of mechanical parts in English has been so thoroughly claimed by critiques of capitalism that it is hard to hear it any other way.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Konbini no oto</em> (コンビニの音) as Acoustic Identity</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>全てが混ざり合い、「<strong>コンビニの音</strong>」になって</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"everything mixes together, becomes '<strong>the sound of the convenience store</strong>'"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>konbini no oto</em> (コンビニの音, "the sound of the convenience store") is presented in quotation marks in the original, and this typographical choice is doing important work. The quotation marks make "the sound of the convenience store" a named entity — not merely a description but a proper noun, a category, a thing in itself. In Japanese, quotation marks around a phrase can give it the status of a coined term, a concept that the author is introducing for the first time. Murata is not saying that the store "has sounds"; she is saying that it has a <em>sound</em> — a singular, identifiable acoustic signature as distinctive as a person's voice or a nation's anthem. What is lost in English is the specifically Japanese convention of using quotation marks to elevate a descriptive phrase into a conceptual term. The English reader sees "the sound of the convenience store" as a poetic description; the Japanese reader sees <em>「コンビニの音」</em> as a technical concept being defined. The passage is doing acoustic phenomenology: it is analyzing how individual sounds (the door chime, the scanner, the refrigerator) blend into a gestalt that is greater than the sum of its parts — a "konbini sound" that Keiko can read the way a musician reads a score. The quotation marks make this analysis explicit; without them, the English risks reducing a philosophical claim to a poetic image. The novel is not being poetic about the konbini's sound; it is being precise. The sound is real. It has properties. It can be learned, internalized, and used as the basis for a form of consciousness. And that is exactly what Keiko has done.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of the konbini, the pressure of the normal, and the quiet radicalism of choosing to be a component.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の（名詞＋名詞の複合）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>A no B</em> (appositional compound): "A-B / the B that is A" — fuses two nouns into a single identity without specifying modifier/modified.</p>
+      <div class="grammar-example">コンビニ人間</div>
+      <p class="grammar-example-en">"convenience-store human" — Not a human in a store but a new ontological category.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ことができた（可能の過去）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...koto ga dekita</em>: "was able to... / could..." — potential form in past tense, making achievement active rather than automatic.</p>
+      <div class="grammar-example">世界の部品になることができた</div>
+      <p class="grammar-example-en">"I was able to become a component of the world" — Becoming as achievement, not as fate.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜としての（資格・立場）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...to shite no</em>: "as / in the capacity of / qua" — makes a role or capacity into a modifier of identity.</p>
+      <div class="grammar-example">世界の正常な部品としての私</div>
+      <p class="grammar-example-en">"I, as a normal component of the world" — Identity as role, not essence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜かもしれない（推量・可能性）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ka mo shirenai</em>: "might... / perhaps... / may be..." — speculative construction that presents identity as hypothesis rather than certainty.</p>
+      <div class="grammar-example">縄文時代から生き延びてきた人間なのかもしれない</div>
+      <p class="grammar-example-en">"Perhaps I am a human who has survived since the Jōmon period" — Self-diagnosis as speculation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てきた（継続・変化の過程）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kita</em>: "has been...ing / has come to..." — indicates a process continuing from the past to the present.</p>
+      <div class="grammar-example">生き延びてきた人間</div>
+      <p class="grammar-example-en">"a human being who has survived [up to now]" — Survival as temporal extension across millennia.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ために（目的）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tame ni</em>: "in order to... / for the purpose of..." — marks purpose, making survival the goal of parasitism.</p>
+      <div class="grammar-example">き延びるために、コビニに寄生している</div>
+      <p class="grammar-example-en">"parasitic on the convenience store in order to survive" — The logic of ecological necessity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だから（理由・原因）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...da kara</em>: "because..." — explanatory conjunction that presents a reason as sufficient cause.</p>
+      <div class="grammar-example">正常な世界はとても強引だから</div>
+      <p class="grammar-example-en">"Because the normal world is terribly forceful" — Seven syllables that explain an entire life's strategy of camouflage.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜て、〜になる（変化の結果）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te, ...ni naru</em>: "[by doing X], become Y" — resultative construction showing transformation through process.</p>
+      <div class="grammar-example">全てが混ざり合い、「コンビニの音」になって</div>
+      <p class="grammar-example-en">"Everything mixes together and becomes 'the sound of the convenience store'" — Emergence of gestalt from components.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Murata Sayaka's grammar is the grammar of someone who has learned that the world does not make its rules explicit — except at the konbini. Pay attention to how the appositional compound <em>konbini ningen</em> fuses identity with environment, how <em>koto ga dekita</em> makes becoming a component an active achievement, how <em>to shite no</em> turns "normal component" into a role one can inhabit, how <em>ka mo shirenai</em> presents self-knowledge as permanent hypothesis, how <em>te kita</em> stretches survival across geological time, how <em>tame ni</em> makes parasitism a logical necessity, and how <em>da kara</em> compresses an entire social analysis into a single causal clause. The grammar is as precise as the konbini manual — and as quietly revolutionary as Keiko's choice to keep working there.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『コンビニ人間』 &middot; 村田耶香 &middot; 文藝春秋 2016年7月27日刊 &middot; 160ページ &middot; ISBN 978-4-16-390434-4</p>
+  <p style="margin-top: var(--space-xs);">文春文庫版 2017年9月5日発売 &middot; 168ページ &middot; ISBN 978-4-16-790940-6 &middot; 初出『文學界』2016年6月号</p>
+  <p style="margin-top: var(--space-xs);">第155回芥川龍之介賞（2016年） &middot; 英訳版全米100万部突破 &middot; 44カ国語翻訳 &middot; フランス語訳2023年Prix de l'Embouchure受賞</p>
+  <p style="margin-top: var(--space-xs);">著者：村田沙耶香（1979年8月14日生・千葉県印西市出身・玉川大学文学部芸術文化学科卒）</p>
+  <p style="margin-top: var(--space-xs);">受賞歴：第46回群像新人文学賞優秀作（2003年） &middot; 第31回野間文芸新人賞（2009年） &middot; 第26回三島由紀夫賞（2013年） &middot; 第155回芥川龍之介賞（2016年） &middot; 第78回野間文芸賞（2025年）</p>
+</footer>
+
+</div>
+</body>
+</html>

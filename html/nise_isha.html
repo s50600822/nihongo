@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>偽医者がいる村 — 藤ノ木優 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0c1014;
+  --bg-surface: #121820;
+  --bg-elevated: #182028;
+  --bg-card: #1e2832;
+  --ink-primary: #e4e8ec;
+  --ink-secondary: #b4bcc4;
+  --ink-muted: #7a8898;
+  --ink-faint: #4a5868;
+  --accent-snow: #6a8aaa;
+  --accent-snow-dim: #3a5a7a;
+  --accent-snow-glow: rgba(106, 138, 170, 0.12);
+  --accent-ember: #8a6a5a;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-snow-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-snow);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-snow-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-snow-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-snow);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-snow-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-snow), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+/* Sections */
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-snow);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-snow-dim);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+/* TOC */
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-snow); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+/* Title breakdown */
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-snow-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+/* Passage blocks */
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-snow-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-snow);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-snow-dim);
+}
+
+/* Vocabulary tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-snow);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+/* Nuance */
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-ember);
+}
+
+.nuance-box h4 {
+  color: var(--accent-ember);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-snow);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* Grammar */
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-snow);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Author */
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-snow-dim), var(--accent-snow));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Character cards */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+.char-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.char-card h4 {
+  color: var(--accent-snow);
+  margin-top: 0;
+}
+
+.char-card .char-role {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utility */
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-snow-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Print */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>偽医者がいる村</h1>
+  <p class="hero-subtitle">Nise Isha ga Iru Mura / The Village with a Fake Doctor</p>
+  <p class="hero-meta">藤ノ木 優 &middot; KADOKAWA 2025年1月 &middot; 336ページ &middot; 現役産婦人科医が描く感動の医療小説</p>
+  <hr class="hero-divider">
+</header>
+
+<!-- TOC -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<!-- Title Grammar -->
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 偽医者がいる村</h2>
+  <p class="lead">The title <em>Nise Isha ga Iru Mura</em> (偽医者がいる村) is a study in ironic reversal and cultural specificity. At first glance, it appears to announce a mystery: a village where a fake doctor practices, a story of deception and exposure. But the novel subverts this expectation entirely. The "fake doctor" is not an impostor preying on the ignorant; he is a real doctor who has been falsely labeled "fake" by the internet mob. The village is not a place of danger but of redemption. The title, in other words, is a lie that tells the truth — the truth of how quickly a society can strip a healer of his identity, and how slowly, how painstakingly, that identity can be restored.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">偽</span>
+        <span class="romaji">nise</span>
+        <span class="meaning">"false / fake / counterfeit / pseudo-" — The prefix <em>nise</em> (偽) is one of the most morally loaded in Japanese. It appears in compounds like <em>nise-mono</em> (偽物, "counterfeit goods"), <em>nise-satsu</em> (偽札, "counterfeit money"), <em>nise-shōnin</em> (偽証人, "false witness"), and <em>nise-shinbun</em> (偽新聞, "fake news"). In every case, <em>nise</em> marks a deliberate deception — not a mistake, not an accident, but a knowing substitution of the false for the true. When applied to a person, <em>nise</em> is devastating: a <em>nise-isha</em> is not merely an unqualified practitioner but a fraud, an impostor, someone who has stolen the title and trust that belong to the genuine article. The word carries legal weight in Japan: practicing medicine without a license is a criminal offense, and the term <em>nise-isha</em> evokes not just social disapproval but the possibility of prosecution. What makes the title so painful is that Kazuma is not a <em>nise-isha</em> in any of these senses. He is a fully licensed, fully trained obstetrician who made a terrible mistake. The word <em>nise</em> has been applied to him not by a court or a medical board but by strangers on the internet — people who know nothing of the circumstances, the system, the human being. The title is thus an accusation that the novel will spend 336 pages refuting, not by proving Kazuma innocent of error but by proving him human — and humanity, the novel insists, is the opposite of <em>nise</em>.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">医者</span>
+        <span class="romaji">isha</span>
+        <span class="meaning">"doctor / physician / medical practitioner" — The word <em>isha</em> (医者) is the everyday term for a medical doctor, distinct from the more formal <em>ishi</em> (医師, "licensed physician") and the honorific <em>sensei</em> (先生, "teacher / doctor," used as a title of address). <em>Isha</em> is what patients call their doctors, what communities call their healers, what children say they want to become when they grow up. It is a word of trust — the person you call when you are sick, when your wife is in labor, when your child has a fever at 3 AM. To be an <em>isha</em> in Japan is to occupy a social role that extends far beyond technical competence; it is to be a figure of authority, compassion, and hope. The novel's title pairs <em>nise</em> with <em>isha</em> in a way that attacks not just Kazuma's professional standing but his social identity. He is no longer "Doctor Ahiru" — he is "the fake doctor," a phrase that erases everything he has done right in a career that included countless successful deliveries, countless lives saved, countless families made whole. The title's grammar — <em>nise isha ga iru</em> (偽医者がいる, "there is a fake doctor / a fake doctor exists") — uses the existential <em>iru</em> (いる), the verb for animate beings, which subtly acknowledges that the "fake doctor" is a person, not merely a category. What is lost in English is the specifically Japanese resonance of <em>isha</em> as a title of community trust. The English "doctor" can be preceded by "fake" without the same social devastation, because the English-speaking world has many ways to qualify medical practitioners ("unlicensed practitioner," "quack," "charlatan") that do not carry the specific weight of <em>nise isha</em> as a label that can destroy a career with a single hashtag.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">村</span>
+        <span class="romaji">mura</span>
+        <span class="meaning">"village" — The word <em>mura</em> (村) carries in Japanese a weight that "village" in English has largely lost. In contemporary Japan, <em>mura</em> is not merely a small rural settlement; it is a symbol of traditional community, of face-to-face relationships, of a social order that predates and in some ways resists the anonymity of urban life. The <em>mura</em> is where everyone knows everyone, where reputation is built slowly over generations and can be destroyed in a day, where the concept of <em>mura hachibu</em> (村八分, "village ostracism") — the collective shunning of a community member — once held the power of life and death. In the novel, the village is both sanctuary and trial: it offers Kazuma a place to hide from the internet's judgment, but it also subjects him to the older, slower judgment of community — the judgment of people who will look him in the eye before they decide what he is. The title's structure — <em>Nise Isha ga Iru Mura</em> (偽医者がいる村, "The Village Where a Fake Doctor Is / The Village with a Fake Doctor") — uses the relative clause <em>nise isha ga iru</em> to modify <em>mura</em>, making the presence of the "fake doctor" a defining characteristic of the place. The village is named by its shame, or by its secret. What is lost in English is the cultural resonance of <em>mura</em> as a community that judges collectively and forgives slowly — a resonance that makes the novel's final redemption all the more powerful. The English "village" suggests quaintness or pastoral charm; the Japanese <em>mura</em> suggests a social organism with the power to exclude and, eventually, to heal.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Kadokawa Bunko, January 24, 2025, 336 pages, ISBN 978-4-04-114866-2. The cover features a snowy landscape with a solitary clinic — an image that captures both the physical isolation of the setting and the moral isolation of the protagonist. The bunko edition reached its 8th printing by July 2025.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Author Bio -->
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>藤ノ木 優 &mdash; Fujinoki Yuu (Endō Shūichirō)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">藤</div>
+    <div class="author-name-block">
+      <h3>藤ノ木 優 / Fujinoki Yuu</h3>
+      <p class="author-name-romaji">Active OB-GYN &middot; Medical Doctor &middot; PhD &middot; Novelist</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Fujinoki Yuu is the pen name of Endō Shūichirō, a practicing obstetrician-gynecologist who writes novels between delivering babies. Born in the early 1980s, he graduated from Toho High School in 1999 and entered Juntendo University School of Medicine the same year — one of Japan's most prestigious medical schools. He graduated in 2006, completed his graduate studies in 2015, and after working at Juntendo University Urayasu Hospital, opened his own clinic — Endo Ladies Clinic — in 2017. He is, by any measure, a successful physician: a clinic owner, a PhD-holder, a specialist in a field that demands both technical excellence and emotional resilience.</p>
+    <p style="margin-bottom: var(--space-md);">And yet, in 2018, with his clinic still struggling to attract patients — the days when "the pheasant crowed in the empty waiting room," as the Japanese idiom puts it — something unexpected happened. He watched two television dramas: <em>Gibo to Musume no Blues</em> (義母と娘のブルース, "Stepmother and Daughter's Blues") and <em>Unnatural</em> (アンナチュラル), a forensic pathology drama. He was deeply moved. And he thought: I want to write something like that. Not instead of medicine — alongside it. The impulse was not to escape his profession but to extend it, to give voice to the experiences that medical charts and academic papers could not capture: the terror of a hemorrhage at 3 AM, the silence of a stillbirth, the joy of a first cry, the weight of a lawsuit, the loneliness of a doctor who has done everything right and still lost a patient.</p>
+    <p style="margin-bottom: var(--space-md);">He began submitting to literary prizes in 2019. His first work, <em>Mag no Gohan</em> (まぎわのごはん), reached the final selection of the 2nd "Japan Delicious Novel Prize" (日本おいしい小説大賞) in 2020 and was published in revised form in 2021, marking his debut as a novelist. But it was his third work, <em>Ashita no Meii: Izu-chū Shūsanki Sentā</em> (あしたの名医 伊豆中周産期センター, "Tomorrow's Famous Doctor: Izu Central Perinatal Center," 2022), that established him as a major voice in medical fiction. The novel, based on the hospital where he had worked as a young doctor, won the 2023 Kitajima Shirō Original Bunko Grand Prize (北上次郎オリジナル文庫大賞) and launched the "Ashita no Meii" series, which has become one of the most beloved medical fiction franchises in contemporary Japan.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Nise Isha ga Iru Mura</em> (2025) represents a departure from the series format — a standalone novel that draws on Fujinoki's deepest professional fears. Every obstetrician lives with the knowledge that a single bad outcome can destroy a career built on thousands of good ones. Every doctor who has stood in an operating room at 3 AM, watching a patient bleed, knows the particular terror of recognizing that the margin between success and catastrophe is thinner than the scalpel in their hand. Fujinoki has written a novel about that terror — and about what happens after, when the crisis is over but the life is not. The journalist character who visits the clinic is not a villain; she is a person who did her job, who reported a story that was true in its facts and devastating in its omissions. The novel does not ask us to forgive Kazuma's mistake; it asks us to understand that a mistake is not a life, that a doctor is not a headline, and that redemption — if it comes at all — comes not from the internet's approval but from the quiet, daily work of showing up for the next patient.</p>
+    <p style="margin-bottom: var(--space-md);">In 2023, Fujinoki joined the Mystery Writers of Japan (日本推理作家協会), a sign of his growing stature in the literary world. His subsequent works include <em>-196℃ no Yuri-kago</em> (-196℃のゆりかご, "The -196℃ Cradle," 2024), a family novel about reproductive medicine; <em>Kōnotori Tonda</em> (コウノトリとんだ, 2025); and <em>Hoshi Nobori no Shima</em> (星昇りの島, "Star-Ascending Island," 2026), about end-of-life care on a remote island. He continues to run his clinic and deliver babies while writing novels that have brought the reality of Japanese medical practice to hundreds of thousands of readers. He is, in the most literal sense, a doctor who writes — and a writer who heals.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Historical Context -->
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Medical Accidents, Online Bashing, and the Myth of Safe Birth</h2>
+
+  <div class="card">
+    <h3>The Safety Myth of Childbirth in Japan</h3>
+    <p>Japan has one of the lowest maternal mortality rates in the world — a statistic that reflects the skill and dedication of its obstetricians, midwives, and nurses. But this very success has created what one reviewer of Fujinoki's novel called the "safety myth of childbirth" (<em>shussan no anzen shinwa</em> / 出産の安全神話): the widespread belief, particularly among urban, educated populations, that childbirth is not merely safe but routine, not merely routine but risk-free. When something goes wrong — when a fetus dies, when a mother hemorrhages, when an emergency hysterectomy is required — the response is often not grief alone but outrage: <em>how could this happen here, in Japan, in this day and age?</em></p>
+    <p style="margin-top: var(--space-sm);">The novel's prologue is a news article about exactly such a case: a 40-year-old woman undergoing painless labor (<em>mutsū bunben</em> / 無痛分娩) who suffers a uterine rupture, loses her fetus, and undergoes emergency surgery that removes her uterus. The article notes, with the flat objectivity of journalism, that the doctor on duty was "in another building conducting an experiment." This phrase — <em>betsu-tō de jikken-chū</em> (別棟で実験中, "in a separate building conducting an experiment") — is the knife that kills Kazuma's career. It suggests negligence, abandonment, a doctor who prioritized research over patients. What it cannot capture, what no news article can capture, is the complexity of hospital staffing, the reality that doctors are often covering multiple responsibilities, the thousand decisions that led to that moment. Fujinoki's novel is, in part, a meditation on what gets lost when a medical tragedy becomes a news story — and on what can never be recovered once it has.</p>
+  </div>
+
+  <div class="card">
+    <h3>Online Bashing and the Death of Reputation</h3>
+    <p>The Japanese term <em>basshingu</em> (バッシング, from English "bashing") refers to the coordinated online attack on an individual or institution, often triggered by a news story or social media post that goes viral. In the 2010s and 2020s, Japan has seen numerous cases of medical professionals subjected to <em>basshingu</em> after adverse outcomes: their names published on forums, their faces shared on Twitter, their clinics flooded with one-star reviews from people who have never been patients. The legal framework for addressing this — defamation laws, the recently strengthened <em>insuto rō</em> (インストール法, "insult law") that criminalizes online abuse — has struggled to keep pace with the speed and scale of digital shaming.</p>
+    <p style="margin-top: var(--space-sm);">Kazuma's experience in the novel is a textbook case of medical <em>basshingu</em>. A news article reports the facts of the case; social media adds the judgment; the hospital, fearing reputational damage, removes him from his position; and within weeks, a career built over years is reduced to a hashtag. The novel's power lies in its refusal to simplify this process. The journalist who wrote the article is not a monster; she is a professional who believed she was serving the public interest. The hospital administrators are not villains; they are managers trying to protect an institution that serves thousands of patients. Even the online commenters are not individually evil; they are people reacting to a story that has been framed to provoke outrage. Fujinoki shows us a system in which no one person is responsible for the destruction of Kazuma's life — and yet the destruction is total. This is the horror of <em>basshingu</em>: it requires no conspiracy, only convergence.</p>
+  </div>
+
+  <div class="card">
+    <h3>Genkai Shūraku: Japan's Disappearing Villages</h3>
+    <p>The novel's setting — a <em>genkai shūraku</em> (限界集落, "marginal village / village on the brink") — is one of the most pressing social issues in contemporary Japan. A <em>genkai shūraku</em> is defined as a community where more than half the residents are over 65 years old, where the social infrastructure (schools, clinics, shops) is disappearing, and where the population is projected to decline to the point of unsustainability. Japan has thousands of such villages, particularly in the northern prefectures and mountain regions, and the number grows every year as young people continue to migrate to Tokyo, Osaka, and other major cities.</p>
+    <p style="margin-top: var(--space-sm);">For obstetric care, <em>genkai shūraku</em> present a particular crisis. Maternity wards are expensive to maintain, require specialized staff, and serve a declining number of patients. As birth rates fall, rural hospitals have closed their maternity wards one by one, forcing pregnant women to travel hours to the nearest facility — a dangerous journey in winter, in a country where heavy snowfall is common in the north. The novel's clinic, Takeshita Clinic (下診療所), is the only delivery facility in the entire village — a fact that makes Kazuma's presence not merely convenient but essential. The village needs him whether they know his history or not. This mutual need — the doctor who needs a place to hide, the village that needs a doctor to heal — is the novel's emotional foundation. Fujinoki, who opened his own clinic in a competitive urban market, understands intimately what it means to run a medical practice on the edge: the financial pressure, the staffing challenges, the terror of being the only person available when a complication arises at 2 AM. His portrait of rural obstetric care is not sentimental; it is precise, detailed, and devastating in its realism.</p>
+  </div>
+
+  <div class="card">
+    <h3>Mura Hachibu and the Community's Judgment</h3>
+    <p>The concept of <em>mura hachibu</em> (村八分, "village eight parts") refers to the traditional Japanese practice of collective ostracism, in which a community member who violated communal norms would be denied all cooperation except for two services: funeral preparations and firefighting (the "two parts" that were still provided). While <em>mura hachibu</em> was legally banned in the early 20th century, the psychological pattern persists: the community that turns against one of its own, that withdraws trust and cooperation, that makes continued residence unbearable. In the internet age, <em>mura hachibu</em> has been digitized: the online community that coordinates its rejection of an individual, that makes employment impossible and social life unbearable, that drives its target from public life.</p>
+    <p style="margin-top: var(--space-sm);">The novel's title — <em>Nise Isha ga Iru Mura</em> — evokes <em>mura hachibu</em> in its most modern form. Kazuma is not ostracized by his physical community; he is ostracized by the digital community, the nation of strangers who have decided, on the basis of a news article, that he is unfit to practice medicine. When he arrives in the village, he expects the same judgment: they will learn who he is, they will reject him, he will have to move on. But the village operates on older principles. They judge him not by his headlines but by his hands — by what he does when a woman goes into labor in a snowstorm, by how he treats the frightened, by whether he shows up when he is needed. The novel's deepest argument is that <em>mura hachibu</em>, for all its cruelty, had one feature that digital shaming lacks: it required face-to-face contact. The village that ostracized you had to look you in the eye. The internet that destroys Kazuma never does. And the village that saves him does.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Synopsis -->
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>A Doctor's Fall and Rise in the Snow Country</h2>
+
+  <div class="card">
+    <h3>The Fall: A Headline Destroys a Life</h3>
+    <p>The novel opens with a prologue in the form of a news article: "Fetal death due to uterine rupture during painless labor. On-duty doctor conducting experiment in separate building. Medical system questioned." The facts are stark, the language clinical, the implications devastating. The patient was 40 years old — an advanced maternal age that increases risk. She had requested painless labor — a popular option in Japan that requires epidural anesthesia and continuous monitoring. Something went wrong. The fetus died. The mother's uterus was removed. And the doctor on duty, Ahiru Kazuma (阿比留一馬), was not in the delivery ward when the crisis began.</p>
+    <p style="margin-top: var(--space-sm);">What the article cannot say — what no article can say — is the full context: that Kazuma was covering multiple responsibilities, that he responded as soon as he was called, that he performed the emergency surgery that saved the mother's life, that the "experiment" was legitimate research approved by the hospital, that the outcome, while tragic, was not the result of negligence. But articles do not include context; they include facts, and the facts, arranged in a certain order, tell a story of a doctor who abandoned his patient. The internet takes this story and adds its own ending: <em>nise isha</em> (偽医者, "fake doctor"). The hashtag spreads. The hospital, facing public pressure, removes Kazuma from his position. His colleagues, afraid of guilt by association, distance themselves. His career, built over years of study and practice, collapses in a matter of weeks. And Kazuma, unable to bear the weight of his own name, flees — north, toward the snow country, toward anywhere that is not here.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Village: A Chance Encounter in the Snow</h3>
+    <p>On a remote road in northern Japan, in the middle of a snowstorm, Kazuma encounters a pregnant woman in labor. She is alone, frightened, far from any hospital. Kazuma does what he has been trained to do: he assesses the situation, stabilizes the patient, and arranges transport to the nearest medical facility. The nearest facility turns out to be Takeshita Clinic (竹下診療所), a small maternity clinic in a village of approximately 5,000 people — a <em>genkai shūraku</em> where the clinic is the only place within hours that can handle a delivery. The clinic's director, Sagara (相良), is an experienced physician who sees immediately that Kazuma is a doctor — the way he holds himself, the way he speaks, the way he moves in a clinical environment. When Kazuma confesses his history, Sagara does not flinch. He offers him a job.</p>
+    <p style="margin-top: var(--space-sm);">The clinic is a revelation to Kazuma — and to the reader. It is understaffed, underfunded, and equipped with technology that a university hospital would have discarded years ago. The staff is a handful of dedicated professionals working at the edge of their capacity. The patients are rural women who have nowhere else to go, who cannot afford to travel to the city for prenatal care, who trust the clinic because it has been there for generations. Kazuma, who trained in the gleaming corridors of a university hospital, must learn a different kind of medicine: medicine without a safety net, medicine where the nearest specialist is hours away, medicine where a doctor's judgment is the only thing standing between a mother and disaster. He is, in effect, starting over — not as a famous specialist but as a country doctor, the kind he might have become if he had never gone to the city at all.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Confrontation: The Journalist Returns</h3>
+    <p>Just as Kazuma begins to settle into his new life — as he begins, tentatively, to believe that he might be able to practice medicine again, that he might be able to live with his mistake rather than die from it — the past arrives in the form of a woman: the journalist who wrote the article that destroyed his career. She comes to the clinic not to apologize but to report — a story about rural maternity care, about the crisis of <em>genkai shūraku</em>, about the doctors who still work in places the cities have forgotten. She does not know, when she arrives, that the doctor assisting at the clinic is the same man whose name she turned into a hashtag.</p>
+    <p style="margin-top: var(--space-sm);">Their confrontation is the novel's central dramatic sequence, and Fujinoki handles it with the precision of a surgeon. Neither character is entirely right; neither is entirely wrong. The journalist believed she was serving the public interest by exposing a dangerous doctor. Kazuma believes he was destroyed by a story that omitted the context that would have made him comprehensible. Both are correct. Both are incomplete. The novel does not resolve their conflict with a dramatic reconciliation or a cathartic argument; it resolves it with something more difficult and more true: time. The journalist stays in the village. She sees Kazuma work. She watches him deliver babies, comfort frightened mothers, make decisions under pressure. She learns what a news article cannot contain: the texture of a doctor's daily life, the accumulation of small acts of care that constitute a career, the impossibility of judging a human being by their worst day. And Kazuma, in turn, must confront the journalist not as an enemy but as a person — someone who also made a decision, who also lives with consequences, who also deserves the chance to be more than her worst headline.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Climax: Lives Worth Facing</h3>
+    <p>The novel's final hundred pages are a masterclass in medical suspense. A complication arises — the kind of complication that every obstetrician fears, the kind that cannot be predicted or prevented, only managed. Kazuma must make a decision under pressure, with limited resources, in a clinic that lacks the backup of a university hospital. The decision he makes will determine whether a mother lives or dies, whether a baby is born whole or damaged, whether the clinic that has given him refuge survives or closes. And he must make this decision while the journalist watches, while the village holds its breath, while his own history of failure whispers in his ear: <em>you have already killed one patient. Will you kill another?</em></p>
+    <p style="margin-top: var(--space-sm);">What happens — the specifics of the crisis, the outcome, the aftermath — is best discovered in the reading. What can be said is that Fujinoki refuses the easy redemption. Kazuma does not become a hero. He does not receive a public apology. His name is not cleared by a dramatic revelation. The internet does not reverse its judgment. What he receives is something quieter and, in the novel's terms, more valuable: the knowledge that he can still be useful, that he can still save lives, that a single terrible outcome does not erase every good outcome that came before and every good outcome that may come after. The novel's tagline — <em>mukiau beki inochi ga koko ni aru</em> (向き合うべき命がここにある, "The lives I must face are here") — is not a declaration of triumph but a statement of vocation. Kazuma does not conquer his past; he outlives it, one patient at a time.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Passages -->
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the clinical precision, emotional devastation, and quiet redemption of Fujinoki's prose — a voice that speaks with the authority of someone who has held life and death in his hands.</p>
+
+  <!-- Passage 1 -->
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Prologue: News as Accusation</div>
+    <div class="passage-jp">
+      【無痛分娩中の子宮破裂による胎児死亡。当直医は別棟で実験中、問われる医療体制】
+    </div>
+    <div class="passage-romaji">
+      "[Mutsū bunben-chū no shikyū wareme ni yoru taiji shibō. Tōchoku-i wa betsu-tō de jikken-chū, towareru iryō taisei.]"
+    </div>
+    <div class="passage-en">
+      "[Fetal death due to uterine rupture during painless labor. On-duty doctor conducting experiment in separate building. Medical system questioned.]"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This headline — the novel's opening — is a masterpiece of journalistic compression that functions as a death sentence. The grammar is that of Japanese news headlines: bracketed, telegraphic, stripped of particles and verbs where possible. <em>Mutsū bunben-chū</em> (無痛分娩中, "during painless labor") establishes the context — a modern, elective procedure chosen by a patient who expected safety. <em>Shikyū wareme</em> (子宮破裂, "uterine rupture") is the medical catastrophe: a tear in the uterine wall that can cause fatal hemorrhage and fetal death within minutes. <em>Taiji shibō</em> (胎児死亡, "fetal death") is the outcome — the baby died. And then the blade: <em>tōchoku-i wa betsu-tō de jikken-chū</em> (当直医は別棟で実験中, "the on-duty doctor was conducting an experiment in a separate building"). The word <em>betsu-tō</em> (別棟, "separate building / different building") is doing extraordinary work here. It suggests physical and moral distance — the doctor was not merely elsewhere in the hospital but in an entirely different structure, engaged in something (<em>jikken</em> / 実験, "experiment") that sounds more like research than patient care. The final phrase — <em>towareru iryō taisei</em> (問われる医療体制, "medical system questioned / medical system under scrutiny") — shifts responsibility from the individual doctor to the institution, but the damage is done: the reader has already formed an image of a negligent physician who abandoned his patient for his own research. What is lost in English is the specifically Japanese quality of headline grammar, which omits particles and auxiliary verbs to create a staccato rhythm of accusation. The English translation requires added words ("was," "in," "under") that soften the impact; the Japanese original hits like a series of blows, each noun phrase a separate indictment. The headline is not merely informative; it is performative — it creates the reality it describes by framing it.</p>
+    </div>
+  </div>
+
+  <!-- Passage 2 -->
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">The Tagline</div>
+    <div class="passage-jp">
+      向き合うべき命がここにある。
+    </div>
+    <div class="passage-romaji">
+      "Mukiau beki inochi ga koko ni aru."
+    </div>
+    <div class="passage-en">
+      "The lives I must face are here." / "Here are the lives I must confront."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's promotional tagline — is a profound statement of medical vocation compressed into seven syllables. The grammar is precise and layered. <em>Mukiau</em> (向き合う, "to face / to confront / to engage with") is a compound verb: <em>muku</em> (向く, "to turn toward") + <em>au</em> (合う, "to match / to meet"), suggesting not merely facing something but turning toward it with full attention, meeting it directly. The <em>-beki</em> (べき) suffix transforms the verb into an obligation: <em>mukiau beki</em> (向き合うべき, "that which one must face / that which ought to be faced") — not a choice but a duty. <em>Inochi</em> (命, "life / lives / soul") is the object — not <em>seimei</em> (生命, biological life) or <em>jinsei</em> (人生, a human life story) but <em>inochi</em>, the word that carries the full weight of Japanese reverence for life as something sacred and irreplaceable. <em>Ga koko ni aru</em> (がここにある, "are here / exist here") uses the existential construction with <em>ga</em> marking <em>inochi</em> as the subject, emphasizing that these lives are not abstract possibilities but concrete presences in this specific place. The sentence thus means: "The lives that I am obligated to turn toward and engage with directly — they are here, in this village, in this clinic, in this moment." What is lost in English is the moral weight of <em>beki</em> as a modal of vocation rather than mere duty. "Must" in English can mean external compulsion ("I must pay taxes") or internal necessity ("I must breathe"); <em>beki</em> carries the sense of a calling, a responsibility that arises from one's role in the world. The English "The lives I must face" captures the obligation but loses the sense of chosen commitment — the idea that Kazuma is not merely required to face these lives but has discovered, in this village, the lives he was always meant to face. The sentence is the novel's thesis: redemption is not found in forgetting the past but in finding new lives that deserve the fullness of one's attention.</p>
+    </div>
+  </div>
+
+  <!-- Passage 3 -->
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">The Meaning of "Fake"</div>
+    <div class="passage-jp">
+      偽医者。
+    </div>
+    <div class="passage-romaji">
+      "Nise isha."
+    </div>
+    <div class="passage-en">
+      "Fake doctor."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This two-word phrase — <em>nise isha</em> (偽医者) — is the wound at the center of the novel, and its power lies in its devastating inaccuracy. Kazuma is not a <em>nise isha</em> in any legal or moral sense. He is a licensed physician who graduated from a prestigious medical school, completed his residency, and practiced obstetrics for years. His "crime" is not impersonation but error — a terrible error, to be sure, but an error made by a real doctor in the course of real practice, not by a fraud pretending to qualifications he does not possess. The application of <em>nise</em> to Kazuma is thus a kind of violence: it replaces a complex human reality with a simple categorical condemnation. The word <em>nise</em> does not admit gradation. A counterfeit coin is either counterfeit or genuine; there is no "somewhat counterfeit." By calling Kazuma a <em>nise isha</em>, the internet transforms him from a doctor who made a mistake into someone who was never a doctor at all — erasing his training, his dedication, his years of successful practice in a single compound word. What is lost in English is the specifically Japanese resonance of <em>nise isha</em> as a phrase that evokes not merely professional disqualification but social death. In Japan, where professional identity is deeply tied to institutional affiliation and public reputation, to be called <em>nise</em> is to be expelled from the category of respectability. The English "fake doctor" sounds like a consumer warning; the Japanese <em>nise isha</em> is an annihilation. The novel's entire arc is a response to this annihilation — a demonstration that Kazuma's identity as a doctor cannot be taken from him by a hashtag, that the essence of medical practice is not the absence of error but the presence of care, and that a village of five thousand people can see more clearly than a nation of fifty million what a doctor truly is.</p>
+    </div>
+  </div>
+
+  <!-- Passage 4 -->
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Village's Need</div>
+    <div class="passage-jp">
+      逃げるように北へと向かっていた。
+    </div>
+    <div class="passage-romaji">
+      "Nigeru yō ni kita e to mukatte ita."
+    </div>
+    <div class="passage-en">
+      "He was heading north, as if fleeing."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, from the novel's back-cover copy, contains in eight syllables the entire psychology of Kazuma's flight. The phrase <em>nigeru yō ni</em> (逃げるように, "as if fleeing / like someone escaping") uses the <em>yō ni</em> (ように) simile construction to suggest that Kazuma's movement north is not literally a flight from pursuers but something that resembles flight — a movement driven by fear, by the need to put distance between oneself and a threat. The verb <em>nigeru</em> (逃げる, "to flee / to escape / to run away") carries connotations of cowardice in Japanese; it is the word used for desertion, for evasion, for avoiding responsibility. By saying Kazuma moved <em>nigeru yō ni</em>, the novel acknowledges that his flight looks like cowardice — while simultaneously contextualizing it as the only movement available to a person who has been stripped of his professional identity by public opinion. <em>Kita e to mukatte ita</em> (北へと向かっていた, "was heading toward the north") uses the directional <em>e</em> (へ) with the quotative <em>to</em> (と), a slightly literary construction that adds a sense of inevitability — he was not merely traveling north but moving toward it as toward a destination that had already been chosen for him, by his history, by his shame, by the geography of a country where the north is synonymous with snow, isolation, and the edge of things. What is lost in English is the emotional complexity of <em>nigeru yō ni</em> as a phrase that simultaneously describes and excuses. The English "as if fleeing" is descriptive but neutral; the Japanese <em>nigeru yō ni</em> carries a whisper of judgment (is he running away?) and a whisper of compassion (what else could he do?). The novel will spend its pages answering that question: he could stop. He could turn around. He could face the lives that were waiting for him in the snow.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Vocabulary -->
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of medicine, community, and the long road back from disgrace.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>偽</td><td>nise</td><td class="pos">prefix</td><td>false, fake, counterfeit, pseudo-</td></tr>
+        <tr><td>医者</td><td>isha</td><td class="pos">noun</td><td>doctor, physician (everyday term)</td></tr>
+        <tr><td>村</td><td>mura</td><td class="pos">noun</td><td>village; traditional community</td></tr>
+        <tr><td>限界集落</td><td>genkai shūraku</td><td class="pos">noun</td><td>marginal village; declining community</td></tr>
+        <tr><td>村八分</td><td>mura hachibu</td><td class="pos">noun</td><td>village ostracism; collective shunning</td></tr>
+        <tr><td>向き合う</td><td>mukiau</td><td class="pos">verb</td><td>to face, to confront, to engage with</td></tr>
+        <tr><td>命</td><td>inochi</td><td class="pos">noun</td><td>life; soul; sacred existence</td></tr>
+        <tr><td>再生</td><td>saisei</td><td class="pos">noun</td><td>regeneration, rebirth, recovery</td></tr>
+        <tr><td>誹謗中傷</td><td>hibō chūshō</td><td class="pos">noun</td><td>slander, defamation, libel</td></tr>
+        <tr><td>バッシング</td><td>basshingu</td><td class="pos">noun</td><td>online bashing; coordinated attack</td></tr>
+        <tr><td>炎上</td><td>enjō</td><td class="pos">noun</td><td>going viral (negatively); online firestorm</td></tr>
+        <tr><td>赦し</td><td>yurushi</td><td class="pos">noun</td><td>forgiveness, pardon, absolution</td></tr>
+        <tr><td>誇り</td><td>hokori</td><td class="pos">noun</td><td>pride, honor, self-respect</td></tr>
+        <tr><td>信頼</td><td>shinrai</td><td class="pos">noun</td><td>trust, confidence, reliance</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place to belong; where one fits</td></tr>
+        <tr><td>やり直す</td><td>yarinaosu</td><td class="pos">verb</td><td>to start over, to redo, to make a fresh start</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Medicine & Childbirth</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>産科医</td><td>sanka-i</td><td class="pos">noun</td><td>obstetrician</td></tr>
+        <tr><td>産婦人科</td><td>sanfujinka</td><td class="pos">noun</td><td>obstetrics and gynecology</td></tr>
+        <tr><td>診療所</td><td>shinryōjo</td><td class="pos">noun</td><td>clinic, medical practice</td></tr>
+        <tr><td>産院</td><td>san'in</td><td class="pos">noun</td><td>maternity hospital/clinic</td></tr>
+        <tr><td>分娩</td><td>funben</td><td class="pos">noun</td><td>childbirth, delivery, labor</td></tr>
+        <tr><td>無痛分娩</td><td>mutsū bunben</td><td class="pos">noun</td><td>painless labor; epidural childbirth</td></tr>
+        <tr><td>産気づく</td><td>sakizuku</td><td class="pos">verb</td><td>to go into labor</td></tr>
+        <tr><td>子宮破裂</td><td>shikyū wareme</td><td class="pos">noun</td><td>uterine rupture</td></tr>
+        <tr><td>帝王切開</td><td>teiō sekkai</td><td class="pos">noun</td><td>Caesarean section</td></tr>
+        <tr><td>胎児</td><td>taiji</td><td class="pos">noun</td><td>fetus, unborn child</td></tr>
+        <tr><td>医療事故</td><td>iryō jiko</td><td class="pos">noun</td><td>medical accident/malpractice incident</td></tr>
+        <tr><td>当直医</td><td>tōchoku-i</td><td class="pos">noun</td><td>doctor on duty</td></tr>
+        <tr><td>妊婦</td><td>ninpu</td><td class="pos">noun</td><td>pregnant woman</td></tr>
+        <tr><td>出産</td><td>shussan</td><td class="pos">noun</td><td>childbirth, delivery</td></tr>
+        <tr><td>助産師</td><td>josanshi</td><td class="pos">noun</td><td>midwife</td></tr>
+        <tr><td>周産期</td><td>shūsanki</td><td class="pos">noun</td><td>perinatal period</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Journalism, Society & the North</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>記者</td><td>kisha</td><td class="pos">noun</td><td>journalist, reporter</td></tr>
+        <tr><td>記事</td><td>kiji</td><td class="pos">noun</td><td>news article, report</td></tr>
+        <tr><td>報道</td><td>hōdō</td><td class="pos">noun</td><td>news coverage, reporting</td></tr>
+        <tr><td>世間</td><td>seken</td><td class="pos">noun</td><td>the world; public opinion; society</td></tr>
+        <tr><td>世間知らず</td><td>seken-shirazu</td><td class="pos">noun</td><td>naive person; ignorant of the world</td></tr>
+        <tr><td>雪</td><td>yuki</td><td class="pos">noun</td><td>snow</td></tr>
+        <tr><td>雪国</td><td>yukiguni</td><td class="pos">noun</td><td>snow country; northern Japan</td></tr>
+        <tr><td>北</td><td>kita</td><td class="pos">noun</td><td>north; the north (of Japan)</td></tr>
+        <tr><td>過疎</td><td>kaso</td><td class="pos">noun</td><td>depopulation; rural decline</td></tr>
+        <tr><td>地域医療</td><td>chiiki iryō</td><td class="pos">noun</td><td>regional/local medical care</td></tr>
+        <tr><td>院長</td><td>inchō</td><td class="pos">noun</td><td>clinic director; hospital director</td></tr>
+        <tr><td>患者</td><td>kanja</td><td class="pos">noun</td><td>patient</td></tr>
+        <tr><td>職場</td><td>shokuba</td><td class="pos">noun</td><td>workplace; place of employment</td></tr>
+        <tr><td>追放</td><td>tsuihō</td><td class="pos">noun</td><td>expulsion, banishment, ostracism</td></tr>
+        <tr><td>逃げる</td><td>nigeru</td><td class="pos">verb</td><td>to flee, to escape, to run away</td></tr>
+        <tr><td>向かう</td><td>mukau</td><td class="pos">verb</td><td>to head toward, to face, to turn to</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Nuance -->
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Fujinoki Yuu's prose carries the precision of a medical chart and the weight of a confession. These are the moments where Japanese does something that English cannot quite reproduce.</p>
+
+  <div class="card">
+    <h3>1. <em>Nise Isha</em> (偽医者) as Social Death</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>偽医者</strong></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>fake doctor</strong>" / "<strong>false doctor</strong>" / "<strong>quack</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The compound <em>nise isha</em> (偽医者) is doing something in Japanese that has no exact equivalent in English. The prefix <em>nise</em> (偽) is a categorical negation: it does not mean "bad doctor" or "negligent doctor" or "incompetent doctor" — it means "not a doctor at all, despite appearances." The English "quack" carries a sense of long-standing fraud, of someone who has built a career on deception; "fake doctor" sounds like someone impersonating a physician without qualifications; "false doctor" is archaic and legalistic. None of these captures the specific horror of <em>nise isha</em> as applied to a fully qualified physician who has been stripped of his professional identity by public opinion. In Japanese, <em>nise isha</em> is not merely an insult; it is a reclassification. It moves a person from the category of "doctor" to the category of "criminal impersonator" — and this reclassification, once made publicly, is almost impossible to reverse. The novel's entire project is to show that Kazuma's identity as a doctor resides not in his license or his hospital affiliation but in his capacity to heal — and that this capacity cannot be taken from him by a hashtag. What is lost in English is the sense of <em>nise</em> as a legal and social category of exclusion. The Japanese reader who encounters <em>偽医者がいる村</em> on a book cover understands immediately that this is a novel about identity destroyed and identity restored — about what happens when a society applies the wrong label to the right person.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Nigeru yō ni</em> (逃げるように) as Fleeing and Becoming</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span>逃げる<strong>ように</strong>北へと向かっていた</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"heading north <strong>as if fleeing</strong>" / "<strong>like someone running away</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The simile construction <em>nigeru yō ni</em> (逃げるように) is doing double duty in this sentence. Grammatically, it is a standard <em>yō ni</em> simile: "in the manner of fleeing." But <em>yō ni</em> in Japanese carries a range of nuances that English "as if" or "like" cannot fully capture. <em>Yō ni</em> can suggest approximation ("more or less"), appearance ("seemingly"), goal ("so that"), or wish ("may it be that"). In this context, <em>nigeru yō ni</em> suggests not merely that Kazuma's movement resembles flight but that it is flight in everything but name — that he is fleeing in fact while refusing the word. The construction thus contains a psychological insight: Kazuma cannot admit to himself that he is running away, so his flight takes the form of "heading north" — a neutral, directional movement that happens to be indistinguishable from escape. The English "as if fleeing" preserves the simile but loses the sense of self-deception encoded in the grammar. The Japanese reader feels, in <em>nigeru yō ni</em>, the gap between what Kazuma is doing and what he can allow himself to know he is doing — a gap that the novel will gradually close as he learns to face his past rather than outrun it.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Mukiau beki</em> (向き合うべき) as Vocation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>向き合うべき</strong>命</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>the lives one must face</strong>" / "<strong>lives that should be confronted</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The modal construction <em>mukiau beki</em> (向き合うべき) combines the compound verb <em>mukiau</em> (向き合う, "to face / to engage with") with the suffix <em>beki</em> (べき), which expresses obligation, propriety, and moral necessity. <em>Beki</em> is not merely "should" or "must"; it is the grammar of what is fitting, what is appropriate to one's role, what a person of virtue would do. When combined with <em>mukiau</em> — a verb that suggests turning toward something with full attention, meeting it directly rather than avoiding it — <em>beki</em> transforms a simple duty into a calling. <em>Mukiau beki inochi</em> (向き合うべき命) is not "lives that must be faced" in the sense of an external requirement; it is "lives that one is morally and vocationally obligated to turn toward and engage with fully." The English "must" captures the obligation but loses the sense of chosen commitment; "should" captures the propriety but loses the urgency; "ought to" captures the morality but sounds archaic. What is lost in English is the integration of these meanings into a single grammatical form — the way that <em>beki</em> makes the obligation inseparable from the identity of the person who bears it. Kazuma does not face these lives because he is required to; he faces them because, in facing them, he becomes who he is.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Seken</em> (世間) as the Judging World</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>世間</strong>から「偽医者」とバッシングを受け</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"bashed as a 'fake doctor' by <strong>society</strong>" / "by <strong>the public</strong>" / "by <strong>the world</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>seken</em> (世間) is one of the most culturally specific in Japanese. It refers not to "society" in the abstract sociological sense, not to "the public" as a demographic category, and not to "the world" as a philosophical totality. <em>Seken</em> is the network of people who are not your family, not your friends, not your colleagues — the generalized other whose opinion shapes your reputation, your marriage prospects, your professional standing, your sense of whether you are succeeding or failing at life. <em>Seken</em> is what people will say; <em>seken ni warui</em> (世間に悪い, "bad in the eyes of <em>seken</em>") is a reason not to do something; <em>seken no hanashi</em> (世間の話, "<em>seken</em> talk") is gossip; <em>seken-shirazu</em> (世間知らず, "not knowing <em>seken</em>") is a person too naive to understand how they are perceived. When the novel says Kazuma received <em>basshingu</em> from <em>seken</em>, it is saying something more specific and more terrible than "the public bashed him." It is saying that the generalized network of social judgment — the invisible jury that watches every Japanese life — turned against him. What is lost in English is the specifically Japanese quality of <em>seken</em> as a force that is neither personal nor institutional but social in the most intimate sense: the judgment of people you will never meet but who nonetheless determine, in aggregate, whether your life is viable. The English "society" is too large; "the public" is too political; "the world" is too cosmic. The Japanese <em>seken</em> is exactly the size of a reputation — and exactly the size of the wound it can inflict.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Inochi</em> (命) vs. <em>Seimei</em> (生命) vs. <em>Jinsei</em> (人生)</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>命</strong>／生命／人生</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span>"<strong>life</strong>" / "<strong>life</strong>" / "<strong>human life</strong>"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Japanese has multiple words for "life," each carrying a distinct philosophical and emotional register that English collapses into a single term. <em>Seimei</em> (生命) is biological life — the fact of being alive, the opposite of death. It is the word used in scientific contexts, in medical statistics, in discussions of life expectancy. <em>Jinsei</em> (人生) is biographical life — the story of a human existence, the narrative arc from birth to death, the sum of choices and experiences that constitute a person. It is the word used when discussing career, happiness, regret, meaning. <em>Inochi</em> (命) is sacred life — the irreplaceable, singular existence of a being, the thing that is lost forever when someone dies and cannot be recovered by any means. It is the word used in prayers, in promises, in moments of deepest commitment. When Fujinoki writes <em>mukiau beki inochi ga koko ni aru</em> (向き合うべき命がここにある), he chooses <em>inochi</em> deliberately. He is not talking about biological processes (<em>seimei</em>) or life stories (<em>jinsei</em>); he is talking about the sacred, singular lives that pass through a doctor's hands — each one unique, each one entrusted, each one demanding the fullness of one's attention and care. The English "life" cannot distinguish these registers. "The lives I must face" captures the meaning but loses the reverence; "the souls I must face" captures the reverence but adds theological baggage that the Japanese lacks. What is lost is the specifically Japanese understanding of <em>inochi</em> as something that is given, not created — something that a doctor receives rather than manufactures, and that he is obligated to protect not because of a contract but because of what <em>inochi</em> is.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Grammar -->
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of medicine, judgment, flight, and the slow return to oneself.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜がいる（存在・所在）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ga iru</em>: "there is/are [animate]" — existential verb for people and animals, used in the title to make the "fake doctor" a living presence in the village.</p>
+      <div class="grammar-example">偽医者がいる村</div>
+      <p class="grammar-example-en">"The Village with a Fake Doctor" — <em>Iru</em> (not <em>aru</em>) marks the fake doctor as a person, not a thing.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ように（様態・比況）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō ni</em>: "as if / like / in the manner of" — simile construction that describes appearance or manner.</p>
+      <div class="grammar-example">逃げるように北へと向かっていた</div>
+      <p class="grammar-example-en">"heading north as if fleeing" — <em>Yō ni</em> makes the flight a resemblance rather than an admission.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜べきだ（義務・当然）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...beki da</em>: "should / ought to / must" — modal of moral obligation and vocational propriety.</p>
+      <div class="grammar-example">向き合うべき命がここにある</div>
+      <p class="grammar-example-en">"The lives I must face are here" — <em>Beki</em> transforms duty into calling.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜へと向かう（方向・移動）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...e to mukau</em>: "to head toward..." — directional movement with <em>to</em> adding literary inevitability.</p>
+      <div class="grammar-example">北へと向かっていた</div>
+      <p class="grammar-example-en">"was heading north" — <em>E to</em> suggests movement toward a destiny as much as a destination.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜て受ける（受身・響）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te morau / ...te + ukem</em>: passive of reception — "to receive [an action]" — marks the subject as affected by others' actions.</p>
+      <div class="grammar-example">バッシングを受け職場を追われた</div>
+      <p class="grammar-example-en">"received bashing and was driven from his workplace" — The passive marks Kazuma as the patient of others' aggression.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・不帰）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te shimau</em>: completive auxiliary — "end up...ing / unfortunately..." — marks irreversible completion with regret.</p>
+      <div class="grammar-example">胎児は救命できず、子宮を摘出せざるを得なかった</div>
+      <p class="grammar-example-en">"The fetus could not be saved, and the uterus had to be removed" — The grammar of medical tragedy.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ざるを得ない（強制・必然）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...zaru wo enai</em>: "cannot help but... / have no choice but to..." — classical negative + "cannot" — the grammar of forced action.</p>
+      <div class="grammar-example">子宮を摘出せざるを得なかった</div>
+      <p class="grammar-example-en">"had no choice but to remove the uterus" — The grammar of medical necessity that becomes legal accusation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜中（継続・進行）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...chū</em>: "in the middle of / during" — suffix indicating ongoing action or state.</p>
+      <div class="grammar-example">無痛分娩中の子宮破裂</div>
+      <p class="grammar-example-en">"uterine rupture during painless labor" — <em>Chū</em> makes the catastrophe interrupt an ongoing, elective procedure.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> Fujinoki Yuu's grammar is the grammar of a doctor who has learned that precision matters — in medicine and in language. Pay attention to how <em>ga iru</em> makes the "fake doctor" a living person rather than an abstract category, how <em>yō ni</em> encodes self-deception in the grammar of simile, how <em>beki</em> transforms obligation into vocation, and how <em>zaru wo enai</em> captures the terrible necessity of medical decisions that will later be judged as crimes. The grammar is as precise as a surgical incision — and as consequential.
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『偽医者がいる村』 &middot; 藤ノ木優 &middot; KADOKAWA 2025年1月24日刊 &middot; 336ページ &middot; ISBN 978-4-04-114866-2</p>
+  <p style="margin-top: var(--space-xs);">著者：藤ノ木優（本名：遠藤周一郎） &middot; 産婦人科医・医学博士 &middot; 遠藤レディースクリニック院長</p>
+  <p style="margin-top: var(--space-xs);">代表作：『あしたの名医』シリーズ &middot; 『－196℃のゆりかご』 &middot; 『星昇りの島』 &middot; 2023年北上次郎オリジナル文庫大賞受賞</p>
+</footer>
+
+</div>
+</body>
+</html>

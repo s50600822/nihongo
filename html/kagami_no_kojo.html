@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>かがみの孤城 — 辻村深月 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>かがみの孤城</h1>
+  <p class="hero-subtitle">Kagami no Kojō / Lonely Castle in the Mirror</p>
+  <p class="hero-meta">辻村深月 著 &middot; ポプラ社 2017年5月11日刊 &middot; 558ページ &middot; 英訳 Philip Gabriel &middot; Doubleday 2021年4月刊 &middot; 第15回本屋大賞受賞 &middot; 累計100万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: かがみの孤城</h2>
+  <p class="lead">The Japanese title <em>Kagami no Kojō</em> (かがみの孤城, "Lonely Castle in the Mirror") is one of the most visually and semantically layered titles in contemporary Japanese fiction. Its power lies not only in what it names but in how it names it: the orthographic contrast between the hiragana <em>kagami</em> (かがみ, "mirror") and the kanji <em>kojō</em> (孤城, "solitary castle / lonely fortress") creates a tension between softness and hardness, fluidity and monumentality, that perfectly embodies the novel's central theme. A mirror in hiragana suggests something unstable, something that bends and warps, something that does not necessarily reflect truth. A castle in kanji suggests something ancient, fortified, enduring — a structure built to withstand siege. The novel is precisely about this paradox: the castle that exists inside the mirror is both fragile (because it is in the mirror, because it can be shattered, because it depends on the presence of the children who enter it) and fortress-like (because it protects them, because it gives them rules and boundaries, because it becomes the only place where they feel safe). The genitive particle <em>no</em> (の) that connects them is not merely a grammatical link but a spatial one: it tells us that the castle is inside the mirror, that the mirror contains the castle, that the two are inseparable in the same way that the children's inner worlds are inseparable from the reflected world they discover. And because the title is written with this specific orthographic choice — hiragana for the mirror, kanji for the castle — it performs its meaning before the reader has opened the book. The mirror is soft; the castle is hard. The mirror is surface; the castle is depth. The mirror is what we look into; the castle is what we find there.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">かがみ</span>
+        <span class="romaji">kagami</span>
+        <span class="meaning">"mirror" — The word <em>kagami</em> (鏡 / かがみ) means "mirror" in Japanese, but the title deliberately writes it in hiragana (かがみ) rather than kanji (鏡). This orthographic choice is profoundly meaningful. In Japanese, writing a word in hiragana rather than kanji softens it, makes it more approachable, more childlike, more fluid. Hiragana is the script of children's books, of emotional expression, of words that need to be felt rather than analyzed. The kanji 鏡, by contrast, is visually solid: the radical 金 (metal) on the left signals its material, while the phonetic component on the right gives it sound. A mirror in kanji is an object; a mirror in hiragana is an experience. Tsujimura Mizuki has written another novel with <em>kagami</em> in the title — <em>Fuchinashi no Kagami</em> (ふちなしのかがみ, "Rimless Mirror," 2015) — and in both cases the hiragana <em>kagami</em> carries connotations of instability, of a reflective surface that is not firmly bounded, that might show something other than what is directly in front of it. In <em>Kagami no Kojō</em>, the mirror is the portal through which seven junior high school students enter another world, and the hiragana makes this portal feel less like a science-fiction device and more like a fairy-tale threshold — something that a child might discover in their bedroom on an ordinary morning, something that feels both impossible and somehow inevitable. The mirror in Japanese culture carries rich associations: the <em>Yata no Kagami</em> (八咫鏡), one of the Three Sacred Treasures of Japan, is a mirror that represents wisdom and truth; the mirror in the <em>Kojiki</i> myth of Amaterasu is what lures the sun goddess out of her cave; and in folklore, mirrors are frequently portals to other worlds or windows into the soul. Tsujimura draws on all of these associations while adding her own: her mirror is a hiragana mirror, a soft mirror, a mirror that bends to accommodate the pain of children who cannot go to school. The English translation's "in the Mirror" captures the spatial relationship but loses the orthographic poignancy: an English reader cannot see that "mirror" is written in a different script from "castle," cannot feel the softness of the hiragana against the hardness of the kanji. This loss is significant because the novel's emotional architecture depends on contrasts: between the soft world of the children's feelings and the hard world of school rules and bullying, between the fluid time inside the castle and the rigid time of the school calendar, between the hiragana of dreams and the kanji of reality.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">"[genitive particle]" — The particle <em>no</em> (の) in <em>Kagami no Kojō</em> functions as a genitive marker indicating containment or location within: "the castle in the mirror," "the castle belonging to the mirror," "the mirror's castle." But <em>no</em> also carries the appositional sense that we saw in <em>Umibe no Kafuka</em>: "the mirror, which is the castle" — the two are not merely container and contained but equivalents, reflections of each other. The castle is a mirror; the mirror is a castle. This equivalence is thematically central: the castle is a place where the children's inner lives are externalized, where their loneliness takes architectural form, where their unspoken fears become corridors and towers and locked rooms. The genitive <em>no</em> makes this relationship grammatical before the novel makes it narrative. Every time a Japanese reader sees the title, they are rehearsing the novel's central discovery: that the inside and the outside are not separate, that the world in the mirror is as real as the world outside it, that the self we see reflected is not a copy but another version of ourselves with its own reality, its own pain, its own capacity for joy. The English "in the Mirror" captures the locative sense but loses the possessive and appositional dimensions. "The Mirror's Castle" would capture the possessive but sound like a fantasy novel; "The Castle, the Mirror" would capture the appositional but sound like a poem. The Japanese title's <em>no</em> holds all three meanings in suspension, and this suspension is the novel's method: nothing is only one thing, no world is only imaginary, no child is only what they appear to be on the surface.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">孤城</span>
+        <span class="romaji">kojō</span>
+        <span class="meaning">"solitary castle / lonely fortress" — The word <em>kojō</em> (孤城) is a compound of <em>ko</em> (孤, "solitary / alone / orphaned") and <em>jō</em> (城, "castle / fortress"). It is a relatively rare word in modern Japanese, and its appearance in the title immediately signals a literary register that hovers between classical poetry and contemporary fantasy. The character 孤 carries devastating weight: it means not merely "alone" but "orphaned," "bereft," "without support." In classical Chinese poetry, <em>gucheng</em> (孤城) refers to a fortress surrounded by enemies, cut off from reinforcements, doomed to fall. The novel opens with an epigraph from a dictionary definition of <em>kojō</em>: (1) a castle standing alone in isolation; (2) a castle surrounded by enemy forces with no hope of rescue. Both definitions resonate with the novel's plot: the castle in the mirror is indeed isolated — it exists in a space outside ordinary geography, accessible only through mirrors, invisible to the adult world — and the children who gather there are indeed surrounded by enemies — not military forces but the forces of bullying, of family dysfunction, of social expectations, of their own fears. The castle is a <em>kojō</em> because it is the only place where these children can be safe, and its isolation is both its weakness (it cannot last forever, it depends on the Wolf's continuing presence, it will eventually "close") and its strength (because it is isolated, it is protected from the world that has hurt them). The English translation's "Lonely Castle" captures the emotional tone but softens the military connotation: "lonely" is a feeling; "solitary" is a condition; "orphaned" is a fate. <em>Ko</em> (孤) contains all three. The castle in the novel is not merely a place where children feel lonely; it is a fortress that stands alone against an encroaching world, a last stand of childhood innocence and mutual protection in the face of forces that would destroy it. The kanji 城 (castle) reinforces this martial reading: with its radical 土 (earth) and its phonetic 成, it evokes walls, ramparts, moats — the architecture of defense. The castle in the mirror has rules (no violence, no revealing the castle's existence to outsiders, must leave by 5 PM) that function like the rules of a besieged fortress: they are not arbitrary restrictions but survival protocols. When one of the children breaks a rule and the mirror shatters, the disaster feels not like a magical accident but like the breach of a castle wall — the enemy has entered, the defenses have failed, the isolated sanctuary has been violated. The title's <em>kojō</em> thus prepares the reader for a story that is, beneath its fairy-tale surface, a story of siege and survival, of children defending the last safe place they have against a world that has declared war on their right to exist unmolested.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Original Japanese: ポプラ社, May 11, 2017, hardcover, 558 pages, ISBN 978-4-591-15332-1. Paperback edition (ポプラ文庫): March 5, 2021, 2 volumes (upper / lower). Children's edition (キミノベル): March 16, 2022, 2 volumes. English translation by Philip Gabriel: Doubleday (UK) / Erewhon Books (US), April 22, 2021, 355 pages, ISBN 978-0-85752-728-8. The English edition was a <em>Guardian</em> 2021 highlight and a <em>New York Times</em> Editors' Choice. Manga adaptation by Taketomi Tomo: Shueisha, <em>Ultra Jump</em>, July 2019 – March 2022, 5 volumes. Animated film: directed by Hara Keiichi (原恵一), produced by A-1 Pictures, released December 23, 2022, starring Manao Ami (當真あみ) as Kokoro. The film won the Japan Academy Prize for Excellent Animation Film (2023) and the Tokyo Anime Award for Animation of the Year (2023). As of 2024, the novel has sold over 1 million copies in Japan and has been translated into over 20 languages. Critical studies include essays by child psychologists and educators who have used the novel in counseling settings for non-attending students.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>辻村深月 &mdash; Mizuki Tsujimura (b. 1980)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">辻</div>
+    <div class="author-name-block">
+      <h3>辻村深月 / Mizuki Tsujimura</h3>
+      <p class="author-name-romaji">Novelist &middot; winner of the Naoki Prize, Kanda Nisshō Prize, and Japan Booksellers' Award &middot; one of Japan's most versatile contemporary writers</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Mizuki Tsujimura was born on February 29, 1980 — a leap-year birthday that occurs only once every four years — in Fuefuki City, Yamanashi Prefecture, a mountainous region in central Japan famous for its peaches, grapes, and views of Mount Fuji. She graduated from the Faculty of Education at Chiba University in 2002, and her educational background would profoundly shape her fiction: she is a writer who understands schools not as abstract institutions but as lived environments where power operates through small gestures, where cruelty and kindness are administered in equal measure, and where a child's entire sense of self can be destroyed or saved in a single semester. Her debut novel, <em>Tsumetai Kōsha no Toki wa Tomaru</em> (冷たい校舎の時は止まる, "Time Stops at the Cold School Building," 2004), won the 31st Mephisto Prize — a prestigious award for mystery fiction — and announced the arrival of a writer with an exceptional gift for plotting, atmosphere, and the psychology of young people under pressure.</p>
+    <p style="margin-bottom: var(--space-md);">Tsujimura's career has been marked by an unusual versatility. She has written pure mysteries (<em>Zero, Hachi, Zero, Nana.</em> / ゼロ、ハチ、ゼロ、ナナ。, 2010), supernatural thrillers (<em>Yami Harai</em> / 闇祓, 2021), workplace dramas (<em>Haken Anime!</em> / ハケンアニメ！, 2014), literary fiction about marriage and morality (<em>Gōman to Zenryō</em> / 傲慢と善良, 2019), and deeply empathetic novels about children in crisis (<em>Kagami no Kojō</em> / かがみの孤城, 2017). Her major awards include the 32nd Yoshikawa Eiji Bungaku Shinjin Prize for <em>Tsunagu</em> (ツナグ, "Connect," 2011), the 147th Naoki Prize for <em>Kagi no Nai Yume wo Miru</em> (鍵のない夢を見る, "Dreaming of Keyless Dreams," 2012) — one of Japan's most prestigious literary honors, often compared to the Booker Prize — and the 15th Japan Booksellers' Award for <em>Kagami no Kojō</em> (2018), which she won with a record-breaking 651 points, one of the highest scores in the award's history. In 2025, she was appointed to the selection committee for the Naoki Prize, a remarkable honor for a writer who had herself won it only thirteen years earlier.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Tsujimura from many of her contemporaries is her combination of genre craftsmanship with emotional authenticity. She can construct a mystery plot with the precision of a Swiss watch — clues planted, red herrings deployed, revelations timed for maximum impact — while simultaneously creating characters whose pain feels utterly real, whose small victories move the reader to tears, whose conversations sound like actual children talking rather than miniature adults. This dual gift reaches its fullest expression in <em>Kagami no Kojō</em>, where the "mystery" of the Wolf's identity and the castle's purpose is inseparable from the emotional mystery of why these particular children have stopped going to school, what has happened to them, and what they need in order to return to the world. The novel is dedicated, in effect, to all children who cannot go to school — not because they are lazy or rebellious but because school has become, for them, a place of unbearable pain. Tsujimura has said in interviews that she wrote the novel because she wanted to give such children a story in which they could recognize themselves and find hope. The leap-year baby who grew up to write about children trapped in time has, in this novel, created a timeless sanctuary — one that exists outside ordinary calendars, where a child can stay until they are ready to leave, where no one is rushed or judged or forced to be brave before they are ready.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Non-Attendance, Bullying, and the Castle That Japan Built for Its Wounded Children</h2>
+
+  <div class="card">
+    <h3>2017 Japan: The Crisis of Children Who Cannot Go to School</h3>
+    <p><em>Kagami no Kojō</em> was published in May 2017, at a time when Japanese society was beginning to confront a crisis that had been building for decades: the rising number of elementary and junior high school students who were not attending school. According to data from Japan's Ministry of Education, Culture, Sports, Science and Technology (MEXT), the number of non-attending students (<em>futōkō</em> / 不登校) had reached alarming levels by the mid-2010s, with over 100,000 primary and middle school students classified as non-attending annually. By 2022, this number would rise to 244,940 students across primary and middle schools, with 163,442 of them in junior high school — the exact age group of <em>Kagami no Kojō</em>'s characters. These statistics represent not merely absenteeism but a profound social problem: children who wake up with stomachaches, who hide in their rooms, who cannot explain to their parents why they are afraid to leave the house, who have been bullied (<em>ijime</em> / いじめ) or excluded or simply overwhelmed by the pressure to conform in a school system that demands uniformity.</p>
+    <p style="margin-top: var(--space-sm);">The Japanese school system — with its emphasis on group harmony (<em>wa</em> / 和), collective responsibility, and hierarchical relationships between senpai and kōhai — can be extraordinarily supportive for children who fit in and extraordinarily destructive for those who do not. The phenomenon of <em>ijime</em> (bullying) has been documented in Japan since the 1980s, but it was only after a series of high-profile suicides in the 1990s and 2000s that the government began requiring schools to systematically report bullying incidents. By 2017, when <em>Kagami no Kojō</em> appeared, bullying was a national concern, and the figure of the non-attending child had become a recognizable social type — the <em>hikikomori</em> (引きこもり, "shut-in") junior high schooler, the child who stops going to school after a traumatic incident and cannot explain why, the family torn between sympathy and frustration. Tsujimura's novel entered this cultural moment with perfect timing: it offered not a sociological analysis but a story, not statistics but characters, not policy recommendations but a vision of what such children might need — a place where they are welcomed exactly as they are, where their fears are taken seriously, where they can discover that they are not alone.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Japan Booksellers' Award and the Making of a National Classic</h3>
+    <p>The Japan Booksellers' Award (本屋大賞 / <em>Hon'ya Taishō</em>) is one of the most democratic literary prizes in the world. Unlike the Akutagawa Prize or the Naoki Prize, which are decided by small panels of established writers, the Booksellers' Award is voted on by booksellers across Japan — the people who handsell books to customers, who see what readers actually buy and love, who know which books make people cry in the store. When <em>Kagami no Kojō</em> won the 15th Booksellers' Award in April 2018, it received 651 points — one of the highest scores in the award's history — and the acceptance speech by Tsujimura became famous for her metaphor: if the Naoki Prize was an individual sport, the Booksellers' Award was "like curling, a gold medal won by everyone together." She meant that the award represented not merely her own achievement but the collective effort of editors, publicists, booksellers, and readers who had passed the book from hand to hand until it became a phenomenon.</p>
+    <p style="margin-top: var(--space-sm);">The award transformed <em>Kagami no Kojō</em> from a well-reviewed novel into a genuine social phenomenon. Within months of winning, it had sold over 550,000 copies and was being discussed not only in literary magazines but in parenting forums, educational journals, and psychology conferences. Teachers began reading it to understand their non-attending students; parents read it to understand their shut-in children; children read it and recognized themselves in Kokoro's fear, in Subaru's social anxiety, in Aki's desperate cheerfulness. The novel's success demonstrated something that Tsujimura had intuited: Japan was full of people who needed this story, who had been waiting for someone to tell it with enough empathy and enough narrative skill that it could be both a mirror (showing them their own pain) and a castle (giving them a place to be safe). By 2024, the novel had sold over 1 million copies in Japan alone and had been translated into more than 20 languages — an extraordinary reach for a novel that is, on the surface, about seven Japanese junior high school students in a magical castle.</p>
+  </div>
+
+  <div class="card">
+    <h3>From Page to Screen: The Animated Film and Its Expanding Audience</h3>
+    <p>The 2022 animated film adaptation of <em>Kagami no Kojō</em>, directed by Hara Keiichi (原恵一) and produced by A-1 Pictures, brought the novel to an even wider audience. Hara was a singularly appropriate choice: his previous films include <em>Crayon Shin-chan</em> works, <em>Summer Days with Coo</em> (河童のクゥと夏休み, 2007), and <em>Miss Hokusai</em> (百日紅, 2015), all of which demonstrate his ability to handle serious themes — environmental destruction, historical trauma, artistic ambition — within accessible animated narratives. The film starred Manao Ami (當真あみ) as Kokoro in her voice-acting debut, alongside an ensemble cast including Kitamura Takumi (北村匠海), Ashida Mana (芦田愛菜), and Miyazaki Aoi (宮崎あおい). It won the Japan Academy Prize for Excellent Animation Film and the Tokyo Anime Award for Animation of the Year in 2023, and it introduced the story to viewers who might never have read the novel — including, crucially, children who were themselves not attending school and who saw their own situation reflected in Kokoro's story.</p>
+    <p style="margin-top: var(--space-sm);">The film made several significant changes to the novel — compressing the timeline, altering certain characters' backstories, and adding visual set pieces that took advantage of animation's capacity for fantastical imagery — but it preserved the novel's emotional core: the gradual building of trust among seven wounded children, the mystery of the Wolf's identity, and the revelation that transforms the castle from a fantasy escape into a therapeutic intervention. The film's success in turn drove renewed sales of the novel, creating a feedback loop in which the book and the film reinforced each other's popularity. By 2024, <em>Kagami no Kojō</em> had become what the Japanese publishing industry calls a <em>kyōkasho</em> (教科書, "textbook") — not in the literal sense of being assigned in schools (though it has been used in some educational settings) but in the cultural sense of being a work that successive generations encounter as a formative reading experience, a book that defines what a generation understands about being thirteen and afraid.</p>
+  </div>
+
+  <div class="card">
+    <h3>Fairy Tales, Therapeutic Fiction, and the Ethics of Magical Escape</h3>
+    <p><em>Kagami no Kojō</em> belongs to a rich tradition of children's literature in which a magical space offers refuge from an unbearable reality. From Lewis Carroll's <em>Alice's Adventures in Wonderland</em> to C.S. Lewis's <em>The Lion, the Witch and the Wardrobe</em>, from Hayao Miyazaki's <em>Spirited Away</em> (千と千尋の神隠し, 2001) to Neil Gaiman's <em>Coraline</em>, the motif of the child who enters another world through a domestic portal (a rabbit hole, a wardrobe, a tunnel, a door, a mirror) is one of the most enduring structures in fantasy literature. What distinguishes Tsujimura's use of this motif is its therapeutic specificity. The castle in the mirror is not merely an adventure setting; it is a carefully designed therapeutic environment, created by the Wolf (whose identity constitutes the novel's central mystery) for a specific purpose: to give seven non-attending children the experience of community, agency, and mutual support that they need in order to return to their ordinary lives. The castle's rules — enter between 9 AM and 5 PM, no violence, no telling outsiders, find the Wish Key — are not arbitrary fantasy conventions but the structural equivalent of therapeutic boundaries: they create a safe container within which healing can occur.</p>
+    <p style="margin-top: var(--space-sm);">This therapeutic dimension has made the novel uniquely valuable in Japanese educational and psychological contexts. School counselors have reported using the novel with non-attending students; child psychologists have written about its accurate depiction of trauma responses; and parents of shut-in children have described reading it as a way of understanding their own children's experience. The novel's English translator, Philip Gabriel — who also translated Murakami Haruki's <em>Kafka on the Shore</em> — has noted the challenge of rendering the subtle emotional registers of junior high school speech, particularly the ways in which Japanese teenagers use honorifics, sentence-final particles, and ellipsis to convey feelings they cannot name directly. The translation succeeds in preserving the novel's accessibility while conveying its emotional depth, making it available to English-speaking readers as both a compelling fantasy mystery and a window into a specifically Japanese social problem. What emerges from the novel's global reception is a confirmation of its universal theme: that every society produces children who cannot fit into its institutions, and that every such child deserves a castle — even if it exists only in a mirror, even if it lasts only for a year, even if it must eventually close.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Seven Children, One Castle, and the Key to a Wish</h2>
+
+  <div class="card">
+    <h3>The Mirror Opens: Kokoro's World Closes and Opens</h3>
+    <p>Anzai Kokoro (安西こころ) is a first-year junior high school student who has stopped going to school. The reason, which emerges gradually through the novel's careful unfolding, is bullying: a group of girls led by a charismatic classmate has targeted her, and the situation escalated until Kokoro's family home was vandalized — a bag of feces was thrown at her house, an act of humiliation so profound that Kokoro cannot face returning to the school where her classmates know what happened. Every morning she wakes with stomach pain. Every morning her mother urges her to try. Every morning Kokoro cannot explain that it is not reluctance but terror that keeps her in her room. Her mother, sympathetic but bewildered, enrolls her in a "heart classroom" (<em>kokoro no kyōshitsu</em> / 心の教室) — a support program for non-attending students — where she meets Kitajima-sensei, a gentle counselor who becomes one of the novel's most quietly heroic figures. But even this supportive environment is not enough, because Kokoro's wound is not merely educational; it is social, psychological, existential. She has lost not just her place in school but her belief that she has any right to a place at all.</p>
+    <p style="margin-top: var(--space-sm);">Then, one morning in May, the mirror in her bedroom begins to glow. Kokoro touches it and finds herself pulled through into a vast castle — a fairy-tale structure with towers, corridors, a grand hall, and a mysterious room with a door that will not open: the "Wish Room" (願いの部屋 / <em>negai no heya</em>). In the castle she meets six other junior high school students, each from a different city, each with their own reason for not attending school. There is Subaru (スバル), a boy who cannot make friends; Aki (アキ), a girl whose cheerful exterior conceals a devastating secret; Masamune (マサムネ), a gamer who has retreated into virtual worlds; Fuuka (フウカ), a perfectionist crushed by academic pressure; Ureshi (ウレシ), a small boy who seems too young for junior high; and Rion (リオン), a handsome soccer player with a complicated family situation. They are greeted by the Wolf (オオカミさま / <em>Ōkami-sama</em>), a girl wearing a wolf mask who explains the rules: they may enter the castle between 9 AM and 5 PM; they must not speak of the castle to anyone in the outside world; violence is forbidden; and their task is to find the "Wish Key" (願いの鍵 / <em>negai no kagi</em>) that will open the Wish Room. Whoever finds the key may have any one wish granted. The castle has a kitchen stocked with food, a library, comfortable bedrooms, and — most importantly — a space where seven children who have failed at school can be together without judgment.</p>
+  </div>
+
+  <div class="card">
+    <h3>The School Year in the Castle: From Strangers to Family</h3>
+    <p>The novel's central section covers approximately one school year — from May to March — during which the seven children meet daily in the castle. At first they are wary, each carrying their own defensive armor. Kokoro, wounded by her experience with female friendship, is particularly cautious around the other girls. Rion's good looks and easy manner make him seem unapproachable to the boys. Aki's relentless cheerfulness feels forced. But gradually, through shared meals, games, conversations, and the common project of searching for the Wish Key, they begin to trust each other. Tsujimura handles this process with extraordinary patience and psychological precision: she understands that trust is not built by dramatic gestures but by small moments of recognition — someone remembering how you take your tea, someone noticing that you are upset before you say anything, someone choosing to sit next to you when they could have sat anywhere.</p>
+    <p style="margin-top: var(--space-sm);">The search for the Wish Key structures the narrative like a mystery plot, but the real mystery is not the key's location; it is the children's own stories. As they spend time together, fragments emerge: Subaru was betrayed by a friend who spread rumors about him; Fuuka's parents' expectations have crushed her; Masamune was humiliated in an online gaming community; Ureshi is younger than the others and desperately lonely; Rion's family was destroyed by a scandal; and Aki — whose story is the most devastating — is a child of the child welfare system, a <em>shīto</em> (シート, from the English "sheet" — a child under protective custody) who has been moved from institution to institution and who has learned to survive by being relentlessly, exhaustingly cheerful. The castle becomes, in effect, an alternative school — not a place of instruction but a place of restoration, where damaged children can experience what school should have given them: belonging, recognition, the knowledge that they are not deficient but injured, not failures but survivors. The novel's most radical assertion is that what non-attending children need is not "fixing" but time — time to be with others who understand, time to discover that their wounds are not unique, time to gather strength for the return to a world that has hurt them. The castle gives them exactly this: a year outside ordinary time, a year in which March does not mean graduation and April does not mean a new class, a year in which they can simply be.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Wolf Unmasked: Trauma, Grief, and the Ethics of the Wish</h3>
+    <p>The novel's final section reveals the identity of the Wolf and the true purpose of the castle — a revelation that transforms everything that has come before. The Wolf is Mio (ミオ), Rion's older sister, who died in a traffic accident along with six other children — the same children who gather in the castle. In the liminal space between life and death, Mio created the castle as a gift to the children who did not get to live: she gave them a year of friendship, of safety, of being truly seen, before they must move on to whatever comes next. The "wish" that the key grants is not a magical fulfillment of desire but something far more profound: the chance to return to life — not as it was but as it might be, armed with the knowledge gained in the castle, supported by the friendships forged there, carrying the Wolf's gift of having been loved exactly as they are. For Kokoro, this means returning to school not because she has been cured of her fear but because she has discovered that she can be afraid and still move forward. For Aki, it means accepting that her cheerfulness is not a performance she must maintain to deserve love. For all of them, it means understanding that the castle was never an escape from reality but a preparation for it — a year of rehabilitation in the most humane sense, a year of learning to live again.</p>
+    <p style="margin-top: var(--space-sm);">The revelation that the castle exists on the boundary between life and death raises the novel from fantasy into metaphysics, but Tsujimura handles this elevation with characteristic restraint. The emphasis is not on the supernatural mechanics but on the emotional truth: Mio created the castle because she could not bear that these children should die without ever having had a place where they belonged. The castle is her gift, her apology, her love letter to children the world failed. And when the castle "closes" — when the mirrors stop glowing and the children can no longer enter — the closure is not a loss but a graduation. They have received what they needed. They are ready to return. The novel's final pages, in which Kokoro meets Rion in the real world (he was the only one who survived the accident, though he has no memory of the castle), constitute one of the most moving endings in contemporary Japanese fiction: two children who shared an impossible year recognize each other not through memory but through something deeper — the change that the castle wrought in them, the courage it gave them, the knowledge that they are not alone even when they are most alone. The mirror has closed. The castle is gone. But what it gave them remains — not as a place but as a capacity, not as a memory but as a structure of feeling that will sustain them through whatever comes next.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the emotional precision, psychological insight, and narrative magic of Tsujimura's most beloved novel — a book that has become, for a generation of Japanese readers, both a mirror and a castle.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">The Wish That Knows Itself Impossible</div>
+    <div class="passage-jp">
+      そんな奇跡が起きたらいいと、ずっと、願っている。そんな奇跡が起きないことは、知っている。
+    </div>
+    <div class="passage-romaji">
+      "Sonna kiseki ga okitara ii to, zutto, negatte iru. Sonna kiseki ga okinai koto wa, shitte iru."
+    </div>
+    <div class="passage-en">
+      "I have always been wishing that such a miracle would happen. I know that such a miracle will not happen."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening sentence — spoken by Kokoro in the first person — and it establishes the book's emotional method in fourteen words. The grammar is deceptively simple, but every element carries weight. <em>Sonna kiseki ga okitara ii to</em> (そんな奇跡が起きたらいいと, "that such a miracle would happen, [I wish]") uses the conditional <em>tara</em> (たら) form of <em>okiru</em> (起きる, "to happen / occur") combined with <em>ii</em> (いい, "good / desirable") — the standard Japanese construction for expressing a wish (<em>...tara ii</em> / ...たらいい, "it would be good if..."). The <em>to</em> (と) after <em>ii</em> quotativizes the wish, making it into a content clause: "[I wish] that it would be good if such a miracle happened." This quotative structure creates a small distance between Kokoro and her own desire — she is not saying "I want a miracle" directly but "[I hold the thought] that it would be good if a miracle happened" — a distance that reflects her hesitation to claim her own needs, her sense that wanting something too much is dangerous. <em>Zutto</em> (ずっと, "always / continuously / all along") is an adverb of duration that here carries an almost unbearable poignancy: she has not just wished for this miracle once; she has been wishing continuously, perhaps for years, perhaps for as long as she can remember. The word <em>zutto</em> in Japanese has a childlike quality — it is the word a child uses to describe something that has always been true — and its use here makes Kokoro's longing sound both vast and innocent, the wish of a child who has not yet learned to stop hoping. The second sentence — <em>Sonna kiseki ga okinai koto wa, shitte iru</em> (そんな奇跡が起きないことは、知っている, "I know that such a miracle will not happen") — uses the nominalized negative <em>okinai koto</em> (起きないこと, "the fact that it will not happen") as the object of <em>shitte iru</em> (知っている, "know"). The topic marker <em>wa</em> (は) after <em>koto</em> gives the sentence a quiet definiteness: "As for the fact that such a miracle will not happen, I know it." The contrast between the two sentences is devastating in its economy: the first is all longing, the second is all resignation; the first reaches for the impossible, the second acknowledges the inevitable; the first uses the conditional ("would happen"), the second uses the plain negative ("will not happen"). And yet the two sentences are bound together by the anaphoric repetition of <em>sonna kiseki</em> (そんな奇跡, "such a miracle") — the same miracle is wished for and dismissed, held and released, in the space of a comma. What is lost in English is the specifically Japanese rhythm of the passage. The original has fourteen syllables in the first sentence and eleven in the second — a near-haiku compression — and the alternation of long and short vowels creates a musical pattern that enacts the emotional oscillation between hope and despair. "I have always been wishing that such a miracle would happen" is accurate but prosaic; the Japanese is a poem in two lines. The English also loses the childlike quality of <em>zutto negatte iru</em> (ずっと願っている): "have always been wishing" sounds like an adult's retrospective summary, while <em>zutto negatte iru</em> sounds like a child's continuous present, a wish that is still happening as the sentence is spoken. This matters because the novel's entire project is to take children's feelings seriously — not as memories of feelings, not as analyzed feelings, but as present, active, living experiences. The opening sentence tells us, in fourteen words, that this novel will not patronize its young protagonist; it will let her longing be as deep and as contradictory as any adult's, and it will let her speak that longing in her own voice.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"I Don't Not Go. I Can't Go."</div>
+    <div class="passage-jp">
+      行かないんじゃなくて、行けない。
+    </div>
+    <div class="passage-romaji">
+      "Ikanai n ja nakute, ikenai."
+    </div>
+    <div class="passage-en">
+      "It's not that I don't go. It's that I can't go."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — one of the novel's most quoted lines — is a masterpiece of grammatical contrast and emotional precision. It consists of two clauses, each three words long in Japanese, and the contrast between them turns on a single phoneme: the <em>na</em> (な) in <em>ikanai</em> (行かない, "don't go") versus the <em>e</em> (え) in <em>ikenai</em> (行けない, "can't go"). The first clause — <em>Ikanai n ja nakute</em> (行かないんじゃなくて, "it's not that I don't go") — uses the explanatory/emphatic <em>n</em> (ん) after the negative plain form <em>ikanai</em> (行かない), followed by <em>ja nakute</em> (じゃなくて, "it's not... but / rather than being..."), a colloquial contraction of <em>de wa nakute</em> (でなくて). This construction is used to correct a misconception: Kokoro is addressing the implicit accusation that she is choosing not to go to school, that her non-attendance is a matter of will, of laziness, of stubbornness. The <em>n ja nakute</em> says: "Whatever you think you know about why I'm not in school, you're wrong. It's not what you think." The second clause — <em>ikenai</em> (行けない, "can't go / am unable to go") — is the potential negative of <em>iku</em> (行く, "to go"): not "I do not go" but "I am not capable of going." The potential form in Japanese (<em>ikeru</em> / 行ける, "can go") expresses not permission but capacity — physical, psychological, or circumstantial ability. By using the potential negative, Kokoro is saying that going to school is, for her, literally impossible — not because of transportation or logistics but because something in her has broken, some capacity that other children take for granted has been destroyed by what happened to her. The contrast between <em>ikanai</em> (volitional negative: "I don't go / I won't go") and <em>ikenai</em> (potential negative: "I can't go / I'm unable to go") is the difference between choice and compulsion, between agency and disability, between being blamed and being understood. In Japanese, this contrast is audible: <em>ikanai</em> ends in a flat <em>i</em>, while <em>ikenai</em> has the open vowel <em>e</em> that makes the word sound more exposed, more vulnerable. The sentence as a whole is spoken in the plain form — there is no polite <em>desu</em> or <em>masu</em> — which gives it the directness of a confession made to an equal, not a justification offered to an authority. What is lost in English is the phonemic intimacy of the contrast. "It's not that I don't go, it's that I can't go" captures the meaning but loses the near-homophony that makes the Japanese so powerful: the two phrases sound almost identical except for a single vowel change, and this near-identity enacts the confusion that Kokoro faces — the world's inability to hear the difference between "won't" and "can't," between refusal and incapacity. In Japan, this sentence has become a kind of slogan for the non-attending children's rights movement, a way of explaining to parents and teachers that futōkō is not a behavioral problem but a symptom of injury. The grammar makes this explanation irrefutable: <em>ikenai</em> is not a choice; it is a statement of fact, as objective as saying "the door is closed" or "the train has left." The sentence's six syllables contain an entire theory of school refusal — one that has changed how Japanese society understands its most vulnerable children.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"You Fight Every Day, Don't You?"</div>
+    <div class="passage-jp">
+      「だってこころちゃんは毎日、闘ってるでしょう？」
+    </div>
+    <div class="passage-romaji">
+      "Datte Kokoro-chan wa mainichi, tatakatte ru deshō?"
+    </div>
+    <div class="passage-en">
+      "But Kokoro, you fight every day, don't you?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken by Kitajima-sensei, the counselor at the "heart classroom" — is one of the most emotionally devastating lines in contemporary Japanese literature, and its grammar encodes a profound act of recognition. <em>Datte</em> (だって, "but / because / you see") is a sentence-initial conjunction used in colloquial Japanese to introduce a reason or a counterargument. Here it functions as a gentle reproach to Kokoro's self-deprecation: whatever Kokoro has just said about herself (that she is lazy, that she is a failure, that she does not try hard enough), Kitajima-sensei is about to offer a different interpretation. <em>Kokoro-chan wa</em> (こころちゃんは, "as for Kokoro [diminutive]") uses the topic marker <em>wa</em> (は) to make Kokoro the subject of the sentence, and the diminutive suffix <em>chan</em> (ちゃん) — rather than the more neutral <em>san</em> (さん) — establishes Kitajima-sensei as someone who sees Kokoro not as a case or a client but as a child who needs affection. In Japanese, the choice between <em>san</em>, <em>chan</em>, and <em>kun</em> is never neutral; it encodes an entire relationship. A teacher who calls a student <em>chan</em> is signaling that the pedagogical relationship has been supplemented by something more personal, more maternal, more tender. <em>Mainichi</em> (毎日, "every day") is an adverb of time that here carries crushing weight: Kitajima-sensei is not saying that Kokoro fought once, or fought bravely in a particular moment; she is saying that Kokoro's entire existence, day after day, is a form of combat. <em>Tatakatte iru</em> (闘っている, "is fighting / is struggling") uses the continuous form of the verb <em>tatakau</em> (闘う, "to fight / struggle / battle") — the kanji 闘 specifically denotes fighting with effort and resistance, as opposed to 戦う (<em>tatakau</em> with the kanji 戦), which can mean simply "to make war." The choice of 闘 over 戦 is significant: Kokoro is not a soldier in a war; she is a person engaged in a daily struggle for survival, a struggle that requires endurance rather than victory. The sentence-final <em>deshō</em> (でしょう, "isn't it? / don't you? / probably") is a tag question that functions here not as a request for information but as an invitation to self-recognition. Kitajima-sensei is not asking Kokoro to confirm a fact; she is asking Kokoro to see herself as Kitajima-sensei sees her — as someone who is already brave, already strong, already fighting. The <em>deshō</em> softens the statement into a question, making it less like a declaration and more like a discovery offered for Kokoro's consideration: "You fight every day, don't you?" — as if to say, "Have you noticed? Have you given yourself credit for what you are already doing?" What is lost in English is the full social texture of the Japanese. "But Kokoro, you fight every day, don't you?" captures the meaning but loses the maternal tenderness of <em>chan</em>, the continuous present of <em>tatakatte iru</em> (which in Japanese suggests an ongoing action that is still happening at the moment of speaking — Kokoro is fighting even as Kitajima-sensei speaks), and the gentle pedagogical magic of <em>deshō</em> as a tool for helping someone see their own strength. In Japanese, this sentence is not merely comforting; it is transformative. It renames Kokoro's paralysis as struggle, her invisibility as endurance, her shame as courage. And it does so in eleven words — a haiku of recognition that has made countless Japanese readers weep, because it is the sentence they needed someone to say to them when they were Kokoro's age, or the sentence they wish they had said to their own child who could not go to school. The grammar of <em>desh</em> makes the sentence into a gift: it does not force recognition but offers it, allowing Kokoro (and the reader) to receive it at their own pace, in their own time, with their own tears.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Rules of the World and the Rules of the Castle</div>
+    <div class="passage-jp">
+      世の中で決まっているルールには、全部、そうした方がいい理由がきちんとある。
+    </div>
+    <div class="passage-romaji">
+      "Yo no naka de kimatte iru rūru ni wa, zenbu, sō shita hō ga ii riyū ga kichin to aru."
+    </div>
+    <div class="passage-en">
+      "For all the rules that are decided in the world, there is a proper reason why it is better that way."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken by Kokoro early in the novel, before she enters the castle — encapsulates one of the novel's deepest themes: the relationship between rules and justice, between social norms and individual suffering. The grammar is that of a child's attempt to make sense of a world that has hurt her, and its very formality is heartbreaking. <em>Yo no naka</em> (世の中, "the world / society / the way things are") is a phrase with classical resonance — it appears in Buddhist texts, in <em>haiku</em>, in folk sayings — and its use here gives Kokoro's observation the weight of folk wisdom. She is not merely talking about her school or her neighborhood; she is talking about "the world" as a totality, the entire system of human arrangements. <em>De kimatte iru</em> (で決まっている, "that are decided / that are established") uses the continuous passive of <em>kimaru</em> (決まる, "to be decided / fixed"), emphasizing that the rules were not made by Kokoro and cannot be changed by her — they are simply "decided," by whom she does not know, for reasons she cannot question. The dative particle <em>ni wa</em> (には) after <em>rūru</em> (ルール, "rules" — a loanword from English, written in katakana) marks the rules as the topic of the sentence and implies a comprehensive scope: "as for all the rules that are decided in the world..." <em>Zenbu</em> (全部, "all / entirely") reinforces this comprehensiveness: every rule, without exception, has its reason. <em>Sō shita hō ga ii</em> (そうした方がいい, "it is better that way / it is better to do so") is the comparative construction (<em>hō ga ii</em> / 方がいい, "it is better to...") used to express advice or general wisdom. Kokoro is not saying that the rules are good; she is saying that there are reasons why they exist, reasons that make them "better" than the alternative — a more tentative and more heartbreaking claim than a simple assertion of justice. <em>Riyū ga kichin to aru</em> (理由がきちんとある, "there is a proper / solid reason") uses the adverb <em>kichin to</em> (きちんと, "properly / neatly / solidly / in good order") to describe the reasons. <em>Kichin to</em> is a word of childlike faith — it suggests that things are organized, that adults know what they are doing, that the world is not arbitrary. Kokoro wants to believe this. She needs to believe this, because the alternative — that the rules are arbitrary, that the world is cruel for no reason, that she was bullied not because of anything she did but because of accidents of social dynamics beyond her control — is too terrifying to contemplate. The sentence is thus both a statement of belief and a cry of need: Kokoro is clinging to the idea that the world makes sense because if it does not make sense, then her suffering has no meaning. What is lost in English is the specifically Japanese child's relationship to rules. In Japan, children are socialized from an early age to accept rules as part of the natural order — not merely as laws to be obeyed but as expressions of social harmony (<em>wa</em> / 和) that benefit everyone. Kokoro's sentence is what a well-socialized Japanese child would say, and its tragedy is that this well-socialized child has been destroyed by the very system she is trying to believe in. The English translation captures the meaning but loses the pathos of <em>kichin to</em> — a word that sounds like something from a children's picture book, a word that believes in order, a word that has not yet learned that some rules exist only to protect the powerful. When Kokoro enters the castle and discovers that its rules, too, have reasons — reasons that are eventually revealed to be rooted in love and grief — the novel fulfills the promise of this sentence while transforming its meaning. The rules of the world may or may not have good reasons. But the rules of the castle — the castle that Mio built for children who died too soon — have the best reason of all: to give them a year of being together, of being safe, of being seen. Kokoro's childlike faith in the rationality of rules is vindicated, but not in the way she expected. The grammar of her faith — <em>kichin to aru</em>, "properly exist" — finds its true referent not in the world she left but in the castle she discovers, not in the society that hurt her but in the love that heals her.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of mirrors, castles, wishes, and the courage to return to a world that has hurt you.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>かがみ</td><td>kagami</td><td class="pos">noun</td><td>mirror (hiragana rendering)</td></tr>
+        <tr><td>鏡</td><td>kagami</td><td class="pos">noun</td><td>mirror (kanji rendering)</td></tr>
+        <tr><td>孤城</td><td>kojō</td><td class="pos">noun</td><td>solitary castle; lonely fortress</td></tr>
+        <tr><td>城</td><td>shiro / jō</td><td class="pos">noun</td><td>castle; fortress</td></tr>
+        <tr><td>孤</td><td>ko</td><td class="pos">noun</td><td>solitude; orphanhood; isolation</td></tr>
+        <tr><td>願い</td><td>negai</td><td class="pos">noun</td><td>wish; prayer; desire</td></tr>
+        <tr><td>鍵</td><td>kagi</td><td class="pos">noun</td><td>key</td></tr>
+        <tr><td>部屋</td><td>heya</td><td class="pos">noun</td><td>room</td></tr>
+        <tr><td>奇跡</td><td>kiseki</td><td class="pos">noun</td><td>miracle</td></tr>
+        <tr><td>ルール</td><td>rūru</td><td class="pos">noun</td><td>rule (loanword)</td></tr>
+        <tr><td>理由</td><td>riyū</td><td class="pos">noun</td><td>reason; cause</td></tr>
+        <tr><td>世界</td><td>sekai</td><td class="pos">noun</td><td>world</td></tr>
+        <tr><td>現実</td><td>genjitsu</td><td class="pos">noun</td><td>reality; actuality</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place where one belongs; niche</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>闘い</td><td>tatakai</td><td class="pos">noun</td><td>struggle; fight; battle</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>School, Pain & the Heart</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>不登校</td><td>futōkō</td><td class="pos">noun</td><td>non-attendance at school</td></tr>
+        <tr><td>いじめ</td><td>ijime</td><td class="pos">noun</td><td>bullying</td></tr>
+        <tr><td>学校</td><td>gakkō</td><td class="pos">noun</td><td>school</td></tr>
+        <tr><td>教室</td><td>kyōshitsu</td><td class="pos">noun</td><td>classroom</td></tr>
+        <tr><td>中学生</td><td>chūgakusei</td><td class="pos">noun</td><td>junior high school student</td></tr>
+        <tr><td>先生</td><td>sensei</td><td class="pos">noun</td><td>teacher; doctor; master</td></tr>
+        <tr><td>心</td><td>kokoro</td><td class="pos">noun</td><td>heart; mind; spirit</td></tr>
+        <tr><td>痛み</td><td>itami</td><td class="pos">noun</td><td>pain; ache</td></tr>
+        <tr><td>苦しみ</td><td>kurushimi</td><td class="pos">noun</td><td>suffering; agony</td></tr>
+        <tr><td>怖さ</td><td>kowasa</td><td class="pos">noun</td><td>fear; fright</td></tr>
+        <tr><td>恥ずかしさ</td><td>hazukashisa</td><td class="pos">noun</td><td>shame; embarrassment</td></tr>
+        <tr><td>友達</td><td>tomodachi</td><td class="pos">noun</td><td>friend</td></tr>
+        <tr><td>仲間</td><td>nakama</td><td class="pos">noun</td><td>companion; comrade; friend</td></tr>
+        <tr><td>信頼</td><td>shinrai</td><td class="pos">noun</td><td>trust; confidence</td></tr>
+        <tr><td>勇気</td><td>yūki</td><td class="pos">noun</td><td>courage; bravery</td></tr>
+        <tr><td>助け</td><td>tasuke</td><td class="pos">noun</td><td>help; rescue; aid</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Castle, the Wolf & the Texture of Magic</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>オオカミ</td><td>ōkami</td><td class="pos">noun</td><td>wolf</td></tr>
+        <tr><td>お面</td><td>omen</td><td class="pos">noun</td><td>mask (festive)</td></tr>
+        <tr><td>光る</td><td>hikaru</td><td class="pos">verb</td><td>to shine; to glow; to glitter</td></tr>
+        <tr><td>輝く</td><td>kagayaku</td><td class="pos">verb</td><td>to shine; to sparkle; to radiate</td></tr>
+        <tr><td>くぐり抜ける</td><td>kugurinukeru</td><td class="pos">verb</td><td>to pass through; to slip through</td></tr>
+        <tr><td>引きこもる</td><td>hikikomoru</td><td class="pos">verb</td><td>to shut oneself in; to withdraw</td></tr>
+        <tr><td>閉じる</td><td>tojiru</td><td class="pos">verb</td><td>to close; to shut</td></tr>
+        <tr><td>開く</td><td>hiraku</td><td class="pos">verb</td><td>to open</td></tr>
+        <tr><td>探す</td><td>sagasu</td><td class="pos">verb</td><td>to search for; to look for</td></tr>
+        <tr><td>叶う</td><td>kanau</td><td class="pos">verb</td><td>to come true (wish)</td></tr>
+        <tr><td>正体</td><td>shōtai</td><td class="pos">noun</td><td>true identity; true character</td></tr>
+        <tr><td>秘密</td><td>himitsu</td><td class="pos">noun</td><td>secret</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory</td></tr>
+        <tr><td>忘れる</td><td>wasureru</td><td class="pos">verb</td><td>to forget</td></tr>
+        <tr><td>再会</td><td>saikai</td><td class="pos">noun</td><td>reunion; meeting again</td></tr>
+        <tr><td>卒業</td><td>sotsugyō</td><td class="pos">noun</td><td>graduation</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Tsujimura writes with the precision of a mystery novelist and the tenderness of a school counselor — and the translation of her work raises urgent questions about how to carry emotional truth across linguistic and cultural boundaries.</p>
+
+  <div class="card">
+    <h3>1. Hiragana <em>Kagami</em> vs. Kanji <em>Kojō</em>: The Orthographic Emotion</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>かがみ（ひらがな）</strong>＋<strong>孤城（漢字）</strong> — soft mirror / hard castle; fluid surface / fortified structure</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Lonely Castle in the Mirror</strong> — all in one script; no orthographic contrast possible</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The most significant untranslatable element of the title is the orthographic contrast between hiragana and kanji. In Japanese, this contrast is visible on the page and felt in the hand: hiragana flows, kanji stands firm. The English translation cannot replicate this because English uses only one script. A designer might try to compensate by using different fonts or weights — rendering "Mirror" in a light, flowing typeface and "Castle" in a heavy, blocky one — but this would be a graphic designer's solution, not a linguistic one, and it would not reach the reader who encounters the title in plain text. The loss matters because the orthographic contrast is not decorative; it is thematic. The novel is about the contrast between the soft, fluid world of children's feelings (hiragana) and the hard, fortified world of social institutions (kanji). The castle in the mirror is a kanji structure in a hiragana medium — a hard place inside a soft surface — and this paradox is exactly what the novel explores: the fortress of safety that exists inside the fluid, reflective world of a child's imagination. The English title "Lonely Castle in the Mirror" captures the emotional content (loneliness, castle, mirror) but loses the material contrast that makes the title a work of art in its own right. What is gained in English is clarity and alliteration (the <em>l</em> sounds in "Lonely" and "Castle" create a gentle music that partially compensates for the lost orthographic play), but the specifically Japanese poignancy of seeing softness and hardness coexist in a single title — the visual equivalent of a child building a fortress inside a tear — is unavailable in translation.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Ikanai n ja nakute, ikenai</em>: The Phonemic Cry</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>行かないんじゃなくて、行けない。</strong> — six syllables; near-homophony of <em>ikanai</em> and <em>ikenai</em> with one vowel change</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"It's not that I don't go. It's that I can't go."</strong> — fourteen words; no phonemic relationship between "don't" and "can't"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English translation of this sentence is accurate in meaning but loses what might be called the phonemic emotion of the original. In Japanese, <em>ikanai</em> (行かない) and <em>ikenai</em> (行けない) sound almost identical: they share the same consonants (k, n) and differ only in their central vowel (a vs. e). This near-identity enacts the confusion that Kokoro experiences — the world's confusion between her refusal and her incapacity, between "won't" and "can't." An English speaker cannot hear "don't" and "can't" as nearly the same word; they are phonemically distinct, visually distinct, conceptually distinct. The Japanese speaker hears Kokoro's six syllables as a kind of minimal pair — the linguistic term for two words that differ by only one sound — and this minimal pair becomes a cry of distinction: I am not what you think I am. My "can't" is not your "won't." The difference between <em>a</em> and <em>e</em> is the difference between blame and compassion, between choice and compulsion, between a child who needs discipline and a child who needs help. The English translation must add words ("It's not that... It's that...") to make the contrast explicit, and these added words, while necessary for clarity, dilute the sentence's compression. In Japanese, the contrast is immediate, visceral, almost bodily — two breaths, six sounds, one vowel changed. The English is a thoughtful explanation; the Japanese is a wound exposed. Both are true to Kokoro, but they are not the same sentence, and the difference between them is the difference between understanding and hearing, between reading about pain and feeling it in your mouth.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kokoro-chan</em>: The Diminutive as Therapy</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>こころちゃん</strong> — diminutive suffix signaling maternal/personal affection beyond institutional role</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Kokoro"</strong> — bare name, or "Kokoro, you fight every day" with no honorific</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Japanese honorific system is one of the most emotionally expressive features of the language, and its loss in translation is always significant. When Kitajima-sensei calls Kokoro "Kokoro-chan" rather than "Anzai-san" (the formal name she might use in a school record) or "Kokoro-san" (a more neutral respect form), she is performing a small act of love. The diminutive <em>chan</em> (ちゃん) is used for small children, for intimate friends, for family members, and for people whom one wishes to protect. A teacher who uses <em>chan</em> with a student is signaling that their relationship has crossed the boundary of professionalism into something more personal — not inappropriate, but deeply humane. The English translation cannot replicate this because English has no equivalent honorific system. A translator might try "dear Kokoro" or "Kokoro, sweetie" or "little Kokoro," but all of these sound either too intimate (suggesting a familial relationship that does not exist) or too condescending (suggesting that Kitajima-sensei is talking down to Kokoro). "Kokoro" alone — the bare name — is the standard English solution, but it loses the entire social texture of the Japanese. An English reader cannot know, from the text alone, that Kitajima-sensei's use of <em>chan</em> is a therapeutic intervention, a way of giving Kokoro the maternal affection she may not be receiving at home, a way of saying "you are not a case file to me; you are a child I care about." This loss is particularly acute in a novel about children who have been dehumanized by institutions — bullied by peers, pressured by parents, categorized by schools — because the honorific is the grammatical form of their rehumanization. When Kitajima-sensei says <em>Kokoro-chan</em>, she is using grammar to heal, and this healing grammar has no direct equivalent in English.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kichin to</em> (きちんと): The Adverb of a Child's Faith</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>きちんと</strong> — adverb meaning "properly / neatly / in good order / as it should be"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"properly" / "solidly" / "in good order"</strong> — accurate but lacking childlike connotation</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The adverb <em>kichin to</em> (きちんと) is one of the most emotionally loaded words in the novel, and it is nearly impossible to translate adequately. It means "properly," "neatly," "in good order," "as things should be" — but it carries a specifically Japanese affect: the satisfaction of things being in their proper places, the reassurance of social order, the faith that the world is organized by adults who know what they are doing. Japanese children are taught to do things <em>kichin to</em> — to fold their clothes <em>kichin to</em>, to greet their teachers <em>kichin to</em>, to follow rules <em>kichin to</em> — and the word becomes associated with the entire structure of Japanese socialization. When Kokoro says that the rules of the world have reasons that exist <em>kichin to</em> (きちんとある), she is invoking this childhood faith in the rationality of authority. The English "properly" or "solidly" captures the semantic content but loses the childlike quality: "properly" sounds like a lawyer's word, while <em>kichin to</em> sounds like a mother's word, a teacher's word, a word spoken over a child's bed at night. The loss matters because the novel's emotional arc depends on Kokoro's discovery that the world is not, in fact, organized <em>kichin to</em> — that bullying happens for no good reason, that some children are destroyed by forces they did not choose, that the rules that should protect them sometimes fail. And it depends equally on her discovery that there is a place — the castle — where things are, finally, <em>kichin to</em> in the best sense: organized not by arbitrary authority but by love, not for social control but for individual flourishing. The word <em>kichin to</em> thus travels through the novel from naivety to wisdom, from the false comfort of believing the world is fair to the true comfort of discovering that someone has built a place where fairness is possible. The English translation can track this journey semantically but cannot replicate its emotional texture — the way <em>kichin to</em> feels in a Japanese child's mouth, the way it connects to a lifetime of being told to do things properly, the way it becomes, in Kokoro's sentence, both a prayer and a doubt.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. The Junior High School Voice: Sentence-Final Particles and Emotional Ellipsis</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>〜だよね / 〜かな / 〜じゃん / 〜なのに</strong> — sentence-final particles carrying emotional nuance, hesitation, shared understanding, frustration</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"right?" / "I guess" / "I mean" / "even though"</strong> — approximations that lose the specifically Japanese adolescent speech patterns</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>One of Tsujimura's greatest achievements in <em>Kagami no Kojō</em> is her rendering of authentic junior high school speech — the halting, self-interrupting, emotionally overloaded language of thirteen-year-olds who are trying to sound like adults while still feeling like children. This speech is saturated with sentence-final particles (<em>yo</em> / よ, <em>ne</em> / ね, <em>yo ne</em> / よね, <em>jana</em> / じゃん, <em>kana</em> / かな, <em>noni</em> / のに) that carry emotional information impossible to render fully in English. <em>Yo</em> (よ) asserts; <em>ne</em> (ね) seeks confirmation; <em>yo ne</em> (よね) asserts and seeks confirmation simultaneously; <em>jana</em> (じゃん) is a colloquial contraction of <em>ja nai</em> (じゃない) used to point out something obvious to peers; <em>kana</em> (かな) expresses hesitation or self-doubt; <em>noni</em> (のに) conveys frustrated expectation ("even though / and yet"). These particles are the grammatical equivalent of body language — the shrug, the eye-roll, the hesitant smile — and they are essential to how Japanese teenagers communicate feelings they cannot name. When Aki uses <em>jana</em> to deflect a serious question with cheerfulness, when Subaru trails off with <em>kana</em> because he is afraid of being wrong, when Kokoro uses <em>noni</em> to express the injustice of her situation without sounding like she is complaining, they are using grammar to protect themselves. The English translation handles these particles as well as any translation could — Philip Gabriel is one of the most experienced translators of Japanese fiction — but the fundamental problem is structural: English teenagers do not use sentence-final particles in this way, and any attempt to replicate the effect sounds like dialect or affectation. The result is that the English characters sound more articulate than the Japanese ones, more capable of expressing their feelings directly, less dependent on the grammatical crutches that Japanese adolescents use to navigate social interaction. This is not a failure of translation but a difference between languages: English-speaking teenagers are socialized to "use their words," while Japanese teenagers are socialized to read between them. The loss is of a whole culture of emotional indirection — a culture that <em>Kagami no Kojō</em> both depicts and transcends, as its characters learn, in the castle, to say what they mean and mean what they say, with or without particles.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of wishes that know themselves impossible, of rules that may or may not have reasons, and of the courage to say "I can't" when the world hears "I won't."</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たらいい（願望・希望）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...tara ii</em>: "it would be good if..." — the standard conditional construction for expressing wishes.</p>
+      <div class="grammar-example">そんな奇跡が起きたらいいと、ずっと、願っている</div>
+      <p class="grammar-example-en">"I have always been wishing that such a miracle would happen" — The grammar of a wish held too long.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜んじゃなくて、〜（対比・訂正）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...n ja nakute, ...</em>: "it's not that... [but]..." — colloquial correction of misconception, with explanatory <em>n</em> and contracted negative <em>ja nakute</em>.</p>
+      <div class="grammar-example">行かないんじゃなくて、行ない</div>
+      <p class="grammar-example-en">"It's not that I don't go. It's that I can't go." — The grammar of distinction between refusal and incapacity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ている（継続・反復）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...te iru</em>: continuous aspect — action ongoing at present or repeated over time.</p>
+      <div class="grammar-example">ずっと、願っている</div>
+      <p class="grammar-example-en">"[I] have continuously been wishing" — The grammar of a longing that does not end.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜でしょう（確認・推量の招待）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...deshō</em>: tag question expressing gentle assertion + invitation to confirm — "...don't you? / ...isn't it?"</p>
+      <div class="grammar-example">だってこころちゃんは毎日、闘ってるでしょう？</div>
+      <p class="grammar-example-en">"But Kokoro, you fight every day, don't you?" — The grammar of recognition offered as a gift.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜方がいい（比較・助言）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...hō ga ii</em>: "it is better to... / one should..." — comparative construction for advice or general wisdom.</p>
+      <div class="grammar-example">そうした方がいい理由がきちんとある</div>
+      <p class="grammar-example-en">"There is a proper reason why it is better that way" — The grammar of a child's faith in order.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ことが〜（名詞化・事実）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...koto ga...</em>: nominalization turning a clause into a noun phrase — "the fact that..."</p>
+      <div class="grammar-example">そんな奇跡が起きないことは、知っている</div>
+      <p class="grammar-example-en">"I know [the fact] that such a miracle will not happen" — The grammar of resigned knowledge.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に（は）〜がある（存在・所有）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni wa ... ga aru</em>: "in/at... there is..." — existential construction with topic-marked location.</p>
+      <div class="grammar-example">世の中で決まっているルールには、理由がきちんとある</div>
+      <p class="grammar-example-en">"For the rules decided in the world, there are properly existing reasons" — The grammar of systemic belief.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だって（理由・反論）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>Datte</em>: sentence-initial conjunction giving reason or counterargument — "but / because / you see"</p>
+      <div class="grammar-example">だってこころちゃんは毎日、闘ってるでしょう？</div>
+      <p class="grammar-example-en">"But Kokoro, you fight every day, don't you?" — The grammar of gentle reproach turned recognition.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Kagami no Kojō</em> is the grammar of children learning to name what hurts them. The conditional wish (<em>tara ii</em>) reaches for what cannot be had; the contrastive correction (<em>n ja nakute</em>) insists on being understood; the continuous aspect (<em>te iru</em>) makes longing into a permanent condition; the tag question (<em>deshō</em>) offers recognition without demanding it; the comparative advice (<em>hō ga ii</em>) clings to faith in order; the nominalized fact (<em>koto</em>) makes knowledge bearable by objectifying it; the existential construction (<em>ni wa... ga aru</em>) locates reasons in the world rather than in the self; and the counterargument conjunction (<em>datte</em>) turns defense into love. Pay attention to how these constructions work together to create a prose voice that sounds like a thirteen-year-old thinking aloud — halting, self-correcting, hoping against hope, and finally, in the castle, finding the words that the world outside would not let her speak. The grammar is the mirror; the meaning is the castle.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『かがみの孤城』 &middot; 辻村深月 著 &middot; ポプラ社 2017年5月11日刊 &middot; 558ページ &middot; ISBN 978-4-591-15332-1</p>
+  <p style="margin-top: var(--space-xs);">ポプラ文庫版 2021年3月5日刊（上下巻） &middot; キミノベル版 2022年3月16日刊</p>
+  <p style="margin-top: var(--space-xs);">英訳 <em>Lonely Castle in the Mirror</em> &middot; Philip Gabriel 訳 &middot; Doubleday 2021年4月22日刊 &middot; 355ページ &middot; ISBN 978-0-85752-728-8</p>
+  <p style="margin-top: var(--space-xs);">受賞：第15回本屋大賞（2018年・得点651点） &middot; 第32回吉川英治文学新人賞（2011年・『ツナグ』） &middot; 第147回直木三十五賞（2012年・『鍵のない夢を見る』）</p>
+  <p style="margin-top: var(--space-xs);">著者：辻村深月（1980年2月29日生・山梨県笛吹市出身・千葉大学教育学部卒）</p>
+  <p style="margin-top: var(--space-xs);">劇場アニメ：2022年12月23日公開 &middot; 原恵一監督 &middot; A-1 Pictures制作 &middot; 當真あみ主演</p>
+  <p style="margin-top: var(--space-xs);">アニメ受賞：日本アカデミー賞優秀アニメーション作品賞（2023年） &middot; 東京アニメアワードアニメーションオブザイヤー（2023年）</p>
+  <p style="margin-top: var(--space-xs);">漫画化：武富智作画 &middot; 集英社『ウルトラジャンプ』2019年7月号〜2022年3月号 &middot; 全5巻</p>
+  <p style="margin-top: var(--space-xs);">累計発行部数：100万部突破（2024年時点） &middot; 20カ国語以上に翻訳</p>
+</footer>
+
+</div>
+</body>
+</html>

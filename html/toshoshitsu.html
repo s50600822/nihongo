@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お探し物は図書室まで — 青山美智子 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>お探し物は図書室まで</h1>
+  <p class="hero-subtitle">Osagashimono wa Toshoshitsu made / What You Seek Is in the Library</p>
+  <p class="hero-meta">青山美智子 著 &middot; ポプラ社 2019年11月6日刊（単行本） &middot; ポプラ文庫 2021年11月8日刊 &middot; 256ページ &middot; ISBN 978-4-591-16441-2 &middot; 2022年本屋大賞ノミネート</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: The Library as Destination and Threshold</h2>
+  <p class="lead">The title <em>Osagashimono wa Toshoshitsu made</em> (お探し物は図書室まで, "What You Seek Is in the Library" / "Your Sought-After Item: As Far As the Library") is a study in the poetics of gentle direction — the way that a humble service phrase, spoken daily by librarians and shopkeepers across Japan, becomes, in this novel, a philosophy of human need and human care. The grammar is deceptively simple: a noun phrase (<em>osagashimono</em> / お探し物, "what you are looking for / your sought-after item") marked as the topic by <em>wa</em> (は), followed by a location phrase (<em>toshoshitsu made</em> / 図書室まで, "as far as the library / up to the library") that serves as the predicate. But the semantic and cultural weight of each element creates a title that operates simultaneously as a literal direction, a philosophical claim, and a promise.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">お探し物</span>
+        <span class="romaji">osagashimono / "what you are looking for / the thing you seek / your sought-after item"</span>
+        <span class="meaning">"what you are looking for / the thing you seek" — <em>Osagashimono</em> (お探し物) is a compound of the honorific prefix <em>o</em> (お), the continuative form of the verb <em>sagasu</em> (探す, "to search for / to look for / to seek"), and the nominalizer <em>mono</em> (物, "thing / item / object"). The honorific <em>o</em> is crucial: it transforms a simple "thing you are looking for" into a service phrase, the kind of language used by shopkeepers (<em>Osagashi no mono de gozaimasu ka</em> / お探しのものでございますか, "Is this what you are looking for?") and librarians when speaking to patrons. This is not merely "the thing being sought" but "the thing that <em>you</em>, valued customer/reader, are seeking" — a phrase that carries the full weight of Japanese service culture's attention to the other's needs. The word <em>sagasu</em> (探す) is also richer than English "search": it implies active seeking, sometimes with difficulty, sometimes with persistence, sometimes with a sense that the object is not merely lost but needed — needed in a way that matters to the seeker's life. In the context of the novel, <em>osagashimono</em> is never merely a physical object: it is the thing each protagonist has lost without knowing they have lost it — confidence, purpose, a way forward, a reason to keep trying. The title thus announces that the novel is about seekers, and that what they seek is not trivial. The honorific <em>o</em> also creates a tone of gentleness and respect that pervades the entire book: this is not a novel that shouts its wisdom but one that offers it, like a good librarian, with quiet attentiveness to the reader's needs.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">は</span>
+        <span class="romaji">wa / topic particle</span>
+        <span class="meaning">"as for / [topic marker]" — The particle <em>wa</em> (は) marks <em>osagashimono</em> as the topic of the sentence, creating a categorical statement: "as for what you are seeking..." The <em>wa</em> particle has the effect of backgrounding the topic — making it the assumed subject of discussion — and foregrounding what follows as the new information. In the title, this creates a sense of reassurance: you don't need to keep searching everywhere; the thing you need has a known location. The <em>wa</em> also performs a subtle emotional operation: it takes the seeker's private anxiety ("I don't know where to find what I need") and reframes it as a shared, manageable problem ("what you seek" — a general condition — "is in the library" — a specific solution). The grammar thus transforms individual desperation into communal possibility, which is precisely what the library does in the novel: it takes five people who arrive alone with their private troubles and shows them that their problems are not unique, that others have faced similar crossroads, and that the books on the shelves contain not answers but companions for the journey.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">図書室まで</span>
+        <span class="romaji">toshoshitsu made / "as far as the library / up to the library / the library is where it is"</span>
+        <span class="meaning">"as far as the library / up to the library" — <em>Toshoshitsu</em> (図書室, "library / reading room / book room") is a compound of <em>tosho</em> (図書, "books / library collection") and <em>shitsu</em> (室, "room / chamber"). The word is more intimate than <em>toshokan</em> (図書館, "library [building/institution]"); a <em>shitsu</em> (室) is a room, a contained space, a chamber — suggesting not the vast public institution but a specific, approachable place. The particle <em>made</em> (まで, "as far as / up to / until") is the title's most grammatically interesting element. <em>Made</em> indicates the extent or limit of a range — it answers the question "how far?" rather than "where?" The difference is crucial: "in the library" (<em>toshoshitsu ni</em> / 図書室に) would locate the object inside a building; "as far as the library" (<em>toshoshitsu made</em> / 図書室まで) suggests that the journey to the library is itself the answer, that the seeking ends not when you find a book but when you arrive at the place where books are kept. <em>Made</em> thus carries a philosophical implication: the library is not merely a container for solutions but a destination that transforms the seeker by the act of arriving. In Japanese, <em>made</em> also appears in phrases like <em>made ni</em> (までに, "by [a time/deadline]") and <em>made mo</em> (までも, "even / as far as"), all of which share the sense of a boundary or terminus. The title says, in effect: your search has a boundary, a place where it can end, and that place is the library — not because the library contains what you seek (though it may) but because the library is the kind of place where seeking becomes something else: not desperation but curiosity, not isolation but community, not a problem but a journey. The English translation "What You Seek Is in the Library" captures the practical meaning but loses the journey-implication of <em>made</em>: "in" is a static preposition, while <em>made</em> is a dynamic particle of extent and arrival. What the Japanese title gives us — and what "in" cannot quite convey — is the sense that the library is not merely a location but a destination, a place you travel to, a threshold you cross, a boundary beyond which the nature of your search changes.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> ポプラ社 (Poplar-sha), November 6, 2019, hardcover, 256 pages, ISBN 978-4-591-16441-2. Bunkoban (ポプラ文庫 / Poplar Bunko): November 8, 2021, ISBN 978-4-591-16750-5. The book was nominated for the 2022 Hon'ya Taishō (第15回本屋大賞, 15th Booksellers' Award) and has sold over 1 million copies cumulatively across all editions as of 2025. It has been translated into multiple languages including Korean, Chinese, and Thai. A manga adaptation by Komori Yoichi (小森庸介) was serialized starting 2023. The novel's subtitle — "A Story That Will Make You Want to Visit the Library" (図書室に行きたくなる物語, <em>Toshoshitsu ni Ikitaku Naru Monogatari</em>) — appears on the cover and captures the book's transformative effect on readers, many of whom report visiting their local libraries for the first time in years after reading it.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>青山美智子 &mdash; Aoyama Michiko (b. 1970)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">青</div>
+    <div class="author-name-block">
+      <h3>青山美智子 / Aoyama Michiko</h3>
+      <p class="author-name-romaji">The former flight attendant who became Japan's librarian-novelist &middot; born in Aichi Prefecture</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Aoyama Michiko was born in 1970 in Aichi Prefecture. Before becoming a novelist, she worked as a flight attendant for Singapore Airlines — an experience that gave her an unusually cosmopolitan perspective for a Japanese writer of her generation, and that surfaces in her fiction's attention to the small kindnesses of service work, the poetry of transit, and the loneliness of people in motion. After leaving the airline industry, she worked in various professions before turning to writing, making her literary debut relatively late compared to many of her contemporaries.</p>
+    <p style="margin-bottom: var(--space-md);">Her debut work, <em>Mada Mada, Mada da yo</em> (『まだまだ、まだよ』, "Still, Still, It's Still Not Over"), was published in 2012 and won the 1st SML Story Prize (第1回SMLストーリー賞). She followed this with a series of warmly received novels that established her reputation for gentle, humanistic storytelling centered on ordinary people at moments of quiet crisis: <em>Konbini Ondo</em> (『コンビニ温度』, "Convenience Store Temperature," 2014), <em>Nishi-Ōya Shōten</em> (『西の屋商店』, "Nishi-Oya Store," 2015), <em>Chīsana Hoshi no Omoide</em> (『小さな星の思い出』, "Memories of a Small Star," 2017), and <em>Kogitsune Helen</em> (『こぎつねヘレン』, "Little Fox Helen," 2018).</p>
+    <p style="margin-bottom: var(--space-md);"><em>Osagashimono wa Toshoshitsu made</em> (2019) was her breakthrough work — the novel that transformed her from a respected mid-list author into a national phenomenon. Its nomination for the 2022 Hon'ya Taishō and its million-copy sales made her one of Japan's most widely read contemporary writers, and its effect on library visitation rates across Japan has been widely reported in the media. She followed this success with <em>Kagi no Nai Yume wo Miru</em> (『のない夢を見る』, "Dreaming Dreams Without Keys," 2020), <em>Kimi no Borantia, Boku no Borantia</em> (『きみのボランティア、ぼくのボランティア』, "Your Volunteer, My Volunteer," 2021), <em>Sakana no Namae</em> (『さかなのなまえ』, "The Name of the Fish," 2022), and <em>Kimi no Saka wa Maru de Hon no Naka no Sekai no Yō</em> (『きみの坂はまるで本の中の世界のよう』, "Your Hill Is Just Like a World Inside a Book," 2023). In 2024, she published <em>Kimi to Aruite, Ikiru</em> (『きみと歩いて、生きる』, "Walking and Living with You"), a novel about disability and companionship that extends her thematic concern with people who find themselves at life's crossroads.</p>
+    <p style="margin-bottom: var(--space-md);">What distinguishes Aoyama's work is its radical gentleness — a quality that is harder to achieve than it appears. In an era of Japanese fiction dominated by dark realism, social critique, and formal experimentation, Aoyama writes with an almost defiant optimism, trusting that the small acts of attention performed by librarians, shopkeepers, and strangers can redirect the course of a life. Her prose is accessible without being simple, emotionally direct without being sentimental, and structurally sophisticated without being showy. The "library novel" (<em>toshoshitsu shōsetsu</em> / 図書室小説) that she effectively invented with this book has become a recognized subgenre in Japanese publishing, inspiring numerous imitators and establishing the public library as a newly resonant setting in contemporary fiction.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Japanese Public Library: From Institution to Sanctuary</h2>
+
+  <div class="card">
+    <h3>2019: The Year Japan Rediscovered Its Libraries</h3>
+    <p><em>Osagashimono wa Toshoshitsu made</em> was published in November 2019, on the eve of the COVID-19 pandemic — a timing that would prove extraordinarily consequential. When Japan entered its first state of emergency in April 2020, public libraries across the country closed their doors, and readers who had just discovered (or rediscovered) the library through Aoyama's novel found themselves unable to visit the very place the book had celebrated. The pandemic thus created a strange temporal dislocation: the novel's message — "what you seek is in the library" — became, for a time, literally impossible to act upon. But it also intensified the longing. When libraries reopened in the summer of 2020 with mask requirements, plastic barriers, and appointment systems, they were met with an outpouring of public affection that surprised even library administrators. The novel had given readers a language for what they felt about libraries — not merely that they were useful, but that they were necessary, personal, almost sacred. The pandemic revealed that this feeling was shared by millions. Aoyama's novel thus occupies a unique position in Japanese cultural history: it is both a pre-pandemic celebration of public space and a post-pandemic testament to what was almost lost.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Japanese Public Library: A Brief History of the "Toshokan"</h3>
+    <p>The public library in Japan (<em>toshokan</em> / 図書館, or more intimately, <em>toshoshitsu</em> / 図書室, "reading room") has a history that reflects the broader story of Japanese modernity. The first public libraries were established in the Meiji period (1868–1912) as part of the government's modernization drive, modeled on Western institutions but adapted to Japanese educational needs. The Library of Congress-style classification system was introduced, modified, and eventually supplemented with Japan-specific categories; the Dewey Decimal System was adopted by many municipal libraries; and a distinctly Japanese library culture emerged, one that emphasized not merely access to information but the librarian's role as a guide, educator, and community anchor. The postwar period saw an explosion of public library construction, funded by the Library Act (図書館法, <em>Toshokan-hō</em>, 1950), which mandated library services as a public good. By the 1980s, Japan had one of the highest numbers of public libraries per capita in the world, and the library had become a fixture of neighborhood life — a place where children did homework, where retirees read newspapers, where job-seekers used free computers, and where anyone could enter without buying anything. The 1990s and 2000s brought challenges: budget cuts, the rise of digital media, and the question of whether libraries were still "necessary" in an age of Amazon and Google. Aoyama's novel arrived at the precise moment when this question was being asked most urgently, and its answer — that the library is not merely a repository of books but a sanctuary for the seeking self — helped reframe the public conversation. The novel's impact on library funding debates, on library science enrollment, and on the morale of working librarians has been documented in Japanese library journals and is one of the rare cases of a work of fiction directly influencing public policy discussion.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Library Novel" and the Ethics of Gentle Guidance</h3>
+    <p>Aoyama did not invent the library as a literary setting — Kawabata Yasunari's "The Master of Go" features a newspaper reading room; Murakami Haruki's characters are constantly in libraries; and the "bookshop novel" (<em>shoten shōsetsu</em> / 書店小説) has been a recognized genre since the 2000s. But she did something new: she made the librarian, not the books, the center of the drama. In her novel, the books are important — each protagonist receives a specific book that speaks to their situation — but the true agent of transformation is the librarian, a figure named simply "the old librarian" (<em>tosho-san</em> / 司書さん) who appears in each story with a different face and name but the same function: to see what the seeker needs before the seeker knows it themselves. This figure draws on a deep archetype in Japanese culture: the <em>senpai</em> (先輩, senior) who guides the <em>kōhai</em> (後輩, junior), the <em>sen-sei</em> (先生, teacher/mentor) who recognizes potential before it has manifested, the <em>okami</em> (女将, innkeeper) who knows what her guests need before they ask. The librarian in Aoyama's novel is all of these and something else: a professional whose expertise is not knowledge but attention — the trained capacity to observe, to listen, to match a person with a book without imposing one's own judgment. The novel's ethics are thus not didactic ("read this book and your problems will be solved") but relational ("I see you, I hear what you are not saying, and I know a book that has helped others in similar situations"). This ethic of gentle guidance — <em>yasashii michibiki</em> (優しい導き) — is the novel's most distinctive contribution to Japanese literary culture, and it has resonated with readers who are tired of fiction that shouts and hungry for fiction that listens.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Hon'ya Taishō and the Booksellers' Verdict</h3>
+    <p>The novel's nomination for the 2022 Hon'ya Taishō (本屋大賞, "Booksellers' Award") — Japan's most commercially influential literary prize, determined by votes from bookstore employees nationwide — is significant beyond the honor itself. The Hon'ya Taishō, established in 2004, has become a reliable predictor of both literary quality and popular appeal, with past winners including <em>Devils' Line</em>, <em>The Miracles of the Namiya General Store</em>, <em>Kagami no Kojō</em> (by Tsujimura Mizuki), and <em>Rurō no Tsuki</em> (by Nagira Yū). For Aoyama's novel to be nominated meant that bookstore employees — the people who see readers browse, hesitate, and choose every day — had recognized something special: a book that did not merely sell but changed the relationship between readers and the places where books are kept. Booksellers reported that customers would return to the store weeks after buying the novel to report that they had visited a library for the first time in decades, or that they had given the book to a friend who was going through a difficult time, or that they had read it in one sitting and cried. The Hon'ya Taishō nomination validated what these booksellers already knew: that Aoyama had written not merely a novel but a kind of literary catalyst — a book that produced action in the world beyond the page. The novel did not win the top prize (it was a strong year, with Nagira Yū's <em>Nanji, Hoshi no Gotoku</em> taking the award), but its nomination, combined with its million-copy sales, established Aoyama as one of Japan's most important contemporary voices in popular fiction.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Five Seekers, Five Books, One Library Where Everything Changes</h2>
+
+  <div class="card">
+    <h3>The Architecture: A Quintet of Transformation</h3>
+    <p>The novel is structured as five interconnected stories, each focusing on a different protagonist who arrives at the library with a different problem, receives a different book, and leaves with a different future. The stories are connected by the librarian — a mysterious figure who appears in each narrative with a different name and face but the same function — and by the library itself, which remains constant even as the seekers change. The structure echoes the Japanese tradition of the <em>tsuzuki-mono</em> (続き物, "continued thing / linked narrative") and the Western tradition of the Canterbury Tales, but its closest literary cousin is perhaps <em>The Miracles of the Namiya General Store</em> (『ナミヤ雑貨店の奇蹟』) by Higashino Keigo — another novel in which strangers arrive with problems and receive unexpected guidance. Aoyama's innovation is to make the guidance come not from the supernatural but from the professional: the librarian's skill is not magic but expertise, not prophecy but experience. The five stories are: "The Girl Who Wanted to Quit" (やめたいと思っている娘, <em>Yametai to Omotte Iru Musume</em>), "The Man Who Had Lost His Dream" (夢を失った男, <em>Yume wo Ushinatta Otoko</em>), "The Woman Who Wanted to Be Someone Else" (誰か他の人になりたい女, <em>Dareka Hoka no Hito ni Naritai Onna</em>), "The Boy Who Didn't Know What He Loved" (好きなものがわからない少年, <em>Suki na Mono ga Wakaranai Shōnen</em>), and "The Old Woman Who Wanted to Be Useful" (役に立ちたい老女, <em>Yaku ni Tachitai Rōjo</em>). Each story is named after the protagonist's felt deficiency, and each book they receive addresses not the deficiency but the fear beneath it — the fear of failure, of irrelevance, of being unseen, of making the wrong choice, of having no more time.</p>
+  </div>
+
+  <div class="card">
+    <h3>Story 1: The Girl Who Wanted to Quit — 小町 (Komachi)</h3>
+    <p>Komachi (小町, a name that evokes the legendary Heian beauty Ono no Komachi / 小野小町) is a 21-year-old interior design company employee who has lost confidence in her work after a series of setbacks. She arrives at the library not knowing what she is looking for — only that she is tired, discouraged, and on the verge of quitting everything. The librarian gives her a book — not a self-help manual but a novel about someone who kept going when quitting would have been easier. The specific book and the conversation that surrounds it form the heart of the story, and Aoyama's skill is to make the book's relevance feel discovered rather than assigned: Komachi recognizes herself in the pages not because the librarian told her to but because the librarian knew, with professional precision, which book would speak to a 21-year-old who had forgotten why she started. The story's power lies in its refusal to offer easy answers: Komachi does not "solve" her problems by reading the book; she simply remembers that problems can be survived, that discouragement is not the same as defeat, and that the person who began with enthusiasm is still inside the person who wants to quit.</p>
+  </div>
+
+  <div class="card">
+    <h3>Story 2: The Man Who Had Lost His Dream — 鷲宮 (Washimiya)</h3>
+    <p>Washimiya (鷲宮, a surname combining <em>washi</em> / 鷲, "eagle," and <em>miya</em> / 宮, "shrine" — suggesting a lofty aspiration that has been enshrined and forgotten) is a 40-year-old man who abandoned his dream of becoming a professional guitarist in his twenties and has spent the intervening years in a job he does not love, telling himself that dreams are for children. He arrives at the library because his wife has left him a note suggesting he "go somewhere quiet and think" — and the library is the only quiet place he knows. The book he receives is about someone who returned to a abandoned passion late in life and discovered that it was not too late. Washimiya's story is the novel's most explicit treatment of regret — the sense that one has taken a wrong turn so long ago that the right path no longer exists — and its answer is characteristically gentle: not that he should quit his job and become a guitarist (that would be another novel), but that he should allow himself to play again, to have the thing he loves without requiring it to become his profession, to be an amateur (<em>shirōto</em> / 素人) in the original sense of the word — one who does something for love rather than money. The story's ending — Washimiya buying a guitar and playing it badly in his small apartment — is one of the novel's most moving, precisely because it is so small, so un-dramatic, so real.</p>
+  </div>
+
+  <div class="card">
+    <h3>Story 3: The Woman Who Wanted to Be Someone Else — 葵 (Aoi)</h3>
+    <p>Aoi (葵, "hollyhock / mallow" — a name associated with the Tokugawa clan and with quiet strength) is a 30-year-old woman who has spent her life comparing herself to others and finding herself wanting. She arrives at the library because she has seen a social media post about a former classmate's success and is spiraling into self-doubt. The book she receives is about a character who learns that the life she has been envying belongs to someone who is envying hers. Aoi's story is the novel's most direct engagement with the pathology of comparison that social media has amplified — the constant measurement of one's own life against the curated highlights of others — and its answer is not to reject comparison but to redirect it: not "stop comparing yourself to others" (impossible advice) but "compare yourself to the person you were yesterday" (possible advice, grounded in the reality that change is incremental and visible only in retrospect). The librarian's gift to Aoi is not a book that solves her problem but a book that reframes it — that shows her that her felt inadequacy is a symptom of a culture, not a verdict on her worth.</p>
+  </div>
+
+  <div class="card">
+    <h3>Story 4: The Boy Who Didn't Know What He Loved — 風太 (Fūta)</h3>
+    <p>Fūta (風太, combining <em>fū</em> / 風, "wind," and <em>ta</em> / 太, "great / thick" — suggesting a force that has not yet found its direction) is a high school student facing the most consequential decision of his young life: what to do after graduation, when everyone else seems to know their path and he does not. He arrives at the library because his teacher has told him that "people who read find what they love" — advice he follows more from desperation than conviction. The book he receives is about someone who tried many things before discovering what mattered to them, and the librarian's message is the novel's most directly pedagogical: not that Fūta will find his answer in a book, but that the act of searching — of picking up books, reading a few pages, putting them down, picking up others — is itself a practice of self-discovery. The story's insight is that not knowing what you love is not a failure but a stage, and that the library is the ideal place to be in that stage because it offers infinite possibilities without requiring any commitment. Fūta leaves the library not with a career plan but with a method: keep reading, keep trying, keep paying attention to what makes you feel alive. It is simple advice, but in Aoyama's hands it feels like a revelation — because it is delivered not by a parent or teacher (figures who have stakes in the outcome) but by a librarian (a figure whose only stake is the seeker's flourishing).</p>
+  </div>
+
+  <div class="card">
+    <h3>Story 5: The Old Woman Who Wanted to Be Useful — 静香 (Shizuka)</h3>
+    <p>Shizuka (静香, "quiet fragrance" — a name that evokes gentleness and persistence) is a 65-year-old retired woman who has spent her life taking care of others and now, in the silence of an empty nest, does not know how to take care of herself. She arrives at the library because she has heard that libraries need volunteers — a way, she thinks, to be useful again. The book she receives is about someone who discovered, late in life, that their greatest contribution was not what they did for others but what they became for themselves. Shizuka's story is the novel's most profound meditation on the second half of life — the period after children have grown, after careers have ended, after the roles that defined one's identity have been removed — and its answer is that this period is not an ending but a beginning, not a loss of purpose but a discovery of a different kind of purpose: the purpose of being rather than doing, of presence rather than production. The librarian's gift to Shizuka is the recognition that she has never stopped being useful — she has simply changed the form of her usefulness, from active service to quiet example. The story's ending — Shizuka becoming a library volunteer, not because she needs to be useful but because she loves the place — brings the novel full circle: the seeker becomes the guide, the one who was lost becomes the one who helps others find their way.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages contain the novel's most quietly transformative sentences — the moments when a librarian's observation, a book's relevance, or a seeker's recognition changes the direction of a life.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"The Library Is a Place That Accepts Your Loneliness"</div>
+    <div class="passage-jp">
+      図書室は、あなたの孤独を受け入れてくれる場所です。
+    </div>
+    <div class="passage-romaji">
+      "Toshoshitsu wa, anata no kodoku wo ukeirete kureru basho desu."
+    </div>
+    <div class="passage-en">
+      "The library is a place that accepts your loneliness."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken by the librarian to Komachi in the first story — is the novel's foundational statement of purpose, and its grammar creates a philosophy of acceptance that defines the entire book. <em>Toshoshitsu wa</em> (図書室は, "as for the library [topic]") uses the topic marker <em>wa</em> (は) to establish the library as the subject of a categorical claim — not "this particular library" but "the library" as an institution, a concept, a type of place. <em>Anata no kodoku wo</em> (あなたの孤独を, "your loneliness [object]") uses the second-person pronoun <em>anata</em> (あなた) — in modern Japanese, a word that can feel either intimate or distant depending on context. Here, spoken by a librarian to a patron, it carries the formal warmth of service speech: not the casual <em>kimi</em> (君) of friendship, not the distant <em>o-kata</em> (お方) of extreme formality, but the measured, respectful <em>anata</em> of a professional addressing a stranger with full attention. <em>Kodoku</em> (孤独, "loneliness / solitude / isolation") is one of Japanese's most emotionally precise nouns: it means not merely "being alone" (<em>hitori</em> / 一人) but the felt quality of isolation, the sense of being cut off from meaningful connection. The possessive <em>anata no kodoku</em> (あなたの孤独, "your loneliness") makes the loneliness specific and owned — not a general condition but this person's particular burden. <em>Ukeirete kureru</em> (受け入れてくれる, "accepts / receives / takes in [for me / to my benefit]") uses the gerundive form of <em>ukeireru</em> (受け入れる, "to accept / to receive / to take in") combined with the auxiliary <em>kureru</em> (くれる, "to do something for me / to my benefit"). The <em>kureru</em> auxiliary is crucial: it indicates that the acceptance is performed by someone of equal or lower status (the library, in this framing) for the benefit of someone else (the seeker). This is not a grand institution condescending to accept a supplicant; it is a humble place offering a service. The grammar thus enacts the novel's ethics of service: the library does not judge the loneliness but receives it, takes it in, makes room for it. <em>Basho desu</em> (場所です, "is a place / is a location") uses the formal copula <em>desu</em> (です), appropriate to the librarian's professional register. What is lost in English is the full force of <em>ukeirete kureru</em>. "Accepts" captures the meaning but loses the benefactive dimension — the sense that the acceptance is a gift, performed for the seeker's benefit. "Welcomes" captures the warmth but loses the precision: <em>ukeireru</em> is not merely "welcome" (<em>kangei suru</em> / 歓迎する) but "receive / take in" — a more physical, more encompassing action. The Japanese says, in effect, that the library will not merely tolerate your loneliness but will actively receive it, hold it, make space for it — a claim that transforms the library from a building into a kind of emotional container.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"The Book You Need Already Exists"</div>
+    <div class="passage-jp">
+      あなたに必要な本は、すでにこの世界に存在しています。
+    </div>
+    <div class="passage-romaji">
+      "Anata ni hitsuyō na hon wa, sudeni kono sekai ni sonzai shite imasu."
+    </div>
+    <div class="passage-en">
+      "The book you need already exists in this world."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the librarian's foundational promise to each seeker — is the novel's most reassuring line, and its grammar creates a metaphysics of pre-existing help that is both comforting and challenging. <em>Anata ni hitsuyō na hon wa</em> (あなたに必要な本は, "as for the book necessary for you [topic]") uses the dative <em>ni</em> (に) to mark the beneficiary — the book is not merely "necessary" in general but "necessary <em>for you</em>." The relative clause <em>anata ni hitsuyō na</em> (あなたに必要な, "necessary for you") modifies <em>hon</em> (本, "book"), creating a specific category: not "a book you might like" but "the book you need" — singular, precise, waiting. <em>Sudeni kono sekai ni</em> (すでにこの世界に, "already in this world") uses the adverb <em>sudeni</em> (すでに, "already / by now / beforehand") to create a temporal claim: the book did not come into existence when you developed your problem; it has been here all along, waiting for you to be ready for it. The phrase <em>kono sekai ni</em> (この世界に, "in this world") expands the scope from the library to the entire world of published books — a vast, almost overwhelming claim that is immediately grounded by what follows. <em>Sonzai shite imasu</em> (存在しています, "exists / is in existence") uses the formal continuative of <em>sonzai suru</em> (存在する, "to exist"), a philosophical verb that carries more weight than the simple <em>aru</em> (ある, "there is"). <em>Sonzai suru</em> is the verb used for the existence of abstract entities (God, numbers, possibilities) as well as concrete ones; <em>aru</em> is used for physical objects. By choosing <em>sonzai shite imasu</em> over <em>arimasu</em> (あります), the sentence elevates the book from a physical object to a kind of necessity — something that exists not merely as paper and ink but as a possibility waiting to be actualized. What is lost in English is the full philosophical resonance of <em>sonzai shite imasu</em>. "Exists" captures the meaning but loses the distinction from <em>aru</em>; "is already out there" captures the temporal sense but loses the philosophical weight. The Japanese sentence says, with quiet grandeur, that your need has already been answered — not by you, not by the librarian, but by the accumulated wisdom of everyone who has ever written a book. The librarian's job is simply to help you find what already exists.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"It's Not About Finding the Answer"</div>
+    <div class="passage-jp">
+      答えを見つけることじゃないんです。大切なのは、探し続けることです。
+    </div>
+    <div class="passage-romaji">
+      "Kotae wo mitsukeru koto ja nai n desu. Taisetsu na no wa, sagashi-tsuzukeru koto desu."
+    </div>
+    <div class="passage-en">
+      "It's not about finding the answer. What's important is to keep on searching."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken to Fūta, the high school student who does not know what he loves — is the novel's most directly pedagogical line, and its grammar creates a philosophy of process over product that challenges the goal-oriented culture of contemporary Japan. <em>Kotae wo mitsukeru koto ja nai n desu</em> (答えを見つけることじゃないんです, "it's not a matter of finding the answer") uses the nominalized clause <em>kotae wo mitsukeru koto</em> (答えを見つけること, "the act of finding the answer") as the topic, with the negative casual copula <em>ja nai</em> (じゃない) and the explanatory <em>n desu</em> (んです) creating a tone of friendly clarification — not "you're wrong to want answers" but "the thing you're worried about is not the thing that matters." The explanatory <em>n desu</em> (んです) is crucial: it softens the negation into a kind of shared realization, as if the librarian and Fūta are discovering this truth together rather than the librarian lecturing him. <em>Taisetsu na no wa</em> (大切なのは, "what is important [topic]") uses the nominalized adjective <em>taisetsu na no</em> (大切なの, "the important thing / what is important") as the topic, creating a parallel structure with the previous clause: "not X, but Y." <em>Sagashi-tsuzukeru koto desu</em> (探し続けることです, "is to keep on searching / is the act of continuing to search") uses the compound verb <em>sagashi-tsuzukeru</em> (探し続ける, "to continue searching / to keep on looking"), combining <em>sagasu</em> (探す, "to search / to seek") with <em>tsuzukeru</em> (続ける, "to continue / to keep on"). The compound verb is the grammatical heart of the sentence: it transforms "searching" from an event (<em>sagasu</em>) into a practice (<em>sagashi-tsuzukeru</em>), something one does not once but continuously. The sentence thus says that the value lies not in the discovery but in the persistence — a radical claim in a culture that measures success by outcomes. What is lost in English is the full force of <em>sagashi-tsuzukeru</em> as a compound verb. "Keep on searching" captures the continuity but loses the sense of active, directed seeking that <em>sagasu</em> carries; "continue the search" captures the formality but loses the conversational warmth. The Japanese <em>sagashi-tsuzukeru</em> contains both the active energy of <em>sagasu</em> (you are not merely waiting; you are looking) and the commitment of <em>tsuzukeru</em> (you are not giving up; you are continuing). The sentence is thus not merely advice but a definition of maturity: to be an adult is not to have found your answers but to have learned to keep looking.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"Every Person Who Comes Here Is a Story"</div>
+    <div class="passage-jp">
+      ここに来る人は、みんな物語なんです。
+    </div>
+    <div class="passage-romaji">
+      "Koko ni kuru hito wa, minna monogatari na n desu."
+    </div>
+    <div class="passage-en">
+      "Every person who comes here is a story."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the librarian's explanation of their work to a curious colleague — is the novel's most explicit statement of its own literary method, and its grammar creates a metaphysics of person-as-narrative that justifies the book's very existence. <em>Koko ni kuru hito wa</em> (ここに来る人は, "as for the people who come here [topic]") uses the relative clause <em>koko ni kuru</em> (ここに来る, "who come here") to modify <em>hito</em> (人, "person / people"), creating a specific category: not "people in general" but "the people who come to this library" — a self-selected group defined by their act of seeking. <em>Minna</em> (みんな, "everyone / all / everybody") is an inclusive quantifier that creates universality without hierarchy: not "some people" or "important people" but "everyone" — the discouraged office worker, the lost teenager, the retired grandmother, all equally <em>monogatari</em> (物語, "story / narrative / tale"). <em>Monogatari na n desu</em> (物語なんです, "is a story / are stories [explanatory]") uses the explanatory <em>na n desu</em> (なんです) — the nominalized copula <em>na no desu</em> (なのです) in its casual form — to create a tone of gentle revelation. The <em>na n desu</em> says, in effect, "and the reason I mention this is that..." — it connects the observation to a larger point, in this case the librarian's method of matching people with books. The grammar thus makes the sentence into both a statement of fact and a statement of method: people are stories, and because they are stories, they can be matched with other stories (books) in ways that help them. What is lost in English is the full resonance of <em>monogatari</em> as a literary term. "Story" captures the basic meaning but loses the literary weight: <em>monogatari</em> is the word used for classical Japanese narrative (<em>Genji Monogatari</em> / 源氏物語), for folktales (<em>mukashi-banashi</em> / 昔話), for novels (<em>shōsetsu</em> / 小説), and for the narrative structure of a life. To call someone a <em>monogatari</em> is to say that their life has shape, meaning, and interest — that it is worth telling and worth reading. The English "story" cannot carry this full literary weight, and the sentence's power is slightly diminished by the translation. The Japanese reader hears, in <em>minna monogatari na n desu</em>, an echo of every <em>monogatari</em> they have ever read — and recognizes that the novel they are holding is itself an act of the librarian's faith: the belief that every person's life, properly attended to, is a story worth telling.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of libraries, seeking, and the quiet transformations that happen when a person meets the right book at the right time.</p>
+
+  <div class="card">
+    <h3>The Library & the Language of Books</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>図書室</td><td>toshoshitsu</td><td class="pos">noun</td><td>library; reading room; book room</td></tr>
+        <tr><td>図書館</td><td>toshokan</td><td class="pos">noun</td><td>library (institution / building)</td></tr>
+        <tr><td>司書</td><td>shisho</td><td class="pos">noun</td><td>librarian</td></tr>
+        <tr><td>本</td><td>hon</td><td class="pos">noun</td><td>book</td></tr>
+        <tr><td>書籍</td><td>shoseki</td><td class="pos">noun</td><td>book; publication; volume</td></tr>
+        <tr><td>読書</td><td>dokusho</td><td class="pos">noun</td><td>reading (books)</td></tr>
+        <tr><td>読者</td><td>dokusha</td><td class="pos">noun</td><td>reader</td></tr>
+        <tr><td>本棚</td><td>hondana</td><td class="pos">noun</td><td>bookshelf</td></tr>
+        <tr><td>貸出</td><td>kashidashi</td><td class="pos">noun</td><td>lending; checkout (of books)</td></tr>
+        <tr><td>返却</td><td>henkyaku</td><td class="pos">noun</td><td>return (of books)</td></tr>
+        <tr><td>蔵書</td><td>zōsho</td><td class="pos">noun</td><td>library collection; holdings</td></tr>
+        <tr><td>分類</td><td>bunrui</td><td class="pos">noun</td><td>classification; categorization</td></tr>
+        <tr><td>書評</td><td>shohyō</td><td class="pos">noun</td><td>book review</td></tr>
+        <tr><td>推薦</td><td>suisen</td><td class="pos">noun</td><td>recommendation</td></tr>
+        <tr><td>紹介</td><td>shōkai</td><td class="pos">noun</td><td>introduction; presentation</td></tr>
+        <tr><td>物語</td><td>monogatari</td><td class="pos">noun</td><td>story; narrative; tale</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Seeking, Finding & the Language of the Soul's Journey</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>探す</td><td>sagasu</td><td class="pos">verb</td><td>to search for; to look for; to seek</td></tr>
+        <tr><td>探し物</td><td>sagashimono</td><td class="pos">noun</td><td>thing one is looking for; lost item</td></tr>
+        <tr><td>見つける</td><td>mitsukeru</td><td class="pos">verb</td><td>to find; to discover</td></tr>
+        <tr><td>答え</td><td>kotae</td><td class="pos">noun</td><td>answer; reply; response</td></tr>
+        <tr><td>道</td><td>michi</td><td class="pos">noun</td><td>path; road; way</td></tr>
+        <tr><td>迷う</td><td>mayou</td><td class="pos">verb</td><td>to get lost; to waver; to be uncertain</td></tr>
+        <tr><td>迷子</td><td>maigo</td><td class="pos">noun</td><td>lost child; person who has lost their way</td></tr>
+        <tr><td>方向</td><td>hōkō</td><td class="pos">noun</td><td>direction; course; way</td></tr>
+        <tr><td>自信</td><td>jishin</td><td class="pos">noun</td><td>confidence; self-confidence</td></tr>
+        <tr><td>夢</td><td>yume</td><td class="pos">noun</td><td>dream; aspiration</td></tr>
+        <tr><td>希望</td><td>kibō</td><td class="pos">noun</td><td>hope; aspiration</td></tr>
+        <tr><td>後悔</td><td>kōkai</td><td class="pos">noun</td><td>regret; repentance</td></tr>
+        <tr><td>悩み</td><td>nayami</td><td class="pos">noun</td><td>worry; trouble; distress</td></tr>
+        <tr><td>悩む</td><td>nayamu</td><td class="pos">verb</td><td>to worry; to be troubled</td></tr>
+        <tr><td>迷い</td><td>mayoi</td><td class="pos">noun</td><td>hesitation; uncertainty; wandering</td></tr>
+        <tr><td>決断</td><td>ketsudan</td><td class="pos">noun</td><td>decision; determination</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Connection, Kindness & the Language of Being Seen</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>受け入れる</td><td>ukeireru</td><td class="pos">verb</td><td>to accept; to receive; to take in</td></tr>
+        <tr><td>優しい</td><td>yasashii</td><td class="pos">i-adj</td><td>gentle; kind; tender</td></tr>
+        <tr><td>親切</td><td>shinsetsu</td><td class="pos">na-adj</td><td>kind; considerate</td></tr>
+        <tr><td>温かい</td><td>atatakai</td><td class="pos">i-adj</td><td>warm; kind; heartfelt</td></tr>
+        <tr><td>支える</td><td>sasaeru</td><td class="pos">verb</td><td>to support; to sustain</td></tr>
+        <tr><td>寄り添う</td><td>yorisou</td><td class="pos">verb</td><td>to lean close; to stay near; to empathize</td></tr>
+        <tr><td>気づく</td><td>kizuku</td><td class="pos">verb</td><td>to notice; to become aware</td></tr>
+        <tr><td>見守る</td><td>mimamoru</td><td class="pos">verb</td><td>to watch over; to keep an eye on</td></tr>
+        <tr><td>出会い</td><td>deai</td><td class="pos">noun</td><td>encounter; meeting</td></tr>
+        <tr><td>縁</td><td>en</td><td class="pos">noun</td><td>fate; bond; connection; chance</td></tr>
+        <tr><td>感謝</td><td>kansha</td><td class="pos">noun</td><td>gratitude; thanks</td></tr>
+        <tr><td>励ます</td><td>hagemasu</td><td class="pos">verb</td><td>to encourage; to cheer on</td></tr>
+        <tr><td>導く</td><td>michibiku</td><td class="pos">verb</td><td>to guide; to lead</td></tr>
+        <tr><td>救う</td><td>sukuu</td><td class="pos">verb</td><td>to save; to rescue; to help</td></tr>
+        <tr><td>大切</td><td>taisetsu</td><td class="pos">na-adj</td><td>important; precious; valuable</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Aoyama writes with the gentleness of a librarian who has learned that the most important thing is not what you say but how you listen — and her prose raises urgent questions about how to carry that gentleness across linguistic borders.</p>
+
+  <div class="card">
+    <h3>1. <em>Osagashimono</em> (お探し物): The Service Phrase as Philosophy</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>お探し物</strong> — the thing you seek; the item you are looking for; the lost thing that has been elevated by the honorific to the status of a valued need</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"what you seek" / "what you are looking for" / "your sought-after item"</strong> — each captures one dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the title analysis, <em>osagashimono</em> (お探し物) is not merely "what you are looking for" but a service phrase that carries the full weight of Japanese customer-service culture. The honorific <em>o</em> (お) transforms the seeker's need into something worthy of respect; the continuative <em>sagashi</em> (探し) implies ongoing, perhaps difficult searching; and the nominalizer <em>mono</em> (物) makes the search into an object that can be named, discussed, and eventually found. English "what you seek" captures the philosophical dimension but loses the service-culture warmth; "what you are looking for" captures the everyday quality but loses the elevation that <em>o</em> provides; "your sought-after item" captures the specificity but sounds like retail language. The Japanese <em>osagashimono</em> is all of these at once — a phrase that would be spoken by a shopkeeper, a librarian, or a friend helping you search — and its warmth comes from the fact that it is a <em>shared</em> phrase, part of the common vocabulary of care in Japanese daily life. Without this cultural resonance, the title becomes merely descriptive rather than invitational — and the invitation ("come to the library, we will help you find what you need") is the novel's essential tone.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Made</em> (まで): The Particle of Arrival and Transformation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>まで</strong> — as far as; up to; until; the extent of a journey; the boundary where change happens</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"in" / "to" / "as far as"</strong> — each loses a different dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The particle <em>made</em> (まで) is, as discussed in the title analysis, the novel's most untranslatable element. "In the library" (<em>ni</em> / に) would be static; "to the library" (<em>e</em> / へ) would be directional; but <em>made</em> (まで) is extentional — it says that the library is the limit of the search, the place where the journey ends and something else begins. English has no preposition that captures this exactly. "As far as" is accurate but awkward; "up to" is better but still clunky; "in" is natural but loses the journey. The loss matters because the novel's entire philosophy is contained in this particle: that seeking is a journey with a destination, that the destination is not merely a place but a transformation, and that the library is the kind of place where arrival changes the nature of the quest. The Japanese title says, with elegant compression, that your search has a natural boundary and that boundary is the library. English can only approximate this with paraphrase — "What you seek is waiting for you in the library" — which adds words the Japanese does not need and loses the precision of <em>made</em>'s boundary-marking function.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ukeirete Kureru</em> (受け入れてくれる): The Grammar of Receiving Care</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>受け入れてくれる</strong> — accepts [for my benefit]; receives [with me in mind]; takes in [as a gift to me]</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"accepts" / "receives" / "welcomes"</strong> — each loses the benefactive</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>ukeirete kureru</em> (受け入れてくれる) is a benefactive construction that English cannot fully reproduce. The auxiliary <em>kureru</em> (くれる) indicates that the action is performed by someone of equal or lower status for the benefit of the speaker (or, in this case, the seeker). This is not merely "the library accepts loneliness" but "the library accepts loneliness <em>as a service to the one who is lonely</em>." English "accepts" is accurate but flat; "welcomes" is warmer but less precise; "receives" is closer to <em>ukeireru</em>'s physical sense but loses the benefactive entirely. The loss is philosophical as well as grammatical: without <em>kureru</em>, the library's acceptance becomes a property of the institution rather than an act of care performed for a specific person. The Japanese sentence makes the loneliness personal (<em>anata no kodoku</em> / あなたの孤独, "your loneliness") and the acceptance personal too — performed by the library <em>for you</em>. English can add "you" ("the library accepts your loneliness") but cannot build the benefactive into the verb itself, which is where Japanese encodes the ethics of care.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Monogatari</em> (物語): The Person as Literary Form</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>物語</strong> — story; narrative; tale; the literary form that gives shape to human experience</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"story" / "narrative" / "tale"</strong> — each loses some literary weight</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>monogatari</em> (物語) is one of Japanese's most resonant literary terms, and calling a person a <em>monogatari</em> is a richer claim than calling them a "story." <em>Monogatari</em> is the word used for Japan's foundational literary form — from the <em>Taketori Monogatari</em> (『竹取物語』, Tale of the Bamboo Cutter, 10th century) to the <em>Genji Monogatari</em> (『源氏物語』, Tale of Genji, 11th century) to contemporary novels. It carries the sense of a shaped narrative, a life with meaning and structure, a sequence of events that coheres into significance. "Story" in English can mean anything from a news report to a children's tale; "narrative" is more formal but clinical; "tale" is literary but slightly archaic. None of these captures the full resonance of <em>monogatari</em> as a term that connects individual lives to a thousand-year literary tradition. The Japanese reader who hears <em>minna monogatari na n desu</em> (みんな物語なんです) feels not merely that people are interesting but that they belong to a form — that their lives have the same right to narrative attention as the classics on the library shelves. The loss in English is the loss of this literary dignity: "everyone is a story" sounds like a pleasant metaphor, while <em>minna monogatari na n desu</em> sounds like a literary-critical claim with ethical implications.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Sagashi-tsuzukeru</em> (探し続ける): The Compound Verb of Persistent Seeking</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>探し続ける</strong>  to continue searching; to keep on seeking; to persist in the act of looking</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"keep on searching" / "continue the search" / "keep looking"</strong> — each captures one register</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>sagashi-tsuzukeru</em> (探し続ける) is a compound verb that English can only approximate. The verb combines <em>sagasu</em> (探す, "to search / to seek / to look for") — an active, directed verb that implies effort and intention — with <em>tsuzukeru</em> (続ける, "to continue / to keep on / to persist in"), a verb of duration and commitment. The result is not merely "continued searching" but "searching-as-practice" — the transformation of an event into a habit, a disposition, a way of being in the world. English "keep on searching" captures the colloquial warmth but loses the formality; "continue the search" captures the persistence but sounds like a police investigation; "keep looking" captures the everyday quality but loses the intentionality of <em>sagasu</em>. The Japanese <em>sagashi-tsuzukeru</em> preserves both the active energy (you are not merely waiting; you are looking) and the commitment (you are not giving up; you are continuing). The compound verb is thus the grammatical embodiment of the novel's central message: that the value lies not in finding but in the sustained practice of seeking. Without this compound, the sentence becomes merely advice; with it, the sentence becomes a definition of how to live.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of gentle guidance, persistent seeking, and the library as a place that accepts what the world rejects.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくれる（受益・受身の好意）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kureru</em>: "does... for me / to my benefit" — benefactive auxiliary indicating an action performed by another for the speaker's benefit</p>
+      <div class="grammar-example">あなたの孤独を受け入れてくれる</div>
+      <p class="grammar-example-en">"accepts your loneliness [for you / as a gift to you]" — The grammar of received care.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくれる（存在の継続）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te iru</em>: "is...ing / has been...ed" — continuative auxiliary indicating ongoing state or completed result</p>
+      <div class="grammar-example">すでにこの世界に存在しています</div>
+      <p class="grammar-example-en">"already exists [in a continuing state] in this world" — The grammar of pre-existing help.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ことじゃないんです（説明・断定の否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...koto ja nai n desu</em>: "it's not that... / it's not about...ing" — explanatory negative redefining what matters</p>
+      <div class="grammar-example">答えを見つけることじゃないんです</div>
+      <p class="grammar-example-en">"It's not about finding the answer" — The grammar of reframed priorities.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜続ける（継続・習慣化）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tsuzukeru</em>: "to continue...ing / to keep on...ing" — continuative compound verb turning action into practice</p>
+      <div class="grammar-example">探し続けることです</div>
+      <p class="grammar-example-en">"is to keep on searching" — The grammar of persistent practice.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なんです（説明・理由・納得）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...na n desu</em>: "it's that... / the thing is... / you see..." — explanatory nominalized copula creating shared understanding</p>
+      <div class="grammar-example">みんな物語なんです</div>
+      <p class="grammar-example-en">"Everyone is a story, you see / The thing is, everyone is a story" — The grammar of gentle revelation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たい（願望・希望）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...tai</em>: "want to..." — desiderative form expressing the speaker's desire</p>
+      <div class="grammar-example">図書室に行きたくなる物語</div>
+      <p class="grammar-example-en">"a story that makes you want to go to the library" — The grammar of transformative desire.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に（目的・方向・対象）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni</em>: "to / for / toward" — dative particle marking destination, purpose, or beneficiary</p>
+      <div class="grammar-example">あなたに必要な本</div>
+      <p class="grammar-example-en">"the book necessary for you / the book you need" — The grammar of personal relevance.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜まで（範囲・限度・到達点）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...made</em>: "as far as / up to / until" — extent particle indicating the limit or destination of a range</p>
+      <div class="grammar-example">お探し物は図書室まで</div>
+      <p class="grammar-example-en">"What you seek [extends] as far as the library" — The grammar of journey's end.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Osagashimono wa Toshoshitsu made</em> is the grammar of gentle transformation — each construction chosen to create the experience of being seen, heard, and guided without being pushed. The benefactive (<em>te kureru</em> / てくれる) encodes care as a service performed for the seeker; the continuative (<em>te iru</em> / ている) makes help into a pre-existing condition; the explanatory negative (<em>koto ja nai n desu</em> / ことじゃないんです) reframes priorities without lecturing; the continuative compound (<em>sagashi-tsuzukeru</em> / 探し続ける) turns seeking into a practice; the explanatory nominalized copula (<em>na n desu</em> / なんです) creates shared understanding; the desiderative (<em>tai</em> / たい) makes the book's effect into desire; the dative (<em>ni</em> / に) makes relevance personal; and the extent particle (<em>made</em> / まで) makes the library into a destination where journeys change. Pay attention to how these constructions work together to create a prose that feels like a good librarian's conversation: attentive, unhurried, and quietly convinced that you already contain everything you need.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, critical analysis, and textual scholarship.</p>
+  <p style="margin-top: var(--space-xs);">『お探し物は図書室まで』 &middot; 青山美智子 著 &middot; ポプラ社 2019年11月6日刊（単行本） &middot; ポプラ文庫 2021年11月8日刊 &middot; 256ページ &middot; ISBN 978-4-591-16441-2</p>
+  <p style="margin-top: var(--space-xs);">副題：「図書室に行きたくなる物語」 &middot; 累計100万部突破（2025年時点） &middot; 第15回本屋大賞ノミネート</p>
+  <p style="margin-top: var(--space-xs);">漫画化：小森介 作画・2023年連載開始</p>
+  <p style="margin-top: var(--space-xs);">著者：青山美智子（あおやまみちこ・1970年生・愛知県出身・元シンガポール航空客室乗務員）</p>
+  <p style="margin-top: var(--space-xs);">デビュー：2012年『まだまだ、まだよ』で第1回SMLストーリー賞受賞</p>
+  <p style="margin-top: var(--space-xs);">主要作品：『コンビニ温度』 &middot; 『西の屋商店』 &middot; 『小さな星の思い出』 &middot; 『こぎつねヘレン』 &middot; 『鍵のない夢を見る』 &middot; 『きみのボランティア、ぼくのボランティア』 &middot; 『さかなのなまえ』 &middot; 『きみの坂はまるで本の中の世界のよう』 &middot; 『きみと歩いて、生きる』</p>
+  <p style="margin-top: var(--space-xs);">5編構成：①「やめたいと思っている娘」（小町・21歳・インテリア会社） &middot; ②「夢を失った男」（鷲宮・40歳・元ギタリスト志望 &middot; ③「誰か他の人になりたい女」（葵・30歳・SNS比較による自己否定） &middot; ④「好きなものがわからない少年」（風太・高校生・進路未定） &middot; ⑤「役に立ちたい老女」（静香・65歳・シニアボランティア）</p>
+  <p style="margin-top: var(--space-xs);">テーマ：司書の「見守る」専門性、本と読者の出会いの奇蹟、公共図書館の社会的役割、探し続けることの価値、優しい導きの倫理、お探し物という接客言語の哲学、COVID-19禍における図書館再評価</p>
+  <p style="margin-top: var(--space-xs);">関連作品：東野圭吾『ナミヤ雑貨店の奇蹟』 &middot; 青山美智子『コンビニ温度』 &middot; 青山美智子『きみと歩いて、生きる』</p>
+</footer>
+
+</div>
+</body>
+</html>

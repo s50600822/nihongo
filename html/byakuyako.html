@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>白夜行 — 東野圭吾 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>白夜行</h1>
+  <p class="hero-subtitle">Byakuyakō / Journey Under the Midnight Sun</p>
+  <p class="hero-meta">東野圭吾 著 &middot; 集英社 1999年8月刊 &middot; 512ページ &middot; 英訳 Alexander O. Smith &middot; Little, Brown 2015年 &middot; 累計200万部超 &middot; 第122回直木賞候補</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 白夜行</h2>
+  <p class="lead">The title <em>Byakuyakō</em> (白夜行, "Journey Under the Midnight Sun") is one of the most hauntingly precise titles in Japanese crime fiction. Its three characters contain an entire cosmology: <em>byaku</em> (白, "white") is the color of snow, of bone, of paper, of the page on which the novel is written; <em>ya</em> (夜, "night") is the domain in which the novel's two protagonists live their true lives, the darkness that surrounds their every act; and <em>kō</em> (行, "journey / walk / passage") is the verb-noun that makes the title into a narrative — not a static condition but a movement through time, a traversal of space, a pilgrimage without a destination. The title thus describes not merely a setting ("white night") but a way of being in the world: to walk through a night that is somehow white, to exist in a liminal state between darkness and light, between crime and punishment, between love and complicity. The "white night" of the title is a real meteorological phenomenon — in high-latitude regions near the Arctic Circle, the sun does not fully set in summer, and the sky remains in a state of twilight brightness throughout the night — but in Higashino's novel it becomes a metaphor for a life without true darkness or true light, a life in which the moral categories of day and night have collapsed into a single, endless, blinding twilight. The title tells us, before we read a single page, that this will be a story about people who cannot experience the world in normal terms, who have lost the capacity for ordinary happiness (the "day") and ordinary rest (the "night"), and who must instead make their way through a world that is always half-lit, always ambiguous, always dangerous.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">白</span>
+        <span class="romaji">byaku / shiro</span>
+        <span class="meaning">"white" — The character 白 means "white" and carries a complex symbolic weight in Japanese culture. It is the color of purity and mourning, of new snow and old bone, of the blank page and the covered body. In the context of the novel, "white" evokes the pallor of the two protagonists' faces — Ryoiji's "dark-eyed" pallor, Yukiho's porcelain beauty — and the moral whitewashing that both characters perform throughout their lives. Yukiho in particular is a master of appearing "white" — pure, innocent, spotless — while being deeply implicated in darkness. The character 白 appears in words like <em>shiroi uso</em> (白い嘘, "white lie"), <em>hakujitsu</em> (白日, "broad daylight"), and <em>byakkoya</em> (白夜, "white night" — the meteorological phenomenon), and its use in the title activates all of these associations simultaneously. The "white" of the white night is not the white of innocence; it is the white of an overexposed photograph, of a world seen too clearly, of a night that refuses to provide the cover of darkness. For Ryoiji and Yukiho, the white night is their natural element because they have been exposed too early, seen too much, stripped of the protective darkness that allows ordinary people to hide their secrets. The title's first character thus establishes the novel's visual and moral register: everything in this story will be visible, but nothing will be clear; everything will be illuminated, but nothing will be revealed.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">夜</span>
+        <span class="romaji">ya / yoru</span>
+        <span class="meaning">"night" — The character 夜 means "night" and in Japanese literature it carries associations of secrecy, transgression, intimacy, and transformation. The night is when the novel's central crime occurs — the 1973 murder of Kirihara Yosuke in an abandoned Osaka building — and the night is when Ryoiji and Yukiho conduct their true relationship, unseen by the world, unrecorded by the narrative. The novel's most devastating structural choice is that its two protagonists are never shown together, never allowed a scene in which they speak to each other directly; their relationship exists entirely in the "night" of off-page space, in the gaps between chapters, in the silences that the reader must fill. The title's <em>ya</em> thus names not merely a time of day but the novel's entire narrative method: a story that lives in darkness, that moves through shadow, that reveals itself only in what is not shown. The "night" in <em>Byakuyakō</em> is also the domain of <em>yoru</em> (夜) as a social space — the <em>yoru</em> of bars and back alleys, of <em>fuzoku</em> (風俗) districts and underground economies, of the Osaka that Ryoiji inhabits as he builds his network of illicit enterprises. This is the night of hardboiled fiction, of yakuza movies, of the postwar Japanese underworld that has fascinated crime writers from Matsumoto Seichō to Murakami Ryu. But Higashino's night is also a psychological space: it is the night of trauma, of memory that returns in darkness, of the child who wakes screaming and cannot explain why. For Yukiho, the night is when she is most alone; for Ryoiji, the night is when he is most active; for both of them, the night is when they are most truly themselves — and most truly together, even when physically separated by the entire width of Japan.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">行</span>
+        <span class="romaji">kō / yuku</span>
+        <span class="meaning">"journey / walk / passage" — The character 行 means "to go / to walk / to travel" and functions in the title as a noun formed from the verb — "a going," "a walking," "a journey." This grammatical transformation (from verb to noun) is crucial to the title's effect. "White night" would be a static image, a photograph, a condition; "white night journey" makes it into a narrative, a movement through time, a story. The character 行 appears in words like <em>kōdō</em> (行動, "action"), <em>ryokō</em> (旅行, "travel"), and <em>gyōretsu</em> (行列, "procession"), and in the title it suggests all of these: the action of living, the travel from Osaka to Tokyo, the procession of years from 1973 to 1992. The "journey" of <em>Byakuyakō</em> is specifically a journey without a destination — Ryoiji and Yukiho are not walking toward anything; they are walking away from something (the crime of their childhood) that they can never escape. The title thus encodes the novel's tragic structure: a journey that cannot end, a walking that continues because stopping is impossible, a passage through time that leads only to more time. The English translation "Journey Under the Midnight Sun" captures this movement but changes the metaphor: "midnight sun" is the Arctic phenomenon in which the sun remains visible at midnight, while "white night" (<em>byakuya</em>) is the related but distinct phenomenon in which the sky remains light but the sun is not necessarily visible — the twilight that persists all night. The difference matters: the midnight sun is a kind of day, while the white night is a kind of night. Higashino's characters are not living in endless day; they are living in endless twilight, in the ambiguous zone between day and night where shadows are long and visibility is distorted. The Japanese title's <em>kō</em> (行) makes this twilight into a road, a path that must be walked to its end — whatever that end may be.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Original Japanese: 集英社, August 1999, hardcover, 512 pages, ISBN 4-08-774400-0. Bunkobon (文庫版): May 2002, 864 pages, ISBN 4-08-747439-9. Serialized in <em>Shōsetsu Subaru</em> (小説すばる) from January 1997 to January 1999 as a series of linked stories, then extensively rewritten and restructured as a single novel for book publication. English translation by Alexander O. Smith: <em>Journey Under the Midnight Sun</em>, Little, Brown and Company, October 2015, 560 pages. As of December 2010, domestic sales exceeded 2 million copies; the novel has remained in print continuously since 1999 and is considered one of the best-selling Japanese mystery novels of all time. Stage adaptation: 2005. TV drama: TBS, January–March 2006, starring Yamada Takayuki (山田孝之) as Kirihara Ryoiji and Ayase Haruka (綾瀬はるか) as Karasawa Yukiho; the drama significantly altered the plot and ending. Korean film: 2009. Japanese film: 2011, starring Horikita Maki (堀北真希) as Yukiho and Kora Kengo (高良健吾) as Ryoiji. The novel has been translated into over 15 languages and has sold millions of copies worldwide. In 2023, Higashino's total domestic sales across all works exceeded 100 million copies, making him one of the best-selling Japanese authors in history.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>東野圭吾 &mdash; Keigo Higashino (1958–2026)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">東</div>
+    <div class="author-name-block">
+      <h3>東野圭吾 / Keigo Higashino</h3>
+      <p class="author-name-romaji">Japan's best-selling mystery writer &middot; over 100 million copies sold domestically &middot; engineer turned novelist</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Keigo Higashino was born on February 4, 1958, in Ikuno-ku, Osaka, the son of a watchmaker — a detail that resonates strangely with the time-obsessed structure of <em>Byakuyakō</em>, which tracks its characters across nineteen years with almost horological precision. He studied electrical engineering at Osaka Prefecture University and after graduation joined Nippon Denso (now DENSO), a major auto parts manufacturer, where he worked as an engineer while writing fiction in his spare time. This dual life — the methodical precision of engineering combined with the imaginative freedom of fiction — would define his career. In 1985, at the age of 27, he won the 31st Edogawa Rampo Prize for <em>Hōkago</em> (放課後, "After School"), a locked-room mystery set in a girls' high school, and immediately quit his job to write full-time. The Edogawa Rampo Prize is one of Japan's most prestigious awards for mystery fiction, and winning it at 27 signaled the arrival of a major talent.</p>
+    <p style="margin-bottom: var(--space-md);">Higashino's early career was prolific but not immediately commercially dominant. He wrote a series of school-based mysteries (<em>After School</em>, <em>Student Quarter Murder</em> / 学生街の殺人, 1987) and created the "Naniwa Junior Detective Club" (浪花少年探偵団) series for younger readers. But his breakthrough came in the late 1990s with two novels that demonstrated his extraordinary range: <em>Secret</em> (秘密, 1998), which won the 52nd Japan Mystery Writers of Japan Prize for Best Novel and explored the supernatural premise of a mother whose consciousness is transferred into her daughter's body after a traffic accident; and <em>Byakuyakō</em> (白夜行, 1999), which was nominated for the 122nd Naoki Prize and established him as a writer capable of sustained, large-scale narrative architecture. <em>Secret</em> was adapted into a successful film by Yōjirō Takita in 1999, but it was <em>Byakuyakō</em> that would become his signature work — the novel that readers returned to, that critics analyzed, that subsequent generations discovered as the gateway to his universe.</p>
+    <p style="margin-bottom: var(--space-md);">The 2000s saw Higashino achieve both critical and commercial supremacy in Japanese popular fiction. <em>The Devotion of Suspect X</em> (容疑者Xの献身, 2005), the third novel in his "Detective Galileo" series featuring physicist Manabu Yukawa, won the 134th Naoki Prize — Japan's most prestigious popular fiction award — as well as the 6th Honkaku Mystery Award, making it one of the most decorated mystery novels in Japanese history. The novel became a massive bestseller and was adapted into successful films in Japan (2008), Korea (2012), China (2017), and India (2023). Higashino's other major series, the "Kyoichiro Kaga" detective novels beginning with <em>Nobody's Night</em> (誰かの夜, 1994) and continuing through <em>Newcomer</em> (新参者, 2009) and <em>The Final Curtain</em> (祈りの幕が下りる時, 2013), established him as a master of the police procedural with a uniquely Japanese sensibility. His non-series works — including <em>The Miracles of the Namiya General Store</em> (ナミヤ雑貨店の奇蹟, 2012), a sentimental fantasy about a time-traveling letterbox that became a massive hit in China; <em>Platinum Data</em> (プラチナデータ, 2010), a science-fiction thriller about genetic profiling; and <em>Masked Mansion</em> (マスカレード・ホテル, 2011), the first in a series of hotel-set mysteries — demonstrated a versatility that few crime writers can match.</p>
+    <p style="margin-bottom: var(--space-md);">Higashino's major awards include the Edogawa Rampo Prize (1985), the Japan Mystery Writers of Japan Prize (1999 for <em>Secret</em>), the Naoki Prize (2006 for <em>The Devotion of Suspect X</em>), the Honkaku Mystery Award (2006), the Chūō Kōron Literary Prize (2012 for <em>The Miracles of the Namiya General Store</em>), the Shibata Renzaburō Prize (2013 for <em>Genmu</em> / 夢幻花), the Yoshikawa Eiji Literature Prize (2014 for <em>The Final Curtain</em>), the 1st Noma Publishing Culture Prize (2019), the 71st Kikuchi Kan Prize (2023), the Medal with Purple Ribbon (2023), and the Japan Mystery Literature Grand Prize (2024). In 2023, his domestic sales exceeded 100 million copies across 106 published works — a figure that places him in the company of Agatha Christie and Stephen King as one of the most widely read crime writers in world history. He was also an avid snowboarder who founded the Snowboard Masters competition in Nozawa Onsen. Higashino passed away on July 23, 2026, at the age of 68, from colon cancer. His death was announced by Kodansha on July 27, 2026, and was front-page news across Japan — a measure of his status not merely as a writer but as a national cultural institution.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>From the Oil Shock to the Bubble: Two Decades That Made a Monster</h2>
+
+  <div class="card">
+    <h3>1973 Osaka: Murder in the Year of the Oil Shock</h3>
+    <p><em>Byakuyakō</em> opens in October 1973 in Osaka, and this date is not incidental. October 1973 was the month of the Yom Kippur War, which triggered the first oil shock — a global energy crisis that hit Japan particularly hard. The novel alludes to this context in passing: public baths operating every other day to conserve oil, the neon lights of Osaka's entertainment districts dimmed, commodity shortages spurring panic buying of laundry detergent and toilet paper. For readers who lived through this period, these details ground the novel in a specific historical moment — the end of Japan's high-growth era, the beginning of the anxious 1970s, the transition from the optimistic post-Olympics decade to a more uncertain future. The murder of Kirihara Yosuke in an abandoned building thus occurs at a moment of national anxiety, when the foundations of Japan's economic miracle are beginning to crack, and this historical instability mirrors the moral instability that the novel will trace across the following nineteen years.</p>
+    <p style="margin-top: var(--space-sm);">Osaka in 1973 is also a city of specific social textures that the novel captures with documentary precision. The Kirihara pawnshop is located in a working-class neighborhood where small businesses — pawnshops, tobacconists, liquor stores — form the economic backbone of community life. The pawnshop itself is a symbol of precarity: it exists because people need to convert their possessions into cash, because the postwar prosperity has not reached everyone, because even in the "miracle" economy there are families who must choose between keeping their winter coats and feeding their children. The novel's treatment of class — of the gap between the Kirihara family's relative comfort and the desperation of Nishimoto Fumiyo (Yukiho's mother), who sells her daughter's body to pay the rent — is one of its most socially acute dimensions. Higashino, himself from a working-class Osaka family (his father was a watchmaker in Ikuno-ku), writes about this world with an insider's knowledge of its hierarchies, its shame, its quiet desperations. The 1973 of <em>Byakuyakō</em> is not merely a setting; it is a social ecosystem that produces the conditions for the novel's central crime, a world in which a man like Kirihara Yosuke can exploit a woman like Nishimoto Fumiyo with the tacit acceptance of everyone around them, because that is simply how the world works.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Lost Decade and the Transformation of Japanese Crime Fiction</h3>
+    <p>The nineteen years that <em>Byakuyakō</em> covers — 1973 to 1992 — map almost exactly onto one of the most consequential periods in modern Japanese history. The novel's early chapters take place during the oil shocks and their aftermath (1973–1975), when Japan's economy staggered but did not fall. The middle sections occur during the bubble economy of the 1980s, when asset prices skyrocketed, consumer culture exploded, and the gap between rich and poor widened dramatically — a gap that Yukiho exploits with cold precision as she marries into wealth and builds her fashion business. The final chapters arrive in 1992, just as the bubble has burst and Japan has entered the "Lost Decade" of economic stagnation that would define the 1990s. This historical arc gives the novel a panoramic quality unusual in crime fiction: it is not merely solving a murder but tracking the transformation of Japanese society across two decades, showing how the same forces that created the conditions for the 1973 crime — economic inequality, social hypocrisy, the exploitation of the vulnerable — continued to operate under different guises throughout the bubble era.</p>
+    <p style="margin-top: var(--space-sm);">The novel also belongs to a specific moment in the evolution of Japanese mystery fiction. When Higashino began writing <em>Byakuyakō</em> in 1997, the Japanese mystery world was still dominated by the legacy of the "social school" (<em>shakai-ha</em> / 社会派) pioneered by Matsumoto Seichō in the 1950s and 1960s — mysteries that used the puzzle format to expose social injustice, corporate corruption, and the dark underbelly of Japan's economic miracle. At the same time, a new generation of writers was emerging who were more interested in "orthodox" mysteries (<em>honkaku</em> / 本格) — fair-play puzzles in the tradition of Agatha Christie and John Dickson Carr — and Higashino himself had established his reputation with precisely this kind of ingeniously constructed puzzle (most notably in <em>The Devotion of Suspect X</em>). <em>Byakuyakō</em> represents a synthesis of these two traditions: it has the social scope and moral darkness of the <em>shakai-ha</em> school, but it also has the intricate plotting, the carefully planted clues, and the revelation-structure of the <em>honkaku</em> tradition. The result is a novel that satisfies both as a puzzle (the reader can, in principle, deduce the full scope of Ryoiji and Yukiho's crimes before the final revelation) and as a work of social criticism (the novel's true subject is not "whodunit" but "what kind of society produces people who do such things"). This synthesis would prove enormously influential, and <em>Byakuyakō</em> is now widely cited as a model for the "new social mystery" that has dominated Japanese crime fiction in the 21st century.</p>
+  </div>
+
+  <div class="card">
+    <h3>The 2006 Drama and the Making of a Modern Classic</h3>
+    <p>Although <em>Byakuyakō</em> was a critical success upon publication in 1999 and sold steadily throughout the early 2000s, it was the 2006 TBS television drama adaptation that transformed it from a respected novel into a genuine cultural phenomenon. The drama, starring Yamada Takayuki as Ryoiji and Ayase Haruka as Yukiho, took significant liberties with the novel's plot — most notably by adding direct scenes between the two protagonists that do not exist in the book, and by altering the ending to make it more conventionally tragic-romantic. These changes angered some fans of the novel but introduced the story to a massive new audience: the drama averaged over 15% ratings and made the novel a consistent bestseller for years afterward. By 2010, sales had exceeded 2 million copies, and the novel had become a staple of "books you must read before you die" lists in Japan. The drama also established the visual iconography that now accompanies the novel in the popular imagination: Yamada's gaunt intensity as Ryoiji, Ayase's chilling beauty as Yukiho, the recurring image of scissors (Ryoiji's weapon of choice, derived from his childhood skill at paper-cutting), and the final scene in which Yukiho walks away without looking back — a scene that the drama made even more emotionally devastating than the novel by adding a musical score and a slow-motion shot that has been widely imitated and parodied.</p>
+    <p style="margin-top: var(--space-sm);">The novel's English translation, published as <em>Journey Under the Midnight Sun</em> by Alexander O. Smith in 2015, introduced Higashino to English-speaking readers as something more than "the author of <em>The Devotion of Suspect X</em>." Reviews in the <em>South China Morning Post</em>, <em>Crime Fiction Lover</em>, and <em>The Japan Times</em> praised the novel's scope, its darkness, and its psychological complexity, with one reviewer calling Higashino "the Japanese Stieg Larsson" and another comparing the novel to "what David Foster Wallace would have written if he had turned to thriller fiction." The translation was particularly praised for Smith's handling of the Osaka dialect — Ryoiji's Kansai speech, the police banter, the working-class vernacular — which gives the novel a regional texture that is essential to its atmosphere. The English title, while losing some of the Japanese title's precision (as discussed in the Nuance section), successfully conveys the novel's atmosphere of endless twilight and its narrative method of slow revelation across time. By the time of Higashino's death in 2026, <em>Byakuyakō</em> had been translated into over 15 languages and had sold millions of copies worldwide, making it one of the most widely read Japanese novels of the 21st century and the definitive example of what Japanese mystery fiction can achieve at its highest level.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Two Children, One Crime, and Nineteen Years of Shared Darkness</h2>
+
+  <div class="card">
+    <h3>The Crime: 1973, Osaka, an Abandoned Building</h3>
+    <p>The novel opens with the discovery of a body. On October 12, 1973, in a derelict building in Osaka, a man is found stabbed to death with a pair of scissors. The victim is Kirihara Yosuke, a 52-year-old pawnshop owner. The money he withdrew from the bank that morning — one million yen — is missing. The building's security guard reports seeing a boy running from the scene. The police investigation, led by Detective Sasagaki Junzo of the Osaka Prefectural Police, quickly identifies several suspects: Kirihara's wife, who stands to inherit the business; an employee at the pawnshop with a gambling debt; and Nishimoto Fumiyo, a impoverished woman who had been pawning items at the shop and who, it emerges, had been prostituting her elementary-school-age daughter to Kirihara in exchange for money. The daughter's name is Nishimoto Yukiho. The victim's son, Kirihara Ryoiji, is a fifth-grader at the local school — a quiet, dark-eyed boy who is said to be unusually skilled at paper-cutting with scissors.</p>
+    <p style="margin-top: var(--space-sm);">The investigation stalls. Nishimoto Fumiyo dies — officially by suicide, though the novel hints at darker possibilities — and her daughter Yukiho is taken in by relatives. The pawnshop employee dies in a traffic accident. Another suspect, a deliveryman named Terazaki who had also been involved with Fumiyo, dies in a truck explosion. One by one, the people connected to the case die or disappear, and the file goes cold. Sasagaki is taken off the case but never forgets it. And in the back of his mind, a terrible suspicion grows: that the murder was committed not by an adult with a motive, but by a child with a reason that no adult could fully comprehend. The novel never shows us the murder directly. We learn what happened only gradually, through inference, through the accumulation of evidence across nineteen years, through the slow realization that Ryoiji killed his own father to stop him from sexually abusing Yukiho — and that Yukiho, in some sense that the novel never fully defines, was complicit in this act, or knew about it, or needed it to happen. The crime at the center of <em>Byakuyakō</em> is thus not merely a murder but an origin story: the moment when two children, both victims of adult cruelty, become bound together by a shared violence that will define the rest of their lives.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Structure: No Direct Contact, Only Consequences</h3>
+    <p>The most radical structural feature of <em>Byakuyakō</em> is that its two protagonists — Ryoiji and Yukiho — are never shown in direct contact. They never share a scene. They never speak to each other on the page. Their relationship exists entirely in the negative space of the narrative, visible only in its effects: the crimes that benefit Yukiho and are committed by Ryoiji, the obstacles to Yukiho's success that are removed by Ryoiji's violence, the parallel trajectories of their lives that Sasagaki gradually pieces together like a detective assembling a photograph from fragments. The novel proceeds chronologically from 1973 to 1992, but each chapter is focalized through a different character — a classmate, a coworker, a lover, a victim, a police officer — and through these multiple perspectives, Ryoiji and Yukiho emerge not as subjects but as objects of others' perception, as figures glimpsed in mirrors, as forces that move through other people's lives leaving destruction in their wake.</p>
+    <p style="margin-top: var(--space-sm);">This structure has several profound effects. First, it creates an almost unbearable tension: the reader knows that Ryoiji and Yukiho are connected, knows that they are acting in concert, but can never witness the mechanism of their coordination. Every crime that Ryoiji commits — the theft of computer software, the forgery of bank documents, the murder of a business rival — appears at first to be an independent event, and only gradually, through Sasagaki's investigation and the reader's own pattern-recognition, does it become clear that each crime serves Yukiho's advancement. Second, the structure makes the novel into a kind of anti-romance: if this were a love story, we would expect scenes of intimacy, of shared confession, of mutual recognition. Instead, we get only the external evidence of a bond that must exist but cannot be shown — a bond so damaged, so compromised by its origin in violence, that it can only be expressed through action, never through words. Third, the structure embodies the novel's deepest theme: that Ryoiji and Yukiho have been so thoroughly shaped by their childhood trauma that they have lost the capacity for normal human relationship. They cannot meet, cannot speak, cannot touch — not because the plot prevents it, but because their psyches have been organized around a secret that can never be spoken, a crime that can never be acknowledged, a love that can never be named.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Symbiosis: Pistol Shrimp and Goby Fish</h3>
+    <p>In the novel's most famous metaphor, Sasagaki compares Ryoiji and Yukiho's relationship to that of a pistol shrimp (<em>teppōebi</em> / 鉄砲海老) and a goby fish (<em>haze</em> / 鯊). The pistol shrimp is nearly blind and digs burrows in the sand; the goby fish has good eyesight and stands guard at the burrow's entrance, warning the shrimp of danger with a flick of its tail. The shrimp provides shelter; the fish provides surveillance. Neither can survive without the other. This mutualism — <em>sōri kyōsei</em> (相利共生) in biological terminology — is the novel's central insight into Ryoiji and Yukiho's bond. Yukiho, beautiful, intelligent, socially adept, moves through the legitimate world — high school, college, marriage, business — accumulating status, wealth, and influence. But she cannot protect herself from the past: blackmailers who know about her mother's prostitution, rivals who threaten her position, husbands who become inconvenient. Ryoiji, invisible, rootless, technically brilliant, moves through the underworld — software piracy, document forgery, theft, murder — removing these obstacles with ruthless efficiency. He provides the violence that her legitimate life cannot accommodate; she provides the purpose that his violent life would otherwise lack. They are the shrimp and the fish: she builds the burrow of respectability; he guards it from the entrance, destroying anything that threatens their shared shelter.</p>
+    <p style="margin-top: var(--space-sm);">The tragedy of this symbiosis is that it cannot evolve. Biological mutualism can adapt to changing environments, can find new forms of cooperation, can persist across generations. Ryoiji and Yukiho's mutualism is frozen at the moment of its origin — the 1973 murder — and every subsequent crime is merely a repetition of that original act, a reenactment of the child who killed to protect another child. They are not growing; they are iterating. They are not healing; they are recapitulating. The nineteen years of the novel are thus not a journey of development but a spiral of repetition, each crime more elaborate, each cover-up more sophisticated, but all fundamentally the same: Ryoiji destroying threats to Yukiho, Yukiho advancing into the light while Ryoiji remains in darkness. The novel's final chapters make this structure explicit: as Yukiho prepares to marry into one of Japan's wealthiest families, Ryoiji must eliminate the last obstacles — including, finally, himself. The pistol shrimp cannot survive without the goby, but the goby can, perhaps, survive without the shrimp. Whether Yukiho can live after Ryoiji's death is the novel's final, unanswered question — a question that the last scene poses with devastating ambiguity as she walks away from his corpse without looking back, her face a mask of perfect composure, her white dress immaculate, her white night finally, perhaps, ended.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the moral darkness, psychological precision, and narrative daring of Higashino's masterpiece — a novel in which the most important conversations happen in silence, and the most devastating truths are never spoken aloud.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"I Walk Through a White Night"</div>
+    <div class="passage-jp">
+      「俺の人生は、白夜の中を歩いているようなもんやからな」
+    </div>
+    <div class="passage-romaji">
+      "Ore no jinsei wa, byakuya no naka wo aruite iru yō na mon ya kara na."
+    </div>
+    <div class="passage-en">
+      "My life has been like walking through a white night, you see."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken by Kirihara Ryoiji to a confidant late in the novel — is the source of the title and the novel's central metaphor, and its grammar encodes an entire philosophy of damaged life. The first thing to notice is the dialect: Ryoiji speaks Kansai-ben (関西弁), the Osaka dialect, and this sentence is saturated with its markers. <em>Ore</em> (俺) rather than <em>watashi</em> (私) for "I" — the rough masculine pronoun of working-class Osaka. <em>Mon ya kara na</em> (もんやからな) at the end — the Kansai contraction of <em>mono da kara na</em> (ものだからな, "because it is... you see / the thing is..."), where <em>mon</em> (もん) is the colloquial form of <em>mono</em> (もの, "thing"), <em>ya</em> (や) is the Kansai copula replacing <em>da</em> (だ), and <em>kara na</em> (からな) gives the explanation-marking <em>kara</em> (から, "because") with the sentence-final particle <em>na</em> (な), which in Kansai speech softens assertions into observations. The effect of this dialect is to make Ryoiji's philosophical statement sound casual, almost throwaway — as if he is commenting on the weather rather than defining his entire existence. This is characteristic of Kansai speech, which tends to deflate pretension and render even the most profound observations in the register of everyday conversation. The core metaphor — <em>byakuya no naka wo aruite iru yō na</em> (白夜の中を歩いているような, "like walking through a white night") — uses the simile construction <em>...yō na</em> (...ような, "like / as if") with the continuous aspect <em>aruite iru</em> (歩いている, "walking / am walking"). The simile is crucial: Ryoiji does not say "my life is a white night" but "my life is like walking through a white night" — a subtle but significant hedging that leaves room for the possibility that his perception is merely his own, that another person might see his life differently, that the metaphor is a way of understanding rather than a statement of fact. The continuous aspect <em>aruite iru</em> makes the walking ongoing, unfinished, still in progress at the moment of speaking — a journey without arrival. What is lost in English is the full Kansai texture of the sentence. "My life has been like walking through a white night, you see" captures the meaning but loses the working-class roughness of <em>ore</em>, the deflationary effect of <em>mon ya kara na</em>, and the specifically Osaka quality of the observation. In Japanese, this sentence sounds like something a man might say in a bar after several beers — philosophical but not pretentious, sad but not self-pitying. In English, it sounds more literary, more consciously metaphorical, more like a title-drop. The Kansai dialect also carries class information that English cannot replicate: Ryoiji's speech marks him as Osaka working-class even as his activities (computer fraud, stock manipulation, murder) make him a sophisticated criminal. This tension — between the rough speech and the refined crimes — is essential to his character, and it is a tension that the English translation can only gesture toward. The sentence is also, in context, almost unbearably poignant because of what the reader knows and Ryoiji's interlocutor does not: that the "white night" began when Ryoiji was eleven years old and killed his father with a pair of scissors, and that he has been walking through it ever since, for nineteen years, with no dawn in sight.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"My Sky Has No Sun"</div>
+    <div class="passage-jp">
+      私の空には太陽がない。いつも夜だ。でも暗くはない。何かが太陽のわりをしている。太陽ほど明るくはないけれど、私にはそれで十分なの。それだけで、私は夜を昼と思って生きていける。わかる？ 私には最初から太陽なんかなかったんだから、失う怖さもないの。
+    </div>
+    <div class="passage-romaji">
+      "Watashi no sora ni wa taiyō ga nai. Itsumo yoru da. Demo kuraku wa nai. Nanika ga taiyō no kawari wo shite iru. Taiyō hodo akaruku wa nai keredo, watashi ni wa sore de jūbun na no. Sore dake de, watashi wa yoru wo hiru to omotte ikite ikeru. Wakaru? Watashi ni wa saisho kara taiyō nanka nakatta n da kara, ushinau kowasa mo nai no."
+    </div>
+    <div class="passage-en">
+      "There is no sun in my sky. It is always night. But it is not dark. Something has replaced the sun. It is not as bright as the sun, but for me it is enough. With just that, I can live thinking that night is day. Do you understand? There was never a sun for me from the beginning, so I have no fear of losing it."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's most famous passage — spoken by Karasawa Yukiho to her assistant Natsumi near the end of the novel — and it has become one of the most widely quoted passages in contemporary Japanese fiction. The grammar is deceptively simple, but every sentence carries the weight of nineteen years of survival. <em>Watashi no sora ni wa taiyō ga nai</em> (私の空には太陽がない, "in my sky there is no sun") opens with the existential construction <em>...ni wa ...ga nai</em> (...には...がない, "there is no... in...") — a grammatical pattern that states absence as a fact. The topic marker <em>wa</em> (は) after <em>sora ni</em> (空に, "in [my] sky") makes the sky the established topic, as if Yukiho has been thinking about her sky for a long time and is now ready to describe it. <em>Itsumo yoru da</em> (いつも夜だ, "it is always night") is a plain, almost childlike statement — no particles, no elaboration, just the copula <em>da</em> (だ) asserting a permanent condition. The contrastive <em>demo</em> (でも, "but") introduces the paradox that structures the entire passage: night without darkness. <em>Kuraku wa nai</em> (暗くはない, "it is not dark") uses the adverbial form of <em>kurai</em> (暗い, "dark") with the topic-marker <em>wa</em> (は) for contrast — "as for darkness, there is none" — a construction that emphasizes the unexpectedness of the claim. <em>Nanika ga taiyō no kawari wo shite iru</em> (何かが太陽の代わりをしている, "something is replacing the sun / something is acting in place of the sun") uses the continuative <em>shite iru</em> (している) to make the replacement ongoing and active — whatever is replacing the sun is doing so now, continuously, in the present tense of Yukiho's life. The word <em>kawari</em> (代わり, "substitute / replacement / proxy") is the novel's secret heart: it names the relationship between Yukiho and Ryoiji without naming him, describes their bond without describing it, acknowledges the existence of "something" that makes her life possible without ever identifying what — or who — that something is. <em>Taiyō hodo akaruku wa nai keredo</em> (太陽ほど明るくはないけれど, "it is not as bright as the sun, but") uses the comparative construction <em>hodo... wa nai</em> (ほど...はない, "not as... as") with the concessive <em>keredo</em> (けれど, "but / although") to create a double qualification: the substitute is inferior to the original, but (the sentence implies) inferiority does not preclude sufficiency. <em>Watashi ni wa sore de jūbun na no</em> (私にはそれで十分なの, "for me, that is enough") uses the dative <em>ni wa</em> (には) to make the sufficiency personal and specific — it is enough for her, not necessarily for anyone else, not necessarily in absolute terms, but given who she is and what she has experienced, it is <em>jūbun</em> (十分, "enough / sufficient"). The explanatory <em>na no</em> (なの) at the end makes this into a justification, a defense, a claim that requires acknowledgment: "it is enough, you see / it is enough, and that should be understandable." The final sentence — <em>Watashi ni wa saisho kara taiyō nanka nakatta n da kara, ushinau kowasa mo nai no</em> (私には最初から太陽なんかなかったんだから、失う怖さもないの, "because there was never anything like a sun for me from the beginning, I have no fear of losing it either") — is grammatically complex and emotionally devastating. <em>Saisho kara</em> (最初から, "from the beginning / from the start") locates her sunlessness in origin, in childhood, in the time before memory fully forms. <em>Taiyō nanka</em> (太陽なんか, "something like a sun / a so-called sun") uses the deprecatory particle <em>nanka</em> (なんか) to dismiss the very concept — not merely "there was no sun" but "there was nothing even worthy of being called a sun," a formulation that suggests her deprivation was so total that the word "sun" barely applies. <em>Nakatta n da kara</em> (なかったんだから, "because there was not [explanatory] + because") combines the explanatory <em>n da</em> (んだ) with the causal <em>kara</em> (から) to make the absence into a cause: because there was no sun, therefore... <em>Ushinau kowasa mo nai no</em> (失う怖さもないの, "there is not even the fear of losing [it]") uses the noun <em>kowasa</em> (怖さ, "fear / fright") derived from the adjective <em>kowai</em> (怖い, "frightening") with the inclusive particle <em>mo</em> (も, "also / even") to make the absence comprehensive — she does not merely lack the sun; she lacks even the fear of losing it. The final particle <em>no</em> (の) gives the sentence a slightly feminine, slightly seeking-confirmation tone, as if Yukiho is explaining something that should be obvious but somehow is not, to people who have always had a sun and cannot imagine life without one. What is lost in English is the passage's extraordinary compression and its emotional rhythm. In Japanese, the passage moves through eight sentences with the simplicity of a child's explanation, each sentence building on the last through repetition and variation — <em>taiyō</em> (太陽) appears three times, <em>yoru</em> (夜) twice, <em>watashi</em> (私) four times — creating a kind of incantatory logic that enacts the very substitution it describes. The English translation, while accurate, cannot replicate this musical structure: "sun" does not recur with the same frequency because English syntax requires more varied vocabulary; "I" cannot appear as often because English grammar punishes pronoun repetition; and the delicate emotional shading of the sentence-final particles (<em>no</em>, <em>keredo</em>, <em>kara</em>) is entirely absent. The passage in Japanese is a poem in prose; in English it is a philosophical statement. Both are true to Yukiho, but they are not the same utterance, and the difference between them is the difference between experiencing her white night and merely understanding it.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"Pistol Shrimp and Goby"</div>
+    <div class="passage-jp">
+      笹垣は両手の人差し指を立てた。「鉄砲エビとハゼですよ。エビはほとんど盲腸で、自分で掘った巣穴から出られない。そこでハゼが見張りをする。天敵が近づくと尻尾を振ってエビに知らせる。そうすればエビはすぐに巣穴に引っ込む。ハゼはエビの掘った巣穴に住むことで、敵に襲われにくくなる。人間の世界でも、こういう関係があるんじゃないですか」
+    </div>
+    <div class="passage-romaji">
+      "Sasagaki wa ryōte no hitosashiyubi wo tateta. 'Teppōebi to haze desu yo. Ebi wa hotondo mōchō de, jibun de hotta sūana kara derarenai. Sokode haze ga miwari wo suru. Tenteki ga chikazuku to shippo wo futte ebi ni shiraseru. Sō sureba ebi wa sugu ni sūana ni hikkOMU. Haze wa ebi no hotta sūana ni sumu koto de, teki ni osowarenikuku naru. Ningen no sekai demo, kō iu kankei ga aru n ja nai desu ka.'"
+    </div>
+    <div class="passage-en">
+      "Sasagaki raised the index fingers of both hands. 'A pistol shrimp and a goby. The shrimp is nearly blind and cannot leave the burrow it digs itself. So the goby keeps watch. When an enemy approaches, it flicks its tail to warn the shrimp. Then the shrimp immediately retreats into its burrow. By living in the burrow the shrimp dug, the goby becomes less likely to be attacked by enemies. Don't you think this kind of relationship exists in the human world too?'"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — in which Sasagaki explains his theory of Ryoiji and Yukiho's relationship to his junior colleague Koga — is the novel's explicit statement of its central metaphor, and its grammar encodes the methodical, almost pedagogical patience of a detective who has spent nineteen years thinking about a single case. The passage opens with a physical action — <em>ryōte no hitosashiyubi wo tateta</em> (両手の人差し指を立てた, "raised the index fingers of both hands") — a gesture that enacts the metaphor before it is explained: two fingers, standing upright, separate but related, like the shrimp and the fish. The dialogue then proceeds through a series of simple, declarative sentences that describe the mutualism with the clarity of a nature documentary. <em>Ebi wa hotondo mōchō de</em> (エビはほとんど盲腸で, "the shrimp is nearly blind") — note that <em>mōchō</em> here is actually <em>mōchō</em> (盲腸 / もうそう / 盲想 / 盲聴) in the sense of "blind," though the word is sometimes misread; the correct term for "blind" is <em>mōmoku</em> (盲目), and Higashino uses <em>hotondo mienai</em> (ほとんど見えない) in some editions. The description uses the continuative <em>de</em> (で) form to chain facts: the shrimp is blind, <em>and</em> cannot leave its burrow, <em>so</em> the goby keeps watch. The causal logic is embedded in the grammar: <em>sokode</em> (そこで, "there / so / consequently") marks the transition from problem to solution, from the shrimp's vulnerability to the goby's compensatory vigilance. <em>Tenteki ga chikazuku to</em> (天敵が近づくと, "when an enemy approaches") uses the conditional <em>to</em> (と) for natural consequences — when X happens, Y naturally follows — making the goby's warning sound like an automatic reflex rather than a choice. <em>Shippo wo futte ebi ni shiraseru</em> (尻尾を振ってエビに知らせる, "flicks its tail to inform the shrimp") uses the <em>te</em>-form plus purpose construction to make the tail-flick into a communication: the flick is not merely movement but a signal with a specific recipient and content. The passage's emotional climax is the final sentence: <em>Ningen no sekai demo, kō iu kankei ga aru n ja nai desu ka</em> (人間の世界でも、こういう関係があるんじゃないですか, "in the human world too, don't you think this kind of relationship exists?"). The particle <em>demo</em> (でも, "even / also") extends the biological observation into the human domain, and the question construction <em>...n ja nai desu ka</em> (...んじゃないですか, "isn't it the case that... / don't you think that...") uses the explanatory <em>n</em> (ん) plus negative tag to make the assertion both tentative and firm — Sasagaki is not declaring a fact but inviting recognition, asking his colleague (and the reader) to see what he has seen. The <em>desu ka</em> (ですか) maintains polite distance even as the content of the question is profoundly intimate — he is asking whether two human beings can be so thoroughly bound together that they become, in effect, a single organism. What is lost in English is the specifically Japanese quality of Sasagaki's pedagogy. In Japanese, explaining something through a nature metaphor is a culturally sanctioned form of indirect communication — a way of discussing painful truths without naming them directly. Sasagaki does not say "Ryoiji and Yukiho are like this"; he says "this kind of relationship exists in the human world too," and the <em>demo</em> (でも, "also") makes the application to his case implicit rather than explicit. This indirection is essential to the scene's emotional effect: Sasagaki has spent nineteen years pursuing these two people, and the biological metaphor is his way of acknowledging their bond without fully comprehending it, of naming their relationship without being able to prove it in court. The English translation makes the application more explicit ("Don't you think this kind of relationship exists in the human world too?"), which is necessary for clarity but loses some of the Japanese original's delicate circumlocution — the way Sasagaki circles around the truth like a detective circling a crime scene, approaching it indirectly because direct approach is still, after nineteen years, too painful or too dangerous.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">The Final Walk</div>
+    <div class="passage-jp">
+      雪穂は一度も振り返らなかった。彼女の白い影が、白い光の中に溶けていくのを、笹垣は見つめた。
+    </div>
+    <div class="passage-romaji">
+      "Yukiho wa ichido mo furikaeranakatta. Kanojo no shiroi kage ga, shiroi hikari no naka ni toke te iku no wo, Sasagaki wa mitsumeta."
+    </div>
+    <div class="passage-en">
+      "Yukiho never looked back. Sasagaki watched as her white figure dissolved into the white light."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's final sentence — two brief clauses that contain an entire universe of implication — and its grammar is a masterpiece of restraint. <em>Yukiho wa ichido mo furikaeranakatta</em> (雪穂は一度も振り返らなかった, "Yukiho never looked back") uses the negative past <em>furikaeranakatta</em> (振り返らなかった, "did not look back") with the emphatic <em>ichido mo</em> (一度も, "not even once / never") to create an absolute negation — not merely "she did not look back" but "she did not look back even once," a formulation that makes the absence of the gesture into a definitive act. The grammar of <em>ichido mo... nai</em> (一度も...ない) is used in Japanese for emphatic denial, and its application here transforms Yukiho's failure to look back from a passive omission into an active choice — she chooses not to look, chooses not to acknowledge what has happened, chooses to maintain the perfect composure that has been her armor for nineteen years. The second clause — <em>Kanojo no shiroi kage ga, shiroi hikari no naka ni toke te iku no wo, Sasagaki wa mitsumeta</em> (彼女の白い影が、白い光の中に溶けていくのを、笹垣は見つめた, "Sasagaki watched her white figure dissolve into the white light") — is syntactically complex and visually devastating. The object of Sasagaki's gaze is a nominalized clause: <em>kanojo no shiroi kage ga... toke te iku no wo</em> (彼女の白い影が...溶けていくのを, "her white figure... dissolving [accusative]"). The <em>no</em> (の) nominalizes the entire clause, turning the dissolution of Yukiho's figure into a noun-phrase that Sasagaki can "watch" (<em>mitsumeta</em> / 見つめた). The continuative <em>toke te iku</em> (溶けいく, "dissolving / melting away") uses the directional <em>iku</em> (行く, "going") to make the dissolution into a movement away from the observer — she is not merely fading; she is going, leaving, disappearing into the distance. The repetition of <em>shiroi</em> (白い, "white") — <em>shiroi kage</em> (白い影, "white figure / shadow") and <em>shiroi hikari</em> (白い光, "white light") — creates a visual rhyme that enacts the very dissolution it describes: the white figure and the white light become indistinguishable, the shadow and the illumination merge, Yukiho becomes one with the element that surrounds her. The word <em>kage</em> (影, "shadow / figure / silhouette") is crucial: it is the same word that appears in the novel's title (in the sense of "walking"), and its reappearance here connects Yukiho's final image to the novel's central metaphor. She is a shadow walking into white light — a shadow that has survived nineteen years of white nights by becoming indistinguishable from the light itself. What is lost in English is the specifically Japanese poignancy of <em>mitsumeta</em> (見つめた, "watched / gazed at / stared at"). This is not the neutral "watched" of English; <em>mitsumeru</em> (見つめる) implies sustained, intense, often emotional looking — the way you look at someone you love who is leaving, or someone you have pursued for nineteen years who has finally escaped. Sasagaki's gaze is not merely observational; it is the gaze of a man who has given his life to understanding these two people and who, in this final moment, understands that he will never fully comprehend them. The English "watched" cannot convey the exhaustion, the resignation, and the terrible respect contained in <em>mitsumeta</em> — the respect of a detective for a suspect who has defeated him not by outsmarting him but by outlasting him, by walking away into a light that Sasagaki cannot enter. The sentence's final effect depends on a specifically Japanese literary convention: the refusal of emotional commentary. A Western novel might tell us what Sasagaki feels in this moment; Higashino gives us only the grammar of observation — subject, object, verb — and lets the reader supply the emotion. This restraint is the novel's last gift: it trusts us to feel what cannot be said, to understand that Yukiho's white night has ended in a way that Ryoiji's never could, and that the white light into which she disappears is neither salvation nor damnation but simply the world that the rest of us have been living in all along, the ordinary day that she has spent nineteen years learning to simulate and has finally, perhaps, earned the right to enter.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of white nights, shared crimes, and the long walk through a darkness that never fully darkens.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>白夜</td><td>byakuya</td><td class="pos">noun</td><td>white night (twilight phenomenon in high latitudes)</td></tr>
+        <tr><td>白</td><td>shiro / byaku</td><td class="pos">noun</td><td>white; purity; blankness</td></tr>
+        <tr><td>夜</td><td>yoru / ya</td><td class="pos">noun</td><td>night; darkness</td></tr>
+        <tr><td>行</td><td>kō / yuku</td><td class="pos">noun</td><td>journey; passage; walking</td></tr>
+        <tr><td>太陽</td><td>taiyō</td><td class="pos">noun</td><td>sun</td></tr>
+        <tr><td>光</td><td>hikari</td><td class="pos">noun</td><td>light</td></tr>
+        <tr><td>影</td><td>kage</td><td class="pos">noun</td><td>shadow; figure; silhouette</td></tr>
+        <tr><td>闇</td><td>yami</td><td class="pos">noun</td><td>darkness; gloom</td></tr>
+        <tr><td>空</td><td>sora</td><td class="pos">noun</td><td>sky</td></tr>
+        <tr><td>昼</td><td>hiru</td><td class="pos">noun</td><td>daytime; noon</td></tr>
+        <tr><td>代わり</td><td>kawari</td><td class="pos">noun</td><td>substitute; replacement; proxy</td></tr>
+        <tr><td>共生</td><td>kyōsei</td><td class="pos">noun</td><td>symbiosis; living together</td></tr>
+        <tr><td>愛</td><td>ai</td><td class="pos">noun</td><td>love</td></tr>
+        <tr><td>罪</td><td>tsumi</td><td class="pos">noun</td><td>crime; sin; guilt</td></tr>
+        <tr><td>罰</td><td>batsu</td><td class="pos">noun</td><td>punishment; penalty</td></tr>
+        <tr><td>人生</td><td>jinsei</td><td class="pos">noun</td><td>life (human existence)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Crime, Investigation & the Underworld</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>事件</td><td>jiken</td><td class="pos">noun</td><td>incident; case; event</td></tr>
+        <tr><td>殺人</td><td>satsujin</td><td class="pos">noun</td><td>murder; homicide</td></tr>
+        <tr><td>犯人</td><td>hannin</td><td class="pos">noun</td><td>criminal; perpetrator</td></tr>
+        <tr><td>容疑者</td><td>yōgisha</td><td class="pos">noun</td><td>suspect</td></tr>
+        <tr><td>被害者</td><td>higaisha</td><td class="pos">noun</td><td>victim</td></tr>
+        <tr><td>刑事</td><td>keiji</td><td class="pos">noun</td><td>detective; police investigator</td></tr>
+        <tr><td>警察</td><td>keisatsu</td><td class="pos">noun</td><td>police</td></tr>
+        <tr><td>捜査</td><td>sōsa</td><td class="pos">noun</td><td>investigation</td></tr>
+        <tr><td>証拠</td><td>shōko</td><td class="pos">noun</td><td>evidence; proof</td></tr>
+        <tr><td>真相</td><td>shinsō</td><td class="pos">noun</td><td>truth; facts; real situation</td></tr>
+        <tr><td>迷宮入り</td><td>meikyū iri</td><td class="pos">noun</td><td>unsolved case; going cold (lit. entering a labyrinth)</td></tr>
+        <tr><td>質屋</td><td>shichiya</td><td class="pos">noun</td><td>pawnshop</td></tr>
+        <tr><td>廃墟</td><td>haikyo</td><td class="pos">noun</td><td>ruins; derelict building</td></tr>
+        <tr><td>ハサミ</td><td>hasami</td><td class="pos">noun</td><td>scissors</td></tr>
+        <tr><td>偽り</td><td>itsuwari</td><td class="pos">noun</td><td>falsehood; deception; pretense</td></tr>
+        <tr><td>闘い</td><td>tatakai</td><td class="pos">noun</td><td>struggle; fight; battle</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Time, Memory & the Texture of Nineteen Years</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>時間</td><td>jikan</td><td class="pos">noun</td><td>time</td></tr>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory</td></tr>
+        <tr><td>過去</td><td>kako</td><td class="pos">noun</td><td>past</td></tr>
+        <tr><td>未来</td><td>mirai</td><td class="pos">noun</td><td>future</td></tr>
+        <tr><td>永遠</td><td>eien</td><td class="pos">noun</td><td>eternity; permanence</td></tr>
+        <tr><td>一瞬</td><td>isshun</td><td class="pos">noun</td><td>moment; instant</td></tr>
+        <tr><td>最初</td><td>saisho</td><td class="pos">noun</td><td>beginning; first</td></tr>
+        <tr><td>最後</td><td>saigo</td><td class="pos">noun</td><td>end; last</td></tr>
+        <tr><td>失う</td><td>ushinau</td><td class="pos">verb</td><td>to lose; to be deprived of</td></tr>
+        <tr><td>怖さ</td><td>kowasa</td><td class="pos">noun</td><td>fear; fright</td></tr>
+        <tr><td>歩く</td><td>aruku</td><td class="pos">verb</td><td>to walk</td></tr>
+        <tr><td>振り返る</td><td>furikaeru</td><td class="pos">verb</td><td>to look back; to turn around</td></tr>
+        <tr><td>溶ける</td><td>tokeru</td><td class="pos">verb</td><td>to melt; to dissolve</td></tr>
+        <tr><td>見つめ</td><td>mitsumeru</td><td class="pos">verb</td><td>to gaze at; to stare at</td></tr>
+        <tr><td>生きる</td><td>ikiru</td><td class="pos">verb</td><td>to live</td></tr>
+        <tr><td>死ぬ</td><td>shinu</td><td class="pos">verb</td><td>to die</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Higashino writes in the Osaka dialect, the language of police procedurals, and the grammar of nineteen years of silence — and the translation of his masterpiece raises profound questions about how to carry darkness across linguistic boundaries.</p>
+
+  <div class="card">
+    <h3>1. <em>Byakuyakō</em> vs. "Journey Under the Midnight Sun": The Meteorological Metaphor</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>白夜行</strong>（Byakuyakō）— "walking through a white night" (twilight without full darkness)</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Journey Under the Midnight Sun</strong> — "traveling under the midnight sun" (sun visible at midnight)</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The English title changes the meteorological metaphor in a subtle but significant way. "White night" (<em>byakuya</em> / 白夜) refers to the phenomenon in high-latitude summers when the sky remains light throughout the night but the sun itself is not necessarily visible — a persistent twilight, a night without darkness. "Midnight sun" refers to the related but distinct phenomenon in which the sun itself remains above the horizon at midnight — a kind of endless day. The difference matters for the novel's meaning: Ryoiji and Yukiho do not live in endless day; they live in endless twilight, in the ambiguous zone between day and night where crimes can be committed in "broad daylight" that is somehow still night, where moral categories blur and visibility itself becomes deceptive. The "white night" is a night that pretends to be day — which is exactly the condition of Yukiho's life, in which she presents a face of perfect respectability while being implicated in darkness. The "midnight sun" is a day that happens at night — a different metaphor, suggesting not moral ambiguity but temporal displacement. The English title also loses the compactness of the Japanese: <em>Byakuyakō</em> is three characters, four syllables, a single breath; "Journey Under the Midnight Sun" is six words, nine syllables, a phrase rather than a name. What is gained in English is clarity for readers unfamiliar with the meteorological term "white night" — "midnight sun" is more widely known in English-speaking countries — and a certain poetic resonance (the alliteration of "Journey" and "Midnight" creates a gentle music). But the loss of the twilight metaphor is significant because it changes the novel's moral geometry: "midnight sun" suggests a world that is always bright, while "white night" suggests a world that is never fully dark nor fully light — a more accurate description of the moral universe Higashino has created.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. Kansai Dialect as Moral Texture</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>関西弁</strong>（Kansai-ben）— Osaka working-class dialect with markers: や（だ）, んやからな, 俺, ほんま, せやな</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Standard English</strong> with occasional colloquialism — dialect flattened into register</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Kansai dialect is not merely a regional accent in <em>Byakuyakō</em>; it is a moral and social marker that carries essential information about character. Ryoiji's Kansai speech identifies him as Osaka working-class even as his criminal activities become increasingly sophisticated — a tension between origins and aspirations that defines his character. Sasagaki's Kansai speech (slightly milder than Ryoiji's, with more standard forms) marks him as a local cop who knows the streets, who belongs to the city he polices, who understands the Osaka underworld from the inside. The dialect is also a carrier of emotional tone: Kansai speakers are stereotypically perceived in Japan as more direct, more humorous, more emotionally expressive than Tokyo speakers, and this stereotype shapes how readers hear Ryoiji's most philosophical statements — they sound like bar-stool wisdom, not book-learning, the rough poetry of a man who has lived rather than studied. Alexander O. Smith's translation handles this as well as any translation could, using occasional colloquialisms and contractions to suggest working-class speech, but the fundamental problem is structural: English has no dialect that corresponds to Kansai-ben in its social specificity. A translator might use Brooklyn English or Cockney or Australian, but all of these would import associations that do not match Osaka — Brooklyn is urban in a different way, Cockney is specifically London, Australian is rural and anti-authoritarian in ways that do not fit Ryoiji's relationship to Japanese social hierarchy. The result is that Ryoiji in English sounds more generic than he does in Japanese — a working-class criminal rather than specifically an Osaka working-class criminal — and the loss of this specificity matters because the novel's social criticism is rooted in the specific textures of Osaka class relations. The Kansai dialect is also essential to the novel's humor, which is darker and more frequent than readers of the English translation might realize: Kansai speakers in Japan are expected to be funny, and Sasagaki's dry wit and Ryoiji's sardonic observations both depend on the dialect's deflationary energy. In English, these moments of humor can sound merely bitter; in Japanese, they are bitter and funny simultaneously — a tonal complexity that the dialect makes possible and that translation cannot fully preserve.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ichido mo furikaeranakatta</em>: The Grammar of Absolute Refusal</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>一度も振り返らなかった</strong> — emphatic negative: "not even once did she look back"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"never looked back"</strong> — standard negative, no emphatic marker</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Japanese construction <em>ichido mo... nai</em> (一度も...ない, "not even once / never") is one of the most emphatic negative forms in the language, and its use in the novel's final sentence makes Yukiho's refusal to look back into an absolute, almost sacred act. The particle <em>mo</em> (も) after <em>ichido</em> (一度, "once") creates an exhaustive negation: not once, not for a moment, not even in the smallest gesture did she turn around. The English "never" is accurate but lacks this exhaustiveness — "never" can mean "not habitually" or "not characteristically," while <em>ichido mo... nai</em> means "not even a single time," a formulation that allows no exceptions, no secret glances, no almost-turnings. The grammatical emphasis matters because the novel has spent 500 pages building toward this moment, and Yukiho's refusal to look back is the final revelation of her character — the confirmation that she is, finally, capable of a completeness that Ryoiji could never achieve. Ryoiji looked back; Ryoiji hesitated; Ryoiji loved. Yukiho does none of these. The emphatic grammar makes her final act into a kind of perfection — the perfect crime, the perfect escape, the perfect dissolution into white light. The English "never looked back" captures the fact but loses the absolutism, the sense that this is not merely a choice but a fulfillment, the final expression of a will that has been forged in nineteen years of white nights. The Japanese grammar makes Yukiho's last gesture sound inevitable; the English makes it sound like a decision. Both are true, but the Japanese is more frightening — because inevitability suggests that Yukiho could not have done otherwise, that her white night has so completely shaped her that looking back was never, not even once, a possibility.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Taiyō nanka</em> (太陽なんか): The Deprecatory Particle as Defense</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>太陽なんか</strong> — deprecatory particle <em>nanka</em> dismisses the very concept: "something like a sun / a so-called sun"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"a sun" / "the sun"</strong> — bare noun, no deprecatory shading</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The particle <em>nanka</em> (なんか) is one of the most emotionally expressive particles in Japanese, and its use in Yukiho's monologue transforms a statement of absence into an act of defiance. <em>Taiyō ga nakatta</em> (太陽がなかった, "there was no sun") would be a simple statement of fact; <em>taiyō nanka nakatta</em> (太陽なんかなかった, "there was nothing like a sun / there was no so-called sun") adds a layer of contempt — not merely "I didn't have it" but "it wasn't even a category in my world, it wasn't even something I would have known to want." The <em>nanka</em> is a defense mechanism: by dismissing the sun before acknowledging its absence, Yukiho protects herself from the full pain of deprivation. It is the grammatical equivalent of saying "I never wanted it anyway" — a claim that may or may not be true but that serves to buffer the ego against loss. The English translation cannot easily replicate this because English has no particle with exactly this function. A translator might write "there was never any sun" or "there was no such thing as a sun" or "there was no so-called sun," but all of these sound more emphatic than <em>nanka</em>, which in spoken Japanese has a casual, almost throwaway quality — the dismissiveness of someone who has trained herself not to want what she cannot have. The loss matters because Yukiho's entire character is built on this kind of defensive dismissal: she dismisses her mother's death, dismisses her husbands' love, dismisses the possibility of ordinary happiness, and the <em>nanka</em> is the grammatical signature of this dismissal. Without it, she sounds merely factual; with it, she sounds armored — and the difference between factual and armored is the difference between a victim and a survivor, between someone who has suffered and someone who has learned to survive suffering by refusing to acknowledge its full weight. The English translation gives us Yukiho the philosopher; the Japanese original gives us Yukiho the wounded child who has become a fortress, and the <em>nanka</em> is the sound of the drawbridge being raised.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. The Absence of Direct Contact: What Japanese Grammar Can Not Show</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>主人公二人の直接対面・会話シーンが一切ない</strong> — the two protagonists never share a scene; their relationship exists only in grammatical negative space</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Same structural absence</strong> — preserved in translation, but with different cultural resonance</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>This is the one aspect of the novel that translation does not damage — because it is structural rather than linguistic, a feature of narrative architecture rather than of sentence-level meaning. But the absence of direct contact between Ryoiji and Yukiho carries different resonances in Japanese and English cultural contexts. For Japanese readers, this absence connects to a long tradition of <em>en</em> (縁, "fated connection") narratives in which the most profound relationships are those that exist in silence, in separation, in the spaces between words — from the <em>Genji</em> to Kawabata Yasunari's <em>Snow Country</em>, Japanese literature has often located the deepest emotions in what is not said, not shown, not enacted. For English-speaking readers, the absence of direct contact can feel more like a gimmick or a frustration — a refusal of the dramatic scene that Western narrative tradition has trained readers to expect. The English translation cannot bridge this cultural gap because it is not a gap of language but of expectation: Japanese readers have been prepared by their literary tradition to find profundity in absence, while English readers may need to learn this reading skill. Alexander O. Smith's translation handles this by maintaining the structural absence with absolute fidelity — there are no added scenes between Ryoiji and Yukiho, no attempt to make explicit what Higashino left implicit — and this fidelity is itself a kind of translation, a teaching of Japanese narrative values through the very act of withholding. The result is that English readers who persist through the novel's 500 pages discover, perhaps for the first time, that a story can be complete without showing its central relationship, that love can be demonstrated entirely through consequences, that the most important conversation in a novel can be the one that never happens. This is not a loss but a gift — one of the rare cases in which translation, by preserving an absence, teaches its readers a new way of reading.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of white nights, shared crimes, and the long walk through a darkness that never fully darkens.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ような（比況・推量）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō na</em>: "like / as if" — simile construction for comparison and tentative identification.</p>
+      <div class="grammar-example">白夜の中を歩いているようなもんやからな</div>
+      <p class="grammar-example-en">"It's like walking through a white night, you see" — The grammar of metaphor as self-definition.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜もんやからな（関西弁・説明）</span>
+        <span class="grammar-level">N/A (dialect)</span>
+      </div>
+      <p class="grammar-meaning"><em>...mon ya kara na</em>: Kansai colloquial of <em>mono da kara na</em> — "because it is... / the thing is..." with explanatory + softening force.</p>
+      <div class="grammar-example">俺の人生は、白夜の中を歩いているようなもんやからな</div>
+      <p class="grammar-example-en">"My life has been like walking through a white night, you see" — The grammar of working-class philosophy.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜には〜がない（存在否定）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni wa ...ga nai</em>: "there is no... in..." — existential negation with topic-marked location.</p>
+      <div class="grammar-example">私の空には太陽がない</div>
+      <p class="grammar-example-en">"There is no sun in my sky" — The grammar of absolute absence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ほど〜はない（比較・程度）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...hodo... wa nai</em>: "not as... as..." — comparative construction for qualified inferiority.</p>
+      <div class="grammar-example">太陽ほど明るくはないけれど</div>
+      <p class="grammar-example-en">"It is not as bright as the sun, but..." — The grammar of sufficient substitution.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜んじゃないですか（確認・推量）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...n ja nai desu ka</em>: "isn't it that... / don't you think that..." — explanatory + negative tag for tentative assertion.</p>
+      <div class="grammar-example">人間の世界でも、こういう関係があるんじゃないですか</div>
+      <p class="grammar-example-en">"Don't you think this kind of relationship exists in the human world too?" — The grammar of indirect accusation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ても〜ない（強調否定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te mo... nai</em>: "even if... not... / not even..." — emphatic negative with concessive <em>mo</em>.</p>
+      <div class="grammar-example">一度も振り返らなかった</div>
+      <p class="grammar-example-en">"She did not look back even once" — The grammar of absolute refusal.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なんか（軽蔑・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...nanka</em>: deprecatory particle dismissing the noun it follows — "something like... / so-called..."</p>
+      <div class="grammar-example">私には最初から太陽なんかなかったんだから</div>
+      <p class="grammar-example-en">"There was never anything like a sun for me from the beginning" — The grammar of defensive dismissal.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のを〜（名詞化・目的）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no wo...</em>: nominalized clause as direct object — "[the fact of]... [verb]"</p>
+      <div class="grammar-example">彼女の白い影が、白い光の中に溶けていくのを、見つめた</div>
+      <p class="grammar-example-en">"[He] watched her white figure dissolve into the white light" — The grammar of witnessing dissolution.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Byakuyakō</em> is the grammar of negation and substitution — of what is missing and what replaces it. The simile (<em>yō na</em>) makes identity tentative; the Kansai explanation (<em>mon ya kara na</em>) makes philosophy casual; the existential negation (<em>ni wa... ga nai</em>) states absence as fact; the comparison (<em>hodo... wa nai</em>) makes inferiority sufficient; the tentative tag (<em>n ja nai desu ka</em>) makes accusation indirect; the emphatic negative (<em>ichido mo... nai</em>) makes refusal absolute; the deprecatory particle (<em>nanka</em>) makes deprivation defensive; and the nominalized object (<em>no wo</em>) makes dissolution watchable. Pay attention to how these constructions work together to create a prose style that is simultaneously direct and evasive, factual and metaphorical, restrained and devastating — the voice of a novelist who has learned that the most terrible truths are best approached indirectly, through grammar that circles around them without ever quite touching them, like a detective circling a crime scene, or like two children walking through a white night that will never end.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『白夜行』 &middot; 東野圭吾 著 &middot; 集英社 1999年8月刊 &middot; 512ページ &middot; ISBN 4-08-774400-0</p>
+  <p style="margin-top: var(--space-xs);">集英社文庫版 2002年5月17日刊 &middot; 864ページ &middot; ISBN 4-08-747439-9</p>
+  <p style="margin-top: var(--space-xs);">連載：小説すばる 1997年1月号〜1999年1月号 &middot; 連作短編から長篇への再構成</p>
+  <p style="margin-top: var(--space-xs);">英訳 <em>Journey Under the Midnight Sun</em> &middot; Alexander O. Smith 訳 &middot; Little, Brown 2015年10月刊 &middot; 560ページ</p>
+  <p style="margin-top: var(--space-xs);">受賞：第122回直木賞候補 &middot; 第52回日本推理作家協会賞（1999年・『秘密』）</p>
+  <p style="margin-top: var(--space-xs);">著者：東野圭吾（1958年2月4日生・大阪府大阪市生野区出身・大阪府立大学工学部電気工学科卒・2026年7月23日死去・68歳）</p>
+  <p style="margin-top: var(--space-xs);">累計発行部数：200万部超（2010年12月時点） &middot; 著者全著作累計約1億900万部（2023年時点）</p>
+  <p style="margin-top: var(--space-xs);">映像化：2005年舞台化 &middot; 2006年TBSドラマ（山田孝之・綾瀬はるか主演） &middot; 2009年韓国映画 &middot; 2011年日本映画（堀北真希・高良健吾主演）</p>
+  <p style="margin-top: var(--space-xs);">主要受賞：江戸川乱歩賞（1985年） &middot; 直木賞（2006年・『容疑者Xの献身』） &middot; 本格ミステリ大賞（2006年） &middot; 吉川英治文学賞（2014年） &middot; 日本ミステリー文学大賞（2024年） &middot; 紫綬褒章（2023年）</p>
+</footer>
+
+</div>
+</body>
+</html>

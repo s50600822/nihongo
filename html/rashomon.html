@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>羅生門 — 芥川龍之介 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>羅生</h1>
+  <p class="hero-subtitle">Rashōmon / Rashomon</p>
+  <p class="hero-meta">芥川龍之介 著 &middot; 『帝国文学』1915年11月号初出 &middot; 阿蘭陀書房 1917年5月刊（短編集『羅生門』所収） &middot; 約10ページの短編 &middot; 高校国語教科書採用</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: The Gate Where the City Ends and the Wilderness Begins</h2>
+  <p class="lead">The title <em>Rashōmon</em> (羅生門) is a single toponym that carries the entire weight of the story before a single sentence is read. The grammar is minimal: a proper noun, the name of a gate. But this gate is not merely a location; it is a threshold, a boundary, a liminal space where the civilized order of the capital dissolves into the chaos of survival. Akutagawa's genius was to recognize that the gate itself — with its peeling vermilion paint, its abandoned corpses, its cricket and its foxes — could become the protagonist of a story about the fragility of human morality when the structures that sustain it have collapsed.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">羅生門</span>
+        <span class="romaji">Rashōmon / "Rashomon Gate"</span>
+        <span class="meaning">"Rashomon Gate" — The historical gate was properly called <em>Rajōmon</em> (羅城門, "Outer Castle Gate"), the massive southern gate of Heian-kyō (安京, the ancient capital of Kyoto), located at the terminus of Suzaku Ōji (朱雀大路, "Suzaku Great Road"), the main north-south avenue that ran from the Imperial Palace to the southern edge of the city. The name <em>Rajōmon</em> derives from <em>ra</em> (羅, "net / gauze / to spread out") and <em>jō</em> (城, "castle / fortification / wall"), referring to the outer enclosure of the capital. Akutagawa deliberately altered the spelling to <em>Rashōmon</em> (羅生門), replacing <em>jō</em> (城) with <em>sei/shō</em> (生, "life / birth / to live"). This substitution is not a mistake but a calculated literary decision: the character <em>sei</em> (生) transforms the gate from a mere geographical marker into a symbol of the struggle for survival (<em>seizon</em> / 生存) that the story dramatizes. The gate where life meets death, where civilization meets wilderness, where morality meets starvation — this is the <em>Rashōmon</em> of Akutagawa's imagination. The historical <em>Rajōmon</em> was indeed allowed to fall into ruin during the late Heian and early Kamakura periods, as the capital's administrative center shifted and the grand urban plan of Heian-kyō became a memory. By the time of the story's setting — a period of compounded disasters in the late Heian period — the gate had become a dumping ground for unclaimed corpses, a dwelling for thieves and fox-spirits, a place so feared that no one would approach it after dark. Akutagawa's orthographic transformation thus encodes the story's central theme: the gate of the outer wall becomes the gate of life itself, and the question the story poses is whether a human being can pass through that gate and remain human.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> First published in <em>Teikoku Bungaku</em> (『帝国文学』, "Imperial Literature") in November 1915 (Taishō 4). First book publication: May 1917, Arando Shobō (阿蘭陀書房), as part of the short story collection <em>Rashōmon</em> (『羅生門』), which also included "Hana" (「鼻」, "The Nose") and "Imogayu" (「芋粥」, "Yam Gruel"). Later collected in <em>Sara no Hana</em> (『沙羅の花』, "The Flower of the Shāra Tree," 1922) by Kōdansha. The story is approximately 10 pages in bunkoban format and is one of the most frequently taught works in Japanese high school literature curricula, making it a true <em>kokumin bungaku</em> (国民文学, "national literature") text. It has been translated into English by multiple translators, including Jay Rubin, and has inspired the title (though not the plot) of Akira Kurosawa's 1950 film <em>Rashomon</em>, which was actually based on Akutagawa's "In a Grove" (「藪の中」, <em>Yabu no Naka</em>, 1922).
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>芥川龍之介 &mdash; Akutagawa Ryūnosuke (1892–1927)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">芥</div>
+    <div class="author-name-block">
+      <h3>芥川龍之介 / Akutagawa Ryūnosuke</h3>
+      <p class="author-name-romaji">The demon of Japanese letters &middot; 1892–1927 &middot; 35 years of burning brilliance</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Akutagawa Ryūnosuke was born on March 1, 1892, in Kyōbashi, Tokyo (present-day Chūō Ward), as the eldest son of Niihara Toshizō (新原敏三), a dairy businessman, and his wife Fuku (ふく). The circumstances of his birth would shadow his entire life and work: his mother suffered from mental illness and was institutionalized shortly after his birth, and the infant Ryūnosuke was taken in by his maternal uncle, Akutagawa Dōshō (芥川道章), and his wife Tomo (儔), who raised him as their own. He was formally adopted into the Akutagawa family in 1899. This early separation from his birth mother — combined with the fear that her insanity might be hereditary — created the "vague uneasiness" (<em>bonyari to shita fuan</em> / ぼんやりとした不安) that would haunt his final years and appear in his suicide note.</p>
+    <p style="margin-bottom: var(--space-md);">The Akutagawa household was a cultured one, located in the Shinjuku area of Tokyo, and young Ryūnosuke was immersed in books from infancy. His foster mother was an enthusiastic reader of traditional literature, and by the time he entered elementary school he had already read the classics of Japanese and Chinese literature, including <em>Heike Monogatari</em> (『平家物語』), <em>Kojiki</em> (『古事記』), and the tales of the <em>Konjaku Monogatarishū</em> (『今昔物語集』). This early saturation in pre-modern narrative would become the foundation of his mature style: a prose that moved with the speed and compression of classical tale literature while addressing the psychological complexities of modern consciousness. At the age of nine, he experienced another formative trauma: the death of his foster mother, who had been the stable center of his world. His foster father remarried, and while the second marriage was not unhappy, the loss of his first mother-figure deepened the sense of existential precariousness that would characterize his fiction.</p>
+    <p style="margin-bottom: var(--space-md);">Akutagawa's academic career was stellar. He attended the prestigious First Higher School (旧制第一高等学校, <em>kyūsei daiichi kōtō gakkō</em>), where he was a classmate of Kikuchi Kan (菊池寛), who would become a major playwright and the founder of the Akutagawa Prize (芥川賞). In 1913, he entered the English Department of Tokyo Imperial University (東京帝国大学英文科), where he immersed himself in English literature — particularly the works of Anatole France, W. B. Yeats, and the English Romantic poets — while continuing to write Japanese fiction. In 1914, he joined the third iteration of the literary magazine <em>Shinshichō</em> (『新思潮』, "New Currents of Thought"), the crucible in which modern Japanese literature was being forged by young writers including Kume Masao (久米正雄) and Kan Kikuchi.</p>
+    <p style="margin-bottom: var(--space-md);">The publication of <em>Rashōmon</em> in 1915 was his literary debut, but it was the following year that changed everything. In 1916, he published "Hana" (「鼻」, "The Nose") in the fourth iteration of <em>Shinshichō</em>. Natsume Sōseki (夏目漱石), then the undisputed master of Japanese letters, read it and declared it a work of genius, summoning the unknown student to his home and becoming his mentor. Sōseki's endorsement launched Akutagawa's career with a velocity rare in Japanese literary history. Over the next decade, he produced a body of short fiction unmatched in its range, precision, and intellectual depth: "Imogayu" (「芋粥」, 1916), "Kesa to Moritō" (「袈裟と盛遠」, 1918), "Jigokuhen" (「地獄変", 1918), "Hōkyōnin no Shi" (「奉教人の死」, 1918), "Toshishun" (「杜子春", 1920), "Yabu no Naka" (「藪の中」, 1922), and "Kappa" (「河童", 1927), among dozens of others. He also wrote essays, criticism, haiku, and aphorisms of crystalline brilliance.</p>
+    <p style="margin-bottom: var(--space-md);">From 1916 to 1919, he worked as an English instructor at the Naval Engineering School (海軍機関学校) while continuing to write. In 1919, he left teaching to become a full-time writer for the Osaka Mainichi Shinbun (大阪毎日新聞). In 1919, he married Tsukamoto Fumi (塚本文), with whom he had three sons: Hiroshi (比呂志, 1920–2001), who became a renowned actor; Tashi (多加志, 1922–1945), who died in the war; and Yasushi (也寸志, 1927–2015), who became a composer. The marriage was stable but not passionate; Akutagawa's deepest emotional attachments were to literature and to a series of intense, often unconsummated romantic obsessions — including the "unhappy love affair" (<em>warui koi</em> / 悪い恋) that directly preceded the writing of <em>Rashōmon</em> and that he himself identified as the emotional engine of the story's darkness.</p>
+    <p style="margin-bottom: var(--space-md);">From 1925 onward, his health and mental state deteriorated rapidly. He suffered from insomnia, nervous exhaustion, hallucinations, and a deepening fear of inherited madness. He traveled to China in 1921 as a newspaper correspondent, an experience that left him physically depleted. In the winter of 1926–1927, he began writing the autobiographical works that would become his final testament: "Kappa" (「河童」), "Kuruma no Ha" (「歯車」, "Cogwheels," 1927), and "Aru Ahō no Isshō" (「或阿呆の一生」, "A Fool's Life," 1927). In the early hours of July 24, 1927, at his home in Tabata, Tokyo, he took an overdose of Veronal, leaving behind a brief suicide note that ended with the phrase: "<em>Boku no shōrai ni taishite bonyari to shita fuan</em>" (「僕の将来に対して唯ぼんやりした不安」, "a vague sense of unease about my future"). He was thirty-five years old. His death sent shockwaves through Japanese literary culture. Kikuchi Kan established the Akutagawa Prize for literature in 1935 in his memory, and it remains, with the Naoki Prize, the most prestigious literary award in Japan.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Ruin of Heian-kyō: Disaster, Decay, and the Birth of Modern Japanese Fiction</h2>
+
+  <div class="card">
+    <h3>1915: The Birth of the Modern Japanese Short Story</h3>
+    <p><em>Rashōmon</em> was published in November 1915, at a pivotal moment in Japanese literary history. The Meiji period (1868–1912) had ended three years earlier, and the Taishō era (1912–1926) was establishing itself as a period of urban modernity, democratic aspiration, and cultural experimentation. Japanese fiction had achieved maturity through the works of Futabatei Shimei (二葉亭四迷), Ozaki Kōyō (尾崎紅葉), and above all Natsume Sōseki and Mori Ōgai (森鷗外), but the short story — the <em>tanpen shōsetsu</em> (短編小説) as a self-conscious art form — was still in its infancy. Akutagawa did not invent the Japanese short story, but he perfected it. <em>Rashōmon</em> demonstrated that a narrative of fewer than ten pages could sustain the density of theme, the precision of image, and the psychological complexity that had previously required novel-length exposition. The story's compression — its ability to move from atmospheric description to ethical crisis to existential resolution in a single swift arc — established a model that would influence every subsequent generation of Japanese writers, from Kawabata Yasunari to Murakami Haruki. The year 1915 was also significant for Akutagawa personally: he was twenty-three, still a university student, and recovering from the romantic disappointment that he would later identify as the emotional source of the story's bleakness. The coincidence of personal crisis and literary innovation produced a work that feels, even today, astonishingly mature for a debut.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Late Heian World: Catastrophe and Social Collapse</h3>
+    <p>The story is set in the late Heian period (late 12th century), a time when the elegant court culture depicted in <em>The Tale of Genji</em> had given way to political chaos, natural disaster, and social breakdown. The text explicitly names the disasters that have devastated the capital: "earthquakes, whirlwinds, fires, famine" (地震とか辻風とか火事とか饑饉とか). This is not mere atmospheric detail; it is historically grounded. The late Heian period was indeed marked by a series of natural catastrophes — the great Tōgoku earthquake of 1182, recurrent famines caused by drought and locust plagues, and fires that regularly consumed the wooden city — compounded by the Genpei War (源平合戦, 1180–1185), the civil conflict between the Taira and Minamoto clans that would destroy the Heian court system and establish the military shogunate at Kamakura. The <em>Rajōmon</em> gate, once the grand southern entrance to the planned capital of Heian-kyō — a city laid out on a grid modeled on the Chinese Tang dynasty capital of Chang'an — had by this period become a symbol of administrative failure. The gate was never properly maintained after the capital's functional center shifted; by the Kamakura period it was in ruins, and by the Muromachi period it had disappeared entirely. Akutagawa's description of the gate as a dumping ground for corpses, a haunt of foxes and thieves, is historically plausible: in times of famine and plague, the dead were indeed left at the city's margins, and ruined structures became shelters for the desperate and the outlaw. The social world of the story is one in which the bonds of feudal obligation have dissolved: the servant has been "dismissed" (暇を出された) by his master, a euphemism for being cast into the labor market during a time when labor had no value. The <em>genin</em> (下人, "servant / low-ranking retainer") was the lowest rung of the samurai class, a figure who existed in a state of radical dependency on his lord's patronage. To be dismissed was not merely to lose a job; it was to lose one's place in the social order, to become, effectively, a non-person. The story's power derives from its recognition that morality is a luxury of the socially embedded, and that when the structures of embedding collapse, the self collapses with them.</p>
+  </div>
+
+  <div class="card">
+    <h3>The <em>Konjaku Monogatarishū</em>: Source, Transformation, and the Ethics of Adaptation</h3>
+    <p>The story's direct source is Tale 18 of Volume 29 of the <em>Konjaku Monogatarishū</em> (『今昔物語集』, "Tales of Times Now Past"), a massive collection of Buddhist tales compiled in the late Heian period (c. 1120), comprising over 1,000 stories organized by geographical origin: Indian tales (jūnishi / 震旦, referring to China and India), Chinese tales, and Japanese tales. The specific source tale, "Rajōmon Jōsō ni Noborite Shinin wo Mitaru Tōnin no Katari" (「羅城門上層に登りて死人を見たる盗人の語」, "The Tale of a Thief Who Climbed to the Upper Story of Rajōmon and Saw a Corpse," Tale 18, Volume 29), is a brief, morally uncomplicated anecdote: a thief climbs the ruined gate to wait for nightfall, discovers an old woman pulling hair from a corpse, interrogates her, learns that she is making wigs to survive, and then strips her of her clothes and disappears. The tale is told from the thief's perspective and offers no psychological depth; the moral — that in desperate times people do desperate things — is implicit rather than explored. Akutagawa's transformation of this source is radical in three ways. First, he shifts the protagonist from the thief to the servant, making the central figure not a professional outlaw but an ordinary person pushed to the edge — a change that universalizes the ethical dilemma. Second, he adds the servant's interior monologue, the long passage of indecision beneath the gate, the oscillation between shame and desperation, the rationalization and self-disgust. This is the invention of psychological fiction in the Japanese short story: the recognition that action follows not from circumstance alone but from the tortuous path of consciousness as it negotiates between desire and prohibition. Third, he transforms the old woman's justification from mere explanation into a philosophical argument that becomes the story's ethical fulcrum. In the original, the woman says simply that the dead woman sold dried snake as dried fish; in Akutagawa, this becomes a theory of moral relativism that the servant internalizes and turns against the woman herself. The servant's decision to strip her is not mere theft but a logical demonstration: if she can justify desecrating the dead for survival, then he can justify despoiling her. The story thus becomes a meditation on the self-undermining nature of egoistic rationalization — a theme that would occupy Akutagawa throughout his career and that connects <em>Rashōmon</em> to his later, more explicitly autobiographical works.</p>
+  </div>
+
+  <div class="card">
+    <h3>Kurosawa's <em>Rashomon</em> and the Global Afterlife of a Title</h3>
+    <p>No discussion of <em>Rashōmon</em> can avoid addressing the film that made the title globally famous while completely changing its meaning. Akira Kurosawa's 1950 film <em>Rashomon</em> — winner of the Golden Lion at the Venice Film Festival and the film that introduced Japanese cinema to the world — is based not on "Rashōmon" but on "In a Grove" (「藪の中」, <em>Yabu no Naka</em>, 1922), another Akutagawa story about conflicting testimonies surrounding a murder in a forest. Kurosawa used the <em>Rashōmon</em> gate as a framing device: the film opens and closes with characters sheltering from rain beneath the ruined gate, recounting the tale of the grove. The result is that for global audiences, "Rashomon" has come to mean not Akutagawa's story of a servant's moral collapse but the epistemological problem of multiple, contradictory perspectives — the "Rashomon effect," as it is known in psychology and law. This semantic drift is one of the most fascinating cases of cultural translation in modern literary history. The Japanese title <em>Rashōmon</em> refers to a specific gate and a specific story about survival and morality; the global "Rashomon" refers to a general problem of narrative unreliability. The two meanings are connected only by the accident of Kurosawa's title choice and the brilliance of his film. For students of Japanese literature, the distinction is crucial: when a Japanese reader hears <em>Rashōmon</em>, they think of the servant beneath the gate, the old woman on the upper story, the cricket on the vermilion column, and the final disappearance into darkness. When a global reader hears "Rashomon," they think of conflicting testimonies, unreliable narration, and the impossibility of knowing what really happened. Both meanings are legitimate; both are powerful; but they are not the same, and the gap between them is itself a lesson in how literature travels across borders.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Ten Pages, One Gate, and the Collapse of a Soul</h2>
+
+  <div class="card">
+    <h3>The Architecture: A Single Arc from Indecision to Action</h3>
+    <p><em>Rashōmon</em> is a masterpiece of narrative economy. In approximately ten pages, Akutagawa constructs a complete moral drama with a beginning (the servant's dilemma beneath the gate), a middle (his discovery of the old woman and her justification), and an end (his transformation into a thief and his disappearance into the night). The structure is deceptively simple: three scenes, two characters, one location. But within this minimal frame, Akutagawa achieves a density of implication that makes the story feel far larger than its page count. The narrative is divided into three movements. First, the exposition: the servant beneath the gate, the rain, the cricket, the description of the ruined capital and the gate's function as a corpse-dump. This opening establishes atmosphere, social context, and the servant's psychological state — his indecision between starvation and theft, his shame, his hunger, his inability to act. Second, the ascent: the servant climbs to the upper story of the gate, discovers the corpses, and witnesses the old woman pulling hair from a dead woman. This is the story's turning point, the moment when the abstract problem of survival becomes concrete and visible. The servant's initial response is moral outrage — he draws his sword, prepared to punish this desecration — and this outrage is the last flicker of his socialized conscience before it is extinguished. Third, the justification and transformation: the old woman explains that the dead woman sold dried snake as dried fish, that she herself needs the hair to make wigs to survive, and that in such times one does what one must. The servant listens, processes, and applies her logic to her: if she can strip the dead for survival, he can strip her. He takes her clothes and disappears into the darkness. The final sentence — "The servant's whereabouts were unknown to anyone" (下人の行方は、誰も知らない) — is one of the most devastating endings in Japanese literature: not a moral judgment but a factual statement, the erasure of a person from the social record, the disappearance of a human being into the category of the outlaw.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Servant: A Man Without a Name, a Conscience Without a Foundation</h3>
+    <p>The protagonist is identified only as <em>genin</em> (下人, "servant / low-ranking retainer"), a figure so insignificant that he does not merit a name. This anonymity is essential to the story's effect: he is not an individual but a type, a stand-in for every person who has ever faced the choice between death and degradation. At the story's opening, he has been dismissed by his master — the "small ripple" (小さな余波) of the capital's larger collapse — and stands beneath the gate seeking shelter from the rain while contemplating his future. He is caught between two unacceptable options: starvation (dying with his morality intact) and theft (surviving at the cost of his humanity). The story's psychological brilliance lies in its depiction of his indecision: he is not a bad man who chooses evil, but a normal man who cannot choose at all, who oscillates between fear and desire, shame and necessity, until an external event — the discovery of the old woman — provides the catalyst that resolves his paralysis. The servant's moral collapse is not sudden but logical: he does not abandon his principles but discovers that they have no foundation. The old woman's justification — "I don't think what I'm doing is wrong, because she did the same thing when she was alive" — is a form of moral reasoning that the servant recognizes as valid. If morality is merely the strong exploiting the weak, and if the dead woman exploited her customers, then the old woman can exploit the dead woman, and the servant can exploit the old woman. The logic is impeccable; its conclusion is monstrous. The servant's transformation is thus not a failure of will but a triumph of reasoning — the most chilling aspect of the story. He becomes a thief not because he is weak but because he is intelligent enough to follow an argument to its end.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Old Woman: The Philosopher of Necessity</h3>
+    <p>The old woman (<em>rōba</em> / 老婆) is the story's other named character, and she is one of the most memorable minor figures in Japanese fiction. Akutagawa describes her with almost grotesque precision: her "reddish" hair, her monkey-like appearance, her breath as she pants over the corpse. She is not a villain but a survivor, a person who has found a way to live in a world that offers no legitimate means of survival. Her justification for pulling hair from the dead — that the dead woman sold dried snake as dried fish, that she "had to do it to survive" (生きていくために仕方なかった) — is the story's central philosophical statement. It is a theory of moral exemption based on necessity: when survival is at stake, ordinary moral rules are suspended. This is not cynicism but realism, the voice of someone who has learned that the beautiful principles of the court mean nothing when the stomach is empty. The old woman does not glory in her actions; she simply does not see them as wrong. Her moral universe has been reduced to a single axis: survival. And in that universe, the dead are resources, hair is merchandise, and desecration is labor. The servant's response to her — applying her logic to her own body — is the story's cruelest twist: the philosopher of necessity becomes the object of her own philosophy. When the servant strips her, he is not merely stealing; he is demonstrating the logical consequence of her position. If necessity justifies any action, then his necessity justifies his action against her. The old woman, who has spent the story treating the dead as means, is herself treated as a means. The story offers no comfort, no redemption, no suggestion that either character learns anything. The servant disappears; the old woman is left naked among the corpses. The moral of the story, if there is one, is that in a world without structure, logic leads to horror.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages contain the story's most precisely weighted sentences — the moments when atmosphere becomes argument, and when the servant's consciousness turns a corner from which there is no return.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"One Evening at Dusk" — The Opening</div>
+    <div class="passage-jp">
+      或日の暮方の事である。一人の下人が、羅生門の下で雨やみを待っていた。
+    </div>
+    <div class="passage-romaji">
+      "Aru hi no kuregata no koto de aru. Hitori no genin ga, Rashōmon no shita de ameyami wo matte ita."
+    </div>
+    <div class="passage-en">
+      "It was an evening at dusk. A single servant waited beneath the Rashōmon Gate for the rain to stop."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is one of the most famous opening lines in Japanese literature, and its grammar creates an atmosphere of suspended time that defines the story's mood. <em>Aru hi no kuregata no koto de aru</em> (或日の暮方の事である, "it was a matter of an evening at dusk / it was an evening at dusk") uses the classical copula <em>de aru</em> (である) rather than the modern <em>desu</em> (です), immediately establishing a literary register that hovers between the classical tale and modern fiction. <em>Aru hi</em> (或日, "a certain day / one day") is the traditional opening of Japanese tales, from the <em>Konjaku Monogatarishū</em> to Edo-period fiction, and its use here signals that this will be a story in the classical mode — even as the psychological depth that follows will be unmistakably modern. <em>Kuregata</em> (暮方, "dusk / twilight / evening") is a word of extraordinary atmospheric precision: it means not merely "evening" (<em>yūgata</em> / 夕方) but the specific moment when day has ended but night has not fully begun — the threshold time, the liminal hour. The choice of <em>kuregata</em> over <em>yūgata</em> is significant: <em>kure</em> (暮) contains the sense of "ending / dying / drawing to a close," and <em>kuregata</em> thus carries a faint whiff of mortality, of something coming to an end. <em>Hitori no genin ga</em> (一の下人が, "a single servant [subject]") isolates the protagonist in the grammatical as well as the narrative sense: <em>hitori</em> (一人, "one person / alone") precedes the noun, making aloneness the first attribute we learn about him. <em>Rashōmon no shita de</em> (羅生門の下で, "beneath the Rashōmon Gate") places him at the bottom of the social and spatial hierarchy — beneath the gate, not passing through it, not standing before it, but huddled under it, seeking shelter. <em>Ameyami wo matte ita</em> (雨やみを待っていた, "was waiting for the rain to stop") uses the continuative past <em>matte ita</em> (待っていた), indicating an ongoing state: he has been waiting, he is still waiting, the rain has not stopped. The grammar thus creates a sense of suspended animation — a man waiting for something to end, unable to move until it does, trapped in a moment of indecision that mirrors his larger existential paralysis. What is lost in English is the full classical resonance of <em>de aru</em> and <em>aru hi</em>. "It was an evening at dusk" captures the meaning but loses the tale-literature echo; "A certain day at dusk" captures the classical opening but sounds archaic in English. The Japanese reader hears, in this single sentence, the voice of a thousand tales beginning, and knows that what follows will be both ancient and immediate.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"No Leisure to Choose Means"</div>
+    <div class="passage-jp">
+      どうにもならない事を、どうにかする為には、手段を選んでゐる遑はない。選んでゐれば、築土の下か、道ばたの土の上で、饑死をするばかりである。
+    </div>
+    <div class="passage-romaji">
+      "Dō ni mo naranai koto wo, dō ni ka suru tame ni wa, shudan wo erande iru itoma wa nai. Erande ireba, tsukiji no shita ka, michibata no tsuchi no ue de, kishi wo suru bakari de aru."
+    </div>
+    <div class="passage-en">
+      "In order to somehow deal with what cannot be dealt with, there is no leisure to choose one's means. If one were to choose, one would do nothing but starve to death under an earthen bridge or on the dirt at the roadside."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence is the story's ethical thesis, and its grammar creates a logical trap from which the servant — and the reader — cannot escape. <em>Dō ni mo naranai koto wo</em> (どうにもならない事を, "what cannot be dealt with / what is impossible to manage") uses the emphatic negative potential construction <em>dō ni mo... nai</em> (どうにも…ない, "no matter what one does... not / impossible to"), creating a sense of absolute impossibility. The thing that cannot be dealt with is the servant's situation: dismissed, hungry, without prospects in a ruined city. <em>Dō ni ka suru tame ni wa</em> (どうにかする為には, "in order to somehow deal with it / for the purpose of managing it somehow") uses the purposive <em>tame ni</em> (為に, "for the purpose of / in order to") to create a goal-directed statement: if you want to solve an unsolvable problem, you must... <em>Shudan wo erande iru itoma wa nai</em> (手段を選んでゐる遑はない, "there is no leisure to choose means / no time to be selective about methods") uses the classical negative nominal construction <em>itoma wa nai</em> (遑はない, "there is no leisure / no spare time / no room"), where <em>itoma</em> (遑 / 暇) means "leisure / spare time / room to maneuver." The grammar says that the urgency of survival forecloses the luxury of moral deliberation. <em>Erande ireba</em> (選んでゐれば, "if one were choosing / if one were to be selective") uses the continuative conditional <em>te ireba</em> (ていれば, "if one is/were...ing"), creating a hypothetical: if you take the time to choose, then... <em>Kishi wo suru bakari de aru</em> (饑死をするばかりである, "one will do nothing but starve to death") uses the limiting particle <em>bakari</em> (ばかり, "only / nothing but") with the nominalized verb phrase <em>kishi wo suru</em> (饑死をする, "to starve to death"). The sentence thus constructs a syllogism: survival requires action; action requires means; there is no time to choose means; therefore, any means will do. The logic is impeccable and horrifying. What is lost in English is the full force of <em>itoma wa nai</em> as a classical expression. "No leisure" is accurate but archaic; "no time" is natural but loses the sense of "room to maneuver"; "no luxury" captures the moral dimension but adds a word not in the original. The Japanese <em>itoma wa nai</em> is a compact claim that moral deliberation is a form of leisure, and that leisure is fatal.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"The Old Woman's Justification"</div>
+    <div class="passage-jp">
+      さう云われれば、この死人も、生前には、蛇の干物を干魚に見せて売ると云ふ事を、やはり悪らしく仕居つたのぢやありませんか。それに、それが悪いと云ふのなら、この妾の仕る事も悪い筈はござらんせぬ。妾も、生き延びる為の仕方が無かつたのぢやありません。妾も、さやうしなければ、饑死をするばかりでござりましやう。さあ、この門の上に棲んでゐるものは、皆、さやうぢやござらんせぬか。
+    </div>
+    <div class="passage-romaji">
+      "Sō iwareba, kono shinin mo, seizen ni wa, hebi no himono wo hoshiuo ni misete uru to iu koto wo, yahari warurashiku shioita no ja arimasen ka. Sore ni, sore ga warui to iu no nara, kono ware no shiru koto mo warui hazu wa gozaranu sen. Ware mo, ikinobiru tame no shikata ga nakatta no ja arimasen. Ware mo, sayō shinakereba, kishi wo suru bakari de gozarimashō. Sā, kono mon no ue ni sunde iru mono wa, mina, sayō ja gozaran sen ka."
+    </div>
+    <div class="passage-en">
+      "If you put it that way, this dead person too, when she was alive, used to do things like passing off dried snake as dried fish and selling it, didn't she? And if that was wrong, then what I am doing cannot be wrong either. I too had no other way to survive. I too, if I didn't do this, would do nothing but starve to death. Now, don't you think that everyone who lives on top of this gate is the same way?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — the old woman's defense of her actions — is the story's philosophical climax, and its grammar constructs a theory of moral equivalence that dissolves the boundary between right and wrong. <em>Sō iwareba</em> (さう云われれば, "if you put it that way / if one says so") is a concessive conditional that acknowledges the servant's implicit challenge while preparing to reframe it: yes, what I am doing looks bad, but consider the context. <em>Warurashiku shioita</em> (悪らしく仕居つた, "did bad things / acted wickedly") uses the classical perfective auxiliary <em>tsu</em> (つ / 居つた) to indicate completed action in the past, giving the old woman's statement the flavor of historical fact rather than mere accusation. <em>Hazu wa gozaranu sen</em> (筈はござらんせぬ, "cannot be / ought not to be") is a complex classical negative modal construction combining <em>hazu</em> (筈, "should / ought") with the negative honorific <em>gozaranu</em> (ござらぬ, classical negative of <em>gozaru</em> / ござる) and the emphatic <em>sen</em> (せぬ). The grammar elevates her statement from mere opinion to logical necessity: it is not that she thinks her actions are right; it is that logic compels the conclusion that they cannot be wrong if the dead woman's actions were wrong. <em>Ikinobiru tame no shikata ga nakatta</em> (生き延びる為の仕方が無かつた, "had no way to survive / no method of prolonging life") uses the purposive <em>tame</em> (為) with the negative past <em>nakatta</em> (なかった), creating a claim of necessity: there was no alternative. <em>Sayō shinakereba</em> (さやうしなければ, "if I don't do so / if I don't act this way") uses the classical conditional <em>nakereba</em> (なければ) to create a zero conditional of survival: if X doesn't happen, Y follows with mechanical certainty. <em>Gozarimashō</em> (ござりましやう, "would be / probably is") is a classical conjectural form that softens the statement into a shared assumption rather than a personal claim. <em>Sayō ja gozaran sen ka</em> (さやうぢやござらんせぬか, "isn't it so? / don't you think?") uses the negative interrogative to demand agreement, to make the servant (and the reader) complicit in the generalization. The grammar of the entire passage is thus a machine for producing consensus: it starts with a specific case, generalizes to a principle, applies the principle to the speaker, and then demands that the listener acknowledge the principle's universality. What is lost in English is the full classical register of the old woman's speech. Her language is not modern Japanese but a stylized approximation of Heian-period speech, with its honorifics, its classical auxiliaries, and its rhetorical patterns. In English she sounds like any old woman making an excuse; in Japanese she sounds like a figure from a classical tale delivering a philosophical argument. The translation cannot reproduce this register-shift, and the loss is significant: the old woman's speech is not merely colloquial self-justification but a kind of folk wisdom encoded in classical grammar, the voice of a culture's accumulated experience of disaster.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"The Servant's Whereabouts Were Unknown"</div>
+    <div class="passage-jp">
+      下人の行方は、誰も知らない。
+    </div>
+    <div class="passage-romaji">
+      "Genin no yukue wa, dare mo shiranai."
+    </div>
+    <div class="passage-en">
+      "The servant's whereabouts were unknown to anyone."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This final sentence — six words in Japanese, six in English — is one of the most devastating endings in world literature, and its grammar creates an effect of absolute erasure that no translation can fully reproduce. <em>Genin no yukue wa</em> (下人の行方は, "as for the servant's whereabouts [topic]") uses the topic marker <em>wa</em> (は) to establish the servant's location as the subject of discussion — but the location is unknown, so the topic is immediately revealed as an absence, a gap. <em>Yukue</em> (行方, "whereabouts / destination / course") is a word of profound loneliness: it refers not merely to where someone is but to where they have gone, the path they have taken, the direction of their movement. To lose one's <em>yukue</em> is to become unfindable, to drop out of the network of human knowledge that keeps track of where people are. <em>Dare mo shiranai</em> (誰も知らない, "no one knows / unknown to anyone") uses the negative polarity item <em>dare mo</em> (誰も, "anyone / everyone [in negative context]") with the negative verb <em>shiranai</em> (知らない, "does not know"). The grammar creates a universal negative: not "some people don't know" but "there is no one who knows." The servant has passed out of the realm of known things, out of the social record, out of human concern. The sentence does not say what happened to him. It does not say he became a thief, or that he prospered, or that he was caught, or that he died. It says only that no one knows — and in saying so, it makes him a non-person, a figure who has disappeared from the narrative of the human. The sentence's power comes from its refusal to judge. Akutagawa does not tell us that the servant was wicked, or that he was justified, or that he was tragic. He simply records his disappearance and moves on. This flatness — this documentary neutrality in the face of moral catastrophe — is the story's most modern quality, and it would become a hallmark of Akutagawa's style: the refusal to moralize, the willingness to let the event speak for itself, the trust in the reader's capacity to draw the necessary conclusions. What is lost in English is almost nothing on the lexical level — "The servant's whereabouts were unknown to anyone" is as close to a word-for-word translation as Japanese-to-English permits — but the cultural resonance of <em>genin</em> and <em>yukue</em> cannot be carried across. A <em>genin</em> was not merely a "servant" but a person defined by his place in a feudal hierarchy; to lose one's <em>yukue</em> was not merely to be "missing" but to become socially nonexistent. The Japanese sentence thus encodes a social death as well as a physical disappearance, and the English can only hint at this dimension.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of ruin, survival, and the gate where morality dissolves into necessity.</p>
+
+  <div class="card">
+    <h3>The Gate and the City: The Language of Space and Decay</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>羅生門</td><td>Rashōmon</td><td class="pos">proper noun</td><td>Rashomon Gate (Akutagawa's spelling of Rajōmon)</td></tr>
+        <tr><td>羅城門</td><td>Rajōmon</td><td class="pos">proper noun</td><td>Rajōmon Gate (historical name: Outer Castle Gate)</td></tr>
+        <tr><td>朱雀大路</td><td>Suzaku ōji</td><td class="pos">proper noun</td><td>Suzaku Great Road (main avenue of Heian-kyō)</td></tr>
+        <tr><td>洛中</td><td>rakuchū</td><td class="pos">noun</td><td>inside the capital; central Kyoto</td></tr>
+        <tr><td>丹塗</td><td>ninuri</td><td class="pos">noun</td><td>vermilion lacquer; cinnabar coating</td></tr>
+        <tr><td>円柱</td><td>marubashira</td><td class="pos">noun</td><td>round pillar; cylindrical column</td></tr>
+        <tr><td>蟋蟀</td><td>kirigirisu</td><td class="pos">noun</td><td>cricket (insect)</td></tr>
+        <tr><td>狐狸</td><td>kori</td><td class="pos">noun</td><td>foxes and badgers; fox-spirits</td></tr>
+        <tr><td>市女笠</td><td>ichimegasa</td><td class="pos">noun</td><td>wide-brimmed bamboo hat worn by noblewomen</td></tr>
+        <tr><td>揉烏帽子</td><td>momieboshi</td><td class="pos">noun</td><td>soft black cap worn by noblemen</td></tr>
+        <tr><td>築土</td><td>tsukiji</td><td class="pos">noun</td><td>earthen mound; embankment</td></tr>
+        <tr><td>路傍</td><td>robo</td><td class="pos">noun</td><td>roadside; wayside</td></tr>
+        <tr><td>荒れ果てる</td><td>arehateru</td><td class="pos">verb</td><td>to fall into complete ruin; to be desolate</td></tr>
+        <tr><td>棲む</td><td>sumu</td><td class="pos">verb</td><td>to live; to dwell; to inhabit</td></tr>
+        <tr><td>顧みる</td><td>kaerimiru</td><td class="pos">verb</td><td>to look back; to pay attention to; to care about</td></tr>
+        <tr><td>剥げる</td><td>hageru</td><td class="pos">verb</td><td>to peel off; to flake off; to come off</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Disaster and the Body: The Language of Catastrophe</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>地震</td><td>jishin</td><td class="pos">noun</td><td>earthquake</td></tr>
+        <tr><td>辻風</td><td>tsujikaze</td><td class="pos">noun</td><td>whirlwind; sudden gust</td></tr>
+        <tr><td>火事</td><td>kaji</td><td class="pos">noun</td><td>fire; conflagration</td></tr>
+        <tr><td>饑饉</td><td>kikin</td><td class="pos">noun</td><td>famine; starvation</td></tr>
+        <tr><td>災</td><td>wazawai</td><td class="pos">noun</td><td>calamity; disaster; misfortune</td></tr>
+        <tr><td>饑死</td><td>kishi</td><td class="pos">noun</td><td>death by starvation</td></tr>
+        <tr><td>死人</td><td>shinin</td><td class="pos">noun</td><td>dead person; corpse</td></tr>
+        <tr><td>遺体</td><td>itai</td><td class="pos">noun</td><td>corpse; remains</td></tr>
+        <tr><td>引取手</td><td>hikitet</td><td class="pos">noun</td><td>person who claims a body; bereaved family</td></tr>
+        <tr><td>雨やみ</td><td>ameyami</td><td class="pos">noun</td><td>lull in the rain; break in rainfall</td></tr>
+        <tr><td>暮方</td><td>kuregata</td><td class="pos">noun</td><td>dusk; twilight; evening</td></tr>
+        <tr><td>日の目</td><td>hinome</td><td class="pos">noun</td><td>sunlight; light of day</td></tr>
+        <tr><td>途方</td><td>tohō</td><td class="pos">noun</td><td>way out; recourse; resource</td></tr>
+        <tr><td>暇を出す</td><td>itoma wo dasu</td><td class="pos">expression</td><td>to dismiss from service</td></tr>
+        <tr><td>主人</td><td>shujin</td><td class="pos">noun</td><td>master; lord; employer</td></tr>
+        <tr><td>下人</td><td>genin</td><td class="pos">noun</td><td>servant; low-ranking retainer</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Morality, Action & the Language of Choice</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>盗人</td><td>nusubito</td><td class="pos">noun</td><td>thief; robber</td></tr>
+        <tr><td>悪</td><td>waru</td><td class="pos">noun</td><td>evil; wickedness; badness</td></tr>
+        <tr><td>善悪</td><td>zen'aku</td><td class="pos">noun</td><td>good and evil</td></tr>
+        <tr><td>利己主義</td><td>rikoshugi</td><td class="pos">noun</td><td>egoism; self-interest</td></tr>
+        <tr><td>勇気</td><td>yūki</td><td class="pos">noun</td><td>courage; bravery</td></tr>
+        <tr><td>手段</td><td>shudan</td><td class="pos">noun</td><td>means; method; measure</td></tr>
+        <tr><td>遑</td><td>itoma</td><td class="pos">noun</td><td>leisure; spare time; room</td></tr>
+        <tr><td>生き延びる</td><td>ikinobiru</td><td class="pos">verb</td><td>to survive; to live through</td></tr>
+        <tr><td>抜く</td><td>nuku</td><td class="pos">verb</td><td>to pull out; to extract; to pluck</td></tr>
+        <tr><td>奪う</td><td>ubau</td><td class="pos">verb</td><td>to seize; to take away; to deprive</td></tr>
+        <tr><td>剥ぎ取る</td><td>sugitoru</td><td class="pos">verb</td><td>to strip off; to tear away</td></tr>
+        <tr><td>行方</td><td>yukue</td><td class="pos">noun</td><td>whereabouts; course; destination</td></tr>
+        <tr><td>老婆</td><td>rōba</td><td class="pos">noun</td><td>old woman; crone</td></tr>
+        <tr><td>鬘</td><td>kazura</td><td class="pos">noun</td><td>wig; false hair</td></tr>
+        <tr><td>干物</td><td>himono</td><td class="pos">noun</td><td>dried fish (or other dried food)</td></tr>
+        <tr><td>干魚</td><td>hoshiuo</td><td class="pos">noun</td><td>dried fish</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Akutagawa writes with the compression of classical tale literature and the precision of a modern psychologist — and his prose raises urgent questions about how to carry that double register across linguistic borders.</p>
+
+  <div class="card">
+    <h3>1. <em>De aru</em> (である): The Classical Copula and the Voice of Tale Literature</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>である</strong> — the classical/literary copula, marking written narrative rather than spoken discourse</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"was" / "is" / "it was that"</strong> — the English simple past copula, neutral and unmarked</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The copula <em>de aru</em> (である) pervades <em>Rashōmon</em>, distinguishing its narrative voice from the spoken <em>desu</em> (です) or the informal <em>da</em> (だ). <em>De aru</em> is the copula of written literature, of essays, of formal narrative — the voice of the storyteller rather than the conversationalist. When Akutagawa writes <em>Aru hi no kuregata no koto de aru</em> (或日の暮方の事である), the <em>de aru</em> places the sentence in the tradition of classical tale literature, echoing the opening of countless <em>setsuwa</em> (説話, anecdotal tales) and <em>monogatari</em> (物語). English "It was an evening at dusk" cannot reproduce this register because English has no grammatical distinction between literary and colloquial copulas. The Japanese reader feels, in <em>de aru</em>, the weight of a literary tradition; the English reader receives only information. The loss is not merely stylistic but generic: <em>de aru</em> tells the Japanese reader "this is literature" before the story has said anything, and that pre-announcement shapes everything that follows.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Genin</em> (下人): The Socially Embedded Servant</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>下人</strong> — low-ranking retainer; servant; the lowest rung of the samurai class; a person defined by feudal dependency</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"servant" / "retainer" / "menial"</strong> — each captures one dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>genin</em> (下人) is historically specific in a way that English "servant" is not. A <em>genin</em> was not merely someone who performed domestic labor; he was a member of the warrior class, a person with a recognized place in the feudal hierarchy who had fallen or been cast out of that place. The character <em>ge</em> (下, "lower / below") and <em>nin</em> (人, "person") make the social position explicit: this is someone below others, subordinate, dependent. English "servant" carries some of this but also evokes modern domestic employment, which is a contractual relationship rather than a feudal one. "Retainer" captures the feudal dimension but suggests a higher status than <em>genin</em> implies. "Menial" captures the low status but loses the feudal specificity. The Japanese <em>genin</em> is thus a word that carries an entire social system in two characters, and no English equivalent can reproduce this density. The loss matters because the story's moral drama depends on the reader understanding that the servant is not a free agent making a choice but a person whose social embedding has been destroyed, leaving him with no legitimate place in the world.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Itoma wa nai</em> (遑はない): The Grammar of Moral Emergency</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>遑はない</strong> — there is no leisure; there is no room to maneuver; moral deliberation is a luxury that survival does not permit</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"no leisure" / "no time" / "no luxury"</strong> — each loses a different dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>itoma wa nai</em> (遑はない) is a classical expression whose full resonance English cannot reproduce. <em>Itoma</em> (遑 / 暇) means not merely "time" (<em>jikan</em> / 時間) but "spare time / leisure / room to maneuver" — the temporal and spatial margin that makes deliberation possible. To say <em>itoma wa nai</em> is to say that survival has consumed all margin, all buffer, all space for reflection. "No leisure" captures the classical register but sounds stilted; "no time" is natural but loses the sense of "room"; "no luxury" captures the moral dimension but adds a word not in the original. The Japanese <em>itoma wa nai</em> is a compact claim that ethics requires margin, and that margin is the first thing to disappear in catastrophe. The sentence thus contains a theory of moral philosophy: that morality is not a set of absolute rules but a function of social and material conditions, and that when those conditions collapse, morality collapses with them. This theory is implicit in six syllables.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kirigirisu</em> (蟋蟀): The Insect as Symbol</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>蟋蟀</strong> — cricket; a creature of autumn, ruin, and classical poetry; a sign of desolation and persistence</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"cricket"</strong> — accurate but symbolically thin</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The cricket that appears in the story's opening paragraph — perched on a peeling vermilion pillar beneath the Rashōmon Gate — is one of Japanese literature's most loaded insects. In the classical poetic tradition, the cricket (<em>kirigirisu</em> / 蟋蟀) is a creature of autumn desolation, associated with abandoned houses, ruined temples, and the passage of time. Its cry is the sound of loneliness, and its presence in a once-grand structure is a sign of nature reclaiming what human civilization has abandoned. The character <em>kirigirisu</em> itself is onomatopoeic, imitating the insect's chirp. When Akutagawa places a cricket on the gate's pillar, he is invoking this entire poetic tradition: the gate is not merely ruined but poetically ruined, and the servant who waits beneath it is not merely unemployed but existentially displaced, a human counterpart to the insect that has made its home in the wreckage of grandeur. English "cricket" carries none of this symbolic weight: it is simply an insect, and while readers may know that crickets chirp in autumn, they do not feel the full cultural resonance of <em>kirigirisu</em> as a sign of ruin and persistence. The loss is atmospheric rather than semantic: the Japanese reader feels the poetry; the English reader sees only an insect on a pillar.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Yukue</em> (行方): The Word for Disappearing</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>行方</strong> — whereabouts; course; direction of movement; the path one has taken; the place one has gone</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"whereabouts" / "destination" / "course"</strong> — each captures one dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>yukue</em> (行方) is a word of extraordinary loneliness, and its use in the story's final sentence creates an effect of social erasure that "whereabouts" cannot fully reproduce. <em>Yukue</em> combines <em>yuku</em> (行く, "to go / to proceed") with <em>e</em> (方, "direction / course / way"), making it literally "the direction of going" — not a static location but a trajectory, a path, a movement through space. To ask after someone's <em>yukue</em> is to ask where they have gone, what path they have taken, whether they can be found. To say that someone's <em>yukue</em> is unknown is to say that they have passed out of the network of human tracking, that their movement through the world is no longer visible to others. "Whereabouts" captures the general sense but loses the dynamism; "destination" captures the directionality but implies a known endpoint; "course" captures the trajectory but loses the personal dimension. The Japanese <em>genin no yukue</em> (下人の行方) thus contains a double disappearance: the servant is gone, and the path he took is also gone, erased from human knowledge. The English "The servant's whereabouts were unknown" can convey the first disappearance but struggles with the second.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of suspended time, moral emergency, and the classical register that makes a tale into literature.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜である（文語的断定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...de aru</em>: "is / was / it is that" — literary/classical copula marking written narrative and formal statement</p>
+      <div class="grammar-example">或日の暮方のである</div>
+      <p class="grammar-example-en">"It was an evening at dusk" — The grammar of tale literature.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ている（継続・進行）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...te iru</em>: "is...ing / has been...ing / is in a state of..." — continuative auxiliary indicating ongoing action or state</p>
+      <div class="grammar-example">雨やみを待っていた</div>
+      <p class="grammar-example-en">"was waiting for the rain to stop" — The grammar of suspended time.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ためには（目的）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...tame ni wa</em>: "in order to / for the purpose of" — purposive construction indicating goal-directed action</p>
+      <div class="grammar-example">どうにかする為には、手段を選んでゐる遑はない</div>
+      <p class="grammar-example-en">"In order to somehow deal with it, there is no leisure to choose means" — The grammar of necessity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ばかりだ（限定・消極）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...bakari da</em>: "nothing but... / only... / do nothing but..." — limiting particle indicating the exclusivity of an undesirable outcome</p>
+      <div class="grammar-example">饑死をするばかりである</div>
+      <p class="grammar-example-en">"one will do nothing but starve to death" — The grammar of fatal limitation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なければ（条件・必要）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...nakereba</em>: "if not... / unless..." — negative conditional indicating necessary condition</p>
+      <div class="grammar-example">さやうしなければ、死をするばかりでござりましやう</div>
+      <p class="grammar-example-en">"If I don't do so, I would do nothing but starve to death" — The grammar of survival logic.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜はずだ（推量・当然）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...hazu da</em>: "should / ought to / is expected to" — expectation marker indicating logical inference</p>
+      <div class="grammar-example">悪い筈はござらんせぬ</div>
+      <p class="grammar-example-en">"cannot be wrong / ought not to be evil" — The grammar of moral rationalization.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ても（逆接・譲歩）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te mo</em>: "even if / even though" — concessive construction indicating contrary outcome</p>
+      <div class="grammar-example">選んでゐれば、饑死をするばかりである</div>
+      <p class="grammar-example-en">"Even if one chooses, one will only starve" — The grammar of futile deliberation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ずにはいられない（禁制）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...zu ni wa irarenai</em>: "cannot help but... / cannot resist...ing" — negative potential construction indicating irresistible compulsion</p>
+      <div class="grammar-example">（文脈的）下人は老婆を剥ぎ取らずにはいられなかった</div>
+      <p class="grammar-example-en">"The servant could not help but strip the old woman" — The grammar of irreversible action.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Rashōmon</em> is the grammar of classical modernity — a prose that uses the forms of tale literature (<em>de aru</em> / である, <em>itoma</em> / 遑, classical auxiliaries) to explore the psychology of modern alienation. The continuative (<em>te iru</em> / ている) creates suspended time; the purposive (<em>tame ni</em> / 為に) creates goal-directed necessity; the limiting particle (<em>bakari</em> / ばかり) closes off alternatives; the negative conditional (<em>nakereba</em> / なければ) constructs survival logic; the expectation marker (<em>hazu</em> / 筈) rationalizes moral collapse; the concessive (<em>te mo</em> / て) demonstrates futility; and the negative potential (<em>zu ni wa irarenai</em> / ずにはいられない) enacts the irreversibility of the servant's choice. Pay attention to how these constructions work together to create a prose that feels both ancient and immediate — the voice of a classical tale telling a story that modern psychology has only just learned to recognize.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, critical scholarship, and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">『羅生門』 &middot; 芥川龍之介 著 &middot; 『帝国文学』1915年11月号初出 &middot; 阿蘭陀書房 1917年5月刊（短編集『羅生門』所収） &middot; 改造社『沙羅の花』1922年8月再収録</p>
+  <p style="margin-top: var(--space-xs);">典拠：『今昔物語集』巻第二十九「羅城門上層に登りて死人見たる盗人の語第十八」 &middot; 高校国語教科書採用（国民文学）</p>
+  <p style="margin-top: var(--space-xs);">著者：芥川龍之介（あくたがわりゅうのすけ・1892年3月1日〜1927年7月24日・東京府京橋区入船町生まれ・東京帝国大学英文科卒）</p>
+  <p style="margin-top: var(--space-xs);">経歴：新原家長男→母方実家芥川家養子（1899年）→旧制第一高等学校→東大英文科→『新思潮』同人→海軍機関学校嘱託教官（1916–1919）→大阪毎日新聞社社員（1919–1927）</p>
+  <p style="margin-top: var(--space-xs);">デビュー：1915年『羅生門』 &middot; 文壇確立：1916年「鼻」が夏目漱石に絶賛 &middot; 自殺：1927年7月24日（ベロナール過剰摂取・35歳）</p>
+  <p style="margin-top: var(--space-xs);">配偶者：塚本文（つかもとふみ・1919年結婚） &middot; 子：芥川比呂志（俳優・1920–2001） &middot; 芥川多加志（1922–1945・戦死） &middot; 芥也寸志（作曲家・1927–2015）</p>
+  <p style="margin-top: var(--space-xs);">主要作品：『羅生門』 &middot; 「鼻」 &middot; 「芋粥」 &middot; 「袈裟と盛遠」 &middot; 「地獄変」 &middot; 「奉教人の死」 &middot; 「杜子春」 &middot; 「蜘蛛の糸」 &middot; 「藪の中」 &middot; 「侏儒の言葉」 &middot; 「河童」 &middot; 「歯車」 &middot; 「或阿呆の一生」 &middot; 「点鬼簿」</p>
+  <p style="margin-top: var(--space-xs);">登場人物：下人（げにん・職を失った下級武士） &middot; 老婆（ろうば・死人の髪を抜く老女）</p>
+  <p style="margin-top: var(--space-xs);">舞台：平安時代末期・荒廃した平安京・朱雀大路南端の羅生門（羅城門） &middot; 時間：或る日の暮方から夜へ</p>
+  <p style="margin-top: var(--space-xs);">テーマ：生きるための悪（利己主義） &middot; 善悪の相対性 &middot; 社会秩序崩壊と個人の道徳 &middot; 必要と正当化の論理 &middot; クラシックと近代の融合</p>
+  <p style="margin-top: var(--space-xs);">関連作品：『今昔物語集』巻二十九第十八話 &middot; 黒澤明『羅生門』（1950年・実際の原作は「藪の中」） &middot; 芥川「鼻」 &middot; 芥川「藪の中」</p>
+</footer>
+
+</div>
+</body>
+</html>

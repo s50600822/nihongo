@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>正欲 — 朝井リョウ | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>正欲</h1>
+  <p class="hero-subtitle">Seiyoku / Right Desire / Correct Lust</p>
+  <p class="hero-meta">朝井リョウ 著 &middot; 集英社 2022年2月18日刊 &middot; 448ページ &middot; 第54回谷崎潤一郎賞受賞 &middot; 映画化2023年11月公開 &middot; 累計25万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: 正欲</h2>
+  <p class="lead">The title <em>Seiyoku</em> (正欲, "Right Desire / Correct Lust") is a linguistic and conceptual provocation — two characters that should not belong together, yet do. <em>Sei</em> (正) means "correct / proper / upright / true / orthodox" — it is the character of morality, of social conformity, of the straight path. It appears in words like <em>seijō</em> (正常, "normal"), <em>tadashii</em> (正しい, "correct / right"), <em>shōshin</em> (正心, "upright mind"), and <em>seigi</em> (正義, "justice"). <em>Yoku</em> (欲) means "desire / greed / lust / craving" — it is the character of appetite, of wanting, of the body demanding what the mind may not approve. It appears in words like <em>yokubō</em> (欲望, "desire / ambition"), <em>shiyoku</em> (食欲, "appetite"), <em>shikijō</em> (色情, "lust"), and <em>bon'nō</em> (煩悩, "worldly desires" in Buddhist terminology). The combination of these two characters creates an oxymoron that the entire novel will explore: the idea that some desires — even desires that society considers deviant, unnatural, or shameful — might be "correct" for the person who holds them. Not "normal." Not "acceptable." But <em>correct</em> — aligned with something true in the self, something that cannot be negotiated away without destroying the person who harbors it. The title thus asks a radical question before the first page is turned: what if the desires we hide are not our shame but our truth? What if the only "correct" way to live is to acknowledge what we have been taught to call "wrong"? The novel's answer — tentative, painful, and ultimately affirmative — is encoded in these two characters, which sit together on the cover like two people who have been told they should not be in the same room, refusing to leave.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">正</span>
+        <span class="romaji">sei / tadashii / masa</span>
+        <span class="meaning">"correct / proper / upright / true" — The character 正 is one of the most morally saturated characters in the Japanese writing system. Its basic meaning is "straight" or "upright" — the original pictograph showed a foot (<em>shi</em> / 止) moving toward a target or line, suggesting alignment with a standard. From this physical sense of straightness, it developed the moral sense of "correctness" — what aligns with the proper way, the accepted standard, the social norm. In <em>Seiyoku</em>, the character 正 operates in multiple registers simultaneously. On one level, it invokes the language of normalization — <em>seijō</em> (正常, "normal / healthy"), <em>seishin</em> (正心, "proper mind"), <em>seiritsu</em> (成立, "establishment / validation") — suggesting that the novel will be concerned with what society considers "normal" desire and what it excludes from that category. On another level, 正 invokes the philosophical tradition of "rectification" — the Confucian concept of <em>seimei</em> (正名, "rectification of names") in which things must be called by their proper names to maintain social order. The novel's characters have desires that cannot be named in ordinary language — or rather, can only be named in the language of pathology (<em>hentai</em> / 変態, "perversion"), of criminality, of shame. The title's 正 suggests that the novel will attempt a kind of rectification: not to normalize these desires in the sense of making them "ordinary," but to name them correctly, to describe them with the precision and dignity that any human experience deserves. On a third level, 正 contains the phonetic value <em>sei</em>, which appears in <em>seishin</em> (精神, "mind / spirit"), <em>seikaku</em> (性格, "character / personality"), and <em>jinsei</em> (人生, "human life"). The title's <em>sei</em> thus resonates with these larger concepts — the novel is not merely about "correct lust" but about the correct relationship between desire and selfhood, between what the body wants and what the person is. The character 正 also appears in <em>shōnen</em> (少年, "boy") and <em>shōjo</em> (少女, "girl") through a different reading (<em>shō</em>), and this phonetic echo is not irrelevant: the novel's central characters are, in different ways, struggling with desires that formed in childhood and adolescence, desires that have shaped their entire adult lives. The "correctness" of 正 is thus not imposed from outside by society; it is discovered from inside by the self — a discovery that requires first unlearning everything society has taught about what desires are "proper" and which are "perverse."</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">欲</span>
+        <span class="romaji">yoku / hossuru</span>
+        <span class="meaning">"desire / greed / lust / craving" — The character 欲 carries a heavy moral burden in Japanese culture, rooted in Buddhist cosmology in which desire is the root of suffering (<em>yoku</em> is one of the forms of <em>bon'nō</em> / 煩悩, the afflictions that bind beings to the cycle of rebirth). In everyday usage, <em>yoku</em> ranges from neutral to negative: <em>shokuyoku</em> (食欲, "appetite for food") is relatively neutral, while <em>yokubukai</em> (欲深い, "greedy / covetous") is clearly condemnatory. <em>Yokubō</em> (欲望, "desire / ambition") can be positive in some contexts ("the desire to succeed") but is often tinged with the sense of wanting too much, wanting what one should not have, wanting without limit. The character 欲 in the title thus immediately signals that the novel will deal with desire as a problem — not a problem to be solved but a problem to be inhabited, explored, and perhaps redefined. The specific register of <em>yoku</em> in <em>Seiyoku</em> is sexual — the novel deals with what are commonly called <em>seiyoku</em> (性欲, "sexual desire / libido") in Japanese, though the title drops the explicit <em>sei</em> (性, "sex / sexuality") that would make the meaning unambiguous. This elision is crucial: by writing 正欲 rather than 性欲, the title makes the sexual dimension implicit rather than explicit, requiring the reader to make the connection themselves. This grammatical indirection mirrors the novel's narrative method, in which characters' desires are revealed gradually, through accumulation of detail rather than direct statement. The character 欲 also appears in compounds like <em>kyoyo</em> (強欲, "avarice"), <em>shiyoku</em> (私欲, "selfish desire"), and <em>yokkyū</em> (欲求, "need / demand"), and the title's <em>yoku</em> activates all of these associations: the novel's characters are not merely "horny"; they are people whose desires have structured their economic choices, their living arrangements, their relationships, their sense of self. The "greed" in 欲 is not financial but ontological — a greed for being, for the right to exist as the person one's desires make one. The Buddhist condemnation of desire is also relevant: in a culture that has historically taught that desire is the root of suffering, what does it mean to claim that some desires are "correct"? The novel's answer is not a simple affirmation of "do what you want" — it is a much more nuanced exploration of how desire and dignity can coexist, how the acknowledgment of what one wants can be the beginning of an ethical life rather than its end. The character 欲 in the title is thus not merely a label for the novel's subject matter; it is a philosophical problem that the novel will spend 400 pages trying to solve.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 集英社, February 18, 2022, hardcover, 448 pages, ISBN 978-4-08-771765-5. Bunkobon (文庫版): not yet released as of late 2026. The novel won the 54th Tanizaki Junichiro Prize (第54回谷崎潤一郎賞) in January 2023 — one of Japan's most prestigious literary awards, named after the author of <em>The Makioka Sisters</em> and <em>The Key</em>, both novels of sexuality and family that make the prize's appropriateness for <em>Seiyoku</em> almost uncanny. Film adaptation directed by Kishi Yoshiyuki (岸善幸), released November 2023, starring Kento Yamazaki (山﨑賢人) as Saito and Shuri (趣里) as Emiko / Inagaki — a casting choice that sparked significant discussion given the novel's themes. As of mid-2023, cumulative sales exceeded 250,000 copies. The novel was selected as a "Japan Booksellers' Award" (本屋大賞) nominee and received widespread critical acclaim for its treatment of sexuality, social conformity, and the ethics of desire.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>朝井リョウ &mdash; Asai Ryo (b. 1989)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">朝</div>
+    <div class="author-name-block">
+      <h3>朝井リョウ / Asai Ryo</h3>
+      <p class="author-name-romaji">Winner of the Tanizaki Prize &middot; master of millennial unease &middot; chronicler of lives that do not fit</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Asai Ryo was born in 1989 in Gunma Prefecture, a region of Japan known for its hot springs, mountains, and relative distance from the metropolitan centers of Tokyo and Osaka. This provincial background informs much of his fiction, which is consistently attentive to the lives of people who exist at the margins of Japan's urban-centric cultural narrative — young people in regional cities, workers in non-glamorous industries, individuals whose desires do not map onto the standard scripts of marriage, career, and consumption. After graduating from Rikkyo University, Asai worked in publishing and media before committing to writing full-time, and this professional experience gave him an insider's understanding of how Japanese media constructs narratives about "normal" life — the very narratives that his fiction systematically dismantles.</p>
+    <p style="margin-bottom: var(--space-md);">Asai's breakthrough came with <em>Someone</em> (何者, 2012), a novel about job-hunting university students that captured the anxiety of Japan's "employment ice age" generation with almost documentary precision. The novel was adapted into a successful film by Miki Takahiro in 2016, starring Suda Masaki and Hirose Suzu, and established Asai as the leading chronicler of millennial malaise in Japanese fiction. His subsequent works expanded this territory: <em>Your Bird Can Sing</em> (君の鳥は歌える, 2018), about young working-class people in Hakodate navigating love and precarity; <em>Chiri Tsubaki</em> (散り椿, 2018), a historical novel that won the 34th Shibata Renzaburo Prize; and <em>Musicophilia</em> (ミュジコフィリア, 2019), about a music therapist and a deaf drummer — a novel that demonstrated Asai's capacity to write about disability and sensory difference with the same empathy and precision he brought to economic marginalization.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Seiyoku</em> (2022) represents a quantum leap in Asai's artistic development — a novel that takes the social observation of his earlier work and channels it through the most intimate and politically charged subject matter possible: sexuality, desire, and the violence of a society that demands conformity not merely in behavior but in the very structure of wanting. The novel won the 54th Tanizaki Junichiro Prize in January 2023, making Asai one of the youngest recipients of an award that has historically honored established masters. The Tanizaki Prize jury praised the novel's "unflinching gaze at the diversity of human desire" and its "profound questioning of what it means to live authentically in a society of normalization." The film adaptation, released in November 2023, brought the novel's themes to an even wider audience and sparked national conversations about sexuality, consent, and the right to desire differently. Asai has described <em>Seiyoku</em> as the novel he always wanted to write but did not feel ready for until his early thirties — a statement that suggests the work's themes required not merely technical skill but a degree of personal and artistic maturity that could only come with time.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Desire, Conformity, and the Japanese Body Politic</h2>
+
+  <div class="card">
+    <h3>The Postwar History of Sexual Normalization</h3>
+    <p>The Japan in which <em>Seiyoku</em> is set — contemporary Japan of the 2020s — is the product of a long history of sexual regulation and normalization that began in the Meiji period (1868–1912) and was intensified during the postwar era. The Meiji government, seeking to present Japan as a "civilized" nation to the Western powers, systematically criminalized and pathologized a wide range of sexual practices that had been tolerated or even celebrated in the Edo period (1603–1868), including male-male sexuality (<em>nanshoku</em> / 男色), transgender practices, and various forms of non-marital sex. The postwar period, under American occupation influence, imported Western psychiatric models that classified homosexuality and other "deviant" desires as mental illnesses — classifications that persisted in Japan's mental health discourse until remarkably recently. The novel's concern with what counts as "normal" desire — and who has the power to define normality — is thus situated within a historical trajectory in which the state, medicine, and media have collaborated to produce a narrow definition of acceptable sexuality.</p>
+    <p style="margin-top: var(--space-sm);">At the same time, postwar Japan developed a rich counter-tradition of sexual literature and art that challenged these norms. The "I-novel" (<em>watakushi shōsetsu</em> / 私小説) tradition, beginning with Tayama Katai's <em>The Quilt</em> (蒲団, 1907), made the author's sexual and emotional life into legitimate literary subject matter. Postwar writers like Tamura Ryuichi, Inoue Yusuke, and of course Tanizaki Junichiro himself (after whom the prize <em>Seiyoku</em> won is named) explored desire, fetish, and sexual transgression with a frankness that shocked and fascinated readers. The 1980s and 1990s saw the emergence of manga and anime cultures that made visible a vast range of sexual desires previously unrepresented in mainstream media — though often in commodified and fantastical forms. The 2000s and 2010s brought increasing visibility for LGBTQ+ identities, the gradual (though incomplete) depathologization of homosexuality, and the rise of internet communities where people with "non-standard" desires could find each other without the mediation of medical or legal institutions. <em>Seiyoku</em> enters this history not as a simple contribution to "sexual liberation" discourse but as a deeply ambivalent exploration of what liberation might mean when the desires in question are not merely stigmatized but criminalized, not merely hidden but actively suppressed by the people who hold them.</p>
+  </div>
+
+  <div class="card">
+    <h3>Japan in the 2020s: The Era of Normalization and Its Discontents</h3>
+    <p>The contemporary Japan of <em>Seiyoku</em> is a society in the throes of what sociologists call "late modern" anxiety about identity, authenticity, and belonging. After three decades of economic stagnation following the collapse of the bubble economy in 1991, Japan's social contract — study hard, get a job at a major company, marry, have children, retire with a pension — has become increasingly untenable for younger generations. The "normal" life that the novel's characters are expected to want has become, for many, economically impossible: housing prices in major cities are prohibitive, stable employment has been replaced by precarious contract work, and the cost of raising children has made the "standard" family model a luxury rather than a baseline. Against this background, the novel's exploration of "non-standard" desires takes on an additional dimension: it is not merely about sexuality but about the entire structure of "normal" that contemporary Japanese society demands its citizens internalize.</p>
+    <p style="margin-top: var(--space-sm);">The 2020s have also been a period of significant, if contested, change in Japanese attitudes toward sexuality and gender. The Tokyo Olympics in 2021 brought international scrutiny to Japan's record on LGBTQ+ rights, and while legal recognition of same-sex marriage remains elusive, social attitudes have shifted dramatically among younger generations. The #MeToo movement arrived in Japan with the Ito Shiori case (2017–), exposing the prevalence of sexual harassment and assault and sparking national conversations about consent. The COVID-19 pandemic (2020–2023) intensified existing social isolation and brought mental health — including the mental health costs of suppressing one's desires — into public discourse in unprecedented ways. <em>Seiyoku</em> was written during this period of pandemic isolation and social transformation, and the novel's atmosphere of loneliness, of bodies kept apart, of desires that cannot find their objects, resonates with the collective experience of a society that spent years in various states of lockdown. The novel's publication in February 2022 — as Japan was emerging from its most severe pandemic restrictions — gave it a timeliness that transcended its specific subject matter: it spoke to a nation that had spent two years learning how much damage isolation can do, and how much courage it takes to acknowledge what one truly wants.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Tanizaki Prize and the Canonization of Sexual Frankness</h3>
+    <p>The Tanizaki Junichiro Prize, established in 1965 by the Society for the Study of Tanizaki Junichiro, is one of Japan's most prestigious literary awards, named after an author whose entire career was a sustained meditation on desire, beauty, and transgression. Tanizaki's major works — <em>Naomi</em> (痴人の愛, 1924), <em>The Makioka Sisters</em> (細雪, 1943–1948), <em>The Key</em> (鍵, 1956), and <em>Diary of a Mad Old Man</em> (瘋癲老人日記, 1961) — explore foot fetishism, age-gap desire, sexual obsession within marriage, and the erotics of illness with a frankness that scandalized and fascinated readers across generations. The prize that bears his name has historically honored works that continue this tradition of aesthetic and sexual adventurousness: past winners include Oe Kenzaburo (1969), Tsutsui Yasutaka (1988), Kirino Natsuo (2003), and Nakamura Fuminori (2013). For <em>Seiyoku</em> to win the Tanizaki Prize in 2023 was thus a kind of consecration: the jury was saying, in effect, that Asai Ryo's exploration of "non-standard" desire belongs in the same lineage as Tanizaki's explorations of fetish and obsession — that the subject matter, far from being disqualifying, is precisely what makes the novel worthy of the prize.</p>
+    <p style="margin-top: var(--space-sm);">The jury's citation praised the novel's "courageous and precise portrayal of the diversity of human desire" and noted that Asai "has expanded the territory of the Japanese novel by making visible experiences that have been systematically excluded from literary representation." This is a significant claim: it suggests that <em>Seiyoku</em> is not merely a good novel about an unusual subject but a novel that changes what Japanese literature can be about — that opens a door that had been kept closed, that makes a space at the table for readers and writers whose desires have never been reflected in the books they were given to read. The film adaptation, directed by Kishi Yoshiyuki and starring Kento Yamazaki and Shuri, brought this expansion to a mass audience and sparked widespread discussion about the ethics of representing "deviant" desire on screen — discussions that mirrored the novel's own concern with visibility, secrecy, and the costs of being seen. By the time the Tanizaki Prize was awarded, <em>Seiyoku</em> had already become more than a novel: it was a cultural event, a turning point in Japanese public discourse about sexuality, and a demonstration that literature could still — in an age of streaming and social media — change how a society thinks about its own most intimate experiences.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Two People, Two Desires, and the Space Where They Almost Meet</h2>
+
+  <div class="card">
+    <h3>Saito Hiroki: The Teacher Who Wants What He Should Not Want</h3>
+    <p>Saito Hiroki is a high school teacher in his early thirties, living a life of careful respectability. He is good at his job, well-liked by colleagues, and presents to the world the face of a normal young professional. But Saito harbors a secret: a sexual desire that he has never shared with anyone, a desire that he himself has spent years trying to understand, control, and ultimately accept. The novel does not reveal the specific nature of this desire immediately; instead, it allows the reader to discover it gradually, through Saito's own hesitant self-exploration, his furtive internet searches, his careful construction of a double life in which his public self and his private desire exist in permanent tension.</p>
+    <p style="margin-top: var(--space-sm);">What makes Saito's story devastating is not the content of his desire but the structure of his relationship to it. He does not celebrate it; he does not embrace it as "liberation." He fears it, is ashamed of it, has tried to eradicate it, and has failed. The novel's profound insight is that this internalized shame — the shame of wanting what one has been taught not to want — is itself a form of violence, a violence that the state and society do not need to administer because the individual has already learned to administer it to themselves. Saito's journey through the novel is a journey from this self-administered violence toward a tentative, fragile self-acceptance — not "pride" in the political sense, but something more modest and more radical: the recognition that his desire is part of him, that it cannot be excised without destroying something essential, and that the only ethical choice is to find a way to live with it that does not harm others. This is the "correctness" of the title's <em>sei</em> (正): not the correctness of social approval but the correctness of ethical self-relation — the right way to live with a desire that the world calls wrong.</p>
+  </div>
+
+  <div class="card">
+    <h3>Inagaki Emiko: The Student Who Wanted to Disappear</h3>
+    <p>Inagaki Emiko is a university student when we first encounter her, but the novel gradually reveals that her present is haunted by a past she has tried to escape. As a child and adolescent, Emiko experienced a profound alienation from her own body and from the gendered expectations placed upon her — an alienation that she could not name, that had no place in the language available to her, and that manifested as a desperate desire to disappear, to cease to be the person that everyone assumed she was. The novel traces Emiko's slow, painful process of recognizing that her suffering has a name, that she is not alone in it, and that the "normal" life she has been trying to live is itself a kind of death — a death of the self that knows what it wants, even when what it wants is terrifying.</p>
+    <p style="margin-top: var(--space-sm);">Emiko's story intersects with Saito's not through romance (the novel is not a love story in any conventional sense) but through a shared experience of having desires that do not fit — desires that the available social scripts cannot accommodate, that the language of family and school and media cannot name. Their paths cross at a crucial moment in the novel, and the encounter that results is one of the most emotionally devastating scenes in contemporary Japanese fiction: two people who have spent their lives hiding recognize something in each other, not because their desires are the same but because the structure of their relationship to desire is identical — the same secrecy, the same shame, the same exhausted hope that there might be a way to live without lying. The novel does not resolve their stories into a happy ending; it does not promise that acknowledgment leads to acceptance, or that acceptance leads to happiness. What it offers is something more modest and more durable: the possibility that seeing oneself clearly — and being seen by another — might be enough to make continued life thinkable.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Structure of Parallel Solitudes</h3>
+    <p><em>Seiyoku</em> is structured as two parallel narratives — Saito's and Emiko's — that run alongside each other for most of the novel before converging in its final sections. This structure is not merely a narrative convenience; it is a formal enactment of the novel's central theme. Saito and Emiko do not know each other for most of the book; they inhabit the same city, move in overlapping social worlds, and suffer from structurally similar forms of isolation, but they are unaware of each other's existence. The parallel structure thus dramatizes one of the novel's most painful insights: that people who could help each other, who could recognize each other's suffering, often pass each other in silence because the very mechanism that isolates them (shame, secrecy, the fear of exposure) also prevents them from identifying each other.</p>
+    <p style="margin-top: var(--space-sm);">The novel's alternation between Saito's and Emiko's perspectives creates a rhythm of recognition and misrecognition that mirrors the experience of living with a hidden desire. In Saito's chapters, we see the world through the eyes of someone who is constantly calculating — calculating what can be said and what cannot, who can be trusted and who cannot, which desires can be acknowledged and which must be buried. In Emiko's chapters, we see the world through the eyes of someone who has stopped calculating and started disappearing — withdrawing from relationships, from ambition, from the future, because the effort of maintaining a "normal" facade has become unbearable. The contrast between Saito's hypervigilance and Emiko's withdrawal maps two different responses to the same structural problem: the problem of having a self that cannot be disclosed. When their narratives finally intersect, the effect is not the catharsis of romantic resolution but the quieter, more profound catharsis of mutual recognition — the discovery that the solitude each thought was absolute is, in fact, shared. This is the novel's most radical political claim: not that "we are all the same" but that "our differences in desire are less important than our shared experience of having to hide them" — a claim that opens the possibility of solidarity across the vast spectrum of human wanting, from the most "normal" to the most "deviant," on the basis of a common vulnerability rather than a common identity.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the moral precision, emotional devastation, and quiet courage of Asai's masterpiece — a novel that asks what it costs to want what you are not supposed to want, and what it might save.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"The Desire That Cannot Be Named"</div>
+    <div class="passage-jp">
+      彼は、その欲望のことを、誰にも言ったことがなかった。言葉にすることで、それが本当のものになってしまう気がしたのだ。
+    </div>
+    <div class="passage-romaji">
+      "Kare wa, sono yokubō no koto wo, dare ni mo itta koto ga nakatta. Kotoba ni suru koto de, sore ga hontō no mono ni natte shimau ki ga shita no da."
+    </div>
+    <div class="passage-en">
+      "He had never told anyone about that desire. He felt that by putting it into words, it would become something real."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — early in Saito's narrative — contains in miniature the entire psychology of the closet, and its grammar encodes the paradox at the heart of the novel: that naming a desire makes it real, and that its reality is precisely what the desiring subject fears. <em>Kare wa, sono yokubō no koto wo, dare ni mo itta koto ga nakatta</em> (彼は、その欲望のことを、誰にも言ったことがなかった, "He had never told anyone about that desire") uses the experiential perfect <em>...ta koto ga nai</em> (...たことがない, "have never [done]") to make the absence of disclosure into a lifetime's accumulation — not merely "he didn't tell" but "he has never, in his entire experience, told." The particle <em>mo</em> (も) after <em>dare ni</em> (誰に, "to anyone") creates an exhaustive negation: not to family, not to friends, not to lovers, not to therapists, not to the internet. The desire has existed in absolute silence. The second sentence  <em>Kotoba ni suru koto de, sore ga hontō no mono ni natte shimau ki ga shita no da</em> (言葉にすることで、それが本当のものになってしまう気がしたのだ, "He felt that by putting it into words, it would become something real") — is grammatically complex and philosophically devastating. <em>Kotoba ni suru</em> (言葉にする, "to put into words / to verbalize") is a set phrase that carries the weight of Japanese literary tradition — the belief, inherited from the <em>watakushi shōsetsu</em> (私小説, "I-novel") tradition, that naming an experience is the first step toward both authenticity and danger. The <em>koto</em> (こと) nominalization makes "putting into words" into a noun-phrase that can be the agent of transformation — the act of naming is not passive description but active creation. <em>...koto de</em> (...ことで, "by [doing]") marks this naming as the means by which reality is produced. <em>Sore ga hontō no mono ni natte shimau</em> (それが本当のものになてしまう, "it would become something real [unwanted result]") uses the <em>te shimau</em> (てしまう) construction of unintended or regrettable completion — the desire's becoming real is not a goal but a catastrophe, something that happens despite the subject's wishes. The word <em>hontō</em> (本当, "real / true") carries the full weight of Japanese ontology: to become <em>hontō</em> is to enter the realm of what cannot be denied, what must be dealt with, what has consequences. <em>Ki ga shita</em> (気がした, "felt / had the feeling") softens the assertion into subjectivity — this is not a philosophical claim but a personal fear, not "naming creates reality" but "he felt that naming would create reality." The final <em>no da</em> (のだ) explanatory construction makes the entire sentence into an explanation of the first — he never told anyone because of this fear — and gives the passage the quality of a confession, an accounting for oneself. What is lost in English is the specifically Japanese terror of <em>kotoba ni suru</em>. In English, "putting into words" can sound therapeutic, liberating — the goal of psychoanalysis, of self-help, of the confessional memoir. In Japanese literary culture, <em>kotoba ni suru</em> carries a double valence: it is both the path to authenticity (the I-novel tradition) and the path to destruction (naming makes the unnamed manageable but also makes it inescapable). The English "putting it into words" cannot capture this cultural weight; it sounds like a step toward health, whereas the Japanese <em>kotoba ni suru koto de</em> sounds like a step toward a precipice. The <em>te shimau</em> construction is crucial here: it tells us that Saito experiences the verbalization of his desire not as self-expression but as self-creation — and that the self thus created is one he does not want to be responsible for.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"The Body Knows Before the Mind"</div>
+    <div class="passage-jp">
+      身体は、心が認めるより先に、知っている。
+    </div>
+    <div class="passage-romaji">
+      "Karada wa, kokoro ga mitomeru yori saki ni, shitte iru."
+    </div>
+    <div class="passage-en">
+      "The body knows, before the mind admits it."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — from Emiko's narrative — is one of the novel's most quietly devastating lines, and its grammar enacts the very priority of body over mind that it describes. <em>Karada wa</em> (身体は, "as for the body") uses the topic marker <em>wa</em> (は) to establish "the body" as the subject under discussion — not "my body" or "her body" but "the body" as a universal category, as if Emiko has discovered a general truth about human existence through her own suffering. The word <em>karada</em> (身体, "body / physical body") rather than <em>shintai</em> (身体, also "body" but more formal/clinical) or <em>nikutai</em> (肉体, "flesh / physical body" with sexual connotations) is significant: <em>karada</em> is the everyday word, the word a child would use, the word that carries no philosophical pretension. This ordinariness makes the sentence's claim more shocking — it is not a theoretical statement about embodiment but a simple observation from lived experience. <em>Kokoro ga mitomeru yori saki ni</em> (心が認めるより先に, "before the mind admits / recognizes") uses the comparative <em>yori</em> (より, "than / rather than") with <em>saki ni</em> (先に, "before / earlier") to create a temporal hierarchy: the body's knowledge precedes the mind's acknowledgment. The word <em>kokoro</em> (心, "heart / mind / spirit") is crucial — in Japanese, <em>kokoro</em> encompasses both emotional and cognitive functions, so "mind" is only an approximate translation. <em>Kokoro ga mitomeru</em> (心が認める, "the heart/mind admits / recognizes") uses <em>mitomeru</em> (認める, "to recognize / to admit / to approve of") rather than <em>shiru</em> (知る, "to know") or <em>wakaru</em> (分かる, "to understand"), and this choice is significant: <em>mitomeru</em> carries the sense of reluctant acknowledgment, of granting something one would prefer to deny. The mind does not merely "know" in the abstract; it must "admit," must give permission, must overcome resistance. The body, by contrast, simply <em>shitte iru</em> (知っている, "knows") — the continuous aspect making the knowledge ongoing and unchanging, a state rather than an event. What is lost in English is the full Japanese resonance of the body-mind distinction. In English, "The body knows before the mind admits it" sounds like a psychological insight, perhaps from cognitive science or phenomenology. In Japanese, <em>karada wa, kokoro ga mitomeru yori saki ni, shitte iru</em> carries the weight of Buddhist and traditional Japanese medicine's understanding of the body as the site of truth that the mind can only belatedly recognize. The sentence's structure — topic (<em>karada wa</em>), comparative temporal clause (<em>kokoro ga mitomeru yori saki ni</em>), main verb (<em>shitte iru</em>) — creates a kind of grammatical suspense: the body is announced, a comparison is set up, and then the simple verb arrives like a fact that has been waiting to be stated. The English translation preserves this structure but loses the cultural specificity of <em>karada</em> as the locus of <em>honne</em> (本音, "true feeling") versus <em>kokoro</em> as the locus of <em>tatemae</em> (建前, "public facade"). In Japanese cultural psychology, the body is where truth resides; the mind is where socialization operates. Emiko's sentence is thus not merely a personal observation but a cultural diagnosis — and one that the entire novel will bear out, as both her body and Saito's body insist on truths that their minds have spent years trying to suppress.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"To Live Without Lying"</div>
+    <div class="passage-jp">
+      嘘をつかずに生きること。それが、彼にとっての正義だった。
+    </div>
+    <div class="passage-romaji">
+      "Uso wo tsukazu ni ikiru koto. Sore ga, kare ni totte no seigi datta."
+    </div>
+    <div class="passage-en">
+      "To live without lying. That, for him, was justice."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — from late in Saito's narrative, as he approaches a tentative resolution — contains the novel's ethical core, and its grammar makes a modest claim into a radical one. The first sentence is not grammatically a sentence at all but a nominalized phrase: <em>Uso wo tsukazu ni ikiru koto</em> (嘘をつかずに生きること, "to live without lying / the act of living without lying"). The <em>koto</em> (こと) nominalization turns the verb phrase into a noun, making "living without lying" into a thing that can be contemplated, desired, perhaps achieved. The <em>ni</em> (に) after <em>tsukazu</em> (つかず, "without telling [a lie]") is the adverbial marker — "in the manner of not lying" — and the continuative negative <em>zu</em> (ず) form of <em>tsuku</em> (つく, "to tell [a lie]") creates a state of ongoing non-lying rather than a single act of truth-telling. This is important: Saito's ethical ideal is not "tell the truth once" but "live in the continuous state of not lying" — a much more demanding and much more vulnerable way of being. The second sentence — <em>Sore ga, kare ni totte no seigi datta</em> (それが、彼にとっての正義だった, "That, for him, was justice") — uses the demonstrative <em>sore</em> (それ, "that") to refer back to the entire nominalized phrase, making "living without lying" the antecedent of "justice." The phrase <em>kare ni totte</em> (彼にとって, "for him") uses the dative <em>ni totte</em> (にとって) to specify that this is his justice, not necessarily anyone else's — a crucial qualification that prevents the sentence from becoming preachy or universalizing. The possessive <em>no</em> (の) before <em>seigi</em> (正義, "justice") makes "justice" into something that belongs to him — "his justice," "the justice that was his." The past tense <em>datta</em> (だった, "was") is also significant: this justice is not an abstract ideal but something he has arrived at through experience, something that has become true for him over time. What is lost in English is the full force of <em>seigi</em> (正義) in this context. The word <em>seigi</em> — which contains the same <em>sei</em> (正) as the novel's title — is the standard Japanese word for "justice," but it carries associations of heroic struggle, of fighting for what is right, of social transformation. To call "living without lying" <em>seigi</em> elevates it from a personal moral standard to a form of resistance — resistance against a society that demands lies, that punishes truth-telling, that makes authenticity dangerous. The English "justice" captures the meaning but loses the characterological echo: <em>seigi</em> shares its first character with <em>seiyoku</em> (正欲), creating a subliminal connection between "correct desire" and "justice" that the English cannot replicate. The sentence also loses the Japanese rhythm: the three-beat <em>u-so-wo-tsu-ka-zu-ni-i-ki-ru-ko-to</em> (11 morae) followed by the four-beat <em>so-re-ga-ka-re-ni-to-tte-no-se-i-gi-da-t-ta</em> (14 morae) creates a cadence of statement and confirmation, of ideal and identification, that the English "To live without lying. That, for him, was justice" approximates but cannot fully reproduce. The Japanese sounds like a moral principle being carved in stone; the English sounds like a quiet personal reflection. Both are true to Saito, but the Japanese carries the weight of a civilization's vocabulary of righteousness — a weight that makes the modest content (just don't lie) into something almost revolutionary.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"The Shape of a Life"</div>
+    <div class="passage-jp">
+      人は、自分の欲望の形に、人生を削っていく。
+    </div>
+    <div class="passage-romaji">
+      "Hito wa, jibun no yokubō no katachi ni, jinsei wo kezutte iku."
+    </div>
+    <div class="passage-en">
+      "People carve their lives into the shape of their desires."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — one of the novel's most beautiful and disturbing observations — uses grammar to make desire into a sculptor and life into the stone, and the effect is both elegiac and hopeful. <em>Hito wa</em> (人は, "as for people / people [topic]") uses the universal topic to make a claim about human nature as such — this is not how one person acts but how all people act, whether they know it or not. The word <em>hito</em> (人, "person / people") is the most universal subject in Japanese, and its use here prevents the sentence from sounding like advice or prescription; it is simply an observation about the human condition. <em>Jibun no yokubō no katachi ni</em> (自分の欲望の形に, "into the shape of their own desires") uses the double possessive <em>no... no</em> (の...の) to create a nested structure: the shape (<em>katachi</em> / 形) of the desires (<em>yokubō</em> / 欲望) of oneself (<em>jibun</em> / 自分). The word <em>katachi</em> (形, "shape / form") is one of the most resonant words in Japanese aesthetics — it appears in discussions of art, of manners, of social form, of the visible manifestation of invisible essence. To say that desires have a <em>katachi</em> is to grant them aesthetic and ontological dignity; they are not merely impulses but forms, structures, architectures of the self. The dative particle <em>ni</em> (に, "into / toward") makes the desire's shape into a destination — life moves toward this shape, is drawn into it, finds its form there. <em>Jinsei wo kezutte iku</em> (人生を削っていく, "carve / whittle away at life [continuous]") uses the continuative <em>kezutte iku</em> (削っていく) to make the carving into an ongoing process — not a single act but a lifetime's work. The verb <em>kezuru</em> (削る, "to shave / to carve / to whittle / to erode") is the crucial word here, and it carries a complex set of associations. <em>Kezuru</em> can mean to carve a sculpture from stone (creative), to whittle a stick (craft-like), to erode a coastline (natural), or to shave away at something until it is damaged (destructive). All of these meanings are active in the sentence: life is being shaped by desire, but it is also being worn away, diminished, reduced. The novel's profound ambiguity is contained in this single verb: is the shaping of life by desire a creative act or a destructive one? The answer, the novel suggests, is both — and the grammar does not let us choose. The accusative <em>wo</em> (を) before <em>kezutte</em> makes <em>jinsei</em> (人生, "life / human life") the direct object of the carving — life is the material that is being worked on, the stone that is being shaped. This is a radical reconceptualization: we do not "live" our lives so much as we sculpt them, and the chisel is desire. What is lost in English is the specifically Japanese poignancy of <em>kezuru</em> as a verb of artistic creation. In Japanese aesthetics, the artist does not "add" to the material but "reveals" what is already there by removing what is not essential — the sculptor carves away everything that is not the figure. This aesthetic of subtraction (<em>kanshō</em> / 減少) is central to Japanese art theory, and Asai's use of <em>kezuru</em> activates this tradition: desire reveals the shape of a life by removing everything that does not belong to it. The English "carve" captures some of this but loses the nuance of revelation-through-removal. "Whittle" would capture the gradual, reductive quality but sounds too rustic. "Erode" would capture the destructive aspect but loses the creative one. The Japanese <em>kezutte iku</em> holds all of these in suspension — the creative, the destructive, the gradual, the irreversible — and the sentence's beauty depends on this suspension. The English "People carve their lives into the shape of their desires" is accurate and eloquent, but it makes the process sound more intentional than the Japanese suggests. The Japanese <em>kezutte iku</em> has a quality of something happening over time, almost despite oneself — the way a coastline erodes, the way a habit forms. The English "carve" sounds like a decision; the Japanese <em>kezuru</em> sounds like a fate.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of desires that do not fit, bodies that know before minds admit, and the justice of living without lies.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>正欲</td><td>seiyoku</td><td class="pos">noun</td><td>right desire; correct lust</td></tr>
+        <tr><td>正</td><td>sei / tadashii</td><td class="pos">noun/adj</td><td>correct; proper; upright; true</td></tr>
+        <tr><td>欲</td><td>yoku</td><td class="pos">noun</td><td>desire; greed; lust; craving</td></tr>
+        <tr><td>欲望</td><td>yokubō</td><td class="pos">noun</td><td>desire; ambition; craving</td></tr>
+        <tr><td>性欲</td><td>seiyoku</td><td class="pos">noun</td><td>sexual desire; libido</td></tr>
+        <tr><td>正常</td><td>seijō</td><td class="pos">na-adj</td><td>normal; healthy; standard</td></tr>
+        <tr><td>正しい</td><td>tadashii</td><td class="pos">i-adj</td><td>correct; right; proper</td></tr>
+        <tr><td>正義</td><td>seigi</td><td class="pos">noun</td><td>justice; righteousness</td></tr>
+        <tr><td>正名</td><td>seimei</td><td class="pos">noun</td><td>rectification of names (Confucian)</td></tr>
+        <tr><td>心</td><td>kokoro</td><td class="pos">noun</td><td>heart; mind; spirit</td></tr>
+        <tr><td>身体</td><td>karada</td><td class="pos">noun</td><td>body; physical body</td></tr>
+        <tr><td>形</td><td>katachi</td><td class="pos">noun</td><td>shape; form; appearance</td></tr>
+        <tr><td>人生</td><td>jinsei</td><td class="pos">noun</td><td>life; human life</td></tr>
+        <tr><td>嘘</td><td>uso</td><td class="pos">noun</td><td>lie; falsehood</td></tr>
+        <tr><td>本当</td><td>hontō</td><td class="pos">na-adj/noun</td><td>truth; reality; genuine</td></tr>
+        <tr><td>本音</td><td>honne</td><td class="pos">noun</td><td>true feeling; real intention</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Desire, Shame & the Language of the Hidden Self</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>恥</td><td>haji</td><td class="pos">noun</td><td>shame; humiliation</td></tr>
+        <tr><td>秘密</td><td>himitsu</td><td class="pos">noun</td><td>secret; confidentiality</td></tr>
+        <tr><td>隠す</td><td>kakusu</td><td class="pos">verb</td><td>to hide; to conceal</td></tr>
+        <tr><td>認める</td><td>mitomeru</td><td class="pos">verb</td><td>to recognize; to admit; to approve</td></tr>
+        <tr><td>言葉にする</td><td>kotoba ni suru</td><td class="pos">verb phrase</td><td>to put into words; to verbalize</td></tr>
+        <tr><td>変態</td><td>hentai</td><td class="pos">noun</td><td>perversion; pervert; metamorphosis</td></tr>
+        <tr><td>性癖</td><td>seiheki</td><td class="pos">noun</td><td>sexual preference; fetish</td></tr>
+        <tr><td>違和感</td><td>iwakan</td><td class="pos">noun</td><td>sense of discomfort; feeling out of place</td></tr>
+        <tr><td>違う</td><td>chigau</td><td class="pos">verb</td><td>to differ; to be wrong</td></tr>
+        <tr><td>普通</td><td>futsū</td><td class="pos">na-adj</td><td>normal; ordinary; common</td></tr>
+        <tr><td>当たり前</td><td>atarimae</td><td class="pos">na-adj</td><td>obvious; natural; taken for granted</td></tr>
+        <tr><td>建前</td><td>tatemae</td><td class="pos">noun</td><td>public facade; official position</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">na-adj/noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>生きづらさ</td><td>ikizurasa</td><td class="pos">noun</td><td>difficulty of living; hardship of existence</td></tr>
+        <tr><td>承認</td><td>shōnin</td><td class="pos">noun</td><td>approval; recognition; validation</td></tr>
+        <tr><td>自己</td><td>jiko</td><td class="pos">noun</td><td>self; oneself</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Society, Norms & the Violence of Conformity</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>社会</td><td>shakai</td><td class="pos">noun</td><td>society</td></tr>
+        <tr><td>規範</td><td>kihan</td><td class="pos">noun</td><td>norm; standard; criterion</td></tr>
+        <tr><td>常識</td><td>jōshiki</td><td class="pos">noun</td><td>common sense; conventional wisdom</td></tr>
+        <tr><td>同調</td><td>dōchō</td><td class="pos">noun</td><td>conformity; falling in line</td></tr>
+        <tr><td>圧力</td><td>atsuryoku</td><td class="pos">noun</td><td>pressure; stress</td></tr>
+        <tr><td>偏見</td><td>henken</td><td class="pos">noun</td><td>prejudice; bias</td></tr>
+        <tr><td>差別</td><td>sabetsu</td><td class="pos">noun</td><td>discrimination; distinction</td></tr>
+        <tr><td>排除</td><td>haijo</td><td class="pos">noun</td><td>exclusion; elimination</td></tr>
+        <tr><td>暴力</td><td>bōryoku</td><td class="pos">noun</td><td>violence; force</td></tr>
+        <tr><td>傷</td><td>kizu</td><td class="pos">noun</td><td>wound; injury; trauma</td></tr>
+        <tr><td>癒す</td><td>iyasu</td><td class="pos">verb</td><td>to heal; to cure</td></tr>
+        <tr><td>削る</td><td>kezuru</td><td class="pos">verb</td><td>to shave; to carve; to whittle; to erode</td></tr>
+        <tr><td>耐える</td><td>taeru</td><td class="pos">verb</td><td>to endure; to bear; to withstand</td></tr>
+        <tr><td>生きる</td><td>ikiru</td><td class="pos">verb</td><td>to live</td></tr>
+        <tr><td>存在</td><td>sonzai</td><td class="pos">noun</td><td>existence; being</td></tr>
+        <tr><td>尊厳</td><td>songen</td><td class="pos">noun</td><td>dignity</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Asai writes with the precision of a moral philosopher and the courage of someone who has something to lose — and the translation of his most dangerous novel raises urgent questions about how to carry desire across linguistic boundaries without domesticating its deviance.</p>
+
+  <div class="card">
+    <h3>1. <em>Seiyoku</em> (正欲) vs. "Right Desire": The Oxymoron That English Cannot Fully Reproduce</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>正欲</strong> — oxymoronic compound: <em>sei</em> (correct/proper) + <em>yoku</em> (desire/lust); echoes <em>seiyoku</em> (性欲, sexual desire) without the explicit <em>sei</em> (性, sex)</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Right Desire" / "Correct Lust"</strong> — semantic approximation; loses the echo of 性欲 and the shock of the compound</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The title <em>Seiyoku</em> is a deliberate orthographic and semantic provocation. The standard word for "sexual desire" in Japanese is <em>seiyoku</em> (性欲), written with <em>sei</em> (性, "sex / sexuality / nature") and <em>yoku</em> (欲, "desire"). By replacing 性 with 正 (correct/proper), Asai creates a title that is almost <em>seiyoku</em> but not quite — a near-homophone that forces the reader to do a double-take, to hear "sexual desire" and then realize that what is written is "correct desire." This phonetic and graphic proximity is the title's central device, and it is entirely lost in English. "Right Desire" or "Correct Lust" conveys the semantic content but cannot reproduce the shock of recognition and revision that the Japanese reader experiences — the moment of thinking "sexual desire" and then having to recalibrate to "correct desire." This recalibration is the novel's entire project in miniature: teaching readers to revise their automatic associations, to question what they assume when they hear words like "desire" and "correct." The English title also loses the compactness of the Japanese: <em>Seiyoku</em> is two characters, four syllables, a single breath; "Right Desire" is three syllables but two words, and "Correct Lust" is four syllables with a jarring register clash ("correct" is formal; "lust" is biblical/romantic). The Japanese achieves its oxymoron within the economy of a single word; English requires a phrase. A translator might try "Rightlust" as a coinage, but this would sacrifice clarity for effect. The fundamental loss is of the title's pedagogical function: the Japanese title teaches the reader how to read the novel before they open it, by forcing a revision of their own assumptions. The English title can only state the theme, not enact it.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Kotoba ni suru</em> (言葉にする): The Terror and Promise of Verbalization</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>言葉にする</strong> — "to make into words"; carries the full weight of the I-novel tradition and the terror of making desire real through naming</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"to put into words" / "to verbalize"</strong> — accurate but lacks the literary and cultural resonance</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>kotoba ni suru</em> (葉にする, "to make into words / to put into words") is one of the most culturally loaded phrases in Japanese, and its use in <em>Seiyoku</em> activates a literary tradition that English cannot access. In the Japanese "I-novel" (<em>watakushi shōsetsu</em>) tradition that began with Tayama Katai's <em>The Quilt</em> (1907), <em>kotoba ni suru</em> is the foundational act of literature: the writer's obligation to name what has been unnameable, to make experience communicable by forcing it into language. This tradition carries both positive and negative valences: on the positive side, <em>kotoba ni suru</em> is the path to authenticity, to being known, to escaping the prison of solitary experience. On the negative side, <em>kotoba ni suru</em> is an act of exposure that cannot be undone — once named, an experience becomes public property, subject to judgment, interpretation, and misinterpretation. In <em>Seiyoku</em>, Saito's fear of <em>kotoba ni suru</em> is precisely this double valence: he knows that naming his desire might liberate him, but he also knows that it will make him vulnerable in ways he cannot control. The English "putting into words" captures the basic meaning but loses the literary-historical weight: in English, "putting into words" sounds like a therapeutic goal, a step toward mental health, a positive act of self-expression. The Japanese <em>kotoba ni suru</em> carries the accumulated weight of a century of literary confession, with all its ambivalence about authenticity and exposure. A translator might try to compensate by adding context — "the act of naming that Japanese literature has both demanded and feared since Tayama Katai" — but this would be commentary, not translation. The loss is structural: the Japanese reader feels the weight of literary history in the phrase; the English reader feels only the immediate context. This is not a failure of translation but a difference in literary ecology: English has its own traditions of confession (Augustine, Rousseau, the confessional poets), but they do not attach to the specific phrase "put into words" with the density that <em>kotoba ni suru</em> carries in Japanese. The result is that Saito's terror of naming sounds slightly irrational in English — "why is he so afraid of putting it into words?" — whereas in Japanese, the terror is culturally intelligible, even expected: of course he is afraid; <em>kotoba ni suru</em> has destroyed as many lives as it has saved.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Ikizurasa</em> (生きづらさ): The Untranslatable Density of "Difficulty of Living"</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>生きづらさ</strong> — nominalized adjective: "difficulty of living / hardship of existence / the quality of finding life hard to live"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"difficulty of living" / "hard to live" / "life is hard"</strong> — approximations that lose the nominalized abstraction</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>ikizurasa</em> (生きづらさ) — the nominalized form of <em>ikizurai</em> (きづらい, "hard to live / difficult to exist") — is one of the most important untranslatable words in contemporary Japanese, and it appears throughout <em>Seiyoku</em> as the background condition against which all the characters' struggles take place. <em>Ikizurai</em> is formed from <em>iki</em> (生き, "living") and <em>zurai</em> (づらい, a suffix meaning "difficult to do [because of physical or social friction]"). The nominalization <em>sa</em> (さ) turns the adjective into an abstract noun — not "I find life hard" but "the hardness of life itself," a quality that exists in the world, not merely in individual perception. This grammatical move is crucial: it transforms personal suffering into social condition, making <em>ikizurasa</em> into a structural feature of the society the novel describes rather than a private feeling of its characters. The word has become central to Japanese discussions of mental health, social exclusion, and the experience of living in a society with rigid norms — it names the friction between individual difference and social expectation that produces suffering without pathology. English has no equivalent word. "Difficulty of living" is accurate but clumsy; "hard to live" is not a noun; "life is hard" is a platitude. A translator might use "social friction," "existential friction," or "the weight of living," but none of these capture the specific Japanese sense of a society that makes life difficult by its very structure — by its assumptions, its norms, its unspoken requirements. The loss of <em>ikizurasa</em> matters because it is the water the novel's characters swim in: not a dramatic crisis but a chronic condition, not a disease but an environment. Without the word, English readers may understand that the characters suffer but may not understand that their suffering is produced by the same social machinery that produces "normality" for everyone else — that <em>ikizurasa</em> is the shadow cast by <em>futsū</em> (普通, "normal"), the cost of maintaining a society in which some ways of being are "ordinary" and others are "hard to live."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Karada</em> (身体) vs. <em>Shintai</em> (身体) vs. <em>Nikutai</em> (肉体): The Body's Many Names</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>身体（からだ）</strong> — everyday body; <strong>身体（しんたい）</strong> — clinical/formal body; <strong>肉体（にくたい）</strong> — flesh/erotic body</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"body"</strong> — single word for all three, losing the register and affective distinctions</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Japanese has multiple words for "body," and Asai's choice of <em>karada</em> (身体) rather than <em>shintai</em> (身体, same characters, different reading) or <em>nikutai</em> (肉体, "flesh") is meaningful in ways that English cannot reproduce. <em>Karada</em> is the everyday, almost childlike word for the physical body — the word you use when you say "my body hurts" or "I washed my body." It carries no clinical distance (<em>shintai</em> is the word doctors use) and no erotic charge (<em>nikutai</em> is the word philosophers and erotic writers use). By choosing <em>karada</em> for the sentence "The body knows before the mind admits it," Asai makes the body's knowledge into something ordinary, basic, pre-theoretical — not a medical fact or a philosophical claim but a simple truth that anyone who has lived in a body knows. The English "body" cannot capture this ordinariness because English "body" is the only word available and therefore carries all registers simultaneously — clinical, erotic, philosophical, everyday. The Japanese reader feels the specificity of <em>karada</em> as the body of lived experience rather than theory; the English reader receives only the generic "body." This matters for the novel because one of its central arguments is that desire is not theoretical — it is not a matter of identity categories or political positions but of bodily experience that precedes all categorization. The word <em>karada</em> enacts this argument at the lexical level: it names the body as the site of pre-discursive truth, the place where knowledge exists before language can capture it. <em>Shintai</em> would have made the sentence sound medical; <em>nikutai</em> would have made it sound erotic or philosophical. <em>Karada</em> makes it sound true — and that truthfulness, that quality of unarguable lived experience, is what the English "body" cannot quite deliver. A translator might try "the flesh" for <em>nikutai</em> or "the physical body" for <em>shintai</em>, but there is no English equivalent for <em>karada</em> — the everyday body, the body you have without thinking about it, the body that knows what the mind denies.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Kezutte iku</em> (削っていく): The Aesthetics of Subtractive Self-Creation</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>削っていく</strong> — continuative of <em>kezuru</em>: "carving/whittling/eroding [ongoing]"; carries creative, destructive, and natural-process meanings simultaneously</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"carve" / "whittle away" / "erode"</strong> — each captures one facet but loses the others</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The verb <em>kezuru</em> (削る) and its continuative form <em>kezutte iku</em> (削っていく) are central to the novel's aesthetic and moral vision, and their translation is genuinely impossible without loss. <em>Kezuru</em> means to remove material from a surface by scraping, shaving, or cutting — it is the verb for carving a sculpture, whittling a stick, sharpening a pencil, eroding a cliff, and cutting costs (<em>hi o kezuru</em> / 費を削る, "to reduce expenses"). This semantic range is not accidental: it reflects a Japanese aesthetic in which creation and destruction are not opposites but aspects of the same process — the sculptor destroys the stone to create the figure, the river destroys the mountain to create the valley. The continuative <em>kezutte iku</em> (削っていく) makes this process ongoing and directional — life is not merely carved but is in the process of being carved, moving toward the shape that desire dictates. The English "carve" captures the artistic dimension but loses the destructive and natural-process dimensions. "Whittle away" captures the gradual, reductive quality but sounds too rustic and loses the artistic dignity. "Erode" captures the natural-process dimension but loses intentionality and creativity. "Shape" would lose the subtractive quality entirely. The Japanese <em>kezutte iku</em> holds all of these in suspension — the creative, the destructive, the gradual, the irreversible — and this suspension is essential to the novel's moral ambiguity. The novel does not tell us whether being shaped by desire is a good thing or a bad thing; it shows us that it is simply what happens, and that the ethical question is not whether to be shaped but how to live with the shape that results. The English translation must choose one meaning and lose the others, whereas the Japanese preserves the full ambiguity that makes the sentence — and the novel — morally serious rather than merely descriptive. This is one of the cases where translation loss is not merely lexical but philosophical: the English reader receives a statement about life being shaped by desire; the Japanese reader receives a meditation on the ethics of subtractive self-creation that has no single answer.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of desires that cannot be named, bodies that know before minds admit, and lives carved slowly into the shape of what we cannot stop wanting.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たことがな（経験否定）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ta koto ga nai</em>: "have never [done]" — experiential perfect negative, making absence into accumulated lifetime.</p>
+      <div class="grammar-example">誰にも言ったことがなかった</div>
+      <p class="grammar-example-en">"He had never told anyone" — The grammar of a lifetime's silence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・遺憾）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te shimau</em>: unintended or regrettable completion — "end up [doing] / [do] completely [with regret]"</p>
+      <div class="grammar-example">本当のものになってしまう</div>
+      <p class="grammar-example-en">"It would become something real [unwanted result]" — The grammar of feared actualization.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜気がした（感覚・推量）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ki ga shita</em>: "felt that... / had the feeling that..." — subjective sensation marker, softening assertion into intuition.</p>
+      <div class="grammar-example">気がしたのだ</div>
+      <p class="grammar-example-en">"He felt that... [explanatory]" — The grammar of fearful intuition.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜より先に（比較・時間）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yori saki ni</em>: "before... / earlier than..." — comparative temporal construction establishing priority.</p>
+      <div class="grammar-example">心が認めるより先に、知っている</div>
+      <p class="grammar-example-en">"The body knows before the mind admits it" — The grammar of bodily precedence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜こと（名詞化）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...koto</em>: nominalization of verb phrase — "[the act of]... / [the fact of]..."</p>
+      <div class="grammar-example">嘘をつかずに生きること</div>
+      <p class="grammar-example-en">"To live without lying / the act of living without lying" — The grammar of ideal as noun.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜にとっての（関係・所有）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni totte no</em>: "[the X] that is for [person] / [person's] X" — dative possessive specifying whose category.</p>
+      <div class="grammar-example">彼にとっての正義</div>
+      <p class="grammar-example-en">"The justice that was his / justice, for him" — The grammar of personal ethics.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ずに（打消し連用）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...zu ni</em>: negative continuative — "without [doing]" — creating state of ongoing non-action.</p>
+      <div class="grammar-example">嘘をつかずに</div>
+      <p class="grammar-example-en">"Without telling lies / in the state of not lying" — The grammar of continuous integrity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ていく（継続・方向）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te iku</em>: continuative with directional <em>iku</em> — "[doing] continuously / [doing] going forward"</p>
+      <div class="grammar-example">人生を削っていく</div>
+      <p class="grammar-example-en">"Carve / erode one's life [ongoing, forward]" — The grammar of irreversible shaping.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Seiyoku</em> is the grammar of what cannot be said and what must be said anyway. The experiential negative (<em>ta koto ga nai</em>) makes silence into a lifetime's accumulation; the regrettative completion (<em>te shimau</em>) makes naming into a feared actualization; the subjective sensation (<em>ki ga shita</em>) makes fear into intuition; the comparative temporal (<em>yori saki ni</em>) makes the body precede the mind; the nominalization (<em>koto</em>) makes ethical ideals into graspable nouns; the dative possessive (<em>ni totte no</em>) makes justice personal rather than universal; the negative continuative (<em>zu ni</em>) makes integrity into a sustained state; and the directional continuative (<em>te iku</em>) makes life's shaping into an irreversible forward movement. Pay attention to how these constructions work together to create a prose that is simultaneously precise and tentative, declarative and doubtful — the voice of a writer who knows that the most important truths about desire can only be approached indirectly, through grammar that circles around them, that names them slowly, that respects the courage it takes to say what has never been said before.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『正欲』 &middot; 朝井リョウ 著 &middot; 集英社 2022年2月18日刊 &middot; 448ページ &middot; ISBN 978-4-08-771765-5</p>
+  <p style="margin-top: var(--space-xs);">受賞：第54回谷崎潤一郎賞（2023年1月）</p>
+  <p style="margin-top: var(--space-xs);">売上：累計25万部突破（2023年中旬時点）</p>
+  <p style="margin-top: var(--space-xs);">映画化：2023年11月公開 &middot; 監督 岸善幸 &middot; 主演 山﨑賢人、趣里</p>
+  <p style="margin-top: var(--space-xs);">著者：朝井リョウ（1989年生・群馬県出身・立教大学卒）</p>
+  <p style="margin-top: var(--space-xs);">主要過去受賞・作品：『何者』（2012年・映画化2016年） &middot; 『君の鳥は歌える』（2018年） &middot; 『散り椿』（第34回柴田錬三郎賞・2018年） &middot; 『ミュジコフィリア』（2019年）</p>
+</footer>
+
+</div>
+</body>
+</html>

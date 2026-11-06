@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本を読んだことがない32歳がはじめて本を読む | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>本を読んだことがない32歳がはじめて本を読む</h1>
+  <p class="hero-subtitle">Hon wo Yonda Koto ga Nai 32-sai ga Hajimete Hon wo Yomu / A 32-Year-Old Who Has Never Read a Book Starts Reading for the First Time</p>
+  <p class="hero-meta">かまど・みくのしん 著 &middot; 大和書房 2024年8月3日刊 &middot; 319ページ &middot; ISBN 978-4-479-39435-8 &middot; 累計10万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: A Sentence That Became a Bestseller</h2>
+  <p class="lead">The title <em>Hon wo Yonda Koto ga Nai 32-sai ga Hajimete Hon wo Yomu</em> (本を読んだことがない32歳がはじめて本を読む, "A 32-Year-Old Who Has Never Read a Book Starts Reading for the First Time") is not a title in the conventional literary sense. It is a complete Japanese sentence — subject, predicate, and all — and this grammatical completeness is precisely what makes it work. In an age of algorithmic content consumption, where titles must function as clickbait hooks and SEO-optimized search strings, this title operates with the radical simplicity of a statement of fact: here is a person, here is what they are doing, and here is why you might care. The grammar is elementary: <em>Hon wo yonda koto ga nai</em> (本を読んだことがない, "has never read a book") is an experiential perfect negative using <em>koto ga nai</em> (ことがない, "never [done]"), a pattern taught in the first year of Japanese study. <em>32-sai</em> (32歳, "32-year-old") modifies this person with the specificity of age — not "a man" or "a person" but exactly 32, old enough to have a fully formed adult identity, young enough to still change. <em>Ga</em> (が) marks the subject with the emphasis of new information — this 32-year-old, not some other. <em>Hajimete</em> (初めて, "for the first time") is an adverb of inaugural experience, carrying the weight of all first times — first kiss, first job, first time seeing the ocean. And <em>hon wo yomu</em> (本を読む, "reads a book") is the simplest possible predicate, the basic transitive sentence that Japanese textbooks use on page one. The title's subtitle — <em>Hashire Merosu / Hitofusa no Budō / Toshishun / Hondana</em> (走れメロス・一房の葡萄・杜子春・本棚) — lists the four works covered in the book with the flat enumerative rhythm of a table of contents, but also with the implicit promise that these four particular works, read in this particular order, by this particular person, will produce something that no other combination could. The title as a whole is thus a narrative proposition before the book even begins: it tells a story in a single sentence, and the story is so improbable — a 32-year-old who has never read a book, reading Dazai Osamu and Akutagawa Ryunosuke for the first time — that the reader cannot help but want to know what happens next.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">本を読んだことがない</span>
+        <span class="romaji">hon wo yonda koto ga nai</span>
+        <span class="meaning">"has never read a book" — The experiential perfect negative construction <em>...ta koto ga nai</em> (...たことがない) is one of the most fundamental patterns in Japanese, taught in every introductory textbook. Its use here is strategically brilliant: it establishes the subject's inexperience with the same grammatical tool used by beginners, creating an immediate structural identification between the 32-year-old protagonist and any student of Japanese who has ever said <em>Nihon ni itta koto ga nai</em> (日本に行ったことがない, "I've never been to Japan"). The word <em>hon</em> (本, "book") is deliberately unspecific — not "novel" (<em>shōsetsu</em> / 小説), not "literature" (<em>bungaku</em> / 文学), not "manga" (<em>manga</em> / 漫画), but simply "book" — which makes the claim both more shocking and more relatable. In an age when many adults consume information primarily through screens, the idea of someone who has "never read a book" is simultaneously absurd and recognizable, a hyperbolic version of a widespread condition. The experiential <em>koto ga nai</em> also carries a subtle temporal weight: it does not merely say "does not read books" (<em>hon wo yomanai</em> / 本を読まない) but "has never, in the entire history of his life up to this point, read a book." This is the grammar of cumulative absence, of a void that has been building for 32 years — and the title's promise is that this void is about to be filled.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">32歳</span>
+        <span class="romaji">32-sai</span>
+        <span class="meaning">"32-year-old" — The age is specific and significant. In Japanese society, 32 is an age of established adulthood: old enough to have finished education, started a career, perhaps married, perhaps had children — old enough, in other words, to be considered fully formed. To say that a 32-year-old has never read a book is not like saying it about a teenager; it is saying that an entire adult life has been lived without this fundamental human experience. The number 32 also carries a subtle marketing psychology: it is old enough to be surprising ("How is that even possible?") but young enough to be sympathetic ("He still has time to change"). The counter <em>-sai</em> (歳, "years old") is the formal age counter, used in official documents and serious contexts, which gives the age a documentary precision — this is not an approximation but a fact. The title thus presents us with a statistical anomaly, a data point that should not exist but does, and the book's entire project is to make that anomaly narratively productive rather than merely pitiable.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">が</span>
+        <span class="romaji">ga</span>
+        <span class="meaning">"[subject marker]" — The particle <em>ga</em> (が) marks the subject with the emphasis of new information, the grammatical equivalent of pointing. In the title's sentence structure, <em>ga</em> performs a crucial pivot: it turns the descriptive clause "32-year-old who has never read a book" into the subject of the sentence's main action. Without <em>ga</em>, the title would be a fragment; with <em>ga</em>, it becomes a proposition about a specific person doing a specific thing. The use of <em>ga</em> rather than <em>wa</em> (は) is also significant: <em>wa</em> would topicalize the subject, making it old information ("As for the 32-year-old who has never read a book..."); <em>ga</em> presents him as new information, as someone being introduced to the reader for the first time. This is the grammar of introduction, of documentary framing, of reality television — "Meet the 32-year-old who has never read a book." The particle thus establishes the book's genre before a single page is turned: this is not fiction but reportage, not a novel but a record of something that actually happened.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">はじめて</span>
+        <span class="romaji">hajimete</span>
+        <span class="meaning">"for the first time" — The adverb <em>hajimete</em> (初めて, "for the first time") is one of the most emotionally loaded words in Japanese. It derives from <em>hajimeru</em> (初める, "to begin / to start"), and it carries the full weight of inaugural experience — the first time doing anything that will, from that point on, be part of one's life. <em>Hajimete</em> is the word Japanese people use for first kisses, first jobs, first loves, first times abroad. Its appearance in the title transforms the mundane act of reading a book into an event of existential significance: this is not merely "reading" but "reading for the first time," an experience that can only happen once and that will, by definition, change the person who undergoes it. The word also creates a narrative arc within the title itself: from <em>yonda koto ga nai</em> (has never read) to <em>hajimete... yomu</em> (reads for the first time), the title traces a journey from absence to presence, from void to fulfillment, from not-reading to reading. This arc is the book's promise: you are not merely going to watch someone read books; you are going to witness a first time, with all the vulnerability, discovery, and transformation that first times entail. The grammar of <em>hajimete</em> — an adverb modifying a verb, creating a temporal specification that changes the verb's meaning entirely — is the grammar of initiation, of threshold-crossing, of the moment before and after which everything is different.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">本を読む</span>
+        <span class="romaji">hon wo yomu</span>
+        <span class="meaning">"reads a book" — The predicate <em>hon wo yomu</em> (本を読む, "reads a book") is the simplest possible transitive sentence in Japanese: object (<em>hon</em> / 本, "book") + particle (<em>wo</em> / を, direct object marker) + verb (<em>yomu</em> / 読む, "to read"). It is the sentence that appears in every Japanese textbook's first chapter, the sentence used to teach the <em>wo</em> particle and the conjugation of <em>yomu</em>. By using this elementary sentence as the climax of its title, the book performs a remarkable rhetorical operation: it aligns the 32-year-old's first reading experience with the reader's first encounter with Japanese grammar. The person who has never read a book and the person who is learning Japanese are, grammatically, in the same position — both are doing something for the first time, both are discovering that the simplest sentences can contain infinite depths. The verb <em>yomu</em> (読む) is also culturally resonant in Japanese: it appears in compounds like <em>dokusho</em> (読書, "reading books"), <em>ondoku</em> (音読, "reading aloud"), <em>shōdoku</em> (精读, "close reading"), and <em>ryōdoku</em> (了読, "reading through to the end"). The title's <em>yomu</em> is unspecified as to manner — it could be silent reading, aloud reading, close reading, or casual reading — and this ambiguity is fitting for a book whose central discovery is that there is no single "correct" way to read. The subtitle then specifies what <em>yomu</em> will mean in this case: it will mean reading <em>Hashire Merosu</em> (走れメロス, "Run, Melos!" by Dazai Osamu), <em>Hitofusa no Budō</em> (一房の葡萄, "A Bunch of Grapes" by Arishima Takeo), <em>Toshishun</em> (杜子春, by Akutagawa Ryunosuke), and <em>Hondana</em> (本棚, "Bookshelf" by Ameana). These four titles, connected by the enumeration particle <em>・</em> (nakaguro), form a reading list that is also a curriculum — the classics of Japanese middle-school textbooks, the stories that every Japanese person is supposed to have read, presented here as if for the first time, which, for the 32-year-old protagonist, they are.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 大和書房 (Daiwa Shobo), August 3, 2024, hardcover, 319 pages, 19cm, ISBN 978-4-479-39435-8. Base price: ¥1,600 (¥1,760 tax included). Initial print run: 30,000 copies. Sold out in bookstores nationwide within days; a 50,000-copy reprint was decided just 3 days after release, bringing the total to 80,000 copies by August 9, 2024. Total sales later exceeded 100,000 copies. The book originated as a web article on the media site Omocoro (オモコロ): "本を読んだことがない32歳が初めて『走れメロス』を読む日" (October 31, 2022), which went viral with over 1 million views and became a social media phenomenon. Sequels: 『本が読めない33歳が国語の教科書を読む やまなし・少年の日の思い出・山月記・枕草子』(2025, Daiwa Shobo) and 『本が読めない34歳がはじめてごんぎつねを読む』(September 10, 2026, Omocoro Publishing).
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Authors</div>
+  <h2>かまど &middot; みくのしん &mdash; The Scribe and the Virgin Reader</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">か</div>
+    <div class="author-name-block">
+      <h3>かまど / Kamado</h3>
+      <p class="author-name-romaji">Omocoro Bros Editor-in-Chief &middot; The Scribe Who Records Wonder</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Kamado is a writer and editor from Fukuoka Prefecture. Before joining the web media company BERG HAMBURG BERG (BHB) in 2019, he worked as a composition writer for television and radio — a background that gave him a keen ear for dialogue, timing, and the rhythms of natural speech. At BHB, he became a writer for Omocoro (オモコロ), one of Japan's most distinctive web media platforms, and eventually editor-in-chief of its sister site Omocoro Bros (オモコロブロス). His role in this book is that of facilitator, interlocutor, and scribe: he selects the works for Mikunoshin to read, asks the questions that prompt reflection, and transforms the raw material of conversation into the polished prose of the book. Kamado is, in a sense, the reader's surrogate — the person who already knows these classics and experiences them anew through Mikunoshin's eyes. His questions are never pedantic; they are the questions of a friend who genuinely wants to know what someone else saw in a text he thought he already understood. This quality — the ability to be surprised by the familiar — is what makes Kamado's writing in this book so engaging: he does not lecture about literature; he discovers it alongside his friend, and the discovery is genuine.</p>
+  </div>
+
+  <div class="author-header">
+    <div class="author-avatar">み</div>
+    <div class="author-name-block">
+      <h3>みくのしん / Mikunoshin</h3>
+      <p class="author-name-romaji">Takasugi Mikunoshin (高杉未来之進) &middot; Omocoro Editor-in-Chief &middot; Born September 4, 1990</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Mikunoshin — real name Takasugi Mikunoshin (高杉未来之進), born September 4, 1990, in Tokyo — is the protagonist of this book in every sense that matters. He grew up without reading books: not out of rebellion or ideological opposition, but simply because reading was never part of his life. Manga, yes; the internet, absolutely; but the sustained, solitary engagement with a prose text that we call "reading a book" — never. He made his debut as a writer for Omocoro in 2016 with the article "芋掘りを100倍感動させるために、サツマイモを光らせてみた" ("I Made a Sweet Potato Glow to Make Digging for Potatoes 100 Times More Moving"), a characteristically absurd Omocoro premise that demonstrated his gift for finding emotional depth in unlikely places. After joining BHB, he rose to become editor-in-chief of Omocoro in 2026 — a remarkable trajectory for someone who, by his own admission, had never read a book until age 32.</p>
+    <p style="margin-bottom: var(--space-md);">What makes Mikunoshin extraordinary as a reader is not his inexperience but his responsiveness. Because he has no accumulated literary knowledge, no "correct" way of reading inherited from school or culture, he reads with a directness that trained readers have lost. He cries at sentences that literature professors would analyze for their syntactic complexity. He gets angry at characters that sophisticated readers know to be "unreliable narrators." He asks questions that seem naive but are actually profound — "Marco traveled three thousand ri, but Melos only travels ten ri, right? Isn't he losing?" — questions that cut through centuries of critical interpretation to the basic human concerns that made these stories worth telling in the first place. Mikunoshin cannot read silently; he reads aloud (<em>ondoku</em> / 音読), hearing the words as sounds, feeling their rhythms in his mouth, reacting to them in real time. This orality — this reading as performance, as conversation, as shared event — is the book's central methodological innovation and its deepest insight: reading does not have to be solitary to be real, and understanding does not have to be silent to be deep.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Omocoro, the Decline of Reading, and the Rediscovery of the Classics</h2>
+
+  <div class="card">
+    <h3>Omocoro: Twenty Years of "Loose-Headed Internet"</h3>
+    <p>Omocoro (オモコロ) is a Japanese web media platform founded in 2005 under the slogan "あたまゆるるインターネット" ("loose-headed internet" / "relaxed-brain internet"). For two decades, it has cultivated a distinctive voice: humorous, absurdist, deeply attuned to internet culture, and yet capable of surprising emotional sincerity. The site's name derives from "おもしろコロッセオ" ("Amusing Colosseum"), and like a colosseum it presents a constant stream of spectacles — articles, comics, videos, and collaborative projects — that compete for the audience's attention through sheer creative audacity. Omocoro launched the career of Ameana (雨穴), the anonymous masked writer whose real-estate mystery "変な家" (Strange House) began as an Omocoro article, became a viral YouTube video with over 20 million views, and was published as a book that sold over 300,000 copies and is being adapted into a film. The site's 20th anniversary in 2025 marked a transition: a new editorial team including Mikunoshin as editor-in-chief, Kamado as Omocoro Bros editor-in-chief, Da Vinci Kiyama, and Ameana, with the launch of Omocoro Publishing (オモコロ出版) in June 2026. <em>A 32-Year-Old Who Has Never Read a Book</em> is emblematic of the Omocoro method: take a premise that sounds like a joke, execute it with total sincerity, and discover that the joke contains something genuinely moving — in this case, the revelation that reading is not an elite skill but a universal human capacity waiting to be activated.</p>
+  </div>
+
+  <div class="card">
+    <h3>Japan's "Reading Decline" and the Textbook Canon</h3>
+    <p>Japan, like many advanced economies, has experienced a well-documented decline in book reading over the past several decades. The percentage of people who "read books every day" has fallen steadily, and the average time spent reading has decreased as screen-based entertainment has proliferated. The Japan Publishers and Distributors Association has reported declining print book sales for years, and the cultural discourse is filled with anxiety about <em>dokusho banare</em> (読書離れ, "drifting away from reading") — particularly among young men, who statistically read fewer books than any other demographic. Mikunoshin is, in this sense, a statistical extreme of a widespread condition: the adult who has never developed the habit of reading because the digital environments he grew up in made books seem slow, difficult, and irrelevant. The three classics he reads in this book — Dazai Osamu's <em>Hashire Merosu</em> (走れメロス, 1940), Arishima Takeo's <em>Hitofusa no Budō</em> (一房の葡萄, 1918), and Akutagawa Ryunosuke's <em>Toshishun</em> (杜子春, 1920) — are all mainstays of Japanese middle-school Japanese-language textbooks. They are the stories that "every Japanese person has read" — which means, in practice, that they are the stories that adults like Mikunoshin were supposed to have read in school but either forgot, never absorbed, or actively resisted. The book's historical significance is that it reclaims these canonical texts not as instruments of cultural education but as living experiences — stories that can still make a 32-year-old cry, laugh, and rage on his first encounter with them, proving that the classics are not museum pieces but ongoing events.</p>
+  </div>
+
+  <div class="card">
+    <h3>From Viral Article to National Bestseller: The New Publishing Pipeline</h3>
+    <p>The book's publication history is a case study in the transformation of Japan's media ecosystem. It began as an article on Omocoro Bros on October 31, 2022: "本を読んだことがない32歳が初めて『走れメロス』を読む日" ("The Day a 32-Year-Old Who Had Never Read a Book Read 'Run, Melos!' for the First Time"). The article went viral immediately, trending on Twitter (now X) and accumulating over 1 million views. Readers were captivated by the combination of Mikunoshin's genuine emotional responses and Kamado's unobtrusive narration — the sense of watching a real human being discover something that had been there all along. The article's success led to a book deal with Daiwa Shobo, a publisher known for practical and lifestyle books rather than literary criticism — a fitting choice for a book that is essentially a lifestyle document, a record of how one person changed his relationship to culture. The book's explosive sales — 80,000 copies within a week, over 100,000 total — demonstrated that there was a vast audience hungry for this kind of content: not literary analysis aimed at experts, but reading companionship aimed at people who were afraid of books, or had forgotten why they mattered, or simply wanted to recapture the feeling of reading something for the first time. The book's endorsement by Ameana — "読書の常識が変わる……。これは全く新しい本の読み方です" ("This changes the common sense of reading... This is an entirely new way of reading books") — and by Da Vinci Kiyama — "ついに日本一おもしろく『走れメロス』を読む人間が現れた" ("At last, the most entertaining reader of 'Run, Melos!' in Japan has appeared") — confirmed its status as a cultural phenomenon that bridged internet culture and traditional publishing, viral media and literary heritage.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Four Books, One Virgin Reader, and the Conversation That Changed Everything</h2>
+
+  <div class="card">
+    <h3>The Method: Reading Aloud as Shared Event</h3>
+    <p>The book's formal innovation is simple in concept and radical in implication: one person reads aloud, sentence by sentence, and another person records their reactions, questions, and emotional responses. Mikunoshin cannot read silently — or rather, he has never learned to read silently with comprehension. Instead, he reads aloud (<em>ondoku</em> / 音読), hearing the words as sounds, feeling their rhythms, reacting to them in real time. Kamado sits beside him (or across from him, or on the other end of a voice call — the exact logistics are less important than the structural relationship), listening to him read, occasionally asking questions, and transcribing the exchange. The result is a text that is neither pure dialogue nor pure commentary but something in between: a record of reading as a social act, of literature as a shared experience rather than a solitary one. This method has several consequences that shape the book's unique quality. First, it slows reading down to the speed of speech, which means Mikunoshin cannot skim, cannot skip difficult passages, cannot pretend to have read what he has not. Every sentence must pass through his mouth and his consciousness, which means every sentence has a chance to affect him. Second, the aloudness of the reading makes it performative: Mikunoshin is not merely receiving the text but enacting it, becoming its voice, and this embodiment produces a level of emotional investment that silent reading rarely achieves. Third, the presence of a listener — Kamado — transforms reading from a private activity into a public one, creating accountability and shared memory: Mikunoshin cannot forget what he felt because Kamado was there to witness it, and Kamado cannot dismiss the classics as "already known" because he is seeing them through Mikunoshin's genuinely fresh eyes.</p>
+  </div>
+
+  <div class="card">
+    <h3>Book 1: Dazai Osamu's "Run, Melos!" (走れメロス) — The Discovery of Fiction's Power</h3>
+    <p>The first and most substantial section of the book is devoted to Dazai Osamu's <em>Hashire Merosu</em> (走れメロス, "Run, Melos!"), a 1940 short story that is arguably the most widely read work of modern Japanese literature. Based on a legend from Schiller's poem "Die Bürgschaft," Dazai's story tells of Melos, a young shepherd who arrives in Syracuse and is condemned to death by the tyrant Dionysius. Melos asks for three days' grace to attend his sister's wedding and leave his sister in the care of his friend Selinuntius. Selinuntius pledges his own life as surety: if Melos does not return by sunset on the third day, Selinuntius will be executed in his place. The story follows Melos's desperate run back to Syracuse, his struggles with doubt, fatigue, and despair, and his ultimate arrival just in time to save his friend — a story of friendship, trust, and the human capacity to keep promises even at the cost of one's life. For Mikunoshin, reading this story is an earthquake. He knows the famous opening line — "メロスは激怒した" ("Melos was furious") — because it is part of Japanese cultural common knowledge, but he has never known what comes after. As he reads aloud, sentence by sentence, he is dragged into Melos's world with the helplessness of someone who does not know how stories work, who cannot predict the ending, who feels each twist as a genuine event rather than a narrative convention. He cries. He yells at the characters. He asks questions that seem childish — "Why doesn't he just run faster?" — and in doing so, he rediscovers the basic emotional mechanics that make stories work: suspense, identification, hope, despair, catharsis. Kamado's role is to let this happen, to ask the questions that help Mikunoshin articulate what he is feeling, and to resist the temptation to explain. The result is a reading of <em>Run, Melos!</em> unlike any other: not a critical analysis but a documentary of discovery, a record of what it feels like to read Dazai Osamu with no preparation, no expectations, and no defenses.</p>
+  </div>
+
+  <div class="card">
+    <h3>Books 2 & 3: Arishima's "A Bunch of Grapes" and Akutagawa's "Toshishun" — Expanding the Canon</h3>
+    <p>The book's second section covers Arishima Takeo's <em>Hitofusa no Budō</em> (一房の葡萄, "A Bunch of Grapes," 1918), a story about a teacher and his students in a Hokkaido boarding school, centered on a bunch of grapes as a symbol of forgiveness, generosity, and the fragile bonds between adults and children. The third section covers Akutagawa Ryunosuke's <em>Toshishun</em> (杜子春, 1920), a retelling of a Chinese legend about a man who seeks immortality from a Taoist immortal, achieves it, but gives it up when he discovers that it requires him to abandon his human feelings — particularly his love for his mother. Both stories are staples of Japanese middle-school textbooks, which means they are stories that "everyone knows" and that almost no one remembers reading for the first time. Mikunoshin's encounters with these works are different from his encounter with <em>Run, Melos!</em> — he is now, slightly, a more experienced reader — but they retain the same quality of radical freshness. He does not know that Arishima was a Christian humanist or that Akutagawa was a master of ironic distance; he knows only what the words on the page tell him, and what they tell him is sometimes surprising, sometimes confusing, always emotionally immediate. The cumulative effect of these three readings is to demonstrate that the Japanese literary canon is not a closed system of cultural capital but an open resource of human experience — that these stories, written decades ago, can still make a 32-year-old man cry in 2024 because they are about things that do not change: friendship, forgiveness, love, sacrifice, and the terrible choice between power and connection.</p>
+  </div>
+
+  <div class="card">
+    <h3>Book 4: Ameana's "Bookshelf" (本棚) — The Gift from a Friend</h3>
+    <p>The fourth work in the book is a special contribution: <em>Hondana</em> (本棚, "Bookshelf"), an original short story written by Ameana (雨穴) specifically for this volume. Ameana is the pseudonymous author of <em>Hen na Ie</em> (変な家, "Strange House"), the real-estate mystery that became a viral sensation on Omocoro and YouTube and has sold over 300,000 copies. His inclusion in this book is a gesture of friendship and a mark of the Omocoro ecosystem's collaborative spirit: the writer who has mastered the art of making millions of people care about floor plans writes a story for the friend who has just discovered that reading is possible. <em>Bookshelf</em> functions as a gift within the book — a story that only exists because this book exists, that can only be read by people who have followed Mikunoshin's journey through the classics. Its presence transforms the book from a reading report into a literary community, a demonstration that the act of reading creates relationships, that stories passed from hand to hand become bonds between people. The book thus ends not with a conclusion but with an invitation: having read these four works with Mikunoshin, the reader is now part of a community of people who have discovered, or rediscovered, that books matter — not because they are "good for you," not because they are "culture," but because they make you feel things you did not know you could feel, and connect you to people you might never have met.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the conversational chemistry, emotional immediacy, and radical freshness of a reading experience unlike any other — a 32-year-old discovering that books have been waiting for him all along.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"This Sentence Is Famous, Right? Even I Know This One"</div>
+    <div class="passage-jp">
+      「うんうん。この一文は有名だよね。さすがの俺も知ってるわ」<br>
+      「相槌うちながら読書するんだ。逆に読みにくくない？」<br>
+      「ダメ？ その方が自分のペースで読めるんだけど」<br>
+      「その方が読みやすいならいいけどさ」
+    </div>
+    <div class="passage-romaji">
+      "Un un. Kono ichibun wa yūmei da yo ne. Sasuga no ore mo shitteru wa."<br>
+      "Aizuchi uchi nagara dokusho suru nda. Gyaku ni nikui kunai?"<br>
+      "Dame? Sono hō ga jibun no pēsu de yomeru n dakedo."<br>
+      "Sono hō ga yomiyasui nara ii kedo sa."
+    </div>
+    <div class="passage-en">
+      "Yeah, yeah. This sentence is famous, right? Even I know this one."<br>
+      "You read while making conversational responses. Isn't that actually harder?"<br>
+      "Is that bad? This way I can read at my own pace, though."<br>
+      "If that's easier for you to read, then I guess it's fine."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This exchange — from the opening of the <em>Run, Melos!</em> section — is the book's overture, establishing in four lines the entire method and emotional register of what follows. Mikunoshin's first line — <em>Un un. Kono ichibun wa yūmei da yo ne</em> (うんうん。この一文は有名だよね。さすがの俺も知ってるわ, "Yeah, yeah. This sentence is famous, right? Even I know this one") — is a masterpiece of casual Japanese that encodes a complex social position. <em>Un un</em> (うんうん) is the doubled affirmative, not the formal <em>hai hai</em> (はいはい) but the friendly, almost childish nod of recognition — the sound of someone who is not pretending to be surprised by what everyone knows. <em>Kono ichibun</em> (この一文, "this one sentence") uses <em>ichibun</em> (一文, "one sentence / one line") rather than <em>ichigyou</em> (一行) or <em>hitokoto</em> (一言), giving the sentence a physical, almost tangible quality — this specific string of characters, famous in the culture, now present before him. <em>Yūmei da yo ne</em> (有名だよね, "it's famous, right?") uses the tag question <em>yo ne</em> (よね) to seek confirmation while asserting knowledge — he is not asking if it is famous; he is confirming that he knows it is famous, while also checking that Kamado agrees. <em>Sasuga no ore mo shitteru wa</em> (さすがの俺も知ってるわ, "Even I know it") is the emotional core of the line: <em>sasuga no</em> (さすがの, "even / as expected of") modifies <em>ore</em> (俺, "I/me"), the rough masculine first-person pronoun that establishes Mikunoshin's casual, unpretentious voice. The implication is: "I am famous for not knowing literary things, so the fact that even I know this shows how famous it really is." It is a self-deprecating boast, a claim to cultural literacy that acknowledges its own limits — and this is the voice that will make the book beloved. Kamado's reply — <em>Aizuchi uchi nagara dokusho suru nda</em> (相槌うちなら読書するんだ, "You read while making conversational responses") — uses <em>aizuchi</em> (相槌, "back-channel responses / conversational grunts like 'uh-huh'"), a specifically Japanese conversational concept referring to the sounds listeners make to show they are paying attention. The fact that Mikunoshin makes these sounds while reading aloud to himself is, for Kamado, a fascinating behavioral detail — reading as a social act even in solitude. <em>Gyaku ni nikui kunai?</em> (逆に読みにくくない？, "Isn't that actually harder?") uses <em>gyaku ni</em> (逆に, "conversely / on the contrary / actually") to pivot from observation to concern, and the negative question <em>...kunai?</em> (...くない？) expects agreement — he is not genuinely asking but expressing worry. Mikunoshin's <em>Dame?</em> (ダメ？, "Is that bad? / Is it not allowed?") is a child's response to adult concern, the defensive question of someone who has just been told their method is strange. <em>Sono hō ga jibun no pēsu de yomeru n dakedo</em> (その方が自分のペースで読めるんだけど, "This way I can read at my own pace, though") uses the explanatory <em>n dakedo</em> (んだけど, "it's just that / the thing is") to offer a justification that is also a confession of need — he reads this way not because he is eccentric but because it is the only way he can read. The final line — <em>Sono hō ga yomiyasui nara ii kedo sa</em> (その方が読みやすいならいいけどさ, "If that's easier for you to read, then I guess it's fine") — uses the conditional <em>nara</em> (なら, "if") with the concessive <em>kedo sa</em> (けどさ, "but / though") to express reluctant acceptance. Kamado is not fully convinced, but he is willing to let Mikunoshin read however he needs to read — and this acceptance, this refusal to impose a "correct" method, is the book's ethical foundation. What is lost in English is the full intimacy of the <em>ore</em> (俺) and the <em>a</em> (あ) verb endings (<em>shitteru wa</em>, <em>yomeru n dakedo</em>), which create a casual masculine friendship register that English "I" and standard verb forms cannot reproduce. The English translations convey the content but lose the sense of eavesdropping on a conversation between two guys who have known each other long enough to tease, worry, and relent — a sense that is essential to the book's appeal.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"Marco Traveled Three Thousand Ri, but Melos Only Travels Ten Ri, Right?"</div>
+    <div class="passage-jp">
+      マルコは三千里も行ってるのに、メロスは十里でしょ？負けてない？
+    </div>
+    <div class="passage-romaji">
+      "Maruko wa sanzenri mo itteru no ni, Merosu wa jūri desho? Maketenai?"
+    </div>
+    <div class="passage-en">
+      "Marco traveled three thousand ri, but Melos only travels ten ri, right? Isn't he losing?"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This question — one of the most quoted lines from the original article — is a masterpiece of naive comparison that cuts through centuries of literary criticism to the heart of what <em>Run, Melos!</em> is actually about. <em>Maruko wa sanzenri mo itteru no ni</em> (マルコは三千里も行ってるのに, "Marco traveled three thousand ri, but / even though") uses the concessive <em>no ni</em> (のに, "even though / despite the fact that") to establish a comparison that is, on the surface, absurd: Marco (from <em>Marco's Great Adventure</em> / 『マルコの冒険』 / 『三千里寻母记』 / 『母をたずねて三千里』, the Japanese title of the Italian-Japanese anime <em>3000 Leagues in Search of Mother</em>) is a cultural reference that every Japanese person knows — a boy who travels 3,000 ri across Argentina to find his mother. By comparing Melos's journey to Marco's, Mikunoshin is doing something that no literature professor would do: he is measuring fictional journeys against each other as if they were real events in a shared universe. The <em>no ni</em> makes this comparison into a complaint — "Marco went 3,000 ri, and yet Melos only goes ten, so Melos is losing." <em>Mer osu wa jūri desho?</em> (メロスは十里でしょ？, "Melos only travels ten ri, right?") uses the presumptive <em>desho</em> (でしょ) to seek confirmation of a fact Mikunoshin believes he has discovered — the <em>desho</em> of someone who has just realized something and wants to make sure he is not wrong. <em>Maketenai?</em> (負けてない？, "Isn't he losing?") uses the negative question form to express concern — not "Melos is losing" but "Isn't Melos losing?", the question format softening the judgment into a worry. What makes this line extraordinary is that it is simultaneously completely wrong and profoundly right. Wrong, because the point of <em>Run, Melos!</em> is not the distance traveled but the urgency of the journey, the psychological weight of the deadline, the moral stakes of the promise. Right, because Mikunoshin has identified the fundamental mechanism of narrative suspense: comparison. We care about Melos's run because we know what he is running against — time, death, his friend's life — and Mikunoshin's comparison to Marco, absurd as it is, activates this mechanism in its purest form. The line also reveals something about Mikunoshin's reading method: he is not reading <em>Run, Melos!</em> as a self-contained artwork but as one story among many, connected to other stories he knows from anime and popular culture. This is not a failure of reading; it is a different kind of reading, a networked reading that finds connections across media and genres rather than isolating a single text for formal analysis. The English translation preserves the literal meaning but loses the specifically Japanese cultural resonance of Marco (<em>Marco's Great Adventure</em> was a massive hit in Japan, far better known there than in the West) and the childlike innocence of the comparison. In Japanese, the line is funny because it is so wrong; in English, without the Marco reference, it might simply seem bizarre.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"The Word 'Quietly' — In Just That Short Phrase, the Reader Also Snaps to Attention"</div>
+    <div class="passage-jp">
+      「ひっそりしている」って短い一文で、読む方もシャンとする感じがある。
+    </div>
+    <div class="passage-romaji">
+      "'Hisso ri shite iru' tte mijikai ichibun de, yomu kata mo shan to suru kanji ga aru."
+    </div>
+    <div class="passage-en">
+      "With just that short phrase 'quietly there,' even the reader snaps to attention."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This observation — Mikunoshin's response to a descriptive phrase in <em>Run, Melos!</em> — demonstrates the extraordinary precision of his naive reading, and its grammar encodes a theory of literary effect that many trained critics would struggle to articulate so clearly. <em>"Hisso ri shite iru" tte</em> (「ひっそりしている」って, "The phrase 'quietly there' / 'keeping quiet'") uses the quotative <em>tte</em> (って) to introduce the phrase being discussed — the casual quotative, not the formal <em>to</em> (と), which gives the observation the feel of someone pointing at a sentence and saying "look at this." <em>Mijikai ichibun de</em> (短い一文で, "in just that short sentence / with just that short phrase") uses <em>de</em> (で, "with / by means of") to make the brevity of the phrase into the instrument of its effect — it is because the phrase is short that it works so powerfully. <em>Yomu kata mo shan to suru kanji ga aru</em> (読む方もシャンとする感じがある, "even the reader snaps to attention / there's a feeling that even the reader straightens up") is the observation's payoff. <em>Yomu kata</em> (読む方, "the reader / the one reading") uses <em>kata</em> (方, "person / side") rather than <em>hit</em> (人) to mean "the reading party" — a slightly formal construction that elevates the reader into a role. <em>Mo</em> (も, "also / even") extends the effect from the fictional world to the real one: not only the characters in the story but also the person reading it experiences a physical response. <em>Shan to suru</em> (シャンとする, "to snap to attention / to straighten up / to perk up") is an onomatopoeic phrase describing the physical act of suddenly becoming alert — the way a soldier straightens at a command, or a dog perks up at a sound. It is a bodily, almost military metaphor for literary attention, and Mikunoshin's use of it shows that he is not merely thinking about the text but feeling it in his body. <em>Kanji ga aru</em> (感じがある, "there is a feeling / it feels like") uses the existential <em>ga aru</em> (がある) to make the observation tentative, personal, and undeniable all at once — he is not claiming objective truth but reporting subjective experience, and the report is so specific that it carries the force of truth. What is lost in English is the onomatopoeic precision of <em>shan</em> (シャン). "Snaps to attention" captures the military connotation but loses the sound-symbolism — the sharp, sudden <em>sha</em> that mimics the physical act of straightening. "Perks up" captures the physicality but loses the formality. "Straightens up" is closest but sounds more deliberate than the sudden, involuntary <em>shan</em>. The Japanese phrase makes literary attention into a reflex, a physical response to a verbal stimulus — which is exactly what good writing produces and exactly what Mikunoshin, unburdened by critical distance, is able to feel and name. The grammar of <em>...de, ...mo... kanji ga aru</em> (...で、...も...感じがある, "with [X], even [Y] has the feeling of [Z]") is the grammar of causal aesthetic experience: this phrase causes this effect, even in the reader, and the feeling is real. It is a sentence that could only have been written by someone who was experiencing what he described as he wrote it — which is precisely what happened.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"If That's Easier for You to Read, Then I Guess It's Fine"</div>
+    <div class="passage-jp">
+      その方が読みやすいならいいけどさ。
+    </div>
+    <div class="passage-romaji">
+      "Sono hō ga yomiyasui nara ii kedo sa."
+    </div>
+    <div class="passage-en">
+      "If that's easier for you to read, then I guess it's fine."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Kamado's final response in the opening exchange about reading method — is the ethical foundation of the entire book, and its grammar encodes a philosophy of reading that challenges centuries of pedagogical assumption. <em>Sono hō ga</em> (その方が, "that way / that method / that approach") uses the comparative <em>hō</em> (方, "side / direction / method") to establish a comparison between ways of reading — the "normal" silent way and Mikunoshin's aloud way. The demonstrative <em>sono</em> (その, "that") distances the method slightly, making it Mikunoshin's rather than Kamado's, but without rejecting it. <em>Yomiyasui nara</em> (読みやすいなら, "if it is easy to read / if it is readable") uses the conditional <em>nara</em> (なら, "if") rather than <em>ba</em> (ば) or <em>tara</em> (たら), and this choice is significant. <em>Nara</em> is the conditional of acceptance, used when the speaker is responding to a situation already presented — "if that is the case (as you say), then..." It carries a sense of concession, of letting the other person's reality determine one's own response. Kamado is not saying "if you read silently, it will be easier"; he is saying "given that you find reading aloud easier, I accept that." <em>Ii kedo sa</em> (いいけどさ, "it's fine, but / it's okay, though") uses the concessive <em>kedo</em> (けど, "but / although") with the final particle <em>sa</em> (さ) to express reluctant, slightly worried acceptance. The <em>sa</em> is crucial: it is the masculine sentence-final particle of mild assertion, the sound of someone who is not fully convinced but is willing to let the matter rest. It gives the sentence a slightly paternal, slightly resigned quality — the sound of a friend who has decided to trust the other person's self-knowledge even when it contradicts his own assumptions. What is lost in English is the full emotional complexity of <em>ii kedo sa</em>. "I guess it's fine" captures the reluctance but loses the warmth; "it's fine, though" captures the concession but loses the masculine friendship register; "that's okay then" captures the acceptance but loses the lingering worry. The Japanese sentence holds all of these in suspension: acceptance, concern, friendship, and the radical willingness to let someone read wrong — aloud, with grunts, at their own strange pace — because the only criterion that matters is whether reading happens at all. This sentence is the book's manifesto, its pedagogy, and its ethics, all in six words. The grammar of <em>...nara ii kedo sa</em> (...ならいいけどさ, "if [X] then it's fine, though") is the grammar of conditional acceptance — not unconditional approval, not absolute endorsement, but a willingness to let the other person's experience be the standard by which their method is judged. It is the sentence that makes this book possible, and the sentence that makes it matter.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of reading aloud, of famous first sentences, of comparative literary journeys, and of the quiet phrases that make readers snap to attention.</p>
+
+  <div class="card">
+    <h3>Reading, Books & the Act of Discovery</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>本</td><td>hon</td><td class="pos">noun</td><td>book</td></tr>
+        <tr><td>読む</td><td>yomu</td><td class="pos">verb</td><td>to read</td></tr>
+        <tr><td>読書</td><td>dokusho</td><td class="pos">noun</td><td>reading (books)</td></tr>
+        <tr><td>音読</td><td>ondoku</td><td class="pos">noun</td><td>reading aloud</td></tr>
+        <tr><td>黙読</td><td>mokudoku</td><td class="pos">noun</td><td>silent reading</td></tr>
+        <tr><td>初めて</td><td>hajimete</td><td class="pos">adverb</td><td>for the first time</td></tr>
+        <tr><td>経験</td><td>keiken</td><td class="pos">noun</td><td>experience</td></tr>
+        <tr><td>感想</td><td>kansō</td><td class="pos">noun</td><td>impressions; thoughts; reaction</td></tr>
+        <tr><td>反応</td><td>han'nō</td><td class="pos">noun</td><td>reaction; response</td></tr>
+        <tr><td>相槌</td><td>aizuchi</td><td class="pos">noun</td><td>back-channel response; conversational grunt</td></tr>
+        <tr><td>ペース</td><td>pēsu</td><td class="pos">noun</td><td>pace; rhythm</td></tr>
+        <tr><td>名作</td><td>meisaku</td><td class="pos">noun</td><td>masterpiece; classic work</td></tr>
+        <tr><td>文豪</td><td>bungō</td><td class="pos">noun</td><td>literary master; great author</td></tr>
+        <tr><td>教科書</td><td>kyōkasho</td><td class="pos">noun</td><td>textbook</td></tr>
+        <tr><td>国語</td><td>kokugo</td><td class="pos">noun</td><td>Japanese language (as a school subject)</td></tr>
+        <tr><td>短編</td><td>tanpen</td><td class="pos">noun</td><td>short story; short piece</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Four Works & Their Worlds</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>走れメロス</td><td>Hashire Merosu</td><td class="pos">title</td><td>Run, Melos! (Dazai Osamu)</td></tr>
+        <tr><td>激怒</td><td>gekido</td><td class="pos">noun</td><td>fury; rage (famous opening word)</td></tr>
+        <tr><td>友情</td><td>yūjō</td><td class="pos">noun</td><td>friendship</td></tr>
+        <tr><td>信頼</td><td>shinrai</td><td class="pos">noun</td><td>trust; reliance</td></tr>
+        <tr><td>約束</td><td>yakusoku</td><td class="pos">noun</td><td>promise; agreement</td></tr>
+        <tr><td>一房の葡萄</td><td>Hitofusa no Budō</td><td class="pos">title</td><td>A Bunch of Grapes (Arishima Takeo)</td></tr>
+        <tr><td>葡萄</td><td>budō</td><td class="pos">noun</td><td>grape(s)</td></tr>
+        <tr><td>許す</td><td>yurusu</td><td class="pos">verb</td><td>to forgive; to permit</td></tr>
+        <tr><td>慈愛</td><td>jiai</td><td class="pos">noun</td><td>charity; benevolence; loving kindness</td></tr>
+        <tr><td>杜子春</td><td>Toshishun</td><td class="pos">title</td><td>Toshishun (Akutagawa Ryunosuke)</td></tr>
+        <tr><td>仙人</td><td>sennin</td><td class="pos">noun</td><td>hermit; immortal; wizard</td></tr>
+        <tr><td>不死</td><td>fushi</td><td class="pos">noun</td><td>immortality</td></tr>
+        <tr><td>母性</td><td>bosei</td><td class="pos">noun</td><td>motherhood; maternal love</td></tr>
+        <tr><td>本棚</td><td>hondana</td><td class="pos">noun</td><td>bookshelf; bookcase</td></tr>
+        <tr><td>間取り</td><td>madori</td><td class="pos">noun</td><td>floor plan; room arrangement</td></tr>
+        <tr><td>違和感</td><td>iwakan</td><td class="pos">noun</td><td>sense of discomfort; feeling that something is wrong</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Internet Media, Conversation & Friendship</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>記事</td><td>kiji</td><td class="pos">noun</td><td>article; blog post</td></tr>
+        <tr><td>書籍化</td><td>shosekika</td><td class="pos">noun</td><td>publication as a book; bookification</td></tr>
+        <tr><td>バズる</td><td>bazuru</td><td class="pos">verb</td><td>to go viral; to buzz</td></tr>
+        <tr><td>拡散</td><td>kakusan</td><td class="pos">noun</td><td>spread; diffusion (of content)</td></tr>
+        <tr><td>会話</td><td>kaiwa</td><td class="pos">noun</td><td>conversation; dialogue</td></tr>
+        <tr><td>やり取り</td><td>yaritori</td><td class="pos">noun</td><td>exchange; back-and-forth</td></tr>
+        <tr><td>ツッコミ</td><td>tsukkomi</td><td class="pos">noun</td><td>straight man; retort; critical response</td></tr>
+        <tr><td>ボケ</td><td>boke</td><td class="pos">noun</td><td>funny man; absurd setup (in comedy duo)</td></tr>
+        <tr><td>相方</td><td>aikata</td><td class="pos">noun</td><td>partner; counterpart (in comedy/performance)</td></tr>
+        <tr><td>感情移入</td><td>kanjō inyū</td><td class="pos">noun</td><td>empathy; emotional identification</td></tr>
+        <tr><td>感動</td><td>kandō</td><td class="pos">noun</td><td>being moved; deep emotion</td></tr>
+        <tr><td>笑い</td><td>warai</td><td class="pos">noun</td><td>laughter; laugh</td></tr>
+        <tr><td>泣く</td><td>naku</td><td class="pos">verb</td><td>to cry; to weep</td></tr>
+        <tr><td>怒る</td><td>okoru</td><td class="pos">verb</td><td>to get angry; to be mad</td></tr>
+        <tr><td>シャンとする</td><td>shan to suru</td><td class="pos">phrase</td><td>to snap to attention; to straighten up</td></tr>
+        <tr><td>ひっそり</td><td>hissori</td><td class="pos">adv</td><td>quietly; unobtrusively; still</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">This book about reading Japanese classics aloud presents a unique translation challenge: how do you translate a book about the experience of reading Japanese into another language, when the very subject — the act of reading Japanese sentences aloud — is untranslatable by definition?</p>
+
+  <div class="card">
+    <h3>1. <em>Ore</em> (俺) and the Voice of the Non-Reader</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>俺</strong> — rough masculine first-person; casual, unpretentious, working-class; the voice of someone who does not perform intelligence</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"I"</strong> — neutral, loses the gender, class, and performative dimensions</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>Mikunoshin's consistent use of <em>ore</em> (俺) as his first-person pronoun is a crucial part of his character voice and the book's social positioning. In Japanese, first-person pronoun choice is deeply meaningful: <em>watashi</em> (私) is neutral/formal, <em>boku</em> (僕) is masculine but gentle/young, and <em>ore</em> (俺) is rough, masculine, adult, and casual — the pronoun of working-class men, of close male friends, of people who do not need to perform politeness because their social position is secure. By using <em>ore</em>, Mikunoshin signals that he is not an intellectual, not a student, not someone who performs intelligence for social capital — he is a regular guy who happens to be reading a book for the first time. The English "I" cannot capture any of this. A translator might try "I'm" with colloquial contractions to suggest casualness, or use working-class English dialect, but any such choice would add associations that <em>ore</em> does not have. <em>Ore</em> is not dialect; it is standard Japanese used in a specific register. The loss is structural: the Japanese reader knows immediately, from the first sentence, what kind of person is speaking — his age, his gender, his social class, his relationship to the listener. The English reader knows only that someone is speaking. The book's entire project  making literary reading accessible to "regular guys" — depends on this voice, and the voice is the first thing translation destroys.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Aizuchi</em> (相槌): The Untranslatable Rhythm of Japanese Listening</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>相槌</strong> — back-channel responses; the grunts and affirmations that Japanese listeners make to show attention; a culturally specific conversational rhythm</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"back-channel responses" / "conversational grunts"</strong> — accurate but clinical; loses the cultural specificity</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>aizuchi</em> (相槌) refers to a specifically Japanese conversational practice: the sounds that listeners make (<em>un</em> / うん, <em>ē</em> / ええ, <em>sō desu ne</em> / そうですね, <em>hontō</em> / 本当) to indicate that they are listening, following, and engaged. These sounds are not interruptions; they are the glue of Japanese conversation, without which a speaker might feel they are talking into a void. Mikunoshin's habit of making <em>aizuchi</em> while reading aloud — saying "un un" (yeah yeah) to a sentence he is reading by himself — is, for Kamado, a fascinating behavioral detail that reveals reading as a social act even in solitude. But the concept of <em>aizuchi</em> does not exist as a named, culturally significant practice in English-speaking cultures. English speakers certainly make listening sounds ("uh-huh," "yeah," "I see"), but there is no single word for this practice, no recognition that it is a skill that can be performed well or badly, no cultural anxiety about whether one is making appropriate <em>aizuchi</em>. The English "back-channel responses" is a technical term from communication studies, not a lived cultural concept. The loss matters because the book is, among other things, a demonstration that reading is a conversation — between reader and text, between reader and facilitator, between present reader and past writer — and <em>aizuchi</em> is the physical evidence of this conversation happening in real time. Without the word, the concept, and the cultural practice, Mikunoshin's reading method seems merely eccentric rather than deeply social.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Shan to suru</em> (シャンとする): The Onomatopoeia of Attention</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>シャンとする</strong> — onomatopoeic phrase for snapping to attention; the sharp sound of sudden alertness; bodily, reflexive, military</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"snap to attention" / "perk up" / "straighten up"</strong> — each captures one dimension but loses the sound-symbolism</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>shan to suru</em> (シャンとする) is an onomatopoeic expression describing the physical act of suddenly becoming alert — the way a soldier's body snaps straight at a command, the way a dog's ears perk up at a familiar sound. The <em>sha</em> sound mimics the sharp, sudden movement; the <em>n</em> gives it finality. This is not merely a description of attention but a performance of it — the word itself enacts the suddenness it describes. English has no equivalent onomatopoeia for this specific physical response. "Snap to attention" captures the military connotation but loses the sound; "perk up" captures the suddenness but loses the formality; "straighten up" captures the physical movement but loses the reflexivity. The Japanese phrase makes literary attention into a bodily reflex, a physical response to a verbal stimulus — which is exactly what Mikunoshin experiences and what the book celebrates. The loss of <em>shan</em> is thus not merely lexical but phenomenological: the English reader understands that the reader "snaps to attention," but they do not feel the <em>sha</em> — the sharp, sudden, almost audible quality of the response. Japanese onomatopoeia is one of the language's most untranslatable features because it encodes sensory experience directly; <em>shan</em> is not a word <em>about</em> attention but a word that <em>is</em> attention, in sound form. English translations must describe what <em>shan</em> does rather than reproducing what <em>shan</em> is.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. The Textbook Canon: Cultural Literacy vs. Universal Literature</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>走れメロス・一房の葡萄・杜子春</strong> — stories every Japanese person is assumed to know; the shared cultural inheritance of compulsory education</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Run, Melos! / A Bunch of Grapes / Toshishun"</strong> — accurate titles but lose the "everyone knows this" cultural weight</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The three classics that Mikunoshin reads are not merely "famous Japanese stories" — they are the specific stories that appear in Japanese middle-school Japanese-language textbooks, which means they occupy a unique position in Japanese cultural literacy. When a Japanese person says "Melos was furious" (<em>Mer osu wa gekido shita</em> / メロスは激怒した), every other Japanese person knows what they are referring to, in the same way that English speakers might reference "It was the best of times" or "Call me Ishmael." This shared cultural knowledge is the background against which Mikunoshin's ignorance becomes meaningful: he is not merely reading old stories; he is reading the stories that were supposed to have formed the common ground of his culture, and he is reading them for the first time at 32. The English reader, even if they have heard of Dazai Osamu or Akutagawa Ryunosuke, does not share this textbook-specific cultural literacy. They do not know that <em>Run, Melos!</em> is the opening line that generations of Japanese students have memorized, that <em>Toshishun</em> is the story that every Japanese adult vaguely remembers from junior high, that <em>A Bunch of Grapes</em> is the story about forgiveness that appears in every textbook's "human relationships" unit. Without this background, Mikunoshin's discovery seems like one among many possible reading experiences rather than the reclamation of a specifically Japanese cultural inheritance. The book's power depends on the reader's recognition that these are <em>our</em> stories, the stories we were all supposed to have read — and the English translation cannot reproduce this "our" because the stories are not, culturally, "ours" for English readers. They are Japanese classics, important and beautiful, but not the shared childhood reading of the target audience. The loss is thus communal: the Japanese reader feels a collective recognition; the English reader feels individual curiosity.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Ii kedo sa</em> (いいけどさ): The Grammar of Reluctant Acceptance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>いいけどさ</strong> — "it's fine, but / it's okay, though" — concessive acceptance with lingering worry; masculine friendship register</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"I guess it's fine" / "that's okay then"</strong> — captures content but loses the friendship register and the specific emotional texture</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The phrase <em>ii kedo sa</em> (いいけどさ, "it's fine, but / it's okay, though") is the emotional climax of the book's opening exchange and the ethical foundation of its entire method. <em>Ii</em> (いい, "fine / okay / good") is simple affirmation. <em>Kedo</em> (けど, "but / although") introduces the concession — yes, but. <em>Sa</em> (さ) is the masculine sentence-final particle that softens assertion into suggestion, that makes a statement feel like friendly advice rather than authoritative judgment. Together, these six morae encode a complex emotional state: acceptance that is not fully convinced, permission that is slightly worried, trust that acknowledges its own limits. Kamado is saying: I will let you read your way, even though it is not the way I would read, even though I worry it will be harder for you, even though part of me wants to correct you — because I trust that you know what you need, and because the only thing that matters is that reading happens at all. The English "I guess it's fine" captures the reluctance but loses the warmth; "that's okay then" captures the acceptance but loses the worry; "it's fine, though" captures the concession but loses the masculine friendship register. The Japanese <em>ii kedo sa</em> is specifically the sound of one guy letting another guy do something his own way — the verbal equivalent of a shrug that is also a hug. It is the sound of a friendship strong enough to let the other person be wrong, or at least different, and the book's entire project — that there is no wrong way to read, only the way that works for you — is contained in this phrase. The loss in translation is not merely of a sentence but of a relationship, a pedagogy, and an ethics.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of first-time readers, of famous sentences, of comparative journeys, and of the quiet phrases that make a body snap to attention.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たことがない（経験の否定）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ta koto ga nai</em>: "have never [done]" — experiential perfect negative indicating an action has never been performed in one's life</p>
+      <div class="grammar-example">本を読んだことがない</div>
+      <p class="grammar-example-en">"have never read a book" — The grammar of cumulative absence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・遺憾）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te shimau</em>: "to end up [doing] / to [do] completely" — completive construction indicating completion or regret</p>
+      <div class="grammar-example">（文脈より）100万人の目に留まる記事になってしまった</div>
+      <p class="grammar-example-en">"The article ended up reaching 1 million people's eyes"  The grammar of unintended consequence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のに（逆接・不満）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no ni</em>: "even though / despite the fact that" — concessive construction expressing surprise or complaint at an unexpected result</p>
+      <div class="grammar-example">マルコは三千里も行ってるのに、メロスは十里でしょ？</div>
+      <p class="grammar-example-en">"Marco traveled three thousand ri, but Melos only travels ten ri, right?" — The grammar of naive comparative complaint.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なら（仮定・受容）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...nara</em>: "if [X is the case] / given that" — conditional of acceptance, responding to a situation already presented</p>
+      <div class="grammar-example">読みやすいならいいけどさ</div>
+      <p class="grammar-example-en">"If that's easier for you to read, then I guess it's fine" — The grammar of conditional acceptance.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜けどさ（譲歩・親しい間）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...kedo sa</em>: "...but / ...though" — concessive with final particle <em>sa</em> expressing reluctant acceptance in casual masculine speech</p>
+      <div class="grammar-example">いいけどさ</div>
+      <p class="grammar-example-en">"it's fine, though / I guess it's fine" — The grammar of reluctant, worried permission.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜んだけど（説明・弁護）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...n dakedo</em>: "it's just that / the thing is" — explanatory construction offering justification or background</p>
+      <div class="grammar-example">自分のペースで読めるんだけど</div>
+      <p class="grammar-example-en">"It's just that I can read at my own pace" — The grammar of self-justifying need.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜方が（比較・方法）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...hō ga</em>: "the way of / the method of / rather" — comparative construction for methods or directions</p>
+      <div class="grammar-example">その方が読みやすい</div>
+      <p class="grammar-example-en">"That way is easier to read" — The grammar of comparative method.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜感じがある（感覚の存在文）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...kanji ga aru</em>: "there is a feeling of / it feels like" — existential construction for subjective sensory or emotional experience</p>
+      <div class="grammar-example">シャンとする感じがある</div>
+      <p class="grammar-example-en">"There's a feeling of snapping to attention" — The grammar of embodied literary response.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of this book is the grammar of friendship allowing difference. The experiential negative (<em>koto ga nai</em>) makes 32 years of absence into a single fact; the completive (<em>te shimau</em>) turns a blog post into an unintended phenomenon; the concessive (<em>no ni</em>) makes naive comparison into genuine literary insight; the conditional of acceptance (<em>nara</em>) lets the other person's reality determine one's response; the reluctant permission (<em>kedo sa</em>) encodes an ethics of non-interference; the explanatory justification (<em>n dakedo</em>) confesses need without shame; the comparative method (<em>hō ga</em>) finds the way that works for the individual; and the existential feeling (<em>kanji ga aru</em>) makes subjective response into undeniable fact. Pay attention to how these constructions work together to create a prose that sounds like eavesdropping on a conversation between friends — because that is exactly what it is, and that is exactly what makes it literature.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『本を読んだことがない32歳がはじめて本を読む～走れメロス・一房の葡萄・杜子春・本棚』 &middot; かまど・みくのしん 著 &middot; 和書房 2024年8月3日刊 &middot; 319ページ &middot; ISBN 978-4-479-39435-8</p>
+  <p style="margin-top: var(--space-xs);">定価：1,760円（税込） &middot; 本体1,600円＋税 &middot; 19cm判</p>
+  <p style="margin-top: var(--space-xs);">売上：初版3万部 &middot; 発売3日で5万部重版決定 &middot; 累計8万部突破（2024年8月9日時点） &middot; 累計10万部突破</p>
+  <p style="margin-top: var(--space-xs);">原記事：オモコロブロス「本を読んだことがない32歳が初めて『走れメロス』を読む日」（2022年10月31日公開） &middot; 100万回以上閲覧</p>
+  <p style="margin-top: var(--space-xs);">推薦：雨穴「読書の常識が変わる……。これは全く新しい本の読み方です」 &middot; ダ・ヴィンチ・恐山「ついに日本一おもしろく『走れメロス』を読む人間が現れた」</p>
+  <p style="margin-top: var(--space-xs);">続編：『本が読めない33歳が国語の教書を読む やまなし・少年の日の思い出・山月記・枕草子』（大和書房 2025年刊）</p>
+  <p style="margin-top: var(--space-xs);">続編2：『本が読めない34歳がはじめてごんぎつねを読む』（オモコロ出版 2026年9月10日刊）</p>
+  <p style="margin-top: var(--space-xs);">著者1：かまど（福岡県出身・テレビ・ラジオ構成作家として活動後、2019年バーグハンバーグバーグ入社・オモコロブロス編集長）</p>
+  <p style="margin-top: var(--space-xs);">著者2：みくのしん（高杉未来之進・1990年9月4日生・東京都出身・2016年オモコロデビュー・2026年オモコロ編集長就任）</p>
+  <p style="margin-top: var(--space-xs);">収録作品：太宰治「走れメロス」 &middot; 有島武郎「一房の葡萄」 &middot; 芥川龍之介「杜子春」 &middot; 雨穴書き下ろし「本棚」</p>
+</footer>
+
+</div>
+</body>
+</html>

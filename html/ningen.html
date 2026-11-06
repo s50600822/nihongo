@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人間失格 — 太宰治 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>人間失格</h1>
+  <p class="hero-subtitle">Ningen Shikkaku / No Longer Human</p>
+  <p class="hero-meta">太宰治 著 &middot; 筑摩書房 1948年7月刊 &middot; 271ページ &middot; 戦後文学の最高傑作 &middot; 累計600万部突破 &middot; 新潮文庫版ISBN 978-4-10-100605-5</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: The Noun That Judges Itself</h2>
+  <p class="lead">The title <em>Ningen Shikkaku</em> (人間失格, "No Longer Human" / "Disqualified from Being Human") is a four-character compound that contains, in its very grammar, the novel's entire argument about identity, judgment, and the impossibility of self-certification. <em>Ningen</em> (人間, "human being / person") is a noun of extraordinary weight in Japanese: it is the word for the species, the moral category, the social status that every reader assumes themselves to possess. Unlike English "human," which can be modified by adjectives ("only human," "too human," "no longer human"), <em>ningen</em> in standard Japanese grammar is not typically the object of a process of disqualification — one does not "lose" humanity in Japanese the way one might in English. The title's shock comes from this grammatical transgression: it treats <em>ningen</em> as something one can be <em>shikkaku</em> (失格, "disqualified / failed / ineligible") of, as if humanity were a license, a certification, a qualification that can be revoked. <em>Shikkaku</em> (失格) is a formal, bureaucratic word — the word used when an athlete is disqualified from competition, when a candidate fails an examination, when a license is revoked for misconduct. It is not a poetic or philosophical term; it is the language of rules, committees, and official decisions. The collision between <em>ningen</em> (the most fundamental category of existence) and <em>shikkaku</em> (the most procedural category of exclusion) creates the title's devastating effect: humanity itself has become an examination that the protagonist has failed. The absence of a particle between the two nouns — no <em>no</em> (の), no <em>ga</em> (が), no <em>wa</em> (は) — makes the title into a single, unmodified judgment, a stamp, a seal, a diagnosis without appeal. The grammar is that of a document, not a poem; of a verdict, not a lament. And yet the novel that follows is nothing but lament — which means the title is either ironic (the protagonist is more human than those who would disqualify him) or prophetic (the society that produced him has already lost its own humanity). The title does not tell us which; it merely delivers the sentence and lets the reader serve as both judge and jury.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">人間</span>
+        <span class="romaji">ningen / "human being"</span>
+        <span class="meaning">"human being / person" — The kanji <em>ningen</em> (人間) combines <em>hito</em> (人, "person / human") and <em>ma</em> (間, "between / space / relationship"), etymologically suggesting "the space between people" or "the relational being." This etymology is thematically essential: the novel's protagonist, Ōba Yōzō, fails precisely at the relational dimension of being human — he cannot inhabit the space between himself and others without terror, cannot maintain the social contracts that <em>ningen</em> implies. The word <em>ningen</em> is also the term used in Japanese philosophy and ethics for "human" as a moral category — as in <em>ningen no jinken</em> (人間の人権, "human rights") or <em>ningen rui</em> (人間類, "the human species"). It is not merely "a person" (<em>hito</em> / 人) but "the human" as a type, a class, a condition. The title's use of <em>ningen</em> rather than <em>hito</em> elevates the judgment from the personal to the categorical: this is not "I am no longer a person" but "I am no longer <em>human</em>" — a species-level expulsion. The word also carries, in postwar Japanese culture, the full weight of the 1947 Constitution's Article 1: "All <em>ningen</em> are created equal" (すべて国民は、個人として尊重される). To be <em>shikkaku</em> from <em>ningen</em> is thus to be expelled from the constitutional community itself, to be placed outside the protection of the postwar democratic order. The title's grammar makes this expulsion feel not like a metaphor but like a legal status — which is exactly how Yōzō experiences his own existence.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">失格</span>
+        <span class="romaji">shikkaku / "disqualification"</span>
+        <span class="meaning">"disqualification / failure / ineligibility" — The word <em>shikkaku</em> (失格) is composed of <em>shitsu</em> (失, "loss / forfeiture") and <em>kaku</em> (格, "rank / status / qualification / pattern"). <em>Kaku</em> is a word of social ordering: it refers to rank in a hierarchy, pattern in a design, qualification for a position. <em>Shikkaku</em> thus means not merely "failure" (<em>shippai</em> / 失敗) but "loss of status" — the removal of one's recognized place in a system. In sports, a <em>shikkaku</em> is a disqualification from competition; in examinations, it is a failing grade that removes eligibility; in licensing, it is a revocation. The word is bureaucratic, procedural, and official — it implies a judgment rendered by an authority according to established criteria. The title's use of <em>shikkaku</em> for <em>ningen</em> thus performs a double operation: it bureaucratizes the human (humanity becomes a qualification with criteria) and it humanizes the bureaucratic (disqualification becomes an existential condition). The word has no emotional content in itself — it is cold, administrative, factual — and this coldness makes the title's judgment feel inescapable. One might argue with "worthless" (<em>muda</em> / 無駄) or "wretched" (<em>aware</em> / 哀れ), but how does one argue with <em>shikkaku</em>? The criteria are not stated; the committee is not named; the appeal process does not exist. The title delivers its verdict the way a document delivers it: without explanation, without mercy, without the possibility of response. This is the grammar of a society that has already decided, and the novel's genius is to make the reader complicit in that decision before a single page is turned.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> Serialized in <em>Tenbō</em> (展望) magazine, June-August 1948 (3 installments). Published as a book by 筑摩書房 (Chikuma Shobō), July 25, 1948, 271 pages, with the short story "Good-Bye" (グッド・バイ). The first two notebooks and the preface were published in the June 1948 issue while Dazai was still alive; the third notebook and afterword were published posthumously in the July and August issues after Dazai's death on June 13, 1948. Bunkoban (文庫版): 新潮文庫 (Shinchō Bunko), November 3, 1952, 192 pages, ISBN 978-4-10-100605-5, ¥440 (tax included). Cumulative sales across all editions exceed 6 million copies, making it one of the best-selling Japanese novels of all time. Film adaptations: 2010 (starring Tōma Ikuta / 生田斗真), 2019 ("Human Lost: Ningen Shikkaku," animated science fiction adaptation), and numerous stage adaptations. The novel has been translated into over 20 languages; the English translation by Donald Keene (New Directions, 1958) is considered a classic of translation literature. In 2020, the novel entered the public domain in Japan (50 years after Dazai's death), leading to a surge of new editions, manga adaptations, and retranslations.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>太宰治 &mdash; Dazai Osamu (1909–1948)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">太</div>
+    <div class="author-name-block">
+      <h3>太宰治 / Dazai Osamu</h3>
+      <p class="author-name-romaji">The prince of Tsugaru who became the voice of Japan's shame &middot; 38 years, 5 suicide attempts, one immortal book</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Dazai Osamu was born Tsushima Shūji (津島修治) on June 19, 1909, in Kanagi, Aomori Prefecture — the tenth child and sixth son of Tsushima Gen'emon, one of the largest landowners in the entire Tōhoku region. The Tsushima family mansion, built in 1907 and now the Dazai Osamu Memorial Museum "Shayōkan" (斜陽館), was a symbol of wealth and power in rural Japan; young Shūji grew up surrounded by servants, property, and the suffocating expectations of a provincial aristocracy. His father, who served in both the House of Representatives and the House of Peers, died when Shūji was 14, leaving him under the authority of his eldest brother, who would become the family head and a member of the House of Lords. This family structure — immense wealth, political power, and the rigid hierarchy of the <em>ie</em> system — is the unspoken background of <em>No Longer Human</em>: Yōzō's terror of "human beings" is inseparable from Dazai's own terror of the Tsushima household, where love was scarce and performance was mandatory.</p>
+    <p style="margin-bottom: var(--space-md);">In 1927, Dazai entered the French literature department of Tokyo Imperial University (now the University of Tokyo), where he discovered the literature that would shape his sensibility: the French symbolists, Dostoevsky (whose <em>The Idiot</em> he would translate), and the Japanese writers of the previous generation, particularly Akutagawa Ryūnosuke, whose suicide in July 1927 devastated the 18-year-old Dazai. In 1930, he attempted suicide for the first time with a bar hostess named Tanabe Shimeko (田部シメ子) at Kamakura's Koshigoe beach — she drowned; he survived. This pattern — suicide attempts in which his partners died while he lived — would haunt Dazai for the rest of his life, creating the "survivor's guilt" that permeates his fiction. He married小山初代 (Oyama Tsuchiyo) in 1931, became involved in illegal communist activities, was arrested and tortured by police, and gradually withdrew from political activism while maintaining a lifelong identification with the left. His literary career began in earnest with the short story "Gyakkō" (逆行, "The Wayward," 1935), which placed second for the first Akutagawa Prize — a rejection that wounded him deeply and that he would reference bitterly in later works.</p>
+    <p style="margin-bottom: var(--space-md);">In 1939, through the mediation of his mentor Ibuse Masuji (井伏鱒二), Dazai married Ishihara Michiko (石原美知子), a teacher from Kōfu, and entered the most stable and productive period of his life. Living in Mitaka, Tokyo, he wrote the works that established his popular reputation: "Hashire Melos" (走れメロス, "Run, Melos!," 1940), "Fugaku Hyakkei" (富嶽百景, "One Hundred Views of Mount Fuji," 1939), and "Otogi-zōshi" (お伽草紙, "Fairy Tales," 1945). The postwar period brought both his greatest fame and his final destruction: <em>Shayō</em> (斜陽, "The Setting Sun," 1947) became a sensational bestseller, coining the term "shayō-zoku" (斜陽族, "the declining-sun tribe") to describe the postwar Japanese aristocracy in collapse. But Dazai's personal life was unraveling: his increasing dependence on alcohol and painkillers (pavinol), his affair with Yamazaki Tomie (山崎富栄), a war widow who ran a beauty parlor near his home, and his deepening conviction that he had exhausted his capacity to write all converged in the spring of 1948. He completed <em>No Longer Human</em> in May, sent it to his publisher, and on June 13 — one month before the novel's publication — he and Tomie drowned themselves in the Tamagawa Josui (玉川上水) canal near Mitaka. His body was found on June 19, his 39th birthday. The annual commemoration, called "Ōtōsai" (桜桃忌, "Cherry Festival," named after his pen-name <em>Otō</em> / 桜桃), draws thousands of fans to his grave at Zenshōji Temple in Mitaka every year.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Defeat, Occupation, and the Literature of National Shame</h2>
+
+  <div class="card">
+    <h3>1948: The Year Japan's Soul Was Examined</h3>
+    <p><em>No Longer Human</em> was written and published in 1948, three years after Japan's surrender in World War II — a year in which the nation was undergoing what might be called a collective <em>shikkaku</em> (失格). The Tokyo War Crimes Tribunal was in its second year; the new Constitution, drafted under American occupation, had been in effect for two years; the zaibatsu were being dismantled; land reform was redistributing the estates of families like the Tsushimas; and the intellectual class was engaged in a ferocious debate about "war responsibility" (<em>senso sekinin</em> / 戦争責任). Dazai's novel does not mention the war directly — there are no soldiers, no bombs, no occupation authorities — and this absence is precisely the novel's historical intervention. <em>No Longer Human</em> argues that the catastrophe of 1945 was not merely military or political but existential: Japan had lost not just the war but its claim to humanity, its belief in its own moral standing, its capacity to look at itself without shame. The novel's first sentence — <em>Haji no ōi shōgai wo okutte kimashita</em> (恥の多い生涯を送って来ました, "I have spent a life full of shame") — is not merely Yōzō's confession; it is Japan's. The "I" of the novel expands, in the context of 1948, to include a nation that had committed atrocities in China, Southeast Asia, and the Pacific, that had mobilized its own population for total war, and that was now being forced to confront what it had done. Dazai's genius was to understand that this national shame could not be addressed through political analysis or historical documentation; it required a voice that could speak from inside the shame itself, a voice that had already judged itself and found itself <em>shikkaku</em>. Yōzō is that voice — not because he is a war criminal (he is not) but because his entire structure of feeling — the terror of others, the compulsion to perform, the sense of being fundamentally different from "human beings," the resort to alcohol and drugs and self-destruction — mirrors the structure of feeling of a defeated nation that no longer believes in its own legitimacy. The novel is thus a work of national allegory disguised as personal confession, and its enduring power comes from the fact that readers in 2020s Japan — readers who have no memory of the war — still recognize themselves in Yōzō's shame. The conditions that produced <em>No Longer Human</em> were specific to 1948; the experience it describes is not.</p>
+  </div>
+
+  <div class="card">
+    <h3>The <em>Ichinen Shōsetsu</em> (私小説) Tradition and Its Destruction</h3>
+    <p><em>No Longer Human</em> operates within the tradition of the Japanese "I-novel" (<em>watakushi shōsetsu</em> / 私小説), the autobiographical fiction that dominated Japanese literature from the Taishō period through the postwar. In the classic I-novel, a male narrator confesses his sins — typically sexual or financial — with the implicit promise that confession is redemptive, that the act of telling the truth about oneself restores one's place in the human community. Dazai's entire career was an exploration and subversion of this tradition: his I-novels confess more than any of his predecessors dared, but they refuse the redemption. Confession in Dazai does not save; it merely documents the unsaveable. <em>No Longer Human</em> takes this destruction of the I-novel to its limit by introducing a double narrative structure: the "I" who writes the preface and afterword (a bar madam and the authorial persona) frames Yōzō's first-person notebooks, creating a distance between the confessing subject and the judging audience that makes redemption impossible. Yōzō never addresses a reader who might forgive him; he writes only for himself, or for the void. The I-novel tradition assumes a community that will receive the confession; Dazai's novel assumes no such community. The "human" that Yōzō has been disqualified from is precisely the community of confessors and forgivers that the I-novel tradition imagined. By making Yōzō's disqualification absolute, Dazai destroys the I-novel from within — using its form to announce its bankruptcy. This is why <em>No Longer Human</em> marks both the culmination and the death of the I-novel tradition: after Dazai, Japanese autobiographical fiction could no longer believe in the redemptive power of confession. The shame remained; only the hope of its absolution had disappeared.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Burakumin, the Outcast, and the "Non-Human" in Japanese Culture</h3>
+    <p>The concept of "losing humanity" (<em>ningen shikkaku</em>) has deep roots in Japanese cultural history, particularly in the treatment of outcast communities. The <em>burakumin</em> (部落民), Japan's historically discriminated-against underclass, were officially designated as "non-people" (<em>hinin</em> / 非人) during the Edo period — literally, "not human" — and were excluded from the category of <em>ningen</em> in both law and custom. The Meiji government's Emancipation Edict of 1871 abolished the <em>eta</em> (穢多, "abundant filth") and <em>hinin</em> (非人, "non-human") categories, but discrimination persisted and persists. Dazai, writing in 1948, would have been acutely aware of this history: his own region of Tsugaru had significant <em>burakumin</em> populations, and the social hierarchy of his childhood was inseparable from these distinctions. The title <em>Ningen Shikkaku</em> thus carries a faint but unmistakable echo of the <em>hinin</em> designation — the official, legal stripping of humanity from a category of people. Yōzō's "disqualification" is self-administered (he judges himself), but it reproduces the structure of a society that has always known how to declare certain people non-human. The novel's historical significance lies partly in this reversal: where the <em>burakumin</em> were declared non-human by a society that needed their labor while denying their dignity, Yōzō declares himself non-human from a position of privilege (he is wealthy, educated, talented) that makes his disqualification seem almost luxurious — a choice rather than an imposition. And yet the suffering is real in both cases. Dazai's novel does not equate Yōzō's existential crisis with the structural violence against outcast communities, but it does place them on the same spectrum of human disqualification — suggesting that a society that knows how to make some people "non-human" will eventually produce individuals who internalize that judgment and apply it to themselves. The title is thus not merely personal but cultural: it names a capacity that Japanese society has always possessed, and that the war revealed in its most extreme form.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Three Photographs, Three Notebooks, One Verdict</h2>
+
+  <div class="card">
+    <h3>The Architecture: Frame Narrative as Court of Judgment</h3>
+    <p>The novel's structure is a masterpiece of narrative engineering: a frame narrative (preface and afterword) encloses three first-person notebooks, creating a Chinese-box effect in which Yōzō's voice is always already judged by the voices that surround it. The preface, written by an unnamed "I" (presumably Dazai's authorial persona), describes three photographs of Yōzō at different ages — childhood, studenthood, and a final image of indeterminate age that seems barely human. This triptych of images establishes the novel's visual grammar: Yōzō's face changes from a child's grotesque smile to a young man's beauty to something that "no longer even seems alive" (生きている人間とも思えぬ). The photographs function as evidence in a trial — the trial of Yōzō's humanity — and the three notebooks that follow are his testimony, his defense, his confession. But there is no judge to receive them, no court to render a verdict beyond the title itself. The afterword, in which a bar madam who knew Yōzō in his final period delivers the novel's most devastating line — "He was a very gentle person, very thoughtful... a good child, like a god" (とても素直で、よく気がきいて……神様みたいないい子でした) — does not overturn the title's judgment; it merely complicates it. If Yōzō was "like a god," how can he be "disqualified from being human"? The bar madam's testimony is the novel's ethical counterweight to its title: she saw in Yōzō what the title refuses to see — a goodness that exceeded the category of the human rather than falling below it. The structure thus creates a dialogue between judgment and witness, between the law of the title and the mercy of the afterword, and it refuses to resolve this dialogue. The reader is left holding both: Yōzō is disqualified, and Yōzō is divine. Both are true. Neither cancels the other.</p>
+  </div>
+
+  <div class="card">
+    <h3>First Notebook: The Discovery of Performance (Childhood to Adolescence)</h3>
+    <p>The first notebook covers Yōzō's childhood in rural Tōhoku through his departure for high school in Tokyo. Its central discovery is what Yōzō calls "clowning" (<em>dōke</em> / 道化): the realization that he cannot understand human beings, is terrified by them, and must therefore perform a role — the funny, obliging, harmless boy — in order to survive social interaction. "I thought of it as my last request for love addressed to my fellow human beings" (それは、自分の、人間に対する最後の求愛でした), he writes, and this sentence is the key to the entire novel: Yōzō's clowning is not cynicism or manipulation but a desperate, terminal appeal for connection from someone who believes himself incapable of genuine relationship. The first notebook's most harrowing episode — Yōzō's realization that a servant has been sexually abusing him, which he reports with the same detached tone he uses for everything — establishes the novel's method: horror presented as anecdote, trauma as routine, the unspeakable spoken in the voice of someone who has already stopped believing that anything he says matters. The notebook ends with Yōzō's departure for Tokyo, where he will discover alcohol, women, and the "friend" who will accelerate his destruction.</p>
+  </div>
+
+  <div class="card">
+    <h3>Second Notebook: The Education of Destruction (High School to Adulthood)</h3>
+    <p>The second notebook is the novel's longest and most densely plotted section, tracing Yōzō's trajectory through high school, his friendship with Horiki (堀木), his discovery of alcohol and prostitutes, his relationship with Tsuneko (恒子) and their double suicide attempt (she dies; he survives), his withdrawal from society, his relationship with the widow Shizuko (シヅ子) and her young daughter, and finally his marriage to Yoshiko (良子), the innocent young woman whose rape by a merchant employee destroys the last possibility of Yōzō's salvation. Horiki is the novel's most important secondary character: a cynical, parasitic "friend" who introduces Yōzō to the pleasures of the demimonde while slowly destroying his capacity for self-respect. Their relationship is a study in the dynamics of exploitation disguised as camaraderie — Horiki needs Yōzō's money and social status; Yōzō needs Horiki's apparent confidence in the world of "human beings." The double suicide with Tsuneko — based on Dazai's own 1930 attempt with Tanabe Shimeko — establishes the pattern of Yōzō's life: every time he approaches genuine connection, it ends in death or betrayal, and he survives to accumulate more guilt. The marriage to Yoshiko represents the novel's most painful exploration of innocence and its destruction. Yoshiko is "a person who did not know suspicion" (疑うということを知らない人でした) — her trust in the world is absolute, and Yōzō loves her precisely for this quality that he himself has lost. When she is raped while Yōzō watches from the next room, unable to intervene, the novel reaches its moral nadir: the destruction of innocence by a world that Yōzō has always known to be corrupt, and his own complicity in that destruction through his paralysis. After this, Yōzō's descent into alcoholism, drug addiction, and institutionalization feels not like a choice but like an inevitability — the only remaining path for someone who has witnessed what he has witnessed.</p>
+  </div>
+
+  <div class="card">
+    <h3>Third Notebook: The Asylum and the End of Speech</h3>
+    <p>The third notebook is the shortest and most terrifying, covering Yōzō's institutionalization, his addiction to pavinol (a morphine-based painkiller), his confinement by his family, and his final retreat to a rural asylum where he is "not even forty years old, yet my hair is largely white, and I look like an old man" (四十に満たぬうちに、髪の毛はすっかり白くなり、老人のやうに見えるでせう). The notebook's most striking feature is the deterioration of Yōzō's language: the prose becomes simpler, more fragmented, more childlike, as if the process of disqualification were consuming not just his social status but his capacity for complex thought. The famous final line — "Now, for me, there is neither happiness nor unhappiness. All that remains is for everything to pass" (いまは自分には、幸福も不幸もありません。ただ一さいは過ぎて行きます) — is not resignation but the description of a consciousness that has moved beyond the categories of human emotion. Yōzō is not "at peace"; he is simply no longer capable of the distinctions that make human experience meaningful. The notebook ends with Yōzō's brother sending him money and telling him to "think no more about the past" (むかしの事は、もう思ひ出さないでくれ), a command that Yōzō cannot obey because the past is all he has — and because the novel we are reading <em>is</em> that past, the unerasable record of a disqualification that cannot be appealed. The third notebook was published after Dazai's death, making it, in effect, his own posthumous testimony — the document he left behind to explain what had happened to him, even as he denied that explanation was possible.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages contain some of the most devastating sentences ever written in Japanese — sentences whose simplicity makes them unbearable, whose grammar encodes an entire theory of human failure.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"I Have Spent a Life Full of Shame"</div>
+    <div class="passage-jp">
+      恥の多い生涯を送って来ました。
+    </div>
+    <div class="passage-romaji">
+      "Haji no ōi shōgai wo okutte kimashita."
+    </div>
+    <div class="passage-en">
+      "I have spent a life full of shame."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the most famous opening sentence in modern Japanese literature, and its power depends on a grammatical simplicity that is almost impossible to reproduce in English. <em>Haji no ōi shōgai</em> (恥の多い生涯, "a life full of shame / a shame-filled life") uses the noun <em>haji</em> (恥, "shame / disgrace / humiliation") with the possessive <em>no</em> (の) and the adjective <em>ōi</em> (多い, "many / abundant / full of") to create a genitive phrase that modifies <em>shōgai</em> (生涯, "lifetime / career / one's span of life"). <em>Shōgai</em> is a solemn, almost formal word — the word used for a person's entire life trajectory, their "career" in the broadest sense. By modifying <em>shōgai</em> with <em>haji no ōi</em>, Yōzō makes shame not an episode or a quality but the defining attribute of his entire existence — not "I have experienced shame" but "my life <em>was</em> shame, in its abundance, in its essence." <em>Wo okutte kimashita</em> (を送って来ました, "have spent / have passed through") uses the continuative <em>okutte</em> (送って, "sending / passing") from <em>okuru</em> (送る, "to send / to spend time / to pass through") with the directional auxiliary <em>kimashita</em> (来ました, "came [up to the present]"). The <em>te kuru</em> (て来る) construction indicates an action that began in the past and continues to the present — "I have been sending through [my life] and have now arrived." This grammatical structure makes the sentence into a journey narrative: the speaker has traveled through a shame-filled life and has now reached the point of narration, the moment at which he can look back and deliver the verdict. The <em>mashita</em> (ました) ending is the polite past, which creates a strange formality in the context of such raw confession — as if Yōzō were making an official report, or as if the shame were so total that it can only be stated with the distance of politeness. What is lost in English is the specific weight of <em>haji</em> (恥) in Japanese culture. Unlike English "shame," which exists on a spectrum with "embarrassment," <em>haji</em> is a profound moral category — the feeling that accompanies the violation of social bonds, the exposure of one's inadequacy, the failure to meet obligations. <em>Haji</em> is what one feels before others; it is inherently social and relational. To say one's life was "full of <em>haji</em>" is thus to say that one's entire existence has been a failure before the human community — not merely a private feeling of inadequacy but a public, visible, undeniable disqualification. The English "shame" captures the general meaning but loses the social specificity, the sense that <em>haji</em> is what the community uses to mark those who have failed it. And "I have spent a life full of shame" — while accurate — cannot reproduce the Japanese sentence's shocking directness: nine syllables, no subordinate clauses, no qualifiers, no "I think" or "it seems" or "perhaps." Just the fact, delivered like a death sentence. Donald Keene's English translation — "Mine has been a life of much shame" — captures the formality but loses the journey-grammar of <em>okutte kimashita</em>; more recent translations have struggled to find an equivalent for this sentence that carries both its simplicity and its weight. The Japanese original achieves what perhaps only Japanese can achieve: the expression of total self-condemnation in the grammar of perfect politeness.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"I Could Not Make Out the Business of Living as a Human Being"</div>
+    <div class="passage-jp">
+      自分には、人間の生活というものが、見当つかないのです。
+    </div>
+    <div class="passage-romaji">
+      "Jibun ni wa, ningen no seikatsu to iu mono ga, mientō tsukanai no desu."
+    </div>
+    <div class="passage-en">
+      "As for me, I could not make out the thing called 'living as a human being.'"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence, appearing immediately after the opening line, establishes the novel's central problem with a precision that has made it one of the most quoted lines in Japanese literature. <em>Jibun ni wa</em> (自分には, "as for me / in my case") uses the dative-topic construction to create a space of exception: "speaking for myself" — implying that others may understand, but I do not. <em>Jibun</em> (自分) is the reflexive pronoun, "oneself," and its use here rather than <em>watashi</em> (私, "I") creates a slight distance — Yōzō is observing himself as if from outside, already divided from his own subjectivity. <em>Ningen no seikatsu to iu mono ga</em> (人間の生活というものが, "the thing called 'human living' [subject]") uses the quotative <em>to iu</em> (という) with the nominalizer <em>mono</em> (もの, "thing / entity") to create a construction meaning "the thing called X" — a formulation that treats "human living" as a category, a concept, an object of investigation rather than a natural condition. The <em>ga</em> (が) marks this "thing" as the subject of the sentence, emphasizing it as new information or the focus of concern. <em>Mientō tsukanai no desu</em> (見当つかないのです, "cannot make out / cannot figure out / cannot get a fix on") uses the idiom <em>mientō ga tsuku</em> (見当がつく, "to get a fix on / to form an idea of / to be able to estimate"), literally "for a bearing/direction to attach." <em>Mientō</em> (見当) originally meant "bearing" or "direction" in navigation; <em>mientō ga tsuku</em> means to get one's bearings, to know where one is, to have a sense of direction. The negative <em>mientō tsukanai</em> (見当つかない) thus means not merely "I don't understand" but "I cannot get my bearings" — I am lost, disoriented, without direction in the territory of human living. The explanatory nominalizer <em>no desu</em> (のです) gives the sentence the quality of an explanation, a clarification, a statement of fact being offered to someone who needs to understand. What is lost in English is the navigational metaphor embedded in <em>mientō</em>. "I could not make out" (Keene) captures the sense of perceptual failure but loses the spatiality; "I cannot comprehend" is too cognitive; "I cannot fathom" is too emotional. The Japanese <em>mientō tsukanai</em> suggests that "human living" is a landscape that Yōzō has been trying to navigate without a map, a compass, or bearings — that he has been wandering in the territory of the human without ever knowing where he is. The sentence is thus not merely a confession of ignorance but a description of existential disorientation, and the grammar of <em>no desu</em> makes it feel like a patient explanation to someone who has asked, "Why are you like this?" — the answer being, "Because I have never known where I was, in the world of human beings."</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"Clowning Was My Last Request for Love"</div>
+    <div class="passage-jp">
+      そこで考え出したのは、道化でした。それは、自分の、人に対する最後の求愛でした。
+    </div>
+    <div class="passage-romaji">
+      "Soko de kangaedashita no wa, dōke deshita. Sore wa, jibun no, ningen ni taisuru saigo no kyūai deshita."
+    </div>
+    <div class="passage-en">
+      "What I came up with there was clowning. It was my last request for love addressed to my fellow human beings."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's moral center — transforms the entire narrative from a story of self-destruction into a theory of love, and its grammar encodes a theology of the outcast. <em>Soko de kangaedashita no wa, dōke deshita</em> (そこで考え出したのは、道化でした, "What I came up with there was clowning") uses the nominalizing construction <em>...no wa... deshita</em> (...のは...でした) to make "clowning" into the answer to an implied question — "What did I come up with? Clowning." The <em>soko de</em> (そこで, "there / in that situation") refers back to the entire preceding description of Yōzō's terror of human beings, making clowning not a choice but a solution, a necessity born of desperation. <em>Dōke</em> (道化, "clowning / buffoonery / playing the fool") is a strong word — not merely "acting funny" (<em>okashi</em> / 可笑し) but the deliberate assumption of a ridiculous persona to make others laugh. The word carries associations of the <em>dōke</em> in medieval Japanese culture — the licensed fool who speaks truth through absurdity, the figure who exists at the margins of the human community and comments on its hypocrisies. <em>Sore wa, jibun no, ningen ni taisuru saigo no kyūai deshita</em> (それは、自分の、人間に対する最後の求愛でした, "It was my last request for love addressed to my fellow human beings") is one of the most beautiful and terrible sentences in Japanese literature. <em>Sore wa</em> (それは, "that was") renames clowning, transforms it from performance into appeal. <em>Jibun no</em> (自分の, "my own") with the commas that surround it in the original creates a pause, a breath, a moment of self-recognition before the sentence delivers its payload. <em>Ningen ni taisuru</em> (人間に対する, "addressed to human beings / directed toward human beings") uses the directional <em>ni taisuru</em> (に対する, "toward / addressed to / in relation to") to make the love specific and directional — not love in general but love aimed at the category of beings that terrifies Yōzō most. <em>Saigo no kyūai</em> (最後の求愛, "last request for love / final courtship") combines <em>saigo</em> (最後, "last / final") with <em>kyūai</em> (求愛, "courtship / wooing / request for love") — a word that in Japanese carries both romantic and supplicatory connotations. <em>Kyūai</em> is what a suitor does; it is also what a beggar does. Yōzō's clowning is both: a seduction and a supplication, an attempt to be loved by making himself indispensable to others' amusement. The <em>saigo</em> (最後, "last") makes it clear that this is terminal — there is no further appeal, no next strategy, no reserve of hope. What is lost in English is the full resonance of <em>kyūai</em> (求愛), which is a more formal and literary word than "request for love." <em>Kyūai</em> is the word of courtly love, of romantic pursuit, of the lover's address to the beloved — and its application to "human beings" as a category elevates Yōzō's clowning from pathology to theology. He is not merely anxious; he is a soul begging for grace from the only source that can give it — other people — and discovering that the only language they understand is laughter. The sentence thus contains a theory of comedy as the last language of the outcast, the final dialect available to those who cannot speak the language of normal human interaction. And the grammar of <em>deshita</em> (でした) — the polite past of <em>desu</em> — delivers this devastating theory in the tone of a man explaining something he has long since accepted, a fact so established that it no longer requires emotional emphasis. The politeness is the horror: Yōzō has lived with this knowledge so long that he can state it as calmly as a weather report.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"A Good Child, Like a God"</div>
+    <div class="passage-jp">
+      とても素直で、よく気がきいて……神様みたいないい子でした。
+    </div>
+    <div class="passage-romaji">
+      "Totemo sunao de, yoku ki ga kiite…… Kami-sama mitai na ii ko deshita."
+    </div>
+    <div class="passage-en">
+      "He was very gentle, very thoughtful... a good child, like a god."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken by the bar madam in the afterword — is the novel's counter-verdict, its single moment of grace, its refusal to let the title have the last word. And its grammar is as simple as it is devastating. <em>Totemo sunao de</em> (とても素直で, "very gentle / very docile / very honest, and...") uses the continuative <em>de</em> (で) form of the <em>na</em>-adjective <em>sunao</em> (素直, "gentle / docile / honest / straightforward / without deceit") to begin a list of qualities. <em>Sunao</em> is one of the highest virtues in Japanese culture — the quality of being unresisting, accepting, without hidden agenda. It is the word used for well-behaved children, for obedient students, for people who do not make trouble. That this is the first word the bar madam uses for Yōzō — the man who has just spent 200 pages describing himself as a monster — creates an immediate dissonance that the reader must hold without resolving. <em>Yoku ki ga kiite</em> (よく気がきいて, "very thoughtful / very attentive / very considerate") uses the idiom <em>ki ga kiku</em> (気が利く, "to be thoughtful / to be attentive / to notice what needs to be done"), literally "for one's spirit/attention to reach." The continuative <em>kiite</em> (きいて) connects this quality to the next, creating a list of virtues that accumulates without the bar madam seeming to notice their contradiction with everything Yōzō has told us about himself. The ellipsis (……) creates a pause — the pause of memory, of searching for the right word, of feeling that language is inadequate to what she wants to say. And then comes the sentence's explosion: <em>Kami-sama mitai na ii ko deshita</em> (神様みたいないい子でした, "was a good child, like a god"). <em>Kami-sama</em> (神様, "god / deity") with the honorific <em>-sama</em> (様) is the most respectful way to refer to the divine in Japanese — the word a child uses for the god of the shrine, for the Buddha, for the absolute. <em>Mitai na</em> (みたいな, "like / similar to") is the casual simile marker, creating a comparison that feels spontaneous rather than calculated — she is not making a theological claim but groping for language sufficient to her feeling. <em>Ii ko</em> (いい子, "good child") is the phrase used by adults for well-behaved children — simple, affectionate, slightly condescending in its warmth. The combination — <em>kami-sama mitai na ii ko</em> (神様みたいないい子, "a good child like a god") — is almost unbearable in its innocence: the bar madam, who has seen Yōzō at his most destroyed, retains the capacity to see him as a child, and not just any child but one whose goodness approaches the divine. The <em>deshita</em> (でした) — polite past of <em>desu</em> — delivers this judgment with the same formal distance that Yōzō uses for his own self-condemnation, as if the bar madam and Yōzō were speaking the same grammatical language to deliver opposite verdicts. What is lost in English is the full shock of <em>kami-sama</em> (神様) in this context. "Like a god" in English sounds hyperbolic, almost ironic; <em>kami-sama mitai na</em> in Japanese sounds like the most natural thing in the world, the only comparison adequate to the bar madam's experience of Yōzō's gentleness. The Japanese reader knows that <em>kami-sama</em> is the word used by children and adults alike for the divine presence in daily life — the god who protects, who sees, who understands what humans cannot. For the bar madam to call Yōzō <em>kami-sama mitai na ii ko</em> is thus to place him outside the economy of human judgment entirely — to say that he is not "disqualified from being human" but rather "qualified for something beyond the human." The title says <em>ningen shikkaku</em>; the afterword says <em>kami-sama mitai</em>. The novel ends with both statements standing, neither canceled, both true — and the reader is left to decide which verdict to carry forward, or whether to carry both, holding the contradiction as the novel itself does, without resolution, without peace, but not without meaning.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of shame, performance, and the slow disqualification of the self from the community of human beings.</p>
+
+  <div class="card">
+    <h3>Shame, Judgment & the Self</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>人間</td><td>ningen</td><td class="pos">noun</td><td>human being; person; the human</td></tr>
+        <tr><td>失格</td><td>shikkaku</td><td class="pos">noun</td><td>disqualification; failure; ineligibility</td></tr>
+        <tr><td>恥</td><td>haji</td><td class="pos">noun</td><td>shame; disgrace; humiliation</td></tr>
+        <tr><td>生涯</td><td>shōgai</td><td class="pos">noun</td><td>lifetime; career; one's span of life</td></tr>
+        <tr><td>道化</td><td>dōke</td><td class="pos">noun</td><td>clowning; buffoonery; playing the fool</td></tr>
+        <tr><td>求愛</td><td>kyai</td><td class="pos">noun</td><td>courtship; wooing; request for love</td></tr>
+        <tr><td>恐怖</td><td>kyōfu</td><td class="pos">noun</td><td>terror; fear; dread</td></tr>
+        <tr><td>不安</td><td>fuan</td><td class="pos">na-adj</td><td>anxiety; unease; insecurity</td></tr>
+        <tr><td>恥ずかしい</td><td>hazukashii</td><td class="pos">i-adj</td><td>ashamed; embarrassed; shameful</td></tr>
+        <tr><td>見当</td><td>mientō</td><td class="pos">noun</td><td>estimate; bearings; direction; fix</td></tr>
+        <tr><td>素直</td><td>sunao</td><td class="pos">na-adj</td><td>gentle; docile; honest; straightforward</td></tr>
+        <tr><td>神様</td><td>kami-sama</td><td class="pos">noun</td><td>god; deity; divine being</td></tr>
+        <tr><td>自分</td><td>jibun</td><td class="pos">pronoun</td><td>oneself; myself; yourself</td></tr>
+        <tr><td>人間不信</td><td>ningen fushin</td><td class="pos">noun</td><td>misanthropy; distrust of human beings</td></tr>
+        <tr><td>罪</td><td>tsumi</td><td class="pos">noun</td><td>sin; crime; guilt; fault</td></tr>
+        <tr><td>罰</td><td>batsu</td><td class="pos">noun</td><td>punishment; penalty</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Performance, Masks & Social Survival</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>演技</td><td>engi</td><td class="pos">noun</td><td>performance; acting</td></tr>
+        <tr><td>仮面</td><td>kamen</td><td class="pos">noun</td><td>mask; disguise; false face</td></tr>
+        <tr><td>笑顔</td><td>egao</td><td class="pos">noun</td><td>smiling face; smile</td></tr>
+        <tr><td>愛嬌</td><td>aikyō</td><td class="pos">noun</td><td>charm; amiability; ingratiating manner</td></tr>
+        <tr><td>気を遣う</td><td>ki wo tsukau</td><td class="pos">verb</td><td>to be attentive; to take care; to be considerate</td></tr>
+        <tr><td>気が利く</td><td>ki ga kiku</td><td class="pos">phrase</td><td>to be thoughtful; to be attentive; to notice</td></tr>
+        <tr><td>取り繕う</td><td>toritsukurou</td><td class="pos">verb</td><td>to patch up; to put on a brave face; to disguise</td></tr>
+        <tr><td>見せかけ</td><td>misekake</td><td class="pos">noun</td><td>semblance; outward show; pretense</td></tr>
+        <tr><td>世間</td><td>seken</td><td class="pos">noun</td><td>the world; society; the public</td></tr>
+        <tr><td>世間体</td><td>sekentei</td><td class="pos">noun</td><td>public image; social appearance; face</td></tr>
+        <tr><td>体裁</td><td>teisai</td><td class="pos">noun</td><td>appearance; form; decency; respectability</td></tr>
+        <tr><td>体面</td><td>taimen</td><td class="pos">noun</td><td>face; honor; dignity; reputation</td></tr>
+        <tr><td>隠す</td><td>kakusu</td><td class="pos">verb</td><td>to hide; to conceal; to cover up</td></tr>
+        <tr><td>装う</td><td>yosōu</td><td class="pos">verb</td><td>to pretend; to feign; to disguise oneself as</td></tr>
+        <tr><td>振る舞う</td><td>furumau</td><td class="pos">verb</td><td>to behave; to conduct oneself; to treat (others)</td></tr>
+        <tr><td>ふるまい</td><td>furumai</td><td class="pos">noun</td><td>behavior; conduct; demeanor</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Destruction, Addiction & the Edge of Life</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>酒</td><td>sake</td><td class="pos">noun</td><td>alcohol; sake; liquor</td></tr>
+        <tr><td>中毒</td><td>chūdoku</td><td class="pos">noun</td><td>poisoning; addiction; intoxication</td></tr>
+        <tr><td>麻薬</td><td>mayaku</td><td class="pos">noun</td><td>narcotic; drug; dope</td></tr>
+        <tr><td>廃人</td><td>hainin</td><td class="pos">noun</td><td>invalid; wreck; human wreckage</td></tr>
+        <tr><td>狂人</td><td>kyōjin</td><td class="pos">noun</td><td>madman; lunatic; insane person</td></tr>
+        <tr><td>精神病院</td><td>seishin byōin</td><td class="pos">noun</td><td>mental hospital; psychiatric hospital</td></tr>
+        <tr><td>入院</td><td>nyūin</td><td class="pos">noun</td><td>hospitalization; admission</td></tr>
+        <tr><td>自殺</td><td>jisatsu</td><td class="pos">noun</td><td>suicide</td></tr>
+        <tr><td>心中</td><td>shinju</td><td class="pos">noun</td><td>lovers' double suicide</td></tr>
+        <tr><td>入水</td><td>nyūsui</td><td class="pos">noun</td><td>drowning oneself; suicide by water</td></tr>
+        <tr><td>絶望</td><td>zetsubō</td><td class="pos">noun</td><td>despair; hopelessness; desperation</td></tr>
+        <tr><td>破滅</td><td>hametsu</td><td class="pos">noun</td><td>ruin; destruction; downfall</td></tr>
+        <tr><td>堕落</td><td>daraku</td><td class="pos">noun</td><td>depravity; corruption; degradation</td></tr>
+        <tr><td>懺悔</td><td>zange</td><td class="pos">noun</td><td>confession; penitence; repentance</td></tr>
+        <tr><td>手記</td><td>shuki</td><td class="pos">noun</td><td>memoir; personal account; notebook</td></tr>
+        <tr><td>遺書</td><td>isho</td><td class="pos">noun</td><td>will; testament; suicide note</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Dazai writes with the precision of a man who has stripped language to its bones — and the translation of his most famous novel raises questions that go to the heart of what literature can carry across borders.</p>
+
+  <div class="card">
+    <h3>1. <em>Haji</em> (恥): The Social Grammar of Shame</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>恥</strong> — shame; disgrace; the violation of social bonds; what one feels before others when one has failed them</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"shame" / "disgrace" / "humiliation"</strong> — each captures one register but loses the social specificity</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>haji</em> (恥) is not merely a private feeling but a social judgment — the recognition that one has failed before the community, that one's inadequacy is visible and undeniable. English "shame" exists on a continuum with "embarrassment" and "mortification"; <em>haji</em> does not. <em>Haji</em> is what destroys social standing, what makes one unfit for human company, what the title calls <em>shikkaku</em>. The English translation can convey the feeling but cannot reproduce the social architecture that makes <em>haji</em> a structural feature of Japanese relational life — the constant calibration of one's behavior against the possibility of <em>haji</em>, the terror of exposure, the knowledge that the community is always watching. Yōzō's "life full of shame" is not a life of private suffering; it is a life of public failure, and the English translation cannot fully convey this because English shame does not carry the same social weight. "Disgrace" comes closer but sounds too formal; "humiliation" emphasizes the moment of exposure rather than the accumulated condition. The loss is thus not lexical but cultural: without the full social grammar of <em>haji</em>, Yōzō's opening confession becomes a psychological statement rather than a social one, and the novel's argument about the impossibility of living as a human being loses half its force.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Dōke</em> (道化): The Clown as Theologian</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>道化</strong> — clowning; buffoonery; the licensed fool; the performance of absurdity as a form of truth-telling and supplication</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"clowning" / "playing the fool" / "buffoonery"</strong> — "clowning" is closest but loses the Japanese cultural associations</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>dōke</em> (道化) carries in Japanese a specific cultural history that English "clowning" cannot reproduce. The <em>dōke</em> in Japanese medieval and early modern culture was not merely a performer but a figure of licensed transgression — the fool who could speak truth to power because his very existence was outside the normal order of society. The <em>dōke</em> was simultaneously below humanity (ridiculous, grotesque) and above it (free from the constraints that bind ordinary people). Yōzō's self-description as a <em>dōke</em> activates this entire tradition: he is not merely "acting funny" to get by; he is assuming a role that Japanese culture has long recognized as the last refuge of those who cannot inhabit normal social identities. English "clowning" evokes circus performers, children's entertainers, Bozo and Pagliacci — a tradition of commercial amusement rather than existential strategy. "Playing the fool" captures the strategic element but loses the cultural resonance; "buffoonery" is too dismissive, too comic, too light. The loss matters because the novel's central argument — that clowning is "my last request for love" — depends on the reader understanding that <em>dōke</em> is not a trivial performance but a profound, even sacred, social role. Without this understanding, Yōzō's clowning becomes mere anxiety, mere social awkwardness, rather than the theological gesture that the novel claims it is.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Sunao</em> (素直): The Virtue That Saved No One</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>素直</strong> — gentle; docile; honest; straightforward; without hidden agenda; the highest virtue of Japanese social life</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"gentle" / "docile" / "honest" / "straightforward"</strong> — each captures one facet but loses the integrated whole</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>sunao</em> (素直) is one of the most important and untranslatable virtues in Japanese culture. It describes the quality of being without resistance, of accepting what comes, of not harboring hidden resentment or secret agendas, of being "straight" (<em>nao</em> / 直) in one's "essence" (<em>su</em> / 素). A <em>sunao</em> child obeys without rebellion; a <em>sunao</em> adult accepts criticism without defensiveness; a <em>sunao</em> person loves without calculation. It is the quality that makes social harmony possible, that allows groups to function, that makes the individual subordinate to the collective without feeling destroyed. And it is precisely this quality that Yōzō, in his own estimation, lacks — and that the bar madam, in hers, discovers in him. The English translations — "gentle," "docile," "honest," "straightforward" — each capture one dimension but fail to convey the integrated social virtue that <em>sunao</em> represents. "Gentle" is too emotional; "docile" is too submissive; "honest" is too cognitive; "straightforward" is too behavioral. None can convey the sense that <em>sunao</em> is the foundation of Japanese relational ethics — the quality without which trust, harmony, and love cannot exist. When the bar madam calls Yōzō <em>sunao</em>, she is not merely describing his personality; she is placing him at the center of the very human community that the title has expelled him from. The English translation can convey the description but not the ethical reversal — the sense that this single word overturns everything the novel has seemed to say. The loss is thus structural: without <em>sunao</em>, the afterword's verdict cannot carry the weight it carries in Japanese, and the novel's final dialogue between judgment and mercy becomes a monologue of judgment alone.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Kami-sama mitai na ii ko</em> (神様みたいないい子): The God in the Asylum</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>神様みたいないい子</strong> — a good child, like a god; the casual, affectionate comparison of a destroyed man to the divine</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"a good child, like a god" / "a good boy, like a god"</strong> — grammatically accurate but tonally inadequate</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, the bar madam's description of Yōzō as <em>kami-sama mitai na ii ko</em> (神様みたいないい子) is the novel's most important sentence, and it is almost impossible to translate adequately. The English "a good child, like a god" captures the literal meaning but loses the devastating simplicity of the Japanese original — the way a middle-aged woman, speaking casually about a man she knew, reaches for the highest comparison available in her language and finds it perfectly natural. In English, "like a god" sounds hyperbolic, almost comic; in Japanese, <em>kami-sama mitai na</em> sounds like the most obvious thing in the world, the only comparison that fits. The loss is tonal and theological: English readers cannot feel the full shock of <em>kami-sama</em> being applied to a man who has described himself as a monster, because English religious vocabulary operates differently. "God" in English is a distant, capitalized abstraction; <em>kami-sama</em> in Japanese is intimate, local, present in daily life — the deity of the neighborhood shrine, the protector of the household, the presence that children learn to address before they learn any other name. For the bar madam to call Yōzō <em>kami-sama mitai na</em> is thus to domesticate the divine, to bring it into the space of ordinary affection, to say that goodness of god-like magnitude can exist in the most destroyed of human beings. The English translation can convey the logic but not the intimacy, the casualness, the absolute naturalness of the comparison — which means it cannot fully convey the novel's final, unspoken argument: that the categories of "human" and "divine" are not hierarchically arranged but mysteriously intertwined, and that those who fall below the human may simultaneously rise above it. "A good child, like a god" is correct; but it is not the same sentence that Japanese readers carry with them for the rest of their lives.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Mientō ga tsuku</em> (見当がつく): The Navigation of the Human</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>見当がつく</strong> — to get one's bearings; to form an estimate; to know where one is; the navigational metaphor for understanding life</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"to make out" / "to figure out" / "to comprehend"</strong> — each loses the spatial metaphor</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, the idiom <em>mientō ga tsuku</em> (見当がつく) contains a navigational metaphor that is essential to the novel's understanding of human social life as a territory that must be traversed. <em>Mientō</em> (見当) originally meant "bearing" or "direction" in the context of travel and exploration; <em>mientō ga tsuku</em> means to orient oneself, to know where one stands, to have a sense of direction. When Yōzō says he cannot <em>mientō ga tsuku</em> "human living," he is saying that this territory has no maps, no compass points, no recognizable landmarks — that he has been wandering in it blindly, without ever knowing where he is. The English translations — "make out," "figure out," "comprehend" — are all cognitive rather than spatial; they describe an act of understanding rather than an act of orientation. The loss is imagistic and philosophical: without the navigational metaphor, Yōzō's statement becomes a confession of intellectual inadequacy rather than a description of existential disorientation. The novel's argument is not that Yōzō is stupid or uninformed; it is that he is lost — permanently, irremediably lost — in the territory of the human, and that this lostness is not a temporary condition but a constitutional one. The English translation cannot reproduce this landscape, this sense of wandering without bearings, and so it cannot fully convey the novel's deepest terror: not the fear of death, or pain, or poverty, but the fear of being forever unable to know where one is in relation to other people.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of total shame, navigational failure, terminal supplication, and the judgment that arrives without appeal.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を送って来ました（継続＋方向）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...wo okutte kimashita</em>: "have spent [time] coming [to the present]" — continuative verb with directional auxiliary indicating action from past to present</p>
+      <div class="grammar-example">恥の多い生涯を送って来ました</div>
+      <p class="grammar-example-en">"I have spent a life full of shame [and arrived here]" — The grammar of the completed journey of shame.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜には〜が見当つかない（方向感覚の否定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni wa... ga mientō tsukanai</em>: "as for me, cannot get a fix on..." — dative-topic with negative of navigational idiom</p>
+      <div class="grammar-example">自分には、人間の生活というものが、見当つかないのです</div>
+      <p class="grammar-example-en">"As for me, I cannot get my bearings on the thing called human living" — The grammar of existential disorientation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜というもの（名詞化・引用）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...to iu mono</em>: "the thing called... / what is called..." — quotative nominalization treating a concept as an object of investigation</p>
+      <div class="grammar-example">人間の生活というもの</div>
+      <p class="grammar-example-en">"the thing called human living" — The grammar of categorical distance.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のです（説明・断定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no desu</em>: "the fact is that / it is that" — explanatory nominalizer marking a statement as clarification or discovered truth</p>
+      <div class="grammar-example">見当つかないのです</div>
+      <p class="grammar-example-en">"The fact is, I cannot get my bearings" — The grammar of patient explanation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のは〜でした（焦点化・断定）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no wa... deshita</em>: "what [I did] was..." — nominalizing focus construction emphasizing the answer to an implied question</p>
+      <div class="grammar-example">考え出したのは、道化でした</div>
+      <p class="grammar-example-en">"What I came up with was clowning" — The grammar of the discovered solution.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜に対する〜（方向・対象）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni taisuru...</em>: "addressed to / directed toward / in relation to" — directional adjectival phrase specifying the target of an action or feeling</p>
+      <div class="grammar-example">人間に対する最後の求愛</div>
+      <p class="grammar-example-en">"the last request for love addressed to human beings" — The grammar of terminal supplication.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜みたいな（比況・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...mitai na</em>: "like / similar to" — casual simile marker creating spontaneous comparison</p>
+      <div class="grammar-example">神様みたいないい子</div>
+      <p class="grammar-example-en">"a good child, like a god" — The grammar of the comparison that overturns the verdict.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜でした（丁寧過去）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...deshita</em>: "was / were [polite past]" — polite past of <em>desu</em>, creating formal distance even in raw confession</p>
+      <div class="grammar-example">神様みたいないい子でした</div>
+      <p class="grammar-example-en">"was a good child, like a god" — The grammar of the verdict delivered from a distance.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>No Longer Human</em> is the grammar of a man who has decided that language itself is part of the problem — that the polite forms, the nominalizers, the explanatory particles are all part of the performance that has failed. And yet he cannot stop using them. The continuative-directional (<em>okutte kimashita</em>) makes shame into a journey with an endpoint; the navigational negative (<em>mientō tsukanai</em>) makes social life into a territory without bearings; the quotative nominalization (<em>to iu mono</em>) turns "human living" into an object of failed investigation; the explanatory nominalizer (<em>no desu</em>) delivers devastating truths in the tone of clarification; the focus construction (<em>no wa... deshita</em>) presents clowning as the answer to a question no one asked; the directional adjectival (<em>ni taisuru</em>) makes love specific, targeted, terminal; the casual simile (<em>mitai na</em>) overturns the entire novel with a single comparison; and the polite past (<em>deshita</em>) delivers both self-condemnation and unexpected grace with the same formal distance. Pay attention to how these constructions work together to create a prose that sounds calm because it is desperate — the voice of a man who has nothing left but the grammar of his own disqualification.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, critical scholarship, and textual analysis.</p>
+  <p style="margin-top: var(--space-xs);">『人間失格』 &middot; 太宰治 著 &middot; 筑摩書房 1948年7月25日刊 &middot; 271ページ</p>
+  <p style="margin-top: var(--space-xs);">初出：雑誌『展望』1948年6月号〜8月号（3回連載・第3の手記とあとがきは太宰の死後掲載）</p>
+  <p style="margin-top: var(--space-xs);">新潮文庫版：1952年11月3日刊 &middot; 192ページ &middot; ISBN 978-4-10-100605-5 &middot; 定価440円（税込） &middot; 累計600万部突破</p>
+  <p style="margin-top: var(--space-xs);">著者：太宰治（本名・津島修治、1909年619日〜1948年6月13日・青森県北津軽郡金木村〈現・五所川原市金木町〉出身）</p>
+  <p style="margin-top: var(--space-xs);">最期：1948年6月13日、山崎富栄とともに東京都三鷹市の玉川上水で入水自殺 &middot; 遺発見は6月19日（39歳の誕生日）</p>
+  <p style="margin-top: var(--space-xs);">文学活動：無頼派（新戯作派）の代表作家 &middot; 井伏鱒二に師事 &middot; 東京帝国大学仏文科中退</p>
+  <p style="margin-top: var(--space-xs);">代表作：『走れメロス』（1940年） &middot; 『富嶽百景』（1939年） &middot; 『女生徒』（1939年） &middot; 『お伽草紙』（1945年） &middot; 『ヴィヨンの妻』（1947年） &middot; 『斜陽』（1947年） &middot; 『人間失格』（1948年）</p>
+  <p style="margin-top: var(--space-xs);">主要登場人物：大庭葉蔵（おおばようぞう・主人公・手記の語り手） &middot; 堀木正雄（ほりき・葉蔵の「友達」・遊び仲間） &middot; 恒子（つねこ・酒場の女・葉蔵と心中未遂） &middot; シヅ子（しづこ・未亡人・葉蔵と同居） &middot; 良子（よしこ・無垢な少女・葉蔵の妻・後に暴行される） &middot; マダム（酒場の女将・後記の語り手） &middot; ヒラメ（ひらめ・葉蔵の親戚・監視役）</p>
+  <p style="margin-top: var(--space-xs);">構造：はしがき &middot; 第一の手記（幼少期〜高校時代） &middot; 第二の手記（高校時代〜結婚） &middot; 第三の手記（結婚後〜精神病院） &middot; あとがき</p>
+  <p style="margin-top: var(--space-xs);">テーマ：恥、人間不信、道化としての生、女性への依存、酒と薬物、自殺と心中、廃人としての終焉、人間としての失格と神性</p>
+  <p style="margin-top: var(--space-xs);">映画化：2010年（生田斗真主演） &middot; 2019年（アニメ『HUMAN LOST 人間失格』） &middot; 舞台・漫画・テレビドラマ多数</p>
+  <p style="margin-top: var(--space-xs);">英訳：Donald Keene訳 <em>No Longer Human</em>（New Directions, 1958）ほか20言語以上に翻訳 &middot; 2020年に日本で著作権消滅（公有化）</p>
+</footer>
+
+</div>
+</body>
+</html>

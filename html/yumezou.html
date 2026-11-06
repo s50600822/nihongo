@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夢をかなえるゾウ1 — 水野敬也 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>夢をかなえるゾウ1</h1>
+  <p class="hero-subtitle">Yume wo Kanaeru Zō 1 / The Elephant That Makes Dreams Come True, Vol. 1</p>
+  <p class="hero-meta">水野敬也 著 &middot; 文響社 2007年8月刊 &middot; 352ページ &middot; ISBN 978-4-87031-805-2 &middot; シリーズ累計560万部突破 &middot; ドラマ化・アニメ化</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: The Elephant as Dream-Making Machine</h2>
+  <p class="lead">The title <em>Yume wo Kanaeru Zō</em> (夢をかなえるゾウ, "The Elephant That Makes Dreams Come True") is a study in the grammar of magical realism applied to self-help: a creature from Hindu mythology (Ganesha, the elephant-headed god of beginnings and obstacle-removal) is placed inside a Japanese verb phrase that makes him sound like a household appliance. The title's genius is its collision of registers: <em>yume wo kanaeru</em> (夢をかなえる) is the language of fairy tales and Disney songs — "dreams come true" — while <em>zō</em> (ゾウ / 象, "elephant") grounds the sentence in zoological specificity. The result is a title that promises both the impossible (a god who grants wishes) and the practical (a method you can follow), both the magical and the mundane. This is the grammar of the entire self-help novel genre that the book invented: the extraordinary delivered in the language of the ordinary, the divine packaged as a daily routine.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">夢を</span>
+        <span class="romaji">yume wo / "dreams [object]"</span>
+        <span class="meaning">"dreams [direct object]" — <em>Yume</em> (夢, "dream / ambition / vision") is one of the most emotionally loaded words in Japanese, encompassing everything from childhood fantasies to adult career goals. The kanji combines <em>muttsu no kashira</em> (六つの頭, the radical for "bed / lying down") with <em>mu</em> (無, "without / -less"), suggesting something that appears in sleep, outside conscious control — and yet the word has been thoroughly appropriated by capitalist aspiration: <em>yume</em> is the word on every job-hunting brochure, every sports poster, every political slogan. The particle <em>wo</em> (を) marks <em>yume</em> as the direct object of the verb, making the dream into the thing that will be acted upon — not something the protagonist pursues but something the elephant (the method, the system, the god) will perform an operation on. The grammar thus shifts agency from the dreamer to the dream-making mechanism: the elephant does the work; the human receives the result. This is the fundamental promise of the self-help genre, and the title encodes it in its very syntax.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">かなえる</span>
+        <span class="romaji">kanaeru / "to make come true / to grant / to fulfill"</span>
+        <span class="meaning">"to make come true / to grant / to fulfill" — <em>Kanaeru</em> (叶える / かなえる) is a beautiful and specific verb, distinct from the more common <em>jitsugen suru</em> (実現する, "to realize / to actualize") or <em>kansei suru</em> (完成する, "to complete"). <em>Kanaeru</em> carries a sense of magical responsiveness: it is the verb used when a god grants a prayer, when a parent gives a child what they wished for, when reality bends to accommodate a deeply held desire. The kanji <em>叶</em> (kana) originally meant "to harmonize / to be in accord" — from the image of leaves (<em>ha</em> / 葉) on a branch (<em>ki</em> / 木) coming together in harmony — and by extension came to mean "to grant / to fulfill" in the sense of bringing desire and reality into alignment. The title's use of <em>kanaeru</em> rather than a more business-like verb is crucial: it tells the reader that this is not a manual of hard work and discipline (though it becomes that) but a story of magical transformation. The elephant "grants" dreams the way a fairy godmother grants wishes — and the novel's genius is to reveal, gradually, that this granting takes the form of small, daily, almost absurdly mundane actions. The magic is in the method; the method is in the mundane.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">ゾウ</span>
+        <span class="romaji">zō / "elephant"</span>
+        <span class="meaning">"elephant" — <em>Zō</em> (象 / ゾウ, "elephant") is written with the kanji that means "image / form / phenomenon" (象), a character of enormous philosophical weight in East Asian thought — it appears in compounds like <em>shōtai</em> (象徴, "symbol") and <em>genshō</em> (現象, "phenomenon"). The elephant is thus not merely an animal but a form, an image, a symbolic presence. In the context of the novel, <em>zō</em> refers specifically to Ganesha (ガネーシャ), the Hindu god with an elephant head, who is the deity of beginnings, the remover of obstacles, and the patron of arts and sciences. Ganesha is one of the most widely worshipped deities in the Hindu pantheon, and his Japanese recognition — while not as widespread as in India — has grown through yoga culture, spirituality publishing, and works like this novel. The title's use of <em>zō</em> rather than <em>ganesha</em> is a marketing masterstroke: it makes the book sound like a children's fable (<em>The Elephant That...</em>) rather than a religious text, lowering the barrier for readers who might hesitate at "Hindu mythology." At the same time, the choice of an elephant rather than, say, a fox (<em>kitsune</em>) or a tanuki connects the novel to the Indian spiritual tradition in which Ganesha operates — the tradition that says obstacles are not enemies but invitations, and that the divine is not distant but conversational, even comical. The title's grammar — [object] + [verb] + [subject/agent] — is the standard Japanese relative-clause structure ("the elephant that grants dreams"), and this structure makes the title into a noun phrase, a thing you can pick up and hold: not "How to Grant Your Dreams" but "The Dream-Granting Elephant" — a character, a companion, a book.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 文響社 (Bunkyosha / formerly Asukashinsha 飛鳥新社), August 29, 2007, hardcover, 352 pages, 四六判, ISBN 978-4-87031-805-2. Bunkoban (文庫版): 文響社, July 9, 2020, 402 pages, ISBN 978-4-86651-351-9, ¥1,595 (tax included). The series has sold over 5.6 million copies across all volumes as of 2026, making it the bestselling self-help novel series in Japanese publishing history. TV drama adaptation: 2008, starring Oguri Shun (小栗旬) as the protagonist and Furuta Arata (古田新太) as Ganesha. Anime adaptation: broadcast within TBS's <em>Kimi ha Break</em> (キミハ・ブレイク) program. Children's edition: <em>Yume wo Kanaeru Zō Kodomo-ban</em> (『夢をかなえるゾウ 子ども版』), 2023, illustrated by Yasuragi Masashi (安楽雅志). The series comprises 5 volumes: Vol. 1 (2007), Vol. 2 <em>Ganesha to Binbōgami</em> (『ガネーシャと貧乏神』, 2012), Vol. 3 <em>Black Ganesha no Oshie</em> (『ブラックガネーシャの教え』, 2015), Vol. 4 <em>Ganesha to Shinigami</em> (『ガネーシャと死神』, 2020), and Vol. 0 <em>Ganesha to Yume wo Taberu Baku</em> (『ガネーシャと夢を食べるバク』, 2022).
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>水野敬也 &mdash; Mizuno Keiya (b. 1976)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">水</div>
+    <div class="author-name-block">
+      <h3>水野敬也 / Mizuno Keiya</h3>
+      <p class="author-name-romaji">The comedian who became Japan's most successful self-help novelist &middot; born in Aichi &middot; Keio University graduate</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Mizuno Keiya was born on November 26, 1976, in Kiyosu, Aichi Prefecture (now Kiyosu City, formerly Nishikasugai District). He attended Tōkai Junior and Senior High School (東海中学校・高学校) and graduated from Keio University Faculty of Economics (慶應義塾大学経済学部) in 2000. Before becoming a writer, Mizuno was an aspiring comedian — a background that explains everything about his prose style: the rapid-fire dialogue, the self-deprecating narrator, the puncturing of pretension with a well-timed joke. He has said in interviews that his experience in comedy taught him the most important lesson of his writing career: that people will listen to anything if you make them laugh first. This principle — entertainment as the delivery system for wisdom — is the engine of the entire <em>Yume Zō</em> series.</p>
+    <p style="margin-bottom: var(--space-md);">Mizuno made his debut as an author in 2003 with <em>Ukeru Gijutsu</em> (『ウケる技術』, "The Art of Being Funny," Shinchosha), a book about comedy technique that sold over 300,000 copies — an extraordinary figure for a debut work. But it was his third book, <em>Yume wo Kanaeru Zō</em> (2007), that transformed him from a promising humor writer into a publishing phenomenon. The book's concept — a loser salaryman receives daily assignments from a Kansai-dialect-speaking elephant god — emerged from Mizuno's own reading of hundreds of self-help books. He had noticed that while most contained valuable insights, they were often written from the perspective of already-successful people, making their advice feel unattainable to ordinary readers. Mizuno's radical innovation was to create a protagonist who was not a success story but a failure story — someone so relatable that readers could think, "If this guy can change, so can I." The comedy was not decoration; it was the essential ingredient that made the medicine go down.</p>
+    <p style="margin-bottom: var(--space-md);">Beyond the <em>Yume Zō</em> series, Mizuno's bibliography is remarkably diverse. Under his own name, he has written <em>Ame no Hi mo, Hare Otoko</em> (『雨の日も、晴れ男』, 2008), <em>Kao ni mo Makezu</em> (『顔ニモマケズ』, 2013), and <em>Shitabanashi no Clover</em> (『四つ話のクローバー』, 2019). Under the pen name Mizuno Aiya (水野愛也, "Love-Arrow Mizuno"), he writes as a "love gym teacher" (<em>ren'ai taiiku kyōshi</em> / 恋愛体育教師), publishing <em>LOVE Riron</em> (『LOVE理論』, 2010) and <em>Suparuta Konkatsu Juku</em> (『スパルタ婚活塾』, 2014). He has also collaborated with artist Tekken (鉄拳) on picture books including <em>Sore demo Boku wa Yume wo Miru</em> (『それでも僕は夢を見る』, 2016). His work in film includes the screenplay for <em>In the Hero</em> (『イン・ザ・ヒーロー』, 2014) and planning/screenplay for the DVD <em>Onkō na Jōshi no Okorasekata</em> (『温厚な上司の怒らせ方』). In 2024, he participated in a celebrated dialogue with Koga Fumitake (古賀史健, co-author of <em>The Courage to Be Disliked</em>) and self-help researcher Ozaki Shunsuke (尾崎俊介) on the deep appeal of self-help literature, published on the Hobo Nikkan Itoi Shinbun (ほぼ日) website. What unifies all these projects is Mizuno's fundamental belief — demonstrated through the Ganesha character — that wisdom must wear the clothes of entertainment to reach the people who need it most.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Self-Help Boom, the Kansae Comedy Explosion, and the Birth of "Edutainment" in 2000s Japan</h2>
+
+  <div class="card">
+    <h3>2007: The Year Japan Learned to Laugh at Self-Improvement</h3>
+    <p><em>Yume wo Kanaeru Zō</em> was published in 2007, at the precise moment when Japanese publishing was ready for a new kind of self-help book. The 2000s had seen an explosion of business and self-help literature — books like Honda Tōru's <em>Shinpai Shinaiai Gakkō</em> (『心配しなさい学級』, 2002), Ihara Saikaku's rediscovered business aphorisms, and translations of American motivational classics like Stephen Covey's <em>The 7 Habits of Highly Effective People</em> (1995 Japanese translation) and Dale Carnegie's perennial bestsellers. But by 2007, a certain fatigue had set in: readers were tired of being lectured by millionaires, tired of seven-step programs that assumed unlimited willpower, tired of the implicit message that their failure to succeed was a moral deficiency. Mizuno's novel arrived like a breath of fresh air — or rather, like a comedian walking into a stuffy seminar and opening a window. The book's format (novelistic narrative + practical assignments) created what would become known as the <em>jiko keihatsu shōsetsu</em> (自己啓発小説, "self-help novel") genre — a hybrid form that used story to deliver actionable advice. This format solved the central problem of self-help publishing: how to make readers actually <em>do</em> the exercises rather than merely feeling inspired while reading and forgetting everything afterward. By embedding the advice in a plot with characters the reader cared about, Mizuno created emotional stakes for the assignments: you wanted the protagonist to succeed, so you paid attention to what Ganesha told him to do. The novel's commercial success — over 2 million copies for Volume 1 alone — proved that Japanese readers were hungry for wisdom delivered with humor, and the genre it created would influence hundreds of subsequent books.</p>
+  </div>
+
+  <div class="card">
+    <h3>Kansai Dialect as Comic Wisdom: The Voice of the Unpretentious God</h3>
+    <p>One of the novel's most distinctive and culturally specific features is Ganesha's use of Kansai dialect (関西弁, <em>Kansai-ben</em>) — the variety of Japanese spoken in Osaka, Kyoto, Kobe, and the surrounding Kansai region. Kansai-ben occupies a unique position in Japanese popular culture: it is the dialect of comedy (most Japanese comedians use Kansai-ben or a standardized "comedy dialect" derived from it), the dialect of straight-talking merchants, the dialect that signals "I'm not putting on airs, I'm telling it like it is." By making Ganesha a Kansai speaker, Mizuno made a series of sophisticated cultural moves simultaneously. First, he signaled that this god would not be distant, Sanskrit-chanting, or ceremonially remote; he would be immediate, chatty, occasionally rude — a god who felt like a neighbor at the <em>izakaya</em>. Second, he tapped into the deep Japanese association between Kansai-ben and humor: the reader knows, from the first sentence, that this book will be funny, and this expectation creates the receptivity that self-help advice requires. Third, he created a natural source of dramatic irony: the cosmic wisdom of the ages delivered in the accent of a Osaka tobacco shop owner. This irony is not merely comic; it is pedagogical. By stripping divine wisdom of its ceremonial language, Mizuno makes it accessible — the way a good teacher translates complex concepts into everyday speech. The Kansai dialect is thus not a stylistic quirk but a philosophical choice: truth does not need fancy clothes. What the novel understands, and what its millions of readers responded to, is that the most profound advice often sounds, when properly translated, like something your funny uncle might say after his third beer — if your funny uncle happened to be a god.</p>
+  </div>
+
+  <div class="card">
+    <h3>Ganesha in Japan: How a Hindu God Became a Self-Help Icon</h3>
+    <p>The choice of Ganesha as the novel's divine messenger is itself a cultural phenomenon worth examining. Ganesha (Sanskrit: Gaṇeśa), the son of Shiva and Parvati, is one of the most widely worshipped deities in the Hindu pantheon — revered as the <em>Vighnaharta</em> (विघ्नहर्ता, "remover of obstacles"), the patron of letters and learning, and the lord of beginnings. His elephant head — the result of a famous myth in which Shiva, not recognizing his own son, beheads him and replaces the head with that of the first creature found, an elephant — makes him visually unmistakable. In Japan, Ganesha was not widely known outside academic and spiritual circles before Mizuno's novel. Buddhism had brought Indian deities to Japan centuries earlier (the <em>Myōten</em> / 歓喜天 cult is a Japanese form of Ganesha worship), but these traditions were obscure to most contemporary readers. Mizuno's genius was to take this relatively unknown figure and make him into a pop-culture icon — not by explaining his mythology in detail but by giving him a personality so vivid that readers felt they knew him. The novel's Ganesha is not the object of worship; he is a character — gluttonous, vain, lazy, occasionally dishonest, and yet fundamentally benevolent. This humanization of the divine is the novel's most radical move, and it drew criticism from some Hindu readers who felt it trivialized their religion. But Mizuno's intention was never theological; it was narrative. He needed a god who could be funny, and Ganesha's elephant head — with its implicit comedy (an elephant in a Tokyo apartment!) — provided the perfect vehicle. The novel's success sparked a minor Ganesha boom in Japan: elephant-headed figurines appeared in bookstores, Ganesha-themed merchandise sold well, and readers who had never heard of Hinduism found themselves with a new favorite deity. Whether this counts as cultural appropriation or cultural appreciation is a question the novel itself never addresses — but the phenomenon is undeniable proof of literature's power to reshape religious imagination across borders.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Homo Mundus" Protagonist and the Democratization of Success</h3>
+    <p>The novel's protagonist — known simply as "Boku" (僕, "I / me") or, in the drama adaptation, as Fumiyama Fumio (フミ山フミ夫) — is a deliberate construction of maximum relatability: a mid-20s salaryman, not particularly talented, not particularly hardworking, not particularly successful, who goes to work, comes home, watches TV, and wonders if this is all there is. He is what Japanese popular culture calls a <em>dame dame na sararīman</em> (ダメダメなサラリーマン, "good-for-nothing salaryman") — a type that had existed in manga and TV since the 1980s but had rarely been the protagonist of a self-help book. Traditional self-help literature assumes a reader who is already motivated, already disciplined, already halfway to success. Mizuno's radical insight was that the people who most need self-help are the ones least likely to read it — because they have been made to feel, by the very genre that claims to help them, that they are not good enough to deserve improvement. By creating a protagonist who is a failure by every conventional measure, Mizuno gave those readers a surrogate: someone who felt as lost as they did, who made the same excuses, who resisted the same advice. The novel's structure — daily assignments of almost insulting simplicity (polish your shoes, clean the toilet, donate your change) — reinforced this democratization: you didn't need talent, connections, or money to do these things. You just needed to start. The novel's historical significance lies in this egalitarian premise: success is not the inheritance of the gifted but the achievable goal of anyone willing to perform small, consistent actions. It was a message perfectly calibrated for post-bubble Japan, where the old certainties of lifetime employment and seniority promotion had collapsed, and where young people needed not grand theories but practical steps they could take today.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Twenty-Nine Days, Twenty-Nine Lessons, One Transformed Life</h2>
+
+  <div class="card">
+    <h3>The Architecture: Daily Assignments as Narrative Engine</h3>
+    <p>The novel is structured around twenty-nine "assignments" (<em>kadai</em> / 課題) that Ganesha gives to the protagonist, one per day, each one a small behavioral change designed to shift his mindset, habits, and relationships. This structure — daily lessons building cumulative change — draws on multiple traditions: the Buddhist <em>kōan</em> (公案, a paradoxical question or statement to meditate on), the Christian devotional (daily readings for spiritual growth), and the contemporary "30-day challenge" format of internet self-improvement culture. But Mizuno's innovation is to embed each assignment in narrative: the protagonist tries the assignment, fails or succeeds, reflects on why it mattered, and moves to the next one with the accumulated weight of all previous lessons. The assignments are deliberately anticlimactic: "Polish your shoes," "Clean the toilet," "Donate your change," "Eat only until 80% full," "Say 'I'm lucky' out loud every day." Each one is a <em>kadai</em> — a task, a problem, a lesson — and each one carries a philosophical payload disguised as household chore. The novel's pacing follows the rhythm of these assignments: each chapter introduces a new <em>kadai</em>, explores its rationale through Ganesha's Kansai-dialect lectures, shows the protagonist's attempt to execute it, and ends with a small transformation — sometimes comic, sometimes genuinely moving. By Day 29, the cumulative effect is unmistakable: the protagonist has not merely learned twenty-nine tricks; he has become a different kind of person — someone who notices, who serves, who gives, who speaks positively, who takes care of small things. The novel's deepest insight is that character is not changed by epiphany but by repetition — by the slow accumulation of small right actions until they become habitual, automatic, self-reinforcing.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Protagonist: Everyman as Hero of the Mundane</h3>
+    <p>The protagonist of <em>Yume Zō</em> — let us call him Boku, as the narrative does — is a 26-year-old salaryman at a mid-sized company, living alone in a small apartment, neither happy nor miserable, just... stuck. He has no particular dream (this becomes a central issue in later volumes), no particular talent, no particular girlfriend. His defining characteristic is his willingness to complain combined with his unwillingness to act — the classic self-help target demographic. What makes him work as a character is Mizuno's refusal to make him either purely sympathetic or purely pathetic. Boku is lazy, self-pitying, resistant to advice, and quick to make excuses — but he is also funny, observant, and fundamentally decent. When Ganesha appears in his room one morning, Boku's first reaction is not awe but irritation: "Who are you and how did you get in?" This skepticism is crucial to the novel's appeal. Boku does not immediately believe that a talking elephant is a god; he tests, questions, resists, and complains — which is exactly what most readers would do. His gradual transformation from skeptic to practitioner is the novel's primary narrative arc, and it works because Mizuno makes the resistance as entertaining as the breakthrough. Boku's failures (he "forgets" to polish his shoes, he "doesn't have time" to clean the toilet, he feels foolish saying "I'm lucky") are the moments when readers see themselves most clearly — and when Ganesha's responses (usually some variant of "Quit whining and do it") land with maximum force. The protagonist is thus not a hero in the traditional sense but a stand-in — a body the reader can inhabit while receiving the book's lessons. His eventual success is not dramatic (no million-yen deal, no marriage proposal, no miraculous recovery) but incremental: he becomes, day by day, a slightly better version of himself. And in the grammar of this novel, that is enough — that is the dream being granted.</p>
+  </div>
+
+  <div class="card">
+    <h3>Ganesha: The Anti-Guru as Divine Teacher</h3>
+    <p>Ganesha, the elephant-headed god who appears in Boku's apartment claiming to have guided Napoleon, Newton, Confucius, and Bill Gates to greatness, is one of the most original teacher figures in contemporary Japanese literature — precisely because he violates almost every convention of the self-help guru. He is not calm; he is irritable. He is not wise-sounding; he speaks in the accent of a Osaka shopkeeper. He is not ascetic; he eats enormous quantities of sweets, smokes, and complains about being bored. He is, in short, a god with all the flaws of a human — and this is exactly what makes his advice credible. A perfect god giving perfect advice would be unbearable; a flawed god giving practical advice is approachable. Ganesha's teaching method is Socratic in its indirectness: he never tells Boku what to think; he gives him assignments that force him to discover the truth through action. "Polish your shoes" is not about footwear; it is about attention to detail, self-respect, and the signal that polish sends to others. "Donate your change" is not about charity; it is about the psychology of abundance — the recognition that giving creates the feeling of having enough. "Clean the toilet" is not about hygiene; it is about humility, service, and the willingness to do what others avoid. Each assignment is a <em>kōan</em> in work clothes, a philosophical puzzle disguised as a chore. Ganesha's Kansai dialect is essential to this method: it allows him to deliver profound insights with the intonation of someone complaining about the weather. The contrast between the cosmic scope of his claims ("I guided all the great ones") and the pettiness of his assignments ("Polish your shoes") creates the comic tension that drives the novel — and it is in this tension that the wisdom operates. The reader laughs, and in laughing, lowers their defenses; and in lowering their defenses, receives the teaching.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Dull" Assignments and the Philosophy of Small Actions</h3>
+    <p>The most commented-upon feature of <em>Yume Zō</em> — both by fans and by skeptics — is the apparent triviality of Ganesha's assignments. "Polish your shoes?" "Clean the toilet?" "Eat until 80% full?" These are not the grand gestures that self-help books usually recommend ("Visualize your success!" "Believe in yourself!" "Take massive action!"). They are, by design, almost embarrassingly small. Mizuno has explained that this was a deliberate strategy born from his reading of hundreds of self-help books: he noticed that the most successful books were not the ones with the most profound theories but the ones with the most actionable advice. The problem was that most actionable advice was still too big — "Start your own business!" "Write a book!" — and therefore paralyzing. His solution was to go in the opposite direction: to make the assignments so small that resistance became ridiculous. Who <em>can't</em> polish their shoes? Who <em>can't</em> donate a few yen of change? The smallness is the point: it removes the excuse of "I can't do this" and replaces it with the question "Will I do this?" — which is a question of will, not capacity. And once the protagonist (and the reader) begins to execute these small assignments, something unexpected happens: the small actions begin to have large consequences. Polished shoes lead to a compliment from a client, which leads to a conversation, which leads to a connection. A donated coin creates a feeling of generosity that changes how the protagonist sees his financial situation. Cleaning the toilet humbles him in a way that makes him more approachable to colleagues. The novel's philosophy is thus not "think big" but "act small" — the belief that large transformations are the cumulative result of tiny, consistent actions, and that the grandiose self-help rhetoric of "massive action" and "crushing it" is actually a form of avoidance, a way of postponing the small thing you could do today. This philosophy, delivered through Ganesha's Kansai-dialect wisecracks, has become the book's most influential legacy: the idea that success is not a mountain to be climbed in a single leap but a staircase ascended one step at a time — and that the step directly in front of you is always, however humble, the most important one.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages contain the novel's most quoted sentences — the Kansai-dialect wisdom that has become part of Japanese popular culture, reproduced on social media, quoted in offices, and passed from friend to friend.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"The Most Important Factor in Not Succeeding"</div>
+    <div class="passage-jp">
+      「成功しないための一番重要な要素はな、『人の言うことを聞かない』や」
+    </div>
+    <div class="passage-romaji">
+      "Seikō shinai tame no ichiban jūyō na yōso wa na, 'hito no iu koto wo kikanai' ya."
+    </div>
+    <div class="passage-en">
+      "The most important factor in not succeeding is 'not listening to what people say.'"
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Ganesha's opening salvo in his first lesson — is the novel's most famous line, and its grammar encodes the entire philosophy of coachable humility. <em>Seikō shinai tame no</em> (成功しないための, "for the sake of not succeeding / in order to not succeed") uses the negative-purpose construction <em>shinai tame ni</em> (しないために) as an attributive modifier of <em>yōso</em> (要素, "factor / element"), creating a sentence about the <em>mechanism of failure</em> rather than the <em>absence of success</em>. The grammar makes failure into an active process with identifiable components — not a mystery or a curse but a system that can be analyzed. <em>Ichiban jūyō na</em> (一番重要な, "the most important") uses the superlative <em>ichiban</em> (一番, "number one / most") with the adjectival noun <em>jūyō</em> (重要, "important"), delivering the judgment with the flat certainty of a weather report. <em>Hito no iu koto wo kikanai</em> (人の言うことを聞かない, "not listening to what people say") uses the quotative construction <em>hito no iu koto</em> (人の言うこと, "the things people say / what people say") with the negative of <em>kiku</em> (聞く, "to listen / to hear / to obey"). The verb <em>kiku</em> is crucial here: in Japanese, <em>kiku</em> means not merely "to hear" but "to obey / to follow advice" — the word used when a child "listens" to a parent, when a student "listens" to a teacher. Ganesha is not saying "You don't hear people"; he is saying "You don't obey people" — and the Kansai dialect final particle <em>ya</em> (や) delivers this accusation not as a condemnation but as a statement of fact, the way an old man in Osaka might say "Rain's coming, ya." What is lost in English is the full force of the Kansai <em>ya</em>. "Ya" is the Kansai equivalent of Standard Japanese <em>da</em> (だ), but it carries a warmth, a familiarity, a "I'm telling you this because I like you" quality that <em>da</em> does not have. The English "is" captures the copula but loses the regional flavor that makes Ganesha sound like a friend rather than a lecturer. And the quotative construction <em>hito no iu koto</em> — literally "the things of people's saying" — is more specific than English "what people say"; it implies not random chatter but the accumulated wisdom of those who have gone before, the advice that successful people have always given and that failures have always ignored. The sentence is thus not merely "Don't be stubborn"; it is "Your failure has a specific and identifiable cause, and that cause is your refusal to accept guidance." This is the novel's foundational diagnosis, and everything that follows is the treatment.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"Money Is Something You Receive for Making People Happy"</div>
+    <div class="passage-jp">
+      「お金いうんはな、人を喜ばせて、幸せにした分だけもらうもんや」
+    </div>
+    <div class="passage-romaji">
+      "Okane iun wa na, hito wo yorokobasete, shiawase ni shita bun dake morau mon ya."
+    </div>
+    <div class="passage-en">
+      "Money, see, is something you receive in proportion to how much you make people happy and bless them with happiness."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Ganesha's theory of money — is the novel's most economically radical statement, and its grammar creates a theory of value in which money is an effect of service rather than a cause of greed. <em>Okane iun wa</em> (お金いうんは, "as for what is called money / as for money") uses the colloquial nominalization <em>iun</em> (言うん / いうの, "what is called / the thing called") to introduce a definition — the grammatical structure Japanese uses when explaining what something fundamentally is. <em>Hito wo yorokobasete</em> (人を喜ばせて, "making people happy / delighting people") uses the causative form <em>yorokobaseru</em> (喜ばせる) of <em>yorokobu</em> (喜ぶ, "to be happy / to rejoice"), meaning not merely "to please people" but "to cause people to feel joy" — an active, agentive construction that makes the protagonist the source of others' happiness. <em>Shiawase ni shita</em> (幸せにした, "made [them] happy / blessed [them] with happiness") uses the adverbial <em>ni</em> (に) with the causative <em>suru</em> (する), creating a parallel structure with the previous clause: "causing joy + causing happiness." <em>Bun dake morau mon ya</em> (分だけもらうもんや, "receive only the amount / portion / share") uses the proportional particle <em>dake</em> (だけ, "only / just / in proportion to") with the nominalizer <em>mon</em> (もん / もの, "thing / entity") and the Kansai copula <em>ya</em> (や). The grammar creates a precise equation: money received = joy caused + happiness created. This is not "money is the root of all evil" or "greed is good"; it is a service theory of value in which money is the receipt for service rendered. What is lost in English is the full colloquial force of the Kansai construction. <em>Morau mon ya</em> (もらうもんや) is not "is received" (passive, formal) but "is a thing you receive" — the <em>mon</em> making money into a concrete object, something you can hold, count, give. The Kansai delivery makes this profound economic theory sound like something a fishmonger might say about the price of tuna — which is exactly the point. Ganesha is not delivering a lecture on political economy; he is stating a fact of life in the language of common sense. The English "is something you receive" captures the meaning but loses the tactile, everyday quality of <em>morau mon ya</em> — the sense that this is not philosophy but observable reality, as plain as the price of fish.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"People Gather Around Those Who Brighten the Atmosphere"</div>
+    <div class="passage-jp">
+      「空気を明るくしてくれる人の周りに人は集まるもんやで」
+    </div>
+    <div class="passage-romaji">
+      "Kūki wo akaruku shite kureru hito no mawari ni hito wa atsumaru mon ya de."
+    </div>
+    <div class="passage-en">
+      "People gather around those who brighten the atmosphere for them, they do."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Ganesha's social physics lesson — is the novel's most elegant statement of interpersonal dynamics, and its grammar creates a law of human attraction as inevitable as gravity. <em>Kūki wo akaruku shite kureru</em> (空気を明るくしてくれる, "brighten the atmosphere for [others]") uses the benefactive auxiliary <em>kureru</em> (くれる) with the continuative of <em>suru</em> (する), creating a sentence meaning "do something beneficial for me/us." The benefactive <em>kureru</em> is essential: it specifies that the brightening is done <em>for others</em>, not for oneself. A person who brightens the atmosphere for their own enjoyment is merely cheerful; a person who brightens it <em>for others</em> is magnetic. <em>Hito no mawari ni</em> (人の周りに, "around a person / in the vicinity of a person") uses the spatial <em>mawari</em> (周り, "surroundings / vicinity / around") with the locative <em>ni</em> (に), creating an image of concentric circles — the bright person at the center, others drawn into orbit. <em>Hito wa atsumaru</em> (人は集まる, "people gather") uses the intransitive verb <em>atsumaru</em> (集まる, "to gather / to assemble / to collect"), which makes gathering sound like a natural process — not "people choose to gather" but "people gather," the way water flows downhill. <em>Mon ya de</em> (もんやで) combines the nominalizer <em>mon</em> (もん) with the Kansai copula <em>ya</em> (や) and the emphatic final particle <em>de</em> (で), creating a sentence that sounds like "It's a thing, it is, ya know" — the grammar of someone stating a self-evident truth with friendly emphasis. What is lost in English is the full benefactive force of <em>kureru</em>. "Brighten the atmosphere" in English does not specify for whom; the Japanese <em>shite kureru</em> makes the direction of benefit explicit — the brightener is giving, and the gatherers are receiving. This is not merely a statement about cheerfulness; it is a statement about generosity, about the social physics of giving. The English "People gather around those who brighten the atmosphere" captures the observation but loses the ethical architecture: in the Japanese original, the gathering is a <em>response to a gift</em>, and the sentence thus contains an implicit instruction — if you want people around you, give them the gift of brightness. The Kansai final <em>ya de</em> also creates a warmth that English cannot reproduce: it is the particle combination of a friendly uncle making a point he knows you'll agree with once you think about it. "They do" at the end of the English translation is a pale approximation of this camaraderie.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"You Gotta Search Like Your Life Depends on It"</div>
+    <div class="passage-jp">
+      「死ぬ気で探さんといかんねん」
+    </div>
+    <div class="passage-romaji">
+      "Shinu ki de sagasan to ikan nen."
+    </div>
+    <div class="passage-en">
+      "You gotta search like your life depends on it."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Ganesha's most intense exhortation — is the novel's emotional climax, and its grammar compresses an entire philosophy of desperate commitment into seven syllables. <em>Shinu ki de</em> (死ぬ気で, "with the intention of dying / as if one's life depended on it") uses the noun <em>ki</em> (気, "spirit / intention / mind") with the continuative of <em>shinu</em> (死ぬ, "to die") to create an adverbial phrase meaning "with death-level seriousness." The phrase <em>shinu ki</em> (死ぬ気) is one of Japanese's most powerful intensifiers — it appears in martial arts, in sports, in any context where total commitment is required. <em>Sagasan to ikan nen</em> (探さんといかんねん) uses the Kansai negative conditional <em>-n to ikan</em> (〜んと行かん / 〜んといかん, "must / have to / gotta") with the Kansai final particle <em>nen</em> (ねん). The construction <em>-n to ikan</em> is the Kansai equivalent of Standard Japanese <em>-nakereba naranai</em> (〜なければならない) or <em>-nai to ikenai</em> (〜ないといけない) — but it is stronger, more urgent, more visceral. "Naranai" (ならない) means "it will not become"; "ikenai" (いけない) means "it cannot go"; but "ikan" (行かん) means "it will not proceed / it cannot proceed" — the image of forward motion being blocked. Combined with <em>nen</em> — the Kansai emphatic final that adds a note of "I'm telling you" insistence — the sentence delivers not merely advice but command, not merely suggestion but necessity. What is lost in English is almost everything. "You gotta search like your life depends on it" captures the meaning but loses the Kansai urgency, the death-metaphor intensity, and the grammatical compression. The Japanese packs "with death-level intention + must search + emphatic insistence" into seven syllables; the English requires fourteen words. The <em>shinu ki</em> metaphor is also culturally specific: in Japanese martial and spiritual traditions, <em>shinu ki</em> is not hyperbole but a recognized state of total commitment in which the ego's fear of death is overcome by the imperative of the task. Ganesha is not saying "try hard"; he is saying "commit completely, as if failure equals death" — a level of intensity that English "like your life depends on it" approaches but cannot fully match. The Kansai <em>nen</em> at the end is the final touch: it makes the sentence sound less like a divine command and more like a coach's halftime speech — urgent, personal, and absolutely non-negotiable.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of dreams, daily action, and the Kansai-dialect wisdom of an elephant-headed god.</p>
+
+  <div class="card">
+    <h3>Dreams, Success & the Self-Help Vocabulary</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>夢</td><td>yume</td><td class="pos">noun</td><td>dream; ambition; aspiration; vision</td></tr>
+        <tr><td>叶える</td><td>kanaeru</td><td class="pos">verb</td><td>to grant (a wish); to make come true; to fulfill</td></tr>
+        <tr><td>成功</td><td>seikō</td><td class="pos">noun</td><td>success; achievement</td></tr>
+        <tr><td>目標</td><td>mokuhyō</td><td class="pos">noun</td><td>goal; target; objective</td></tr>
+        <tr><td>努力</td><td>doryoku</td><td class="pos">noun</td><td>effort; endeavor; hard work</td></tr>
+        <tr><td>行動</td><td>kōdō</td><td class="pos">noun</td><td>action; conduct; behavior</td></tr>
+        <tr><td>習慣</td><td>shūkan</td><td class="pos">noun</td><td>habit; custom; practice</td></tr>
+        <tr><td>課題</td><td>kadai</td><td class="pos">noun</td><td>assignment; task; problem; challenge</td></tr>
+        <tr><td>挑戦</td><td>chōsen</td><td class="pos">noun</td><td>challenge; defiance; attempt</td></tr>
+        <tr><td>成長</td><td>seichō</td><td class="pos">noun</td><td>growth; development; maturation</td></tr>
+        <tr><td>変化</td><td>henka</td><td class="pos">noun</td><td>change; transformation</td></tr>
+        <tr><td>実践</td><td>jissen</td><td class="pos">noun</td><td>practice; putting into action</td></tr>
+        <tr><td>継続</td><td>keizoku</td><td class="pos">noun</td><td>continuation; persistence</td></tr>
+        <tr><td>自信</td><td>jishin</td><td class="pos">noun</td><td>self-confidence; confidence</td></tr>
+        <tr><td>可能性</td><td>kanōsei</td><td class="pos">noun</td><td>possibility; potential</td></tr>
+        <tr><td>自己啓発</td><td>jiko keihatsu</td><td class="pos">noun</td><td>self-help; self-improvement</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Work, Money & Human Relations</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>仕事</td><td>shigoto</td><td class="pos">noun</td><td>work; job; occupation</td></tr>
+        <tr><td>お金</td><td>okane</td><td class="pos">noun</td><td>money</td></tr>
+        <tr><td>靴磨き</td><td>kutsu migaki</td><td class="pos">noun</td><td>shoe polishing</td></tr>
+        <tr><td>募金</td><td>bokin</td><td class="pos">noun</td><td>donation; contribution; fundraising</td></tr>
+        <tr><td>掃除</td><td>sōji</td><td class="pos">noun</td><td>cleaning</td></tr>
+        <tr><td>謝</td><td>kansha</td><td class="pos">noun</td><td>gratitude; thanks</td></tr>
+        <tr><td>人間関係</td><td>ningen kankei</td><td class="pos">noun</td><td>human relations; interpersonal relationships</td></tr>
+        <tr><td>空気</td><td>kūki</td><td class="pos">noun</td><td>air; atmosphere; mood</td></tr>
+        <tr><td>率先</td><td>sossen</td><td class="pos">noun</td><td>taking the initiative</td></tr>
+        <tr><td>喜ぶ</td><td>yorokobu</td><td class="pos">verb</td><td>to be happy; to rejoice; to delight in</td></tr>
+        <tr><td>偉人</td><td>ijin</td><td class="pos">noun</td><td>great person; great man</td></tr>
+        <tr><td>神様</td><td>kamisama</td><td class="pos">noun</td><td>god; deity; divine being</td></tr>
+        <tr><td>関西弁</td><td>Kansai-ben</td><td class="pos">noun</td><td>Kansai dialect</td></tr>
+        <tr><td>教え</td><td>oshie</td><td class="pos">noun</td><td>teaching; lesson; doctrine</td></tr>
+        <tr><td>指南</td><td>shinann</td><td class="pos">noun</td><td>instruction; guidance</td></tr>
+        <tr><td>腹八分目</td><td>hara hachibunme</td><td class="pos">noun</td><td>eating until 80% full</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Daily Actions, Mindset & the Language of Comedy</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>運</td><td>un</td><td class="pos">noun</td><td>luck; fortune</td></tr>
+        <tr><td>言葉</td><td>kotoba</td><td class="pos">noun</td><td>words; language; speech</td></tr>
+        <tr><td>笑顔</td><td>egao</td><td class="pos">noun</td><td>smiling face; smile</td></tr>
+        <tr><td>明るい</td><td>akarui</td><td class="pos">i-adj</td><td>bright; cheerful; light</td></tr>
+        <tr><td>地味</td><td>jimi</td><td class="pos">na-adj</td><td>plain; simple; subdued; humble</td></tr>
+        <tr><td>胡散臭い</td><td>usankusai</td><td class="pos">i-adj</td><td>suspicious; shady; fishy</td></tr>
+        <tr><td>甘い</td><td>amai</td><td class="pos">i-adj</td><td>sweet; indulgent; naive</td></tr>
+        <tr><td>タバコ</td><td>tabako</td><td class="pos">noun</td><td>tobacco; cigarette</td></tr>
+        <tr><td>泥酔</td><td>deisui</td><td class="pos">noun</td><td>dead drunk; intoxication</td></tr>
+        <tr><td>サラリーマン</td><td>sararīman</td><td class="pos">noun</td><td>salaryman; white-collar worker</td></tr>
+        <tr><td>ダメダメ</td><td>dame dame</td><td class="pos">na-adj</td><td>good-for-nothing; hopeless; useless</td></tr>
+        <tr><td>偉そう</td><td>erasō</td><td class="pos">i-adj</td><td>self-important; pretentious</td></tr>
+        <tr><td>わざわざ</td><td>wazawaza</td><td class="pos">adverb</td><td>going out of one's way; specially</td></tr>
+        <tr><td>率先して</td><td>sossen shite</td><td class="pos">adverb</td><td>taking the lead; being the first to</td></tr>
+        <tr><td>死ぬ気</td><td>shinu ki</td><td class="pos">noun</td><td>with death-level seriousness; total commitment</td></tr>
+        <tr><td>具体的</td><td>gutaiteki</td><td class="pos">na-adj</td><td>concrete; specific; tangible</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Mizuno writes in the voice of a comedian delivering wisdom — and the translation of his debut blockbuster raises urgent questions about how to carry Kansai-dialect divinity across linguistic borders.</p>
+
+  <div class="card">
+    <h3>1. Kansai Dialect (関西弁): The Voice of Unpretentious Truth</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>関西弁</strong> — the dialect of comedy, commerce, and straight talk; the accent that signals "I'm not putting on airs"</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Brooklyn English / Cockney / Southern US English</strong> — each approximates one dimension but none carries the same cultural load</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Kansai dialect is not merely a regional accent in Japanese; it is a semiotic system with decades of accumulated cultural meaning. Thanks to Japan's comedy industry (based in Osaka), Kansai-ben is the dialect of humor, of the straight-talking merchant, of the person who tells you the truth while making you laugh. When Ganesha speaks Kansai-ben, he is not merely "speaking funny"; he is activating an entire cultural code that tells Japanese readers: "This character is funny, honest, unpretentious, and probably right." No English dialect can carry this specific load. Brooklyn English suggests urban toughness; Cockney suggests working-class London; Southern US English suggests hospitality and folk wisdom. Each captures one facet of Kansai-ben (directness, warmth, humor) but none combines them in the same proportions, and none carries the specific history of Japanese comedy that makes Kansai-ben the natural voice of a god who refuses to sound divine. The loss is thus not merely phonetic but cultural: without Kansai-ben, Ganesha becomes merely "a funny character" rather than "a character who embodies a specific Japanese ideal of unpretentious wisdom." And this ideal is central to the novel's philosophy: truth does not need fancy language. The dialect is the message.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Ya</em> (や), <em>Hen</em> (へん), and <em>Nen</em> (ねん): The Grammar of Kansai Character</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>や / へん / ねん</strong> — Kansai final particles and negative auxiliaries that create warmth, insistence, and regional identity</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"is" / "don't" / "y'know" / "gotta"</strong> — approximations that lose the specific grammatical functions</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Kansai grammatical markers are not merely decorative; they perform specific functions that shape how Ganesha's sentences land. <em>Ya</em> (や) is the Kansai declarative copula (equivalent to Standard Japanese <em>da</em> / だ), but it carries a warmth and familiarity that <em>da</em> lacks — the difference between a teacher saying "That's correct" and an uncle saying "That's how it is, yeah." <em>Hen</em> (へん) is the Kansai negative auxiliary (equivalent to Standard Japanese <em>-nai</em> / ない), but its sound is softer, more colloquial, less confrontational — "I don't think so" rather than "That is not correct." <em>Nen</em> (ねん) is the Kansai emphatic final particle that adds a note of explanation, insistence, or "I'm telling you this because you need to know" — a particle with no direct English equivalent. When Ganesha says <em>morau mon ya</em> (もらうもんや), the <em>mon</em> (もん) nominalizer plus <em>ya</em> creates a statement of natural law delivered in the tone of a friendly observation. When he says <em>sagasan to ikan nen</em> (探さんといかんねん), the <em>-n to ikan</em> (〜んと行かん) creates urgent necessity while the <em>nen</em> adds personal insistence — "You <em>gotta</em>, I'm telling ya." English translations can approximate the meaning but cannot reproduce the grammatical texture: the way these particles modulate the force of each statement, making divine commands sound like neighborly advice. The loss is grammatical and tonal: without these markers, Ganesha's sentences lose their specific Kansai "feel" — the quality that makes readers feel they are being spoken to by a person rather than preached at by a text.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Kanaeru</em> (叶える): The Magic of Responsive Fulfillment</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>叶える</strong> — to grant; to make come true; to bring desire and reality into harmony; the verb of magical responsiveness</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"make come true" / "grant" / "fulfill" / "realize"</strong> — each captures one dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the title analysis, <em>kanaeru</em> (叶える) is a verb of profound cultural and etymological resonance. Its kanji <em>叶</em> originally meant "harmony" — the coming-together of leaves on a branch — and by extension came to mean the bringing-together of desire and reality. <em>Kanaeru</em> is the verb used when prayers are answered, when parents give children what they wish for, when the universe seems to bend toward a deeply held desire. English "make come true" captures the fairy-tale quality but loses the sense of <em>harmony</em> embedded in the etymology; "grant" captures the divine aspect but sounds too formal; "fulfill" captures the completion but loses the magic; "realize" is too cognitive, too modern. The Japanese <em>kanaeru</em> contains all of these and something more: the sense that fulfillment is not conquest but <em>alignment</em> — the bringing of inner and outer into accord. The novel's title promises this alignment, and the novel's method (small daily actions) reveals how it is achieved: not by forcing reality to obey desire but by slowly adjusting desire and action until they meet. The loss in translation is thus not merely lexical but philosophical: without <em>kanaeru</em>'s etymology of harmony, the title becomes merely "The Dream-Granting Elephant" — a nice story — rather than "The Elephant That Brings Dreams and Reality Into Harmony" — a method.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Jimina</em> (地味な): The Aesthetics of the Unspectacular</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>地な</strong> — plain; subdued; humble; unspectacular; the aesthetic of unshowy competence</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"plain" / "simple" / "mundane" / "humble"</strong> — each captures one facet</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>jimi</em> (地味, "plain / subdued / sober") is central to the novel's philosophy and almost impossible to translate adequately. Etymologically, it combines <em>chi</em> (地, "earth / ground") with <em>mi</em> (味, "flavor / taste") — literally "earth-flavor," the taste of the ground, the unshowy, foundational quality of things that are not flashy but essential. In Japanese aesthetics, <em>jimi</em> is a positive term — it describes the beauty of understatement, the virtue of not standing out, the dignity of doing necessary work without applause. Ganesha's assignments are repeatedly described as <em>jimi</em> — "polishing shoes is <em>jimi</em>," "cleaning toilets is <em>jimi</em>" — and this is not a criticism but a recognition. The novel's argument is that success is built on <em>jimi</em> actions, not spectacular ones; that the people who "make it" are not the ones with the flashiest dreams but the ones willing to do the unglamorous work that dreams require. English "plain" sounds boring; "simple" sounds easy; "mundane" sounds dismissive; "humble" sounds moralistic. None of these carries the Japanese aesthetic valuation embedded in <em>jimi</em> — the sense that there is a particular beauty, even nobility, in the unshowy and the foundational. The loss matters because the novel's entire pedagogy depends on the reader accepting that <em>jimi</em> is not a drawback but a feature — that the small, the humble, and the everyday are precisely where transformation happens. Without <em>jimi</em>, the assignments sound like chores; with <em>jimi</em>, they sound like a practice.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Kūki</em> (空気): The Atmosphere as Social Substance</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>空気</strong> — air; atmosphere; mood; the invisible social substance that surrounds every group</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"atmosphere" / "mood" / "vibe" / "air"</strong> — each approximates but none carries the full social weight</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>kūki</em> (空気, "air / atmosphere") is one of the most socially loaded nouns in Japanese, and its use in Ganesha's famous line — <em>kūki wo akaruku shite kureru hito</em> (空気を明るくしてくれる人, "people who brighten the atmosphere for us") — activates a specifically Japanese theory of social space. In Japanese, <em>kūki wo yomu</em> (空気を読む, "to read the air") means to perceive the unspoken mood of a group and adjust one's behavior accordingly — a skill considered essential for social competence. <em>Kūki wo yomenai hito</em> (空気を読めない人, "people who can't read the air," abbreviated as <em>KY</em>) is a standard term for social cluelessness. Ganesha's use of <em>kūki</em> thus draws on this entire conceptual framework: he is not merely saying "be cheerful"; he is saying "become someone who actively shapes the social atmosphere of every room you enter." The English "atmosphere" captures the general meaning but loses the social-psychological specificity; "mood" is too individual; "vibe" is too casual and too recent. The Japanese <em>kūki</em> is a <em>collective</em> substance — something that belongs to the group, not the individual — and Ganesha's sentence says that the person who gives the gift of brightness to this collective substance will find the collective gathering around them. The loss is thus conceptual: without the Japanese theory of <em>kūki</em> as a shared social field, the sentence becomes merely "People like cheerful folks" rather than "People are drawn to those who improve the shared emotional environment." And this is not merely a semantic difference; it is a practical one. The Japanese reader, hearing <em>kūki</em>, thinks of specific social situations — the meeting, the party, the family dinner — and understands that "brightening the atmosphere" is a skill to be practiced in context. The English reader, hearing "atmosphere," thinks of weather.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of Kansai-dialect divinity, daily assignments, and the comedy that makes wisdom digestible.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を〜える（他動詞・願望成就）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...wo...eru</em>: "to grant / to make come true [transitive]" — the transitive verb of wish-fulfillment, making the dream into the object of magical action</p>
+      <div class="grammar-example">夢をかなえるゾウ</div>
+      <p class="grammar-example-en">"The elephant that makes dreams come true" — The grammar of magical agency.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜んと行かん（関西弁・義務）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...n to ikan</em>: "gotta / must / have to" — Kansai negative conditional creating urgent necessity</p>
+      <div class="grammar-example">死ぬ気で探さんといかんねん</div>
+      <p class="grammar-example-en">"You gotta search like your life depends on it" — The grammar of desperate commitment.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てくれる（受益・他者の好意）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te kureru</em>: "do something for me/us" — benefactive auxiliary indicating action performed for the speaker's benefit</p>
+      <div class="grammar-example">空気を明るくしてくれる人</div>
+      <p class="grammar-example-en">"people who brighten the atmosphere for us" — The grammar of generous action.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜もんや（関西弁・断定・自然法則）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...mon ya</em>: "it's a thing that... / that's how things are" — Kansai nominalizer + copula stating natural law in colloquial form</p>
+      <div class="grammar-example">人は集まるもんやで</div>
+      <p class="grammar-example-en">"People gather, they do" — The grammar of observable social law.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だけもらう（比例・対価）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...dake morau</em>: "receive only in proportion to..." — proportional particle with verb of receiving creating a service theory of value</p>
+      <div class="grammar-example">幸せにした分だけもらうもんや</div>
+      <p class="grammar-example-en">"You receive in proportion to the happiness you create" — The grammar of earned reward.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜の言うことを聞く（引用＋服従）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no iu koto wo kiku</em>: "listen to what someone says / obey someone's advice" — quotative construction where "hear" means "obey"</p>
+      <div class="grammar-example">人の言うことを聞かない</div>
+      <p class="grammar-example-en">"not listening to what people say / not obeying advice" — The grammar of coachable humility.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜さえ〜ば（条件・最低条件）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...sae...ba</em>: "if only... / as long as..." — minimal condition construction suggesting that success requires only simple actions</p>
+      <div class="grammar-example">課題さえこなしていれば</div>
+      <p class="grammar-example-en">"As long as you keep completing the assignments" — The grammar of minimal sufficient conditions.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜気で（様態・覚悟）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...ki de</em>: "with the spirit of... / as if... / with...-level seriousness" — nominalized intention creating an adverbial phrase of total commitment</p>
+      <div class="grammar-example">死ぬ気で探す</div>
+      <p class="grammar-example-en">"to search with death-level seriousness" — The grammar of total commitment.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Yume wo Kanaeru Zō</em> is the grammar of accessible transformation — wisdom delivered in the voice of a funny friend rather than a distant guru. The transitive wish-fulfillment verb (<em>kanaeru</em> / 叶える) makes dreams into objects that can be acted upon; the Kansai obligation construction (<em>-n to ikan</em> / 〜んと行かん) delivers commands with urgent warmth; the benefactive (<em>te kureru</em> / てくれる) makes generosity into the engine of attraction; the Kansai natural-law nominalizer (<em>mon ya</em> / もんや) states social truths as casually observable facts; the proportional reward (<em>dake morau</em> / だけもらう) creates a service theory of value; the quotative obedience construction (<em>iu koto wo kiku</em> / 言うことを聞く) makes listening into the foundation of success; the minimal condition (<em>sae...ba</em> / さえ...ば) promises that small actions are sufficient; and the commitment adverbial (<em>ki de</em> / 気で) raises the stakes from "try" to "commit completely." Pay attention to how these constructions work together to create a prose that sounds like your funny uncle giving life advice — if your funny uncle happened to be an immortal elephant god who had guided Napoleon, Newton, and Bill Gates to greatness.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, critical analysis, and textual scholarship.</p>
+  <p style="margin-top: var(--space-xs);">『夢をかなえるゾウ1』 &middot; 水野敬也 著 &middot; 文響社 2007年8月29日刊 &middot; 352ページ &middot; 四六判 &middot; ISBN 978-4-87031-805-2</p>
+  <p style="margin-top: var(--space-xs);">文庫版：文響社 2020年7月9日刊 &middot; 402ページ &middot; ISBN 978-4-86651-351-9 &middot; 定価1,595円（税込）</p>
+  <p style="margin-top: var(--space-xs);">売上：シリーズ累計560万部突破（2026年時点） &middot; 日本一読まれている自己啓発小説シリーズ</p>
+  <p style="margin-top: var(--space-xs);">著者：水野敬也（みずのけいや・1976年11月26日生・愛知県西春日井郡清洲町〈現・清須市〉出身）</p>
+  <p style="margin-top: var(--space-xs);">学歴：東海中学校・高等学校 &middot; 慶應義塾大学経済学部卒業</p>
+  <p style="margin-top: var(--space-xs);">デビュー：2003年『ウケる技術』（新潮社・累計30万部突破）</p>
+  <p style="margin-top: var(--space-xs);">ドラマ化：2008年（小栗旬主演・古田新太がガネーシャ役） &middot; アニメ化：TBS系「キミハ・ブレイク」内アニメコーナー</p>
+  <p style="margin-top: var(--space-xs);">主要登場人物：僕（ぼく・主人公・26歳・ダメダメなサラリーマン） &middot; ガネーシャ（がねーしゃ・関西弁を話すゾウの神様・甘いもの好き・タバコ派） &middot; ドラマ版：フミ山フミ夫（ふみやまふみお・小栗旬） &middot; 連続ドラマ版：星野あすか（ほしのあすか・水川あさみ）</p>
+  <p style="margin-top: var(--space-xs);">物語の構造：29の課題（kadai）を1日1つ実践していく形式 &middot; 各課題は地味だが哲学的含意を持つ</p>
+  <p style="margin-top: var(--space-xs);">代表的課題：靴を磨く &middot; トイレ掃除 &middot; お釣りを募金する &middot; 腹八分目 &middot; 「運がいい」と口に出す &middot; の成功を喜ぶ &middot; 率先してやる &middot; 身内を大切にする &middot; まずやめる</p>
+  <p style="margin-top: var(--space-xs);">シリーズ：『夢をかなえるゾウ2 ガネーシャと貧乏神』（2012年） &middot; 『夢をかなえるゾウ3 ブラックガネーシャの教え』（2015年） &middot; 『夢をかなえるゾウ4 ガネーシャと死神』（2020年） &middot; 『夢をかなえるゾウ0 ガネーシャと夢を食べるバク』（2022年） &middot; 『夢をかなえるゾウ 子ども版』（2023年・絵：安楽雅志）</p>
+  <p style="margin-top: var(--space-xs);">テーマ：自己啓発小説という新ジャンルの創出、小さな行動の累積効果、関西弁による神様の親しみやすさ、成功者目線ではない自己啓発、エンタメとしての知恵伝達</p>
+  <p style="margin-top: var(--space-xs);">関連作品：『ウケる技術』 &middot; 『雨の日も、晴れ男』 &middot; 『顔ニモマケズ』 &middot; 『四つ話のクロバー』 &middot; 『人生はニャンとかなる！』 &middot; 『人生はワンチャンス！』 &middot; 『LOVE理論』（水野愛也名義） &middot; 『スパルタ婚活塾』（水野愛也名義） &middot; 映画『イン・ザ・ヒーロー』（脚本）</p>
+</footer>
+
+</div>
+</body>
+</html>

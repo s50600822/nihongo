@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>流浪の月 — 凪良ゆう | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>流浪の月</h1>
+  <p class="hero-subtitle">Rurō no Tsuki / The Wandering Moon</p>
+  <p class="hero-meta">凪良ゆう 著 &middot; 東京創元社 2019年8月30日刊 &middot; 314ページ &middot; ISBN 978-4-488-02802-2 &middot; 第17回本屋大賞受賞 &middot; 累計100万部突破</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: The Moon That Has No Orbit</h2>
+  <p class="lead">The title <em>Rurō no Tsuki</em> (流浪の月, "The Wandering Moon") is a study in cosmic loneliness — a celestial body without a gravitational home, a satellite that has escaped its planet, a light that shines without belonging. The grammar is deceptively simple: <em>rurō</em> (流浪, "wandering / vagrancy / drifting") modifies <em>tsuki</em> (月, "moon") through the attributive particle <em>no</em> (の). But the semantic weight of each element creates a title that operates simultaneously as metaphor, prophecy, and emotional diagnosis. This is not "The Wandering Star" (<em>hoshi</em> / 星) — a common enough image in poetry — but "The Wandering <em>Moon</em>," and the choice of the moon rather than a star changes everything about how the title feels.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">流浪</span>
+        <span class="romaji">rurō / "wandering / vagrancy / drifting / having no fixed abode"</span>
+        <span class="meaning">"wandering / vagrancy / drifting" — <em>Rurō</em> (流浪) is a compound of <em>ru</em> (流, "to flow / to drift / to wander") and <em>rō</em> (浪, "wave / wandering / vagrancy"). The character <em>rō</em> (浪) appears in words like <em>rōnin</em> (浪人, a masterless samurai; also a student who has failed university entrance exams and is studying for a retake) and <em>hourō</em> (放浪, "wandering / roaming / vagrancy"). Together, <em>rurō</em> describes a state of being without a fixed place, without belonging, without a center of gravity. It is the word used for homeless wanderers, for exiles, for people who have been cast out of the social order and must keep moving because stopping means confronting the void. The word carries a literary and slightly archaic dignity — it is not the casual <em>samayou</em> (彷徨う, "to wander aimlessly") but a condition with philosophical weight. In the context of the novel, <em>rurō</em> applies to both protagonists with devastating precision. Morena (更紗), the 9-year-old girl who loses her father, then her mother, then her home, then her name (reduced to "the victim girl" / <em>higaisha jō</em> / 被害女児), is a <em>rurōsha</em> (流浪者, wanderer) long before she meets Fumi. Fumi (文), the 19-year-old university student who cannot complete puberty, who remains physically and psychically suspended in a pre-adult state, is a <em>rurōsha</em> of a different kind — someone who has never found the orbit that society expects of a man his age. The title thus names not one character but a shared condition: both are moons that have lost their planets, reflecting light without a source that belongs to them, circling nothing, defining their paths by absence rather than presence. The word <em>rurō</em> also carries the specific resonance of postwar Japanese literature — it echoes the "wandering" of Dazai Osamu's losers, of Oe Kenzaburō's outcasts, of Yoshimoto Banana's dreamers who cannot find their place in the waking world. By using this word, Nagira signals that her novel belongs to a tradition of Japanese fiction about people who do not fit, who exist at the edges of the social diagram, who are "wandering" not by choice but by the failure of the world to offer them a place to stop.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no / attributive possessive particle</span>
+        <span class="meaning">"of / 's" — The particle <em>no</em> (の) creates an attributive relationship between <em>rurō</em> and <em>tsuki</em>, making "wandering" into a quality that modifies "moon." The grammar allows for multiple readings: "the moon <em>of</em> wandering" (the moon that belongs to the state of wandering), "the wandering moon" (the moon that is itself wandering), "the moon at the edge of wandering" (the moon that exists within the condition of having no fixed place). This ambiguity is essential to the novel's architecture: the "wandering" is not merely a description of the moon but its ontological condition — the moon <em>is</em> wandering the way a fish <em>is</em> wet. The <em>no</em> particle thus performs a subtle but crucial operation: it makes "wandering" not an activity but an essence, not something the moon does but something the moon is. Both Morena and Fumi are not "experiencing" wandering; they <em>are</em> wandering, in the same way that one is hungry or is tired — a state so total that it precedes action and survives after action has ceased. When Morena, at 25, has a job and an apartment and a boyfriend, she is still, in the novel's deepest sense, a <em>rurō no tsuki</em> — because the orbit she appears to have is not her own, because the life she lives was designed by others' expectations, because the center of her gravity is still the two months she spent at 10 in Fumi's room, the only place she ever felt at rest.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">月</span>
+        <span class="romaji">tsuki / "moon"</span>
+        <span class="meaning">"moon" — <em>Tsuki</em> (月) is one of the most symbolically loaded nouns in Japanese culture. Unlike the sun (<em>hi</em> / 日), which generates its own light, the moon reflects — it is luminous without being generative, visible without being primary, beautiful without being warm. In Japanese poetry, the moon (<em>tsuki</em>) is the quintessential image of loneliness, of quiet persistence, of beauty that exists in the absence of the sun. The moon waxes and wanes (<em>michikake</em> / 満ち欠け), following a cycle of fullness and emptiness that has made it a symbol of Buddhist impermanence and of feminine cyclicality. The moon is also, in modern Japanese, the word used for "month" — <em>tsuki</em> (月) as a unit of time, making the title carry a temporal echo: "the wandering month," the month that does not belong to any year, the time that passes without accumulating into a life. In the novel, the moon operates as a double symbol. For Morena, it is the light she remembers from the window of Fumi's room — the only light that did not judge her, the only presence that stayed with her through the nights when she was too afraid to sleep. For Fumi, it is the body he does not have — the adult male body that never arrived, the "moon" of his own physical development that remained a thin crescent rather than growing full. The title's choice of <em>tsuki</em> rather than <em>hoshi</em> (星, "star") is thus deeply meaningful. A star generates its own light; a moon only reflects. Both protagonists are moons rather than stars — they do not generate their own social legitimacy but reflect, however dimly, the light of a society that has never truly illuminated them. The English translation "The Wandering Moon" preserves the image but loses the cultural specificity of <em>tsuki</em> as a symbol of reflected light, cyclical change, and quiet, persistent loneliness. What the Japanese reader hears in <em>tsuki</em> — the entire tradition of moon-poetry from the <em>Manyōshū</em> to Kawabata Yasunari — the English reader must reconstruct from context, if at all.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 東京創元社 (Tokyo Sogensha), August 30, 2019, hardcover, 314 pages, 四六判仮フランス装, ISBN 978-4-488-02802-2. Bunkoban (文庫版): 創元文芸文庫 (Sogen Literary Bunko), February 2022, ISBN 978-4-488-80301-8. The book won the 17th Hon'ya Taishō (本屋大賞, "Booksellers' Award") in 2020, selected by votes from bookstore employees nationwide — an award that has become one of Japan's most reliable predictors of both literary quality and commercial success. It was also nominated for the 41st Yoshikawa Eiji Literary Newcomer's Prize (吉川英治文学新人賞). As of 2026, cumulative sales have exceeded 1 million copies. Film adaptation: released May 13, 2022, directed by Lee Sang-il (李相日), starring Hirose Suzu (広瀬すず) as Morena, Matsuzaka Tōri (松坂桃李) as Fumi, Yokohama Ryūsei (横浜流星) as Ryō, and Tabe Mikako (多部未華子) as Ayumi. Cinematography by Hong Kyung-pyo (ホン・ギョンピョ), known for <em>Parasite</em> and <em>Burning</em>. Audiobook: released 2023, winner of the Audiobook Award 2023 in the Literature category. Screenplay book: <em>Rurō no Tsuki Scenario Book</em> (『流浪の月 シナリオブック』), June 2022, featuring a dialogue between Nagira Yū and Lee Sang-il.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>凪良ゆう &mdash; Nagira Yū (b. 1973)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">凪</div>
+    <div class="author-name-block">
+      <h3>凪良ゆう / Nagira Yū</h3>
+      <p class="author-name-romaji">The BL writer who became Japan's most awarded contemporary novelist &middot; twice winner of the Hon'ya Taishō</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Nagira Yū was born on January 25, 1973, in Ōtsu City, Shiga Prefecture, and currently lives in Kyoto City. She was raised in a single-parent household; her mother was frequently away for work, and from early elementary school, Nagira handled cooking, laundry, and cleaning by herself. In sixth grade, she spent approximately ten days alone, nearly running out of money and food — an experience of abandonment that would echo through her fiction's preoccupation with children left to fend for themselves. Her mother never returned from that absence; her teacher noticed something was wrong and intervened. This early experience of precarious survival, of learning that adults cannot always be trusted to provide, is the emotional bedrock of everything Nagira writes.</p>
+    <p style="margin-bottom: var(--space-md);">Nagira originally dreamed of becoming a manga artist — she read voraciously from childhood, consuming her older sisters' manga collections and borrowing from the library. Her debut as a novelist came in 2006 with <em>Koisuru Egoisuto</em> (『恋するエゴイスト』), published in <em>Shōsetsu Hanamaru</em> (『小説花丸』), followed by her first book, <em>Hanayome wa Marijj Burū</em> (『花嫁はマリッジブルー』, "The Bride Has the Blues," Hakusensha), in 2007. For the next decade, she built her career primarily as a BL (Boys' Love) novelist — a genre she approached with the same psychological precision she would later bring to general fiction. Her BL works, including the <em>Utsukushii Kare</em> (『美しい彼』, "My Beautiful Man") series, developed a devoted readership and demonstrated her extraordinary capacity for depicting the subtle dynamics of power, desire, and emotional dependency between marginalized people.</p>
+    <p style="margin-bottom: var(--space-md);">The turning point came in 2017 with <em>Kamisama no Biotōpu</em> (『神さまのビオトープ』, "The Biotope of the Gods"), her first major non-BL work, which expanded her readership beyond the BL community. But it was <em>Rurō no Tsuki</em> (2019) that transformed her into a national literary phenomenon — the rare case of a writer crossing from a "genre" niche to the absolute center of Japanese literary culture without compromising her distinctive voice. In 2022, she won her second Hon'ya Taishō for <em>Nanji, Hoshi no Gotoku</em> (『汝、星のごとく』, "Thou, Like a Star"), making her one of only a handful of writers to win the award twice. She has also been nominated for the Naoki Prize (直木賞) and the Yoshikawa Eiji Literary Newcomer's Prize. In 2024, she published <em>New World</em> (『ニューワールド』), a collection of dialogues with fellow writers including Hashimoto Eriko, Ashizawa Yō, Yamashita Tomoko, Machida Sonoko, and Eneda Yūri — a book that reveals the network of literary solidarity among contemporary Japanese women writers. Her bibliography spans over 300 works, including <em>Mikansei</em> (『未完成』), <em>Mayonaka Chronicle</em> (『真夜中クロニクル』), <em>365+1</em>, <em>Koko de Matteru</em> (『ここで待ってる』), <em>Aishi no Nikōru</em> (『愛しのニコール』), <em>Barairo ja Nai</em> (『薔薇色じゃない』), <em>Sumire-sō Familia</em> (すみれ荘ファミリア』), <em>Watashi no Utsukushii Niwa</em> (『わたしの美しい庭』), <em>Horobi no Mae no Shangri-la</em> (『滅びの前のシャングリラ』), and <em>Tarui Kon'in Tan</em> (『多類婚姻譚』, 2026).</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Crime That Wasn't a Crime: Japan, Moral Panic, and the Violence of Narrative</h2>
+
+  <div class="card">
+    <h3>2019: The Year Japan Learned to Doubt Its Own Sympathy</h3>
+    <p><em>Rurō no Tsuki</em> was published in August 2019 and won the Hon'ya Taishō in April 2020 — a moment when Japanese society was undergoing profound shifts in how it understood victimhood, perpetration, and the gap between "facts" and "truth." The late 2010s had seen a series of high-profile criminal cases involving children — the abuse and death of Yua Funato in 2018, the discovery of systematic abuse in foster homes, the ongoing revelations about the Jehovah's Witnesses' refusal of blood transfusions for children — all of which had sensitized the public to the reality that the most dangerous place for a child is often not "out there" with strangers but "in here" with family. At the same time, the #MeToo movement had reached Japan (though in muted form compared to the West), raising questions about consent, power asymmetry, and the social pressure on victims to perform gratitude for the sympathy they receive. Nagira's novel arrived at the intersection of these currents: a story about a child who is not "saved" by being labeled a victim, about an adult who is destroyed by being labeled a perpetrator, and about a relationship that cannot be named within the available vocabulary of crime and punishment. The novel's explosive impact came from its refusal to offer the reader a comfortable moral position. You cannot simply side with "the victim" or condemn "the perpetrator" because the novel systematically dismantles the coherence of both categories. This refusal — this insistence on the complexity of lived experience beneath the labels of social judgment — is what made the book both controversial and transformative.</p>
+  </div>
+
+  <div class="card">
+    <h3>The "Victim Girl" and the "Perpetrator": Labels as Life Sentences</h3>
+    <p>Central to the novel's historical and social significance is its examination of what the Japanese media calls <em>higaisha jō</em> (被害女児, "victim girl") — the label applied to Morena after the incident is reported. In Japan, as in many societies, the labeling of a child as a "victim" activates a complex machinery of social response: police protection, media coverage, psychological counseling, legal proceedings, and, most insidiously, a permanent alteration in how everyone who knows the label sees the labeled person. The novel's genius is to show that this machinery, however well-intentioned, functions as a second trauma — a social violence that compounds the original violence by removing the victim's agency to define her own experience. Morena is not allowed to say "I was not unhappy" without being diagnosed with Stockholm syndrome. She is not allowed to say "I wanted to stay" without being told she has been brainwashed. She is not allowed to grieve the loss of the only home she ever felt safe in without being told she is "identifying with her abuser." The novel thus becomes a profound critique of what we might call "sympathy as domination" — the way that society's concern for victims often takes the form of overriding their own accounts of their lives. On the other side, Fumi's labeling as a "kidnapper" (<em>yūkaihan</em> / 誘拐犯) and "pedophile" (<em>shōniseiai-sha</em> / 小児性愛者) creates a parallel imprisonment: he is not merely punished for a crime but sentenced to a permanent social identity from which there is no release, no rehabilitation, no possibility of being seen as anything other than the label. The novel's title — <em>The Wandering Moon</em> — names the condition of both characters after the labels have done their work: they are socially dead, orbiting the edges of a world that has decided who they are without asking who they were.</p>
+  </div>
+
+  <div class="card">
+    <h3>BL to General Fiction: The Queer Origins of Radical Empathy</h3>
+    <p>Nagira Yū's background as a BL writer is not merely biographical trivia; it is the key to understanding the novel's ethical architecture. BL (Boys' Love) fiction in Japan has long been a space where female writers explore relationships that exist outside normative social structures  relationships between people whose desires, bodies, or circumstances place them at odds with mainstream expectations. The genre's conventions — intense emotional bonds between marginalized men, power asymmetries that are negotiated rather than condemned, love that refuses available categories — provided Nagira with a training ground for the kind of radical empathy that <em>Rurō no Tsuki</em> demands. The relationship between Morena and Fumi is, in a deep sense, a BL relationship transposed onto a male-female dyad: it is a bond between two people that society cannot recognize as legitimate, a connection forged in shared outsiderhood, a love (if it is love) that must define itself because no existing vocabulary will do it for them. Nagira has said in interviews that what she learned from writing BL was "how to write desire without judgment" — and this skill is everywhere visible in <em>Rurō no Tsuki</em>. The novel does not ask whether Morena and Fumi "should" feel what they feel; it simply shows what they feel, in all its contradiction and intensity, and trusts the reader to follow. This trust in the reader — the refusal to moralize, the willingness to let disturbing emotions exist on the page without editorial commentary — is the BL writer's gift to general fiction, and it is what makes <em>Rurō no Tsuki</em> a genuinely new kind of novel in Japanese literature: a book about a relationship that is not romantic, not familial, not therapeutic, and not criminal, but something for which the language must be invented as the story unfolds.</p>
+  </div>
+
+  <div class="card">
+    <h3>Fumi's Secret: Disability, Intersexuality, and the Body as Truth</h3>
+    <p>The novel's most technically daring element — and the one that has generated the most critical discussion — is the revelation of Fumi's medical condition: he has a disorder that prevented him from completing puberty, leaving him in a state of physical and psychological suspension that the novel gradually reveals but never fully names with a diagnostic label. This condition — sometimes discussed by readers as a form of intersexuality or hypogonadism, though the novel deliberately avoids specificity — is not a plot gimmick but the structural foundation of the entire narrative. It explains why Fumi, at 19, could live with a 10-year-old girl for two months without the relationship becoming sexual: his body had not developed the sexual drives that society assumes would inevitably corrupt such a situation. It explains his social isolation, his inability to form conventional relationships, his sense of himself as a "failed product" (<em>shippai-saku</em> / 失敗作). And it explains, most importantly, why Morena's presence in his life was not an aberration but a necessity — the only relationship he had ever had in which his difference was not the defining fact. The novel's treatment of Fumi's body is a profound intervention in Japanese discourse about disability, sexuality, and the assumption that "normal" development is the standard by which all human experience must be judged. By making Fumi's condition the invisible axis around which the entire plot rotates, Nagira forces the reader to confront their own assumptions: the assumption that a 19-year-old man and a 10-year-old girl cannot cohabit without sexual danger; the assumption that "victim" and "perpetrator" are transparent categories; the assumption that the body's development follows a single inevitable path. The novel's answer to all of these assumptions is the same: the body is more various than society admits, and the heart's truth is more complex than any label can capture.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Fifteen Years, Two Souls, One Unnameable Bond</h2>
+
+  <div class="card">
+    <h3>The Architecture: Then and Now in Counterpoint</h3>
+    <p>The novel is structured as a double narrative — the "then" of the summer when Morena was 10 and Fumi was 19, and the "now" of fifteen years later, when Morena is 25 and Fumi is 34 — with the two timelines interweaving to create a counterpoint of memory and aftermath, innocence and consequence, the brief idyll and its lifelong shadow. This structure — reminiscent of techniques used by Kazuo Ishiguro in <em>Never Let Me Go</em> and by Yoshimoto Banana in <em>Kitchen</em> — allows Nagira to do something that a linear narrative could not: to make the reader feel simultaneously the beauty of what was and the devastation of what followed, without either canceling the other. The "then" chapters are written with a luminous, almost fairy-tale quality: a lonely child and a lonely young man find each other in a rainy park and, without planning or intention, create a home. The "now" chapters are written with the exhausted precision of adult survival: the same two people, scarred by what society did to them, circling each other in a world that has already decided their story. The counterpoint creates the novel's central emotional effect: every moment of present-day connection is shadowed by the knowledge of what was taken from them, and every memory of the past is haunted by the knowledge of what came after. The structure is thus not merely organizational but emotional — it enacts the novel's theme that time does not heal but transforms, that the past is not behind us but beside us, walking in step with every present moment.</p>
+  </div>
+
+  <div class="card">
+    <h3>Morena: The Girl Who Would Not Be Saved</h3>
+    <p>Morena Kanai (家内更紗, <em>Kanai Morena</em>) — whose given name evokes the delicate fabric <em>sarasa</em> (更紗, calico) and whose family name <em>Kanai</em> (家内, literally "inside the house") carries an almost cruel irony for a girl who loses every house she inhabits — is one of the most original child characters in contemporary Japanese fiction. At 9, she loses her father; her mother "evaporates" (<em>jōhatsu</em> / 蒸発, a Japanese euphemism for disappearance that carries the sense of vaporizing without trace); and she is deposited with an aunt who does not want her, where her older cousin Takahiro (孝弘) subjects her to escalating abuse. By the time she meets Fumi in the park, Morena is already a veteran of abandonment — a child who has learned that adults leave, that homes are temporary, and that her own perception of reality will always be overridden by whatever story adults decide to tell about her. What makes her extraordinary is not suffering but lucidity: she sees clearly what is happening to her, and she makes choices based on that clarity. When she asks Fumi to take her home, she is not being manipulated; she is exercising the only agency available to her. When she refuses to condemn him during the police investigation, she is not being brainwashed; she is refusing to participate in a narrative that would destroy the one person who treated her like a person. The adult Morena, at 25, works part-time at a family restaurant and lives with her boyfriend Ryō (亮) — a "normal" life that she experiences as a kind of performance. The novel's deepest insight into her character is that survival, for her, has meant learning to inhabit other people's expectations while keeping her true self in the one place no one can reach: the memory of the two months when she was not a victim, not a problem, not a case — just a child in a room with someone who saw her.</p>
+  </div>
+
+  <div class="card">
+    <h3>Fumi: The Man Who Could Not Grow</h3>
+    <p>Saeki Fumi (佐伯文, <em>Saeki Fumi</em>) — the surname <em>Saeki</em> (佐伯) suggesting "assistant count" or a minor noble role, and the given name <em>Fumi</em> (文, "letter / writing / literature") connecting him to the world of words that is Nagira's own domain — is a character of almost unbearable pathos, and the novel's greatest risk. A 19-year-old university student who looks and feels younger than his age, who has never experienced sexual desire in the way his peers have, who moves through the world with the tentative gentleness of someone who has always been told he is wrong — Fumi is, by conventional standards, a figure of suspicion. The novel's radical act is to make him not a monster but a wounded healer, not a predator but a refuge. His medical condition — the "failure to complete puberty" that leaves him in a state of physical and emotional suspension — is never presented as an excuse or an explanation but as a fact of his existence that shapes everything and justifies nothing. What Fumi did (taking a child home, keeping her for two months) was, by the law's definition, kidnapping. What Fumi was (a person who had never hurt anyone, who had only ever been hurt) is something the law cannot see. The novel does not ask us to forgive him; it asks us to understand that forgiveness and condemnation are both operations performed from outside a relationship, and that the truth of what existed between him and Morena is accessible only to them. The adult Fumi, at 34, has changed his surname and runs a late-night coffee shop — a life of deliberate invisibility that is shattered when Morena reappears. His journey through the novel is a journey from hiding to emergence, from the belief that he must disappear to protect her, to the recognition that their bond — whatever it is — is the only truth either of them has.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Unnameable: What Is This Bond?</h3>
+    <p>The novel's most discussed and most elusive element is the nature of the bond between Morena and Fumi. It is not romantic — Morena explicitly states that she does not want to kiss him, does not want to sleep with him, has never felt sexual desire for him. It is not familial — they are not related, and the power asymmetry of their ages and circumstances makes any parent-child framing impossible. It is not therapeutic — neither is healing the other in any professional sense, and their relationship does not follow the trajectory of recovery. It is not friendship exactly, not love exactly, not dependency exactly, though it contains elements of all three. Morena's own attempt to name it — "what I need in order to be myself" (<em>watashi ga watashi de iru tame ni, nakute wa naranai mono, mitai</em> / わたしがわたしでいるために、なくてはならないもの、みたい) — is deliberately provisional, ending with the softening <em>mitai</em> (みたい, "like / sort of / something like") that is the novel's characteristic grammatical gesture toward the unsayable. The novel's deepest commitment is to the preservation of this unnameability. It refuses every label that society offers — victim, perpetrator, Stockholm syndrome, codependency, trauma bonding — not because these concepts have no explanatory power but because their application destroys the specificity of what these two people experienced. The bond, whatever it was, existed in the space before labels, in the two months when no one was watching, when a child and a young man who had both been failed by the world found in each other the only recognition they had ever known. The novel's ending — which I will not spoil here — preserves this unnameability to the last, refusing the reader the satisfaction of a category. What remains is not a definition but a feeling: the sense that some human connections are too singular to be named, too necessary to be condemned, and too precious to be explained away.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages contain the novel's most emotionally devastating sentences — the moments when language, pushed to its limit, approaches the unsayable truth of what existed between two people the world refused to understand.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"I Discard Your Precious Kindness"</div>
+    <div class="passage-jp">
+      せっかくの善意をわたしは捨てていく。そんなものでは、わたしはかけらも救われない。
+    </div>
+    <div class="passage-romaji">
+      "Sekkaku no zen'i wo watashi wa sutete iku. Sonna mono de wa, watashi wa kakera mo sukuwarenai."
+    </div>
+    <div class="passage-en">
+      "I go on discarding your precious kindness. Something like that cannot save me — not even a fragment."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's opening line, displayed on the cover of the bunko edition — is a declaration of war against the society that would save Morena against her will, and its grammar creates a poetics of refusal that defines the entire narrative. <em>Sekkaku no zen'i</em> (せっかくの善意, "precious kindness / carefully extended goodwill / hard-won compassion") uses the adjectival noun <em>sekkaku</em> (せっかく, "with effort / specially / taking the trouble to"), which carries the full weight of Japanese social obligation: someone has gone out of their way, has made a special effort, has extended themselves on your behalf — and you are expected to receive this effort with gratitude. <em>Zen'i</em> (善意, "goodwill / kindness / benevolence") is the word for morally positive intention, the desire to do good. Combined, <em>sekkaku no zen'i</em> names the exact quality of the sympathy that Morena has spent her life receiving and rejecting: the kindness that arrives already labeled as "for your own good," the compassion that knows what she needs better than she does. <em>Watashi wa sutete iku</em> (わたしは捨てていく, "I go on discarding / throwing away") uses the continuative auxiliary <em>te iku</em> (ていく, "to go on...ing / to continue to..."), which makes the discarding into an ongoing process — not a single act of rejection but a lifelong practice of self-preservation. <em>Sutta mono de wa</em> (そんなものでは, "something like that / with something like that") uses the dismissive <em>sonna mono</em> (そんなもの, "that kind of thing") to reduce the precious kindness to its proper size: not a lifeline but an object, not salvation but a thing that can be weighed and found insufficient. <em>Kakera mo sukuwarenai</em> (かけらも救われない, "not even a fragment can be saved / not a scrap will be rescued") uses the negative potential of <em>sukuwarenai</em> (救われない, "cannot be saved / rescued / redeemed") with the emphatic <em>kakera mo</em> (かけらも, "not even a fragment / not a scrap"). The word <em>sukuwarenai</em> is the passive potential of <em>sukuu</em> (救う, "to save / to rescue / to deliver"), a verb with deep religious resonance — it is the word used for salvation in Christian contexts and for rescue in secular ones. The sentence thus says: your kindness, however well-intentioned, lacks the power to save even the smallest fragment of me. What is lost in English is the social force of <em>sekkaku</em>. "Precious kindness" captures the value but loses the obligation; "carefully extended goodwill" captures the effort but loses the moral weight. The Japanese <em>sekkaku no zen'i</em> is a phrase that makes every Japanese reader feel, in their bones, the pressure of received gratitude — the sense that someone has "gone to the trouble" of caring for you, and you owe them a response. Morena's response — "I discard it" — is thus not merely personal preference but social heresy, a refusal of the economy of sympathy that structures Japanese interpersonal relations. The sentence is the novel's thesis statement: the world's kindness is a currency that cannot purchase what the wounded actually need.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"Not Love. But I Want to Be Beside You."</div>
+    <div class="passage-jp">
+      愛ではない。けれどそばにいたい。
+    </div>
+    <div class="passage-romaji">
+      "Ai de wa nai. Keredo soba ni itai."
+    </div>
+    <div class="passage-en">
+      "It is not love. But I want to be beside you."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's most quoted line, its emotional fulcrum, the statement that has launched a thousand online discussions about what "love" means — is a masterpiece of negative definition, and its grammar creates a relationship in the space between two denials. <em>Ai de wa nai</em> (愛ではない, "it is not love") uses the negative copular construction <em>de wa nai</em> (ではない), the formal negation of <em>da</em> (だ), delivered with the flat certainty of a mathematical proof. The word <em>ai</em> (愛, "love") is not modified, qualified, or hedged; it is simply negated. This is crucial: the sentence does not say "it is not exactly love" or "it is more than love" or "it is a different kind of love." It says, with absolute finality, "it is not love." The period after <em>nai</em> creates a full stop, a breath, a space in which the reader must sit with the absence of the word that would normally explain everything. <em>Keredo soba ni itai</em> (けれどそばにいたい, "but I want to be beside you") uses the concessive conjunction <em>keredo</em> (けれど, "but / however / and yet") — softer than <em>demo</em> (でも) or <em>dakedo</em> (だけど), more literary, more resigned — to introduce a statement that should be impossible after the previous negation. If it is not love, how can she want to be beside him? The grammar creates this impossibility and then insists on it: <em>soba ni itai</em> (そばにいたい, "want to be beside / near"). <em>Soba</em> (そば / 側, "beside / near / side") is one of Japanese's most intimate spatial words — it means not merely "near" (<em>chikaku</em> / 近く) but "at one's side," the position of the closest companion, the one who is there without being asked. <em>Itai</em> (いたい, "want to be / exist") uses the desiderative form of <em>iru</em> (いる, "to be / to exist [for animate beings]"), making the desire not for action but for state — not "I want to go to you" but "I want to be where you are." The sentence thus creates a bond defined entirely by negation and proximity: it is not love (the category is wrong), but the desire for co-presence is absolute. What is lost in English is the full force of the categorical negation. "It's not love" in English sounds like the beginning of a qualification ("It's not love, it's..."); the Japanese <em>ai de wa nai</em> is a complete statement, a closing of a door. And the word <em>keredo</em> — softer than "but," more like "and yet" — creates a tone of gentle persistence rather than argumentative contradiction. The sentence does not argue; it simply states two facts that should not coexist and lets the reader feel the pressure of their coexistence. This is the novel's method in miniature: not to explain the bond but to place its contradictory elements side by side and trust the reader to recognize what cannot be explained.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"What I Need in Order to Be Myself"</div>
+    <div class="passage-jp">
+      わたしがわたしでいるために、なくてはならないもの、みたい。
+    </div>
+    <div class="passage-romaji">
+      "Watashi ga watashi de iru tame ni, nakute wa naranai mono, mitai."
+    </div>
+    <div class="passage-en">
+      "Something like what I need in order to be myself, I think."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Morena's most precise attempt to name the unnameable — is the novel's emotional climax, and its grammar creates a definition that undoes itself in the act of being spoken, preserving the very unsayability it approaches. <em>Watashi ga watashi de iru tame ni</em> (わたしがわたしでいるために, "in order for me to be myself / for me to remain myself") uses the reflexive construction <em>watashi ga watashi de iru</em> (わたしがわたしでいる, "I am being myself / I exist as myself"), where the subject and the predicate nominative are the same pronoun, creating a tautology that is also a profound philosophical claim: to be oneself is not automatic but conditional, requiring something outside oneself. The <em>ga</em> (が) particle marking <em>watashi</em> as the subject of the subordinate clause creates a grammatical nesting — "for [me to be me]" — that enacts the very self-referentiality the sentence describes. <em>Nakute wa naranai mono</em> (なくてはならないもの, "something that is indispensable / something without which [I cannot be]") uses the negative conditional necessity construction <em>nakute wa naranai</em> (なくてはならない, "must / indispensable / cannot do without"), literally "if it were not, it would not become" — a double negative that creates absolute necessity through the denial of absence. <em>Mono</em> (もの, "thing / entity / person") nominalizes the necessity, making it into an object that can be possessed, lost, or named. And then — the stroke of genius — <em>mitai</em> (みたい, "like / sort of / something like / I think") softens the entire construction into a simile of itself. After the absolute necessity of <em>nakute wa naranai</em>, the <em>mitai</em> arrives like a hand gently lowered, a qualification that says: this is the closest I can come, but the words are still not quite right. The grammar thus enacts the novel's central theme: that the most important things cannot be named directly, only approached through approximation, softened by the acknowledgment that language is always slightly wrong about what matters most. What is lost in English is the full emotional architecture of this softening. "Something like" captures the approximation but loses the tenderness of <em>mitai</em>, which is not merely hedging but a form of respect — respect for the truth that refuses to be captured, respect for the bond that is larger than any word. The Japanese reader feels, in the rhythm of <em>nakute wa naranai mono, mitai</em>, the pulse of someone reaching for the exact word, finding none, and offering the nearest approximation with humble acknowledgment of its inadequacy. This is not failure of language but its highest function: to gesture toward what it cannot contain.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"Facts and Truth Are Different"</div>
+    <div class="passage-jp">
+      事実と真実は、違う。
+    </div>
+    <div class="passage-romaji">
+      "Jijitsu to shinjitsu wa, chigau."
+    </div>
+    <div class="passage-en">
+      "Facts and truth are different."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's most direct statement of its epistemological theme — is a quiet earthquake, and its grammar creates a philosophical distinction in five syllables that most treatises take chapters to establish. <em>Jijitsu to shinjitsu wa</em> (事実と真実は, "as for facts and truth [topic]") places two compound nouns in parallel, joined by <em>to</em> (と, "and"), and marks them as the topic with <em>wa</em> (は). The two words are etymologically related and visually similar — both contain <em>jitsu</em> (実, "reality / fruit / truth") — but their first elements diverge: <em>ji</em> (事, "thing / matter / affair / event") for <em>jijitsu</em> (事実, "fact / actuality / empirical event"), and <em>shin</em> (真, "true / real / genuine") for <em>shinjitsu</em> (真実, "truth / veracity / inner reality"). The parallel structure makes the sentence feel like a definition being offered for consideration — not shouted but stated, with the quiet confidence of someone who has learned this distinction through suffering rather than study. <em>Chigau</em> (違う, "differ / be different / be wrong") is the intransitive verb of difference, delivered without elaboration, qualification, or apology. The sentence does not say "facts and truth are <em>sometimes</em> different" or "facts and truth <em>can be</em> different"; it says they <em>are</em> different, as a categorical statement about the structure of reality. What is lost in English is the visual and etymological poetry of the Japanese. "Facts" and "truth" in English are etymologically unrelated (Latin <em>facere</em> vs. Old English <em>trīewth</em>); in Japanese, <em>jijitsu</em> and <em>shinjitsu</em> share the character <em>jitsu</em> (実), creating a family resemblance that makes their difference feel like a sibling rivalry — two words from the same root that have grown apart. The Japanese reader sees, in the written sentence, the character <em>jitsu</em> (実) repeated with different prefixes, a visual rhyme that enacts the very closeness-and-difference the sentence names. And the verb <em>chigau</em> — which can mean both "to differ" and "to be wrong" — carries a subtle accusation: the facts, in their difference from truth, are "wrong" about reality, mistaken in their claim to completeness. The sentence is thus not merely an observation but an indictment — of the legal system that operates on facts, of the media that reports facts, of the society that judges by facts. All of them, the sentence says, are "wrong" in the most literal sense: they have taken the branch (<em>ji</em> / 事, "event") for the root (<em>shin</em> / 真, "genuine"), the happening for the meaning, the observable for the real.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of victimhood, social judgment, and the bonds that exist outside every available category.</p>
+
+  <div class="card">
+    <h3>Crime, Judgment & the Language of Social Labels</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>誘拐</td><td>yūkai</td><td class="pos">noun</td><td>kidnapping; abduction</td></tr>
+        <tr><td>被害者</td><td>higaisha</td><td class="pos">noun</td><td>victim</td></tr>
+        <tr><td>加害者</td><td>kagaisha</td><td class="pos">noun</td><td>perpetrator; offender</td></tr>
+        <tr><td>被害女児</td><td>higaisha jō</td><td class="pos">noun</td><td>victim girl (female child victim)</td></tr>
+        <tr><td>事件</td><td>jiken</td><td class="pos">noun</td><td>incident; case; event</td></tr>
+        <tr><td>事実</td><td>jijitsu</td><td class="pos">noun</td><td>fact; empirical reality</td></tr>
+        <tr><td>真実</td><td>shinjitsu</td><td class="pos">noun</td><td>truth; inner reality; veracity</td></tr>
+        <tr><td>レッテル</td><td>retteru</td><td class="pos">noun</td><td>label; tag; stigma</td></tr>
+        <tr><td>烙印</td><td>rakuin</td><td class="pos">noun</td><td>brand; stigma; mark of shame</td></tr>
+        <tr><td>デジタルタトゥー</td><td>dejitaru tatū</td><td class="pos">noun</td><td>digital tattoo (permanent online record)</td></tr>
+        <tr><td>常識</td><td>jōshiki</td><td class="pos">noun</td><td>common sense; conventional wisdom</td></tr>
+        <tr><td>偏見</td><td>henken</td><td class="pos">noun</td><td>prejudice; bias; preconception</td></tr>
+        <tr><td>予断</td><td>yodan</td><td class="pos">noun</td><td>prejudgment; premature conclusion</td></tr>
+        <tr><td>善意</td><td>zen'i</td><td class="pos">noun</td><td>goodwill; kindness; benevolence</td></tr>
+        <tr><td>同情</td><td>dōjō</td><td class="pos">noun</td><td>sympathy; compassion</td></tr>
+        <tr><td>世間</td><td>seken</td><td class="pos">noun</td><td>society; the world; public opinion</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Trauma, Survival & the Language of the Wounded Self</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>傷</td><td>kizu</td><td class="pos">noun</td><td>wound; injury; scar</td></tr>
+        <tr><td>痛み</td><td>itami</td><td class="pos">noun</td><td>pain; ache; suffering</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place to be; where one belongs</td></tr>
+        <tr><td>寄る辺</td><td>yorube</td><td class="pos">noun</td><td>refuge; reliance; something to depend on</td></tr>
+        <tr><td>流浪</td><td>rurō</td><td class="pos">noun</td><td>wandering; vagrancy; drifting</td></tr>
+        <tr><td>月</td><td>tsuki</td><td class="pos">noun</td><td>moon; month</td></tr>
+        <tr><td>満ち欠け</td><td>michikake</td><td class="pos">noun</td><td>waxing and waning; phases of the moon</td></tr>
+        <tr><td>虐待</td><td>gyakutai</td><td class="pos">noun</td><td>abuse; maltreatment</td></tr>
+        <tr><td>悪戯</td><td>itazura</td><td class="pos">noun</td><td>mischief; prank; sexual abuse (euphemism)</td></tr>
+        <tr><td>蒸発</td><td>jōhatsu</td><td class="pos">noun</td><td>disappearance; evaporating without trace</td></tr>
+        <tr><td>失踪</td><td>shissō</td><td class="pos">noun</td><td>disappearance; missing person</td></tr>
+        <tr><td>失敗作</td><td>shippai-saku</td><td class="pos">noun</td><td>failed product; defective work</td></tr>
+        <tr><td>白い目</td><td>shiroi me</td><td class="pos">phrase</td><td>cold look; disapproving glance</td></tr>
+        <tr><td>救う</td><td>sukuu</td><td class="pos">verb</td><td>to save; to rescue; to redeem</td></tr>
+        <tr><td>救われない</td><td>sukuwarenai</td><td class="pos">verb</td><td>cannot be saved; irredeemable</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Relationship, Desire & the Language of the Unnameable</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>愛</td><td>ai</td><td class="pos">noun</td><td>love</td></tr>
+        <tr><td>恋</td><td>koi</td><td class="pos">noun</td><td>romantic love; being in love</td></tr>
+        <tr><td>そば</td><td>soba</td><td class="pos">noun</td><td>side; beside; proximity</td></tr>
+        <tr><td>家族</td><td>kazoku</td><td class="pos">noun</td><td>family</td></tr>
+        <tr><td>絆</td><td>kizuna</td><td class="pos">noun</td><td>bond; tie; connection</td></tr>
+        <tr><td>共依存</td><td>kyōizon</td><td class="pos">noun</td><td>codependency</td></tr>
+        <tr><td>ストックホルム症候群</td><td>sutokkutorumu shōkōgun</td><td class="pos">noun</td><td>Stockholm syndrome</td></tr>
+        <tr><td>多様性</td><td>tayōsei</td><td class="pos">noun</td><td>diversity; variety</td></tr>
+        <tr><td>普通</td><td>futsū</td><td class="pos">na-adj</td><td>normal; ordinary; usual</td></tr>
+        <tr><td>違和感</td><td>iwakan</td><td class="pos">noun</td><td>sense of discomfort; feeling that something is off</td></tr>
+        <tr><td>違う</td><td>chigau</td><td class="pos">verb</td><td>to differ; to be different; to be wrong</td></tr>
+        <tr><td>捨てる</td><td>suteru</td><td class="pos">verb</td><td>to throw away; to discard; to abandon</td></tr>
+        <tr><td>かけら</td><td>kakera</td><td class="pos">noun</td><td>fragment; scrap; shred</td></tr>
+        <tr><td>みたい</td><td>mitai</td><td class="pos">aux</td><td>like; sort of; something like</td></tr>
+        <tr><td>なくてはならない</td><td>nakute wa naranai</td><td class="pos">phrase</td><td>indispensable; must; cannot do without</td></tr>
+        <tr><td>わたしがわたしでいる</td><td>watashi ga watashi de iru</td><td class="pos">phrase</td><td>to be oneself; to remain oneself</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Nagira writes with the precision of someone who has spent a decade learning what language cannot do — and her prose raises urgent questions about how to carry the unsayable across linguistic borders.</p>
+
+  <div class="card">
+    <h3>1. <em>Sekkaku no Zen'i</em> (っかくの善意): The Violence of Well-Meaning</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>せっかくの善意</strong> — the kindness that has gone out of its way; the compassion that arrives with social obligation attached; the help that demands gratitude</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"precious kindness" / "carefully extended goodwill" / "well-meaning sympathy"</strong> — each captures one dimension</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>sekkaku no zen'i</em> (せっかくの善意) is a phrase of extraordinary social density that English cannot fully reproduce. "Precious kindness" captures the value but loses the obligation; "carefully extended goodwill" captures the effort but loses the moral pressure; "well-meaning sympathy" captures the intention but loses the specificity of <em>sekkaku</em> — the sense that someone has "gone to the trouble" (<em>sekkaku</em>) of caring for you, and you now owe them a response. The loss matters because the entire novel is a response to this phrase — a systematic refusal of the economy of sympathy that structures Japanese social relations. Without <em>sekkaku</em>'s built-in pressure, the opening sentence becomes merely "I discard your kindness" — a statement of preference rather than a social heresy. The Japanese reader feels, in the first four syllables, the weight of every time they have been told to be grateful for help they did not ask for; the English reader receives only the abstract noun "kindness," stripped of its social machinery.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Keredo</em> (けれど): The Soft "But" of Irreducible Coexistence</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>けれど</strong> — the soft, literary, resigned "but" that introduces contradiction without aggression; the conjunction of coexistence</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"but" / "and yet" / "however"</strong> — each too strong or too weak</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The conjunction <em>keredo</em> (けれど / けれども) is one of Japanese's most tonally specific words, and its use in the novel's central sentence — <em>ai de wa nai. keredo soba ni itai</em> — is irreplaceable. <em>Keredo</em> is softer than <em>demo</em> (でも) or <em>dakedo</em> (だけど), more literary than <em>shikashi</em> (しかし), more resigned than argumentative. It introduces a contradiction not as a challenge but as a fact — the way one might say "it's raining, but the flowers need it" rather than "it's raining, but I refuse to go out." The English "but" carries an implicit adversarial energy; "and yet" is more literary but more dramatic; "however" is formal and distant. None of these captures the specific quality of <em>keredo</em> as it is used here: the gentle persistence of a desire that should not exist (because it is not love) but does exist (because she wants to be beside him). The loss is tonal and philosophical: without <em>keredo</em>'s softening, the sentence becomes a declaration of war against categories rather than a simple statement of emotional fact. The Japanese <em>keredo</em> says: these two things coexist, and I am merely noting their coexistence. The English "but" says: these two things are in conflict, and I am choosing sides.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Mitai</em> (みたい): The Grammar of Approximate Truth</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>みたい</strong> — like; sort of; something like; the softener that acknowledges language's inadequacy while still reaching for truth</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"like" / "sort of" / "I think" / "something like"</strong> — each captures one register</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The auxiliary <em>mitai</em> (みたい) appears at the end of Morena's most important attempt to name her bond with Fumi — <em>nakute wa naranai mono, mitai</em> (なくてはならないもの、みたい) — and its loss in translation would be the loss of the novel's soul. <em>Mitai</em> is not merely hedging; it is a form of epistemic humility, an acknowledgment that the words being used are the nearest available approximation rather than the thing itself. In Japanese, <em>mitai</em> operates across registers: children use it (<em>kuma mitai</em> / 熊みたい, "like a bear"), adults use it (<em>kanashii mitai</em> / 悲しいみたい, "seems sad / sort of sad"), and philosophers use it (<em>sonna mono, mitai</em> / そんなもの、みたい, "something like that, I think"). Its function is to create a simile of reality — to say "this is like the truth" rather than "this is the truth." In the context of the novel, this grammatical feature is essential because the entire book is about a bond that cannot be named directly. Every time Morena or Fumi approaches a definition, they must soften it with <em>mitai</em> or its equivalents — not because they are uncertain but because certainty would be a lie. The English "something like" or "I think" captures the approximation but loses the tenderness; "sort of" captures the softness but loses the precision; "like" is too casual. The Japanese <em>mitai</em> preserves both the reach and the humility — the sense of someone stretching language to its limit and then gently acknowledging that the limit has been reached. Without <em>mitai</em>, the novel's most important sentences become declarations rather than approaches, answers rather than questions, closures rather than openings.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Higaisha Jō</em> (被害女児): The Label That Eats the Person</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>被害女児</strong> — victim girl; the female child victim; the label that transforms a person into a case category</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"victim" / "victimized child" / "the girl victim"</strong> — each too general</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The term <em>higaisha jō</em> (被害女児) is a specifically Japanese legal-media compound that has no exact English equivalent. <em>Higaisha</em> (被害者, "victim / injured party") is the standard legal term for someone who has suffered harm; <em>jō</em> (女児, "female child / girl") is a formal, almost clinical term that appears in legal documents and news reports. Combined, <em>higaisha jō</em> is the label that Japanese media and legal systems apply to girls who have been victims of crimes — a label that, once applied, becomes the primary social identity of the person so labeled. The English "victim" is too general; "victimized child" is accurate but clunky; "the girl victim" captures the gender and age specificity but loses the institutional force of the compound. What is lost is the sense of <em>higaisha jō</em> as a social role rather than a description — a role that comes with expected behaviors (gratitude for rescue, willingness to testify, appropriate displays of trauma), expected emotions (fear of the perpetrator, relief at rescue, desire for "normal" life), and expected narratives (the journey from victim to survivor). Morena's resistance to this label — her refusal to perform the role of <em>higaisha jō</em> — is the novel's central act of characterological defiance, and the English reader who does not feel the full institutional weight of the term may underestimate the social cost of her refusal. The Japanese reader, hearing <em>higaisha jō</em>, hears every news report, every police drama, every after-school special about "victim girls" who must be saved — and recognizes, in Morena's rejection of the label, a rejection of an entire social script.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Jijitsu to Shinjitsu</em> (事実と真実): The Etymological Riddle</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>事実と真実</strong> — facts and truth; empirical events and inner reality; the sibling words that share a root but have grown apart</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"facts and truth" / "fact and reality"</strong> — accurate but etymologically flat</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, the visual and etymological relationship between <em>jijitsu</em> (事実) and <em>shinjitsu</em> (真実) — both containing <em>jitsu</em> (実, "reality / fruit / truth") — creates a family resemblance that English "facts and truth" cannot reproduce. In Japanese, the two words are etymological siblings: <em>ji</em> (事, "thing / matter / event") + <em>jitsu</em> (実) = the reality of events; <em>shin</em> (真, "true / genuine") + <em>jitsu</em> (実) = the reality of genuineness. The shared <em>jitsu</em> makes their difference feel like a branching from a common root — the way two brothers might take different paths from the same home. The English "facts" (from Latin <em>facere</em>, "to do") and "truth" (from Old English <em>trīewth</em>, "faithfulness") have no such relationship; they are etymological strangers who happen to be placed side by side. The Japanese reader sees, in the written sentence, the character <em>jitsu</em> (実) repeated with different prefixes  a visual rhyme that enacts the very closeness-and-difference the sentence names. This visual poetry is not decorative; it is the embodiment of the novel's theme: that facts and truth emerge from the same soil of reality but grow into different trees. The loss in translation is thus not merely lexical but philosophical: the English sentence names a distinction; the Japanese sentence performs it through the very material of its characters.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of refusal, approximation, and the bonds that exist in the spaces between categories.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てはならない（必要性・義務）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te wa naranai</em>: "must / indispensable / cannot do without" — negative conditional creating absolute necessity through double negation</p>
+      <div class="grammar-example">なくてはならないもの</div>
+      <p class="grammar-example-en">"something that is indispensable / something without which I cannot be" — The grammar of existential necessity.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜でいる（継続・状態維持）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...de iru</em>: "to continue being... / to remain..." — continuative state indicating persistence of identity or condition</p>
+      <div class="grammar-example">わたしがわたしでいるために</div>
+      <p class="grammar-example-en">"in order for me to remain myself" — The grammar of self-preservation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜みたい（推量・比喩・軟化）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...mitai</em>: "like / sort of / something like" — approximative auxiliary softening statements while preserving their reach toward truth</p>
+      <div class="grammar-example">なくてはならないもの、みたい</div>
+      <p class="grammar-example-en">"something like what is indispensable, I think" — The grammar of approximate truth.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てはいられない（可能性の否定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...te wa irarenai</em>: "cannot afford to... / cannot keep...ing" — negative potential of continuative indicating unsustainable state</p>
+      <div class="grammar-example">あの部屋のことを思い出さずにはいられない</div>
+      <p class="grammar-example-en">"I cannot help but remember that room" — The grammar of irresistible memory.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜がち（傾向・悪い傾向）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...gachi</em>: "tend to... / prone to..." — nominal suffix indicating undesirable tendency or pattern</p>
+      <div class="grammar-example">人は思い込みがちだ</div>
+      <p class="grammar-example-en">"People tend to assume / are prone to jumping to conclusions" — The grammar of dangerous habit.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜わけではない（断定の否定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...wake de wa nai</em>: "it is not that... / doesn't mean that..." — explanatory negative softening categorical denials</p>
+      <div class="grammar-example">文が悪いというわけではない</div>
+      <p class="grammar-example-en">"It's not that Fumi is bad / It doesn't mean Fumi is evil" — The grammar of qualified judgment.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ようで〜（比喩・様態）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō de...</em>: "it seems as if... / it's like..." — similative construction creating metaphorical comparison</p>
+      <div class="grammar-example">夢を見ているようで、現実だった</div>
+      <p class="grammar-example-en">"It was like dreaming, but it was reality" — The grammar of uncanny experience.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ものの（逆接・予想外）</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>...mono no</em>: "although... / even though... / but" — concessive conjunction indicating unexpected outcome despite condition</p>
+      <div class="grammar-example">知っていたものの、言えなかった</div>
+      <p class="grammar-example-en">"Although I knew, I couldn't say it" — The grammar of silenced knowledge.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Rurō no Tsuki</em> is the grammar of the unsayable — each construction chosen to approach truth while acknowledging language's limits. The necessity construction (<em>nakute wa naranai</em> / なくてはならない) creates absolute need through double negation; the continuative state (<em>de iru</em> / でいる) preserves identity against time's erosion; the approximative (<em>mitai</em> / みたい) softens without retreating; the unsustainable state (<em>te wa irarenai</em> / てはいられない) makes memory into compulsion; the tendency marker (<em>gachi</em> / がち) diagnoses social habit; the explanatory negative (<em>wake de wa nai</em> / わけではない) qualifies judgment without excusing; the similative (<em>yō de</em> / ようで) makes reality feel like dream; and the concessive (<em>mono no</em> / ものの) gives voice to what was known but unspoken. Pay attention to how these constructions work together to create a prose that approaches its subject obliquely, gently, persistently — the way the moon approaches the earth, not directly but in orbit, always near, never quite arriving, and always, in its wandering, exactly where it needs to be.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, critical analysis, and textual scholarship.</p>
+  <p style="margin-top: var(--space-xs);">『流浪の月』 &middot; 凪良ゆう 著 &middot; 東京創元社 2019年8月30日刊 &middot; 314ページ &middot; 四六判仮フランス装 &middot; ISBN 978-4-488-02802-2</p>
+  <p style="margin-top: var(--space-xs);">文庫版：創元文芸文 2022年2月刊 &middot; ISBN 978-4-488-80301-8</p>
+  <p style="margin-top: var(--space-xs);">受賞：第17回本屋大賞（2020年） &middot; 第41回吉川英治文学新人賞候補 &middot; 累計100万部突破（2026年時点）</p>
+  <p style="margin-top: var(--space-xs);">映画化：2022年5月13日公開 &middot; 李相日監督・脚本 &middot; 広瀬すず（更紗役）・松坂桃李（文役）・横浜流星（亮役）・多部未華子（谷あゆみ役） &middot; 撮影：ホン・ギョンピョ</p>
+  <p style="margin-top: var(--space-xs);">オーディオブック：2023年配信 &middot; オーディオブック大賞2023 文芸部門大賞受賞 &middot; ナレーター：大空直美、小林千晃 ほか</p>
+  <p style="margin-top: var(--space-xs);">著者：凪良ゆう（なぎらゆう・1973年1月25日生・滋賀県大津市出身・京都府京都市在住）</p>
+  <p style="margin-top: var(--space-xs);">デビュー：2006年「恋するエゴイスト（『小説花丸』） &middot; 2007年『花嫁はマリッジブルー』（白泉社）で本格デビュー</p>
+  <p style="margin-top: var(--space-xs);">経歴：もともとBL作家として活動（『美しい彼』シリーズなど） &middot; 2017年『神さまのビオトープ』で一般文芸へ進出 &middot; 2020年『流浪の月』で本屋大賞受賞 &middot; 2023年『汝、星のごとく』で2度目の本屋大賞受賞・第10回高校生直木賞受賞</p>
+  <p style="margin-top: var(--space-xs);">主要登場人物：家内更紗（かないさらさ・10歳→25歳・父死・母蒸発・伯母家で従兄弟の孝弘から虐待を受ける） &middot; 佐伯文（さえきふみ・19歳→34歳・大学生→喫茶店経営・第二次性徴未完了の病気） &middot; 中瀬亮（なかせりょう・29歳・更紗の恋人・農家の息子） &middot; 谷あゆみ（たにあゆみ・文に寄り添う看護師） &middot; 孝弘（たかひろ・更紗の従兄弟・中学生）</p>
+  <p style="margin-top: var(--space-xs);">構成："Then"（10歳の更紗と19歳の文の2か月）と"Now"（15年後の再会）の二重叙事が交互に進行</p>
+  <p style="margin-top: var(--space-xs);">テーマ：事実と真実の乖離、「被害者・加害者」レッテルの社会的暴力、善意の害毒性、名前のない絆、BL作家から一般文芸への多様な愛の形、児童虐待、障害・未成熟の身体論、デジタルタトゥー、世間の常識という名の予断</p>
+  <p style="margin-top: var(--space-xs);">関連作品：『汝、星のごとく』 &middot; 『美しい彼』シリーズ &middot; 『わたしの美しい庭』 &middot; 『滅びの前のシャングリラ』 &middot; 『神さまのビオトープ』 &middot; 『多類婚姻譚』 &middot; 『ニューワールド』（対談集・2024年） &middot; 『流浪の月 シナリオブック』（2022年・凪良ゆう×李相日対談収録）</p>
+</footer>
+
+</div>
+</body>
+</html>

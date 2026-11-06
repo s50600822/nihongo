@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ファイア・ドーム — 辻村深月 | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>ファイア・ドーム</h1>
+  <p class="hero-subtitle">Faia Dōmu / Fire Dome</p>
+  <p class="hero-meta">辻村深月 著 &middot; 小学館 2026年6月5日刊 &middot; 上下巻（上448頁／下432頁） &middot; 第39回柴田錬三郎賞受賞 &middot; デビュー22周年記念刊行作品</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: ファイア・ドーム</h2>
+  <p class="lead">The title <em>Faia Dōmu</em> (ファイア・ドーム, "Fire Dome") is written entirely in katakana — a deliberate orthographic choice that distances the novel from traditional Japanese literary associations and places it firmly in the contemporary world of media spectacle, information warfare, and communal trauma. Unlike the hiragana-kanji contrast of <em>Kagami no Kojō</em>, which created softness against hardness, the katakana title of <em>Faia Dōmu</em> creates a uniform surface: modern, technical, almost scientific. Katakana in Japanese is the script of foreign loanwords, of brand names, of neologisms, of concepts that have not yet been fully naturalized into the Japanese semantic universe. By writing her title in katakana, Tsujimura signals that the phenomenon she is describing — the dome of fire that rumors create over a community — is not a traditional Japanese concept with roots in classical literature or Buddhist philosophy. It is a modern pathology, born of mass media, accelerated by the internet, and made devastating by the human appetite for spectacle. The middle dot (<em>nakaguro</em> / 中黒) between <em>faia</em> and <em>dōmu</em> creates a small pause, a breath, a space in which the reader can feel the two concepts separating and joining simultaneously: fire (destructive, spreading, consuming) and dome (enclosing, containing, trapping). The title thus names not merely a metaphor but a structure of social violence: the way rumors about a crime spread outward in all directions like flames, and the way those flames eventually form a dome over the entire community, trapping everyone — victims, perpetrators, bystanders, the innocent and the guilty — in a shared atmosphere of suspicion, speculation, and burning.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">ファイア</span>
+        <span class="romaji">faia</span>
+        <span class="meaning">"fire" — The word <em>faia</em> (ファイア) is the katakana transliteration of the English word "fire," and its use here rather than the native Japanese <em>hi</em> (火) or <em>honō</em> (炎) is profoundly meaningful. <em>Hi</em> (火) is the elemental fire of Japanese culture — the fire of the hearth, the fire of the festival, the fire that warms and illuminates. <em>Honō</em> (炎) is the romantic fire of literature — the flame of passion, the blaze of battle, the fire that destroys beautifully. <em>Faia</em> is none of these. <em>Faia</em> is the fire of disaster coverage, of breaking news, of social media conflagration. It is the fire that spreads not through forests but through chatrooms, not through paper but through pixels. The katakana rendering strips the word of all cultural warmth and leaves only the mechanism: combustion, spread, consumption. In the novel, the "fire" is the rumor that engulfs a provincial city after a department store receptionist is kidnapped and murdered in 1994. The fire spreads from person to person, from household to household, from the original crime to unrelated families, from the past to the present, until the entire city exists inside a dome of burning speculation. The choice of <em>faia</em> over <em>hi</em> or <em>honō</em> also connects to the novel's concern with media. The 1994 crime becomes national news; television crews descend on the small city; newspapers print sensational headlines; and the "fire" is literally mediated — it exists not as a physical phenomenon but as a media phenomenon, something that enters homes through screens and pages. The English word "fire" carried in katakana is itself a media word in Japanese — it appears in video games (<em>faia bōru</em> / ファイアボール), in anime attacks, in news metaphors (<em>faia dorillu</em> / ファイアドリル for intense questioning). By using <em>faia</em>, Tsujimura makes her title sound like a news headline, a special report, a documentary title card — which is exactly what the novel will examine: how a real tragedy becomes media content, how human suffering becomes entertainment, how a city becomes a set for a drama that no one asked to star in.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">・</span>
+        <span class="romaji">nakaguro</span>
+        <span class="meaning">"middle dot" — The <em>nakaguro</em> (中黒) that separates <em>faia</em> from <em>dōmu</em> is not merely a typographic convenience; it is a semantic space. In Japanese title conventions, the middle dot creates a relationship of apposition or compound formation between two foreign words: it says that these two concepts belong together but are not yet fully fused. "Fire Dome" as a single uninterrupted phrase would suggest a known entity, a technical term, something from a manual. <em>Faia</em>・<em>Dōmu</em> with the dot keeps the two words separate enough that the reader must actively combine them, must imagine what a "fire dome" might be before opening the book. This small typographic gap enacts the novel's central theme: the gap between what happened and what is said to have happened, between the fact of a crime and the story that grows around it, between the truth and the rumor that replaces it. The dot is the space where speculation breeds, where inference becomes accusation, where a missing child becomes a murderer's son in the minds of his classmates. The dot is also a breath, a pause — and the novel will show how such pauses, such moments of uncertainty, are filled not with careful thought but with the most damaging assumptions. When a child goes missing, the pause between "he is missing" and "he must be dead" is where the fire begins. The <em>nakaguro</em> keeps that pause visible on the cover.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">ドーム</span>
+        <span class="romaji">dōmu</span>
+        <span class="meaning">"dome" — The word <em>dōmu</em> (ドーム) is the katakana form of "dome," and it carries architectural, scientific, and metaphorical associations that the native Japanese <em>maruyane</em> (丸屋根, "rounded roof") or <em>tennbaku</em> (天幕, "canopy") cannot capture. A dome in Western architecture is a structure that encloses space from above — the dome of a cathedral, the dome of a planetarium, the dome of the Capitol. It suggests completeness, enclosure, a self-contained world. In scientific contexts, a dome can be a pressure dome, a containment structure, a force field. The metaphorical "dome" in Tsujimura's title suggests all of these: the city enclosed by rumors as if under a glass dome, the community contained by shared suspicion, the victims trapped under a structure they did not build and cannot escape. The word <em>dōmu</em> also has specific Japanese associations: the Tokyo Dome (東京ドーム), the Osaka Dome, the domed stadiums where crowds gather to watch spectacle. The "dome" of the title thus evokes not merely enclosure but spectatorship — the way a whole city becomes an audience for a tragedy, the way people gather around disaster as if it were entertainment, the way the dome of media coverage turns a local crime into a national spectacle. The novel's most devastating insight is that this dome is constructed not by malice but by curiosity, not by hatred but by boredom, not by evil intent but by the casual cruelty of people who have nothing better to do than speculate about their neighbors' suffering. The dome is transparent — everyone can see through it, can see the fire burning above them — and yet it is impermeable: those inside cannot get out, cannot correct the record, cannot stop the burning. The katakana <em>dōmu</em>, like <em>faia</em>, keeps the concept modern and technical, preventing the reader from finding comfort in traditional metaphors. There is no Buddhist teaching here, no classical consolation. There is only the dome, and the fire, and the people trapped inside — which is to say, all of us, in any community where a rumor has ever spread faster than the truth.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 小学館, June 5, 2026, 2 volumes (upper / lower), upper volume 448 pages ISBN 978-4-09-386769-6, lower volume 432 pages ISBN 978-4-09-386770-2, price 2,090 yen each (tax included). Manuscript length: approximately 1,500 pages. Writing period: 7 years (beginning circa 2019). The novel won the 39th Shibata Renzaburo Prize in September 2026. Sales exceeded 350,000 copies within one month of release and reached #1 on the mystery sales ranking for the first half of 2026 (Sanseido Bookstore survey). The book received over 400 comments from booksellers nationwide prior to release. Author's comment: "A special novel that I might only be able to write once in my lifetime." The novel has been praised by booksellers and critics as "bone-solid" (<em>honebuto</em> / 骨太), "a novel of rumors and rumors of a novel," and compared to Kirino Natsuo's <em>OUT</em> for its social scope and darkness.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>辻村深月 &mdash; Mizuki Tsujimura (b. 1980)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">辻</div>
+    <div class="author-name-block">
+      <h3>辻村深月 / Mizuki Tsujimura</h3>
+      <p class="author-name-romaji">Winner of the Naoki Prize, Japan Booksellers' Award, and Shibata Renzaburo Prize &middot; one of Japan's most versatile and empathetic contemporary writers</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Mizuki Tsujimura was born on February 29, 1980 — a leap-year birthday — in Fuefuki City, Yamanashi Prefecture. She graduated from the Faculty of Education at Chiba University in 2002, and her background in education has profoundly shaped her fiction, giving her an unparalleled understanding of how schools function as ecosystems of power, cruelty, and potential salvation. Her debut novel, <em>Tsumetai Kōsha no Toki wa Tomaru</em> (冷たい校舎の時は止まる, "Time Stops at the Cold School Building," 2004), won the 31st Mephisto Prize and announced the arrival of a writer with exceptional gifts for plotting, atmosphere, and the psychology of young people under pressure.</p>
+    <p style="margin-bottom: var(--space-md);">Over the subsequent two decades, Tsujimura has demonstrated extraordinary range, moving between pure mystery (<em>Zero, Hachi, Zero, Nana.</em> / ゼロ、ハチ、ゼロ、ナナ。, 2010), supernatural thriller (<em>Yami Harai</em> / 闇祓, 2021), workplace drama (<em>Haken Anime!</em> / ハケンアニメ！, 2014), literary fiction about marriage (<em>Gōman to Zenryō</em> / 傲慢と善良, 2019), and deeply empathetic novels about children in crisis (<em>Kagami no Kojō</em> / かがみの孤城, 2017). Her major awards include the 32nd Yoshikawa Eiji Bungaku Shinjin Prize for <em>Tsunagu</em> (ツナグ, 2011), the 147th Naoki Prize for <em>Kagi no Nai Yume wo Miru</em> (鍵のない夢を見る, 2012), and the 15th Japan Booksellers' Award for <em>Kagami no Kojō</em> (2018) — the latter won with a record-breaking 651 points. In 2025, she was appointed to the selection committee for the Naoki Prize.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Faia Dōmu</em> represents a new peak in Tsujimura's career — a work she describes as "a special novel that I might only be able to write once in my lifetime." Written over seven years from a 1,500-page manuscript, it is her darkest, most structurally ambitious novel, moving beyond the relatively contained world of junior high school students in <em>Kagami no Kojō</em> to examine an entire community across twenty-five years. The novel demonstrates her continued growth: where <em>Kagami no Kojō</em> offered hope through magical intervention, <em>Faia Dōmu</em> offers no magic, no castle, no wolf-masked guardian — only the relentless machinery of rumor, the casual violence of speculation, and the fragile courage of those who refuse to let the fire consume them. Winning the 39th Shibata Renzaburo Prize in September 2026 confirmed what readers and booksellers had already recognized: that this is a work of major literary significance, a novel that uses the mystery form to ask fundamental questions about how we live together, how we consume each other's pain, and whether it is possible to survive in a world where truth is always less interesting than the stories people tell about it.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Rumors, Media, and the Fire That Never Goes Out</h2>
+
+  <div class="card">
+    <h3>1994 Japan: Before the Internet, When Rumors Traveled by Mouth and Newspaper</h3>
+    <p>The 1994 timeline of <em>Faia Dōmu</em> is set in a Japan on the cusp of the information revolution. Mobile phones existed but were rare and expensive; the internet was virtually unknown to ordinary people; social media did not exist; and rumors spread through the traditional channels of telephone, personal conversation, local newspaper, and television news. This pre-digital media environment is crucial to the novel's effect. In 1994, a rumor could not be debunked by a quick Google search; a false accusation could not be countered by posting the truth online; and the record of what was said could not be easily retrieved or corrected. Once a story began to circulate in a provincial city, it became part of the city's oral history, repeated at dinner tables, in bars, at school gates, in hospital waiting rooms — accumulating detail, gathering momentum, becoming more "real" with each retelling precisely because there was no mechanism to stop it.</p>
+    <p style="margin-top: var(--space-sm);">The 1994 crime at the center of the novel's historical timeline — the kidnapping and murder of a young department store receptionist — becomes national news, and the novel captures with documentary precision how a local tragedy becomes a media spectacle. Television crews arrive from Tokyo; newspapers print sensational headlines; and the small city of L Prefecture finds itself suddenly visible to the entire nation, not as a place where people live and work but as "the place where that happened." This transformation of a lived place into a media location is one of the novel's most acute observations: the city ceases to belong to its inhabitants and becomes public property, a setting for a drama that outsiders consume and discard. The "fire dome" of the title is thus historically specific — it is the dome created by pre-internet mass media, a dome that took days or weeks to form rather than hours, but that was perhaps more durable precisely because it was harder to dismantle. In 1994, there were no hashtags to trend and fade; there was only the slow burn of communal memory, the gradual accumulation of "everyone knows" that could persist for decades.</p>
+  </div>
+
+  <div class="card">
+    <h3>2019 Japan: The Return of the Repressed, and the Fire That Smolders</h3>
+    <p>The novel's present-day timeline is set in 2019, twenty-five years after the original crime — a temporal gap that allows Tsujimura to examine what happens to a community that has never fully processed its trauma. By 2019, the city has apparently returned to normal: new buildings have replaced old ones, new families have moved in, the department store where the victim worked has been rebuilt or rebranded. But the fire, Tsujimura shows us, has only been smoldering (<em>kusuburu</em> / 燻る) — waiting for oxygen. When a fourth-grade elementary school boy named Kotaro disappears after a sketching field trip, the old rumors resurface with terrifying speed. The new case provides the oxygen that rekindles the old fire, and suddenly the dome that had seemed to dissipate is revealed to have been there all along — invisible, perhaps, but structurally intact.</p>
+    <p style="margin-top: var(--space-sm);">The 2019 of <em>Faia Dōmu</em> is also recognizably the Japan of the late Heisei and early Reiwa periods — a society saturated with social media, where rumors can spread through Line groups and Twitter threads, where parents monitor their children's locations by GPS, where every citizen is a potential broadcaster. And yet Tsujimura's insight is that the fundamental mechanism of rumor has not changed. Whether transmitted by whisper or by tweet, a rumor requires the same conditions: uncertainty, anxiety, the desire for narrative coherence, and the willingness to prefer a compelling story to a boring fact. The novel thus functions as a kind of diptych, showing the same pathology in two different technological eras, and suggesting that however our media change, our appetite for other people's pain — and our carelessness with their reputations — remains constant. The fire dome of 1994 was constructed with newspapers and television; the fire dome of 2019 is constructed with smartphones and social media; but both domes are made of the same material: human imagination used carelessly, human curiosity untempered by empathy.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Shibata Renzaburo Prize and the Canonization of a Contemporary Classic</h3>
+    <p>The Shibata Renzaburo Prize (柴田錬三郎賞), established in 1988, honors the legacy of Shibata Renzaburo (1917–1978), the author of <em>Nemuri Kyōshirō Burai Hikae</em> (眠狂四郎無頼控) and other works of popular fiction that combined literary craftsmanship with broad audience appeal. The prize is awarded to works of modern or historical fiction that "can captivate a truly wide readership" — a criterion that emphasizes not merely literary quality but the capacity to reach across demographic boundaries, to move readers who do not typically read "literary" fiction. When <em>Faia Dōmu</em> won the 39th Shibata Renzaburo Prize in September 2026, it joined a canon of popular fiction that includes some of the most beloved works in contemporary Japanese literature.</p>
+    <p style="margin-top: var(--space-sm);">The award recognized what booksellers had already understood. Prior to publication, over 400 booksellers nationwide submitted comments about the novel, and the pre-release buzz was extraordinary — fueled in part by a marketing campaign in which Tsujimura herself wrote "rumors" that appeared as advertisements in cities before the book's release, blurring the boundary between the novel's subject and its promotion. Within one month of publication, sales exceeded 350,000 copies, and the novel reached #1 on the mystery sales ranking for the first half of 2026. Critics compared it to Kirino Natsuo's <em>OUT</em> (1997) for its unflinching examination of social violence, and to Tsujimura's own <em>Kagami no Kojō</em> for its empathy with wounded children — but <em>Faia Dōmu</em> is darker than either, offering no magical escape and no easy redemption. The Shibata Renzaburo Prize confirmed that a novel about the damage rumors do, written with the precision of a mystery and the moral urgency of social criticism, could be not merely popular but canonical — a work that future readers will encounter as a defining document of Japan's rumor-saturated, media-saturated, trauma-saturated age.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Two Crimes, Twenty-Five Years, and the Dome That Never Dissipates</h2>
+
+  <div class="card">
+    <h3>The 1994 Fire: A Department Store, a Kidnapping, and a City That Cannot Forget</h3>
+    <p>The novel opens in the summer of 1994 in a provincial city in L Prefecture, in Japan's Hokuriku region. A young woman working as a receptionist at a local department store is kidnapped and murdered — a crime so shocking that it becomes national news. The victim is not merely a statistic; she is a daughter, a friend, a coworker, a person with a specific life that the novel gradually reveals through the perspectives of those who knew her. But the national media do not see her specificity; they see a story — a pretty young woman, a brutal crime, a mystery that sells newspapers and attracts viewers. The coverage is relentless, and the city finds itself under a dome of attention it never sought.</p>
+    <p style="margin-top: var(--space-sm);">As the investigation proceeds, suspects emerge and are questioned. But the novel's focus is not on the police procedural; it is on what happens around the edges of the official story. Rumors begin to circulate — about the victim's private life, about her family, about the "kind of woman" who would be targeted by such a crime. These rumors have no single author; they arise from the collective imagination of a city that cannot tolerate uncertainty. The human mind, Tsujimura shows us, prefers a damaging story to no story at all. And so the victim's family finds itself not merely grieving but defending — defending their daughter's memory against the rumors that attach themselves to her like barnacles, defending their own reputation against the suspicion that somehow, in some way, they must have been responsible. The fire spreads from the crime scene to the victim's home, from the victim's home to her relatives, from her relatives to anyone connected to them, until the dome encompasses the entire city and the original crime becomes almost incidental to the stories that have grown around it. By the time the case goes cold — the killer never definitively identified, the full truth never established — the damage has been done. The fire has burned. The dome has formed. And the city will live inside it for the next twenty-five years.</p>
+  </div>
+
+  <div class="card">
+    <h3>The 2019 Spark: A Missing Boy, a Young Teacher, and the Past That Refuses to Stay Buried</h3>
+    <p>In 2019, a fourth-grade elementary school boy named Kotaro disappears after a sketching field trip. He was last seen with his homeroom teacher, a young woman named Homma-sensei, who did not escort him home despite knowing that he was walking in the wrong direction. The disappearance is immediately reported; search parties are organized; and the city holds its breath. But almost as quickly as the search begins, the rumors start — because Kotaro is not just any child. His family is connected, however distantly, to the 1994 case. His name carries the residue of the old fire. And in the minds of the city's residents, the new disappearance cannot be a separate event; it must be connected, must be a continuation, must be evidence that the old evil has returned.</p>
+    <p style="margin-top: var(--space-sm);">The novel's structure alternates between the two timelines, showing how the 1994 fire created the conditions for the 2019 conflagration. Characters who were children in 1994 are adults in 2019 — parents, teachers, police officers — and they carry the old rumors in their bones. A teacher who heard gossip at the school gate in 1994 finds herself repeating versions of it to her own children in 2019. A journalist who covered the original case recognizes patterns in the new one. A family that was destroyed by the 1994 rumors watches in horror as the same mechanism begins to operate against a new victim. Tsujimura's genius is to show not merely that rumors persist but that they evolve, adapting to new circumstances, finding new hosts, mutating like a virus that becomes more virulent with each transmission. The 2019 rumors are not identical to the 1994 rumors; they are their descendants, refined by time, strengthened by repetition, and given new power by the technologies of social media. The dome that seemed to have lifted is revealed to have been a permanent structure — a geodesic dome of suspicion that simply needed a new spark to become visible again.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Structure of Complicity: How Readers Become Accomplices</h3>
+    <p>One of the most celebrated features of <em>Faia Dōmu</em> is its narrative method, which critics have described as implanting "participant consciousness" (<em>tōjisha ishiki</em> / 当事者意識) in the reader. Tsujimura achieves this through careful management of perspective and a prose style that implicates the reader in the very act of speculation that the novel condemns. The novel is told through multiple viewpoints — the victim's family in 1994, a young newspaper reporter, a schoolteacher, a parent, a child — and as readers move from one perspective to another, they accumulate information the way rumors accumulate: partially, selectively, with gaps that the mind naturally fills. The reader who thinks "I wonder if Homma-sensei is guilty" is performing the same cognitive operation as the parent who tells her child "don't play with that boy, his family are murderers." The reader who tries to piece together the connection between the 1994 and 2019 cases is reenacting the very behavior that destroys lives in the novel.</p>
+    <p style="margin-top: var(--space-sm);">This structural complicity is what makes <em>Faia Dōmu</em> more than a mystery novel and elevates it to the level of moral inquiry. Most mysteries invite the reader to solve the puzzle, to feel superior to the characters who do not see what is obvious. <em>Faia Dōmu</em> invites the reader to recognize that the desire to solve, to know, to have the complete story — the desire that drives every mystery reader — is precisely the desire that fuels the fire dome. The novel does not let us consume it safely from outside; it pulls us in, makes us residents of the dome, makes us feel the temptation to speculate, to judge, to repeat. And in making us feel this temptation, it teaches us something about ourselves that we might prefer not to know: that we are all potential arsonists, that the fire dome is not a phenomenon that happens to other people in other places but a structure that we help build every time we repeat a story without verifying it, every time we prefer the interesting version to the true one, every time we let our imagination outrun our empathy. The novel's final revelation — about what really happened to Kotaro, about the true connection between the two cases, about the identity of the 1994 killer — does not dissolve the dome. It only changes its shape. Because the dome was never made of falsehood alone; it was made of the human need to narrate, to explain, to make sense of the senseless. And that need, Tsujimura suggests, is not going away. The fire will find new fuel. The dome will form again. The only question is whether, next time, we will recognize our own hands among the builders.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the moral precision, structural daring, and emotional devastation of Tsujimura's most ambitious novel — a work that makes its readers into accomplices and then asks them to live with that knowledge.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"Rumors Are Frivolous Entertainment"</div>
+    <div class="passage-jp">
+      噂は、軽薄な娯楽だ。一時興じて、あとは忘れる。消費して捨てる。
+    </div>
+    <div class="passage-romaji">
+      "Uwasa wa, keihaku na goraku da. Ichiji kyōjite, ato wa wasureru. Shōhi shite suteru."
+    </div>
+    <div class="passage-en">
+      "Rumors are frivolous entertainment. Amuse yourself for a moment, then forget. Consume and discard."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — one of the novel's most quoted lines — is a masterpiece of compressed moral judgment, and its grammar enacts the very disposability it describes. The sentence consists of three short clauses, each progressively shorter: the first has seven morae, the second five, the third four. This rhythmic diminution enacts the process of consumption and disposal — the rumor enters, is briefly enjoyed, and is thrown away, with each clause falling away like a piece of trash. <em>Uwasa wa</em> (噂は, "as for rumors") uses the topic marker <em>wa</em> (は) to make "rumors" the established subject, as if the speaker has been thinking about them for some time and is now ready to deliver a verdict. <em>Keihaku na goraku da</em> (軽薄な娯楽だ, "are frivolous entertainment") uses the copula <em>da</em> (だ) for definitive assertion — this is not an opinion but a classification. The adjective <em>keihaku</em> (軽薄, "frivolous / shallow / flippant") carries moral weight in Japanese; it describes not merely something light but something irresponsibly so, something that lacks the gravity appropriate to its subject. To call rumors <em>keihaku na goraku</em> is to accuse them of moral lightness in the face of human suffering — they are entertainment that does not know its own cost. The second clause  <em>Ichiji kyōjite</em> (一時興じて, "amuse yourself for a moment / take temporary pleasure") — uses the <em>te</em>-form of <em>kyōjiru</em> (興じる, "to amuse oneself / to take pleasure in"), a slightly literary verb that suggests refined rather than vulgar pleasure, making the accusation more cutting: rumors are not even honestly vulgar; they are the shallow amusement of people who should know better. <em>Ato wa wasureru</em> (あとは忘れる, "afterward forget") is brutally simple — subjectless, agentless, the forgetting simply happens, as if by natural law. The third clause — <em>Shōhi shite suteru</em> (消費して捨てる, "consume and discard") — uses the <em>te</em>-form plus main verb construction to make consumption and disposal into a single action: not "consume, then discard" but "consume-and-discard," a compound verb for a compound vice. The word <em>shōhi</em> (消費, "consumption") is the standard economic term, making the process sound industrial, mechanical, part of the modern economy of attention. What is lost in English is the rhythmic finality of the Japanese. "Rumors are frivolous entertainment. Amuse yourself for a moment, then forget. Consume and discard." captures the meaning but loses the accelerating tempo — the way the Japanese seems to speed up as it progresses, as if the speaker is losing patience with their own description, as if the very act of describing rumor's disposability is itself disposable. The Japanese also loses the subject as it proceeds: the first clause has an explicit topic (<em>uwasa wa</em>), the second has an implied subject, the third has no subject at all. This grammatical stripping enacts the dehumanization that rumors perform — they remove subjects, turn people into objects, and then discard them. The English translation must supply subjects ("yourself," "you") that the Japanese deliberately omits, making the English feel more accusatory and more personal than the Japanese original, which achieves its moral force through grammatical impersonality.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"Don't Think You Can Die from Something Like an Illness"</div>
+    <div class="passage-jp">
+      病気なんかで、死ねると思うな。
+    </div>
+    <div class="passage-romaji">
+      "Byōki nanka de, shineru to omou na."
+    </div>
+    <div class="passage-en">
+      "Don't think you can die from something like an illness."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — spoken by a character who has survived the fire dome of 1994 and now faces its rekindling in 2019 — is one of the most chilling lines in the novel, and its grammar encodes an entire philosophy of survival. <em>Byōki nanka de</em> (病気なんかで, "from something like an illness / from a mere illness") uses the deprecatory particle <em>nanka</em> (なんか) after <em>byōki</em> (病気, "illness") to dismiss illness as an insufficient cause of death — as if to say, "after everything I've survived, do you think something as trivial as illness could kill me?" The <em>nanka</em> here functions as a badge of survival: the speaker has endured the fire dome, has had their reputation destroyed and rebuilt, has lived with the memory of a murdered family member and the rumors that followed — and illness, by comparison, is <em>nanka</em>, something trivial, something unworthy of being taken seriously as a threat. <em>Shineru to omou na</em> (死ねると思うな, "don't think you can die / don't think dying is possible") uses the negative imperative <em>na</em> (な) with the potential form <em>shineru</em> (死ねる, "can die") rather than the simple <em>shinu</em> (死ぬ, "die"). The potential form is crucial: the speaker is not saying "don't die" but "don't think that dying is something you are capable of" — a formulation that transforms survival from a fact into a discipline, from a condition into a choice. The grammar says: you have survived the fire; therefore you have lost the privilege of ordinary death; therefore you must continue to survive, because your survival is now proof against the rumors that tried to destroy you. What is lost in English is the specifically Japanese valence of <em>nanka</em> as a particle of survival. In English, "something like" or "a mere" captures the dismissiveness but loses the emotional history: this <em>nanka</em> is spoken by someone who has measured illness against the destruction of their family name and found illness wanting. The Japanese <em>nanka</em> carries the weight of that comparison in a single particle; the English requires a whole clause. The negative imperative <em>omou na</em> (思うな, "don't think") is also stronger in Japanese than in English. "Don't think" in English can sound like advice; <em>omou na</em> is a command, a prohibition, a drawing of a line. The speaker is forbidding not merely the act of dying but the thought of dying — because in a world where rumors can kill more effectively than disease, the thought of dying from illness is not merely mistaken; it is a betrayal of everything the survivor has endured. The sentence's eight syllables contain a lifetime of pain, and its grammar — deprecatory particle, potential verb, negative imperative — is the grammar of someone who has learned that survival is not a gift but a duty.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"In the Process of Rumors Spreading, There Is Nothing That Can Be Clearly Called 'Malice.' That Is Precisely Why It Is of Such Poor Quality."</div>
+    <div class="passage-jp">
+      噂が広まるその過程には明確な「悪意」と呼べるものがない。だからこそ、質悪い。
+    </div>
+    <div class="passage-romaji">
+      "Uwasa ga hiromaru sono katei ni wa meikaku na 'akui' to yoberu mono ga nai. Dakara koso, shitsu ga warui."
+    </div>
+    <div class="passage-en">
+      "In the process of rumors spreading, there is nothing that can be clearly called 'malice.' That is precisely why it is of such poor quality."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — one of the novel's central moral insights — turns on a grammatical and conceptual paradox: the absence of malice is what makes rumors most dangerous. The first sentence — <em>Uwasa ga hiromaru sono katei ni wa meikaku na "akui" to yoberu mono ga nai</em> (噂が広まるその過程には明確な「悪意」と呼べるものがない, "in the process of rumors spreading, there is nothing that can be clearly called 'malice'") — is syntactically complex and carefully constructed. <em>Uwasa ga hiromaru</em> (噂が広まる, "rumors spread") uses the plain non-past to describe the general process, not a specific instance — this is how rumors always spread, not how one rumor spread on one occasion. <em>Sono katei ni wa</em> (その過程には, "in that process") locates the absence within the mechanism of transmission itself — not in the origin of the rumor, not in its destination, but in the middle space where it passes from person to person. The dative <em>ni wa</em> (には) topicalizes this middle space, making it the focus of attention. <em>Meikaku na "akui" to yoberu mono ga nai</em> (明確な「悪意」と呼べるものがない, "there is nothing that can be clearly called 'malice'") uses the potential passive <em>yoberu</em> (呼べる, "can be called") to create a category of epistemic uncertainty — it is not that malice does not exist, but that it cannot be clearly identified, cannot be named, cannot be held responsible. The quotation marks around <em>akui</em> (悪意, "malice / ill will") are crucial: they signal that the word itself is under examination, that the concept of "malice" may be inadequate to describe what rumors do. The second sentence — <em>Dakara koso, shitsu ga warui</em> (だからこそ、質が悪い, "that is precisely why it is of such poor quality") — uses the emphatic <em>dakara koso</em> (だからこそ, "it is precisely for that reason that...") to turn the absence of malice into the cause of the damage. <em>Shitsu ga warui</em> (質が悪い, "the quality is bad / it is of poor quality") uses the nominal <em>shitsu</em> (質, "quality") with the topic marker <em>ga</em> (が) to make a judgment that sounds almost technical, almost consumerist — as if rumors were a product being evaluated. This technical register is deliberate: it suggests that the problem with rumors is not their evil but their shoddiness, their poor construction, their lack of integrity as information. What is lost in English is the full force of <em>dakara koso</em>. "That is precisely why" captures the emphasis but loses the Japanese construction's sense of paradox fulfilled — the moment when a negative (no malice) becomes the positive cause of a negative (poor quality). In Japanese, <em>dakara koso</em> is used when a reason that should mitigate actually intensifies: "I trusted him, and that is precisely why the betrayal hurt more." Here, the absence of malice should make rumors less dangerous, but <em>dakara koso</em> tells us it makes them more dangerous — because without a malicious agent to blame, the damage cannot be localized, cannot be prosecuted, cannot be healed. The English "that is precisely why" captures the logic but loses the emotional shock of the reversal. The Japanese reader feels the paradox in the grammar itself; the English reader must understand it intellectually. This gap between grammatical feeling and intellectual understanding is itself a kind of translation loss that mirrors the novel's theme: some things are felt in the body of one language that can only be explained in the body of another.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"People See the World Using Their Imagination"</div>
+    <div class="passage-jp">
+      人は自分の想像力を使って世の中を見る。
+    </div>
+    <div class="passage-romaji">
+      "Hito wa jibun no sōzōryoku wo tsukatte yo no naka wo miru."
+    </div>
+    <div class="passage-en">
+      "People see the world using their imagination."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This deceptively simple sentence — spoken by Tsujimura herself in interviews about the novel — is the philosophical key to <em>Faia Dōmu</em>, and its grammar contains the novel's entire epistemology. <em>Hito wa</em> (人は, "as for people / people [topic]") uses the universal topic marker to make a claim about human nature as such — not "some people," not "people in this city," but <em>hito</em> (人), human beings in general. This universality is essential to the novel's moral project: Tsujimura is not describing a pathology of a particular community but a feature of human cognition itself. <em>Jibun no sōzōryoku wo tsukatte</em> (自分の想像力を使って, "using their own imagination") uses the reflexive <em>jibun</em> (自分, "oneself / one's own") to emphasize that each person sees with their own imaginative apparatus — not with a shared reality but with a private faculty that shapes what is seen before it is seen. The word <em>sōzōryoku</em> (想像力, "imagination / imaginative power") is the novel's true subject: not rumor itself but the cognitive capacity that makes rumor possible, the human ability to fill gaps, to infer, to construct narratives from fragments. <em>Tsukatte</em> (使って, "using") is the <em>te</em>-form of <em>tsukau</em> (使う, "to use"), and its use here rather than a more formal construction makes the process sound habitual, ordinary, like using one's hands or one's eyes. Imagination is not a special faculty invoked on occasion; it is the default mode of perception. <em>Yo no naka wo miru</em> (世の中を見る, "see the world / see society") uses <em>yo no naka</em> (世の中, "the world / society / the way things are") — the same phrase that appeared in <em>Kagami no Kojō</em> — but here it carries a different weight. In <em>Kagami no Kojō</em>, <em>yo no naka</em> was the world of rules that Kokoro wanted to believe was rational. In <em>Faia Dōmu</em>, <em>yo no naka</em> is the world that people see through imagination — which is to say, the world they partially create. The accusative particle <em>wo</em> () makes "the world" the direct object of "see" — people do not merely look at the world; they see it, perceive it, construct it as an object of consciousness. What is lost in English is the philosophical density of the Japanese. "People see the world using their imagination" is accurate but sounds like a statement from a psychology textbook. The Japanese has a literary compression that makes it sound like a proverb, a folk wisdom, something that grandmothers say — which is exactly how the novel treats it: not as a scientific claim but as a tragic fact of human existence. The word <em>sōzōryoku</em> (想像力) also carries positive associations in Japanese education (children are encouraged to develop their <em>sōzōryoku</em>), and the novel's use of the word is therefore quietly subversive: it takes a faculty that is normally celebrated and shows its dark side, its capacity to harm. The English "imagination" carries similar positive associations, but the Japanese educational context gives the subversion a sharper edge. In eight words, the sentence diagnoses the condition that makes the entire novel possible — and by extension, the condition that makes every rumor, every false accusation, every fire dome in human history possible. We do not see the world as it is. We see it as we imagine it to be. And that imagination, Tsujimura shows us, is as likely to burn as to illuminate.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of rumors that burn, communities that trap, and the imagination that sees what is not there.</p>
+
+  <div class="card">
+    <h3>The Title & Core Concepts</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ファイア</td><td>faia</td><td class="pos">noun</td><td>fire (katakana loanword)</td></tr>
+        <tr><td>ドーム</td><td>dōmu</td><td class="pos">noun</td><td>dome (katakana loanword)</td></tr>
+        <tr><td>火</td><td>hi</td><td class="pos">noun</td><td>fire (native Japanese)</td></tr>
+        <tr><td>炎</td><td>honō</td><td class="pos">noun</td><td>flame; blaze</td></tr>
+        <tr><td>噂</td><td>uwasa</td><td class="pos">noun</td><td>rumor; gossip; hearsay</td></tr>
+        <tr><td>軽薄</td><td>keihaku</td><td class="pos">na-adj</td><td>frivolous; shallow; flippant</td></tr>
+        <tr><td>娯楽</td><td>goraku</td><td class="pos">noun</td><td>entertainment; amusement</td></tr>
+        <tr><td>悪意</td><td>akui</td><td class="pos">noun</td><td>malice; ill will; malicious intent</td></tr>
+        <tr><td>想像力</td><td>sōzōryoku</td><td class="pos">noun</td><td>imagination; imaginative power</td></tr>
+        <tr><td>世の中</td><td>yo no naka</td><td class="pos">noun</td><td>the world; society</td></tr>
+        <tr><td>過程</td><td>katei</td><td class="pos">noun</td><td>process; course</td></tr>
+        <tr><td>質</td><td>shitsu</td><td class="pos">noun</td><td>quality; nature; character</td></tr>
+        <tr><td>消費</td><td>shōhi</td><td class="pos">noun</td><td>consumption</td></tr>
+        <tr><td>燻る</td><td>kusuburu</td><td class="pos">verb</td><td>to smolder; to linger</td></tr>
+        <tr><td>拡散</td><td>kakusan</td><td class="pos">noun</td><td>spread; diffusion; scattering</td></tr>
+        <tr><td>当者意識</td><td>tōjisha ishiki</td><td class="pos">noun</td><td>participant consciousness; sense of involvement</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Crime, Trauma & the Machinery of Rumor</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>事件</td><td>jiken</td><td class="pos">noun</td><td>incident; case; event</td></tr>
+        <tr><td>誘拐</td><td>yūkai</td><td class="pos">noun</td><td>kidnapping; abduction</td></tr>
+        <tr><td>殺人</td><td>satsujin</td><td class="pos">noun</td><td>murder; homicide</td></tr>
+        <tr><td>行方不</td><td>yukue fumei</td><td class="pos">noun</td><td>missing; whereabouts unknown</td></tr>
+        <tr><td>失踪</td><td>shissō</td><td class="pos">noun</td><td>disappearance</td></tr>
+        <tr><td>被害者</td><td>higaisha</td><td class="pos">noun</td><td>victim</td></tr>
+        <tr><td>加害者</td><td>kagaisha</td><td class="pos">noun</td><td>perpetrator</td></tr>
+        <tr><td>遺族</td><td>izoku</td><td class="pos">noun</td><td>bereaved family</td></tr>
+        <tr><td>報道</td><td>hōdō</td><td class="pos">noun</td><td>news coverage; reporting</td></tr>
+        <tr><td>記者</td><td>kisha</td><td class="pos">noun</td><td>journalist; reporter</td></tr>
+        <tr><td>教師</td><td>kyōshi</td><td class="pos">noun</td><td>teacher</td></tr>
+        <tr><td>担任</td><td>tannin</td><td class="pos">noun</td><td>homeroom teacher</td></tr>
+        <tr><td>遠足</td><td>ensoku</td><td class="pos">noun</td><td>field trip; excursion</td></tr>
+        <tr><td>ランドセル</td><td>randoseru</td><td class="pos">noun</td><td>schoolbag (loanword from Dutch)</td></tr>
+        <tr><td>誹謗中傷</td><td>hibō chūshō</td><td class="pos">noun</td><td>slander; defamation</td></tr>
+        <tr><td>因縁</td><td>innen</td><td class="pos">noun</td><td>karma; fate; connection</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Time, Memory & the Texture of Twenty-Five Years</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>記憶</td><td>kioku</td><td class="pos">noun</td><td>memory</td></tr>
+        <tr><td>忘却</td><td>bōkyaku</td><td class="pos">noun</td><td>forgetting; oblivion</td></tr>
+        <tr><td>真実</td><td>shinjitsu</td><td class="pos">noun</td><td>truth</td></tr>
+        <tr><td>事実</td><td>jijitsu</td><td class="pos">noun</td><td>fact</td></tr>
+        <tr><td>誤解</td><td>gokai</td><td class="pos">noun</td><td>misunderstanding</td></tr>
+        <tr><td>偏見</td><td>henken</td><td class="pos">noun</td><td>prejudice; bias</td></tr>
+        <tr><td>同情</td><td>dōjō</td><td class="pos">noun</td><td>sympathy; compassion</td></tr>
+        <tr><td>共感</td><td>kyōkan</td><td class="pos">noun</td><td>empathy; resonance</td></tr>
+        <tr><td>苦しみ</td><td>kurushimi</td><td class="pos">noun</td><td>suffering; agony</td></tr>
+        <tr><td>傷</td><td>kizu</td><td class="pos">noun</td><td>wound; injury; trauma</td></tr>
+        <tr><td>生き延びる</td><td>ikinobiru</td><td class="pos">verb</td><td>to survive; to live through</td></tr>
+        <tr><td>耐える</td><td>taeru</td><td class="pos">verb</td><td>to endure; to bear</td></tr>
+        <tr><td>明かす</td><td>akasu</td><td class="pos">verb</td><td>to reveal; to disclose</td></tr>
+        <tr><td>隠す</td><td>kakusu</td><td class="pos">verb</td><td>to hide; to conceal</td></tr>
+        <tr><td>繋がる</td><td>tsunagaru</td><td class="pos">verb</td><td>to be connected; to be linked</td></tr>
+        <tr><td>忘れる</td><td>wasureru</td><td class="pos">verb</td><td>to forget</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Tsujimura writes with the precision of a mystery novelist and the moral urgency of a social critic — and the translation of her most ambitious work raises urgent questions about how to carry fire across linguistic boundaries without letting it spread.</p>
+
+  <div class="card">
+    <h3>1. Katakana Title: The Orthography of Modern Violence</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>ファイア・ドーム</strong>（全カタカナ）— modern, technical, media-native; no traditional literary associations</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>Fire Dome</strong> — English words in English script; loses the foreignness and technicality of katakana</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The most significant orthographic feature of the Japanese title is that it is written entirely in katakana — the script of foreign loanwords, brand names, and technical neologisms. In Japanese, katakana functions as a distancing device: it makes concepts sound modern, imported, scientific, and slightly unreal. When a Japanese reader sees ファイア・ドーム on a book cover, they do not think of classical literature or Buddhist philosophy; they think of video games, news reports, special broadcasts, documentary titles. The katakana tells them, before they open the book, that this will be a story about modern mechanisms of violence — media violence, information violence, the violence of spectacle — rather than traditional forms of evil. An English translation cannot replicate this because "Fire Dome" in English is simply two English words. An English reader sees "Fire Dome" and might think of science fiction, of disaster movies, of architectural terminology — but they do not experience the foreignness of the words because the words are not foreign to them. The Japanese reader experiences <em>faia</em> and <em>dōmu</em> as imported concepts, as words that have traveled from another language and carry the traces of that journey. This foreignness is thematically crucial: rumors in the novel are also imported into communities from outside, carried by media that originate elsewhere (Tokyo news crews, national newspapers), and the katakana title enacts this importation at the level of script. A translator might try to compensate by using all caps (FIRE DOME) or by adding a subtitle ("A Novel of Rumor and Fire"), but these are graphic design solutions, not linguistic ones. The fundamental loss is of the katakana's semantic function: the way it signals "this is modern, this is mediated, this is not part of your grandmother's vocabulary." In English, "Fire Dome" could be your grandmother's vocabulary. In Japanese, ファイア・ドーム almost certainly is not.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Keihaku na goraku</em> (軽薄な娯楽): The Moral Weight of Frivolity</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>軽薄な娯楽</strong> — <em>keihaku</em> carries moral accusation of irresponsible lightness in the face of suffering</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"frivolous entertainment"</strong> — accurate but lacks the specifically Japanese moral register of <em>keihaku</em></span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The adjective <em>keihaku</em> (軽薄) is one of the most morally loaded words in the novel, and it is nearly impossible to translate adequately. It means "frivolous," "shallow," "flippant," "lightweight" — but it carries a specific accusation in Japanese culture that these English equivalents do not fully convey. In Japan, <em>keihaku</em> describes a failure of <em>kejime</em> (ケジメ, "proper distinction / sense of propriety") — the capacity to recognize when a situation requires gravity, respect, or restraint. A person who jokes at a funeral is <em>keihaku</em>; a journalist who sensationalizes a tragedy is <em>keihaku</em>; a society that consumes murder as entertainment is <em>keihaku</em>. The word thus accuses not merely of lightness but of moral blindness — a failure to see that human suffering is not appropriate material for amusement. "Frivolous entertainment" captures the semantic content but loses the cultural specificity: in English, "frivolous" is a mild criticism, almost charming; <em>keihaku</em> is a serious moral condemnation. A translator might try "shallow amusement," "irresponsible entertainment," or "morally lightweight diversion," but none of these carry the specific Japanese valence of <em>keihaku</em> as a violation of communal decorum. The loss matters because the novel's entire moral project depends on the reader feeling the weight of this accusation — not merely understanding that rumors are "frivolous" but feeling that they are <em>keihaku</em>, that they represent a failure of the human capacity for appropriate response to suffering. When Tsujimura calls rumors <em>keihaku na goraku</em>, she is not making a aesthetic judgment; she is making a moral one. And the grammar of the Japanese — the definitive copula <em>da</em> (だ) that ends the clause — makes this judgment sound like a verdict, not an opinion. The English "are frivolous entertainment" is accurate but sounds more descriptive than judgmental. The Japanese <em>keihaku na goraku da</em> is a sentence that a judge might pronounce.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Byōki nanka</em> (病気なんか): The Deprecatory Particle as Survival Badge</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>病気なんか</strong> — <em>nanka</em> dismisses illness as trivial compared to survived trauma</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"something like an illness" / "a mere illness"</strong> — captures dismissiveness but loses the survival narrative</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The particle <em>nanka</em> (なんか) in <em>byōki nanka</em> (病気なんか, "something like illness / a mere illness") functions here as a badge of survival — the speaker has endured the fire dome and now measures all subsequent threats against that experience. The <em>nanka</em> does not merely dismiss illness; it hierarchizes suffering, placing the fire dome above all other forms of damage and declaring that anything less is <em>nanka</em> — not worth taking seriously, not capable of destroying someone who has already survived the worst that communal malice can inflict. This is a profoundly Japanese way of speaking about trauma: the survivor who does not claim their suffering directly but instead dismisses lesser sufferings, as if to say "compared to what I've been through, this is nothing." The English "something like" or "a mere" captures the dismissiveness but loses the narrative of survival that makes the dismissal meaningful. In English, "don't think you can die from a mere illness" sounds like bravado or denial; in Japanese, <em>byōki nanka de shineru to omou na</em> sounds like the hard-won wisdom of someone who has learned that reputational destruction is more deadly than disease. The <em>nanka</em> carries the entire backstory in a single particle — all the years of the fire dome, all the rumors survived, all the mornings of waking up knowing that the city is talking about your family. The English translation must either add this backstory ("after everything I've survived, don't think...") or lose it. Either solution changes the sentence from a compressed survival narrative into either an explicit autobiography or a bald assertion. The Japanese achieves both simultaneously: the particle contains the story, and the grammar delivers the command.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Dakara koso</em> (だからこそ): The Paradox of Absence Becoming Cause</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>だからこそ</strong> — emphatic causal conjunction: "it is precisely for that reason that..."</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"that is precisely why" / "it is for that very reason that"</strong> — accurate but loses the emotional shock of reversal</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The construction <em>dakara koso</em> (だからこそ) is one of the most emotionally charged causal conjunctions in Japanese, and its use in the novel's central moral insight — that the absence of malice is what makes rumors most dangerous — creates a paradox that the grammar itself enacts. <em>Dakara</em> (だから) means "therefore" or "so"; <em>koso</em> (こそ) is an emphatic particle that intensifies the reason, making it into the only possible cause — "it is precisely and only for that reason." Together, <em>dakara koso</em> creates a moment of grammatical revelation: the reader has been led to expect that the absence of malice might make rumors less blameworthy, and <em>dakara koso</em> reverses this expectation with the force of logical necessity. The English "that is precisely why" captures the logic but loses the emotional shock — the way <em>dakara koso</em> feels like a door slamming, like a verdict being delivered, like the moment in an argument when the opposing position collapses. In Japanese, <em>koso</em> is also associated with formal rhetoric, with legal language, with the speech of people who are making important distinctions. Its appearance in a novel about rumors — which are the opposite of careful distinction — creates an ironic tension: the grammar insists on precision at the moment when the subject is imprecision, on clarity when discussing confusion. This tension is lost in English because "precisely why" does not carry the same formal register; it sounds analytical rather than rhetorical. The Japanese <em>dakara koso, shitsu ga warui</em> (だからこそ、質がい) sounds like a principle being established; the English "that is precisely why the quality is poor" sounds like an observation being offered. The difference is the difference between a moral law and a casual comment — and the novel's entire project is to establish the damage of rumors as a moral law, not a casual observation.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. Participant Consciousness: The Grammar of Reader Complicity</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>当事者意識を植え付ける文体</strong> — prose style that implants "participant consciousness" in readers</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"a prose style that makes readers feel like participants"</strong> — loses the specifically Japanese psychological concept</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The concept of <em>tōjisha ishiki</em> (当事者意識, "participant consciousness / sense of oneself as a party involved") is a specifically Japanese psychological and social concept that has no exact English equivalent. It refers to the sense of being personally involved in a situation, of having a stake in the outcome, of being not merely an observer but a participant — and it carries particular weight in Japanese contexts of trauma, discrimination, and social responsibility, where the distinction between "bystander" and "participant" is ethically crucial. When critics say that Tsujimura's prose <em>tōjisha ishiki wo uetsukeru</em> (当事者意識を植え付ける, "implants participant consciousness"), they mean something more specific than "makes readers feel involved." They mean that the prose makes readers feel that they are not merely reading about rumor but are themselves engaged in the act of rumor — that their own cognitive operations as they read (inferring, speculating, judging) are the same operations that create the fire dome in the novel. This is a moral accusation as well as an aesthetic observation, and it depends on the Japanese concept of <em>tōjisha</em> (当事者, "the person directly involved / the party") as opposed to <em>kankyōsha</em> (環境者, "bystander / environmental person"). The English "participant" is too neutral; "accomplice" would be too strong. The Japanese <em>tōjisha ishiki</em> occupies a middle space — the consciousness of being involved without having chosen involvement, of being responsible without having intended responsibility. This is exactly the position of the rumor-spreader in the novel, and it is exactly the position Tsujimura creates for her reader. The translation loss is significant because without the concept of <em>tōjisha ishiki</em>, English readers may understand that the novel is "immersive" or "engaging" without understanding that it is also accusatory — that their immersion is itself the crime being examined. The grammar of the Japanese critical term makes this clear: <em>uetsukeru</em> (植え付ける, "to implant / to inoculate / to instill") suggests a surgical or agricultural procedure, something done to the reader without their full consent. The novel does not invite participation; it implants it. And that implanted consciousness, once awakened, cannot easily be removed.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of rumors that consume and are discarded, of malice that is absent yet devastating, and of the imagination through which we see what we have made.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だ（断定・分類）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...da</em>: copula for definitive assertion and classification — "is / are [category]"</p>
+      <div class="grammar-example">噂は、軽薄な娯楽だ</div>
+      <p class="grammar-example-en">"Rumors are frivolous entertainment" — The grammar of moral verdict.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜て、〜（連続・手段）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...te, ...</em>: <em>te</em>-form connecting actions in sequence or means — "[doing X], [do Y]"</p>
+      <div class="grammar-example">消費して捨てる</div>
+      <p class="grammar-example-en">"Consume and discard" — The grammar of disposability as single action.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜なんか（軽蔑・例示）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...nanka</em>: deprecatory particle dismissing the noun as trivial — "something like... / a mere..."</p>
+      <div class="grammar-example">病気なんかで、死ねると思うな</div>
+      <p class="grammar-example-en">"Don't think you can die from something like an illness" — The grammar of survival's hierarchy.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と思うな（禁止・打消し）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...to omou na</em>: negative imperative prohibiting a thought — "don't think that..."</p>
+      <div class="grammar-example">死ねると思うな</div>
+      <p class="grammar-example-en">"Don't think that dying is possible" — The grammar of forbidding death itself.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜と呼べるものがない（可能性否定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...to yoberu mono ga nai</em>: "there is nothing that can be called..." — potential passive + existential negation</p>
+      <div class="grammar-example">明確な「悪意」と呼べるものがない</div>
+      <p class="grammar-example-en">"There is nothing that can be clearly called 'malice'" — The grammar of epistemic absence.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜だからこそ（強調理由）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...dakara koso</em>: "it is precisely for that reason that..." — emphatic causal conjunction with exclusive emphasis</p>
+      <div class="grammar-example">だからこそ、質が悪い</div>
+      <p class="grammar-example-en">"That is precisely why it is of such poor quality" — The grammar of paradox fulfilled.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を使って〜（手段・方法）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...wo tsukatte...</em>: "using / by means of..." — instrumental construction with <em>te</em>-form</p>
+      <div class="grammar-example">自分の想像力を使って世の中を見る</div>
+      <p class="grammar-example-en">"People see the world using their imagination" — The grammar of constructed perception.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜には〜がない（存在否定）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ni wa ...ga nai</em>: "there is no... in..." — existential negation with topic-marked location</p>
+      <div class="grammar-example">噂が広まるその過程には明確な「悪意」と呼べるものがない</div>
+      <p class="grammar-example-en">"In the process of rumors spreading, there is nothing that can be clearly called 'malice'" — The grammar of locating absence.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Faia Dōmu</em> is the grammar of modern violence — not the violence of weapons but the violence of words. The definitive copula (<em>da</em>) delivers moral verdicts without appeal; the <em>te</em>-form chains consumption to disposal as a single unbroken action; the deprecatory particle (<em>nanka</em>) hierarchizes suffering and declares survival's supremacy; the negative imperative (<em>to omou na</em>) forbids not action but thought itself; the potential passive (<em>to yoberu</em>) creates categories of unnameable harm; the emphatic causal (<em>dakara koso</em>) transforms absence into cause; the instrumental construction (<em>wo tsukatte</em>) reveals perception as construction; and the existential negation (<em>ni wa... ga nai</em>) locates the emptiness at the center of the fire. Pay attention to how these constructions work together to create a prose that implicates the reader — not by accusation but by structure, not by content but by grammar. The novel teaches that the fire dome is built not by evil people but by ordinary grammar, used carelessly, repeated mechanically, consumed and discarded. The grammar is the arsonist; the meaning is the flame.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『ファイア・ドーム』（上巻） &middot; 辻村深月 著 &middot; 小学館 2026年6月5日刊 &middot; 448ページ &middot; ISBN 978-4-09-386769-6</p>
+  <p style="margin-top: var(--space-xs);">『ファイア・ドーム』（下巻） &middot; 辻村深月 著 &middot; 小学館 2026年6月5日刊 &middot; 432ページ &middot; ISBN 978-4-09-386770-2</p>
+  <p style="margin-top: var(--space-xs);">定価：各2,090円（税込） &middot; 原稿枚数：1,500枚 &middot; 執筆期間：7年</p>
+  <p style="margin-top: var(--space-xs);">受賞：第39回柴田錬三郎賞（2026年9月30日決定・副賞300万円）</p>
+  <p style="margin-top: var(--space-xs);">売上：発売1か月で累計発行部数35万部突破 &middot; 2026年上半期ミステリー売上ランキング第1位（三省堂書店調べ）</p>
+  <p style="margin-top: var(--space-xs);">著者：辻村深月（1980年2月29日生・山梨県笛吹市出身・千葉大学教育学部卒）</p>
+  <p style="margin-top: var(--space-xs);">主要過去受賞：第31回メフィスト賞（2004年） &middot; 第32回吉川英治文学新人賞（2011年） &middot; 第147回直木三十五賞（2012年） &middot; 第15回本屋大賞（2018年・『かがみの孤城』・得点651点）</p>
+  <p style="margin-top: var(--space-xs);">著者コメント：「私にとって、一生に一度書けるかどうかの特別な小説です」</p>
+</footer>
+
+</div>
+</body>
+</html>

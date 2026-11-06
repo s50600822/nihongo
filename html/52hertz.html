@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>52ヘルツのクジラたち — 町田そのこ | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>52ヘルツのクジラたち</h1>
+  <p class="hero-subtitle">Gojūni Herutsu no Kujira-tachi / The 52-Hertz Whales</p>
+  <p class="hero-meta">町田そのこ 著 &middot; 中央公論新社 2020年4月刊 &middot; 260ページ &middot; ISBN 978-4-12-005298-9 &middot; 2021年本屋大賞受賞 &middot; 累計100万部突破 &middot; 2024年映画化</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: The Frequency of Unheard Voices</h2>
+  <p class="lead">The title <em>52 Herutsu no Kujira-tachi</em> (52ヘルツのクジラたち, "The 52-Hertz Whales") is a phrase that operates simultaneously in three registers: the scientific, the poetic, and the social. <em>52 herutsu</em> (52ヘルツ, "52 hertz") is a precise scientific measurement — a frequency of sound, a number on a spectrogram — and its appearance in a novel's title immediately signals that this book will engage with something measurable, real, and yet strangely humanized. <em>No</em> (の) is the possessive particle that transforms the number into an attribute: not "52 hertz" as an abstract frequency but "52-hertz" as a modifier, a condition, a way of being. <em>Kujira</em> (クジラ / 鯨, "whale") is the creature that carries this frequency, and the choice of katakana (<em>kujira</em> / クジラ) rather than the kanji (<em>kujira</em> / 鯨) is significant: katakana distances the word slightly from its literary and mythological associations, making it feel more like a technical term, a biological classification, a data point. But then comes the final element that transforms everything: <em>-tachi</em> (たち, plural suffix / "and others / and company"). The 52-hertz whale is not one whale but <em>whales</em>, not a singular anomaly but a plurality, a community, a <em>they</em>. This grammatical pluralization is the novel's central gesture: it takes a scientific curiosity — a single whale whose voice is too high for its species to hear — and extends it into a metaphor for all the unheard voices in human society. The title thus performs the novel's essential operation in grammar itself: what science observes as one, literature recognizes as many.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">52ヘルツ</span>
+        <span class="romaji">52 herutsu / "52 hertz"</span>
+        <span class="meaning">"52 hertz" — The scientific unit of frequency, named after Heinrich Hertz, representing 52 cycles per second. In the context of whale vocalization, this is an anomalously high frequency. Most baleen whales (mysticetes) vocalize at frequencies between 10 and 39 hertz; blue whales typically call at 15-20 hertz, fin whales at 18-25 hertz. The 52-hertz frequency is thus not merely "higher than normal" but fundamentally outside the communicative range of other whales. The number 52 is specific and memorable — not "approximately 50" or "in the fifties" but exactly 52, a figure that has become iconic through decades of scientific reporting and popular retelling. In Japanese, the number is written with Arabic numerals (52) followed by the katakana transliteration of "hertz" (ヘルツ), a loanword from German via English. This numerical-katakana combination creates a clinical, almost report-like precision that contrasts with the emotional weight the number carries in the novel's context. The title's use of a scientific measurement as its first element is unusual for Japanese literary fiction and immediately signals that this book will operate at the intersection of empirical reality and emotional truth — that it will take something discovered by hydrophones and make it into a metaphor for human suffering.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no</span>
+        <span class="meaning">"[possessive particle]" — The particle <em>no</em> (の) performs the crucial grammatical operation of converting the scientific measurement into an adjectival modifier. Without <em>no</em>, "52 hertz whale" would be a compound noun in English; with <em>no</em>, the Japanese creates a genitive relationship that can be read in multiple ways: "the whales <em>of</em> 52 hertz" (belonging to that frequency), "the 52-hertz <em>type of</em> whales" (characterized by that frequency), or "the whales <em>who emit</em> 52 hertz" (defined by their vocalization). This ambiguity is productive: it allows the title to mean both "whales that vocalize at 52 hertz" and "whales who inhabit the condition of 52-hertz-ness" — a condition of being unheard, of calling without response, of existing in a frequency that no one else can receive. The <em>no</em> is thus not merely a grammatical particle but a philosophical operator: it transforms a physical measurement into a state of being.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">クジラ</span>
+        <span class="romaji">kujira / "whale"</span>
+        <span class="meaning">"whale" — The word <em>kujira</em> (クジラ) is written in katakana rather than kanji (鯨), and this choice is one of the title's most subtle but significant decisions. The kanji <em>kujira</em> (鯨) carries millennia of cultural weight: it appears in the earliest Japanese written records, in folktales, in Buddhist parables, in Moby-Dick translations, in eco-poetry and children's songs. The katakana <em>kujira</em> (クジラ) strips away these associations, presenting the creature as a biological entity rather than a cultural symbol. This clinical distance is essential to the novel's method: it wants us to encounter the whale first as a scientific fact (a creature whose voice has been recorded by hydrophones since 1989) before we encounter it as a metaphor (a creature whose loneliness mirrors human loneliness). The katakana also connects <em>kujira</em> to the katakana <em>herutsu</em> (ヘルツ) that precedes it, creating a visual and phonetic continuity between the measurement and the creature — as if the whale is made of the same foreign, technical substance as the frequency that defines it. At the same time, <em>kujira</em> in any script retains its inherent melancholy in Japanese culture: the whale is the largest creature on Earth, ancient and solitary, singing songs that travel across ocean basins. The katakana cannot entirely suppress this resonance; it merely holds it in suspension, allowing the scientific and the poetic to coexist in a single word.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">たち</span>
+        <span class="romaji">-tachi / "[plural suffix]"</span>
+        <span class="meaning">"and others / and company / [plural]" — The suffix <em>-tachi</em> (た) is the grammatical element that transforms the entire title from a curiosity into a community. In Japanese, <em>-tachi</em> is not a simple plural marker like English "-s"; it carries specific social and emotional connotations. It is used for people (not things), and it implies a group centered around a particular individual — <em>watashi-tachi</em> (私たち, "we / our group"), <em>Tanaka-san-tachi</em> (田中さんたち, "Tanaka and the people with him / his family"). When applied to animals, <em>-tachi</em> personifies them, bringing them into the human social world. The title's <em>-tachi</em> thus does something remarkable: it takes a single, scientifically unique whale — the only known individual that vocalizes at 52 hertz — and grammatically multiplies it. This is, scientifically speaking, incorrect: there is only one 52-hertz whale (or at most a very small number of unidentified individuals). But the novel's <em>-tachi</em> is not making a scientific claim; it is making a literary and ethical one. It says: the condition of the 52-hertz whale — the condition of calling out at a frequency no one can hear, of being surrounded by others who cannot receive your signal — is not unique to one creature. It is shared by many. The abused child who cannot speak. The abused adult who cannot be believed. The transgender person whose identity is dismissed. The caregiver who is invisible. All of them are 52-hertz whales. The <em>-tachi</em> is thus the novel's manifesto in a single syllable: you are not alone in your solitude. Your unheard frequency is shared by others, and in that sharing, a community becomes possible. The title thus moves from the singular (one whale, one frequency) to the plural (many whales, many frequencies) through the simple addition of <em>-tachi</em> — a movement that mirrors the novel's narrative arc, in which isolated individuals gradually discover that their solitude is not unique and that connection is possible across frequencies that seemed incompatible.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 中央公論新社 (Chūō Kōron Shinsha), April 2020, hardcover, 260 pages, 四六判, ISBN 978-4-12-005298-9. Base price: ¥1,760 (tax included). Bunkoban (文庫版): May 25, 2023, 320 pages, ISBN 978-4-12-207370-8, ¥880. Cumulative sales exceeded 1 million copies across all formats by 2024 (single volume, bunko, and e-book). Film adaptation: released March 1, 2024, directed by Narushima Izuru (成島出), starring Sugisaki Hana (杉咲花) as Mishima Kiko and Shison Jun (志尊淳) as Okada Ango, with Miyazawa Hio (宮沢氷魚) and Ono Karin (小野花梨) in supporting roles. Theme song: "Kono Saki e" (この先へ) written and performed by Saucy Dog. Awards: 2021 Booksellers' Award (第18回本屋大賞) Grand Prize; 4th Miraiya Novel Prize (第4回未来屋小説大賞); "King's Brunch" BOOK Prize 2020 (「王様のブランチ」BOOK大賞2020); Dokusho Meter "Book of the Year 2020" Overall #1 (読書メーター「オブ・ザ・イヤー2020」総合ランキング1位). The novel was published in April 2020, at the height of Japan's first COVID-19 state of emergency, when bookstores across the country were closed or operating with restricted hours — making its word-of-mouth success entirely dependent on social media and online recommendation.
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>町田そのこ &mdash; Machida Sonoko (b. 1980)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">町</div>
+    <div class="author-name-block">
+      <h3>町田そのこ / Machida Sonoko</h3>
+      <p class="author-name-romaji">From hairdresser to Japan's most beloved novelist &middot; the voice that scoops up unheard cries</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Machida Sonoko was born on March 9, 1980, in Fukuoka Prefecture, Japan. Her path to becoming one of the most celebrated novelists of her generation was anything but conventional. After graduating from Kitakyushu Municipal Higher Barber and Beauty School (北九州市立高等理容美容学校, now Kyushu CTB Professional Training College), she worked briefly as a hairdresser before leaving after one year. She then moved through a series of jobs that would become the substrate of her fiction's social realism: restaurant staff, 100-yen shop clerk, Japanese confectionery shop worker, funeral home employee. At 28, she was a stay-at-home mother raising three children, with what she later described as "nothing" — no career, no prospects, no visible path to the writer she had dreamed of becoming since childhood.</p>
+    <p style="margin-bottom: var(--space-md);">The turning point came with a death. At age 28, Machida learned that Himuro Saeko (氷室冴子, 1957-2008), the writer whose novels she had fallen in love with at age 10 — <em>Clara White Paper</em> (クララ白書) and <em>How Wonderful and Japanese</em> (なんて素敵にジャパネスク) — had passed away. Himuro's death awakened something in Machida: the realization that the person who had given her the dream of writing was gone, and that if she did not begin, the dream would die with her. She started writing seriously, submitting to competitions, and in 2016 — after nearly a decade of effort — won the Grand Prize of the 15th "R-18 Literature Prize for Women by Women" (第15回「女による女のためのR-18文学賞」) for her short story "Cameroon no Aoi Sakana" (カメルーンの青い魚, "The Blue Fish of Cameroon"). The selection committee, including best-selling authors Miura Shion (三浦しをん) and Tsujimura Mizuki (辻村深月), praised the work's audacity and emotional precision. The following year, 2017, the story was published as part of her debut collection <em>Yozora ni Oyogu Chocoreeto Guramī</em> (夜空に泳ぐチョコレートグラミー, "Chocolate Gourami Swimming in the Night Sky," Shinchōsha).</p>
+    <p style="margin-bottom: var(--space-md);">Machida's subsequent works — <em>Gyoran</em> (ぎょらん, 2018, Shinchōsha), <em>Utsukushigaoka no Fukō no Ie</em> (うつくしが丘の不幸の家, "The Unhappy House of Beautiful Hill," 2019, Tōkyō Sōgensha), and the <em>Konbini Kyōdai</em> (コンビニ兄弟, "Convenience Store Brothers") series — established her as a writer of extraordinary range, capable of moving between dark social realism and warm-hearted comedy. But it was <em>52-Hertz Whales</em> that transformed her from a respected author into a national phenomenon. The novel's success during the COVID-19 pandemic — when readers were isolated, anxious, and hungry for stories of connection — demonstrated Machida's almost uncanny ability to give voice to what society refuses to hear. In 2021, she became a Cultural Ambassador for Kitakyushu City (北九州市文化大使). Her favorite writers include Himuro Saeko, Takada Ikki (高田郁), Ogawa Yōko (小川洋子), and Nishi Kanako (西加奈子). She lives in Fukuoka Prefecture with her family, drinks her coffee black, and has described her daily writing routine with the same precision she brings to her characters' inner lives: "First, grind the beans to medium coarseness. Moisten with a little hot water. Let it bloom for one minute. Then pour slowly, in a circle, being careful not to break the fine bubbles on the surface. Drink it black. This is my best way."</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>The Loneliest Whale, Child Abuse in Japan, and the Pandemic Novel</h2>
+
+  <div class="card">
+    <h3>The 52-Hertz Whale: From Scientific Anomaly to Global Metaphor</h3>
+    <p>The "52-hertz whale" is a real, documented phenomenon in oceanography. In 1989, during the Cold War-era Sound Surveillance System (SOSUS) operations, the U.S. Navy detected an unusual acoustic signal in the North Pacific — a whale vocalization at 52 hertz, far above the typical 10-39 hertz range of baleen whales. Researchers at the Woods Hole Oceanographic Institution, led by William A. Watkins and Mary Ann Daher, tracked the signal for twelve years, publishing their findings in <em>Deep Sea Research</em> in 2004. The whale's call pattern did not match any known species: it was higher in frequency, shorter in duration, and more frequent than blue whale or fin whale calls. Because the 52-hertz frequency is outside the known hearing range of other whales, the individual was believed to be unable to communicate with conspecifics — to call without being heard, to search without finding, to sing without response. The <em>New York Times</em> reported on the discovery in December 2004, and the story spread globally, inspiring songs, documentaries, art installations, and countless social media posts. A 2021 documentary film, <em>The Loneliest Whale: The Search for 52</em>, directed by Joshua Zeman, attempted to locate the whale in the present day. Scientists have since debated whether the whale is truly "lonely" — some suggest it may be a hybrid species or an individual with a developmental variation, and its calls have been detected at lower frequencies in recent years — but the metaphorical power of the story has only grown. The 52-hertz whale has become a symbol for anyone who feels their voice is not heard, their frequency not received, their call unanswered. Machida's genius was to recognize that this scientific curiosity was not merely a metaphor for individual loneliness but a structural description of how societies produce unheard voices: through abuse, neglect, prejudice, and the systematic dismissal of those who do not conform to expected frequencies.</p>
+  </div>
+
+  <div class="card">
+    <h3>Child Abuse and Domestic Violence in Contemporary Japan</h3>
+    <p>The novel's engagement with child abuse (<em>jidō gyakutai</em> / 児童虐待) and domestic violence (<em>DV</em>) is not incidental thematic decoration but a direct confrontation with one of Japanese society's most pressing and hidden crises. Reports of child abuse in Japan have risen dramatically over the past two decades: from approximately 30,000 cases in 2000 to over 200,000 cases annually by 2020. The increase reflects both a genuine rise in abuse and a growing willingness to recognize and report what was previously hidden behind the walls of the "home" (<em>ie</em> / 家). Japan's child welfare system, while extensive, has been criticized for being reactive rather than preventive, for prioritizing family preservation over child safety, and for lacking the resources to intervene effectively in the most dangerous cases. The novel's portrayal of a child called "Mushi" (ムシ, "Bug / Insect") by his own mother — deprived of his name, his voice, and his humanity — resonates with documented cases in which abusers systematically dehumanize their victims through naming and denial of identity. The 2019 murder of 10-year-old Jainal Abedin in Chiba, the 2020 death of 4-year-old Yua in Kagoshima, and numerous other cases in which children died despite multiple reports to child welfare authorities have made abuse a subject of intense national debate. Machida's novel does not reference these specific cases, but it channels the accumulated outrage and grief of a society that has begun to confront what it long refused to see. The novel's publication in April 2020 — as Japan entered its first COVID-19 state of emergency and children were confined to homes that were not safe — gave its subject an almost prophetic urgency.</p>
+  </div>
+
+  <div class="card">
+    <h3>The COVID-19 Pandemic and the Novel of Connection</h3>
+    <p><em>52-Hertz Whales</em> was published on April 20, 2020 — ten days after Japan's first COVID-19 state of emergency was declared, when bookstores across the country were closed or operating with severely restricted hours, and when the physical act of browsing for books had become impossible. Under these conditions, the novel's success was entirely dependent on word-of-mouth recommendation through social media, online book communities, and the passionate advocacy of booksellers who promoted it through Twitter and Instagram even when their shops were shuttered. The novel sold out repeatedly; by December 2020, it had reached its 10th printing. The circumstances of its publication and reception are inseparable from its meaning: a novel about isolated people finding connection was itself discovered by isolated people seeking connection through books. The pandemic created what we might call a "52-hertz condition" on a societal scale — millions of people suddenly unable to touch, to gather, to speak face-to-face, their usual frequencies of communication disrupted or destroyed. The novel's story of a woman and a boy, both abused, both silent in their own ways, gradually learning to hear each other across the gulf of their trauma, spoke directly to readers who were themselves struggling to maintain human connection across unprecedented distances. The Booksellers' Award that the novel won in April 2021 was thus not merely a recognition of literary quality but a collective statement by Japan's booksellers: this is the book we needed, this is the book we want you to read, this is the book that helped us survive.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Two Souls, One Frequency, and the Town That Almost Didn't Listen</h2>
+
+  <div class="card">
+    <h3>The Architecture: Dual Narrative as Frequency Interference</h3>
+    <p>The novel is structured around two central consciousnesses — Mishima Kiko (三島貴瑚), a 26-year-old woman, and the boy called "Mushi" (ムシ, "Bug"), a middle-school student — whose stories alternate and gradually interweave like two sound waves that begin at different phases but eventually fall into resonance. Supporting these two are a constellation of characters who function as "receivers" — people who can, with varying degrees of success, pick up the frequencies that others emit. This structure — what we might call "dual narrative with receiving chorus" — is Machida's distinctive contribution to the Japanese social novel: rather than a single protagonist whose consciousness organizes the world, she presents multiple centers of perception, each with their own frequency, their own damage, their own capacity to hear or not hear others. The novel's setting — a small seaside town in Ōita Prefecture, on the island of Kyushu — is itself a character, with its gossip, its prejudices, its unexpected kindnesses, and its dangerous indifference. The town is not idyllic; it is merely smaller than Tokyo, which means its cruelties are more visible and its generosities more necessary.</p>
+  </div>
+
+  <div class="card">
+    <h3>Mishima Kiko: The Woman Who Escaped and Returned to Herself</h3>
+    <p>Mishima Kiko (三島貴瑚), 26, arrives in the small Ōita seaside town from Tokyo, where she has left behind a life of being "extracted" (<em>sakushu</em> / 搾取) by her family — a word that appears in the novel's promotional copy and that carries the full weight of Marxist critique applied to the domestic sphere. Kiko was abused by her parents, grew up without the unconditional love that children are supposed to receive as their birthright, and has spent her adult life trying to become a person who does not need what she was denied. She is, in her own way, a 52-hertz whale: she calls out — for understanding, for connection, for recognition — but the frequency of her need is too high, too damaged, too specific for most people to receive. Her move to Ōita is an attempt to lower her frequency, to find a wavelength on which she can be heard, to escape the extraction machine of her Tokyo family. In the town, she becomes the subject of rumors: because she is young, single, and from Tokyo, the locals decide she must be a former sex worker fleeing a yakuza boyfriend. The rumor is absurd and cruel, but it is also, in the novel's merciless logic, a kind of recognition — the town sees her, even if what it sees is wrong. Kiko's gradual emergence from isolation — through her encounter with Mushi, her friendship with Muranaka Maho (村中眞帆), a local contractor who becomes her ally, and her reconnection with her past — forms the novel's primary arc of healing. But Machida refuses easy redemption: Kiko's wounds do not close; they merely become bearable, navigable, shareable. The novel's deepest insight is that healing is not the absence of damage but the capacity to carry it without being destroyed — and to carry it with others who understand its weight.</p>
+  </div>
+
+  <div class="card">
+    <h3>Mushi: The Boy Who Lost His Name and Found His Voice</h3>
+    <p>The boy called "Mushi" (ムシ, "Bug / Insect") — his real name is gradually revealed as Ango (安吾) — is a middle-school student who lives with his mother, Kotomi (琴美), in the same town Kiko has moved to. Kotomi abuses him physically and psychologically, calling him "Mushi" rather than his name, denying his humanity, treating him as a pest to be eradicated rather than a child to be nurtured. The abuse has rendered him mute: he can understand language but cannot speak, his voice locked inside a body that has learned that speech is dangerous, that calling out brings not help but punishment. Mushi is the novel's most devastating creation because he embodies the 52-hertz condition in its purest form: he is literally unheard, not because his frequency is wrong but because he has stopped emitting sound, having learned that no one will answer. His body bears the marks of abuse — bruises, malnutrition, the flinch that anticipates blows before they fall — and his silence is not peaceful but full of screaming that cannot escape. Kiko's recognition of Mushi — her realization, before anyone else in the town, that this child is being destroyed — is the novel's catalytic event. It is not a rescue in the Hollywood sense; Kiko does not swoop in and save him. Rather, she <em>hears</em> him — she picks up the frequency of his suffering, which is not 52 hertz but the frequency of all abused children, the sound of a voice that has been trained into silence. The novel's middle and latter sections trace the painstaking, dangerous, uncertain process by which Kiko and a small group of allies attempt to intervene in Mushi's life — not to "fix" him but to create conditions in which he might eventually speak again, in which his frequency might be received. The process is messy, legally ambiguous, emotionally exhausting, and without guarantee of success. This is the novel's realism: there are no magical solutions to abuse, only the slow, collective work of people who refuse to look away.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Receivers: Maho, Ango-san, and the Ethics of Hearing</h3>
+    <p>Surrounding Kiko and Mushi are characters who function as "receivers" — people capable of picking up frequencies that others cannot or will not hear. Muranaka Maho (村中眞帆), a local contractor who does renovation work on Kiko's inherited house, is the first to receive Kiko's frequency: she sees through the rumors, recognizes Kiko's damage without needing to know its specifics, and offers practical, unromantic solidarity. Maho is not a savior; she is a worker with her own burdens, her own limitations, her own capacity for error. But she is <em>present</em>, and in the novel's economy, presence is the highest virtue. Okada Ango (岡田安吾), known as "An-san" (アンさん), is Kiko's friend from her Tokyo past — a transgender man whose chosen name (安吾 / Ango) mirrors the boy's real name, creating a resonance that the novel exploits with extraordinary subtlety. An-san is the person who once heard Kiko's 52-hertz call and answered it, who helped her escape her family, who embodies the possibility that frequencies can be received across vast distances of experience and identity. The novel's engagement with transgender experience — the prejudice An-san faces, the violence done to him, the courage required to live as himself — is not a subplot but a parallel frequency: another form of being unheard, another way that society produces 52-hertz whales by refusing to acknowledge the validity of certain identities. The novel's ethical argument is that hearing is not a natural capacity but a moral choice, a decision to tune into frequencies that are uncomfortable, inconvenient, or frightening. The town's failure to hear Mushi — its willingness to believe that "Mushi" is just a nickname, that boys are tough, that family business is private — is not malice but the default setting of a society that has not learned to listen. The novel's triumph is to make the reader complicit in this failure and then to offer, through Kiko's example, the possibility of a different choice.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages capture the novel's devastating precision about how cruelty disguises itself as casualness, how silence contains screams, and how the unheard can learn to hear each other.</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"Asking About Tomorrow's Weather"</div>
+    <div class="passage-jp">
+      明日の天気を訊くような軽い感じで、風俗やってたの？ と言われた。フウゾク。一瞬だけ言葉の意味がわからなかった。
+    </div>
+    <div class="passage-romaji">
+      "Ashita no tenki wo kiku yō na karui kanji de, fūzoku yateta no? to iwareta. Fūzoku. Isshun dake kotoba no imi ga wakaranakatta."
+    </div>
+    <div class="passage-en">
+      "With the same casual lightness as asking about tomorrow's weather, I was asked: Were you in the sex industry? Sex industry. For a moment, I didn't understand what the word meant."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This is the novel's opening sentence, and it is a masterpiece of controlled devastation — a single line that establishes the narrator's voice, the town's cruelty, and the novel's central theme of how violence disguises itself as casualness. <em>Ashita no tenki wo kiku yō na karui kanji de</em> (明日の天気を訊くような軽い感じで, "with the same casual lightness as asking about tomorrow's weather") uses the simile marker <em>yō na</em> (ような, "like / as if") to create a comparison that is almost cliché — asking about the weather is the universal example of trivial conversation — and then weaponizes it. The weather question is not merely casual; it is <em>karui</em> (軽い, "light / trivial / flippant"), a word that carries moral judgment in Japanese — to treat something <em>karui</em> is to fail to take it seriously, to lack the gravity that the situation demands. The phrase thus contains its own critique: the speaker recognizes that the question about her past is being asked with a lightness that is inappropriate, even grotesque, given what is being asked. <em>Fūzoku yateta no?</em> (風俗やってたの？, "Were you in the sex industry?") uses the past-tense auxiliary <em>yateta</em> (やってた, informal contraction of <em>yatte ita</em> / やっていた, "were doing") with the question particle <em>no</em> (の) — the casual, almost intimate question form that assumes familiarity. <em>Fūzoku</em> (風俗, "sex industry / adult entertainment industry") is written in kanji, making it visually stark amid the otherwise flowing prose, and the narrator's repetition of it — <em>Fūzoku.</em> (フウゾク。) — written in full-width katakana with a period, creates a moment of stasis, a frozen frame in which the word detaches from meaning and becomes pure sound, pure shock. <em>Isshun dake kotoba no imi ga wakaranakatta</em> (一瞬だけ言葉の意味がわからなかった, "for a moment only, the word's meaning was not understood") uses the temporal limitation <em>isshun dake</em> (一瞬だけ, "only for an instant") to make the disorientation brief but total — not a sustained confusion but a moment of absolute blankness, the mind's refusal to process what the ears have received. The grammar of <em>...ga wakaranakatta</em> (...がわからなかった, "could not understand") uses the potential negative to suggest that understanding was temporarily impossible, not permanently unavailable — the meaning will come, and with it, the full weight of the insult. What is lost in English is the specific social context of <em>fūzoku</em> (風俗), which in Japan refers not to illegal prostitution but to the legal adult entertainment industry (soaplands, pink salons, hostess clubs, etc.) — a massive sector of the Japanese economy that exists in a gray zone of legality and social stigma. "Sex industry" is the closest English equivalent but carries different legal and moral associations; "adult entertainment" is too euphemistic; "prostitution" is too specific and criminalizing. The English translation cannot reproduce the particular shame-structure of <em>fūzoku</em> in Japanese society — the way it is simultaneously ubiquitous, legal, and deeply stigmatized, especially for women. The sentence's power comes from the collision between the weather-question triviality and the <em>fūzoku</em> accusation, a collision that is specifically Japanese in its social mechanics.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"I Will Listen to Your 52-Hertz Voice That Reaches No One"</div>
+    <div class="passage-jp">
+      わたしは、あんたの誰にも届かない52ヘルツの声を聴くよ。
+    </div>
+    <div class="passage-romaji">
+      "Watashi wa, anta no dare ni mo todokanai gojūni herutsu no koe wo kiku yo."
+    </div>
+    <div class="passage-en">
+      "I will listen to your 52-hertz voice that reaches no one."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — one of the novel's most quoted lines, appearing on promotional materials and in countless reader testimonials — is the ethical core of the entire book, and its grammar encodes a theory of recognition that is both simple and revolutionary. <em>Watashi wa</em> (わたしは, "I [topic]") uses the first-person pronoun <em>watashi</em> (わたし), the standard, relatively neutral feminine form, marked with the topic particle <em>wa</em> (は). The <em>wa</em> establishes the speaker as the stable subject of the sentence, the one who will act, the one who commits. <em>Anta no</em> (あんたの, "your") uses the second-person pronoun <em>anta</em> (あんた), which is crucial: <em>anta</em> is not the polite <em>anata</em> (あなた) but a more casual, slightly rough form that carries intimacy and equality. It is the pronoun used between people who have moved past formality into genuine relationship — not strangers, not superiors and inferiors, but two people who have seen each other. The use of <em>anta</em> rather than <em>anata</em> or a name marks the moment when Kiko addresses Mushi not as a victim to be saved but as a person to be met. <em>Dare ni mo todokanai</em> (誰にも届かない, "reaches no one / doesn't reach anyone") uses the universal negative construction <em>dare ni mo... nai</em> (誰にも...ない, "not to anyone") with the verb <em>todoku</em> (届く, "to reach / to arrive / to be received"). <em>Todoku</em> is a verb of communication and delivery: a letter <em>todoku</em>s, a sound <em>todoku</em>s, a feeling <em>todoku</em>s. The negative <em>todokanai</em> (届かない) thus describes not merely physical distance but communicative failure — the voice that is emitted but not received, the call that goes unanswered. <em>Gojūni herutsu no koe</em> (52ヘルツの声, "52-hertz voice") combines the scientific measurement with the human organ of expression — <em>koe</em> (声, "voice") is not merely "sound" (<em>oto</em> / 音) but the specifically human (and whale) capacity for vocal expression, for calling out, for making oneself heard. The possessive <em>no</em> makes the 52-hertz frequency an attribute of the voice, a characteristic that defines it. <em>Kiku yo</em> (聴くよ, "will listen [emphatic]") uses the verb <em>kiku</em> (聴く, "to listen / to hear attentively") rather than the more common <em>kiku</em> (聞く, "to hear / to ask"). The choice of <em>聴く</em> (with the "ear" radical 耳) over <em>聞く</em> is deeply significant: <em>聴く</em> implies attentive, intentional listening — the kind of listening you do to music, to a confession, to a voice that needs to be heard. It is not passive reception but active engagement. The final particle <em>yo</em> (よ) adds emphasis and declaration — this is not a question or a suggestion but a statement of intent, a promise, a commitment. What is lost in English is the full weight of the <em>聴く</em> vs. <em>聞く</em> distinction, which has no equivalent in English "listen" vs. "hear." English "listen" does capture the attentiveness of <em>聴く</em>, but it loses the visual and etymological connection to the ear that the Japanese kanji provides. More importantly, the English translation cannot reproduce the social significance of <em>anta</em> (あんた) — the casual intimacy that marks a relationship of equals — or the full scientific-poetic resonance of "52-hertz voice," which in Japanese carries the specific cultural memory of the "world's loneliest whale" story that has circulated in Japan for years before the novel was written. The sentence is the novel's promise to its readers as much as Kiko's promise to Mushi: your unheard voice will be listened to, here, in these pages, by someone who understands what it means to call without answer.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"I Don't Want to Be Involved with Anyone Anymore. I Achieved That Wish, Yet..."</div>
+    <div class="passage-jp">
+      もう、誰とも関わり合いたくない。そう願ってそれを叶えたのに、温もりを求めている。寂しいと思ってしまう。
+    </div>
+    <div class="passage-romaji">
+      "Mō, dare to mo kakawaritakunai. Sō negatte sore wo kanaeta no ni, nukumori wo motomete iru. Sabishii to omotte shimau."
+    </div>
+    <div class="passage-en">
+      "I don't want to be involved with anyone anymore. I wished for that and made it come true, yet I am seeking warmth. I find myself thinking I am lonely."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This passage — from Kiko's interior monologue — captures the fundamental contradiction of trauma survival with a precision that has made it one of the novel's most shared quotations. <em>Mō, dare to mo kakawaritakunai</em> (もう、誰とも関わり合いたくない, "I don't want to be involved with anyone anymore") uses the universal negative <em>dare to mo... nai</em> (誰とも...ない, "not with anyone") with the desiderative negative <em>kakawaritakunai</em> (関わり合いたくない, "don't want to be involved"). <em>Kakawariau</em> (関わり合う, "to be involved with / to have dealings with") is a compound verb that carries more weight than simple "involvement" — it implies entanglement, mutual obligation, the risk of being hurt that comes with connection. The <em>mō</em> (もう, "already / anymore") at the beginning gives the sentence the quality of final decision, of someone who has reached a limit. <em>Sō negatte sore wo kanaeta no ni</em> (そう願ってそれを叶えたのに, "I wished for that and made it come true, yet / despite") uses the concessive <em>no ni</em> (のに, "despite the fact that / although") to create the central paradox: the speaker has achieved exactly what she wanted (isolation, safety from entanglement) and yet finds it unbearable. <em>Negau</em> (願う, "to wish / to pray for") is a strong word, closer to "pray" than to casual "want" — it suggests that the desire for isolation was not mere preference but desperate necessity, a prayer answered at great cost. <em>Kanaeru</em> (叶える, "to grant / to make come true") is typically used for wishes, dreams, prayers — the verb of fairy tales and miracles, here applied to the grim miracle of successful self-isolation. <em>Nukumori wo motomete iru</em> (温もりを求めている, "am seeking warmth") uses the continuous <em>te iru</em> (ている) form to make the seeking ongoing, present, undeniable — despite the achieved isolation, the body continues to want what the mind has renounced. <em>Nukumori</em> (温もり, "warmth") is physical and emotional simultaneously: the warmth of another body, the warmth of human connection, the opposite of the coldness that isolation produces. <em>Sabishii to omotte shimau</em> (寂しいと思ってしまう, "find myself thinking I am lonely") uses the completive/regretful auxiliary <em>shimau</em> (しまう) to express the involuntary nature of the thought — she does not choose to feel lonely; the loneliness arrives despite her resistance, despite her achieved isolation, despite everything she has done to prevent it. The <em>shimau</em> carries a tone of helplessness, of something that happens <em>to</em> the subject against their will. What is lost in English is the full emotional weight of <em>no ni</em> (のに) as a concessive of disappointed expectation — the grammar of "I did everything right, and yet..." that is so central to the experience of trauma survivors who have built walls and then discovered that walls keep out warmth as well as danger. The English "yet" or "nevertheless" captures the logical structure but loses the emotional texture of betrayal — the sense that one's own successful self-protection has become the source of new suffering. "Find myself thinking" captures the involuntariness of <em>omotte shimau</em> but loses the regretful, almost ashamed tone that <em>shimau</em> adds to Japanese self-reflection.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"I Loved My Mother"</div>
+    <div class="passage-jp">
+      おかあさんが、大好きだった
+    </div>
+    <div class="passage-romaji">
+      "Okā-san ga, daisuki datta."
+    </div>
+    <div class="passage-en">
+      "I loved my mother."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — five morae, six syllables, devastating in its simplicity — is the novel's emotional fulcrum, the moment when the grammar of abuse meets the grammar of love and produces something that cannot be resolved, only endured. <em>Okā-san</em> (おかあさん, "Mother") uses the childish/familiar form <em>okā-san</em> (お母さん) rather than the more formal <em>okā-sama</em> (お母様) or the adult <em>haha</em> (母). This is the word a child uses for their mother — the word Mushi might have used before he became "Mushi," the word Kiko used before she understood what was being done to her. The <em>o</em> (お) prefix is the honorific of affection, not deference; the <em>-san</em> (さん) is the suffix of familiar respect. The word thus carries the full weight of a child's love for their parent, unguarded and unconditional. <em>Ga</em> (が) marks the subject with the emphasis of new information or emotional focus — not "my mother" (old information, taken for granted) but "<em>mother</em>" (the one who should have been the source of love, the one who was instead the source of damage). The <em>ga</em> gives the sentence a slight exclamatory quality, as if the speaker is surprised by their own statement, or as if they are insisting on something that others might doubt. <em>Daisuki datta</em> (大好きだった, "loved / was very fond of") uses the past tense of <em>daisuki</em> (大好き, "love / really like"), which is not a verb but a <em>na</em>-adjective in Japanese — literally "was big-like." The past tense <em>datta</em> (だた) is crucial: it places the love in the past, suggesting either that the love has ended (I loved her, but no longer do) or that the love existed in a time that is now over (the time before I understood, the time when I was still capable of loving her). The ambiguity is productive and unbearable: the sentence does not say "I don't love her anymore" but leaves open the possibility that the love persists beneath the damage, that the child who loved still exists inside the adult who knows better. What is lost in English is the specifically Japanese grammar of <em>daisuki</em> as an adjective rather than a verb. English "I loved my mother" is a complete transitive sentence with subject, verb, and object; Japanese <em>Okā-san ga daisuki datta</em> is grammatically closer to "Mother was beloved [by me]" — the love is not an action performed by the subject but a quality that existed in relation to the mother. This grammatical structure makes the love feel less like a choice and more like a condition — something that was simply true, the way weather is true, the way gravity is true. The English translation also cannot reproduce the child-voice resonance of <em>okā-san</em> (お母さん), which in Japanese immediately evokes nursery rhymes, school plays, tearful confessions — the entire cultural archive of mother-child intimacy. "Mother" in English is more formal; "Mom" or "Mama" would capture the intimacy but would sound incongruously American in this context. The sentence's power in Japanese comes from its collision between the child-word <em>okā-san</em> and the adult knowledge that makes the sentence necessary — the knowledge that the mother was the abuser, that the love was not reciprocated, that the child's love was exploited and betrayed. This collision is the novel's deepest wound, and it cannot be fully translated because it depends on the specific cultural weight of <em>okā-san</em> in Japanese family structure — the word that names both the source of unconditional love and, in this case, the source of unconditional damage.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of unheard voices, of abuse and survival, of frequencies that no one else can receive, and of the warmth that persists despite everything.</p>
+
+  <div class="card">
+    <h3>The Whale, Sound & the Metaphor of Frequency</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ヘルツ</td><td>herutsu</td><td class="pos">noun</td><td>hertz (unit of frequency)</td></tr>
+        <tr><td>周波数</td><td>shūhasū</td><td class="pos">noun</td><td>frequency (physics)</td></tr>
+        <tr><td>声</td><td>koe</td><td class="pos">noun</td><td>voice; cry; call</td></tr>
+        <tr><td>鳴き声</td><td>nakigoe</td><td class="pos">noun</td><td>cry; call; vocalization</td></tr>
+        <tr><td>届く</td><td>todoku</td><td class="pos">verb</td><td>to reach; to arrive; to be received</td></tr>
+        <tr><td>聴く</td><td>kiku</td><td class="pos">verb</td><td>to listen (attentively); to hear</td></tr>
+        <tr><td>聞こえる</td><td>kikoeru</td><td class="pos">verb</td><td>to be audible; to be heard</td></tr>
+        <tr><td>孤独</td><td>kodoku</td><td class="pos">noun</td><td>loneliness; solitude; isolation</td></tr>
+        <tr><td>寂しい</td><td>sabishii</td><td class="pos">i-adj</td><td>lonely; lonesome; sad</td></tr>
+        <tr><td>共鳴</td><td>kyōmei</td><td class="pos">noun</td><td>resonance; sympathy; empathy</td></tr>
+        <tr><td>周波</td><td>shūha</td><td class="pos">noun</td><td>frequency; wave band</td></tr>
+        <tr><td>音</td><td>oto</td><td class="pos">noun</td><td>sound; noise</td></tr>
+        <tr><td>鳴く</td><td>naku</td><td class="pos">verb</td><td>to cry; to call; to chirp; to sing (of animals)</td></tr>
+        <tr><td>聞き取る</td><td>kikitoru</td><td class="pos">verb</td><td>to catch (a sound); to make out; to understand by hearing</td></tr>
+        <tr><td>静寂</td><td>seijaku</td><td class="pos">noun</td><td>silence; stillness; quiet</td></tr>
+        <tr><td>響く</td><td>hibiku</td><td class="pos">verb</td><td>to resound; to echo; to reverberate</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Abuse, Family & the Body's Memory</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>虐待</td><td>gyakutai</td><td class="pos">noun</td><td>abuse; maltreatment; cruelty</td></tr>
+        <tr><td>搾取</td><td>sakushu</td><td class="pos">noun</td><td>exploitation; extraction</td></tr>
+        <tr><td>暴力</td><td>bōryoku</td><td class="pos">noun</td><td>violence; force</td></tr>
+        <tr><td>傷</td><td>kizu</td><td class="pos">noun</td><td>wound; injury; scar</td></tr>
+        <tr><td>痕</td><td>ato</td><td class="pos">noun</td><td>scar; mark; trace</td></tr>
+        <tr><td>痛み</td><td>itami</td><td class="pos">noun</td><td>pain; ache; suffering</td></tr>
+        <tr><td>苦痛</td><td>kutsū</td><td class="pos">noun</td><td>pain; agony; distress</td></tr>
+        <tr><td>恐怖</td><td>kyōfu</td><td class="pos">noun</td><td>fear; dread; terror</td></tr>
+        <tr><td>震え</td><td>furue</td><td class="pos">noun</td><td>trembling; shivering; shaking</td></tr>
+        <tr><td>無言</td><td>mugon</td><td class="pos">noun</td><td>silence; being speechless</td></tr>
+        <tr><td>言葉</td><td>kotoba</td><td class="pos">noun</td><td>word; language; speech</td></tr>
+        <tr><td>喋る</td><td>shaberu</td><td class="pos">verb</td><td>to talk; to speak; to chat</td></tr>
+        <tr><td>声を失う</td><td>koe wo ushinau</td><td class="pos">phrase</td><td>to lose one's voice; to become mute</td></tr>
+        <tr><td>家族</td><td>kazoku</td><td class="pos">noun</td><td>family; household</td></tr>
+        <tr><td>母親</td><td>hahaoya</td><td class="pos">noun</td><td>mother</td></tr>
+        <tr><td>親</td><td>oya</td><td class="pos">noun</td><td>parent</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Connection, Warmth & the Ethics of Hearing</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>温もり</td><td>nukumori</td><td class="pos">noun</td><td>warmth; warmth of another body/person</td></tr>
+        <tr><td>関わり合う</td><td>kakawariau</td><td class="pos">verb</td><td>to be involved with; to have dealings with</td></tr>
+        <tr><td>出会う</td><td>deau</td><td class="pos">verb</td><td>to meet (by chance); to encounter</td></tr>
+        <tr><td>支える</td><td>sasaeru</td><td class="pos">verb</td><td>to support; to sustain; to prop up</td></tr>
+        <tr><td>救う</td><td>sukuu</td><td class="pos">verb</td><td>to save; to rescue; to redeem</td></tr>
+        <tr><td>癒やす</td><td>iyasu</td><td class="pos">verb</td><td>to heal; to cure; to soothe</td></tr>
+        <tr><td>魂</td><td>tamashii</td><td class="pos">noun</td><td>soul; spirit</td></tr>
+        <tr><td>絆</td><td>kizuna</td><td class="pos">noun</td><td>bond; tie; connection</td></tr>
+        <tr><td>寄り添う</td><td>yorisou</td><td class="pos">verb</td><td>to snuggle up to; to draw close; to empathize</td></tr>
+        <tr><td>理解</td><td>rikai</td><td class="pos">noun</td><td>understanding; comprehension</td></tr>
+        <tr><td>受け止める</td><td>uketomeru</td><td class="pos">verb</td><td>to catch; to receive; to accept (emotions)</td></tr>
+        <tr><td>憐れむ</td><td>awaremu</td><td class="pos">verb</td><td>to pity; to feel compassion for</td></tr>
+        <tr><td>願う</td><td>negau</td><td class="pos">verb</td><td>to wish; to pray for; to desire</td></tr>
+        <tr><td>叶える</td><td>kanaeru</td><td class="pos">verb</td><td>to grant (a wish); to make come true</td></tr>
+        <tr><td>存在</td><td>sonzai</td><td class="pos">noun</td><td>existence; being</td></tr>
+        <tr><td>居場所</td><td>ibasho</td><td class="pos">noun</td><td>place to be; place where one belongs</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Machida writes with the precision of someone who has learned that the most devastating sentences are the shortest ones — and the translation of her most culturally specific novel raises urgent questions about how to carry emotional truth across linguistic boundaries without diluting it.</p>
+
+  <div class="card">
+    <h3>1. <em>Mushi</em> (ムシ / 虫): The Name That Is Not a Name</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>ムシ／虫</strong> — "bug / insect / pest"; a dehumanizing nickname that replaces a child's actual name; the word Japanese children use when they see something small and disgusting</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Bug" / "Insect" / "Pest"</strong> — accurate denotations but lose the specific childhood register and the full force of maternal dehumanization</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>mushi</em> (ムシ / 虫, "bug / insect") is the novel's most emotionally charged word, and its translation is almost impossible to do justice. In Japanese, <em>mushi</em> is what children say when they point at ants, cockroaches, mosquitoes — the generic word for small crawling or flying creatures, usually said with a mixture of fascination and revulsion. When a mother calls her child <em>mushi</em>, she is doing something far worse than insulting him: she is removing him from the category of the human. The English "Bug" or "Insect" captures the dehumanization but loses the specifically childish register — "bug" is what American children say, but it does not carry the same visceral immediacy as <em>mushi</em> in Japanese, where the word is learned before memory begins and is associated with the earliest experiences of disgust and fear. "Pest" is more explicitly dehumanizing but loses the smallness and vulnerability that <em>mushi</em> implies — a pest is annoying but not necessarily helpless; a <em>mushi</em> can be crushed. The novel's power depends on the reader's ability to feel, every time <em>mushi</em> appears, the full weight of a mother refusing her child's humanity. The English translations can convey this intellectually but cannot reproduce the physical revulsion that Japanese readers feel, the way the word activates childhood memories of seeing insects squashed, the cultural association of <em>mushi</em> with worthlessness and dispensability. The loss is bodily as well as semantic: <em>mushi</em> is a word that makes Japanese skin crawl, and this somatic response is part of the novel's method.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Okā-san</em> (お母さん): The Child-Word for the Abuser</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>お母さん</strong> — "Mother" in the child's voice; the word of nursery rhymes and unconditional love; the name for the one who should protect</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Mother" / "Mom" / "Mama"</strong> — each carries different cultural associations; none can reproduce the Japanese child-voice</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>As discussed in the passage analysis, <em>okā-san</em> (お母さん) is not merely a kinship term but a cultural monument — the word that appears in every Japanese child's earliest vocabulary, in every school song about family, in every Mother's Day card. When Kiko says <em>Okā-san ga, daisuki datta</em> (お母さんが、大好きだった, "I loved my mother"), the <em>okā-san</em> carries the full weight of this cultural archive. English "Mother" is too formal, too adult; "Mom" or "Mama" are too culturally specific to American or British childhoods. The Japanese <em>okā-san</em> exists in a cultural space where maternal love is simultaneously idealized (the self-sacrificing <em>ehomaki</em>-making mother of popular culture) and interrogated (the "toxic mother" / 毒親 of recent discourse). The novel's use of <em>okā-san</em> activates both poles: the idealized mother that every child wants to love, and the real mother who fails to deserve that love. English translations must choose one register and sacrifice the other, while the Japanese word holds both in painful suspension. The loss is thus not merely lexical but structural: the novel's argument about abuse depends on the gap between what <em>okā-san</em> promises and what the mother delivers, and this gap is culturally specific in ways that translation cannot fully bridge.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Koe</em> (声) vs. <em>Oto</em> (音): The Voice That Is More Than Sound</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>声</strong> — voice; specifically human/animal vocal expression; the sound that comes from a throat with intention behind it</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"voice" / "sound" / "cry"</strong> — "voice" is close but loses the kanji's specificity; "sound" is too general</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The Japanese word <em>koe</em> (声, "voice") is distinguished from <em>oto</em> (音, "sound") by its source: <em>koe</em> comes from a throat, from a body with consciousness, from a being that intends to communicate. <em>Oto</em> is any sound — the wind, a machine, a dropped object. The novel's title uses <em>koe</em> (声) in "52-herutsu no koe" (52ヘルツの声, "52-hertz voice"), and this choice is essential: the whale is not merely making a sound (<em>oto</em>) but emitting a <em>koe</em> — a call, a cry, a vocalization that carries intention and need. The kanji <em>koe</em> (声) contains the radical for "ear" (耳) and the character for "shelf" or "support" (殸), suggesting sound that is held and received. When Kiko promises to "listen to your 52-hertz voice" (<em>koe wo kiku</em> / 声を聴く), she is committing to receive not just a sound but a communication — the intentional expression of a suffering being. English "voice" captures this reasonably well but cannot reproduce the kanji's visual argument about sound and reception, nor the specific contrast with <em>oto</em> that Japanese readers implicitly understand. The loss matters because the novel's entire ethics depends on the distinction between hearing a sound (<em>oto wo kiku</em> / 音を聞く) and listening to a voice (<em>koe wo kiku</em> / 声を聴く): the first is passive, the second is moral. English "listen to your voice" conveys the moral commitment but cannot reproduce the linguistic architecture that makes the distinction visible.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Fūzoku</em> (風俗): The Stigma-Structure of Legal Sex Work</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>風俗</strong> — the legal adult entertainment industry; a massive sector of the Japanese economy existing in a gray zone of stigma and regulation</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"sex industry" / "adult entertainment" / "prostitution"</strong> — each carries different legal and moral associations</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>fūzoku</em> (風俗) is central to the novel's opening and to its social critique, and it is almost impossible to translate adequately. In Japan, <em>fūzoku</em> refers to the legal adult entertainment industry — soaplands, pink salons, image clubs, delivery health services, and other businesses that operate in the penumbra of Article 3 of the Anti-Prostitution Law (売春防止法). These businesses are legal, regulated, ubiquitous (especially in urban areas), and simultaneously heavily stigmatized. A woman who has worked in <em>fūzoku</em> faces discrimination in employment, housing, and social relationships — yet the industry employs hundreds of thousands of women and generates enormous economic activity. The English "sex industry" is the closest functional equivalent but carries different legal associations (in many English-speaking countries, the activities described by <em>fūzoku</em> would be illegal); "adult entertainment" is too euphemistic and evokes American strip clubs rather than Japanese <em>fūzoku</em> establishments; "prostitution" is both too narrow (not all <em>fūzoku</em> work involves intercourse) and too criminalizing. The novel's power depends on the reader's understanding of the specific shame-structure of <em>fūzoku</em> in Japan — the way it is simultaneously visible and hidden, legal and stigmatized, economically necessary and socially condemned. When the town assumes Kiko is a former <em>fūzoku</em> worker, they are not accusing her of a crime but of a category error — of having been the kind of woman who can be talked about with the "casual lightness of asking about tomorrow's weather." This specific social mechanics of <em>fūzoku</em>-stigma cannot be reproduced in English because the legal and social structures are different. The translation can convey the rudeness of the question but not the full architecture of gendered shame that makes it possible.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>-tachi</em> (たち): The Plural That Creates Community</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>たち</strong> — plural suffix that personifies and communities; transforms a singular anomaly into a collective condition</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"-s" / "whales"</strong> — grammatically correct but loses the personification and communal resonance</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The suffix <em>-tachi</em> (たち) is, as discussed in the title analysis, the novel's most important grammatical decision — and it is entirely invisible in English. English "The 52-Hertz Whales" reproduces the plural but cannot reproduce what the plural <em>means</em> in Japanese. English plural "-s" is a grammatical default; Japanese <em>-tachi</em> is a social and ethical choice. It says: these whales are not merely multiple; they are a <em>group</em>, a <em>we</em>, a community of beings who share a condition. The English reader sees "whales" and understands multiplicity; the Japanese reader sees <em>kujira-tachi</em> (クジラたち) and understands solidarity. The loss is thus not merely of a suffix but of an entire ethical framework: the novel's argument that unheard voices can find each other, that solitude is not uniqueness, that the condition of calling without response is shared by many — this argument is embedded in the grammar of <em>-tachi</em> and cannot be extracted and transplanted into English "-s." An English translator might try to compensate with phrasing ("the community of 52-hertz whales," "those who call at 52 hertz"), but any such compensation adds words that are not in the original and changes the title's elegant simplicity. The <em>-tachi</em> is the novel's secret weapon, its ethical engine, its promise to the reader — and it disappears in translation, leaving only the ghost of its absence.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of unheard voices, of abuse disguised as weather questions, of warmth sought against the will, and of love that persists beneath damage.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ような（比況・例示）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō na</em>: "like / as if / similar to" — simile marker creating comparison between two situations or qualities</p>
+      <div class="grammar-example">明日の天気を訊くような軽い感じで</div>
+      <p class="grammar-example-en">"With the same casual lightness as asking about tomorrow's weather" — The grammar of violent trivialization.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜のに（逆接・不満）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...no ni</em>: "despite the fact that / although" — concessive expressing disappointment, betrayal of expectation</p>
+      <div class="grammar-example">そう願ってそれを叶えたのに、温もりを求めている</div>
+      <p class="grammar-example-en">"Despite having wished for it and made it come true, I am seeking warmth" — The grammar of paradoxical need.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまう（完了・遺憾・無意識）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...te shimau</em>: "to end up [doing] / to [do] involuntarily" — completive expressing unintended result, regret, or unconscious action</p>
+      <div class="grammar-example">寂しいと思ってしまう</div>
+      <p class="grammar-example-en">"I find myself thinking I am lonely / I end up feeling lonely" — The grammar of involuntary feeling.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">誰にも〜ない（全面否定）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>dare ni mo... nai</em>: "not to anyone / reaches no one" — universal negative construction denying all possible recipients</p>
+      <div class="grammar-example">誰にも届かない52ヘルツの声</div>
+      <p class="grammar-example-en">"the 52-hertz voice that reaches no one" — The grammar of absolute communicative failure.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜が＋形容詞／名詞（焦点・新情報）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...ga + adjective/noun</em>: "[subject] is..." — subject marker <em>ga</em> emphasizing new information or emotional focus</p>
+      <div class="grammar-example">おかあさんが、大好きだった</div>
+      <p class="grammar-example-en">"Mother — I loved her" — The grammar of emotional emphasis and painful declaration.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜た＋のに（過去の期待裏切り）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...ta + no ni</em>: "even though [I did] / despite having [done]" — past-tense concessive expressing betrayal of effort or expectation</p>
+      <div class="grammar-example">それを叶えたのに</div>
+      <p class="grammar-example-en">"despite having made it come true" — The grammar of disappointed achievement.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜を求めている（継続的欲求）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...wo motomete iru</em>: "am seeking / am in search of" — continuous <em>te iru</em> form expressing ongoing desire or search</p>
+      <div class="grammar-example">温もりを求めている</div>
+      <p class="grammar-example-en">"am seeking warmth" — The grammar of persistent, undeniable need.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜よ（断定・約束・宣言）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...yo</em>: "[emphatic assertion]" — sentence-final particle adding emphasis, declaration, or promise</p>
+      <div class="grammar-example">聴くよ</div>
+      <p class="grammar-example-en">"I will listen [I promise / I declare]" — The grammar of commitment.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>52-Hertz Whales</em> is the grammar of wounds that speak and listeners who choose to hear. The simile (<em>yō na</em>) makes violence look like weather; the concessive (<em>no ni</em>) makes isolation into its own betrayal; the completive (<em>te shimau</em>) makes loneliness involuntary; the universal negative (<em>dare ni mo... nai</em>) makes solitude absolute; the emphatic subject (<em>ga</em>) makes love into a painful declaration; the past concessive (<em>ta no ni</em>) makes achievement disappointing; the continuous desiderative (<em>wo motomete iru</em>) makes need persistent; and the declarative particle (<em>yo</em>) makes listening into a promise. Pay attention to how these constructions work together to create a prose that sounds simple until you realize that every sentence is carrying an unbearable weight — the weight of voices that have called for years without answer, and the weight of the decision to finally listen.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, and critical analysis.</p>
+  <p style="margin-top: var(--space-xs);">『52ヘルツのクジラたち』 &middot; 町田そのこ 著 &middot; 中央公論新社 2020年4月刊 &middot; 260ページ &middot; ISBN 978-4-12-005298-9</p>
+  <p style="margin-top: var(--space-xs);">文庫版：2023年5月25日刊 &middot; 320ページ &middot; ISBN 978-4-12-207370-8 &middot; 定価880円（税込）</p>
+  <p style="margin-top: var(--space-xs);">累計：単行本・文庫・電子書籍合計100万部突破（2024年文庫版第11刷時点）</p>
+  <p style="margin-top: var(--space-xs);">受賞：第18回本屋大賞（2021年4月14日） &middot; 第4回未来屋小説大賞 &middot; 「王様のブランチ」BOOK大賞2020 &middot; 読書メーター「オブ・ザ・イヤー2020」総合ランキング1位</p>
+  <p style="margin-top: var(--space-xs);">映画化：2024年3月1日公開 &middot; 成島出監督 &middot; 杉咲花・志尊淳主演 &middot; 宮沢氷魚・小野花梨共演 &middot; 主題歌：Saucy Dog「この先へ」</p>
+  <p style="margin-top: var(--space-xs);">著者：町田そのこ（1980年3月9日生・福岡県出身・在住・北九州市文化大使）</p>
+  <p style="margin-top: var(--space-xs);">経歴：北九州市立高等理容美容学校卒業後、理容師・飲食店・100円ショップ・和菓子店・葬儀屋などを経験</p>
+  <p style="margin-top: var(--space-xs);">デビュー：2016年「カメルーンの青い魚」で第15回「女による女のためのR-18文学賞」大賞受賞 &middot; 2017年『夜空に泳ぐチョコレートグラミー』刊行</p>
+  <p style="margin-top: var(--space-xs);">主要登場人物：三島貴瑚（みしまきこ・26歳・過去に両親から虐待された女性） &middot; ムシ／安吾（あんご・中学生・母親から虐待され声を失った少年） &middot; 村中眞帆（まほろ・内装業者・貴瑚の味方） &middot; 岡田安吾（あんさん・貴瑚の友人・トランスジェンダー男性） &middot; 琴美（ことみ・ムシの母親・虐待者）</p>
+  <p style="margin-top: var(--space-xs);">舞台：大分県の小さな海辺の町（九州）</p>
+  <p style="margin-top: var(--space-xs);">テーマ：児童虐待、DV、家族による搾取、トランスジェンダーへの偏見、孤独、再生、声なき声の聴取</p>
+</footer>
+
+</div>
+</body>
+</html>

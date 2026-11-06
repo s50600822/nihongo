@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>楽園のカンヴァス — 原田マハ | Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0f1218;
+  --bg-surface: #161b24;
+  --bg-elevated: #1e2434;
+  --bg-card: #262e40;
+  --ink-primary: #e8eaec;
+  --ink-secondary: #c8ccd4;
+  --ink-muted: #a0a8b4;
+  --ink-faint: #707888;
+  --accent-gold: #8a9aaa;
+  --accent-gold-dim: #5a6a7a;
+  --accent-gold-glow: rgba(138, 154, 170, 0.12);
+  --accent-lavender: #9a8aaa;
+  --line-subtle: rgba(255, 255, 255, 0.06);
+  --line-medium: rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line-subtle);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --step-4: clamp(2.8rem, 2.3rem + 2.5vw, 4rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg-deep);
+  color: var(--ink-primary);
+  font-size: var(--step-0);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-gold-glow);
+  color: var(--ink-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); margin-top: var(--space-2xl); margin-bottom: var(--space-md); }
+h3 { font-size: var(--step-2); margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--step-1); margin-top: var(--space-lg); margin-bottom: var(--space-xs); }
+
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover { border-bottom-color: var(--accent-gold-dim); }
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+@media (min-width: 900px) {
+  .container { padding: var(--space-xl) var(--space-lg); }
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--accent-gold-dim);
+  padding: 0.3em 1em;
+  border-radius: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.hero h1 {
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(180deg, var(--ink-primary) 0%, var(--ink-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  font-family: "Shippori Mincho", serif;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-meta {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  margin: var(--space-lg) auto 0;
+  border: none;
+}
+
+section { margin-bottom: var(--space-2xl); }
+
+.section-label {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent-gold-dim);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-lg);
+}
+
+.toc {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: var(--step-1);
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+
+.toc li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.toc li:last-child { border-bottom: none; }
+
+.toc a {
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border-bottom: none;
+  transition: color 0.2s;
+}
+
+.toc a:hover { color: var(--accent-gold); }
+
+.toc-num {
+  color: var(--ink-faint);
+  font-size: 0.85em;
+  min-width: 1.5em;
+}
+
+.title-breakdown {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.title-part {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-gold-dim);
+}
+
+.title-part .jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--ink-primary);
+  min-width: 5em;
+}
+
+.title-part .romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.title-part .meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+}
+
+.passage {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-gold-dim), transparent 80%);
+}
+
+.passage-number {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-md);
+  font-family: "Shippori Mincho", serif;
+  font-size: 3rem;
+  color: var(--line-medium);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.passage-label {
+  font-size: var(--step--1);
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.passage-jp {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  line-height: 2;
+  color: var(--ink-primary);
+  margin-bottom: var(--space-md);
+}
+
+.passage-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--line-subtle);
+}
+
+.passage-en {
+  color: var(--ink-secondary);
+  line-height: 1.75;
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--accent-gold-dim);
+}
+
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.7em 1em;
+  text-align: left;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.vocab-table th {
+  color: var(--accent-gold);
+  font-weight: 500;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--bg-elevated);
+}
+
+.vocab-table tr:hover td { background: var(--bg-elevated); }
+
+.vocab-table td:first-child {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.1em;
+  color: var(--ink-primary);
+}
+
+.vocab-table .pos {
+  color: var(--ink-muted);
+  font-size: 0.9em;
+}
+
+.nuance-box {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+  border-left: 3px solid var(--accent-lavender);
+}
+
+.nuance-box h4 {
+  color: var(--accent-lavender);
+  margin-top: 0;
+}
+
+.lost-in-translation {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.lost-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.lost-marker {
+  color: var(--accent-gold);
+  font-weight: 700;
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+.grammar-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grammar-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.grammar-header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-pattern {
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-1);
+  color: var(--accent-gold);
+}
+
+.grammar-level {
+  font-size: 0.75em;
+  color: var(--ink-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 0.15em 0.6em;
+  border-radius: 100px;
+}
+
+.grammar-meaning {
+  color: var(--ink-secondary);
+  font-size: var(--step--1);
+  margin-bottom: var(--space-xs);
+}
+
+.grammar-example {
+  background: var(--bg-elevated);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: "Shippori Mincho", serif;
+  color: var(--ink-primary);
+  margin: var(--space-xs) 0;
+}
+
+.grammar-example-en {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+.author-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Shippori Mincho", serif;
+  font-size: var(--step-2);
+  color: var(--bg-deep);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.author-name-block h3 { margin: 0; }
+
+.author-name-romaji {
+  font-family: "Noto Serif", serif;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.lead {
+  font-size: var(--step-1);
+  color: var(--ink-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.note {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent-gold-dim);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--step--1);
+  color: var(--ink-secondary);
+  margin: var(--space-md) 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-medium), transparent);
+  border: none;
+  margin: var(--space-xl) 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--ink-faint);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .toc { display: none; }
+  .card, .passage {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 18mm;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-badge">Japanese Literature Lesson</div>
+  <h1>楽園のカンヴァス</h1>
+  <p class="hero-subtitle">Rakuen no Kanvasu / The Canvas of Paradise</p>
+  <p class="hero-meta">原田マハ 著 &middot; 新潮社 2012年1月20日刊（単行本） &middot; 文庫版 2014年6月27日刊 &middot; 302ページ（単行本）/ 440ページ（文庫） &middot; ISBN 978-4-10-331751-7</p>
+  <hr class="hero-divider">
+</header>
+
+<nav class="toc">
+  <h3>Contents</h3>
+  <ul>
+    <li><a href="#title-grammar"><span class="toc-num">01</span> Title Grammar</a></li>
+    <li><a href="#author-bio"><span class="toc-num">02</span> Author Biography</a></li>
+    <li><a href="#historical-context"><span class="toc-num">03</span> Historical Context</a></li>
+    <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+    <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+    <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+    <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+    <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+  </ul>
+</nav>
+
+<section id="title-grammar">
+  <div class="section-label">Title Analysis</div>
+  <h2>Title Grammar: Paradise as a Painted Surface</h2>
+  <p class="lead">The title <em>Rakuen no Kanvasu</em> (楽園のカンヴァス, "The Canvas of Paradise") is a study in the materiality of transcendence — the way that paradise, which should be immaterial, finds itself stretched across a woven fabric, pinned to a wooden frame, and hung in a room where people pay money to look at it. The grammar is simple: <em>rakuen</em> (楽園, "paradise / Eden / earthly paradise") modifies <em>kanvasu</em> (カンヴァス, "canvas" — the French-derived artistic term) through the attributive particle <em>no</em> (の). But the semantic collision between these two nouns creates a title of extraordinary density, one that announces the novel's central paradox: that the highest human aspirations (paradise) must pass through the most humble material means (canvas, paint, wooden frame) in order to become visible to other humans. The title also carries, for readers who know art history, the specific echo of Henri Rousseau's "The Dream" (夢, <em>Le Rêve</em>), the painting at the novel's center, which depicts a lush jungle paradise that never existed — a paradise that Rousseau, who never left France, painted entirely from imagination, botanical gardens, and picture books. The "canvas of paradise" is thus not merely a metaphor; it is the literal object around which the entire plot rotates: a painting so close to "The Dream" that it may be a forgery, a study, or something else entirely — a canvas on which paradise has been painted twice, by two different hands, for two different reasons, and the novel's task is to determine which hand, which reason, and which paradise.</p>
+
+  <div class="card">
+    <h3>Title Breakdown</h3>
+    <div class="title-breakdown">
+      <div class="title-part">
+        <span class="jp">楽園</span>
+        <span class="romaji">rakuen / "paradise / Eden / earthly paradise / garden of delight"</span>
+        <span class="meaning">"paradise / Eden" — <em>Rakuen</em> (楽園) is a compound of <em>raku</em> (楽, "pleasure / joy / ease / comfort / bliss") and <em>en</em> (園, "garden / park / enclosure"). The word carries strong biblical and literary resonances in Japanese: it is the standard translation for the Garden of Eden (<em>Eden no rakuen</em> / エデンの楽園), and by extension has come to mean any place of perfect happiness, any enclosed space of beauty and peace, any world set apart from suffering. In the context of the novel, <em>rakuen</em> operates on multiple levels. First, it names the subject matter of Rousseau's paintings: his jungles, though painted in Paris, are "rakuen" in their lushness, their absence of modernity, their dreamlike harmony between humans, animals, and plants. "The Dream" (<em>Le Rêve</em> / 夢) shows a reclining nude on a sofa in the middle of a jungle, surrounded by lions, birds, and exotic plants — a paradise of the unconscious, a garden where the laws of waking life have been suspended. Second, <em>rakuen</em> names the experience of looking at art: the museum or gallery as a temporary paradise, a space outside ordinary time where beauty can be encountered without the pressure of utility. The novel's Swiss mansion, where the authentication takes place, is such a space — a private paradise of art, accessible only to the invited, where paintings are lived with rather than merely displayed. Third, and most movingly, <em>rakuen</em> names the state of creative absorption: the paradise that Rousseau entered when he painted, the paradise that Tim and Orie enter when they look closely enough to forget themselves, the paradise that any reader enters when a book becomes so absorbing that the world outside its pages temporarily ceases to exist. The word <em>raku</em> (楽) is significant here: it means not merely "happy" but "at ease," "without struggle," "in one's element." The paradise of the canvas is not a place of excitement or drama but of ease — the ease of perfect fit between what one sees and what one has always needed to see. This is why the novel's authentication plot is not merely intellectual but existential: to determine whether the painting is "real" is to determine whether paradise can be real, whether the ease we feel before a great work of art is a response to something true or merely a seduction by skillful technique.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">の</span>
+        <span class="romaji">no / possessive / attributive particle</span>
+        <span class="meaning">"of / 's" — The particle <em>no</em> (の) creates an attributive relationship between <em>rakuen</em> and <em>kanvasu</em>, making "paradise" into a modifier of "canvas." The grammar allows for two primary readings: "the canvas <em>of</em> paradise" (the canvas that belongs to paradise, that serves as paradise's material ground) and "the paradise <em>of</em> canvas" (the paradise that is made of canvas, that has canvas as its substance). Both readings are active in the novel. The first suggests that paradise requires a canvas to become visible — that without the woven fabric, the wooden stretcher, the gesso ground, and the layers of pigment, paradise would remain invisible, locked in the painter's imagination. The second suggests something more radical: that canvas itself, the humble woven linen that painters have used for centuries, is a kind of paradise — a space where anything can be imagined, where the rules of the physical world can be suspended, where the painter is "at ease" (<em>raku</em>) in a way that life outside the studio rarely permits. The <em>no</em> particle thus holds these two directions of meaning in suspension: paradise needs canvas, and canvas is paradise. This bidirectionality is the key to the novel's philosophy of art: that the material and the transcendent are not opposites but partners, that the highest visions require the humblest supports, and that every canvas is a potential paradise waiting for the right painter to arrive.</span>
+      </div>
+      <div class="title-part">
+        <span class="jp">カンヴァス</span>
+        <span class="romaji">kanvasu / "canvas"</span>
+        <span class="meaning">"canvas" — <em>Kanvasu</em> (カンヴァス) is a loanword from French <em>toile</em> (via English "canvas"), and its use in the title rather than a Sino-Japanese equivalent like <em>emo</em> (画布, literally "painting cloth") is significant. The katakana form signals that this is a specifically Western artistic concept, imported into Japanese along with oil painting, museums, and the entire apparatus of European fine art. The French subtitle of the novel — <em>La toile du paradis</em> — makes this explicit: <em>toile</em> is the French word for both "canvas" (the fabric) and "painting" (the work on fabric), and the title thus names not merely the support but the work itself. The Japanese <em>kanvasu</em> retains this doubleness less elegantly but no less truly: in art-world Japanese, <em>kanvasu</em> means both the physical fabric and, by metonymy, the painting executed upon it. The choice of <em>kanvasu</em> over <em>emo</em> also signals the novel's international scope: its characters move between New York, Basel, Paris, and Kurashiki; its paintings belong to MoMA, the Ohara Museum, the Basel Kunstmuseum, and private Swiss collections. The katakana word is a passport that allows the title to travel, just as the paintings travel, just as the characters travel. What is lost in English "The Canvas of Paradise" is the specifically Japanese experience of encountering Western art through loanwords — the sense that <em>kanvasu</em> is a slightly foreign word in Japanese, carrying with it the entire history of Japan's encounter with European painting, from the first oil paintings brought by Portuguese missionaries in the 16th century to the establishment of the Tokyo National Museum in 1872 to the founding of the Ohara Museum in 1930 as Japan's first museum of Western art. For Japanese readers, <em>kanvasu</em> is not a neutral word but a charged one, carrying the history of cultural translation that is the novel's unspoken subject.</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Publication data:</strong> 新潮社 (Shinchosha), January 20, 2012, hardcover, 302 pages, 四六判上製本, ISBN 978-4-10-331751-7. Bunkoban (新潮文庫 / Shincho Bunko): June 27, 2014, 440 pages, ISBN 978-4-10-125961-1. French translation: <em>La toile du paradis</em>, published by Philippe Picquier (2018). The novel won the 25th Yamamoto Shugoro Prize (第25回山本周五郎賞) in 2012, was ranked 3rd in the 10th Hon'ya Taisho (第10回本屋大賞) in 2013, received the Da Vinci Platinum Book of the Year 2012 (雑誌『ダ・ヴィンチ』プラチナ本 OF THE YEAR 2012), and won the King's Brunch BOOK Award 2012 Grand Prize (王様のブランチBOOKアワード2012大賞). It was also nominated for the Naoki Prize (直木賞候補). Serialized in <em>Shōsetsu Shinchō</em> (『小説新潮』) from September 2010 to June 2011 under the title "Yume wo Mita" (『夢をみた』, "I Dreamed").
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="author-bio">
+  <div class="section-label">Author</div>
+  <h2>原田マハ &mdash; Harada Maha (b. 1962)</h2>
+
+  <div class="author-header">
+    <div class="author-avatar">原</div>
+    <div class="author-name-block">
+      <h3>原田マハ / Harada Maha</h3>
+      <p class="author-name-romaji">The curator-novelist who turned art history into page-turners &middot; born in Kodaira, Tokyo &middot; raised in Okayama</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p style="margin-bottom: var(--space-md);">Harada Maha was born on July 14, 1962, in Kodaira, Tokyo, and raised from age 6 through high school in Okayama City. Her pen name derives from the Goya painting titles "Maja" (『着衣のマハ』/『裸のマハ』), and her elder brother is the writer Harada Munenori (原田宗典). She graduated from Kwansei Gakuin University's Faculty of Letters (Japanese Literature) in 1985, then from Waseda University's Second Faculty of Letters (Art History) in 1996 — a dual education in literary craft and visual culture that would define her entire career. Before becoming a novelist, she worked at Itochu Corporation (art consulting), the Mori Art Museum preparatory office, and the Museum of Modern Art (MoMA) in New York for nine years, leaving in 2002 to work as a freelance curator and culture writer.</p>
+    <p style="margin-bottom: var(--space-md);">Harada made her debut in 2006 with <em>Kafū wo Machiwabite</em> (『カフーを待ちわびて』, "Waiting for Kafū"), which won the 1st Japan Love Story Award. In 2012, she received the 25th Yamamoto Shūgorō Prize for <em>Rakuen no Kanvasu</em> (『楽園のカンヴァス』, "The Canvas of Paradise"), and in 2017 the 36th Shintarō Rintarō Literary Prize for <em>Rīchi-sensei</em> (『リーチ先生』, "Mr. Reach"). In 2024, she won the 52nd Kyoka Izumi Prize for Literature for <em>Itajō ni Saku</em> (『板上に咲く』, "Blooming on the Board"). Her works have sold over 8.5 million copies cumulatively.</p>
+    <p style="margin-bottom: var(--space-md);"><em>Rakuen no Kanvasu</em> (2012) was the novel that transformed Harada from a popular romance and travel writer into a major literary figure — the rare case of an "art novel" (<em>geijutsu shōsetsu</em> / 芸術小説) achieving both critical prestige (Yamamoto Shugoro Prize) and commercial success (top 3 in Hon'ya Taisho). Harada has described the period before this novel as a kind of "apprenticeship" (<em>shūgyō</em> / 修行): she had always wanted to write about art but felt she needed to master the craft of narrative first. In interviews, she has said that art was "the theme of her life" and that everything before <em>Rakuen no Kanvasu</em> was preparation. The novel draws directly on her experience as a curator at MoMA — the protagonist Tim Brown's workplace — and on her deep knowledge of Henri Rousseau, whose work she first encountered as a child visiting the Ohara Museum in her hometown of Okayama. The novel's Japanese title uses <em>kanvasu</em> (カンヴァス) rather than the Sino-Japanese <em>emo</em> (画布), and this choice reflects Harada's comfort in the international art world: she is a writer who moves easily between Japanese literary tradition and Western art history, between the <em>onsen</em> towns of her travel novels and the auction houses of her art mysteries.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="historical-context">
+  <div class="section-label">History</div>
+  <h2>Henri Rousseau, Picasso, and the Authentication of Dreams</h2>
+
+  <div class="card">
+    <h3>Henri Rousseau (1844–1910): The Customs Officer Who Painted Paradise</h3>
+    <p>Henri Rousseau (アンリ・ルソー, <em>Anri Rusō</em>) is one of art history's most beloved outsiders: a self-taught painter who worked as a customs officer (<em>douanier</em> / 税関吏, hence his nickname "Le Douanier Rousseau" / 税関吏ルソー) until his retirement at 49, and who began painting seriously in his forties without any formal training. His style — flat, detailed, brightly colored, with a naive perspective that refused the conventions of academic painting — was ridiculed by the establishment during his lifetime and celebrated by the avant-garde. Rousseau's subjects were exotic jungles (he never left France; his "jungle" came from the Jardin des Plantes botanical garden in Paris, picture books, and imagination), portraits with staring eyes, and dreamlike landscapes where lions and gypsies and reclining nudes coexisted in impossible harmony. "The Dream" (<em>Le Rêve</em> / 夢, 1910), his final masterpiece, depicts a reclining nude on a sofa in the middle of a jungle, surrounded by tropical plants and animals, with a black musician playing a flute in the moonlight — an image of the unconscious as paradise that has become one of the most recognizable paintings in modern art. It hangs in the Museum of Modern Art (MoMA) in New York, where the novel's protagonist Tim Brown works as a curator. Rousseau's significance for the novel is both biographical and philosophical: he was a painter who created paradise without ever having seen it, who was mocked as a "Sunday painter" (<em>nichiyō gaka</em> / 日曜画家) by those who could not see the genius in his naivety, and who was eventually recognized as a pioneer of modernism by the very avant-garde that had initially treated him as a joke. His life embodies the novel's central question: who has the authority to say what is "real" art, and what happens when the conventional criteria fail to recognize genius?</p>
+  </div>
+
+  <div class="card">
+    <h3>Picasso and the Banquet: How the Avant-Garde Discovered Rousseau</h3>
+    <p>The novel's historical narrative centers on a real event: Pablo Picasso's discovery of a Rousseau portrait in a junk shop, his purchase of it for 5 francs, and the famous banquet he held in Rousseau's honor in 1908 at the Bateau-Lavoir (洗濯船, <em>Sentakusen</em> — literally "laundry boat," the nickname for the squalid Montmartre building where Picasso and other artists lived and worked). This banquet — half sincere homage, half avant-garde prank — has become one of the legendary events of modern art history, and Harada uses it as the seed from which her fictional mystery grows. In the novel, the historical relationship between Rousseau and Picasso becomes the key to understanding a painting that should not exist: a work so close to "The Dream" that it seems to be either a forgery or a lost original, and whose authentication requires reconstructing not merely the physical facts of its creation but the emotional and artistic relationship between these two men. The novel's insight is that authentication is never merely technical: to determine whether a painting is "by Rousseau" requires understanding what "by Rousseau" meant in the context of early 20th-century Paris, where the boundaries between influence, collaboration, homage, and forgery were far less clear than museum labels suggest. Picasso, who painted in Rousseau's "style" as both parody and tribute, complicates any simple notion of artistic originality — and the novel uses this complication to create a mystery that cannot be solved by science alone (X-rays, pigment analysis, canvas dating) but requires the humanistic skills of interpretation, empathy, and imagination.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Ohara Museum: Japan's First Temple of Western Art</h3>
+    <p>The Ohara Museum of Art (大原美術館, <em>Ōhara Bijutsukan</em>) in Kurashiki, Okayama Prefecture, is Japan's first museum dedicated to Western art, founded in 1930 by Ohara Magosaburo (大原孫三郎), a Kurashiki industrialist and philanthropist. The museum's collection — assembled with the guidance of the painter Kojima Torajiro (児島虎次郎), who studied in Europe — includes works by El Greco, Monet, Gauguin, Matisse, and, crucially for the novel, Picasso's "Birdcage" (『鳥籠』, 1925). In the novel's present-day timeline (set in 2000), the protagonist Hayakawa Orie works as a museum attendant (<em>kanshiin</em> / 監視員 — literally "surveillance person," the staff member who watches over the galleries) at the Ohara Museum, having retreated from a brilliant academic career in Paris to raise her daughter in her provincial hometown. The museum's presence in the novel is not merely scenic: it embodies the Japanese relationship to Western art — the passion, the distance, the longing, and the surprising intimacy. For Harada, who grew up in Okayama and visited the Ohara Museum as a child, the museum represents the place where a Japanese person can encounter Western masterpieces without traveling to Paris or New York — and where the question of "authenticity" takes on a particular poignancy. When a Japanese museum attendant in Okayama looks at a Picasso, she is looking across a vast cultural distance; but she is also looking at something that has become, through decades of care and contemplation, part of her own cultural landscape. The novel's authentication mystery thus raises, in its deepest register, a question about cultural ownership: who does Rousseau belong to? The French state? The museum that bought the painting? The scholars who study him? Or the child in Okayama who stands before "Birdcage" and feels, for the first time, that she has seen something that explains her own life?</p>
+  </div>
+
+  <div class="card">
+    <h3>Art Authentication: The Science and Poetry of Determining What's Real</h3>
+    <p>The novel's plot engine — the authentication of a painting whose provenance is unclear — sits at the intersection of science and intuition, commerce and connoisseurship, that defines the modern art world. Art authentication (<em>shingan</em> / 真贋, literally "true / false judgment") is a discipline that combines technical analysis (pigment testing, canvas dating, X-ray fluorescence, infrared reflectography) with historical research (provenance tracing, archival documentation, stylistic comparison) and, ultimately, with the connoisseur's "eye" — the cultivated capacity to recognize a hand, a touch, a way of handling paint that distinguishes one artist from another. The novel dramatizes all three levels, but its deepest interest is in the third: the human judgment that cannot be reduced to data. Tim Brown, the MoMA curator, represents the institutional authority of the established museum world; Hayakawa Orie, the fallen scholar working as a museum attendant, represents the passionate, almost devotional knowledge that comes from loving one artist deeply rather than managing many. Their rivalry — seven days, a mysterious old book, a Swiss mansion, and a painting that could rewrite art history — is structured as a mystery, but it is really a debate about how we know what we know. The novel's answer, delivered with the precision of someone who has worked in museums, is that authentication requires all three capacities — technical, historical, and intuitive — and that the greatest authenticators are those who, like Orie, have sacrificed everything else for the purity of their attention. The "canvas of paradise" is thus also a metaphor for the authenticated work: the painting that has passed through doubt and emerged as genuine, carrying with it not merely market value but the credibility of human perception — the paradise, available to anyone who stands before it with open eyes, of knowing that what you see is really what the artist saw, really what the artist felt, really what the artist made.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="synopsis">
+  <div class="section-label">Structure</div>
+  <h2>Seven Days, Two Rivals, One Painting That Should Not Exist</h2>
+
+  <div class="card">
+    <h3>The Architecture: A Mystery in Five Movements</h3>
+    <p>The novel is structured in five chapters, each named after a painting or art-historical concept and each moving between multiple time periods: the "present" of 2000 (Kurashiki), the "recent past" of 1983 (New York, Basel), and the "historical" periods of 1906–1908 (Paris). This temporal layering creates a narrative equivalent of the X-ray image used in art authentication: the reader sees not merely the surface story but the underlying structure, the way that past events (Rousseau and Picasso in Paris) determine present possibilities (the authentication in Basel) and future consequences (Orie's life in Kurashiki). The five chapters are: "Pandora's Box" (パンドラの箱, 2000 Kurashiki), "Dream" (夢, 1983 New York), "Secret Treasure" (秘宝, 1983 Basel), "Sabbath" (安息日, 1983 Basel / 1906 Paris), and "Destroyer" (破壊者, 1983 Basel / 1908 Paris). Each chapter adds a layer to the mystery while deepening the reader's understanding of Rousseau, Picasso, and the two authenticators who must decide the painting's fate. The structure is thus not merely a container for the plot but a formal enactment of the novel's theme: that every painting contains multiple times — the time of its making, the time of its viewing, the time of its authentication — and that to understand a work of art is to hold these times in relation without collapsing them into a single "now."</p>
+  </div>
+
+  <div class="card">
+    <h3>Tim Brown: The Curator of Certainty</h3>
+    <p>Tim Brown (ティム・ブラウン) is a curator at the Museum of Modern Art (MoMA) in New York — the institutional center of the modern art world, the place where "The Dream" hangs, the temple of canonical certainty. He is, by profession, a man who deals in authenticated facts: this painting is by this artist, made in this year, acquired by this museum, valued at this amount. His invitation to the Swiss mansion — to authenticate a painting that resembles "The Dream" so closely that it seems to be either a lost original or an inexplicable forgery — disrupts this certainty. The seven-day deadline, the mysterious old book that serves as the only clue, and the presence of a rival authenticator turn what should be a professional task into an existential trial. Tim's journey through the novel is a journey from institutional confidence to personal doubt: the doubt that arises when technical analysis fails, when historical records are silent, and when the only remaining criterion is the quality of one's own perception. His rivalry with Orie is charged not merely by professional competition but by something more vulnerable — the sense that she sees something he cannot, that her fall from academic grace has given her a kind of vision that his institutional success has cost him. The novel's romantic subplot — Tim's growing awareness that Orie's presence affects him physically and emotionally — is handled with the restraint that characterizes all of Harada's writing about attraction: it is never allowed to overwhelm the intellectual drama, but it provides the human warmth that makes the art-historical debate matter.</p>
+  </div>
+
+  <div class="card">
+    <h3>Hayakawa Orie: The Scholar Who Chose Her Daughter Over Paris</h3>
+    <p>Hayakawa Orie (早川織絵, <em>Hayakawa Orie</em>) — the surname <em>Hayakawa</em> (早川, "early river") suggesting someone who arrived before her time, and the given name <em>Orie</em> (織絵, "woven picture" — a name that makes her, before she has done anything, a person who weaves images) — is one of the most compelling female protagonists in contemporary Japanese fiction. In her twenties, she was a brilliant art history student at the Sorbonne in Paris, completing her doctorate at 26 with a dissertation on Rousseau that promised to remake the field. She was, by every institutional measure, on track to become one of the great Rousseau scholars of her generation. Then she became pregnant, returned to Japan, and took a job as a museum attendant (<em>kanshiin</em> / 監視員) at the Ohara Museum in Kurashiki — not a curator (<em>kyuratorā</em> / キュレーター), not a researcher (<em>kenkyūsha</em> / 研究者), but an attendant, the person who stands in the gallery and makes sure no one touches the paintings. The novel does not treat this as a tragedy; it treats it as a choice — a choice that Orie has made, with full awareness of what she has given up, because her daughter matters more than her career. But the novel also shows what this choice has cost: the isolation from the international scholarly community, the diminishment of her ambitions, the gradual acceptance of a life in which she is "only" a museum attendant in a provincial city. The Swiss authentication is thus not merely a professional opportunity but a moment of reckoning: a chance to discover whether the Orie who wrote the brilliant dissertation still exists beneath the Orie who checks tickets and says "please don't touch the painting." Her journey through the novel is the novel's emotional core: the rediscovery of one's own capacity for greatness, not in spite of motherhood but through it — the recognition that the attentiveness required to raise a child is the same attentiveness required to authenticate a painting, and that neither activity is diminished by the other.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Riddle: What Is "Yume wo Mita"?</h3>
+    <p>The painting at the center of the mystery — the work that resembles Rousseau's "The Dream" so closely that it seems to be either a lost twin or an inexplicable copy — is called "Yume wo Mita" (『夢をみた』, "I Dreamed" / "I Saw a Dream"). This title, with its subtle difference from "The Dream" (<em>Le Rêve</em> / 夢, "The Dream" as noun), is the first clue: "The Dream" is a place, a state, a noun; "Yume wo Mita" is an experience, a verb phrase, a report from someone who has been somewhere and returned. The novel's task is to determine whether this painting is a forgery (<em>gansaku</em> / 贋作), a study (<em>shūzō</em> / 習作), a copy (<em>mohon</em> / 模本), or something else entirely — perhaps a work by Rousseau that predates "The Dream," perhaps a work by someone close to him, perhaps a painting that contains the secret of his relationship with Picasso. The seven-day deadline creates the novel's ticking clock, but the true suspense comes from the gradual revelation that authentication is not merely about determining who painted what but about understanding why — the motive, the passion, the human need that would drive someone to create a painting so close to a masterpiece that its very existence seems impossible. The answer, when it comes, rewrites not merely the provenance of one painting but the reader's understanding of artistic genius, collaboration, and the ways that paradise can be shared across the boundaries of time, nation, and reputation.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="passages">
+  <div class="section-label">Text</div>
+  <h2>Key Passages</h2>
+  <p class="lead">These passages contain the novel's most precise sentences — the moments when art history, human desire, and the grammar of looking converge to create what Harada's readers call "the feeling of standing before a painting that changes everything."</p>
+
+  <div class="passage">
+    <span class="passage-number">01</span>
+    <div class="passage-label">"Pandora's Box Opens in Kurashiki"</div>
+    <div class="passage-jp">
+      パンドラの箱は、人が開けるものではない。人が開けようとするとき、すでに中身は空っぽになっている。箱を開けるのは、時間だけだ。
+    </div>
+    <div class="passage-romaji">
+      "Pandora no hako wa, hito ga akeru mono de wa nai. Hito ga akeyou to suru toki, sudeni nakami wa karappo ni natte iru. Hako wo akeru no wa, jikan dake da."
+    </div>
+    <div class="passage-en">
+      "Pandora's box is not something that humans open. By the time a human tries to open it, the contents are already empty. Only time can open the box."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the novel's philosophical opening, establishing the theme of temporal inevitability that structures the entire mystery — is a masterpiece of negative definition, and its grammar creates a theory of revelation that applies equally to Pandora's myth and to the authentication of a painting. <em>Pandora no hako wa</em> (パンドラの箱は, "as for Pandora's box [topic]") introduces the subject with the topic marker <em>wa</em> (は), creating a categorical statement about the nature of the box — not "a box" or "this box" but "Pandora's box" as a type, a mythological category. <em>Hito ga akeru mono de wa nai</em> (人が開けるものではない, "is not a thing that humans open") uses the nominalizer <em>mono</em> (もの, "thing / entity") with the negative copular <em>de wa nai</em> (ではない) to create a strong prohibition disguised as a definition: it is not that humans "should not" open the box (that would be <em>akeru beki de wa nai</em> / 開けるべきではない) but that the box "is not the kind of thing" that humans open — a categorical statement about ontology rather than morality. <em>Hito ga akeyou to suru toki</em> (人が開けようとするとき, "when a human tries to open it") uses the conative form <em>akeyou</em> (開けよう, "try to open / attempt to open") followed by <em>to suru</em> (とする, "to try to do"), creating a doubled attempt — the will to open (<em>akeyou</em>) and the act of trying (<em>to suru</em>) — that emphasizes the futility of human effort against the box's true nature. <em>Sudeni nakami wa karappo ni natte iru</em> (すでに身は空っぽになっている, "already the contents have become empty") uses the adverb <em>sudeni</em> (すでに, "already") with the resultative <em>natte iru</em> (なっている, "have become / are in a state of being") to create a temporal paradox: by the time the attempt is made, the result has already occurred. The grammar thus enacts the very phenomenon it describes — the reader, attempting to "open" the novel by reading its first sentence, discovers that the revelation has already happened before the attempt. <em>Hako wo akeru no wa, jikan dake da</em> (箱を開けるのは、時間だけだ, "what opens the box is only time") uses the nominalized clause <em>hako wo akeru no</em> (箱を開けるの, "the act of opening the box / what opens the box") as the topic, with the restrictive <em>dake</em> (だけ, "only") emphasizing exclusivity: not humans, not effort, not will — only time. What is lost in English is the philosophical weight of <em>mono de wa nai</em> as a form of ontological negation. "Is not something that humans open" captures the grammar but loses the sense of category error — the implication that Pandora's box belongs to a different order of reality than human agency. The Japanese says, in effect, that the box is not in the same ontological category as human actions; English can only say that humans don't open it, which is weaker and more empirical than the original's metaphysical claim.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">02</span>
+    <div class="passage-label">"To Admit It Would Be to Lose"</div>
+    <div class="passage-jp">
+      織絵の笑顔を見るたび、胸が甘い疼痛を覚えることを、ティムはとっくに自覚していた。けれど、それを恋だと認めたくなかった。認めてしまえば、負けなのだ。
+    </div>
+    <div class="passage-romaji">
+      "Orie no egao wo miru tabi, mune ga amai tōtsū wo oboeru koto wo, Timu wa tokku ni jikaku shite ita. Keredo, sore wo koi da to mitometakunakatta. Mitomete shimaeba, make na no da."
+    </div>
+    <div class="passage-en">
+      "Each time he saw Orie's smile, Tim had long been aware that his chest felt a sweet pain. But he had not wanted to admit that it was love. To admit it would be to lose."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — one of the novel's most celebrated passages, capturing the precise moment when professional rivalry becomes something more dangerous — is a study in the grammar of emotional self-preservation. <em>Orie no egao wo miru tabi</em> (織絵の笑顔を見るたび, "each time [he] saw Orie's smile") uses the temporal quantifier <em>tabi</em> (たび, "each time / whenever") to create a repeated action that has become, through repetition, a condition of Tim's existence — not "when he saw her smile" (once) but "each time he saw her smile" (always). <em>Mune ga amai tōtsū wo oboeru</em> (胸が甘い疼痛を覚える, "[his] chest remembers / feels a sweet pain") uses the verb <em>oboeru</em> (覚える, "to remember / to feel / to experience") in its physical sense — the chest "remembers" the pain the way a body remembers, not the way a mind recalls. The adjective <em>amai</em> (甘い, "sweet") modifying <em>tōtsū</em> (疼痛, "pain / ache") creates the oxymoron that defines romantic attraction in Harada's world: a pain that is pleasurable, a sweetness that hurts. <em>Timu wa tokku ni jikaku shite ita</em> (ティムはとっくに自覚していた, "Tim had long been self-aware") uses the adverb <em>tokku ni</em> (とっくに, "long ago / already / for a long time") with the continuative past <em>jikaku shite ita</em> (自覚していた, "had been aware / had had self-consciousness of") to create a state of knowledge that predates the narrative present — Tim has known this for a long time, has been living with this knowledge. <em>Keredo, sore wo koi da to mitometakunakatta</em> (けれど、それを恋だと認めたくなかった, "but he had not wanted to admit that it was love") uses the quotative <em>to</em> (と) with the nominalizing <em>da</em> (だ) to define the feeling as "love" (<em>koi</em> / 恋) — a categorical assignment that Tim resists. The negative desire form <em>mitometakunakatta</em> (認めたくなかった, "did not want to admit") makes the resistance emotional rather than intellectual: it is not that he denies the evidence but that he does not want to make the admission. <em>Mitomete shimaeba, make na no da</em> (認めてしまえば、負けなのだ, "if he were to admit it, it would be defeat") uses the hypothetical conditional <em>ba</em> (ば) with the completive <em>shimaeba</em> (しまえば, "if [he] were to completely/end up") to create a sense of finality — admission is not merely acknowledgment but surrender, the end of a game whose stakes Tim has been pretending he does not understand. The copular <em>na no da</em> (なのだ) at the end provides explanatory force: this is not merely Tim's opinion but the structure of the situation, the rule of the game. What is lost in English is the full force of <em>make</em> (負け, "defeat / loss") in the context of Japanese masculine pride. "To lose" captures the competitive metaphor but loses the gendered specificity: for Tim, a successful male curator, to fall in love with his female rival is a loss of face, a defeat in the professional arena that has defined his identity. The Japanese <em>make</em> carries the full weight of this social meaning — it is not merely "losing at love" but "losing at being the person he has constructed himself to be."</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">03</span>
+    <div class="passage-label">"The Next Time You Come, I Will No Longer Be Who I Am Now"</div>
+    <div class="passage-jp">
+      「そうですね、またいつでも来られる。でも、次に来たときには、きっと、いまの私ではなくなっているはずです」
+    </div>
+    <div class="passage-romaji">
+      "Sō desu ne, mata itsu demo korareru. Demo, tsugi ni kita toki ni wa, kitto, ima no watashi de wa naku natte iru hazu desu."
+    </div>
+    <div class="passage-en">
+      "Yes, you can come again anytime. But when you come next time, I will surely no longer be the person I am now."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — Orie's response when Tim suggests he might return to Kurashiki — is the novel's most quietly devastating line, and its grammar creates a theory of personal change that applies equally to the authentication of paintings and the authentication of selves. <em>Sō desu ne</em> (そうですね, "yes / that's right / I suppose so") is the Japanese affirmative hedge — not a simple "yes" (<em>hai</em> / はい) but a thoughtful agreement that leaves room for reservation. Orie agrees that Tim can return, but the hedge signals that she does not fully believe in the possibility, or does not fully want it. <em>Mata itsu demo korareru</em> (またいつでも来られる, "you can come again anytime") uses the potential honorific <em>korareru</em> (来られる, "can come / are able to come") — the honorific form of <em>kuru</em> (来る, "to come") — which creates a subtle social distance: Orie is not saying "come back" to a friend but acknowledging the possibility of a return visit from someone who remains, in some sense, a stranger or a superior. <em>Demo</em> (でも, "but") introduces the contradiction with a softness that <em>shikashi</em> (しかし) would not have: this is a personal reservation, not a professional objection. <em>Tsugi ni kita toki ni wa</em> (次に来たときには, "when you come next time") uses the temporal clause with <em>toki</em> (時, "time") marked by <em>ni wa</em> (には) to create a specific future moment — not "someday" but "the next time," a definite occasion that Orie can already imagine. <em>Kitto</em> (きっと, "surely / certainly / no doubt") is an adverb of high probability, but in this context it carries a tone of resignation rather than confidence: Orie is certain not of a happy outcome but of an inevitable change. <em>Ima no watashi de wa naku natte iru hazu desu</em> (いまの私ではなくなっているはずです, "I will surely no longer be the present me") uses the negative continuative <em>de wa naku natte iru</em> (ではなくなっている, "am in the process of becoming not / am no longer") — a complex verbal construction that combines the negative copula <em>de wa nai</em> (ではない) with the inchoative <em>naru</em> (なる, "to become") in its continuative form <em>natte iru</em> (なっている). The grammar thus describes not a completed change but a process: Orie is not saying "I will be a different person" (<em>chigau hito ni naru</em> / 違う人になる) but "I will be in the state of having become not-my-present-self" — a more radical claim because it denies continuity rather than asserting difference. The epistemic <em>hazu desu</em> (はずです, "should / ought to / presumably") softens the prophecy into a reasonable inference: given the pace of her life, given the changes she feels happening within her, it is reasonable to expect that the next visit will find her transformed. What is lost in English is the full philosophical weight of <em>de wa naku natte iru</em>. "No longer be the person I am now" captures the meaning but loses the grammatical enactment of dissolution — the sense that the present self is not being replaced by a new self but is actively un-becoming, dissolving into non-selfhood. The Japanese grammar makes change sound like a kind of gentle erasure, a fading rather than a transformation, and this tonal quality — the sadness of a self that knows it cannot hold still — is what makes the sentence so moving.</p>
+    </div>
+  </div>
+
+  <div class="passage">
+    <span class="passage-number">04</span>
+    <div class="passage-label">"What Two Geniuses Enclosed in the Canvas"</div>
+    <div class="passage-jp">
+      ルソーとピカソ、二人の天才がカンヴァスに籠めた想いとは。
+    </div>
+    <div class="passage-romaji">
+      "Rusō to Pikaso, futari no tensai ga kanvasu ni kometa omoi to wa."
+    </div>
+    <div class="passage-en">
+      "What were the feelings that Rousseau and Picasso — two geniuses — enclosed within the canvas."
+    </div>
+    <div class="nuance-box" style="margin-top: var(--space-md);">
+      <h4>Nuance Note</h4>
+      <p style="font-size: var(--step--1); color: var(--ink-secondary);">This sentence — the tagline that appears on the book's cover and in its promotional copy — is the novel's central question, and its grammar creates a mystery that is simultaneously about art history and human intimacy. <em>Rusō to Pikaso</em> (ルソーとピカソ, "Rousseau and Picasso") names the two artists with the simple connective <em>to</em> (と, "and"), creating a pair whose relationship the novel will explore. The order — Rousseau first, Picasso second — is significant: chronologically, Rousseau was older (born 1844, died 1910); institutionally, Picasso is the greater name; but the novel's sympathy is with Rousseau, the outsider, the naive painter, the one who needed recognition rather than the one who gave it. <em>Futari no tensai</em> (二人の天才, "two geniuses") uses the counter <em>futari</em> (二人, "two people") to humanize the geniuses — they are not abstract "talents" (<em>tensai-sei</em> / 天才性) but two people, two bodies, two lives. The appositive structure — naming them, then describing them as "two geniuses" — creates a moment of definition that the novel will complicate: what does it mean to call both of these men "genius" when their relationship to the art world, to technique, to success was so different? <em>Ga kanvasu ni kometa omoi</em> (がカンヴァスに籠めた想い, "the feelings that [they] enclosed / shut up in the canvas") uses the verb <em>komeru</em> (籠める / 込める, "to enclose / to shut in / to put into / to concentrate"), a verb of containment that suggests the canvas is a vessel, a box, a space into which feelings have been poured and sealed. The particle <em>ni</em> (に) marks the canvas as the destination of the enclosing action, and the result — <em>omoi</em> (想い, "feelings / thoughts / love / devotion") — is left grammatically open, defined only by the question marker <em>to wa</em> (とは) at the sentence's end. <em>Omoi to wa</em> (想いとは, "what are the feelings / what is this <em>omoi</em>") is a rhetorical question that expects no simple answer: the novel's 400+ pages are the attempt to answer it. What is lost in English is the full resonance of <em>komeru</em>. "Enclosed" captures the containment but loses the sense of passionate concentration — <em>komeru</em> is the verb used for pouring one's heart into something, for concentrating all one's feeling into a single gesture. "What feelings did they put into the canvas" captures the passion but loses the sense of sealing, of trapping, of making something permanent by enclosing it. The Japanese <em>kometa omoi</em> suggests feelings that have been not merely expressed but preserved — locked in the canvas like a message in a bottle, waiting for the right reader to open it. And the use of <em>omoi</em> rather than <em>jōnetsu</em> (情熱, "passion") or <em>koi</em> (恋, "love") is crucial: <em>omoi</em> is softer, more comprehensive, more ambiguous — it can mean devotion, longing, memory, or the simple fact of having thought about someone. The novel's answer to its own question is that what Rousseau and Picasso "enclosed in the canvas" was not merely artistic ambition but something closer to friendship — the recognition of one outsider by another, the gift of seeing and being seen that makes art possible and makes life bearable.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="vocabulary">
+  <div class="section-label">Words</div>
+  <h2>Vocabulary</h2>
+  <p class="lead">Essential vocabulary from the language of art history, museum work, and the paradise that painters build one brushstroke at a time.</p>
+
+  <div class="card">
+    <h3>Art, Painting & the Language of the Canvas</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>カンヴァス</td><td>kanvasu</td><td class="pos">noun</td><td>canvas (painting surface)</td></tr>
+        <tr><td>画布</td><td>emo</td><td class="pos">noun</td><td>painting cloth (Sino-Japanese term)</td></tr>
+        <tr><td>絵画</td><td>kaiga</td><td class="pos">noun</td><td>painting; picture; artwork</td></tr>
+        <tr><td>油彩</td><td>yusai</td><td class="pos">noun</td><td>oil painting</td></tr>
+        <tr><td>名画</td><td>meiga</td><td class="pos">noun</td><td>masterpiece; famous painting</td></tr>
+        <tr><td>贋作</td><td>gansaku</td><td class="pos">noun</td><td>forgery; fake; counterfeit work</td></tr>
+        <tr><td>真贋</td><td>shingan</td><td class="pos">noun</td><td>authenticity; genuine or fake</td></tr>
+        <tr><td>真筆</td><td>shinbitsu</td><td class="pos">noun</td><td>genuine work (by the artist's own hand)</td></tr>
+        <tr><td>模写</td><td>mosha</td><td class="pos">noun</td><td>copy; reproduction; imitation</td></tr>
+        <tr><td>習作</td><td>shūsaku</td><td class="pos">noun</td><td>study; practice work</td></tr>
+        <tr><td>素描</td><td>sobyō</td><td class="pos">noun</td><td>sketch; drawing</td></tr>
+        <tr><td>構図</td><td>kōzu</td><td class="pos">noun</td><td>composition (of a picture)</td></tr>
+        <tr><td>筆致</td><td>hittochi</td><td class="pos">noun</td><td>brushwork; touch; handling of paint</td></tr>
+        <tr><td>色彩</td><td>shikisai</td><td class="pos">noun</td><td>color; coloring; hue</td></tr>
+        <tr><td>素朴派</td><td>soboku-ha</td><td class="pos">noun</td><td>naive art; primitive art (movement)</td></tr>
+        <tr><td>日曜画家</td><td>nichiyō gaka</td><td class="pos">noun</td><td>Sunday painter; amateur painter</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Museums, Scholarship & the Language of Art Worlds</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>美術館</td><td>bijutsukan</td><td class="pos">noun</td><td>art museum</td></tr>
+        <tr><td>キュレーター</td><td>kyuratorā</td><td class="pos">noun</td><td>curator</td></tr>
+        <tr><td>学芸員</td><td>gakugeiin</td><td class="pos">noun</td><td>museum curator (official Japanese title)</td></tr>
+        <tr><td>監視員</td><td>kanshiin</td><td class="pos">noun</td><td>gallery attendant; watchperson</td></tr>
+        <tr><td>所蔵</td><td>shozō</td><td class="pos">noun</td><td>collection (of a museum)</td></tr>
+        <tr><td>所蔵品</td><td>shozōhin</td><td class="pos">noun</td><td>collection item</td></tr>
+        <tr><td>鑑定</td><td>kantei</td><td class="pos">noun</td><td>appraisal; authentication; expert judgment</td></tr>
+        <tr><td>見極める</td><td>mikiwameru</td><td class="pos">verb</td><td>to ascertain; to determine; to see through to the truth</td></tr>
+        <tr><td>来歴</td><td>raireki</td><td class="pos">noun</td><td>provenance (history of ownership)</td></tr>
+        <tr><td>作品</td><td>sakuin</td><td class="pos">noun</td><td>work (of art)</td></tr>
+        <tr><td>代表作</td><td>daihyōsaku</td><td class="pos">noun</td><td>masterpiece; representative work</td></tr>
+        <tr><td>晩年</td><td>ban'nen</td><td class="pos">noun</td><td>late years (of an artist's life)</td></tr>
+        <tr><td>研究者</td><td>kenkyūsha</td><td class="pos">noun</td><td>researcher; scholar</td></tr>
+        <tr><td>美術史</td><td>bijutsushi</td><td class="pos">noun</td><td>art history</td></tr>
+        <tr><td>コレクター</td><td>korekutā</td><td class="pos">noun</td><td>collector</td></tr>
+        <tr><td>蒐集</td><td>shūshū</td><td class="pos">noun</td><td>collecting; accumulation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Mystery, Rivalry & the Language of the Seven-Day Duel</h3>
+    <table class="vocab-table">
+      <thead>
+        <tr><th>Japanese</th><th>Reading</th><th>POS</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>謎</td><td>nazo</td><td class="pos">noun</td><td>mystery; riddle; enigma</td></tr>
+        <tr><td>謎解き</td><td>nazotoki</td><td class="pos">noun</td><td>solving a riddle; unraveling a mystery</td></tr>
+        <tr><td>手がかり</td><td>tegakari</td><td class="pos">noun</td><td>clue; hint; lead</td></tr>
+        <tr><td>期限</td><td>kigen</td><td class="pos">noun</td><td>deadline; time limit</td></tr>
+        <tr><td>対決</td><td>taiketsu</td><td class="pos">noun</td><td>confrontation; showdown; duel</td></tr>
+        <tr><td>ライバル</td><td>raibaru</td><td class="pos">noun</td><td>rival</td></tr>
+        <tr><td>駆け引き</td><td>kakehiki</td><td class="pos">noun</td><td>tactics; maneuvering; give-and-take</td></tr>
+        <tr><td>秘宝</td><td>hihō</td><td class="pos">noun</td><td>secret treasure; hidden gem</td></tr>
+        <tr><td>幻の</td><td>maboroshi no</td><td class="pos">adj</td><td>phantom; legendary; fabled</td></tr>
+        <tr><td>隠された</td><td>kakusareta</td><td class="pos">adj</td><td>hidden; concealed</td></tr>
+        <tr><td>自覚</td><td>jikaku</td><td class="pos">noun</td><td>self-awareness; consciousness</td></tr>
+        <tr><td>認める</td><td>mitomeru</td><td class="pos">verb</td><td>to admit; to acknowledge; to recognize</td></tr>
+        <tr><td>負け</td><td>make</td><td class="pos">noun</td><td>defeat; loss</td></tr>
+        <tr><td>勝負</td><td>shōbu</td><td class="pos">noun</td><td>victory or defeat; match; contest</td></tr>
+        <tr><td>想い</td><td>omoi</td><td class="pos">noun</td><td>feelings; thoughts; devotion; love</td></tr>
+        <tr><td>籠める</td><td>komeru</td><td class="pos">verb</td><td>to enclose; to concentrate; to put into</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="nuance">
+  <div class="section-label">Translation</div>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="lead">Harada writes with the precision of a curator labeling a masterpiece and the sensuality of someone who has smelled the linseed oil in a painter's studio — and her prose raises urgent questions about how to carry the vocabulary of art across linguistic borders.</p>
+
+  <div class="card">
+    <h3>1. <em>Shingan</em> (真贋): The Judgment of Real and Fake</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>真贋</strong> — the judgment of true versus false; the authentication; the expert determination of whether a work is by the hand it claims to be</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"authentication" / "genuineness" / "authenticity"</strong> — each captures one register</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The term <em>shingan</em> (真贋) is a compound of <em>shin</em> (真, "true / genuine / real") and <em>gan</em> (贋, "false / fake / counterfeit"), and its compactness creates a binary that English "authentication" cannot reproduce. "Authentication" is a process; <em>shingan</em> is a judgment, a verdict, a single act of discrimination that divides the world of art into two categories with no middle ground. The character <em>gan</em> (贋) is specific and severe: it means not merely "inauthentic" but "counterfeit," with the implication of intentional deception. When Japanese art historians speak of <em>shingan</em>, they are invoking a tradition of connoisseurship that goes back to Chinese painting criticism, where the ability to distinguish true from false was considered a spiritual discipline as much as a technical skill. The loss in English is thus not merely lexical but cultural: "authentication" sounds like a professional service, while <em>shingan</em> sounds like a moral trial. The novel's entire plot depends on this moral weight — the sense that determining whether "Yume wo Mita" is <em>shin</em> (真) or <em>gan</em> (贋) is not merely a professional task but a judgment on the nature of artistic truth itself. Without <em>shingan</em>'s built-in severity, the stakes of the novel's mystery feel lower than they are.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>2. <em>Kanshiin</em> (監視員): The Invisible Guardian of Art</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>監視員</strong> — surveillance person; gallery attendant; the one who watches; the invisible guardian</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"gallery attendant" / "museum guard" / "watchperson"</strong> — each captures one aspect</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The term <em>kanshiin</em> (監視員) combines <em>kanshi</em> (監視, "surveillance / monitoring / watching") with the suffix <em>in</em> (員, "person / member"), creating a job title that emphasizes the act of watching rather than the institutional role. "Gallery attendant" (the standard British term) emphasizes service; "museum guard" (the standard American term) emphasizes security; "watchperson" is gender-neutral but vague. None of these captures the poetic loneliness of <em>kanshiin</em> — the person who stands in the gallery for hours, watching people watch art, seeing the same paintings every day, developing a relationship with them that no curator, who moves from collection to collection, can match. In the novel, Orie's position as <em>kanshiin</em> is crucial to her character: she has not "failed" at being a scholar; she has chosen a different relationship to art, one of sustained, daily, bodily presence. The English terms all make her sound like a subordinate; the Japanese <em>kanshiin</em> makes her sound like a monk — someone who has taken a vow of watchfulness. The loss matters because the novel's deepest argument is that the <em>kanshiin</em> sees more than the curator, that the person who stands before the painting every day develops an intimacy that the expert who flies in for a day cannot achieve. Without <em>kanshiin</em>'s dignity of watchfulness, Orie's choice to remain in Kurashible seems like resignation rather than vocation.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. <em>Omoi</em> (想い): The Feeling That Has No English Name</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>想い</strong> — feelings; thoughts; devotion; the concentrated emotional energy one directs toward someone or something</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"feelings" / "thoughts" / "devotion" / "love"</strong> — each captures one facet</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The word <em>omoi</em> (想い) is central to the novel's emotional vocabulary and almost impossible to translate with a single English word. It derives from <em>omou</em> (想う, "to think of / to muse on / to hold in one's thoughts / to feel toward"), a verb that combines cognitive and emotional activity in a way that English "think" and "feel" do not. <em>Omoi</em> can mean: the thoughts you have when you remember someone; the feelings that accumulate around a long-held devotion; the emotional energy that a painter puts into a work; the unspoken affection between two people who have not yet named their bond. In the novel's tagline — <em>futari no tensai ga kanvasu ni kometa omoi to wa</em> (二人の天才がカンヴァスに籠めた想いとは, "what were the feelings that two geniuses enclosed in the canvas") — <em>omoi</em> names something broader than "love" (<em>koi</em> / 恋 or <em>ai</em> / 愛), more passionate than "thoughts" (<em>shikō</em> / 思考), more personal than "devotion" (<em>seishin</em> / 精神). It is the entire affective and cognitive content of a relationship, compressed into pigment and sealed behind varnish. English "feelings" is too vague; "love" is too specific; "devotion" is too religious; "thoughts" is too intellectual. The Japanese <em>omoi</em> preserves all of these possibilities while committing to none — and this very ambiguity is what makes it the right word for a novel about a relationship (Rousseau and Picasso's) that cannot be named with any of the available categories. The loss in translation is the loss of this productive vagueness: the English reader receives a specific noun where the Japanese reader receives a field of possibilities, and the novel's mystery is diminished by every step toward specificity.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>4. <em>Nichiyō Gaka</em> (日曜画家): The Amateur as Insult and Honor</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>日曜画家</strong> — Sunday painter; amateur painter; the artist who paints on days off, not for a living</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"Sunday painter" / "amateur painter" / "hobby painter"</strong> — accurate but tonally flat</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The term <em>nichiyō gaka</em> (日曜画家, "Sunday painter") was the dismissive label applied to Henri Rousseau by the Parisian art establishment — the implication being that he was not a "real" painter because he had a day job (as a customs officer) and only painted on his days off. In English, "Sunday painter" carries some of this dismissiveness but also a certain charm — the image of the bourgeois amateur dabbing at a landscape between church and tea. In Japanese, <em>nichiy gaka</em> carries a sharper edge: the <em>nichiyō</em> (日曜, "Sunday") emphasizes the temporal limitation (only one day a week), while <em>gaka</em> (画家, "painter") claims the professional title that the modifier undermines. The term is thus an oxymoron — a professional amateur — and its application to Rousseau was intended to exclude him from the category of serious artists. The novel's reclamation of this term — its demonstration that Rousseau's "Sunday" painting produced works that hang in MoMA while the "full-time" painters of his era have been forgotten — is one of its quiet political arguments. The loss in English is the specific historical weight of <em>nichiyō gaka</em> as a term of exclusion in both French and Japanese art discourse. "Amateur" captures the non-professional status but loses the temporal specificity; "Sunday painter" captures the charm but loses the sting. The Japanese reader hears, in <em>nichiyō gaka</em>, the full history of institutional gatekeeping in the art world; the English reader hears a quaint hobby.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>5. <em>Kometa</em> (籠めた): The Grammar of Sealed Emotion</h3>
+    <div class="lost-in-translation">
+      <div class="lost-item">
+        <span class="lost-marker">JP</span>
+        <span><strong>籠めた</strong> — enclosed; shut in; concentrated; poured into a vessel and sealed</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">EN</span>
+        <span><strong>"enclosed" / "put into" / "invested" / "poured"</strong> — each captures one physical metaphor</span>
+      </div>
+      <div class="lost-item">
+        <span class="lost-marker">Loss</span>
+        <span>The verb <em>komeru</em> (籠める / 込める) — past tense <em>kometa</em> (籠めた / 込めた) — is, as discussed in the passage analysis, one of Japanese's most resonant verbs of emotional concentration. Its core image is of putting something into a container and sealing it: <em>tesori wo hako ni komeru</em> (宝石を箱に籠める, "to lock jewels in a box"), <em>kotoba ni omoi wo komeru</em> (言葉に想いを籠める, "to put one's feelings into words"). The verb implies not merely expression but preservation — the act of making something permanent by enclosing it. In the context of painting, <em>kanvasu ni omoi wo komeru</em> (カンヴァスに想いを籠める) suggests feelings that have been not merely painted but preserved — sealed in the layers of pigment and varnish like a message in a bottle, waiting for the right viewer to open them. English "put into" captures the directionality but loses the sense of sealing; "invested" captures the emotional commitment but loses the physicality; "poured" captures the liquidity of emotion but loses the containment. The Japanese <em>kometa</em> preserves all three: the direction (into the canvas), the emotion (concentrated feeling), and the permanence (sealed, preserved, waiting). The loss matters because the novel's entire theory of art is contained in this verb: that a painting is a sealed message from one consciousness to another, that the artist "encloses" something in the canvas that only the right viewer can release, and that authentication is the act of recognizing that something has been sealed there — a recognition that requires not merely knowledge but love. Without <em>kometa</em>, the novel's paintings become merely decorated surfaces rather than sealed vessels of human feeling.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="grammar">
+  <div class="section-label">Grammar</div>
+  <h2>Grammar Points</h2>
+  <p class="lead">Grammatical patterns from the language of art authentication, emotional self-defense, and the paradise that time alone can open.</p>
+
+  <div class="grammar-grid">
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ものではない（存在・本質の否定）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...mono de wa nai</em>: "is not the kind of thing that... / is not something that..." — nominalized negative copula creating ontological rather than moral negation</p>
+      <div class="grammar-example">パンドラの箱は、人が開けるものではない</div>
+      <p class="grammar-example-en">"Pandora's box is not something that humans open" — The grammar of categorical exclusion.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ようとする（試行・企て）</span>
+        <span class="grammar-level">N4</span>
+      </div>
+      <p class="grammar-meaning"><em>...yō to suru</em>: "to try to... / to attempt to..." — conative form indicating effort or attempt toward an action</p>
+      <div class="grammar-example">人が開けようとするとき、すでに中身は空っぽになっている</div>
+      <p class="grammar-example-en">"By the time a person tries to open it, the contents are already empty" — The grammar of futile attempt.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たび（反復・条件）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...tabi</em>: "each time... / whenever..." — temporal quantifier creating habitual or conditional repetition</p>
+      <div class="grammar-example">織絵の笑顔を見るたび、胸が甘い疼痛を覚える</div>
+      <p class="grammar-example-en">"Each time he sees Orie's smile, his chest remembers a sweet pain" — The grammar of accumulating sensation.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜たくない（願望の否定）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...takunai</em>: "don't want to..." — negative desire form expressing emotional resistance to an action</p>
+      <div class="grammar-example">それを恋だと認めたくなかった</div>
+      <p class="grammar-example-en">"He didn't want to admit that it was love" — The grammar of self-protective denial.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜てしまえば（仮定完了）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...te shimaeba</em>: "if [one] were to completely... / if [one] ends up...ing" — hypothetical completive suggesting irreversible finality</p>
+      <div class="grammar-example">認めてしまえば、負けなのだ</div>
+      <p class="grammar-example-en">"If he admits it, it will be defeat" — The grammar of irreversible concession.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜ではなくなっている（継続的変化の否定）</span>
+        <span class="grammar-level">N2</span>
+      </div>
+      <p class="grammar-meaning"><em>...de wa naku natte iru</em>: "is in the process of becoming not... / is no longer..." — negative continuative describing ongoing dissolution of a state</p>
+      <div class="grammar-example">いまの私ではなくなっているはずです</div>
+      <p class="grammar-example-en">"I will surely no longer be the person I am now" — The grammar of gentle self-erasure.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜とは（定義・驚き・問い）</span>
+        <span class="grammar-level">N3</span>
+      </div>
+      <p class="grammar-meaning"><em>...to wa</em>: "what is... / the fact that..." — quotative particle used for definitions, exclamations, or rhetorical questions</p>
+      <div class="grammar-example">二人の天才がカンヴァスに籠めた想いとは</div>
+      <p class="grammar-example-en">"What were the feelings that two geniuses enclosed in the canvas" — The grammar of the unanswerable question.</p>
+    </div>
+
+    <div class="grammar-item">
+      <div class="grammar-header">
+        <span class="grammar-pattern">〜はずだ（推量・当然）</span>
+        <span class="grammar-level">N5</span>
+      </div>
+      <p class="grammar-meaning"><em>...hazu da</em>: "should... / ought to... / presumably..." — epistemic modal expressing reasonable inference or expectation</p>
+      <div class="grammar-example">きっと、いまの私ではなくなっているはずです</div>
+      <p class="grammar-example-en">"Surely, I will presumably no longer be the person I am now" — The grammar of resigned prophecy.</p>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top: var(--space-lg);">
+    <strong>Study tip:</strong> The grammar of <em>Rakuen no Kanvasu</em> is the grammar of revelation delayed — each construction chosen to create the experience of approaching a truth that cannot be forced. The ontological negation (<em>mono de wa nai</em> / ものではない) establishes what the box is not; the conative (<em>yō to suru</em> / ようとする) enacts the futility of human effort; the temporal quantifier (<em>tabi</em> / たび) makes love into a cumulative condition; the negative desire (<em>takunai</em> / たくない) protects the self from vulnerability; the hypothetical completive (<em>te shimaeba</em> / てしまえば) makes admission into surrender; the negative continuative (<em>de wa naku natte iru</em> / ではなくなっている) describes change as gentle dissolution; the quotative definition (<em>to wa</em> / とは) poses the unanswerable; and the epistemic (<em>hazu da</em> / はずだ) turns prophecy into reasonable inference. Pay attention to how these constructions work together to create a prose that feels like standing before a painting in a quiet gallery — the eye moving across the surface, discovering depths gradually, and arriving, finally, at the recognition that paradise was there all along, waiting in the canvas.
+  </div>
+</section>
+
+<footer style="text-align: center; padding: var(--space-2xl) 0 var(--space-lg); color: var(--ink-faint); font-size: var(--step--1);">
+  <p>Lesson compiled from published sources, interviews, critical analysis, and textual scholarship.</p>
+  <p style="margin-top: var(--space-xs);">『楽園のカンヴァス』 &middot; 原田マハ 著 &middot; 新潮社 2012年1月20日刊（単行本） &middot; 新潮文庫 2014年6月27日刊 &middot; 302ページ（単行本）/ 440ページ（文庫） &middot; ISBN 978-4-10-331751-7（単本） &middot; ISBN 978-4-10-125961-1（文庫）</p>
+  <p style="margin-top: var(--space-xs);">仏語版：La toile du paradis（Philippe Picquier社 2018年刊）</p>
+  <p style="margin-top: var(--space-xs);">受賞：第25回山本周五郎賞（2012年） &middot; 第10回本屋大賞第3位（2013年） &middot; 雑誌『ダ・ヴィンチ』プラチナ本 OF THE YEAR 2012 &middot; 王様のブランチBOOKアワード2012大賞 &middot; 直木賞候補</p>
+  <p style="margin-top: var(--space-xs);">連載：『小説新潮』2010年9月号〜2011年6月号（表題「夢をみた」）</p>
+  <p style="margin-top: var(--space-xs);">著者：原田マハ（はらだまは・1962年7月14日生・東京都小平市出身・岡山市育ち・関西学院大学文学部日本文学科卒・早稲田大学第二文学部美術史科卒・2006年デビュー）</p>
+  <p style="margin-top: var(--space-xs);">主要登場人物：ティム・ブラウン（Tim Brown・MoMAキュレーター） &middot; 早川織絵（はやかわおりえ・元ソルボンヌ美術史研究者・現大原美術館監視員・シングルマザー） &middot; スイス大邸宅の謎のコレクター</p>
+  <p style="margin-top: var(--space-xs);">歴史的人物：アンリ・ルソー（1844–1910・税関吏ルソー・素朴派・「夢」1910年） &middot; パブロ・ピカソ（1881–1973・バトーラヴォワールでの1908年宴会）</p>
+  <p style="margin-top: var(--space-xs);">舞台：岡山県倉敷市（大原美術館） &middot; ニューヨーク（MoMA） &middot; スイス・バーゼル（バーゼル美術館・大邸宅） &middot; パリ（モンマルトル・1906–1908年）</p>
+  <p style="margin-top: var(--space-xs);">構成：5章からなる多重叙事（2000年倉敷・1983年ニューヨーク/バーゼル・1906–1908年パリ） &middot; 作中に24点の実在絵画が登場</p>
+  <p style="margin-top: var(--space-xs);">テーマ：真贋鑑定の技術と直感、美術史の権威と個人の愛、ソーとピカソの知られざる接点、大原美術館という日本の西洋美術受容の象徴、シングルマザーとしての研究者の再起、カンヴァスという物質への超越、楽園を描くことの意味</p>
+  <p style="margin-top: var(--space-xs);">関連作品：『ジヴェルニーの食卓』（モネ） &middot; 『暗幕のゲルニカ』（ピカソ） &middot; 『リボルバー』（ゴッホとゴーギャン） &middot; 『デトロイト美術館の奇跡』 &middot; 『カフーを待ちわびて』 &middot; 『本日は、お日柄もよく』 &middot; 『さいはての彼女』 &middot; 『リーチ先生』 &middot; 『板上に咲く』</p>
+</footer>
+
+</div>
+</body>
+</html>

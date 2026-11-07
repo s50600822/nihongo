@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Travelling Cat Chronicles  A Japanese Literature Lesson</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+JP:wght@300;400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* Energy-Saving Dark Theme: optimized for MacBook Pro displays.
+   Near-black backgrounds minimize backlight power draw on mini-LED
+   and OLED panels. Muted warm tones reduce eye strain in low-light
+   environments while preserving readability. */
+:root {
+  --bg: #0a0a0a;
+  --surface: #141210;
+  --elevated: #1c1916;
+  --ink: #d4cfc7;
+  --muted: #9a948a;
+  --faint: #6a655c;
+  --accent: #b8a894;
+  --accent-weak: rgba(184, 168, 148, 0.08);
+  --line: rgba(212, 207, 199, 0.10);
+  --line-medium: rgba(212, 207, 199, 0.18);
+  --cat: #a09078;
+  --cat-weak: rgba(160, 144, 120, 0.10);
+  --shadow: 0 1px 4px rgba(0,0,0,0.35);
+  --radius: 6px;
+  --radius-lg: 12px;
+  --step--1: clamp(0.82rem, 0.80rem + 0.15vw, 0.92rem);
+  --step-0: clamp(0.98rem, 0.95rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.15rem, 1.08rem + 0.4vw, 1.4rem);
+  --step-2: clamp(1.55rem, 1.35rem + 1vw, 2.1rem);
+  --step-3: clamp(2.1rem, 1.7rem + 2vw, 3.2rem);
+  --step-4: clamp(2.9rem, 2.3rem + 3vw, 4.5rem);
+  --space: clamp(1.1rem, 1rem + 0.6vw, 1.8rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Source Sans 3", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: var(--step-0);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(184, 168, 148, 0.25);
+  color: var(--ink);
+}
+
+.jp {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  line-height: 1.9;
+}
+
+/* Header */
+header {
+  background: linear-gradient(160deg, #2a2420 0%, #0f0d0b 100%);
+  color: var(--ink);
+  padding: calc(var(--space) * 3.5) var(--space);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(160, 144, 120, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 20% 30%, rgba(184, 168, 148, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+header h1 {
+  font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+  font-size: var(--step-4);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  position: relative;
+}
+
+header .subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: var(--step-1);
+  color: rgba(180, 172, 160, 0.85);
+  margin-top: 1rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  line-height: 1.5;
+}
+
+header .meta {
+  font-size: var(--step--1);
+  color: rgba(160, 152, 140, 0.65);
+  margin-top: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  position: relative;
+}
+
+/* TOC */
+.toc {
+  max-width: 720px;
+  margin: calc(var(--space) * 2) auto;
+  padding: 0 var(--space);
+}
+
+.toc-inner {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: calc(var(--space) * 1.2);
+  box-shadow: var(--shadow);
+}
+
+.toc h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-2);
+  color: var(--accent);
+  margin-bottom: calc(var(--space) * 0.8);
+  margin-top: 0;
+}
+
+.toc ul {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.toc a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.35em 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.toc a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--line-medium);
+}
+
+.toc-num {
+  font-variant-numeric: tabular-nums;
+  color: var(--faint);
+  font-size: 0.85em;
+  min-width: 1.6em;
+}
+
+/* Main */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 1.5) var(--space) calc(var(--space) * 3);
+}
+
+section {
+  margin-bottom: calc(var(--space) * 3);
+}
+
+.section-label {
+  display: inline-block;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--cat);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: calc(var(--space) * 0.4);
+  border: 1px solid var(--line-medium);
+  padding: 0.2em 0.7em;
+  border-radius: 100px;
+}
+
+h2 {
+  font-family: "Cormorant Garamond", "Noto Serif JP", serif;
+  font-size: var(--step-3);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: var(--space);
+  line-height: 1.15;
+}
+
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-2);
+  font-weight: 600;
+  margin-top: calc(var(--space) * 1.6);
+  margin-bottom: calc(var(--space) * 0.5);
+  color: var(--ink);
+}
+
+h4 {
+  font-size: var(--step-0);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-top: calc(var(--space) * 1.2);
+  margin-bottom: calc(var(--space) * 0.4);
+}
+
+p {
+  margin-bottom: calc(var(--space) * 0.75);
+}
+
+.intro {
+  font-size: var(--step-1);
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: calc(var(--space) * 2);
+  font-family: "Cormorant Garamond", serif;
+}
+
+.disclaimer {
+  background: rgba(160, 144, 120, 0.06);
+  border: 1px solid rgba(160, 144, 120, 0.18);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 0.9);
+  margin-bottom: calc(var(--space) * 1.5);
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+/* Passages */
+.passage {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: calc(var(--space) * 1.3);
+  margin: calc(var(--space) * 1.2) 0;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.passage::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.passage.cat::before {
+  background: var(--cat);
+}
+
+.passage .jp-text {
+  font-size: var(--step-1);
+  margin-bottom: calc(var(--space) * 0.6);
+}
+
+.passage .romaji {
+  font-size: var(--step--1);
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: calc(var(--space) * 0.4);
+  line-height: 1.6;
+}
+
+.passage .translation {
+  font-family: "Cormorant Garamond", serif;
+  font-size: var(--step-1);
+  color: var(--muted);
+  font-style: italic;
+  border-top: 1px solid var(--line);
+  padding-top: calc(var(--space) * 0.5);
+  margin-top: calc(var(--space) * 0.5);
+  line-height: 1.55;
+}
+
+.source {
+  font-size: var(--step--1);
+  color: var(--faint);
+  text-align: right;
+  margin-top: 0.6rem;
+}
+
+/* Vocab tables */
+.vocab-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: calc(var(--space) * 0.8) 0;
+  font-size: var(--step--1);
+}
+
+.vocab-table th,
+.vocab-table td {
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.vocab-table th {
+  font-weight: 600;
+  color: #c4b8a4;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  background: #1c1916;
+}
+
+.vocab-table tr:hover td {
+  background: var(--elevated);
+}
+
+.vocab-table .word {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1.05rem;
+}
+
+.vocab-table .reading {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.vocab-table .usage {
+  font-size: 0.88em;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.vocab-table .usage .jp-ex {
+  font-family: "Noto Serif JP", serif;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.vocab-table .usage .en-ex {
+  font-style: italic;
+  font-size: 0.92em;
+}
+
+.vocab-table th:nth-child(1) { width: 18%; }
+.vocab-table th:nth-child(2) { width: 20%; }
+.vocab-table th:nth-child(3) { width: 25%; }
+.vocab-table th:nth-child(4) { width: 37%; }
+
+/* Nuance boxes */
+.nuance {
+  background: var(--accent-weak);
+  border-left: 3px solid var(--accent);
+  padding: calc(var(--space) * 0.9);
+  margin: calc(var(--space) * 0.9) 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.nuance.cat-box {
+  background: var(--cat-weak);
+  border-left-color: var(--cat);
+}
+
+.nuance h5 {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #c4b8a4;
+  margin-bottom: 0.5rem;
+}
+
+.nuance.cat-box h5 {
+  color: #b0a080;
+}
+
+.nuance p {
+  margin-bottom: 0.5rem;
+  font-size: var(--step--1);
+  line-height: 1.75;
+}
+
+.nuance p:last-child {
+  margin-bottom: 0;
+}
+
+/* Grammar */
+.grammar {
+  background: rgba(26, 26, 26, 0.03);
+  border-radius: var(--radius);
+  padding: calc(var(--space) * 0.7);
+  margin: calc(var(--space) * 0.6) 0;
+}
+
+.grammar h5 {
+  font-size: var(--step--1);
+  color: #c4b8a4;
+  margin-bottom: 0.3rem;
+}
+
+.grammar code {
+  background: #1c1916;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: "Source Sans 3", monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--line);
+}
+
+/* Highlights */
+.hl {
+  background: rgba(184, 168, 148, 0.18);
+  padding: 0 0.18rem;
+  border-radius: 2px;
+}
+
+.hl-cat {
+  background: rgba(160, 144, 120, 0.22);
+  padding: 0 0.18rem;
+  border-radius: 2px;
+}
+
+/* Divider */
+.divider {
+  text-align: center;
+  margin: calc(var(--space) * 2.5) 0;
+  color: var(--accent);
+  font-size: var(--step-2);
+  letter-spacing: 0.5em;
+  opacity: 0.25;
+}
+
+/* Lists */
+ul {
+  margin-left: 1.3rem;
+  margin-bottom: calc(var(--space) * 0.8);
+}
+
+li {
+  margin-bottom: 0.45rem;
+}
+
+/* Story label */
+.story-label {
+  display: inline-block;
+  background: var(--accent);
+  color: #0a0a0a;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+  margin-bottom: 0.6rem;
+}
+
+/* Footer */
+footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2) var(--space) calc(var(--space) * 3);
+  text-align: center;
+  color: var(--faint);
+  font-size: var(--step--1);
+  border-top: 1px solid var(--line);
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+/* Back to top */
+.back-to-top {
+  display: inline-block;
+  margin-top: calc(var(--space) * 1.2);
+  color: var(--cat);
+  text-decoration: none;
+  font-size: var(--step--1);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.back-to-top:hover {
+  border-bottom-color: #b0a080;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 { font-size: var(--step-3); }
+  header { padding: calc(var(--space) * 2.5) var(--space); }
+  .passage .jp-text { font-size: var(--step-0); }
+  .passage { padding: calc(var(--space) * 0.9); }
+  .toc-inner { padding: calc(var(--space) * 0.9); }
+}
+
+/* Print */
+@media print {
+  body { background: #fff; color: #000; }
+  header {
+    background: #2a2420 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .passage, .nuance, .grammar, .disclaimer, .toc-inner {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    box-shadow: none !important;
+  }
+  .toc { display: none; }
+  .back-to-top { display: none; }
+  a { text-decoration: none; color: var(--ink); }
+}
+
+@page {
+  size: A4;
+  margin: 16mm;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Focus */
+a:focus-visible {
+  outline: 2px solid #b0a080;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <h1>The Travelling Cat Chronicles<br><span style="font-size:0.55em; font-weight:300;">旅猫リポート</span></h1>
+  <div class="subtitle">A Japanese lesson through Arikawa Hiro's road novel of a proud stray cat and the gentle young man who must find him a new home, where every mile reveals what family truly means</div>
+  <div class="meta">Arikawa Hiro &middot; Bungeishunjū 2012 &middot; Kodansha Bunko 2017 &middot; Novel</div>
+</header>
+
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-inner">
+    <h2>Contents</h2>
+    <ul>
+      <li><a href="#title"><span class="toc-num">01</span> Title Grammar</a></li>
+      <li><a href="#author"><span class="toc-num">02</span> Author Biography</a></li>
+      <li><a href="#history"><span class="toc-num">03</span> Historical Context</a></li>
+      <li><a href="#synopsis"><span class="toc-num">04</span> Synopsis & Structure</a></li>
+      <li><a href="#passages"><span class="toc-num">05</span> Key Passages</a></li>
+      <li><a href="#vocabulary"><span class="toc-num">06</span> Vocabulary</a></li>
+      <li><a href="#nuance"><span class="toc-num">07</span> Nuance & Translation Loss</a></li>
+      <li><a href="#grammar"><span class="toc-num">08</span> Grammar Points</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+<div class="disclaimer">
+  <strong>Note:</strong> The passages below are based on <em>Tabineko Ripōto</em> (旅猫リポート) by Arikawa Hiro, serialized in <em>Shūkan Bunshun</em> from October 2011 to April 2012 and published by Bungeishunjū in November 2012. The translations and commentary are original to this lesson.
+</div>
+
+<p class="intro">
+  Serialized in <em>Shūkan Bunshun</em> from October 2011 to April 2012 and published as a novel by Bungeishunjū in November 2012, <em>Tabineko Ripōto</em> (旅猫リポート, <em>The Travelling Cat Chronicles</em>) is one of the most beloved works in this lesson series: a road novel told from the perspective of a cat. Its author, Arikawa Hiro (有川浩, b. 1972), was born in Kōchi Prefecture, graduated from Sonoda Gakuen Women's University, and debuted in 2004 with <em>Shio no Machi</em> (塩の街), which won the Dengeki Novel Prize. She is best known for the <em>Toshokan Sensō</em> (図書館戦争, "Library War") series, a fusion of military SF and romantic comedy that won the 39th Seiun Award, and for <em>Hankyū Densha</em> (阪急電車), a bestselling novel of intersecting lives on a single train line. Where the <em>Library War</em> series asks what we would fight to protect and <em>Hankyū Densha</em> asks what a chance encounter on a commuter train can change, <em>Tabineko Ripōto</em> asks something quieter and more devastating: what does it mean to love something you know you will lose? The novel's narrator is Nana (ナナ), a proud, clever, "tsundere" male stray cat who was rescued by Satoru, a gentle young man with a secret. When Satoru can no longer keep Nana, the two embark on a journey in a silver station wagon to find Nana a new home among Satoru's old friends. Each visit reveals not just a candidate for adoption but a chapter of Satoru's hidden past, and Nana's voice — by turns arrogant, tender, and heartbroken — becomes the lens through which we learn what family means when blood ties have been severed and what love means when time is running out. The novel won the 4th Booklog Prize (Novel Category), was nominated for the 26th Yamamoto Shūgorō Prize and the 34th Yoshikawa Eiji Literary Newcomer Prize, and has been adapted into a stage play (2013, script by the author herself), a radio drama, a picture book, and a 2018 film starring Fukushi Sōta as Satoru with Takahata Mitsuki voicing Nana. It has sold millions of copies and been translated into more than a dozen languages, but its power remains rooted in the specific grammar of Japanese intimacy: the way a cat says "I" (吾輩, <em>wagahai</em>), the way a man asks for help (もらってくれませんか), the way loss is endured without being named.
+</p>
+
+<!-- ==================== SECTION 1 ==================== -->
+<section id="title">
+  <span class="section-label">Title Analysis</span>
+  <h2>The Title: The Grammar of the Travelling Cat</h2>
+
+  <p>The title contains its entire premise in five syllables.</p>
+
+  <div class="passage cat">
+    <div class="jp-text jp">
+      <span class="hl-cat">旅猫リポート</span>
+    </div>
+    <div class="romaji">"Tabineko Ripōto"</div>
+    <div class="translation">"The Travelling Cat Chronicles / The Travelling Cat Report"</div>
+    <div class="source">— Title</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">旅</td><td class="reading">tabi</td><td>journey, travel, trip</td><td class="usage"><span class="jp-ex">銀色のワゴンで最後の旅に出る</span><span class="en-ex">"set out on their final journey in a silver station wagon"</span></td></tr>
+    <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td><td class="usage"><span class="jp-ex">ボクはオス猫のナナ</span><span class="en-ex">"I am Nana, a male cat"</span></td></tr>
+    <tr><td class="word">リポート</td><td class="reading">ripōto</td><td>report (from English "report")</td><td class="usage"><span class="jp-ex">旅を猫リポートとしてお届けする</span><span class="en-ex">"delivering the journey as a cat report"</span></td></tr>
+  </table>
+
+  <div class="nuance cat-box">
+    <h5>What translation loses: The compound poetics of 旅猫</h5>
+    <p><strong>旅猫 (tabineko):</strong> "Travelling cat." The compound is simple — 旅 (tabi, journey) + 猫 (neko, cat) — but it carries the weight of Japanese literary tradition. The word 旅 (tabi) is not the casual travel of a vacation. It is the journey of the classical Japanese poetic imagination: the road that leads away from home, the <em>michiyuki</em> (道行き) of Noh drama and <em>saigyō</em> poetry, the wandering of Bashō. A 旅猫 is not merely a cat that rides in cars. It is a cat engaged in the specifically Japanese form of travel-as-self-discovery, where the road is not a means to an end but the story itself. The English "travelling cat" captures the literal meaning but loses the literary resonance. "Journeying cat" is closer but sounds archaic. "Road cat" sounds like a stray. The Japanese 旅猫 contains Bashō, Saigyō, and the entire tradition of Japanese road literature in two syllables.</p>
+    <p><strong>リポート (ripōto):</strong> "Report." The English loanword makes the title into something between journalism and literature. A リポート is not a novel (小説, <em>shōsetsu</em>), not an essay (エッセイ), not a memoir (自伝). It is a report: factual, observational, delivered by someone who was there. By calling Nana's story a リポート, Arikawa gives the cat the authority of a journalist and the distance of a witness. Nana is not merely experiencing the journey; he is filing dispatches from it. The loanword also creates a charming tonal clash: the classical 旅猫 paired with the modern リポート, as if a Heian-period travelling poet had been given a press pass. This tonal clash is the key to the book's voice — Nana speaks with the archaic self-importance of a classical narrator and the casual irony of a contemporary observer. The grammar of the title makes the cat into a correspondent, and the journey into news that must be reported before it is too late.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 2 ==================== -->
+<section id="author">
+  <span class="section-label">Author</span>
+  <h2>The Author: From Military SF to the Cat's Inner Monologue</h2>
+
+  <p>Arikawa Hiro's career is a lesson in literary range. The woman who wrote military science fiction about censorship and armed library defense also wrote the gentlest novel about a cat's last journey.</p>
+
+  <div class="passage">
+    <div class="jp-text jp">
+      <span class="hl">1972年、高知県生まれ。園田学園女子大学卒。2003年『塩の街』で第10回電撃ゲーム小説大賞〈大賞〉を受賞し、2004年デビュー。『自衛隊三部作』『図書館戦争』シリーズで読者を広げ、『阪急電車』『植物図鑑』『旅猫リポート』など著書多数</span>
+    </div>
+    <div class="romaji">"Sen-kyūhyaku-nanajūni-nen, Kōchi-ken nareru. Sonoda Gakuen Joshi Daigaku sotsu. Nisen-san-nen 'Shio no Machi' de dai-jū-kai Dengeki Gēmu Shōsetsu Taishō (taishō) wo jushō shi, nisen-yon-nen debyū. 'Jieitai San-busaku' 'Toshokan Sensō' shirīzu de dokusha wo hirogate, 'Hankyū Densha' 'Shokubutsu Zukan' 'Tabineko Ripōto' nado cho-sho tasū."</div>
+    <div class="translation">"Born in 1972 in Kōchi Prefecture. Graduated from Sonoda Gakuen Women's University. Won the Grand Prize at the 10th Dengeki Game Novel Prize in 2003 for 'Shio no Machi' and debuted in 2004. Expanded her readership with the 'Self-Defense Forces Trilogy' and the 'Library War' series, and has published many books including 'Hankyū Densha,' 'Shokubutsu Zukan,' and 'Tabineko Ripōto.'"</div>
+    <div class="source">— Author profile</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">高知県</td><td class="reading">Kōchi-ken</td><td>Kōchi Prefecture (Shikoku)</td><td class="usage"><span class="jp-ex">高知県生まれ</span><span class="en-ex">"born in Kōchi Prefecture"</span></td></tr>
+    <tr><td class="word">園田学園女子大学</td><td class="reading">Sonoda Gakuen Joshi Daigaku</td><td>Sonoda Gakuen Women's University (Hyōgo)</td><td class="usage"><span class="jp-ex">園田学園女子大学卒</span><span class="en-ex">"graduate of Sonoda Gakuen Women's University"</span></td></tr>
+    <tr><td class="word">電撃ゲーム小説大賞</td><td class="reading">Dengeki Gēmu Shōsetsu Taishō</td><td>Dengeki Game Novel Prize</td><td class="usage"><span class="jp-ex">第10回電撃ゲーム小説大賞〈大賞〉を受賞</span><span class="en-ex">"won the Grand Prize at the 10th Dengeki Game Novel Prize"</span></td></tr>
+    <tr><td class="word">受賞</td><td class="reading">jushō</td><td>to win (a prize)</td><td class="usage"><span class="jp-ex">星雲賞を受賞した</span><span class="en-ex">"won the Seiun Award"</span></td></tr>
+    <tr><td class="word">デビュー</td><td class="reading">debyū</td><td>debut</td><td class="usage"><span class="jp-ex">2004年デビュー</span><span class="en-ex">"debuted in 2004"</span></td></tr>
+    <tr><td class="word">自衛隊</td><td class="reading">jieitai</td><td>Self-Defense Forces</td><td class="usage"><span class="jp-ex">自衛隊三部作</span><span class="en-ex">"Self-Defense Forces Trilogy"</span></td></tr>
+    <tr><td class="word">三部作</td><td class="reading">san-busaku</td><td>trilogy</td><td class="usage"><span class="jp-ex">『塩の街』『空の中』『海の底』の三部作</span><span class="en-ex">"trilogy of Salt Town, In the Sky, and At the Bottom of the Sea"</span></td></tr>
+    <tr><td class="word">図書館戦争</td><td class="reading">Toshokan Sensō</td><td>Library War (series title)</td><td class="usage"><span class="jp-ex">図書館戦争シリーズで読者を広げた</span><span class="en-ex">"expanded her readership with the Library War series"</span></td></tr>
+  </table>
+
+  <div class="nuance">
+    <h5>What translation loses: The genre-hopping grammar of Arikawa's career</h5>
+    <p><strong>電撃ゲーム小説大賞 (Dengeki Gēmu Shōsetsu Taishō):</strong> "Dengeki Game Novel Prize." This is one of Japan's most prestigious awards for light novels (ライトノベル), the category of youth-oriented fiction that blends illustration, anime-style storytelling, and genre experimentation. Winning the Grand Prize with <em>Shio no Machi</em> (塩の街, "Salt Town"), a post-apocalyptic military SF novel, established Arikawa as a writer of serious genre fiction. The <em>Library War</em> series (2006–2008) confirmed her reputation: a dystopian romance about censorship and armed librarians that won the 39th Seiun Award (Japan's Hugo equivalent) and sold over a million copies. And then, from this writer of military SF and dystopian romance, came <em>Tabineko Ripōto</em> — a novel about a cat. The whiplash is deliberate. Arikawa has said in interviews that she wrote the novel after being deeply moved by her own experiences with cats, and the shift from battles to whiskers is not a departure but a deepening. The same narrative skills that made <em>Library War</em> thrilling — pacing, emotional withholding, the slow revelation of character through action — make <em>Tabineko Ripōto</em> devastating. The grammar of her career makes the cat novel into the logical destination of a writer who has spent her career asking what is worth protecting.</p>
+    <p><strong>2019年、ペンネームを「有川浩」から「有川ひろ」に改める:</strong> "In 2019, changed pen name from 'Arikawa Hiro' (浩) to 'Arikawa Hiro' (ひろ)." This change is significant. The original 浩 (hiro) uses the kanji meaning "vast, great, mighty" — a strong, masculine-associated character. The new ひろ is written in hiragana, the syllabary used for grammatical particles and native Japanese words, which carries a softer, more gender-neutral, more approachable feeling. The change reflects Arikawa's evolution from a light novel writer in a male-dominated field to a general fiction author whose work appeals across demographics. The grammar of the name change is the grammar of a writer claiming her full range: she can write military SF and cat novels, and she does not need a "mighty" name to do either.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 3 ==================== -->
+<section id="history">
+  <span class="section-label">History</span>
+  <h2>The Cat in Japanese Literature: From Sōseki to Nana</h2>
+
+  <p>To understand <em>Tabineko Ripōto</em>, one must understand the lineage of the talking cat in Japanese literature, the boom in pet literature in the 2000s, and the specific cultural moment of 2011–2012 when the novel was written.</p>
+
+  <div class="passage cat">
+    <div class="jp-text jp">
+      <span class="hl-cat">吾輩は猫である。名前はまだない。</span>
+    </div>
+    <div class="romaji">"Wagahai wa neko de aru. Namae wa mada nai."</div>
+    <div class="translation">"I am a cat. As yet I have no name."</div>
+    <div class="source">— Natsume Sōseki, <em>Wagahai wa Neko de Aru</em> (1905), opening line</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">吾輩</td><td class="reading">wagahai</td><td>I, me (archaic, pompous first-person pronoun)</td><td class="usage"><span class="jp-ex">吾輩は猫である</span><span class="en-ex">"I am a cat" (Sōseki's famous opening)</span></td></tr>
+    <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td><td class="usage"><span class="jp-ex">吾輩は猫である</span><span class="en-ex">"I am a cat"</span></td></tr>
+    <tr><td class="word">名前</td><td class="reading">namae</td><td>name</td><td class="usage"><span class="jp-ex">名前はまだない</span><span class="en-ex">"as yet I have no name"</span></td></tr>
+    <tr><td class="word">まだ</td><td class="reading">mada</td><td>yet, still, not yet</td><td class="usage"><span class="jp-ex">名前はまだない</span><span class="en-ex">"as yet I have no name"</span></td></tr>
+  </table>
+
+  <div class="nuance cat-box">
+    <h5>What translation loses: The Sōseki echo chamber</h5>
+    <p><strong>吾輩は猫である (Wagahai wa Neko de Aru):</strong> "I Am a Cat." Natsume Sōseki's 1905 novel is the most famous work of Japanese literature narrated by a cat, and Arikawa's opening — "吾輩は猫である。名前はまだない。昔の偉い猫は言った。" ("I am a cat. As yet I have no name. So said the great cat of old.") — is a direct, playful homage. But the homage is also a declaration of difference. Sōseki's cat is a philosopher, a detached observer of human folly, a Meiji-period intellectual who uses his feline perspective to satirize Japanese society's rush to modernize. Arikawa's Nana is something else entirely: not a philosopher but a roommate, not detached but deeply attached, not a satirist but a mourner. Where Sōseki's cat looks down on humans from the roof, Nana looks up at Satoru from the passenger seat of a silver station wagon. The grammar of the homage makes Nana into Sōseki's descendant, but the grammar of the story makes him into something Sōseki could not have imagined: a cat who loves a human so much that he would rather be homeless than be owned by anyone else.</p>
+    <p><strong>The pet literature boom:</strong> The 2000s and 2010s saw an explosion of Japanese literature about cats, dogs, and the human-animal bond. Works like Hiraide Takashi's <em>Neko no Kyaku</em> (猫の客, "The Guest Cat," 2001), Itō Hideaki's <em>Nana to Kurashite</em> (ナナと暮らして), and dozens of " healing" (癒し系, <em>iyashi-kei</em>) novels about pets filled bookstore shelves. This boom reflected demographic shifts: Japan's aging population, declining birthrate, and increasing number of single-person households made pets into family members, companions, and grief objects. <em>Tabineko Ripōto</em> was written in the immediate aftermath of the March 11, 2011 Tōhoku earthquake and tsunami, a national trauma that made questions of loss, displacement, and the fragility of daily life urgently present. The novel's journey — a man and a cat driving through a landscape of memory, visiting old friends, preparing for an ending — resonates with the post-3.11 Japanese consciousness of impermanence. The grammar of the historical moment makes the cat novel into a national elegy, and Nana's voice into the voice of everyone who has ever had to say goodbye.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 4 ==================== -->
+<section id="synopsis">
+  <span class="section-label">Structure</span>
+  <h2>A Silver Station Wagon, Five Old Friends, and One Unspeakable Secret</h2>
+
+  <p><em>Tabineko Ripōto</em> is structured as a road novel with a frame narrative. The book opens with a Pre-Report ("Before We Set Out on Our Journey") in which Nana introduces himself and his relationship with Satoru. Then come four Reports, each centered on a visit to one of Satoru's friends from a different period of his life. Between the Reports, Nana's narration continues, deepening the reader's understanding of Satoru's secret. The novel closes with a Last-Report that delivers the emotional climax and the revelation that has been withheld throughout.</p>
+
+  <div class="passage cat">
+    <div class="jp-text jp">
+      <span class="hl-cat">Pre-Report 僕たちが旅に出る前のこと / Report-01 コースケ / Report-02 ヨシミネ / Report-03 スギとチカコ / Report-3.5 最後の旅 / Report-04 ノリコ / Last-Report</span>
+    </div>
+    <div class="romaji">"Pre-Report: Bokutachi ga tabi ni deru mae no koto / Report-01: Kōsuke / Report-02: Yoshimine / Report-03: Sugi to Chikako / Report-3.5: Saigo no Tabi / Report-04: Noriko / Last-Report"</div>
+    <div class="translation">"Pre-Report: Before We Set Out on Our Journey / Report-01: Kōsuke / Report-02: Yoshimine / Report-03: Sugi and Chikako / Report-3.5: The Last Journey / Report-04: Noriko / Last-Report"</div>
+    <div class="source">— Table of contents</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">僕たち</td><td class="reading">bokutachi</td><td>we (masculine/casual)</td><td class="usage"><span class="jp-ex">僕たちが旅に出る前のこと</span><span class="en-ex">"before we set out on our journey"</span></td></tr>
+    <tr><td class="word">旅に出る</td><td class="reading">tabi ni deru</td><td>to set out on a journey</td><td class="usage"><span class="jp-ex">僕たちが旅に出る前のこと</span><span class="en-ex">"before we set out on our journey"</span></td></tr>
+    <tr><td class="word">最後</td><td class="reading">saigo</td><td>last, final</td><td class="usage"><span class="jp-ex">最後の旅</span><span class="en-ex">"the last journey"</span></td></tr>
+    <tr><td class="word">報告</td><td class="reading">ripōto</td><td>report (chapter heading)</td><td class="usage"><span class="jp-ex">Report-01、Report-02</span><span class="en-ex">"Report-01, Report-02"</span></td></tr>
+  </table>
+
+  <div class="nuance cat-box">
+    <h5>What translation loses: The chapter-naming grammar of the report</h5>
+    <p><strong>Report-01, Report-02, etc.:</strong> The chapter headings use the English loanword "Report" with a number, creating the effect of a filed dispatch, a travel log, or a scientific observation. But the content is deeply emotional, not scientific. This tension between the clinical form (report) and the sentimental content (a cat's love for his human) is the structural joke of the novel. Nana pretends to be objective — he calls himself "unparalleled in intelligence and beauty" — but he is writing an elegy. The grammar of the chapter names makes the novel into a series of official documents that record an unofficial love. The Pre-Report establishes the terms of the journey. The numbered Reports document each visit. Report-3.5 (最後の旅, "The Last Journey") breaks the numerical sequence to mark the turning point. And the Last-Report delivers the ending that the entire book has been withholding. The structure is not merely organizational; it is emotional architecture, with each Report adding a floor to the reader's understanding of who Satoru is and why he must give Nana away.</p>
+  </div>
+
+  <h3>The Five Visits and What They Reveal</h3>
+  <p>Each visit follows the same pattern: Satoru and Nana arrive, the friend is delighted to see Satoru, Nana evaluates the friend as a potential new owner, and through conversation and memory, a piece of Satoru's past is revealed. But the pattern is not repetitive; it is cumulative. Each visit adds a layer to the portrait of Satoru as a man who has been shaped by loss.</p>
+
+  <p><strong>Report-01: Kōsuke (コースケ)</strong> — Satoru's elementary school friend, now the heir to a photo studio. Kōsuke's wife has left him, and his life is in disarray. Through Kōsuke's memories, we learn that Satoru lost his parents in sixth grade in a traffic accident and was raised by his aunt Noriko. We also learn about Hachi, the cat Satoru had as a child, and the origin of Satoru's belief that pets are family, not property. Kōsuke cannot take Nana; his life is too unstable. But the visit restores something in Kōsuke, a reminder of who he was before his marriage failed.</p>
+
+  <p><strong>Report-02: Yoshimine (ヨシミネ)</strong> — Satoru's middle school friend, now a farmer. Yoshimine grew up in the chaos of his parents' divorce and was raised by his grandmother. His farm is remote, peaceful, and full of animals. He seems like an ideal candidate. But Yoshimine's life is too full, too rooted in his land and his work. He cannot take Nana either. Through Yoshimine, we learn about Satoru's adolescence: his kindness, his silence about his own pain, his capacity to make others feel seen.</p>
+
+  <p><strong>Report-03: Sugi and Chikako (スギとチカコ)</strong> — Satoru's high school friends, now married and running a pet-friendly pension. They are the most obvious candidates: they love animals, they have space, they are stable and kind. But they have a dog, and Nana, being a proud cat with a tsundere personality, does not get along with dogs. The visit fails as an adoption, but it succeeds as revelation: through Sugi and Chikako, we learn about Satoru's young adulthood, his romantic failures, his decision not to pursue love because he knew something they did not.</p>
+
+  <p><strong>Report-04: Noriko (ノリコ)</strong> — Satoru's aunt, the woman who raised him after his parents died. She is not a candidate for adoption; she is the destination. The visit to Noriko reveals what the reader has suspected: Satoru is dying. He has a terminal illness. The journey has never been about finding Nana a new owner. It has been about saying goodbye to the people who made Satoru's life bearable, and about finding Nana a home before Satoru can no longer care for him. Noriko takes Nana. The Last-Report is Nana's life after Satoru, a life of grief and memory and the slow, painful process of learning to love again.</p>
+
+  <h3>The Unreliable Cat Narrator</h3>
+  <p>Nana is an unreliable narrator in the most poignant sense: he does not know what Satoru knows. He suspects, he worries, he notices that Satoru is thinner, more tired, more tender than usual. But he does not understand the full truth until the end, and his gradual realization mirrors the reader's. This structural choice is brilliant: by filtering the story through a cat's limited understanding, Arikawa makes the reader feel the full force of the revelation when it comes. We have been laughing at Nana's arrogance, admiring his pride, feeling his love — and then we realize that every moment of the journey has been suffused with the knowledge of its ending. The grammar of the cat's perspective is the grammar of innocence confronting mortality.</p>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 5 ==================== -->
+<section id="passages">
+  <span class="section-label">Text</span>
+  <h2>Key Passages</h2>
+  <p class="intro">These passages contain the novel's most precisely weighted sentences: the opening that echoes Sōseki, the request that launches the journey, the declaration of what was gained rather than lost, and the definition of family that the entire book exists to prove.</p>
+
+  <h3>Passage 1: The Opening — The Grammar of the Proud Cat</h3>
+  <span class="story-label">Pre-Report</span>
+
+  <div class="passage cat">
+    <div class="jp-text jp">
+      <span class="hl-cat">吾輩は猫である。名前まだない。昔の偉い猫は言った。……ボクはオス猫のナナ。類まれなる聡明さと美貌を持つ、ただの猫だ</span>
+    </div>
+    <div class="romaji">"Wagahai wa neko de aru. Namae wa mada nai. Mukashi no erai neko wa itta. ... Boku wa osu-neko no Nana. Taguireru-naru sōmei-sa to bibō wo motsu, tada no neko da."</div>
+    <div class="translation">"I am a cat. As yet I have no name. So said the great cat of old. ... I am Nana, a male cat. A perfectly ordinary cat, possessed of unparalleled intelligence and beauty."</div>
+    <div class="source">— Pre-Report opening</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">吾輩</td><td class="reading">wagahai</td><td>I, me (archaic, pompous first-person)</td><td class="usage"><span class="jp-ex">吾輩は猫である</span><span class="en-ex">"I am a cat" (Nana's Sōseki homage)</span></td></tr>
+    <tr><td class="word">昔</td><td class="reading">mukashi</td><td>old times, long ago</td><td class="usage"><span class="jp-ex">昔の偉い猫は言った</span><span class="en-ex">"so said the great cat of old"</span></td></tr>
+    <tr><td class="word">偉い</td><td class="reading">erai</td><td>great, eminent, admirable</td><td class="usage"><span class="jp-ex">昔の偉い猫</span><span class="en-ex">"the great cat of old"</span></td></tr>
+    <tr><td class="word">オス</td><td class="reading">osu</td><td>male (animal)</td><td class="usage"><span class="jp-ex">ボクはオス猫のナナ</span><span class="en-ex">"I am Nana, a male cat"</span></td></tr>
+    <tr><td class="word">類まれなる</td><td class="reading">taguireru-naru</td><td>unparalleled, peerless (literary)</td><td class="usage"><span class="jp-ex">類まれなる聡明さと美貌を持つ</span><span class="en-ex">"possessed of unparalleled intelligence and beauty"</span></td></tr>
+    <tr><td class="word">聡明さ</td><td class="reading">sōmei-sa</td><td>intelligence, sagacity</td><td class="usage"><span class="jp-ex">類まれなる聡明さと美貌</span><span class="en-ex">"unparalleled intelligence and beauty"</span></td></tr>
+    <tr><td class="word">美貌</td><td class="reading">bibō</td><td>beauty, good looks</td><td class="usage"><span class="jp-ex">類まれなる聡明さと美貌</span><span class="en-ex">"unparalleled intelligence and beauty"</span></td></tr>
+    <tr><td class="word">ただの</td><td class="reading">tada no</td><td>merely, just, only a</td><td class="usage"><span class="jp-ex">ただの猫だ</span><span class="en-ex">"a perfectly ordinary cat" (humble brag)</span></td></tr>
+  </table>
+
+  <div class="nuance cat-box">
+    <h5>What translation loses: The pronoun shift from wagahai to boku</h5>
+    <p><strong>吾輩 (wagahai) → ボク (boku):</strong> The opening echoes Sōseki's famous first line using 吾輩, the pompous, archaic first-person pronoun that Sōseki's cat uses to establish his philosophical authority. But Nana immediately shifts to ボク (boku), the standard masculine first-person pronoun of a young man or boy. This shift is the key to Nana's voice. He is not Sōseki's philosopher-king. He is a contemporary guy who happens to be a cat. The ボク makes him approachable, casual, slightly immature — the perfect voice for a proud cat who thinks he's smarter than his human but loves him anyway. The English translation cannot reproduce this pronoun shift because English has only one "I." The reader of Japanese feels the tonal drop from classical grandeur to everyday masculinity in a single syllable, and that drop is the essence of Nana's character: he aspires to Sōseki's dignity but lives in the contemporary world of silver station wagons and convenience store stops.</p>
+    <p><strong>類まれなる聡明さと美貌 (taguireru-naru sōmei-sa to bibō):</strong> "Unparalleled intelligence and beauty." The phrase 類まれなる is a literary adjectival form (連体形, <em>rentaikei</em>) of 類まれない, meaning "unparalleled, peerless, unprecedented." It is the kind of phrase found in classical literature, not in the self-description of a cat. Nana's use of it is absurd and endearing: he is a stray who has appointed himself aristocrat. The English "unparalleled" captures the meaning but loses the literary register. "Peerless" is closer but sounds like a knight. "Unprecedented intelligence and beauty" sounds like a press release. The Japanese phrase makes Nana sound like a Heian-period courtier describing himself in a diary, which is exactly the joke. He is a cat of impossible self-regard, and his language is the language of impossible self-regard.</p>
+  </div>
+
+  <h3>Passage 2: The Request — The Grammar of the Unsayable</h3>
+  <span class="story-label">Pre-Report</span>
+
+  <div class="passage">
+    <div class="jp-text jp">
+      <span class="hl">「僕の猫をもらってくれませんか？」</span>
+    </div>
+    <div class="romaji">"Boku no neko wo moratte kuremasen ka?"</div>
+    <div class="translation">"Won't you take my cat?" / "Would you take my cat, please?"</div>
+    <div class="source">— Satoru's request, repeated throughout the novel</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">僕</td><td class="reading">boku</td><td>I, me (masculine, casual)</td><td class="usage"><span class="jp-ex">僕の猫をもらってくれませんか</span><span class="en-ex">"won't you take my cat?"</span></td></tr>
+    <tr><td class="word">猫</td><td class="reading">neko</td><td>cat</td><td class="usage"><span class="jp-ex">僕の猫をもらってくれませんか</span><span class="en-ex">"won't you take my cat?"</span></td></tr>
+    <tr><td class="word">もらう</td><td class="reading">morau</td><td>to receive, to get</td><td class="usage"><span class="jp-ex">もらってくれませんか</span><span class="en-ex">"won't you receive [him]?"</span></td></tr>
+    <tr><td class="word">くれる</td><td class="reading">kureru</td><td>to give (to me/us)</td><td class="usage"><span class="jp-ex">もらってくれませんか</span><span class="en-ex">"do me the favor of receiving"</span></td></tr>
+    <tr><td class="word">ませんか</td><td class="reading">masen ka</td><td>won't you...? (polite invitation)</td><td class="usage"><span class="jp-ex">もらってくれませんか</span><span class="en-ex">"won't you...?" (the devastating politeness)</span></td></tr>
+  </table>
+
+  <div class="nuance">
+    <h5>What translation loses: The devastating politeness of もらってくれませんか</h5>
+    <p><strong>もらってくれませんか (moratte kuremasen ka):</strong> "Won't you take/receive [him]?" This is one of the most emotionally complex sentences in contemporary Japanese fiction, and it is devastating because of its politeness. The grammar combines もらう (to receive) with くれる (to give, directed toward the speaker) in the te-form, creating もらってくれる: "to give me the favor of receiving." The addition of ませんか makes it a polite request: "Won't you do me the favor of receiving?" The sentence is indirect, humble, and excruciating. Satoru is not saying "I need to give my cat away." He is saying "Would you do me the kindness of accepting him?" The grammar puts Satoru in the position of supplicant and the friend in the position of benefactor. It makes the giving of the cat into a gift that the receiver bestows on the giver. This is the opposite of how we usually think about pet surrender, which is framed as abandonment. Satoru's grammar reframes it as an act of grace that he is requesting. And because the reader knows what Satoru knows — that he is dying, that this is not a casual rehoming but a final arrangement — the politeness becomes almost unbearable. He is too gentle to say "I am dying and need to find my cat a home before I go." He says "Won't you take my cat?" and lets his friends fill in the rest.</p>
+  </div>
+
+  <h3>Passage 3: The Declaration — The Grammar of What Was Gained</h3>
+  <span class="story-label">Last-Report</span>
+
+  <div class="passage cat">
+    <div class="jp-text jp">
+      <span class="hl-cat">サトルがボクを飼えなくなっても、僕は何も失わないんだ。ナナって名前と、サトルと暮らした五年を得ただけなんだ。それは、サトルに出会わなかったら絶対に手に入らなかったんだ</span>
+    </div>
+    <div class="romaji">"Satoru ga boku wo kaenaku natte mo, boku wa nani mo ushinawanai n da. Nana tte namae to, Satoru to kura shita go-nen wo eta dake nanda. Sore wa, Satoru ni deawanakattara zettai ni te ni hairanakatta n da."</div>
+    <div class="translation">"Even if Satoru can no longer keep me, I lose nothing. I have simply gained the name Nana and five years of living with Satoru. Those are things I never could have gotten if I hadn't met Satoru."</div>
+    <div class="source">— Nana's realization in the Last-Report</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">飼う</td><td class="reading">kau</td><td>to keep (a pet), to raise</td><td class="usage"><span class="jp-ex">サトルがボクを飼えなくなっても</span><span class="en-ex">"even if Satoru can no longer keep me"</span></td></tr>
+    <tr><td class="word">失う</td><td class="reading">ushinau</td><td>to lose</td><td class="usage"><span class="jp-ex">僕は何も失わないんだ</span><span class="en-ex">"I lose nothing"</span></td></tr>
+    <tr><td class="word">得る</td><td class="reading">eru</td><td>to obtain, to gain</td><td class="usage"><span class="jp-ex">五年を得ただけなんだ</span><span class="en-ex">"I have simply gained five years"</span></td></tr>
+    <tr><td class="word">だけ</td><td class="reading">dake</td><td>only, just</td><td class="usage"><span class="jp-ex">五年を得ただけなんだ</span><span class="en-ex">"simply gained" (humble magnification)</span></td></tr>
+    <tr><td class="word">出会う</td><td class="reading">deau</td><td>to meet, to encounter (fateful)</td><td class="usage"><span class="jp-ex">サトルに出会わなかったら</span><span class="en-ex">"if I hadn't met Satoru"</span></td></tr>
+    <tr><td class="word">絶対に</td><td class="reading">zettai ni</td><td>absolutely, definitely</td><td class="usage"><span class="jp-ex">絶対に手に入らなかった</span><span class="en-ex">"I never could have gotten"</span></td></tr>
+    <tr><td class="word">手に入る</td><td class="reading">te ni hairu</td><td>to obtain, to come into one's hands</td><td class="usage"><span class="jp-ex">手に入らなかった</span><span class="en-ex">"could not have come into my hands"</span></td></tr>
+  </table>
+
+  <div class="nuance cat-box">
+    <h5>What translation loses: The inversion grammar of 何も失わない</h5>
+    <p><strong>何も失わない (nani mo ushinawanai):</strong> "I lose nothing." The sentence is a radical inversion of the expected emotional response. When someone loses a home, a family, a person they love, we expect them to say they have lost everything. Nana says the opposite: he has lost nothing because what he had was a gift that he was never entitled to. The grammar of 何も失わない makes loss into a philosophical position. Nana is not denying his grief. He is reframing it: grief is the price of having had something worth losing, and he would rather have the grief than never have had Satoru. The English "I lose nothing" sounds like stoicism or denial. In Japanese, it sounds like wisdom — the wisdom of someone who has learned that love is not a debt to be collected but a grace to be grateful for. The particle も (mo) in 何も (nani mo) creates a total negation: "not one thing." The total negation of loss is the total affirmation of what was given.</p>
+    <p><strong>得ただけ (eta dake):</strong> "Simply gained." The particle だけ (only, just) minimizes what Nana has received — "only the name Nana and five years" — but the context maximizes it. "Only five years" is an eternity when you are a cat. "Only the name Nana" is everything when you were born without one. The grammar of だけ creates the characteristic Japanese rhetorical move of humble magnification: by claiming to have received "only" something, the speaker makes that something appear infinitely precious. The English "simply gained" captures the minimization but loses the emotional expansion. "I only gained" sounds like regret. 得ただけ sounds like wonder.</p>
+  </div>
+
+  <h3>Passage 4: The Definition of Family — The Grammar of What Pets Are</h3>
+  <span class="story-label">Report-01 (Kōsuke)</span>
+
+  <div class="passage">
+    <div class="jp-text jp">
+      <span class="hl">「ペットじゃないよ。ハチは家族だよ。」……「ハチは家族だ。家族なんだ。」</span>
+    </div>
+    <div class="romaji">"Petto ja nai yo. Hachi wa kazoku da yo." ... "Hachi wa kazoku da. Kazoku na n da."</div>
+    <div class="translation">"He's not a pet. Hachi is family." ... "Hachi is family. Family."</div>
+    <div class="source">— Young Satoru, Report-01</div>
+  </div>
+
+  <h4>Vocabulary</h4>
+  <table class="vocab-table">
+    <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    <tr><td class="word">ペット</td><td class="reading">petto</td><td>pet (loanword)</td><td class="usage"><span class="jp-ex">ペットじゃないよ</span><span class="en-ex">"he's not a pet"</span></td></tr>
+    <tr><td class="word">家族</td><td class="reading">kazoku</td><td>family</td><td class="usage"><span class="jp-ex">ハチは家族だ。家族なんだ。</span><span class="en-ex">"Hachi is family. Family."</span></td></tr>
+    <tr><td class="word">じゃない</td><td class="reading">ja nai</td><td>is not (casual)</td><td class="usage"><span class="jp-ex">ペットじゃないよ</span><span class="en-ex">"he's not a pet"</span></td></tr>
+    <tr><td class="word">なんだ</td><td class="reading">na n da</td><td>is (emphatic explanatory)</td><td class="usage"><span class="jp-ex">家族なんだ</span><span class="en-ex">"is family" (explanatory revelation)</span></td></tr>
+  </table>
+
+  <div class="nuance">
+    <h5>What translation loses: The repetition grammar of 家族なんだ</h5>
+    <p><strong>家族なんだ (kazoku na n da):</strong> "Is family." The repetition — "Hachi is family. Family." — is not mere emphasis. It is a child correcting an adult's category error. The first sentence (ペットじゃないよ。ハチは家族だよ) is a correction with the softening particle よ. The second sentence (ハチは家族だ。家族なんだ) removes the softening and adds the explanatory のだ (なんだ), which makes the statement into an explanation of a fundamental truth. The child Satoru is not merely disagreeing. He is revealing a truth about the world that adults have forgotten: the boundary between "pet" and "family" is a human invention, and children can see through it. The grammar of the repetition makes the second statement more certain than the first, as if Satoru is discovering the word "family" as he speaks it. The English translation can repeat "family" but cannot reproduce the grammatical intensification from だよ (gentle assertion) to なん (explanatory revelation). This small grammatical shift is the philosophical center of the entire novel: everything that follows exists to prove that Satoru was right when he said Hachi was family, and that Nana is family too.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 6 ==================== -->
+<section id="vocabulary">
+  <span class="section-label">Words</span>
+  <h2>Vocabulary</h2>
+  <p class="intro">Essential vocabulary from the language of the journey, the cat's voice, and the unspeakable secret that drives them both.</p>
+
+  <h3>The Journey: The Language of the Road</h3>
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="word">旅</td><td class="reading">tabi</td><td>journey, travel, trip</td><td class="usage"><span class="jp-ex">銀色のワゴンで最後の旅に出る</span><span class="en-ex">"set out on their final journey in a silver station wagon"</span></td></tr>
+      <tr><td class="word">旅に出る</td><td class="reading">tabi ni deru</td><td>to set out on a journey</td><td class="usage"><span class="jp-ex">僕たちが旅に出る前のこと</span><span class="en-ex">"before we set out on our journey"</span></td></tr>
+      <tr><td class="word">銀色</td><td class="reading">giniro</td><td>silver (color)</td><td class="usage"><span class="jp-ex">銀色のワゴン</span><span class="en-ex">"silver station wagon"</span></td></tr>
+      <tr><td class="word">ワゴン</td><td class="reading">wagon</td><td>station wagon, estate car</td><td class="usage"><span class="jp-ex">銀色のワゴンで旅に出る</span><span class="en-ex">"set out in a silver station wagon"</span></td></tr>
+      <tr><td class="word">最後の旅</td><td class="reading">saigo no tabi</td><td>last journey, final trip</td><td class="usage"><span class="jp-ex">これは僕らの最後の旅だ</span><span class="en-ex">"this is our last journey"</span></td></tr>
+      <tr><td class="word">里親</td><td class="reading">sato-oya</td><td>adoptive parent, foster home</td><td class="usage"><span class="jp-ex">新しい里親を探す旅</span><span class="en-ex">"a journey to find a new foster home"</span></td></tr>
+      <tr><td class="word">お見合い</td><td class="reading">omiai</td><td>meeting for arrangement (marriage/pet adoption)</td><td class="usage"><span class="jp-ex">ナナとのお見合いの旅</span><span class="en-ex">"a journey of meetings for Nana's adoption"</span></td></tr>
+      <tr><td class="word">訪ねる</td><td class="reading">tazuneru</td><td>to visit, to call on</td><td class="usage"><span class="jp-ex">昔の友人を訪ねる</span><span class="en-ex">"visit old friends"</span></td></tr>
+      <tr><td class="word">再会</td><td class="reading">saikai</td><td>reunion, meeting again</td><td class="usage"><span class="jp-ex">友人との再会</span><span class="en-ex">"reunion with friends"</span></td></tr>
+      <tr><td class="word">思い出</td><td class="reading">omoide</td><td>memory, recollection</td><td class="usage"><span class="jp-ex">思い出を一つ一つ積み重ねる</span><span class="en-ex">"accumulating memories one by one"</span></td></tr>
+      <tr><td class="word">風景</td><td class="reading">fūkei</td><td>scenery, landscape</td><td class="usage"><span class="jp-ex">美しい風景に出会う</span><span class="en-ex">"encounter beautiful scenery"</span></td></tr>
+      <tr><td class="word">海</td><td class="reading">umi</td><td>sea, ocean</td><td class="usage"><span class="jp-ex">初めて海を目の当たりにする</span><span class="en-ex">"see the sea for the first time"</span></td></tr>
+      <tr><td class="word">道</td><td class="reading">michi</td><td>road, path, way</td><td class="usage"><span class="jp-ex">帰り道のサトルとナナ</span><span class="en-ex">"Satoru and Nana on the way back"</span></td></tr>
+      <tr><td class="word">ボンネット</td><td class="reading">bonnetto</td><td>hood, bonnet (of a car)</td><td class="usage"><span class="jp-ex">ワゴンのボンネットがお気に入り</span><span class="en-ex">"the wagon's hood is his favorite spot"</span></td></tr>
+      <tr><td class="word">日向ぼっこ</td><td class="reading">hinatabokko</td><td>basking in the sun</td><td class="usage"><span class="jp-ex">ボンネットで日向ぼっこ</span><span class="en-ex">"basking in the sun on the hood"</span></td></tr>
+      <tr><td class="word">車</td><td class="reading">kuruma</td><td>car, vehicle</td><td class="usage"><span class="jp-ex">銀色の車で旅をする</span><span class="en-ex">"travel by silver car"</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>The Cat's World: The Language of Feline Personhood</h3>
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="word">吾輩</td><td class="reading">wagahai</td><td>I, me (archaic, pompous)</td><td class="usage"><span class="jp-ex">吾輩は猫である</span><span class="en-ex">"I am a cat" (Sōseki homage, immediately dropped)</span></td></tr>
+      <tr><td class="word">ボク</td><td class="reading">boku</td><td>I, me (masculine, casual)</td><td class="usage"><span class="jp-ex">ボクはオス猫のナナ</span><span class="en-ex">"I am Nana, a male cat"</span></td></tr>
+      <tr><td class="word">野良猫</td><td class="reading">nora-neko</td><td>stray cat</td><td class="usage"><span class="jp-ex">元野良猫のナナ</span><span class="en-ex">"Nana, formerly a stray cat"</span></td></tr>
+      <tr><td class="word">飼い猫</td><td class="reading">kai-neko</td><td>pet cat, kept cat</td><td class="usage"><span class="jp-ex">ナナと名付けられて飼い猫の生活が始まる</span><span class="en-ex">"named Nana, his life as a pet cat began"</span></td></tr>
+      <tr><td class="word">オス</td><td class="reading">osu</td><td>male (animal)</td><td class="usage"><span class="jp-ex">ボクはオス猫のナナ</span><span class="en-ex">"I am Nana, a male cat"</span></td></tr>
+      <tr><td class="word">キジトラ</td><td class="reading">kijitora</td><td>tabby cat (brown striped)</td><td class="usage"><span class="jp-ex">キジトラの毛並み</span><span class="en-ex">"tabby fur pattern"</span></td></tr>
+      <tr><td class="word">尻尾</td><td class="reading">shippo</td><td>tail</td><td class="usage"><span class="jp-ex">尻尾が数字の7に似ている</span><span class="en-ex">"his tail resembles the number 7"</span></td></tr>
+      <tr><td class="word">カギしっぽ</td><td class="reading">kagi-shippo</td><td>crooked tail (lit. "key tail")</td><td class="usage"><span class="jp-ex">カギしっぽのナナ</span><span class="en-ex">"Nana with the crooked tail"</span></td></tr>
+      <tr><td class="word">ツンデレ</td><td class="reading">tsundere</td><td>tsundere (cold outside, warm inside)</td><td class="usage"><span class="jp-ex">ツンデレな猫・ナナ</span><span class="en-ex">"Nana, a tsundere cat"</span></td></tr>
+      <tr><td class="word">類まれなる</td><td class="reading">taguireru-naru</td><td>unparalleled, peerless</td><td class="usage"><span class="jp-ex">類まれなる聡明さと美貌を持つ</span><span class="en-ex">"possessed of unparalleled intelligence and beauty"</span></td></tr>
+      <tr><td class="word">聡明</td><td class="reading">sōmei</td><td>intelligence, sagacity</td><td class="usage"><span class="jp-ex">類まれなる聡明さ</span><span class="en-ex">"unparalleled intelligence"</span></td></tr>
+      <tr><td class="word">美貌</td><td class="reading">bibō</td><td>beauty, good looks</td><td class="usage"><span class="jp-ex">聡明さと美貌</span><span class="en-ex">"intelligence and beauty"</span></td></tr>
+      <tr><td class="word">ルームメイト</td><td class="reading">rūmumēto</td><td>roommate</td><td class="usage"><span class="jp-ex">良いルームメイトとして生活していた</span><span class="en-ex">"lived together as good roommates"</span></td></tr>
+      <tr><td class="word">ニンゲン</td><td class="reading">ningen</td><td>human (cat's slightly mocking term)</td><td class="usage"><span class="jp-ex">気高く聡明な猫とニンゲンの旅路</span><span class="en-ex">"the journey of a proud, clever cat and a human"</span></td></tr>
+      <tr><td class="word">狩り</td><td class="reading">kari</td><td>hunting</td><td class="usage"><span class="jp-ex">狩りが上手なオス猫</span><span class="en-ex">"a male cat skilled at hunting"</span></td></tr>
+      <tr><td class="word">昼寝</td><td class="reading">hirune</td><td>nap, afternoon sleep</td><td class="usage"><span class="jp-ex">ボンネットで昼寝をしている</span><span class="en-ex">"napping on the hood"</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>The Human Bonds: The Language of Family and Loss</h3>
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Word</th><th>Reading</th><th>Meaning</th><th>Usage in Context</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="word">家族</td><td class="reading">kazoku</td><td>family</td><td class="usage"><span class="jp-ex">ハチは家族だ。家族なんだ。</span><span class="en-ex">"Hachi is family. Family."</span></td></tr>
+      <tr><td class="word">ペット</td><td class="reading">petto</td><td>pet</td><td class="usage"><span class="jp-ex">ペットじゃないよ。ハチは家族だよ。</span><span class="en-ex">"He's not a pet. Hachi is family."</span></td></tr>
+      <tr><td class="word">飼い主</td><td class="reading">kainushi</td><td>pet owner</td><td class="usage"><span class="jp-ex">新しい飼い主を探す旅</span><span class="en-ex">"a journey to find a new owner"</span></td></tr>
+      <tr><td class="word">親友</td><td class="reading">shinyū</td><td>close friend, best friend</td><td class="usage"><span class="jp-ex">小学校時代の親友・コースケ</span><span class="en-ex">"Kōsuke, his close friend from elementary school"</span></td></tr>
+      <tr><td class="word">幼馴染</td><td class="reading">osananajimi</td><td>childhood friend</td><td class="usage"><span class="jp-ex">スギとチカコは幼馴染</span><span class="en-ex">"Sugi and Chikako are childhood friends"</span></td></tr>
+      <tr><td class="word">同級生</td><td class="reading">dōkyūsei</td><td>classmate</td><td class="usage"><span class="jp-ex">高校時代の同級生</span><span class="en-ex">"high school classmates"</span></td></tr>
+      <tr><td class="word">叔母</td><td class="reading">oba</td><td>aunt</td><td class="usage"><span class="jp-ex">母親の妹である叔母に引き取られる</span><span class="en-ex">"taken in by his aunt, his mother's younger sister"</span></td></tr>
+      <tr><td class="word">両親</td><td class="reading">ryōshin</td><td>parents, both parents</td><td class="usage"><span class="jp-ex">小6のとき交通事故で両親を亡くす</span><span class="en-ex">"lost both parents in a traffic accident in sixth grade"</span></td></tr>
+      <tr><td class="word">交通事故</td><td class="reading">kōtsū jiko</td><td>traffic accident</td><td class="usage"><span class="jp-ex">交通事故で大怪我を負っ</span><span class="en-ex">"was severely injured in a traffic accident"</span></td></tr>
+      <tr><td class="word">引き取る</td><td class="reading">hikitoru</td><td>to take in, to adopt, to take custody of</td><td class="usage"><span class="jp-ex">叔母に引き取られる</span><span class="en-ex">"taken in by his aunt"</span></td></tr>
+      <tr><td class="word">手放す</td><td class="reading">tebanasu</td><td>to let go of, to part with, to give up</td><td class="usage"><span class="jp-ex">ナナを手離すことに</span><span class="en-ex">"decided to part with Nana"</span></td></tr>
+      <tr><td class="word">絆</td><td class="reading">kizuna</td><td>bond, tie, emotional connection</td><td class="usage"><span class="jp-ex">この絆は、恋愛を超える</span><span class="en-ex">"this bond transcends romance"</span></td></tr>
+      <tr><td class="word">別れ</td><td class="reading">wakare</td><td>parting, farewell, separation</td><td class="usage"><span class="jp-ex">別れと再会</span><span class="en-ex">"partings and reunions"</span></td></tr>
+      <tr><td class="word">秘密</td><td class="reading">himitsu</td><td>secret</td><td class="usage"><span class="jp-ex">サトルの秘密とは</span><span class="en-ex">"what is Satoru's secret?"</span></td></tr>
+      <tr><td class="word">優しい</td><td class="reading">yasashii</td><td>gentle, kind, tender</td><td class="usage"><span class="jp-ex">心優しき青年・サトル</span><span class="en-ex">"Satoru, a gentle-hearted young man"</span></td></tr>
+      <tr><td class="word">幸せ</td><td class="reading">shiawase</td><td>happiness, blessedness</td><td class="usage"><span class="jp-ex">こんなに幸せなことって他にあるかい？</span><span class="en-ex">"is there anything else this happy in the world?"</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Words of Character and Circumstance: The Language of Grace and Imperfection</h3>
+  <table class="vocab-table">
+    <thead>
+      <tr><th>Word</th><th>Reading</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="word">申し分ない</td><td class="reading">mōshibun nai</td><td>flawless, beyond reproach, impeccable</td></tr>
+      <tr><td class="word">瀕死</td><td class="reading">hinshi</td><td>dying, on the verge of death</td></tr>
+      <tr><td class="word">轢かれる</td><td class="reading">hikareru</td><td>to be run over (by a vehicle)</td></tr>
+      <tr><td class="word">ひきとる</td><td class="reading">hikitoru</td><td>to take in, to take custody of, to adopt</td></tr>
+      <tr><td class="word">引き取り手</td><td class="reading">hikitorite</td><td>adopter, one who takes in</td></tr>
+      <tr><td class="word">世話になる</td><td class="reading">sewa ni naru</td><td>to be indebted to, to receive care from</td></tr>
+      <tr><td class="word">快諾</td><td class="reading">kaidaku</td><td>ready consent, prompt agreement</td></tr>
+      <tr><td class="word">うんざり</td><td class="reading">unzari</td><td>fed up, tired of, weary</td></tr>
+      <tr><td class="word">気にすんな</td><td class="reading">ki ni sunna</td><td>don't worry about it (casual)</td></tr>
+      <tr><td class="word">道理</td><td class="reading">dōri</td><td>reason, sense, propriety, the way things should be</td></tr>
+      <tr><td class="word">気の弱い</td><td class="reading">ki no yowai</td><td>weak-willed, timid, unable to refuse</td></tr>
+      <tr><td class="word">跡取り</td><td class="reading">atotori</td><td>heir, successor (to a family business)</td></tr>
+      <tr><td class="word">別居</td><td class="reading">bekkyo</td><td>separation, living apart (of spouses)</td></tr>
+      <tr><td class="word">気まま</td><td class="reading">kimama</td><td>selfish, willful, doing as one pleases</td></tr>
+      <tr><td class="word">不自由ない</td><td class="reading">fujiyū nai</td><td>without inconvenience, comfortable, well-provided</td></tr>
+      <tr><td class="word">いたわる</td><td class="reading">itawaru</td><td>to be kind to, to treat with care, to nurse</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 7 ==================== -->
+<section id="nuance">
+  <span class="section-label">Translation</span>
+  <h2>Nuance & What Translation Loss</h2>
+  <p class="intro">Arikawa's world is built from words that carry the weight of literary tradition, the intimacy of the human-animal bond, and the unspeakable knowledge of endings.</p>
+
+  <h3>1. <em>Wagahai</em> (吾輩): The Pronoun That Makes a Cat Aristocratic</h3>
+  <div class="nuance">
+    <h5>What translation loses</h5>
+    <p><strong>吾輩 (wagahai):</strong> "I, me." This is one of the most famous first-person pronouns in Japanese literature, entirely because of Sōseki's cat. Before 1905, it was an archaic, pompous pronoun used by men of high status to refer to themselves with exaggerated humility that actually conveyed superiority. Sōseki's cat adopts it to establish his philosophical authority, and Arikawa's Nana adopts it to establish his literary pedigree. But Nana cannot sustain it. He drops 吾輩 after the opening sentence and reverts to ボク (boku), the pronoun of a contemporary young man. The drop is the joke: Nana aspires to Sōseki's grandeur but is too modern, too casual, too emotionally exposed to maintain the pose. English has no equivalent pronoun shift. "I" is "I" is "I." The reader of English knows that Nana is a cat; the reader of Japanese knows that Nana is a cat who has read Sōseki and cannot decide whether to be a philosopher or a boyfriend. The 吾輩 is a literary costume that Nana tries on and immediately discards, and that discarding is the essence of his character.</p>
+  </div>
+
+  <h3>2. <em>Kizuna</em> (絆): The Bond That Is Not a Rope</h3>
+  <div class="nuance cat-box">
+    <h5>What translation loses</h5>
+    <p><strong>絆 (kizuna):</strong> "Bond, tie, emotional connection." The word originally meant "hobble, tether, bond" — the physical rope that ties an animal's legs. Over centuries, it shifted to mean the emotional bond between people (or between people and animals). The original meaning is still present as a ghost: a 絆 is something that constrains as well as connects. When Arikawa writes about the 絆 between Satoru and Nana, she is invoking this double meaning: their bond is what makes them free and what will make their separation unbearable. The English "bond" captures the connection but loses the etymological shadow of the rope. "Tie" captures the constraint but sounds too physical. "Connection" is too neutral. The Japanese 絆 contains the paradox of love: it is what holds us together and what makes loss possible. Without the 絆, there would be no grief. With it, there is everything.</p>
+  </div>
+
+  <h3>3. <em>Tebanasu</em> (手放す): The Verb That Means Both Release and Abandonment</h3>
+  <div class="nuance">
+    <h5>What translation loses</h5>
+    <p><strong>手放す (tebanasu):</strong> "To let go of, to part with, to release from one's hands." The word combines 手 (te, hand) with 放す (hanasu, to release), creating an image of physically opening one's hands and letting something fall away. It is used for selling a house, giving up a hobby, and — crucially — surrendering a pet. The physicality of the word makes pet surrender into an embodied act: Satoru is not merely "giving Nana away." He is opening his hands and letting him go. The English "part with" is the closest equivalent but sounds archaic. "Let go" sounds like acceptance. "Give up" sounds like surrender. "Surrender" sounds like defeat. The Japanese 手放す contains all of these and none of them: it is simply the act of opening your hands, which is the most devastating thing a person who loves something can do. The grammar of the word makes the body responsible for the emotion.</p>
+  </div>
+
+  <h3>4. <em>Satō-oya</em> (里親): The Word for the Person Who Becomes Family</h3>
+  <div class="nuance cat-box">
+    <h5>What translation loses</h5>
+    <p><strong>里親 (sato-oya):</strong> "Adoptive parent, foster parent, new owner (of a pet)." The word combines 里 (sato, home, village, native place) with 親 (oya, parent), creating a compound that means "the parent who provides a home." It is used for pet adoption as well as child foster care, and this overlap is not accidental. In Japanese, the language of pet adoption borrows from the language of human family because the emotional structure is the same: someone who cannot keep a dependent finds someone who can, and the dependent's home is transferred from one set of hands to another. The English "new owner" sounds like property transfer. "Adoptive parent" sounds like human adoption. "Foster home" sounds like institutional care. The Japanese 里親 contains the village, the parent, and the act of taking someone in as a single concept. It is the word Satoru is looking for when he asks his friends もらってくれませんか, and it is the word that makes Nana's journey not a surrender but a search for a new 里 — a new village, a new home.</p>
+  </div>
+
+  <h3>5. <em>Yasashii</em> (優しい): The Word That Contains All the World's Gentleness</h3>
+  <div class="nuance">
+    <h5>What translation loses</h5>
+    <p><strong>優しい (yasashii):</strong> "Gentle, kind, tender, considerate, mild." This is the word most often used to describe Satoru, and it is impossible to translate with a single English equivalent. 優しい is not merely "kind." It is a quality of being that encompasses gentleness of manner, tenderness of heart, consideration for others, and a kind of emotional softness that makes people feel safe. A 優しい person does not raise their voice, does not impose, does not demand. They make space for others. They listen. They do not rush to judgment. Satoru's 優しさ is the reason Nana loves him, the reason his friends remember him, the reason his aunt raised him, and the reason he cannot bring himself to tell anyone he is dying. He is too 優しい to burden them. The English "gentle" captures the manner but not the moral quality. "Kind" captures the moral quality but not the texture. "Tender" sounds romantic. "Considerate" sounds calculating. The Japanese 優しい is a single word for a whole way of being in the world, and Satoru embodies it until it breaks your heart.</p>
+  </div>
+</section>
+
+<div class="divider">* * *</div>
+
+<!-- ==================== SECTION 8 ==================== -->
+<section id="grammar">
+  <span class="section-label">Grammar</span>
+  <h2>Grammar Points</h2>
+  <p class="intro">Grammatical patterns from the language of proud cats, unspeakable requests, philosophical gains, and the definition of family.</p>
+
+  <div class="grammar">
+    <h5>〜てくれませんか (…te kuremasen ka)</h5>
+    <p>"Won't you do [for me]...?" — The grammar of the devastatingly polite request. <code>僕の猫をもらってくれませんか</code> (Won't you take my cat?). The te-form + くれる (to give, toward the speaker) + ませんか (polite negative question) creates a request so humble it sounds like a favor being asked rather than a pet being surrendered. N4–N3 level: combines benefactive くれる with polite invitation.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜なくなる (…naku naru)</h5>
+    <p>"To become unable to..." — The grammar of gradual incapacity. <code>飼えなくなっても</code> (even if [he] becomes unable to keep me). The potential negative 飼えない + なる (to become) creates a euphemistic way of describing terminal illness without naming it. The grammar makes dying into a process of losing abilities one by one. N4 level.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜だけ (…dake)</h5>
+    <p>"Only, just" — The grammar of humble magnification. <code>五年を得ただけなんだ</code> (I simply gained five years). The limiting particle だけ minimizes what was received, but the context makes the minimization into magnification. "Only five years" becomes "an eternity of grace." N5 level, but its rhetorical use is advanced.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜なかったら (…nakattara)</h5>
+    <p>"If [I] had not..." — The grammar of counterfactual gratitude. <code>出会わなかったら絶対に手に入らなかった</code> (If I hadn't met him, I never could have gotten it). The conditional negative past + counterfactual result creates the grammatical structure of gratitude: the acknowledgment that what you have was contingent, unearned, and precious because it might not have happened. N4 level.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜なんだ (…na n da)</h5>
+    <p>"Is [emphatic explanatory]" — The grammar of revealed truth. <code>家族なんだ</code> (Is family). The explanatory のだ (なんだ after a noun) makes a statement into a discovery, an explanation of a fundamental truth that the speaker has just recognized. N4 level, but its emotional force in this context is N2+.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜も…ない (…mo…nai)</h5>
+    <p>"Not even one..." — The grammar of total negation. <code>何も失わない</code> (I lose nothing). The も particle after an interrogative (何, 誰, どこ) creates total negation when combined with a negative predicate. "Not one thing." The total negation of loss becomes the total affirmation of love. N4 level.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜である (…de aru)</h5>
+    <p>"Is [copula, formal/literary]" — The grammar of classical authority. <code>吾輩は猫である</code> (I am a cat). The copula である is the formal, written-language equivalent of だ, used in literature, academic writing, and — crucially — the opening of Sōseki's novel. Nana's use of it is a costume he immediately removes. N4 level in form, N1 in literary resonance.</p>
+  </div>
+
+  <div class="grammar">
+    <h5>〜ても (…te mo)</h5>
+    <p>"Even if..." — The grammar of concessive love. <code>飼えなくなっても、僕は何も失わない</code> (Even if he can no longer keep me, I lose nothing). The te-form + も creates a concession: the first clause is admitted as true, and the second clause defies its expected consequence. Even if the worst happens, the grammar says, something remains. N4 level.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>旅猫リポート</strong> &middot; 有川浩 著 &middot; 文藝春秋 2012年11月刊 &middot; 講談社文庫 2017年刊 &middot; 272ページ</p>
+  <p>連載：『週刊文春』2011年10月27号〜2012年4月19号 / イラスト：村上勉（青い鳥文庫版）/ 絵本版：文藝春秋</p>
+  <p>受賞：第4回ブクログ大賞（小説部門）/ 第26回山本周五郎賞候補 / 第34回吉川英治文学新人賞候補</p>
+  <p>著者：有川浩（ありかわ・ひろ・1972年6月9日生・高知県出身・園田学園女子大学卒・2003年『塩の街』で電撃ゲーム小説大賞受賞・2004年デビュー・2019年ペンネームを「有川ひろ」に改める）</p>
+  <p>代表作：『塩の街』『空の中』『海の底』（自衛隊三部作）/『図書館戦争』シリーズ（第39回星雲賞）/『阪急電車』『植物図鑑』『フリーター、家を買う。』『空飛ぶ広報室』『旅猫リポート』</p>
+  <p>メディア展開：舞台（2013年・紀伊國屋ザンシアター・脚本：有川浩自身・演劇ユニット「スカイロケット」）/ 映画（2018年10月26日公開・三木康一郎監督・福士蒼汰主演・高畑充希ナナ声の出演・コトリンゴ音楽・松竹配給）/ ラジオドラマ / 朗読劇 / 絵本</p>
+  <p>舞台：現代日本（東京〜地方都市・銀色ワゴンの車旅）/ 構成：Pre-Report＋Report-01〜04＋Last-Report / 視点：猫ナナの一人称語り</p>
+  <p>テーマ：人と動物の絆・ロードノベルとしての別れ・家族の定義・喪失と記憶・優しさの倫理・ペットロス・出会いの偶然と必然</p>
+  <p>登場人物：ナナ（オス猫・語り手・ツンデレ・類まれなる聡明さと美貌）/ 宮脇悟（サトル・30代前半・優しい青年・両親を幼くして亡くす）/ コースケ（小学校時代の親友・写真館跡取り）/ ヨシミネ（中学校時代の親友・農家）/ スギとチカコ（高校時代の級生・ペンション経営・夫婦）/ リコ（悟の叔母・育ての親）</p>
+  <p>Lesson compiled from published sources, critical scholarship, and textual analysis.</p>
+  <a href="#top" class="back-to-top">Back to top &uarr;</a>
+</footer>
+
+</body>
+</html>
